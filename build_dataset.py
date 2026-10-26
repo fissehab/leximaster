@@ -2193,6 +2193,48 @@ def prune_senses(meanings: list[dict], label_map: dict) -> list[dict]:
     return out
 
 
+def rank_zipf(w: dict) -> float:
+    """Frequency for the study order. wordfreq scores a phrase by its common
+    words ("one-to-one" almost as high as "one"), which put hundreds of easy
+    phrases first; a phrase ranks by its rarest word, a step lower. Used only
+    for the order, never to choose which words are in the dataset."""
+    tokens = [x for x in re.split(r"[\s-]+", w["word"]) if x]
+    if len(tokens) < 2:
+        return w["zipf"]
+    return min(zipf_frequency(x, "en") for x in tokens) - 1.0
+
+
+def apply_fixes(words: list[dict]) -> None:
+    """Hand corrections from seeds/fixes/*.txt (see its README.txt). A
+    corrected entry is normalized again, so its senses are compared with the
+    corrected definition."""
+    by_key = {w["key"]: w for w in words}
+    fixed = set()
+    for path in sorted((SEEDS / "fixes").glob("*.txt")):
+        if path.name == "README.txt":
+            continue
+        for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            if not line.strip() or line.startswith("#"):
+                continue
+            key, field, value = (x.strip() for x in line.split(" | ", 2))
+            where = f"{path.relative_to(ROOT)}:{n}"
+            if key not in by_key:
+                sys.exit(f"{where}: no word with key {key!r}")
+            parts = field.split(".")
+            node = by_key[key]
+            for part in parts[:-1]:
+                node = node[int(part)] if isinstance(node, list) else node.get(part)
+                if node is None:
+                    sys.exit(f"{where}: {key} has no {field}")
+            last = int(parts[-1]) if isinstance(node, list) else parts[-1]
+            if isinstance(node, dict) and last not in node:
+                sys.exit(f"{where}: {key} has no {field}")
+            node[last] = json.loads(value) if value[:1] in "[{" else value
+            fixed.add(key)
+    for key in fixed:
+        normalize_display(by_key[key])
+
+
 def assemble(quiet: bool = False) -> dict:
     sel = read_json(SELECTED, None)
     if sel is None:
@@ -2394,8 +2436,18 @@ def assemble(quiet: bool = False) -> dict:
         theirs = respelling_matches_ipa(resp, ipa)
         if ours is not True and theirs is not False and (not w["phonetic"] or ours is False):
             w["phonetic"], w["phonetic_source"] = us_style(ipa), "reviewed"
-    # Frequency rank within the dataset: 1 = most common.
-    for rank, w in enumerate(sorted(words, key=lambda w: -w["zipf"]), start=1):
+    # Narrow transcriptions in brackets ([ˈɛn.əkˌdɐʉt]) are often not
+    # American: the enrichment's General American IPA replaces them.
+    for w in words:
+        ipa = ((w.get("nuance") or {}).get("pronunciation") or {}).get("ipa", "").strip()
+        if w["phonetic"].startswith("[") and ipa.startswith("/"):
+            w["phonetic"], w["phonetic_source"] = us_style(ipa), "reviewed"
+    dropped = {norm_key(x) for path in sorted((SEEDS / "drop").glob("*.txt")) for x, _ in load_seed_file(path)}
+    words = [w for w in words if w["key"] not in dropped]
+    apply_fixes(words)
+    # Frequency rank within the dataset (1 = most common), the order new
+    # words are studied in.
+    for rank, w in enumerate(sorted(words, key=lambda w: -rank_zipf(w)), start=1):
         w["freq_rank"] = rank
     words.sort(key=lambda w: w["word"].lower())
     atomic_write_json(WORDS_JSON, {"version": 1, "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),

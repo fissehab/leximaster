@@ -1,0 +1,5 @@
+# Entries left out of the build: not real words, or British spellings of a
+# word Americans spell differently. One key per line.
+drach
+wearin
+licence
