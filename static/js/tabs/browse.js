@@ -3,7 +3,7 @@
 import { allWords, api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
-import { domainLabel, domainOptions, formDialog, isEveryday, h, icon, renderEntry, setKnown, setStars, showError, toast } from "../ui.js";
+import { domainLabel, domainOptions, formDialog, isEveryday, h, icon, renderEntry, scrollBehavior, setKnown, setStars, showError, toast } from "../ui.js";
 
 const ROW_H = 54;
 const state = { q: "", sort: "alpha", domain: "", stars: "", known: "", selectedId: null };
@@ -123,7 +123,7 @@ async function select(id, { scroll = true, reveal = false } = {}) {
   detail = w;
   w.list_actions = listActions(w);
   const back = h("button.btn.btn-quiet.back-to-list", { type: "button",
-    on: { click: () => els.vlist.scrollIntoView({ block: "center", behavior: "smooth" }) } }, "← List");
+    on: { click: () => els.vlist.scrollIntoView({ block: "center", behavior: scrollBehavior() }) } }, "← List");
   els.detail.replaceChildren(back, renderEntry(w, { onChange: () => { syncCached(w); renderRows(); } }));
   els.detail.scrollTop = 0;
   if (reveal && narrow()) els.detail.scrollIntoView({ block: "start" });
@@ -238,7 +238,7 @@ export async function render(root, { param, view }) {
       els.meta,
       els.vlist),
     h("div.detail-wrap", showBtn, els.detail));
-  root.append(browse);
+  root.append(h("h1.sr-only", "Browse"), browse);   // the page heading, for screen readers (the entry is h2)
   try { setList(localStorage.getItem("lexi-browse-list") === "collapsed"); } catch (e) { setList(false); }
 
   if (!words.length) {

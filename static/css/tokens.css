@@ -9,26 +9,27 @@
   --surface-2: #ECEEF3;
   --ink: #171B26;
   --ink-2: #3A4152;
-  --muted: #646B7C;
+  --muted: #626979;
   --rule: #DDE1E8;
   --rule-strong: #C4CAD5;
+  --control: #8793AA;        /* input borders, empty stars: 3:1 against the surface */
 
   --lapis: #2B47A8;          /* headword, primary actions */
   --lapis-soft: #E5EAFA;
   --verdigris: #0D7465;      /* phonetics, audio */
   --verdigris-soft: #DDF1EC;
-  --gilt: #8F650F;           /* stars, highlights */
+  --gilt: #85600E;           /* stars, highlights */
   --gilt-soft: #F7EDD5;
   --madder: #B23A3F;         /* errors, "again" */
   --madder-soft: #F8E3E3;
-  --sage: #3E7D3A;           /* correct, "good" */
+  --sage: #3B7637;           /* correct, "good" */
   --sage-soft: #E2F0DF;
   --plum: #7A3E8C;
 
   --pos-noun: #2B47A8;
   --pos-verb: #0D7465;
   --pos-adjective: #B23A3F;
-  --pos-adverb: #8F650F;
+  --pos-adverb: #85600E;
   --pos-other: #5A6375;
 
   --shadow: 0 1px 2px rgba(23, 27, 38, .06), 0 6px 24px rgba(23, 27, 38, .06);
@@ -55,6 +56,7 @@
     --muted: #9198A9;
     --rule: #272D3B;
     --rule-strong: #384053;
+    --control: #5B6887;
     --lapis: #93A8FF;
     --lapis-soft: #1F2A4F;
     --verdigris: #4CC3AE;
@@ -85,6 +87,7 @@
   --muted: #9198A9;
   --rule: #272D3B;
   --rule-strong: #384053;
+  --control: #5B6887;
   --lapis: #93A8FF;
   --lapis-soft: #1F2A4F;
   --verdigris: #4CC3AE;
@@ -118,22 +121,23 @@
   --muted: #B0B7C3;
   --rule: #3F4A55;
   --rule-strong: #515D69;
+  --control: #738393;
   --lapis: #7DB4EA;
   --lapis-soft: #2D3F52;
-  --verdigris: #5FB4B4;
+  --verdigris: #64B6B6;
   --verdigris-soft: #2E4A4D;
   --gilt: #FAC761;
   --gilt-soft: #4A4332;
-  --madder: #F47F86;
+  --madder: #F5888F;
   --madder-soft: #4E363B;
   --sage: #99C794;
   --sage-soft: #364A3B;
-  --plum: #C695C6;
-  --pos-noun: #7DB4EA;
-  --pos-verb: #5FB4B4;
+  --plum: #D1A9D1;
+  --pos-noun: #8CBDEC;
+  --pos-verb: #80C3C3;
   --pos-adjective: #F9AE58;
   --pos-adverb: #FAC761;
-  --pos-other: #A6ACB9;
+  --pos-other: #B3B8C3;
   --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 28px rgba(0, 0, 0, .25);
   --focus: 0 0 0 3px rgba(110, 168, 226, .45);
   color-scheme: dark;

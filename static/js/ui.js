@@ -538,11 +538,23 @@ export function shuffle(a) {
   return a;
 }
 
+/** "smooth", unless the system asks for less motion. */
+export const scrollBehavior = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+
 // Bring answer feedback into view, and again once its fonts have loaded: an
 // italic face loaded on first use makes the text taller after the first scroll.
 export function reveal(el) {
-  el.scrollIntoView({ block: "nearest", behavior: "smooth" });
-  document.fonts.ready.then(() => requestAnimationFrame(() => el.scrollIntoView({ block: "nearest", behavior: "smooth" })));
+  el.scrollIntoView({ block: "nearest", behavior: scrollBehavior() });
+  document.fonts.ready.then(() => requestAnimationFrame(() => el.scrollIntoView({ block: "nearest", behavior: scrollBehavior() })));
+}
+
+/** An answered option: disabled, and marked right or wrong by a sign and
+ * words as well as color. */
+export function markOption(button, right, chosen) {
+  button.disabled = true;
+  if (right) button.append(h("span.mark", { "aria-hidden": "true" }, "✓"), h("span.sr-only", " (correct answer)"));
+  else if (chosen) button.append(h("span.mark", { "aria-hidden": "true" }, "✗"), h("span.sr-only", " (your answer)"));
+  if (right) button.classList.add("right"); else if (chosen) button.classList.add("wrong");
 }
 
 export function fmtDuration(s) {
