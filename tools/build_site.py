@@ -19,6 +19,7 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import re
 import shutil
 import sys
 import time
@@ -243,10 +244,56 @@ self.addEventListener("fetch", e => {{
     (DOCS / "sw.js").write_text(sw, encoding="utf-8")
 
 
+NO_CREDIT_LICENSES = ("CC0", "Public domain")
+
+
+def credit_author(raw: str) -> str:
+    """A recording's author as Commons states it, reduced to the name:
+    "Speaker: X Recorder: X" → X, "I, X" → X, "No machine-readable author
+    provided. X assumed (…)" → X."""
+    m = re.match(r"^No machine-readable author provided\. (.+?) assumed", raw)
+    if m:
+        return m.group(1)
+    m = re.match(r"^Speaker: (.+?) Recorder: .+$", raw)
+    if m:
+        return m.group(1)
+    return re.sub(r"^(I, |User:)", "", raw).strip()
+
+
+def recording_credits(audio_rows: list[dict]) -> str:
+    """The recordings grouped by author and license, most recordings first;
+    each group folds open to its words, each linked to its Commons page
+    (author, license and source). From tools/audio_credits.py's cache."""
+    path = DATA / "cache" / "audio_credits.json"
+    meta = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    groups: dict[tuple, list[dict]] = {}
+    urls: dict[str, str] = {}   # license → its deed (files link the same license in slightly different ways)
+    for r in audio_rows:
+        if not r["page"]:
+            continue
+        m = meta.get(r["file"].replace(" ", "_"), {})
+        lic = m.get("license", "")
+        if lic in NO_CREDIT_LICENSES:
+            key = ("", "Public domain or CC0")
+        else:
+            key = (credit_author(m.get("author", "")) or "Author not named on Commons", lic or "License on the file page")
+            urls.setdefault(key[1], m.get("license_url", ""))
+        groups.setdefault(key, []).append(r)
+    order = sorted(groups.items(), key=lambda g: (g[0][1] == "Public domain or CC0", -len(g[1]), g[0][0].lower()))
+    out = []
+    for (author, lic), rows in order:
+        url = urls.get(lic, "")
+        words = ", ".join(f'<a href="{html.escape(r["page"])}">{html.escape(r["word"])}</a>'
+                          for r in sorted(rows, key=lambda r: r["word"].lower()))
+        lic_html = f'<a href="{html.escape(url)}">{html.escape(lic)}</a>' if url else html.escape(lic)
+        who = (f"<strong>{html.escape(author)}</strong> · " if author else "<strong>No credit required</strong> · ")
+        out.append(f'<details><summary>{who}{len(rows):,} recording{"s" if len(rows) != 1 else ""} · {lic_html}'
+                   f'</summary><p class="words">{words}</p></details>')
+    return "\n".join(out)
+
+
 def build_credits(audio_rows: list[dict], n_words: int) -> None:
-    rows = "\n".join(
-        f'<tr><td>{html.escape(r["word"])}</td><td><a href="{html.escape(r["page"])}">{html.escape(r["file"])}</a></td></tr>'
-        for r in sorted(audio_rows, key=lambda r: r["word"].lower()) if r["page"])
+    rows = recording_credits(audio_rows)
     page = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -267,6 +314,9 @@ def build_credits(audio_rows: list[dict], n_words: int) -> None:
   table {{ border-collapse: collapse; width: 100%; font: 14px/1.4 var(--font-ui); }}
   td {{ padding: 6px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }}
   td:first-child {{ font-family: var(--font-word); white-space: nowrap; }}
+  details {{ border-bottom: 1px solid var(--rule); padding: 10px 0; }}
+  summary {{ cursor: pointer; font: 15px/1.5 var(--font-ui); }}
+  .words {{ margin: 8px 0 4px; font: 14px/1.7 var(--font-ui); }}
 </style>
 </head>
 <body>
@@ -299,12 +349,10 @@ Open Font License 1.1 (<a href="static/fonts/licenses/literata-OFL.txt">Literata
 <a href="static/fonts/licenses/charissil-OFL.txt">Charis SIL</a>).</p>
 
 <h2>Recorded pronunciations</h2>
-<p class="muted">{len(audio_rows):,} American English recordings from <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>.
-Each was converted from its original format to AAC (.m4a). Each recording's author and license (most are
-Creative Commons Attribution-ShareAlike, some public domain) are on its file page, linked below.</p>
-<div class="table-wrap"><table><tbody>
+<p class="muted">{len(audio_rows):,} American English recordings from <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>,
+by the volunteers below, under the licenses shown. Each was converted from its original format to AAC (.m4a).
+Open a name to see the words; each word links to its recording's page, with the full author and license details.</p>
 {rows}
-</tbody></table></div>
 </main>
 </body>
 </html>

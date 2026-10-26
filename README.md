@@ -337,7 +337,8 @@ seeds/drop/        keys left out of the build (not real words, British spellings
 tools/             build_site.py (the website), audit.py (content checks), parity.py (website vs
                    local app), gen_shared.py (constants shared with the browser code),
                    check_examples.py, classify_names.py, check_bible.py (fact-checks the
-                   "In the Bible" notes: verse references, Hebrew and Greek words)
+                   "In the Bible" notes: verse references, Hebrew and Greek words),
+                   audio_credits.py (each recording's author and license, for the credits page)
 app/               FastAPI backend: db.py (schema), srs.py (SM-2), api/ (routes)
 static/            single-page app, with no build step: index.html, css/, js/, fonts/
 data/              dataset, audio, SQLite database, recordings
