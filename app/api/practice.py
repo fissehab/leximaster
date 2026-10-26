@@ -200,14 +200,15 @@ def add_activity(body: ActivityIn):
 
 @router.get("/flashcards")
 def flashcards(stars: str | None = None, list_id: int | None = None, domain: str | None = None,
-               n: int = Query(30, ge=1, le=500), shuffle: bool = True):
+               n: int = Query(30, ge=1, le=500), shuffle: bool = True, brief: bool = False):
+    """A deck. brief: only what the front of a card needs (the back is
+    loaded per card from /api/words/{id}), so the first card shows at once."""
     with db.tx() as c:
         ids = pool_ids(c, **parse_filters(stars, list_id, domain))
-        if shuffle:
-            ids = weighted_sample(c, ids, n)
-        else:
-            ids = ids[:n]
-        return {"cards": [full(fetch_word(c, i)) for i in ids], "pool": len(pool_ids(c, **parse_filters(stars, list_id, domain)))}
+        pool = len(ids)
+        ids = weighted_sample(c, ids, n) if shuffle else ids[:n]
+        card = compact if brief else full
+        return {"cards": [card(fetch_word(c, i)) for i in ids], "pool": pool}
 
 
 # ------------------------------------------------------------------------- quiz
