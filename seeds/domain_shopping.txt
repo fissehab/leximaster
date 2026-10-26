@@ -1,0 +1,230 @@
+# Shopping and errands in the US: stores, paying, returns.
+checkout
+cashier
+register
+cash register
+self-checkout
+bagger
+aisle
+shelf
+rack
+display
+fitting room
+dressing room
+try on
+size
+fit
+too tight
+too loose
+in stock
+out of stock
+sold out
+back in stock
+on sale
+sale
+clearance
+markdown
+discount
+coupon
+promo code
+deal
+bargain
+steal
+rip-off
+overpriced
+pricey
+affordable
+cheap
+budget
+splurge
+treat yourself
+impulse buy
+window-shopping
+browse
+just looking
+shop around
+compare prices
+haggle
+price tag
+sticker price
+retail price
+wholesale
+sales tax
+receipt
+gift receipt
+return
+refund
+exchange
+store credit
+return policy
+no questions asked
+warranty
+extended warranty
+rain check
+layaway
+installment
+financing
+gift card
+loyalty card
+rewards
+points
+membership
+cash back
+debit card
+credit card
+tap to pay
+chip
+swipe
+PIN
+signature
+change
+exact change
+bills
+coins
+quarter
+dime
+nickel
+penny
+ATM
+cart
+shopping cart
+basket
+bag
+paper or plastic
+reusable bag
+grocery store
+supermarket
+convenience store
+corner store
+drugstore
+pharmacy
+department store
+mall
+outlet
+strip mall
+thrift store
+secondhand
+consignment
+boutique
+hardware store
+big-box store
+dollar store
+farmers market
+flea market
+yard sale
+garage sale
+online shopping
+order online
+add to cart
+shipping
+free shipping
+delivery
+tracking number
+package
+curbside pickup
+in-store pickup
+backorder
+restock
+brand
+brand-name
+generic
+store brand
+label
+tag
+barcode
+scanner
+produce
+deli counter
+bakery
+frozen foods
+dairy
+canned goods
+household items
+toiletries
+errand
+run errands
+pick up
+drop off
+grab
+stock up
+pick out
+ring up
+bag up
+check out
+pay for
+charge
+overcharge
+price match
+sales associate
+customer service
+customer service desk
+manager
+line
+wait in line
+cut in line
+next in line
+store hours
+open
+closed
+twenty-four hours
+holiday hours
+Black Friday
+doorbuster
+bulk
+in bulk
+by the pound
+per item
+buy one get one
+two for one
+mark down
+on clearance
+final sale
+worth it
+a good deal
+
+# Phrasal verbs while shopping
+look around
+shop around
+pick out
+try on
+put back
+ring up
+check out
+pay for
+sell out
+mark down
+stock up
+pick up
+drop off
+add up
+cash in
+send back
+bring back
+
+# Expressions
+I'm just looking, thanks. | Telling a sales associate you don't need help yet.
+Do you have this in a medium? | Asking whether the item comes in another size.
+Do you have this in black? | Asking whether the item comes in another color.
+Where are the fitting rooms? | Asking where you can try on clothes.
+It doesn't fit. | Saying the clothing is the wrong size.
+It's a little tight. | Saying the clothing is slightly too small.
+How much is this? | Asking the price.
+Is this on sale? | Asking if the item is discounted.
+Do you price match? | Asking if the store will lower its price to match a competitor's.
+Can I get a gift receipt? | Asking for a receipt without prices so the recipient can exchange the gift.
+I'd like to return this. | Telling the cashier you want to give an item back for a refund.
+I'd like to exchange this for a different size. | Asking to swap an item rather than get your money back.
+Do you need a bag? | The cashier asking if you want a bag for your items.
+Paper or plastic? | The cashier asking which kind of bag you want.
+Debit or credit? | The cashier asking which kind of card you're using.
+Would you like your receipt? | The cashier asking if you want a printed receipt.
+Do you have a rewards card? | Asking if you belong to the store's loyalty program.
+Can you hold this for me? | Asking the store to keep an item for you to pick up later.
+Do you know when it'll be back in stock? | Asking when a sold-out item will be available again.
+What's your return policy? | Asking how long you have to return an item and what you get back: a refund, an exchange or store credit.
+That's a steal. | Casual: a very good price.
+That's a rip-off. | Casual: far too expensive.
+I'll think about it. | Politely saying you won't buy now.
+Where can I find the batteries? | Asking a store worker where an item is located.
+Which aisle is the cereal in? | Asking for the aisle number of a product.
+Is this line open? | Asking whether a checkout lane is taking customers.

@@ -1,0 +1,275 @@
+# Home, household repairs, health care and everyday services in the US.
+apartment
+condo
+townhouse
+duplex
+studio
+lease
+rent
+landlord
+tenant
+roommate
+security deposit
+utilities
+move in
+move out
+moving truck
+furnished
+unfurnished
+closet
+pantry
+basement
+attic
+garage
+driveway
+porch
+deck
+backyard
+front yard
+lawn
+mow
+rake
+leaf blower
+gutter
+faucet
+sink
+drain
+clogged
+plunger
+toilet
+shower
+showerhead
+bathtub
+leak
+leaky
+drip
+plumber
+plumbing
+electrician
+handyman
+contractor
+repairman
+maintenance
+fix
+repair
+outlet
+power outlet
+circuit breaker
+fuse
+light switch
+light bulb
+thermostat
+heater
+furnace
+air conditioning
+AC
+ceiling fan
+dishwasher
+washer
+dryer
+laundry
+detergent
+fabric softener
+iron
+vacuum
+mop
+broom
+dustpan
+trash
+garbage
+recycling
+trash can
+compost
+chores
+do the dishes
+do laundry
+take out the trash
+tidy up
+declutter
+clean up
+spring cleaning
+mess
+messy
+cluttered
+spotless
+pest
+exterminator
+mold
+mildew
+smoke detector
+fire alarm
+locksmith
+locked out
+spare key
+doorbell
+mail
+mailbox
+package
+delivery
+neighbor
+HOA
+doctor
+physician
+primary care
+checkup
+physical
+appointment
+walk-in clinic
+urgent care
+emergency room
+ER
+ambulance
+pharmacy
+pharmacist
+prescription
+refill
+over-the-counter
+generic
+dosage
+side effect
+pill
+tablet
+capsule
+cough syrup
+painkiller
+ibuprofen
+Tylenol
+antibiotic
+allergy
+allergic reaction
+cold
+flu
+fever
+chills
+cough
+sore throat
+runny nose
+stuffy nose
+congested
+sneeze
+headache
+migraine
+stomachache
+nausea
+nauseous
+dizzy
+lightheaded
+rash
+itchy
+swollen
+bruise
+sprain
+sprained ankle
+cut
+scrape
+stitches
+bandage
+Band-Aid
+ice pack
+heating pad
+sick day
+come down with
+catch a cold
+feel under the weather
+get better
+recover
+rest up
+health insurance
+copay
+deductible
+premium
+in-network
+out-of-network
+coverage
+claim
+dentist
+cleaning
+cavity
+filling
+braces
+optometrist
+eye exam
+contacts
+glasses
+therapist
+counselor
+gym
+work out
+physical therapy
+
+# Phrasal verbs at home and at the doctor's
+move in
+move out
+settle in
+clean up
+tidy up
+pick up
+put away
+throw out
+take out
+fix up
+set up
+hook up
+plug in
+unplug
+turn on
+turn off
+turn up
+turn down
+break down
+act up
+clog up
+back up
+come down with
+fight off
+shake off
+throw up
+pass out
+come to
+get over
+get better
+feel up to
+check up on
+look after
+sign up
+fill out
+call in sick
+call in
+refill
+run out of
+cut down on
+work out
+warm up
+cool down
+wear off
+kick in
+flare up
+swell up
+
+# Expressions
+The sink is clogged. | Saying water won't drain from the sink.
+The faucet is leaking. | Saying water is dripping from the faucet.
+The power went out. | Saying the electricity stopped working.
+The AC isn't working. | Saying the air conditioning is broken.
+Can you send someone to take a look? | Asking a landlord or company to send a repair person.
+When is rent due? | Asking the date rent must be paid.
+Will I get my security deposit back? | Asking whether the landlord will return your deposit when you move out; by law it comes back minus any damage beyond normal wear and tear.
+I'd like to make an appointment. | Asking to schedule a visit with a doctor or service.
+Do you take my insurance? | Asking whether the clinic accepts your health insurance plan.
+Are you accepting new patients? | Asking whether a doctor can take you as a regular patient.
+I'm not feeling well. | Saying you feel sick.
+I think I'm coming down with something. | Saying you feel the first signs of an illness.
+I've had a fever since yesterday. | Describing how long you have had a symptom.
+It hurts when I swallow. | Describing pain in your throat.
+I feel lightheaded. | Saying you feel dizzy, as if you might faint.
+My back is killing me. | Casual: my back hurts a lot.
+I need to refill my prescription. | Asking for more of a medicine your doctor prescribed.
+Are there any side effects? | Asking about unwanted effects of a medicine.
+Take two tablets twice a day. | Typical instructions for how to take a medicine.
+Take it with food. | Instructions to swallow a medicine during or after a meal.
+How long is the wait? | Asking how long until you will be seen.
+What's the copay? | Asking how much you pay at the visit under your insurance.
+I'm calling in sick today. | Telling your employer you can't work because you are ill.
+Feel better soon! | A kind wish to someone who is sick.
+Bless you. | What Americans say when someone sneezes.
+Gesundheit. | Another common thing Americans say when someone sneezes.

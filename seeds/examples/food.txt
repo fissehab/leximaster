@@ -1,0 +1,1114 @@
+# Conversation examples: food
+savory
+- I'm not in the mood for sweets; I want something savory.
+- Do you prefer savory or sweet breakfasts?
+- The savory pies at that bakery are filled with chicken and vegetables.
+
+sweet
+- [sugary taste] This lemonade is way too sweet for me.
+- [sugary taste] I always want something sweet after dinner.
+- [kind, thoughtful] It was so sweet of you to bring us dinner.
+
+salty
+- [taste] The fries are really salty tonight.
+- [taste] I'm craving something salty, like chips or pretzels.
+- [slang, annoyed] He's still salty about losing the game.
+
+sour
+- [taste] These candies are really sour, but my kids love them.
+- [taste] I think the milk has gone sour; smell it.
+- [unfriendly mood] She's been in a sour mood all day.
+
+bitter
+- [taste] This coffee is too bitter; can I get some cream?
+- [taste] Kale can taste a little bitter if you don't cook it right.
+- [resentful] He's still bitter about not getting the promotion.
+
+umami
+- Mushrooms and soy sauce add a lot of umami to the dish.
+- Parmesan cheese is full of umami flavor.
+- Umami is that rich, savory taste you get in broth.
+
+tangy
+- The barbecue sauce is sweet and a little tangy.
+- I love the tangy taste of Greek yogurt.
+- Add some lime juice to make it more tangy.
+
+zesty
+- This zesty lemon chicken is perfect for summer.
+- The salsa is fresh and zesty.
+- I added orange peel to give the cake a zesty flavor.
+
+tart
+- [sharp, sour taste] These green apples are really tart.
+- [sharp, sour taste] The cranberry sauce is a little too tart for me.
+- [small pie] She made a lemon tart for dessert.
+
+spicy
+- This salsa is pretty spicy, so be careful.
+- I love spicy food, the hotter the better.
+- Is the chili spicy, or is it okay for kids?
+
+hot
+- [spicy] Be careful; those peppers are really hot.
+- [spicy] Do you want your wings mild or hot?
+- [high temperature] Watch out; the plate is hot.
+
+peppery
+- The arugula has a nice peppery taste.
+- This soup is a little too peppery for me.
+- I like a peppery steak with lots of black pepper.
+
+smoky
+- The ribs have a great smoky flavor.
+- Paprika makes the chili taste smoky.
+- The whole backyard smelled smoky from the grill.
+
+garlicky
+- This garlicky bread is amazing; can I have another piece?
+- The pasta was so garlicky that I could taste it all night.
+- I love garlicky shrimp with butter.
+
+lemony
+- The chicken has a nice, lemony flavor.
+- This lemony dressing goes great with fish.
+- The cake was light and lemony.
+
+herby
+- The potatoes are herby and buttery.
+- I made an herby sauce with parsley and basil.
+- The salad was fresh and herby.
+
+nutty
+- [taste] Brown rice has a nice nutty flavor.
+- [taste] Toasting the bread gives it a nutty taste.
+- [crazy] My uncle has some nutty ideas about cooking.
+
+buttery
+- These rolls are soft and buttery.
+- The popcorn is so buttery that my fingers are greasy.
+- I love a buttery croissant with coffee.
+
+creamy
+- The soup is rich and creamy.
+- I like creamy peanut butter, not chunky.
+- This pasta sauce is really creamy.
+
+cheesy
+- [full of cheese] These cheesy potatoes are my favorite side dish.
+- [full of cheese] The pizza was super cheesy and greasy.
+- [corny] That movie was so cheesy, but I loved it.
+
+rich
+- [heavy with butter or cream] This chocolate cake is really rich; I can only eat a little.
+- [heavy with butter or cream] The sauce is rich and creamy.
+- [wealthy] Her family is rich, but she's very humble.
+
+hearty
+- A hearty bowl of chili is perfect on a cold day.
+- We had a hearty breakfast before the hike.
+- This stew is warm and hearty.
+
+filling
+- [makes you full] Oatmeal is really filling, so I'm not hungry till lunch.
+- [makes you full] That salad was surprisingly filling for something so small.
+- [inside food] The pie filling is apple and cinnamon.
+
+light
+- [not heavy] I want something light for lunch, maybe a salad.
+- [not heavy] The fish was light and fresh.
+- [low calorie] My dad only drinks light beer because he's watching his weight.
+
+heavy
+- [too much, rich] The pasta was too heavy for a hot day.
+- [too much, rich] I don't want anything heavy before my run.
+- [weight] This bag of groceries is really heavy.
+
+greasy
+- The burger was greasy, but delicious.
+- I don't like greasy food late at night.
+- My fingers are greasy from the fries.
+
+oily
+- The salad dressing is too oily.
+- These chips are a little oily.
+- The fries were cold and oily, so I didn't finish them.
+
+bland
+- The soup is a little bland; it needs salt.
+- Hospital food is usually pretty bland.
+- I don't like bland food, so I add hot sauce.
+
+flavorful
+- This curry is really flavorful; what spices did you use?
+- The chicken was juicy and flavorful.
+- Fresh herbs make any dish more flavorful.
+
+tasty
+- That was a tasty sandwich; where did you get it?
+- These cookies are really tasty, and they're not too sweet.
+- "Is the soup any good?" "Yeah, it's tasty."
+
+delicious
+- Thank you for dinner; it was delicious.
+- This pie is absolutely delicious; I need the recipe.
+- Everything at the party was delicious.
+
+yummy
+- Mmm, this is yummy! Can I have some more?
+- The kids said the pancakes were yummy.
+- Those cupcakes in the bakery window look so yummy.
+
+mouthwatering
+- The smell of the barbecue was mouthwatering.
+- That photo of the burger is mouthwatering.
+- The bakery window was full of mouthwatering pastries.
+
+scrumptious
+- Grandma's apple pie is scrumptious, especially with vanilla ice cream.
+- What a scrumptious dinner! Thank you.
+- The dessert table at the wedding looked scrumptious.
+
+appetizing
+- The food didn't look very appetizing, but it tasted great.
+- Adding some green herbs makes the plate more appetizing.
+- That gray soup is not very appetizing.
+
+unappetizing
+- The cafeteria food looked pretty unappetizing.
+- The leftovers looked unappetizing after three days.
+- Brown mushy vegetables are so unappetizing.
+
+gross
+- Ew, this milk tastes gross; check the date.
+- I think anchovies are gross, but my wife loves them.
+- That's gross; don't eat food off the floor.
+
+juicy
+- [full of juice] This peach is so juicy that it's dripping down my arm.
+- [full of juice] The burger was thick and juicy.
+- [interesting gossip] Tell me all the juicy details!
+
+tender
+- The meat was so tender it fell off the bone.
+- Cook the beef slowly so it stays tender.
+- The steak was tender and juicy.
+
+chewy
+- These cookies are soft and chewy.
+- The steak was a little chewy.
+- I like chewy bagels more than soft ones.
+
+crispy
+- I like my bacon extra crispy.
+- The fries were hot and crispy.
+- Make sure the chicken skin gets crispy.
+
+crunchy
+- These apples from the farmers market are really crunchy.
+- I love crunchy peanut butter on my toast.
+- The salad has crunchy croutons on top.
+
+flaky
+- [layered pastry] The pie crust was buttery and flaky.
+- [breaks into soft pieces] This fish is so tender and flaky.
+- [unreliable] Don't count on Mike; he's kind of flaky.
+
+fluffy
+- These pancakes are so light and fluffy.
+- Beat the eggs well to make fluffy scrambled eggs.
+- The rice came out fluffy, not sticky.
+
+moist
+- The cake is so moist and soft.
+- Cover the turkey so it stays moist.
+- This banana bread is really moist.
+
+dry
+- [not juicy] The chicken is a little dry.
+- [not juicy] I overcooked the turkey, and now it's dry.
+- [not sweet, of wine] I prefer a dry white wine.
+
+soggy
+- The fries got soggy in the to-go box.
+- Don't put the dressing on yet, or the salad will get soggy.
+- I answered the phone, and now my cereal is soggy.
+
+gooey
+- These brownies are warm and gooey.
+- I love gooey cheese on my pizza.
+- The cookies are gooey in the middle.
+
+sticky
+- The rice is a little sticky.
+- My hands are sticky from the syrup.
+- These sticky buns from the bakery are amazing.
+
+mushy
+- The vegetables were overcooked and mushy.
+- I don't like mushy bananas, so I eat them a little green.
+- The pasta got mushy because I boiled it too long.
+
+lumpy
+- The gravy is lumpy; keep stirring.
+- My mashed potatoes came out lumpy.
+- Whisk the batter so it's not lumpy.
+
+smooth
+- [no lumps] Blend the soup until it's smooth.
+- [no lumps] I like smooth peanut butter better than crunchy.
+- [mild, easy to drink] This coffee is really smooth, not bitter at all.
+
+velvety
+- The chocolate mousse was rich and velvety.
+- This tomato soup is velvety smooth.
+- The red wine has a velvety taste.
+
+silky
+- The custard was silky and smooth.
+- Add butter to make the sauce silky.
+- This tofu has a silky texture.
+
+melt-in-your-mouth
+- These melt-in-your-mouth cookies disappear fast at every party.
+- The brisket at that barbecue place was melt-in-your-mouth tender.
+- She makes melt-in-your-mouth biscuits every Sunday.
+
+bite-sized
+- I cut the chicken into bite-sized pieces for the kids.
+- The party had bite-sized desserts on little plates.
+- Bite-sized snacks are perfect for a party.
+
+homemade
+- This is so good. Is this pie homemade?
+- Nothing beats homemade cookies fresh out of the oven.
+- She brought homemade salsa to the party.
+
+store-bought
+- The cake was store-bought, but nobody could tell.
+- Is this dressing homemade or store-bought?
+- Store-bought bread doesn't taste as good as fresh.
+
+from scratch
+- [cooking from basic ingredients] She made the pizza dough from scratch.
+- [cooking from basic ingredients] I don't have time to cook from scratch every night.
+- [from the beginning] My laptop crashed, so I had to start the report from scratch.
+
+leftover
+- I'm eating leftover pizza for breakfast.
+- What should we do with the leftover chicken?
+- Put the leftover rice in the fridge.
+
+fresh
+- [recently made or picked] The bread is fresh out of the oven.
+- [recently made or picked] We bought fresh strawberries at the farmers market.
+- [not frozen or canned] I use fresh garlic, not the jar kind.
+
+ripe
+- These bananas are ripe and ready to eat.
+- The avocado isn't ripe yet; it's still hard.
+- Pick the ripe tomatoes and leave the green ones.
+
+overripe
+- Use the overripe bananas for banana bread.
+- The peaches are overripe and too soft.
+- Throw out that overripe fruit; it attracts fruit flies.
+
+rotten
+- There's a rotten apple at the bottom of the bag.
+- The eggs smell rotten; throw them out.
+- Some of the potatoes went rotten.
+
+spoiled
+- [gone bad] The milk is spoiled; it smells sour.
+- [gone bad] Don't eat that chicken; I think it's spoiled.
+- [given too much] Their dog is so spoiled; it eats steak.
+
+stale
+- The bread is stale; let's make toast.
+- These crackers are stale; how long has the box been open?
+- Close the bag, or the chips will get stale.
+
+expired
+- Don't eat that; this yogurt expired last week.
+- Check the date; I think the milk is expired.
+- Don't use expired baking powder, or your cake won't rise.
+
+organic
+- We try to buy organic fruit when we can.
+- Organic eggs cost more at the store.
+- Is this salad made with organic vegetables?
+
+processed
+- I'm trying to eat less processed food.
+- Hot dogs are a kind of processed meat.
+- Most snacks in that aisle are highly processed.
+
+whole grain
+- I switched to whole grain bread.
+- Whole grain pasta is more filling.
+- Is this cereal whole grain, or is it mostly sugar?
+
+low-fat
+- I'll have the low-fat yogurt, please.
+- Low-fat milk tastes a little watery to me.
+- This low-fat dressing is surprisingly good.
+
+sugar-free
+- Do you have sugar-free syrup for the pancakes?
+- My dad has diabetes, so he eats sugar-free candy.
+- Is this gum sugar-free? I'm trying to avoid sugar.
+
+comfort food
+- Mac and cheese is my favorite comfort food.
+- When I'm stressed, I want comfort food.
+- Chicken soup is classic comfort food when you're sick.
+
+junk food
+- I'm trying to cut back on junk food.
+- We ate so much junk food on the road trip.
+- Don't fill up on junk food before dinner.
+
+health food
+- That store sells mostly health food and vitamins.
+- Granola is sold as health food, but it's full of sugar.
+- She's really into health food lately.
+
+finger food
+- We're serving finger food at the party, nothing fancy.
+- Chicken wings are great finger food.
+- Can you bring some finger food for the game?
+
+street food
+- The best part of the trip was the street food.
+- Tacos are the most popular street food in this city.
+- I love trying street food when I travel.
+
+soul food
+- My grandma cooked soul food every Sunday: fried chicken, greens and cornbread.
+- There's a great soul food restaurant downtown.
+- Soul food is a big part of Southern Black culture.
+
+snack
+- [small food] Do you want a snack before dinner?
+- [small food] I always bring snacks for the kids.
+- [eat a little] I snacked on almonds all afternoon.
+
+treat
+- [special food] Ice cream is my favorite treat.
+- [special food] The kids get a treat if they finish their vegetables.
+- [pay for someone] Let me treat you to lunch this time.
+
+indulgence
+- A little dark chocolate after dinner is my one indulgence.
+- A big brunch on Sunday is our weekly indulgence.
+- Dessert every night is an indulgence I can't afford.
+
+guilty pleasure
+- Fast food burgers are my guilty pleasure.
+- My guilty pleasure is eating ice cream from the carton.
+- Reality TV and popcorn are my guilty pleasures.
+
+craving
+- I have a craving for pizza.
+- Late-night cravings are my biggest problem.
+- She's craving tacos tonight, so let's go to that food truck.
+
+acquired taste
+- Black coffee is an acquired taste.
+- Blue cheese is definitely an acquired taste.
+- Olives were an acquired taste for me.
+
+aftertaste
+- This diet soda has a weird aftertaste.
+- The medicine left a bitter aftertaste.
+- Does the coffee have an aftertaste?
+
+flavor
+- What flavor of ice cream do you want?
+- The soup doesn't have much flavor.
+- Fresh herbs add a lot of flavor.
+
+seasoning
+- This needs more seasoning; it's bland.
+- What seasoning did you put on the chicken?
+- I use a seasoning mix for tacos.
+
+spice
+- [cooking ingredient] Cinnamon is my favorite spice for fall baking.
+- [cooking ingredient] What spices did you use in this curry?
+- [heat, spiciness] I can't handle a lot of spice.
+
+herb
+- Basil is my favorite herb for pasta.
+- We grow herbs on our balcony.
+- Sprinkle some fresh herbs on top.
+
+marinade
+- The marinade has soy sauce, garlic and lime.
+- Let the chicken sit in the marinade overnight.
+- This marinade works great for steak.
+
+glaze
+- The ham has a honey glaze.
+- The donuts are covered in a sugar glaze.
+- Brush the glaze on the salmon before baking.
+
+sauce
+- What kind of sauce comes with the chicken?
+- The pasta sauce is homemade, from my grandma's recipe.
+- Can I have extra sauce, please?
+
+gravy
+- Can I get extra gravy on my mashed potatoes?
+- Biscuits and gravy is a classic Southern breakfast.
+- Who made the gravy? It's delicious.
+
+dip
+- [thick sauce for chips] We need more chips for this spinach dip.
+- [thick sauce for chips] I'm bringing a dip to the party.
+- [put quickly into a liquid] My son likes to dip his fries in ketchup.
+
+spread
+- [soft food on bread] We need a cheese spread for the crackers.
+- [put on with a knife] Spread some butter on the toast.
+- [big meal on a table] Wow, what a spread! You made all this?
+
+topping
+- What toppings do you want on your pizza?
+- The frozen yogurt place has tons of toppings.
+- I'll have the pancakes with whipped cream topping.
+
+garnish
+- Add a sprig of mint as a garnish.
+- The garnish is just for looks; you don't have to eat it.
+- She garnished the soup with fresh parsley.
+
+crust
+- [outside of bread or pie] My kids won't eat the crust on their sandwiches.
+- [outside of bread or pie] I like thin-crust pizza more than deep dish.
+- [outside of bread or pie] The pie crust was golden and flaky.
+
+batter
+- [cake or pancake mix] Let the pancake batter sit for five minutes.
+- [cake or pancake mix] The kids love licking the cake batter.
+- [baseball] The batter hit the ball right out of the park.
+
+dough
+- [for bread] Let the dough rise for an hour.
+- [for bread] We made pizza dough with the kids.
+- [slang, money] That car cost a lot of dough.
+
+broth
+- I made chicken broth from the leftover bones.
+- This soup has a rich beef broth.
+- Drink some warm broth if you're feeling sick.
+
+stock
+- [cooking liquid] Use chicken stock instead of water for the rice.
+- [cooking liquid] Homemade stock is better than canned.
+- [available in a store] Sorry, that item is out of stock right now.
+- [shares in a company] My dad has been buying tech stocks for years.
+
+stew
+- Beef stew is perfect for a cold night.
+- She made a big pot of stew.
+- The stew needs to cook for three hours.
+
+casserole
+- My mom brought a casserole to the potluck.
+- Green bean casserole is a Thanksgiving classic.
+- The neighbors brought us a casserole when the baby was born.
+
+roast
+- [dish] We're having a pot roast for Sunday dinner.
+- [cook in the oven] Roast the vegetables at 400 degrees for half an hour.
+- [joke about someone] At the party, his friends roasted him for being late.
+
+grill
+- [cook over fire] Let's grill some burgers this weekend.
+- [the cooking equipment] Mike is out back firing up the grill.
+- [question hard] My parents grilled me about where I was last night.
+
+barbecue
+- [outdoor party] We're having a barbecue in the backyard on Saturday.
+- [the food] This place has the best barbecue in Texas.
+- [cook outside] Dad likes to barbecue ribs on the Fourth of July.
+
+bake
+- I'm going to bake cookies for the party.
+- She bakes bread every weekend and gives some to the neighbors.
+- Bake the cake for about thirty minutes.
+
+fry
+- Fry the onions until they're golden.
+- My grandma likes to fry chicken in a cast-iron skillet.
+- Should I fry the eggs or scramble them?
+
+deep-fry
+- They deep-fry the turkey every Thanksgiving.
+- At the state fair, they deep-fry everything, even butter.
+- Deep-fry the fries twice to make them extra crispy.
+
+stir-fry
+- Let's do a quick chicken stir-fry tonight.
+- Stir-fry the vegetables for a few minutes.
+- I like to stir-fry leftover rice with eggs.
+
+sauté
+- Sauté the onions and garlic in olive oil.
+- I sautéed some spinach for a side dish.
+- Sauté the mushrooms until they're brown.
+
+simmer
+- [cook gently] Let the sauce simmer for twenty minutes.
+- [cook gently] Turn down the heat and simmer the soup.
+- [calm down] Okay, simmer down, guys; dinner's almost ready.
+
+boil
+- Boil the pasta for about ten minutes.
+- Wait until the water boils before adding the rice.
+- Should I boil the eggs or scramble them?
+
+steam
+- [cook with steam] I like to steam broccoli instead of boiling it.
+- [cook with steam] Steam the dumplings for eight minutes.
+- [get rid of anger] I went for a walk to blow off some steam.
+
+poach
+- Poach the eggs in simmering water.
+- She poached the salmon in white wine.
+- I can never poach an egg right.
+
+braise
+- Braise the short ribs for three hours.
+- I like to braise chicken thighs with wine.
+- The braised beef was so tender.
+
+broil
+- Broil the salmon for a few minutes to crisp the top.
+- Broil it for two minutes, but watch it closely so it doesn't burn.
+- I broiled the cheese until it was bubbly.
+
+toast
+- [brown bread] Can you toast the bagels while I make coffee?
+- [brown bread] I'll have toast with butter and jam.
+- [drink to celebrate] Let's raise a glass and make a toast to the cook.
+
+microwave
+- Just microwave the leftovers for two minutes.
+- Don't put metal in the microwave.
+- I microwaved my coffee because it got cold.
+
+chop
+- Can you chop the onions for me?
+- Chop the carrots into small pieces.
+- I chopped some fresh parsley for the salad.
+
+dice
+- [cut in small cubes] Dice the tomatoes and add them to the salsa.
+- [cut in small cubes] I diced the potatoes for the hash.
+- [game cubes] It's your turn to roll the dice.
+
+slice
+- [cut thin pieces] Can you slice the bread for the sandwiches?
+- [a piece] I'll have a slice of pizza, please.
+- [a piece] There's some left. Want a slice of cake?
+
+mince
+- Mince the garlic as fine as you can.
+- I minced some ginger for the stir-fry.
+- Minced onions cook faster than big chunks.
+
+grate
+- Grate some cheese over the pasta.
+- I grated a carrot into the muffin batter.
+- Can you grate the lemon peel?
+
+peel
+- Can you peel the potatoes while I start the gravy?
+- Peel the shrimp before cooking, and keep the tails on.
+- I peeled an orange for my daughter.
+
+whisk
+- Whisk the eggs and milk together.
+- Grab a whisk from the drawer.
+- Whisk the dressing until it's smooth.
+
+stir
+- Stir the soup so it doesn't stick.
+- Keep stirring the sauce while it cooks.
+- She stirred some sugar into her coffee.
+
+knead
+- Knead the dough for about ten minutes.
+- My grandma kneads bread by hand.
+- I kneaded the pizza dough until it was smooth.
+
+season
+- [add flavor] Season the chicken with salt and pepper.
+- [add flavor] I seasoned the fries with garlic salt.
+- [time of year] Tomatoes taste best in summer when they're in season.
+
+marinate
+- Marinate the chicken overnight for the best flavor.
+- I marinated the steak in garlic and soy sauce.
+- How long should I marinate the shrimp?
+
+preheat
+- Preheat the oven to 350 degrees.
+- Did you preheat the oven? The pizza's ready to go in.
+- Preheat the grill before you put the burgers on.
+
+drizzle
+- [pour a little] Drizzle some olive oil over the salad.
+- [pour a little] She drizzled honey on her yogurt.
+- [light rain] It's drizzling outside, so bring an umbrella.
+
+sprinkle
+- [scatter a little] Sprinkle some cheese on top of the pasta.
+- [scatter a little] I sprinkled cinnamon on my oatmeal.
+- [light rain] It's just sprinkling, so we can still grill.
+
+toss
+- [mix lightly] Toss the salad with the dressing right before serving.
+- [mix lightly] Toss the potatoes in oil and salt.
+- [throw away] The milk smells bad; just toss it.
+
+blend
+- Blend the fruit and yogurt to make a smoothie.
+- Blend the soup until it's smooth.
+- I blended some spinach into the smoothie.
+
+mash
+- Mash the potatoes with butter and milk.
+- I mashed a banana for the baby.
+- Mash the avocado with a fork for guacamole.
+
+melt
+- Melt the butter in a pan.
+- The ice cream is melting; eat it fast.
+- I melted some cheese on my burger.
+
+thaw
+- Thaw the chicken in the fridge overnight.
+- Did you take the turkey out to thaw?
+- The steaks are still frozen; let them thaw.
+
+defrost
+- Defrost the meat in the microwave.
+- I forgot to defrost the chicken for dinner.
+- The fish takes a few hours to defrost.
+
+reheat
+- Just reheat the soup on the stove.
+- Can I reheat my food in the office microwave?
+- Pizza is hard to reheat without making it soggy.
+
+recipe
+- Can you send me the recipe for that salad?
+- This is my grandma's recipe for apple pie.
+- I followed the recipe, but it didn't turn out right.
+
+ingredient
+- What are the ingredients in this sauce?
+- You only need five ingredients for this recipe.
+- Garlic is the secret ingredient in my mom's sauce.
+
+pinch
+- [tiny amount] Add a pinch of salt to the water.
+- [tiny amount] Put a pinch of sugar in the tomato sauce.
+- [emergency] In a pinch, you can use milk instead of cream.
+- [squeeze with fingers] My little brother pinched me under the table.
+
+dash
+- [small amount] Add a dash of hot sauce to the eggs.
+- [small amount] I put a dash of milk in my coffee.
+- [hurry] Sorry, I have to dash; my bus is here.
+
+teaspoon
+- Add one teaspoon of vanilla to the batter.
+- A teaspoon of salt is plenty.
+- Use a teaspoon to measure the baking soda.
+
+tablespoon
+- Add two tablespoons of olive oil.
+- One tablespoon of butter is enough.
+- How many tablespoons of sugar does it need?
+
+cup
+- [measure] Add two cups of flour to the bowl.
+- [measure] The recipe calls for half a cup of milk.
+- [drink container] Can I get a cup of coffee, please?
+
+ounce
+- The steak on the menu is twelve ounces.
+- Add four ounces of shredded cheese to the pasta.
+- I try to drink at least sixty-four ounces of water a day.
+
+pound
+- [weight] Can I get a pound of ground beef?
+- [weight] Apples are two dollars a pound.
+- [hit hard] Pound the chicken flat so it cooks evenly.
+
+serving size
+- The serving size is one cup, but who eats just one cup?
+- Check the serving size on the label.
+- The serving size for these chips is tiny.
+
+portion
+- Smaller portions help me eat less.
+- She gave me a huge portion of pasta.
+- Restaurant portions in the US are really big.
+
+cookout
+- We're having a cookout on the Fourth of July.
+- Bring some burgers and hot dogs to the cookout.
+- The neighborhood cookout is this Saturday.
+
+potluck
+- The church potluck is on Sunday; everyone brings a dish.
+- I'm bringing mac and cheese to the potluck.
+- Let's do a potluck instead of ordering food.
+
+picnic
+- Let's have a picnic in the park this weekend.
+- I packed sandwiches and fruit for the picnic.
+- We had a picnic on the beach.
+
+barbecue sauce
+- Can I get extra barbecue sauce for my ribs?
+- This barbecue sauce is sweet and smoky.
+- My dad makes his own barbecue sauce.
+
+condiment
+- Ketchup is the most popular condiment in America.
+- What condiments do you want on your burger?
+- Mustard is my favorite condiment for hot dogs.
+
+appetite
+- [wish to eat] The kids have big appetites after swimming.
+- [wish to eat] I lost my appetite after seeing that.
+- [interest in] He doesn't have much of an appetite for risk.
+
+hungry
+- Are you hungry? I can make sandwiches.
+- I'm not very hungry; I had a big lunch.
+- Let's eat; the kids are hungry.
+
+starving
+- Hey, Mom, what's for dinner? I'm starving.
+- I haven't eaten all day, so I'm starving.
+- The kids came home from practice starving.
+
+full
+- [had enough food] No more for me, thanks; I'm full.
+- [had enough food] I'm too full to eat dessert.
+- [no room left] The fridge is full of leftovers.
+
+stuffed
+- [very full] I'm stuffed; I couldn't eat another thing.
+- [very full] After Thanksgiving dinner, everyone was stuffed.
+- [filled with food] We had stuffed mushrooms as an appetizer.
+
+thirsty
+- I'm so thirsty; can I get some water?
+- Salty food always makes me thirsty.
+- The kids were thirsty after soccer.
+
+parched
+- I'm parched; I need a big glass of water.
+- After the hike, we were totally parched.
+- That spicy food left me parched.
+
+sweet tooth
+- My husband has a sweet tooth; he loves desserts.
+- I don't have much of a sweet tooth.
+- She has a real sweet tooth, so she always saves room for dessert.
+
+picky eater
+- My son is a picky eater; he only eats pasta.
+- I was a picky eater as a kid.
+- Are you a picky eater, or will you eat anything?
+
+foodie
+- My friend is a total foodie; she always knows the best places.
+- This city is a dream for foodies.
+- As a foodie, he takes pictures of everything he eats.
+
+eat healthy
+- I'm trying to eat healthy this year.
+- It's hard to eat healthy when you travel.
+- We eat healthy during the week and relax on weekends.
+
+watch what you eat
+- My doctor said, "At your age, you really have to watch what you eat."
+- If you want to lose weight, you have to watch what you eat.
+- Are you still watching what you eat, or should I order dessert for two?
+
+cut back on
+- I'm cutting back on sugar, so no dessert for me.
+- The doctor said to cut back on salt.
+- We cut back on eating out to save money.
+
+go easy on
+- [use less of] Go easy on the salt; Dad has high blood pressure.
+- [use less of] Can you go easy on the ice in my drink?
+- [be gentle with] Go easy on him; it's his first time cooking.
+
+have a bite
+- Do you want to have a bite of my cake?
+- Have a bite; tell me if it needs more salt.
+- Let's have a bite to eat before the show.
+
+take a bite
+- Take a bite and tell me what you think.
+- I only meant to take a bite, but I ate the whole thing.
+- She took a big bite of her burger.
+
+dig in
+- Dinner's ready, everyone; come sit down and dig in!
+- Don't wait for me; go ahead and dig in while it's hot.
+- Grandma put the turkey on the table and said, "Dig in!"
+
+help yourself
+- There's plenty of food, so help yourself.
+- Help yourself to anything in the fridge.
+- The snacks are on the table; please help yourself.
+
+seconds
+- [another serving] Can I have seconds? This is amazing.
+- [another serving] The chili was so good that everyone went back for seconds.
+- [short time] The eggs only take a few seconds to cook.
+
+hits the spot
+- This hot soup really hits the spot on a cold day.
+- A cold drink hits the spot after mowing the lawn.
+- I was so hungry, and this burger really hits the spot.
+
+to die for
+- Her chocolate cake is to die for.
+- The view from the restaurant is to die for.
+- You have to try the tacos; they're to die for.
+
+melts in your mouth
+- This steak just melts in your mouth.
+- The chocolate melts in your mouth.
+- Try the brisket; it melts in your mouth.
+
+not my cup of tea
+- Sushi is not my cup of tea, but I'll try it.
+- Spicy food is just not my cup of tea.
+- Jazz is not my cup of tea, but my wife loves it.
+
+too rich
+- The cheesecake was too rich for me.
+- I can't finish this; it's too rich.
+- Is the chocolate sauce too rich for the kids?
+
+a bit much
+- Three desserts is a bit much, don't you think?
+- The garlic was a bit much for me.
+- His cooking show was a bit much, but the food looked good.
+
+heat up
+- [make food hot] Can you heat up the leftovers?
+- [make food hot] I'll heat up some soup for lunch.
+- [become intense] The game really heated up in the fourth quarter.
+
+warm up
+- [make food warm] Let me warm up the bread in the oven.
+- [make food warm] I'll warm up dinner when you get home.
+- [prepare for exercise] Always warm up before you run.
+
+cool down
+- [become less hot] Let the cookies cool down before you eat them.
+- [become less hot] Wait for the soup to cool down a little.
+- [calm down] He needed a few minutes to cool down after the argument.
+
+chop up
+- Chop up the onions and carrots.
+- I chopped up some fruit for the kids.
+- Can you chop up the lettuce for the salad?
+
+cut up
+- Can you cut up the chicken for the baby?
+- I cut up some apples for a snack.
+- Cut up the potatoes into small pieces.
+
+mix in
+- Mix in the chocolate chips at the end.
+- I mixed in some cheese with the eggs.
+- Mix in a little salt and pepper.
+
+stir in
+- Stir in the cream and let it simmer.
+- Stir in the cheese until it melts.
+- I stirred in some honey to sweeten it.
+
+whip up
+- I can whip up some pancakes in ten minutes.
+- She whipped up a great dinner from leftovers.
+- Let me whip up something quick for lunch.
+
+throw together
+- I just threw together a salad with what we had.
+- Can you throw together some sandwiches for the trip?
+- It's nothing fancy; I threw it together last minute.
+
+dish up
+- Dad dished up the pasta for everyone.
+- Can you dish up some rice for the kids?
+- I'll dish up dinner while you set the table.
+
+eat up
+- [finish eating] Eat up, kids; there's plenty more in the pot.
+- [finish eating] The kids ate up all their vegetables.
+- [use a lot of] Groceries eat up most of our budget.
+
+gobble up
+- The kids gobbled up the cookies in seconds.
+- The dog gobbled up the leftover chicken.
+- The guests gobbled up all the appetizers.
+
+scarf down
+- He scarfed down a sandwich between classes.
+- Don't scarf down your food; you'll get a stomachache.
+- I scarfed down lunch at my desk.
+
+wolf down
+- He wolfed down three slices of pizza.
+- Don't wolf down your dinner like that.
+- The kids wolfed down their food and ran outside.
+
+cut out
+- [stop eating] I cut out sugar for a month.
+- [stop eating] My doctor told me to cut out fried food.
+- [cut a shape] The kids cut out star-shaped cookies.
+- [stop working] The old microwave keeps cutting out in the middle of heating my food.
+
+give up
+- [stop eating] I gave up soda last year.
+- [stop eating] She's giving up meat for Lent.
+- [stop trying] I gave up on making bread; it never rises.
+
+load up on
+- I loaded up on veggies at the salad bar.
+- Don't load up on carbs before bed.
+- We loaded up on snacks for the road trip.
+
+run out of
+- We ran out of milk; can you pick some up?
+- I ran out of eggs halfway through the recipe.
+- The restaurant ran out of the special by eight.
+
+go off
+- [food spoils, British] In the UK, milk "goes off," but we say it goes bad.
+- [alarm or timer rings] The oven timer went off, so the cookies are done.
+- [alarm or timer rings] The smoke alarm went off when I burned the toast.
+- [get angry, slang] My dad went off on the waiter for bringing the wrong order.
+
+boil over
+- [pot spills] Watch the pasta so it doesn't boil over.
+- [pot spills] The milk boiled over and made a mess.
+- [anger explodes] The argument boiled over at dinner.
+
+dry out
+- Cover the turkey, or it'll dry out.
+- If you leave the bread out, it will dry out overnight.
+- Don't overcook the chicken, or it'll dry out.
+
+thaw out
+- Let the steaks thaw out in the fridge.
+- I moved the chicken to the fridge last night to thaw out.
+- Frozen shrimp only take about ten minutes to thaw out in cold water.
+
+This is delicious.
+- [praising food] Wow, this is delicious. Did you make it yourself?
+- [praising food] This is delicious; can I get the recipe?
+- [praising food] Mom, this is delicious. Best lasagna ever!
+
+This hits the spot.
+- [just what you wanted] Thanks for the soup; this hits the spot on a cold day.
+- [just what you wanted] Oh, this hits the spot after a long run.
+- [just what you wanted] I was craving a burger, and this hits the spot.
+
+It's a little too salty for me.
+- [polite complaint] It's good, but it's a little too salty for me.
+- [polite complaint] The soup? Honestly, it's a little too salty for me.
+- [polite complaint] I like the flavor, but it's a little too salty for me.
+
+It could use a little more salt.
+- [gentle feedback] It's really good, but it could use a little more salt.
+- [gentle feedback] Taste the sauce. I think it could use a little more salt.
+- [gentle feedback] Try the gravy. It could use a little more salt, don't you think?
+
+I'm not much of a cook.
+- [being modest] I'm not much of a cook, so I usually order takeout.
+- [being modest] Honestly, I'm not much of a cook, but I make great pancakes.
+- [being modest] I'm not much of a cook, so let me bring drinks.
+
+What's in this?
+- [asking about ingredients] This is amazing. What's in this?
+- [asking about ingredients] What's in this? I have a nut allergy.
+- [asking about ingredients] Wow, what's in this sauce? It's so good.
+
+Did you make this from scratch?
+- [asking about cooking] This bread is amazing. Did you make this from scratch?
+- [asking about cooking] Did you make this from scratch, or is it store-bought?
+- [asking about cooking] Did you make this from scratch? It tastes homemade.
+
+I'm trying to eat healthy.
+- [explaining food choices] No fries for me; I'm trying to eat healthy.
+- [explaining food choices] I'll just have a salad. I'm trying to eat healthy.
+- [explaining food choices] I'm trying to eat healthy this month, so no dessert.
+
+I'm watching my carbs.
+- [limiting bread and pasta] No bread for me, thanks; I'm watching my carbs.
+- [limiting bread and pasta] I'm watching my carbs, so I'll skip the pasta.
+- [limiting bread and pasta] Can I get a lettuce wrap? I'm watching my carbs.
+
+I have a sweet tooth.
+- [loving sweets] I have a sweet tooth, so I always order dessert.
+- [loving sweets] I'll admit it: I have a sweet tooth.
+- [loving sweets] I have a sweet tooth, so I keep chocolate in my desk.
+
+I could eat.
+- [a little hungry] "Want to get lunch?" "Yeah, I could eat."
+- [a little hungry] I'm not starving, but I could eat.
+- [a little hungry] "Are you hungry?" "I could eat. What are you thinking?"
+
+I'm starving.
+- [very hungry] When's dinner? I'm starving after practice.
+- [very hungry] I skipped lunch, and now I'm starving.
+- [very hungry] I'm starving; let's get food before the movie.
+
+I'm full.
+- [had enough] No more for me, thanks; I'm full.
+- [had enough] I'm full, but that was really good.
+- [had enough] I'm full, so I'll take the rest home.
+
+I couldn't eat another bite.
+- [completely full] No dessert, thanks; I couldn't eat another bite.
+- [completely full] That was amazing, but I couldn't eat another bite.
+- [completely full] After Thanksgiving dinner, I couldn't eat another bite.
+
+Would you like seconds?
+- [offering more] There's plenty of pasta left. Would you like seconds?
+- [offering more] Would you like seconds, or are you saving room for dessert?
+- [offering more] Would you like seconds? Don't be shy.
+
+It's an acquired taste.
+- [not liked at first] Black coffee? It's an acquired taste.
+- [not liked at first] Don't worry if you don't like it; it's an acquired taste.
+- [not liked at first] Blue cheese is great, but it's an acquired taste.
+
+It's not really my thing.
+- [polite dislike] Thanks, but seafood? It's not really my thing.
+- [polite dislike] I tried sushi once, but it's not really my thing.
+- [polite dislike] It's not really my thing, but I'm glad you like it.
+
+That smells amazing.
+- [praising cooking] Wow, that smells amazing. What are you making?
+- [praising cooking] That smells amazing; is dinner almost ready?
+- [praising cooking] When she opened the oven, I said, "That smells amazing!"

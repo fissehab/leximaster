@@ -1,0 +1,1080 @@
+# Conversation examples: shopping
+checkout
+- [the pay counter] The line at checkout is really long, so let's try the self-service lanes.
+- [the pay counter] I grabbed some gum at the checkout while I was waiting.
+- [online payment page] My cart is ready, but the website keeps crashing at checkout.
+
+cashier
+- The cashier asked if I wanted to donate a dollar to the food bank.
+- My first job was working as a cashier at a grocery store.
+- Ask the cashier if they can break a twenty for you.
+
+register
+- [cash register] Please come to the register when you're ready, and I'll ring you up.
+- [cash register] There's only one register open, so the line isn't moving.
+- [sign up] You have to register online before you can use the coupon.
+
+cash register
+- The cash register froze, so the cashier had to call the manager.
+- She counted the money in the cash register at the end of her shift.
+- There was a jar of free lollipops next to the cash register.
+
+self-checkout
+- I always use the self-checkout when I only have a few things.
+- The self-checkout keeps telling me there's an unexpected item in the bagging area.
+- Excuse me, can someone help me at self-checkout? It needs an employee.
+
+bagger
+- The bagger put the eggs on top, which was really thoughtful.
+- My son got a summer job as a bagger at the supermarket.
+- There's no bagger today, so I guess we're bagging our own groceries.
+
+aisle
+- Excuse me, which aisle has the paper towels?
+- The pasta is in aisle seven, right next to the sauces.
+- Someone spilled juice in aisle four, so be careful walking through there.
+
+shelf
+- The last box of that cereal is on the top shelf, and I can't reach it.
+- If you don't see it on the shelf, we might have more in the back.
+- They just stocked the shelf, so everything is nice and fresh.
+
+rack
+- The sale items are on the rack by the front door.
+- I found this jacket on the clearance rack for twenty bucks.
+- Could you hang these back on the rack? I decided not to get them.
+
+display
+- [shown in the store] I love the lamp on display in the window. Is it for sale?
+- [shown in the store] Sorry, that one's just for display, but we have new ones in the back.
+- [screen] The display on this laptop is so much brighter than my old one.
+
+fitting room
+- Excuse me, how many items can I take into the fitting room?
+- There's a line for the fitting room, so I'll wait out here.
+- I left my scarf in the fitting room. Can I go back and grab it?
+
+dressing room
+- The dressing room is in the back, past the shoe section.
+- My daughter tried on six dresses in the dressing room and loved none of them.
+- Is anyone using this dressing room, or is it free?
+
+try on
+- Can I try on these jeans before I buy them?
+- I had to try on three sizes before the medium fit right.
+- You should try it on first; their sizes run small.
+
+size
+- [clothing measure] What size are you? I want to get you a sweater for your birthday.
+- [clothing measure] Do these come in a bigger size? The large is too snug.
+- [how big] Wow, look at the size of that TV! It covers the whole wall.
+
+fit
+- [right size] These shoes fit perfectly, so I'm buying them.
+- [the way it fits] I love the color, but the fit is a little boxy on me.
+- [fits in a space] Will this couch fit through our front door?
+- [healthy] Mike has been running every morning, and he looks really fit.
+
+too tight
+- These jeans are too tight; do you have the next size up?
+- The waist is fine, but the shoulders are too tight.
+- My new shoes were too tight, so I returned them.
+
+too loose
+- This shirt is too loose on me. I need a small.
+- The belt helps, because these pants are a little too loose.
+- If the ring is too loose, the jeweler can resize it.
+
+in stock
+- Do you have this blender in stock, or do I have to order it?
+- The website says it's in stock at the store on Main Street.
+- We only have two left in stock, so I'd grab one today.
+
+out of stock
+- Sorry, that color is out of stock right now.
+- The cat food we like has been out of stock for weeks.
+- Every store I called said the game was out of stock.
+
+sold out
+- Sorry, the small sizes are sold out, but we're getting more Friday.
+- The concert sold out in ten minutes, so we didn't get tickets.
+- Sorry, we're sold out of the pumpkin bread today. Come back tomorrow?
+
+back in stock
+- Do you know when the gray one will be back in stock?
+- I signed up for an email when the shoes are back in stock.
+- Good news, your favorite coffee is back in stock!
+
+on sale
+- These sweaters are on sale for forty percent off this weekend.
+- Is this jacket on sale, or is it full price?
+- I only buy steak when it's on sale.
+
+sale
+- [discount event] The store is having a huge sale this weekend, so let's go Saturday.
+- [discount event] I got this dress at the end-of-summer sale.
+- [selling] The cashier made her first sale of the day at nine.
+- [selling] Is this bike for sale? I didn't see a price tag.
+
+clearance
+- All the winter coats are on the clearance rack now.
+- Check the clearance section in the back; they have some great deals.
+- I found this lamp on clearance for half of what it originally cost.
+
+markdown
+- There's an extra markdown on all red-tag items today.
+- The markdown on this TV is huge, so I think we should get it.
+- After the second markdown, the boots were finally in my price range.
+
+discount
+- Do you offer a student discount?
+- I got a ten percent discount for signing up for their emails.
+- If you buy two, they'll give you a discount on the second one.
+
+coupon
+- I have a coupon for five dollars off. Can I use it on this?
+- My mom cuts coupons out of the Sunday paper every week.
+- Sorry, this coupon expired yesterday, so I can't take it.
+
+promo code
+- Do you have a promo code? There's a box for it at checkout.
+- I found a promo code online that gave me twenty percent off.
+- The promo code isn't working. Can you check if it's still valid?
+
+deal
+- [good price] Three shirts for twenty dollars is a great deal.
+- [good price] Let's wait for Black Friday; they always have deals on TVs.
+- [agreement] Okay, you carry the bags and I'll drive. Deal?
+- [handle] I can't deal with the crowds at the mall today.
+
+bargain
+- These boots were a bargain at thirty dollars.
+- My grandma loves hunting for bargains at yard sales.
+- That couch was a real bargain compared to what we saw downtown.
+
+steal
+- [very cheap] Ten bucks for a leather wallet? That's a steal.
+- [very cheap] I got this bike for a steal at a garage sale.
+- [take without paying] They have cameras everywhere because people steal so much.
+
+rip-off
+- Eight dollars for a bottle of water? That's a total rip-off.
+- Don't buy chargers at the airport; they're a rip-off.
+- I felt like the repair was a rip-off, so I asked for an itemized bill.
+
+overpriced
+- The food at the stadium is so overpriced.
+- I like this store, but everything is a little overpriced.
+- That jacket is nice, but it's overpriced for what it is.
+
+pricey
+- That restaurant is a little pricey, but the food is amazing.
+- Organic strawberries are pricey this time of year.
+- Ooh, these headphones are pricey. Do you have anything cheaper?
+
+affordable
+- We're looking for an affordable couch, nothing too fancy.
+- This store has really affordable kids' clothes.
+- Is there a more affordable option that still has good reviews?
+
+cheap
+- [low price] Gas is cheap at that station by the highway.
+- [poor quality] The handle broke after a week. It's so cheap.
+- [doesn't like spending] Don't be cheap; leave a decent tip.
+
+budget
+- [spending plan] What's your budget for a new laptop?
+- [spending plan] We're trying to stay on budget this month, so no eating out.
+- [low-cost] We stayed at a budget hotel near the airport, and it was fine.
+
+splurge
+- I usually buy the cheap stuff, but I'm going to splurge on good shoes.
+- We splurged on a nice dinner for our anniversary.
+- That bag was a splurge, but I'll use it every day.
+
+treat yourself
+- You worked hard all week, so treat yourself to something nice.
+- I got a raise, so I treated myself to a new pair of boots.
+- It's your birthday! Go ahead and treat yourself.
+
+impulse buy
+- The candy at the register is there for impulse buys.
+- This blanket was an impulse buy, but I don't regret it.
+- I try not to make impulse buys when I'm shopping online late at night.
+
+window-shopping
+- We don't have money to spend, so let's just go window-shopping.
+- My sister and I spent Saturday afternoon window-shopping downtown.
+- Window-shopping is fun until you see something you really want.
+
+browse
+- [in a store] I'm just going to browse for a few minutes, thanks.
+- [in a store] We browsed the bookstore for an hour and left with nothing.
+- [online] I like to browse online before I go to the store.
+
+just looking
+- No, thanks, I'm just looking for now.
+- When a salesperson offers to help, you can tell them you're just looking.
+- We were just looking, but then we found the perfect rug.
+
+shop around
+- Shop around before you buy a new phone; prices vary a lot.
+- We shopped around and found the same TV for a hundred dollars less.
+- It pays to shop around for car insurance.
+
+compare prices
+- I always compare prices online before I go to the store.
+- Let's compare prices at a couple of places before we decide.
+- Priya compared prices and found it cheaper at the store across the street.
+
+haggle
+- You can haggle at a flea market, but not at a regular store.
+- He haggled with the car dealer and got five hundred dollars off.
+- I'm terrible at haggling, so I just pay whatever the price tag says.
+
+price tag
+- There's no price tag on this one. Do you know how much it is?
+- Remember to take the price tag off before you wrap the gift.
+- I loved the coat until I looked at the price tag.
+
+sticker price
+- Nobody pays the sticker price for a car, so make an offer.
+- The sticker price was high, but they gave us a big discount.
+- We negotiated about two thousand dollars off the sticker price.
+
+retail price
+- The retail price is ninety dollars, but it's on sale for sixty.
+- At the outlet, everything is way below retail price.
+- I never pay full retail price for sneakers.
+
+wholesale
+- My uncle buys flowers wholesale for his shop.
+- At wholesale clubs, you can buy paper towels in huge packs.
+- They sell to restaurants at wholesale prices.
+
+sales tax
+- Is sales tax included in that price?
+- The sales tax here is about eight percent.
+- Oregon has no sales tax, so people drive there to shop.
+
+receipt
+- Do you want your receipt in the bag or emailed to you?
+- Keep the receipt in case you need to return it.
+- I can't find the receipt, but I paid with my credit card.
+
+gift receipt
+- It's a gift, so could you include a gift receipt?
+- I put a gift receipt in the box in case it doesn't fit.
+- With a gift receipt, she can exchange it without seeing the price.
+
+return
+- [give back an item] I need to return these shoes; they're too small.
+- [give back an item] Returns are at the customer service desk by the entrance.
+- [come back] She returned from her trip with a suitcase full of souvenirs.
+
+refund
+- If it doesn't work, we'll give you a full refund.
+- How long does it take for the refund to show up on my card?
+- I returned the jacket and got a refund the same day.
+
+exchange
+- Can I exchange this shirt for a bigger size?
+- We don't do refunds on sale items, but you can do an exchange.
+- I exchanged the blue mug for a green one.
+
+store credit
+- Without a receipt, we can only give you store credit.
+- I still have store credit from returning my holiday gifts.
+- Would you prefer a refund or store credit?
+
+return policy
+- What's your return policy on electronics?
+- The return policy is thirty days with a receipt.
+- Check the return policy before you buy anything on sale.
+
+no questions asked
+- You can return anything within ninety days, no questions asked.
+- They took the broken toaster back, no questions asked.
+- I love this store because returns are no questions asked.
+
+warranty
+- The laptop comes with a one-year warranty.
+- Is the screen still under warranty? It started flickering.
+- Keep the receipt, because you'll need it for the warranty.
+
+extended warranty
+- The cashier asked if I wanted to buy an extended warranty for the TV.
+- I never get the extended warranty; it's usually not worth it.
+- The extended warranty covers repairs for three more years.
+
+rain check
+- [store promise] The sale item was sold out, so they gave me a rain check.
+- [store promise] Can I get a rain check for the advertised price?
+- [postpone a plan] I'm too tired for dinner tonight. Can I take a rain check?
+
+layaway
+- My grandparents bought their first TV on layaway.
+- Do you still do layaway for the holidays?
+- I put the bike on layaway and paid for it over two months.
+
+installment
+- You can pay for the couch in four monthly installments.
+- I'm paying off my phone in installments, so it doesn't feel too expensive.
+- The first installment is due the day you buy it.
+
+financing
+- Do you offer financing on mattresses?
+- They have zero percent financing for twelve months.
+- We used store financing to buy the new fridge.
+
+gift card
+- I got a fifty-dollar gift card to the bookstore for my birthday.
+- Can I use a gift card and a credit card for the same purchase?
+- If you don't know what to get him, just get a gift card.
+
+loyalty card
+- Do you have a loyalty card? You get a free coffee after ten.
+- I have a loyalty card for almost every store at the mall.
+- Scan your loyalty card first to get the member price.
+
+rewards
+- I paid with points from my rewards account.
+- Are you a rewards member? I can look you up by your phone number.
+- This credit card has great rewards on groceries and gas.
+
+points
+- You earn two points for every dollar you spend.
+- I used my points to get twenty dollars off.
+- Do my points expire at the end of the year?
+
+membership
+- You need a membership to shop at that warehouse store.
+- How much does the membership cost per year?
+- Our membership gets us free shipping on most orders.
+
+cash back
+- [money at the register] Would you like any cash back today?
+- [money at the register] I asked for twenty dollars cash back with my debit card.
+- [card reward] My credit card gives me two percent cash back on everything.
+
+debit card
+- I'll pay with my debit card, please.
+- My debit card got declined, so let me try another one.
+- Can I get cash back on a debit card here?
+
+credit card
+- Do you take credit cards, or is it cash only?
+- I paid for the TV with my credit card to get the points.
+- She left her credit card at the bar last night.
+
+tap to pay
+- You can tap to pay with your phone right here.
+- Does this machine take tap to pay, or do I need to insert my card?
+- I love tap to pay; it's so much faster than swiping.
+
+chip
+- [card chip] Please insert your card; it has a chip.
+- [card chip] The chip on my card stopped working, so I had to swipe.
+- [snack] Grab a bag of chips for the road trip.
+
+swipe
+- Go ahead and swipe your card whenever you're ready.
+- The machine wouldn't read my chip, so the cashier told me to swipe.
+- I swiped my card twice by accident. Will I be charged twice?
+
+PIN
+- Please enter your PIN and press the green button.
+- I forgot my PIN, so I had to run it as credit.
+- Cover the keypad when you type your PIN.
+
+signature
+- I just need your signature on the screen, please.
+- Most stores don't ask for a signature on small purchases anymore.
+- Sign here; your signature confirms the delivery.
+
+change
+- [money back] Here's your change, and your receipt is in the bag.
+- [money back] I think you gave me the wrong change. I paid with a twenty.
+- [coins] Do you have any change for the parking meter?
+- [switch] Can I change my order? I'd like the large instead.
+
+exact change
+- The bus only takes exact change, so bring some quarters.
+- Do you have exact change? I'm out of ones.
+- The total was $7.35, and for once I had exact change.
+
+bills
+- [paper money] The ATM only gives out twenty-dollar bills.
+- [paper money] Do you have smaller bills? I can't break a hundred.
+- [money owed] I need to pay my bills before the end of the month.
+
+coins
+- I have a jar full of coins I need to take to the bank.
+- Can I pay with coins? I have a lot of quarters.
+- The vending machine only takes coins and dollar bills.
+
+quarter
+- [coin] Do you have a quarter for the shopping cart?
+- [coin] The laundromat machines only take quarters.
+- [one fourth] I ate about a quarter of the pizza, and I'm already full.
+
+dime
+- It's ninety cents, so give me three quarters, a dime, and a nickel.
+- I found a dime on the floor of the car.
+- A dime is smaller than a penny, but it's worth more.
+
+nickel
+- That candy used to cost a nickel when my dad was a kid.
+- I'm a nickel short. Does anyone have five cents?
+- The cashier gave me a nickel and two pennies in change.
+
+penny
+- They stopped making the penny, so some stores round cash totals to the nearest nickel.
+- There's a little dish of pennies by the register if you need one.
+- That car must have cost a pretty penny.
+
+ATM
+- Is there an ATM nearby? They only take cash here.
+- The ATM charged me a three-dollar fee.
+- I'll stop at the ATM on the way to the farmers market.
+
+cart
+- [in a store] Can you grab a cart? We have a lot to buy today.
+- [in a store] Please return your cart to the corral when you're done.
+- [online] I have five things in my cart, but I haven't checked out yet.
+
+shopping cart
+- The shopping cart has a wobbly wheel that keeps pulling left.
+- Don't let the kids stand on the shopping cart.
+- I left my shopping cart in the parking lot by mistake.
+
+basket
+- I'm only getting a few things, so I'll take a basket.
+- She put two avocados and a loaf of bread in her basket.
+- The baskets are stacked by the front door.
+
+bag
+- [container] Do you need a bag, or are you okay without one?
+- [container] Can you double bag the heavy stuff?
+- [put in a bag] I'll bag your groceries while you pay.
+
+paper or plastic
+- The cashier asked, "Paper or plastic?" and I said paper.
+- "Paper or plastic?" "Neither, thanks; I brought my own bag."
+- Most stores around here don't ask "paper or plastic" anymore; it's just paper.
+
+reusable bag
+- I keep a few reusable bags in my trunk for grocery runs.
+- Bring a reusable bag, because they charge ten cents for paper.
+- I forgot my reusable bag again, so I'll just carry everything.
+
+grocery store
+- I need to stop by the grocery store for milk and eggs.
+- The grocery store near us is open until midnight.
+- Do you want anything from the grocery store?
+
+supermarket
+- The new supermarket has a huge bakery and a sushi counter.
+- I do my big shopping trip at the supermarket on Sundays.
+- That supermarket is cheaper, but it's always crowded.
+
+convenience store
+- Let's grab some snacks at the convenience store by the gas station.
+- The convenience store is open twenty-four hours.
+- Everything at the convenience store costs a little more.
+
+corner store
+- Run down to the corner store and get some ice, please.
+- The corner store sells sandwiches, lottery tickets, and cat food.
+- I know the guy who runs the corner store on our block.
+
+drugstore
+- I'm stopping at the drugstore to get some sunscreen and shampoo.
+- Is there a drugstore that's open late around here?
+- The drugstore has a sale on vitamins this week.
+
+pharmacy
+- The pharmacy is in the back of the store, past the cosmetics.
+- My prescription is ready, so I'm swinging by the pharmacy.
+- The pharmacy closes at nine, but the store is open later.
+
+department store
+- The department store has clothes, shoes, makeup, and home goods.
+- We bought our dishes at a department store downtown.
+- Department stores are always busy during the holiday season.
+
+mall
+- Do you want to go to the mall this weekend?
+- Teenagers used to hang out at the mall on Friday nights.
+- Parking at the mall in December is a nightmare.
+
+outlet
+- [discount store] We got our running shoes at the outlet for half price.
+- [discount store] Let's stop at the outlets on the way home from the beach.
+- [power socket] Is there an outlet near the register where I can charge my phone?
+
+strip mall
+- The best Thai food in town is in a little strip mall off the highway.
+- There's a dry cleaner and a nail salon in that strip mall.
+- Meet me at the coffee shop in the strip mall by the gym.
+
+thrift store
+- I found this vintage jacket at a thrift store for eight dollars.
+- We donated our old clothes to the thrift store.
+- Ana loves digging through thrift stores for old records.
+
+secondhand
+- Most of our furniture is secondhand, but it's in great shape.
+- I bought a secondhand bike for my son.
+- Secondhand clothes are cheaper and better for the environment.
+
+consignment
+- She sells her designer bags at a consignment shop downtown.
+- I put my wedding dress on consignment, and it sold in a month.
+- That consignment store has great kids' clothes.
+
+boutique
+- There's a cute little boutique on Main Street that sells handmade jewelry.
+- The boutique was nice, but everything was way out of my budget.
+- I bought this dress at a boutique near my sister's place.
+
+hardware store
+- I need to run to the hardware store for some screws.
+- The guy at the hardware store showed me how to fix the faucet.
+- Does the hardware store cut keys?
+
+big-box store
+- It's cheaper at a big-box store, but I like supporting local shops.
+- That big-box store has everything from groceries to lawn mowers.
+- A new big-box store opened right off the highway.
+
+dollar store
+- I got the party decorations at the dollar store.
+- The dollar store is great for gift bags and cards.
+- Not everything at the dollar store costs a dollar anymore.
+
+farmers market
+- The farmers market downtown is open every Saturday morning.
+- I bought fresh peaches and honey at the farmers market.
+- Bring cash to the farmers market; some vendors don't take cards.
+
+flea market
+- We found an old record player at the flea market.
+- You can usually bargain a little at the flea market.
+- The flea market is held in the stadium parking lot on Sundays.
+
+yard sale
+- Our neighbors are having a yard sale this Saturday.
+- I bought this bookshelf at a yard sale for ten bucks.
+- Let's have a yard sale to get rid of all the kids' old toys.
+
+garage sale
+- There's a garage sale sign at the end of our street.
+- We sold the old bike at our garage sale.
+- James stopped at every garage sale on the drive home.
+
+online shopping
+- I do most of my online shopping late at night.
+- Online shopping is easy, but returns can be a hassle.
+- She's addicted to online shopping; packages show up every day.
+
+order online
+- You can order online and pick it up at the store in an hour.
+- I ordered the curtains online, but the color looks different in person.
+- It's cheaper to order online than to buy it in the store.
+
+add to cart
+- I clicked "add to cart," but then I forgot to check out.
+- Just add it to the cart, and I'll pay for everything together.
+- I added three things to my cart, and the total jumped to a hundred dollars.
+
+shipping
+- How much is shipping to California?
+- Shipping takes five to seven business days.
+- The shirt was cheap, but the shipping cost almost as much.
+
+free shipping
+- If you spend fifty dollars, you get free shipping.
+- I added socks to my order just to get free shipping.
+- Do they offer free shipping on returns too?
+
+delivery
+- When is the delivery scheduled for the new couch?
+- Delivery is free if you live within ten miles of the store.
+- I missed the delivery, so they left a note on my door.
+
+tracking number
+- Can you send me the tracking number for my order?
+- The tracking number says the package is out for delivery.
+- I put the tracking number in, but it hasn't updated in three days.
+
+package
+- [parcel] A package came for you while you were at work.
+- [parcel] Someone stole the package from our front porch.
+- [bundle deal] The phone package includes a case and a charger.
+
+curbside pickup
+- I ordered groceries for curbside pickup, so I don't have to go inside.
+- For curbside pickup, park in one of the orange spots and call the number.
+- Curbside pickup is great when the kids are asleep in the car.
+
+in-store pickup
+- I chose in-store pickup so I could get it today.
+- In-store pickup is at the back of the store, next to customer service.
+- Is in-store pickup free, or is there a fee?
+
+backorder
+- The desk is on backorder, so it won't ship until next month.
+- My shoes were on backorder for three weeks, but they finally shipped.
+- How long is the backorder on this item?
+
+restock
+- When do you usually restock the paper towels?
+- They restock the shelves every night after closing.
+- I'm checking back Thursday, since they said they'd restock by then.
+
+brand
+- Which brand of peanut butter do you like?
+- I don't care about the brand, as long as it works.
+- This is a new brand, but the reviews are great.
+
+brand-name
+- The brand-name cereal is two dollars more than the store version.
+- My kids only want brand-name sneakers.
+- Brand-name medicine and the generic stuff work the same.
+
+generic
+- The generic version is half the price and works just as well.
+- I always buy generic ibuprofen instead of the name brand.
+- Is there a generic kind of this cereal?
+
+store brand
+- The store brand is cheaper and tastes exactly the same.
+- I usually buy the store brand of flour and sugar.
+- Is the store brand any good, or should I get the name brand?
+
+label
+- [information sticker] Check the label to see if it has any nuts.
+- [information sticker] I always read the label before I buy anything for the baby.
+- [clothing brand] She only wears designer labels, even to the grocery store.
+
+tag
+- [price tag] The tag says twenty-five dollars, but it rang up as thirty.
+- [price tag] Don't take the tags off until you're sure it fits.
+- [label in clothes] Check the tag inside the collar for the size.
+
+barcode
+- The barcode won't scan. Can you type in the number?
+- Hold the barcode under the red light at self-checkout.
+- You can scan the barcode with your phone to compare prices.
+
+scanner
+- The scanner isn't reading the coupon on my phone.
+- There's a price scanner in aisle five if you want to check a price.
+- The cashier passed each item over the scanner really fast.
+
+produce
+- [fruits and vegetables] The produce section is right when you walk in.
+- [fruits and vegetables] The produce here is always fresh and pretty cheap.
+- [make] That factory produces most of the cereal sold in the Midwest.
+
+deli counter
+- Can you get a pound of turkey from the deli counter?
+- Take a number at the deli counter; they call them in order.
+- The guy at the deli counter let me try a slice of cheese.
+
+bakery
+- The bakery has fresh bread every morning at seven.
+- Let's get a birthday cake from the bakery in the grocery store.
+- That bakery's croissants sell out before noon.
+
+frozen foods
+- The ice cream is in the frozen foods aisle.
+- Let's get the frozen foods last so they don't melt.
+- I stocked up on frozen foods for busy weeknights.
+
+dairy
+- The milk and yogurt are in the dairy section along the back wall.
+- I'm trying to cut back on dairy, so I buy oat milk.
+- Is this cheese in the dairy aisle or by the deli?
+
+canned goods
+- We donated canned goods to the food drive at church.
+- The canned goods are in aisle six, next to the pasta.
+- I keep plenty of canned goods in the pantry in case of a storm.
+
+household items
+- Paper towels and other household items are on the left side of the store.
+- We spend a lot on household items like trash bags and soap.
+- The dollar store is great for basic household items.
+
+toiletries
+- Don't forget to pack your toiletries for the trip.
+- Toiletries are in aisle nine with the shampoo and toothpaste.
+- I bought travel-size toiletries so I could just bring a carry-on.
+
+errand
+- I have one more errand, and then I'll meet you for lunch.
+- Can you run a quick errand for me and drop this off at the post office?
+- Picking up the dry cleaning is my least favorite errand.
+
+run errands
+- I'm going to run errands this morning, so I'll be out until noon.
+- Saturday is the day we run errands and clean the house.
+- She ran errands all afternoon and forgot to eat lunch.
+
+pick up
+- [buy] Can you pick up some bread on your way home?
+- [collect an order] I'm going to pick up my order at the customer service desk.
+- [collect someone] I'll pick you up at the front entrance in five minutes.
+- [answer the phone] I called the store twice, but nobody picked up.
+
+drop off
+- [leave something] I need to drop off these returns at the post office.
+- [leave something] You can drop off donations at the back of the thrift store.
+- [give someone a ride] Can you drop me off at the mall entrance?
+
+grab
+- [get quickly] Let's grab a coffee before we start shopping.
+- [get quickly] Can you grab a gallon of milk while you're in there?
+- [take hold of] He grabbed the last box of cereal right before I did.
+
+stock up
+- I'm going to stock up on canned goods before the storm.
+- Toilet paper is on sale, so let's stock up.
+- We stocked up on school supplies during the summer sale.
+
+pick out
+- Help me pick out a gift for my mom's birthday.
+- She picked out a blue dress for the wedding.
+- Go pick out a candy bar; it's on me.
+
+ring up
+- The cashier rang up my items, and the total was way more than I thought.
+- Excuse me, could you ring this up separately?
+- I think you rang up the bananas twice.
+
+bag up
+- The cashier bagged up our groceries really quickly.
+- Can you bag up the cold stuff together?
+- I'll bag up your order while you finish paying.
+
+check out
+- [pay] I'm ready to check out. Is this register open?
+- [pay] I checked out online, but I never got a confirmation email.
+- [look at] Let's check out the new store that opened by the mall.
+
+pay for
+- I'll pay for the groceries, and you can get gas.
+- Did you already pay for that, or do we still owe them?
+- You have to pay for bags here; they're ten cents each.
+
+charge
+- [cost] How much do you charge for gift wrapping?
+- [put on a card] Can you charge it to my credit card?
+- [power up] Is there somewhere in the mall I can charge my phone?
+
+overcharge
+- I think you overcharged me; the sign says these are on sale.
+- Check your receipt, because they overcharged me last week.
+- If the store overcharges you, they'll usually fix it at the service desk.
+
+price match
+- Do you price match? It's twenty dollars cheaper online.
+- They price matched the TV, so I didn't have to drive across town.
+- Not every store will price match an online price.
+
+sales associate
+- A sales associate helped me find the right size.
+- Ask a sales associate if they have more in the back.
+- The sales associate was really friendly and didn't push me to buy anything.
+
+customer service
+- Take it to customer service, and they'll do the return.
+- I called customer service about my order, and they were really helpful.
+- The customer service at that store is terrible.
+
+customer service desk
+- Returns go to the customer service desk near the entrance.
+- The customer service desk can check whether another store has it in stock.
+- I left my phone number at the customer service desk in case someone finds my wallet.
+
+manager
+- The cashier said she needed a manager to approve the return.
+- Can I speak to the manager? I've been waiting for twenty minutes.
+- The store manager gave us a discount because the item was damaged.
+
+line
+- The line at the register goes all the way to the back.
+- Are you in line, or can I go ahead?
+- There's no line at self-checkout right now.
+
+wait in line
+- We had to wait in line for an hour on Black Friday.
+- I hate waiting in line, so I go shopping early in the morning.
+- Can you wait in line while I grab the milk?
+
+cut in line
+- That guy just cut in line in front of everyone.
+- Excuse me, I don't mean to cut in line, but I only have one thing.
+- My kids know it's rude to cut in line.
+
+next in line
+- I can help whoever's next in line.
+- Excuse me, are you next in line?
+- I was next in line when the register shut down.
+
+store hours
+- The store hours are posted on the front door.
+- Check the store hours online before you drive over.
+- Store hours are shorter on Sundays.
+
+open
+- [doing business] Is the pharmacy open on Sunday?
+- [doing business] We're open until ten tonight, so take your time.
+- [unwrap] Don't open the box until you're sure you want to keep it.
+
+closed
+- Sorry, this register is closed. Can you use the next one?
+- The store is closed on Thanksgiving Day.
+- We drove all the way there, and the shop was closed for remodeling.
+
+twenty-four hours
+- The pharmacy on Main Street is open twenty-four hours.
+- Is the grocery store open twenty-four hours, or does it close at midnight?
+- It's nice having a gas station that's open twenty-four hours.
+
+holiday hours
+- The mall has holiday hours, so it's open until eleven in December.
+- Check the holiday hours before you go on Christmas Eve.
+- Our holiday hours are posted on the website.
+
+Black Friday
+- We go shopping on Black Friday every year after Thanksgiving.
+- I got this TV for half price on Black Friday.
+- The Black Friday crowds were too much, so I shopped online instead.
+
+doorbuster
+- The doorbuster deals only last until ten a.m.
+- People lined up at five in the morning for the doorbusters.
+- The doorbuster TVs sold out in minutes.
+
+bulk
+- We buy bulk paper towels at the warehouse store.
+- The bulk section has nuts, rice, and dried fruit.
+- Buying bulk only saves money if you actually use it all.
+
+in bulk
+- We buy rice and coffee in bulk to save money.
+- It's cheaper to buy diapers in bulk.
+- Don't buy fresh fruit in bulk unless you can eat it fast.
+
+by the pound
+- The cherries are sold by the pound, so weigh them over there.
+- How much are the shrimp by the pound?
+- At the candy store, you can buy jelly beans by the pound.
+
+per item
+- Shipping is two dollars per item, so it adds up fast.
+- It's three dollars per item, or ten dollars for four.
+- They charge a dollar per item for gift wrapping.
+
+buy one get one
+- The shampoo is buy one get one free this week.
+- They're having a buy one get one half off sale on shoes.
+- Is the ice cream still buy one get one?
+
+two for one
+- Pizzas are two for one on Tuesdays.
+- The yogurt was two for one, so we have plenty.
+- It's a two for one deal, so grab a second bottle.
+
+mark down
+- They usually mark down the summer clothes in August.
+- The manager marked down the bread because it was a day old.
+- These shoes were marked down twice, so they're only fifteen dollars now.
+
+on clearance
+- All the patio furniture is on clearance now that summer's over.
+- I found this coat on clearance for thirty dollars.
+- Are these on clearance, or are they regular price?
+
+final sale
+- Sorry, swimsuits are final sale, so you can't return them.
+- It's a final sale item, so make sure it fits before you buy it.
+- Everything on this rack is final sale.
+
+worth it
+- The good knives are expensive, but they're totally worth it.
+- Is the membership worth it if we only shop there once a month?
+- I waited an hour in line, but the deal was worth it.
+
+a good deal
+- Twenty dollars for both? That's a good deal.
+- I got a good deal on my car because it was last year's model.
+- Is this really a good deal, or is it the same price online?
+
+look around
+- Mind if we look around? We're not sure what we want yet.
+- I looked around the whole store and couldn't find the batteries.
+- Feel free to look around, and let me know if you need anything.
+
+put back
+- I changed my mind; can you put this back for me?
+- Please put the items back where you found them.
+- He put the chips back when he saw the price.
+
+sell out
+- [all sold] These cookies always sell out by noon.
+- [all sold] The new phone sold out online in an hour.
+- [give up principles] Fans said the band sold out when they made a car commercial.
+
+add up
+- [total] Can you add up the receipts so we know what we spent?
+- [total] All those little coffees really add up over a month.
+- [make sense] His story about the missing money just doesn't add up.
+
+cash in
+- [exchange for money] I cashed in my coins at the machine at the grocery store.
+- [exchange for money] You can cash in your points for a gift card.
+- [take advantage] Stores cash in on the holidays with big sales.
+
+send back
+- The shoes were too big, so I sent them back.
+- If the package arrives damaged, just send it back for free.
+- I sent back the soup because it was cold.
+
+bring back
+- [return to a store] You can bring it back within thirty days with a receipt.
+- [return to a store] I brought back the lamp because it didn't match the room.
+- [make remember] This song brings back so many memories from college.
+
+I'm just looking, thanks.
+- [to a salesperson] "Can I help you find anything?" "Oh, I'm just looking, thanks."
+- [walking into a store] Hi! I'm just looking, thanks. I'll let you know if I need something.
+- When the salesperson came over, I smiled and said, "I'm just looking, thanks."
+
+Do you have this in a medium?
+- [holding a shirt] Excuse me, do you have this in a medium? I only see smalls.
+- [at the fitting room] This is a little snug. Do you have this in a medium?
+- I asked the clerk, "Do you have this in a medium?" and she checked the back.
+
+Do you have this in black?
+- [looking at a sweater] I love the style. Do you have this in black?
+- Do you have this in black, or just the gray and the navy?
+- [calling a store] Hi, do you have this in black? The website says sold out.
+
+Where are the fitting rooms?
+- [walking into a store] Hi, where are the fitting rooms? I want to try these on.
+- Excuse me, where are the fitting rooms? I can't find them anywhere.
+- Where are the fitting rooms? Oh, past the shoes in the back? Thanks.
+
+It doesn't fit.
+- [at a return desk] It doesn't fit, so I'd like to exchange it for a large.
+- [in the fitting room] I love this dress, but it doesn't fit. It's way too long.
+- [about a gift] Thanks so much for the jacket, but it doesn't fit. Can I exchange it?
+
+It's a little tight.
+- [in the fitting room] It's a little tight around the shoulders. Do you have a bigger size?
+- [trying on a jacket] I like the color, but it's a little tight under the arms.
+- [trying on a ring] It's a little tight. Do you have it a half size bigger?
+
+How much is this?
+- [holding up a mug] Excuse me, how much is this? I can't find a price tag.
+- [at a flea market] How much is this? Would you take ten for it?
+- How much is this? Oh, wow, I thought it was cheaper.
+
+Is this on sale?
+- [at the register] Is this on sale? The sign said twenty percent off.
+- Excuse me, is this on sale too, or just the stuff on that rack?
+- [checking a tag] Is this on sale? It's on the clearance table.
+
+Do you price match?
+- [showing your phone] Do you price match? It's fifteen dollars cheaper online.
+- Before I buy this TV, do you price match other stores?
+- [calling a store] Hi, quick question. Do you price match online retailers?
+
+Can I get a gift receipt?
+- [at checkout] It's a birthday present. Can I get a gift receipt, please?
+- Can I get a gift receipt in case my nephew doesn't like it?
+- [at the register] Oh, and can I get a gift receipt with that? Thanks.
+
+I'd like to return this.
+- [at customer service] Hi, I'd like to return this. I have the receipt right here.
+- I'd like to return this. It stopped working after two days.
+- [handing over a bag] Hi, I'd like to return this. It was a gift, and it doesn't fit.
+
+I'd like to exchange this for a different size.
+- [at customer service] Hi, I'd like to exchange this for a different size. It's too small.
+- I'd like to exchange this for a different size, please. Do you have a large?
+- [holding a sweater] I'd like to exchange this for a different size; my husband needs an extra large.
+
+Do you need a bag?
+- [cashier] Do you need a bag, or are you okay carrying it?
+- Do you need a bag? They're ten cents each.
+- [cashier] Your total is six fifty. Do you need a bag for that?
+
+Paper or plastic?
+- [cashier] "Paper or plastic?" "Paper's fine, thanks."
+- The bagger looked up and asked, "Paper or plastic?"
+- [cashier] Paper or plastic for your groceries today?
+
+Debit or credit?
+- [cashier] "Debit or credit?" "Oh, debit, please. Thanks."
+- [at the register] Debit or credit? If it's debit, you'll need your PIN.
+- She swiped my card and asked, "Debit or credit?"
+
+Would you like your receipt?
+- [cashier] Would you like your receipt, or should I just put it in the bag?
+- [after you pay] "Would you like your receipt?" "No, thanks, I'm good."
+- [cashier] Would you like your receipt printed or emailed?
+
+Do you have a rewards card?
+- [cashier] Do you have a rewards card with us? You'd save two dollars today.
+- Do you have a rewards card? I can look it up with your phone number.
+- [cashier] Before I total this, do you have a rewards card?
+
+Can you hold this for me?
+- [at the register] Can you hold this for me? I need to go get my wallet from the car.
+- I love this coat. Can you hold this for me until tomorrow?
+- [calling a store] Can you hold this for me if I come by after work?
+
+Do you know when it'll be back in stock?
+- [to a sales associate] Do you know when it'll be back in stock? I need it for a party.
+- These are sold out in my size. Do you know when it'll be back in stock?
+- [on the phone] Do you know when it'll be back in stock, maybe next week?
+
+What's your return policy?
+- [before buying] This is a gift. What's your return policy if it doesn't fit?
+- What's your return policy on sale items, or are they final sale?
+- "What's your return policy?" "Thirty days with the receipt, for a full refund."
+
+That's a steal.
+- Only five dollars for this lamp? That's a steal.
+- [at a yard sale] A whole box of books for ten bucks? That's a steal.
+- She told me what she paid for the couch, and I said, "That's a steal."
+
+That's a rip-off.
+- Twelve dollars for popcorn? That's a rip-off.
+- [looking at a price tag] Ninety bucks for a plain T-shirt? That's a rip-off.
+- My friend paid extra for the warranty, and honestly, that's a rip-off.
+
+I'll think about it.
+- [to a salesperson] It's nice, but I'll think about it and come back later.
+- I'll think about it. Can I take a card with your number?
+- [at a car dealer] Thanks for your time, but I'll think about it.
+
+Where can I find the batteries?
+- [to a store employee] Excuse me, where can I find the batteries?
+- Where can I find the batteries? I checked the electronics aisle already.
+- [at the help desk] Hi, where can I find the batteries for this remote?
+
+Which aisle is the cereal in?
+- [to a store worker] Excuse me, which aisle is the cereal in?
+- Which aisle is the cereal in? I always get lost in this store.
+- [in a new grocery store] Hi, which aisle is the cereal in? Thanks so much.
+
+Is this line open?
+- [at the registers] Excuse me, is this line open?
+- Is this line open? The light's off, but there's a cashier.
+- [pushing a cart over] Hi, is this line open, or should I go to the next one?

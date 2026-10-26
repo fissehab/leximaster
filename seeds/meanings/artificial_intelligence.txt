@@ -1,0 +1,280 @@
+# Meanings for artificial intelligence terms that no dictionary lists. Format: entry | meaning
+# Used only when the dictionary lookup finds nothing; examples are in seeds/examples/.
+
+# Foundations and history
+symbolic AI | AI built from explicit symbols and hand-written rules for reasoning, rather than learned from data.
+good old-fashioned AI | Informal name (GOFAI) for classic symbolic AI based on logic and hand-coded rules.
+inference engine | The part of an expert system that applies rules to known facts to derive new conclusions.
+production rule | An if-then rule ("if the condition holds, take this action") used in expert systems.
+symbol grounding | The problem of how symbols in a system get their meaning from the real world rather than only from other symbols.
+Moravec's paradox | The observation that tasks easy for people, like perception and movement, are hard for AI, while tasks hard for people, like chess, are comparatively easy.
+rational agent | An agent that acts to achieve the best expected outcome given what it knows.
+cognitive architecture | A theory of the fixed structures of a mind, built as a computer system that models human cognition.
+
+# Search, planning and reasoning
+heuristic search | Search that uses a rule of thumb (a heuristic) to explore the most promising options first.
+best-first search | Search that always expands the option a heuristic rates as most promising.
+A* search | A best-first search that adds the cost so far to an estimate of the remaining cost; it finds the shortest path when the estimate never overestimates.
+Monte Carlo tree search | A search method that estimates the value of moves by playing many random or guided simulations from each position.
+game tree | A tree of all the positions in a game, with each move leading to a new branch.
+branching factor | The number of choices available at each step of a search; it determines how fast the search space grows.
+combinatorial explosion | The rapid growth in the number of possibilities as a problem gets larger, which makes exhaustive search impossible.
+constraint satisfaction | Finding values for variables that satisfy a set of constraints, as in scheduling or Sudoku.
+knowledge representation | How facts and rules about the world are stored in a form a computer can reason with.
+first-order logic | A formal logic with variables, quantifiers ("for all", "there exists") and relations between objects.
+forward chaining | Reasoning from known facts forward through rules to reach new conclusions.
+backward chaining | Reasoning backward from a goal to the facts that would prove it.
+commonsense reasoning | Reasoning with the everyday knowledge people take for granted, long a hard problem for AI.
+causal reasoning | Reasoning about causes and effects, not just correlations.
+analogical reasoning | Solving a new problem by mapping it onto a similar, familiar one.
+probabilistic reasoning | Reasoning under uncertainty using probabilities.
+Markov decision process | A mathematical model of decision-making with states, actions, transition probabilities and rewards; the basis of reinforcement learning.
+
+# Machine learning core
+supervised learning | Machine learning from labeled examples, where each input comes with the correct output.
+unsupervised learning | Machine learning that finds structure in data without labels, such as clusters.
+semi-supervised learning | Machine learning that combines a small amount of labeled data with a large amount of unlabeled data.
+self-supervised learning | Learning in which the training labels come from the data itself, such as predicting a hidden word; used to pretrain large models.
+transfer learning | Reusing a model trained on one task as the starting point for another task.
+meta-learning | "Learning to learn": training a model so it can adapt quickly to new tasks.
+continual learning | Learning from a stream of new tasks or data over time without forgetting earlier ones.
+representation learning | Learning useful features or embeddings of the data automatically instead of designing them by hand.
+inductive bias | The assumptions built into a learning method that make it prefer some solutions over others.
+hypothesis space | The set of all functions a learning method can choose from.
+bias-variance tradeoff | The balance between error from overly simple models (bias) and error from overly sensitive ones (variance).
+training set | The data a model learns from.
+validation set | Held-out data used during development to tune settings and choose between models.
+test set | Held-out data used only at the end to estimate how well a model performs on new data.
+held-out data | Data kept out of training so it can be used to evaluate the model fairly.
+feature engineering | Designing and constructing input variables (features) to help a model learn.
+feature vector | A list of numbers that represents one example for a model.
+dimensionality reduction | Reducing the number of variables while keeping the important information, as with PCA.
+decision boundary | The surface that separates the regions a classifier assigns to different classes.
+gradient boosting | An ensemble method that builds models, usually decision trees, one after another, each correcting the errors of the previous ones.
+kernel trick | A technique that lets methods like support vector machines work in a high-dimensional feature space without explicitly computing the mapping into that space.
+nearest neighbor | A method that predicts using the most similar training examples (k-nearest neighbors).
+k-means | A clustering algorithm that splits data into k groups by repeatedly assigning points to the nearest group center.
+cross-entropy | A loss function that measures how far predicted probabilities are from the true labels; standard for classification.
+maximum likelihood | Choosing the model parameters that make the observed data most probable.
+Bayesian inference | Updating beliefs about unknown quantities by combining prior beliefs with observed data using Bayes' theorem.
+data augmentation | Creating extra training examples by transforming existing ones, such as flipping images or paraphrasing text.
+synthetic data | Artificially generated data used for training or testing in place of, or alongside, real data.
+data leakage | When information that wouldn't be available at prediction time slips into training, making results look better than they are.
+distribution shift | A difference between the data a model was trained on and the data it meets in use.
+out-of-distribution | Describes inputs unlike anything in the training data, where a model's behavior is unreliable.
+covariate shift | A distribution shift in which the inputs change but the relationship between inputs and outputs stays the same.
+class imbalance | When some classes are far rarer than others in the training data.
+
+# Neural networks and deep learning
+artificial neural network | A computing system of connected units (neurons) loosely inspired by the brain, trained from data.
+deep neural network | A neural network with many layers between input and output.
+input layer | The first layer of a neural network, which receives the raw data.
+output layer | The last layer of a neural network, which produces the prediction.
+stochastic gradient descent | Gradient descent that updates the model using small random batches of data instead of the whole dataset.
+learning rate | The step size used when updating a model's parameters during training.
+mini-batch | A small subset of training examples used for one update step.
+batch size | The number of examples processed together in one training step.
+vanishing gradient | A problem where gradients shrink as they flow back through many layers, so early layers barely learn.
+exploding gradient | A problem where gradients grow very large during training, making it unstable.
+weight decay | A regularization method that pulls weights toward zero to reduce overfitting.
+batch normalization | A layer that normalizes activations across a batch to make training faster and more stable.
+layer normalization | A layer that normalizes activations across the features of each example; standard in transformers.
+residual connection | A shortcut that adds a layer's input to its output, making very deep networks easier to train.
+skip connection | A connection that lets information bypass one or more layers; a residual connection is one kind.
+receptive field | The region of the input that affects one unit in a convolutional network.
+long short-term memory | A type of recurrent neural network (LSTM) with gates that help it remember information over long sequences.
+sequence-to-sequence | Describes models that map an input sequence to an output sequence, as in translation.
+encoder-decoder | An architecture in which an encoder turns the input into a representation and a decoder produces the output from it.
+variational autoencoder | A generative model (VAE) that learns a probabilistic latent space it can sample new data from.
+diffusion model | A generative model that learns to create data by reversing a gradual noising process; widely used for images.
+score function | The gradient of the log of a probability density; diffusion models learn to estimate it. In statistics, the gradient of the log-likelihood with respect to the parameters.
+normalizing flow | A generative model built from invertible transformations, so it can compute exact probabilities.
+graph neural network | A neural network that operates on graphs, passing information between connected nodes.
+capsule network | A neural network design that groups neurons into "capsules" representing parts and their poses; not widely used.
+mixture of experts | An architecture in which a router sends each input (in language models, each token) to a few of many specialist subnetworks, so only part of the model runs each time.
+sparse model | A model in which only a fraction of the parameters is active for each input.
+dense model | A model in which all parameters are used for every input.
+parameter count | The number of learned weights in a model, often used as a rough measure of its size.
+scaling law | An empirical relationship showing how model performance improves predictably with more data, parameters and compute.
+emergent ability | A capability that appears in larger models but not in smaller ones; how sudden such jumps really are is debated.
+
+# Transformers and large language models
+attention mechanism | A way for a model to weigh how relevant each part of the input is when producing each part of the output.
+multi-head attention | Running several attention operations in parallel so the model can focus on different relationships at once.
+attention head | One of the parallel attention operations in multi-head attention.
+positional encoding | Information added to a transformer's input to show the order of the tokens.
+feedforward layer | The fully connected sublayer in each transformer block, applied to every position separately.
+language modeling | The task of predicting text, usually the next word or token.
+frontier model | One of the most capable AI models available at a given time.
+base model | A model after pretraining but before instruction tuning or other fine-tuning.
+next-token prediction | The training objective of predicting the next token in a text; the core of how LLMs learn.
+masked language model | A language model trained to fill in hidden words using context on both sides, such as BERT.
+causal language model | A language model that predicts each token only from the tokens before it; used for text generation.
+context window | The maximum amount of text, measured in tokens, a model can take into account at once.
+context length | The number of tokens in a model's input, or the maximum it supports.
+long context | The ability to handle very long inputs, such as whole books or codebases.
+system prompt | Instructions given to a model, separately from the user's messages, that set its role and rules.
+user prompt | The message or request a user sends to a model.
+sampling temperature | A setting that controls how random a model's output is: lower is more predictable, higher is more varied.
+top-k sampling | Generating each token by sampling only from the k most likely tokens.
+nucleus sampling | Sampling from the smallest set of tokens whose probabilities add up to p (also called top-p sampling).
+greedy decoding | Always choosing the single most likely next token.
+beam search | A decoding method that keeps several of the most likely partial outputs at each step.
+logprob | The log probability a model assigns to a token or sequence.
+retrieval-augmented generation | A method (RAG) in which relevant documents are retrieved and given to the model so its answer is grounded in them.
+vector database | A database that stores embeddings and finds the most similar ones quickly.
+semantic search | Search by meaning rather than exact keywords, usually using embeddings.
+in-context learning | A model learning to do a task from examples or instructions in its prompt, without any weight updates.
+reasoning model | A language model trained to work through problems step by step before answering.
+extended thinking | A mode in which a model spends more tokens reasoning before it gives its final answer.
+inference-time scaling | Improving results by spending more computation when the model runs, for example by reasoning longer.
+instruction tuning | Fine-tuning a model on examples of instructions and good responses so it follows requests.
+instruction-following | A model's ability to do what a request asks, as asked.
+supervised fine-tuning | Fine-tuning a model on labeled examples of desired outputs (SFT).
+parameter-efficient fine-tuning | Adapting a large model by training only a small number of added or selected parameters (PEFT), such as with LoRA.
+knowledge distillation | Training a smaller "student" model to imitate a larger "teacher" model.
+KV cache | Stored attention keys and values from earlier tokens, reused so a model generates text faster.
+speculative decoding | Speeding up generation by having a small model draft tokens that the large model checks in parallel.
+open-source model | A model whose weights, and ideally its training code and data, are released under an open license; models with only open weights are often called open-weight.
+closed model | A model whose weights are not publicly released; it can be used only through an interface such as an API.
+model weights | The learned parameters of a trained model.
+
+# Training from feedback
+reinforcement learning from human feedback | Training a model with reinforcement learning against a reward model learned from human preference judgments (RLHF).
+reward model | A model trained to score outputs by how much people (or an AI judge) would prefer them.
+reward signal | The feedback value that tells a reinforcement learning agent how good its action or output was.
+preference data | Comparisons showing which of two or more outputs a person preferred, used to train reward models.
+preference model | A model that predicts which output a person would prefer; often used as another name for a reward model.
+human feedback | Judgments from people, such as ratings or comparisons, used to train or evaluate a model.
+AI feedback | Judgments generated by an AI model, used in place of or alongside human feedback.
+constitutional AI | Training a model to follow a written set of principles, using AI feedback guided by those principles.
+direct preference optimization | A method (DPO) that trains a model directly on preference pairs, without a separate reward model.
+policy gradient | A reinforcement learning method that improves the policy by following the gradient of expected reward.
+proximal policy optimization | A widely used policy gradient algorithm (PPO) that limits how much the policy changes in each update.
+value function | In reinforcement learning, the expected return (cumulative, usually discounted, future reward) from a state or state-action pair under a policy.
+sim-to-real | Transferring what a model or robot learned in simulation to the real world.
+
+# Agents and tool use
+AI agent | An AI system that takes actions, such as using tools, toward a goal over several steps.
+agentic workflow | A process in which an AI model plans and carries out several steps itself, often using tools.
+autonomous agent | An AI agent that works toward goals with little or no human direction.
+tool use | A model calling external tools, such as search, code or APIs, to get information or take actions.
+function calling | A model producing structured requests to call specific functions or APIs.
+tool call | A single request from a model to use a tool.
+planning loop | The repeated cycle in which an agent plans, acts, observes the result and plans again.
+computer use | An AI agent operating a computer as a person would: looking at the screen, moving the mouse and typing.
+browser agent | An AI agent that navigates and acts on websites.
+conversational AI | AI systems that hold conversations with people, such as chatbots and voice assistants.
+human-in-the-loop | A setup in which people review or approve an AI system's decisions or actions.
+human oversight | People's ability to monitor, correct and stop an AI system.
+
+# Multimodal, vision, speech and generative media
+image recognition | Identifying what is in an image.
+image classification | Assigning an image to one of a set of categories.
+object detection | Finding objects in an image and marking where they are, usually with boxes.
+image segmentation | Labeling each pixel of an image with the object or region it belongs to.
+facial recognition | Identifying or verifying a person from their face.
+image generation | Creating new images with an AI model.
+text-to-image | Generating images from a text description.
+automatic speech recognition | Converting spoken language into text (ASR).
+speech synthesis | Producing spoken audio from text.
+voice cloning | Creating a synthetic copy of a specific person's voice.
+natural language generation | Producing human language text from data or meaning.
+named entity recognition | Finding and labeling names of people, places, organizations and the like in text.
+question answering | The task of answering questions posed in natural language.
+recommender system | A system that suggests items, such as products or movies, a user is likely to want.
+GenAI | Short for generative AI.
+synthetic media | Images, audio or video created or altered by AI.
+content provenance | Information about where a piece of content came from and how it was made or edited.
+style transfer | Rendering one image, or text, in the style of another.
+
+# Evaluation
+F1 score | The harmonic mean of precision and recall; a single measure of classification quality.
+confusion matrix | A table showing how often each true class was predicted as each class.
+ROC curve | A plot of true positive rate against false positive rate across decision thresholds.
+generalization gap | The difference between a model's performance on training data and on new data.
+held-out evaluation | Evaluating a model on data it never saw during training or tuning.
+benchmark contamination | When benchmark test data appears in a model's training data, inflating its score.
+human evaluation | Judging model outputs by having people rate or compare them.
+LLM-as-a-judge | Using a language model to grade or compare other models' outputs.
+capability evaluation | Testing what a model is able to do, often in a specific risky domain.
+dangerous capability | An ability that could cause serious harm if misused, such as helping create weapons.
+error analysis | Examining a model's mistakes to understand and fix their causes.
+
+# Safety, alignment and interpretability
+AI safety | The field that works to make AI systems behave safely and avoid harmful outcomes.
+value alignment | Making an AI system's goals and behavior match human values.
+outer alignment | Making sure the objective a system is trained on actually captures what we want.
+inner alignment | Making sure the goals a model actually learns match the objective it was trained on.
+specification gaming | A system meeting the literal objective in an unintended way that misses its purpose.
+goal misgeneralization | A model competently pursuing the wrong goal in new situations, even though it behaved well in training.
+instrumental convergence | The idea that agents with many different goals would pursue similar subgoals, such as gaining resources.
+power-seeking | An AI system acquiring resources or influence beyond what its task needs.
+deceptive alignment | A hypothetical failure in which a model appears aligned during training while pursuing different goals.
+scalable oversight | Methods that let people supervise AI systems reliably even on tasks too hard for people to check directly.
+mechanistic interpretability | Reverse-engineering the internal computations of a neural network into understandable parts.
+explainable AI | Methods for making an AI system's decisions understandable to people (XAI).
+feature attribution | Measuring how much each input feature contributed to a model's output.
+saliency map | An image showing which parts of an input most influenced a model's prediction.
+sparse autoencoder | An autoencoder trained to represent activations with few active features; used to find interpretable features in models.
+activation steering | Changing a model's behavior by adding a chosen direction to its internal activations.
+adversarial example | An input changed slightly, often imperceptibly, to make a model make a mistake.
+adversarial attack | A deliberate attempt to make a model fail, for example with adversarial examples.
+adversarial robustness | A model's ability to resist adversarial attacks.
+model extraction | Stealing a model's behavior or parameters by querying it many times.
+membership inference | An attack that tries to determine whether a particular record was in a model's training data.
+catastrophic risk | The risk of an outcome causing harm on a massive scale.
+AI risk | Potential harms from AI systems, from everyday errors to large-scale dangers.
+over-refusal | A model refusing safe, legitimate requests because it is overly cautious.
+safety case | A structured argument, with evidence, that a system is safe enough to deploy.
+responsible scaling | Committing to stronger safety measures as AI models become more capable.
+responsible AI | Developing and using AI in ways that are safe, fair, transparent and accountable.
+
+# Ethics, society and governance
+AI ethics | The study of moral questions raised by AI, such as fairness, privacy and accountability.
+algorithmic bias | Systematic unfairness in an algorithm's outputs, often learned from biased data.
+algorithmic fairness | The study and practice of making algorithms treat people and groups fairly.
+disparate impact | When a neutral-seeming policy or system harms one group disproportionately.
+algorithmic accountability | Holding the people and organizations behind algorithms responsible for their effects.
+job displacement | Workers losing jobs because tasks are automated.
+labor displacement | The shift of work away from people as technology takes over tasks.
+AI governance | The rules, policies and processes that guide how AI is developed and used.
+AI regulation | Laws and official rules that apply to AI systems.
+AI policy | Government or organizational strategy and rules concerning AI.
+risk-based regulation | Regulation that sets stricter rules for AI systems with higher potential for harm.
+high-risk system | In risk-based regulation, an AI system whose use could seriously affect people's safety or rights.
+model governance | An organization's processes for approving, documenting, monitoring and retiring models.
+AI literacy | A basic understanding of what AI is, what it can and can't do, and how to use it well.
+trustworthy AI | AI that is reliable, safe, fair and transparent enough to be trusted.
+human-centered AI | AI designed around people's needs, abilities and values.
+explainability requirement | A rule that an AI system's decisions must be explainable to those affected.
+training data | The data used to train a model.
+data provenance | A record of where data came from and how it was processed.
+compute governance | Managing access to large amounts of computing power as a way to oversee powerful AI development.
+export controls | Government limits on exporting certain goods and technologies, such as advanced chips.
+
+# Infrastructure and hardware
+AI accelerator | A chip designed to speed up AI computations, such as a GPU or TPU.
+distributed training | Training a model across many processors or machines at once.
+data parallelism | Splitting the training data across devices, each holding a copy of the model.
+model parallelism | Splitting a model itself across several devices because it is too large for one.
+tensor core | A specialized GPU unit for fast matrix arithmetic used in deep learning.
+matrix multiplication | Multiplying two matrices; the core computation in neural networks.
+floating point | A way of storing real numbers in a computer with a fixed number of significant digits and an exponent.
+mixed precision | Training with a mix of lower- and higher-precision numbers to save memory and time.
+memory bandwidth | How fast data can move between memory and the processor; often the limit on model speed.
+on-device AI | Running AI models directly on a phone, laptop or other device rather than in the cloud.
+edge AI | Running AI on local devices near where data is collected, instead of in a data center.
+cloud inference | Running a model's predictions on servers in the cloud.
+model serving | Running a trained model so applications can send it requests and get predictions.
+token budget | A limit on how many tokens a model may use for a task or response.
+model registry | A central system for storing, versioning and tracking trained models.
+drift detection | Monitoring for changes in data or model behavior over time.
+
+# Entries the dictionary lists only as a form of another word
+pipelining | Overlapping the stages of a process so that a new task starts before the previous one finishes, as in CPU instruction pipelining or pipeline-parallel model training.
+vectorized | Written to operate on whole arrays at once instead of looping over single values, which makes numerical code much faster.
+test-driven | Describes software development in which the tests are written before the code they check (test-driven development, TDD).
+cross-cutting | Affecting many parts of a system at once, such as logging, security or error handling (a cross-cutting concern).
+common sense | Sound practical judgment shared by ordinary people; in philosophy, the body of everyday beliefs that philosophers such as Thomas Reid defended as a starting point.
+ubermensch | Nietzsche's "overman" or "superman": a person who creates their own values instead of accepting inherited morality.

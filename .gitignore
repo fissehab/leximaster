@@ -1,0 +1,12 @@
+# Secrets and personal files: never publish
+.env
+instructions
+
+# Local environment and build caches
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Generated data, your progress database and recordings (the site's copy is in docs/)
+data/

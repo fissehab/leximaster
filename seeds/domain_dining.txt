@@ -1,0 +1,255 @@
+# Dining out in the US: ordering, the table, paying. Phrases use spaces.
+appetizer
+entrée
+main course
+side dish
+side
+dessert
+beverage
+refill
+free refill
+to go
+to-go box
+doggy bag
+takeout
+takeaway
+carryout
+delivery
+dine in
+server
+waiter
+waitress
+host
+hostess
+busboy
+bartender
+sommelier
+maître d'
+chef
+line cook
+reservation
+walk-in
+waitlist
+party of
+booth
+patio
+counter
+bar seating
+high chair
+booster seat
+menu
+specials
+special of the day
+prix fixe
+à la carte
+tasting menu
+kids' menu
+happy hour
+brunch
+buffet
+all-you-can-eat
+diner
+bistro
+café
+deli
+food truck
+fast food
+drive-through
+food court
+steakhouse
+pizzeria
+bakery
+eatery
+joint
+hole in the wall
+check
+bill
+tab
+split the check
+separate checks
+my treat
+it's on me
+tip
+gratuity
+service charge
+tax
+receipt
+comp
+on the house
+cover charge
+order
+order up
+for here or to go
+dressing
+on the side
+hold the
+no ice
+well done
+medium rare
+medium well
+rare
+over easy
+sunny side up
+scrambled
+hash browns
+gluten-free
+dairy-free
+vegan
+vegetarian
+allergy
+nut allergy
+spicy
+mild
+craving
+starving
+stuffed
+full
+leftovers
+seconds
+portion
+serving
+entree salad
+house salad
+soup of the day
+combo
+value meal
+upsize
+napkin
+silverware
+utensils
+place setting
+condiments
+ketchup
+mustard
+mayo
+hot sauce
+salsa
+guac
+creamer
+sweetener
+straw
+lid
+coaster
+pitcher
+carafe
+tap water
+sparkling water
+still water
+soda
+pop
+iced tea
+sweet tea
+lemonade
+decaf
+espresso
+latte
+cappuccino
+americano
+cold brew
+draft beer
+on tap
+craft beer
+house wine
+glass of wine
+bottle
+cocktail
+mocktail
+nightcap
+toast
+cheers
+bon appétit
+grab a bite
+grab lunch
+eat out
+dine out
+order in
+take out
+wolf down
+pig out
+snack
+nibble
+bite
+sip
+chow down
+grub
+munchies
+foodie
+regular
+reservation under
+waiting list
+seat
+seated
+be right with you
+check on
+flag down
+send back
+undercooked
+overcooked
+lukewarm
+stale
+soggy
+fresh
+complimentary
+bread basket
+amuse-bouche
+palate cleanser
+doggie bag
+box up
+wrap up
+cash or card
+contactless
+keep the change
+
+# Phrasal verbs at a restaurant
+start off with
+go with
+split up
+box up
+wash down
+fill up on
+eat up
+polish off
+cut back on
+come with
+order in
+send back
+pick up the tab
+run up a tab
+
+# Expressions (meaning written here; not dictionary entries)
+Table for two, please. | Asking the host for a table for two people when you arrive.
+Do you have a reservation? | The host asking whether you booked a table in advance.
+We have a reservation under Smith. | Telling the host the name the table was booked under.
+How long is the wait? | Asking how long until a table is free.
+Can we sit outside? | Asking for a table on the patio or outdoor area.
+Are you ready to order? | The server asking if you have decided what to eat.
+Can I get you started with anything to drink? | The server's usual first question: what you'd like to drink while you look at the menu.
+I need a few more minutes. | Politely telling the server you haven't decided yet.
+What do you recommend? | Asking the server for a suggestion from the menu.
+What's good here? | Casual way to ask which dishes the restaurant does best.
+I'll have the salmon. | The usual way to order a dish: "I'll have…" (also "Can I get…").
+Can I get the burger, medium rare? | Ordering a dish and saying how you want it cooked; "Can I get…" is normal and polite in the US.
+I'll go with the special. | Choosing the dish of the day; "go with" means choose.
+Could I get the dressing on the side? | Asking for the sauce or dressing served separately, not on the food.
+Can I get a salad instead of fries? | Asking to swap the side dish that comes with your meal; "sub" is the casual verb: "Can I sub a salad for the fries?"
+Does that come with anything? | Asking what side dishes are included with a main dish.
+Is this dish spicy? | Asking how hot the food is.
+I'm allergic to nuts. | Telling the server about a food allergy so the kitchen can avoid it.
+Just water for now, thanks. | Ordering only water while you decide on other drinks.
+Could we get some more napkins? | Asking for an extra item; "Could we get…" is the polite form.
+How is everything? | The server checking that you're happy with the meal; "Great, thanks" is the usual reply.
+Everything's great, thanks. | The usual friendly reply when the server checks on you.
+This isn't what I ordered. | Politely saying the server brought the wrong dish.
+Could I get a box for this? | Asking for a container to take your leftovers home.
+Can we get the check, please? | Asking for the bill at the end of the meal (Americans say "check").
+Could we split the check? | Asking for separate bills so each person pays for their own food.
+Can we put it all on one card? | Asking to pay the whole bill with one credit card.
+It's on me. | Saying you will pay for everyone; also "My treat."
+Let's go Dutch. | Suggesting that each person pays for their own meal.
+Keep the change. | Telling the server to keep the leftover money as part of the tip.
+For here or to go? | A counter worker asking whether you'll eat in the restaurant or take the food away.
+I'm just grabbing something quick. | Saying you want a fast, simple meal.
+Can I get a refill? | Asking for your drink to be filled again, often free in the US.
+We're still working on it. | Telling the server you haven't finished eating, so don't take the plates yet.
+I'm stuffed. | Casual way to say you've eaten so much you are completely full.
+My compliments to the chef. | Formal way of saying the food was excellent.

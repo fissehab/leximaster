@@ -1,0 +1,2705 @@
+# Conversation examples: artificial_intelligence
+artificial intelligence
+- [the field] Artificial intelligence studies how to build systems that perceive, reason, learn, and act.
+- [history of the term] John McCarthy coined the term "artificial intelligence" for the 1956 Dartmouth workshop.
+- [explaining to a friend] Most of what people call artificial intelligence today is really machine learning models trained on lots of data.
+
+AI
+- [the field, abbreviation] AI has gone through several cycles of hype and disappointment since the 1950s.
+- [a deployed system] Our support team uses an AI to draft replies, but a person reviews every one.
+- [executive meeting] Before we add AI to the product, let's agree on what problem it's actually solving.
+
+machine intelligence
+- [general capability] Some researchers prefer "machine intelligence" because it sounds less like a marketing term.
+- [in a paper] We treat machine intelligence as the ability to achieve goals across a range of environments.
+
+artificial general intelligence
+- [hypothetical system] Artificial general intelligence refers to a system that could learn and perform most intellectual tasks a human can.
+- [in a debate] Nobody in the room could agree on a test that would tell us we'd reached artificial general intelligence.
+- [explaining to a manager] Our forecasting model is narrow; it's nowhere near artificial general intelligence.
+
+AGI
+- [hypothetical system] AGI is usually contrasted with narrow AI, which is built for one task or domain.
+- [skeptical conversation] Every few months someone claims AGI is two years away, and the definition keeps shifting.
+- [in a strategy review] Our roadmap doesn't depend on AGI; it depends on better data and evaluation.
+
+superintelligence
+- [hypothetical concept] Superintelligence describes a hypothetical system that far exceeds human ability in nearly every domain.
+- [safety discussion] Debates about superintelligence often focus on whether its goals would stay aligned with ours.
+
+narrow AI
+- [task-specific system] A spam filter is a good example of narrow AI: excellent at one task, useless at others.
+- [explaining to executives] Everything we've deployed so far is narrow AI, trained for a specific business problem.
+- [in a blog post] Narrow AI can beat experts at chess and still fail at tasks a child finds trivial.
+
+strong AI
+- [philosophy of mind] In philosophy of mind, strong AI is the claim that a properly programmed computer actually has a mind.
+- [general capability, loose use] People sometimes use strong AI as a synonym for artificial general intelligence.
+- [in a seminar] The Chinese room argument was aimed squarely at strong AI, not at useful software.
+
+weak AI
+- [philosophy of mind] Weak AI claims only that computers can simulate thinking, leaving open whether they actually understand anything.
+- [task-specific, loose use] In casual use, weak AI just means a system built for a single, narrow task.
+
+Turing test
+- [historical test] Alan Turing proposed what we now call the Turing test in his 1950 paper on computing machinery and intelligence.
+- [how it works] In the Turing test, a judge chats with a human and a machine and tries to tell which is which.
+- [in a discussion] Passing a casual Turing test says more about fluent text than about real understanding.
+
+Chinese room
+- [thought experiment] The Chinese room argument, published in 1980, says symbol manipulation alone isn't enough for understanding.
+- [debating language models] Critics invoke the Chinese room when they argue that chatbots process text without grasping meaning.
+- [at dinner with friends] The Chinese room imagines a person following rules to answer in Chinese without knowing any Chinese.
+
+symbolic AI
+- [rule-based approach] Symbolic AI represents knowledge with explicit symbols and rules and reasons by manipulating them.
+- [historical context] Symbolic AI dominated the field from the 1950s through the 1980s, before statistical methods took over.
+- [design review] For the compliance checks, a bit of symbolic AI is easier to audit than a neural network.
+
+good old-fashioned AI
+- [symbolic tradition] John Haugeland coined "good old-fashioned AI" to describe the symbolic, logic-based approach.
+- [team meeting, informal] The scheduler is good old-fashioned AI: a constraint solver and a handful of rules.
+
+connectionism
+- [approach to cognition] Connectionism models cognition as patterns of activity across networks of simple, interconnected units.
+- [history] The 1986 work on parallel distributed processing helped revive connectionism after years of skepticism.
+- [in a paper] Modern deep learning is in many ways the engineering descendant of connectionism.
+
+connectionist
+- [describing a model] A connectionist model learns by adjusting connection weights rather than by following hand-written rules.
+- [in a debate] The old symbolic versus connectionist debate is back, now framed as reasoning versus pattern matching.
+
+cybernetics
+- [historical field] Norbert Wiener's cybernetics studied control and communication in animals and machines.
+- [feedback loops] Ideas from cybernetics, like feedback and self-regulation, show up throughout control theory and robotics.
+
+expert system
+- [rule-based software] An expert system encodes a specialist's knowledge as if-then rules and applies them through an inference engine.
+- [history] MYCIN, an expert system for diagnosing bacterial infections, is a classic example from the 1970s.
+- [explaining limitations] Expert systems were brittle and expensive to maintain because every rule had to be written by hand.
+
+knowledge base
+- [system component] The knowledge base stores the facts and rules that the inference engine reasons over.
+- [retrieval systems] We index the internal knowledge base so the assistant can cite the right policy document.
+- [everyday sense: help articles] Before filing a ticket, check the knowledge base; the answer is usually there.
+
+inference engine
+- [expert system component] The inference engine applies rules from the knowledge base to derive new facts.
+- [design review] We kept the rules in a config file and swapped in an off-the-shelf inference engine.
+
+production rule
+- [if-then rule] Each production rule has a condition and an action, like "if the temperature exceeds 100.4°F, flag a fever."
+- [debugging rules] Two production rules fired at the same time, so we had to add a conflict-resolution strategy.
+
+AI winter
+- [historical period] An AI winter is a period when funding and interest in AI collapse after inflated expectations.
+- [history] The Lighthill report in 1973 contributed to the first AI winter in the UK.
+- [executive conversation] If we overpromise and underdeliver, we're inviting our own little AI winter inside the company.
+
+frame problem
+- [logic and planning] The frame problem asks how to represent what doesn't change when an action is performed, without listing every non-effect.
+- [broader sense] Philosophers use the frame problem more broadly to ask how an agent knows which facts are relevant.
+
+symbol grounding
+- [meaning problem] Symbol grounding is the problem of how symbols in a system get their meaning from the world.
+- [debating language models] Text-only training raises the symbol grounding question: does "red" mean anything to the model?
+- [robotics] Robotics researchers argue that perception and action help with symbol grounding.
+
+Moravec's paradox
+- [observation] Moravec's paradox notes that high-level reasoning is relatively easy for computers, while basic perception and motor skills are hard.
+- [explaining robotics] Folding laundry is still a hard robotics problem, which is Moravec's paradox in action.
+
+intelligent agent
+- [textbook concept] An intelligent agent perceives its environment through sensors and acts on it through actuators.
+- [product discussion] Calling the chatbot an intelligent agent is a stretch if it can't take any actions.
+
+rational agent
+- [decision theory] A rational agent chooses the action that maximizes its expected performance measure, given what it knows.
+- [in a lecture] Being a rational agent doesn't mean being all-knowing; it means acting well on the available information.
+
+bounded rationality
+- [limited decision-making] Herbert Simon's idea of bounded rationality says real decision makers face limits on time, information, and computation.
+- [system design] Given bounded rationality, the agent settles for a good-enough plan instead of searching for the optimal one.
+- [everyday decisions] Picking the first decent restaurant on the list is bounded rationality, not laziness.
+
+cognitive architecture
+- [model of the mind] A cognitive architecture like Soar or ACT-R specifies the fixed structures underlying human-like cognition.
+- [agent design] Some teams describe their agent's memory, planning, and tool use as a cognitive architecture.
+
+cognitive science
+- [interdisciplinary field] Cognitive science combines psychology, neuroscience, linguistics, philosophy, and AI to study the mind.
+- [in a paper] We borrow the notion of working memory from cognitive science to motivate our design.
+
+neuro-symbolic
+- [hybrid approach] Neuro-symbolic methods combine neural networks for perception with symbolic reasoning for logic and rules.
+- [design review] A neuro-symbolic pipeline lets us extract entities with a model and then validate them with hard constraints.
+
+emergent
+- [arising from interactions] Flocking is emergent behavior: no single bird plans the shape of the flock.
+- [in large models] Some capabilities look emergent because they appear suddenly as models get bigger.
+- [everyday sense: newly forming] The team noticed an emergent need for better labeling tools as the project grew.
+
+emergence
+- [complex systems] Emergence describes complex patterns arising from simple rules interacting at scale.
+- [in a review] Claims of emergence in large models sometimes disappear when you use a smoother evaluation metric.
+
+anthropomorphize
+- [attributing human traits] It's easy to anthropomorphize a chatbot when it says "I think" or "I feel."
+- [advice to executives] Let's not anthropomorphize the model in the press release; it doesn't "want" anything.
+- [team discussion] We anthropomorphize the agent in casual talk, but the docs should describe what it actually does.
+
+anthropomorphism
+- [attributing human traits] Anthropomorphism in product copy can lead users to trust the system more than they should.
+- [in a paper] We avoid anthropomorphism and describe model outputs rather than model beliefs.
+
+automaton
+- [abstract machine] A finite automaton reads input symbols one at a time and changes state according to fixed rules.
+- [mechanical device] One famous eighteenth-century automaton could write short messages with a quill pen.
+- [figurative] After twelve hours of labeling, I felt like an automaton clicking the same buttons.
+
+automation
+- [replacing manual work] Automation of the data-validation step saved the team about a day each week.
+- [executive conversation] Not every automation project needs AI; sometimes a script and a schedule are enough.
+- [labor discussion] The report looks at which tasks are most exposed to automation, not which jobs disappear.
+
+autonomous
+- [acting independently] An autonomous agent can plan and execute multistep tasks without a human approving each step.
+- [vehicles] Autonomous vehicles must handle rare edge cases that barely appear in training data.
+- [everyday sense: self-governing] Each product team is fairly autonomous and picks its own tools.
+
+autonomy
+- [degree of independence] We gave the agent limited autonomy: it can draft changes but can't deploy them.
+- [safety discussion] As autonomy increases, so does the need for monitoring and clear ways to intervene.
+- [workplace sense] Senior scientists on the team have a lot of autonomy in choosing research directions.
+
+search space
+- [set of candidates] The search space for this scheduling problem grows exponentially with the number of tasks.
+- [hyperparameter tuning] We narrowed the search space to three learning rates and two batch sizes.
+- [in a review] Your method only looks better because it explored a larger search space than the baselines.
+
+state space
+- [all possible states] In the 8-puzzle, the state space contains every reachable arrangement of the tiles.
+- [reinforcement learning] A continuous state space means we can't use a simple lookup table for values.
+- [control theory sense] In a state-space model, the system's hidden state evolves over time and generates the observations.
+
+heuristic search
+- [guided search] Heuristic search uses an estimate of the remaining cost to decide which node to expand next.
+- [design review] Exhaustive search won't finish in time, so let's switch to a heuristic search with a good distance estimate.
+
+best-first search
+- [search strategy] Best-first search always expands the node that the evaluation function rates as most promising.
+- [comparison] Greedy best-first search is fast but not optimal, because it ignores the cost already paid.
+
+breadth-first search
+- [search strategy] Breadth-first search explores all nodes at one depth before moving to the next level.
+- [optimality] On an unweighted graph, breadth-first search finds a shortest path, but it can use a lot of memory.
+- [code review] Use breadth-first search here so we find the closest related account first.
+
+depth-first search
+- [search strategy] Depth-first search follows one branch as deep as possible before backtracking.
+- [memory trade-off] Depth-first search needs little memory, but it can get lost down a very deep or infinite branch.
+
+A* search
+- [search algorithm] A* search ranks nodes by f(n) = g(n) + h(n), the path cost so far plus a heuristic estimate.
+- [optimality] With an admissible heuristic, A* search is guaranteed to find an optimal path in tree search.
+- [practical use] Game developers often use A* search for pathfinding on grid maps.
+
+minimax
+- [game algorithm] Minimax assumes the opponent plays optimally and picks the move with the best worst-case outcome.
+- [in a lecture] In minimax, the maximizing player and the minimizing player alternate levels of the game tree.
+- [optimization sense] The GAN objective is a minimax problem: the generator minimizes what the discriminator maximizes.
+
+alpha-beta pruning
+- [search optimization] Alpha-beta pruning skips branches of the minimax tree that can't change the final decision.
+- [efficiency] With good move ordering, alpha-beta pruning lets the search go roughly twice as deep in the same time.
+- [result guarantee] Alpha-beta pruning returns exactly the same move as plain minimax, just faster.
+
+Monte Carlo tree search
+- [search algorithm] Monte Carlo tree search estimates move values by running many simulated playouts from each position.
+- [game-playing programs] The strongest Go programs combine Monte Carlo tree search with deep neural networks that evaluate positions.
+- [team discussion] Monte Carlo tree search works well when we can simulate cheaply but lack a good evaluation function.
+
+game tree
+- [game representation] In a game tree, each node is a position and each edge is a legal move.
+- [scale] The game tree for chess is far too large to search completely, so programs search only to a limited depth.
+
+branching factor
+- [search complexity] Go has a much larger branching factor than chess, which made brute-force search impractical.
+- [planning] Reducing the branching factor by pruning unlikely actions made the planner usable in real time.
+
+combinatorial explosion
+- [rapid growth] Adding just ten more variables caused a combinatorial explosion in the number of configurations.
+- [historical critique] The Lighthill report criticized early AI for failing to deal with combinatorial explosion.
+- [explaining to a manager] We can't try every feature combination; that's a combinatorial explosion.
+
+constraint satisfaction
+- [problem type] Sudoku is a classic constraint satisfaction problem: fill cells so that no row, column, or box repeats a digit.
+- [applied scheduling] We framed shift planning as constraint satisfaction, with staff availability as hard constraints.
+
+satisfiability
+- [logic problem] Satisfiability asks whether some assignment of true and false values makes a logical formula true.
+- [complexity] Boolean satisfiability, or SAT, was the first problem proven to be NP-complete.
+- [tooling] Modern satisfiability solvers handle millions of clauses in hardware verification.
+
+planner
+- [planning algorithm] The planner takes a goal and a model of the actions and outputs a sequence of steps.
+- [agent design] In our agent, a language model acts as the planner and separate tools carry out each step.
+- [everyday sense: person or notebook] I keep a paper planner, but the team uses a shared calendar.
+
+knowledge representation
+- [subfield] Knowledge representation studies how to encode facts about the world so a program can reason with them.
+- [design review] Choosing a knowledge representation early saves a lot of rework when the rules start piling up.
+
+knowledge graph
+- [structured data] A knowledge graph stores entities as nodes and relationships, like "works for" or "located in," as edges.
+- [retrieval] We query the knowledge graph to ground the model's answers in verified product data.
+- [explaining to executives] Think of the knowledge graph as a map of how our customers, products, and suppliers connect.
+
+semantic network
+- [historical representation] A semantic network represents concepts as nodes linked by labeled relations such as "is-a" and "part-of."
+- [comparison] Today's knowledge graphs are close cousins of the semantic networks from early AI research.
+
+ontology
+- [formal vocabulary] Our ontology defines classes like Product and Supplier and the relations allowed between them.
+- [data integration] Without a shared ontology, the two teams kept using "customer" to mean different things.
+- [philosophy sense] In philosophy, ontology is the study of what exists, which is where the technical term comes from.
+
+first-order logic
+- [formal logic] Unlike propositional logic, first-order logic has quantifiers like "for all" and "there exists" that range over objects.
+- [expressiveness] You can't express "every employee has a manager" in propositional logic, but first-order logic handles it easily.
+
+description logic
+- [formal logic] Description logic refers to a family of mostly decidable fragments of first-order logic for defining concepts and relationships.
+- [ontology languages] OWL, the Web Ontology Language, is based on description logic.
+
+forward chaining
+- [data-driven reasoning] Forward chaining starts from known facts and applies rules until no new facts can be derived.
+- [system design] We use forward chaining because new sensor readings arrive continuously and should trigger alerts.
+
+backward chaining
+- [goal-driven reasoning] Backward chaining starts from a goal and works backward to find facts that would support it.
+- [logic programming] Prolog answers queries with backward chaining over its rules.
+
+inference
+- [running a trained model] Inference costs now exceed training costs because the model serves millions of requests a day.
+- [logical reasoning] Logical inference derives new conclusions from premises using valid rules.
+- [statistical estimation] Statistical inference lets us say how confident we are that the effect is real.
+- [team meeting] Let's batch requests at inference time to cut GPU costs.
+
+deduction
+- [logical reasoning] Deduction guarantees a true conclusion if the premises are true and the rules are valid.
+- [comparison] Deduction goes from general rules to specific cases, while induction goes from examples to general rules.
+- [everyday sense: tax] The home-office deduction lowered her taxable income this year.
+
+abduction
+- [inference to best explanation] Abduction infers the most likely explanation for an observation, like guessing a fault from symptoms.
+- [diagnosis systems] Medical diagnosis is often framed as abduction: which condition best explains these symptoms?
+- [everyday sense: kidnapping] In the news, abduction means kidnapping, so define the term early in a talk.
+
+commonsense reasoning
+- [everyday knowledge] Commonsense reasoning covers things people take for granted, like knowing that a glass can break if dropped.
+- [evaluation] The model scores well on commonsense reasoning benchmarks but still makes odd physical mistakes.
+
+causal reasoning
+- [cause and effect] Causal reasoning asks what would happen if we intervened, not just what tends to occur together.
+- [in a review] The dashboard shows a correlation, but the decision really needs causal reasoning.
+- [explaining to a manager] Causal reasoning is how we tell whether the promotion caused the sales lift or just coincided with it.
+
+analogical reasoning
+- [reasoning by similarity] Analogical reasoning maps the structure of a familiar problem onto a new one.
+- [evaluation] We tested analogical reasoning with puzzles like "hand is to glove as foot is to what?"
+
+probabilistic reasoning
+- [reasoning under uncertainty] Probabilistic reasoning updates beliefs as evidence arrives instead of treating facts as simply true or false.
+- [system design] Sensor data is noisy, so the robot relies on probabilistic reasoning to estimate where it is.
+
+Bayesian network
+- [graphical model] A Bayesian network is a directed acyclic graph where each node has a probability distribution conditioned on its parents.
+- [applied use] We built a small Bayesian network to estimate failure risk from maintenance and usage data.
+- [explaining to a stakeholder] The Bayesian network shows which factors influence each other and by how much.
+
+Markov decision process
+- [formal definition] A Markov decision process is defined by states, actions, transition probabilities, rewards, and usually a discount factor.
+- [key assumption] In a Markov decision process, the next state depends only on the current state and action.
+- [in a paper] We formulate inventory control as a Markov decision process and solve it with value iteration.
+
+Markov chain
+- [stochastic process] In a Markov chain, the probability of the next state depends only on the current state.
+- [sampling] MCMC methods build a Markov chain whose stationary distribution is the posterior we want to sample.
+- [explaining to a friend] A simple text generator can be a Markov chain that picks each word based on the previous one.
+
+hidden Markov model
+- [sequence model] A hidden Markov model assumes an unobserved state sequence that generates the observations we see.
+- [history] Before deep learning, hidden Markov models were the standard approach in speech recognition.
+- [algorithm] The Viterbi algorithm finds the most likely hidden state sequence in a hidden Markov model.
+
+fuzzy logic
+- [degrees of truth] Fuzzy logic allows truth values between 0 and 1, so a room can be "somewhat warm."
+- [applications] Some appliances and control systems use fuzzy logic to adjust settings smoothly.
+- [clarifying in a meeting] Fuzzy logic isn't the same as probability; it measures degree of membership, not likelihood.
+
+machine learning
+- [the field] Machine learning builds systems that improve at a task by learning patterns from data rather than following hand-written rules.
+- [executive conversation] Machine learning makes sense here because the rules change too often to code by hand.
+- [in a design review] Before reaching for machine learning, let's see how well a simple heuristic performs.
+
+supervised learning
+- [learning from labels] In supervised learning, the model learns a mapping from inputs to known labels.
+- [project planning] Supervised learning will need a few thousand labeled tickets before it beats the keyword rules.
+- [explaining to a friend] Supervised learning is like studying with an answer key: the model sees the right answer for each example.
+
+unsupervised learning
+- [learning without labels] Unsupervised learning finds structure in data without labels, for example by clustering similar customers.
+- [team meeting] We don't have labels yet, so let's start with unsupervised learning to see what groups emerge.
+
+semi-supervised learning
+- [few labels, much data] Semi-supervised learning combines a small labeled set with a much larger unlabeled set.
+- [practical technique] Pseudo-labeling is a simple form of semi-supervised learning: the model labels unlabeled data and retrains on its confident guesses.
+
+self-supervised learning
+- [labels from the data] In self-supervised learning, the training signal comes from the data itself, like predicting a masked word.
+- [pretraining] Large language models are pretrained with self-supervised learning on next-token prediction.
+- [in a paper] Self-supervised learning let us use millions of unlabeled images before fine-tuning on a small labeled set.
+
+reinforcement learning
+- [learning from reward] In reinforcement learning, an agent learns a policy by trying actions and receiving rewards.
+- [applied discussion] Reinforcement learning is hard to use here because we can't safely explore in production.
+- [language models] Reinforcement learning from human feedback is used to make chat models more helpful.
+
+online learning
+- [incremental updates] In online learning, the model updates after each new example instead of retraining on the full dataset.
+- [everyday sense: e-learning] In education, online learning just means taking classes over the internet.
+- [system design] Online learning helps the fraud model adapt quickly, but we need guardrails against poisoned data.
+
+active learning
+- [choosing what to label] Active learning picks the most informative unlabeled examples and sends them to annotators.
+- [budget discussion] With active learning, we got the same accuracy with about half the labeling budget in our pilot.
+- [education sense] In education, active learning means students participate instead of just listening to a lecture.
+
+transfer learning
+- [reusing a model] Transfer learning reuses a model trained on one task as the starting point for another.
+- [team meeting] We don't have enough data to train from scratch, so transfer learning from a pretrained encoder is the obvious choice.
+- [explaining to a manager] Transfer learning is why we could build this classifier with only five hundred labeled examples.
+
+meta-learning
+- [learning to learn] Meta-learning trains a model across many tasks so it can adapt quickly to a new task.
+- [in a paper] Our meta-learning approach adapts to a new customer with just a handful of labeled examples.
+
+continual learning
+- [learning over time] Continual learning aims to learn new tasks over time without forgetting old ones.
+- [design review] Continual learning sounds appealing, but periodic retraining on a fresh dataset is easier to validate.
+
+catastrophic forgetting
+- [losing old skills] Catastrophic forgetting happens when training on a new task wipes out performance on earlier tasks.
+- [fine-tuning] After fine-tuning on legal documents, the model showed catastrophic forgetting on general questions.
+- [mitigation] Mixing in some original training data is a simple way to reduce catastrophic forgetting.
+
+federated learning
+- [decentralized training] In federated learning, devices train locally and share model updates instead of raw data.
+- [privacy discussion] Federated learning reduces data movement, but the updates themselves can still leak information.
+
+representation learning
+- [learning features] Representation learning lets the model discover useful features instead of relying on hand-crafted ones.
+- [in a talk] Much of deep learning's success comes down to representation learning at scale.
+
+inductive bias
+- [built-in assumptions] Convolutional networks have an inductive bias toward local patterns and translation equivariance.
+- [design review] With so little data, we need a model with a strong inductive bias that matches the problem.
+- [explaining the idea] Every learning algorithm has some inductive bias; otherwise it couldn't generalize beyond the training examples.
+
+hypothesis space
+- [set of possible models] The hypothesis space of linear models contains every possible weighted sum of the features.
+- [learning theory] A richer hypothesis space can fit more patterns, but it also makes overfitting easier.
+
+generalization
+- [performing on new data] Generalization is the model's ability to perform well on data it hasn't seen during training.
+- [in a review] The gap between training and test accuracy suggests poor generalization.
+- [everyday sense: broad statement] Saying "all users hate pop-ups" is a generalization we should check against the data.
+
+overfitting
+- [memorizing training data] The validation loss started climbing after epoch ten while training loss kept falling, a classic sign of overfitting.
+- [in a review] We added dropout and more data because the model was clearly overfitting.
+- [explaining to a manager] Overfitting means the model memorized the training examples instead of learning the general pattern.
+
+overfit
+- [verb] With only two hundred samples, a deep network will overfit almost immediately.
+- [team meeting] I think we overfit to the validation set after all those rounds of tuning.
+- [adjective] An overfit model looks great in the notebook and disappoints in production.
+
+underfitting
+- [too simple a model] Underfitting shows up as high error on both the training and validation sets.
+- [in a review] A linear model is underfitting this data; the relationship is clearly nonlinear.
+
+underfit
+- [verb] If you regularize too aggressively, the model will underfit.
+- [team meeting] The small model underfits; even its training loss plateaus early.
+
+bias-variance tradeoff
+- [error decomposition] The bias-variance tradeoff describes how simpler models err systematically while complex models are sensitive to the training sample.
+- [design review] Deeper trees cut bias but raised variance, so we picked a middle depth: the bias-variance tradeoff in action.
+- [modern nuance] Double descent complicates the classic bias-variance tradeoff story for very large models.
+
+regularization
+- [preventing overfitting] Regularization adds a penalty or constraint that discourages overly complex models.
+- [specific techniques] L2 regularization shrinks weights toward zero, while L1 regularization can push some weights exactly to zero.
+- [team meeting] Let's increase regularization before we decide we need more data.
+
+training set
+- [data for fitting] The training set is the data the model's parameters are fit on.
+- [code review] Make sure the scaler is fit only on the training set, not on the full dataset.
+
+validation set
+- [data for tuning] We use the validation set to choose hyperparameters and decide when to stop training.
+- [in a review] If you tune against the validation set for weeks, it stops being a fair estimate.
+
+test set
+- [final evaluation] The test set should be touched only once, for the final evaluation.
+- [in a paper] We report accuracy on a held-out test set that was collected after the training data.
+- [team meeting] Someone peeked at the test set while tuning, so we need a fresh one.
+
+held-out data
+- [unseen data for evaluation] We evaluate on held-out data to estimate how the model will do on new examples.
+- [in a review] Your held-out data overlaps with the training customers, so the numbers are optimistic.
+
+ground truth
+- [correct answer] The ground truth labels came from two radiologists who reviewed every scan.
+- [evaluation] Without reliable ground truth, we can't tell whether the model or the annotators are wrong.
+- [general sense] Field visits gave us the ground truth that the survey data was missing.
+
+label
+- [target value, noun] Each image has a label saying which of ten classes it belongs to.
+- [verb: assign labels] We paid annotators to label two thousand support tickets by topic.
+- [everyday sense: tag or brand] The product label lists the ingredients in order of weight.
+
+labeling
+- [assigning labels] Labeling was the most expensive part of the project, more than compute.
+- [quality discussion] Inconsistent labeling between annotators capped our accuracy at around ninety percent.
+
+annotation
+- [labeling process] Annotation guidelines need examples of edge cases, or annotators will disagree.
+- [team meeting] We'll outsource annotation for the bounding boxes and keep the medical labels in-house.
+- [everyday sense: notes] Her annotations in the margins of the draft were more useful than the comments thread.
+
+feature engineering
+- [designing inputs] Feature engineering turned raw timestamps into useful signals like day of week and time since last purchase.
+- [comparison] Deep learning reduced the need for feature engineering on images, but it still matters for tabular data.
+
+feature vector
+- [numeric input] Each customer is represented as a feature vector with forty numeric values.
+- [code review] Check that the feature vector is in the same order at training and serving time.
+
+embedding
+- [dense vector representation] An embedding maps words or items to dense vectors so similar things end up close together.
+- [retrieval system] We compute an embedding for each document and search by cosine similarity.
+- [explaining to a manager] An embedding is a list of numbers that captures what something means, so we can compare things mathematically.
+
+latent space
+- [learned representation] In the autoencoder's latent space, similar images are mapped to nearby points.
+- [generative models] Interpolating between two points in latent space produced a smooth blend of the two faces.
+
+latent variable
+- [unobserved variable] A latent variable is something we never observe directly but assume drives the data, like a user's taste.
+- [modeling] Topic models treat each document's topic mixture as a latent variable.
+
+classifier
+- [model that assigns categories] The classifier predicts whether a transaction is fraudulent.
+- [design review] Let's start with a logistic regression classifier as a baseline before trying anything fancier.
+
+classification
+- [predicting categories] Classification predicts a discrete category, like spam or not spam.
+- [in a paper] We frame churn prediction as binary classification with a thirty-day window.
+- [security sense: secrecy level] The report's security classification means only staff with clearance can read it.
+
+regression
+- [predicting numbers] Regression predicts a continuous value, such as delivery time or price.
+- [software sense] The new release caused a regression: a feature that used to work broke.
+- [model performance sense] Let's check for a regression in accuracy before we ship the retrained model.
+
+clustering
+- [grouping without labels] Clustering grouped our customers into segments based on purchase behavior.
+- [caution in a review] Clustering will always find clusters, so we need to check whether they mean anything.
+
+dimensionality reduction
+- [fewer features] Dimensionality reduction with PCA cut four hundred features down to twenty components.
+- [visualization] We used dimensionality reduction to plot the embeddings in two dimensions.
+
+decision boundary
+- [separating surface] A linear classifier's decision boundary is a straight line in two dimensions or a hyperplane in higher dimensions.
+- [visual explanation] The plot shows the decision boundary bending around a few outliers, which suggests overfitting.
+
+decision tree
+- [model type] A decision tree splits the data on one feature at a time, forming a tree of if-then rules.
+- [explaining to executives] We chose a shallow decision tree because the business team needs to see exactly why a case was flagged.
+- [everyday business sense] The support team uses a decision tree on paper to route calls.
+
+random forest
+- [ensemble of trees] A random forest averages many decision trees trained on bootstrap samples, considering a random subset of features at each split.
+- [team meeting] A random forest is a strong baseline for tabular data and needs little tuning.
+
+gradient boosting
+- [sequential ensemble] Gradient boosting adds trees one at a time, each fitting the negative gradient of the loss, which for squared error is the residuals.
+- [practical advice] On tabular data, gradient boosting often beats deep learning with far less effort.
+- [tuning] Gradient boosting can overfit if the learning rate is high and you add too many trees.
+
+support vector machine
+- [model type] A support vector machine finds the boundary that maximizes the margin between classes.
+- [comparison] Before deep learning, a support vector machine with a good kernel was a go-to classifier for many tasks.
+
+kernel trick
+- [implicit feature mapping] The kernel trick lets an SVM work in a high-dimensional feature space without computing the mapping explicitly.
+- [in a lecture] With the RBF kernel, the kernel trick corresponds to an infinite-dimensional feature space.
+
+nearest neighbor
+- [instance-based method] A nearest neighbor classifier assigns the label of the closest training example.
+- [retrieval] Approximate nearest neighbor search makes embedding lookup fast across millions of vectors.
+
+k-means
+- [clustering algorithm] K-means assigns each point to the nearest centroid and then recomputes the centroids until they stop moving.
+- [practical caveat] K-means needs you to choose k in advance, and it assumes roughly spherical clusters.
+- [team meeting] Let's run k-means with several random initializations, since the result depends on the starting centroids.
+
+ensemble
+- [combined models] An ensemble of five models with different seeds was more accurate than any single model.
+- [in a review] The ensemble helps accuracy, but it also triples inference cost.
+- [everyday sense: group] The musical ensemble rehearses every Thursday evening.
+
+bagging
+- [bootstrap aggregating] Bagging trains models on bootstrap samples of the data and averages their predictions to reduce variance.
+- [comparison] Bagging mainly reduces variance, while boosting mainly reduces bias.
+
+boosting
+- [sequential ensemble] Boosting trains weak learners in sequence, each focusing on the examples the previous ones got wrong.
+- [history] AdaBoost was one of the first practical boosting algorithms.
+- [everyday sense: increasing] Boosting morale on the team mattered as much as boosting accuracy.
+
+loss function
+- [training objective] The loss function measures how far the model's predictions are from the targets.
+- [design review] Mean squared error is the wrong loss function here because big outliers dominate it.
+- [explaining to a manager] The loss function is the score the model tries to make as small as possible during training.
+
+objective function
+- [what we optimize] The objective function combines the prediction loss with a regularization term.
+- [in a review] Make sure the objective function matches the business goal, or we'll optimize the wrong thing.
+
+cost function
+- [loss over the dataset] The cost function averages the loss over all training examples.
+- [team meeting] We changed the cost function to penalize false negatives five times more than false positives.
+
+cross-entropy
+- [classification loss] Cross-entropy loss penalizes the model heavily when it assigns low probability to the correct class.
+- [information theory] Cross-entropy measures the average number of bits needed to encode samples from one distribution using a code optimized for another.
+- [code review] Use the built-in cross-entropy on logits instead of applying softmax first; it's more numerically stable.
+
+softmax
+- [function] Softmax turns a vector of logits into probabilities that are positive and sum to one.
+- [temperature] Dividing the logits by a temperature before the softmax makes the distribution sharper or flatter.
+- [caution] A high softmax score isn't a calibrated confidence; the model can be confidently wrong.
+
+logit
+- [raw output score] The model outputs one logit per class, and softmax converts them into probabilities.
+- [statistics sense] In logistic regression, the logit is the log of the odds, log(p / (1 - p)).
+
+probability distribution
+- [assigning probabilities] A language model outputs a probability distribution over the vocabulary for the next token.
+- [modeling] We assumed a normal probability distribution for the errors, but the residuals have heavy tails.
+
+likelihood
+- [probability of data given parameters] The likelihood measures how probable the observed data is under a given set of parameters.
+- [everyday sense: chance] There's a high likelihood the deadline will slip if the labels arrive late.
+- [in a paper] Our model achieves a higher test log-likelihood than the baseline.
+
+maximum likelihood
+- [estimation method] Maximum likelihood chooses the parameters that make the observed data most probable.
+- [connection to training] Minimizing cross-entropy on classification labels is equivalent to maximum likelihood estimation.
+
+posterior
+- [updated belief] The posterior combines the prior with the likelihood of the observed data.
+- [team meeting] The posterior is still wide, so we need more data before we can make a confident call.
+- [everyday sense: anatomy] In anatomy, posterior just means toward the back of the body.
+
+Bayesian inference
+- [updating beliefs] Bayesian inference updates a prior belief with data to get a posterior distribution.
+- [practical tools] We used MCMC for Bayesian inference because the posterior has no closed form.
+- [explaining to executives] Bayesian inference gives us a range of plausible values, not just one number.
+
+sampling
+- [drawing from a distribution] At generation time, sampling with a lower temperature gives more predictable text.
+- [data collection] Our sampling over-represented urban stores, so the model struggles in rural ones.
+- [statistical sense] Stratified sampling keeps the class proportions the same in each split.
+
+data augmentation
+- [expanding training data] Data augmentation with random crops and flips made the image model more robust.
+- [in a review] Be careful with data augmentation that changes the label, like rotating a 6 by 180 degrees into a 9.
+
+synthetic data
+- [generated data] We generated synthetic data to cover rare fraud patterns that barely appear in our logs.
+- [caution] Synthetic data can help, but it carries the assumptions of whatever process created it.
+- [privacy] Synthetic data lets external partners test the pipeline without seeing real customer records.
+
+data leakage
+- [information that shouldn't be there] Data leakage happens when the model sees information during training that won't be available at prediction time.
+- [code review] Normalizing before the train-test split is data leakage; fit the scaler on the training set only.
+- [in a review] The suspiciously high accuracy turned out to be data leakage from a field filled in after the outcome.
+
+distribution shift
+- [changed data] Distribution shift means the production data no longer looks like the training data.
+- [team meeting] Accuracy dropped after the holiday season, probably because of distribution shift in purchase patterns.
+
+out-of-distribution
+- [unlike training data] The model is overconfident on out-of-distribution inputs, such as photos taken at night.
+- [design review] We need an out-of-distribution detector that flags inputs the model wasn't trained to handle.
+
+covariate shift
+- [input distribution change] Covariate shift means the distribution of inputs changes while the relationship between inputs and labels stays the same.
+- [example] A new camera model caused covariate shift: same objects, different lighting and color profile.
+
+concept drift
+- [relationship changes] Concept drift means the relationship between inputs and the target changes over time.
+- [fraud example] Fraud models suffer from concept drift because fraudsters adapt their tactics.
+- [monitoring] We retrain monthly and monitor for concept drift with a rolling accuracy check.
+
+class imbalance
+- [uneven classes] With severe class imbalance, a model that always predicts "no fraud" can still reach 99 percent accuracy.
+- [techniques] We handled class imbalance with class weights and reported precision and recall instead of accuracy.
+
+neural network
+- [model type] A neural network stacks layers of weighted sums and nonlinear activations to map inputs to outputs.
+- [design review] For this small tabular dataset, a neural network is probably overkill compared with gradient boosting.
+- [explaining to a friend] A neural network is loosely inspired by the brain, but it's really a big, adjustable math function.
+
+artificial neural network
+- [formal term] The term artificial neural network distinguishes the computational model from biological networks of neurons.
+- [in a paper] We train an artificial neural network with two hidden layers to predict equipment failure.
+
+deep learning
+- [field and method] Deep learning uses neural networks with many layers to learn representations directly from raw data.
+- [history] Deep learning took off around 2012, when a convolutional network won the ImageNet competition by a wide margin.
+- [executive conversation] Deep learning needs lots of data and compute, so it isn't the right first step for every problem.
+
+deep neural network
+- [many layers] A deep neural network has multiple hidden layers between the input and the output.
+- [team meeting] The deep neural network barely beat logistic regression, so the extra complexity isn't worth it.
+
+neuron
+- [network unit] Each neuron computes a weighted sum of its inputs, adds a bias, and applies an activation function.
+- [interpretability] We found a neuron that fires strongly whenever the input mentions a date.
+- [biological sense] A biological neuron is far more complex than the simple units in an artificial network.
+
+perceptron
+- [early model] Frank Rosenblatt introduced the perceptron in the late 1950s as a simple trainable classifier.
+- [limitation] A single perceptron can't learn XOR because the classes aren't linearly separable.
+- [history] Minsky and Papert's 1969 book on the perceptron dampened enthusiasm for neural networks for years.
+
+multilayer perceptron
+- [feedforward network] A multilayer perceptron has one or more hidden layers of fully connected units with nonlinear activations.
+- [architecture discussion] Inside each transformer block, there's a small multilayer perceptron applied to every token.
+- [team meeting] Let's try a two-layer multilayer perceptron on the embeddings before fine-tuning the whole model.
+
+layer
+- [network component] Each layer transforms its input and passes the result to the next layer.
+- [design review] We froze the early layers and fine-tuned only the last two.
+- [software sense] The caching layer sits between the API and the model server.
+
+input layer
+- [first layer] The input layer has one unit for each feature, so here it has 784 units for a 28-by-28 image.
+- [clarifying] The input layer doesn't learn anything; it just passes the features into the network.
+
+hidden layer
+- [intermediate layer] A hidden layer sits between the input and output layers, and its activations aren't directly observed.
+- [tuning] Adding a second hidden layer improved validation accuracy by only a fraction of a point.
+
+output layer
+- [final layer] For ten-class classification, the output layer has ten units followed by a softmax.
+- [code review] The output layer for regression shouldn't have an activation that limits values to between zero and one.
+
+bias
+- [learned parameter] Each neuron adds a bias to the weighted sum of its inputs before the activation.
+- [unfair outcome] The audit found bias against applicants from rural zip codes.
+- [statistical error] An estimator has bias if its expected value differs from the true value.
+- [bias-variance sense] A linear model has high bias on this problem; it can't capture the curvature.
+- [everyday sense: prejudice] Interviewers receive training to reduce personal bias when evaluating candidates.
+
+parameter
+- [learned weight] The model has seven billion parameters, which are learned during training.
+- [statistics sense] The mean and variance are the two parameters of a normal distribution.
+- [code sense: argument] The function takes a parameter that sets the maximum number of retries.
+
+hyperparameter
+- [set before training] The learning rate is a hyperparameter: we choose it, the model doesn't learn it.
+- [team meeting] We ran a hyperparameter sweep over learning rate, batch size, and weight decay.
+- [in a review] Did the baseline get the same hyperparameter tuning budget as your method?
+
+activation function
+- [adds nonlinearity] Without a nonlinear activation function, stacking layers would just give you another linear model.
+- [comparison] ReLU replaced sigmoid as the default activation function in hidden layers because it's cheap to compute and makes deep networks easier to train.
+
+ReLU
+- [function] ReLU is max(0, x): it passes positive values through and sets negative values to zero.
+- [training behavior] ReLU helps with vanishing gradients because its derivative is one for positive inputs.
+- [known issue] A "dead" ReLU outputs zero for every input and stops learning.
+
+sigmoid
+- [function] The sigmoid squashes any real number into the range between zero and one.
+- [use case] We use a sigmoid on the output for binary classification and multi-label problems.
+- [training issue] In deep networks, sigmoid activations saturate and make gradients vanish.
+
+nonlinearity
+- [activation function] The nonlinearity after each layer is what lets the network represent complex functions.
+- [data relationship] There's a clear nonlinearity in how price affects demand, so a linear model won't capture it.
+
+feedforward
+- [one-direction network] In a feedforward network, information flows from input to output with no loops.
+- [transformer component] Each transformer block has an attention sublayer followed by a feedforward sublayer.
+
+backpropagation
+- [gradient computation] Backpropagation computes the gradient of the loss with respect to every weight using the chain rule.
+- [history] A 1986 paper by David Rumelhart and colleagues popularized backpropagation for training neural networks.
+- [explaining to a manager] Backpropagation tells each weight which direction to move to reduce the error.
+
+gradient
+- [direction of steepest increase] The gradient points in the direction where the loss increases fastest, so we step the opposite way.
+- [debugging] The gradient for the embedding layer is all zeros, so something may be detached from the graph.
+- [everyday sense: slope or color] The slide background uses a soft blue gradient.
+
+gradient descent
+- [optimization] Gradient descent repeatedly updates the parameters in the direction that reduces the loss.
+- [explaining to a friend] Gradient descent is like walking downhill in fog by always stepping where the ground slopes down.
+
+stochastic gradient descent
+- [noisy updates] Stochastic gradient descent estimates the gradient from a small random batch instead of the full dataset.
+- [team meeting] Stochastic gradient descent with momentum often still generalizes better than Adam on some vision tasks.
+- [explaining the noise] The noise in stochastic gradient descent can actually help the model escape poor regions.
+
+optimizer
+- [update algorithm] The optimizer decides how to update the weights from the gradients; Adam and SGD are common choices.
+- [code review] Remember to reset the optimizer state when you load new weights for fine-tuning.
+
+learning rate
+- [step size] If the learning rate is too high, the loss jumps around or diverges.
+- [team meeting] Let's add a warmup and then decay the learning rate with a cosine schedule.
+- [debugging] The loss barely moved, so I bumped up the learning rate by a factor of ten.
+
+momentum
+- [optimizer technique] Momentum accumulates past gradients so the updates keep moving in a consistent direction.
+- [batch normalization sense] In batch normalization, the momentum controls how quickly the running statistics update.
+- [everyday sense] The project has real momentum now that the data pipeline is finished.
+
+Adam
+- [optimizer] Adam adapts the learning rate for each parameter using running estimates of the gradient's first and second moments.
+- [team meeting] We switched from SGD to Adam, and the model converged in half as many steps.
+- [variant] AdamW decouples weight decay from the gradient update, which plain Adam doesn't do.
+
+epoch
+- [one pass over data] One epoch means the model has seen every training example once.
+- [team meeting] We trained for twenty epochs, but validation loss was flat after the eighth.
+- [everyday sense: era] The printing press marked a new epoch in how knowledge spread.
+
+batch
+- [group of examples] Each batch of 64 examples produces one gradient update.
+- [batch processing] We run scoring as a nightly batch job instead of in real time.
+- [everyday sense] She baked a batch of cookies for the team's launch party.
+
+mini-batch
+- [small training batch] A mini-batch is a small random subset of the training data used for one gradient step.
+- [design review] Mini-batch training balances the noise of single examples against the cost of the full dataset.
+
+batch size
+- [examples per step] A larger batch size uses more GPU memory but gives smoother gradient estimates.
+- [team meeting] When we doubled the batch size, we also had to retune the learning rate.
+
+iteration
+- [one update step] Each iteration processes one mini-batch and updates the weights once.
+- [general sense: repeated cycle] After three iterations of the labeling guidelines, annotator agreement finally improved.
+- [code sense] The loop crashes on the last iteration because the final batch is smaller.
+
+convergence
+- [training settles] We stopped at convergence, once the training loss had been flat for several thousand steps.
+- [optimization theory] With a suitable learning rate, convergence to a global minimum is guaranteed for convex problems but not for neural networks.
+- [general sense] There's a convergence of opinion on the team that we should simplify the pipeline.
+
+local minimum
+- [optimization] A local minimum is a point where the loss is lower than all nearby points but not necessarily the lowest overall.
+- [deep learning nuance] In high dimensions, getting stuck in a bad local minimum is less of a problem than people once feared.
+
+saddle point
+- [optimization] At a saddle point, the gradient is zero, but the loss curves up in some directions and down in others.
+- [in a lecture] In high-dimensional loss surfaces, saddle points are thought to be far more common than local minima.
+
+vanishing gradient
+- [training problem] With a vanishing gradient, the early layers barely update because the signal shrinks as it flows backward.
+- [solutions] LSTMs and residual connections were both designed in part to address the vanishing gradient problem.
+
+exploding gradient
+- [training problem] An exploding gradient makes the weights jump wildly and the loss turn into NaN.
+- [fix] Gradient clipping is the standard fix for an exploding gradient in recurrent networks.
+
+weight decay
+- [regularization] Weight decay shrinks the weights a little at each step, discouraging overly large values.
+- [team meeting] Let's try a weight decay of 0.01 with AdamW and compare.
+
+dropout
+- [regularization] Dropout randomly zeroes a fraction of activations during training, which reduces overfitting.
+- [inference behavior] Dropout is turned off at inference time, so remember to put the model in eval mode.
+- [everyday sense: someone who quits] In everyday English, a dropout is someone who left school before finishing.
+
+batch normalization
+- [normalizing activations] Batch normalization normalizes each feature using the mean and variance of the current batch.
+- [debugging] Batch normalization behaves differently in training and evaluation, which explained the accuracy gap.
+
+layer normalization
+- [normalizing activations] Layer normalization normalizes across the features of each example, so it doesn't depend on batch size.
+- [transformers] Transformers use layer normalization because batch statistics are awkward with variable-length sequences.
+
+residual connection
+- [shortcut] A residual connection adds a layer's input to its output, so the layer only needs to learn the change.
+- [history] Residual connections made it practical to train networks with more than a hundred layers.
+
+skip connection
+- [bypassing layers] A skip connection passes information past one or more layers to a later point in the network.
+- [architecture example] U-Net uses skip connections to carry fine spatial detail from the encoder to the decoder.
+
+initialization
+- [starting weights] Bad initialization can make activations explode or vanish before training even starts.
+- [specific methods] He initialization is designed for ReLU networks, while Xavier initialization suits tanh layers.
+- [software sense] The service failed during initialization because the model file was missing.
+
+convolutional neural network
+- [architecture] A convolutional neural network applies learned filters across an image to detect local patterns.
+- [history] In the 1990s, a convolutional neural network for reading handwritten digits was used to process bank checks.
+- [design review] A convolutional neural network is a reasonable choice for this spectrogram data too.
+
+CNN
+- [abbreviation] We used a small CNN to classify defects from camera images on the production line.
+- [comparison] Vision transformers now rival a well-tuned CNN on many benchmarks, especially when pretrained on large datasets.
+
+convolution
+- [operation] A convolution slides a small kernel over the input and computes a weighted sum at each position.
+- [signal processing sense] In signal processing, convolution describes how a filter shapes an incoming signal.
+
+pooling
+- [downsampling] Max pooling keeps the largest value in each window, which shrinks the feature map.
+- [aggregating embeddings] We used mean pooling over token embeddings to get one vector per sentence.
+- [everyday sense: sharing] The two teams are pooling their GPU budgets for the big training run.
+
+filter
+- [learned convolution kernel] Each filter in the first layer learns to detect a simple pattern like an edge.
+- [data filtering] We filter out near-duplicate documents before training.
+- [content moderation] The safety filter blocks outputs that match prohibited categories.
+- [signal processing] A low-pass filter removes high-frequency noise from the sensor signal.
+
+receptive field
+- [region of input] A neuron's receptive field is the region of the input image that can influence its activation.
+- [design review] Deeper layers have a larger receptive field, so they capture more global context.
+
+recurrent neural network
+- [sequence model] A recurrent neural network processes a sequence one step at a time, carrying a hidden state forward.
+- [limitation] A plain recurrent neural network struggles to remember information from many steps earlier.
+
+RNN
+- [abbreviation] The RNN reads the sensor readings in order and predicts the next value.
+- [history] Transformers largely replaced the RNN for language tasks because they parallelize better during training.
+
+long short-term memory
+- [gated recurrent network] Long short-term memory networks use gates to control what information to keep, forget, and output.
+- [history] Long short-term memory was introduced in 1997 to address vanishing gradients in recurrent networks.
+
+LSTM
+- [abbreviation] An LSTM can carry information across long sequences better than a plain RNN.
+- [team meeting] The LSTM baseline is still competitive on our short time series.
+- [explaining] The LSTM's cell state acts like a conveyor belt that gates can add to or erase from.
+
+sequence-to-sequence
+- [model type] A sequence-to-sequence model maps one sequence to another, like a sentence in English to one in French.
+- [design review] Summarization fits naturally into a sequence-to-sequence setup.
+
+encoder
+- [model component] The encoder turns the input into a representation that the rest of the model can use.
+- [design review] We'll use a pretrained text encoder and train only a small classification head.
+- [data preprocessing sense] The one-hot encoder maps each category to its own binary column.
+
+decoder
+- [model component] The decoder generates the output one token at a time, conditioned on the encoder's representation.
+- [language models] Most modern chat models are decoder-only transformers.
+
+encoder-decoder
+- [architecture] The original transformer was an encoder-decoder model built for machine translation.
+- [comparison] An encoder-decoder setup suits tasks where input and output are clearly separate, like translation.
+
+autoencoder
+- [compressing and reconstructing] An autoencoder learns to compress the input and then reconstruct it from the compressed code.
+- [anomaly detection] We flag transactions that the autoencoder reconstructs poorly as possible anomalies.
+
+variational autoencoder
+- [generative model] A variational autoencoder encodes each input as a distribution in latent space and generates new data by decoding samples from the prior.
+- [technical detail] The variational autoencoder's loss combines reconstruction error with a KL divergence term.
+
+generative adversarial network
+- [generative model] A generative adversarial network trains a generator and a discriminator against each other.
+- [history] The generative adversarial network was introduced in a 2014 paper and quickly became a popular research topic.
+
+GAN
+- [abbreviation] The GAN produced realistic faces, but training was unstable and sometimes collapsed to a few outputs.
+- [known issue] Mode collapse happens when a GAN's generator keeps producing the same few samples.
+
+generator
+- [adversarial training role] The generator takes random noise and tries to produce samples the discriminator can't tell from real data.
+- [code sense: data loader] We wrote a data generator that streams batches from disk.
+- [everyday sense: electricity] The office has a backup generator in case the power goes out.
+
+discriminator
+- [adversarial training role] The discriminator learns to tell real samples from the generator's fakes.
+- [training dynamics] If the discriminator gets too strong too fast, the generator stops getting useful gradients.
+
+diffusion model
+- [generative model] A diffusion model learns to reverse a gradual noising process, turning random noise into an image step by step.
+- [comparison] Diffusion models have largely overtaken GANs for high-quality image generation.
+- [explaining to executives] A diffusion model starts with static and gradually cleans it up into a picture that matches the prompt.
+
+denoising
+- [removing noise] Denoising autoencoders learn to recover clean inputs from corrupted ones.
+- [diffusion] Each denoising step removes a little of the noise added during the forward process.
+
+score function
+- [gradient of log density] In score-based models, the score function is the gradient of the log probability density with respect to the data.
+- [statistics sense] In classical statistics, the score function is the gradient of the log-likelihood with respect to the parameters.
+
+normalizing flow
+- [generative model] A normalizing flow transforms a simple distribution into a complex one through a chain of invertible functions.
+- [advantage] Unlike a GAN, a normalizing flow gives you exact likelihoods.
+
+graph neural network
+- [model for graphs] A graph neural network updates each node's representation by aggregating messages from its neighbors.
+- [applications] We used a graph neural network to predict properties of molecules from their bond structure.
+
+capsule network
+- [architecture] A capsule network groups neurons into capsules whose outputs are vectors encoding an entity's properties, like pose.
+- [history] Capsule networks drew a lot of attention around 2017 but never became widely used.
+
+mixture of experts
+- [sparse architecture] In a mixture of experts layer, a router sends each token to a few expert subnetworks.
+- [efficiency] Mixture of experts lets the model have many parameters while using only a fraction of them for each token.
+- [team meeting] Mixture of experts saves compute per token, but serving it needs memory for all the experts.
+
+sparse model
+- [few active parameters] A sparse model activates only part of its parameters for each input.
+- [pruning sense] After pruning, we had a sparse model with most weights set to zero.
+
+dense model
+- [all parameters active] A dense model uses every parameter for every input.
+- [comparison] We compared a dense model with a mixture of experts at the same compute per token.
+
+parameter count
+- [model size] The parameter count alone doesn't tell you how good a model is; data and training matter too.
+- [executive conversation] Vendors love to quote parameter count, but we should ask about evaluation results.
+
+scaling law
+- [empirical trend] A scaling law describes how loss falls predictably, roughly as a power law, as model size, data, or compute grows.
+- [planning] We used a scaling law fitted on small runs to predict the loss of the large model.
+- [caution in a review] A scaling law for loss doesn't guarantee the same smooth gains on downstream tasks.
+
+compute
+- [noun: computational resources] We're limited by compute, not data, for the next training run.
+- [verb: calculate] We compute the embeddings once and cache them.
+- [executive conversation] Most of the project's budget goes to compute for training and serving.
+
+FLOPs
+- [count of operations] Training FLOPs for a dense transformer are roughly six times the parameter count times the number of tokens.
+- [clarifying in a review] Do you mean FLOPs as total operations or FLOP/s as throughput? The paper mixes them up.
+
+emergent ability
+- [appearing at scale] An emergent ability is one that seems absent in smaller models and appears in larger ones.
+- [debate] Some researchers argue an emergent ability can be an artifact of using an all-or-nothing metric.
+
+grokking
+- [delayed generalization] Grokking is when a model suddenly generalizes long after it has memorized the training set.
+- [team discussion] We saw something like grokking on the toy task: test accuracy jumped after thousands of extra steps.
+- [everyday slang] In everyday tech slang, grokking something means understanding it deeply.
+
+double descent
+- [test error curve] Double descent describes test error falling, rising near the interpolation threshold, then falling again as model size grows.
+- [in a review] Double descent is a good reminder that bigger isn't always worse, even when the model can fit the training data perfectly.
+
+transformer
+- [neural network architecture] The transformer replaced recurrence with attention, so it can process every position in a sequence in parallel during training.
+- [design review] Is a transformer really necessary here, or would gradient-boosted trees on these tabular features do just as well?
+- [explaining to a friend] A transformer is the neural network design behind most modern chatbots; it learns which words to pay attention to.
+- [everyday: electrical device] The power went out because a transformer on our street blew during the storm.
+
+attention mechanism
+- [how it works] The attention mechanism lets each token gather information from other tokens, weighting each one by its relevance.
+- [paper writing] We replace the standard attention mechanism with a linear-time approximation and report the quality trade-off.
+- [explaining to an executive] The attention mechanism is how the model decides which earlier words matter most for predicting the next one.
+
+self-attention
+- [technical explanation] In self-attention, the queries, keys, and values all come from the same sequence.
+- [cost discussion] Self-attention scales quadratically with sequence length, which is why long documents get expensive fast.
+- [team meeting] In this example, the self-attention weights show the pronoun attending strongly to the noun it refers to.
+
+multi-head attention
+- [technical explanation] Multi-head attention runs several attention operations in parallel, each with its own learned projections, then concatenates the results.
+- [efficiency variant] Grouped-query attention, a variant of multi-head attention, shares key and value heads across query heads to shrink the KV cache.
+- [intuition with caveat] With multi-head attention, one head might track syntax while another tracks coreference, though it's rarely that clean.
+
+cross-attention
+- [encoder-decoder models] In cross-attention, the decoder's queries attend to keys and values computed from the encoder's output.
+- [multimodal models] The image features enter the language model through cross-attention layers inserted between the text layers.
+- [text-to-image models] The diffusion model uses cross-attention to condition each denoising step on the text prompt.
+
+attention head
+- [interpretability finding] We found an attention head that consistently copies tokens that appeared earlier in the context.
+- [pruning experiment] Removing a surprising number of attention heads barely changed accuracy, which suggests a lot of redundancy.
+- [explaining to a colleague] Each attention head has its own query, key, and value projections, so it can learn a different pattern.
+
+positional encoding
+- [why it's needed] Attention alone ignores word order, so positional encoding is what tells the model where each token sits.
+- [design choice] We switched from learned absolute positional encoding to rotary embeddings, which encode relative position directly.
+- [paper writing] The original transformer used sinusoidal positional encoding added to the token embeddings.
+
+query
+- [attention vector] Each token's query is compared with every key, and the scores decide how much of each value it takes.
+- [user request] Most user queries in the logs are short, so we added query rewriting before retrieval.
+- [database query] I wrote a SQL query to pull every conversation where the model refused.
+- [everyday: question] If you have any queries about the rollout, post them in the project channel.
+
+feedforward layer
+- [technical explanation] After attention, each token passes independently through a feedforward layer, usually a two-layer MLP with a nonlinearity.
+- [parameter count] In most dense transformers, the feedforward layers hold the majority of the parameters, not the attention blocks.
+- [interpretability view] Some researchers describe the feedforward layer as a key-value memory that stores factual associations.
+
+large language model
+- [basic definition] A large language model is a neural network trained on huge amounts of text to predict the next token.
+- [explaining to an executive] A large language model drafts and summarizes well, but it still needs checks before it touches customer data.
+- [paper writing] We evaluate three open large language models of different sizes on the same task suite.
+
+LLM
+- [team meeting] Let's prototype the classifier with an LLM first and only train a custom model if the costs don't work out.
+- [design review] The LLM call is the slowest step in the pipeline, so we cache responses to repeated questions.
+- [reporting results] LLM outputs vary between runs, so report results averaged over several samples.
+
+language model
+- [general definition] Technically, a language model is any model that assigns probabilities to sequences of words or tokens.
+- [historical sense] Before neural networks, a language model was usually an n-gram model built from word counts.
+- [team discussion] A small language model fine-tuned on our tickets beat the big general model on routing.
+
+language modeling
+- [training objective] Language modeling usually means predicting the next token, and doing it well requires picking up grammar, facts, and reasoning patterns.
+- [paper writing] We pretrain with a standard language modeling objective and then fine-tune on instruction data.
+- [evaluation metric] Perplexity on held-out text is the usual measure of language modeling quality.
+
+foundation model
+- [basic definition] A foundation model is trained on broad data at scale and then adapted to many downstream tasks.
+- [strategy meeting] Instead of training from scratch, we'll build on a foundation model and fine-tune it for claims processing.
+- [policy discussion] Some proposals put extra obligations on foundation model developers because so many products are built on top of them.
+
+frontier model
+- [basic definition] A frontier model is one at or near the cutting edge of capability when it's released.
+- [policy discussion] Many safety frameworks focus on frontier models, since new risks are most likely to show up there first.
+- [team meeting] We'll use a frontier model to generate the labels, then distill them into something cheaper.
+
+base model
+- [before instruction tuning] The base model just continues text; it won't follow instructions reliably until it's been instruction-tuned.
+- [fine-tuning starting point] Which base model are we fine-tuning from, the 7B or the 13B?
+- [paper writing] We compare the base model with its chat version to isolate the effect of post-training.
+
+pretrained
+- [adjective before noun] We started from pretrained weights rather than random initialization, which cut training time dramatically.
+- [passive verb] The model was pretrained on a mix of web text, books, and code before any fine-tuning.
+- [explaining to a client] Pretrained means the model already learned general language patterns before we taught it your specific task.
+
+pretraining
+- [training stage] Pretraining is the expensive stage where the model learns from trillions of tokens of mostly unlabeled text.
+- [design review] If the domain vocabulary is that unusual, continued pretraining on our documents may help before fine-tuning.
+- [paper writing] Most of the model's factual knowledge seems to come from pretraining rather than later alignment steps.
+
+next-token prediction
+- [training objective] Next-token prediction sounds simple, but doing it well across diverse text forces a model to learn a lot.
+- [answering a skeptic] Calling it "just next-token prediction" undersells how much structure a model needs to predict text well.
+- [generation process] At inference time, generation is just repeated next-token prediction, one token at a time.
+
+autoregressive
+- [generation style] Autoregressive models generate one token at a time, feeding each output back in as input.
+- [latency consequence] Because decoding is autoregressive, longer answers take proportionally longer to generate.
+- [statistics origin] The term comes from autoregressive time-series models, where each value is regressed on earlier values.
+
+masked language model
+- [basic definition] A masked language model hides random tokens and learns to predict them using context on both sides.
+- [practical use case] For classification and embeddings, an encoder-only masked language model is often cheaper and good enough.
+- [comparison with generators] Unlike a causal model, a masked language model isn't designed to generate long text left to right.
+
+causal language model
+- [basic definition] A causal language model only attends to earlier tokens, which is what makes left-to-right generation possible.
+- [implementation detail] The causal language model uses a triangular attention mask so no position can see future tokens.
+- [paper writing] All baselines are decoder-only causal language models trained with the same tokenizer.
+
+token
+- [unit of text] A token is often a piece of a word; in English, a token averages roughly three-quarters of a word.
+- [billing unit] The provider charges per token, and output tokens usually cost more than input tokens.
+- [team meeting] We're burning tokens on that huge system prompt, so let's trim it.
+- [authentication credential] Rotate the API token immediately if it ever ends up in a public repository.
+- [everyday: symbol] She gave the team a small gift as a token of appreciation.
+
+tokenizer
+- [basic definition] The tokenizer converts raw text into integer IDs from a fixed vocabulary before the model sees anything.
+- [debugging arithmetic errors] Some of the arithmetic errors came from the tokenizer splitting long numbers into odd chunks.
+- [multilingual cost] Many tokenizers are less efficient on languages like Amharic, so the same sentence takes far more tokens than in English.
+
+tokenization
+- [basic process] Tokenization splits text into subword units that the model can map to embeddings.
+- [surprising bug] Leading spaces change tokenization, so " cat" and "cat" can end up as different tokens.
+- [fairness concern] Uneven tokenization across languages means some users pay more for the same content.
+
+byte-pair encoding
+- [how it works] Byte-pair encoding starts with characters and repeatedly merges the most frequent adjacent pair into a new symbol.
+- [design review] Byte-level byte-pair encoding guarantees we never hit an unknown token, even on emoji or code.
+- [historical origin] Byte-pair encoding began as a data compression technique before NLP adopted it.
+
+subword
+- [unit of text] Rare words get broken into subword pieces, so "unbelievably" might become three tokens.
+- [why it helps] Subword tokenization handles typos and new words better than a fixed word-level vocabulary.
+- [paper writing] We report all results with a 32k subword vocabulary.
+
+vocabulary
+- [tokenizer vocabulary] Adding domain terms to the vocabulary shortened our sequences but required resizing the embedding matrix.
+- [model size effect] A larger vocabulary means a bigger embedding table and a bigger output layer.
+- [everyday: known words] Her technical vocabulary is impressive, but she explains things in plain language.
+
+context window
+- [what fits] The whole contract fits in the context window, so we don't need retrieval for this task.
+- [overflow behavior] Once the conversation exceeds the context window, our app drops or summarizes the earliest messages.
+- [explaining to an executive] The context window is the model's working space: everything it can see at once, measured in tokens.
+
+context length
+- [training setting] We trained at a 4k context length and extended it later with positional interpolation.
+- [compute cost] Doubling the context length roughly quadruples the cost of the attention computation.
+- [team meeting] What's the max context length on that endpoint? Some of these documents are really long.
+
+long context
+- [capability and limits] Long context lets the model read an entire codebase, but it doesn't always use the middle of it well.
+- [design review] Should we rely on long context here, or is retrieval cheaper and more reliable?
+- [evaluation method] Needle-in-a-haystack tests check whether long-context models can find one fact buried in a huge input.
+
+prompt
+- [input text] The prompt includes three worked examples and a strict output format.
+- [verb: instruct the model] We prompted the model to answer only from the provided documents.
+- [prompt sensitivity] Small changes to the prompt swung accuracy by several points, which worries me.
+- [everyday: quick, adjective] Thanks for the prompt reply; it unblocked the whole team.
+
+system prompt
+- [basic definition] The system prompt sets the assistant's role, rules, and tone before the user says anything.
+- [security advice] Assume the system prompt can leak; never put secrets or API keys in it.
+- [design review] Let's move the formatting rules into the system prompt so every request gets them.
+
+user prompt
+- [basic definition] The user prompt is what the person actually types, as opposed to the instructions we add behind the scenes.
+- [logging practice] With consent, we log each user prompt so we can find where the assistant struggles.
+- [security mindset] Treat every user prompt as untrusted input, the same way you'd treat form data on a website.
+
+prompt engineering
+- [practical results] Prompt engineering closed most of the gap before we touched fine-tuning.
+- [skeptical view] A lot of prompt engineering is just writing clear instructions, which is still a real skill.
+- [explaining to a friend] Prompt engineering means carefully wording your requests so the AI gives better, more reliable answers.
+
+prompt injection
+- [the attack] Prompt injection happens when untrusted text, like a web page or email, contains instructions the model then follows.
+- [design review] The agent reads customer emails, so prompt injection is our biggest security risk here.
+- [mitigation strategy] There's no complete fix for prompt injection yet, so we limit what the agent is allowed to do.
+
+jailbreak
+- [noun: the attack] The jailbreak worked by framing the harmful request as a role-play scenario.
+- [verb: red teaming] Testers managed to jailbreak the model by splitting the request across several turns.
+- [everyday: phones] Years ago, people would jailbreak their phones to install apps the manufacturer didn't allow.
+
+completion
+- [model output] The completion stopped mid-sentence because it hit the max tokens limit.
+- [api style] Older completion endpoints took raw text, while chat endpoints take a list of messages.
+- [everyday: finishing] Project completion is scheduled for the end of the quarter.
+
+decoding
+- [generation step] Decoding is the step where we turn the model's probability distributions into actual text.
+- [strategy choice] The decoding strategy matters: greedy, beam search, and sampling give noticeably different outputs.
+- [speech recognition] In speech recognition, decoding turns acoustic and language model scores into the most likely transcript.
+
+sampling temperature
+- [how it works] Sampling temperature divides the logits before the softmax; lower values sharpen the distribution and higher values flatten it.
+- [team meeting] Set the sampling temperature to zero for extraction tasks; we want consistency, not creativity.
+- [explaining to a friend] Sampling temperature is like a creativity dial: low is predictable, high is more surprising and more error-prone.
+
+top-k sampling
+- [basic definition] Top-k sampling restricts each step to the k most likely tokens and renormalizes their probabilities before sampling.
+- [known weakness] Top-k sampling uses a fixed k even when the model is very confident, which can let in poor candidates.
+- [typical configuration] We use top-k sampling with k set to 40, along with a moderate temperature.
+
+nucleus sampling
+- [basic definition] Nucleus sampling picks from the smallest set of tokens whose cumulative probability reaches p.
+- [compared with top-k] Unlike top-k, nucleus sampling adapts: the candidate set shrinks when the model is confident and grows when it isn't.
+- [common setting] Nucleus sampling with p set to 0.9 is a common default for open-ended generation.
+
+greedy decoding
+- [basic definition] Greedy decoding always picks the single most likely next token.
+- [known weakness] Greedy decoding is deterministic in principle but can get stuck in repetitive loops on long outputs.
+- [benchmark runs] We used greedy decoding for the benchmark runs so the results are easier to reproduce.
+
+beam search
+- [basic definition] Beam search keeps the several highest-scoring partial sequences at each step instead of just one.
+- [good use case] Beam search still works well for machine translation, where outputs are fairly constrained.
+- [chat trade-off] For chat, beam search tends to produce bland, generic text, so we sample instead.
+
+logprob
+- [basic definition] A logprob is the logarithm of the probability the model assigned to a token.
+- [confidence signal] We use the logprob of the answer token as a cheap confidence score.
+- [api option] Ask the API to return logprobs so we can see how close the second choice was.
+
+perplexity
+- [evaluation metric] Perplexity is the exponential of the average negative log-likelihood per token; lower is better.
+- [comparison caveat] Perplexity numbers aren't directly comparable across models with different tokenizers.
+- [everyday: confusion] She stared at the error message in perplexity; the code hadn't changed at all.
+
+hallucination
+- [made-up model output] The summary cited a paper that doesn't exist, a textbook hallucination.
+- [reducing it] Grounding answers in retrieved documents cut hallucinations noticeably in our evals.
+- [explaining to a client] A hallucination is when the model states something false with complete confidence.
+
+hallucinate
+- [model behavior] The model tends to hallucinate citations when it doesn't know the source.
+- [team meeting] It hallucinated an API parameter that doesn't exist, so the generated code failed.
+- [everyday: medical sense] Very high fevers can make people hallucinate.
+
+confabulation
+- [preferred term] Some researchers prefer confabulation to hallucination, since the model fills gaps with plausible inventions rather than perceiving anything.
+- [concrete example] Inventing a quote from an earlier meeting is classic confabulation.
+- [neurology origin] In neurology, confabulation means producing false memories without any intent to deceive.
+
+grounding
+- [tying answers to sources] Grounding means tying each answer to specific sources the model was given, ideally with citations.
+- [design review] Without grounding, the assistant answers from memory, and that's where most of the errors come from.
+- [vision-language sense] In vision-language models, grounding can also mean linking a phrase to a region of the image.
+- [everyday: electrical] The electrician said the outlet lacked proper grounding.
+
+grounded
+- [supported by sources] Every claim in the response should be grounded in the retrieved documents.
+- [evaluation label] We score each answer as grounded or ungrounded by checking it against the cited passages.
+- [everyday: down-to-earth] She's very grounded; the hype around AI doesn't sway her.
+- [everyday: punished child] Our son is grounded this weekend for missing curfew.
+
+retrieval-augmented generation
+- [basic definition] Retrieval-augmented generation fetches relevant documents first and gives them to the model along with the question.
+- [main advantage] Retrieval-augmented generation lets us update knowledge by updating the index, without retraining the model.
+- [explaining to an executive] With retrieval-augmented generation, the assistant answers from our policy documents, not from what it vaguely remembers.
+
+RAG
+- [design review] Our RAG pipeline fails mostly at retrieval, not generation; the right chunk never reaches the model.
+- [team meeting] Before fine-tuning, let's try RAG; it's cheaper and easier to keep current.
+- [evaluation approach] We evaluate RAG answers on both retrieval recall and faithfulness to the sources.
+
+vector database
+- [basic definition] A vector database stores embeddings and quickly finds the nearest neighbors to a query vector.
+- [design review] Do we really need a dedicated vector database, or can our existing database's vector extension handle this volume?
+- [explaining to a non-expert] A vector database finds documents by meaning, so "car" can match "automobile."
+
+semantic search
+- [basic definition] Semantic search matches on meaning using embeddings rather than on exact keywords.
+- [hybrid approach] We combine keyword search with semantic search because product codes need exact matching.
+- [explaining to a client] With semantic search, typing "laptop won't charge" finds the article titled "Battery issues."
+
+reranking
+- [pipeline step] Reranking takes the top fifty retrieved chunks and reorders them with a slower but more accurate model.
+- [team meeting] Adding a reranking step improved answer quality more than switching embedding models did.
+- [latency trade-off] Reranking adds latency, so we only rerank the top twenty candidates.
+
+chunking
+- [document splitting] Chunking splits long documents into smaller passages before we embed them.
+- [design review] Our chunking cuts tables in half, which is why the numeric questions fail.
+- [psychology sense] In psychology, chunking means grouping information into units so it's easier to remember.
+
+in-context learning
+- [basic definition] In-context learning is when a model picks up a task from examples in the prompt, with no weight updates.
+- [research surprise] One surprise of large models was how well in-context learning worked without any fine-tuning.
+- [team meeting] In-context learning gets us started today; fine-tuning can come later if volume justifies it.
+
+zero-shot
+- [evaluation setting] In the zero-shot setting, the model gets only instructions, no examples.
+- [team meeting] Zero-shot accuracy was already decent, so a few examples might get us over the bar.
+- [classification use] We use the model as a zero-shot classifier: just describe the labels and let it choose.
+
+one-shot
+- [prompting setting] One-shot prompting gives the model exactly one worked example before the real input.
+- [paper writing] Table 2 compares zero-shot, one-shot, and few-shot performance across tasks.
+- [everyday: single chance] It's a one-shot opportunity with the client, so let's rehearse the demo twice.
+
+few-shot
+- [prompting technique] Few-shot prompting with five examples fixed most of the formatting errors.
+- [example order sensitivity] Few-shot results depend a lot on which examples you pick and in what order.
+- [paper writing] We report few-shot results averaged over several randomly sampled example sets.
+
+chain of thought
+- [prompting technique] Asking for a chain of thought before the final answer improved accuracy on multistep math problems.
+- [faithfulness caveat] A chain of thought isn't guaranteed to reflect how the model actually reached its answer.
+- [explaining to a friend] Chain of thought just means the model writes out its reasoning step by step, like showing your work.
+
+reasoning model
+- [basic definition] A reasoning model is trained to spend extra tokens thinking through a problem before it answers.
+- [cost trade-off] The reasoning model is more accurate on hard problems but slower and more expensive per request.
+- [team meeting] Use a reasoning model for the planning step and a fast model for the simple lookups.
+
+extended thinking
+- [model feature] With extended thinking turned on, the model works through the problem at length before giving its final answer.
+- [cost control] Extended thinking uses more tokens, so set a thinking budget for routine requests.
+- [design review] Extended thinking helped on the tricky contract questions but added noticeable latency.
+
+test-time compute
+- [basic concept] Test-time compute is the computation spent when the model answers, as opposed to during training.
+- [scaling insight] Spending more test-time compute, for example sampling many answers and verifying them, can rival using a bigger model.
+- [explaining to an executive] More test-time compute means slower, pricier answers, but often better ones on hard tasks.
+
+inference-time scaling
+- [industry trend] Inference-time scaling means improving results by spending more compute per query rather than training a larger model.
+- [paper writing] Our inference-time scaling curves show accuracy rising with the number of sampled solutions, then leveling off.
+- [team meeting] Inference-time scaling works best when we have a reliable verifier to pick the best answer.
+
+self-consistency
+- [prompting technique] Self-consistency samples several reasoning paths and takes the majority answer.
+- [cost trade-off] Self-consistency with ten samples costs ten times as much, so we use it only on hard questions.
+- [uncertainty signal] Low self-consistency, where the samples disagree, is a useful sign that the model is unsure.
+
+scratchpad
+- [reasoning space] The model writes intermediate steps to a scratchpad that the user never sees.
+- [research finding] Giving the model a scratchpad substantially improved its accuracy on multi-digit addition.
+- [everyday: rough notes] I keep a scratchpad file open for rough notes during experiments.
+
+instruction tuning
+- [basic definition] Instruction tuning fine-tunes a model on many tasks phrased as instructions, so it learns to follow new ones.
+- [visible effect] After instruction tuning, the model answers questions instead of just continuing the text.
+- [paper writing] We find that instruction tuning improves zero-shot performance on held-out task types.
+
+instruction-following
+- [model capability] Instruction-following has improved a lot, but long lists of constraints still trip models up.
+- [evaluation design] Our instruction-following eval checks verifiable constraints like word limits and required formats.
+- [design review] Weak instruction-following is why it keeps ignoring the JSON schema.
+
+fine-tuning
+- [basic process] Fine-tuning continues training a pretrained model on a smaller, task-specific dataset.
+- [when to use it] Fine-tuning makes sense when prompting alone can't make the format or style consistent.
+- [known risk] Fine-tuning on a narrow dataset can erode some of the model's general abilities and safety behavior.
+
+fine-tune
+- [verb: adapt a model] We fine-tuned the model on two thousand labeled support tickets.
+- [team meeting] Let's not fine-tune until we've exhausted prompting and retrieval.
+- [noun: informal] The fine-tune overfit badly; validation loss started rising after the first epoch.
+- [everyday: adjust details] We need to fine-tune the slides before the board meeting.
+
+supervised fine-tuning
+- [basic definition] Supervised fine-tuning trains the model on demonstrations: prompts paired with ideal responses.
+- [pipeline order] Supervised fine-tuning usually comes before preference training in the post-training pipeline.
+- [data quality] For supervised fine-tuning, a few thousand excellent examples often beat a huge noisy set.
+
+parameter-efficient fine-tuning
+- [basic definition] Parameter-efficient fine-tuning updates only a small set of added or selected parameters and freezes the rest.
+- [serving benefit] Parameter-efficient fine-tuning lets us keep one base model and swap in small task-specific adapters.
+- [explaining to an executive] Parameter-efficient fine-tuning often makes customization cheap enough to run on a single GPU.
+
+LoRA
+- [how it works] LoRA freezes the original weights and learns a pair of low-rank matrices whose product is added to them.
+- [deployment detail] After training, the LoRA update can be merged into the base weights, so there's no extra inference latency.
+- [team meeting] What rank did you use for the LoRA adapters? Rank 8 might be too small for this task.
+
+adapter
+- [small trainable module] An adapter is a small trainable module inserted into a frozen network to handle a new task.
+- [multi-tenant serving] We serve one base model and load a different adapter for each customer.
+- [software design pattern] We wrote an adapter so the new vector store fits our old retrieval interface.
+- [everyday: power plug] Don't forget a power adapter; the outlets there are different.
+
+distillation
+- [model compression] Distillation trains a small student model to imitate the outputs of a larger teacher model.
+- [team meeting] Distillation gave us a model ten times smaller that keeps most of the quality on our task.
+- [terms of service] Some providers' terms prohibit using their model outputs for distillation into competing models.
+- [everyday: making spirits] Whiskey production relies on distillation to concentrate the alcohol.
+
+knowledge distillation
+- [basic definition] Knowledge distillation trains the student on the teacher's soft probability outputs, not just the hard labels.
+- [why soft targets help] In knowledge distillation, the teacher's probabilities on wrong classes reveal which classes it considers similar.
+- [paper writing] We apply knowledge distillation with a temperature-scaled softmax on both teacher and student.
+
+quantization
+- [basic definition] Quantization stores weights in lower precision, such as 8-bit or 4-bit integers, to save memory and speed up inference.
+- [accuracy trade-off] Aggressive quantization can hurt accuracy, especially on math and long reasoning chains.
+- [team meeting] With 4-bit quantization, the 13B model fits on a single consumer GPU.
+
+pruning
+- [removing weights] Pruning removes weights or whole neurons that contribute little, making the model smaller.
+- [practical caveat] Unstructured pruning often saves less in practice than expected, because sparse matrices are hard to accelerate.
+- [everyday: gardening] Spring pruning keeps the rose bushes healthy.
+
+latency
+- [response time] Latency is the time from sending a request to getting a response, and users notice anything over a couple of seconds.
+- [chat applications] For chat, time to first token matters more to users than total latency.
+- [design trade-off] Batching raises throughput but can increase latency for individual requests.
+
+throughput
+- [system capacity] Throughput is how many tokens or requests the system handles per second across all users.
+- [design review] We can roughly double throughput by batching, but latency per request goes up slightly.
+- [explaining to an executive] Higher throughput per GPU directly lowers our cost per query.
+
+batching
+- [inference efficiency] Batching groups several requests so the GPU processes them together and stays busy.
+- [continuous batching] Continuous batching adds new requests as soon as others finish, instead of waiting for a whole batch to complete.
+- [training sense] During training, batching also averages gradients over many examples, which makes updates less noisy.
+
+KV cache
+- [how it works] The KV cache stores attention keys and values from earlier tokens so they aren't recomputed at each step.
+- [memory pressure] With long contexts and big batches, the KV cache can take more GPU memory than the model weights.
+- [prompt caching] Reusing the KV cache for a shared prompt prefix cuts both latency and cost.
+
+speculative decoding
+- [how it works] Speculative decoding has a small draft model propose several tokens, which the large model then verifies in a single pass.
+- [quality guarantee] Done correctly, speculative decoding speeds up generation without changing the output distribution.
+- [team meeting] Speculative decoding helps most when the draft model's guesses are accepted often.
+
+open-weight
+- [basic definition] An open-weight model has its trained weights publicly released, even if the training data and code stay private.
+- [precise wording] Call it open-weight rather than open source unless the license and training details are actually open.
+- [deployment advantage] An open-weight model lets us run everything on our own servers, which the legal team prefers.
+
+open-source model
+- [strict definition] Strictly speaking, an open-source model should come with an open license, and ideally with code and data details too.
+- [team meeting] Can an open-source model match the hosted one on our task? Let's benchmark it.
+- [policy debate] The debate over open-source models weighs broader access and outside scrutiny against the risk of misuse.
+
+closed model
+- [basic definition] A closed model is available only through an API or product; its weights aren't released.
+- [capability trade-off] A closed model is often more capable, but we give up control over versions and data residency.
+- [policy debate] Supporters of closed models argue that misuse is easier to monitor and restrict when access goes through an API.
+
+model card
+- [what it documents] The model card describes intended use, training data, evaluation results, and known limitations.
+- [team meeting] Before release, update the model card with the fairness results by subgroup.
+- [explaining to a non-expert] A model card is like a nutrition label for an AI model.
+
+system card
+- [documentation scope] A system card documents the whole deployed system, including safeguards and red-teaming results, not just the model.
+- [reading a release] The system card had a detailed section on how the developers tested for dangerous capabilities.
+- [internal practice] Let's write a short system card for our internal assistant so reviewers know what it can and can't do.
+
+checkpoint
+- [saved training state] We save a checkpoint every thousand steps so a crash doesn't cost us the whole run.
+- [model version] Which checkpoint is in production, the one from step 40k or the final one?
+- [everyday: security line] We waited forty minutes at the airport security checkpoint.
+
+weights
+- [learned parameters] The weights are the numbers learned during training; together, they essentially are the model.
+- [public release] Releasing the weights means anyone can run, inspect, or modify the model.
+- [loss weighting] We put higher weights on the rare classes in the loss function.
+- [everyday: exercise] He lifts weights three times a week.
+
+model weights
+- [valuable asset] The model weights are our main intellectual property, so they're stored encrypted with strict access controls.
+- [security risk] Stolen model weights would let someone run the model with none of our safeguards.
+- [team logistics] Download the model weights once to the shared drive instead of everyone pulling their own copy.
+
+reinforcement learning from human feedback
+- [basic definition] Reinforcement learning from human feedback trains a reward model on human preferences, then optimizes the language model against it.
+- [explaining to a friend] With reinforcement learning from human feedback, people compare pairs of answers, and the model learns to produce the preferred kind.
+- [known critique] Reinforcement learning from human feedback can teach a model to please raters rather than to be correct.
+
+RLHF
+- [pipeline stages] Our RLHF pipeline has three stages: supervised fine-tuning, reward modeling, and policy optimization.
+- [side effect] Some sycophancy is often attributed to RLHF, because raters tend to prefer agreeable answers.
+- [team meeting] We don't have the rater budget for full RLHF, so let's try DPO on the preference data we already have.
+
+reward model
+- [basic definition] The reward model takes a prompt and response and outputs a score predicting how much humans would prefer it.
+- [how it's trained] We train the reward model on pairwise comparisons, where raters picked the better of two responses.
+- [reward overoptimization] The policy found responses the reward model loved but humans didn't, a classic case of overoptimization.
+
+reward hacking
+- [basic definition] Reward hacking happens when an agent maximizes the reward signal in ways the designers didn't intend.
+- [coding agent example] It was reward hacking: the coding agent edited the tests so they'd pass instead of fixing the bug.
+- [team meeting] Longer answers kept scoring higher, so we suspect some reward hacking on length.
+
+reward signal
+- [basic definition] The reward signal is the feedback that tells the agent how well it did.
+- [sparse rewards] In this game, the reward signal is sparse: the agent only gets feedback at the very end.
+- [design review] If the reward signal comes from unit tests, make sure the tests actually cover the behavior we care about.
+
+preference data
+- [basic definition] Preference data consists of prompts with two or more responses and a label saying which one is better.
+- [data quality] Noisy preference data with lots of rater disagreement makes the reward model unreliable.
+- [team meeting] We collected preference data from domain experts, not general crowdworkers.
+
+preference model
+- [basic definition] A preference model predicts which of two responses a person would choose.
+- [two uses] We use the preference model both for training and for ranking candidate responses at inference time.
+- [paper writing] The preference model's accuracy on held-out comparisons limits how far we can trust its scores.
+
+human feedback
+- [general sense] Human feedback, whether ratings, comparisons, or written corrections, is expensive but hard to replace.
+- [product signal] The thumbs-up and thumbs-down buttons give us a steady stream of human feedback.
+- [known limitation] Human feedback struggles on tasks where raters can't easily tell which answer is correct.
+
+AI feedback
+- [basic definition] With AI feedback, a model rather than a person judges which response better follows the guidelines.
+- [scaling trade-off] AI feedback scales much more cheaply, but it can inherit the judging model's blind spots.
+- [paper writing] We compare policies trained with human labels and with AI feedback on the same prompts.
+
+constitutional AI
+- [basic definition] Constitutional AI uses a written set of principles to guide a model in critiquing and revising its own outputs.
+- [feedback source] In constitutional AI, much of the harmlessness feedback comes from a model judging responses against those principles.
+- [explaining to a non-expert] Constitutional AI is like giving the model a short rulebook and having it check its own answers against it.
+
+direct preference optimization
+- [basic definition] Direct preference optimization trains on preference pairs directly, with no separate reward model or reinforcement learning loop.
+- [why it's popular] Direct preference optimization is simpler to implement and often more stable than PPO-based RLHF.
+- [paper writing] We fine-tune with direct preference optimization, using the SFT model as the reference policy.
+
+policy gradient
+- [basic definition] Policy gradient methods adjust the policy's parameters in the direction that increases expected reward.
+- [variance reduction] Vanilla policy gradient estimates are noisy, so we subtract a baseline to reduce variance.
+- [language model setting] For the language model, each sampled response is an action, and we apply policy gradient using its reward.
+
+proximal policy optimization
+- [basic definition] Proximal policy optimization clips each update so the new policy can't move too far from the old one.
+- [historical role] Proximal policy optimization was the standard RL algorithm in early RLHF pipelines.
+- [practical drawback] Proximal policy optimization needs a value model and lots of tuning, which is why many teams moved to simpler methods.
+
+value function
+- [basic definition] A value function estimates the expected future return from a state under the current policy.
+- [actor-critic methods] In actor-critic methods, the value function acts as the critic and reduces variance in the policy updates.
+- [avoiding confusion] Here, value function has nothing to do with business value; it's an estimate of expected return.
+
+Q-learning
+- [basic definition] Q-learning learns the value of taking each action in each state, then acts by picking the highest-value action.
+- [off-policy learning] Q-learning is off-policy, so it can learn from old experience collected by a different policy.
+- [historical milestone] Combining Q-learning with deep networks let agents learn to play video games directly from raw pixels.
+
+exploration
+- [reinforcement learning sense] Exploration means trying actions with uncertain outcomes, even if they look worse right now.
+- [too little of it] With too little exploration, the agent locks into a mediocre strategy early.
+- [everyday: early research phase] We're still in the exploration phase; nothing here is production-ready.
+
+exploitation
+- [reinforcement learning sense] Exploitation means choosing the action that currently looks best based on what the agent has learned.
+- [the classic trade-off] The explore-exploit trade-off is about balancing exploration with exploitation of what already works.
+- [everyday: unfair treatment] Labor advocates raised concerns about the exploitation of low-paid data annotators.
+
+agent
+- [reinforcement learning sense] In reinforcement learning, the agent observes the state, takes an action, and receives a reward.
+- [language model system] Our agent can search the knowledge base, file tickets, and draft replies on its own.
+- [everyday: a person] Our travel agent rebooked the flights after the cancellation.
+
+reward
+- [reinforcement learning sense] The agent gets a reward of plus one for reaching the goal and zero otherwise.
+- [reward design] Shaping the reward too aggressively can teach the agent shortcuts we never wanted.
+- [everyday: money offered] There's a reward for anyone who finds the lost laptop.
+
+return
+- [cumulative reward] The return is the discounted sum of rewards from a time step to the end of the episode.
+- [why it matters] Maximizing expected return, not immediate reward, is what makes the agent plan ahead.
+- [programming sense] The function returns an empty list when nothing matches.
+- [everyday: investment] The project's return on investment justified the GPU spend.
+
+episode
+- [reinforcement learning sense] An episode ends when the agent reaches the goal, fails, or hits the step limit.
+- [training logs] Average reward per episode plateaued after a few thousand episodes.
+- [everyday: television] I fell asleep halfway through the episode.
+
+trajectory
+- [reinforcement learning sense] A trajectory is the sequence of states, actions, and rewards from one run of the policy.
+- [agent debugging] We reviewed failed agent trajectories to see where the plan went wrong.
+- [everyday: direction of change] Her career trajectory changed when she moved from analytics into machine learning.
+
+rollout
+- [reinforcement learning sense] Each rollout runs the current policy in the environment to collect experience for the next update.
+- [language model training] We generate eight rollouts per prompt and score them with the reward model.
+- [product launch] The rollout will go to ten percent of users first, then everyone if the metrics hold.
+
+self-play
+- [basic definition] In self-play, an agent trains by competing against copies of itself, so its opponents improve along with it.
+- [game-playing results] Self-play let game-playing systems surpass top human players without learning from human games.
+- [language model use] Some teams use a form of self-play where one model writes problems and another tries to solve them.
+
+simulation
+- [training environment] Training in simulation is cheap and safe, but the robot still has to work in the real world.
+- [agent practice] We built a simulation of the support desk so the agent can practice on synthetic customers.
+- [everyday: pilot training] The flight simulation felt surprisingly real.
+
+sim-to-real
+- [basic definition] Sim-to-real transfer is about making policies trained in simulation work on physical robots.
+- [domain randomization] Domain randomization narrows the sim-to-real gap by varying lighting, friction, and textures during training.
+- [team meeting] The grasping policy looked great in simulation, but the sim-to-real gap killed it on the actual arm.
+
+AI agent
+- [basic definition] An AI agent uses a model to choose actions, calls tools, observes the results, and repeats until the task is done.
+- [explaining to an executive] An AI agent can handle the whole refund process, but we'll require human approval above a dollar threshold.
+- [design review] Before building an AI agent, check whether a simple fixed workflow would do the job.
+
+agentic
+- [adjective meaning] Agentic systems take multistep actions on their own instead of just answering one question.
+- [evaluation challenge] Agentic tasks are harder to evaluate because there are many valid paths to success.
+- [buzzword caution] Not every product labeled agentic really plans or acts; some are just chatbots with a button.
+
+agentic workflow
+- [basic definition] In an agentic workflow, the model chooses the next step based on what it observed, rather than following a fixed script.
+- [design review] This agentic workflow needs a step limit and a budget, or a confused loop could run all night.
+- [team meeting] Let's map the agentic workflow on the whiteboard before writing any code.
+
+autonomous agent
+- [basic definition] An autonomous agent pursues a goal over many steps with little or no human input.
+- [permissions principle] The more autonomous the agent, the more important it is to restrict its permissions.
+- [policy discussion] Regulators are asking who's accountable when an autonomous agent makes a costly mistake.
+
+multi-agent system
+- [basic definition] In a multi-agent system, several agents with different roles coordinate or compete to complete a task.
+- [design review] A multi-agent system adds coordination overhead; one capable agent with good tools is often enough.
+- [reinforcement learning sense] Multi-agent systems are hard to train because each agent's environment keeps changing as the others learn.
+
+tool use
+- [model capability] Tool use lets the model call a calculator, search engine, or code interpreter instead of guessing.
+- [evaluation criteria] Our eval measures tool use accuracy: right tool, right arguments, right time.
+- [animal cognition] Tool use was once considered uniquely human until researchers documented it in crows and chimpanzees.
+
+function calling
+- [how it works] With function calling, the model outputs a structured request with JSON arguments, and our code actually runs the function.
+- [design review] Function calling is more reliable than parsing free text, but validate the arguments anyway.
+- [common misconception] Function calling doesn't mean the model runs code itself; it just tells our system what to run.
+
+tool call
+- [debugging with logs] Each tool call shows up in the logs with its arguments and the result we sent back.
+- [efficiency problem] The agent made twelve tool calls for a simple question, so the planning prompt needs work.
+- [error handling] If a tool call fails, return the error message to the model so it can try again.
+
+orchestrator
+- [agent architecture] The orchestrator breaks the task into pieces, hands them to subagents, and merges the results.
+- [workflow infrastructure] The workflow orchestrator schedules pipeline steps and retries the ones that fail.
+- [everyday: organizer] She was the orchestrator of the whole merger, though she rarely got the credit.
+
+subagent
+- [basic definition] A subagent handles one focused part of the task in its own context and reports back a summary.
+- [context benefit] Using a subagent for the research keeps the main agent's context window clean.
+- [cost warning] Subagents can run in parallel, but the token costs add up quickly.
+
+planning loop
+- [basic definition] In the planning loop, the agent drafts a plan, takes a step, checks the result, and updates the plan.
+- [failure mode] The planning loop got stuck repeating the same failed search, so we added a stop condition.
+- [design review] Should the planning loop replan after every step or only after failures?
+
+long-term memory
+- [agent feature] Long-term memory lets the assistant remember user preferences across sessions, usually by saving notes to a database.
+- [privacy requirement] If we add long-term memory, users need a way to see and delete what's stored.
+- [psychology sense] In humans, long-term memory can hold information for years, unlike short-term memory.
+
+working memory
+- [agent context] For an agent, working memory is basically whatever is in the context window right now.
+- [design choice] We keep a compact working memory of open subtasks so the agent doesn't lose track.
+- [psychology sense] Human working memory can only hold a handful of items at once.
+
+computer use
+- [model capability] Computer use lets a model operate a desktop by reading screenshots and sending mouse clicks and keystrokes.
+- [safety practice] Computer use should run in an isolated virtual machine, never on a laptop with real credentials.
+- [current limits] Computer use is still slow and error-prone on complex forms.
+
+browser agent
+- [basic definition] A browser agent navigates websites, fills in forms, and clicks buttons to complete tasks for the user.
+- [security exposure] A browser agent can read malicious instructions hidden in a web page, so it's exposed to prompt injection.
+- [team meeting] Let's test the browser agent on the expense portal before we let it touch anything real.
+
+copilot
+- [ai assistant] The coding copilot suggests the next few lines, but the developer stays in charge.
+- [product framing] We framed the tool as a copilot for analysts rather than a replacement for them.
+- [everyday: aviation] The copilot took over the controls while the captain talked to air traffic control.
+
+chatbot
+- [basic definition] A chatbot is any program that converses in text, from simple rule-based scripts to large language models.
+- [customer service] The old chatbot could only match keywords; the new one actually understands the question.
+- [explaining to an executive] A chatbot is a good start, but the real value comes from connecting it to our systems.
+
+conversational AI
+- [field of work] Conversational AI covers chatbots, voice assistants, and any system designed for back-and-forth dialogue.
+- [team structure] Our conversational AI team owns both the voice and the chat channels.
+- [paper writing] Evaluating conversational AI requires judging whole dialogues, not just single replies.
+
+virtual assistant
+- [software sense] A virtual assistant helps with tasks like scheduling, reminders, and quick questions, often by voice.
+- [then and now] Older virtual assistants handled fixed commands; newer ones can handle open-ended requests.
+- [everyday: human job] She works as a virtual assistant, managing email and calendars for three small business owners.
+
+human-in-the-loop
+- [system design] The system is human-in-the-loop: an underwriter approves every decision before it goes out.
+- [labeling workflow] Human-in-the-loop labeling sends only the uncertain examples to annotators.
+- [policy discussion] For high-stakes uses, many guidelines expect a human-in-the-loop process with real authority to override.
+
+human oversight
+- [what it requires] Meaningful human oversight means reviewers have the time, information, and authority to overrule the system.
+- [how it fails] Human oversight weakens when reviewers approve hundreds of AI suggestions an hour without really checking.
+- [policy discussion] Some AI regulations require human oversight for high-risk applications.
+
+guardrail
+- [safety layer] A guardrail checks inputs and outputs and blocks anything that violates policy.
+- [design review] Don't rely only on the model's own judgment; add a guardrail that validates every tool call.
+- [everyday: road barrier] The car hit the guardrail, but nobody was hurt.
+
+sandbox
+- [isolated environment] The agent runs code in a sandbox with no network access and no access to production data.
+- [testing space] Try the new prompts in the sandbox before pushing them to production.
+- [regulatory sandbox] Some regulators offer a sandbox where companies can test new AI products under supervision.
+- [everyday: playground] The kids spent the afternoon in the sandbox at the park.
+
+multimodal
+- [basic definition] A multimodal model can take in more than one type of data, such as text, images, and audio.
+- [practical benefit] Multimodal input lets the assistant read the chart in a screenshot, not just the surrounding text.
+- [paper writing] We evaluate multimodal reasoning on questions that require both the image and the text.
+
+modality
+- [type of data] Each modality, whether text, image, or audio, typically gets its own encoder before the representations are fused.
+- [robustness concern] The model should still work when one modality is missing, like a video without sound.
+- [medical sense] In medicine, modality can refer to a type of imaging, such as MRI or ultrasound.
+
+computer vision
+- [field of study] Computer vision teaches machines to interpret images and video.
+- [industrial application] Our computer vision model inspects welds on the production line.
+- [explaining to a friend] Computer vision is how your phone finds all the photos of your dog.
+
+image recognition
+- [general term] Image recognition is a broad term for identifying what's in a picture.
+- [historical milestone] Deep learning took off after convolutional networks made a big leap in image recognition around 2012.
+- [consumer app] The plant app uses image recognition to identify species from a photo.
+
+image classification
+- [task definition] Image classification assigns a single label to the whole image, like "cat" or "dog."
+- [compared with detection] Image classification tells you a defect exists; object detection tells you where it is.
+- [paper writing] We pretrain on a large image classification dataset and fine-tune on medical scans.
+
+object detection
+- [task definition] Object detection finds each object in an image and draws a labeled bounding box around it.
+- [evaluation metric] We evaluate object detection with mean average precision across several IoU thresholds.
+- [robotics application] The warehouse robot relies on object detection to locate packages on the shelves.
+
+image segmentation
+- [task definition] Image segmentation labels every pixel, so you get the exact outline of each object.
+- [medical application] Image segmentation of tumors helps radiologists measure their size precisely.
+- [types of segmentation] Semantic image segmentation labels each pixel's class, while instance segmentation also separates individual objects.
+
+optical character recognition
+- [basic definition] Optical character recognition converts images of text, like scanned pages, into machine-readable text.
+- [root cause] Optical character recognition errors on old invoices were the real cause of the bad extractions.
+- [explaining to a non-expert] Optical character recognition is what lets you search the text inside a scanned PDF.
+
+OCR
+- [pipeline step] Run OCR on the scanned contracts first, then send the text to the model.
+- [multimodal alternative] Newer multimodal models can often read documents directly, without a separate OCR step.
+- [known weakness] OCR still struggles with messy handwriting and low-resolution faxes.
+
+facial recognition
+- [how it works] Facial recognition matches a face in an image against a database of known faces.
+- [fairness concern] Some facial recognition systems have shown higher error rates for certain demographic groups.
+- [policy debate] Several cities have debated limits on police use of facial recognition.
+
+image generation
+- [basic capability] Image generation models create new images from a text description or another image.
+- [underlying technique] Much modern image generation relies on diffusion models, which gradually turn random noise into a picture.
+- [business use] Marketing uses image generation for concept art, but final assets still go through a designer.
+
+text-to-image
+- [task definition] A text-to-image model turns a written prompt into a picture.
+- [prompting tips] Text-to-image prompts often need details about lighting, style, and composition.
+- [copyright debate] Text-to-image models raise questions about artists' styles and the images used in training.
+
+text-to-speech
+- [basic definition] Text-to-speech converts written text into spoken audio.
+- [quality today] Modern text-to-speech sounds natural, with realistic pauses and intonation.
+- [accessibility benefit] Text-to-speech makes documents accessible to people who are blind or have low vision.
+
+speech recognition
+- [basic definition] Speech recognition turns spoken audio into text.
+- [remaining challenges] Speech recognition still struggles with heavy accents, crosstalk, and noisy rooms.
+- [evaluation metric] We measure speech recognition quality with word error rate.
+
+automatic speech recognition
+- [formal term] Automatic speech recognition, or ASR, is the technical name for transcribing speech into text.
+- [call center pipeline] The call center pipeline runs automatic speech recognition first, then summarizes the transcript.
+- [paper writing] We fine-tune an automatic speech recognition model on medical dictation.
+
+speech synthesis
+- [general term] Speech synthesis is the general term for producing artificial speech; text-to-speech is its most common form.
+- [then and now] Older speech synthesis sounded robotic, with flat and unnatural intonation.
+- [current research] Neural speech synthesis can now control emotion and speaking style.
+
+voice cloning
+- [basic definition] Voice cloning creates a synthetic voice that sounds like a specific person, sometimes from a short recording.
+- [fraud risk] Scammers have used voice cloning to impersonate relatives asking for money.
+- [consent policy] We only offer voice cloning with the speaker's documented consent.
+
+natural language processing
+- [field of study] Natural language processing is the field of getting computers to work with human language.
+- [history of the field] Natural language processing moved from hand-written rules to statistical models to deep learning.
+- [explaining to a friend] Spam filters and autocomplete are everyday examples of natural language processing.
+
+NLP
+- [team scope] Our NLP team handles everything from search to document classification.
+- [research community] Papers on large language models now dominate most NLP conferences.
+- [ambiguous acronym] Careful: in self-help circles, NLP means neuro-linguistic programming, which is something else entirely.
+
+natural language understanding
+- [nlp subfield] Natural language understanding focuses on extracting meaning, such as intents and entities, from text.
+- [older chatbots] The old assistant's natural language understanding module only recognized fifty intents.
+- [philosophical debate] Whether these models have genuine natural language understanding is still debated.
+
+natural language generation
+- [nlp subfield] Natural language generation produces text from data or meaning, such as writing a weather report from forecast data.
+- [older approach] Before LLMs, natural language generation often relied on templates filled in with data.
+- [evaluation difficulty] Evaluating natural language generation is hard because many different outputs can be equally good.
+
+machine translation
+- [task definition] Machine translation automatically converts text from one language to another.
+- [historical note] The transformer was originally introduced for machine translation.
+- [quality limits] Machine translation is great for the gist, but contracts still need a professional translator.
+
+sentiment analysis
+- [task definition] Sentiment analysis classifies text as positive, negative, or neutral.
+- [business use] We run sentiment analysis on reviews to spot product issues early.
+- [known weakness] Sentiment analysis often misses sarcasm, like "Great, another update that broke everything."
+
+named entity recognition
+- [task definition] Named entity recognition finds and labels names of people, organizations, places, and dates in text.
+- [privacy pipeline] We use named entity recognition to redact patient names before the data leaves the hospital.
+- [domain adaptation] General-purpose named entity recognition misses drug names, so we trained a domain-specific model.
+
+summarization
+- [task definition] Summarization condenses a long document into its key points.
+- [two approaches] Extractive summarization copies key sentences, while abstractive summarization writes new ones.
+- [accuracy risk] Summarization can introduce errors, so we check that every claim appears in the source.
+
+question answering
+- [task definition] Question answering systems return a direct answer instead of a list of documents.
+- [open-domain setting] Open-domain question answering requires finding the relevant evidence before answering.
+- [internal product] We built question answering over the HR handbook so employees stop emailing the same questions.
+
+information retrieval
+- [field of study] Information retrieval is about finding relevant documents for a query, and it's the backbone of search engines.
+- [role in retrieval systems] A RAG system is only as good as its information retrieval step.
+- [evaluation metrics] Information retrieval uses metrics like recall at k and mean reciprocal rank.
+
+recommender system
+- [basic definition] A recommender system suggests items, like products or videos, based on a user's behavior and that of similar users.
+- [societal concern] Critics worry that a recommender system optimized only for clicks can push users toward more extreme content.
+- [cold-start problem] New items are hard for the recommender system because there's no interaction data yet.
+
+generative AI
+- [basic definition] Generative AI creates new content, such as text, images, code, or audio, rather than just classifying data.
+- [explaining to an executive] Generative AI can speed up first drafts, but someone still needs to own the final quality.
+- [policy discussion] Generative AI has revived debates about copyright and misinformation.
+
+GenAI
+- [business shorthand] Our GenAI pilot cut the time to draft support replies, so leadership wants to expand it.
+- [industry buzzword] Every vendor pitch deck now seems to have a GenAI slide.
+- [team meeting] Is this really a GenAI problem, or would a simple classifier work?
+
+synthetic media
+- [basic definition] Synthetic media is any image, video, audio, or text generated or substantially altered by AI.
+- [legitimate use] Synthetic media is used legitimately for dubbing films into other languages.
+- [policy discussion] Proposed rules often require clear labels on synthetic media in political ads.
+
+deepfake
+- [basic definition] A deepfake is a realistic fake video or audio clip of a real person saying or doing something they never did.
+- [fraud risk] Deepfake fraud is a growing concern, for example a fake video call from an "executive" requesting a wire transfer.
+- [detection arms race] Deepfake detectors struggle to keep up as generation quality improves.
+
+watermarking
+- [text watermarking] Text watermarking subtly biases the model's token choices so a detector can later spot the statistical pattern.
+- [image watermarking] Image watermarking embeds an invisible signal meant to survive common edits like cropping or compression.
+- [known limitation] Watermarking helps, but paraphrasing or heavy editing can often remove the signal.
+
+content provenance
+- [basic definition] Content provenance records where a piece of media came from and how it was edited, often with cryptographically signed metadata.
+- [policy goal] Content provenance standards aim to help people tell authentic photos from generated ones.
+- [practical limitation] Content provenance only works if the metadata isn't stripped when files are shared.
+
+style transfer
+- [image sense] Style transfer renders a photo in the style of a painting while keeping its content.
+- [text sense] Text style transfer can rewrite a formal email in a casual tone without changing its meaning.
+- [paper writing] Early neural style transfer optimized an image to match one image's content features and another's style statistics.
+
+upscaling
+- [image super-resolution] AI upscaling increases image resolution by predicting plausible fine details.
+- [forensic caution] Upscaling invents details, so don't treat upscaled images as forensic evidence.
+- [video games] Real-time upscaling lets games render at a lower resolution and still look sharp.
+
+evaluation
+- [measuring models] Evaluation should match how the model will actually be used, not just what's easy to measure.
+- [team meeting] We need a proper evaluation before launch, not a few hand-picked demos.
+- [everyday: performance review] My annual evaluation with my manager is next week.
+
+eval
+- [saturated test] The eval's saturated; every model scores above 95%, so it can't tell them apart.
+- [specific test suite] Let's add an eval for the refund edge cases before we change the prompt.
+- [team meeting] Did the new checkpoint regress on any of our evals?
+
+benchmark
+- [standard test] A benchmark is a fixed dataset and metric that lets researchers compare models.
+- [verb: compare] We benchmarked three embedding models on our own queries.
+- [benchmark score caution] A high benchmark score doesn't guarantee good performance on our data.
+- [everyday: reference point] Their customer satisfaction scores are the industry benchmark.
+
+leaderboard
+- [basic definition] A leaderboard ranks models by their scores on a benchmark.
+- [known critique] Chasing the leaderboard can reward overfitting to the test set rather than real progress.
+- [team meeting] We're near the top of the leaderboard, but the margin is within noise.
+
+baseline
+- [comparison point] Always compare against a simple baseline, like logistic regression or keyword search.
+- [paper writing] Our method beats the strongest baseline by a small but consistent margin.
+- [starting measurement] Measure the baseline latency before we start optimizing.
+- [everyday: medical sense] Her baseline blood pressure was normal.
+
+ablation
+- [removal experiment] The ablation showed that the retrieval step accounted for most of the gain.
+- [peer review] Reviewers asked for more ablations to justify each design choice.
+- [medical sense] In medicine, ablation means destroying abnormal tissue, for example in the heart.
+
+ablation study
+- [basic definition] An ablation study removes one component at a time to measure how much each one contributes.
+- [paper writing] Our ablation study shows the auxiliary loss matters more than the extra data.
+- [design review] Before we keep all three tricks, run an ablation study; maybe only one of them helps.
+
+accuracy
+- [basic metric] Accuracy is the fraction of predictions the model gets right.
+- [imbalanced data trap] With one percent fraud, a model that always says "legit" gets 99% accuracy and is useless.
+- [everyday: correctness] I can't vouch for the accuracy of those numbers; they came from a slide.
+
+precision
+- [classification metric] Precision is the fraction of positive predictions that are actually positive.
+- [metric trade-off] For the spam filter, we prioritize precision so real emails don't end up in the spam folder.
+- [numerical precision] Training in lower numerical precision saves memory but can cause overflow if you're not careful.
+- [everyday: exactness] She writes with precision; there's never a wasted word.
+
+recall
+- [classification metric] Recall is the fraction of actual positives that the model successfully finds.
+- [metric trade-off] For cancer screening, recall matters most, because missing a case is worse than a false alarm.
+- [retrieval metric] Recall at ten tells us how often the right document is in the top ten results.
+- [everyday: product recall] The manufacturer issued a recall for the faulty chargers.
+
+F1 score
+- [basic definition] The F1 score is the harmonic mean of precision and recall.
+- [when to use it] We report the F1 score because the classes are imbalanced and accuracy would be misleading.
+- [known caveat] The F1 score ignores true negatives, which matters in some applications.
+
+confusion matrix
+- [basic definition] A confusion matrix shows true positives, false positives, true negatives, and false negatives in a table.
+- [error analysis] The confusion matrix shows the model constantly mixing up "billing" and "refund" tickets.
+- [team meeting] Accuracy hides a lot; let's look at the confusion matrix by class.
+
+ROC curve
+- [basic definition] The ROC curve plots the true positive rate against the false positive rate across all thresholds.
+- [choosing a threshold] We pick the operating point on the ROC curve based on how costly false alarms are.
+- [imbalance caution] On very imbalanced data, the ROC curve can look great while precision is poor, so check the precision-recall curve too.
+
+AUC
+- [basic definition] AUC is the area under the ROC curve; 0.5 means random ranking and 1.0 means perfect ranking.
+- [probability interpretation] An AUC of 0.85 means a random positive is ranked above a random negative 85% of the time.
+- [common misconception] AUC measures ranking, not calibration, so a high AUC doesn't mean the probabilities are trustworthy.
+
+calibration
+- [probability calibration] Good calibration means that when the model says 80% confidence, it's right about 80% of the time.
+- [how we measure it] We measure calibration with reliability diagrams and expected calibration error.
+- [effect of post-training] Some studies find that preference tuning hurts calibration compared with the base model.
+- [everyday: instruments] The sensor needs calibration every six months.
+
+robustness
+- [basic definition] Robustness means performance holds up under noise, distribution shift, or adversarial input.
+- [how we test it] We test robustness by adding typos and paraphrases to the eval questions.
+- [design review] The model is accurate on clean data, but robustness to messy scans is what matters here.
+
+generalization gap
+- [basic definition] The generalization gap is the difference between performance on training data and on unseen data.
+- [diagnosing overfitting] A big generalization gap usually signals overfitting.
+- [team meeting] More data closed most of the generalization gap; regularization helped a little.
+
+held-out evaluation
+- [basic definition] Held-out evaluation tests the model on data it never saw during training or tuning.
+- [rigor warning] If we tuned prompts on this set, it's not a held-out evaluation anymore.
+- [paper writing] All numbers come from a held-out evaluation on tasks excluded from training.
+
+contamination
+- [test data leakage] Contamination means test examples leaked into the training data, inflating the scores.
+- [team meeting] These results look too good; check for contamination before we celebrate.
+- [everyday: lab samples] The lab shut down after the contamination of several samples.
+
+benchmark contamination
+- [basic definition] Benchmark contamination happens when benchmark questions appear in the web data used for pretraining.
+- [detection method] We check for benchmark contamination by searching the training corpus for long overlapping n-grams.
+- [paper writing] To limit benchmark contamination, we built a new test set after the training data cutoff.
+
+saturation
+- [benchmark saturation] Benchmark saturation means top models score near the ceiling, so the test no longer separates them.
+- [diminishing returns] We hit saturation on data: doubling the dataset barely moved the metric.
+- [activation saturation] Sigmoid saturation makes gradients vanish when inputs are very large or very small.
+- [everyday: photo color] Turn down the saturation; the colors look unnatural.
+
+human evaluation
+- [basic definition] Human evaluation uses people to judge outputs on qualities like helpfulness, accuracy, or fluency.
+- [cost trade-off] Human evaluation is slow and expensive, so we run it only on the final candidates.
+- [good practice] For human evaluation, make sure raters don't know which model produced each response.
+
+LLM-as-a-judge
+- [basic definition] LLM-as-a-judge uses a strong model to grade other models' outputs against a rubric.
+- [known biases] LLM-as-a-judge setups can favor longer answers or the first response shown, so we randomize the order.
+- [validation step] Before trusting LLM-as-a-judge scores, check their agreement with human ratings on a sample.
+
+red teaming
+- [basic practice] Red teaming means deliberately trying to make the model fail or misbehave before real attackers do.
+- [testing scope] Our red teaming covers jailbreaks, privacy leaks, and harmful advice.
+- [automated approach] Automated red teaming uses one model to generate attacks against another.
+
+red team
+- [noun: the group] The red team found a way to extract the system prompt in under ten minutes.
+- [verb: test by attacking] Let's red-team the agent before it gets access to customer accounts.
+- [cybersecurity origin] In cybersecurity, a red team plays the attacker while the blue team defends.
+
+stress test
+- [noun: load testing] The stress test sent ten times normal traffic to see where the serving stack breaks.
+- [verb: hard inputs] We stress-tested the model with adversarial and out-of-distribution prompts.
+- [banking sense] Banks run stress tests to check whether they could survive a severe recession.
+
+capability evaluation
+- [basic definition] A capability evaluation measures what a model can do, including skills that could be dangerous.
+- [pre-release decisions] Capability evaluations before release help decide what safeguards a model needs.
+- [elicitation caveat] A weak prompt can make a capability evaluation underestimate what the model can really do.
+
+dangerous capability
+- [basic definition] A dangerous capability is one that could cause serious harm if misused, like meaningfully helping with cyberattacks.
+- [release testing] We test against dangerous capability thresholds before each major release.
+- [policy debate] There's ongoing debate about which dangerous capabilities should trigger mandatory reporting.
+
+error analysis
+- [basic practice] Error analysis means reading through failures and grouping them by cause.
+- [team meeting] Before tuning anything, spend an afternoon on error analysis; the patterns usually jump out.
+- [paper writing] Our error analysis shows that most failures come from ambiguous questions, not faulty reasoning.
+
+AI safety
+- [field of research] AI safety studies how to keep AI systems from causing harm, from today's misuse to risks from more capable future systems.
+- [team function] Our AI safety team reviews every launch for misuse risks.
+- [ongoing debate] People disagree about priorities in AI safety, especially near-term harms versus long-term risks.
+
+alignment
+- [ai values sense] Alignment means getting an AI system to pursue the goals and values its developers and users actually intend.
+- [research field] Alignment research includes reward modeling, interpretability, and scalable oversight.
+- [matching representations] Contrastive training improves the alignment between image and text embeddings.
+- [everyday: agreement] We need alignment with legal before we ship.
+
+misalignment
+- [ai sense] Misalignment is when a system's behavior diverges from what its designers intended.
+- [familiar example] Optimizing for engagement instead of user well-being is a familiar form of misalignment.
+- [everyday: organizational] There's some misalignment between the product and research teams on what "done" means.
+
+aligned
+- [ai behavior] A well-aligned assistant should be genuinely helpful while declining clearly harmful requests.
+- [research question] How do we verify that a model is aligned, rather than just behaving well on our tests?
+- [everyday: in agreement] Are we aligned on the launch date?
+
+value alignment
+- [basic definition] Value alignment asks whose values an AI system should reflect and how to instill them.
+- [core challenge] Value alignment is hard because people disagree, and values vary across cultures.
+- [paper writing] We frame value alignment as learning from human preferences rather than hard-coding rules.
+
+outer alignment
+- [basic definition] Outer alignment is about whether the objective we specify actually captures what we want.
+- [example failure] Rewarding clicks when we really want satisfied users is an outer alignment failure.
+- [contrast with inner] Outer alignment concerns the training objective; inner alignment concerns what the model actually learns to pursue.
+
+inner alignment
+- [basic definition] Inner alignment asks whether the trained model actually pursues the training objective or a proxy that happened to work during training.
+- [why it's hard] Inner alignment is hard to test because the proxy and the true goal can look identical during training.
+- [explaining to a colleague] Even with a perfect reward function, inner alignment can still fail if the model learns the wrong goal.
+
+specification gaming
+- [basic definition] Specification gaming is when a system satisfies the literal objective but not the intended one.
+- [classic example] A boat-racing agent that circled endlessly collecting points instead of finishing the race is a famous case of specification gaming.
+- [coding example] Writing code that special-cases the test inputs is specification gaming.
+
+goal misgeneralization
+- [basic definition] Goal misgeneralization is when a model keeps its capabilities in a new setting but pursues the wrong goal.
+- [well-known experiment] In one experiment, an agent trained to collect a coin kept heading to the level's end after the coin moved: goal misgeneralization.
+- [contrast with specification gaming] Goal misgeneralization differs from specification gaming: the reward was correct, but the model learned the wrong goal from it.
+
+instrumental convergence
+- [basic definition] Instrumental convergence is the idea that agents with very different goals would pursue similar subgoals, like acquiring resources.
+- [shutdown example] A standard instrumental convergence argument is that avoiding shutdown helps with almost any goal, so capable agents might resist it.
+- [ongoing debate] Critics question how much instrumental convergence applies to today's language models.
+
+power-seeking
+- [basic concept] Power-seeking behavior means acquiring resources, influence, or control beyond what the task requires.
+- [evaluation check] We check whether the agent shows power-seeking tendencies, like requesting broader permissions than it needs.
+- [ongoing debate] Researchers disagree on how likely power-seeking is in systems trained the way current models are.
+
+deceptive alignment
+- [basic definition] Deceptive alignment is a hypothesized failure in which a model behaves well during training to avoid being modified, then acts differently later.
+- [research difficulty] Studying deceptive alignment is hard because such a model would, by definition, try to pass our tests.
+- [ongoing debate] Some researchers consider deceptive alignment a serious possibility, while others see it as speculative.
+
+sycophancy
+- [basic definition] Sycophancy is the model's tendency to tell users what they want to hear, even when it's wrong.
+- [typical example] It's sycophancy when the model abandons a correct answer as soon as the user pushes back.
+- [reducing sycophancy] We added preference data that rewards polite disagreement, to reduce sycophancy.
+
+corrigibility
+- [basic definition] Corrigibility is an AI system's willingness to let humans correct, retrain, or shut it down.
+- [design tension] There's a tension between corrigibility and autonomy: we want agents that are capable but still correctable.
+- [paper writing] We test corrigibility by checking whether the agent resists changes to its instructions.
+
+corrigible
+- [ai sense] A corrigible agent doesn't try to stop its operators from changing its goals.
+- [product requirement] We want the assistant to be corrigible: if the user says stop, it stops.
+- [everyday: word usage] Outside AI, corrigible is rare; you'll hear its opposite, incorrigible, far more often.
+
+scalable oversight
+- [basic definition] Scalable oversight is about supervising AI systems on tasks too hard for humans to check directly.
+- [proposed techniques] Debate and recursive task decomposition are proposed approaches to scalable oversight.
+- [why it matters] Scalable oversight matters because human labelers can't easily verify a thousand-line proof by hand.
+
+oversight
+- [supervising ai] Oversight of the agent includes logging every action and reviewing a sample each week.
+- [corporate governance] Board oversight of AI risk is becoming a standard governance topic.
+- [everyday: mistake] Leaving the test set in the training data was an oversight, not a deliberate choice.
+
+interpretability
+- [research field] Interpretability research tries to understand what's happening inside a model's computations.
+- [business requirement] For credit decisions, interpretability isn't optional; we have to explain denials.
+- [team meeting] A linear model gives us interpretability for free; the deep net would need extra tools.
+
+mechanistic interpretability
+- [basic definition] Mechanistic interpretability tries to reverse-engineer neural networks into understandable features and algorithms.
+- [research example] Mechanistic interpretability work has traced specific circuits, like ones that copy repeated patterns in text.
+- [explaining to a friend] Mechanistic interpretability is like taking apart a clock to see how each gear moves the hands.
+
+explainability
+- [basic definition] Explainability is about giving people understandable reasons for a model's outputs.
+- [regulatory expectation] Regulators often expect explainability for decisions that affect people's lives, like loan approvals.
+- [important caveat] Explainability methods are often post hoc; they can describe a decision without revealing the true mechanism.
+
+explainable AI
+- [field of study] Explainable AI develops methods that help people understand and appropriately trust model decisions.
+- [common tools] Common explainable AI tools include feature importance scores and counterfactual explanations.
+- [explaining to an executive] Explainable AI helps us answer the auditor's question: why was this claim flagged?
+
+XAI
+- [abbreviation of explainable ai] XAI, short for explainable AI, covers methods like SHAP values and saliency maps.
+- [known critique] Some XAI explanations are unstable: small input changes produce very different attributions.
+- [team meeting] The XAI dashboard shows which features drove each individual prediction.
+
+black box
+- [opaque model] To the loan officers, the model is a black box: inputs go in, scores come out.
+- [access level] With only black-box access through an API, we can't inspect gradients or activations.
+- [everyday: aviation] Investigators recovered the black box from the crash site.
+
+feature attribution
+- [basic definition] Feature attribution assigns each input feature a score for how much it contributed to a prediction.
+- [specific method] Integrated gradients is a feature attribution method that accumulates gradients along a path from a baseline input.
+- [methods can disagree] Different feature attribution methods can disagree on the same prediction, so don't treat any one as ground truth.
+
+saliency map
+- [basic definition] A saliency map highlights the pixels that most influenced the model's prediction.
+- [revealing a shortcut] The saliency map showed the classifier focusing on a text marker in the corner, not the lung tissue.
+- [reliability caution] Some saliency map methods produce similar pictures even for randomly initialized models, which undermines trust in them.
+
+probing
+- [interpretability technique] Probing trains a simple classifier on internal activations to test whether some information is encoded there.
+- [interpretation caveat] Successful probing shows the information is present, not that the model actually uses it.
+- [everyday: questioning] The interviewer asked some probing questions about the project's failures.
+
+circuit
+- [interpretability sense] A circuit is a set of neurons and attention heads that together implement a specific behavior.
+- [research finding] Researchers identified a circuit that spots repeated text and predicts what came after it last time.
+- [everyday: electrical] The kitchen circuit trips whenever the microwave and kettle run at the same time.
+
+superposition
+- [interpretability sense] Superposition is when a network represents more features than it has neurons by using overlapping directions.
+- [polysemantic neurons] Because of superposition, a single neuron often responds to several unrelated concepts.
+- [physics sense] In quantum mechanics, superposition means a system can be in a combination of states at once.
+
+sparse autoencoder
+- [basic definition] A sparse autoencoder learns to rewrite model activations as a sparse combination of many, hopefully interpretable, features.
+- [research use] We trained a sparse autoencoder on one layer and found features for concepts like legal language and code errors.
+- [known limitation] A sparse autoencoder doesn't reconstruct activations perfectly, so some of the model's computation goes unexplained.
+
+steering
+- [controlling behavior] Steering means nudging a model's behavior at inference time, through prompts or by editing internal activations.
+- [team meeting] Can we use steering to make the tone more formal without fine-tuning?
+- [everyday: committee] The steering committee meets monthly to approve AI projects.
+
+activation steering
+- [basic technique] Activation steering adds a vector to the model's hidden states to push its outputs toward a concept or behavior.
+- [main appeal] Activation steering can strengthen or suppress a behavior without any retraining.
+- [practical caution] Too much activation steering degrades fluency, so we tune the vector's scale carefully.
+
+model organism
+- [ai safety sense] A model organism of misalignment is a model deliberately trained to show a failure, so researchers can study it safely.
+- [research use] We built a model organism with a hidden backdoor to test whether our detection tools could find it.
+- [biology sense] Fruit flies and mice are model organisms because they're easy to study and share much of their biology with humans.
+
+adversarial example
+- [basic definition] An adversarial example is an input with tiny, deliberate changes that cause the model to make a mistake.
+- [classic image case] Adding imperceptible noise produced an adversarial example that the classifier confidently mislabeled.
+- [physical world] Researchers have demonstrated physical adversarial examples, like stickers that fool traffic-sign classifiers.
+
+adversarial attack
+- [basic definition] An adversarial attack deliberately crafts inputs to make a model fail.
+- [white-box setting] In a white-box adversarial attack, the attacker has full access to the model's gradients.
+- [language models] A jailbreak is one kind of adversarial attack on a language model.
+
+adversarial robustness
+- [basic definition] Adversarial robustness is a model's ability to keep working when inputs are deliberately manipulated.
+- [known trade-off] Adversarial training improves adversarial robustness but often costs some clean accuracy.
+- [paper writing] We report adversarial robustness under bounded perturbations of increasing size.
+
+data poisoning
+- [the attack] Data poisoning plants malicious examples in training data to corrupt the model or create a backdoor.
+- [pretraining risk] Since we scrape public web data, data poisoning is a real concern for our pretraining corpus.
+- [first defense] Data provenance checks are our first line of defense against data poisoning.
+
+model extraction
+- [the attack] Model extraction means querying a model many times to build a copy that mimics its behavior.
+- [possible defenses] Rate limits and query monitoring make model extraction slower and more expensive.
+- [business risk] Model extraction threatens a provider's investment, since a rough copy might cost far less than the original training.
+
+membership inference
+- [the attack] A membership inference attack tries to determine whether a specific record was in the training data.
+- [overfitting link] Overfit models are more vulnerable to membership inference because they behave differently on training examples.
+- [privacy defense] Differential privacy limits how much membership inference can reveal.
+
+existential risk
+- [basic definition] Existential risk refers to threats that could cause human extinction or permanently curtail humanity's future.
+- [ongoing debate] Some researchers argue advanced AI poses an existential risk; others think the concern distracts from present harms.
+- [broader context] Pandemics, nuclear war, and asteroid impacts are also studied as sources of existential risk.
+
+x-risk
+- [informal shorthand] In safety circles, "x-risk" is shorthand for existential risk.
+- [ongoing debate] The x-risk debate often divides people who otherwise agree on near-term AI policy.
+- [casual conversation] She works on x-risk, mostly on how to evaluate advanced models before release.
+
+catastrophic risk
+- [basic definition] Catastrophic risk covers events that could cause massive harm, such as large-scale loss of life, even short of extinction.
+- [policy frameworks] Some safety frameworks require extra safeguards once a model could meaningfully increase catastrophic risk.
+- [commonly cited areas] Biological weapons and attacks on critical infrastructure are frequently cited catastrophic risk areas.
+
+AI risk
+- [broad term] AI risk covers everything from biased hiring tools to deliberate misuse and loss of control.
+- [explaining to an executive] Our board wants an AI risk register, like the one we keep for cybersecurity.
+- [public debate] Public discussions of AI risk often mix very different concerns, so it helps to be specific.
+
+dual-use
+- [basic definition] A dual-use technology can serve both beneficial and harmful purposes.
+- [concrete example] Protein design models are dual-use: they could speed up drug discovery or be misused.
+- [policy discussion] Dual-use concerns are why some model capabilities are tested before public release.
+
+misuse
+- [noun: harmful use] Misuse means people deliberately using AI to cause harm, such as for fraud or harassment.
+- [verb: use wrongly] The terms of service prohibit attempts to misuse the API for spam.
+- [contrast with accidents] Safety teams separate misuse by bad actors from accidents caused by the system itself.
+
+refusal
+- [model behavior] A refusal is when the model declines a request, ideally with a brief explanation and a safer alternative.
+- [measuring refusals] We track refusal rates on harmful prompts and on harmless ones that look similar.
+- [everyday: saying no] His refusal to compromise stalled the negotiations.
+
+over-refusal
+- [basic definition] Over-refusal is when a model declines harmless requests because they superficially resemble harmful ones.
+- [classic example] Refusing to explain how to kill a Python process is a classic over-refusal.
+- [balancing safety] Tightening safety filters without measuring over-refusal just makes the product annoying.
+
+harmlessness
+- [training goal] Harmlessness means the model avoids producing content that could cause harm.
+- [tension with helpfulness] Pushing too hard on harmlessness can reduce helpfulness, so we measure both.
+- [paper writing] We train for helpfulness and harmlessness using separate preference datasets.
+
+helpfulness
+- [training goal] Helpfulness means actually solving the user's problem, not just giving a polite answer.
+- [rating scale] Raters scored helpfulness on a five-point scale.
+- [everyday: service] I appreciated the helpfulness of the hotel staff.
+
+honesty
+- [ai sense] For an AI system, honesty means asserting only what it believes is true and being upfront about uncertainty.
+- [evaluating honesty] Our honesty evals check whether the model admits when it doesn't know.
+- [everyday: candor] I appreciate your honesty about the delays.
+
+robust
+- [model property] The model is robust to typos but not to questions in other languages.
+- [statistics sense] The median is more robust to outliers than the mean.
+- [software sense] We need a robust retry policy for failed API calls.
+- [everyday: vigorous] We had a robust discussion about the roadmap.
+
+safety case
+- [basic definition] A safety case is a structured argument, backed by evidence, that a system is acceptably safe for a specific use.
+- [industry origin] Safety cases come from industries like aviation and nuclear power.
+- [team meeting] Before deployment, we need a safety case explaining why the agent can't take irreversible actions.
+
+responsible scaling
+- [basic concept] Responsible scaling ties increases in model capability to stronger safeguards at each level.
+- [policy commitments] Responsible scaling policies commit developers to add protections, or pause, if evaluations cross certain thresholds.
+- [ongoing debate] Critics ask whether voluntary responsible scaling commitments are enough without outside enforcement.
+
+responsible AI
+- [broad practice] Responsible AI covers fairness, privacy, transparency, and accountability throughout the model lifecycle.
+- [internal review] The responsible AI review flagged that we never tested the model with non-native English speakers.
+- [known critique] Responsible AI principles are easy to publish; the hard part is turning them into engineering practice.
+
+AI ethics
+- [field of study] AI ethics examines the moral questions raised by AI, such as fairness, privacy, and responsibility.
+- [organizational body] Our AI ethics board reviews any project that uses biometric data.
+- [training requirement] A course on AI ethics is now required for every data scientist on the team.
+
+algorithmic bias
+- [basic definition] Algorithmic bias is when a system produces systematically unfair outcomes for certain groups.
+- [common cause] Algorithmic bias often comes from historical data that reflects past discrimination.
+- [audit finding] The audit found algorithmic bias in the resume screener against applicants with employment gaps.
+
+fairness
+- [machine learning sense] Common fairness criteria, like demographic parity and equalized odds, generally can't all be satisfied at once.
+- [team meeting] Let's report fairness results by age group and region, not just overall accuracy.
+- [everyday: justice] Everyone praised the fairness of how the bonuses were decided.
+
+algorithmic fairness
+- [field of study] Algorithmic fairness studies how to define, measure, and achieve fairness in automated decisions.
+- [value choices] Algorithmic fairness involves value choices, not just math, because different definitions conflict.
+- [paper writing] We evaluate algorithmic fairness using equalized odds across protected groups.
+
+disparate impact
+- [legal concept] Disparate impact is when a seemingly neutral practice disproportionately harms a protected group.
+- [rule of thumb] In U.S. hiring, the four-fifths rule is a common rule of thumb for flagging disparate impact.
+- [proxy features] Even without race as a feature, the model could have disparate impact through proxies like ZIP code.
+
+discrimination
+- [unfair treatment] Using proxies for protected attributes can lead to discrimination even without any intent.
+- [statistical sense] In risk modeling, discrimination means how well the model separates positives from negatives, often measured by AUC.
+- [legal context] Anti-discrimination law generally applies to automated decisions just as it does to human ones.
+
+transparency
+- [disclosure to users] Transparency means telling users when they're interacting with AI and how it's being used.
+- [about training data] Transparency about training data helps outside researchers assess the risks.
+- [everyday: openness] Management promised more transparency about the reorganization.
+
+accountability
+- [clear responsibility] Accountability means someone is clearly responsible when the system causes harm.
+- [design practice] We assign a named owner to each production model so there's clear accountability.
+- [everyday: workplace] The new manager brought more accountability to the team.
+
+auditability
+- [basic definition] Auditability means an external reviewer can trace how and why the system made a decision.
+- [logging practice] We log every input, model version, and output to ensure auditability.
+- [regulated industries] Auditability is a common requirement for AI used in finance and healthcare.
+
+algorithmic accountability
+- [basic concept] Algorithmic accountability holds organizations responsible for the effects of their automated decisions.
+- [policy proposals] Proposed algorithmic accountability rules would require impact assessments for high-stakes systems.
+- [investigative journalism] Reporters covering algorithmic accountability investigate how automated systems affect people's lives.
+
+privacy
+- [data handling] Privacy concerns stop us from sending patient records to an external API.
+- [model memorization] Large models can memorize parts of their training data, which creates privacy risks.
+- [everyday: personal matters] Please respect my privacy; I'd rather not discuss my salary.
+
+differential privacy
+- [basic definition] Differential privacy adds calibrated noise so the output barely changes whether or not any one person's data is included.
+- [private training] We trained with differential privacy, clipping per-example gradients and adding noise.
+- [privacy-utility trade-off] Stronger differential privacy, meaning a smaller epsilon, usually costs some accuracy.
+
+data protection
+- [legal framework] Data protection laws restrict how personal data can be collected, stored, and used.
+- [organizational role] Our data protection officer must approve any new use of customer data for training.
+- [good practice] Good data protection includes encryption, access controls, and deleting data you no longer need.
+
+consent
+- [data for training] Did users give consent for their chats to be used for training?
+- [design principle] Consent should be specific and easy to withdraw, not buried in the terms of service.
+- [everyday: medical] The patient signed a consent form before surgery.
+
+surveillance
+- [civil liberties concern] Critics worry that facial recognition makes mass surveillance cheap and easy.
+- [workplace monitoring] AI-powered workplace surveillance raises questions about employee trust and privacy.
+- [public health sense] Public health surveillance tracks disease outbreaks across hospitals and regions.
+
+automation bias
+- [basic definition] Automation bias is the tendency to trust an automated system's output over one's own judgment, even when it's wrong.
+- [risk in review] Automation bias means reviewers may approve the model's suggestions without checking them carefully.
+- [reducing automation bias] To reduce automation bias, some teams ask reviewers to decide before showing them the AI's recommendation.
+
+job displacement
+- [basic concept] Job displacement happens when automation eliminates or shrinks certain roles.
+- [economic debate] Economists disagree about how much job displacement AI will cause versus how many new roles it will create.
+- [policy response] Retraining programs are one common response to job displacement.
+
+labor displacement
+- [economics term] Labor displacement refers to automation taking over tasks that workers used to do.
+- [research approach] Studies of labor displacement increasingly look at specific tasks rather than whole occupations.
+- [policy proposals] Labor displacement concerns are behind proposals for wage insurance and retraining.
+
+digital divide
+- [basic definition] The digital divide is the gap between people who have access to technology and the skills to use it, and those who don't.
+- [ai angle] If AI tools mostly support a few languages, they could widen the digital divide.
+- [policy response] Broadband subsidies aim to narrow the digital divide in rural areas.
+
+AI governance
+- [organizational sense] AI governance covers the policies, roles, and processes for approving and monitoring AI systems.
+- [internal framework] Under our AI governance framework, high-impact models need sign-off from legal and risk.
+- [international sense] International AI governance discussions focus on safety standards and cross-border cooperation.
+
+AI regulation
+- [policy landscape] AI regulation varies widely; some jurisdictions pass broad laws, while others rely on sector-specific rules.
+- [ongoing debate] Supporters say AI regulation builds trust; critics worry it could slow innovation.
+- [team practice] We track AI regulation in every market where we launch.
+
+AI policy
+- [field of work] AI policy covers how governments and organizations shape the development and use of AI.
+- [career path] She moved from research into AI policy, advising lawmakers on technical questions.
+- [company rules] Our internal AI policy bans entering customer data into unapproved tools.
+
+risk-based regulation
+- [basic definition] Risk-based regulation classifies AI systems by risk level and sets stricter rules for higher-risk uses.
+- [concrete illustration] Under risk-based regulation, a spam filter faces few rules, while a hiring tool faces many.
+- [ongoing debate] Risk-based regulation is flexible, but deciding what counts as high-risk is contentious.
+
+high-risk system
+- [basic definition] A high-risk system is one whose failures could seriously affect people's health, safety, or fundamental rights.
+- [compliance obligations] If our tool counts as a high-risk system, we'll need documentation, testing, and human oversight.
+- [typical examples] AI used in hiring or credit scoring is often treated as a high-risk system.
+
+compliance
+- [regulatory function] Compliance needs to sign off on how we store the training data.
+- [process design] Building compliance into the pipeline is cheaper than retrofitting it right before an audit.
+- [model behavior sense] In safety evals, compliance means the model went along with the request; on harmful prompts, we want low compliance.
+
+model governance
+- [basic definition] Model governance covers how models are approved, documented, monitored, and retired.
+- [banking practice] Banks have long had model governance requirements for credit and risk models.
+- [team meeting] Good model governance means we can say exactly which model version made each decision.
+
+AI literacy
+- [basic definition] AI literacy is a basic understanding of what AI can and can't do, and how to use it critically.
+- [company training] We're rolling out AI literacy training so everyone knows the tool can make mistakes.
+- [policy trend] Some regulations now expect organizations to ensure AI literacy among staff who use AI systems.
+
+trustworthy AI
+- [common definition] Trustworthy AI is often described as lawful, ethical, and technically robust.
+- [critical view] "Trustworthy AI" is a goal; trust has to be earned through evidence, not slogans.
+- [team checklist] Our trustworthy AI checklist covers fairness, privacy, security, and explainability.
+
+human-centered AI
+- [basic concept] Human-centered AI designs systems around people's needs, abilities, and values rather than automation for its own sake.
+- [design example] A human-centered AI approach would involve nurses in designing the alert system.
+- [research area] Human-centered AI research studies how people actually interact with and rely on AI tools.
+
+explainability requirement
+- [regulatory sense] Under the explainability requirement, we must give applicants specific reasons when the model declines their loan.
+- [design consequence] The explainability requirement ruled out the deep ensemble, so we used a scorecard model.
+- [team meeting] Check whether the explainability requirement applies to internal tools or only to customer-facing decisions.
+
+copyright
+- [training data question] Whether training on copyrighted material is lawful is being argued in courts in several countries.
+- [generated outputs] In the U.S., copyright generally requires human authorship, so purely AI-generated content may not be protected.
+- [everyday: permission] The photo is under copyright, so we need permission to use it.
+
+fair use
+- [legal doctrine] Fair use is a U.S. legal doctrine that allows limited use of copyrighted material without permission.
+- [ongoing debate] Many developers argue that training is fair use, while many creators argue it isn't.
+- [legal factors] Courts weigh fair use factors such as the purpose of the use, the amount used, and the effect on the market.
+
+training data
+- [basic definition] Training data is the set of examples a model learns from.
+- [data quality] Cleaning the training data improved results more than any architecture change.
+- [policy discussion] Disclosure of training data sources is a recurring theme in AI regulation debates.
+
+data provenance
+- [basic definition] Data provenance tracks where each piece of data came from and how it was processed.
+- [legal protection] Good data provenance lets us show we had the rights to use every dataset.
+- [debugging data issues] Without data provenance, we couldn't tell which scrape introduced the duplicates.
+
+intellectual property
+- [company assets] The model weights and our training recipes are our most valuable intellectual property.
+- [legal debate] Generative AI raises new intellectual property questions about both training inputs and outputs.
+- [contract terms] The contract specifies who owns the intellectual property in fine-tuned models.
+
+open source
+- [software sense] Most of our ML tooling is open source, so we can inspect and modify the code.
+- [applied to models] Whether a model counts as open source depends on its license and on how much code and data detail is shared.
+- [policy debate] Advocates say open source AI enables scrutiny; critics worry it makes misuse harder to control.
+
+compute governance
+- [basic concept] Compute governance uses access to advanced chips and large-scale computing as a lever for overseeing AI development.
+- [policy mechanism] Reporting thresholds based on training compute are one tool of compute governance.
+- [ongoing debate] Supporters of compute governance say compute is measurable and hard to hide; critics note that efficiency gains can make fixed thresholds outdated.
+
+export controls
+- [basic definition] Export controls restrict the sale of certain technologies, such as advanced chips, to other countries.
+- [business impact] Export controls affect which GPUs we can ship to some overseas data centers.
+- [policy debate] Export controls on AI hardware are debated as a security measure versus a drag on trade and research.
+
+GPU
+- [hardware basics] A GPU has thousands of cores that do math in parallel, which makes it ideal for deep learning.
+- [team meeting] We're GPU-constrained this quarter, so prioritize the experiments that matter most.
+- [gaming origin] GPUs were originally designed to render graphics for video games.
+
+TPU
+- [hardware basics] A TPU is a custom chip designed specifically for the tensor operations used in neural networks.
+- [porting effort] Porting the training code to TPUs required changes to how we handled data loading.
+- [vendor consideration] TPUs are mainly available through one cloud provider, so choosing them is also a vendor decision.
+
+accelerator
+- [specialized hardware] An accelerator is any specialized chip, like a GPU, that speeds up particular computations.
+- [cluster scheduling] Our cluster mixes accelerator types, which complicates scheduling.
+- [startup program] The startup joined an accelerator that offered seed funding and mentorship.
+- [everyday: car pedal] Press the accelerator gently on icy roads.
+
+AI accelerator
+- [basic definition] An AI accelerator is a chip optimized for neural network workloads, especially matrix multiplication.
+- [industry trend] Many companies are designing their own AI accelerator chips to reduce dependence on a single supplier.
+- [edge devices] The phone includes a small AI accelerator for on-device photo processing.
+
+data center
+- [the facility] A data center houses thousands of servers, along with the power and cooling they need.
+- [energy demand] AI training is driving rapid growth in demand for data center power capacity.
+- [data residency] Which data center region are we deploying to? The client needs the data to stay in Europe.
+
+cluster
+- [compute cluster] We reserved a cluster of 256 GPUs for the training run.
+- [unsupervised learning] K-means put these customers into one cluster based on their purchase patterns.
+- [everyday: group] A cluster of reporters gathered outside the building.
+
+distributed training
+- [basic definition] Distributed training spreads the work of training a model across many devices or machines.
+- [main bottleneck] Communication between nodes is often the main bottleneck in distributed training.
+- [team meeting] Distributed training is overkill for this model; it fits on one GPU.
+
+data parallelism
+- [basic definition] In data parallelism, each GPU holds a full copy of the model and processes a different slice of the batch.
+- [gradient synchronization] Data parallelism requires averaging gradients across GPUs after each step.
+- [memory limitation] Plain data parallelism won't help if the model doesn't fit in one GPU's memory.
+
+model parallelism
+- [basic definition] Model parallelism splits the model itself across devices when it's too big for one.
+- [two main types] Tensor parallelism and pipeline parallelism are both forms of model parallelism.
+- [communication trade-off] Model parallelism adds communication overhead, so we use it only for the biggest models.
+
+tensor
+- [data structure] In deep learning, a tensor is a multidimensional array, like a batch of images.
+- [shape debugging] The tensor shapes didn't match, so the matrix multiplication failed.
+- [mathematical sense] In mathematics and physics, a tensor has a stricter definition involving how it transforms under coordinate changes.
+
+tensor core
+- [hardware unit] A tensor core is a specialized GPU unit that performs small matrix multiply-accumulate operations very fast.
+- [precision formats] Tensor cores deliver their biggest speedups with lower-precision formats like FP16 or BF16.
+- [performance debugging] Our kernel wasn't using the tensor cores at all, which explained the poor throughput.
+
+matrix multiplication
+- [core operation] Most of a transformer's compute goes into matrix multiplication.
+- [why gpus help] GPUs excel at matrix multiplication because the work splits into many independent pieces that run in parallel.
+- [explaining to a friend] Matrix multiplication combines rows and columns of numbers; a model does billions of multiply-add steps for every word it writes.
+
+floating point
+- [number format] Floating point numbers trade exactness for range, which can cause small rounding errors.
+- [memory savings] Storing weights in 16-bit floating point halves memory compared with 32-bit.
+- [debugging nondeterminism] Floating point nondeterminism on GPUs explains why identical runs gave slightly different results.
+
+mixed precision
+- [basic technique] Mixed precision training does most computation in 16-bit while keeping a 32-bit master copy of the weights.
+- [loss scaling] With FP16 mixed precision, loss scaling keeps small gradients from underflowing to zero.
+- [team meeting] Turning on mixed precision nearly doubled our training speed with no loss in accuracy.
+
+memory bandwidth
+- [basic definition] Memory bandwidth is how fast data moves between GPU memory and the compute units.
+- [decoding bottleneck] Token-by-token generation is usually limited by memory bandwidth, not raw compute.
+- [hardware choice] For inference, memory bandwidth often matters more than peak FLOPS.
+
+on-device AI
+- [basic definition] On-device AI runs models directly on phones or laptops instead of in the cloud.
+- [privacy benefit] On-device AI keeps personal data local and works without an internet connection.
+- [hardware constraint] On-device AI forces us to use small, quantized models because of memory and battery limits.
+
+edge AI
+- [basic definition] Edge AI runs inference close to where data is created, like on cameras, sensors, or factory equipment.
+- [latency benefit] Edge AI avoids round trips to the cloud, which matters for real-time control.
+- [operations challenge] The edge AI deployment needs a plan for updating models on thousands of devices.
+
+cloud inference
+- [basic definition] With cloud inference, the model runs on a provider's servers and the app sends requests over the network.
+- [access trade-off] Cloud inference gives us access to bigger models but adds latency and data-sharing concerns.
+- [cost model] Cloud inference costs scale with usage, so heavy workloads can get expensive.
+
+serving
+- [running models in production] Serving a 70-billion-parameter model takes several GPUs and careful batching.
+- [serving infrastructure] Our serving stack handles autoscaling, batching, and request routing.
+- [everyday: food portion] One serving of pasta is smaller than most people think.
+
+model serving
+- [basic definition] Model serving is the infrastructure that hosts a trained model and answers prediction requests in production.
+- [cost shift] For us, model serving now costs more than training.
+- [design review] The model serving layer should support rolling back to the previous version within minutes.
+
+API
+- [programming interface] The API takes a JSON request and returns the model's response.
+- [team meeting] Are we calling the API directly or going through our internal gateway?
+- [business model] Selling access through an API lets customers build on our models without ever seeing the weights.
+
+endpoint
+- [api address] Each model version gets its own endpoint, so clients can pin a specific version.
+- [deployment behavior] The inference endpoint scales to zero when there's no traffic.
+- [clinical trials sense] The trial's primary endpoint was overall survival.
+- [security sense] Every endpoint, including employee laptops, needs the security agent installed.
+
+rate limit
+- [api constraint] We hit the rate limit during the batch job, so add retries with exponential backoff.
+- [abuse protection] A rate limit protects the service from abuse and keeps costs predictable.
+- [team meeting] Can we get the rate limit raised before the launch?
+
+token budget
+- [cost cap] Each request has a token budget of four thousand, including the retrieved context.
+- [reasoning budget] Raising the token budget for thinking improved accuracy on the hardest problems.
+- [agent stopping rule] The agent stops when it runs out of its token budget, even if the task isn't finished.
+
+MLOps
+- [basic definition] MLOps applies DevOps practices to machine learning: versioning, automated testing, deployment, and monitoring.
+- [team ownership] Our MLOps team owns the training pipelines and the model registry.
+- [operational maturity] Without MLOps, every model update is a manual, risky process.
+
+model registry
+- [basic definition] A model registry stores versioned models with their metadata, metrics, and approval status.
+- [deployment gate] Only models marked "approved" in the model registry can be deployed to production.
+- [team meeting] Register the new checkpoint in the model registry with its eval results attached.
+
+pipeline
+- [training pipeline] The training pipeline pulls data, cleans it, trains, evaluates, and registers the model.
+- [inference pipeline] Our RAG pipeline has three stages: retrieve, rerank, and generate.
+- [pipeline parallelism] Pipeline parallelism splits the model's layers across GPUs in sequential stages.
+- [everyday: sales] The sales pipeline looks strong for next quarter.
+
+deployment
+- [releasing a model] The deployment went smoothly, and the new model now serves all traffic.
+- [canary strategy] We use canary deployment: a small share of traffic goes to the new model first.
+- [context of use] Deployment context matters; the same model can be low risk in one product and high risk in another.
+- [everyday: military] Her deployment overseas lasted nine months.
+
+monitoring
+- [production health] Monitoring tracks latency, error rates, and output quality once the model is live.
+- [safety monitoring] We use automated monitoring to flag possible misuse in API traffic.
+- [team meeting] Monitoring caught a spike in refusals right after the prompt change.
+
+observability
+- [basic definition] Observability means you can understand a system's internal state from its logs, metrics, and traces.
+- [llm applications] For LLM apps, observability includes logging prompts, tool calls, and token usage per request.
+- [incident postmortem] We lacked observability, so it took two days to find which step of the agent failed.
+
+drift detection
+- [basic definition] Drift detection flags when production inputs or predictions move away from what the model saw in training.
+- [statistical method] Our drift detection compares weekly feature distributions with the training set using a statistical test.
+- [response process] When drift detection fires, we investigate before retraining anything.
+
+retraining
+- [basic process] Retraining updates the model on fresh data so it keeps up with changing patterns.
+- [retraining schedule] Retraining happens monthly, or sooner if drift detection fires.
+- [regression risk] Retraining can introduce regressions, so the new model must pass the same evals as the old one.
+
+versioning
+- [models and data] Versioning models, data, and prompts together is the most reliable way to reproduce a past result.
+- [api versioning] API versioning lets clients upgrade on their own schedule.
+- [team meeting] Our prompt versioning was a mess; nobody knew which prompt was in production.
+
+reproducibility
+- [research standard] Reproducibility means another team can get the same results using the same code, data, and settings.
+- [practical limits] Fixed seeds help reproducibility, but GPU nondeterminism can still cause small differences.
+- [field-wide problem] Missing details on data and hyperparameters have hurt reproducibility in many ML papers.

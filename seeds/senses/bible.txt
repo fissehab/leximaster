@@ -1,0 +1,3 @@
+# Bible senses shown first ("In the Bible: ...") for words whose first
+# dictionary sense is another subject's. Format: entry | part of speech | meaning
+Adam | proper noun | the first man, created by God in Genesis; husband of Eve and father of Cain, Abel and Seth.
