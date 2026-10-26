@@ -10,7 +10,8 @@ Why it exists, in the words of its author:
 
 > I'm Fisseha, a non-native English speaker working in data science and AI, with a background in civil
 > engineering, environmental science (MS, University of Connecticut) and atmospheric physics (MS and
-> PhD, Johns Hopkins University), and a deep interest in philosophy, theology and Christian mysticism.
+> PhD, Johns Hopkins University). I also hold a master's in theology from Agora University, where I'm
+> pursuing a ThD, and have a deep interest in philosophy and Christian mysticism.
 > I built LexiMaster to spend a few minutes a day keeping the words and ideas I care about in active
 > memory, ready for professional work, philosophical and theological dialogue, and everyday
 > conversation.
