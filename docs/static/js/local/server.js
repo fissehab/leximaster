@@ -62,8 +62,9 @@ class HttpError extends Error {
 let db = null;
 let ready = null;
 const INDEX = new Map();     // id -> index entry (short field names, see tools/build_site.py)
-const DETAIL = new Map();    // id -> full data (meanings, nuance, examples, ...)
-const SHARDS = new Map();    // shard number -> Promise of {key: data}
+const CUSTOM = new Map();    // id -> full data of a word you added (never evicted)
+const SHARDS = new Map();    // shard number -> Promise of {key: data}, most recently used last
+const SHARDS_KEPT = 8;       // detail files kept in memory (about 0.7 MB each)
 const recordingUrls = new Map();
 
 function all(sql, params = []) {
@@ -126,21 +127,24 @@ async function boot() {
   });
 }
 
-// Detail data for a word: a shard file for dictionary words, memory for custom ones.
+// Detail data for a word: a shard file for dictionary words (the few most
+// recently used are kept in memory; the service worker keeps the files), or
+// memory for the words you added.
 async function detail(id) {
-  if (DETAIL.has(id)) return DETAIL.get(id);
+  if (CUSTOM.has(id)) return CUSTOM.get(id);
   const w = INDEX.get(id);
   if (!w) return {};
-  if (!SHARDS.has(w.s)) {
-    SHARDS.set(w.s, fetchJson(`data/detail/${String(w.s).padStart(2, "0")}.json`).catch(e => {
+  let shard = SHARDS.get(w.s);
+  if (shard) SHARDS.delete(w.s);   // re-inserted below as the most recent
+  else {
+    shard = fetchJson(`data/detail/${String(w.s).padStart(2, "0")}.json`).catch(e => {
       SHARDS.delete(w.s);
       throw e;
-    }));
+    });
   }
-  const shard = await SHARDS.get(w.s);
-  const data = shard[w.k] || {};
-  DETAIL.set(id, data);
-  return data;
+  SHARDS.set(w.s, shard);
+  while (SHARDS.size > SHARDS_KEPT) SHARDS.delete(SHARDS.keys().next().value);
+  return (await shard)[w.k] || {};
 }
 
 // --------------------------------------------------------------- persistence
@@ -211,7 +215,7 @@ function rebuild(state) {
     db.exec(`DELETE FROM ${t}`);
   }
   db.exec("DELETE FROM meta WHERE key LIKE 'wotd:%'");
-  for (const r of all("SELECT id FROM words WHERE is_custom=1")) DETAIL.delete(r.id);
+  for (const r of all("SELECT id FROM words WHERE is_custom=1")) CUSTOM.delete(r.id);
   db.exec("DELETE FROM words WHERE is_custom=1");
   for (const [k, v] of Object.entries(DEFAULT_SETTINGS)) run("INSERT INTO settings(key, value) VALUES (?, ?)", [k, v]);
   db.exec("COMMIT");
@@ -294,7 +298,7 @@ const audioUrl = file => file ? `media/${file}` : null;
 
 function compact(row) {
   const w = INDEX.get(row.id);
-  const d = w ? null : DETAIL.get(row.id) || {};   // custom words live in DETAIL
+  const d = w ? null : CUSTOM.get(row.id) || {};   // custom words live in CUSTOM
   const [corePos, def] = w ? [w.cp || "", w.df || ""] : coreDefinition(d);
   return {
     id: row.id, word: row.word,
@@ -578,7 +582,7 @@ async function addCustomWord(body) {
     throw new HttpError(404, "That list no longer exists.");
   }
   const { lastId } = run(`INSERT INTO words(key, word, domains, has_audio, enriched, is_custom) VALUES (?, ?, '["custom"]', 0, 0, 1)`, [key, word]);
-  DETAIL.set(lastId, data);
+  CUSTOM.set(lastId, data);
   if (body.notes) run("INSERT INTO user_word(word_id, notes) VALUES (?, ?)", [lastId, String(body.notes)]);
   if (body.list_id) run("INSERT OR IGNORE INTO list_words(list_id, word_id) VALUES (?, ?)", [body.list_id, lastId]);
   return full(fetchWord(lastId));
@@ -591,7 +595,7 @@ async function deleteCustomWord(id) {
   const key = get("SELECT key FROM words WHERE id=?", [id]).key;
   for (const t of ["user_word", "srs", "review_log", "list_words", "recordings"]) run(`DELETE FROM ${t} WHERE word_id=?`, [id]);
   run("DELETE FROM words WHERE id=?", [id]);
-  DETAIL.delete(id);
+  CUSTOM.delete(id);
   await idbDelete("recordings", key);
   const logKeys = (await idbEntries("state", "log:")).filter(([, r]) => r.key === key).map(([k]) => k);
   if (logKeys.length) await idbTx("state", "readwrite", s => logKeys.forEach(k => s.delete(k)));
@@ -800,7 +804,7 @@ function defsById(ids) {
   if (!ids.length) return out;
   for (const r of all(`SELECT id, word FROM words WHERE id IN (${ids.map(() => "?").join(",")})`, ids)) {
     const w = INDEX.get(r.id);
-    const [pos, d] = w ? [w.cp || "", w.df || ""] : coreDefinition(DETAIL.get(r.id) || {});
+    const [pos, d] = w ? [w.cp || "", w.df || ""] : coreDefinition(CUSTOM.get(r.id) || {});
     if (d) out.set(r.id, [r.word, pos, d]);
   }
   return out;
@@ -927,7 +931,7 @@ async function matching(q) {
       if (!sentences.length) continue;
       right = choice(sentences);
     } else {
-      const [, d] = INDEX.has(wid) ? [0, INDEX.get(wid).df] : coreDefinition(DETAIL.get(wid) || {});
+      const [, d] = INDEX.has(wid) ? [0, INDEX.get(wid).df] : coreDefinition(CUSTOM.get(wid) || {});
       if (!d) continue;
       right = mask(row.word, d);
     }
@@ -1101,7 +1105,7 @@ function exportProgress({ snapshot = false } = {}) {
     lists: all(`SELECT ${snapshot ? "id, " : ""}name, created_at FROM lists`),
     custom_words: all("SELECT id, key, word, domains FROM words WHERE is_custom=1")
       .map(r => ({ ...(snapshot ? { id: r.id } : {}), key: r.key, word: r.word, domains: r.domains,
-                   data: JSON.stringify(DETAIL.get(r.id) || {}) })),
+                   data: JSON.stringify(CUSTOM.get(r.id) || {}) })),
     test_session: all("SELECT ts, kind, score, total, duration_s FROM test_session"),
     daily_activity: all("SELECT * FROM daily_activity"),
     settings: settingsMap(),
@@ -1158,7 +1162,7 @@ function importProgress(data, { restore = false } = {}) {
       const { lastId } = keepId
         ? run("INSERT INTO words(id, key, word, domains, is_custom) VALUES (?, ?, ?, ?, 1)", [raw.id, cw.key, cw.word, cw.domains])
         : run("INSERT INTO words(key, word, domains, is_custom) VALUES (?, ?, ?, 1)", [cw.key, cw.word, cw.domains]);
-      DETAIL.set(keepId ? raw.id : lastId, cw.data);
+      CUSTOM.set(keepId ? raw.id : lastId, cw.data);
     }
     if (skipped) counts["damaged custom words skipped"] = skipped;
     const ids = new Map(all("SELECT id, key FROM words").map(r => [r.key, r.id]));
@@ -1251,10 +1255,15 @@ async function importFile(body) {
 // Fetch every detail file so the whole lexicon works offline.
 async function downloadForOffline() {
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
+  // Fetching each file is enough: the service worker stores it. Not parsing
+  // them keeps 46 MB of entries out of memory.
   const shards = [...new Set([...INDEX.values()].map(w => w.s))];
-  await Promise.all(shards.map(s => {
-    if (!SHARDS.has(s)) SHARDS.set(s, fetchJson(`data/detail/${String(s).padStart(2, "0")}.json`));
-    return SHARDS.get(s);
+  await Promise.all(shards.map(async s => {
+    const url = `data/detail/${String(s).padStart(2, "0")}.json`;
+    let res;
+    try { res = await fetch(url); } catch (e) { throw new HttpError(503, "The download stopped: check your connection and try again."); }
+    if (!res.ok) throw new HttpError(503, `Couldn't download ${url} (${res.status}).`);
+    await res.arrayBuffer();   // read to the end so the copy is complete
   }));
   return { ok: true, files: shards.length };
 }
