@@ -19,6 +19,5 @@ export async function render(root) {
         "definitions, real examples, and notes on how each word is actually used. It covers advanced and " +
         "professional vocabulary, data science and AI, mathematics, philosophy and theology, the Bible (with " +
         "Orthodox, Catholic and Protestant perspectives), and everyday American English."),
-      h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser."),
-      window.LEXI_STATIC ? h("p", h("a", { href: "credits.html" }, "Sources & credits")) : null));
+      h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser.")));
 }

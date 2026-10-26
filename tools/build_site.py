@@ -230,8 +230,9 @@ self.addEventListener("fetch", e => {{
   const path = url.pathname;
   if (path.includes("/media/")) {{ e.respondWith(cacheFirst(e.request, MEDIA)); return; }}
   if (path.includes("/data/detail/") || path.endsWith("/data/index.json")) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
-  if (e.request.mode === "navigate") {{
-    // The page comes from the same version's cache as its scripts.
+  if (e.request.mode === "navigate" && /\/(index\.html)?$/.test(path)) {{
+    // The app's page comes from the same version's cache as its scripts.
+    // Other pages (credits.html) load normally.
     e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));
     return;
   }}
