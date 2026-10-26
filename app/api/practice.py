@@ -11,8 +11,8 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from .. import db, srs
-from ..common import (EVERYDAY_DOMAINS, NAMES_ONLY_SQL, WORD_COLUMNS, WORD_FROM, blank_sentence,
-                      bump_activity, compact, core_definition, examples_for, fetch_word, full, pool_ids,
+from ..common import (BIBLE_TRACKS, EVERYDAY_DOMAINS, NAMES_ONLY_SQL, WORD_COLUMNS, WORD_FROM, blank_sentence,
+                      bump_activity, compact, core_definition, examples_for, fetch_word, full, is_base_form, pool_ids, quiz_synonyms,
                       today_iso, track_clause, weighted_sample)
 
 router = APIRouter(prefix="/api")
@@ -80,15 +80,20 @@ def review_queue(extra: int = 0, track: str = "", count: int = 0):
             "ORDER BY s.due_date ASC, COALESCE(u.stars, 0) ASC, s.ease ASC", (today_iso(),)).fetchall()
         used = 0.0
         queue = []
-        for r in due:
+        # A card made by a practice miss but never reviewed is still a new
+        # word: it takes one of the day's new-word places (ahead of words not
+        # seen at all) and waits for a later day when they are used up.
+        unseen = [r for r in due if r["reps"] == 0 and r["last_reviewed"] is None]
+        for r in (r for r in due if not (r["reps"] == 0 and r["last_reviewed"] is None)):
             if used + per_review > budget and queue:
                 break
-            # A card created by a quiz miss but never reviewed is still a new word.
-            queue.append((r, r["reps"] == 0 and r["last_reviewed"] is None))
+            queue.append((r, False))
             used += per_review
         remaining = max(0.0, budget - used)
         new_cap = max(0, int(st["new_per_day"]) - done_new) + max(0, extra)
         n_new = min(new_cap, int(remaining // NEW_CARD_SECONDS) + max(0, extra))
+        queue += [(r, True) for r in unseen[:max(0, n_new)]]
+        n_new -= min(len(unseen), max(0, n_new))
         if n_new > 0:
             if track:
                 new_rows = new_words(c, tr, n_new)
@@ -103,7 +108,7 @@ def review_queue(extra: int = 0, track: str = "", count: int = 0):
         if count:
             n_new_cards = sum(1 for _, is_new in queue if is_new)
             return {"total": len(queue), "due": len(queue) - n_new_cards, "new": n_new_cards,
-                    "due_total": len(due), "est_seconds": round(used + n_new * NEW_CARD_SECONDS) if queue else 0,
+                    "due_total": len(due), "est_seconds": round(used + n_new_cards * NEW_CARD_SECONDS) if queue else 0,
                     "done_today": {"reviews": done_reviews, "new": done_new,
                                    "seconds": act["seconds"] if act else 0}}
         return {
@@ -112,7 +117,7 @@ def review_queue(extra: int = 0, track: str = "", count: int = 0):
             "done_today": {"reviews": done_reviews, "new": done_new,
                            "seconds": act["seconds"] if act else 0},
             "target_seconds": budget,
-            "est_seconds": round(used + n_new * NEW_CARD_SECONDS) if queue else 0,
+            "est_seconds": round(used + sum(1 for _, is_new in queue if is_new) * NEW_CARD_SECONDS) if queue else 0,
         }
 
 
@@ -161,7 +166,7 @@ def record_answer(body: AnswerIn):
             misses_today = c.execute(
                 "SELECT COUNT(*) AS n FROM review_log WHERE word_id=? AND correct=0 AND mode != 'review' "
                 "AND date(ts) = date('now', 'localtime')", (body.word_id,)).fetchone()["n"]
-            srs.penalise_miss(c, body.word_id, first_miss_today=misses_today <= 1)
+            srs.penalise_miss(c, body.word_id, first_miss_today=misses_today <= 1, mode=body.mode)
     return {"ok": True}
 
 
@@ -228,20 +233,45 @@ def _mask(word: str, text: str) -> str:
     return re.sub(re.escape(word), "…", text, flags=re.I)
 
 
+def _option(word: str, definition: str) -> str:
+    """A definition as a quiz option: masked, and without a leading "In
+    statistics," that would mark the one subject word among everyday ones."""
+    text = re.sub(r"^In (?!an? )[A-Za-z' -]{1,40}, ", "", _mask(word, definition))  # not "In a clear, careful way"
+    return text[:1].upper() + text[1:]
+
+
+def _rights(data: dict, kind: str) -> list[str]:
+    """Correct answers for a synonym or antonym question. "Compared with"
+    words (nuance distinctions) are never a right synonym, even when a
+    dictionary lists them: the entry explains how they differ."""
+    nuance = data.get("nuance") or {}
+    out = list(data.get("synonyms" if kind == "synonym" else "antonyms") or [])
+    if kind == "antonym":
+        out = list(nuance.get("antonyms") or []) + out
+    for m in data.get("meanings") or []:
+        out += m.get("synonyms" if kind == "synonym" else "antonyms") or []
+    contrasted = {(d.get("vs") or "").lower() for d in nuance.get("distinctions") or []}
+    return [r for r in dict.fromkeys(out) if r and not (kind == "synonym" and r.lower() in contrasted)]
+
+
 @router.get("/quiz")
 def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym,name_kind",
               n: int = Query(10, ge=1, le=50), stars: str | None = None,
               list_id: int | None = None, domain: str | None = None):
     wanted = [t for t in types.split(",") if t in QUIZ_TYPES] or list(QUIZ_TYPES)
     with db.tx() as c:
-        pool = pool_ids(c, **parse_filters(stars, list_id, domain))
+        filters = parse_filters(stars, list_id, domain)
+        if wanted == ["name_kind"] and not list_id and domain not in BIBLE_TRACKS:
+            filters["domain"] = "bible_names"   # only names can be asked "who or what?"
+        pool = pool_ids(c, **filters)
         if len(pool) < 4:
             raise HTTPException(400, "Not enough words match these filters. Choose a wider set.")
         all_ids = [r["id"] for r in c.execute(
             f"SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT {NAMES_ONLY_SQL}")]
         if len(all_ids) < 50:  # dataset not enriched yet: draw distractors from every word
             all_ids = [r["id"] for r in c.execute("SELECT id FROM words")]
-        candidates = weighted_sample(c, list(pool), min(len(pool), n * 4))
+        # Fewer question types fit fewer words: look at more of them.
+        candidates = weighted_sample(c, list(pool), min(len(pool), n * (4 if len(wanted) > 2 else 10)))
         questions = []
         for wid in candidates:
             if len(questions) >= n:
@@ -252,12 +282,8 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
             word = row["word"]
             nuance = data.get("nuance") or {}
             name_kind = data.get("name_kind") or ""
-            if name_kind:
-                # A Bible name: "Who or what is it?", or person, place or people.
-                qtype = random.choice([t for t in ("name_kind", "word_meaning") if t in wanted] or ["word_meaning"])
-            else:
-                qtype = random.choice([t for t in wanted if t != "name_kind"] or ["word_meaning"])
-            everyday = [d for d in json.loads(row["domains"] or "[]") if d in EVERYDAY_DOMAINS]
+            domains = json.loads(row["domains"] or "[]")
+            everyday = [d for d in domains if d in EVERYDAY_DOMAINS]
             if name_kind:
                 everyday = ["bible_names"]  # names are told apart from other names
             if everyday:
@@ -279,53 +305,67 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
             others = sorted((v for v in dmap.values() if v[0].lower() != word.lower()
                              and not re.search(rf"\b{re.escape(v[0])}\b", v[2], re.I)),
                             key=lambda v: (len(v[0].split()) != n_words, v[1] != pos))
-            q = None
-            if qtype == "name_kind":
-                q = {"prompt": word, "ask": f"Who or what is {word}?", "answer": NAME_KINDS[name_kind],
-                     "options": list(NAME_KINDS.values())}
-            elif qtype == "word_meaning" and name_kind and definition and len(others) >= 3:
-                opts = [_mask(o[0], o[2]) for o in others[:3]] + [_mask(word, definition)]
-                q = {"prompt": word, "ask": f"Who or what is {word}?", "answer": _mask(word, definition),
-                     "options": opts}
-            elif qtype == "word_meaning" and definition and len(others) >= 3:
-                opts = [_mask(o[0], o[2]) for o in others[:3]] + [_mask(word, definition)]
-                q = {"prompt": word, "ask": "What does this word mean?", "answer": _mask(word, definition),
-                     "options": opts}
-            elif qtype == "meaning_word" and definition and len(others) >= 3:
-                opts = [o[0] for o in others[:3]] + [word]
-                q = {"prompt": _mask(word, definition), "ask": "Which word fits this meaning?",
-                     "answer": word, "options": opts}
-            elif qtype == "fill_blank":
-                sentences = [s for s in (blank_sentence(word, e) for e in examples_for(data)) if s]
-                if sentences and len(others) >= 3:
-                    opts = [o[0] for o in others[:3]] + [word]
-                    q = {"prompt": random.choice(sentences), "ask": "Fill in the blank.",
-                         "answer": word, "options": opts}
-            elif qtype in ("synonym", "antonym"):
-                if qtype == "synonym":
-                    rights = [d["vs"] for d in nuance.get("distinctions") or [] if d.get("vs")]
-                    rights += data.get("synonyms") or []
-                    for m in data.get("meanings") or []:
-                        rights += m.get("synonyms") or []
-                else:
-                    rights = list(nuance.get("antonyms") or []) + list(data.get("antonyms") or [])
-                    for m in data.get("meanings") or []:
-                        rights += m.get("antonyms") or []
-                rights = [r for r in dict.fromkeys(rights) if r and r.lower() != word.lower()]
-                wrongs = [o[0] for o in others if o[0] not in rights]
-                if rights and len(wrongs) >= 3:
+
+            def build(qtype):
+                if qtype == "name_kind":
+                    return {"prompt": word, "ask": f"Who or what is {word}?", "answer": NAME_KINDS[name_kind],
+                            "options": list(NAME_KINDS.values())}
+                if qtype == "word_meaning" and definition and len(others) >= 3:
+                    return {"prompt": word, "ask": f"Who or what is {word}?" if name_kind else "What does this word mean?",
+                            "answer": _option(word, definition),
+                            "options": [_option(o[0], o[2]) for o in others[:3]] + [_option(word, definition)]}
+                if qtype == "meaning_word" and definition and len(others) >= 3:
+                    return {"prompt": _mask(word, definition), "ask": "Which word fits this meaning?",
+                            "answer": word, "options": [o[0] for o in others[:3]] + [word]}
+                if qtype == "fill_blank" and len(others) >= 3:
+                    examples = examples_for(data)
+                    # Prefer sentences that use the word as the options show it.
+                    usable = [e for e in examples if is_base_form(word, e)] or examples
+                    sentences = [s for s in (blank_sentence(word, e) for e in usable) if s]
+                    if sentences:
+                        return {"prompt": random.choice(sentences), "ask": "Fill in the blank.",
+                                "answer": word, "options": [o[0] for o in others[:3]] + [word]}
+                if qtype in ("synonym", "antonym"):
+                    rights = [r for r in _rights(data, qtype) if r.lower() != word.lower()]
+                    if not rights:
+                        return None
                     right = random.choice(rights)
-                    q = {"prompt": word,
-                         "ask": "Which is closest in meaning?" if qtype == "synonym"
-                         else "Which is opposite in meaning?",
-                         "answer": right, "options": wrongs[:3] + [right]}
-            if q is None:  # fall back to the simplest question this word supports
-                if not definition or len(others) < 3:
-                    continue
-                qtype = "word_meaning"
-                opts = [_mask(o[0], o[2]) for o in others[:3]] + [_mask(word, definition)]
-                q = {"prompt": word, "ask": "What does this word mean?", "answer": _mask(word, definition),
-                     "options": opts}
+                    # Wrong options: other words' synonyms, so the answer isn't
+                    # the one plain word among headwords; never one of this
+                    # word's own synonyms or antonyms, and for antonyms never
+                    # from its own subject ("glad": sorry, disappointed…).
+                    own = {x.lower() for x in _rights(data, "synonym") + _rights(data, "antonym")} | {word.lower()}
+                    src = random.sample(all_ids, k=min(80, len(all_ids)))
+                    wrongs = []
+                    for r in c.execute(f"SELECT id, domains, data FROM words WHERE id IN ({','.join('?' * len(src))})", src):
+                        if qtype == "antonym" and set(json.loads(r["domains"] or "[]")) & set(domains):
+                            continue
+                        wrongs += [s for s in quiz_synonyms(json.loads(r["data"])) if s.lower() not in own]
+                    wrongs = list(dict.fromkeys(wrongs))
+                    random.shuffle(wrongs)
+                    wrongs.sort(key=lambda s: len(s.split()) != len(right.split()))
+                    if len(wrongs) >= 3:
+                        return {"prompt": word,
+                                "ask": "Which is closest in meaning?" if qtype == "synonym" else "Which is opposite in meaning?",
+                                "answer": right, "options": wrongs[:3] + [right]}
+                return None
+
+            # Only the chosen kinds of question. A Bible name is asked "who or
+            # what?" or "person, place or people?"; people get the second less
+            # often (two in five), or "A person" would be right two times in three.
+            kinds = random.sample(wanted, len(wanted))
+            if name_kind:
+                kinds = [k for k in kinds if k in ("name_kind", "word_meaning")
+                         and not (k == "name_kind" and name_kind == "person" and random.random() < 0.6)]
+            else:
+                kinds = [k for k in kinds if k != "name_kind"]
+            q, qtype = None, None
+            for qtype in kinds:
+                q = build(qtype)
+                if q:
+                    break
+            if not q:
+                continue
             random.shuffle(q["options"])
             examples = [e for e in examples_for(data)  # a name's "everyday" line is about a namesake
                         if not (name_kind and e == (nuance.get("examples") or {}).get("everyday"))]

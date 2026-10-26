@@ -334,18 +334,26 @@ function examplesFor(data) {
 }
 
 const escapeRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-function wordPattern(word) {
+// Endings an inflected form may add (app/common.py SUFFIX).
+const SUFFIX = "(?:e|es|ed|ing|er|ers|est|s|d|ly|y|ies|ied|ier|iest|ily)?";
+function wordPattern(word, flags = "i") {
   const parts = word.trim().split(/[\s-]+/);
   let stem = parts[parts.length - 1];
   if (stem.length > 4 && /e$/.test(stem)) stem = stem.slice(0, -1);
   if (stem.length > 4 && /y$/.test(stem)) stem = stem.slice(0, -1);
   const head = parts.slice(0, -1).map(escapeRe).join("[\\s-]+");
-  const body = (head ? head + "[\\s-]+" : "") + escapeRe(stem) + "[a-z]{0,4}";
-  return new RegExp(`\\b${body}\\b`, "i");
+  const body = (head ? head + "[\\s-]+" : "") + escapeRe(stem) + SUFFIX;
+  return new RegExp(`\\b${body}\\b`, flags);
 }
+// Every use of the word blanked; "a"/"an" before a blank written "a(n)".
 function blankSentence(word, sentence) {
+  const out = sentence.replace(wordPattern(word, "gi"), "_____");
+  return out === sentence ? null : out.replace(/\b([Aa])n? (?=_____)/g, "$1(n) ");
+}
+function isBaseForm(word, sentence) {
   const m = sentence.match(wordPattern(word));
-  return m ? sentence.slice(0, m.index) + "_____" + sentence.slice(m.index + m[0].length) : null;
+  const norm = s => s.replace(/[\s-]+/g, " ").toLowerCase();
+  return !!m && norm(m[0]) === norm(word.trim());
 }
 
 const pad = n => String(n).padStart(2, "0");
@@ -437,6 +445,14 @@ const MIN_EASE = 1.3;
 const STAR_INTERVAL_CAP = { 1: 4, 2: 7 };
 const STAR_START_EASE = { 0: 2.5, 1: 2.2, 2: 2.35, 3: 2.5, 4: 2.65, 5: 2.8 };
 
+const LAPSE_EASE = 0.2;
+// Python's round(): halves go to the even number, so both apps schedule alike.
+function roundHalfEven(x) {
+  const f = Math.floor(x);
+  if (x - f === 0.5) return f % 2 === 0 ? f : f + 1;   // same doubles as Python, so an exact test matches
+  return Math.round(x);
+}
+
 const getCard = id => get("SELECT * FROM srs WHERE word_id=?", [id]);
 const starsOf = id => (get("SELECT stars FROM user_word WHERE word_id=?", [id]) || { stars: 0 }).stars;
 
@@ -463,11 +479,12 @@ function schedule(card, grade, stars) {
     else if (reps === 1) interval = grade === 1 ? 3 : (grade === 2 ? 6 : 8);
     else {
       const factor = { 1: 1.2, 2: ease, 3: ease * 1.3 }[grade];
-      interval = Math.max(interval + 1, Math.round(interval * factor));
+      interval = Math.max(interval + 1, roundHalfEven(interval * factor));
     }
     reps += 1;
   }
-  ease = Math.max(MIN_EASE, ease + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
+  ease = q < 3 ? Math.max(MIN_EASE, ease - LAPSE_EASE)   // SM-2's own formula takes 0.54
+    : Math.max(MIN_EASE, ease + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
   const cap = STAR_INTERVAL_CAP[stars];
   if (cap) interval = Math.min(interval, cap);
   return { ease: Math.round(ease * 1000) / 1000, interval_days: interval, reps, lapses,
@@ -481,9 +498,10 @@ function review(id, grade) {
   return next;
 }
 
-function penaliseMiss(id, firstMissToday) {
+// Only a quiz miss (a wrong meaning) lowers ease (app/srs.py penalise_miss).
+function penaliseMiss(id, firstMissToday, mode = "quiz") {
   const card = ensureCard(id);
-  const ease = firstMissToday && card.reps ? Math.max(MIN_EASE, card.ease - 0.2) : card.ease;
+  const ease = firstMissToday && card.reps && mode === "quiz" ? Math.max(MIN_EASE, card.ease - 0.2) : card.ease;
   run("UPDATE srs SET due_date=?, ease=?, interval_days=MIN(interval_days, 1) WHERE word_id=?", [todayIso(), ease, id]);
 }
 
@@ -676,14 +694,20 @@ async function reviewQueue(q) {
                   "ORDER BY s.due_date ASC, COALESCE(u.stars, 0) ASC, s.ease ASC", [todayIso()]);
   let used = 0;
   const rows = [];
-  for (const r of due) {
+  // A card made by a practice miss but never reviewed is still a new word:
+  // it takes one of the day's new-word places (app/api/practice.py).
+  const isUnseen = r => r.reps === 0 && r.last_reviewed == null;
+  for (const r of due.filter(r => !isUnseen(r))) {
     if (used + perReview > budget && rows.length) break;
-    rows.push([r, r.reps === 0 && r.last_reviewed == null]);
+    rows.push([r, false]);
     used += perReview;
   }
   const remaining = Math.max(0, budget - used);
   const newCap = Math.max(0, Number(st.new_per_day) - (act ? act.new_words : 0)) + extra;
-  const nNew = Math.min(newCap, Math.floor(remaining / NEW_CARD_SECONDS) + extra);
+  let nNew = Math.min(newCap, Math.floor(remaining / NEW_CARD_SECONDS) + extra);
+  const unseen = due.filter(isUnseen).slice(0, Math.max(0, nNew));
+  for (const r of unseen) rows.push([r, true]);
+  nNew -= unseen.length;
   if (nNew > 0) {
     let fresh;
     if (track) fresh = newWords(tr, nNew);
@@ -703,7 +727,7 @@ async function reviewQueue(q) {
     // Only the numbers (Home, the nav badge): same selection, no card details.
     const nNewCards = rows.filter(([, isNew]) => isNew).length;
     return { total: rows.length, due: rows.length - nNewCards, new: nNewCards, due_total: due.length,
-             est_seconds: rows.length ? Math.round(used + Math.max(0, nNew) * NEW_CARD_SECONDS) : 0,
+             est_seconds: rows.length ? Math.round(used + nNewCards * NEW_CARD_SECONDS) : 0,
              done_today: { reviews: act ? act.reviews : 0, new: act ? act.new_words : 0, seconds: act ? act.seconds : 0 } };
   }
   const queue = await Promise.all(rows.map(async ([r, isNew]) => ({ ...(await full(r)), is_new: isNew })));
@@ -711,7 +735,7 @@ async function reviewQueue(q) {
     queue, due_total: due.length,
     done_today: { reviews: act ? act.reviews : 0, new: act ? act.new_words : 0, seconds: act ? act.seconds : 0 },
     target_seconds: budget,
-    est_seconds: queue.length ? Math.round(used + Math.max(0, nNew) * NEW_CARD_SECONDS) : 0,
+    est_seconds: queue.length ? Math.round(used + queue.filter(c => c.is_new).length * NEW_CARD_SECONDS) : 0,
   };
 }
 
@@ -735,7 +759,7 @@ function recordAnswer(body) {
   if (!body.correct) {
     const n = get("SELECT COUNT(*) AS n FROM review_log WHERE word_id=? AND correct=0 AND mode != 'review' " +
                   "AND date(ts) = date('now', 'localtime')", [id]).n;
-    penaliseMiss(id, n <= 1);
+    penaliseMiss(id, n <= 1, body.mode);
   }
   return { ok: true };
 }
@@ -751,6 +775,20 @@ async function flashcards(q) {
 const QUIZ_TYPES = ["word_meaning", "meaning_word", "fill_blank", "synonym", "antonym", "name_kind"];
 const NAME_KINDS = { person: "A person", place: "A place", people: "A people or nation" };
 const mask = (word, text) => text.replace(new RegExp(escapeRe(word), "gi"), "…");
+// A definition as a quiz option: masked, without a leading "In statistics,".
+function option(word, definition) {
+  const text = mask(word, definition).replace(/^In (?!an? )[A-Za-z' -]{1,40}, /, "");   // not "In a clear, careful way"
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+// Right answers for a synonym or antonym question; "Compared with" words
+// (nuance distinctions) never count as synonyms, even when a dictionary lists them.
+function rightsFor(data, kind) {
+  const field = kind === "synonym" ? "synonyms" : "antonyms";
+  let out = [...(kind === "antonym" ? (data.nuance || {}).antonyms || [] : []), ...(data[field] || [])];
+  for (const m of data.meanings || []) out = out.concat(m[field] || []);
+  const contrasted = new Set(((data.nuance || {}).distinctions || []).map(d => (d.vs || "").toLowerCase()));
+  return [...new Set(out)].filter(r => r && !(kind === "synonym" && contrasted.has(r.toLowerCase())));
+}
 
 function defsById(ids) {
   const out = new Map();
@@ -764,15 +802,20 @@ function defsById(ids) {
 }
 
 async function makeQuiz(q) {
-  const wanted = (q.types || QUIZ_TYPES.join(",")).split(",").filter(t => QUIZ_TYPES.includes(t));
-  const types = wanted.length ? wanted : QUIZ_TYPES;
+  const asked = (q.types || QUIZ_TYPES.join(",")).split(",").filter(t => QUIZ_TYPES.includes(t));
+  const types = asked.length ? asked : QUIZ_TYPES;
   const n = Math.min(50, Math.max(1, Number(q.n) || 10));
-  const pool = poolIds(parseFilters(q));
+  const filters = parseFilters(q);
+  if (types.length === 1 && types[0] === "name_kind" && !filters.list_id && !BIBLE_TRACKS.includes(filters.domain)) {
+    filters.domain = "bible_names";   // only names can be asked "who or what?"
+  }
+  const pool = poolIds(filters);
   if (pool.length < 4) throw new HttpError(400, "Not enough words match these filters. Choose a wider set.");
   let allIds = all(`SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT ${NAMES_ONLY_SQL}`).map(r => r.id);
   if (allIds.length < 50) allIds = all("SELECT id FROM words").map(r => r.id);
   const questions = [];
-  const candidates = weightedSample(pool, Math.min(pool.length, n * 4));
+  // Fewer question types fit fewer words: look at more of them.
+  const candidates = weightedSample(pool, Math.min(pool.length, n * (types.length > 2 ? 4 : 10)));
   // Load the words' details together rather than one shard at a time.
   const details = new Map(await Promise.all(candidates.slice(0, n * 2).map(async id => [id, await detail(id)])));
   for (const wid of candidates) {
@@ -781,14 +824,9 @@ async function makeQuiz(q) {
     const data = details.get(wid) || await detail(wid);
     const [pos, definition] = INDEX.has(wid) ? [INDEX.get(wid).cp || "", INDEX.get(wid).df || ""] : coreDefinition(data);
     const word = row.word;
-    const nuance = data.nuance || {};
     const nameKind = INDEX.has(wid) ? INDEX.get(wid).nk || "" : "";
-    // A Bible name: "Who or what is it?", or person, place or people.
-    const forName = ["name_kind", "word_meaning"].filter(t => types.includes(t));
-    const forWord = types.filter(t => t !== "name_kind");
-    let qtype = nameKind ? choice(forName.length ? forName : ["word_meaning"]) : choice(forWord.length ? forWord : ["word_meaning"]);
-    const everyday = nameKind ? ["bible_names"]
-      : JSON.parse(row.domains || "[]").filter(d => EVERYDAY_DOMAINS.includes(d));
+    const domains = JSON.parse(row.domains || "[]");
+    const everyday = nameKind ? ["bible_names"] : domains.filter(d => EVERYDAY_DOMAINS.includes(d));
     const distractIds = everyday.length
       ? all("SELECT id FROM words w WHERE id != ? AND EXISTS (SELECT 1 FROM json_each(w.domains) " +
             `WHERE json_each.value IN (${everyday.map(() => "?").join(",")})) ORDER BY random() LIMIT 30`,
@@ -801,48 +839,62 @@ async function makeQuiz(q) {
       .filter(v => v[0].toLowerCase() !== word.toLowerCase() && !new RegExp(`\\b${escapeRe(v[0])}\\b`, "i").test(v[2]))
       .sort((a, b) => ((a[0].split(/\s+/).length !== nWords) - (b[0].split(/\s+/).length !== nWords)) ||
                       ((a[1] !== pos) - (b[1] !== pos)));
-    let qn = null;
-    if (qtype === "name_kind") {
-      qn = { prompt: word, ask: `Who or what is ${word}?`, answer: NAME_KINDS[nameKind],
-             options: Object.values(NAME_KINDS) };
-    } else if (qtype === "word_meaning" && nameKind && definition && others.length >= 3) {
-      qn = { prompt: word, ask: `Who or what is ${word}?`, answer: mask(word, definition),
-             options: [...others.slice(0, 3).map(o => mask(o[0], o[2])), mask(word, definition)] };
-    } else if (qtype === "word_meaning" && definition && others.length >= 3) {
-      qn = { prompt: word, ask: "What does this word mean?", answer: mask(word, definition),
-             options: [...others.slice(0, 3).map(o => mask(o[0], o[2])), mask(word, definition)] };
-    } else if (qtype === "meaning_word" && definition && others.length >= 3) {
-      qn = { prompt: mask(word, definition), ask: "Which word fits this meaning?", answer: word,
-             options: [...others.slice(0, 3).map(o => o[0]), word] };
-    } else if (qtype === "fill_blank") {
-      const sentences = examplesFor(data).map(e => blankSentence(word, e)).filter(Boolean);
-      if (sentences.length && others.length >= 3) {
-        qn = { prompt: choice(sentences), ask: "Fill in the blank.", answer: word,
-               options: [...others.slice(0, 3).map(o => o[0]), word] };
+    const build = qtype => {
+      if (qtype === "name_kind") {
+        return { prompt: word, ask: `Who or what is ${word}?`, answer: NAME_KINDS[nameKind], options: Object.values(NAME_KINDS) };
       }
-    } else if (qtype === "synonym" || qtype === "antonym") {
-      let rights;
-      if (qtype === "synonym") {
-        rights = (nuance.distinctions || []).map(d => d.vs).filter(Boolean).concat(data.synonyms || []);
-        for (const m of data.meanings || []) rights = rights.concat(m.synonyms || []);
-      } else {
-        rights = [...(nuance.antonyms || []), ...(data.antonyms || [])];
-        for (const m of data.meanings || []) rights = rights.concat(m.antonyms || []);
+      if (qtype === "word_meaning" && definition && others.length >= 3) {
+        return { prompt: word, ask: nameKind ? `Who or what is ${word}?` : "What does this word mean?",
+                 answer: option(word, definition),
+                 options: [...others.slice(0, 3).map(o => option(o[0], o[2])), option(word, definition)] };
       }
-      rights = [...new Set(rights)].filter(r => r && r.toLowerCase() !== word.toLowerCase());
-      const wrongs = others.map(o => o[0]).filter(o => !rights.includes(o));
-      if (rights.length && wrongs.length >= 3) {
+      if (qtype === "meaning_word" && definition && others.length >= 3) {
+        return { prompt: mask(word, definition), ask: "Which word fits this meaning?", answer: word,
+                 options: [...others.slice(0, 3).map(o => o[0]), word] };
+      }
+      if (qtype === "fill_blank" && others.length >= 3) {
+        const examples = examplesFor(data);
+        // Prefer sentences that use the word as the options show it.
+        const usable = examples.filter(e => isBaseForm(word, e));
+        const sentences = (usable.length ? usable : examples).map(e => blankSentence(word, e)).filter(Boolean);
+        if (sentences.length) {
+          return { prompt: choice(sentences), ask: "Fill in the blank.", answer: word,
+                   options: [...others.slice(0, 3).map(o => o[0]), word] };
+        }
+      }
+      if (qtype === "synonym" || qtype === "antonym") {
+        const rights = rightsFor(data, qtype).filter(r => r.toLowerCase() !== word.toLowerCase());
+        if (!rights.length) return null;
         const right = choice(rights);
-        qn = { prompt: word, ask: qtype === "synonym" ? "Which is closest in meaning?" : "Which is opposite in meaning?",
-               answer: right, options: [...wrongs.slice(0, 3), right] };
+        // Wrong options: other words' synonyms; never this word's own
+        // synonyms or antonyms, and for antonyms never from its own subject.
+        const own = new Set([...rightsFor(data, "synonym"), ...rightsFor(data, "antonym"), word].map(s => s.toLowerCase()));
+        let wrongs = [];
+        for (const id of shuffle([...allIds]).slice(0, 80)) {
+          const e = INDEX.get(id);
+          if (!e || (qtype === "antonym" && (e.d || []).some(d => domains.includes(d)))) continue;
+          wrongs = wrongs.concat((e.sy || []).filter(s => !own.has(s.toLowerCase())));
+        }
+        wrongs = shuffle([...new Set(wrongs)]);
+        const size = right.split(/\s+/).length;
+        wrongs.sort((a, b) => (a.split(/\s+/).length !== size) - (b.split(/\s+/).length !== size));
+        if (wrongs.length >= 3) {
+          return { prompt: word, ask: qtype === "synonym" ? "Which is closest in meaning?" : "Which is opposite in meaning?",
+                   answer: right, options: [...wrongs.slice(0, 3), right] };
+        }
       }
-    }
-    if (!qn) {
-      if (!definition || others.length < 3) continue;
-      qtype = "word_meaning";
-      qn = { prompt: word, ask: "What does this word mean?", answer: mask(word, definition),
-             options: [...others.slice(0, 3).map(o => mask(o[0], o[2])), mask(word, definition)] };
-    }
+      return null;
+    };
+    // Only the chosen kinds of question. People are asked "person, place or
+    // people?" less often (two in five), or "A person" would be right two times in three.
+    let kinds = shuffle([...types]);
+    kinds = nameKind
+      ? kinds.filter(k => (k === "name_kind" || k === "word_meaning") &&
+                          !(k === "name_kind" && nameKind === "person" && Math.random() < 0.6))
+      : kinds.filter(k => k !== "name_kind");
+    let qn = null, qtype = null;
+    for (qtype of kinds) if ((qn = build(qtype))) break;
+    if (!qn) continue;
     shuffle(qn.options);
     const everydayEx = (data.nuance && data.nuance.examples || {}).everyday;
     // A name's "everyday" line is about a namesake.
@@ -954,6 +1006,8 @@ function streak() {
   return { current, best, today_done: active.has(todayIso()) };
 }
 
+const STUDIED = "FROM srs s LEFT JOIN user_word u ON u.word_id=s.word_id WHERE COALESCE(u.known,0)=0";
+
 function stats() {
   const one = sql => get(sql).n;
   const byDomain = new Map();
@@ -977,10 +1031,11 @@ function stats() {
       total: one("SELECT COUNT(*) AS n FROM words"),
       enriched: one("SELECT COUNT(*) AS n FROM words WHERE enriched=1"),
       with_audio: one("SELECT COUNT(*) AS n FROM words WHERE has_audio=1"),
-      mastered: get("SELECT COUNT(*) AS n FROM words w LEFT JOIN srs s ON s.word_id=w.id LEFT JOIN user_word u ON u.word_id=w.id " +
-                    "WHERE s.interval_days >= ? OR COALESCE(u.known,0)=1", [MASTERED_INTERVAL]).n,
-      learning: get("SELECT COUNT(*) AS n FROM srs WHERE interval_days < ?", [MASTERED_INTERVAL]).n,
-      due: get("SELECT COUNT(*) AS n FROM srs WHERE due_date <= ?", [todayIso()]).n,
+      // Words marked known are counted apart (app/api/stats.py).
+      mastered: get(`SELECT COUNT(*) AS n ${STUDIED} AND s.interval_days >= ?`, [MASTERED_INTERVAL]).n,
+      learning: get(`SELECT COUNT(*) AS n ${STUDIED} AND s.interval_days < ?`, [MASTERED_INTERVAL]).n,
+      due: get(`SELECT COUNT(*) AS n ${STUDIED} AND s.due_date <= ? AND NOT (s.reps = 0 AND s.last_reviewed IS NULL)`, [todayIso()]).n,
+      known: get("SELECT COUNT(*) AS n FROM user_word WHERE known=1").n,
       stars: Object.fromEntries(all("SELECT stars, COUNT(*) AS n FROM user_word WHERE stars > 0 GROUP BY stars").map(r => [r.stars, r.n])),
     },
     accuracy: { attempts: overall.n, correct: overall.ok },
