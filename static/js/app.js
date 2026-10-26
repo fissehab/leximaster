@@ -71,18 +71,44 @@ function parseHash() {
 }
 
 // A new version (static site) waits until a calm screen, never mid-session,
-// then takes over and the page reloads on the same screen.
+// then takes over and the page reloads on the same screen. Every open tab
+// reloads when the new version takes over (at its own next calm screen), and
+// the switch waits for any save in progress to finish.
 const CALM_TABS = ["home", "browse", "lists", "stats", "more", "practice"];
 let updating = false;
+let reloadPending = false;
+if ("serviceWorker" in navigator) {
+  let hadController = !!navigator.serviceWorker.controller;   // the first install also claims the page
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (!hadController) { hadController = true; return; }
+    if (updating || CALM_TABS.includes(parseHash().tab)) location.reload();
+    else reloadPending = true;
+  });
+}
+function watchInstalling(reg) {
+  const w = reg && reg.installing;
+  if (w) w.addEventListener("statechange", () => { if (w.state === "installed") applyWaitingUpdate(parseHash().tab); });
+}
 function applyWaitingUpdate(tab) {
   const reg = window.LEXI_SW;
-  if (updating || !reg || !CALM_TABS.includes(tab)) return false;
-  if (!reg.waiting) { reg.update().catch(() => {}); return false; }  // look for one for next time
+  if (!CALM_TABS.includes(tab)) return false;
+  if (reloadPending) { location.reload(); return true; }
+  // Only a page already run by a service worker updates; on a first visit
+  // the worker that is installing is the first version, not an update.
+  if (updating || !reg || !navigator.serviceWorker.controller) return false;
+  if (!reg.waiting) {   // look for one for next time
+    reg.update().then(() => watchInstalling(reg)).catch(() => {});
+    watchInstalling(reg);
+    return false;
+  }
   updating = true;
-  navigator.serviceWorker.addEventListener("controllerchange", () => location.reload());
-  reg.waiting.postMessage("SKIP_WAITING");
+  const go = () => { if (reg.waiting) reg.waiting.postMessage("SKIP_WAITING"); else updating = false; };
+  if (navigator.locks) navigator.locks.request("lexi-write", go); else go();
   return true;
 }
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") applyWaitingUpdate(parseHash().tab);
+});
 
 async function route() {
   const { tab, param } = parseHash();

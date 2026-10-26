@@ -5,10 +5,11 @@
 // Data: data/index.json lists every word (enough for search, filters and
 // quiz distractors); each word's full entry is in one of data/detail/NN.json,
 // fetched on demand. The learner's progress is saved in IndexedDB in the
-// Export format and restored on load with the Import logic, so a progress
-// file moves freely between this site and the desktop app.
+// Export format (the answer log as one key per answer) and restored on load
+// with the Import logic, so a progress file moves freely between this site
+// and the desktop app. See "persistence" for how several open tabs share it.
 
-import { idbGet, idbPut, idbDelete } from "./idb.js";
+import { idbDelete, idbEntries, idbGet, idbKeys, idbPut, idbTx } from "./idb.js";
 import { BIBLE_TRACKS, EVERYDAY_DOMAINS, FORM_OF } from "../shared.gen.js";
 
 const EVERYDAY_SQL = `EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value IN (${
@@ -113,11 +114,12 @@ async function boot() {
   });
   stmt.free();
   db.exec("COMMIT");
-  const saved = await idbGet("state", "progress");
-  if (saved) {
-    importProgress(saved.progress || saved);
-    for (const m of saved.meta || []) run("INSERT OR REPLACE INTO meta(key, value) VALUES (?, ?)", [m.key, m.value]);
-  }
+  await withWriteLock(async () => {
+    const state = await readState();
+    const migrated = await migrateV1(state);
+    rebuild(state);
+    if (migrated) await persist();
+  });
 }
 
 // Detail data for a word: a shard file for dictionary words, memory for custom ones.
@@ -139,16 +141,133 @@ async function detail(id) {
 
 // --------------------------------------------------------------- persistence
 
-let saveTimer = null;
-function scheduleSave() {
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(saveNow, 400);
+// IndexedDB "state" holds a snapshot ("progress": the export without the
+// answer log), one "log:…" key per logged answer, and a revision number
+// ("rev"). Every change runs under a Web Lock shared by all open tabs: it
+// first reloads if another tab saved since (the revision moved), then saves
+// before replying, so a reply always means "saved". Other tabs hear about the
+// save on a BroadcastChannel and reload before their next request. Saved
+// rows for words missing from this build ("orphans") are kept and re-saved.
+
+const FORMAT = 2;
+let localRev = 0;
+let dirty = false;
+let persistedLogId = 0;           // review_log rows up to this id are saved
+let orphans = noOrphans();
+let askedPersist = false;
+const channel = typeof BroadcastChannel === "function" ? new BroadcastChannel("leximaster") : null;
+if (channel) channel.onmessage = e => { if (!e.data || e.data.rev !== localRev) dirty = true; };
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") dirty = true; });
+
+function noOrphans() { return { user_word: [], srs: [], list_words: [], review_log: [] }; }
+const withWriteLock = fn => navigator.locks ? navigator.locks.request("lexi-write", fn) : fn();
+const logSig = r => JSON.stringify([String(r.key), String(r.ts), r.mode, r.grade ?? null, Number(r.correct) ? 1 : 0, r.ms_taken ?? null]);
+const newLogKey = ts => `log:${ts}|${Math.random().toString(36).slice(2, 10)}`;
+
+async function readState() {
+  try {
+    const [rev, saved, log, recordings] = await Promise.all([
+      idbGet("state", "rev"), idbGet("state", "progress"), idbEntries("state", "log:"), idbKeys("recordings")]);
+    return { rev: rev || 0, saved, log: log.map(([, r]) => r), recordings };
+  } catch (e) {
+    throw new HttpError(503, "Couldn't read your saved progress, so nothing was changed. Reload the page to try again.");
+  }
 }
-async function saveNow() {
+
+// Progress saved by an earlier version keeps its answer log inside the
+// snapshot. Move each answer to its own key (adding only answers not already
+// there, so running this twice changes nothing), keep a backup of the old
+// snapshot, and continue in the new format. Returns whether it migrated.
+async function migrateV1(state) {
+  const old = state.saved && (state.saved.progress || state.saved);
+  if (!old || state.saved.format === FORMAT) return false;
+  const have = new Map();
+  for (const r of state.log) have.set(logSig(r), (have.get(logSig(r)) || 0) + 1);
+  const add = [];
+  for (const r of Array.isArray(old.review_log) ? old.review_log : []) {
+    if (!r || typeof r !== "object") continue;
+    const sig = logSig(r);
+    if (have.get(sig) > 0) have.set(sig, have.get(sig) - 1);
+    else add.push({ key: r.key, ts: r.ts, mode: r.mode, grade: r.grade ?? null, correct: r.correct, ms_taken: r.ms_taken ?? null });
+  }
+  await idbTx("state", "readwrite", s => {
+    s.get("progress_v1_backup").onsuccess = e => { if (e.target.result === undefined) s.put(state.saved, "progress_v1_backup"); };
+    for (const r of add) s.put(r, newLogKey(r.ts));
+  });
+  const { review_log, ...rest } = old;
+  state.saved = { format: FORMAT, progress: rest, meta: state.saved.meta || [] };
+  state.log = state.log.concat(add);
+  return true;
+}
+
+// Replace everything the learner owns in memory with the saved state.
+function rebuild(state) {
+  db.exec("BEGIN");
+  for (const t of ["user_word", "srs", "review_log", "test_session", "daily_activity", "list_words", "lists", "recordings", "settings"]) {
+    db.exec(`DELETE FROM ${t}`);
+  }
+  db.exec("DELETE FROM meta WHERE key LIKE 'wotd:%'");
+  for (const r of all("SELECT id FROM words WHERE is_custom=1")) DETAIL.delete(r.id);
+  db.exec("DELETE FROM words WHERE is_custom=1");
+  for (const [k, v] of Object.entries(DEFAULT_SETTINGS)) run("INSERT INTO settings(key, value) VALUES (?, ?)", [k, v]);
+  db.exec("COMMIT");
+  orphans = noOrphans();
+  const snap = state.saved && (state.saved.progress || state.saved);
+  if (snap) importProgress(snap, { restore: true });
+  for (const m of (state.saved && state.saved.meta) || []) run("INSERT OR REPLACE INTO meta(key, value) VALUES (?, ?)", [m.key, m.value]);
+  const ids = new Map(all("SELECT id, key FROM words").map(r => [r.key, r.id]));
+  db.exec("BEGIN");
+  const stmt = db.prepare("INSERT INTO review_log(word_id, ts, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?, ?)");
+  for (const r of [...state.log].sort((a, b) => String(a.ts).localeCompare(String(b.ts)))) {
+    if (!ids.has(r.key)) { orphans.review_log.push(r); continue; }
+    stmt.run([ids.get(r.key), String(r.ts), String(r.mode), r.grade ?? null, Number(r.correct) ? 1 : 0, r.ms_taken ?? null]);
+  }
+  stmt.free();
+  for (const k of state.recordings) {
+    if (ids.has(k)) run("INSERT OR REPLACE INTO recordings(word_id, path) VALUES (?, 'idb')", [ids.get(k)]);
+  }
+  db.exec("COMMIT");
+  for (const url of recordingUrls.values()) URL.revokeObjectURL(url);
+  recordingUrls.clear();
+  persistedLogId = get("SELECT COALESCE(MAX(id), 0) AS n FROM review_log").n;
+  localRev = state.rev;
+  dirty = false;
+}
+
+// Reload from IndexedDB if another tab saved since this one last did.
+async function syncIfStale() {
+  let rev;
+  try { rev = (await idbGet("state", "rev")) || 0; } catch (e) {
+    throw new HttpError(503, "Couldn't read your saved progress, so nothing was changed. Reload the page to try again.");
+  }
+  if (rev !== localRev) {
+    const state = await readState();
+    const migrated = await migrateV1(state);   // a tab still running the old version saved
+    rebuild(state);
+    if (migrated) await persist();
+  }
+  dirty = false;
+}
+
+async function persist() {
+  const progress = exportProgress({ snapshot: true });
   const meta = all("SELECT key, value FROM meta WHERE key LIKE 'wotd:%'");
-  await idbPut("state", "progress", { progress: exportProgress(), meta });
+  const newLog = all(`SELECT r.id, w.key, r.ts, r.mode, r.grade, r.correct, r.ms_taken FROM review_log r
+                      JOIN words w ON w.id = r.word_id WHERE r.id > ? ORDER BY r.id`, [persistedLogId]);
+  const rev = localRev + 1;
+  await idbTx("state", "readwrite", s => {
+    s.put({ format: FORMAT, progress, meta }, "progress");
+    for (const { id, ...row } of newLog) s.put(row, newLogKey(row.ts));
+    s.put(rev, "rev");
+  });
+  if (newLog.length) persistedLogId = newLog[newLog.length - 1].id;
+  localRev = rev;
+  if (channel) channel.postMessage({ rev });
+  if (!askedPersist && navigator.storage && navigator.storage.persist) {
+    askedPersist = true;
+    navigator.storage.persist().catch(() => {});   // ask the browser not to evict progress
+  }
 }
-addEventListener("pagehide", () => { if (saveTimer) { clearTimeout(saveTimer); saveNow(); } });
 
 // ------------------------------------------------------------------- helpers
 
@@ -451,6 +570,8 @@ async function deleteCustomWord(id) {
   run("DELETE FROM words WHERE id=?", [id]);
   DETAIL.delete(id);
   await idbDelete("recordings", key);
+  const logKeys = (await idbEntries("state", "log:")).filter(([, r]) => r.key === key).map(([k]) => k);
+  if (logKeys.length) await idbTx("state", "readwrite", s => logKeys.forEach(k => s.delete(k)));
   return { ok: true };
 }
 
@@ -795,7 +916,7 @@ const wordKey = id => (get("SELECT key FROM words WHERE id=?", [id]) || {}).key;
 
 async function recordingUrl(id) {
   if (recordingUrls.has(id)) return recordingUrls.get(id);
-  const blob = await idbGet("recordings", wordKey(id));
+  const blob = await idbGet("recordings", wordKey(id)).catch(() => undefined);
   if (!blob) return null;
   const url = URL.createObjectURL(blob);
   recordingUrls.set(id, url);
@@ -906,21 +1027,29 @@ function updateSettings(body) {
 
 // -------------------------------------------------------------- export/import
 
-function exportProgress() {
-  return {
+// The export file; with snapshot, the copy saved in IndexedDB: no answer log
+// (saved as its own keys), list and custom-word ids kept so links and saved
+// filters stay valid, and rows for words missing from this build kept apart.
+function exportProgress({ snapshot = false } = {}) {
+  const withOrphans = (name, rows) => snapshot ? rows : rows.concat(orphans[name]);
+  const out = {
     app: "LexiMaster", version: 1, exported_at: todayIso(),
-    user_word: all("SELECT w.key, u.stars, u.known, u.notes, u.updated_at FROM user_word u JOIN words w ON w.id=u.word_id"),
-    srs: all("SELECT w.key, s.ease, s.interval_days, s.reps, s.lapses, s.due_date, s.last_reviewed FROM srs s JOIN words w ON w.id=s.word_id"),
-    review_log: all("SELECT w.key, r.ts, r.mode, r.grade, r.correct, r.ms_taken FROM review_log r JOIN words w ON w.id=r.word_id"),
-    list_words: all("SELECT l.name AS list, w.key, lw.note, lw.added_at FROM list_words lw JOIN lists l ON l.id=lw.list_id " +
-                    "JOIN words w ON w.id=lw.word_id"),
-    lists: all("SELECT name, created_at FROM lists"),
+    user_word: withOrphans("user_word", all("SELECT w.key, u.stars, u.known, u.notes, u.updated_at FROM user_word u JOIN words w ON w.id=u.word_id")),
+    srs: withOrphans("srs", all("SELECT w.key, s.ease, s.interval_days, s.reps, s.lapses, s.due_date, s.last_reviewed FROM srs s JOIN words w ON w.id=s.word_id")),
+    list_words: withOrphans("list_words", all("SELECT l.name AS list, w.key, lw.note, lw.added_at FROM list_words lw JOIN lists l ON l.id=lw.list_id " +
+                    "JOIN words w ON w.id=lw.word_id")),
+    lists: all(`SELECT ${snapshot ? "id, " : ""}name, created_at FROM lists`),
     custom_words: all("SELECT id, key, word, domains FROM words WHERE is_custom=1")
-      .map(r => ({ key: r.key, word: r.word, domains: r.domains, data: JSON.stringify(DETAIL.get(r.id) || {}) })),
+      .map(r => ({ ...(snapshot ? { id: r.id } : {}), key: r.key, word: r.word, domains: r.domains,
+                   data: JSON.stringify(DETAIL.get(r.id) || {}) })),
     test_session: all("SELECT ts, kind, score, total, duration_s FROM test_session"),
     daily_activity: all("SELECT * FROM daily_activity"),
     settings: settingsMap(),
   };
+  if (snapshot) out.orphans = { user_word: orphans.user_word, srs: orphans.srs, list_words: orphans.list_words };
+  else out.review_log = all("SELECT w.key, r.ts, r.mode, r.grade, r.correct, r.ms_taken FROM review_log r JOIN words w ON w.id=r.word_id")
+    .concat(orphans.review_log);
+  return out;
 }
 
 function clamp(v, lo, hi, dflt, isInt = Number.isInteger(dflt)) {
@@ -930,27 +1059,53 @@ function clamp(v, lo, hi, dflt, isInt = Number.isInteger(dflt)) {
   return isInt ? Math.trunc(x) : x;
 }
 
+// A custom word's saved fields, made safe to use: anything malformed becomes
+// empty rather than breaking every page that lists words. Null when unusable.
+function cleanCustomWord(cw) {
+  if (typeof cw.key !== "string" || !cw.key.startsWith("custom:") || typeof cw.word !== "string" || !cw.word.trim()) return null;
+  let data;
+  try { data = typeof cw.data === "string" ? JSON.parse(cw.data) : cw.data; } catch (e) { data = null; }
+  if (!data || typeof data !== "object" || Array.isArray(data)) return null;
+  data.meanings = Array.isArray(data.meanings) ? data.meanings.filter(m => m && typeof m === "object") : [];
+  for (const m of data.meanings) m.senses = Array.isArray(m.senses) ? m.senses.filter(s => s && typeof s === "object") : [];
+  if (data.nuance !== null && (typeof data.nuance !== "object" || Array.isArray(data.nuance))) data.nuance = null;
+  let domains;
+  try { domains = JSON.parse(cw.domains); } catch (e) { domains = null; }
+  if (!Array.isArray(domains) || !domains.every(d => typeof d === "string")) domains = ["custom"];
+  return { key: cw.key, word: cw.word.trim().slice(0, 80), domains: JSON.stringify(domains), data };
+}
+
 // Merge an export into the database (app/api/stats.py import_progress).
-function importProgress(data) {
+// restore: reloading this site's own saved snapshot, so keep ids, keep every
+// row as it is (no merging of identical rows), and keep rows for words this
+// build doesn't have as orphans instead of dropping them.
+function importProgress(data, { restore = false } = {}) {
   if (!data || typeof data !== "object" || Array.isArray(data) || data.app !== "LexiMaster") {
     throw new HttpError(400, "That file isn't a LexiMaster progress export.");
   }
-  const rows = name => Array.isArray(data[name]) ? data[name].filter(r => r && typeof r === "object") : [];
+  const saved = restore && data.orphans && typeof data.orphans === "object" ? data.orphans : {};
+  const rows = name => (Array.isArray(data[name]) ? data[name] : []).concat(Array.isArray(saved[name]) ? saved[name] : [])
+    .filter(r => r && typeof r === "object");
   const counts = {};
+  let skipped = 0;
   db.exec("BEGIN");
   try {
-    for (const cw of rows("custom_words")) {
-      if (String(cw.key || "").startsWith("custom:") && cw.word && cw.data &&
-          !get("SELECT 1 AS x FROM words WHERE key=?", [cw.key])) {
-        const { lastId } = run("INSERT INTO words(key, word, domains, is_custom) VALUES (?, ?, ?, 1)",
-                               [cw.key, String(cw.word), cw.domains || '["custom"]']);
-        try { DETAIL.set(lastId, JSON.parse(cw.data)); } catch (e) { DETAIL.set(lastId, {}); }
-      }
+    for (const raw of rows("custom_words")) {
+      const cw = cleanCustomWord(raw);
+      if (!cw) { skipped++; continue; }
+      if (get("SELECT 1 AS x FROM words WHERE key=?", [cw.key])) continue;
+      const keepId = restore && Number.isInteger(raw.id) && !get("SELECT 1 AS x FROM words WHERE id=?", [raw.id]);
+      const { lastId } = keepId
+        ? run("INSERT INTO words(id, key, word, domains, is_custom) VALUES (?, ?, ?, ?, 1)", [raw.id, cw.key, cw.word, cw.domains])
+        : run("INSERT INTO words(key, word, domains, is_custom) VALUES (?, ?, ?, 1)", [cw.key, cw.word, cw.domains]);
+      DETAIL.set(keepId ? raw.id : lastId, cw.data);
     }
+    if (skipped) counts["damaged custom words skipped"] = skipped;
     const ids = new Map(all("SELECT id, key FROM words").map(r => [r.key, r.id]));
+    const orphan = (name, r) => { if (restore) orphans[name].push(r); };
     let n = 0;
     for (const u of rows("user_word")) {
-      if (!ids.has(u.key)) continue;
+      if (!ids.has(u.key)) { orphan("user_word", u); continue; }
       run("INSERT OR REPLACE INTO user_word(word_id, stars, known, notes, updated_at) VALUES (?, ?, ?, ?, ?)",
           [ids.get(u.key), clamp(u.stars, 0, 5, 0), clamp(u.known, 0, 1, 0), String(u.notes || ""), String(u.updated_at || "")]);
       n++;
@@ -958,7 +1113,8 @@ function importProgress(data) {
     counts["word states"] = n;
     n = 0;
     for (const s of rows("srs")) {
-      if (!ids.has(s.key) || !s.due_date) continue;
+      if (!s.due_date) continue;
+      if (!ids.has(s.key)) { orphan("srs", s); continue; }
       run("INSERT OR REPLACE INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed) VALUES (?, ?, ?, ?, ?, ?, ?)",
           [ids.get(s.key), clamp(s.ease, 1.3, 5.0, 2.5, false), clamp(s.interval_days, 0, 36500, 0, false),
            clamp(s.reps, 0, 10000, 0), clamp(s.lapses, 0, 10000, 0), String(s.due_date).slice(0, 10), s.last_reviewed ?? null]);
@@ -971,7 +1127,7 @@ function importProgress(data) {
       if (!ids.has(r.key) || !["review", "quiz", "match", "listen", "spell", "flash"].includes(r.mode)) continue;
       const row = [ids.get(r.key), String(r.ts), r.mode, r.grade ?? null, clamp(r.correct, 0, 1, 0), r.ms_taken ?? null];
       const sig = JSON.stringify(row);
-      if (seen.has(sig)) continue;
+      if (seen.has(sig) && !restore) continue;
       run("INSERT INTO review_log(word_id, ts, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?, ?)", row);
       seen.add(sig);
       n++;
@@ -980,14 +1136,17 @@ function importProgress(data) {
     for (const l of rows("lists")) {
       const name = String(l.name || "").split(/\s+/).filter(Boolean).join(" ").slice(0, 60);
       if (name && !get("SELECT 1 AS x FROM lists WHERE lower(name)=lower(?)", [name])) {
-        run("INSERT INTO lists(name, created_at) VALUES (?, ?)", [name, l.created_at || ""]);
+        if (restore && Number.isInteger(l.id) && !get("SELECT 1 AS x FROM lists WHERE id=?", [l.id])) {
+          run("INSERT INTO lists(id, name, created_at) VALUES (?, ?, ?)", [l.id, name, l.created_at || ""]);
+        } else run("INSERT INTO lists(name, created_at) VALUES (?, ?)", [name, l.created_at || ""]);
       }
     }
     const listIds = new Map(all("SELECT id, name FROM lists").map(r => [r.name.toLowerCase(), r.id]));
     n = 0;
     for (const lw of rows("list_words")) {
       const lid = listIds.get(String(lw.list || "").split(/\s+/).filter(Boolean).join(" ").toLowerCase());
-      if (!ids.has(lw.key) || !lid) continue;
+      if (!lid) continue;
+      if (!ids.has(lw.key)) { orphan("list_words", lw); continue; }
       run("INSERT OR IGNORE INTO list_words(list_id, word_id, note, added_at) VALUES (?, ?, ?, ?)",
           [lid, ids.get(lw.key), String(lw.note || ""), lw.added_at || ""]);
       n++;
@@ -997,7 +1156,7 @@ function importProgress(data) {
     for (const t of rows("test_session")) {
       const row = [String(t.ts), String(t.kind).slice(0, 40), clamp(t.score, 0, 1e6, 0), clamp(t.total, 0, 1e6, 0),
                    clamp(t.duration_s, 0, 1e7, 0)];
-      if (!seenTests.has(JSON.stringify(row))) run("INSERT INTO test_session(ts, kind, score, total, duration_s) VALUES (?, ?, ?, ?, ?)", row);
+      if (restore || !seenTests.has(JSON.stringify(row))) run("INSERT INTO test_session(ts, kind, score, total, duration_s) VALUES (?, ?, ?, ?, ?)", row);
     }
     for (const a of rows("daily_activity")) {
       if (!a.date) continue;
@@ -1031,6 +1190,7 @@ async function importFile(body) {
 
 // Fetch every detail file so the whole lexicon works offline.
 async function downloadForOffline() {
+  if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   const shards = [...new Set([...INDEX.values()].map(w => w.s))];
   await Promise.all(shards.map(s => {
     if (!SHARDS.has(s)) SHARDS.set(s, fetchJson(`data/detail/${String(s).padStart(2, "0")}.json`));
@@ -1108,10 +1268,24 @@ export async function handle(method, url, body) {
     if (verb !== method) continue;
     const m = u.pathname.replace(/^.*?(\/api\/)/, "$1").match(pattern);
     if (!m) continue;
-    const result = await fn(m, query, body);
     const path = m[0];
-    if (method !== "GET" || !(READ_ONLY.has(path) || /^\/api\/(words|lists)\/\d+$/.test(path))) scheduleSave();
-    return result;
+    const reads = method === "GET" && (READ_ONLY.has(path) || /^\/api\/(words|lists)\/\d+$/.test(path));
+    if (reads) {
+      if (dirty) await withWriteLock(syncIfStale);
+      return fn(m, query, body);
+    }
+    return withWriteLock(async () => {
+      await syncIfStale();
+      const result = await fn(m, query, body);
+      try {
+        await persist();
+      } catch (e) {
+        localRev = -1;   // memory now differs from what is saved: reload it before anything else
+        dirty = true;
+        throw new HttpError(507, `Couldn't save, so that change wasn't kept (${e && e.message || "storage error"}).`);
+      }
+      return result;
+    });
   }
   throw new HttpError(404, `No such endpoint: ${method} ${u.pathname}`);
 }

@@ -36,13 +36,15 @@ def audio_url(data: dict) -> str | None:
 def core_definition(data: dict) -> tuple[str, str]:
     """(pos, definition) for the most useful sense: the enrichment's learner
     definition when present, otherwise the first dictionary sense."""
-    nuance = data.get("nuance") or {}
-    core = nuance.get("core") or {}
+    nuance = data.get("nuance") if isinstance(data.get("nuance"), dict) else {}
+    core = nuance.get("core") if isinstance(nuance.get("core"), dict) else {}
     if core.get("definition"):
         return core.get("pos", ""), core["definition"]
     first = None
-    for m in data.get("meanings") or []:
-        for s in m.get("senses") or []:
+    meanings = data.get("meanings") if isinstance(data.get("meanings"), list) else []
+    for m in (m for m in meanings if isinstance(m, dict)):
+        senses = m.get("senses") if isinstance(m.get("senses"), list) else []
+        for s in (s for s in senses if isinstance(s, dict)):
             d = s.get("definition")
             if not d:
                 continue
