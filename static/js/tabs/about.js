@@ -6,10 +6,11 @@ export async function render(root) {
   root.append(
     pageHead("About LexiMaster"),
     h("div.panel.about",
-      h("p", "I'm Fisseha, a non-native English speaker who works in data science and AI. My path here was a " +
-        "long one. I studied civil engineering, then earned a master's in environmental science at the " +
-        "University of Connecticut and a master's and PhD in atmospheric physics at Johns Hopkins University, " +
-        "before moving into data science. Beyond work, I'm drawn to philosophy, theology and Christian mysticism."),
+      h("p", "I'm Fisseha, a non-native English speaker who works in data science and AI. I studied civil " +
+        "engineering, then earned a master's in environmental science at the University of Connecticut and a " +
+        "master's and PhD in atmospheric physics at Johns Hopkins University, before moving into data science. " +
+        "Theology has been a parallel path: I hold a master's in theology from Agora University and am now " +
+        "pursuing a ThD there, with a particular love for philosophy and Christian mysticism."),
       h("p", "That mix means I need English in several registers at once: precise technical language at work, " +
         "the vocabulary of philosophical and theological dialogue, and the easy idioms of everyday American " +
         "conversation. Knowing a word when I read it isn't enough. I want the words and ideas I care about in " +
