@@ -92,7 +92,11 @@ function loadScript(src) {
 }
 
 async function fetchJson(url) {
-  const res = await fetch(url);
+  let res;
+  try { res = await fetch(url); } catch (e) {
+    throw new HttpError(503, "You're offline, and this part isn't saved on this device yet. " +
+      "Stats → Download for offline use makes all of LexiMaster work offline.");
+  }
   if (!res.ok) throw new HttpError(503, `Couldn't load ${url} (${res.status}). Check your connection.`);
   return res.json();
 }
@@ -560,7 +564,8 @@ function setState(id, body) {
 async function addCustomWord(body) {
   const word = String(body.word || "").trim();
   const definition = String(body.definition || "").trim();
-  if (!word || word.length > 80 || !definition) throw new HttpError(422, "A word and a definition are required.");
+  if (!word || !definition) throw new HttpError(422, "A word and a definition are required.");
+  if (word.length > 80) throw new HttpError(422, "Keep the word or phrase under 80 characters.");
   const key = "custom:" + word.toLowerCase().replace(/ /g, "-");
   const data = {
     phonetic: String(body.phonetic || "").trim(), audio: null,
@@ -658,9 +663,9 @@ function listDetail(id) {
 function addToList(id, body) {
   if (!get("SELECT 1 AS x FROM lists WHERE id=?", [id])) throw new HttpError(404, "List not found");
   needWord(Number(body.word_id));
-  run("INSERT INTO list_words(list_id, word_id, note) VALUES (?, ?, ?) ON CONFLICT(list_id, word_id) DO NOTHING",
-      [id, Number(body.word_id), String(body.note || "")]);
-  return { ok: true };
+  const { changes } = run("INSERT INTO list_words(list_id, word_id, note) VALUES (?, ?, ?) ON CONFLICT(list_id, word_id) DO NOTHING",
+                          [id, Number(body.word_id), String(body.note || "")]);
+  return { ok: true, added: changes > 0 };
 }
 
 // ------------------------------------------------------------ practice routes

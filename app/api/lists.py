@@ -95,9 +95,9 @@ def add_to_list(list_id: int, body: ListWordIn):
             raise HTTPException(404, "List not found")
         if not c.execute("SELECT 1 FROM words WHERE id=?", (body.word_id,)).fetchone():
             raise HTTPException(404, "Word not found")
-        c.execute("INSERT INTO list_words(list_id, word_id, note) VALUES (?, ?, ?) "
-                  "ON CONFLICT(list_id, word_id) DO NOTHING", (list_id, body.word_id, body.note))
-    return {"ok": True}
+        cur = c.execute("INSERT INTO list_words(list_id, word_id, note) VALUES (?, ?, ?) "
+                        "ON CONFLICT(list_id, word_id) DO NOTHING", (list_id, body.word_id, body.note))
+    return {"ok": True, "added": cur.rowcount > 0}
 
 
 @router.patch("/{list_id}/words/{word_id}")

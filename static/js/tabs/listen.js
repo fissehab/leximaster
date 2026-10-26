@@ -90,14 +90,29 @@ function hint(input) {
 }
 
 function diffView(typed, target) {
-  // Letter-by-letter comparison, aligned by position after a common prefix/suffix.
-  const out = [];
-  const n = Math.max(typed.length, target.length);
-  for (let k = 0; k < n; k++) {
-    const t = target[k] || "", c = typed[k] || "";
-    out.push(h(`span.${t.toLowerCase() === c.toLowerCase() ? "ok" : "no"}`, t || "·"));
+  // The correct spelling, each letter marked right or wrong after aligning the
+  // two spellings (edit distance), so one missing letter marks one letter,
+  // not everything after it. A letter typed but not in the word shows as "·".
+  const a = typed.toLowerCase(), b = target.toLowerCase();
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
   }
-  return h("div.diff", out);
+  const out = [];
+  let i = a.length, j = b.length;
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && d[i][j] === d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)) {
+      out.push(h(`span.${a[i - 1] === b[j - 1] ? "ok" : "no"}`, target[j - 1])); i--; j--;
+    } else if (j > 0 && d[i][j] === d[i][j - 1] + 1) {
+      out.push(h("span.no", target[j - 1])); j--;      // a letter left out
+    } else {
+      out.push(h("span.no.extra", "·")); i--;          // a letter too many
+    }
+  }
+  return h("div.diff", out.reverse());
 }
 
 function check(value) {

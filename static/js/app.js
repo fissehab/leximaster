@@ -230,9 +230,10 @@ document.addEventListener("click", e => {
 
 function showShortcuts() {
   const rows = [
-    ["Space", "Play pronunciation"], ["← →", "Previous / next word"], ["1–5", "Set star rating"],
-    ["M", "Mark known / unknown"], ["/", "Search (Browse)"], ["Enter", "Flip card / reveal answer"],
-    ["1–4", "Grade recall in Daily review; choose an answer in Quiz"], ["?", "Show this help"],
+    ["Space", "Play pronunciation"], ["← →", "Previous / next word"], ["↑ ↓", "Previous / next word (Browse, Pronounce)"],
+    ["1–5", "Set star rating"], ["M", "Know it (after the answer in Daily review)"], ["/", "Search (Browse)"],
+    ["Enter", "Flip card / reveal answer"], ["1–4", "Grade recall in Daily review; choose an answer in Quiz"],
+    ["R", "Record yourself (Pronounce)"], ["?", "Show this help"],
   ];
   formDialog({
     title: "Keyboard shortcuts", submit: null,

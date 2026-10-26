@@ -216,7 +216,7 @@ Dictionary senses that only restate the meaning in step 2 are marked when the da
 | Space | Play pronunciation (in Quiz, only after you answer) |
 | ← → (↑ ↓ in Browse) | Previous / next word |
 | 1–5 | Set star rating (Browse, Flashcards) |
-| M | Mark known / unknown (in Daily review: Know it) |
+| M | Know it: stop studying the word (in Daily review, after the answer; Undo in the message) |
 | / | Search (Browse) |
 | Enter | Flip card / reveal / next |
 | 1–4 | Answer in Daily review (the buttons are numbered); choose an answer in Quiz and Listen |

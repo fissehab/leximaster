@@ -157,11 +157,11 @@ export async function setStars(word, v) {
   return res;
 }
 
-export async function setKnown(word, known) {
+export async function setKnown(word, known, { quiet = false } = {}) {
   const res = await api.patch(`/api/words/${word.id}/state`, { known });
   word.known = res.known;
   patchCachedWord(word.id, { known: res.known });
-  toast(res.known ? `Marked “${word.word}” as known` : `“${word.word}” is back in your study pool`);
+  if (!quiet) toast(res.known ? `“${word.word}” marked as known` : `“${word.word}” is back in your study pool`);
   return res;
 }
 
@@ -220,14 +220,14 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   const pos = core ? core.pos : (groups[0] && groups[0].pos) || "";
   const domains = (w.domains || []).filter(d => !["custom", "bible_vocab", "bible_names"].includes(d) && !(isName && d === "bible"));
   const knownBtn = h("button.btn.known-toggle", {
-    type: "button", "aria-pressed": String(!!w.known), title: "Mark known / unknown · M",
+    type: "button", "aria-pressed": String(!!w.known), title: "Know it: stop studying this word (press again to study it) · M",
     on: { click: async () => {
       try { await setKnown(w, !w.known); } catch (err) { return showError(err); }
       knownBtn.setAttribute("aria-pressed", String(!!w.known));
-      knownBtn.lastChild.textContent = w.known ? "Known" : "Mark known";
+      knownBtn.lastChild.textContent = w.known ? "Known" : "Know it";
       onChange && onChange();
     } },
-  }, icon("check"), h("span", w.known ? "Known" : "Mark known"));
+  }, icon("check"), h("span", w.known ? "Known" : "Know it"));
   const respelling = n && n.pronunciation && n.pronunciation.respelling;
   const parts = [h("header.entry-head",
     h("div.entry-top", h("h2.headword", w.word), playButton(w)),
@@ -382,47 +382,77 @@ function notesEditor(w) {
 
 // ---------------------------------------------------------------- toasts & dialogs
 
-export function toast(msg, { error = false, ms = 2600 } = {}) {
+/** A short message; action: [label, fn] adds a button (e.g. Undo) and keeps it up longer. */
+export function toast(msg, { error = false, ms = 2600, action = null } = {}) {
   const t = h(`div.toast${error ? ".err" : ""}`, msg);
+  if (action) {
+    t.append(" ", h("button.toast-action", { type: "button", on: { click: () => {
+      t.remove();
+      Promise.resolve(action[1]()).catch(showError);
+    } } }, action[0]));
+  }
   document.getElementById("toasts").append(t);
-  setTimeout(() => t.remove(), ms);
+  setTimeout(() => t.remove(), action ? Math.max(ms, 6000) : ms);
 }
 
 export function showError(e) { toast(e.message || String(e), { error: true, ms: 4500 }); }
 
-/** Modal form. fields: [{id, label, type, value, options, placeholder, required}] → resolves values or null. */
-export function formDialog({ title, fields = [], submit = "Save", body = null }) {
+/**
+ * Modal form. fields: [{id, label, type, value, options, placeholder, required, maxlength}].
+ * Resolves the values, or null when cancelled. With onSubmit(values), the
+ * dialog stays open while it runs and shows its error inline (so nothing
+ * typed is lost); it resolves onSubmit's result.
+ */
+export function formDialog({ title, fields = [], submit = "Save", body = null, onSubmit = null }) {
   const dlg = document.getElementById("dialog");
   return new Promise(resolve => {
     const inputs = {};
+    const error = h("p.form-error", { role: "alert", hidden: true });
+    const okBtn = submit ? h("button.btn.btn-primary", { type: "submit", value: "ok" }, submit) : null;
+    let result;
     const form = h("form", { method: "dialog" },
-      h("h2", title),
+      h("h2#dlg-title", title),
       body,
       fields.map(f => {
         let input;
+        const attrs = { id: `dlg-${f.id}`, placeholder: f.placeholder || "", required: !!f.required };
+        if (f.maxlength) attrs.maxlength = f.maxlength;
         if (f.type === "select") {
           input = h("select.input", { id: `dlg-${f.id}` }, f.options.map(([v, l]) => h("option", { value: v }, l)));
         } else if (f.type === "textarea") {
-          input = h("textarea.input", { id: `dlg-${f.id}`, rows: 3, placeholder: f.placeholder || "" });
+          input = h("textarea.input", { ...attrs, rows: 3 });
         } else {
-          input = h("input.input", { id: `dlg-${f.id}`, type: f.type || "text", placeholder: f.placeholder || "", required: !!f.required });
+          input = h("input.input", { ...attrs, type: f.type || "text" });
         }
         if (f.value !== undefined) input.value = f.value;
         inputs[f.id] = input;
         return h("div.field", h("label", { for: `dlg-${f.id}` }, f.label), input);
       }),
+      error,
       h("div.actions",
-        h("button.btn", { type: "button", value: "cancel", on: { click: () => dlg.close("cancel") } }, "Cancel"),
-        submit ? h("button.btn.btn-primary", { type: "submit", value: "ok" }, submit) : null),
+        h("button.btn", { type: "button", value: "cancel", on: { click: () => dlg.close("cancel") } }, submit ? "Cancel" : "Close"),
+        okBtn),
     );
     dlg.replaceChildren(form);
+    dlg.setAttribute("aria-labelledby", "dlg-title");
     dlg.onclose = () => {
       if (dlg.returnValue !== "ok") return resolve(null);
-      const out = {};
-      for (const [k, el] of Object.entries(inputs)) out[k] = el.value;
-      resolve(out);
+      resolve(result);
     };
-    form.addEventListener("submit", e => { e.preventDefault(); dlg.close("ok"); });
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      const values = {};
+      for (const [k, el] of Object.entries(inputs)) values[k] = el.value;
+      if (!onSubmit) { result = values; return dlg.close("ok"); }
+      okBtn.disabled = true;
+      try {
+        result = await onSubmit(values);
+        dlg.close("ok");
+      } catch (err) {
+        error.textContent = err.message || String(err);
+        error.hidden = false;
+      } finally { okBtn.disabled = false; }
+    });
     dlg.returnValue = "";
     dlg.showModal();
     const first = form.querySelector("input, select, textarea");
@@ -470,6 +500,7 @@ export async function filterBar(onChange, { lists = [], domains = [] } = {}, { t
   // A remembered value that's no longer offered (deleted list, gone domain) resets.
   if (listSel.value !== String(practiceFilter.list_id)) practiceFilter.list_id = "";
   if (domSel.value !== practiceFilter.domain) practiceFilter.domain = "";
+  saveFilter(tab, practiceFilter);   // the tab reads it back after this
   const fire = () => {
     practiceFilter.stars = starSel.value;
     practiceFilter.list_id = listSel.value;
