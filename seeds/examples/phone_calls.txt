@@ -1,0 +1,938 @@
+# Conversation examples: phone_calls
+phone call
+- I have a quick phone call at two, and then I'm free.
+- Sorry, I have to take this phone call; it's my doctor.
+- I'd rather send an email than make a phone call.
+
+call
+- [phone] I'll call you tonight after dinner.
+- [phone] I was on a call with a client all morning.
+- [decision] "Should we get pizza or tacos?" "Your call. I'm fine with either."
+- [name] What do you call this thing in English?
+
+give someone a call
+- Give me a call when you land.
+- I'll give the dentist a call and reschedule.
+- If you have any questions, just give us a call.
+
+call back
+- [return a call] Can you call back in an hour? She's in a meeting.
+- [return a call] I left a message, but nobody called me back.
+- [invite back] They called me back for a second interview!
+
+return a call
+- Sorry, I have to return a call from my doctor before it gets late.
+- It's polite to return a call within one business day.
+- I need a quiet place to return a call; is this room free?
+
+missed call
+- I have three missed calls from my mom. I hope everything's OK.
+- Sorry, I just saw your missed call. What's up?
+- I had a missed call from an unknown number, so I didn't call back.
+
+voicemail
+- I left you a voicemail; did you get it?
+- It went straight to voicemail, so his phone must be off.
+- I never check my voicemail, so just text me.
+
+leave a message
+- He's not here right now, but you can leave a message.
+- Please leave a message after the beep.
+- I left a message with the receptionist this morning.
+
+leave a voicemail
+- I left a voicemail, but she hasn't called back.
+- Don't leave a voicemail; nobody listens to them anymore. Just text.
+- If I don't answer, leave a voicemail, and I'll call you back.
+
+take a message
+- She's at lunch, but I can take a message if you'd like.
+- Could you take a message for Dave? He's on the other line.
+- The receptionist took a message and promised to pass it along.
+
+answering machine
+- My grandparents still have an answering machine on their landline.
+- The answering machine picked up, so I left a message.
+- When I was a kid, we'd come home and check the answering machine.
+
+caller
+- The caller didn't leave a name, just a number.
+- The radio host took a question from a caller in Ohio.
+- The caller hung up before I could answer.
+
+caller ID
+- Caller ID said "Unknown," so I didn't pick up.
+- I saw your name on caller ID and knew it was important.
+- My work number shows up as "No Caller ID" on people's phones.
+
+hang up
+- [end a call] Don't hang up; I'm still here.
+- [end a call] He got angry and hung up on me.
+- [put on a hook] Hang up your coat by the door.
+
+pick up
+- [answer the phone] I called three times, but he didn't pick up.
+- [answer the phone] Pick up! I know you're there.
+- [continue] Let's pick up where we left off on yesterday's call.
+- [collect or buy] Can you pick up some milk on your way home?
+
+answer
+- [the phone] Can you answer the phone? My hands are full.
+- [the phone] Nobody answered, so I sent a text.
+- [a question] I'm not sure; let me find the answer and get back to you.
+
+dial
+- In an emergency, dial 911 and stay on the line.
+- At the office, you have to dial nine first to get an outside line.
+- I dialed the wrong number and got a pizza place.
+
+redial
+- The line was busy, so I hit redial.
+- I redialed three times before someone answered.
+- Just press redial; the number should still be there.
+
+speed dial
+- My mom is still on my speed dial.
+- I have the pizza place on speed dial.
+- [always ready to call] She has her lawyer on speed dial.
+
+area code
+- What's the area code for Chicago?
+- I didn't recognize the area code, so I let it go to voicemail.
+- You need to dial the area code, even for local calls here.
+
+extension
+- [phone line] My extension is 4512 if you need to reach me directly.
+- [phone line] Please dial the extension of the person you're trying to reach.
+- [more time] I asked my professor for an extension on the paper.
+
+landline
+- We got rid of our landline years ago.
+- The office has a landline, but everyone uses their cell.
+- Call me on the landline; my cell reception here is bad.
+
+cell phone
+- Please turn off your cell phone before the service begins.
+- What's your cell phone number in case I get lost?
+- I left my cell phone in the car.
+
+cellphone
+- Can you send the photos to my cellphone?
+- She checks her cellphone every five minutes.
+- Cellphone reception in this building is terrible.
+
+smartphone
+- My dad finally got a smartphone, and now he texts all the time.
+- You can check in for your flight on your smartphone.
+- Most people use their smartphone as a GPS.
+
+speakerphone
+- I'm on speakerphone, so the whole team can hear you.
+- Can you take me off speakerphone? It's echoing.
+- He was talking on speakerphone in the coffee shop, and everyone could hear.
+
+on speaker
+- Just so you know, you're on speaker; the whole team is here.
+- I'm driving, so I have you on speaker.
+- Sorry, the kids can hear everything; you're on speaker.
+
+put on speaker
+- Let me put you on speaker so my wife can hear too.
+- Can you put me on speaker? I want to say hi to everyone.
+- She put the call on speaker while she cooked dinner.
+
+mute
+- [turn off your mic] You're on mute, Jake. We can't hear you.
+- [turn off your mic] Please mute yourself when you're not talking.
+- [silence] I muted my phone during the sermon.
+
+unmute
+- Can you unmute? We can't hear you.
+- I forgot to unmute and talked to myself for a whole minute.
+- Unmute when you want to ask a question.
+
+hold
+- [wait on a call] I've been holding for forty minutes.
+- [wait on a call] Can you hold for a moment while I check?
+- [carry] Can you hold my coffee for a second?
+- [have an event] We'll hold the meeting in the conference room.
+
+on hold
+- [waiting on a call] I've been on hold with the airline all morning.
+- [waiting on a call] I was on hold so long that I fell asleep.
+- [paused] The project is on hold until next quarter.
+
+put on hold
+- [make a caller wait] Can I put you on hold for a moment?
+- [make a caller wait] They put me on hold for twenty minutes and never came back.
+- [postpone] We put the trip on hold because of the baby.
+
+hold music
+- The hold music was the same song over and over.
+- I listened to hold music for half an hour before someone picked up.
+- Their hold music is so loud I had to put the phone down.
+
+please hold
+- "Please hold while I transfer your call."
+- The recording kept saying "Please hold" every thirty seconds.
+- "Thank you for calling. Please hold." Then I waited twenty minutes.
+
+hold on
+- [wait] Hold on, let me grab a pen.
+- [wait] Can you hold on a minute? Someone's at the door.
+- [grip] Hold on tight; the train's about to stop.
+
+hang on
+- [wait] Hang on, I'll check if he's here.
+- [wait] Hang on a sec; I'm switching to my headphones.
+- [grip] Hang on to the railing; the steps are icy.
+- [keep] Hang on to the receipt in case you need to return it.
+
+one moment
+- One moment, please. I'll connect you.
+- "Is Dr. Patel there?" "One moment, let me check."
+- Just one moment while I pull up your account.
+
+just a moment
+- Just a moment, please. I'm looking up your order.
+- "Can I talk to the manager?" "Just a moment."
+- Just a moment; I need to find my password.
+
+bear with me
+- Bear with me; my computer is running slow today.
+- Bear with me a second while I find your file.
+- Thanks for bearing with me; I know this took a while.
+
+transfer
+- [move a call] I'll transfer you to the billing department.
+- [move a call] I got transferred three times and had to explain everything again.
+- [send money] I'll transfer my half of the rent to you tonight.
+
+put through
+- Could you put me through to Mr. Garcia, please?
+- I'll put you through to his voicemail.
+- The receptionist put my call through right away.
+
+connect
+- [phone line] Please hold while I connect you.
+- [online meeting] I'm trying to connect to the meeting, but the link isn't working.
+- [introduce] I can connect you with someone in HR.
+
+patch through
+- Hold on, I'll patch you through to the manager.
+- The operator patched the call through to the doctor on duty.
+- Can you patch me through to someone in billing?
+
+switchboard
+- Call the hospital switchboard and ask for the nurses' station.
+- The switchboard lit up with calls after the announcement.
+- The switchboard operator connected me to the right office.
+
+operator
+- I pressed zero to talk to an operator.
+- The operator connected me to the right department.
+- The 911 operator stayed on the line until the ambulance arrived.
+
+receptionist
+- The receptionist said the doctor is running late.
+- I left a message with the receptionist.
+- Call the receptionist to change your appointment.
+
+customer service
+- I called customer service about the double charge.
+- Customer service was actually helpful for once.
+- I've been trying to reach customer service for an hour.
+
+representative
+- [call center worker] I'd like to speak to a representative, please.
+- [call center worker] I kept saying "representative" until the system connected me to a person.
+- [sales rep] A sales representative will call you within one business day.
+
+agent
+- [call center worker] An agent will be with you shortly.
+- [call center worker] The agent waived my fee after I explained the situation.
+- [business helper] Our real estate agent showed us five houses today.
+
+automated
+- I got an automated message saying my appointment is tomorrow.
+- The automated system didn't understand anything I said.
+- We automated the weekly report, so nobody has to build it by hand.
+
+menu options
+- Please listen carefully, as our menu options have changed.
+- None of the menu options fit my problem.
+- I pressed zero to skip the menu options and talk to a person.
+
+press one
+- The recording said, "For English, press one."
+- To speak to the pharmacy, press one.
+- I pressed one for billing, but it sent me to sales.
+
+dial tone
+- I picked up the phone, but there was no dial tone.
+- Wait for the dial tone before you dial.
+- The line went dead, and all I heard was a dial tone.
+
+busy signal
+- I keep getting a busy signal; she must be on the phone.
+- Back in the day, a busy signal meant you had to try later.
+- The office line gave me a busy signal all morning.
+
+ring
+- [phone sound] The phone rang three times and went to voicemail.
+- [phone sound] Let it ring; it's probably a robocall.
+- [jewelry] She lost her wedding ring at the beach.
+- [seem familiar] That name rings a bell. Did we meet at the conference?
+
+ringtone
+- I changed my ringtone so I know when it's my wife.
+- Everyone checked their phones when the ringtone went off.
+- Your ringtone is so loud; can you turn it down?
+
+vibrate
+- Put your phone on vibrate during the meeting.
+- My phone was on vibrate, so I didn't hear you call.
+- I felt my phone vibrate in my pocket.
+
+reception
+- [cell signal] There's no reception in the elevator.
+- [cell signal] My reception is bad here; let me go outside.
+- [front desk] Check in at reception on the first floor.
+- [party] The wedding reception is at a hotel downtown.
+
+signal
+- [cell coverage] I lost my signal in the tunnel.
+- [cell coverage] The signal is better by the window.
+- [gesture] She gave me a signal to wrap up the call.
+
+bars
+- I only have two bars here, so I might lose you.
+- I've got full bars, so it's not on my end.
+- There were no bars at all up in the mountains.
+
+no service
+- There's no service in this canyon, so we used a paper map.
+- My phone says "No Service" in the basement.
+- Sorry I didn't call back; I had no service at the cabin.
+
+dead zone
+- This stretch of highway is a dead zone, so the call might drop.
+- My kitchen is a dead zone; I have to go upstairs to make calls.
+- We lost him in the dead zone near the tunnel.
+
+dropped call
+- Sorry about the dropped call; I went through a tunnel.
+- I keep getting dropped calls in this building.
+- After the third dropped call, we switched to texting.
+
+the call dropped
+- Sorry, the call dropped. Where were we?
+- The call dropped right when she was giving me the address.
+- I think the call dropped; I'll try her again.
+
+cut out
+- [signal drops] You're cutting out; I only caught every other word.
+- [signal drops] The audio cut out for a few seconds on the video call.
+- [stop it] Cut it out, you two. I'm on the phone.
+- [suited for] I'm not cut out for customer service work.
+
+breaking up
+- [bad signal] The line is breaking up; I'll call you back on the landline.
+- [bad signal] Your voice keeps breaking up. Are you in the car?
+- [ending a relationship] I heard they're breaking up after five years.
+
+you're breaking up
+- Sorry, you're breaking up. Can you say that again?
+- "Hello? You're breaking up. I'll call you back."
+- Hey, you're breaking up. Are you driving through the mountains?
+
+bad connection
+- We have a bad connection; let me call you back.
+- Sorry, bad connection. Did you say Tuesday or Thursday?
+- The video kept freezing because of a bad connection.
+
+static
+- [noise] There's a lot of static on the line.
+- [noise] All I could hear was static.
+- [unchanging] Prices have been static for months.
+
+echo
+- I hear an echo; is someone on speaker?
+- There's an echo on the call; can everyone mute?
+- The echo stopped when she put on headphones.
+
+lag
+- [video delay] There's a lag, so we keep talking over each other.
+- [video delay] The video lags every time I share my screen.
+- [fall behind] Our region lags behind the others in sales.
+
+delay
+- There's a delay on the line, so wait a second before you answer.
+- Sorry for the delay in getting back to you.
+- International calls sometimes have a two-second delay.
+
+can you hear me
+- Can you hear me? I just switched to my headphones.
+- "Can you hear me?" "Yes, loud and clear."
+- Hello? Can you hear me? I think my mic isn't working.
+
+can you hear me now
+- I moved to the hallway. Can you hear me now?
+- "Can you hear me now?" "Much better, thanks."
+- OK, I unmuted. Can you hear me now?
+
+I can barely hear you
+- I can barely hear you; it's really loud in here.
+- Speak up, please. I can barely hear you.
+- "I can barely hear you. Are you on a train?" "Yeah, sorry."
+
+could you speak up
+- Could you speak up? The line's not great.
+- Sorry, could you speak up a little? There's a lot of noise here.
+- "Could you speak up?" "Sure. Is this better?"
+
+could you repeat that
+- Sorry, could you repeat that? I missed the last part.
+- Could you repeat that account number, please?
+- "Could you repeat that?" "Sure, the meeting is at 3:30."
+
+come again
+- [casual] "The meeting's at six a.m." "Come again? Six in the morning?"
+- [casual] Come again? I didn't catch that.
+- [casual] "Your total is two hundred dollars." "Come again?"
+
+sorry, say that again
+- Sorry, say that again? The train was loud.
+- "My number is 555-0193." "Sorry, say that again?"
+- Sorry, say that again. You cut out for a second.
+
+could you spell that
+- "My name is Siobhan." "Could you spell that, please?"
+- Could you spell that street name? I can't find it on the map.
+- Could you spell that? I want to make sure I have it right.
+
+spell that for me
+- Can you spell that for me? I want to get it right.
+- "The company is called Qualtrex." "Could you spell that for me?"
+- Your email address is unusual; can you spell that for me?
+
+let me read that back
+- Let me read that back: two large pizzas and a salad, right?
+- OK, let me read that back to make sure I have it.
+- Let me read that back: your flight is at 9:40 on Friday.
+
+read back
+- The pharmacist read back the prescription to be sure.
+- Could you read back the number so I know I have it right?
+- She read the address back to me twice.
+
+is this a good time
+- Hi, it's Tom. Is this a good time, or should I call later?
+- Is this a good time to talk about the contract?
+- "Is this a good time?" "Actually, I'm driving. Can I call you back?"
+
+do you have a minute
+- Do you have a minute? I have a quick question.
+- Hey, do you have a minute to talk about Friday?
+- "Do you have a minute?" "Sure, what's up?"
+
+I'll keep it short
+- I know you're busy, so I'll keep it short.
+- I'll keep it short; I just need a yes or no.
+- "I've only got five minutes." "No problem, I'll keep it short."
+
+who's calling
+- "Hi, is Linda there?" "Can I tell her who's calling?"
+- If anyone asks who's calling, just say you're from Dr. Lee's office.
+- "Hello?" "Hi, it's me." "Sorry, who's calling?"
+
+may I ask who's calling
+- She's available. May I ask who's calling?
+- "Is Mr. Chen in?" "May I ask who's calling?"
+- May I ask who's calling, and what this is regarding?
+
+this is
+- Hi, this is Rachel from Dr. Kim's office.
+- "Is this Paul?" "Yes, this is Paul. Who's this?"
+- This is Mark returning your call from this morning.
+
+speaking
+- [I'm that person] "Hi, is this Ms. Lopez?" "Speaking. How can I help you?"
+- [I'm that person] "Can I talk to Jim Walker?" "This is Jim speaking."
+- [talking] Generally speaking, most people prefer texting to calling.
+
+is this
+- Hi, is this the front desk?
+- Is this Karen? It's Dave from the soccer team.
+- Is this the right number for the pharmacy?
+
+wrong number
+- Sorry, you have the wrong number.
+- I keep getting calls for a "Steve"; I think it's a wrong number.
+- Oops, wrong number. Sorry to bother you.
+
+I'm calling about
+- Hi, I'm calling about the apartment you listed.
+- I'm calling about a charge on my credit card.
+- I'm calling about my appointment on Thursday.
+
+I'm calling to
+- I'm calling to confirm your appointment tomorrow at ten.
+- Hi, I'm calling to cancel my reservation.
+- I'm calling to see if you're still coming tonight.
+
+I'm returning your call
+- Hi, this is Jessica. I'm returning your call from this morning.
+- "Hello?" "Hi, I'm returning your call about the job."
+- Sorry I missed you earlier; I'm returning your call now.
+
+following up on
+- I'm following up on the email I sent last week.
+- Hi, I'm just following up on my application.
+- Just following up on the invoice I sent on Monday.
+
+the reason I'm calling
+- The reason I'm calling is that your payment didn't go through.
+- So, the reason I'm calling is to invite you to our open house.
+- "What can I do for you?" "The reason I'm calling is a charge on my last bill."
+
+get back to you
+- Let me check with my manager and get back to you.
+- Can I get back to you on that tomorrow?
+- Someone from our team will get back to you within two business days.
+
+I'll get back to you
+- I don't know yet, but I'll get back to you by Monday.
+- Good question. I'll get back to you on that.
+- "Can you make Friday?" "I'll get back to you tonight."
+
+call you right back
+- Can I call you right back? Someone's at the door.
+- Sorry, I'm getting on an elevator. I'll call you right back.
+- Let me check the calendar and call you right back.
+
+let me call you back
+- I'm about to go into a tunnel. Let me call you back.
+- Let me call you back in five; I'm in line at the store.
+- Bad connection. Let me call you back on my landline.
+
+I'll let you go
+- Well, I'll let you go. Talk soon.
+- I know you're busy, so I'll let you go.
+- "I'll let you go. Good luck tomorrow!" "Thanks, bye."
+
+talk to you later
+- OK, talk to you later! Say hi to Mom.
+- I've got to run. Talk to you later.
+- "See you Friday?" "Yep. Talk to you later."
+
+talk soon
+- It was great catching up. Talk soon!
+- Thanks for the update. Talk soon.
+- I'll send the details tonight. Talk soon.
+
+thanks for calling
+- Thanks for calling. Have a great day.
+- Thanks for calling, Mom. I'll see you Sunday.
+- "Thanks for calling Riverside Dental. How can I help you?"
+
+have a good day
+- Thanks for your help. Have a good day.
+- "Your refund is processed." "Great, thanks. Have a good day."
+- Have a good day, and let us know if you need anything else.
+
+bye for now
+- OK, I'll call you tomorrow. Bye for now.
+- That's all I needed. Thanks, and bye for now!
+- "Bye for now," she said, and hung up.
+
+text
+- [phone message] Text me when you get home.
+- [phone message] I got a text from the bank saying my card was used.
+- [written words] The text on this slide is too small to read.
+
+text message
+- I got a text message with my verification code.
+- You'll get a text message when your table is ready.
+- My mom sends all her text messages in capital letters.
+
+send a text
+- I'll send a text when I'm on my way.
+- Send a text to the group so everyone knows we're late.
+- She sent a text instead of calling because she was in a meeting.
+
+shoot a text
+- Shoot me a text when you're outside.
+- I'll shoot a text to the team about the change.
+- He shot me a text saying he's running late.
+
+group chat
+- I'll post the address in the group chat.
+- Our family group chat is nonstop on holidays.
+- I muted the group chat because it was going off all night.
+
+FaceTime
+- Let's FaceTime tonight so the kids can see Grandma.
+- I FaceTimed my brother to show him the new apartment.
+- She's on FaceTime with her mom; give her a minute.
+
+video call
+- We have a video call with the client at ten.
+- I put on a nice shirt for the video call, but I'm wearing shorts.
+- Can we do a video call instead? I want to show you something.
+
+Zoom
+- Let's do a quick Zoom at noon to go over the plan.
+- I'll send you the Zoom link for tomorrow's meeting.
+- We Zoomed with my parents every Sunday during the pandemic.
+
+Teams call
+- I'm on a Teams call until three, so text me.
+- Can you set up a Teams call with the vendor for tomorrow?
+- My Teams call froze, so I rejoined from my phone.
+
+conference call
+- We have a conference call with the New York office at nine.
+- The conference call had twenty people on it, and nobody talked.
+- Please mute when you're not speaking on the conference call.
+
+dial in
+- I'll dial in from the car, so I'll be on mute.
+- If the video doesn't work, you can dial in by phone.
+- Three people dialed in late, so we started over.
+
+dial-in number
+- The dial-in number is in the calendar invite.
+- I lost the dial-in number; can you send it again?
+- Call the dial-in number and enter the meeting ID.
+
+meeting ID
+- Enter the meeting ID and then the passcode.
+- I typed the wrong meeting ID and joined someone else's meeting.
+- The meeting ID is in the email I sent this morning.
+
+passcode
+- The passcode is in the invite, right under the link.
+- It asked for a passcode, and I didn't have one.
+- Don't share the meeting passcode outside the team.
+
+join the call
+- I'm joining the call now; I'll be there in a sec.
+- Can you join the call at ten? We need your input.
+- Sorry I joined the call late; my internet went down.
+
+drop off the call
+- I have to drop off the call early for another meeting.
+- Sorry, I dropped off the call when my Wi-Fi died.
+- Mark dropped off the call before we got to the budget.
+
+camera on
+- Please keep your camera on during the interview.
+- I'm having a bad hair day, so I won't have my camera on.
+- "Can you turn your camera on?" "Sure, give me a second."
+
+camera off
+- My internet is slow, so I'll keep my camera off.
+- Is it rude to have your camera off in a meeting?
+- She had her camera off because she was eating lunch.
+
+background noise
+- Sorry for the background noise; I'm at the airport.
+- Please mute if there's background noise where you are.
+- There's a lot of background noise. Are you in a coffee shop?
+
+call screening
+- I use call screening, so unknown callers have to say who they are first.
+- My phone has call screening that blocks most spam.
+- Turn on call screening if you're getting too many robocalls.
+
+robocall
+- I got five robocalls today about my car's warranty.
+- If it's a robocall, just hang up.
+- Robocalls are why nobody answers unknown numbers anymore.
+
+spam call
+- My phone flagged it as a spam call, so I didn't answer.
+- I get more spam calls than real ones these days.
+- That was just a spam call about a free cruise.
+
+telemarketer
+- A telemarketer called during dinner again.
+- I told the telemarketer to take me off their list.
+- Put your number on the Do Not Call list to stop telemarketers.
+
+scam call
+- I got a scam call from someone pretending to be from the IRS.
+- If they ask you to pay with gift cards, it's a scam call.
+- My grandma almost fell for a scam call about her grandson.
+
+unknown number
+- I don't answer calls from unknown numbers.
+- An unknown number called three times, so I finally picked up.
+- If it's an unknown number, let it go to voicemail.
+
+blocked number
+- A blocked number keeps calling me late at night.
+- Doctors' offices sometimes call from a blocked number.
+- I never pick up when it's a blocked number.
+
+call waiting
+- I have call waiting, so I'll know if someone else calls.
+- Hold on, my call waiting just beeped.
+- Call waiting beeped while I was talking to my mom.
+
+three-way call
+- Let me add Mike so we can do a three-way call.
+- We set up a three-way call with the landlord and the plumber.
+- I've never figured out how to make a three-way call on this phone.
+
+roaming
+- Turn off data roaming before you land in Mexico, or you'll get a huge bill.
+- I got charged for roaming even though I barely used my phone.
+- My plan includes free roaming in Canada.
+
+data plan
+- I have an unlimited data plan, so I stream music all day.
+- I went over my data plan this month, so I'm on Wi-Fi only.
+- Check your data plan before you travel abroad.
+
+minutes
+- [phone plan] I used up all my minutes this month.
+- [phone plan] Back then, we saved our minutes by calling after 9 p.m.
+- [meeting notes] Can you take the minutes for today's call?
+
+charger
+- Can I borrow your charger? My phone's at five percent.
+- I left my charger at the hotel.
+- Is there a charger in the car?
+
+battery dying
+- My battery is dying, so I'll make this quick.
+- My battery is dying. Can I call you back from my laptop?
+- I don't have a charger, and my battery is dying fast.
+
+my phone died
+- Sorry I didn't call; my phone died.
+- My phone died in the middle of the call.
+- "Why didn't you answer?" "My phone died at the airport."
+
+low battery
+- My phone says low battery, so this will be quick.
+- My phone's on low battery, so text me the address instead.
+- The low battery warning popped up halfway through the meeting.
+
+on the other line
+- Can you hold? I'm on the other line.
+- She's on the other line; can I take a message?
+- I have my boss on the other line. I'll call you back.
+
+I have another call
+- Sorry, I have another call coming in. Can I call you back?
+- I have another call at four, so let's wrap up.
+- Hold on, I have another call. It's the school.
+
+playing phone tag
+- We've been playing phone tag all week.
+- Sorry we keep playing phone tag; let's just set a time.
+- I'm tired of playing phone tag with the insurance company.
+
+phone tag
+- After three days of phone tag, we finally talked.
+- Let's avoid phone tag; just text me a good time.
+- We've been in a game of phone tag since Monday.
+
+call up
+- I'll call up the restaurant and see if they have a table.
+- She called me up out of the blue last week.
+- Just call up the hotel and ask about parking.
+
+ring up
+- [cashier charges] The cashier rang up my groceries but forgot the eggs.
+- [cashier charges] Can you ring these up separately?
+- [phone, British-sounding] My British coworker said he'd ring me up later.
+
+get back to
+- [reply later] I'll get back to her after lunch.
+- [reply later] Did the landlord ever get back to you about the heat?
+- [return to a task] OK, let's get back to the agenda.
+
+get through
+- [reach by phone] I finally got through to the airline after an hour.
+- [reach by phone] I couldn't get through; the line was busy all day.
+- [survive] We'll get through this. Just take it one day at a time.
+
+speak up
+- [talk louder] Can you speak up? I can't hear you.
+- [talk louder] Speak up a little; the mic isn't picking you up.
+- [give your opinion] If you disagree, please speak up during the meeting.
+
+break up
+- [bad signal] The call started to break up when I got on the elevator.
+- [bad signal] You broke up for a second. Can you say that again?
+- [end a relationship] They broke up after three years together.
+- [stop a fight] The teacher broke up a fight in the hallway.
+
+cut off
+- [call ends suddenly] We got cut off right in the middle of the conversation.
+- [interrupt] Please don't cut me off when I'm talking.
+- [drive in front] A truck cut me off on the highway.
+
+drop off
+- [leave a call] I need to drop off at 3:30 for another meeting.
+- [leave a call] Half the team dropped off after the first hour.
+- [leave something] Can you drop off the keys at the front desk?
+
+look up
+- [find information] Let me look up your account. What's your phone number?
+- [find information] I looked up their number online and called them.
+- [improve] Things are looking up for the team this quarter.
+
+write down
+- Let me grab a pen and write down your number.
+- Did you write down the confirmation number?
+- I wrote down the address, but I can't read my own handwriting.
+
+take down
+- [write] Let me take down your information, and someone will call you back.
+- [write] Can you take down this number? It's 555-0142.
+- [remove] They took down the post after people complained.
+
+call ahead
+- Call ahead to make sure they're open on Sunday.
+- If you call ahead, they'll have your order ready.
+- We called ahead to see if the restaurant had room for eight.
+
+call around
+- I called around to find a plumber who could come today.
+- Call around and compare prices before you pick a mechanic.
+- She called around to see if anyone had seen her dog.
+
+text back
+- I texted her an hour ago, and she hasn't texted back.
+- Text me back when you get a chance.
+- Sorry I didn't text back; I was driving.
+
+Hello, this is Michael.
+- "Hello, this is Michael." "Hi, Michael, it's Jenna from accounting."
+- Hello, this is Michael. I'm calling about the job posting.
+- When the client called, he picked up and said, "Hello, this is Michael."
+
+Hi, may I speak to Sarah?
+- Hi, may I speak to Sarah? This is her dentist's office.
+- "Hi, may I speak to Sarah?" "Sure, one moment."
+- Hi, may I speak to Sarah? I'm returning her call from yesterday.
+
+Speaking.
+- "Hi, may I speak to Dr. Mensah?" "Speaking. How can I help you?"
+- "Is this the person in charge of billing?" "Speaking."
+- "I'm looking for Laura Chen." "Speaking. What's this about?"
+
+Who's calling, please?
+- "Is Mr. Green available?" "Who's calling, please?"
+- Who's calling, please? I'll let her know.
+- "Who's calling, please?" "It's Tom Reyes from the bank."
+
+Hold on a second.
+- Hold on a second; let me find a pen.
+- "Is Dan home?" "Hold on a second. Dan! Phone!"
+- Hold on a second, I'm getting another call.
+
+Can I put you on hold?
+- Can I put you on hold for just a minute while I check?
+- "Can I put you on hold?" "Sure, no problem."
+- I need to look that up. Can I put you on hold?
+
+Thanks for holding.
+- Thanks for holding. I found your reservation.
+- "Thanks for holding, Ms. Davis. I have good news."
+- Thanks for holding; I'll transfer you now.
+
+Let me transfer you.
+- That's a billing question. Let me transfer you.
+- "I need to change my flight." "Let me transfer you to reservations."
+- Let me transfer you; please stay on the line.
+
+She's not available right now.
+- I'm sorry, she's not available right now. Can I take a message?
+- "Is Dr. Lee in?" "She's not available right now; she's with a patient."
+- She's not available right now, but she'll be back at two.
+
+Can I take a message?
+- She's in a meeting right now. Can I take a message?
+- "Is Paul there?" "No, he just stepped out. Can I take a message?"
+- I'm sorry, he's on vacation this week. Can I take a message?
+
+Could you have him call me back?
+- Could you have him call me back when he's free?
+- He's at lunch? Could you have him call me back this afternoon?
+- "He's in a meeting." "Could you have him call me back? It's urgent."
+
+What's the best number to reach you?
+- What's the best number to reach you if we get disconnected?
+- "What's the best number to reach you?" "My cell is fine."
+- I'll have someone call you. What's the best number to reach you?
+
+Sorry, I didn't catch that.
+- Sorry, I didn't catch that. What was your last name?
+- "The code is 4471." "Sorry, I didn't catch that."
+- Sorry, I didn't catch that; there was a siren outside.
+
+Could you say that again?
+- Could you say that again? The line is bad.
+- "It's apartment 3B." "Could you say that again, please?"
+- Sorry, could you say that again a little slower?
+
+Could you speak a little louder?
+- Could you speak a little louder? I'm on a busy street.
+- "Could you speak a little louder?" "Sure. Is this better?"
+- Could you speak a little louder? Your mic is really quiet.
+
+Could you spell your last name?
+- Could you spell your last name for me, please?
+- "It's Abebe Tesfaye." "Thanks. Could you spell your last name?"
+- Thank you. Could you spell your last name so I can find your file?
+
+Let me read that back to you.
+- Let me read that back to you: one large pizza, extra cheese.
+- OK, let me read that back to you to make sure I have it right.
+- "My number is 555-0186." "Let me read that back to you: 555-0186."
+
+I think we got cut off.
+- Hi, it's me again. I think we got cut off.
+- I think we got cut off. Where were we?
+- "Hello? Hello?" "Sorry, I think we got cut off."
+
+I'm calling about my order.
+- Hi, I'm calling about my order. It hasn't arrived yet.
+- I'm calling about my order from last Tuesday; it's the wrong size.
+- "How can I help you?" "I'm calling about my order."
+
+Is now a good time?
+- Hi, it's Lisa. Is now a good time?
+- Is now a good time, or should I call back later?
+- "Is now a good time?" "I've got about five minutes."
+
+Sorry, wrong number.
+- "Is this Jenny?" "No, sorry, wrong number."
+- Sorry, wrong number. I was trying to call my dentist.
+- "Hi, is this the pizza place?" "Sorry, wrong number."
+
+I'll text you the address.
+- I'll text you the address so you can put it in your GPS.
+- "Where's the party?" "I'll text you the address."
+- I'll text you the address and the gate code.
+
+Just shoot me a text.
+- No need to call; just shoot me a text.
+- If you're running late, just shoot me a text.
+- "How will I know you're here?" "Just shoot me a text."
+
+Can I call you back?
+- I'm driving right now. Can I call you back?
+- Can I call you back in ten minutes? I'm at the store.
+- "Is this a bad time?" "Kind of. Can I call you back?"
+
+I'll call you right back.
+- My battery is about to die. I'll call you right back.
+- Sorry, the doorbell's ringing. I'll call you right back.
+- Let me find the file, and I'll call you right back.

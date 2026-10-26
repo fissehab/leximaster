@@ -1,0 +1,585 @@
+# Artificial intelligence: the vocabulary a senior practitioner uses to read,
+# write and talk about AI. Terms shared with data_science or statistics get
+# both tags. Phrases use spaces.
+
+# Foundations and history
+artificial intelligence
+AI
+machine intelligence
+artificial general intelligence
+AGI
+superintelligence
+narrow AI
+strong AI
+weak AI
+Turing test
+Chinese room
+symbolic AI
+good old-fashioned AI
+connectionism
+connectionist
+cybernetics
+expert system
+knowledge base
+inference engine
+production rule
+AI winter
+frame problem
+symbol grounding
+Moravec's paradox
+intelligent agent
+rational agent
+bounded rationality
+cognitive architecture
+cognitive science
+neuro-symbolic
+emergent
+emergence
+anthropomorphize
+anthropomorphism
+automaton
+automation
+autonomous
+autonomy
+
+# Search, planning, reasoning and knowledge representation
+search space
+state space
+heuristic search
+best-first search
+breadth-first search
+depth-first search
+A* search
+minimax
+alpha-beta pruning
+Monte Carlo tree search
+game tree
+branching factor
+combinatorial explosion
+constraint satisfaction
+satisfiability
+planner
+knowledge representation
+knowledge graph
+semantic network
+ontology
+first-order logic
+description logic
+forward chaining
+backward chaining
+inference
+deduction
+abduction
+commonsense reasoning
+causal reasoning
+analogical reasoning
+probabilistic reasoning
+Bayesian network
+Markov decision process
+Markov chain
+hidden Markov model
+fuzzy logic
+
+# Machine learning core
+machine learning
+supervised learning
+unsupervised learning
+semi-supervised learning
+self-supervised learning
+reinforcement learning
+online learning
+active learning
+transfer learning
+meta-learning
+continual learning
+catastrophic forgetting
+federated learning
+representation learning
+inductive bias
+hypothesis space
+generalization
+overfitting
+overfit
+underfitting
+underfit
+bias-variance tradeoff
+regularization
+training set
+validation set
+test set
+held-out data
+ground truth
+label
+labeling
+annotation
+feature engineering
+feature vector
+embedding
+latent space
+latent variable
+classifier
+classification
+regression
+clustering
+dimensionality reduction
+decision boundary
+decision tree
+random forest
+gradient boosting
+support vector machine
+kernel trick
+nearest neighbor
+k-means
+ensemble
+bagging
+boosting
+loss function
+objective function
+cost function
+cross-entropy
+softmax
+logit
+probability distribution
+likelihood
+maximum likelihood
+posterior
+Bayesian inference
+sampling
+data augmentation
+synthetic data
+data leakage
+distribution shift
+out-of-distribution
+covariate shift
+concept drift
+class imbalance
+
+# Neural networks and deep learning
+neural network
+artificial neural network
+deep learning
+deep neural network
+neuron
+perceptron
+multilayer perceptron
+layer
+input layer
+hidden layer
+output layer
+bias
+parameter
+hyperparameter
+activation function
+ReLU
+sigmoid
+nonlinearity
+feedforward
+backpropagation
+gradient
+gradient descent
+stochastic gradient descent
+optimizer
+learning rate
+momentum
+Adam
+epoch
+batch
+mini-batch
+batch size
+iteration
+convergence
+local minimum
+saddle point
+vanishing gradient
+exploding gradient
+weight decay
+dropout
+batch normalization
+layer normalization
+residual connection
+skip connection
+initialization
+convolutional neural network
+CNN
+convolution
+pooling
+filter
+receptive field
+recurrent neural network
+RNN
+long short-term memory
+LSTM
+sequence-to-sequence
+encoder
+decoder
+encoder-decoder
+autoencoder
+variational autoencoder
+generative adversarial network
+GAN
+generator
+discriminator
+diffusion model
+denoising
+score function
+normalizing flow
+graph neural network
+capsule network
+mixture of experts
+sparse model
+dense model
+parameter count
+scaling law
+compute
+FLOPs
+emergent ability
+grokking
+double descent
+
+# Transformers and large language models
+transformer
+attention mechanism
+self-attention
+multi-head attention
+cross-attention
+attention head
+positional encoding
+query
+feedforward layer
+large language model
+LLM
+language model
+language modeling
+foundation model
+frontier model
+base model
+pretrained
+pretraining
+next-token prediction
+autoregressive
+masked language model
+causal language model
+token
+tokenizer
+tokenization
+byte-pair encoding
+subword
+vocabulary
+context window
+context length
+long context
+prompt
+system prompt
+user prompt
+prompt engineering
+prompt injection
+jailbreak
+completion
+decoding
+sampling temperature
+top-k sampling
+nucleus sampling
+greedy decoding
+beam search
+logprob
+perplexity
+hallucination
+hallucinate
+confabulation
+grounding
+grounded
+retrieval-augmented generation
+RAG
+vector database
+semantic search
+reranking
+chunking
+in-context learning
+zero-shot
+one-shot
+few-shot
+chain of thought
+reasoning model
+extended thinking
+test-time compute
+inference-time scaling
+self-consistency
+scratchpad
+instruction tuning
+instruction-following
+fine-tuning
+fine-tune
+supervised fine-tuning
+parameter-efficient fine-tuning
+LoRA
+adapter
+distillation
+knowledge distillation
+quantization
+pruning
+latency
+throughput
+batching
+KV cache
+speculative decoding
+open-weight
+open-source model
+closed model
+model card
+system card
+checkpoint
+weights
+model weights
+
+# Training from feedback and alignment
+reinforcement learning from human feedback
+RLHF
+reward model
+reward hacking
+reward signal
+preference data
+preference model
+human feedback
+AI feedback
+constitutional AI
+direct preference optimization
+policy gradient
+proximal policy optimization
+value function
+Q-learning
+exploration
+exploitation
+agent
+reward
+return
+episode
+trajectory
+rollout
+self-play
+simulation
+sim-to-real
+
+# Agents and tool use
+AI agent
+agentic
+agentic workflow
+autonomous agent
+multi-agent system
+tool use
+function calling
+tool call
+orchestrator
+subagent
+planning loop
+long-term memory
+working memory
+computer use
+browser agent
+copilot
+chatbot
+conversational AI
+virtual assistant
+human-in-the-loop
+human oversight
+guardrail
+sandbox
+
+# Multimodal, vision, speech and generative media
+multimodal
+modality
+computer vision
+image recognition
+image classification
+object detection
+image segmentation
+optical character recognition
+OCR
+facial recognition
+image generation
+text-to-image
+text-to-speech
+speech recognition
+automatic speech recognition
+speech synthesis
+voice cloning
+natural language processing
+NLP
+natural language understanding
+natural language generation
+machine translation
+sentiment analysis
+named entity recognition
+summarization
+question answering
+information retrieval
+recommender system
+generative AI
+GenAI
+synthetic media
+deepfake
+watermarking
+content provenance
+style transfer
+upscaling
+
+# Evaluation and benchmarks
+evaluation
+eval
+benchmark
+leaderboard
+baseline
+ablation
+ablation study
+accuracy
+precision
+recall
+F1 score
+confusion matrix
+ROC curve
+AUC
+calibration
+robustness
+generalization gap
+held-out evaluation
+contamination
+benchmark contamination
+saturation
+human evaluation
+LLM-as-a-judge
+red teaming
+red team
+stress test
+capability evaluation
+dangerous capability
+error analysis
+
+# Safety, alignment and interpretability
+AI safety
+alignment
+misalignment
+aligned
+value alignment
+outer alignment
+inner alignment
+specification gaming
+goal misgeneralization
+instrumental convergence
+power-seeking
+deceptive alignment
+sycophancy
+corrigibility
+corrigible
+scalable oversight
+oversight
+interpretability
+mechanistic interpretability
+explainability
+explainable AI
+XAI
+black box
+feature attribution
+saliency map
+probing
+circuit
+superposition
+sparse autoencoder
+steering
+activation steering
+model organism
+adversarial example
+adversarial attack
+adversarial robustness
+data poisoning
+model extraction
+membership inference
+existential risk
+x-risk
+catastrophic risk
+AI risk
+dual-use
+misuse
+refusal
+over-refusal
+harmlessness
+helpfulness
+honesty
+robust
+safety case
+responsible scaling
+responsible AI
+
+# Ethics, society and governance
+AI ethics
+algorithmic bias
+fairness
+algorithmic fairness
+disparate impact
+discrimination
+transparency
+accountability
+auditability
+algorithmic accountability
+privacy
+differential privacy
+data protection
+consent
+surveillance
+automation bias
+job displacement
+labor displacement
+digital divide
+AI governance
+AI regulation
+AI policy
+risk-based regulation
+high-risk system
+compliance
+model governance
+AI literacy
+trustworthy AI
+human-centered AI
+explainability requirement
+copyright
+fair use
+training data
+data provenance
+intellectual property
+open source
+compute governance
+export controls
+
+# Infrastructure and hardware
+GPU
+TPU
+accelerator
+AI accelerator
+data center
+cluster
+distributed training
+data parallelism
+model parallelism
+tensor
+tensor core
+matrix multiplication
+floating point
+mixed precision
+memory bandwidth
+on-device AI
+edge AI
+cloud inference
+serving
+model serving
+API
+endpoint
+rate limit
+token budget
+MLOps
+model registry
+pipeline
+deployment
+monitoring
+observability
+drift detection
+retraining
+versioning
+reproducibility

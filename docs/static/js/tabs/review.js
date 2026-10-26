@@ -1,0 +1,142 @@
+// Daily review: SM-2 queue sized to the session target, graded Again/Hard/Good/Easy.
+
+import { api } from "../api.js";
+import { playWord } from "../audio.js";
+import { refreshDueCount } from "../app.js";
+import { settings } from "../state.js";
+import { fmtDuration, h, icon, pageHead, renderEntry, showError } from "../ui.js";
+
+let queue = [];
+let pos = 0;
+let total = 0;
+let revealed = false;
+let shownAt = 0;
+let sessionStart = 0;
+let els = {};
+let busy = false;
+let track = "";
+try { track = localStorage.getItem("lexi-review-track") || ""; } catch (e) { /* storage unavailable */ }
+const GRADES = [["again", "Again", "forgot"], ["hard", "Hard", "struggled"], ["good", "Good", "recalled"], ["easy", "Easy", "instant"]];
+
+async function load(extra = 0) {
+  const res = await api.get("/api/review/queue", { extra, track });
+  queue = res.queue;
+  pos = 0;
+  total = queue.length;
+  sessionStart = Date.now();
+  els.meta = res;
+  show();
+}
+
+function progress() {
+  const pct = total ? (pos / total) * 100 : 100;
+  els.bar.style.width = `${pct}%`;
+  els.count.textContent = `${pos} / ${total}`;
+}
+
+function show() {
+  revealed = false;
+  progress();
+  if (pos >= queue.length) return done();
+  const w = queue[pos];
+  shownAt = Date.now();
+  const front = h("div.panel.card.card-front",
+    w.is_new ? h("span.new-badge", "New word") : null,
+    h("h2.headword", w.word),
+    h("p.muted", "Recall the meaning and say it aloud, then reveal."),
+    h("button.btn.btn-primary.btn-lg", { type: "button", on: { click: reveal } }, "Reveal ", h("kbd", "Enter")));
+  els.stage.replaceChildren(front);
+  if (w.is_new && settings.autoplay === "1") playWord(w);
+}
+
+function reveal() {
+  if (revealed) return;
+  revealed = true;
+  const w = queue[pos];
+  const grades = h("div.grade-row", GRADES.map(([cls, label, hint], i) =>
+    h(`button.grade.${cls}`, { type: "button", on: { click: () => grade(i) } },
+      h("span", label, " ", h("kbd", String(i + 1))), h("small", hint))));
+  // The grade buttons stay pinned to the bottom of the screen, however long
+  // the entry is, so the way to the next word is always in view.
+  els.stage.replaceChildren(
+    h("div.panel.card", renderEntry(w)),
+    h("div.grade-dock", h("p.grade-prompt", "How well did you know it? Grading moves to the next word."), grades));
+  if (settings.autoplay === "1") playWord(w, els.stage.querySelector(".play"));
+}
+
+async function grade(g) {
+  if (!revealed || busy) return;
+  busy = true;
+  const w = queue[pos];
+  try {
+    await api.post(`/api/review/${w.id}`, { grade: g, ms: Date.now() - shownAt, is_new: w.is_new, repeat: !!w.repeat });
+    // "Again" puts the card back at the end of this session for another pass;
+    // the re-pass is practice and doesn't reschedule the card a second time.
+    if (g === 0 && !w.repeat) { queue.push({ ...w, is_new: false, repeat: true }); total++; }
+    pos++;
+    show();
+    refreshDueCount();
+  } catch (e) { showError(e); }
+  busy = false;
+}
+
+function done() {
+  const mins = (Date.now() - sessionStart) / 1000;
+  els.stage.replaceChildren(h("div.panel.done-state",
+    h("div.seal", icon("check")),
+    h("h2", "Done for today"),
+    h("p.muted", total
+      ? `You reviewed ${total} card${total === 1 ? "" : "s"} in ${fmtDuration(mins)}. The next cards are scheduled for when you're about to forget them.`
+      : "Nothing is due right now. Come back tomorrow, or learn a few new words now."),
+    h("div.toolbar",
+      h("button.btn.btn-primary", { type: "button", on: { click: () => load(5).catch(showError) } }, "Learn 5 more words"),
+      h("a.btn", { href: "#quiz" }, "Take a quiz"))));
+  if (total) api.post("/api/sessions", { kind: "review", score: total, total, duration_s: Math.round(mins) }).catch(() => {});
+}
+
+export async function render(root) {
+  els.bar = h("span");
+  els.count = h("span.tnum");
+  els.stage = h("div.study-card");
+  const lengths = [...new Set([5, 10, 15, 20, 30, Number(settings.session_minutes)])].sort((a, b) => a - b);
+  const minutes = h("select.input#review-minutes", { "aria-label": "Session length" },
+    lengths.map(m => h("option", { value: m }, `${m}-minute session`)));
+  minutes.value = settings.session_minutes;
+  minutes.addEventListener("change", async () => {
+    const { saveSettings } = await import("../state.js");
+    await saveSettings({ session_minutes: Number(minutes.value) });
+    load().catch(showError);
+  });
+  const trackSel = h("select.input#review-track", { "aria-label": "What to review" },
+    h("option", { value: "" }, "Everything"),
+    h("option", { value: "everyday" }, "Everyday English"),
+    h("option", { value: "core" }, "Advanced & subjects"),
+    h("optgroup", { label: "Bible" },
+      h("option", { value: "bible_vocab" }, "Bible · Vocabulary"),
+      h("option", { value: "bible_names" }, "Bible · Names"),
+      h("option", { value: "bible" }, "Bible · Both")));
+  trackSel.value = track;
+  trackSel.addEventListener("change", () => {
+    track = trackSel.value;
+    try { localStorage.setItem("lexi-review-track", track); } catch (e) { /* storage unavailable */ }
+    load().catch(showError);
+  });
+  root.append(
+    pageHead("Daily review", "Spaced repetition (SM-2). Grade honestly: low stars and quiz misses bring words back sooner.",
+      trackSel, minutes),
+    h("div.study-card", { style: { marginBottom: "18px" } },
+      h("div.progress-row", h("div.progress", els.bar), els.count)),
+    els.stage);
+  await load();
+}
+
+export function onKey(e) {
+  if (pos >= queue.length) return;
+  if (e.key === "Enter" || (e.key === " " && !revealed)) {
+    if (!revealed) { e.preventDefault(); reveal(); }
+  } else if (e.key === " ") {
+    e.preventDefault(); playWord(queue[pos], els.stage.querySelector(".play"));
+  } else if (/^[1-4]$/.test(e.key) && revealed) {
+    e.preventDefault(); grade(Number(e.key) - 1);
+  }
+}

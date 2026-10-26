@@ -1,0 +1,1316 @@
+# Conversation examples: home_health
+apartment
+- We're looking for a two-bedroom apartment close to the train station.
+- My apartment is on the third floor, and there's no elevator.
+- How much is rent for an apartment in this neighborhood?
+
+condo
+- They sold their house and bought a condo downtown.
+- The condo fees cover the pool and the gym.
+- Do you rent your condo, or do you own it?
+
+townhouse
+- We live in a townhouse, so we share walls with our neighbors.
+- The townhouse has three floors and a small backyard.
+- Townhouses here are cheaper than single-family homes.
+
+duplex
+- We rent one side of a duplex, and the owner lives on the other side.
+- The duplex next door just went up for sale.
+- Living in a duplex is quieter than an apartment building.
+
+studio
+- [small apartment] I lived in a tiny studio when I first moved to the city.
+- [small apartment] The studio has a kitchenette and one big room.
+- [workout or art space] Priya goes to a yoga studio near her office every morning.
+
+lease
+- [rental contract] Our lease is up in June, so we need to decide whether to stay.
+- [rental contract] Read the whole lease before you sign it.
+- [rent long-term] We decided to lease a car instead of buying one.
+
+rent
+- [monthly payment] Rent is due on the first of every month.
+- [monthly payment] Rent in this city keeps going up every year.
+- [live somewhere for pay] We rent our house, but we hope to buy one someday.
+- [borrow for a fee] You can rent a carpet cleaner at the hardware store.
+
+landlord
+- I texted my landlord about the broken heater, and he came the same day.
+- Our landlord is really nice, but he's slow to fix things.
+- Ask the landlord if pets are allowed before you sign anything.
+
+tenant
+- The tenant upstairs plays music really late.
+- As a tenant, you have the right to a working heater.
+- The previous tenants left the apartment spotless.
+
+roommate
+- My roommate and I split the rent and the utilities.
+- I need a new roommate, because Mike is moving out in May.
+- Do you get along with your roommate?
+
+security deposit
+- The security deposit is one month's rent.
+- We got our whole security deposit back when we moved out.
+- They kept part of my security deposit for the stain on the carpet.
+
+utilities
+- Are utilities included in the rent, or are they separate?
+- Our utilities are higher in the summer because of the AC.
+- Water and trash are included, but you pay the other utilities.
+
+move in
+- When can we move in? Our lease ends next Friday.
+- We moved in last weekend, and we're still unpacking boxes.
+- My sister is moving in with us for a few months.
+
+move out
+- We have to move out by the end of the month.
+- My roommate moved out, so now I have the place to myself.
+- Before you move out, take photos of every room.
+
+moving truck
+- We rented a moving truck and asked a few friends to help.
+- The moving truck is blocking the whole driveway.
+- Do you think everything will fit in one moving truck?
+
+furnished
+- The apartment comes furnished, so we just need our clothes.
+- A furnished place costs more, but you don't have to buy a bed.
+- Is the unit furnished, or will it be empty?
+
+unfurnished
+- The apartment is unfurnished, so we need to buy a couch.
+- Most rentals here are unfurnished, except for the kitchen appliances.
+- We'd prefer something unfurnished, since we have our own furniture.
+
+closet
+- The bedroom has a huge walk-in closet.
+- Can you put the vacuum back in the hall closet?
+- There's not enough closet space for all my shoes.
+
+pantry
+- The cereal is in the pantry, on the second shelf.
+- We keep extra canned goods in the pantry.
+- I love that this kitchen has a big pantry.
+
+basement
+- The washer and dryer are in the basement.
+- Our basement floods a little when it rains hard.
+- The kids turned the basement into a game room.
+
+attic
+- We store the holiday decorations up in the attic.
+- It gets really hot in the attic in the summer.
+- I found my old high school yearbooks in the attic.
+
+garage
+- We park in the garage when it snows.
+- The garage is so full of boxes that the car doesn't fit.
+- Can you grab the ladder from the garage?
+
+driveway
+- You can park in our driveway when you come over.
+- Someone's car is blocking our driveway again.
+- James spent the morning shoveling snow off the driveway.
+
+porch
+- We sat on the front porch and drank iced tea all evening.
+- The delivery guy left the box on the porch.
+- Can you turn on the porch light? It's getting dark.
+
+deck
+- [outdoor platform] Let's eat dinner out on the deck tonight.
+- [outdoor platform] We need to repaint the deck before summer.
+- [cards] Grab a deck of cards, and we'll play after dinner.
+
+backyard
+- The kids are playing in the backyard.
+- We're having a barbecue in the backyard on Saturday.
+- Our backyard is small, but it has a nice big tree.
+
+front yard
+- The neighbors put up Halloween decorations all over their front yard.
+- Our front yard gets lots of sun, so the grass dries out fast.
+- The kids set up a lemonade stand in the front yard.
+
+lawn
+- Who's going to mow the lawn this weekend?
+- Please keep off the lawn; they just planted new grass.
+- Our lawn turns brown every August.
+
+mow
+- I need to mow the lawn before it rains.
+- My neighbor mows his grass every Saturday at eight a.m.
+- We pay a teenager down the street to mow our yard.
+
+rake
+- [verb] Can you help me rake the leaves this afternoon?
+- [verb] We raked the backyard and filled ten bags.
+- [tool] The rake is hanging on the wall in the garage.
+
+leaf blower
+- Our neighbor's leaf blower woke me up at seven on Sunday.
+- It's faster to use the leaf blower than to rake.
+- Can I borrow your leaf blower this weekend?
+
+gutter
+- The gutters are full of leaves, so the water is spilling over.
+- We hired someone to clean the gutters before winter.
+- A piece of the gutter fell off during the storm.
+
+faucet
+- The kitchen faucet drips all night.
+- We put in a new faucet in the bathroom.
+- Turn the faucet off all the way, or it'll keep dripping.
+
+sink
+- [basin] The dirty dishes are piling up in the sink.
+- [basin] Wash your hands in the bathroom sink before dinner.
+- [go down] Don't open the oven too early, or the cake will sink in the middle.
+
+drain
+- [pipe opening] Something is stuck in the shower drain.
+- [pipe opening] Don't pour grease down the drain; it'll clog it.
+- [let water out] Drain the pasta and add a little olive oil.
+
+clogged
+- The kitchen sink is clogged again.
+- My nose is so clogged I can't smell anything.
+- The toilet's clogged, so use the other bathroom.
+
+plunger
+- Where's the plunger? The toilet is clogged.
+- I fixed the sink with a plunger, so we don't need a plumber.
+- Every bathroom should have a plunger next to the toilet.
+
+toilet
+- The toilet keeps running after you flush it.
+- Don't flush paper towels down the toilet.
+- The toilet in the upstairs bathroom is broken, so use the one downstairs.
+
+shower
+- [in the bathroom] The water in the shower takes forever to get hot.
+- [wash] I'm going to shower and then we can head out.
+- [party for a gift] We're throwing a baby shower for Ana next Saturday.
+- [light rain] There's a chance of showers this afternoon, so bring a jacket.
+
+showerhead
+- We put in a new showerhead, and the water pressure is so much better.
+- The showerhead is dripping even when it's off.
+- Soak the showerhead in vinegar to clean the buildup.
+
+bathtub
+- The kids love bubble baths in the bathtub.
+- Our apartment only has a shower, no bathtub.
+- The bathtub drain is slow, so I need to clean it.
+
+leak
+- [noun] There's a leak under the kitchen sink.
+- [noun] We found a leak in the roof after the storm.
+- [verb] The pipe is leaking water all over the floor.
+
+leaky
+- That leaky faucet kept me up all night.
+- We have a leaky roof, so there's a bucket in the attic.
+- A leaky toilet can really raise your water bill.
+
+drip
+- [verb] The faucet drips all night and drives me crazy.
+- [noun] Put a bucket under the drip until the plumber gets here.
+- [verb] Paint is dripping from the ceiling onto the floor.
+
+plumber
+- We need to call a plumber; the water heater is leaking.
+- The plumber said he could come Tuesday morning.
+- Plumbers charge a lot for weekend visits.
+
+plumbing
+- The plumbing in this old house is always giving us trouble.
+- Is there something wrong with the plumbing? The water smells weird.
+- We redid the plumbing when we remodeled the kitchen.
+
+electrician
+- We hired an electrician to install the ceiling fan.
+- Don't try to fix the wiring yourself; call an electrician.
+- The electrician said the outlet needs to be replaced.
+
+handyman
+- We have a handyman who fixes small stuff around the house.
+- My dad is a real handyman; he can fix almost anything.
+- Can you recommend a good handyman for hanging shelves?
+
+contractor
+- We're getting quotes from three contractors for the new kitchen.
+- The contractor said the job will take about six weeks.
+- Our contractor keeps pushing back the start date.
+
+repairman
+- The repairman is coming between nine and noon to fix the fridge.
+- We waited all day for the repairman, and he never showed up.
+- The repairman said the dishwasher isn't worth fixing.
+
+maintenance
+- I put in a maintenance request for the broken window.
+- Call maintenance if the hot water goes out again.
+- The car needs regular maintenance, like oil changes.
+
+fix
+- [repair] Can you fix the drawer? It keeps falling off the track.
+- [repair] The landlord finally fixed the heater after two weeks.
+- [make food] Let me fix you something to eat before you go.
+
+repair
+- How much will it cost to repair the roof?
+- The washer is getting repaired, so I'm doing laundry at my mom's.
+- They sent someone to repair the garage door.
+
+outlet
+- [power socket] There's no outlet near the bed, so I need an extension cord.
+- [power socket] This outlet isn't working. Did a breaker trip?
+- [discount store] We bought our new sheets at the outlet mall.
+
+power outlet
+- Is there a power outlet near the couch for my laptop?
+- The power outlet in the bathroom stopped working.
+- Don't plug too many things into one power outlet.
+
+circuit breaker
+- The power went out in the kitchen, so I checked the circuit breaker.
+- The circuit breaker trips every time we run the microwave and the toaster.
+- The circuit breaker box is in the basement next to the furnace.
+
+fuse
+- [electric part] Old houses have fuses instead of circuit breakers.
+- [electric part] The lights went out because we blew a fuse.
+- [temper] My boss has a short fuse, so don't be late.
+
+light switch
+- The light switch is on the left when you walk in.
+- I can't find the light switch in the dark.
+- This light switch controls the outlet by the couch.
+
+light bulb
+- The light bulb in the hallway burned out.
+- Can you change the light bulb? I can't reach it.
+- These new light bulbs last for years.
+
+thermostat
+- Can you turn up the thermostat? It's freezing in here.
+- We keep the thermostat at sixty-eight in the winter.
+- The landlord put a lock on the thermostat.
+
+heater
+- The heater makes a loud noise when it turns on.
+- Our water heater broke, so we had cold showers all week.
+- I use a little space heater under my desk.
+
+furnace
+- The furnace stopped working in the middle of January.
+- We have someone check the furnace every fall.
+- The furnace is in the basement next to the water heater.
+
+air conditioning
+- The air conditioning in the car isn't working.
+- Thank goodness the apartment has central air conditioning.
+- Turn off the air conditioning and open the windows; it's nice out.
+
+AC
+- It's ninety degrees out. Can you turn on the AC?
+- The AC is broken, so we're sleeping with fans.
+- Our electric bill is high in the summer because of the AC.
+
+ceiling fan
+- Turn on the ceiling fan; it's a little stuffy in here.
+- The ceiling fan wobbles when it's on high.
+- We put a ceiling fan in every bedroom.
+
+dishwasher
+- Can you load the dishwasher after dinner?
+- The dishwasher is clean, so someone needs to empty it.
+- Don't put the good knives in the dishwasher.
+
+washer
+- [washing machine] The washer is done, so can you move the clothes to the dryer?
+- [washing machine] Our washer is making a weird banging noise.
+- [plumbing part] The plumber said the faucet just needs a new washer.
+
+dryer
+- [for clothes] Don't put my sweater in the dryer; it'll shrink.
+- [for clothes] The dryer takes forever, so I hang some things up.
+- [for hair] Can I borrow your hair dryer? Mine just died.
+
+laundry
+- I have a huge pile of laundry to fold.
+- Our building has a laundry room in the basement.
+- Can you throw your towels in the laundry basket?
+
+detergent
+- We're out of laundry detergent, so add it to the list.
+- Don't use too much detergent, or the clothes get stiff.
+- I switched to an unscented detergent because of my skin.
+
+fabric softener
+- I love how the towels smell with that fabric softener.
+- Use fabric softener so the sheets come out soft.
+- Don't use fabric softener on your workout clothes.
+
+iron
+- [appliance] Do you have an iron I can borrow? My shirt is all wrinkled.
+- [press clothes] I need to iron my shirt before the interview.
+- [nutrient] My doctor said I'm low on iron, so I'm eating more spinach.
+
+vacuum
+- [verb] I vacuumed the living room, but there's still dog hair everywhere.
+- [verb] Can you vacuum the stairs before your grandma comes?
+- [machine] The vacuum is in the hall closet.
+
+mop
+- [verb] I'll mop the kitchen floor after dinner.
+- [tool] Grab the mop; someone spilled juice by the fridge.
+- [verb] Don't walk in there, because I just mopped.
+
+broom
+- Can you get the broom and sweep up the broken glass?
+- The broom is behind the door in the laundry room.
+- I swept the porch with the broom, but there are still leaves.
+
+dustpan
+- Hold the dustpan while I sweep this up.
+- Where's the dustpan? There are crumbs all over the floor.
+- The broom and dustpan are in the closet by the kitchen.
+
+trash
+- Don't throw that in the trash; it can be recycled.
+- The trash is full again. Whose turn is it?
+- Trash pickup is on Tuesday mornings.
+
+garbage
+- The garbage truck comes really early on Mondays.
+- Can you take the garbage out on your way?
+- The kitchen smells because the garbage needs to go out.
+
+recycling
+- The recycling goes in the blue bin.
+- Rinse the bottles before you put them in the recycling.
+- Recycling pickup is every other Thursday.
+
+trash can
+- The trash can is under the kitchen sink.
+- Raccoons knocked over our trash can again last night.
+- Put the trash cans back by the garage after pickup.
+
+compost
+- We compost our coffee grounds and vegetable scraps.
+- The compost bin is in the corner of the backyard.
+- Our city picks up compost along with the regular trash.
+
+chores
+- The kids have to do their chores before they can play video games.
+- We split the chores, so I cook and he cleans.
+- I spend Saturday mornings doing chores around the house.
+
+do the dishes
+- If you cook, I'll do the dishes.
+- I did the dishes, but I didn't put them away yet.
+- Whose turn is it to do the dishes tonight?
+
+do laundry
+- I usually do laundry on Sunday nights.
+- Mike is doing laundry, so the dryer is busy.
+- I haven't done laundry in two weeks, and I'm out of socks.
+
+take out the trash
+- Can you take out the trash? It's starting to smell.
+- I took out the trash, but I forgot the recycling.
+- My job as a kid was to take out the trash every night.
+
+tidy up
+- Let's tidy up the living room before our guests get here.
+- I tidied up my desk, and now I can't find anything.
+- Can you tidy up your room before Grandma comes over?
+
+declutter
+- We need to declutter the garage before we can park in it.
+- I decluttered my closet and donated three bags of clothes.
+- Decluttering the kitchen made it feel so much bigger.
+
+clean up
+- Who's going to clean up this mess in the kitchen?
+- We cleaned up after the party until two in the morning.
+- Please clean up your toys before dinner.
+
+spring cleaning
+- We do spring cleaning every April and wash all the windows.
+- It's time for some spring cleaning; the garage is a disaster.
+- I found my old guitar during spring cleaning.
+
+mess
+- Sorry about the mess; we just moved in.
+- The kids made a huge mess in the kitchen while baking cookies.
+- Who left this mess on the counter?
+
+messy
+- My room is always messy during finals week.
+- He's a messy eater, so put a napkin under his plate.
+- The house gets messy fast with three kids and a dog.
+
+cluttered
+- The counters are so cluttered that I don't have room to cook.
+- His desk is always cluttered with papers and coffee cups.
+- The garage is too cluttered to park the car inside.
+
+spotless
+- She cleaned the kitchen until it was spotless.
+- The hotel room was spotless when we checked in.
+- Leave the apartment spotless if you want your deposit back.
+
+pest
+- [unwanted animal] We called someone about the pests in the attic.
+- [unwanted animal] Ants are the most common pest in our kitchen in summer.
+- [annoying person] My little brother was such a pest when we were kids.
+
+exterminator
+- We had to call an exterminator because of the mice.
+- The exterminator sprays around the building once a month.
+- The landlord pays for the exterminator, so just let them know.
+
+mold
+- There's black mold on the bathroom ceiling.
+- The bread already has mold on it, so throw it out.
+- Open a window after you shower so mold doesn't grow.
+
+mildew
+- The towels smell like mildew; they sat in the washer too long.
+- There's mildew on the shower curtain again.
+- A little bleach takes care of the mildew in the corners.
+
+smoke detector
+- The smoke detector keeps beeping, so it probably needs a new battery.
+- Every bedroom should have a working smoke detector.
+- I burned the toast, and the smoke detector went off.
+
+fire alarm
+- The fire alarm went off at work, so everyone had to go outside.
+- It was just a fire drill, but the fire alarm was so loud.
+- Someone pulled the fire alarm in the dorm at three a.m.
+
+locksmith
+- I locked my keys in the car, so I called a locksmith.
+- The locksmith changed the locks when we moved in.
+- How much does a locksmith charge to open a front door?
+
+locked out
+- I'm locked out of my apartment. Do you have the spare key?
+- I locked myself out of the car with the engine running.
+- She got locked out and had to wait for her roommate to come home.
+
+spare key
+- We keep a spare key with our neighbor.
+- Do you have a spare key I could borrow while you're away?
+- Don't hide the spare key under the doormat; that's the first place people look.
+
+doorbell
+- The doorbell rang, but nobody was there.
+- Our doorbell has a camera, so I can see who's at the door.
+- The baby's asleep, so please knock instead of ringing the doorbell.
+
+mail
+- [letters] Did you get the mail today?
+- [letters] I'm going to check the mail before dinner.
+- [send] Can you mail this letter on your way to work?
+
+mailbox
+- There's a package too big for the mailbox, so it's at the front desk.
+- Can you check the mailbox while we're on vacation?
+- The mailbox key is on the hook by the door.
+
+package
+- [parcel] A package came for you while you were at work.
+- [parcel] Someone took the package right off our porch.
+- [bundle] Our internet and cable package costs too much.
+
+delivery
+- [goods arriving] We're waiting for a furniture delivery between noon and four.
+- [goods arriving] Delivery drivers always leave stuff at the wrong door.
+- [food brought over] Let's just order delivery tonight; I'm too tired to cook.
+
+neighbor
+- Our neighbor watered our plants while we were away.
+- I borrowed a ladder from the neighbor across the street.
+- The new neighbors seem really friendly.
+
+HOA
+- The HOA says we can't paint our front door purple.
+- Our HOA fees went up again this year.
+- The HOA takes care of the pool and the landscaping.
+
+doctor
+- I have a doctor's appointment at ten, so I'll be late.
+- You should see a doctor if the cough doesn't go away.
+- My doctor told me to drink more water and get more sleep.
+
+physician
+- The clinic has three physicians and a nurse practitioner.
+- With an HMO, your primary care physician usually has to give you a referral.
+- She's been our family physician for almost twenty years.
+
+primary care
+- You should find a primary care doctor as soon as you move here.
+- My primary care office is open late on Wednesdays.
+- Check with your primary care provider before starting a new medication.
+
+checkup
+- I go for a checkup once a year.
+- The baby has her six-month checkup next week.
+- The dentist said everything looked great at my checkup.
+
+physical
+- [yearly exam] I'm due for my annual physical next month.
+- [yearly exam] Kids need a physical before they can join the soccer team.
+- [of the body] Physical activity helps me sleep better at night.
+
+appointment
+- I made an appointment with the dentist for Thursday.
+- Can I reschedule my appointment? Something came up at work.
+- Please arrive fifteen minutes before your appointment.
+
+walk-in clinic
+- I didn't have an appointment, so I went to a walk-in clinic.
+- The walk-in clinic at the pharmacy does flu shots.
+- Is the walk-in clinic open on Sundays?
+
+urgent care
+- I twisted my ankle, so I went to urgent care.
+- Urgent care is cheaper than the emergency room for small things.
+- The urgent care down the street is open until nine.
+
+emergency room
+- They took him to the emergency room, but it was just a sprain.
+- We waited three hours in the emergency room.
+- The emergency room is for serious problems, not a cold.
+
+ER
+- My brother cut his hand, so we went to the ER for stitches.
+- The ER was packed on Friday night.
+- She's a nurse in the ER at the children's hospital.
+
+ambulance
+- An ambulance went by with its siren on.
+- The neighbor fell, so we called an ambulance just to be safe.
+- The ambulance got there in about five minutes.
+
+pharmacy
+- I'll pick up your medicine at the pharmacy on the way home.
+- The pharmacy said my prescription will be ready in an hour.
+- Is there a pharmacy open late around here?
+
+pharmacist
+- Ask the pharmacist if it's okay to take this with my allergy pills.
+- The pharmacist explained how often to take the medicine.
+- The pharmacist called my doctor to check the dosage.
+
+prescription
+- You need a prescription for that; you can't just buy it.
+- My doctor sent the prescription straight to the pharmacy.
+- I'm picking up a prescription for my daughter's ear infection.
+
+refill
+- [more medicine] I need a refill on my allergy medicine.
+- [more medicine] The pharmacy called; your refill is ready.
+- [more drink] Can I get a refill on my coffee, please?
+
+over-the-counter
+- You can buy that cream over-the-counter; you don't need a prescription.
+- I just took an over-the-counter cold medicine and went to bed.
+- Ask the pharmacist which over-the-counter allergy pill works best.
+
+generic
+- [drug without a brand] The generic is much cheaper than the brand name.
+- [drug without a brand] Is it okay if they give me the generic version?
+- [not specific] His thank-you note was really generic, like a template.
+
+dosage
+- Check the dosage on the box before you give it to the kids.
+- The doctor lowered my dosage because I was feeling dizzy.
+- Kids get a smaller dosage based on their weight.
+
+side effect
+- The main side effect is that it makes you sleepy.
+- I had no side effects from the flu shot.
+- Read the label for the side effects before you take it.
+
+pill
+- I take one pill every morning with breakfast.
+- The pill is too big, so I cut it in half.
+- I keep a little pill case in my purse for headaches.
+
+tablet
+- [medicine] Take one tablet every eight hours with water.
+- [medicine] These tablets are chewable, so they're easy for kids.
+- [device] My son watches cartoons on his tablet during long drives.
+
+capsule
+- The capsules are easier to swallow than the big tablets.
+- Take one capsule in the morning and one at night.
+- Don't open the capsule; just swallow it whole.
+
+cough syrup
+- I took some cough syrup, and it helped me sleep.
+- This cough syrup tastes awful, but it works.
+- Make sure you get the kids' cough syrup, not the adult kind.
+
+painkiller
+- I took a painkiller for my headache, and it helped.
+- The dentist gave me a painkiller after my root canal.
+- I try not to take painkillers unless I really need them.
+
+ibuprofen
+- I took some ibuprofen for my sore back.
+- Do you have any ibuprofen? I have a headache.
+- Ibuprofen helps with swelling, but it's best to take it with food.
+
+Tylenol
+- I took two Tylenol, and my headache went away.
+- Do we have any Tylenol in the medicine cabinet?
+- The nurse said we could give the baby infant Tylenol for the fever.
+
+antibiotic
+- The doctor put me on an antibiotic for my ear infection.
+- Finish all of the antibiotics, even if you feel better.
+- Antibiotics don't work on colds, because colds are caused by viruses.
+
+allergy
+- Do you have any food allergies?
+- My allergies are terrible in the spring.
+- James has a peanut allergy, so check the label.
+
+allergic reaction
+- She had an allergic reaction to the new laundry detergent.
+- If you have an allergic reaction, stop taking the medicine and call your doctor.
+- My lips swelled up from an allergic reaction to shrimp.
+
+cold
+- [illness] I've had a cold all week, and I can't stop sneezing.
+- [illness] Stay home if you have a bad cold.
+- [low temperature] It's really cold in here. Can you close the window?
+
+flu
+- Half the office is out with the flu.
+- Did you get your flu shot this year?
+- I had the flu last winter, and I was in bed for a week.
+
+fever
+- She has a fever, so she's staying home from school.
+- Take her temperature and see if she has a fever.
+- My fever finally broke last night.
+
+chills
+- [cold shivering] I have chills and a fever, so I'm going to bed.
+- [cold shivering] I couldn't stop shaking from the chills last night.
+- [strong emotion] That song always gives me chills.
+
+cough
+- [noun] My cough is worse at night.
+- [noun] That cough sounds bad. Have you seen a doctor?
+- [verb] I coughed all night and didn't get any sleep.
+
+sore throat
+- I have a sore throat, so I'm going to drink some hot tea.
+- My sore throat started yesterday after the game.
+- Salt water helps a sore throat feel better.
+
+runny nose
+- The baby has a runny nose, so she's a little cranky.
+- I have a runny nose because of my allergies.
+- Do you have a tissue? This runny nose won't quit.
+
+stuffy nose
+- I can't sleep because of my stuffy nose.
+- A hot shower helps with a stuffy nose.
+- My stuffy nose makes everything taste bland.
+
+congested
+- [blocked nose] I'm so congested I can barely breathe through my nose.
+- [blocked nose] Kids get congested a lot in the winter.
+- [crowded] The freeway is always congested at five o'clock.
+
+sneeze
+- Cover your mouth when you sneeze.
+- I can't stop sneezing; it must be allergies.
+- He sneezed so loud that everyone in the store turned around.
+
+headache
+- I have a headache, so I'm going to lie down for a while.
+- Staring at the screen all day gives me a headache.
+- Do you have anything for a headache?
+
+migraine
+- She gets migraines when she doesn't sleep enough.
+- I had a migraine, so I worked in a dark room all afternoon.
+- Bright lights make my migraine worse.
+
+stomachache
+- I have a stomachache from eating too much candy.
+- He stayed home from school with a stomachache.
+- Spicy food sometimes gives me a stomachache.
+
+nausea
+- The medicine can cause nausea, so take it with food.
+- A cup of ginger tea really helps with nausea.
+- I had some nausea on the boat, but it went away.
+
+nauseous
+- I feel a little nauseous after that roller coaster.
+- Long car rides make me nauseous if I read.
+- She was nauseous all morning, so she skipped breakfast.
+
+dizzy
+- I stood up too fast and felt dizzy.
+- If you feel dizzy, sit down and drink some water.
+- Spinning around made the kids dizzy and giggly.
+
+lightheaded
+- I felt lightheaded because I skipped lunch.
+- Giving blood made me a little lightheaded.
+- If you get lightheaded, sit down for a minute.
+
+rash
+- The baby has a rash on her arm.
+- I got a rash from the new soap.
+- The rash went away after a few days of cream.
+
+itchy
+- My eyes are itchy from all the pollen.
+- This sweater is so itchy that I can't wear it.
+- These mosquito bites are so itchy I can't sleep.
+
+swollen
+- My ankle is swollen from tripping on the stairs.
+- His face was swollen after the dentist.
+- Her eyes were red and swollen from crying.
+
+bruise
+- I have a big bruise on my leg, but I don't remember hitting anything.
+- The bruise turned purple and then yellow.
+- I bruised my arm when I bumped into the table.
+
+sprain
+- It's not broken; it's just a sprain.
+- I sprained my wrist playing basketball.
+- A bad sprain can take a few weeks to heal.
+
+sprained ankle
+- She has a sprained ankle, so she's on crutches for a week.
+- I got a sprained ankle stepping off the curb.
+- Ice and rest are the best things for a sprained ankle.
+
+cut
+- [wound] I got a cut on my finger while chopping onions.
+- [wound] Wash the cut with soap and water and put a bandage on it.
+- [to injure with something sharp] Be careful, or you'll cut yourself on that can.
+
+scrape
+- [noun] It's just a scrape; you'll be fine.
+- [verb] He scraped his knee falling off his bike.
+- [noun] Clean the scrape and put some ointment on it.
+
+stitches
+- [medical] He needed five stitches in his chin.
+- [medical] They're taking my stitches out next week.
+- [laughing hard] Her story had the whole table in stitches.
+
+bandage
+- Put a bandage on that so it doesn't get dirty.
+- The nurse wrapped a bandage around my wrist.
+- Change the bandage every day and keep it dry.
+
+Band-Aid
+- Do you have a Band-Aid? I cut my finger.
+- My son wants a Band-Aid for every tiny scratch.
+- The Band-Aids are in the bathroom drawer.
+
+ice pack
+- Put an ice pack on your knee for twenty minutes.
+- We keep an ice pack in the freezer for bumps and bruises.
+- The ice pack helped the swelling go down.
+
+heating pad
+- I slept with a heating pad on my back.
+- A heating pad helps with my sore neck.
+- Don't fall asleep with the heating pad on high.
+
+sick day
+- I'm taking a sick day; I can barely get out of bed.
+- How many sick days do you get a year?
+- I used all my sick days when the kids had the flu.
+
+come down with
+- I think I'm coming down with a cold.
+- Half the class came down with the flu last week.
+- She came down with something on vacation, so she stayed in the hotel.
+
+catch a cold
+- Wear a jacket, or you'll catch a cold.
+- I caught a cold from my son.
+- I always catch a cold when I travel.
+
+feel under the weather
+- I feel under the weather today, so I'm going to stay home.
+- Mike's feeling under the weather, so he can't come tonight.
+- I felt under the weather all weekend, but I'm better now.
+
+get better
+- [recover] Get some rest so you can get better.
+- [recover] I'm getting better, but I still have a cough.
+- [improve] My cooking is getting better since I started watching videos.
+
+recover
+- It took me a week to recover from the flu.
+- He's recovering at home after his knee surgery.
+- Give your body time to recover after a long run.
+
+rest up
+- Rest up this weekend, and you'll feel better Monday.
+- I'm going to rest up before the big trip.
+- The doctor told her to stay home and rest up.
+
+health insurance
+- Does your job offer health insurance?
+- My health insurance covers one eye exam a year.
+- We changed health insurance plans when I switched jobs.
+
+copay
+- The copay for a doctor's visit is twenty-five dollars.
+- My copay at urgent care was higher than I expected.
+- Please pay your copay at the front desk when you check in.
+
+deductible
+- We haven't met our deductible yet, so we're paying most of the bill ourselves.
+- Our deductible is two thousand dollars a year.
+- Once you hit your deductible, the insurance pays most of the bill.
+
+premium
+- [insurance cost] Our monthly premium went up this year.
+- [insurance cost] A lower premium usually means a higher deductible.
+- [high quality] The premium coffee costs twice as much, but it's really good.
+
+in-network
+- Make sure the doctor is in-network, or it'll cost a lot more.
+- Is this lab in-network for my plan?
+- I found an in-network dentist close to my office.
+
+out-of-network
+- The specialist was out-of-network, so we got a big bill.
+- My plan doesn't cover out-of-network doctors at all.
+- Out-of-network visits cost more, so check first.
+
+coverage
+- Does your plan have dental coverage?
+- My coverage starts on the first of next month.
+- Check your coverage before you get the test.
+
+claim
+- [insurance request] I filed a claim for the damage to our roof.
+- [insurance request] The insurance company denied my claim, so I'm calling them.
+- [say is true] He claims he fixed the faucet, but it's still dripping.
+
+dentist
+- I have a dentist appointment on Friday morning.
+- My kids actually like going to the dentist.
+- The dentist said I need to floss more.
+
+cleaning
+- [teeth] I'm due for a cleaning at the dentist next month.
+- [teeth] My cleaning took about forty-five minutes.
+- [housework] We hire someone to do a deep cleaning twice a year.
+
+cavity
+- I have a cavity, so I need to go back for a filling.
+- Good news, no cavities this time!
+- Too much candy will give you cavities.
+
+filling
+- [dental] The dentist said I need a filling in my back tooth.
+- [dental] My filling fell out while I was eating caramel.
+- [inside food] The pie has a sweet apple filling.
+
+braces
+- My daughter got braces last month.
+- I had braces in middle school for two years.
+- Be careful eating popcorn with braces.
+
+optometrist
+- I go to the optometrist once a year for an eye exam.
+- The optometrist said my vision has changed a little.
+- Is there an optometrist inside the mall?
+
+eye exam
+- It's been three years since my last eye exam, so I'm overdue.
+- My eye exam is covered by my insurance once a year.
+- My son failed the vision screening at school, so he needs an eye exam.
+
+contacts
+- [lenses] I wear contacts, but I wear glasses at night.
+- [lenses] I need to order more contacts before I run out.
+- [people you know] I lost all my contacts when my phone broke.
+
+glasses
+- [eyeglasses] I can't read the menu without my glasses.
+- [eyeglasses] She got new glasses with red frames.
+- [for drinking] Can you put the glasses on the top rack of the dishwasher?
+
+therapist
+- Talking to a therapist really helped me during a tough year.
+- My physical therapist gave me some exercises for my shoulder.
+- She sees a therapist every other week.
+
+counselor
+- [mental health] The counselor helped us talk through our problems.
+- [school] The school counselor helped me apply to college.
+- [camp] My son was a camp counselor last summer.
+
+gym
+- I go to the gym before work three days a week.
+- The gym in our building is small, but it has everything I need.
+- I signed up for a gym membership, but I haven't gone yet.
+
+work out
+- [exercise] I try to work out at least three times a week.
+- [exercise] She works out at the gym before work.
+- [solve or arrange] We'll work out a time for the plumber to come.
+- [end well] Don't worry; it'll all work out in the end.
+
+physical therapy
+- I'm doing physical therapy for my knee twice a week.
+- Physical therapy helped my back a lot.
+- After the surgery, he needed six weeks of physical therapy.
+
+settle in
+- We're still settling in, so the place is full of boxes.
+- How are you settling in at the new apartment?
+- It took the cat a few days to settle in.
+
+pick up
+- [clean up] Pick up your clothes off the floor, please.
+- [collect] Can you pick up my prescription on your way home?
+- [collect someone] I'll pick you up from the doctor's office at four.
+- [answer the phone] I called the landlord three times, but he didn't pick up.
+
+put away
+- Can you help me put away the groceries?
+- I washed the dishes, but I didn't put them away.
+- Put away your toys before bedtime, please.
+
+throw out
+- [discard] This milk smells bad; throw it out.
+- [discard] We threw out a lot of junk when we moved.
+- [hurt your back] I threw out my back lifting a heavy box.
+
+take out
+- [remove trash] Can you take out the recycling tonight?
+- [remove from a place] Take the chicken out of the freezer so it can thaw.
+- [go out with someone] I'm taking my mom out to dinner for her birthday.
+
+fix up
+- We're fixing up the old house before we sell it.
+- They fixed up the guest room for my parents' visit.
+- He likes to buy old bikes and fix them up.
+
+set up
+- [install] Can you help me set up the new TV?
+- [install] We set up the crib in the baby's room.
+- [arrange] I'll set up an appointment with the dentist for next week.
+
+hook up
+- [connect] The guys will hook up the washer and dryer when they deliver them.
+- [connect] Can you help me hook up the printer to the Wi-Fi?
+- [help get something] My cousin hooked me up with a great plumber.
+- [slang: casual romantic or sexual encounter] Did they hook up at the party, or are they just friends?
+
+plug in
+- Plug in the phone charger next to the bed.
+- The lamp isn't broken; it just isn't plugged in.
+- Where can I plug in my laptop?
+
+unplug
+- Unplug the toaster when you're not using it.
+- Did you unplug the iron before we left?
+- I unplugged the router and plugged it back in, and the Wi-Fi works now.
+
+turn on
+- Can you turn on the lights? It's getting dark.
+- Turn on the fan; it's hot in here.
+- I turned the oven on, so it should be ready in ten minutes.
+
+turn off
+- Don't forget to turn off the stove.
+- Turn off the water while you brush your teeth.
+- I turned off my phone during the appointment.
+
+turn up
+- [increase] Can you turn up the heat? I'm freezing.
+- [increase] Turn up the TV; I can't hear it.
+- [appear] My lost keys turned up in the laundry basket.
+
+turn down
+- [lower] Please turn down the music; the baby's sleeping.
+- [lower] Turn the heat down a little before we go to bed.
+- [refuse] He turned down the job because of the long drive.
+
+break down
+- [stop working] Our dishwasher broke down right before Thanksgiving.
+- [stop working] The car broke down on the highway, so I called a tow truck.
+- [cry] She broke down in tears when she heard the news.
+
+act up
+- [malfunction] The Wi-Fi is acting up again.
+- [hurt again] My knee always acts up when it rains.
+- [misbehave] The kids act up when they're tired.
+
+clog up
+- Hair clogs up the shower drain, so use a drain cover.
+- The leaves clogged up the gutters again.
+- My nose is all clogged up from this cold.
+
+back up
+- [drain overflows] The kitchen sink backed up, and water went all over the floor.
+- [move backward] Back up a little; you're too close to the garage door.
+- [support] My roommate backed me up when I complained to the landlord.
+- [copy files] Always back up your photos in case your phone breaks.
+
+fight off
+- I'm drinking lots of tea to fight off this cold.
+- She took vitamin C to fight off the flu, but she got it anyway.
+- My body is fighting off something, so I'm really tired.
+
+shake off
+- I can't shake off this cough; it's been two weeks.
+- He shook off the cold in a couple of days.
+- Take a walk to shake off the stress from work.
+
+throw up
+- I threw up after eating that bad sushi.
+- The baby threw up on my shirt.
+- I felt like I was going to throw up on the boat.
+
+pass out
+- [faint] I almost passed out when they took my blood.
+- [faint] It was so hot that one guy passed out in line.
+- [hand out] Can you pass out these forms to everyone in the waiting room?
+
+come to
+- [wake up] He fainted, but he came to after a few seconds.
+- [wake up] When I came to, the nurse was holding my hand.
+- [add up to] The bill came to two hundred dollars after insurance.
+
+get over
+- [recover] It took me two weeks to get over the flu.
+- [recover] I'm finally getting over this cold.
+- [move on] She still hasn't gotten over her breakup.
+
+feel up to
+- Do you feel up to going for a walk?
+- I don't feel up to cooking tonight, so let's order in.
+- If you feel up to it, come to dinner on Sunday.
+
+check up on
+- I'm going to check up on Grandma after work.
+- Can you check up on the dog while we're away?
+- The nurse came in to check up on me every hour.
+
+look after
+- Can you look after the kids while I go to the doctor?
+- She's looking after her mom, who's recovering from surgery.
+- Look after yourself and get some rest.
+
+sign up
+- I signed up for a yoga class at the gym.
+- You can sign up for the flu shot at the front desk.
+- We signed up for internet service the day we moved in.
+
+fill out
+- Please fill out these forms and bring them back to the front desk.
+- I filled out the rental application online.
+- Do I have to fill out the paperwork every time I come?
+
+call in sick
+- I had a fever, so I called in sick to work.
+- You can't call in sick every Monday.
+- If you're still sick tomorrow, just call in sick.
+
+call in
+- [tell work you're absent] I called in this morning because my son is sick.
+- [order by phone] The doctor called in the prescription to the pharmacy.
+- [bring in an expert] We had to call in a plumber for the burst pipe.
+
+run out of
+- We ran out of toilet paper. Can you pick some up?
+- I'm about to run out of my blood pressure pills.
+- Don't let the car run out of gas again.
+
+cut down on
+- My doctor told me to cut down on salt.
+- I'm trying to cut down on coffee.
+- We cut down on eating out to save some money.
+
+warm up
+- [before exercise] Always warm up for five minutes before you run.
+- [heat food] I'll warm up the leftovers for dinner.
+- [weather] It's supposed to warm up this afternoon.
+
+cool down
+- [after exercise] Walk for a few minutes to cool down after your run.
+- [calm down] Let's cool down before we talk about this.
+- [lower temperature] Open the windows to cool down the house.
+
+wear off
+- The numbness should wear off in an hour or two.
+- The medicine wore off, and my headache came back.
+- My coffee is wearing off, and I'm getting sleepy.
+
+kick in
+- The painkiller should kick in in about twenty minutes.
+- I'll feel better once the medicine kicks in.
+- The heat finally kicked in, so the house is warming up.
+
+flare up
+- My allergies flare up every spring.
+- His back pain flared up after he moved the couch.
+- My eczema flares up when the weather gets dry.
+
+swell up
+- My ankle swelled up after I twisted it.
+- His eyes swell up when he's around cats.
+- My fingers swell up when it's hot, so I take my ring off.
+
+The sink is clogged.
+- [texting the landlord] Hi, the sink is clogged and the water won't go down. Can someone come?
+- The sink is clogged again. Where did we put the plunger?
+- [calling maintenance] The sink is clogged in the kitchen, and it smells pretty bad.
+
+The faucet is leaking.
+- [calling the landlord] Hi, the faucet is leaking in the bathroom, and it won't stop.
+- The faucet is leaking again, so I put a cup under it.
+- [to a plumber] The faucet is leaking at the base, not from the spout.
+
+The power went out.
+- [during a storm] The power went out, so grab the flashlights.
+- The power went out for three hours, and all our ice cream melted.
+- [texting a neighbor] The power went out on our side. Is yours out too?
+
+The AC isn't working.
+- [calling the landlord] Hi, the AC isn't working, and it's ninety degrees in here.
+- The AC isn't working in the bedroom, so we slept in the living room.
+- [to the front desk] Excuse me, the AC isn't working in room 214.
+
+Can you send someone to take a look?
+- [calling the landlord] The dishwasher is leaking. Can you send someone to take a look?
+- The heater's making a loud noise. Can you send someone to take a look today?
+- [calling maintenance] Can you send someone to take a look at the bathroom fan?
+
+When is rent due?
+- [signing a lease] When is rent due, and can I pay it online?
+- When is rent due? Is it the first or the fifth of the month?
+- [to a new roommate] Hey, when is rent due? I want to set a reminder.
+
+Will I get my security deposit back?
+- [moving out] We cleaned everything and patched the nail holes. Will I get my security deposit back?
+- [signing a lease] If I break the lease early, will I get my security deposit back?
+- [email to a landlord] I moved out on the 30th. When will I get my security deposit back?
+
+I'd like to make an appointment.
+- [calling a doctor's office] Hi, I'd like to make an appointment for a checkup.
+- I'd like to make an appointment with Dr. Lee sometime next week.
+- [calling a dentist] Hi, I'd like to make an appointment for a cleaning, please.
+
+Do you take my insurance?
+- [calling a clinic] Hi, do you take my insurance? It's through my job.
+- Before I book, do you take my insurance? I can read you the plan name.
+- [at the front desk] Do you take my insurance, or will I have to pay up front?
+
+Are you accepting new patients?
+- [calling a doctor's office] Hi, are you accepting new patients? I just moved here.
+- Are you accepting new patients, or is there a waiting list?
+- [calling a dentist] Are you accepting new patients this year? My kids need a dentist.
+
+I'm not feeling well.
+- [texting your boss] I'm not feeling well, so I'm going to stay home today.
+- I'm not feeling well. Can we reschedule lunch for next week?
+- [to the school nurse] I'm not feeling well. My stomach really hurts.
+
+I think I'm coming down with something.
+- [to a coworker] I think I'm coming down with something, so I'm heading home early.
+- I think I'm coming down with something. My throat is scratchy.
+- [canceling plans] Sorry, I think I'm coming down with something. Rain check?
+
+I've had a fever since yesterday.
+- [at the doctor] I've had a fever since yesterday, and my whole body aches.
+- I've had a fever since yesterday, so I don't think I should come in.
+- [to the nurse] I've had a fever since yesterday, around a hundred and one.
+
+It hurts when I swallow.
+- [at urgent care] My throat is sore, and it hurts when I swallow.
+- It hurts when I swallow, so I've just been drinking soup.
+- [to the doctor] It hurts when I swallow, especially in the morning.
+
+I feel lightheaded.
+- [after giving blood] I feel lightheaded. Can I sit down for a minute?
+- I feel lightheaded. I think I forgot to eat lunch.
+- [to a nurse] I feel lightheaded when I stand up too fast.
+
+My back is killing me.
+- [after moving day] My back is killing me from carrying all those boxes.
+- My back is killing me. I need a new mattress.
+- [after gardening] I pulled weeds all day, and my back is killing me.
+
+I need to refill my prescription.
+- [calling a pharmacy] Hi, I need to refill my prescription. It's under the name Garcia.
+- I need to refill my prescription before we go on vacation.
+- [to your doctor's office] I need to refill my prescription, but it says no refills left.
+
+Are there any side effects?
+- [at the pharmacy] Are there any side effects I should know about?
+- [to the doctor] Are there any side effects, like feeling sleepy?
+- Before I start taking it, are there any side effects?
+
+Take two tablets twice a day.
+- [the pharmacist explains] Take two tablets twice a day, once in the morning and once at night.
+- The label says, "Take two tablets twice a day with water."
+- [the doctor explains] Take two tablets twice a day for a week.
+
+Take it with food.
+- [the pharmacist explains] Take it with food so it doesn't upset your stomach.
+- The bottle says to take it with food, so eat something first.
+- [the doctor explains] Take it with food, and don't drink alcohol with it.
+
+How long is the wait?
+- [at urgent care] Hi, how long is the wait right now?
+- How long is the wait? We've been here almost an hour.
+- [checking in at a clinic] How long is the wait to see a doctor today?
+
+What's the copay?
+- [calling a clinic] What's the copay for a regular visit?
+- [at the front desk] What's the copay for this? Do I pay now or later?
+- What's the copay if I go to urgent care instead?
+
+I'm calling in sick today.
+- [calling your boss] Hi, it's Ana. I'm calling in sick today; I have a fever.
+- I'm calling in sick today, but I'll check my email this afternoon.
+- [texting a coworker] Can you cover my shift? I'm calling in sick today.
+
+Feel better soon!
+- [texting a sick friend] Sorry you're sick. Feel better soon!
+- Feel better soon! Let me know if you need anything from the store.
+- [card for a coworker] Thinking of you. Feel better soon!
+
+Bless you.
+- [someone sneezes] Bless you. Do you need a tissue?
+- Bless you! Are you coming down with a cold?
+- [a stranger sneezes in line] "Bless you." "Oh, thank you. Excuse me."
+
+Gesundheit.
+- [someone sneezes] Gesundheit! That was a big one.
+- Every time I sneeze, my coworker says, "Gesundheit."
+- [someone sneezes twice] Gesundheit. Are your allergies acting up again?

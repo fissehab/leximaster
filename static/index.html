@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>LexiMaster</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232B47A8'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23F0D48A' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/fonts/fonts.css">
+  <link rel="stylesheet" href="/static/css/tokens.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+  <script>
+    try {
+      const t = localStorage.getItem("lexi-theme");
+      if (["light", "dark", "mariana"].includes(t)) document.documentElement.dataset.theme = t;
+      else if (t) localStorage.removeItem("lexi-theme");  // a theme that no longer exists
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="shell">
+    <nav class="rail" aria-label="Sections">
+      <a class="brand" href="#home" aria-label="LexiMaster home">
+        <span class="brand-mark" aria-hidden="true">L</span>
+        <span class="brand-name">LexiMaster</span>
+      </a>
+      <div class="nav-links" id="nav-links"></div>
+      <div class="rail-foot">
+        <button class="icon-btn" id="rail-toggle" type="button" title="Collapse the menu" aria-label="Collapse the menu" aria-expanded="true"></button>
+        <button class="icon-btn" id="theme-toggle" type="button" title="Theme" aria-label="Choose a color theme"></button>
+        <button class="icon-btn" id="help-btn" type="button" title="Keyboard shortcuts (?)" aria-label="Keyboard shortcuts">?</button>
+      </div>
+    </nav>
+    <main id="view" tabindex="-1"></main>
+  </div>
+  <div class="toast-wrap" id="toasts" role="status" aria-live="polite"></div>
+  <dialog id="dialog" class="dialog"></dialog>
+  <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+# Beach, outdoors, weather and leisure trips.
+beach
+shore
+shoreline
+coast
+coastline
+seaside
+oceanfront
+beachfront
+boardwalk
+pier
+dock
+jetty
+dune
+sand
+sandbar
+tide
+high tide
+low tide
+riptide
+rip current
+undertow
+wave
+surf
+swell
+breaker
+whitecap
+lifeguard
+lifeguard stand
+flag
+jellyfish
+seashell
+seaweed
+crab
+seagull
+sunscreen
+sunblock
+SPF
+sunburn
+tan
+suntan
+sunbathe
+shade
+umbrella
+beach umbrella
+beach towel
+cooler
+flip-flops
+sandals
+swimsuit
+bathing suit
+swim trunks
+bikini
+cover-up
+goggles
+snorkel
+snorkeling
+scuba diving
+surfboard
+boogie board
+paddleboard
+kayak
+canoe
+life jacket
+float
+inflatable
+sandcastle
+wade
+splash
+paddle
+float
+drift
+dip
+take a dip
+cannonball
+dive
+lap
+pool
+deep end
+shallow end
+hot tub
+waterpark
+trail
+trailhead
+hike
+hiking
+hiker
+backpacking
+trek
+scenic
+viewpoint
+lookout
+overlook
+summit
+peak
+ridge
+valley
+canyon
+cliff
+waterfall
+creek
+stream
+lake
+pond
+campground
+campsite
+camping
+tent
+sleeping bag
+campfire
+bonfire
+s'more
+marshmallow
+RV
+cabin
+lodge
+national park
+state park
+ranger
+picnic
+picnic table
+cookout
+grill
+hammock
+bug spray
+mosquito
+tick
+poison ivy
+bee sting
+blister
+sunstroke
+heatstroke
+dehydrated
+hydrate
+breezy
+windy
+muggy
+humid
+sticky
+scorching
+sweltering
+boiling
+chilly
+nippy
+crisp
+mild
+overcast
+cloudy
+drizzle
+downpour
+pouring
+sprinkle
+shower
+thunderstorm
+lightning
+hail
+fog
+foggy
+haze
+heat wave
+cold snap
+forecast
+weather forecast
+sunny
+partly cloudy
+clear skies
+sunrise
+sunset
+golden hour
+vacation
+getaway
+staycation
+road trip
+day trip
+weekend trip
+itinerary
+sightseeing
+tourist
+tourist trap
+landmark
+souvenir
+postcard
+resort
+all-inclusive
+check-in
+checkout
+off-season
+peak season
+crowded
+packed
+deserted
+secluded
+relaxing
+unwind
+recharge
+soak up the sun
+catch some rays
+beat the heat
+cool off
+get some fresh air
+
+# Phrasal verbs outdoors and on vacation
+set up
+pitch a tent
+pack up
+head out
+head back
+cool off
+warm up
+dry off
+wash off
+rinse off
+put on
+slather on
+lie out
+soak up
+swim out
+wade in
+wipe out
+paddle out
+clear up
+cloud over
+pour down
+let up
+blow over
+heat up
+chill out
+get away
+check in
+check out
+take off
+
+# Expressions
+Is it safe to swim here? | Asking whether the water or currents are dangerous.
+The water's freezing! | Casual: the water is very cold.
+The water's perfect. | The water temperature is pleasant for swimming.
+Watch out for the riptide. | A warning about a strong current that pulls swimmers away from shore.
+Did you put on sunscreen? | Reminding someone to protect their skin from the sun.
+I'm getting burned. | Saying your skin is starting to get sunburned.
+Let's find some shade. | Suggesting moving out of the direct sun.
+Want to go for a swim? | Inviting someone to swim.
+Want to go for a walk on the beach? | Inviting someone to walk along the shore.
+It's a beautiful day. | Common small talk about good weather.
+It's so humid today. | Complaining that the air feels damp and heavy.
+It's supposed to rain later. | Saying the forecast predicts rain.
+It's really coming down. | Casual: it is raining heavily.
+Looks like it's clearing up. | Saying the clouds or rain are going away.
+How long is the hike? | Asking the distance or time a trail takes.
+Is the trail marked? | Asking whether there are signs along the path.
+What a view! | Admiring scenery.
+We should head back before it gets dark. | Suggesting returning before night.
+Do you need a parking pass? | Asking whether you must pay or register to park.
+Are dogs allowed? | Asking whether pets are permitted.
+I'm so ready for vacation. | Casual: you really need a break.
+We're just taking it easy this weekend. | Saying you plan to relax, without big plans.
+We had a blast. | Casual: we had a great time.
+How was your trip? | Common question after someone returns from travel.
+It was so relaxing. | Saying a trip or day helped you rest.

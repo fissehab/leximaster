@@ -1,0 +1,338 @@
+# Meanings for everyday entries that no dictionary lists. Format: entry | meaning
+# Used only when the dictionary lookup finds nothing; examples are in seeds/examples/.
+
+# dining
+to-go box | A container a restaurant gives you to take leftover food home.
+party of | How a host counts your group: "a party of four" is a group of four people.
+bar seating | Seats at the bar counter, often available without a reservation.
+kids' menu | A shorter, cheaper menu of simple dishes for children.
+hole in the wall | A small, plain, unfancy place, usually a restaurant, that is often surprisingly good.
+split the check | Divide the bill so each person pays for their own share.
+my treat | "I'll pay for this"; said when you offer to pay for someone else.
+hold the | Leave out an ingredient: "a burger, hold the onions" means no onions.
+no ice | A drink served without ice cubes.
+nut allergy | A dangerous allergic reaction to nuts; tell the server so the kitchen can avoid them.
+entree salad | A salad large enough to be a main course.
+house salad | A restaurant's basic, standard salad, often served as a side.
+soup of the day | The soup the restaurant is offering today, which changes daily.
+draft beer | Beer served from a keg through a tap, not from a bottle or can.
+glass of wine | A single serving of wine, ordered by the glass rather than the bottle.
+grab a bite | Eat something quickly and casually.
+grab lunch | Have a quick, casual lunch, often with someone.
+reservation under | Gives the name a table is booked under: "a reservation under Patel".
+be right with you | "I'll come help you in a moment"; said by a busy server or clerk.
+cash or card | The question of how you'll pay: with cash or with a credit or debit card.
+start off with | Begin a meal with something: "We'll start off with the calamari."
+fill up on | Eat so much of one thing that you have no room for the rest.
+cut back on | Eat, drink or use less of something.
+run up a tab | Order many things on one bill at a bar and pay at the end; the amount grows.
+
+# feelings
+caught off guard | Surprised by something you weren't ready for.
+fed up with | Annoyed and out of patience with something that keeps happening.
+over it | No longer upset about something, or tired of it and no longer caring.
+done with | Finished with something, or so annoyed you want nothing more to do with it.
+in a good mood | Feeling happy and pleasant.
+in a bad mood | Feeling irritable or unhappy.
+at my wit's end | So worried or frustrated that you don't know what to do next.
+butterflies in my stomach | A nervous, fluttery feeling before something important.
+a weight off my shoulders | The relief of no longer having a worry or responsibility.
+good vibes | A positive, pleasant feeling from a person, place or situation (casual).
+get something off your chest | Tell someone about a worry or complaint so you feel better.
+that sucks | Casual and a bit rude: "that's bad" or "that's disappointing".
+that's rough | Casual sympathy: "that sounds hard".
+snap at | Speak to someone suddenly and angrily, usually without a good reason.
+calm someone down | Help someone who is upset or angry become calm.
+
+# food
+serving size | The amount of food counted as one portion, as on a nutrition label.
+eat healthy | Choose nutritious food; casual American usage (strictly, "eat healthily").
+melts in your mouth | Describes food so soft and rich it seems to dissolve as you eat it.
+too rich | So heavy with butter, cream or sugar that you can only eat a little.
+mix in | Add an ingredient and combine it with the rest.
+stir in | Add an ingredient while stirring it into a liquid or mixture.
+
+# getting around
+miles per gallon | How far a car goes on one gallon of gas (MPG); the US measure of fuel economy.
+dead battery | A car or phone battery with no charge left, so it won't start or turn on.
+check engine light | A warning light on the dashboard that means the car needs to be checked.
+roadside assistance | A service that helps drivers stuck on the road with a flat tire, dead battery or towing.
+construction zone | A stretch of road where work is being done; speed limits are lower and fines higher.
+right on red | Turning right at a red light after stopping, which is legal in most of the US unless a sign says no.
+make a left | Turn left (in giving or following directions).
+make a right | Turn right (in giving or following directions).
+head north | Travel toward the north.
+pick someone up | Go and get someone in your car.
+drop someone off | Drive someone to a place and leave them there.
+give someone a ride | Drive someone somewhere in your car.
+hitch a ride | Get a free ride with someone going your way (casual).
+checked bag | Luggage you give the airline to carry in the plane's hold.
+connecting flight | A second flight you take to reach your final destination after a stop.
+merge in | Move into a lane of traffic from another lane or an on-ramp.
+head home | Leave to go home.
+tow away | Remove a car with a tow truck, usually because it was parked illegally.
+
+# home and health
+power outlet | The place in a wall where you plug in electrical devices.
+do laundry | Wash, dry and fold your clothes.
+spare key | An extra key kept in case you lose yours or get locked out.
+allergic reaction | The body's bad response to something you're allergic to, such as a rash or swelling.
+stuffy nose | A blocked nose that makes breathing through it hard.
+sprained ankle | An injured ankle from twisting it too far.
+feel under the weather | Feel slightly sick.
+in-network | A doctor or hospital that your health insurance has an agreement with, so you pay less.
+out-of-network | A doctor or hospital outside your insurance plan's network, so you pay more.
+eye exam | A full check of your vision and eye health by an eye doctor.
+cut down on | Use, eat or do less of something.
+
+# idioms
+can't make heads or tails of | Can't understand something at all.
+cut some slack | Be less strict or critical with someone: "Cut him some slack."
+have a lot on your plate | Have many tasks or problems to deal with at once.
+nip it in the bud | Stop a problem early, before it grows.
+slipped my mind | I forgot.
+the best of both worlds | The advantages of two different things at the same time.
+the bottom line | The most important point, or the final result.
+make it work | Find a way to succeed despite problems or limits.
+not a big deal | Not important; nothing to worry about.
+sky's the limit | There is no limit to what is possible.
+
+# meetings
+next steps | The actions to take after a meeting, and who will take them.
+behind schedule | Later than planned.
+to add to that | Introduces a point that builds on what someone just said.
+can I jump in | A polite way to ask to interrupt with a comment.
+let me finish | Asks someone not to interrupt you.
+great point | Praises what someone said.
+to clarify | Introduces an explanation or a question to remove confusion.
+just to clarify | A softer "to clarify", often before checking that you understood.
+to be clear | Introduces a statement you want no one to misunderstand.
+if I understand correctly | Introduces your summary of someone's point, to check it.
+let's table that | In the US: let's postpone that topic and discuss it later.
+take it offline | Discuss something later, outside the meeting, with fewer people.
+out of scope | Not part of the agreed work for this project.
+rough estimate | An approximate number or amount, not an exact one.
+quick win | A task that is easy to do and shows results fast.
+play devil's advocate | Argue against an idea, not because you believe it, but to test it.
+second the motion | Formally support someone's proposal so it can be voted on; used in formal meetings.
+fair point | "You're right about that"; acknowledges someone's argument.
+I hear you | "I understand what you're saying", often before disagreeing politely.
+that makes sense | "I understand and agree."
+I see where you're coming from | "I understand your reasons", often before a different view.
+I'd push back on that | A polite way to say you disagree.
+I'm not sure I agree | A gentle way to disagree.
+let's not get ahead of ourselves | Let's not plan for later steps before the current one is done.
+let's take a step back | Let's look at the bigger picture before going on.
+let's regroup | Let's meet again, or pause and reorganize, before continuing.
+any questions | Invites the audience to ask questions.
+open floor | Time in a meeting when anyone may speak or ask questions.
+I'll take that | "I'll be responsible for that task."
+I'll own that | "I'll take responsibility for that", for a task or a mistake.
+share my screen | Show what's on your computer to others on a video call.
+can you see my screen | Checks that others on a video call can see what you're sharing.
+can everyone hear me | Checks that your audio works for everyone on a call.
+push the meeting | Move a meeting to a later time.
+move the meeting | Change a meeting to a different time.
+calendar invite | An electronic meeting invitation that adds the meeting to your calendar.
+fill in for | Do someone's job temporarily while they're away.
+cover for | Do someone's work while they're away, or hide their mistake.
+
+# beach and outdoors
+lifeguard stand | The tall chair or tower where a lifeguard sits to watch swimmers.
+partly cloudy | A weather forecast meaning some clouds with some sun.
+clear skies | Weather with no clouds.
+soak up the sun | Relax and enjoy sitting in the sunshine.
+beat the heat | Find a way to stay cool on a hot day.
+get some fresh air | Go outside, especially after being indoors a long time.
+head back | Start returning to where you came from.
+slather on | Spread a thick layer of something, like sunscreen.
+lie out | Lie in the sun to relax or tan.
+swim out | Swim away from the shore toward something.
+paddle out | Paddle a surfboard or kayak away from the shore.
+
+# phone and video calls
+give someone a call | Phone someone.
+leave a message | Record a message for someone who doesn't answer the phone.
+leave a voicemail | Record a phone message in someone's voicemail.
+take a message | Write down a caller's message for someone who isn't available.
+on speaker | Using the phone's speaker so others in the room can hear.
+put on speaker | Switch a call to the phone's speaker so others can hear.
+put on hold | Make a caller wait on the line.
+hold music | The music you hear while waiting on hold.
+please hold | Asks a caller to wait on the line.
+just a moment | Asks someone to wait briefly.
+bear with me | "Please be patient while I do this."
+patch through | Connect a caller to another person or line (a bit dated, call-center style).
+menu options | The numbered choices an automated phone system reads out.
+press one | An instruction from an automated phone menu: push the 1 key.
+no service | Your phone has no cell signal.
+dropped call | A call that ends by accident because of a bad signal.
+the call dropped | The call disconnected by accident.
+bad connection | Poor call quality that makes it hard to hear.
+can you hear me | Checks whether the other person can hear you.
+can you hear me now | Checks again whether you can be heard after moving or fixing a problem.
+I can barely hear you | Tells the caller the sound is too faint or poor.
+could you speak up | Asks someone to talk louder.
+could you repeat that | Asks someone to say something again.
+sorry, say that again | A casual way to ask someone to repeat.
+could you spell that | Asks someone to spell a word or name letter by letter.
+spell that for me | Asks someone to spell something (casual).
+let me read that back | Says you'll repeat information to confirm it.
+read back | Repeat written information aloud to check it's correct.
+is this a good time | Asks whether the person can talk now.
+do you have a minute | Asks whether someone has a little time to talk.
+I'll keep it short | Promises a brief conversation.
+may I ask who's calling | A polite way to ask the caller's name.
+this is | How you say your name on the phone: "Hi, this is Maria."
+is this | Asks whether you're speaking to the right person: "Is this Dr. Lee's office?"
+I'm calling about | States the topic of your call.
+I'm calling to | States the purpose of your call.
+the reason I'm calling | Introduces why you called.
+get back to you | Reply to someone later with an answer.
+I'll get back to you | "I'll reply later when I have an answer."
+call you right back | Call again in a moment.
+let me call you back | Asks to end the call now and call again later.
+talk soon | A casual goodbye: "we'll talk again soon".
+have a good day | A friendly goodbye, common with customers and strangers.
+bye for now | A casual goodbye (a little old-fashioned).
+shoot a text | Send a quick text message (casual).
+Teams call | A video or voice call on Microsoft Teams.
+dial-in number | The phone number you call to join a conference call.
+meeting ID | The number that identifies an online meeting so you can join it.
+join the call | Enter a phone or video call that has started.
+drop off the call | Leave a call early.
+camera on | Having your video turned on during a video call.
+camera off | Having your video turned off during a video call.
+spam call | An unwanted call, usually automated advertising.
+scam call | A call from someone trying to cheat you out of money or information.
+blocked number | A phone number you have blocked, or a caller whose number is hidden.
+three-way call | A phone call with three people on the line (somewhat dated).
+data plan | The part of your cell phone plan that covers internet use.
+battery dying | Your phone's battery is almost out of charge.
+my phone died | My phone's battery ran out and it turned off.
+low battery | The battery has little charge left.
+on the other line | Busy with another phone call.
+I have another call | Says you must answer a second incoming call.
+playing phone tag | Calling each other back and forth and repeatedly missing each other.
+text back | Reply to a text message.
+
+# shopping
+too tight | Clothing that is too small.
+too loose | Clothing that is too big.
+back in stock | Available again after being sold out.
+treat yourself | Buy yourself something nice as a reward.
+just looking | Tells a salesperson you don't need help yet.
+compare prices | Check prices at different stores before buying.
+store credit | Money to spend at a store, given instead of a refund.
+return policy | A store's rules about returning items.
+extended warranty | Extra repair coverage you can buy beyond the standard warranty.
+tap to pay | Pay by holding your card or phone near the card reader.
+reusable bag | A sturdy shopping bag you bring back and use many times.
+online shopping | Buying things on the internet.
+order online | Buy something on a website or app.
+add to cart | Put an item in your online shopping basket.
+tracking number | A number that lets you follow where your package is.
+curbside pickup | Ordering ahead and having the store bring the order to your car.
+in-store pickup | Ordering online and collecting the order inside the store.
+deli counter | The counter in a grocery store where meats and cheeses are sliced to order.
+canned goods | Food sold in cans.
+household items | Everyday things for the home, like cleaning supplies and paper towels.
+next in line | The person who will be served next.
+store hours | The times a store is open.
+twenty-four hours | Open all day and night, every day ("open 24 hours").
+holiday hours | Special opening times on holidays.
+Black Friday | The day after Thanksgiving, known for big sales.
+in bulk | In large quantities, usually for a lower price per item.
+by the pound | Priced according to weight in pounds.
+per item | The price for each single item.
+buy one get one | A deal where you get a second item free or discounted (BOGO).
+on clearance | Being sold at a big discount to clear out old stock.
+final sale | An item that can't be returned or exchanged.
+
+# small talk
+grab coffee | Meet someone for a casual coffee.
+grab a drink | Meet someone for a casual drink, often after work.
+how have you been | A friendly greeting asking about someone's life lately.
+pretty good | A common casual answer: "fine, good".
+how about you | Turns a question back to the other person.
+pleasure to meet you | A polite thing to say when you meet someone for the first time.
+good to see you | A friendly greeting to someone you already know.
+fancy meeting you here | A playful greeting when you see someone unexpectedly.
+let's catch up | Suggests meeting to talk about what's new.
+let's do this again | Suggests repeating an enjoyable meeting or outing.
+conversation starter | A question or topic that helps start a conversation.
+girls' night | An evening out with female friends.
+guys' night | An evening out with male friends.
+any plans | Asks whether someone has plans, for example for the weekend.
+big fan | Someone who likes something or someone very much.
+passionate about | Very enthusiastic about something.
+are you kidding | Expresses surprise or disbelief.
+that's crazy | Casual: that's surprising or hard to believe.
+that's wild | Casual: that's amazing or surprising.
+I'm happy for you | Shows you're glad about someone's good news.
+sorry to hear that | Expresses sympathy for bad news.
+I guess | Shows mild uncertainty or reluctant agreement.
+that reminds me | Introduces something you just remembered.
+good point | Agrees with what someone said.
+small favor | A small request for help.
+do me a favor | Asks someone to help you with something.
+sorry to interrupt | A polite way to interrupt someone.
+lost my train of thought | Forgot what I was going to say.
+awkward silence | An uncomfortable pause in a conversation.
+crack a joke | Tell a joke.
+meet up with | Meet someone by arrangement.
+go on about | Talk about something for too long.
+
+# sports and pop culture
+Super Bowl | The NFL championship game, played in February, a huge American TV event.
+March Madness | The college basketball tournament every March.
+cheer for | Support a team or person by shouting encouragement.
+die-hard fan | A very loyal, devoted fan.
+late-night show | A comedy talk show on TV late in the evening.
+opening act | The performer who plays before the main act at a concert.
+award show | A televised ceremony that gives awards, such as the Oscars.
+Grammys | The major American music awards.
+superhero movie | A movie about superheroes.
+cult classic | A movie or show loved by a devoted group of fans, often not a big hit at first.
+fan favorite | Something or someone especially popular with fans.
+Memorial Day | A US holiday on the last Monday of May honoring soldiers who died; the unofficial start of summer.
+Halloween | October 31, when children wear costumes and go trick-or-treating.
+New Year's Eve | December 31, the night before the new year.
+Super Bowl party | A party where people gather to watch the Super Bowl.
+binge on | Do or eat too much of something at once.
+skip ahead | Jump forward in a video or recording.
+
+# added after the fetch finished
+value meal | A fast-food combo of a main item, side and drink at a lower price than buying them separately.
+watch what you eat | Be careful about what and how much you eat, usually for health.
+walk-in clinic | A clinic where you can see a doctor or nurse without an appointment.
+what I'm hearing is | Introduces your summary of what someone said, to check you understood.
+we're running short on time | Says the meeting has little time left.
+weekend trip | A short trip over a weekend.
+wait in line | Stand in a line of people until it's your turn.
+you too | A reply that returns a wish: "Have a nice day!" "You too!"
+what a coincidence | Said when two things happen together by chance in a surprising way.
+weekend plans | What someone plans to do on the weekend; a common small-talk topic.
+what do you do for fun | Asks about someone's hobbies and free time.
+where was I | Asks where you stopped in what you were saying after an interruption.
+World Series | The championship series of Major League Baseball, played in October.
+free refill | Getting your cup filled again at no extra charge, common for soda and coffee in the US.
+special of the day | A dish the restaurant offers only today, often at a good price.
+separate checks | A separate bill for each person or couple at the table.
+free shipping | Delivery of an online order at no extra cost.
+customer service desk | The counter in a store where you make returns, ask questions or get help.
+keeping busy | A casual answer to "How are you?": "I have a lot going on."
+keep your chin up | Stay cheerful and hopeful in a hard situation.
+lose your touch | Lose a skill or ability you used to have.
+send an invite | Send someone an invitation, often a calendar invitation for a meeting.
+return a call | Call back someone who called you.
+send a text | Send a text message.
+
+# Entries the dictionary lists only as a form of another word
+intrigued | Very curious and interested in something because it seems unusual or mysterious.
+offended | Hurt, upset or insulted by something someone said or did.
+inhumane | Cruel; causing unnecessary suffering to people or animals.
+environs | The surrounding area of a place, especially a city: "Boston and its environs".
+high beams | A car's brightest headlight setting, used on dark roads when no cars are coming toward you.
+rearview mirror | The mirror inside a car above the windshield that lets the driver see behind.
+windshield wipers | The moving arms that clear rain and snow from a car's front window.

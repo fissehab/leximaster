@@ -1,0 +1,37 @@
+# Hand-written General American IPA, used only when neither Wiktionary nor
+# the CMU dictionary gives one. Format: entry | /ipa/
+agentic workflow | /eɪˈdʒɛntɪk ˈwɝkˌfloʊ/
+anthropomorphize | /ˌænθɹəpəˈmɔɹˌfaɪz/
+autoencoder | /ˌɔtoʊɪnˈkoʊdɚ/
+combinatorial explosion | /kəmˌbaɪnəˈtɔɹiəl ɪkˈsploʊʒən/
+convolutional neural network | /ˌkɑnvəˈluʃənəl ˌnʊɹəl ˈnɛtˌwɝk/
+corrigibility | /ˌkɔɹɪdʒəˈbɪlɪti/
+covariate shift | /koʊˈvɛɹiət ˈʃɪft/
+cybernetics | /ˌsaɪbɚˈnɛtɪks/
+denoising | /diˈnɔɪzɪŋ/
+discriminator | /dɪˈskɹɪməˌneɪtɚ/
+encoder | /ɪnˈkoʊdɚ/
+encoder-decoder | /ɪnˈkoʊdɚ diˈkoʊdɚ/
+eval | /ɪˈvæl/
+GenAI | /ˌdʒɛn ˌeɪ ˈaɪ/
+grokking | /ˈɡɹɑkɪŋ/
+initialization | /ɪˌnɪʃələˈzeɪʃən/
+MLOps | /ˌɛm ˈɛl ˌɑps/
+Moravec's paradox | /ˈmɔɹəˌvɛks ˈpɛɹəˌdɑks/
+nonlinearity | /ˌnɑnˌlɪniˈɛɹɪti/
+observability | /əbˌzɝvəˈbɪlɪti/
+optimizer | /ˈɑptəˌmaɪzɚ/
+positional encoding | /pəˌzɪʃənəl ɪnˈkoʊdɪŋ/
+quantization | /ˌkwɑntəˈzeɪʃən/
+recommender system | /ˌɹɛkəˈmɛndɚ ˈsɪstəm/
+regularization | /ˌɹɛɡjələɹəˈzeɪʃən/
+ReLU | /ˈɹɛlu/
+reproducibility | /ˌɹipɹəˌdusəˈbɪlɪti/
+reranking | /ɹiˈɹæŋkɪŋ/
+saliency map | /ˈseɪliənsi ˈmæp/
+sparse autoencoder | /ˌspɑɹs ˌɔtoʊɪnˈkoʊdɚ/
+sycophancy | /ˈsɪkəfənsi/
+tokenization | /ˌtoʊkənəˈzeɪʃən/
+tokenizer | /ˈtoʊkəˌnaɪzɚ/
+upscaling | /ˈʌpˌskeɪlɪŋ/
+variational autoencoder | /ˌvɛɹiˈeɪʃənəl ˌɔtoʊɪnˈkoʊdɚ/

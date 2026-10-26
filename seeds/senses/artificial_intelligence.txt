@@ -1,0 +1,151 @@
+# AI senses shown first for artificial intelligence terms whose dictionary
+# entry leads with another meaning (or has no AI meaning at all).
+# Format: entry | part of speech | meaning. The build shows it as "In AI: ...".
+
+AI | noun | Artificial intelligence: computer systems that perform tasks that normally require human intelligence, such as understanding language, recognizing images and making decisions.
+emergent | adjective | Describes a capability or behavior that appears in a large system without being explicitly built in, often only past a certain scale.
+emergence | noun | The appearance of abilities or behaviors in a system, such as a large model, that were not explicitly programmed or present in smaller versions.
+anthropomorphize | verb | To attribute human thoughts, feelings or intentions to an AI system, for example by saying a chatbot "wants" or "believes" something.
+autonomous | adjective | Able to carry out tasks and make decisions without step-by-step human direction.
+autonomy | noun | The degree to which an AI system can act and make decisions on its own, without human approval at each step.
+planner | noun | The part of an AI system that works out a sequence of actions to reach a goal.
+ontology | noun | A formal specification of the concepts in a domain and the relationships between them, used to structure knowledge for computers.
+deduction | noun | Reasoning from general rules to a conclusion that must follow from them.
+abduction | noun | Reasoning to the most plausible explanation for an observation.
+generalization | noun | A model's ability to perform well on new data it was not trained on.
+underfitting | noun | When a model is too simple to capture the patterns in its data, so it performs poorly even on the training set.
+regularization | noun | Techniques that discourage a model from becoming too complex, such as penalties on large weights or dropout, to reduce overfitting.
+ground truth | noun | The correct answers or labels that a model's predictions are compared against.
+label | noun | The correct output attached to a training example, such as "cat" for an image of a cat.
+labeling | noun | Attaching correct outputs (labels) to examples so they can be used to train or evaluate a model.
+classification | noun | The task of assigning inputs to one of a set of categories, such as spam or not spam.
+regression | noun | The task of predicting a continuous number, such as a price or temperature.
+clustering | noun | Grouping data points so that similar points end up in the same group, without labels.
+decision tree | noun | A model that makes predictions by following a series of if-then splits on the input features.
+boosting | noun | An ensemble method that trains models one after another, each focusing on the errors of the previous ones.
+loss function | noun | The function that measures how far a model's predictions are from the correct answers; training tries to minimize it.
+objective function | noun | The quantity a training procedure tries to minimize or maximize.
+cost function | noun | Another name for a loss function: the measure of error that training minimizes.
+posterior | noun | In Bayesian inference, the updated probability of a hypothesis after taking the observed data into account.
+sampling | noun | Drawing outputs from a model's probability distribution, for example choosing each next token at random according to its probability.
+bias | noun | A learned constant added to a neuron's weighted inputs; also, systematic unfairness or error in a model's outputs.
+nonlinearity | noun | A nonlinear function applied inside a neural network, such as ReLU, that lets it model complex patterns.
+feedforward | adjective | Describes a neural network in which information flows in one direction, from input to output, with no loops.
+gradient | noun | The vector of partial derivatives of the loss with respect to the model's parameters; it shows how to change them to reduce the loss.
+optimizer | noun | The algorithm that updates a model's parameters during training, such as stochastic gradient descent or Adam.
+momentum | noun | An optimization technique that keeps a running average of past gradients to speed up and smooth training.
+Adam | noun | A widely used optimizer that adapts the learning rate for each parameter using running averages of the gradient and its square.
+batch | noun | A group of training examples processed together in one step.
+iteration | noun | One update step of training, usually on one batch of data.
+convergence | noun | The point in training where the loss stops improving meaningfully.
+initialization | noun | Setting a model's parameters to starting values before training.
+convolution | noun | An operation that slides a small filter over the input, such as an image, to detect local patterns.
+pooling | noun | A layer that shrinks feature maps by summarizing small regions, for example by taking the maximum.
+filter | noun | In a convolutional network, a small grid of learned weights that detects one kind of pattern; also called a kernel.
+decoder | noun | The part of a model that generates the output, such as text, from an internal representation.
+generator | noun | In a GAN, the network that creates fake samples meant to fool the discriminator.
+discriminator | noun | In a GAN, the network that tries to tell real samples from generated ones.
+denoising | noun | Removing noise from data; diffusion models generate images by learning to denoise step by step.
+grokking | noun | When a model suddenly starts generalizing long after it has fit its training data.
+query | noun | In attention, the vector a token uses to look for relevant information in other tokens' keys.
+pretrained | adjective | Already trained on a large general dataset, ready to be fine-tuned or used directly.
+pretraining | noun | The first, large-scale stage of training a model on broad data, before any fine-tuning.
+autoregressive | adjective | Generating output one piece at a time, with each new token conditioned on the ones before it.
+subword | noun | A piece of a word, such as "ing" or "token", used as a unit by a tokenizer.
+jailbreak | noun | A prompt crafted to get a model to ignore its safety rules or restrictions.
+completion | noun | The text a language model generates to continue a prompt.
+decoding | noun | The procedure for turning a model's predicted probabilities into output text, such as greedy decoding or sampling.
+perplexity | noun | A measure of how well a language model predicts text; lower perplexity means better prediction.
+hallucination | noun | A confident but false or made-up statement produced by an AI model.
+confabulation | noun | Another word for an AI model making up plausible-sounding but false information.
+grounding | noun | Tying a model's answers to real sources or data, so they can be checked.
+grounded | adjective | Describes an answer that is based on, and supported by, provided sources or data.
+reranking | noun | Re-sorting an initial set of search results with a more accurate model, so the best ones come first.
+chunking | noun | Splitting long documents into smaller pieces so they can be embedded and retrieved.
+one-shot | adjective | Learning or prompting with a single example of the task.
+self-consistency | noun | Sampling several reasoning paths from a model and taking the most common final answer.
+scratchpad | noun | Space where a model writes out intermediate reasoning steps before giving its answer.
+fine-tuning | noun | Further training a pretrained model on a smaller, task-specific dataset.
+adapter | noun | A small set of extra trainable layers added to a frozen model so it can be fine-tuned cheaply.
+quantization | noun | Storing a model's numbers with fewer bits, such as 8 or 4 instead of 16, to cut memory use and speed up inference.
+pruning | noun | Removing weights or neurons that contribute little, to make a model smaller and faster.
+latency | noun | The time a model takes to respond to a request.
+throughput | noun | How many requests or tokens a system can process per second.
+batching | noun | Grouping several requests together so the hardware processes them at once, raising throughput.
+open-weight | adjective | Describes a model whose trained weights are publicly released, even if its training data and code are not.
+system card | noun | A document from an AI developer describing a model's capabilities, limitations, safety testing and mitigations.
+checkpoint | noun | A saved copy of a model's weights at a point during training.
+exploration | noun | In reinforcement learning, trying new actions to discover their results.
+exploitation | noun | In reinforcement learning, choosing the actions currently known to give the most reward.
+reward | noun | In reinforcement learning, the numerical feedback an agent receives for an action.
+return | noun | In reinforcement learning, the total (often discounted) reward collected over an episode.
+episode | noun | In reinforcement learning, one complete run from a starting state to an end state.
+trajectory | noun | In reinforcement learning, the sequence of states, actions and rewards in one episode.
+rollout | noun | Running a policy in an environment, or a model through a task, to collect a full trajectory or output.
+orchestrator | noun | In an agent system, the component that plans the work and assigns tasks to other agents or tools.
+working memory | noun | The information an AI agent keeps available for the task at hand, often what fits in its context window.
+copilot | noun | An AI assistant built into a tool that helps a person as they work, for example by suggesting code or text.
+guardrail | noun | A rule, filter or check that keeps an AI system's inputs or outputs within safe or acceptable limits.
+multimodal | adjective | Able to process or produce more than one kind of data, such as text, images and audio.
+modality | noun | A type of data a model handles, such as text, images, audio or video.
+summarization | noun | Automatically producing a shorter version of a text that keeps its main points.
+watermarking | noun | Hiding a detectable signal in AI-generated content so it can later be identified as machine-made.
+upscaling | noun | Using AI to increase the resolution of an image or video.
+evaluation | noun | Measuring how well a model performs, usually with test sets, benchmarks or human ratings.
+eval | noun | Informal for an evaluation: a test or set of tests that measures a model's performance.
+benchmark | noun | A standard set of tasks used to measure and compare models.
+leaderboard | noun | A public ranking of models by their scores on a benchmark.
+baseline | noun | A simple reference model or method that a new approach is compared against.
+accuracy | noun | The fraction of a model's predictions that are correct.
+precision | noun | Of the cases a model labeled positive, the fraction that really are positive.
+recall | noun | Of the truly positive cases, the fraction the model correctly found.
+calibration | noun | How well a model's confidence matches how often it is actually right.
+robustness | noun | How well a model keeps performing under unusual, noisy or adversarial inputs.
+contamination | noun | Test data appearing in a model's training data, which makes its evaluation scores misleadingly high.
+saturation | noun | When models score near the maximum on a benchmark, so it can no longer tell them apart.
+red teaming | noun | Deliberately trying to make an AI system fail or behave harmfully in order to find and fix weaknesses.
+red team | noun | A group that tests an AI system by trying to make it fail or misbehave.
+stress test | noun | Testing a model under extreme or unusual conditions to find where it breaks.
+misalignment | noun | When an AI system's goals or behavior differ from what its developers or users intended.
+aligned | adjective | Describes an AI system whose goals and behavior match what people intend.
+sycophancy | noun | An AI model's tendency to tell users what they want to hear, such as agreeing with them even when they are wrong.
+corrigibility | noun | An AI system's willingness to accept correction, modification or shutdown by people.
+corrigible | adjective | Describes an AI system that accepts being corrected, changed or shut down.
+oversight | noun | People monitoring and checking what an AI system does.
+interpretability | noun | How well people can understand why a model produces its outputs, or the research that tries to explain it.
+explainability | noun | The ability to explain a model's decisions in terms people can understand.
+black box | noun | A system, such as a neural network, whose internal workings are hard or impossible to see or understand.
+probing | noun | Training simple classifiers on a model's internal activations to test what information they contain.
+circuit | noun | In interpretability, a small group of connected neurons or features inside a model that carries out a specific computation.
+superposition | noun | In interpretability, a network representing more features than it has neurons by sharing neurons between features.
+steering | noun | Guiding a model's behavior, for example by editing its internal activations or its instructions.
+model organism | noun | In AI safety, a model deliberately built to show a specific risky behavior so researchers can study it.
+dual-use | adjective | Describes AI capabilities that can be used both for benefit and for harm.
+refusal | noun | A model declining to carry out a request.
+harmlessness | noun | In AI training, the goal that a model avoids causing or assisting harm.
+helpfulness | noun | In AI training, the goal that a model actually helps users with what they need.
+honesty | noun | In AI training, the goal that a model tells the truth and is open about its uncertainty and limitations.
+robust | adjective | Describes a model that keeps working well on unusual, noisy or adversarial inputs.
+surveillance | noun | Monitoring people, increasingly with AI tools such as facial recognition.
+GPU | noun | Graphics processing unit: a chip designed for parallel computation, now the main hardware for training and running AI models.
+TPU | noun | Tensor processing unit: a chip designed specifically for machine learning workloads.
+accelerator | noun | A chip designed to speed up AI computations, such as a GPU or TPU.
+cluster | noun | A group of connected computers or chips that work together, for example to train a large model.
+serving | noun | Running a trained model so applications can send it requests and get responses.
+endpoint | noun | A URL where an application sends requests to a model or service.
+pipeline | noun | A sequence of steps that data or a model goes through, such as cleaning, training, evaluation and deployment.
+deployment | noun | Putting a trained model into production so real users or systems can use it.
+monitoring | noun | Continuously tracking a deployed model's performance, inputs and outputs to catch problems.
+retraining | noun | Training a model again on new or updated data to keep it accurate.
+versioning | noun | Keeping track of different versions of models, data and code so results can be reproduced.
+agent | noun | An AI system that perceives its situation and takes actions toward a goal, such as using tools over several steps.
+layer | noun | One stage of a neural network: a set of units that transforms the output of the previous stage and passes it on.
+weights | noun | The learned numbers in a neural network that determine how strongly each input affects each output; together, the trained model.
+encoder | noun | The part of a model that turns the input into an internal representation, such as a vector of numbers.
+token | noun | The unit of text a language model reads and writes, often a word or part of a word; usage and pricing are counted in tokens.
+vocabulary | noun | The fixed set of tokens a model's tokenizer can produce and the model can understand.
+chatbot | noun | A program, often powered by a language model, that holds conversations with people.
+tensor | noun | A multidimensional array of numbers; the basic data structure in deep learning.
+RNN | noun | Recurrent neural network: a network that processes sequences step by step, carrying a hidden state from one step to the next.
+NLP | noun | Natural language processing: the field of AI that enables computers to understand and generate human language.
+AUC | noun | Area under the ROC curve: a measure of how well a classifier ranks positive cases above negative ones, from 0.5 (chance) to 1 (perfect).

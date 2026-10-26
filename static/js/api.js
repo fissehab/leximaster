@@ -1,0 +1,54 @@
+// Thin JSON client for the FastAPI backend, or, on the static GitHub Pages
+// build (window.LEXI_STATIC), for the same API running in the browser.
+
+async function request(method, url, body) {
+  if (window.LEXI_STATIC) {
+    const { handle } = await import("./local/server.js");
+    return handle(method, url, body);
+  }
+  const opts = { method, headers: {} };
+  if (body instanceof FormData) {
+    opts.body = body;
+  } else if (body !== undefined) {
+    opts.headers["Content-Type"] = "application/json";
+    opts.body = JSON.stringify(body);
+  }
+  const res = await fetch(url, opts);
+  if (!res.ok) {
+    let msg = `${res.status} ${res.statusText}`;
+    try {
+      const data = await res.json();
+      if (data.detail) msg = typeof data.detail === "string" ? data.detail : data.detail.map(d => d.msg).join("; ");
+    } catch (e) { /* not JSON */ }
+    throw new Error(msg);
+  }
+  return res.json();
+}
+
+const qs = params => {
+  const p = new URLSearchParams();
+  for (const [k, v] of Object.entries(params || {})) {
+    if (v !== undefined && v !== null && v !== "") p.set(k, v);
+  }
+  const s = p.toString();
+  return s ? `?${s}` : "";
+};
+
+export const api = {
+  get: (url, params) => request("GET", url + qs(params)),
+  post: (url, body) => request("POST", url, body),
+  patch: (url, body) => request("PATCH", url, body),
+  del: url => request("DELETE", url),
+};
+
+// Word list cache shared by Browse, Lists and the typeahead.
+let wordsCache = null;
+export async function allWords(force = false) {
+  if (!wordsCache || force) wordsCache = (await api.get("/api/words")).words;
+  return wordsCache;
+}
+export function patchCachedWord(id, fields) {
+  const w = wordsCache && wordsCache.find(x => x.id === id);
+  if (w) Object.assign(w, fields);
+}
+export function invalidateWords() { wordsCache = null; }

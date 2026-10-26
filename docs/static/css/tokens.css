@@ -1,0 +1,140 @@
+/* LexiMaster tokens.
+   Layout: a slim navigation rail beside a working canvas; study views are
+   list + entry, like a reference dictionary set beside its open page.
+   Palette: manuscript pigments, lapis for the headword, verdigris for
+   pronunciation, gilt for ratings, madder for errors, on cool paper. */
+:root {
+  --bg: #F3F4F7;
+  --surface: #FFFFFF;
+  --surface-2: #ECEEF3;
+  --ink: #171B26;
+  --ink-2: #3A4152;
+  --muted: #646B7C;
+  --rule: #DDE1E8;
+  --rule-strong: #C4CAD5;
+
+  --lapis: #2B47A8;          /* headword, primary actions */
+  --lapis-soft: #E5EAFA;
+  --verdigris: #0D7465;      /* phonetics, audio */
+  --verdigris-soft: #DDF1EC;
+  --gilt: #8F650F;           /* stars, highlights */
+  --gilt-soft: #F7EDD5;
+  --madder: #B23A3F;         /* errors, "again" */
+  --madder-soft: #F8E3E3;
+  --sage: #3E7D3A;           /* correct, "good" */
+  --sage-soft: #E2F0DF;
+  --plum: #7A3E8C;
+
+  --pos-noun: #2B47A8;
+  --pos-verb: #0D7465;
+  --pos-adjective: #B23A3F;
+  --pos-adverb: #8F650F;
+  --pos-other: #5A6375;
+
+  --shadow: 0 1px 2px rgba(23, 27, 38, .06), 0 6px 24px rgba(23, 27, 38, .06);
+  --focus: 0 0 0 3px rgba(43, 71, 168, .35);
+
+  --font-word: "Literata", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-body: "Literata", "Iowan Old Style", Georgia, serif;
+  --font-ui: "IBM Plex Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-ipa: "Charis SIL", "Doulos SIL", "Lucida Grande", "Gentium Plus", serif;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F121A;
+    --surface: #171B25;
+    --surface-2: #1E2330;
+    --ink: #E7E9EF;
+    --ink-2: #C3C8D4;
+    --muted: #9198A9;
+    --rule: #272D3B;
+    --rule-strong: #384053;
+    --lapis: #93A8FF;
+    --lapis-soft: #1F2A4F;
+    --verdigris: #4CC3AE;
+    --verdigris-soft: #133430;
+    --gilt: #E3B755;
+    --gilt-soft: #3A2F16;
+    --madder: #F08C8F;
+    --madder-soft: #3D1E21;
+    --sage: #86CF7F;
+    --sage-soft: #1D3320;
+    --plum: #D29BE2;
+    --pos-noun: #93A8FF;
+    --pos-verb: #4CC3AE;
+    --pos-adjective: #F08C8F;
+    --pos-adverb: #E3B755;
+    --pos-other: #A6AEC0;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 28px rgba(0, 0, 0, .25);
+    --focus: 0 0 0 3px rgba(147, 168, 255, .4);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F121A;
+  --surface: #171B25;
+  --surface-2: #1E2330;
+  --ink: #E7E9EF;
+  --ink-2: #C3C8D4;
+  --muted: #9198A9;
+  --rule: #272D3B;
+  --rule-strong: #384053;
+  --lapis: #93A8FF;
+  --lapis-soft: #1F2A4F;
+  --verdigris: #4CC3AE;
+  --verdigris-soft: #133430;
+  --gilt: #E3B755;
+  --gilt-soft: #3A2F16;
+  --madder: #F08C8F;
+  --madder-soft: #3D1E21;
+  --sage: #86CF7F;
+  --sage-soft: #1D3320;
+  --plum: #D29BE2;
+  --pos-noun: #93A8FF;
+  --pos-verb: #4CC3AE;
+  --pos-adjective: #F08C8F;
+  --pos-adverb: #E3B755;
+  --pos-other: #A6AEC0;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 28px rgba(0, 0, 0, .25);
+  --focus: 0 0 0 3px rgba(147, 168, 255, .4);
+  color-scheme: dark;
+}
+
+/* Mariana: Sublime Text's default color scheme. Slate blue-gray, with
+   Mariana's blue for headwords, teal for pronunciation, gold for ratings,
+   coral for errors and green for success. */
+:root[data-theme="mariana"] {
+  --bg: #262C33;
+  --surface: #303841;
+  --surface-2: #3A444E;
+  --ink: #D8DEE9;
+  --ink-2: #C0C5CE;
+  --muted: #B0B7C3;
+  --rule: #3F4A55;
+  --rule-strong: #515D69;
+  --lapis: #7DB4EA;
+  --lapis-soft: #2D3F52;
+  --verdigris: #5FB4B4;
+  --verdigris-soft: #2E4A4D;
+  --gilt: #FAC761;
+  --gilt-soft: #4A4332;
+  --madder: #F47F86;
+  --madder-soft: #4E363B;
+  --sage: #99C794;
+  --sage-soft: #364A3B;
+  --plum: #C695C6;
+  --pos-noun: #7DB4EA;
+  --pos-verb: #5FB4B4;
+  --pos-adjective: #F9AE58;
+  --pos-adverb: #FAC761;
+  --pos-other: #A6ACB9;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 28px rgba(0, 0, 0, .25);
+  --focus: 0 0 0 3px rgba(110, 168, 226, .45);
+  color-scheme: dark;
+}
