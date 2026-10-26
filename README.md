@@ -265,7 +265,8 @@ seeds/             seed word lists, one word or phrase per line
 seeds/examples/    hand-written conversation examples for the everyday domains
 tools/             build_site.py (the website), audit.py (content checks), parity.py (website vs
                    local app), gen_shared.py (constants shared with the browser code),
-                   check_examples.py, classify_names.py
+                   check_examples.py, classify_names.py, check_bible.py (fact-checks the
+                   "In the Bible" notes: verse references, Hebrew and Greek words)
 app/               FastAPI backend: db.py (schema), srs.py (SM-2), api/ (routes)
 static/            single-page app, with no build step: index.html, css/, js/, fonts/
 data/              dataset, audio, SQLite database, recordings
