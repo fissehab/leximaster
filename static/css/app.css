@@ -509,6 +509,9 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .rec-btn.on .dot { animation: blink 1s infinite; }
 @keyframes blink { 50% { opacity: .2; } }
 .no-match { padding: 16px; margin: 0; }
+.about { max-width: 68ch; display: flex; flex-direction: column; gap: 14px; padding: 24px 28px; font: 400 16px/1.65 var(--font-body); }
+@media (max-width: 760px) { .about { padding: 18px; } }
+.about-sign { font-style: italic; }
 .pron-layout { display: grid; grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); gap: 18px; align-items: start; }
 .pick-list { max-height: 70vh; overflow-y: auto; display: flex; flex-direction: column; }
 .pick-list button {
@@ -641,7 +644,7 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .nav-link .short { display: inline; }
   .nav-group { display: contents; }
   .nav-heading { display: none; }
-  #help-btn { display: none; }
+  #help-btn, #about-btn { display: none; }   /* on a phone: More → About */
   .brand { display: none; }
   .rail-foot { margin: 0; padding: 0 4px; flex-direction: column; justify-content: center; }
   .rail-foot .icon-btn { width: 30px; height: 30px; }
