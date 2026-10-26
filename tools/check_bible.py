@@ -28,7 +28,7 @@ from build_dataset import CACHE, ENRICH_CACHE, PRICES, WORDS_JSON, append_jsonl,
 HAIKU, SONNET = "claude-haiku-5-5", "claude-sonnet-5-5"
 STATE = CACHE / "bible_check.json"
 SCREEN_BATCH, VERIFY_BATCH = 15, 6
-SCREEN_MAX, VERIFY_MAX = 3000, 3500
+SCREEN_MAX, VERIFY_MAX = 3000, 2500
 
 RULES = """Reference Bible: the Revised Standard Version (RSV), with its book names and verse numbering. Do not count differences in numbering between the RSV, the Hebrew text, the Septuagint or Catholic editions as errors, and do not count wording or style. An error is: a chapter:verse reference that does not exist or is not about what the note says it is about; a wrong Hebrew or Greek word, transliteration or meaning; a person, place or event mixed up with another; a false statement of fact."""
 
