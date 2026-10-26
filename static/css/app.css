@@ -225,6 +225,7 @@ button.chip[aria-pressed="true"] { background: var(--lapis-soft); color: var(--l
 }
 .senses { display: flex; flex-direction: column; gap: 18px; }
 .sense-group { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.senses-label { margin: 0; font: 600 11px/1.2 var(--font-ui); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
 .sense-list { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
 .sense-list li { font: 400 16.5px/1.55 var(--font-body); color: var(--ink); max-width: 68ch; }
 .sense-list li::marker { color: var(--muted); font: 600 13px var(--font-ui); }
