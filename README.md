@@ -1,33 +1,64 @@
 # LexiMaster
 
-A local vocabulary trainer for American English, in two tracks:
+A vocabulary trainer for **American English**, built for an advanced learner who reads, writes and
+speaks English at work: precise general vocabulary, the language of everyday American life, the
+vocabulary of data science, AI, mathematics, philosophy and theology, and the Bible. Every word has
+American pronunciation, a learner's definition and study notes, and you learn it with spaced
+repetition and six kinds of practice.
 
-- **Advanced and subject vocabulary** (about 10,000 words): advanced GRE/SAT-level words,
-  academic, literary and professional vocabulary, and the subjects mathematics, statistics and
-  probability, data science, artificial intelligence, software engineering, philosophy, logic,
-  theology, Christian anthropology and Orthodox mysticism. The artificial intelligence terms
-  (about 560, from AI history to LLMs, agents, safety and governance) also have hand-written
-  examples.
-- **Everyday English** (about 2,800 entries): the words, phrasal verbs and expressions of daily
-  American life, grouped by situation: dining out, food and taste, shopping and errands, beach
-  and outdoors, small talk, feelings and reactions, home and health, getting around, sports and
-  pop culture, meetings, and phone and video calls, plus general phrasal verbs and idioms. Each
-  entry has hand-written conversation examples, labeled by meaning.
+It runs two ways: as a website (https://fissehab.github.io/leximaster/, nothing to install) or as a
+local app on your Mac. Both work the same and share the same progress file format.
 
-- **Bible** (about 3,100 entries), following the Revised Standard Version: the curated vocabulary
-  of Scripture and biblical studies (canon and versions, names of God, covenant and salvation,
-  worship and offices, Hebrew and Greek terms, English expressions from the Bible), every person
-  and place named five or more times from Genesis to Revelation, and the distinctive vocabulary
-  of the biblical text. Study notes cite RSV passages, and where Eastern Orthodox, Roman Catholic
-  and Protestant Christians understand a term differently, they give each tradition's view.
-  It has two parts: **Bible · Vocabulary** (words, expressions, and the books of the Bible) and
-  **Bible · Names** (about 980 names, each labeled Person, Place or People). Names come up in
-  review only on a Bible names track, and the quiz asks "Who or what is it?". Names that became
-  everyday English words (Goliath, Judas, good Samaritan, raise Cain) are in both parts, with the
-  everyday meaning first. The labels live in `seeds/names/bible.txt` (`name | kind | everyday
-  meaning`), written by `tools/classify_names.py` and checked by hand.
+## What's in it
 
-Every entry has American pronunciation (recorded or synthesized), and review is spaced repetition.
+16,381 entries. 5,823 have an American recording; the rest use your device's American voice.
+
+**Advanced & subjects** (scope "Advanced & subjects", 12,239 entries including the Bible vocabulary):
+
+| Domain | Entries | Domain | Entries |
+|---|---|---|---|
+| Advanced (GRE/SAT level) | 7,448 | Artificial intelligence | 590 |
+| Professional | 1,312 | Software engineering | 483 |
+| Literary | 577 | Data science | 425 |
+| Academic | 415 | Statistics & probability | 411 |
+| Theology | 850 | Mathematics | 600 |
+| Philosophy | 720 | Logic | 291 |
+| Christian anthropology | 208 | Orthodox mysticism | 143 |
+
+**Everyday English** (scope "Everyday English", 3,211 entries): the words, phrasal verbs and
+expressions of daily American life, each with hand-written conversation examples labeled by meaning.
+
+| Domain | Entries | Domain | Entries |
+|---|---|---|---|
+| Idioms & expressions | 342 | Beach & outdoors | 295 |
+| Home & health | 323 | Sports & pop culture | 273 |
+| Phrasal verbs | 318 | Dining out | 263 |
+| Food & taste | 306 | Meetings | 262 |
+| Feelings & reactions | 303 | Getting around | 249 |
+| Small talk | 299 | Shopping & errands | 232 |
+| | | Phone & video calls | 189 |
+
+**Bible** (3,281 entries), following the Revised Standard Version (RSV), in two parts:
+
+- **Bible · Vocabulary** (2,350): the vocabulary of Scripture and biblical studies (canon and
+  versions, names of God, covenant and salvation, worship and offices, Hebrew and Greek terms,
+  English expressions from the Bible, the books of the Bible) and the distinctive words of the
+  biblical text.
+- **Bible · Names** (967): every person and place named five or more times from Genesis to
+  Revelation, each labeled Person, Place or People. Names come up in review only on a Bible scope.
+  Names that became everyday English words (Goliath, Judas, good Samaritan, raise Cain) are in both
+  parts, with the everyday meaning first. The labels live in `seeds/names/bible.txt`
+  (`name | kind | everyday meaning`), written by `tools/classify_names.py` and checked by hand.
+
+3,185 entries have an "In the Bible" note citing RSV passages and the Hebrew or Greek word behind
+them; the notes were fact-checked (`tools/check_bible.py`). Where Eastern Orthodox, Roman Catholic and
+Protestant Christians understand a term differently (419 entries), each tradition's view is given.
+
+**Each entry has** the American IPA and a stress respelling (in-ter-SEED), a pronunciation tip, a
+learner's definition with an example, how Americans use the word, how it differs from near-synonyms,
+common mistakes and common pairings, more examples (everyday, professional, analytical), the
+dictionary's other meanings, register, word family, synonyms, antonyms and origin. See
+"The word page" below for the order.
 
 ## Use it online
 
@@ -49,7 +80,29 @@ After you publish, the site updates itself the next time you open Home, Browse, 
 every open tab. It never reloads in the middle of a review or quiz, and your downloaded offline data is
 kept unless the word data changed.
 
-## Setup
+## Using it day to day
+
+1. **Home** shows how many cards are left today and the word of the day. Press **Start daily review**.
+2. **Daily review** (10–20 minutes): say the word's meaning aloud, reveal, and grade yourself honestly.
+   New words are answered Show again, Got it or Know it; words you've seen before Again, Hard, Good or
+   Easy. Choose a scope at the top (Everything, Everyday English, Advanced & subjects, or a Bible scope).
+3. **Practice** when you have more time: Flashcards, Matching, Quiz, Listen (including a spelling
+   test) and Pronounce. Misses go back into today's review.
+4. **Browse** to look up any word, and **My lists** to collect words with your own notes.
+
+- **Stars** (1–5, on any word page or flashcard) say how familiar a word is: 1–2★ words come back
+  more often.
+- **Know it** takes a word you already know out of your study (press it again to bring it back).
+- **Settings** (in Stats): session length, new words per day, and the speed of the synthesized voice.
+  Flashcards has its own "Play audio on flip" switch.
+- **Your own words:** My lists → "Add my own word" adds a word with your definition and example.
+- **Moving between devices:** Stats → Export progress saves a file; Import on the other device.
+- **Sources:** Stats → "Sources & credits" (website) lists the dictionaries and the recording
+  credits.
+
+## Setup (local app)
+
+The local app needs no API key to run. The key is only for building the dataset (below).
 
 ```bash
 ./setup.sh
@@ -60,7 +113,7 @@ This creates `.venv/`, installs `requirements.txt`, and creates a `.env` file. E
 | Setting | Why |
 |---|---|
 | `LEXIMASTER_CONTACT` | A URL or email address. Wikimedia's robot policy requires contact information in the User-Agent and blocks anonymous scripts. |
-| `ANTHROPIC_API_KEY` | Used by Claude Haiku 5.5 to expand the word lists and to write the nuance notes. |
+| `ANTHROPIC_API_KEY` | Building the dataset only: Claude expands the word lists and writes the study notes. Leave it empty to run the app. |
 
 ## 1. Build the dataset
 
@@ -90,11 +143,10 @@ Useful options:
 - `--only "word1,word2"`: redo the study notes for just these words.
 - `--budget 18`: stop enrichment once the estimated cost reaches $18 (rerun to continue).
 - `--effort low|medium|high`: how carefully Claude works (default medium).
+- `--concurrency 8`: number of parallel enrichment requests.
 
 After an enrichment run, `.venv/bin/python -c "import build_dataset as b; b.check_stress()"` flags entries whose
 respelling stresses a different syllable than the IPA; `--stages enrich --retry-failed` then redoes them.
-- `--concurrency 8`: number of parallel enrichment requests.
-- `--effort low`: Claude effort level for enrichment.
 
 Progress is cached in `data/cache/*.jsonl`, which are append-only logs. `data/words.json`
 is rebuilt from these caches during and after each stage.
@@ -148,9 +200,9 @@ To add the notes later, put the key in `.env` and run:
 .venv/bin/python build_dataset.py --stages enrich
 ```
 
-Expected cost and time for about 13,400 words (medium effort):
+Expected cost and time for the full lexicon (about 16,000 words, medium effort):
 
-- **Claude cost:** roughly US$10–12 (measured on the full lexicon).
+- **Claude cost:** roughly US$15 (what this lexicon cost, including redoing some notes).
 - **Fetch and audio:** a couple of hours, limited by polite request rates.
 - **Enrichment:** about 2 hours.
 
@@ -178,14 +230,14 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 |---|---|
 | Home | How many cards are left today (the same number as the badge), word of the day, streak and time studied. |
 | Daily review | SM-2 spaced repetition, sized to your session length (default 15 minutes). Choose a scope: Everything, Everyday English, Advanced & subjects, or Bible vocabulary, names or both. A new word is answered Show again, Got it or Know it (known words leave the review); a word you've seen before is graded Again, Hard, Good or Easy. The answer shows a short card; "Full entry" opens the whole page. |
-| Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings. You can shuffle, play audio on flip, and choose a scope, rating or list. |
+| Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings. You can shuffle, play audio on flip, rate the word (1–5) or mark it known, and choose a scope, rating or list. |
 | Matching | Timed rounds that pair words with meanings or with example sentences, with a score. |
-| Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, and for Bible names "who or what is it?". Changing a setting starts a new quiz. Misses go back into today's review. |
+| Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, and for Bible names "who or what is it?" or "person, place or people?". Only the question types you pick are asked. Changing a setting starts a new quiz; opening an entry and coming back keeps your place. Misses go back into today's review. |
 | Listen | Hear a word, then pick it or type it. Also has a spelling test that compares your spelling letter by letter. |
 | Pronounce | Play the reference recording, record yourself, and play both back with waveforms. |
 | Browse | The full lexicon. It has A–Z jump, instant search across words and meanings, sorting by A–Z, frequency, stars or domain, and filters. On a phone, tapping a word brings its page into view (← List goes back). |
 | My lists | Named lists with a note on each word, plus your own custom words. |
-| Stats | Words mastered, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. Also holds the settings and progress export/import. |
+| Stats | Words mastered (and marked known), streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. Also holds the settings, progress export/import, and on the website "Download for offline use" and the sources. |
 
 The sidebar runs in the order of a study day: Home, Daily review, the Practice group (easiest to
 hardest: Flashcards, Matching, Quiz, Listen, Pronounce), the Words group (Browse, My lists), then Stats.
@@ -237,7 +289,9 @@ Dictionary senses that only restate the meaning in step 2 are marked when the da
   today; only a quiz miss (a wrong meaning) lowers its ease. A word you missed before studying it
   counts as one of the day's new words.
 - **New words:** each day introduces up to "New words per day" new words (default 12; set in Stats).
-  1–2★ words come first, then unrated words, most frequent first. Words marked known are skipped.
+  1–2★ words come first, then unrated words, most frequent first (a phrase counts as common as its
+  rarest word). With the Everything scope, everyday and advanced words alternate. Words marked known
+  are skipped.
 - **Mastered:** a word counts as mastered once its review interval reaches 21 days. Words marked known
   are counted separately in Stats.
 
