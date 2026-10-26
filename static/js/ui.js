@@ -507,6 +507,13 @@ export function shuffle(a) {
   return a;
 }
 
+// Bring answer feedback into view, and again once its fonts have loaded: an
+// italic face loaded on first use makes the text taller after the first scroll.
+export function reveal(el) {
+  el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  document.fonts.ready.then(() => requestAnimationFrame(() => el.scrollIntoView({ block: "nearest", behavior: "smooth" })));
+}
+
 export function fmtDuration(s) {
   s = Math.round(s);
   const m = Math.floor(s / 60);
