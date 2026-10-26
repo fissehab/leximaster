@@ -96,11 +96,11 @@ function paint() {
       n.pronunciation && n.pronunciation.tip ? h("p", { style: { fontFamily: "var(--font-body)", maxWidth: "65ch" } }, n.pronunciation.tip) : null),
     h("div.pron-grid", { style: { marginTop: "14px" } },
       h("div.panel.pron-box",
-        h("h3", w.audio_url ? "Reference · US recording" : "Reference · US synthesized voice"),
+        h("h3", w.audio_url ? "Reference · US recording" : w.tts_url ? "Reference · natural synthesized voice" : "Reference · your device's voice"),
         refWave,
         h("div.toolbar",
           h("button.btn", { type: "button", on: { click: e => playWord(w, e.currentTarget) } }, "Play reference"),
-          h("button.btn.btn-quiet", { type: "button", on: { click: () => speak(w.word) } }, "Synthesized voice"))),
+          h("button.btn.btn-quiet", { type: "button", on: { click: () => speak(w.word) } }, "Device voice"))),
       h("div.panel.pron-box",
         h("h3", "Your recording"),
         myWave,
@@ -108,7 +108,7 @@ function paint() {
           h("button.btn#play-mine", { type: "button", disabled: !myUrl, on: { click: e => myUrl && playUrl(myUrl, e.currentTarget) } }, "Play mine"),
           h("button.btn.btn-primary#play-both", { type: "button", disabled: !myUrl, on: { click: playBoth } }, "Reference, then mine")))),
   );
-  if (w.audio_url) drawWave(refWave, w.audio_url);
+  if (w.audio_url || w.tts_url) drawWave(refWave, w.audio_url || w.tts_url);
   if (myUrl) drawWave(myWave, myUrl);
 }
 

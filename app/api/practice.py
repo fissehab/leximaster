@@ -372,7 +372,8 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                         if not (name_kind and e == (nuance.get("examples") or {}).get("everyday"))]
             q.update({"type": qtype, "word_id": wid, "word": word, "definition": definition,
                       "example": examples[0] if examples else "",
-                      "phonetic": data.get("phonetic") or "", "audio_url": full(row)["audio_url"]})
+                      "phonetic": data.get("phonetic") or "", "audio_url": full(row)["audio_url"],
+                      "tts_url": full(row)["tts_url"]})
             questions.append(q)
         return {"questions": questions}
 

@@ -65,7 +65,7 @@ async function answer(choice) {
   if (ok) score++; else missed.push(q);
   els.opts.querySelectorAll(".opt").forEach(b => markOption(b, b.dataset.v === q.answer, b.dataset.v === choice));
   const fb = document.getElementById("quiz-feedback");
-  const play = h("button.btn", { type: "button", on: { click: () => playWord({ word: q.word, audio_url: q.audio_url }) } }, "Hear it ", h("kbd", "Space"));
+  const play = h("button.btn", { type: "button", on: { click: () => playWord(q) } }, "Hear it ", h("kbd", "Space"));
   const nextBtn = h("button.btn.btn-primary", { type: "button", on: { click: next } }, i + 1 < qs.length ? "Next " : "See results ", h("kbd", "Enter"));
   // The meaning is said once; the answer is named only when it isn't the word or its meaning.
   const named = q.answer !== q.word && q.answer !== q.definition && !q.definition.includes(q.answer.replace(/…/g, ""));
@@ -77,7 +77,7 @@ async function answer(choice) {
     h("div.toolbar", play, h("a.btn.btn-quiet", { href: `#browse/${q.word_id}` }, "Open entry →"), nextBtn)));
   reveal(fb);
   nextBtn.focus({ preventScroll: true });
-  if (settings.autoplay === "1") playWord({ word: q.word, audio_url: q.audio_url });
+  if (settings.autoplay === "1") playWord(q);
   api.post("/api/answer", { word_id: q.word_id, mode: "quiz", correct: ok, ms: Date.now() - shownAt })
     .then(() => !ok && refreshDueCount()).catch(showError);
 }
@@ -136,5 +136,5 @@ export function onKey(e) {
   if (/^[1-4]$/.test(e.key) && !answered) { e.preventDefault(); answer(qs[i].options[Number(e.key) - 1]); }
   else if (e.key === "Enter" && answered) { e.preventDefault(); next(); }
   // Only after answering: before, the sound would give the answer away.
-  else if (e.key === " " && answered) { e.preventDefault(); playWord({ word: qs[i].word, audio_url: qs[i].audio_url }); }
+  else if (e.key === " " && answered) { e.preventDefault(); playWord(qs[i]); }
 }

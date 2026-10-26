@@ -23,7 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 LIST_FIELDS = ("word", "def", "core_pos", "pos", "phonetic", "domains", "name_kind", "has_audio", "enriched",
                "freq_rank")
-SKIP = {"id", "audio_url", "audio_accent", "notes", "list_actions"}  # ids and URL prefixes differ by design
+SKIP = {"id", "audio_url", "tts_url", "audio_accent", "notes", "list_actions"}  # ids and URL prefixes differ by design
 
 
 def prune(v):
@@ -98,6 +98,9 @@ def main() -> int:
         for k in LIST_FIELDS:
             if a.get(k) != c.get(k):
                 problems.append(f"{a['word']}: {k} differs ({a.get(k)!r} vs {c.get(k)!r})")
+        tail = lambda u: (u or "").rsplit("/", 1)[-1]   # same recording file, whatever the URL prefix
+        if tail(a.get("tts_url")) != tail(c.get("tts_url")):
+            problems.append(f"{a['word']}: tts_url differs ({a.get('tts_url')!r} vs {c.get('tts_url')!r})")
     for k in keys:
         a, c = prune(py_full[k]), prune(js_full[k])
         for f in sorted(set(a) | set(c)):

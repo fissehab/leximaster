@@ -313,6 +313,7 @@ function compact(row) {
     name_kind: w ? w.nk || "" : d.name_kind || "",
     freq_rank: row.freq_rank, has_audio: !!row.has_audio,
     audio_url: w ? audioUrl(w.a) : null,
+    tts_url: w && !w.a ? audioUrl(w.t) : null,
     enriched: !!row.enriched, is_custom: !!row.is_custom,
     stars: row.stars, known: !!row.known, due: row.due_date,
   };
@@ -915,7 +916,8 @@ async function makeQuiz(q) {
     // A name's "everyday" line is about a namesake.
     const example = examplesFor(data).find(e => !(nameKind && e === everydayEx)) || "";
     Object.assign(qn, { type: qtype, word_id: wid, word, definition, example, phonetic: data.phonetic || "",
-                        audio_url: INDEX.has(wid) ? audioUrl(INDEX.get(wid).a) : null });
+                        audio_url: INDEX.has(wid) ? audioUrl(INDEX.get(wid).a) : null,
+                        tts_url: INDEX.has(wid) && !INDEX.get(wid).a ? audioUrl(INDEX.get(wid).t) : null });
     questions.push(qn);
   }
   return { questions };

@@ -74,7 +74,8 @@ function show() {
   els.stage.replaceChildren(h("div.panel.q-card", { style: { alignItems: "center", textAlign: "center" } },
     h("div.score-line", h("span.tnum", `${i + 1} of ${items.length}`), h("span.tnum", `Score ${score}`)),
     playBtn,
-    h("p.muted", w.has_audio ? "American recording" : "American synthesized voice (no US recording for this word)"),
+    h("p.muted", w.has_audio ? "American recording" : w.tts_url ? "Natural synthesized voice (no US recording for this word)"
+      : "Your device's American voice (no US recording for this word)"),
     h("div", { style: { width: "100%" } }, body),
     h("div#listen-feedback", { role: "status", style: { width: "100%", textAlign: "left" } })));
   const input = document.getElementById("listen-input");

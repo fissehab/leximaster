@@ -87,6 +87,8 @@ def build_data(words: list[dict]) -> tuple[int, int]:
                  "cp": pos, "df": definition, "s": s}
         if w.get("has_audio") and w.get("audio"):
             entry["a"] = w["audio"]["file"]
+        elif w.get("tts"):
+            entry["t"] = w["tts"]["file"]
         if w.get("nuance"):
             entry["e"] = 1
         if w.get("conversation"):
@@ -108,6 +110,11 @@ def copy_audio(words: list[dict]) -> list[dict]:
     """Copy the recordings the lexicon uses; return their attribution rows."""
     rows = []
     for w in words:
+        t = w.get("tts")
+        if t and not w.get("has_audio") and (DATA / t["file"]).exists():
+            dst = DOCS / "media" / t["file"]
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(DATA / t["file"], dst)
         a = w.get("audio")
         if not (w.get("has_audio") and a):
             continue
@@ -231,7 +238,7 @@ self.addEventListener("fetch", e => {{
   const path = url.pathname;
   if (path.includes("/media/")) {{ e.respondWith(cacheFirst(e.request, MEDIA)); return; }}
   if (path.includes("/data/detail/") || path.endsWith("/data/index.json")) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
-  if (e.request.mode === "navigate" && /\/(index\.html)?$/.test(path)) {{
+  if (e.request.mode === "navigate" && /\\/(index\\.html)?$/.test(path)) {{
     // The app's page comes from the same version's cache as its scripts.
     // Other pages (credits.html) load normally.
     e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));
@@ -292,7 +299,7 @@ def recording_credits(audio_rows: list[dict]) -> str:
     return "\n".join(out)
 
 
-def build_credits(audio_rows: list[dict], n_words: int) -> None:
+def build_credits(audio_rows: list[dict], n_words: int, n_tts: int = 0) -> None:
     rows = recording_credits(audio_rows)
     page = f"""<!doctype html>
 <html lang="en">
@@ -353,6 +360,13 @@ Open Font License 1.1 (<a href="static/fonts/licenses/literata-OFL.txt">Literata
 by the volunteers below, under the licenses shown. Each was converted from its original format to AAC (.m4a).
 Open a name to see the words; each word links to its recording's page, with the full author and license details.</p>
 {rows}
+
+<h2>Synthesized pronunciations</h2>
+<p>The {n_tts:,} entries without an American recording have a natural synthesized one, made for LexiMaster with
+<a href="https://github.com/hexgrad/kokoro">Kokoro</a> (the Kokoro-82M model by hexgrad,
+<a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>), voice “Heart”, through
+<a href="https://github.com/thewh1teagle/kokoro-onnx">kokoro-onnx</a> (MIT license). Rare words and names are spoken from
+each entry's reviewed American IPA; common words and everyday phrases are read by the model directly.</p>
 </main>
 </body>
 </html>
@@ -381,7 +395,7 @@ def main() -> None:
     build_index_html(version)
     build_icons()
     build_manifest()
-    build_credits(audio_rows, len(words))
+    build_credits(audio_rows, len(words), sum(1 for w in words if w.get("tts") and not w.get("has_audio")))
     h = hashlib.sha256()
     for f in [DOCS / "data" / "index.json", *sorted((DOCS / "data" / "detail").glob("*.json"))]:
         h.update(f.read_bytes())
