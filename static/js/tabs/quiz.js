@@ -5,7 +5,7 @@
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
-import { filterBar, filterSources, fmtDuration, h, highlight, pageHead, reveal, showError, toast } from "../ui.js";
+import { filterBar, filterSources, fmtDuration, h, highlight, markOption, pageHead, reveal, showError, toast } from "../ui.js";
 import { loadFilter, settings } from "../state.js";
 
 const TYPES = [
@@ -53,7 +53,7 @@ function show() {
     h("p.q-ask", q.ask),
     h(`p.q-prompt${isWord ? ".is-word" : ""}`, q.prompt),
     opts,
-    h("div#quiz-feedback")));
+    h("div#quiz-feedback", { role: "status" })));
   els.opts = opts;
 }
 
@@ -63,11 +63,7 @@ async function answer(choice) {
   const q = qs[i];
   const ok = choice === q.answer;
   if (ok) score++; else missed.push(q);
-  els.opts.querySelectorAll(".opt").forEach(b => {
-    b.disabled = true;
-    if (b.dataset.v === q.answer) b.classList.add("right");
-    else if (b.dataset.v === choice) b.classList.add("wrong");
-  });
+  els.opts.querySelectorAll(".opt").forEach(b => markOption(b, b.dataset.v === q.answer, b.dataset.v === choice));
   const fb = document.getElementById("quiz-feedback");
   const play = h("button.btn", { type: "button", on: { click: () => playWord({ word: q.word, audio_url: q.audio_url }) } }, "Hear it ", h("kbd", "Space"));
   const nextBtn = h("button.btn.btn-primary", { type: "button", on: { click: next } }, i + 1 < qs.length ? "Next " : "See results ", h("kbd", "Enter"));

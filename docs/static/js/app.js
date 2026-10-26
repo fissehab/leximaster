@@ -37,7 +37,7 @@ function buildNav() {
   const wrap = document.getElementById("nav-links");
   const link = t => h(`a.nav-link${t.hub ? ".hub" : ""}${t.under ? ".under" : ""}${t.sep ? ".sep" : ""}`,
     { href: `#${t.id}`, "data-tab": t.id, title: t.label },
-    icon(t.icon), h("span.label", t.id === "review" ? h("span.long", "Daily review") : t.label,
+    icon(t.icon), h("span.nav-text", t.id === "review" ? h("span.long", "Daily review") : t.label,
       t.id === "review" ? h("span.short", "Review") : null),
     t.id === "review" ? h("span.count#due-count", { hidden: true }) : null);
   const items = [];
@@ -115,6 +115,7 @@ async function route() {
   if (applyWaitingUpdate(tab)) return;
   const token = ++navToken;
   stopAudio();
+  closeThemeMenu();
   if (current && current.cleanup) { try { current.cleanup(); } catch (e) { console.error(e); } }
   current = null;
   const under = (TABS.find(t => t.id === tab) || {}).under;
@@ -176,7 +177,7 @@ function openThemeMenu() {
   themeMenu = h("div.theme-menu", { role: "menu", "aria-label": "Theme" },
     THEMES.map(t => {
       const item = h("button.theme-item", {
-        type: "button", role: "menuitemradio", "aria-checked": String(t.id === current),
+        type: "button", role: "menuitemradio", "aria-checked": String(t.id === current), tabindex: "-1",
       }, h("span.swatch", { "aria-hidden": "true" },
         t.swatch.map(c => h("i", { style: { background: c } }))), t.name);
       item.addEventListener("click", () => { setTheme(t.id); closeThemeMenu({ focus: true }); });
@@ -188,6 +189,7 @@ function openThemeMenu() {
     if (e.key === "Escape") { e.preventDefault(); closeThemeMenu({ focus: true }); }
     else if (e.key === "ArrowDown") { e.preventDefault(); items[(i + 1) % items.length].focus(); }
     else if (e.key === "ArrowUp") { e.preventDefault(); items[(i - 1 + items.length) % items.length].focus(); }
+    else if (e.key === "Tab") closeThemeMenu();   // a menu is one stop: Tab leaves it
     e.stopPropagation();  // keep the app's single-key shortcuts out of the menu
   });
   document.body.append(themeMenu);

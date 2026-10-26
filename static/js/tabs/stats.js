@@ -22,7 +22,9 @@ export async function render(root) {
   const acc = s.accuracy;
   const tile = (label, value, note) => h("div.panel.stat", h("p.label", label), h("div.big-num.tnum", value), note ? h("small", note) : null);
 
-  const heat = h("div.heat", { "aria-label": "Activity over the last 12 weeks" }, s.days.map(d => {
+  const activeDays = s.days.filter(d => d.reviews > 0);
+  const heat = h("div.heat", { role: "img", "aria-label": `Activity over the last 12 weeks: reviews on ${activeDays.length} of 84 days, ` +
+    `${activeDays.reduce((n, d) => n + d.reviews, 0).toLocaleString()} reviews in all.` }, s.days.map(d => {
     const l = d.reviews === 0 && d.seconds < 60 ? 0 : d.reviews < 10 ? 1 : d.reviews < 25 ? 2 : d.reviews < 50 ? 3 : 4;
     return h("span", { "data-l": l, title: `${d.date}: ${d.reviews} reviews, ${fmtDuration(d.seconds)}` });
   }));
@@ -43,7 +45,7 @@ export async function render(root) {
       tile("Daily streak", `${s.streak.current}`, `best ${s.streak.best} day${s.streak.best === 1 ? "" : "s"}${s.streak.today_done ? " · today done" : ""}`),
       tile("Accuracy", acc.attempts ? `${pct(acc.correct, acc.attempts)}%` : "—", `${acc.attempts.toLocaleString()} answers`)),
     h("div.stats-grid",
-      h("section.panel", h("h2", "Activity"), heat, h("p.muted", { style: { fontSize: "12.5px" } }, "Last 12 weeks; darker means more reviews.")),
+      h("section.panel", h("h2", "Activity"), heat, h("p.muted", { style: { fontSize: "12.5px" } }, "Last 12 weeks; a stronger color means more reviews.")),
       h("section.panel", h("h2", "Reviews due, next 14 days"), forecast),
       h("section.panel", h("h2", "Accuracy by domain"),
         s.by_domain.length ? h("div.bars", s.by_domain.map(d => bar(domainLabel(d.domain), d.correct, d.attempts, `${pct(d.correct, d.attempts)}% · ${d.attempts}`)))

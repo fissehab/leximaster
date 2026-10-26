@@ -5,7 +5,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import { loadFilter } from "../state.js";
-import { filterBar, filterSources, fmtDuration, h, pageHead, reveal, showError, toast } from "../ui.js";
+import { filterBar, filterSources, fmtDuration, h, markOption, pageHead, reveal, showError, toast } from "../ui.js";
 
 let mode = "choose";       // choose | type | spell
 let items = [];
@@ -76,7 +76,7 @@ function show() {
     playBtn,
     h("p.muted", w.has_audio ? "American recording" : "American synthesized voice (no US recording for this word)"),
     h("div", { style: { width: "100%" } }, body),
-    h("div#listen-feedback", { style: { width: "100%", textAlign: "left" } })));
+    h("div#listen-feedback", { role: "status", style: { width: "100%", textAlign: "left" } })));
   const input = document.getElementById("listen-input");
   if (input) input.focus();
   clearTimeout(playTimer);
@@ -123,10 +123,7 @@ function check(value) {
     : clean(spelling(value)) === clean(spelling(w.word));
   if (ok) score++; else missed.push(w);
   if (mode === "choose") {
-    els.stage.querySelectorAll(".opt").forEach(b => {
-      b.disabled = true;
-      if (b.dataset.v === w.word) b.classList.add("right"); else if (b.dataset.v === value) b.classList.add("wrong");
-    });
+    els.stage.querySelectorAll(".opt").forEach(b => markOption(b, b.dataset.v === w.word, b.dataset.v === value));
   }
   const def = w.nuance && w.nuance.core ? w.nuance.core.definition : w.def;
   const fb = document.getElementById("listen-feedback");
