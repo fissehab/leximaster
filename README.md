@@ -33,9 +33,10 @@ Every entry has American pronunciation (recorded or synthesized), and review is 
 
 The website version runs entirely in your browser: https://fissehab.github.io/leximaster/
 
-Your progress is saved in that browser on that device. Use Stats → Export / Import to move it between
-devices, and Stats → "Download for offline use" to study without a connection. On a phone, use your
-browser's "Add to Home Screen" to install it like an app.
+Your progress is saved in that browser on that device, each change as it happens; several open tabs
+share it safely (one saves at a time, and the others reload what it saved). Use Stats → Export / Import
+to move it between devices, and Stats → "Download for offline use" to study without a connection. On a
+phone, use your browser's "Add to Home Screen" to install it like an app.
 
 To rebuild the site after changing the dataset:
 
@@ -44,9 +45,9 @@ To rebuild the site after changing the dataset:
 .venv/bin/python tools/parity.py       # the website and the local app give the same answers
 ```
 
-After you publish, the site updates itself the next time you open Home, Browse, Lists or Stats. It
-never reloads in the middle of a review or quiz, and your downloaded offline data is kept unless the
-word data changed.
+After you publish, the site updates itself the next time you open Home, Browse, Lists or Stats, in
+every open tab. It never reloads in the middle of a review or quiz, and your downloaded offline data is
+kept unless the word data changed.
 
 ## Setup
 
@@ -226,17 +227,19 @@ Dictionary senses that only restate the meaning in step 2 are marked when the da
 ### How scheduling works
 
 - **Grades:** Again, Hard, Good and Easy map to SM-2 quality scores 1, 3, 4 and 5. "Again" also puts the
-  card back at the end of today's session.
+  card back at the end of today's session, and lowers the word's ease by 0.2 (SM-2's own formula takes
+  0.54, which soon pins a word at the minimum).
 - **First sight:** Show again brings the word back later in the session and tomorrow, without counting as a
-  lapse; Got it is a Good; Know it marks the word known.
+  lapse; Got it is a Good; Know it marks the word known (Undo in the message).
 - **Stars:** 1★ and 2★ words never go more than 4 or 7 days between reviews. A word's star rating also
   sets its starting ease (1★ = 2.2 … 5★ = 2.8).
 - **Practice misses:** a wrong answer in Quiz, Matching, Listen or the spelling test makes the word due
-  today and lowers its ease.
+  today; only a quiz miss (a wrong meaning) lowers its ease. A word you missed before studying it
+  counts as one of the day's new words.
 - **New words:** each day introduces up to "New words per day" new words (default 12; set in Stats).
   1–2★ words come first, then unrated words, most frequent first. Words marked known are skipped.
-- **Mastered:** a word counts as mastered once its review interval reaches 21 days, or when you mark
-  it known.
+- **Mastered:** a word counts as mastered once its review interval reaches 21 days. Words marked known
+  are counted separately in Stats.
 
 ### Your data
 
