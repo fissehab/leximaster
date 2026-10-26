@@ -8,19 +8,25 @@ import { formDialog, h, icon, showError } from "./ui.js";
 // The rail lists every tab. On a phone the bottom bar has five: Home,
 // Review, Practice, Browse and More; Practice and More are pages of links
 // (`hub`), and the tabs they hold are reached from there (`under`).
+// One order for the sidebar and the phone bar: today's review first, then
+// practice from easiest to hardest (see the answer, recognize it, recall it,
+// hear it, say it), then the words themselves, then progress. The phone shows
+// only Home, Review, the two hubs and Browse, in this same page order, so
+// keyboard and screen-reader order match what is on screen. `group` makes a
+// labeled group in the sidebar; `sep` draws a line above a link.
 export const TABS = [
   { id: "home", label: "Home", icon: "home" },
   { id: "review", label: "Daily review", icon: "review" },
-  { id: "browse", label: "Browse", icon: "book" },
-  { id: "flashcards", label: "Flashcards", icon: "cards", under: "practice", note: "Flip through words" },
-  { id: "quiz", label: "Quiz", icon: "quiz", under: "practice", note: "Meanings, blanks, synonyms" },
-  { id: "matching", label: "Matching", icon: "match", under: "practice", note: "Timed pairs" },
-  { id: "listen", label: "Listen", icon: "listen", under: "practice", note: "Hear it, name it, spell it" },
-  { id: "pronounce", label: "Pronounce", icon: "mic", under: "practice", note: "Record and compare" },
-  { id: "lists", label: "My lists", icon: "list", under: "more", note: "Your word lists and notes" },
-  { id: "stats", label: "Stats", icon: "stats", under: "more", note: "Progress, backup and offline use" },
   { id: "practice", label: "Practice", icon: "cards", hub: true },
+  { id: "flashcards", label: "Flashcards", icon: "cards", under: "practice", group: "Practice", note: "Flip through words" },
+  { id: "matching", label: "Matching", icon: "match", under: "practice", group: "Practice", note: "Timed pairs" },
+  { id: "quiz", label: "Quiz", icon: "quiz", under: "practice", group: "Practice", note: "Meanings, blanks, synonyms" },
+  { id: "listen", label: "Listen", icon: "listen", under: "practice", group: "Practice", note: "Hear it, name it, spell it" },
+  { id: "pronounce", label: "Pronounce", icon: "mic", under: "practice", group: "Practice", note: "Record and compare" },
+  { id: "browse", label: "Browse", icon: "book", group: "Words", note: "The full lexicon" },
+  { id: "lists", label: "My lists", icon: "list", under: "more", group: "Words", note: "Your word lists and notes" },
   { id: "more", label: "More", icon: "more", hub: true },
+  { id: "stats", label: "Stats", icon: "stats", under: "more", sep: true, note: "Progress, backup and offline use" },
 ];
 
 const view = document.getElementById("view");
@@ -29,11 +35,20 @@ let navToken = 0;
 
 function buildNav() {
   const wrap = document.getElementById("nav-links");
-  wrap.replaceChildren(...TABS.map(t =>
-    h(`a.nav-link${t.hub ? ".hub" : ""}${t.under ? ".under" : ""}`, { href: `#${t.id}`, "data-tab": t.id, title: t.label },
-      icon(t.icon), h("span.label", t.id === "review" ? h("span.long", "Daily review") : t.label,
-        t.id === "review" ? h("span.short", "Review") : null),
-      t.id === "review" ? h("span.count#due-count", { hidden: true }) : null)));
+  const link = t => h(`a.nav-link${t.hub ? ".hub" : ""}${t.under ? ".under" : ""}${t.sep ? ".sep" : ""}`,
+    { href: `#${t.id}`, "data-tab": t.id, title: t.label },
+    icon(t.icon), h("span.label", t.id === "review" ? h("span.long", "Daily review") : t.label,
+      t.id === "review" ? h("span.short", "Review") : null),
+    t.id === "review" ? h("span.count#due-count", { hidden: true }) : null);
+  const items = [];
+  for (const t of TABS) {
+    const last = items[items.length - 1];
+    if (!t.group) items.push(link(t));
+    else if (last && last.dataset.group === t.group) last.append(link(t));
+    else items.push(h("div.nav-group", { role: "group", "aria-label": t.group, "data-group": t.group },
+      h("span.nav-heading", { "aria-hidden": "true" }, t.group), link(t)));
+  }
+  wrap.replaceChildren(...items);
 }
 
 /** Cards left in today's review (the Review track you chose): the same

@@ -2,7 +2,7 @@
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
-import { reviewTrack } from "../app.js";
+import { TABS, reviewTrack } from "../app.js";
 import { fmtDuration, h, renderEntry } from "../ui.js";
 
 let wotd = null;
@@ -46,10 +46,8 @@ export async function render(root) {
     : null;
 
   const quick = h("nav.quick", { "aria-label": "Practice" },
-    [["#flashcards", "Flashcards", "Flip through words"], ["#quiz", "Quiz", "Meanings, blanks, synonyms"],
-     ["#matching", "Matching", "Timed pairs"], ["#listen", "Listen & spell", "Hear it, name it"],
-     ["#pronounce", "Pronounce", "Record and compare"], ["#browse", "Browse", "The full lexicon"]]
-      .map(([href, t, s]) => h("a", { href }, h("strong", t), h("span", s))));
+    TABS.filter(t => t.under === "practice" || t.id === "browse")
+      .map(t => h("a", { href: `#${t.id}` }, h("strong", t.label), h("span", t.note))));
 
   root.append(...[
     h("div.page-head", h("div", h("h1", greet), h("p.sub", "Ten to twenty minutes keeps precise words within reach."))),

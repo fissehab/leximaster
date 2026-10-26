@@ -3,7 +3,7 @@
 // (or all at once from Stats → "Download for offline use").
 // A new version installs in the background and takes over only when the
 // page asks (on Home, Browse and other calm screens, never mid-session).
-const VERSION = "20261026120534";
+const VERSION = "20261026121800";
 const SHELL = `shell-${VERSION}`;
 const DATA = "data-50113741";   // changes only when the word data does
 const MEDIA = "media-v1";   // recordings never change, so they survive updates

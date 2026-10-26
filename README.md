@@ -176,18 +176,20 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Tab | What it's for |
 |---|---|
 | Home | How many cards are left today (the same number as the badge), word of the day, streak and time studied. |
-| Browse | The full lexicon. It has A–Z jump, instant search across words and meanings, sorting by A–Z, frequency, stars or domain, and filters. On a phone, tapping a word brings its page into view (← List goes back). |
-| Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings. You can shuffle, play audio on flip, and choose a scope, rating or list. |
 | Daily review | SM-2 spaced repetition, sized to your session length (default 15 minutes). Choose a scope: Everything, Everyday English, Advanced & subjects, or Bible vocabulary, names or both. A new word is answered Show again, Got it or Know it (known words leave the review); a word you've seen before is graded Again, Hard, Good or Easy. The answer shows a short card; "Full entry" opens the whole page. |
-| Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, and for Bible names "who or what is it?". Changing a setting starts a new quiz. Misses go back into today's review. |
+| Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings. You can shuffle, play audio on flip, and choose a scope, rating or list. |
 | Matching | Timed rounds that pair words with meanings or with example sentences, with a score. |
+| Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, and for Bible names "who or what is it?". Changing a setting starts a new quiz. Misses go back into today's review. |
 | Listen | Hear a word, then pick it or type it. Also has a spelling test that compares your spelling letter by letter. |
 | Pronounce | Play the reference recording, record yourself, and play both back with waveforms. |
+| Browse | The full lexicon. It has A–Z jump, instant search across words and meanings, sorting by A–Z, frequency, stars or domain, and filters. On a phone, tapping a word brings its page into view (← List goes back). |
 | My lists | Named lists with a note on each word, plus your own custom words. |
 | Stats | Words mastered, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. Also holds the settings and progress export/import. |
 
-On a phone the bottom bar has five buttons: Home, Review, Practice (Flashcards, Quiz, Matching, Listen,
-Pronounce), Browse and More (My lists, Stats). Each practice tab remembers its own settings.
+The sidebar runs in the order of a study day: Home, Daily review, the Practice group (easiest to
+hardest: Flashcards, Matching, Quiz, Listen, Pronounce), the Words group (Browse, My lists), then Stats.
+On a phone the bottom bar has five buttons in the same order: Home, Review, Practice, Browse and More
+(My lists, Stats). Each practice tab remembers its own settings.
 
 ### The word page
 
