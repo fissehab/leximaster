@@ -5,7 +5,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import { loadFilter } from "../state.js";
-import { filterBar, filterSources, fmtDuration, h, pageHead, showError, toast } from "../ui.js";
+import { filterBar, filterSources, fmtDuration, h, pageHead, reveal, showError, toast } from "../ui.js";
 
 let mode = "choose";       // choose | type | spell
 let items = [];
@@ -124,7 +124,7 @@ function check(value) {
       w.phonetic ? h("span.ipa", w.phonetic) : null, def ? ` — ${def}` : ""),
     h("div.toolbar", nextBtn)));
   // The answer and the way on stay in view, even on a phone.
-  fb.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  reveal(fb);
   nextBtn.focus({ preventScroll: true });
   api.post("/api/answer", { word_id: w.id, mode: mode === "spell" ? "spell" : "listen", correct: ok, ms: Date.now() - shownAt })
     .then(() => !ok && refreshDueCount()).catch(showError);

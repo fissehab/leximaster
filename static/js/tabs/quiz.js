@@ -5,7 +5,7 @@
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
-import { filterBar, filterSources, fmtDuration, h, highlight, pageHead, showError } from "../ui.js";
+import { filterBar, filterSources, fmtDuration, h, highlight, pageHead, reveal, showError } from "../ui.js";
 import { loadFilter, settings } from "../state.js";
 
 const TYPES = [
@@ -77,7 +77,7 @@ async function answer(choice) {
       q.phonetic ? h("span.ipa", q.phonetic) : null, " — ", q.definition),
     q.example ? h("p.example", highlight(q.example, q.word)) : null,
     h("div.toolbar", play, h("a.btn.btn-quiet", { href: `#browse/${q.word_id}` }, "Open entry →"), nextBtn)));
-  fb.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  reveal(fb);
   nextBtn.focus({ preventScroll: true });
   if (settings.autoplay === "1") playWord({ word: q.word, audio_url: q.audio_url });
   api.post("/api/answer", { word_id: q.word_id, mode: "quiz", correct: ok, ms: Date.now() - shownAt })
