@@ -10,8 +10,8 @@ Why it exists, in the words of its author:
 
 > I'm Fisseha, a non-native English speaker working in data science and AI, with a background in civil
 > engineering, environmental science (MS, University of Connecticut) and atmospheric physics (MS and
-> PhD, Johns Hopkins University). I built LexiMaster to spend a few minutes a day keeping the words and ideas I care about in active
-> memory, ready for professional work, philosophical and theological dialogue, and everyday
+> PhD, Johns Hopkins University). I built LexiMaster to spend a few minutes a day keeping the words
+> and ideas I care about in active memory, ready for professional work, writing and everyday
 > conversation.
 
 The app's About page (the ⓘ button at the foot of the menu; More → About on a phone) says more.
