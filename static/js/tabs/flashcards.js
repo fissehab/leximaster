@@ -11,11 +11,22 @@ let flipped = false;
 let els = {};
 let filter = {};
 let doShuffle = true;
+const entries = new Map();   // word id -> Promise of its full entry (the back of the card)
+
+// The deck comes as fronts only; each back is loaded when needed, and the
+// next card's ahead of time, so the first card shows at once.
+function entry(w) {
+  if (!entries.has(w.id)) {
+    entries.set(w.id, api.get(`/api/words/${w.id}`).catch(e => { entries.delete(w.id); throw e; }));
+  }
+  return entries.get(w.id);
+}
 
 async function load() {
   try {
-    const res = await api.get("/api/flashcards", { ...filter, n: 60, shuffle: doShuffle });
+    const res = await api.get("/api/flashcards", { ...filter, n: 60, shuffle: doShuffle, brief: true });
     cards = res.cards;
+    entries.clear();
     idx = 0;
     show();
   } catch (e) { showError(e); }
@@ -33,12 +44,19 @@ function show() {
       w.stars ? h("span", { style: { color: "var(--gilt)" } }, "★".repeat(w.stars)) : null,
       h("h2.headword", w.word),
       h("p.flip-hint", "Say it aloud, recall the meaning, then flip · Enter")),
-    h("div.flip-face.back.panel", { inert: true }, renderEntry(w, { compact: true })));
+    h("div.flip-face.back.panel", { inert: true }, h("p.muted", "Loading…")));
   flip.addEventListener("click", e => { if (!e.target.closest("button")) toggle(); });
   els.flip = flip;
   els.stage.replaceChildren(h("div.flip-wrap", flip));
   els.counter.textContent = `${idx + 1} / ${cards.length}`;
   els.stars.replaceChildren(starsFor(w));
+  const shown = idx;
+  entry(w).then(full => {
+    if (idx !== shown || els.flip !== flip) return;   // moved on meanwhile
+    Object.assign(full, { stars: w.stars, known: w.known });   // changed on this card since the deck loaded
+    flip.querySelector(".back").replaceChildren(renderEntry(full, { compact: true }));
+  }).catch(showError);
+  if (cards.length > 1) entry(cards[(idx + 1) % cards.length]).catch(() => {});
 }
 
 function starsFor(w) {

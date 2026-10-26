@@ -782,7 +782,9 @@ async function flashcards(q) {
   const n = Math.min(500, Math.max(1, Number(q.n) || 30));
   const pool = poolIds(filters);
   const ids = q.shuffle === "false" ? pool.slice(0, n) : weightedSample(pool, n);
-  return { cards: await Promise.all(ids.map(i => full(fetchWord(i)))), pool: pool.length };
+  // brief: only what the front needs; each back is loaded when it's shown.
+  const card = q.brief === "true" || q.brief === "1" ? r => compact(r) : r => full(r);
+  return { cards: await Promise.all(ids.map(i => card(fetchWord(i)))), pool: pool.length };
 }
 
 const QUIZ_TYPES = ["word_meaning", "meaning_word", "fill_blank", "synonym", "antonym", "name_kind"];
