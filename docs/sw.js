@@ -1,17 +1,17 @@
 // LexiMaster offline support. The app shell and word index are cached on
-// install; word details and recordings are cached the first time they load
+// install (the index in the data cache, so a code-only update doesn't fetch it
+// again); word details and recordings are cached the first time they load
 // (or all at once from Stats → "Download for offline use").
 // A new version installs in the background and takes over only when the
 // page asks (on Home, Browse and other calm screens, never mid-session).
-const VERSION = "20261026121800";
+const VERSION = "20261026132414";
 const SHELL = `shell-${VERSION}`;
-const DATA = "data-50113741";   // changes only when the word data does
+const DATA = "data-f0d80c05";   // changes only when the published word data does
 const MEDIA = "media-v1";   // recordings never change, so they survive updates
 const SHELL_FILES = [
 "./",
 "index.html",
 "manifest.webmanifest",
-"data/index.json",
 "static/css/app.css",
 "static/css/tokens.css",
 "static/fonts/-haris-cyrillic-ext-opwj-kv3l-s-q8govxvklebjdjrxq1auxkvscq.woff2",
@@ -61,7 +61,10 @@ const SHELL_FILES = [
 self.addEventListener("install", e => {
   // cache: "reload" skips the browser's HTTP cache, so a fresh deploy can't
   // be stored with files left over from the last one.
-  e.waitUntil(caches.open(SHELL).then(c => c.addAll(SHELL_FILES.map(u => new Request(u, { cache: "reload" })))));
+  e.waitUntil(Promise.all([
+    caches.open(SHELL).then(c => c.addAll(SHELL_FILES.map(u => new Request(u, { cache: "reload" })))),
+    caches.open(DATA).then(c => c.match("data/index.json").then(hit => hit || c.add(new Request("data/index.json", { cache: "reload" })))),
+  ]));
 });
 
 self.addEventListener("message", e => {
@@ -78,7 +81,9 @@ async function cacheFirst(req, name) {
   const cache = await caches.open(name);
   const hit = await cache.match(req, { ignoreSearch: true });
   if (hit) return hit;
-  const res = await fetch(req);
+  // no-cache: revalidate with the server, so a file the browser kept from the
+  // last deploy is never stored under the new data version.
+  const res = await fetch(req, { cache: "no-cache" });
   if (res.ok && res.status === 200) cache.put(req, res.clone());
   return res;
 }
@@ -88,7 +93,7 @@ self.addEventListener("fetch", e => {
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
   const path = url.pathname;
   if (path.includes("/media/")) { e.respondWith(cacheFirst(e.request, MEDIA)); return; }
-  if (path.includes("/data/detail/")) { e.respondWith(cacheFirst(e.request, DATA)); return; }
+  if (path.includes("/data/detail/") || path.endsWith("/data/index.json")) { e.respondWith(cacheFirst(e.request, DATA)); return; }
   if (e.request.mode === "navigate") {
     // The page comes from the same version's cache as its scripts.
     e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));

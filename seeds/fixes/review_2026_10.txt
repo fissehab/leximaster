@@ -1,0 +1,20 @@
+# From the October 2026 review (Kai). Wrong first meaning for the domain:
+old-man | nuance.core.pos | noun
+old-man | nuance.core.definition | Paul's term for the sinful self a person was before new life in Christ, which was crucified with him and is to be put off (Romans 6:6; Ephesians 4:22).
+light | nuance.core.pos | noun
+light | nuance.core.definition | The brightness from the sun, a lamp or a fire that lets us see; in the Bible, also a picture of God's presence, truth and goodness.
+type | nuance.core.definition | A kind or category of things that share certain features; in Bible interpretation, a person, event or thing in the Old Testament that foreshadows Christ (Romans 5:14).
+
+# Pronunciation
+melchizedek | phonetic | /mɛlˈkɪzəˌdɛk/
+filioque | phonetic | /ˌfɪliˈoʊkweɪ/
+fulsome | nuance.pronunciation.respelling | FULL-suhm
+
+# Examples and notes
+peter | nuance.examples.everyday | Our pastor preached on Peter's denial and how Jesus restored him by the lake.
+hold-off | nuance.usage_note | Americans use hold off very often in daily life, especially about weather, decisions and tasks. Common phrases are "The rain held off until after the game" and "Can you hold off on dinner until six?" It is informal enough for conversation with friends and colleagues, and it is also common at work.
+purgatory | nuance.register | ["formal"]
+
+# Tradition notes
+mary | nuance.traditions.2.view | Protestants honor Mary as the mother of Jesus and a model of faith, but generally reject praying to her and Marian dogmas beyond Scripture. Lutherans and Anglicans keep more reverence for her, and some of them, following Luther and the early Reformers, hold her perpetual virginity; many Baptists and Pentecostals see her simply as a faithful servant.
+ordination | nuance.traditions.1.view | Ordination is one of the seven sacraments, which confers an indelible character on bishops, priests, and deacons, and is reserved to baptized men.

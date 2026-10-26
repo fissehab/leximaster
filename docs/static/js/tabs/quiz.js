@@ -5,7 +5,7 @@
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
-import { filterBar, filterSources, fmtDuration, h, highlight, pageHead, reveal, showError } from "../ui.js";
+import { filterBar, filterSources, fmtDuration, h, highlight, pageHead, reveal, showError, toast } from "../ui.js";
 import { loadFilter, settings } from "../state.js";
 
 const TYPES = [
@@ -34,6 +34,7 @@ async function start() {
       return;
     }
     show();
+    if (qs.length < length) toast(`Only ${qs.length} question${qs.length === 1 ? "" : "s"} match these question types and filters.`);
   } catch (e) {
     els.stage.replaceChildren(h("div.panel.empty", h("h2", "Can't build a quiz"), h("p", e.message)));
   }

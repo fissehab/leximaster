@@ -265,6 +265,8 @@ LEXIMASTER_DB=/tmp/test.db PORT=8766 ./run.sh
 build_dataset.py   dataset builder (resumable)
 seeds/             seed word lists, one word or phrase per line
 seeds/examples/    hand-written conversation examples for the everyday domains
+seeds/fixes/       hand corrections to any field of an entry (see its README.txt)
+seeds/drop/        keys left out of the build (not real words, British spellings)
 tools/             build_site.py (the website), audit.py (content checks), parity.py (website vs
                    local app), gen_shared.py (constants shared with the browser code),
                    check_examples.py, classify_names.py, check_bible.py (fact-checks the
