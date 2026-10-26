@@ -28,7 +28,7 @@ from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from app.common import core_definition  # noqa: E402
+from app.common import core_definition, quiz_synonyms  # noqa: E402
 
 DOCS = ROOT / "docs"
 STATIC = ROOT / "static"
@@ -92,6 +92,8 @@ def build_data(words: list[dict]) -> tuple[int, int]:
             entry["c"] = 1
         if w.get("name_kind"):
             entry["nk"] = w["name_kind"]
+        if syn := quiz_synonyms(w):
+            entry["sy"] = syn
         index.append(entry)
         shards[s][w["key"]] = data
     size = write_json(DOCS / "data" / "index.json", {"version": 1, "words": index})

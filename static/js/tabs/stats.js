@@ -38,7 +38,7 @@ export async function render(root) {
       `${w.with_audio.toLocaleString()} with American recordings`,
       w.enriched ? `${w.enriched.toLocaleString()} with nuance notes` : null].filter(Boolean).join(" · ")),
     h("div.stat-row",
-      tile("Words mastered", w.mastered.toLocaleString(), `interval of 3+ weeks, or marked known`),
+      tile("Words mastered", w.mastered.toLocaleString(), `remembered over 3+ weeks · ${(w.known || 0).toLocaleString()} more marked known`),
       tile("Learning", w.learning.toLocaleString(), `${w.due} due now`),
       tile("Daily streak", `${s.streak.current}`, `best ${s.streak.best} day${s.streak.best === 1 ? "" : "s"}${s.streak.today_done ? " · today done" : ""}`),
       tile("Accuracy", acc.attempts ? `${pct(acc.correct, acc.attempts)}%` : "—", `${acc.attempts.toLocaleString()} answers`)),

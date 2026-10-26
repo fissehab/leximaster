@@ -118,6 +118,12 @@ def examples_for(data: dict) -> list[str]:
     return out
 
 
+# Endings an inflected form may add (after a final e or y is dropped):
+# abate → abated, abates, abating; carry → carries, carried. Only real
+# endings, so "patriarch" doesn't match "patriarchal".
+SUFFIX = r"(?:e|es|ed|ing|er|ers|est|s|d|ly|y|ies|ied|ier|iest|ily)?"
+
+
 def word_pattern(word: str) -> re.Pattern:
     """Matches the word and its inflections (abate, abated, abates, abating)."""
     parts = re.split(r"[\s-]+", word.strip())
@@ -127,15 +133,33 @@ def word_pattern(word: str) -> re.Pattern:
     if len(stem) > 4 and stem.endswith("y"):
         stem = stem[:-1]
     head = r"[\s-]+".join(re.escape(p) for p in parts[:-1])
-    body = (head + r"[\s-]+" if head else "") + re.escape(stem) + r"[a-z]{0,4}"
+    body = (head + r"[\s-]+" if head else "") + re.escape(stem) + SUFFIX
     return re.compile(r"\b" + body + r"\b", re.I)
 
 
 def blank_sentence(word: str, sentence: str) -> str | None:
-    m = word_pattern(word).search(sentence)
-    if not m:
+    """The sentence with every use of the word blanked, and "a"/"an" before a
+    blank written "a(n)" so the article doesn't give the answer away."""
+    out, n = word_pattern(word).subn("_____", sentence)
+    if not n:
         return None
-    return sentence[: m.start()] + "_____" + sentence[m.end():]
+    return re.sub(r"\b([Aa])n? (?=_____)", r"\1(n) ", out)
+
+
+def is_base_form(word: str, sentence: str) -> bool:
+    """Whether the sentence uses the word exactly as the options show it."""
+    m = word_pattern(word).search(sentence)
+    return bool(m) and re.sub(r"[\s-]+", " ", m.group(0)).lower() == re.sub(r"[\s-]+", " ", word.strip()).lower()
+
+
+def quiz_synonyms(data: dict) -> list[str]:
+    """A few of a word's dictionary synonyms: wrong options for other words'
+    synonym and antonym questions (tools/build_site.py puts the same list in
+    the website's index)."""
+    out = list(data.get("synonyms") or [])
+    for m in data.get("meanings") or []:
+        out += m.get("synonyms") or []
+    return [s for s in dict.fromkeys(out) if s][:3]
 
 
 def today_iso() -> str:

@@ -12,6 +12,7 @@ from datetime import date, timedelta
 
 QUALITY = {0: 1, 1: 3, 2: 4, 3: 5}
 MIN_EASE = 1.3
+LAPSE_EASE = 0.2                           # ease lost when a learned word is forgotten
 STAR_INTERVAL_CAP = {1: 4, 2: 7}          # days
 STAR_START_EASE = {0: 2.5, 1: 2.2, 2: 2.35, 3: 2.5, 4: 2.65, 5: 2.8}
 
@@ -66,7 +67,10 @@ def schedule(card: dict, grade: int, stars: int) -> dict:
             factor = {1: 1.2, 2: ease, 3: ease * 1.3}[grade]
             interval = max(interval + 1, round(interval * factor))
         reps += 1
-    ease = max(MIN_EASE, ease + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))
+    if q < 3:
+        ease = max(MIN_EASE, ease - LAPSE_EASE)   # SM-2's own formula takes 0.54 and soon pins ease at the floor
+    else:
+        ease = max(MIN_EASE, ease + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))
     cap = STAR_INTERVAL_CAP.get(stars)
     if cap:
         interval = min(interval, cap)
@@ -84,12 +88,14 @@ def review(c: sqlite3.Connection, word_id: int, grade: int) -> dict:
     return new
 
 
-def penalise_miss(c: sqlite3.Connection, word_id: int, first_miss_today: bool) -> None:
-    """A wrong answer in a quiz or game: the word is due today. Ease drops
-    once per word per day, so several misclicks in one round don't compound.
-    A word never studied before gets a fresh card and arrives as a new word."""
+def penalise_miss(c: sqlite3.Connection, word_id: int, first_miss_today: bool, mode: str = "quiz") -> None:
+    """A wrong answer in a quiz or game: the word is due today. Only a quiz
+    miss (a wrong meaning) lowers ease, once per word per day, so several
+    misclicks in one round don't compound; a miss in listening or matching is
+    about hearing or speed. A word never studied before gets a fresh card and
+    arrives as a new word."""
     card = ensure_card(c, word_id)
-    ease = max(MIN_EASE, card["ease"] - 0.2) if first_miss_today and card["reps"] else card["ease"]
+    ease = max(MIN_EASE, card["ease"] - 0.2) if first_miss_today and card["reps"] and mode == "quiz" else card["ease"]
     c.execute("UPDATE srs SET due_date=?, ease=?, interval_days=MIN(interval_days, 1) WHERE word_id=?",
               (iso(today()), ease, word_id))
 

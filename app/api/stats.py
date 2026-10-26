@@ -43,13 +43,16 @@ def stats():
         total = c.execute("SELECT COUNT(*) AS n FROM words").fetchone()["n"]
         enriched = c.execute("SELECT COUNT(*) AS n FROM words WHERE enriched=1").fetchone()["n"]
         with_audio = c.execute("SELECT COUNT(*) AS n FROM words WHERE has_audio=1").fetchone()["n"]
-        mastered = c.execute(
-            "SELECT COUNT(*) AS n FROM words w LEFT JOIN srs s ON s.word_id=w.id "
-            "LEFT JOIN user_word u ON u.word_id=w.id "
-            "WHERE s.interval_days >= ? OR COALESCE(u.known,0)=1", (MASTERED_INTERVAL,)).fetchone()["n"]
-        learning = c.execute("SELECT COUNT(*) AS n FROM srs WHERE interval_days < ?",
+        # Words marked known are counted apart: one click isn't proof of mastery.
+        studied = "FROM srs s LEFT JOIN user_word u ON u.word_id=s.word_id WHERE COALESCE(u.known,0)=0"
+        mastered = c.execute(f"SELECT COUNT(*) AS n {studied} AND s.interval_days >= ?",
                              (MASTERED_INTERVAL,)).fetchone()["n"]
-        due = c.execute("SELECT COUNT(*) AS n FROM srs WHERE due_date <= ?", (today_iso(),)).fetchone()["n"]
+        learning = c.execute(f"SELECT COUNT(*) AS n {studied} AND s.interval_days < ?",
+                             (MASTERED_INTERVAL,)).fetchone()["n"]
+        # Due: reviewed before and due today (the review queue's "due").
+        due = c.execute(f"SELECT COUNT(*) AS n {studied} AND s.due_date <= ? AND NOT (s.reps = 0 AND s.last_reviewed IS NULL)",
+                        (today_iso(),)).fetchone()["n"]
+        known = c.execute("SELECT COUNT(*) AS n FROM user_word WHERE known=1").fetchone()["n"]
         stars = {r["stars"]: r["n"] for r in c.execute(
             "SELECT stars, COUNT(*) AS n FROM user_word WHERE stars > 0 GROUP BY stars")}
         overall = c.execute("SELECT COUNT(*) AS n, COALESCE(SUM(correct),0) AS ok FROM review_log").fetchone()
@@ -88,7 +91,7 @@ def stats():
             (today_iso(), (date.today() + timedelta(days=14)).isoformat()))]
         return {
             "words": {"total": total, "enriched": enriched, "with_audio": with_audio,
-                      "mastered": mastered, "learning": learning, "due": due, "stars": stars},
+                      "mastered": mastered, "learning": learning, "due": due, "known": known, "stars": stars},
             "accuracy": {"attempts": overall["n"], "correct": overall["ok"]},
             "streak": streak(c),
             "by_domain": domain_rows,
