@@ -163,6 +163,34 @@ def export_progress():
         "Content-Disposition": f'attachment; filename="leximaster-progress-{today_iso()}.json"'})
 
 
+def _clean_custom_word(cw: dict) -> tuple | None:
+    """(key, word, domains, data) for an imported custom word, with anything
+    malformed made empty rather than breaking every page that lists words
+    (static/js/local/server.js cleanCustomWord). None when unusable."""
+    key, word = cw.get("key"), cw.get("word")
+    if not (isinstance(key, str) and key.startswith("custom:") and isinstance(word, str) and word.strip()):
+        return None
+    try:
+        data = json.loads(cw["data"]) if isinstance(cw.get("data"), str) else cw.get("data")
+    except json.JSONDecodeError:
+        data = None
+    if not isinstance(data, dict):
+        return None
+    data["meanings"] = [m for m in data.get("meanings") or [] if isinstance(m, dict)] \
+        if isinstance(data.get("meanings"), list) else []
+    for m in data["meanings"]:
+        m["senses"] = [s for s in m.get("senses") or [] if isinstance(s, dict)] if isinstance(m.get("senses"), list) else []
+    if not isinstance(data.get("nuance"), (dict, type(None))):
+        data["nuance"] = None
+    try:
+        domains = json.loads(cw.get("domains") or "")
+    except (json.JSONDecodeError, TypeError):
+        domains = None
+    if not (isinstance(domains, list) and all(isinstance(d, str) for d in domains)):
+        domains = ["custom"]
+    return key, word.strip()[:80], json.dumps(domains), json.dumps(data, ensure_ascii=False)
+
+
 def _clamp(v, lo, hi, default):
     try:
         return min(hi, max(lo, type(default)(v)))
@@ -190,10 +218,15 @@ async def import_progress(file: UploadFile = File(...)):
     counts = {}
     try:
         with db.tx() as c:
-            for cw in rows("custom_words"):
-                if cw.get("key", "").startswith("custom:") and cw.get("word") and cw.get("data"):
-                    c.execute("INSERT OR IGNORE INTO words(key, word, domains, data, is_custom) VALUES (?, ?, ?, ?, 1)",
-                              (cw["key"], cw["word"], cw.get("domains") or '["custom"]', cw["data"]))
+            skipped = 0
+            for raw in rows("custom_words"):
+                cw = _clean_custom_word(raw)
+                if cw is None:
+                    skipped += 1
+                    continue
+                c.execute("INSERT OR IGNORE INTO words(key, word, domains, data, is_custom) VALUES (?, ?, ?, ?, 1)", cw)
+            if skipped:
+                counts["damaged custom words skipped"] = skipped
             ids = {r["key"]: r["id"] for r in c.execute("SELECT id, key FROM words")}
             n = 0
             for u in rows("user_word"):

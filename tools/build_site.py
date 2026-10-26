@@ -177,24 +177,28 @@ def build_manifest() -> None:
 
 
 def build_service_worker(version: str, data_hash: str) -> None:
-    shell = ["./", "index.html", "manifest.webmanifest", "data/index.json"]
+    shell = ["./", "index.html", "manifest.webmanifest"]
     shell += sorted(str(p.relative_to(DOCS)) for p in (DOCS / "static").rglob("*")
                     if p.is_file() and p.suffix in (".css", ".js", ".woff2", ".wasm", ".png", ".html"))
     sw = f"""// LexiMaster offline support. The app shell and word index are cached on
-// install; word details and recordings are cached the first time they load
+// install (the index in the data cache, so a code-only update doesn't fetch it
+// again); word details and recordings are cached the first time they load
 // (or all at once from Stats → "Download for offline use").
 // A new version installs in the background and takes over only when the
 // page asks (on Home, Browse and other calm screens, never mid-session).
 const VERSION = "{version}";
 const SHELL = `shell-${{VERSION}}`;
-const DATA = "data-{data_hash}";   // changes only when the word data does
+const DATA = "data-{data_hash}";   // changes only when the published word data does
 const MEDIA = "media-v1";   // recordings never change, so they survive updates
 const SHELL_FILES = {json.dumps(shell, indent=0)};
 
 self.addEventListener("install", e => {{
   // cache: "reload" skips the browser's HTTP cache, so a fresh deploy can't
   // be stored with files left over from the last one.
-  e.waitUntil(caches.open(SHELL).then(c => c.addAll(SHELL_FILES.map(u => new Request(u, {{ cache: "reload" }})))));
+  e.waitUntil(Promise.all([
+    caches.open(SHELL).then(c => c.addAll(SHELL_FILES.map(u => new Request(u, {{ cache: "reload" }})))),
+    caches.open(DATA).then(c => c.match("data/index.json").then(hit => hit || c.add(new Request("data/index.json", {{ cache: "reload" }})))),
+  ]));
 }});
 
 self.addEventListener("message", e => {{
@@ -211,7 +215,9 @@ async function cacheFirst(req, name) {{
   const cache = await caches.open(name);
   const hit = await cache.match(req, {{ ignoreSearch: true }});
   if (hit) return hit;
-  const res = await fetch(req);
+  // no-cache: revalidate with the server, so a file the browser kept from the
+  // last deploy is never stored under the new data version.
+  const res = await fetch(req, {{ cache: "no-cache" }});
   if (res.ok && res.status === 200) cache.put(req, res.clone());
   return res;
 }}
@@ -221,7 +227,7 @@ self.addEventListener("fetch", e => {{
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
   const path = url.pathname;
   if (path.includes("/media/")) {{ e.respondWith(cacheFirst(e.request, MEDIA)); return; }}
-  if (path.includes("/data/detail/")) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
+  if (path.includes("/data/detail/") || path.endsWith("/data/index.json")) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
   if (e.request.mode === "navigate") {{
     // The page comes from the same version's cache as its scripts.
     e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));
@@ -325,7 +331,10 @@ def main() -> None:
     build_icons()
     build_manifest()
     build_credits(audio_rows, len(words))
-    data_hash = hashlib.sha256((DATA / "words.json").read_bytes()).hexdigest()[:8]
+    h = hashlib.sha256()
+    for f in [DOCS / "data" / "index.json", *sorted((DOCS / "data" / "detail").glob("*.json"))]:
+        h.update(f.read_bytes())
+    data_hash = h.hexdigest()[:8]
     build_service_worker(version, data_hash)
     (DOCS / ".nojekyll").write_text("")
     files = [p for p in DOCS.rglob("*") if p.is_file()]
