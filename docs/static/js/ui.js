@@ -238,12 +238,35 @@ export function renderEntry(w, { compact = false, onChange } = {}) {
     parts.push(h("p.core-def", n.core.definition));
   }
 
-  // Dictionary senses, grouped by part of speech.
+  // Dictionary senses, grouped by part of speech. A sense that repeats the
+  // learner definition above is left out, and the one closest to it comes first.
+  const core = n && n.core && n.core.definition || "";
+  const flat = t => t.toLowerCase().replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
+  const stems = t => new Set(flat(t).split(" ").filter(x => x.length > 3).map(x => x.slice(0, 5)));
+  const coreStems = stems(core);
+  const closeness = s => [...stems(s.definition)].filter(x => coreStems.has(x)).length;
+  const groups = w.meanings
+    .map(m => ({ pos: m.pos, items: m.senses.filter(s => s.definition && (!core || flat(s.definition) !== flat(core))) }))
+    .filter(g => g.items.length);
+  if (core) {
+    for (const g of groups) {
+      const best = g.items.reduce((a, s) => closeness(s) > closeness(a) ? s : a, g.items[0]);
+      if (closeness(best) > 0) g.items = [best, ...g.items.filter(s => s !== best)];
+      g.score = closeness(g.items[0]);
+    }
+    const top = Math.max(...groups.map(g => g.score));
+    // Only lift a group above the first one when it is clearly closer.
+    if (groups.length > 1 && top > groups[0].score) {
+      const i = groups.findIndex(g => g.score === top);
+      groups.unshift(...groups.splice(i, 1));
+    }
+  }
   const MAX = compact ? 2 : 4;
   const senseGroups = h("section.senses", { "aria-label": "Definitions" });
+  if (core && groups.length && !compact) senseGroups.append(h("h3.senses-label", "Dictionary meanings"));
   let hidden = 0;
-  for (const m of w.meanings) {
-    const items = m.senses.filter(s => s.definition);
+  for (const m of groups) {
+    const items = m.items;
     if (!items.length) continue;
     const ol = h("ol.sense-list");
     items.forEach((s, i) => {

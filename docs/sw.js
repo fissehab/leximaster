@@ -1,7 +1,7 @@
 // LexiMaster offline support. The app shell and word index are cached on
 // install; word details and recordings are cached the first time they load
 // (or all at once from Stats → "Download for offline use").
-const VERSION = "20261025222658";
+const VERSION = "20261025225335";
 const SHELL = `shell-${VERSION}`;
 const DATA = `data-${VERSION}`;
 const MEDIA = "media-v1";   // recordings never change, so they survive updates
