@@ -76,7 +76,9 @@ export function playButton(word, { small = false } = {}) {
   const synth = !word.audio_url;
   const btn = h(`button.play${small ? ".sm" : ""}${synth ? ".synth" : ""}`, {
     type: "button",
-    title: synth ? "Play (American synthesized voice; no US recording available) · Space" : "Play American recording · Space",
+    title: word.audio_url ? "Play American recording · Space"
+      : word.tts_url ? "Play (natural synthesized voice; no US recording available) · Space"
+      : "Play (your device's American voice; no US recording available) · Space",
     "aria-label": `Play pronunciation of ${word.word}`,
     html: PLAY_SVG,
   });

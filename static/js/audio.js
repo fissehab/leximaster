@@ -1,5 +1,6 @@
-// Pronunciation playback: an American English recording when available,
-// otherwise the browser's speech synthesis with an American (en-US) voice.
+// Pronunciation playback: an American English recording when available, then
+// a natural synthesized recording made for LexiMaster (tts_url), and only as
+// a last resort the device's own speech synthesis with its best American voice.
 
 import { settings } from "./state.js";
 
@@ -15,18 +16,32 @@ function stop() {
 
 const LANG = "en-US";
 
-function pickVoice() {
-  const voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
-  // Only American voices; macOS ships Samantha, Ava, Allison, Tom and others.
-  const us = voices.filter(v => v.lang.replace("_", "-") === LANG);
-  const pref = ["Ava", "Samantha", "Allison", "Zoe", "Tom", "Evan", "Nathan", "Alex", "Google US English"];
-  for (const name of pref) {
-    const v = us.find(x => x.name.includes(name));
-    if (v) return v;
-  }
-  return us.find(v => v.localService) || us[0] || null;
+// The smoothest American voice the device has. Neural and downloaded voices
+// (Edge's "Natural", Apple's "Premium" and "Enhanced") sound human; the small
+// default voices sound robotic; macOS's novelty voices are never used.
+const NOVELTY = /\b(Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Fred|Good News|Jester|Junior|Organ|Ralph|Superstar|Trinoids|Whisper|Wobble|Zarvox|Grandma|Grandpa|Rocko|Shelley|Flo|Eddy|Reed|Sandy)\b/;
+const NAMES = ["Ava", "Zoe", "Allison", "Samantha", "Evan", "Nathan", "Tom", "Aria", "Jenny", "Guy", "Alex"];
+function voiceScore(v) {
+  const n = v.name;
+  let s = 0;
+  if (/Natural|Neural/.test(n)) s += 40;
+  if (/Premium/.test(n)) s += 35;
+  if (/Enhanced/.test(n)) s += 25;
+  if (/^Google US English/.test(n)) s += 20;
+  const i = NAMES.findIndex(x => n.includes(x));
+  if (i >= 0) s += 10 - i * 0.5;
+  return s;
 }
-if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => {};
+let chosen = null;
+function pickVoice() {
+  if (chosen) return chosen;
+  const voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+  const us = voices.filter(v => v.lang.replace("_", "-") === LANG && !NOVELTY.test(v.name));
+  us.sort((a, b) => voiceScore(b) - voiceScore(a));
+  chosen = us[0] || null;
+  return chosen;
+}
+if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { chosen = null; };
 
 export function speak(text, btn) {
   if (!window.speechSynthesis) return Promise.resolve();
@@ -44,13 +59,14 @@ export function speak(text, btn) {
   });
 }
 
-/** Play a word: recorded audio if it has one, else speech synthesis. */
+/** Play a word: its recording (human, else natural synthesized), else the device's voice. */
 export function playWord(word, btn) {
   stop();
   if (!word) return Promise.resolve();
-  if (word.audio_url) {
+  const url = word.audio_url || word.tts_url;
+  if (url) {
     return new Promise(resolve => {
-      const a = new Audio(word.audio_url);
+      const a = new Audio(url);
       current = a;
       if (btn) { btn.classList.add("playing"); currentBtn = btn; }
       const done = () => { if (btn) btn.classList.remove("playing"); resolve(); };

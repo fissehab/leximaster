@@ -33,6 +33,12 @@ def audio_url(data: dict) -> str | None:
     return f"/media/{a['file']}" if a and a.get("file") else None
 
 
+def tts_url(data: dict) -> str | None:
+    """A natural synthesized recording (tools/tts.py), for words without one."""
+    t = data.get("tts")
+    return f"/media/{t['file']}" if t and t.get("file") else None
+
+
 def core_definition(data: dict) -> tuple[str, str]:
     """(pos, definition) for the most useful sense: the enrichment's learner
     definition when present, otherwise the first dictionary sense."""
@@ -69,6 +75,7 @@ def compact(row: sqlite3.Row) -> dict:
         "freq_rank": row["freq_rank"],
         "has_audio": bool(row["has_audio"]),
         "audio_url": audio_url(data),
+        "tts_url": None if row["has_audio"] else tts_url(data),
         "enriched": bool(row["enriched"]),
         "is_custom": bool(row["is_custom"]),
         "stars": row["stars"],

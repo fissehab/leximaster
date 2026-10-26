@@ -2442,6 +2442,12 @@ def assemble(quiet: bool = False) -> dict:
         ipa = ((w.get("nuance") or {}).get("pronunciation") or {}).get("ipa", "").strip()
         if w["phonetic"].startswith("[") and ipa.startswith("/"):
             w["phonetic"], w["phonetic_source"] = us_style(ipa), "reviewed"
+    # Natural synthesized recordings (tools/tts.py) for words without a human one.
+    tts = read_json(CACHE / "tts.json", {})
+    for w in words:
+        t = tts.get(w["key"])
+        if not w["has_audio"] and t and (DATA / t["file"]).exists():
+            w["tts"] = {"file": t["file"], "voice": t["voice"]}
     dropped = {norm_key(x) for path in sorted((SEEDS / "drop").glob("*.txt")) for x, _ in load_seed_file(path)}
     words = [w for w in words if w["key"] not in dropped]
     apply_fixes(words)

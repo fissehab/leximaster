@@ -160,7 +160,7 @@ def sync_words(force: bool = False) -> int:
     for w in payload.get("words", []):
         data = {k: w.get(k) for k in ("phonetic", "audio", "meanings", "nuance", "source",
                                       "synonyms", "antonyms", "etymology", "variant_of",
-                                      "conversation", "name_kind")}
+                                      "conversation", "name_kind", "tts")}
         rows.append((w["key"], w["word"], w.get("freq_rank"), w.get("zipf"),
                      json.dumps(w.get("domains", [])), int(bool(w.get("has_audio"))),
                      int(w.get("nuance") is not None), json.dumps(data, ensure_ascii=False)))

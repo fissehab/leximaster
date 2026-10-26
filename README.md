@@ -21,7 +21,9 @@ local app on your Mac. Both work the same and share the same progress file forma
 
 ## What's in it
 
-16,381 entries. 5,823 have an American recording; the rest use your device's American voice.
+16,381 entries. 5,823 have a human American recording; the other 10,558 have a natural synthesized
+American recording made for LexiMaster (Kokoro, an open neural voice), spoken from each entry's reviewed
+IPA for rare words and names.
 
 **Advanced & subjects** (scope "Advanced & subjects", 12,239 entries including the Bible vocabulary):
 
@@ -178,8 +180,16 @@ Words, meanings, spelling and pronunciation are all American English:
   Ireland, Australia, India...) are removed, as are inflection-only lines ("simple past of win").
   Words that Claude rates as mainly British (Americans say something else) are left out, except words
   from the GRE/SAT and academic lists.
-- **Synthesized voice:** for words without an American recording, the app uses an installed
-  en-US voice such as Ava, Samantha or Allison.
+- **Synthesized recordings:** words without a human American recording have one made with Kokoro, an
+  open neural voice (`tools/tts.py`; the model goes in `data/models/`, see the tool's header). Rare
+  words and names are spoken from the entry's reviewed American IPA, so they come out as the entry
+  says; common words and phrases are read by the model. `tools/tts.py verify` has Whisper transcribe
+  every recording to catch bad ones.
+- **Device voice:** only if a recording can't play does the app fall back to the device's own
+  American voice, choosing the most natural one installed. For a smoother fallback, download a
+  premium voice: on a Mac, System Settings → Accessibility → Spoken Content → System voice → Manage
+  Voices → English (US) → Ava (Premium); on an iPhone, Settings → Accessibility → Spoken Content →
+  Voices → English → Ava (Premium).
 
 ### Claude through Amazon Bedrock
 
@@ -338,7 +348,8 @@ tools/             build_site.py (the website), audit.py (content checks), parit
                    local app), gen_shared.py (constants shared with the browser code),
                    check_examples.py, classify_names.py, check_bible.py (fact-checks the
                    "In the Bible" notes: verse references, Hebrew and Greek words),
-                   audio_credits.py (each recording's author and license, for the credits page)
+                   audio_credits.py (each recording's author and license, for the credits page),
+                   tts.py (natural synthesized recordings for words without a human one)
 app/               FastAPI backend: db.py (schema), srs.py (SM-2), api/ (routes)
 static/            single-page app, with no build step: index.html, css/, js/, fonts/
 data/              dataset, audio, SQLite database, recordings

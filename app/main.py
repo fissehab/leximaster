@@ -53,6 +53,7 @@ def health():
 
 
 app.mount("/media/audio", StaticFiles(directory=db.DATA / "audio", check_dir=False), name="audio")
+app.mount("/media/tts", StaticFiles(directory=db.DATA / "tts", check_dir=False), name="tts")
 class AppFiles(StaticFiles):
     """The app's own CSS and JS: the browser revalidates on every load
     (a quick 304 when unchanged), so an update is never hidden behind a
