@@ -64,7 +64,10 @@ async function open(id) {
 }
 
 function practise(id) {
-  import("../state.js").then(({ practiceFilter }) => { practiceFilter.list_id = String(id); location.hash = "#flashcards"; });
+  import("../state.js").then(({ loadFilter, saveFilter }) => {
+    saveFilter("flashcards", { ...loadFilter("flashcards"), list_id: String(id) });
+    location.hash = "#flashcards";
+  });
 }
 
 async function rename(data) {
@@ -76,8 +79,6 @@ async function rename(data) {
 async function remove(data) {
   if (!(await confirmDialog(`Delete “${data.name}”?`, "The list and its notes are removed. The words stay in the lexicon."))) return;
   try { await api.del(`/api/lists/${data.id}`); } catch (e) { return showError(e); }
-  const { practiceFilter } = await import("../state.js");
-  if (String(practiceFilter.list_id) === String(data.id)) practiceFilter.list_id = "";
   activeId = null;
   history.replaceState(null, "", "#lists");
   await loadLists();

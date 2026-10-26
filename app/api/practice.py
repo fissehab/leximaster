@@ -11,10 +11,9 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from .. import db, srs
-from ..common import (EVERYDAY_DOMAINS, WORD_COLUMNS, WORD_FROM, blank_sentence, bump_activity, compact,
-                      track_clause,
-                      core_definition, examples_for, fetch_word, full, pool_ids, today_iso,
-                      weighted_sample)
+from ..common import (EVERYDAY_DOMAINS, NAMES_ONLY_SQL, WORD_COLUMNS, WORD_FROM, blank_sentence,
+                      bump_activity, compact, core_definition, examples_for, fetch_word, full, pool_ids,
+                      today_iso, track_clause, weighted_sample)
 
 router = APIRouter(prefix="/api")
 
@@ -60,11 +59,13 @@ def new_words(c, clause: str, n: int) -> list:
 
 
 @router.get("/review/queue")
-def review_queue(extra: int = 0, track: str = ""):
+def review_queue(extra: int = 0, track: str = "", count: int = 0):
     """Today's session: due cards (most overdue, lowest stars first) plus new
     words, sized to the target session length. `extra` adds more new words
     after the day's queue is done. `track` limits the session to everyday
-    English ("everyday") or the advanced and subject words ("core")."""
+    English ("everyday") or the advanced and subject words ("core").
+    `count=1` returns only the numbers (Home, the nav badge), from the same
+    selection, without loading every card."""
     tr = track_clause(track)
     with db.tx() as c:
         st = db.settings(c)
@@ -83,7 +84,7 @@ def review_queue(extra: int = 0, track: str = ""):
             if used + per_review > budget and queue:
                 break
             # A card created by a quiz miss but never reviewed is still a new word.
-            queue.append({**full(r), "is_new": r["reps"] == 0 and r["last_reviewed"] is None})
+            queue.append((r, r["reps"] == 0 and r["last_reviewed"] is None))
             used += per_review
         remaining = max(0.0, budget - used)
         new_cap = max(0, int(st["new_per_day"]) - done_new) + max(0, extra)
@@ -98,9 +99,15 @@ def review_queue(extra: int = 0, track: str = ""):
                 b = new_words(c, track_clause("core"), n_new)
                 new_rows = [r for pair in zip(a, b) for r in pair] + a[len(b):] + b[len(a):]
                 new_rows = new_rows[:n_new]
-            queue += [{**full(r), "is_new": True} for r in new_rows]
+            queue += [(r, True) for r in new_rows]
+        if count:
+            n_new_cards = sum(1 for _, is_new in queue if is_new)
+            return {"total": len(queue), "due": len(queue) - n_new_cards, "new": n_new_cards,
+                    "due_total": len(due), "est_seconds": round(used + n_new * NEW_CARD_SECONDS) if queue else 0,
+                    "done_today": {"reviews": done_reviews, "new": done_new,
+                                   "seconds": act["seconds"] if act else 0}}
         return {
-            "queue": queue,
+            "queue": [{**full(r), "is_new": is_new} for r, is_new in queue],
             "due_total": len(due),
             "done_today": {"reviews": done_reviews, "new": done_new,
                            "seconds": act["seconds"] if act else 0},
@@ -200,7 +207,7 @@ def flashcards(stars: str | None = None, list_id: int | None = None, domain: str
 
 # ------------------------------------------------------------------------- quiz
 
-QUIZ_TYPES = ("word_meaning", "meaning_word", "fill_blank", "synonym", "antonym")
+QUIZ_TYPES = ("word_meaning", "meaning_word", "fill_blank", "synonym", "antonym", "name_kind")
 NAME_KINDS = {"person": "A person", "place": "A place", "people": "A people or nation"}
 
 
@@ -222,7 +229,7 @@ def _mask(word: str, text: str) -> str:
 
 
 @router.get("/quiz")
-def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym",
+def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym,name_kind",
               n: int = Query(10, ge=1, le=50), stars: str | None = None,
               list_id: int | None = None, domain: str | None = None):
     wanted = [t for t in types.split(",") if t in QUIZ_TYPES] or list(QUIZ_TYPES)
@@ -230,7 +237,8 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
         pool = pool_ids(c, **parse_filters(stars, list_id, domain))
         if len(pool) < 4:
             raise HTTPException(400, "Not enough words match these filters. Choose a wider set.")
-        all_ids = [r["id"] for r in c.execute("SELECT id FROM words WHERE enriched = 1 OR is_custom = 1")]
+        all_ids = [r["id"] for r in c.execute(
+            f"SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT {NAMES_ONLY_SQL}")]
         if len(all_ids) < 50:  # dataset not enriched yet: draw distractors from every word
             all_ids = [r["id"] for r in c.execute("SELECT id FROM words")]
         candidates = weighted_sample(c, list(pool), min(len(pool), n * 4))
@@ -243,11 +251,12 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
             pos, definition = core_definition(data)
             word = row["word"]
             nuance = data.get("nuance") or {}
-            qtype = random.choice(wanted)
             name_kind = data.get("name_kind") or ""
             if name_kind:
-                # A Bible name: "Who or what is it?", then person, place or people.
-                qtype = random.choice(["name_kind", "word_meaning"])
+                # A Bible name: "Who or what is it?", or person, place or people.
+                qtype = random.choice([t for t in ("name_kind", "word_meaning") if t in wanted] or ["word_meaning"])
+            else:
+                qtype = random.choice([t for t in wanted if t != "name_kind"] or ["word_meaning"])
             everyday = [d for d in json.loads(row["domains"] or "[]") if d in EVERYDAY_DOMAINS]
             if name_kind:
                 everyday = ["bible_names"]  # names are told apart from other names
@@ -259,12 +268,16 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                     f"WHERE json_each.value IN ({','.join('?' * len(everyday))})) ORDER BY random() LIMIT 30",
                     (wid, *everyday))]
             else:
-                distract_ids = random.sample([i for i in all_ids if i != wid], k=min(30, len(all_ids) - 1))
+                # Other words of the chosen scope ("Statistics", "Bible · Vocabulary"), else any word.
+                source = pool if domain and len(pool) >= 30 else all_ids
+                distract_ids = random.sample([i for i in source if i != wid], k=min(30, len(source) - 1))
             dmap = _defs_by_id(c, distract_ids)
             # Same shape first (number of words, then part of speech): a
             # sentence among single words would give the answer away.
             n_words = len(word.split())
-            others = sorted((v for v in dmap.values() if v[0].lower() != word.lower()),
+            # A definition that names its own word would read "the …eans" once masked.
+            others = sorted((v for v in dmap.values() if v[0].lower() != word.lower()
+                             and not re.search(rf"\b{re.escape(v[0])}\b", v[2], re.I)),
                             key=lambda v: (len(v[0].split()) != n_words, v[1] != pos))
             q = None
             if qtype == "name_kind":
@@ -303,8 +316,8 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                 if rights and len(wrongs) >= 3:
                     right = random.choice(rights)
                     q = {"prompt": word,
-                         "ask": f"Which is closest in meaning to “{word}”?" if qtype == "synonym"
-                         else f"Which is opposite in meaning to “{word}”?",
+                         "ask": "Which is closest in meaning?" if qtype == "synonym"
+                         else "Which is opposite in meaning?",
                          "answer": right, "options": wrongs[:3] + [right]}
             if q is None:  # fall back to the simplest question this word supports
                 if not definition or len(others) < 3:
@@ -314,7 +327,10 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                 q = {"prompt": word, "ask": "What does this word mean?", "answer": _mask(word, definition),
                      "options": opts}
             random.shuffle(q["options"])
+            examples = [e for e in examples_for(data)  # a name's "everyday" line is about a namesake
+                        if not (name_kind and e == (nuance.get("examples") or {}).get("everyday"))]
             q.update({"type": qtype, "word_id": wid, "word": word, "definition": definition,
+                      "example": examples[0] if examples else "",
                       "phonetic": data.get("phonetic") or "", "audio_url": full(row)["audio_url"]})
             questions.append(q)
         return {"questions": questions}

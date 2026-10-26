@@ -5,17 +5,22 @@ import { stopAudio } from "./audio.js";
 import { loadSettings } from "./state.js";
 import { formDialog, h, icon, showError } from "./ui.js";
 
-const TABS = [
+// The rail lists every tab. On a phone the bottom bar has five: Home,
+// Review, Practice, Browse and More; Practice and More are pages of links
+// (`hub`), and the tabs they hold are reached from there (`under`).
+export const TABS = [
   { id: "home", label: "Home", icon: "home" },
-  { id: "browse", label: "Browse", icon: "book" },
-  { id: "flashcards", label: "Flashcards", icon: "cards" },
   { id: "review", label: "Daily review", icon: "review" },
-  { id: "quiz", label: "Quiz", icon: "quiz" },
-  { id: "matching", label: "Matching", icon: "match" },
-  { id: "listen", label: "Listen", icon: "listen" },
-  { id: "pronounce", label: "Pronounce", icon: "mic" },
-  { id: "lists", label: "My lists", icon: "list" },
-  { id: "stats", label: "Stats", icon: "stats" },
+  { id: "browse", label: "Browse", icon: "book" },
+  { id: "flashcards", label: "Flashcards", icon: "cards", under: "practice", note: "Flip through words" },
+  { id: "quiz", label: "Quiz", icon: "quiz", under: "practice", note: "Meanings, blanks, synonyms" },
+  { id: "matching", label: "Matching", icon: "match", under: "practice", note: "Timed pairs" },
+  { id: "listen", label: "Listen", icon: "listen", under: "practice", note: "Hear it, name it, spell it" },
+  { id: "pronounce", label: "Pronounce", icon: "mic", under: "practice", note: "Record and compare" },
+  { id: "lists", label: "My lists", icon: "list", under: "more", note: "Your word lists and notes" },
+  { id: "stats", label: "Stats", icon: "stats", under: "more", note: "Progress, backup and offline use" },
+  { id: "practice", label: "Practice", icon: "cards", hub: true },
+  { id: "more", label: "More", icon: "more", hub: true },
 ];
 
 const view = document.getElementById("view");
@@ -25,16 +30,23 @@ let navToken = 0;
 function buildNav() {
   const wrap = document.getElementById("nav-links");
   wrap.replaceChildren(...TABS.map(t =>
-    h("a.nav-link", { href: `#${t.id}`, "data-tab": t.id, title: t.label }, icon(t.icon), h("span.label", t.label),
+    h(`a.nav-link${t.hub ? ".hub" : ""}${t.under ? ".under" : ""}`, { href: `#${t.id}`, "data-tab": t.id, title: t.label },
+      icon(t.icon), h("span.label", t.id === "review" ? h("span.long", "Daily review") : t.label,
+        t.id === "review" ? h("span.short", "Review") : null),
       t.id === "review" ? h("span.count#due-count", { hidden: true }) : null)));
 }
 
+/** Cards left in today's review (the Review track you chose): the same
+ * number Home shows. */
+export function reviewTrack() {
+  try { return localStorage.getItem("lexi-review-track") || ""; } catch (e) { return ""; }
+}
 export async function refreshDueCount() {
   try {
-    const s = await api.get("/api/stats");
+    const s = await api.get("/api/review/queue", { count: 1, track: reviewTrack() });
     const el = document.getElementById("due-count");
-    el.textContent = s.words.due;
-    el.hidden = !s.words.due;
+    el.textContent = s.total;
+    el.hidden = !s.total;
   } catch (e) { /* non-critical */ }
 }
 
@@ -43,20 +55,32 @@ function parseHash() {
   return { tab: TABS.some(t => t.id === tab) ? tab : "home", param: rest.join("/") };
 }
 
+// A new version (static site) waits until a calm screen, never mid-session,
+// then takes over and the page reloads on the same screen.
+const CALM_TABS = ["home", "browse", "lists", "stats", "more", "practice"];
+let updating = false;
+function applyWaitingUpdate(tab) {
+  const reg = window.LEXI_SW;
+  if (updating || !reg || !CALM_TABS.includes(tab)) return false;
+  if (!reg.waiting) { reg.update().catch(() => {}); return false; }  // look for one for next time
+  updating = true;
+  navigator.serviceWorker.addEventListener("controllerchange", () => location.reload());
+  reg.waiting.postMessage("SKIP_WAITING");
+  return true;
+}
+
 async function route() {
   const { tab, param } = parseHash();
+  if (applyWaitingUpdate(tab)) return;
   const token = ++navToken;
   stopAudio();
   if (current && current.cleanup) { try { current.cleanup(); } catch (e) { console.error(e); } }
   current = null;
+  const under = (TABS.find(t => t.id === tab) || {}).under;
   document.querySelectorAll(".nav-link").forEach(a => {
-    if (a.dataset.tab === tab) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    if (a.dataset.tab === tab || a.dataset.tab === under) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
   });
-  // Phone layout: the bottom bar scrolls sideways; keep the current tab in view.
-  const currentLink = document.querySelector(".nav-link[aria-current]");
-  if (currentLink && matchMedia("(max-width: 760px)").matches) {
-    currentLink.scrollIntoView({ block: "nearest", inline: "center" });
-  }
   const mod = await import(`./tabs/${tab}.js`);
   if (token !== navToken) return;
   view.className = "";
@@ -201,4 +225,6 @@ setInterval(() => {
 
 buildNav();
 addEventListener("hashchange", route);
+// Just opened with an update already waiting: apply it before any study starts.
+addEventListener("lexi-sw", () => applyWaitingUpdate(parseHash().tab));
 loadSettings().catch(showError).finally(() => { route(); refreshDueCount(); });

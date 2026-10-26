@@ -1,10 +1,12 @@
-// Daily review: SM-2 queue sized to the session target, graded Again/Hard/Good/Easy.
+// Daily review: SM-2 queue sized to the session target. Due cards are graded
+// Again/Hard/Good/Easy; a new word is Show again, Got it, or Know it (known
+// words leave the review).
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import { settings } from "../state.js";
-import { fmtDuration, h, icon, pageHead, renderEntry, showError } from "../ui.js";
+import { SCOPES, fmtDuration, h, icon, pageHead, renderEntry, setKnown, showError } from "../ui.js";
 
 let queue = [];
 let pos = 0;
@@ -49,19 +51,48 @@ function show() {
   if (w.is_new && settings.autoplay === "1") playWord(w);
 }
 
+/** The answers offered for the card on screen: [class, label, hint, action]. */
+function choices(w) {
+  if (w.repeat) {
+    return [["again", "Show again", "once more", () => grade(0)], ["good", "Got it", "done for today", () => grade(2)]];
+  }
+  if (w.is_new) {
+    return [["again", "Show again", "later today", () => grade(0)], ["good", "Got it", "see it again soon", () => grade(2)],
+            ["easy", "Know it", "stop showing it", () => knowIt()]];
+  }
+  return GRADES.map(([cls, label, hint], i) => [cls, label, hint, () => grade(i)]);
+}
+
 function reveal() {
   if (revealed) return;
   revealed = true;
   const w = queue[pos];
-  const grades = h("div.grade-row", GRADES.map(([cls, label, hint], i) =>
-    h(`button.grade.${cls}`, { type: "button", on: { click: () => grade(i) } },
+  const buttons = h(`div.grade-row.n${choices(w).length}`, choices(w).map(([cls, label, hint, act], i) =>
+    h(`button.grade.${cls}`, { type: "button", on: { click: act } },
       h("span", label, " ", h("kbd", String(i + 1))), h("small", hint))));
-  // The grade buttons stay pinned to the bottom of the screen, however long
-  // the entry is, so the way to the next word is always in view.
-  els.stage.replaceChildren(
-    h("div.panel.card", renderEntry(w)),
-    h("div.grade-dock", h("p.grade-prompt", "How well did you know it? Grading moves to the next word."), grades));
+  const card = h("div.panel.card", renderEntry(w, { mode: "card" }));
+  const fullBtn = h("button.btn.btn-quiet.full-entry", { type: "button", on: { click: () => {
+    card.replaceChildren(renderEntry(w));
+    fullBtn.remove();
+  } } }, "Full entry");
+  card.append(fullBtn);
+  const prompt = w.repeat ? "Second look." : w.is_new ? "New word. Did it stick?" : "How well did you remember it?";
+  // The buttons stay pinned to the bottom of the screen, however long the
+  // entry is, so the way to the next word is always in view.
+  els.stage.replaceChildren(card, h("div.grade-dock", h("p.grade-prompt", prompt), buttons));
   if (settings.autoplay === "1") playWord(w, els.stage.querySelector(".play"));
+}
+
+async function knowIt() {
+  if (busy) return;
+  busy = true;
+  try {
+    await setKnown(queue[pos], true);
+    pos++;
+    show();
+    refreshDueCount();
+  } catch (e) { showError(e); }
+  busy = false;
 }
 
 async function grade(g) {
@@ -107,14 +138,8 @@ export async function render(root) {
     await saveSettings({ session_minutes: Number(minutes.value) });
     load().catch(showError);
   });
-  const trackSel = h("select.input#review-track", { "aria-label": "What to review" },
-    h("option", { value: "" }, "Everything"),
-    h("option", { value: "everyday" }, "Everyday English"),
-    h("option", { value: "core" }, "Advanced & subjects"),
-    h("optgroup", { label: "Bible" },
-      h("option", { value: "bible_vocab" }, "Bible · Vocabulary"),
-      h("option", { value: "bible_names" }, "Bible · Names"),
-      h("option", { value: "bible" }, "Bible · Both")));
+  const trackSel = h("select.input#review-track", { "aria-label": "Scope" },
+    SCOPES.map(([v, label]) => h("option", { value: v }, label)));
   trackSel.value = track;
   trackSel.addEventListener("change", () => {
     track = trackSel.value;
@@ -137,6 +162,9 @@ export function onKey(e) {
   } else if (e.key === " ") {
     e.preventDefault(); playWord(queue[pos], els.stage.querySelector(".play"));
   } else if (/^[1-4]$/.test(e.key) && revealed) {
-    e.preventDefault(); grade(Number(e.key) - 1);
+    const pick = choices(queue[pos])[Number(e.key) - 1];
+    if (pick) { e.preventDefault(); pick[3](); }
+  } else if (e.key.toLowerCase() === "m") {
+    e.preventDefault(); knowIt();
   }
 }

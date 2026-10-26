@@ -1,9 +1,11 @@
 // LexiMaster offline support. The app shell and word index are cached on
 // install; word details and recordings are cached the first time they load
 // (or all at once from Stats → "Download for offline use").
-const VERSION = "20261025225335";
+// A new version installs in the background and takes over only when the
+// page asks (on Home, Browse and other calm screens, never mid-session).
+const VERSION = "20261025233559";
 const SHELL = `shell-${VERSION}`;
-const DATA = `data-${VERSION}`;
+const DATA = "data-8235de1a";   // changes only when the word data does
 const MEDIA = "media-v1";   // recordings never change, so they survive updates
 const SHELL_FILES = [
 "./",
@@ -37,6 +39,7 @@ const SHELL_FILES = [
 "static/js/audio.js",
 "static/js/local/idb.js",
 "static/js/local/server.js",
+"static/js/shared.gen.js",
 "static/js/state.js",
 "static/js/tabs/browse.js",
 "static/js/tabs/flashcards.js",
@@ -44,6 +47,8 @@ const SHELL_FILES = [
 "static/js/tabs/listen.js",
 "static/js/tabs/lists.js",
 "static/js/tabs/matching.js",
+"static/js/tabs/more.js",
+"static/js/tabs/practice.js",
 "static/js/tabs/pronounce.js",
 "static/js/tabs/quiz.js",
 "static/js/tabs/review.js",
@@ -54,7 +59,13 @@ const SHELL_FILES = [
 ];
 
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(SHELL).then(c => c.addAll(SHELL_FILES)).then(() => self.skipWaiting()));
+  // cache: "reload" skips the browser's HTTP cache, so a fresh deploy can't
+  // be stored with files left over from the last one.
+  e.waitUntil(caches.open(SHELL).then(c => c.addAll(SHELL_FILES.map(u => new Request(u, { cache: "reload" })))));
+});
+
+self.addEventListener("message", e => {
+  if (e.data === "SKIP_WAITING") self.skipWaiting();
 });
 
 self.addEventListener("activate", e => {
@@ -79,8 +90,10 @@ self.addEventListener("fetch", e => {
   if (path.includes("/media/")) { e.respondWith(cacheFirst(e.request, MEDIA)); return; }
   if (path.includes("/data/detail/")) { e.respondWith(cacheFirst(e.request, DATA)); return; }
   if (e.request.mode === "navigate") {
-    e.respondWith(fetch(e.request).catch(() => caches.match("index.html")));
+    // The page comes from the same version's cache as its scripts.
+    e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));
     return;
   }
-  e.respondWith(caches.match(e.request, { ignoreSearch: true }).then(hit => hit || fetch(e.request)));
+  e.respondWith(caches.open(SHELL).then(c => c.match(e.request, { ignoreSearch: true }))
+    .then(hit => hit || fetch(e.request)));
 });

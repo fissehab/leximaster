@@ -1,15 +1,16 @@
-// Quiz: word→meaning, meaning→word, fill-in-the-blank, synonym/antonym.
+// Quiz: word→meaning, meaning→word, fill-in-the-blank, synonym/antonym, and
+// for Bible names "Who or what is it?". Changing a setting starts a new quiz.
 // Wrong answers are logged and pushed back into today's review queue.
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
-import { filterBar, filterSources, fmtDuration, h, pageHead, showError } from "../ui.js";
-import { practiceFilter } from "../state.js";
+import { filterBar, filterSources, fmtDuration, h, highlight, pageHead, showError } from "../ui.js";
+import { loadFilter, settings } from "../state.js";
 
 const TYPES = [
   ["word_meaning", "Word → meaning"], ["meaning_word", "Meaning → word"], ["fill_blank", "Fill in the blank"],
-  ["synonym", "Synonyms"], ["antonym", "Antonyms"],
+  ["synonym", "Synonyms"], ["antonym", "Antonyms"], ["name_kind", "Bible names: who or what?"],
 ];
 let enabled = new Set(TYPES.map(t => t[0]));
 let qs = [];
@@ -20,7 +21,7 @@ let started = 0;
 let shownAt = 0;
 let missed = [];
 let els = {};
-let filter = { ...practiceFilter };
+let filter = loadFilter("quiz");
 let length = 10;
 
 async function start() {
@@ -67,13 +68,18 @@ async function answer(choice) {
   });
   const fb = document.getElementById("quiz-feedback");
   const play = h("button.btn", { type: "button", on: { click: () => playWord({ word: q.word, audio_url: q.audio_url }) } }, "Hear it ", h("kbd", "Space"));
+  const nextBtn = h("button.btn.btn-primary", { type: "button", on: { click: next } }, i + 1 < qs.length ? "Next " : "See results ", h("kbd", "Enter"));
+  // The meaning is said once; the answer is named only when it isn't the word or its meaning.
+  const named = q.answer !== q.word && q.answer !== q.definition && !q.definition.includes(q.answer.replace(/…/g, ""));
   fb.replaceChildren(h(`div.feedback.${ok ? "ok" : "bad"}`,
-    h("strong", ok ? "Correct" : `Not quite. The answer is “${q.answer}”.`),
+    h("strong", ok ? "Correct" : named ? `Not quite. The answer is “${q.answer}”.` : "Not quite."),
     h("p", h("b", { style: { fontFamily: "var(--font-word)", color: "var(--lapis)" } }, q.word), " ",
       q.phonetic ? h("span.ipa", q.phonetic) : null, " — ", q.definition),
-    h("div.toolbar", play,
-      h("button.btn.btn-primary", { type: "button", on: { click: next } }, i + 1 < qs.length ? "Next question " : "See results ", h("kbd", "Enter")))));
-  playWord({ word: q.word, audio_url: q.audio_url });
+    q.example ? h("p.example", highlight(q.example, q.word)) : null,
+    h("div.toolbar", play, h("a.btn.btn-quiet", { href: `#browse/${q.word_id}` }, "Open entry →"), nextBtn)));
+  fb.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  nextBtn.focus({ preventScroll: true });
+  if (settings.autoplay === "1") playWord({ word: q.word, audio_url: q.audio_url });
   api.post("/api/answer", { word_id: q.word_id, mode: "quiz", correct: ok, ms: Date.now() - shownAt })
     .then(() => !ok && refreshDueCount()).catch(showError);
 }
@@ -90,7 +96,7 @@ function next() {
     h("p.muted", `${Math.round((100 * score) / qs.length)}% in ${fmtDuration(secs)}`),
     missed.length ? h("div.missed", h("p.label", "Added back to today's review"),
       h("ul", missed.map(q => h("li", h("a", { href: `#browse/${q.word_id}` }, q.word), " — ", q.definition)))) : h("p", "No misses. Well done."),
-    h("button.btn.btn-primary.btn-lg", { type: "button", on: { click: start } }, "New quiz")));
+    h("button.btn.btn-primary.btn-lg", { type: "button", on: { click: start } }, "Play again")));
 }
 
 export async function render(root) {
@@ -101,20 +107,21 @@ export async function render(root) {
       if (enabled.has(id) && enabled.size === 1) return;
       enabled.has(id) ? enabled.delete(id) : enabled.add(id);
       b.setAttribute("aria-pressed", String(enabled.has(id)));
+      start();
     });
     return b;
   }));
   const len = h("select.input#quiz-length", { "aria-label": "Questions" }, [10, 20, 30].map(n => h("option", { value: n }, `${n} questions`)));
   len.value = String(length);
-  len.addEventListener("change", () => { length = Number(len.value); });
+  len.addEventListener("change", () => { length = Number(len.value); start(); });
   els.stage = h("div.q-wrap");
+  filter = loadFilter("quiz");
   root.append(
-    pageHead("Quiz", "Multiple choice, fill-in-the-blank and synonym questions. Misses return to your review queue.",
-      len, h("button.btn.btn-primary", { type: "button", on: { click: start } }, "Start quiz")),
-    await filterBar(f => { filter = f; }, src),
-    h("div", { style: { marginBottom: "18px" } }, typeChips),
+    pageHead("Quiz", "Multiple choice, fill-in-the-blank and synonym questions. Misses return to your review queue."),
+    await filterBar(f => { filter = f; start(); }, src, { tab: "quiz", extra: [
+      h("div.field", h("label", { for: "quiz-length" }, "Length"), len),
+      h("div.field.field-wide", h("label", "Question types"), typeChips)] }),
     els.stage);
-  filter = { ...practiceFilter };
   await start();
 }
 
@@ -122,5 +129,6 @@ export function onKey(e) {
   if (!qs.length || i >= qs.length) return;
   if (/^[1-4]$/.test(e.key) && !answered) { e.preventDefault(); answer(qs[i].options[Number(e.key) - 1]); }
   else if (e.key === "Enter" && answered) { e.preventDefault(); next(); }
-  else if (e.key === " ") { e.preventDefault(); playWord({ word: qs[i].word, audio_url: qs[i].audio_url }); }
+  // Only after answering: before, the sound would give the answer away.
+  else if (e.key === " " && answered) { e.preventDefault(); playWord({ word: qs[i].word, audio_url: qs[i].audio_url }); }
 }

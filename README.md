@@ -40,8 +40,13 @@ browser's "Add to Home Screen" to install it like an app.
 To rebuild the site after changing the dataset:
 
 ```bash
-.venv/bin/python tools/build_site.py   # writes docs/, which GitHub Pages serves
+.venv/bin/python tools/build_site.py   # checks the display rules, then writes docs/ (GitHub Pages serves it)
+.venv/bin/python tools/parity.py       # the website and the local app give the same answers
 ```
+
+After you publish, the site updates itself the next time you open Home, Browse, Lists or Stats. It
+never reloads in the middle of a review or quiz, and your downloaded offline data is kept unless the
+word data changed.
 
 ## Setup
 
@@ -170,28 +175,49 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 
 | Tab | What it's for |
 |---|---|
-| Home | Word of the day, today's queue, streak and time studied. |
-| Browse | The full lexicon. It has A–Z jump, instant search across words and meanings, sorting by A–Z, frequency, stars or domain, and filters. Each entry shows the headword, IPA, recorded audio, parts of speech, definitions, and nuance panels: examples, pronunciation tip, register, near-synonyms, collocations, antonyms, analogy, etymology and common mistakes. |
-| Flashcards | Word on the front; flip for pronunciation, meaning and examples. You can shuffle, play audio on flip, and filter by stars, list or domain. |
-| Daily review | SM-2 spaced repetition, sized to your session length (default 15 minutes). Choose Everything, Everyday English, or Advanced & subjects; "Everything" alternates new words from both. Grade each card Again, Hard, Good or Easy. Shows a progress bar and a "Done for today" state. |
-| Quiz | Five question types: word to meaning, meaning to word, fill in the blank, synonyms and antonyms. Misses go back into today's review. |
+| Home | How many cards are left today (the same number as the badge), word of the day, streak and time studied. |
+| Browse | The full lexicon. It has A–Z jump, instant search across words and meanings, sorting by A–Z, frequency, stars or domain, and filters. On a phone, tapping a word brings its page into view (← List goes back). |
+| Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings. You can shuffle, play audio on flip, and choose a scope, rating or list. |
+| Daily review | SM-2 spaced repetition, sized to your session length (default 15 minutes). Choose a scope: Everything, Everyday English, Advanced & subjects, or Bible vocabulary, names or both. A new word is answered Show again, Got it or Know it (known words leave the review); a word you've seen before is graded Again, Hard, Good or Easy. The answer shows a short card; "Full entry" opens the whole page. |
+| Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, and for Bible names "who or what is it?". Changing a setting starts a new quiz. Misses go back into today's review. |
 | Matching | Timed rounds that pair words with meanings or with example sentences, with a score. |
 | Listen | Hear a word, then pick it or type it. Also has a spelling test that compares your spelling letter by letter. |
 | Pronounce | Play the reference recording, record yourself, and play both back with waveforms. |
 | My lists | Named lists with a note on each word, plus your own custom words. |
 | Stats | Words mastered, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. Also holds the settings and progress export/import. |
 
+On a phone the bottom bar has five buttons: Home, Review, Practice (Flashcards, Quiz, Matching, Listen,
+Pronounce), Browse and More (My lists, Stats). Each practice tab remembers its own settings.
+
+### The word page
+
+Each entry reads from the top down:
+
+1. The word, its sound, IPA and respelling, and one row of labels.
+2. The meaning, with one example under it. For a Bible name, what the Bible says about it.
+3. **Use it right:** how Americans use it, how it differs from near-synonyms, common mistakes, and
+   common pairings.
+4. **In the Bible**, and Orthodox, Catholic and Protestant views where they differ.
+5. **More examples:** two shown, the rest folded.
+6. **More meanings:** the dictionary's other senses, folded, in the dictionary's order.
+7. **Pronunciation, register, related words, origin:** folded.
+8. Your notes.
+
+Dictionary senses that only restate the meaning in step 2 are marked when the data is built
+(`build_dataset.normalize_display`) and listed only under "Dictionary wording" in step 7.
+`tools/audit.py --check` verifies these rules, and the site build stops if one is broken.
+
 ### Keyboard shortcuts
 
 | Key | Action |
 |---|---|
-| Space | Play pronunciation |
+| Space | Play pronunciation (in Quiz, only after you answer) |
 | ← → (↑ ↓ in Browse) | Previous / next word |
 | 1–5 | Set star rating (Browse, Flashcards) |
-| M | Mark known / unknown |
+| M | Mark known / unknown (in Daily review: Know it) |
 | / | Search (Browse) |
 | Enter | Flip card / reveal / next |
-| 1–4 | Grade in Daily review; choose an answer in Quiz and Listen |
+| 1–4 | Answer in Daily review (the buttons are numbered); choose an answer in Quiz and Listen |
 | R | Record (Pronounce) |
 | ? | Show all shortcuts |
 
@@ -199,6 +225,8 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 
 - **Grades:** Again, Hard, Good and Easy map to SM-2 quality scores 1, 3, 4 and 5. "Again" also puts the
   card back at the end of today's session.
+- **First sight:** Show again brings the word back later in the session and tomorrow, without counting as a
+  lapse; Got it is a Good; Know it marks the word known.
 - **Stars:** 1★ and 2★ words never go more than 4 or 7 days between reviews. A word's star rating also
   sets its starting ease (1★ = 2.2 … 5★ = 2.8).
 - **Practice misses:** a wrong answer in Quiz, Matching, Listen or the spelling test makes the word due
@@ -235,7 +263,9 @@ LEXIMASTER_DB=/tmp/test.db PORT=8766 ./run.sh
 build_dataset.py   dataset builder (resumable)
 seeds/             seed word lists, one word or phrase per line
 seeds/examples/    hand-written conversation examples for the everyday domains
-tools/             check_examples.py: checks every everyday entry has examples
+tools/             build_site.py (the website), audit.py (content checks), parity.py (website vs
+                   local app), gen_shared.py (constants shared with the browser code),
+                   check_examples.py, classify_names.py
 app/               FastAPI backend: db.py (schema), srs.py (SM-2), api/ (routes)
 static/            single-page app, with no build step: index.html, css/, js/, fonts/
 data/              dataset, audio, SQLite database, recordings

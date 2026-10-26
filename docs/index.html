@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" href="static/icons/icon-180.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="LexiMaster">
-  <script>window.LEXI_STATIC = true; window.LEXI_VERSION = "20261025225335";</script>
+  <script>window.LEXI_STATIC = true; window.LEXI_VERSION = "20261025233559";</script>
 </head>
 <body>
   <div class="shell">
@@ -44,7 +44,8 @@
   <script type="module" src="static/js/app.js"></script>
   <script>
     if ("serviceWorker" in navigator) {
-      addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+      addEventListener("load", () => navigator.serviceWorker.register("sw.js")
+        .then(reg => { window.LEXI_SW = reg; dispatchEvent(new Event("lexi-sw")); }).catch(() => {}));
     }
   </script>
 </body>
