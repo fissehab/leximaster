@@ -20,6 +20,5 @@ export async function render(root) {
         "professional vocabulary, data science and AI, mathematics, philosophy and theology, the Bible (with " +
         "Orthodox, Catholic and Protestant perspectives), and everyday American English."),
       h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser."),
-      h("p.muted.about-sign", "Fisseha"),
       window.LEXI_STATIC ? h("p", h("a", { href: "credits.html" }, "Sources & credits")) : null));
 }
