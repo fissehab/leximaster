@@ -4,7 +4,7 @@ import { TABS } from "../app.js";
 import { h, icon, pageHead } from "../ui.js";
 
 export function hubTiles(group) {
-  return h("nav.hub-tiles", TABS.filter(t => t.under === group).map(t =>
+  return h("nav.hub-tiles", { "aria-label": group === "practice" ? "Practice" : "More" }, TABS.filter(t => t.under === group).map(t =>
     h("a.hub-tile", { href: `#${t.id}` }, icon(t.icon), h("strong", t.label), h("span", t.note))));
 }
 
