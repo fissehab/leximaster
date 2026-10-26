@@ -6,6 +6,17 @@ vocabulary of data science, AI, mathematics, philosophy and theology, and the Bi
 American pronunciation, a learner's definition and study notes, and you learn it with spaced
 repetition and six kinds of practice.
 
+Why it exists, in the words of its author:
+
+> I'm Fisseha, a non-native English speaker working in data science and AI, with a background in civil
+> engineering, environmental science (MS, University of Connecticut) and atmospheric physics (MS and
+> PhD, Johns Hopkins University), and a deep interest in philosophy, theology and Christian mysticism.
+> I built LexiMaster to spend a few minutes a day keeping the words and ideas I care about in active
+> memory, ready for professional work, philosophical and theological dialogue, and everyday
+> conversation.
+
+The app's About page (the ⓘ button at the foot of the menu; More → About on a phone) says more.
+
 It runs two ways: as a website (https://fissehab.github.io/leximaster/, nothing to install) or as a
 local app on your Mac. Both work the same and share the same progress file format.
 

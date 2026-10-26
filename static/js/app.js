@@ -27,6 +27,8 @@ export const TABS = [
   { id: "lists", label: "My lists", icon: "list", under: "more", group: "Words", note: "Your word lists and notes" },
   { id: "more", label: "More", icon: "more", hub: true },
   { id: "stats", label: "Stats", icon: "stats", under: "more", sep: true, note: "Progress, backup and offline use" },
+  // Reached from the button at the foot of the menu (and More on a phone), not a menu link.
+  { id: "about", label: "About", icon: "info", under: "more", foot: true, note: "Who made LexiMaster and why" },
 ];
 
 const view = document.getElementById("view");
@@ -41,7 +43,7 @@ function buildNav() {
       t.id === "review" ? h("span.short", "Review") : null),
     t.id === "review" ? h("span.count#due-count", { hidden: true }) : null);
   const items = [];
-  for (const t of TABS) {
+  for (const t of TABS.filter(t => !t.foot)) {
     const last = items[items.length - 1];
     if (!t.group) items.push(link(t));
     else if (last && last.dataset.group === t.group) last.append(link(t));
@@ -74,7 +76,7 @@ function parseHash() {
 // then takes over and the page reloads on the same screen. Every open tab
 // reloads when the new version takes over (at its own next calm screen), and
 // the switch waits for any save in progress to finish.
-const CALM_TABS = ["home", "browse", "lists", "stats", "more", "practice"];
+const CALM_TABS = ["home", "browse", "lists", "stats", "more", "practice", "about"];
 let updating = false;
 let reloadPending = false;
 if ("serviceWorker" in navigator) {
@@ -243,6 +245,7 @@ function showShortcuts() {
   });
 }
 document.getElementById("help-btn").addEventListener("click", showShortcuts);
+document.getElementById("about-btn").replaceChildren(icon("info"));
 
 document.addEventListener("keydown", e => {
   if (e.metaKey || e.ctrlKey || e.altKey) return;
