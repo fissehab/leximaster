@@ -63,7 +63,8 @@ let db = null;
 let ready = null;
 const INDEX = new Map();     // id -> index entry (short field names, see tools/build_site.py)
 const CUSTOM = new Map();    // id -> full data of a word you added (never evicted)
-const SHARDS = new Map();    // shard number -> Promise of {key: data}, most recently used last
+const SHARDS = new Map();    // shard number -> {key: data}, most recently used last
+const LOADING = new Map();   // shard number -> Promise of the same, while it downloads
 const SHARDS_KEPT = 8;       // detail files kept in memory (about 0.7 MB each)
 const recordingUrls = new Map();
 
@@ -135,16 +136,19 @@ async function detail(id) {
   const w = INDEX.get(id);
   if (!w) return {};
   let shard = SHARDS.get(w.s);
-  if (shard) SHARDS.delete(w.s);   // re-inserted below as the most recent
-  else {
-    shard = fetchJson(`data/detail/${String(w.s).padStart(2, "0")}.json`).catch(e => {
-      SHARDS.delete(w.s);
-      throw e;
-    });
+  if (shard) {
+    SHARDS.delete(w.s);   // re-inserted as the most recent
+  } else {
+    // One download per file, however many words ask for it at once.
+    if (!LOADING.has(w.s)) {
+      LOADING.set(w.s, fetchJson(`data/detail/${String(w.s).padStart(2, "0")}.json`)
+        .finally(() => LOADING.delete(w.s)));
+    }
+    shard = await LOADING.get(w.s);
   }
   SHARDS.set(w.s, shard);
   while (SHARDS.size > SHARDS_KEPT) SHARDS.delete(SHARDS.keys().next().value);
-  return (await shard)[w.k] || {};
+  return shard[w.k] || {};
 }
 
 // --------------------------------------------------------------- persistence
