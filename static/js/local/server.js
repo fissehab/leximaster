@@ -9,9 +9,8 @@
 // file moves freely between this site and the desktop app.
 
 import { idbGet, idbPut, idbDelete } from "./idb.js";
+import { BIBLE_TRACKS, EVERYDAY_DOMAINS, FORM_OF } from "../shared.gen.js";
 
-const EVERYDAY_DOMAINS = ["dining", "food", "shopping", "outdoors", "small_talk", "phrasal_verbs", "idioms",
-  "feelings", "home_health", "getting_around", "sports_culture", "meetings", "phone_calls"];
 const EVERYDAY_SQL = `EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value IN (${
   EVERYDAY_DOMAINS.map(d => `'${d}'`).join(",")}))`;
 const NEW_CARD_SECONDS = 35;
@@ -153,7 +152,6 @@ addEventListener("pagehide", () => { if (saveTimer) { clearTimeout(saveTimer); s
 
 // ------------------------------------------------------------------- helpers
 
-const FORM_OF = /^(simple past|past participle|present participle|plural|third-person|alternative (form|spelling)|obsolete (form|spelling)|archaic (form|spelling)|comparative|superlative|misspelling|nonstandard (form|spelling))\b[^.;]*\bof\b/i;
 
 function coreDefinition(data) {
   const core = (data.nuance || {}).core || {};
@@ -249,7 +247,7 @@ function bumpActivity({ seconds = 0, reviews = 0, newWords = 0 } = {}) {
 // Bible names that aren't also vocabulary: studied only when chosen.
 const NAMES_ONLY_SQL = "(EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'bible_names') " +
   "AND NOT EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'bible_vocab'))";
-const BIBLE_TRACKS = ["bible", "bible_vocab", "bible_names"];
+const SCOPES = ["everyday", "core", ...BIBLE_TRACKS];  // study tracks, usable wherever a domain filter is
 
 function trackClause(track) {
   if (track === "everyday") return EVERYDAY_SQL;
@@ -270,8 +268,9 @@ function poolIds({ stars = null, list_id = null, domain = null, need_audio = fal
   let joins = "LEFT JOIN user_word u ON u.word_id = w.id";
   if (stars) { where.push(`COALESCE(u.stars, 0) IN (${stars.map(() => "?").join(",")})`); args.push(...stars); }
   if (list_id) { joins += " JOIN list_words lw ON lw.word_id = w.id AND lw.list_id = ?"; args.unshift(list_id); }
-  if (domain === "everyday") where.push(EVERYDAY_SQL);
+  if (SCOPES.includes(domain)) where.push(trackClause(domain));
   else if (domain) { where.push("EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = ?)"); args.push(domain); }
+  else if (!list_id) where.push(`NOT ${NAMES_ONLY_SQL}`);  // Bible names only when chosen (or in your own list)
   if (need_audio) where.push("w.has_audio = 1");
   if (need_enriched) where.push("w.enriched = 1");
   if (exclude_known) where.push("COALESCE(u.known, 0) = 0");
@@ -333,6 +332,11 @@ function ensureCard(id) {
 function schedule(card, grade, stars) {
   const q = QUALITY[grade];
   let { ease, interval_days: interval, reps, lapses } = card;
+  if (q < 3 && reps === 0 && lapses === 0 && !card.last_reviewed) {
+    // A new word missed the first time it is seen isn't a lapse: it comes
+    // back tomorrow without lowering its ease.
+    return { ease, interval_days: 1, reps: 0, lapses: 0, due_date: addDays(1), last_reviewed: todayIso() };
+  }
   if (q < 3) {
     reps = 0; lapses += 1; interval = 1;
   } else {
@@ -574,6 +578,13 @@ async function reviewQueue(q) {
     }
     for (const r of fresh) rows.push([r, true]);
   }
+  if (q.count) {
+    // Only the numbers (Home, the nav badge): same selection, no card details.
+    const nNewCards = rows.filter(([, isNew]) => isNew).length;
+    return { total: rows.length, due: rows.length - nNewCards, new: nNewCards, due_total: due.length,
+             est_seconds: rows.length ? Math.round(used + Math.max(0, nNew) * NEW_CARD_SECONDS) : 0,
+             done_today: { reviews: act ? act.reviews : 0, new: act ? act.new_words : 0, seconds: act ? act.seconds : 0 } };
+  }
   const queue = await Promise.all(rows.map(async ([r, isNew]) => ({ ...(await full(r)), is_new: isNew })));
   return {
     queue, due_total: due.length,
@@ -616,7 +627,7 @@ async function flashcards(q) {
   return { cards: await Promise.all(ids.map(i => full(fetchWord(i)))), pool: pool.length };
 }
 
-const QUIZ_TYPES = ["word_meaning", "meaning_word", "fill_blank", "synonym", "antonym"];
+const QUIZ_TYPES = ["word_meaning", "meaning_word", "fill_blank", "synonym", "antonym", "name_kind"];
 const NAME_KINDS = { person: "A person", place: "A place", people: "A people or nation" };
 const mask = (word, text) => text.replace(new RegExp(escapeRe(word), "gi"), "…");
 
@@ -637,30 +648,36 @@ async function makeQuiz(q) {
   const n = Math.min(50, Math.max(1, Number(q.n) || 10));
   const pool = poolIds(parseFilters(q));
   if (pool.length < 4) throw new HttpError(400, "Not enough words match these filters. Choose a wider set.");
-  let allIds = all("SELECT id FROM words WHERE enriched = 1 OR is_custom = 1").map(r => r.id);
+  let allIds = all(`SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT ${NAMES_ONLY_SQL}`).map(r => r.id);
   if (allIds.length < 50) allIds = all("SELECT id FROM words").map(r => r.id);
   const questions = [];
-  for (const wid of weightedSample(pool, Math.min(pool.length, n * 4))) {
+  const candidates = weightedSample(pool, Math.min(pool.length, n * 4));
+  // Load the words' details together rather than one shard at a time.
+  const details = new Map(await Promise.all(candidates.slice(0, n * 2).map(async id => [id, await detail(id)])));
+  for (const wid of candidates) {
     if (questions.length >= n) break;
     const row = fetchWord(wid);
-    const data = await detail(wid);
+    const data = details.get(wid) || await detail(wid);
     const [pos, definition] = INDEX.has(wid) ? [INDEX.get(wid).cp || "", INDEX.get(wid).df || ""] : coreDefinition(data);
     const word = row.word;
     const nuance = data.nuance || {};
-    let qtype = choice(types);
     const nameKind = INDEX.has(wid) ? INDEX.get(wid).nk || "" : "";
-    // A Bible name: "Who or what is it?", then person, place or people.
-    if (nameKind) qtype = choice(["name_kind", "word_meaning"]);
+    // A Bible name: "Who or what is it?", or person, place or people.
+    const forName = ["name_kind", "word_meaning"].filter(t => types.includes(t));
+    const forWord = types.filter(t => t !== "name_kind");
+    let qtype = nameKind ? choice(forName.length ? forName : ["word_meaning"]) : choice(forWord.length ? forWord : ["word_meaning"]);
     const everyday = nameKind ? ["bible_names"]
       : JSON.parse(row.domains || "[]").filter(d => EVERYDAY_DOMAINS.includes(d));
     const distractIds = everyday.length
       ? all("SELECT id FROM words w WHERE id != ? AND EXISTS (SELECT 1 FROM json_each(w.domains) " +
             `WHERE json_each.value IN (${everyday.map(() => "?").join(",")})) ORDER BY random() LIMIT 30`,
             [wid, ...everyday]).map(r => r.id)
-      : shuffle(allIds.filter(i => i !== wid)).slice(0, 30);
+      // Other words of the chosen scope ("Statistics", "Bible · Vocabulary"), else any word.
+      : shuffle((q.domain && pool.length >= 30 ? pool : allIds).filter(i => i !== wid)).slice(0, 30);
     const nWords = word.split(/\s+/).length;
+    // A definition that names its own word would read "the …eans" once masked.
     const others = [...defsById(distractIds).values()]
-      .filter(v => v[0].toLowerCase() !== word.toLowerCase())
+      .filter(v => v[0].toLowerCase() !== word.toLowerCase() && !new RegExp(`\\b${escapeRe(v[0])}\\b`, "i").test(v[2]))
       .sort((a, b) => ((a[0].split(/\s+/).length !== nWords) - (b[0].split(/\s+/).length !== nWords)) ||
                       ((a[1] !== pos) - (b[1] !== pos)));
     let qn = null;
@@ -695,8 +712,7 @@ async function makeQuiz(q) {
       const wrongs = others.map(o => o[0]).filter(o => !rights.includes(o));
       if (rights.length && wrongs.length >= 3) {
         const right = choice(rights);
-        qn = { prompt: word, ask: qtype === "synonym" ? `Which is closest in meaning to “${word}”?`
-                                                       : `Which is opposite in meaning to “${word}”?`,
+        qn = { prompt: word, ask: qtype === "synonym" ? "Which is closest in meaning?" : "Which is opposite in meaning?",
                answer: right, options: [...wrongs.slice(0, 3), right] };
       }
     }
@@ -707,7 +723,10 @@ async function makeQuiz(q) {
              options: [...others.slice(0, 3).map(o => mask(o[0], o[2])), mask(word, definition)] };
     }
     shuffle(qn.options);
-    Object.assign(qn, { type: qtype, word_id: wid, word, definition, phonetic: data.phonetic || "",
+    const everydayEx = (data.nuance && data.nuance.examples || {}).everyday;
+    // A name's "everyday" line is about a namesake.
+    const example = examplesFor(data).find(e => !(nameKind && e === everydayEx)) || "";
+    Object.assign(qn, { type: qtype, word_id: wid, word, definition, example, phonetic: data.phonetic || "",
                         audio_url: INDEX.has(wid) ? audioUrl(INDEX.get(wid).a) : null });
     questions.push(qn);
   }
@@ -718,7 +737,10 @@ async function matching(q) {
   const n = Math.min(10, Math.max(3, Number(q.n) || 6));
   const pool = poolIds(parseFilters(q));
   const pairs = [];
-  for (const wid of weightedSample(pool, Math.min(pool.length, n * 5))) {
+  const candidates = weightedSample(pool, Math.min(pool.length, n * 5));
+  // Example sentences live in the detail files: load them together.
+  if (q.kind === "example") await Promise.all(candidates.slice(0, n * 2).map(id => detail(id)));
+  for (const wid of candidates) {
     if (pairs.length >= n) break;
     const row = fetchWord(wid);
     let right;

@@ -1,11 +1,11 @@
 // Matching: click a word, then its meaning (or example sentence). Timed, scored.
 
 import { api } from "../api.js";
-import { practiceFilter } from "../state.js";
+import { loadFilter } from "../state.js";
 import { filterBar, filterSources, fmtDuration, h, pageHead, shuffle } from "../ui.js";
 
 let kind = "meaning";
-let size = 6;
+let size = matchMedia("(max-width: 600px)").matches ? 4 : 6;  // 4 pairs fit a phone screen
 let pairs = [];
 let picked = null;       // { side, el, id }
 let matched = 0;
@@ -13,7 +13,7 @@ let misses = 0;
 let started = 0;
 let timer = null;
 let els = {};
-let filter = { ...practiceFilter };
+let filter = loadFilter("matching");
 let roundToken = 0;
 let missedIds = new Set();
 let alive = false;
@@ -106,10 +106,10 @@ export async function render(root) {
   root.append(
     pageHead("Matching", "Pair each word with its meaning or with a sentence it completes. Faster and cleaner scores higher.", seg, sizeSel,
       h("button.btn.btn-primary", { type: "button", on: { click: start } }, "New round")),
-    await filterBar(f => { filter = f; start(); }, src),
+    await filterBar(f => { filter = f; start(); }, src, { tab: "matching" }),
     h("div.score-line", { style: { marginBottom: "14px", justifyContent: "center" } }, els.timer, els.score),
     els.stage);
-  filter = { ...practiceFilter };
+  filter = loadFilter("matching");
   alive = true;
   await start();
   return () => { alive = false; clearInterval(timer); };

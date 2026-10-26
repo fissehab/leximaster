@@ -16,6 +16,7 @@ progress is kept in their own browser (IndexedDB). Output:
 """
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import shutil
@@ -49,10 +50,34 @@ def write_json(path: Path, obj) -> int:
     return len(text.encode("utf-8"))
 
 
+def slim(data: dict) -> dict:
+    """Leave out what no screen shows: empty sense lists, the study notes'
+    copies of the IPA and domains (already merged into the entry), the
+    American-usage rating (used only by the build) and empty Bible fields."""
+    data = json.loads(json.dumps(data))
+    for m in data.get("meanings") or []:
+        for k in ("synonyms", "antonyms"):
+            if not m.get(k):
+                m.pop(k, None)
+        for sn in m["senses"]:
+            for k in ("synonyms", "antonyms", "example"):
+                if not sn.get(k):
+                    sn.pop(k, None)
+    n = data.get("nuance")
+    if n:
+        for k in ("us_usage", "domains"):
+            n.pop(k, None)
+        (n.get("pronunciation") or {}).pop("ipa", None)
+        for k in ("traditions", "biblical_note"):
+            if not n.get(k):
+                n.pop(k, None)
+    return data
+
+
 def build_data(words: list[dict]) -> tuple[int, int]:
     index, shards = [], {i: {} for i in range(SHARDS)}
     for w in words:
-        data = {k: w.get(k) for k in DETAIL_FIELDS if w.get(k) not in (None, "", [])}
+        data = slim({k: w.get(k) for k in DETAIL_FIELDS if w.get(k) not in (None, "", [])})
         pos, definition = core_definition({"meanings": w.get("meanings") or [], "nuance": w.get("nuance")})
         s = shard_of(w["key"])
         entry = {"k": w["key"], "w": w["word"], "f": w.get("freq_rank"), "z": w.get("zipf"),
@@ -111,7 +136,8 @@ def build_index_html(version: str) -> None:
                       '<main id="view" tabindex="-1"><p class="boot-note">Loading the lexicon…</p></main>', 1)
     sw = """  <script>
     if ("serviceWorker" in navigator) {
-      addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+      addEventListener("load", () => navigator.serviceWorker.register("sw.js")
+        .then(reg => { window.LEXI_SW = reg; dispatchEvent(new Event("lexi-sw")); }).catch(() => {}));
     }
   </script>
 """
@@ -150,21 +176,29 @@ def build_manifest() -> None:
     })
 
 
-def build_service_worker(version: str) -> None:
+def build_service_worker(version: str, data_hash: str) -> None:
     shell = ["./", "index.html", "manifest.webmanifest", "data/index.json"]
     shell += sorted(str(p.relative_to(DOCS)) for p in (DOCS / "static").rglob("*")
                     if p.is_file() and p.suffix in (".css", ".js", ".woff2", ".wasm", ".png", ".html"))
     sw = f"""// LexiMaster offline support. The app shell and word index are cached on
 // install; word details and recordings are cached the first time they load
 // (or all at once from Stats → "Download for offline use").
+// A new version installs in the background and takes over only when the
+// page asks (on Home, Browse and other calm screens, never mid-session).
 const VERSION = "{version}";
 const SHELL = `shell-${{VERSION}}`;
-const DATA = `data-${{VERSION}}`;
+const DATA = "data-{data_hash}";   // changes only when the word data does
 const MEDIA = "media-v1";   // recordings never change, so they survive updates
 const SHELL_FILES = {json.dumps(shell, indent=0)};
 
 self.addEventListener("install", e => {{
-  e.waitUntil(caches.open(SHELL).then(c => c.addAll(SHELL_FILES)).then(() => self.skipWaiting()));
+  // cache: "reload" skips the browser's HTTP cache, so a fresh deploy can't
+  // be stored with files left over from the last one.
+  e.waitUntil(caches.open(SHELL).then(c => c.addAll(SHELL_FILES.map(u => new Request(u, {{ cache: "reload" }})))));
+}});
+
+self.addEventListener("message", e => {{
+  if (e.data === "SKIP_WAITING") self.skipWaiting();
 }});
 
 self.addEventListener("activate", e => {{
@@ -189,10 +223,12 @@ self.addEventListener("fetch", e => {{
   if (path.includes("/media/")) {{ e.respondWith(cacheFirst(e.request, MEDIA)); return; }}
   if (path.includes("/data/detail/")) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
   if (e.request.mode === "navigate") {{
-    e.respondWith(fetch(e.request).catch(() => caches.match("index.html")));
+    // The page comes from the same version's cache as its scripts.
+    e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));
     return;
   }}
-  e.respondWith(caches.match(e.request, {{ ignoreSearch: true }}).then(hit => hit || fetch(e.request)));
+  e.respondWith(caches.open(SHELL).then(c => c.match(e.request, {{ ignoreSearch: true }}))
+    .then(hit => hit || fetch(e.request)));
 }});
 """
     (DOCS / "sw.js").write_text(sw, encoding="utf-8")
@@ -271,6 +307,12 @@ Creative Commons Attribution-ShareAlike, some public domain) are on its file pag
 
 
 def main() -> None:
+    sys.path.insert(0, str(ROOT))
+    from tools.audit import check
+    if check():
+        sys.exit("Not building the site: the word data breaks a display rule (tools/audit.py --check).")
+    from tools.gen_shared import main as gen_shared
+    gen_shared()
     words = json.loads((DATA / "words.json").read_text(encoding="utf-8"))["words"]
     if DOCS.exists():
         shutil.rmtree(DOCS)
@@ -283,7 +325,8 @@ def main() -> None:
     build_icons()
     build_manifest()
     build_credits(audio_rows, len(words))
-    build_service_worker(version)
+    data_hash = hashlib.sha256((DATA / "words.json").read_bytes()).hexdigest()[:8]
+    build_service_worker(version, data_hash)
     (DOCS / ".nojekyll").write_text("")
     files = [p for p in DOCS.rglob("*") if p.is_file()]
     total = sum(p.stat().st_size for p in files)

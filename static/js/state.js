@@ -13,5 +13,12 @@ export async function saveSettings(patch) {
   return settings;
 }
 
-// Practice filters (stars / list / domain) remembered across practice tabs.
-export const practiceFilter = { stars: "", list_id: "", domain: "" };
+// Practice filters (scope / rating / list), remembered separately for each tab.
+const NO_FILTER = { stars: "", list_id: "", domain: "" };
+export function loadFilter(tab) {
+  try { return { ...NO_FILTER, ...JSON.parse(localStorage.getItem(`lexi-filter-${tab}`) || "{}") }; }
+  catch (e) { return { ...NO_FILTER }; }
+}
+export function saveFilter(tab, filter) {
+  try { localStorage.setItem(`lexi-filter-${tab}`, JSON.stringify(filter)); } catch (e) { /* storage unavailable */ }
+}

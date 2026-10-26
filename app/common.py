@@ -160,6 +160,7 @@ _EVERYDAY_SQL = ("EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.val
 NAMES_ONLY_SQL = ("(EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'bible_names') "
                   "AND NOT EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'bible_vocab'))")
 BIBLE_TRACKS = ("bible", "bible_vocab", "bible_names")
+SCOPES = ("everyday", "core", *BIBLE_TRACKS)  # study tracks, usable wherever a domain filter is
 
 
 def track_clause(track: str | None) -> str:
@@ -187,11 +188,13 @@ def pool_ids(c: sqlite3.Connection, *, stars: list[int] | None = None, list_id: 
     if list_id:
         joins += " JOIN list_words lw ON lw.word_id = w.id AND lw.list_id = ?"
         args.insert(0, list_id)
-    if domain == "everyday":
-        where.append(_EVERYDAY_SQL)
+    if domain in SCOPES:
+        where.append(track_clause(domain))
     elif domain:
         where.append("EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = ?)")
         args.append(domain)
+    elif not list_id:
+        where.append(f"NOT {NAMES_ONLY_SQL}")  # Bible names only when chosen (or in your own list)
     if need_audio:
         where.append("w.has_audio = 1")
     if need_enriched:

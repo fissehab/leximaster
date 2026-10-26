@@ -99,7 +99,11 @@ function jumpTo(letter) {
   }
 }
 
-async function select(id, { scroll = true } = {}) {
+const narrow = () => matchMedia("(max-width: 900px)").matches;
+
+/** Show a word. `reveal`: picked by the user, so on a narrow screen (list
+ * above, entry below) bring the entry into view. */
+async function select(id, { scroll = true, reveal = false } = {}) {
   state.selectedId = id;
   detail = null;  // keyboard actions wait for the new entry
   history.replaceState(null, "", `#browse/${id}`);
@@ -115,8 +119,11 @@ async function select(id, { scroll = true } = {}) {
   if (state.selectedId !== id) return;
   detail = w;
   w.list_actions = listActions(w);
-  els.detail.replaceChildren(renderEntry(w, { onChange: () => { syncCached(w); renderRows(); } }));
+  const back = h("button.btn.btn-quiet.back-to-list", { type: "button",
+    on: { click: () => els.vlist.scrollIntoView({ block: "center", behavior: "smooth" }) } }, "← List");
+  els.detail.replaceChildren(back, renderEntry(w, { onChange: () => { syncCached(w); renderRows(); } }));
   els.detail.scrollTop = 0;
+  if (reveal && narrow()) els.detail.scrollIntoView({ block: "start" });
 }
 
 function syncCached(w) {
@@ -174,7 +181,7 @@ export async function render(root, { param, view }) {
   els.search.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => { state.q = els.search.value; refreshList(); }, 60); });
   els.search.addEventListener("keydown", e => {
     if (e.key === "ArrowDown") { e.preventDefault(); els.search.blur(); move(state.selectedId ? 1 : 0); }
-    if (e.key === "Enter" && shown[0]) { e.preventDefault(); els.search.blur(); select(shown[0].id); }
+    if (e.key === "Enter" && shown[0]) { e.preventDefault(); els.search.blur(); select(shown[0].id, { reveal: true }); }
     if (e.key === "Escape") els.search.blur();
   });
 
@@ -201,7 +208,7 @@ export async function render(root, { param, view }) {
   els.inner = h("div.vlist-inner");
   els.vlist = h("div.vlist", { "aria-label": "Words (use the arrow keys to move through them)", tabindex: "0" }, els.inner);
   els.vlist.addEventListener("scroll", () => requestAnimationFrame(renderRows), { passive: true });
-  els.vlist.addEventListener("click", e => { const r = e.target.closest(".row"); if (r) select(Number(r.dataset.id), { scroll: false }); });
+  els.vlist.addEventListener("click", e => { const r = e.target.closest(".row"); if (r) select(Number(r.dataset.id), { scroll: false, reveal: true }); });
   els.meta = h("div.list-meta.tnum");
   els.detail = h("div.detail-col");
 

@@ -4,7 +4,7 @@
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
-import { practiceFilter } from "../state.js";
+import { loadFilter } from "../state.js";
 import { filterBar, filterSources, fmtDuration, h, pageHead, showError, toast } from "../ui.js";
 
 let mode = "choose";       // choose | type | spell
@@ -17,7 +17,7 @@ let shownAt = 0;
 let missed = [];
 let audioOnly = true;
 let els = {};
-let filter = { ...practiceFilter };
+let filter = loadFilter("listen");
 let playTimer = null;
 let startToken = 0;
 
@@ -114,13 +114,18 @@ function check(value) {
     });
   }
   const def = w.nuance && w.nuance.core ? w.nuance.core.definition : w.def;
-  document.getElementById("listen-feedback").replaceChildren(h(`div.feedback.${ok ? "ok" : "bad"}`,
+  const fb = document.getElementById("listen-feedback");
+  const nextBtn = h("button.btn.btn-primary", { type: "button", on: { click: next } },
+    i + 1 < items.length ? "Next " : "See results ", h("kbd", "Enter"));
+  fb.replaceChildren(h(`div.feedback.${ok ? "ok" : "bad"}`,
     h("strong", ok ? "Correct" : "Not quite"),
     !ok && mode !== "choose" ? h("div", h("p.label", "Correct spelling (red letters differ from yours)"), diffView(value.trim(), w.word)) : null,
     h("p", h("b", { style: { fontFamily: "var(--font-word)", color: "var(--lapis)" } }, w.word), " ",
       w.phonetic ? h("span.ipa", w.phonetic) : null, def ? ` — ${def}` : ""),
-    h("div.toolbar", h("button.btn.btn-primary", { type: "button", on: { click: next } },
-      i + 1 < items.length ? "Next " : "See results ", h("kbd", "Enter")))));
+    h("div.toolbar", nextBtn)));
+  // The answer and the way on stay in view, even on a phone.
+  fb.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  nextBtn.focus({ preventScroll: true });
   api.post("/api/answer", { word_id: w.id, mode: mode === "spell" ? "spell" : "listen", correct: ok, ms: Date.now() - shownAt })
     .then(() => !ok && refreshDueCount()).catch(showError);
 }
@@ -153,9 +158,9 @@ export async function render(root) {
   els.stage = h("div.q-wrap");
   root.append(
     pageHead("Listen & identify", "The audio plays first. Name the word you hear, or spell it exactly.", seg, rec),
-    await filterBar(f => { filter = f; start(); }, src),
+    await filterBar(f => { filter = f; start(); }, src, { tab: "listen" }),
     els.stage);
-  filter = { ...practiceFilter };
+  filter = loadFilter("listen");
   await start();
   return () => { clearTimeout(playTimer); startToken++; };
 }

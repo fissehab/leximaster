@@ -2,7 +2,7 @@
 
 import { api } from "../api.js";
 import { playUrl, playWord, speak } from "../audio.js";
-import { practiceFilter } from "../state.js";
+import { loadFilter } from "../state.js";
 import { filterBar, filterSources, h, pageHead, showError, toast } from "../ui.js";
 
 let words = [];
@@ -12,7 +12,7 @@ let chunks = [];
 let stream = null;
 let els = {};
 let myUrl = null;
-let filter = { ...practiceFilter };
+let filter = loadFilter("pronounce");
 let alive = false;        // false once the tab is left
 let starting = false;     // waiting for microphone permission
 let recTimer = null;      // auto-stop after 8 seconds
@@ -181,9 +181,9 @@ export async function render(root) {
   els.stage = h("div");
   root.append(
     pageHead("Pronunciation", "Listen to the reference, record yourself (up to 8 seconds), then play both back to compare."),
-    await filterBar(f => { filter = f; loadWords().catch(showError); }, src),
+    await filterBar(f => { filter = f; loadWords().catch(showError); }, src, { tab: "pronounce" }),
     h("div.pron-layout", els.picker, els.stage));
-  filter = { ...practiceFilter };
+  filter = loadFilter("pronounce");
   alive = true;
   current = null;
   await loadWords();

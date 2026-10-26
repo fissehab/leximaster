@@ -2,6 +2,7 @@
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
+import { reviewTrack } from "../app.js";
 import { fmtDuration, h, renderEntry } from "../ui.js";
 
 let wotd = null;
@@ -9,19 +10,19 @@ let wotd = null;
 export async function render(root) {
   const [stats, review, word] = await Promise.all([
     api.get("/api/stats"),
-    api.get("/api/review/queue"),
+    api.get("/api/review/queue", { count: 1, track: reviewTrack() }),
     api.get("/api/wotd").catch(() => null),
   ]);
   wotd = word;
   const hour = new Date().getHours();
   const greet = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
-  const queued = review.queue.length;
+  const queued = review.total;
   const minutes = Math.max(1, Math.round(review.est_seconds / 60));
 
   const wotdPanel = word
     ? h("section.panel.wotd", { "aria-label": "Word of the day" },
         h("span.eyebrow", `Word of the day · ${new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}`),
-        renderEntry(word))
+        renderEntry(word, { mode: "summary", open: `#browse/${word.id}` }))
     : h("section.panel.wotd", h("span.eyebrow", "Word of the day"),
         h("p", "No words yet. Build the dataset with build_dataset.py, then reload."));
 
@@ -29,15 +30,15 @@ export async function render(root) {
   const todayPanel = h("section.panel.today", { "aria-label": "Today" },
     h("span.eyebrow", "Today"),
     queued
-      ? h("div", h("div.big-num.tnum", queued), h("p.muted", `cards in today's session · about ${minutes} min`))
+      ? h("div", h("div.big-num.tnum", queued),
+          h("p.muted", `left today · ${review.due} due · ${review.new} new · about ${minutes} min`))
       : h("div", h("div.big-num", "Done"), h("p.muted", "Nothing left in today's review queue.")),
     h("a.btn.btn-primary.btn-lg", { href: "#review" }, queued ? "Start daily review" : "Review more words"),
     h("dl.kv",
       h("dt", "Reviewed today"), h("dd", review.done_today.reviews),
       h("dt", "Time studied today"), h("dd", fmtDuration(review.done_today.seconds)),
       h("dt", "Current streak"), h("dd", `${stats.streak.current} day${stats.streak.current === 1 ? "" : "s"}`),
-      h("dt", "Words mastered"), h("dd", `${w.mastered.toLocaleString()} / ${w.total.toLocaleString()}`),
-      h("dt", "Due now"), h("dd", w.due)),
+      h("dt", "Words mastered"), h("dd", `${w.mastered.toLocaleString()} / ${w.total.toLocaleString()}`)),
   );
 
   const banner = w.total === 0

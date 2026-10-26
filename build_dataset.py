@@ -1772,6 +1772,108 @@ def _stems(text: str) -> set[str]:
     return {w[:5] for w in re.findall(r"[a-z]+", text.lower()) if len(w) > 3 and w not in _STOP}
 
 
+# Display rules, applied once here so every screen and both backends show the
+# same entry. Dictionary senses that only restate the learner definition are
+# flagged (kept in the data: Wiktionary is the credited source), not deleted.
+_CIRCULAR = re.compile(r"^(the )?(state|quality|condition) of being\b|^in an? [\w ,-]+? manner\.?$|"
+                       r"^ellipsis of\b|\(in any sense\)", re.I)
+_POS_WORDS = ("noun", "verb", "adjective", "adverb", "interjection", "numeral", "preposition", "pronoun",
+              "conjunction", "determiner", "abbreviation")
+
+
+def canonical_pos(pos: str) -> str:
+    """One part-of-speech label: "noun, verb" -> "noun", "verb (phrasal)" ->
+    "phrasal verb", "idiomatic expression (adjective phrase)" -> "idiom"."""
+    p = pos.lower().strip()
+    if "phrasal" in p:
+        return "phrasal verb"
+    if "proper noun" in p or p == "noun (proper)":
+        return "proper noun"
+    if p.startswith("idiom"):
+        return "idiom"
+    for label in ("proverb", "expression"):
+        if label in p:
+            return label
+    if "phrase" in p:
+        first = p.split()[0]
+        return f"{first} phrase" if first in ("noun", "verb", "adjective", "adverb", "prepositional") else "phrase"
+    first = re.split(r"[\s,;(]+", p)[0] if p else ""
+    return first if first in _POS_WORDS else p
+
+
+def _pos_family(pos: str) -> str:
+    p = canonical_pos(pos)
+    if "noun" in p:
+        return "noun"
+    if "verb" in p and "adverb" not in p:
+        return "verb"
+    if p.startswith("adjective"):
+        return "adjective"
+    if p.startswith("adverb"):
+        return "adverb"
+    if p in ("expression", "phrase", "idiom", "proverb", "prepositional phrase"):
+        return "expression"
+    return p
+
+
+def _flat(text: str) -> str:
+    return " ".join(re.findall(r"[a-z0-9]+", text.lower()))
+
+
+def sense_dup(definition: str, pos: str, core: str, core_pos: str) -> str:
+    """Why a dictionary sense adds nothing beside the learner definition:
+    "paraphrase", "circular", "form_of", or "" when it should be shown."""
+    if FORM_OF_RE.match(definition):
+        return "form_of"
+    if _CIRCULAR.search(definition):
+        return "circular"
+    stems = _stems(definition)
+    if core and stems and _pos_family(pos) == _pos_family(core_pos) \
+            and len(stems & _stems(core)) * 2 >= len(stems):
+        return "paraphrase"
+    return ""
+
+
+def _similar(a: str, b: str) -> bool:
+    x, y = set(_flat(a).split()), set(_flat(b).split())
+    return bool(x and y) and len(x & y) / len(x | y) >= 0.45
+
+
+def normalize_display(w: dict) -> None:
+    n = w.get("nuance") or {}
+    core = n.get("core") or {}
+    if core.get("pos"):
+        core["pos"] = canonical_pos(core["pos"])
+    core_def, core_pos = core.get("definition", ""), core.get("pos", "")
+    meanings = []
+    for m in w["meanings"]:
+        senses = []
+        for sn in m["senses"]:
+            if core_def and _flat(sn["definition"]) == _flat(core_def):
+                continue  # the learner definition itself, copied in by the build
+            dup = "" if m.get("pos") == "everyday English" else \
+                sense_dup(sn["definition"], m.get("pos", ""), core_def, core_pos)
+            if dup:
+                sn = {**sn, "dup": dup, "synonyms": [], "antonyms": []}
+            senses.append(sn)
+        if senses:
+            meanings.append({**m, "senses": senses})
+    w["meanings"] = meanings
+    if w.get("name_kind"):
+        w["synonyms"], w["antonyms"] = [], []  # "Abraham" -> "slopshop" is someone else
+    word = w["word"].lower()
+    if n.get("word_family"):
+        n["word_family"] = [x for x in n["word_family"] if x.split(" (")[0].strip().lower() != word]
+    reg = n.get("register") or []
+    if "neutral" in reg and len(reg) > 1:
+        n["register"] = [r for r in reg if r != "neutral"]
+    kept: list[dict] = []
+    for e in w.get("conversation") or []:
+        if not any(_similar(e["text"], k["text"]) for k in kept):
+            kept.append(e)
+    w["conversation"] = kept
+
+
 def load_bible_names() -> tuple[dict[str, tuple[str, str]], set[str]]:
     """The Bible names, {key: (kind, everyday meaning)}, and the keys of the
     rest of the Bible list (its vocabulary). A name with an everyday meaning
@@ -2265,6 +2367,8 @@ def assemble(quiet: bool = False) -> dict:
             "name_kind": name_kind,
             "status": {"fetched": True, "audio": has_audio, "enriched": nuance is not None},
         })
+    for w in words:
+        normalize_display(w)
     # Words with no US transcription on Wiktionary: the CMU Pronouncing
     # Dictionary, then hand-written IPA (seeds/ipa/*.txt).
     known = {w["key"]: w["phonetic"] for w in words if w["phonetic"] and " " not in w["phonetic"]}

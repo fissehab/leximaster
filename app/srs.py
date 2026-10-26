@@ -48,6 +48,11 @@ def schedule(card: dict, grade: int, stars: int) -> dict:
     """Pure SM-2 step; returns the updated card fields."""
     q = QUALITY[grade]
     ease, interval, reps, lapses = card["ease"], card["interval_days"], card["reps"], card["lapses"]
+    if q < 3 and reps == 0 and lapses == 0 and not card.get("last_reviewed"):
+        # A new word missed the first time it is seen isn't a lapse: it
+        # comes back tomorrow without lowering its ease.
+        return {"ease": ease, "interval_days": 1, "reps": 0, "lapses": 0,
+                "due_date": iso(today() + timedelta(days=1)), "last_reviewed": iso(today())}
     if q < 3:
         reps = 0
         lapses += 1

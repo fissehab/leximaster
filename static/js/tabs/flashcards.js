@@ -89,7 +89,7 @@ export async function render(root) {
   els.stars = h("span");
   root.append(
     pageHead("Flashcards", "Recall first, then check. Weaker words come up more often.", autoplay, shuffleBtn),
-    await filterBar(f => { filter = f; load(); }, src),
+    await filterBar(f => { filter = f; load(); }, src, { tab: "flashcards" }),
     els.stage,
     h("div.fc-nav", { style: { marginTop: "18px" } },
       h("button.btn", { type: "button", on: { click: () => go(-1) } }, icon("arrowL"), "Previous"),
@@ -99,7 +99,7 @@ export async function render(root) {
     h("div.fc-nav", { style: { marginTop: "10px" } }, els.stars,
       h("button.btn.btn-quiet", { type: "button", on: { click: async () => { const w = cards[idx]; if (w) { await setKnown(w, !w.known); go(1); } } } }, "Mark known & next ", h("kbd", "M"))),
   );
-  filter = { stars: "", list_id: "", domain: "", ...(await import("../state.js")).practiceFilter };
+  filter = (await import("../state.js")).loadFilter("flashcards");
   await load();
 }
 
