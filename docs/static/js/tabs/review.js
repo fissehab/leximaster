@@ -6,7 +6,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import { settings } from "../state.js";
-import { SCOPES, fmtDuration, h, icon, pageHead, renderEntry, setKnown, showError } from "../ui.js";
+import { SCOPES, fmtDuration, h, icon, pageHead, renderEntry, setKnown, showError, toast } from "../ui.js";
 
 let queue = [];
 let pos = 0;
@@ -58,7 +58,7 @@ function choices(w) {
   }
   if (w.is_new) {
     return [["again", "Show again", "later today", () => grade(0)], ["good", "Got it", "see it again soon", () => grade(2)],
-            ["easy", "Know it", "stop showing it", () => knowIt()]];
+            ["easy.for-good", "Know it", "for good", () => knowIt()]];
   }
   return GRADES.map(([cls, label, hint], i) => [cls, label, hint, () => grade(i)]);
 }
@@ -84,13 +84,20 @@ function reveal() {
 }
 
 async function knowIt() {
-  if (busy) return;
+  if (busy || !revealed) return;
   busy = true;
+  const w = queue[pos];
   try {
-    await setKnown(queue[pos], true);
+    await setKnown(w, true, { quiet: true });
     pos++;
     show();
     refreshDueCount();
+    toast(`“${w.word}” won't come up again.`, { action: ["Undo", async () => {
+      await setKnown(w, false, { quiet: true });
+      queue.splice(pos, 0, w);
+      show();
+      refreshDueCount();
+    }] });
   } catch (e) { showError(e); }
   busy = false;
 }
@@ -103,7 +110,7 @@ async function grade(g) {
     await api.post(`/api/review/${w.id}`, { grade: g, ms: Date.now() - shownAt, is_new: w.is_new, repeat: !!w.repeat });
     // "Again" puts the card back at the end of this session for another pass;
     // the re-pass is practice and doesn't reschedule the card a second time.
-    if (g === 0 && !w.repeat) { queue.push({ ...w, is_new: false, repeat: true }); total++; }
+    if (g === 0) { queue.push({ ...w, is_new: false, repeat: true }); total++; }
     pos++;
     show();
     refreshDueCount();
@@ -111,18 +118,28 @@ async function grade(g) {
   busy = false;
 }
 
-function done() {
+async function done() {
   const mins = (Date.now() - sessionStart) / 1000;
+  const words = new Set(queue.map(w => w.id)).size;   // repeats are the same word
   els.stage.replaceChildren(h("div.panel.done-state",
     h("div.seal", icon("check")),
     h("h2", "Done for today"),
-    h("p.muted", total
-      ? `You reviewed ${total} card${total === 1 ? "" : "s"} in ${fmtDuration(mins)}. The next cards are scheduled for when you're about to forget them.`
+    h("p.muted", words
+      ? `You studied ${words} word${words === 1 ? "" : "s"} in ${fmtDuration(mins)}. Each comes back when you're about to forget it.`
       : "Nothing is due right now. Come back tomorrow, or learn a few new words now."),
+    els.more = h("p.muted"),
     h("div.toolbar",
       h("button.btn.btn-primary", { type: "button", on: { click: () => load(5).catch(showError) } }, "Learn 5 more words"),
       h("a.btn", { href: "#quiz" }, "Take a quiz"))));
-  if (total) api.post("/api/sessions", { kind: "review", score: total, total, duration_s: Math.round(mins) }).catch(() => {});
+  if (total) api.post("/api/sessions", { kind: "review", score: words, total: words, duration_s: Math.round(mins) }).catch(() => {});
+  // Words marked "Know it" make room for others: say so rather than claim the day is done.
+  try {
+    const left = await api.get("/api/review/queue", { count: 1, track });
+    if (left.total) {
+      els.more.replaceChildren(`${left.total} more ${left.total === 1 ? "is" : "are"} ready for today. `,
+        h("button.btn.btn-quiet", { type: "button", on: { click: () => load().catch(showError) } }, "Continue"));
+    }
+  } catch (e) { /* the count is a nicety */ }
 }
 
 export async function render(root) {
@@ -164,7 +181,7 @@ export function onKey(e) {
   } else if (/^[1-4]$/.test(e.key) && revealed) {
     const pick = choices(queue[pos])[Number(e.key) - 1];
     if (pick) { e.preventDefault(); pick[3](); }
-  } else if (e.key.toLowerCase() === "m") {
+  } else if (e.key.toLowerCase() === "m" && revealed) {   // never before the answer has been seen
     e.preventDefault(); knowIt();
   }
 }

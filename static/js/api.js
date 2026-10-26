@@ -1,10 +1,18 @@
 // Thin JSON client for the FastAPI backend, or, on the static GitHub Pages
 // build (window.LEXI_STATIC), for the same API running in the browser.
 
+// A fetch that fails outright (no network) throws a TypeError.
+const OFFLINE = "You're offline, and this part isn't saved on this device yet. " +
+  "Stats → Download for offline use makes all of LexiMaster work offline.";
+
 async function request(method, url, body) {
   if (window.LEXI_STATIC) {
     const { handle } = await import("./local/server.js");
-    return handle(method, url, body);
+    try {
+      return await handle(method, url, body);
+    } catch (e) {
+      throw e instanceof TypeError && !navigator.onLine ? new Error(OFFLINE) : e;
+    }
   }
   const opts = { method, headers: {} };
   if (body instanceof FormData) {

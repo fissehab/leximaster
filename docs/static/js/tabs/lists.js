@@ -16,13 +16,12 @@ async function loadLists() {
 }
 
 async function createList() {
-  const v = await formDialog({ title: "New list", fields: [{ id: "name", label: "Name", placeholder: "e.g. Theology, Statistics, Words I confuse", required: true }], submit: "Create" });
-  if (!v || !v.name.trim()) return;
-  try {
-    const l = await api.post("/api/lists", { name: v.name.trim() });
-    await loadLists();
-    open(l.id);
-  } catch (e) { showError(e); }
+  const l = await formDialog({ title: "New list", submit: "Create",
+    fields: [{ id: "name", label: "Name", placeholder: "e.g. Theology, Statistics, Words I confuse", required: true, maxlength: 60 }],
+    onSubmit: v => api.post("/api/lists", { name: v.name.trim() }) });
+  if (!l) return;
+  await loadLists().catch(showError);
+  open(l.id);
 }
 
 async function open(id) {
@@ -55,7 +54,7 @@ async function open(id) {
     h("div.page-head", { style: { marginBottom: "14px" } },
       h("div", h("h2", { style: { font: "600 22px/1.2 var(--font-word)" } }, data.name), h("p.sub", `${data.words.length} word${data.words.length === 1 ? "" : "s"}`)),
       h("div.toolbar",
-        h("button.btn", { type: "button", on: { click: () => (practise(id)) } }, "Practise with flashcards"),
+        h("button.btn", { type: "button", on: { click: () => (practice(id)) } }, "Practice with flashcards"),
         h("button.btn", { type: "button", on: { click: () => rename(data) } }, "Rename"),
         h("button.btn.btn-quiet", { type: "button", on: { click: () => remove(data) } }, icon("trash"), "Delete list"))),
     adder(id),
@@ -63,7 +62,7 @@ async function open(id) {
       : h("div.panel.empty", { style: { marginTop: "14px" } }, h("p", "This list is empty. Search above to add words from the lexicon, or add a word of your own.")));
 }
 
-function practise(id) {
+function practice(id) {
   import("../state.js").then(({ loadFilter, saveFilter }) => {
     saveFilter("flashcards", { ...loadFilter("flashcards"), list_id: String(id) });
     location.hash = "#flashcards";
@@ -71,9 +70,10 @@ function practise(id) {
 }
 
 async function rename(data) {
-  const v = await formDialog({ title: "Rename list", fields: [{ id: "name", label: "Name", value: data.name, required: true }] });
-  if (!v || !v.name.trim()) return;
-  try { await api.patch(`/api/lists/${data.id}`, { name: v.name.trim() }); open(data.id); } catch (e) { showError(e); }
+  const ok = await formDialog({ title: "Rename list",
+    fields: [{ id: "name", label: "Name", value: data.name, required: true, maxlength: 60 }],
+    onSubmit: v => api.patch(`/api/lists/${data.id}`, { name: v.name.trim() }) });
+  if (ok) open(data.id);
 }
 
 async function remove(data) {
@@ -96,10 +96,12 @@ function adder(listId) {
   };
   const add = async w => {
     try {
-      await api.post(`/api/lists/${listId}/words`, { word_id: w.id });
-      toast(`Added “${w.word}”`);
+      const res = await api.post(`/api/lists/${listId}/words`, { word_id: w.id });
+      toast(res.added === false ? `“${w.word}” is already in this list` : `Added “${w.word}”`);
       input.value = ""; matches = []; paint();
-      open(listId);
+      await open(listId);
+      const box = document.querySelector(".typeahead input");
+      if (box) box.focus();   // ready for the next word
     } catch (e) { showError(e); }
   };
   input.addEventListener("input", async () => {
@@ -126,7 +128,7 @@ async function addOwnWord(listId) {
   const v = await formDialog({
     title: "Add your own word",
     fields: [
-      { id: "word", label: "Word or phrase", required: true },
+      { id: "word", label: "Word or phrase", required: true, maxlength: 80 },
       { id: "pos", label: "Part of speech", type: "select", options: [["noun", "noun"], ["verb", "verb"], ["adjective", "adjective"], ["adverb", "adverb"], ["phrase", "phrase"]] },
       { id: "definition", label: "Definition", type: "textarea", required: true },
       { id: "example", label: "Example sentence (optional)" },
@@ -134,15 +136,16 @@ async function addOwnWord(listId) {
       { id: "notes", label: "Personal note (optional)", type: "textarea" },
     ],
     submit: "Add word",
+    onSubmit: async v => {
+      if (!v.word.trim() || !v.definition.trim()) throw new Error("A word and a definition are required.");
+      await api.post("/api/words", { ...v, list_id: listId });
+      return v;
+    },
   });
   if (!v) return;
-  if (!v.word.trim() || !v.definition.trim()) return toast("A word and a definition are required.", { error: true });
-  try {
-    await api.post("/api/words", { ...v, list_id: listId });
-    invalidateWords();
-    toast(`Added “${v.word.trim()}” to your words`);
-    open(listId);
-  } catch (e) { showError(e); }
+  invalidateWords();
+  toast(`Added “${v.word.trim()}” to your words`);
+  open(listId);
 }
 
 export async function render(root, { param }) {

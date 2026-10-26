@@ -23,12 +23,13 @@ let missed = [];
 let els = {};
 let filter = loadFilter("quiz");
 let length = 10;
+let finished = false;   // on the results screen
 
 async function start() {
   try {
     const res = await api.get("/api/quiz", { ...filter, types: [...enabled].join(","), n: length });
     qs = res.questions;
-    i = 0; score = 0; missed = []; started = Date.now();
+    i = 0; score = 0; missed = []; started = Date.now(); finished = false;
     if (!qs.length) {
       els.stage.replaceChildren(h("div.panel.empty", h("h2", "No questions available"), h("p", "These words don't have enough content for the chosen question types yet. Try other types or filters.")));
       return;
@@ -91,6 +92,11 @@ function next() {
   if (i < qs.length) return show();
   const secs = (Date.now() - started) / 1000;
   api.post("/api/sessions", { kind: "quiz", score, total: qs.length, duration_s: Math.round(secs) }).catch(() => {});
+  finished = true;
+  results(secs);
+}
+
+function results(secs = (Date.now() - started) / 1000) {
   els.stage.replaceChildren(h("div.panel.result",
     h("span.eyebrow", "Quiz complete"),
     h("div.big-num.tnum", `${score}/${qs.length}`),
@@ -116,14 +122,17 @@ export async function render(root) {
   len.value = String(length);
   len.addEventListener("change", () => { length = Number(len.value); start(); });
   els.stage = h("div.q-wrap");
-  filter = loadFilter("quiz");
   root.append(
     pageHead("Quiz", "Multiple choice, fill-in-the-blank and synonym questions. Misses return to your review queue."),
     await filterBar(f => { filter = f; start(); }, src, { tab: "quiz", extra: [
       h("div.field", h("label", { for: "quiz-length" }, "Length"), len),
       h("div.field.field-wide", h("label", "Question types"), typeChips)] }),
     els.stage);
-  await start();
+  filter = loadFilter("quiz");
+  // Back from "Open entry →" or a missed word returns to the same quiz.
+  if (finished && qs.length) results();
+  else if (qs.length && i < qs.length) { if (answered) next(); else show(); }
+  else await start();
 }
 
 export function onKey(e) {

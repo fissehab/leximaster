@@ -142,6 +142,15 @@ function sitePanel() {
       btn.lastChild.textContent = "Download for offline use";
     }
   });
+  // Already downloaded: the data cache holds every detail file.
+  if (window.caches) {
+    caches.keys().then(async keys => {
+      const data = keys.find(k => k.startsWith("data-"));
+      if (!data) return;
+      const files = (await (await caches.open(data)).keys()).filter(r => r.url.includes("/data/detail/"));
+      if (files.length >= 64) { btn.disabled = true; btn.lastChild.textContent = "Available offline"; }
+    }).catch(() => {});
+  }
   return h("div", { style: { marginTop: "14px" } },
     h("p.muted", "Your progress is saved in this browser on this device only. Use Export and Import to move it between devices."),
     h("div.toolbar", btn, h("a.btn", { href: "credits.html" }, "Sources & credits")));

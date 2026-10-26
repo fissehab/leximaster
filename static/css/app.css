@@ -404,6 +404,8 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
   padding: 12px 6px; border-radius: var(--radius); cursor: pointer;
   border: 1px solid var(--rule-strong); background: var(--surface); font-weight: 600;
 }
+.toast-action { margin-left: 8px; padding: 2px 8px; border: 1px solid currentColor; border-radius: var(--radius-sm);
+  background: transparent; color: inherit; font: inherit; font-weight: 600; cursor: pointer; }
 .grade small { font-weight: 400; font-size: 12px; color: var(--muted); }
 .grade.again { color: var(--madder); } .grade.again:hover { background: var(--madder-soft); }
 .grade.hard { color: var(--gilt); } .grade.hard:hover { background: var(--gilt-soft); }
@@ -500,6 +502,7 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .rec-btn .dot { width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
 .rec-btn.on .dot { animation: blink 1s infinite; }
 @keyframes blink { 50% { opacity: .2; } }
+.no-match { padding: 16px; margin: 0; }
 .pron-layout { display: grid; grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); gap: 18px; align-items: start; }
 .pick-list { max-height: 70vh; overflow-y: auto; display: flex; flex-direction: column; }
 .pick-list button {
@@ -581,6 +584,7 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   border: 1px solid var(--rule); border-radius: 14px; padding: 0; width: min(520px, calc(100vw - 32px));
   background: var(--surface); color: var(--ink); box-shadow: var(--shadow);
 }
+.form-error { margin: 4px 0 0; color: var(--madder); font-size: 13.5px; }
 .dialog::backdrop { background: rgba(10, 12, 18, .45); }
 .dialog form { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
 .dialog h2 { font: 600 20px/1.25 var(--font-word); }
@@ -645,6 +649,7 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .grade-row { gap: 6px; }
   .grade { min-height: 56px; padding: 6px 4px; }
   .grade small, .grade kbd { display: none; }
+  .grade.for-good small { display: block; }   /* "Know it" is for good: say so even here */
 }
 .typeahead input { width: 100%; }
 

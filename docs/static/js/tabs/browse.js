@@ -67,6 +67,9 @@ function renderRows() {
     frag.append(row);
   }
   els.inner.replaceChildren(frag);
+  if (!shown.length && words.length) {
+    els.inner.append(h("p.muted.no-match", "No words match. Try fewer letters, or clear the filters."));
+  }
   els.meta.textContent = `${shown.length.toLocaleString()} of ${words.length.toLocaleString()} words`;
 }
 
@@ -139,23 +142,23 @@ function listActions(w) {
       title: `Add “${w.word}” to a list`,
       fields: [
         { id: "list", label: "List", type: "select", options: [["new", "New list…"], ...lists.map(l => [String(l.id), l.name])], value: lists[0] ? String(lists[0].id) : "new" },
-        { id: "name", label: "New list name (if creating)", placeholder: "e.g. Words I confuse" },
+        { id: "name", label: "New list name (if creating)", placeholder: "e.g. Words I confuse", maxlength: 60 },
         { id: "note", label: "Note (optional)", placeholder: "Why this word belongs here" },
       ],
       submit: "Add",
+      onSubmit: async v => {
+        let listId = v.list;
+        if (listId === "new") {
+          if (!v.name.trim()) throw new Error("Give the new list a name.");
+          const created = await api.post("/api/lists", { name: v.name.trim() });
+          lists.push({ ...created, count: 0 });
+          listId = created.id;
+        }
+        const res = await api.post(`/api/lists/${listId}/words`, { word_id: w.id, note: v.note });
+        return { name: lists.find(l => String(l.id) === String(listId)).name, added: res.added !== false };
+      },
     });
-    if (!v) return;
-    try {
-      let listId = v.list;
-      if (listId === "new") {
-        if (!v.name.trim()) return toast("Give the new list a name.", { error: true });
-        const created = await api.post("/api/lists", { name: v.name.trim() });
-        lists.push({ ...created, count: 0 });
-        listId = created.id;
-      }
-      await api.post(`/api/lists/${listId}/words`, { word_id: w.id, note: v.note });
-      toast(`Added to “${lists.find(l => String(l.id) === String(listId)).name}”`);
-    } catch (e) { showError(e); }
+    if (v) toast(v.added ? `Added to “${v.name}”` : `Already in “${v.name}”`);
   });
   const inLists = (w.lists || []).map(l => h("a.chip", { href: `#lists/${l.id}` }, l.name));
   return h("span", { style: { display: "contents" } }, btn, inLists);
@@ -271,7 +274,7 @@ export async function onKey(e) {
     syncCached(detail);
     const b = els.detail.querySelector(".known-toggle");
     b.setAttribute("aria-pressed", String(detail.known));
-    b.lastChild.textContent = detail.known ? "Known" : "Mark known";
+    b.lastChild.textContent = detail.known ? "Known" : "Know it";
     renderRows();
   }
 }

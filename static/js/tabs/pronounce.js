@@ -29,7 +29,7 @@ async function loadWords() {
     return b;
   }));
   if (words.length) choose(words[0].id);
-  else els.stage.replaceChildren(h("div.panel.empty", h("h2", "No words match"), h("p", "Widen the filters to choose words to practise.")));
+  else els.stage.replaceChildren(h("div.panel.empty", h("h2", "No words match"), h("p", "Widen the filters to choose words to practice.")));
 }
 
 async function choose(id) {
@@ -42,6 +42,8 @@ async function choose(id) {
   myUrl = current.recording_url ? fresh(current.recording_url) : null;
   els.picker.querySelectorAll("button").forEach(b => b.setAttribute("aria-current", String(Number(b.dataset.id) === id)));
   paint();
+  // On a phone the list sits below the stage: bring the chosen word into view.
+  if (matchMedia("(max-width: 900px)").matches) els.stage.scrollIntoView({ block: "start" });
 }
 
 // A just-saved recording reuses its URL; bypass the cache (blob: URLs are unique already).
@@ -121,12 +123,17 @@ async function toggleRecording() {
   if (starting || !current) return;
   starting = true;
   const wordId = current.id;
+  els.recBtn.lastChild.textContent = "Waiting for the microphone…";
   try {
     stream = await navigator.mediaDevices.getUserMedia({ audio: true });
   } catch (e) {
-    return toast("Microphone access was blocked. Allow it in the browser's site settings and try again.", { error: true, ms: 5000 });
+    const msg = e && e.name === "NotFoundError" ? "No microphone found. Connect one and try again."
+      : e && e.name === "NotAllowedError" ? "Microphone access was blocked. Allow it in the browser's site settings and try again."
+      : `The microphone couldn't start (${e && e.message || "unknown error"}).`;
+    return toast(msg, { error: true, ms: 5000 });
   } finally {
     starting = false;
+    if (els.recBtn && !(recorder && recorder.state === "recording")) els.recBtn.lastChild.textContent = "Record";
   }
   if (!alive || !current || current.id !== wordId) {  // left the tab or switched word while asking
     stream.getTracks().forEach(t => t.stop());
@@ -177,7 +184,7 @@ async function save() {
 
 export async function render(root) {
   const src = await filterSources();
-  els.picker = h("div.panel.pick-list", { "aria-label": "Words to practise" });
+  els.picker = h("div.panel.pick-list", { "aria-label": "Words to practice" });
   els.stage = h("div");
   root.append(
     pageHead("Pronunciation", "Listen to the reference, record yourself (up to 8 seconds), then play both back to compare."),

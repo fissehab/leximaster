@@ -69,6 +69,10 @@ function go(delta) {
   show();
 }
 
+// After a mouse click the button would keep focus and take Enter and Space
+// for itself (another "Next"); keyboard use keeps focus where it is.
+const unfocus = e => { if (e.detail > 0) e.currentTarget.blur(); };
+
 export async function render(root) {
   const src = await filterSources();
   const shuffleBtn = h("button.btn", { type: "button", "aria-pressed": String(doShuffle), title: "Shuffle order" },
@@ -92,12 +96,12 @@ export async function render(root) {
     await filterBar(f => { filter = f; load(); }, src, { tab: "flashcards" }),
     els.stage,
     h("div.fc-nav", { style: { marginTop: "18px" } },
-      h("button.btn", { type: "button", on: { click: () => go(-1) } }, icon("arrowL"), "Previous"),
-      h("button.btn.btn-primary", { type: "button", on: { click: toggle } }, "Flip ", h("kbd", "Enter")),
-      h("button.btn", { type: "button", on: { click: () => go(1) } }, "Next", icon("arrowR")),
+      h("button.btn", { type: "button", on: { click: e => { unfocus(e); go(-1); } } }, icon("arrowL"), "Previous"),
+      h("button.btn.btn-primary", { type: "button", on: { click: e => { unfocus(e); toggle(); } } }, "Flip ", h("kbd", "Enter")),
+      h("button.btn", { type: "button", on: { click: e => { unfocus(e); go(1); } } }, "Next", icon("arrowR")),
       els.counter),
     h("div.fc-nav", { style: { marginTop: "10px" } }, els.stars,
-      h("button.btn.btn-quiet", { type: "button", on: { click: async () => { const w = cards[idx]; if (w) { await setKnown(w, !w.known); go(1); } } } }, "Mark known & next ", h("kbd", "M"))),
+      h("button.btn.btn-quiet", { type: "button", on: { click: async e => { unfocus(e); const w = cards[idx]; if (w) { await setKnown(w, !w.known); go(1); } } } }, "Know it & next ", h("kbd", "M"))),
   );
   filter = (await import("../state.js")).loadFilter("flashcards");
   await load();
