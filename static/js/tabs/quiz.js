@@ -11,7 +11,7 @@ import { loadFilter, settings } from "../state.js";
 
 const TYPES = [
   ["word_meaning", "Word → meaning"], ["meaning_word", "Meaning → word"], ["fill_blank", "Fill in the blank"],
-  ["synonym", "Synonyms"], ["antonym", "Antonyms"], ["name_kind", "Bible names: who or what?"],
+  ["synonym", "Synonyms"], ["antonym", "Antonyms"], ["pattern", "Grammar: prepositions"], ["name_kind", "Bible names: who or what?"],
 ];
 let enabled = new Set(TYPES.map(t => t[0]));
 let qs = [];

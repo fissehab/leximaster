@@ -2667,6 +2667,36 @@ def polish_entry(w: dict, stats: dict) -> None:
     w["conversation"] = conv
 
 
+def apply_patterns(words: list[dict]) -> None:
+    """Grammar patterns (nuance.patterns) from seeds/patterns/*.tsv: one line
+    per word, `key<TAB>pattern | pattern`, "-" for none. Hand-written by a
+    lexicographer: the frames a learner needs ("insist on doing sth",
+    "[U] advice on sth", "aware (that) …")."""
+    by_key = {w["key"]: w for w in words}
+    for path in sorted((SEEDS / "patterns").glob("*.tsv")):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            key, _, value = line.partition("\t")
+            w = by_key.get(key.strip())
+            value = value.strip()
+            if not w or not w.get("nuance") or not value or value == "-":
+                continue
+            pats = [x for x in (_tidy_pattern(p, w["word"]) for p in value.split(" | ")) if x]
+            pats = list(dict.fromkeys(pats))[:3]
+            if pats:
+                w["nuance"]["patterns"] = pats
+
+
+def _tidy_pattern(p: str, word: str) -> str:
+    """A pattern that only repeats the word ("a sham", "[U] architecture")
+    says nothing but its label: keep the label ("[U]"), or drop it."""
+    p = p.strip()
+    labels = re.findall(r"\[[^\]]+\]", p)
+    rest = re.sub(r"\[[^\]]+\]", " ", p).lower().split()
+    if rest and set(rest) <= {"a", "an", "the", word.lower()}:
+        return " ".join(labels)
+    return p
+
+
 def apply_fixes(words: list[dict]) -> None:
     """Hand corrections from seeds/fixes/*.txt (see its README.txt). A
     corrected entry is normalized again, so its senses are compared with the
@@ -2968,6 +2998,7 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
             k_.setdefault("also", []).append(by_key[x]["word"])
             k_["domains"] = sorted(set(k_["domains"]) | set(by_key[x]["domains"]))
     words = [w for w in words if w["key"] not in dropped]
+    apply_patterns(words)
     apply_fixes(words)
     for w in words:  # a hand-fixed "(archaic) …" definition gets its label too
         for m in w["meanings"]:
