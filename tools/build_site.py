@@ -25,7 +25,7 @@ import sys
 import time
 import zlib
 from pathlib import Path
-from urllib.parse import unquote
+from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -36,7 +36,7 @@ STATIC = ROOT / "static"
 DATA = ROOT / "data"
 SHARDS = 64
 DETAIL_FIELDS = ("phonetic", "meanings", "nuance", "source", "synonyms", "antonyms", "etymology",
-                 "variant_of", "conversation")
+                 "variant_of", "conversation", "also")
 SITE_URL = "https://fissehab.github.io/leximaster/"
 
 
@@ -75,7 +75,36 @@ def slim(data: dict) -> dict:
     return data
 
 
-def build_data(words: list[dict]) -> tuple[int, int]:
+def media_files(words: list[dict]) -> dict[str, tuple[str, Path]]:
+    """Each word's recording: key → (published path under media/, source file).
+    American recordings are published as processed by tools/audio_norm.py
+    (even loudness, a lead-in, names carrying a content hash); synthesized
+    ones under the hashed name in data/cache/tts.json. A changed recording
+    therefore gets a new URL, and no browser or service-worker cache can
+    play the old one."""
+    norm = _read(DATA / "cache" / "audio_norm.json")
+    tts = _read(DATA / "cache" / "tts.json")
+    out: dict[str, tuple[str, Path]] = {}
+    for w in words:
+        a = w.get("audio")
+        if w.get("has_audio") and a:
+            n = norm.get(a["file"])
+            if n and (DATA / "audio_norm" / Path(n["file"]).name).exists():
+                out[w["key"]] = (n["file"], DATA / "audio_norm" / Path(n["file"]).name)
+            elif (DATA / a["file"]).exists():
+                out[w["key"]] = (a["file"], DATA / a["file"])
+            continue
+        t = tts.get(w["key"]) or w.get("tts")
+        if t and (DATA / t["file"]).exists():
+            out[w["key"]] = (t["file"], DATA / t["file"])
+    return out
+
+
+def _read(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def build_data(words: list[dict], media: dict[str, tuple[str, Path]]) -> tuple[int, int]:
     index, shards = [], {i: {} for i in range(SHARDS)}
     for w in words:
         data = slim({k: w.get(k) for k in DETAIL_FIELDS if w.get(k) not in (None, "", [])})
@@ -85,10 +114,8 @@ def build_data(words: list[dict]) -> tuple[int, int]:
                  "d": w.get("domains") or [], "p": w.get("phonetic") or "",
                  "ps": [m["pos"] for m in w.get("meanings") or [] if m.get("pos")],
                  "cp": pos, "df": definition, "s": s}
-        if w.get("has_audio") and w.get("audio"):
-            entry["a"] = w["audio"]["file"]
-        elif w.get("tts"):
-            entry["t"] = w["tts"]["file"]
+        if w["key"] in media:
+            entry["a" if w.get("has_audio") and w.get("audio") else "t"] = media[w["key"]][0]
         if w.get("nuance"):
             entry["e"] = 1
         if w.get("conversation"):
@@ -106,24 +133,20 @@ def build_data(words: list[dict]) -> tuple[int, int]:
     return size, total
 
 
-def copy_audio(words: list[dict]) -> list[dict]:
-    """Copy the recordings the lexicon uses; return their attribution rows."""
+def copy_audio(words: list[dict], media: dict[str, tuple[str, Path]]) -> list[dict]:
+    """Copy the recordings the lexicon uses (only those: docs/ is rebuilt from
+    scratch, so nothing stale stays); return their attribution rows."""
     rows = []
     for w in words:
-        t = w.get("tts")
-        if t and not w.get("has_audio") and (DATA / t["file"]).exists():
-            dst = DOCS / "media" / t["file"]
-            dst.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(DATA / t["file"], dst)
+        if w["key"] not in media:
+            continue
+        rel, src = media[w["key"]]
+        dst = DOCS / "media" / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src, dst)
         a = w.get("audio")
         if not (w.get("has_audio") and a):
             continue
-        src = DATA / a["file"]
-        if not src.exists():
-            continue
-        dst = DOCS / "media" / a["file"]
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(src, dst)
         name = unquote(a.get("source_url", "").rsplit("/", 1)[-1])
         page = f"https://commons.wikimedia.org/wiki/File:{name.replace(' ', '_')}" if name else ""
         rows.append({"word": w["word"], "file": name, "page": page})
@@ -138,6 +161,7 @@ def build_index_html(version: str) -> None:
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="static/icons/icon-180.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="LexiMaster">
   <script>window.LEXI_STATIC = true; window.LEXI_VERSION = "{version}";</script>
 """
@@ -176,18 +200,23 @@ def build_icons() -> None:
 
 def build_manifest() -> None:
     write_json(DOCS / "manifest.webmanifest", {
-        "name": "LexiMaster", "short_name": "LexiMaster",
+        "id": urlparse(SITE_URL).path, "name": "LexiMaster", "short_name": "LexiMaster",
         "description": "American English vocabulary: advanced, professional, AI and everyday.",
         "start_url": "./", "scope": "./", "display": "standalone",
         "background_color": "#F3F4F7", "theme_color": "#2B47A8",
         "icons": [{"src": "static/icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+                  {"src": "static/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
                   {"src": "static/icons/icon-512.png", "sizes": "512x512", "type": "image/png",
-                   "purpose": "any maskable"}],
+                   "purpose": "maskable"}],
+        "shortcuts": [{"name": "Daily review", "short_name": "Review", "url": "./#review",
+                       "icons": [{"src": "static/icons/icon-192.png", "sizes": "192x192", "type": "image/png"}]},
+                      {"name": "Browse the lexicon", "short_name": "Browse", "url": "./#browse",
+                       "icons": [{"src": "static/icons/icon-192.png", "sizes": "192x192", "type": "image/png"}]}],
     })
 
 
-def build_service_worker(version: str, data_hash: str) -> None:
-    shell = ["./", "index.html", "manifest.webmanifest"]
+def build_service_worker(version: str, data_hash: str, details: dict[str, str]) -> None:
+    shell = ["./", "index.html", "manifest.webmanifest", "credits.html"]
     shell += sorted(str(p.relative_to(DOCS)) for p in (DOCS / "static").rglob("*")
                     if p.is_file() and p.suffix in (".css", ".js", ".woff2", ".wasm", ".png", ".html"))
     sw = f"""// LexiMaster offline support. The app shell and word index are cached on
@@ -196,18 +225,29 @@ def build_service_worker(version: str, data_hash: str) -> None:
 // (or all at once from Stats → "Download for offline use").
 // A new version installs in the background and takes over only when the
 // page asks (on Home, Browse and other calm screens, never mid-session).
+// Every cache name starts with "lexi-": the site shares its origin
+// (fissehab.github.io) with other projects, whose caches are left alone.
 const VERSION = "{version}";
-const SHELL = `shell-${{VERSION}}`;
-const DATA = "data-{data_hash}";   // changes only when the published word data does
-const MEDIA = "media-v1";   // recordings never change, so they survive updates
+const SHELL = `lexi-shell-${{VERSION}}`;
+const DATA = "lexi-data-{data_hash}";   // changes only when the published word data does
+// Recording names carry a hash of their content (media/audio/<word>.<hash>.m4a),
+// so a corrected recording has a new URL: the media cache can outlive deploys.
+const MEDIA = "lexi-media-v2";
 const SHELL_FILES = {json.dumps(shell, indent=0)};
+// Content hash (SHA-256, first 16 hex digits) of each word-detail file in this
+// build: an offline download made under an earlier version keeps the files
+// that haven't changed.
+const DETAIL_HASHES = {json.dumps(details, indent=0, sort_keys=True)};
+// Caches of this app from before the "lexi-" prefix.
+const LEGACY = /^(shell-\\d{{14}}|data-[0-9a-f]{{8}}|media-v1)$/;
 
 self.addEventListener("install", e => {{
-  // cache: "reload" skips the browser's HTTP cache, so a fresh deploy can't
-  // be stored with files left over from the last one.
+  // cache: "no-cache" revalidates each file with the server, so a fresh deploy
+  // can't be stored with files left over from the last one, while files the
+  // browser just downloaded (first visit) aren't downloaded a second time.
   e.waitUntil(Promise.all([
-    caches.open(SHELL).then(c => c.addAll(SHELL_FILES.map(u => new Request(u, {{ cache: "reload" }})))),
-    caches.open(DATA).then(c => c.match("data/index.json").then(hit => hit || c.add(new Request("data/index.json", {{ cache: "reload" }})))),
+    caches.open(SHELL).then(c => c.addAll(SHELL_FILES.map(u => new Request(u, {{ cache: "no-cache" }})))),
+    caches.open(DATA).then(c => c.match("data/index.json").then(hit => hit || c.add(new Request("data/index.json", {{ cache: "no-cache" }})))),
   ]));
 }});
 
@@ -215,10 +255,69 @@ self.addEventListener("message", e => {{
   if (e.data === "SKIP_WAITING") self.skipWaiting();
 }});
 
+async function sha16(res) {{
+  const buf = await crypto.subtle.digest("SHA-256", await res.arrayBuffer());
+  return Array.from(new Uint8Array(buf).slice(0, 8), b => b.toString(16).padStart(2, "0")).join("");
+}}
+
+// Carry the word details an earlier version cached (an offline download) into
+// this version's data cache: unchanged files are copied; changed ones are
+// downloaded again in the background.
+async function migrateDetails(oldNames) {{
+  const cache = await caches.open(DATA);
+  const refetch = new Set();
+  for (const name of oldNames) {{
+    const old = await caches.open(name);
+    for (const req of await old.keys()) {{
+      const path = new URL(req.url).pathname.replace(/^.*\\/(data\\/detail\\/[^/]+)$/, "$1");
+      const want = DETAIL_HASHES[path];
+      if (!want || await cache.match(req, {{ ignoreSearch: true }})) continue;
+      const res = await old.match(req);
+      if (res && await sha16(res.clone()) === want) await cache.put(req, res);
+      else refetch.add(req.url);
+    }}
+  }}
+  return [...refetch];
+}}
+
+// Recordings no word of this version uses (replaced by a corrected one).
+async function pruneMedia() {{
+  const index = await (await caches.open(DATA)).match("data/index.json");
+  if (!index) return;
+  const used = new Set();
+  for (const w of (await index.json()).words) {{
+    if (w.a) used.add(w.a);
+    if (w.t) used.add(w.t);
+  }}
+  const media = await caches.open(MEDIA);
+  for (const req of await media.keys()) {{
+    const m = new URL(req.url).pathname.match(/\\/media\\/(.+)$/);
+    if (m && !used.has(decodeURIComponent(m[1]))) await media.delete(req);
+  }}
+}}
+
 self.addEventListener("activate", e => {{
-  e.waitUntil(caches.keys().then(keys => Promise.all(
-    keys.filter(k => ![SHELL, DATA, MEDIA].includes(k)).map(k => caches.delete(k))
-  )).then(() => self.clients.claim()));
+  e.waitUntil((async () => {{
+    const keys = await caches.keys();
+    const ours = keys.filter(k => k.startsWith("lexi-") || LEGACY.test(k));
+    const oldData = ours.filter(k => k !== DATA && /^(lexi-)?data-/.test(k));
+    let refetch = [];
+    try {{ refetch = await migrateDetails(oldData); }} catch (err) {{}}
+    await Promise.all(ours.filter(k => ![SHELL, DATA, MEDIA].includes(k)).map(k => caches.delete(k)));
+    await self.clients.claim();
+    // In the background: changed detail files of an offline download, and
+    // recordings nothing refers to any more.
+    (async () => {{
+      const cache = await caches.open(DATA);
+      for (const url of refetch) {{
+        try {{
+          const res = await fetch(url, {{ cache: "no-cache" }});
+          if (res.ok && res.status === 200) await cache.put(url, res);
+        }} catch (err) {{ break; }}   // offline: they load when next needed
+      }}
+      await pruneMedia();
+    }})().catch(() => {{}});
+  }})());
 }});
 
 async function cacheFirst(req, name) {{
@@ -232,15 +331,57 @@ async function cacheFirst(req, name) {{
   return res;
 }}
 
+// The part of a cached recording a Range request asks for (Safari and some
+// players always ask for ranges): 206 with the exact bytes.
+async function rangeResponse(full, range) {{
+  const body = await full.arrayBuffer();
+  const size = body.byteLength;
+  const m = /^bytes=(\\d*)-(\\d*)$/.exec(range.trim());
+  let start, end;
+  if (m && m[1] !== "") {{
+    start = Number(m[1]);
+    end = m[2] !== "" ? Math.min(Number(m[2]), size - 1) : size - 1;
+  }} else if (m && m[2] !== "") {{
+    start = Math.max(0, size - Number(m[2]));
+    end = size - 1;
+  }}
+  if (start === undefined || start > end || start >= size) {{
+    return new Response(null, {{ status: 416, headers: {{ "Content-Range": `bytes */${{size}}` }} }});
+  }}
+  return new Response(body.slice(start, end + 1), {{
+    status: 206, statusText: "Partial Content",
+    headers: {{
+      "Content-Type": full.headers.get("Content-Type") || "audio/mp4",
+      "Content-Range": `bytes ${{start}}-${{end}}/${{size}}`,
+      "Content-Length": String(end - start + 1),
+      "Accept-Ranges": "bytes",
+    }},
+  }});
+}}
+
+async function media(req) {{
+  const cache = await caches.open(MEDIA);
+  const range = req.headers.get("Range");
+  let hit = await cache.match(req.url, {{ ignoreSearch: true }});
+  if (!hit) {{
+    // The whole file, without the Range header, so the cache holds a
+    // complete 200 that any later range can be cut from.
+    const res = await fetch(req.url, {{ cache: "no-cache" }});
+    if (!(res.ok && res.status === 200)) return res;
+    await cache.put(req.url, res.clone());
+    hit = res;
+  }}
+  return range ? rangeResponse(hit, range) : hit;
+}}
+
 self.addEventListener("fetch", e => {{
   const url = new URL(e.request.url);
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
   const path = url.pathname;
-  if (path.includes("/media/")) {{ e.respondWith(cacheFirst(e.request, MEDIA)); return; }}
+  if (path.includes("/media/")) {{ e.respondWith(media(e.request).catch(() => fetch(e.request))); return; }}
   if (path.includes("/data/detail/") || path.endsWith("/data/index.json")) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
   if (e.request.mode === "navigate" && /\\/(index\\.html)?$/.test(path)) {{
     // The app's page comes from the same version's cache as its scripts.
-    // Other pages (credits.html) load normally.
     e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));
     return;
   }}
@@ -390,17 +531,22 @@ def main() -> None:
     DOCS.mkdir()
     shutil.copytree(STATIC, DOCS / "static", ignore=shutil.ignore_patterns("index.html", ".DS_Store"))
     version = time.strftime("%Y%m%d%H%M%S")
-    index_size, detail_size = build_data(words)
-    audio_rows = copy_audio(words)
+    media = media_files(words)
+    index_size, detail_size = build_data(words, media)
+    audio_rows = copy_audio(words, media)
     build_index_html(version)
     build_icons()
     build_manifest()
-    build_credits(audio_rows, len(words), sum(1 for w in words if w.get("tts") and not w.get("has_audio")))
+    build_credits(audio_rows, len(words), sum(1 for w in words if not w.get("has_audio") and w["key"] in media))
     h = hashlib.sha256()
+    details = {}
     for f in [DOCS / "data" / "index.json", *sorted((DOCS / "data" / "detail").glob("*.json"))]:
-        h.update(f.read_bytes())
+        b = f.read_bytes()
+        h.update(b)
+        if f.parent.name == "detail":
+            details[f"data/detail/{f.name}"] = hashlib.sha256(b).hexdigest()[:16]
     data_hash = h.hexdigest()[:8]
-    build_service_worker(version, data_hash)
+    build_service_worker(version, data_hash, details)
     (DOCS / ".nojekyll").write_text("")
     files = [p for p in DOCS.rglob("*") if p.is_file()]
     total = sum(p.stat().st_size for p in files)

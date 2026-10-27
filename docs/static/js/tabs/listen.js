@@ -20,6 +20,7 @@ let els = {};
 let filter = loadFilter("listen");
 let playTimer = null;
 let startToken = 0;
+let hinted = false;   // the pronunciation was shown instead of heard
 
 const MODES = [["choose", "Pick the word"], ["type", "Type the word"], ["spell", "Spelling test"]];
 const clean = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[\s-]+/g, " ").trim();
@@ -51,13 +52,14 @@ function show() {
   answered = false;
   shownAt = Date.now();
   const w = items[i];
-  const playBtn = h("button.play.play-big", { type: "button", style: { width: "72px", height: "72px" }, "aria-label": "Play again (Space)",
+  const playBtn = h("button.play.play-big", { type: "button", style: { width: "72px", height: "72px" }, "aria-label": "Play the word",
+    "aria-keyshortcuts": "Space",
     html: '<svg viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>' });
   playBtn.addEventListener("click", play);
   let body;
   if (mode === "choose") {
     body = h("div.options", w.options.map((o, k) =>
-      h("button.opt", { type: "button", "data-v": o, on: { click: () => check(o) } }, h("span.key", String(k + 1)), h("span", { style: { fontFamily: "var(--font-word)", fontWeight: 600 } }, o))));
+      h("button.opt.word-opt", { type: "button", "data-v": o, on: { click: () => check(o) } }, h("span.key", { "aria-hidden": "true" }, String(k + 1)), h("span", o))));
   } else {
     const input = h("input.input.type-in#listen-input", { type: "text", autocomplete: "off", autocapitalize: "off", spellcheck: false,
       "aria-label": mode === "spell" ? "Spelling" : "The word you hear",
@@ -68,7 +70,7 @@ function show() {
     });
     body = h("form", { on: { submit: e => { e.preventDefault(); check(input.value); } } }, input,
       h("div.toolbar", { style: { marginTop: "10px", justifyContent: "center" } },
-        h("button.btn.btn-primary", { type: "submit" }, "Check ", h("kbd", "Enter")),
+        h("button.btn.btn-primary", { type: "submit" }, "Check ", h("kbd", { "aria-hidden": "true" }, "Enter")),
         mode === "type" ? h("button.btn", { type: "button", on: { click: () => hint(input) } }, "Hint") : null));
   }
   els.stage.replaceChildren(h("div.panel.q-card", { style: { alignItems: "center", textAlign: "center" } },
@@ -77,7 +79,18 @@ function show() {
     h("p.muted", w.has_audio ? "American recording" : w.tts_url ? "Natural synthesized voice (no US recording for this word)"
       : "Your device's American voice (no US recording for this word)"),
     h("div", { style: { width: "100%" } }, body),
-    h("div#listen-feedback", { role: "status", style: { width: "100%", textAlign: "left" } })));
+    // Can't play sound right now (a quiet room, no headphones): see how it's
+    // said instead. It counts as a hint, so the answer isn't scored as heard.
+    h("button.btn.btn-quiet.cant-listen", { type: "button", on: { click: e => {
+      const n = w.nuance || {};
+      const respell = n.pronunciation && n.pronunciation.respelling;
+      e.currentTarget.replaceWith(h("p.listen-hint", w.phonetic ? h("span.ipa", { lang: "en-fonipa" }, w.phonetic) : null,
+        respell ? [" ", h("span.respell", respell)] : null));
+      hinted = true;
+    } } }, "Can't listen now?"),
+    h("p.sr-only#listen-verdict", { role: "alert" }),
+    h("div#listen-feedback", { style: { width: "100%", textAlign: "left" } })));
+  hinted = false;
   const input = document.getElementById("listen-input");
   if (input) input.focus();
   clearTimeout(playTimer);
@@ -120,8 +133,9 @@ function check(value) {
   if (answered || !value.trim()) return;
   answered = true;
   const w = items[i];
-  const ok = mode === "spell" ? spelling(value) === spelling(w.word)
+  const right = mode === "spell" ? spelling(value) === spelling(w.word)
     : clean(spelling(value)) === clean(spelling(w.word));
+  const ok = right && !hinted;
   if (ok) score++; else missed.push(w);
   if (mode === "choose") {
     els.stage.querySelectorAll(".opt").forEach(b => markOption(b, b.dataset.v === w.word, b.dataset.v === value));
@@ -129,18 +143,20 @@ function check(value) {
   const def = w.nuance && w.nuance.core ? w.nuance.core.definition : w.def;
   const fb = document.getElementById("listen-feedback");
   const nextBtn = h("button.btn.btn-primary", { type: "button", on: { click: next } },
-    i + 1 < items.length ? "Next " : "See results ", h("kbd", "Enter"));
+    i + 1 < items.length ? "Next " : "See results ", h("kbd", { "aria-hidden": "true" }, "Enter"));
+  const verdict = ok ? "Correct" : right ? "Right, with the pronunciation shown" : "Not quite";
+  document.getElementById("listen-verdict").textContent = `${verdict}. The word is ${w.word}.`;
   fb.replaceChildren(h(`div.feedback.${ok ? "ok" : "bad"}`,
-    h("strong", ok ? "Correct" : "Not quite"),
+    h("strong", verdict),
     !ok && mode !== "choose" ? h("div", h("p.label", "Correct spelling (red letters differ from yours)"), diffView(value.trim(), w.word)) : null,
-    h("p", h("b", { style: { fontFamily: "var(--font-word)", color: "var(--lapis)" } }, w.word), " ",
-      w.phonetic ? h("span.ipa", w.phonetic) : null, def ? ` — ${def}` : ""),
+    h("p", h("b.fb-word", w.word), " ",
+      w.phonetic ? h("span.ipa", { lang: "en-fonipa" }, w.phonetic) : null, def ? ` — ${def}` : ""),
     h("div.toolbar", nextBtn)));
   // The answer and the way on stay in view, even on a phone.
   reveal(fb);
   nextBtn.focus({ preventScroll: true });
-  api.post("/api/answer", { word_id: w.id, mode: mode === "spell" ? "spell" : "listen", correct: ok, ms: Date.now() - shownAt })
-    .then(() => !ok && refreshDueCount()).catch(showError);
+  api.post("/api/answer", { word_id: w.id, mode: mode === "spell" ? "spell" : "listen", correct: right, ms: Date.now() - shownAt })
+    .then(() => !right && refreshDueCount()).catch(showError);
 }
 
 function next() {

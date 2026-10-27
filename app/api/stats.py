@@ -14,6 +14,10 @@ from ..common import today_iso
 router = APIRouter(prefix="/api")
 
 MASTERED_INTERVAL = 21  # days
+MASTERED_SQL = ("SELECT COUNT(*) AS n {studied} AND s.interval_days >= ? AND s.word_id IN (SELECT word_id FROM (SELECT word_id, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE mode = 'review') WHERE grade >= 2 AND gap >= ?)")
+# Reviews of words seen before (last 30 days): the share recalled, by the gap
+# since the word's previous review. About 85-90% means the schedule is right.
+RETENTION_SQL = ("SELECT CASE WHEN gap < 8 THEN 'days' WHEN gap <= 30 THEN 'weeks' ELSE 'months' END AS span, COUNT(*) AS n, SUM(CASE WHEN grade >= 1 THEN 1 ELSE 0 END) AS ok FROM (SELECT ts, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE mode = 'review') WHERE gap IS NOT NULL AND julianday('now') - julianday(ts) <= 30 GROUP BY span")
 
 
 def streak(c) -> dict:
@@ -45,21 +49,28 @@ def stats():
         with_audio = c.execute("SELECT COUNT(*) AS n FROM words WHERE has_audio=1").fetchone()["n"]
         # Words marked known are counted apart: one click isn't proof of mastery.
         studied = "FROM srs s LEFT JOIN user_word u ON u.word_id=s.word_id WHERE COALESCE(u.known,0)=0"
-        mastered = c.execute(f"SELECT COUNT(*) AS n {studied} AND s.interval_days >= ?",
-                             (MASTERED_INTERVAL,)).fetchone()["n"]
-        learning = c.execute(f"SELECT COUNT(*) AS n {studied} AND s.interval_days < ?",
-                             (MASTERED_INTERVAL,)).fetchone()["n"]
+        # Mastered: recalled ("Good" or better) at a review three or more
+        # weeks after the one before, and still scheduled weeks apart. A long
+        # interval alone is only a plan, not proof.
+        mastered = c.execute(MASTERED_SQL.format(studied=studied),
+                             (MASTERED_INTERVAL, MASTERED_INTERVAL)).fetchone()["n"]
+        learning = c.execute(f"SELECT COUNT(*) AS n {studied}").fetchone()["n"] - mastered
         # Due: reviewed before and due today (the review queue's "due").
         due = c.execute(f"SELECT COUNT(*) AS n {studied} AND s.due_date <= ? AND NOT (s.reps = 0 AND s.last_reviewed IS NULL)",
                         (today_iso(),)).fetchone()["n"]
         known = c.execute("SELECT COUNT(*) AS n FROM user_word WHERE known=1").fetchone()["n"]
         stars = {r["stars"]: r["n"] for r in c.execute(
             "SELECT stars, COUNT(*) AS n FROM user_word WHERE stars > 0 GROUP BY stars")}
-        overall = c.execute("SELECT COUNT(*) AS n, COALESCE(SUM(correct),0) AS ok FROM review_log").fetchone()
+        # Practice accuracy (quizzes and games) apart from review retention:
+        # a self-graded review and a four-option guess aren't the same signal.
+        overall = c.execute("SELECT COUNT(*) AS n, COALESCE(SUM(correct),0) AS ok FROM review_log "
+                            "WHERE mode NOT IN ('review', 'repeat')").fetchone()
+        retention = {r["span"]: {"n": r["n"], "ok": r["ok"]} for r in c.execute(RETENTION_SQL)}
 
         # Accuracy by domain: each answer counts toward every domain of its word.
         by_domain: dict[str, list[int]] = {}
-        for r in c.execute("SELECT w.domains, r.correct FROM review_log r JOIN words w ON w.id = r.word_id"):
+        for r in c.execute("SELECT w.domains, r.correct FROM review_log r JOIN words w ON w.id = r.word_id "
+                           "WHERE r.mode != 'repeat'"):
             for d in json.loads(r["domains"]):
                 agg = by_domain.setdefault(d, [0, 0])
                 agg[0] += 1
@@ -71,7 +82,7 @@ def stats():
             "SELECT w.id, w.word, COUNT(*) AS attempts, SUM(r.correct) AS correct, "
             "ROUND(1.0 * SUM(r.correct) / COUNT(*), 3) AS accuracy, "
             "SUM(CASE WHEN r.correct = 0 THEN 1 ELSE 0 END) AS misses "
-            "FROM review_log r JOIN words w ON w.id = r.word_id GROUP BY w.id "
+            "FROM review_log r JOIN words w ON w.id = r.word_id WHERE r.mode != 'repeat' GROUP BY w.id "
             "HAVING attempts >= 2 AND misses > 0 ORDER BY accuracy ASC, misses DESC, attempts DESC LIMIT 25")]
 
         days = []
@@ -93,6 +104,7 @@ def stats():
             "words": {"total": total, "enriched": enriched, "with_audio": with_audio,
                       "mastered": mastered, "learning": learning, "due": due, "known": known, "stars": stars},
             "accuracy": {"attempts": overall["n"], "correct": overall["ok"]},
+            "retention": retention,
             "streak": streak(c),
             "by_domain": domain_rows,
             "weakest": weakest,
@@ -138,6 +150,9 @@ def save_settings(c, values: dict) -> None:
 
 
 # ------------------------------------------------------------------ export/import
+
+import sqlite3  # noqa: E402  (import/export section)
+from datetime import datetime as _dt, timezone as _tz  # noqa: E402
 
 PROGRESS_TABLES = {
     "user_word": "SELECT w.key, u.stars, u.known, u.notes, u.updated_at FROM user_word u JOIN words w ON w.id=u.word_id",
@@ -201,14 +216,110 @@ def _clamp(v, lo, hi, default):
         return default
 
 
+# Import validation. A row that fails these checks is skipped and counted in
+# the response's "skipped"; static/js/local/server.js mirrors these rules.
+MAX_IMPORT_BYTES = 20 * 1024 * 1024
+MAX_NOTE_CHARS = 5000
+LOG_MODES = ("review", "repeat", "quiz", "match", "listen", "spell", "flash")
+MAX_MS_TAKEN = 24 * 3600 * 1000
+
+
+def _iso_date(v) -> str | None:
+    """'YYYY-MM-DD' for a valid ISO date string, else None."""
+    if not isinstance(v, str) or len(v) != 10:
+        return None
+    try:
+        return date.fromisoformat(v).isoformat()
+    except ValueError:
+        return None
+
+
+def _iso_datetime(v, utc: bool = False) -> str | None:
+    """'YYYY-MM-DD HH:MM:SS' for an ISO datetime string ('T' or space, optional
+    fraction and offset), else None. review_log/test_session times are local
+    and user_word.updated_at is UTC (see db.py): a time with an offset is
+    converted to UTC when utc, else to local time; one without is kept as is."""
+    if not isinstance(v, str) or not 16 <= len(v) <= 40:
+        return None
+    try:
+        d = _dt.fromisoformat(v.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if d.tzinfo is not None:
+        d = d.astimezone(_tz.utc if utc else None).replace(tzinfo=None)
+    return d.strftime("%Y-%m-%d %H:%M:%S")
+
+
+def _int(v, lo: int, hi: int) -> int | None:
+    """An integer (or integral float) within [lo, hi]; bools and strings aren't."""
+    if isinstance(v, bool) or not isinstance(v, (int, float)):
+        return None
+    if isinstance(v, float) and not v.is_integer():
+        return None
+    return int(v) if lo <= v <= hi else None
+
+
+def _flag(v) -> int | None:
+    """0/1 from 0, 1, false, true."""
+    return int(v) if isinstance(v, bool) else _int(v, 0, 1)
+
+
+def _valid_user_word(u: dict) -> tuple | None:
+    stars, known = _int(u.get("stars", 0), 0, 5), _flag(u.get("known", 0))
+    notes = u.get("notes") or ""
+    updated = _iso_datetime(u.get("updated_at"), utc=True)
+    if stars is None or known is None or not isinstance(notes, str) or updated is None:
+        return None
+    return stars, known, notes[:MAX_NOTE_CHARS], updated
+
+
+def _valid_srs(s: dict) -> tuple | None:
+    ease = s.get("ease", 2.5)
+    if isinstance(ease, bool) or not isinstance(ease, (int, float)) or ease != ease:
+        return None
+    interval = s.get("interval_days", 0)  # a REAL column: whole days today, fractions allowed
+    if isinstance(interval, bool) or not isinstance(interval, (int, float)) or not 0 <= interval <= 10**9:
+        interval = None
+    reps, lapses = _int(s.get("reps", 0), 0, 10**9), _int(s.get("lapses", 0), 0, 10**9)
+    due = _iso_date(s.get("due_date"))
+    last = s.get("last_reviewed")
+    last_ok = last is None or _iso_date(last) is not None
+    if None in (interval, reps, lapses, due) or not last_ok:
+        return None
+    return (min(5.0, max(1.3, float(ease))), float(min(interval, 36500)), min(reps, 10000),
+            min(lapses, 10000), due, _iso_date(last) if last is not None else None)
+
+
+def _valid_review(r: dict) -> tuple | None:
+    ts = _iso_datetime(r.get("ts"))
+    grade = r.get("grade")
+    grade_ok = grade is None or _int(grade, 0, 3) is not None
+    ms = r.get("ms_taken")
+    ms_ok = ms is None or _int(ms, 0, MAX_MS_TAKEN) is not None
+    correct = _flag(r.get("correct"))
+    if ts is None or r.get("mode") not in LOG_MODES or not grade_ok or not ms_ok or correct is None:
+        return None
+    return (ts, r["mode"], None if grade is None else int(grade), correct, None if ms is None else int(ms))
+
+
+def _norm_utc(v) -> str:
+    """A stored updated_at made comparable ('' sorts before every time)."""
+    return _iso_datetime(v, utc=True) or ""
+
+
 @router.post("/import")
 async def import_progress(file: UploadFile = File(...)):
-    """Merge an export into the current database. Per-word state is replaced
-    by the imported values; answers, sessions and activity are added, skipping
-    rows that were already in the database before this import, so importing
-    the same file twice is harmless. Values are validated and clamped."""
+    """Merge an export into the current database. Rows with wrong types are
+    skipped and counted. Per-word state keeps whichever side is newer (srs: the
+    later last_reviewed, then more reps; user_word: the later updated_at), so
+    an old file can't undo newer progress. Answers, sessions and activity are
+    added, skipping rows already in the database, so importing the same file
+    twice is harmless."""
+    raw_bytes = await file.read(MAX_IMPORT_BYTES + 1)
+    if len(raw_bytes) > MAX_IMPORT_BYTES:
+        raise HTTPException(413, f"That file is too large (over {MAX_IMPORT_BYTES // (1024 * 1024)} MB).")
     try:
-        data = json.loads(await file.read())
+        data = json.loads(raw_bytes)
     except (json.JSONDecodeError, UnicodeDecodeError):
         raise HTTPException(400, "That file isn't valid JSON.")
     if not isinstance(data, dict) or data.get("app") != "LexiMaster":
@@ -222,6 +333,7 @@ async def import_progress(file: UploadFile = File(...)):
     try:
         with db.tx() as c:
             skipped = 0
+            bad = 0
             for raw in rows("custom_words"):
                 cw = _clean_custom_word(raw)
                 if cw is None:
@@ -231,63 +343,104 @@ async def import_progress(file: UploadFile = File(...)):
             if skipped:
                 counts["damaged custom words skipped"] = skipped
             ids = {r["key"]: r["id"] for r in c.execute("SELECT id, key FROM words")}
+
             n = 0
+            have = {r["word_id"]: _norm_utc(r["updated_at"])
+                    for r in c.execute("SELECT word_id, updated_at FROM user_word")}
             for u in rows("user_word"):
-                if u.get("key") in ids:
-                    c.execute("INSERT OR REPLACE INTO user_word(word_id, stars, known, notes, updated_at) "
-                              "VALUES (?, ?, ?, ?, ?)",
-                              (ids[u["key"]], _clamp(u.get("stars"), 0, 5, 0), _clamp(u.get("known"), 0, 1, 0),
-                               str(u.get("notes") or ""), str(u.get("updated_at") or "")))
-                    n += 1
+                if u.get("key") not in ids:
+                    continue
+                v = _valid_user_word(u)
+                if v is None:
+                    bad += 1
+                    continue
+                wid = ids[u["key"]]
+                if wid in have and have[wid] >= v[3]:
+                    continue  # ours is as new or newer
+                c.execute("INSERT OR REPLACE INTO user_word(word_id, stars, known, notes, updated_at) "
+                          "VALUES (?, ?, ?, ?, ?)", (wid, *v))
+                have[wid] = v[3]
+                n += 1
             counts["word states"] = n
+
             n = 0
+            have = {r["word_id"]: (r["last_reviewed"] or "", r["reps"])
+                    for r in c.execute("SELECT word_id, last_reviewed, reps FROM srs")}
             for s_ in rows("srs"):
-                if s_.get("key") in ids and s_.get("due_date"):
-                    c.execute("INSERT OR REPLACE INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed) "
-                              "VALUES (?, ?, ?, ?, ?, ?, ?)",
-                              (ids[s_["key"]], _clamp(s_.get("ease"), 1.3, 5.0, 2.5),
-                               _clamp(s_.get("interval_days"), 0.0, 36500.0, 0.0), _clamp(s_.get("reps"), 0, 10000, 0),
-                               _clamp(s_.get("lapses"), 0, 10000, 0), str(s_["due_date"])[:10], s_.get("last_reviewed")))
-                    n += 1
+                if s_.get("key") not in ids:
+                    continue
+                v = _valid_srs(s_)
+                if v is None:
+                    bad += 1
+                    continue
+                wid = ids[s_["key"]]
+                rank = (v[5] or "", v[2])
+                if wid in have and have[wid] >= rank:
+                    continue
+                c.execute("INSERT OR REPLACE INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed) "
+                          "VALUES (?, ?, ?, ?, ?, ?, ?)", (wid, *v))
+                have[wid] = rank
+                n += 1
             counts["review cards"] = n
+
             existing = {tuple(r) for r in c.execute(
                 "SELECT word_id, ts, mode, grade, correct, ms_taken FROM review_log")}
             n = 0
             for r in rows("review_log"):
-                if r.get("key") not in ids or r.get("mode") not in ("review", "quiz", "match", "listen", "spell", "flash"):
+                if r.get("key") not in ids:
                     continue
-                row = (ids[r["key"]], str(r.get("ts")), r["mode"], r.get("grade"),
-                       _clamp(r.get("correct"), 0, 1, 0), r.get("ms_taken"))
+                v = _valid_review(r)
+                if v is None:
+                    bad += 1
+                    continue
+                row = (ids[r["key"]], *v)
                 if row not in existing:
                     c.execute("INSERT INTO review_log(word_id, ts, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?, ?)", row)
+                    existing.add(row)
                     n += 1
             counts["answers"] = n
+
             for lst in rows("lists"):
                 name = " ".join(str(lst.get("name") or "").split())[:60]
                 if name and not c.execute("SELECT 1 FROM lists WHERE lower(name)=lower(?)", (name,)).fetchone():
-                    c.execute("INSERT INTO lists(name, created_at) VALUES (?, ?)", (name, lst.get("created_at") or ""))
+                    c.execute("INSERT INTO lists(name, created_at) VALUES (?, ?)", (name, str(lst.get("created_at") or "")))
             list_ids = {r["name"].lower(): r["id"] for r in c.execute("SELECT id, name FROM lists")}
             n = 0
             for lw in rows("list_words"):
                 lid = list_ids.get(" ".join(str(lw.get("list") or "").split()).lower())
                 if lw.get("key") in ids and lid:
-                    c.execute("INSERT OR IGNORE INTO list_words(list_id, word_id, note, added_at) VALUES (?, ?, ?, ?)",
-                              (lid, ids[lw["key"]], str(lw.get("note") or ""), lw.get("added_at") or ""))
-                    n += 1
+                    note = lw.get("note") or ""
+                    if not isinstance(note, str):
+                        bad += 1
+                        continue
+                    cur = c.execute("INSERT OR IGNORE INTO list_words(list_id, word_id, note, added_at) VALUES (?, ?, ?, ?)",
+                                    (lid, ids[lw["key"]], note[:MAX_NOTE_CHARS], str(lw.get("added_at") or "")))
+                    n += cur.rowcount
             counts["list entries"] = n
+
             existing = {tuple(r) for r in c.execute("SELECT ts, kind, score, total, duration_s FROM test_session")}
             for t in rows("test_session"):
-                row = (str(t.get("ts")), str(t.get("kind"))[:40], _clamp(t.get("score"), 0, 10**6, 0),
+                ts = _iso_datetime(t.get("ts"))
+                if ts is None or not isinstance(t.get("kind"), str):
+                    bad += 1
+                    continue
+                row = (ts, t["kind"][:40], _clamp(t.get("score"), 0, 10**6, 0),
                        _clamp(t.get("total"), 0, 10**6, 0), _clamp(t.get("duration_s"), 0, 10**7, 0))
                 if row not in existing:
                     c.execute("INSERT INTO test_session(ts, kind, score, total, duration_s) VALUES (?, ?, ?, ?, ?)", row)
+                    existing.add(row)
+
             for a in rows("daily_activity"):
-                if a.get("date"):
-                    c.execute("INSERT INTO daily_activity(date, seconds, reviews, new_words) VALUES (?, ?, ?, ?) "
-                              "ON CONFLICT(date) DO UPDATE SET seconds=MAX(seconds, excluded.seconds), "
-                              "reviews=MAX(reviews, excluded.reviews), new_words=MAX(new_words, excluded.new_words)",
-                              (str(a["date"])[:10], _clamp(a.get("seconds"), 0, 86400, 0),
-                               _clamp(a.get("reviews"), 0, 100000, 0), _clamp(a.get("new_words"), 0, 100000, 0)))
+                day = _iso_date(a.get("date"))
+                if day is None:
+                    bad += 1
+                    continue
+                c.execute("INSERT INTO daily_activity(date, seconds, reviews, new_words) VALUES (?, ?, ?, ?) "
+                          "ON CONFLICT(date) DO UPDATE SET seconds=MAX(seconds, excluded.seconds), "
+                          "reviews=MAX(reviews, excluded.reviews), new_words=MAX(new_words, excluded.new_words)",
+                          (day, _clamp(a.get("seconds"), 0, 86400, 0),
+                           _clamp(a.get("reviews"), 0, 100000, 0), _clamp(a.get("new_words"), 0, 100000, 0)))
+
             st = data.get("settings") if isinstance(data.get("settings"), dict) else {}
             clean = {}
             if "session_minutes" in st:
@@ -299,6 +452,10 @@ async def import_progress(file: UploadFile = File(...)):
             if "autoplay" in st:
                 clean["autoplay"] = str(st["autoplay"]) in ("1", "True", "true")
             save_settings(c, clean)
-    except (KeyError, TypeError, ValueError) as e:
-        raise HTTPException(400, f"That export file is damaged ({e}).")
+            if bad:
+                counts["skipped"] = bad
+    except sqlite3.Error as e:
+        raise HTTPException(400, f"That export file couldn't be imported; nothing was changed ({e}).")
+    except (KeyError, TypeError, ValueError, AttributeError, OverflowError) as e:
+        raise HTTPException(400, f"That export file is damaged; nothing was changed ({e}).")
     return {"imported": counts}

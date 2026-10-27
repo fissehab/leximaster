@@ -1,6 +1,6 @@
 // Shared UI: DOM helper, icons, the dictionary entry, stars, toasts, dialogs.
 
-import { api, allWords, patchCachedWord } from "./api.js";
+import { api, allWords, cachedWords, patchCachedWord } from "./api.js";
 import { playWord } from "./audio.js";
 import { EVERYDAY_DOMAINS } from "./shared.gen.js";
 import { loadFilter, saveFilter } from "./state.js";
@@ -136,7 +136,7 @@ export function starsEl(word, { small = false, readonly = false, onChange } = {}
     b.setAttribute("aria-checked", String(i + 1 === v));
   });
   for (let i = 1; i <= 5; i++) {
-    const b = h("button", { type: "button", role: "radio", title: `${i} star${i > 1 ? "s" : ""} · key ${i}`, "aria-label": `${i} stars`, html: STAR_SVG });
+    const b = h("button", { type: "button", role: "radio", title: `${i} star${i > 1 ? "s" : ""} · key ${i}`, "aria-label": `${i} star${i > 1 ? "s" : ""}`, html: STAR_SVG });
     b.addEventListener("click", async e => {
       e.stopPropagation();
       const v = word.stars === i ? 0 : i;
@@ -168,8 +168,17 @@ export async function setKnown(word, known, { quiet = false } = {}) {
   return res;
 }
 
+/** Typewriter quotes and apostrophes as typographic ones ("it's" → it’s). */
+export function smart(text) {
+  if (typeof text !== "string") return text;
+  return text
+    .replace(/(^|[\s(\[{\u2014\u2013-])"/g, "$1\u201C").replace(/"/g, "\u201D")
+    .replace(/(^|[\s(\[{\u201C\u2014\u2013-])'/g, "$1\u2018").replace(/'/g, "\u2019");
+}
+
 /** Render *word* spans (cited forms in etymologies) as italics, safely. */
 function italicize(text) {
+  text = smart(text);
   return text.split(/(\*[^*]+\*)/).map(part =>
     part.length > 2 && part.startsWith("*") && part.endsWith("*") ? h("em", part.slice(1, -1)) : part);
 }
@@ -191,6 +200,7 @@ export function highlight(sentence, word) {
   } else {
     re = new RegExp(`\\b(${[...parts, last].join("[\\s-]+")}[a-z]{0,4})\\b`, "i");
   }
+  sentence = smart(sentence);
   const m = sentence.match(re);
   if (!m) return [sentence];
   return [sentence.slice(0, m.index), h("mark", m[0]), sentence.slice(m.index + m[0].length)];
@@ -235,7 +245,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   const parts = [h("header.entry-head",
     h("div.entry-top", h("h2.headword", w.word), playButton(w)),
     w.phonetic || respelling ? h("div.entry-pron",
-      w.phonetic ? h("span.ipa", w.phonetic) : null,
+      w.phonetic ? h("span.ipa", { lang: "en-fonipa", title: "IPA" }, h("span.sr-only", "IPA: "), w.phonetic) : null,
       respelling ? h("span.respell", respelling) : null) : null,
     h("div.entry-meta",
       pos ? posBadge(pos) : null,
@@ -244,19 +254,21 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
       domains.length > 2 ? h("span.chip", { title: domains.slice(2).map(domainLabel).join(", ") }, `+${domains.length - 2}`) : null),
     full ? h("div.entry-actions", starsEl(w, { onChange: () => onChange && onChange() }), knownBtn, w.list_actions || null) : null,
   )];
+  if (w.also && w.also.length) parts.push(h("p.also.muted", "Also spelled ", w.also.map((a, i) => [i ? ", " : "", h("em", a)])));
   if (w.variant_of) parts.push(h("p.muted", "Variant of ", h("em", w.variant_of), "; definitions below are for the main form."));
 
   const senseList = list => {
     const many = list.length > 1;
     return list.map(g => h("div.sense-group", many ? posBadge(g.pos) : null,
-      h("ol.sense-list", g.senses.map(s => h("li", s.definition, s.example ? h("span.sense-ex", s.example) : null)))));
+      h("ol.sense-list", g.senses.map(s => h("li", smart(s.definition),
+        s.example ? h("span.sense-ex", smart(s.example)) : null)))));
   };
   const exampleLine = (text, label) => h("p.example", label ? h("span.ex-ctx", label) : null, highlight(text, w.word));
 
   // Meaning, and one example right under it (for a Bible name, what the Bible says).
   let lead = null;
   if (core) {
-    parts.push(h("p.core-def", core.definition));
+    parts.push(h("p.core-def", smart(core.definition)));
     if (isName && n.biblical_note) {
       parts.push(h("div.npanel.wide.lead-note", h("h3", "In the Bible"), h("p", italicize(n.biblical_note))));
     } else if (conversation.length) {
@@ -271,14 +283,37 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
     parts.push(h("section.senses", { "aria-label": "Definitions" }, senseList(mode === "card" ? groups.slice(0, 1) : groups)));
   }
 
+  // Synonyms and antonyms: always in view, each a link when it has an entry.
+  const distinct = new Set(((n && n.distinctions) || []).map(d => (d.vs || "").toLowerCase()));
+  const uniq = list => [...new Map(list.filter(Boolean).map(x => [x.toLowerCase(), x])).values()];
+  const synonyms = isName ? [] : uniq([...(w.synonyms || []), ...(w.meanings || []).flatMap(m => m.synonyms || [])])
+    .filter(x => !distinct.has(x.toLowerCase()) && x.toLowerCase() !== w.word.toLowerCase());
+  const antonyms = uniq([...((n && n.antonyms) || []), ...(w.antonyms || []), ...(w.meanings || []).flatMap(m => m.antonyms || [])])
+    .filter(x => x.toLowerCase() !== w.word.toLowerCase());
+  const related = (synonyms.length || antonyms.length) && mode !== "summary" ? h("div.related",
+    synonyms.length ? h("div.related-row", h("span.related-label", "Synonyms"), wordChips(synonyms.slice(0, mode === "card" ? 5 : 8))) : null,
+    antonyms.length ? h("div.related-row", h("span.related-label", "Antonyms"), wordChips(antonyms.slice(0, mode === "card" ? 3 : 6))) : null) : null;
+
   if (mode === "card") {
+    if (related) parts.push(related);
+    // One contrast and one pitfall, a different one each day, so repeat
+    // reviews bring something new to notice.
+    const day = Math.floor(Date.now() / 86400000);
+    const pick = list => list && list.length ? list[(day + w.id) % list.length] : null;
+    const d = n && pick(n.distinctions);
+    const mistake = n && pick((n.common_mistakes || []).filter(m => !/pronounc|stress|syllable|sound|rhyme|said like|say it/i.test(m)));
+    if (d || mistake) {
+      parts.push(h("div.card-notes",
+        d ? h("p.card-note", h("span.card-note-label", `vs ${d.vs}`), " ", smart(d.note)) : null,
+        mistake ? h("p.card-note", h("span.card-note-label", "Watch out"), " ", smart(mistake)) : null));
+    }
     if (n && n.collocations && n.collocations.length) {
       parts.push(h("div.tags.card-collocations", n.collocations.slice(0, 3).map(c => h("span.chip", c))));
     }
     return h("article.entry.entry-card", parts);
   }
   if (mode === "summary") {
-    if (n && n.usage_note) parts.push(h("p.summary-usage", n.usage_note));
+    if (n && n.usage_note) parts.push(h("p.summary-usage", smart(n.usage_note)));
     if (open) parts.push(h("a.btn.btn-quiet.open-entry", { href: open }, "Open full entry →"));
     return h("article.entry.entry-summary", parts);
   }
@@ -290,13 +325,14 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   const nuanceParts = [];
 
   // Use it right: what an advanced learner needs to use the word well.
+  if (related) parts.push(related);
   if (n) {
     const mistakes = (n.common_mistakes || []).filter(m => !isPron(m));
     const use = [
-      n.usage_note ? h("p", n.usage_note) : null,
+      n.usage_note ? h("p", smart(n.usage_note)) : null,
       n.distinctions && n.distinctions.length ? block("Compared with",
-        h("dl.distinctions", n.distinctions.map(d => [h("dt", d.vs), h("dd", d.note)]))) : null,
-      mistakes.length ? block("Common mistakes", h("ul", mistakes.map(m => h("li", m)))) : null,
+        h("dl.distinctions", n.distinctions.map(d => [h("dt", d.vs), h("dd", smart(d.note))]))) : null,
+      mistakes.length ? block("Common mistakes", h("ul", mistakes.map(m => h("li", smart(m))))) : null,
       n.collocations && n.collocations.length ? block("Common pairings",
         h("div.tags", n.collocations.map(c => h("span.chip", c)))) : null,
     ].filter(Boolean);
@@ -309,7 +345,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
     const order = ["Eastern Orthodox", "Roman Catholic", "Protestant"];
     const views = [...n.traditions].sort((a, b) => order.indexOf(a.tradition) - order.indexOf(b.tradition));
     nuanceParts.push(h("section.npanel.wide.traditions", h("h3", "Orthodox · Catholic · Protestant"),
-      h("dl", views.map(t => [h("dt", { "data-tradition": t.tradition }, t.tradition), h("dd", t.view)]))));
+      h("dl", views.map(t => [h("dt", { "data-tradition": t.tradition }, t.tradition), h("dd", smart(t.view))]))));
   }
 
   // More examples: conversation first, then the study-note examples; two
@@ -337,11 +373,6 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
 
   // Reference: folded; each block only when it has something to say.
   if (n || w.etymology || wording.length) {
-    const distinct = new Set(((n && n.distinctions) || []).map(d => (d.vs || "").toLowerCase()));
-    const uniq = list => [...new Map(list.filter(Boolean).map(x => [x.toLowerCase(), x])).values()];
-    const synonyms = isName ? [] : uniq([...(w.synonyms || []), ...(w.meanings || []).flatMap(m => m.synonyms || [])])
-      .filter(x => !distinct.has(x.toLowerCase()));
-    const antonyms = uniq([...((n && n.antonyms) || []), ...(w.antonyms || []), ...(w.meanings || []).flatMap(m => m.antonyms || [])]);
     const pron = n && n.pronunciation;
     const pronMistakes = ((n && n.common_mistakes) || []).filter(isPron);
     const register = (n && n.register) || [];
@@ -350,18 +381,16 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
     const dictEtym = w.etymology && n && n.etymology && w.etymology !== n.etymology ? w.etymology : "";
     const ref = [
       pron && (pron.tip || pronMistakes.length) ? block("Pronunciation",
-        pron.tip ? h("p", pron.tip) : null, pronMistakes.length ? h("ul", pronMistakes.map(m => h("li", m))) : null) : null,
+        pron.tip ? h("p", smart(pron.tip)) : null, pronMistakes.length ? h("ul", pronMistakes.map(m => h("li", smart(m)))) : null) : null,
       showRegister || connotation ? block("Register",
-        showRegister ? h("div.tags", register.map(r => h("span.chip", r))) : null, connotation ? h("p", connotation) : null) : null,
-      synonyms.length ? block("Synonyms", h("div.tags", synonyms.slice(0, 12).map(x => h("span.chip", x)))) : null,
-      antonyms.length >= 2 ? block("Antonyms", h("div.tags", antonyms.slice(0, 10).map(x => h("span.chip", x)))) : null,
+        showRegister ? h("div.tags", register.map(r => h("span.chip", r))) : null, connotation ? h("p", smart(connotation)) : null) : null,
       n && n.word_family && n.word_family.length ? block("Word family", h("div.tags", n.word_family.map(x => h("span.chip", x)))) : null,
-      n && n.analogy ? block("Analogy", h("p", n.analogy)) : null,
+      n && n.analogy ? block("Analogy", h("p", smart(n.analogy))) : null,
       (n && n.etymology) || w.etymology ? block("Etymology", h("p", italicize((n && n.etymology) || w.etymology)),
         dictEtym ? h("p.muted", "Dictionary: ", italicize(dictEtym)) : null) : null,
-      wording.length ? block("Dictionary wording", h("ul.muted", wording.map(s => h("li", s.definition)))) : null,
+      wording.length ? block("Dictionary wording", h("ul.muted", wording.map(s => h("li", smart(s.definition))))) : null,
     ].filter(Boolean);
-    if (ref.length) nuanceParts.push(h("section.npanel.wide.reference", fold("Pronunciation, register, related words, origin", h("div.ref-grid", ref))));
+    if (ref.length) nuanceParts.push(h("section.npanel.wide.reference", fold("Pronunciation, register, word family, origin", h("div.ref-grid", ref))));
   }
 
   if (nuanceParts.length) parts.push(h("div.nuance", nuanceParts));
@@ -369,18 +398,55 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   return h("article.entry", parts);
 }
 
+/** fn after `ms` of quiet; .now() runs a pending call at once. Pending calls
+ * also run when the page is hidden or closed, so the last words typed are kept. */
+const pendingSaves = new Set();
+const flushAll = () => pendingSaves.forEach(run => run());
+addEventListener("pagehide", flushAll);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flushAll(); });
+export function debounced(fn, ms) {
+  let t = null;
+  const run = () => {
+    clearTimeout(t); t = null;
+    pendingSaves.delete(run);
+    return Promise.resolve(fn()).catch(showError);
+  };
+  const call = () => { clearTimeout(t); t = setTimeout(run, ms); pendingSaves.add(run); };
+  call.now = () => (t ? run() : Promise.resolve());
+  return call;
+}
+
+/** Words as chips; a word with its own entry opens it. */
+function wordChips(words) {
+  const wrap = h("div.tags", words.map(x => h("span.chip", smart(x))));
+  const link = list => {
+    const byWord = new Map(list.map(e => [e.word.toLowerCase(), e.id]));
+    [...wrap.children].forEach((chip, i) => {
+      const id = byWord.get(words[i].toLowerCase());
+      if (id) chip.replaceWith(h("a.chip.chip-link", { href: `#browse/${id}`, title: `Open “${words[i]}”` }, chip.textContent));
+    });
+  };
+  const list = cachedWords();
+  if (list) link(list);
+  else allWords().then(link).catch(() => {});
+  return wrap;
+}
+
 function notesEditor(w) {
   const ta = h("textarea.input#word-notes", { rows: 2, "aria-label": "My notes", placeholder: "Your notes: a mnemonic, a sentence of your own, where you met this word…" });
   ta.value = w.notes || "";
-  let t;
-  ta.addEventListener("input", () => {
-    clearTimeout(t);
-    t = setTimeout(() => api.patch(`/api/words/${w.id}/state`, { notes: ta.value })
-      .then(() => { w.notes = ta.value; })
-      .catch(showError), 600);
-  });
+  const status = h("span.save-status.muted", { "aria-live": "polite" });
+  const flush = debounced(async () => {
+    if (ta.value === (w.notes || "")) return;
+    const value = ta.value;
+    await api.patch(`/api/words/${w.id}/state`, { notes: value });
+    w.notes = value;
+    status.textContent = "Saved";
+  }, 600);
+  ta.addEventListener("input", () => { status.textContent = ""; flush(); });
+  ta.addEventListener("blur", () => flush.now());
   ta.addEventListener("keydown", e => e.stopPropagation());
-  return h("div.npanel.wide", h("h3", "My notes"), ta);
+  return h("div.npanel.wide", h("h3", "My notes ", status), ta);
 }
 
 // ---------------------------------------------------------------- toasts & dialogs
@@ -395,7 +461,18 @@ export function toast(msg, { error = false, ms = 2600, action = null } = {}) {
     } } }, action[0]));
   }
   document.getElementById("toasts").append(t);
-  setTimeout(() => t.remove(), action ? Math.max(ms, 6000) : ms);
+  // A toast with an action stays while the pointer or focus is on it.
+  let left = action ? Math.max(ms, 6000) : ms;
+  let started = Date.now();
+  let timer = setTimeout(() => t.remove(), left);
+  if (action) {
+    const pause = () => { clearTimeout(timer); left -= Date.now() - started; };
+    const resume = () => { started = Date.now(); timer = setTimeout(() => t.remove(), Math.max(left, 2000)); };
+    t.addEventListener("pointerenter", pause);
+    t.addEventListener("pointerleave", resume);
+    t.addEventListener("focusin", pause);
+    t.addEventListener("focusout", resume);
+  }
 }
 
 export function showError(e) { toast(e.message || String(e), { error: true, ms: 4500 }); }
@@ -429,13 +506,23 @@ export function formDialog({ title, fields = [], submit = "Save", body = null, o
         }
         if (f.value !== undefined) input.value = f.value;
         inputs[f.id] = input;
-        return h("div.field", h("label", { for: `dlg-${f.id}` }, f.label), input);
+        const field = h("div.field", h("label", { for: `dlg-${f.id}` }, f.label), input);
+        if (f.showIf) field.dataset.showIf = JSON.stringify(f.showIf);
+        return field;
       }),
       error,
       h("div.actions",
         h("button.btn", { type: "button", value: "cancel", on: { click: () => dlg.close("cancel") } }, submit ? "Cancel" : "Close"),
         okBtn),
     );
+    // A field shown only for one choice of another (a new list's name).
+    const conditional = [...form.querySelectorAll("[data-show-if]")];
+    const sync = () => conditional.forEach(f => {
+      const [other, value] = JSON.parse(f.dataset.showIf);
+      f.hidden = inputs[other].value !== value;
+    });
+    conditional.forEach(f => inputs[JSON.parse(f.dataset.showIf)[0]].addEventListener("change", sync));
+    sync();
     dlg.replaceChildren(form);
     dlg.setAttribute("aria-labelledby", "dlg-title");
     dlg.onclose = () => {

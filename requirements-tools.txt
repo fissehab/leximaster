@@ -1,0 +1,25 @@
+# Build, audio and test tools: build_dataset.py, tools/*.py, tests/.
+# Installs on top of requirements.txt. Exact versions, as tested.
+# System requirement (not pip): ffmpeg, for audio conversion
+# (build_dataset.py, tools/tts.py), e.g. `brew install ffmpeg`.
+-r requirements.txt
+
+# build_dataset.py
+anthropic[bedrock]==2.3.0
+httpx==0.28.1
+truststore==0.10.5
+wordfreq==3.1.1
+
+# tools/tts.py (Kokoro TTS + Whisper check)
+kokoro-onnx==0.6.1
+onnxruntime==1.31.1
+soundfile==0.14.0
+numpy==2.5.4
+faster-whisper==1.2.1
+
+# tools/build_site.py, tools/parity.py (also needs Chrome)
+playwright==1.64.1
+
+# tests/ (FastAPI's TestClient needs httpx)
+httpx2==2.16.0
+pytest==9.1.1

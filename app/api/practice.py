@@ -38,16 +38,17 @@ def avg_review_seconds(c) -> float:
 
 
 def new_words(c, clause: str, n: int) -> list:
-    """Unseen words for today's session: low-star words first (you flagged
-    them as unfamiliar), then unrated words, most frequent first (everyday
-    entries in a fixed mixed order).
+    """Unseen words for today's session: words you put in a list of your own
+    first, then low-star words (you flagged them as unfamiliar), then unrated
+    words, most frequent first (everyday entries in a fixed mixed order).
     Words with notes or examples to study come before bare dictionary words."""
     if n <= 0:
         return []
     # Everyday entries are all common, so frequency would serve "is this"
     # and "like" first; a fixed shuffle mixes the situations instead.
     then = "(w.id * 7919) % 10007" if clause == track_clause("everyday") else "w.freq_rank"
-    order = ("ORDER BY CASE WHEN COALESCE(u.stars,0) BETWEEN 1 AND 2 THEN 0 "
+    order = ("ORDER BY EXISTS (SELECT 1 FROM list_words lw WHERE lw.word_id = w.id) DESC, "
+             "CASE WHEN COALESCE(u.stars,0) BETWEEN 1 AND 2 THEN 0 "
              f"WHEN COALESCE(u.stars,0) = 0 THEN 1 ELSE 2 END, {then} ASC LIMIT ?")
     base = f"SELECT {WORD_COLUMNS} {WORD_FROM} WHERE s.word_id IS NULL AND COALESCE(u.known, 0) = 0 AND {clause} "
     rows = c.execute(base + "AND (w.enriched = 1 OR w.is_custom = 1 "
@@ -56,6 +57,20 @@ def new_words(c, clause: str, n: int) -> list:
     if not rows:  # nothing enriched yet: any word
         rows = c.execute(base + order, (n,)).fetchall()
     return rows
+
+
+def interleave(queue: list) -> list:
+    """New words spread through the reviews (one after every three) rather
+    than all at the end, so a long session doesn't end on a block of them."""
+    old = [q for q in queue if not q[1]]
+    new = [q for q in queue if q[1]]
+    out = []
+    while old or new:
+        out += old[:3]
+        old = old[3:]
+        if new:
+            out.append(new.pop(0))
+    return out
 
 
 @router.get("/review/queue")
@@ -105,6 +120,7 @@ def review_queue(extra: int = 0, track: str = "", count: int = 0):
                 new_rows = [r for pair in zip(a, b) for r in pair] + a[len(b):] + b[len(a):]
                 new_rows = new_rows[:n_new]
             queue += [(r, True) for r in new_rows]
+        queue = interleave(queue)
         if count:
             n_new_cards = sum(1 for _, is_new in queue if is_new)
             return {"total": len(queue), "due": len(queue) - n_new_cards, "new": n_new_cards,
@@ -133,16 +149,55 @@ def submit_review(word_id: int, body: ReviewIn):
     with db.tx() as c:
         if not c.execute("SELECT 1 FROM words WHERE id=?", (word_id,)).fetchone():
             raise HTTPException(404, "Word not found")
+        before = srs.get_card(c, word_id)
         if body.repeat:
             # The card was already rescheduled by its first grade today; a
             # re-pass is practice, so it's logged without touching the schedule.
-            new = srs.get_card(c, word_id) or {}
+            new = before or {}
         else:
             new = srs.review(c, word_id, body.grade)
-        c.execute("INSERT INTO review_log(word_id, mode, grade, correct, ms_taken) VALUES (?, 'review', ?, ?, ?)",
-                  (word_id, body.grade, int(body.grade >= 1), body.ms))
+        # A re-pass is logged as "repeat", so it counts once in the stats.
+        c.execute("INSERT INTO review_log(word_id, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?)",
+                  (word_id, "repeat" if body.repeat else "review", body.grade, int(body.grade >= 1), body.ms))
         bump_activity(c, reviews=1, new_words=int(body.is_new and not body.repeat))
-    return new
+    # The card as it was, so the grade can be undone.
+    return {**new, "previous": before}
+
+
+class CardIn(BaseModel):
+    ease: float = Field(ge=1.3, le=5)
+    interval_days: int = Field(ge=0, le=36500)
+    reps: int = Field(ge=0, le=10000)
+    lapses: int = Field(ge=0, le=10000)
+    due_date: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
+    last_reviewed: str | None = Field(default=None, pattern=r"^\d{4}-\d{2}-\d{2}$")
+
+
+class UndoIn(BaseModel):
+    previous: CardIn | None = None   # the card before the grade; none: it had no card
+    is_new: bool = False
+    repeat: bool = False
+
+
+@router.post("/review/{word_id}/undo")
+def undo_review(word_id: int, body: UndoIn):
+    """Take back the last grade given to this word today: its log entry goes,
+    and the card returns to what it was."""
+    with db.tx() as c:
+        last = c.execute("SELECT id FROM review_log WHERE word_id=? AND mode IN ('review', 'repeat') "
+                         "AND date(ts) = date('now', 'localtime') ORDER BY id DESC LIMIT 1", (word_id,)).fetchone()
+        if not last:
+            raise HTTPException(409, "There's no grade from today to undo.")
+        c.execute("DELETE FROM review_log WHERE id=?", (last["id"],))
+        if not body.repeat:
+            if body.previous:
+                p = body.previous
+                c.execute("UPDATE srs SET ease=?, interval_days=?, reps=?, lapses=?, due_date=?, last_reviewed=? "
+                          "WHERE word_id=?", (p.ease, p.interval_days, p.reps, p.lapses, p.due_date, p.last_reviewed, word_id))
+            else:
+                c.execute("DELETE FROM srs WHERE word_id=?", (word_id,))
+        bump_activity(c, reviews=-1, new_words=-int(body.is_new and not body.repeat))
+    return {"ok": True}
 
 
 # ----------------------------------------------------------------- answers & log
@@ -164,7 +219,7 @@ def record_answer(body: AnswerIn):
                   (body.word_id, body.mode, int(body.correct), body.ms))
         if not body.correct:
             misses_today = c.execute(
-                "SELECT COUNT(*) AS n FROM review_log WHERE word_id=? AND correct=0 AND mode != 'review' "
+                "SELECT COUNT(*) AS n FROM review_log WHERE word_id=? AND correct=0 AND mode NOT IN ('review', 'repeat') "
                 "AND date(ts) = date('now', 'localtime')", (body.word_id,)).fetchone()["n"]
             srs.penalise_miss(c, body.word_id, first_miss_today=misses_today <= 1, mode=body.mode)
     return {"ok": True}
@@ -314,10 +369,13 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                 if qtype == "word_meaning" and definition and len(others) >= 3:
                     return {"prompt": word, "ask": f"Who or what is {word}?" if name_kind else "What does this word mean?",
                             "answer": _option(word, definition),
-                            "options": [_option(o[0], o[2]) for o in others[:3]] + [_option(word, definition)]}
+                            "options": [_option(o[0], o[2]) for o in others[:3]] + [_option(word, definition)],
+                            # What a wrong pick was: the meaning of another word.
+                            "explain": {_option(o[0], o[2]): f"That's the meaning of “{o[0]}”." for o in others[:3]}}
                 if qtype == "meaning_word" and definition and len(others) >= 3:
                     return {"prompt": _mask(word, definition), "ask": "Which word fits this meaning?",
-                            "answer": word, "options": [o[0] for o in others[:3]] + [word]}
+                            "answer": word, "options": [o[0] for o in others[:3]] + [word],
+                            "explain": {o[0]: f"“{o[0]}” means: {o[2]}" for o in others[:3]}}
                 if qtype == "fill_blank" and len(others) >= 3:
                     examples = examples_for(data)
                     # Prefer sentences that use the word as the options show it.
@@ -325,7 +383,8 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                     sentences = [s for s in (blank_sentence(word, e) for e in usable) if s]
                     if sentences:
                         return {"prompt": random.choice(sentences), "ask": "Fill in the blank.",
-                                "answer": word, "options": [o[0] for o in others[:3]] + [word]}
+                                "answer": word, "options": [o[0] for o in others[:3]] + [word],
+                                "explain": {o[0]: f"“{o[0]}” means: {o[2]}" for o in others[:3]}}
                 if qtype in ("synonym", "antonym"):
                     rights = [r for r in _rights(data, qtype) if r.lower() != word.lower()]
                     if not rights:

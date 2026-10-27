@@ -1,8 +1,8 @@
-fastapi>=0.115
-uvicorn[standard]>=0.30
-httpx>=0.27
-anthropic[bedrock]>=2.3,<3
-wordfreq>=3.1
-pydantic>=2.7
-python-multipart>=0.0.9
-truststore>=0.9
+# Runtime: what the app (app/, run.sh) needs. Exact versions, as tested.
+# Build and tool scripts need requirements-tools.txt as well.
+fastapi==0.162.0
+starlette==1.10.0
+pydantic==2.14.1
+pydantic_core==2.50.1
+python-multipart==0.0.32
+uvicorn[standard]==0.54.0

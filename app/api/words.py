@@ -41,7 +41,7 @@ def word_detail(word_id: int):
             raise HTTPException(404, "Word not found")
         out = full(row)
         stats = c.execute("SELECT COUNT(*) AS n, COALESCE(SUM(correct), 0) AS ok FROM review_log "
-                          "WHERE word_id=? AND mode != 'review'", (word_id,)).fetchone()
+                          "WHERE word_id=? AND mode NOT IN ('review', 'repeat')", (word_id,)).fetchone()
         out["accuracy"] = {"attempts": stats["n"], "correct": stats["ok"]}
         out["lists"] = [dict(r) for r in c.execute(
             "SELECT l.id, l.name, lw.note FROM list_words lw JOIN lists l ON l.id = lw.list_id "

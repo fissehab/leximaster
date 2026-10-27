@@ -50,11 +50,20 @@ export const api = {
 };
 
 // Word list cache shared by Browse, Lists and the typeahead.
+// One request at a time: callers that arrive while it loads share it.
 let wordsCache = null;
-export async function allWords(force = false) {
-  if (!wordsCache || force) wordsCache = (await api.get("/api/words")).words;
-  return wordsCache;
+let wordsLoading = null;
+export function allWords(force = false) {
+  if (wordsCache && !force) return Promise.resolve(wordsCache);
+  if (!wordsLoading) {
+    wordsLoading = api.get("/api/words")
+      .then(res => (wordsCache = res.words))
+      .finally(() => { wordsLoading = null; });
+  }
+  return wordsLoading;
 }
+/** The word list if it's already loaded, else null (no request). */
+export const cachedWords = () => wordsCache;
 export function patchCachedWord(id, fields) {
   const w = wordsCache && wordsCache.find(x => x.id === id);
   if (w) Object.assign(w, fields);

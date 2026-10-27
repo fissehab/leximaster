@@ -1573,7 +1573,9 @@ def sense_score(definition: str, tags: set[str], label_map: dict | None = None) 
     score = 0
     if FORM_OF_RE.match(definition):
         score += 8
-    if any(re.search(rf"\b{re.escape(l)}\b", labels) for l in MARGINAL_LABELS):
+    regional = re.search(r"\b(us|american|north america)\b", labels) and \
+        re.search(r"\b(uk|british|britain|outside)\b", labels)  # "obsolete in the UK"
+    if not regional and any(re.search(rf"\b{re.escape(l)}\b", labels) for l in MARGINAL_LABELS):
         score += 5
     domain_words = [w for t in tags for w in DOMAIN_LABELS.get(t, [])]
     if labels and any(w in labels for w in domain_words):
@@ -2099,14 +2101,33 @@ def clean_word_list(items: list[str], headword: str) -> list[str]:
 PLACEHOLDER_RE = re.compile(r"rfdef|please add a definition|add a definition, then remove", re.I)
 
 
+# A sentence about British spelling ("Using the British spelling amortise")
+# must keep the British form it cites.
+SPELLING_TALK = re.compile(r"\b(British|Britain|UK|U\.K\.|Commonwealth|spelled|spelling|spellings|spells?)\b")
+_SENTENCES = re.compile(r"[^.!?;]*(?:[.!?;]+['\"’”)]*\s*|$)")
+
+
+def us_spelling_prose(text: str) -> str:
+    """us_spelling() for study-note prose, sentence by sentence, leaving
+    sentences that discuss British spelling as written."""
+    if not text or not SPELLING_TALK.search(text):
+        return us_spelling(text)
+    return "".join(s if SPELLING_TALK.search(s) else us_spelling(s) for s in _SENTENCES.findall(text))
+
+
 def us_spelling_deep(value):
-    """American spelling throughout a nested structure of strings."""
+    """American spelling throughout a nested structure of strings. A
+    distinction with a British spelling ("calibre", "the British spelling")
+    keeps its "vs" word."""
     if isinstance(value, str):
-        return us_spelling(value)
+        return us_spelling_prose(value)
     if isinstance(value, list):
         return [us_spelling_deep(v) for v in value]
     if isinstance(value, dict):
-        return {k: (v if k == "etymology" else us_spelling_deep(v)) for k, v in value.items()}
+        keep = {"etymology"}
+        if "vs" in value and SPELLING_TALK.search(str(value.get("note", ""))):
+            keep.add("vs")
+        return {k: (v if k in keep else us_spelling_deep(v)) for k, v in value.items()}
     return value
 
 
@@ -2181,6 +2202,9 @@ def prune_senses(meanings: list[dict], label_map: dict) -> list[dict]:
                                         " ".join(label_map.get(sense_key(definition), []))])).lower()
         if not labels:
             return False
+        if re.search(r"\b(us|american|north america)\b", labels) and \
+                re.search(r"\b(uk|british|britain|in the uk|outside)\b", labels):
+            return False  # "north america, obsolete in the UK": current American use
         if NOT_SHOWN_LABELS.search(labels):
             return True
         return bool(BRITISH_ONLY.search(labels)) and not re.search(r"\b(us|american|north america)\b", labels)
@@ -2202,6 +2226,310 @@ def rank_zipf(w: dict) -> float:
     if len(tokens) < 2:
         return w["zipf"]
     return min(zipf_frequency(x, "en") for x in tokens) - 1.0
+
+
+# ------------------------------------------------------------ display polish
+# Mechanical clean-ups of the assembled entries (October 2026 content review).
+
+POLISH_STATS: dict = {}
+RELATED_MIN_ZIPF = 2.0   # synonyms/antonyms rarer than this are left out ("roolie", "pacate")
+RELATED_MAX = 8
+_INFL_SUFFIXES = ("s", "es", "ed", "d", "ing", "er", "est", "ly", "ness")
+
+
+def _phrase_zipf(text: str) -> float:
+    toks = [t for t in re.split(r"[\s-]+", text.lower()) if t]
+    return min((zipf_frequency(t, "en") for t in toks), default=0.0)
+
+
+def _is_form_of(a: str, b: str) -> bool:
+    """a is b or an inflection/derivative of it ("peacefully" of "peaceful")."""
+    if a == b:
+        return True
+    for base in {b, b[:-1] if b.endswith("e") else b, b[:-1] + "i" if b.endswith("y") else b}:
+        if a.startswith(base) and a[len(base):] in _INFL_SUFFIXES:
+            return True
+    return len(b) > 3 and a.startswith(b) and len(a) - len(b) <= 3 and b[-1] == a[len(b)] and \
+        a[len(b) + 1:] in _INFL_SUFFIXES  # doubled consonant: "stop" -> "stopped"
+
+
+def clean_related(items: list[str], headword: str, by_frequency: bool = True,
+                  min_zipf: float = RELATED_MIN_ZIPF) -> list[str]:
+    """Synonyms or antonyms worth showing a learner: common words only (each
+    word of a phrase at Zipf >= 2), not the headword or its inflections, not a
+    phrase built on the headword ("axis deer", another sense), no duplicates;
+    single words first, then phrases, each most frequent first; at most
+    RELATED_MAX."""
+    head = headword.lower()
+    out, seen = [], set()
+    for it in items:
+        low = re.sub(r"[\s-]+", " ", it.lower().strip())  # "check-in" = "check in"
+        if not low or low in seen or low.startswith("-") or low.endswith("-") or \
+                low in ("uk", "us", "idiomatic", "figuratively", "informal", "slang"):
+            continue  # an affix ("over-") or a usage label that leaked into the list
+        seen.add(low)
+        toks = [t for t in re.split(r"[\s-]+", low) if t]
+        if _is_form_of(low, head) or _is_form_of(head, low):
+            continue
+        if len(toks) > 1 and any(_is_form_of(t, head) for t in toks):
+            continue
+        if re.fullmatch(r"[A-Z][a-z]+ [a-z]+", it):
+            continue  # a binomial or a name ("Axis axis")
+        z = _phrase_zipf(low)
+        if z < min_zipf:
+            continue
+        out.append(((len(toks) > 1, -z), it))
+    if by_frequency:
+        out.sort(key=lambda x: x[0])
+    return [it for _, it in out[:RELATED_MAX]]
+
+
+# Senses kept but marked for the learner: "(archaic) To cause a rowdy disturbance."
+SHOWN_MARGINAL = ["obsolete", "archaic", "dated", "rare", "poetic", "historical", "uncommon"]
+
+
+def label_marginal(meanings: list[dict], label_map: dict) -> list[dict]:
+    """Senses the dictionary marks archaic, obsolete, rare, dated, poetic or
+    historical get the label in front of the definition and in `label`, unless
+    the label is about another region ("obsolete in the UK")."""
+    out = []
+    for m in meanings:
+        senses = []
+        for sn in m["senses"]:
+            d = sn["definition"]
+            labels = [x.lower() for x in label_map.get(sense_key(d), [])]
+            lead = leading_labels(d)
+            joined = " ".join(labels) + " " + lead
+            regional = any(re.search(r"\b(uk|british|britain|us|american|north america|outside)\b", x)
+                           for x in labels)
+            marks = [x for x in SHOWN_MARGINAL if re.search(rf"\b{x}\b", joined)]
+            if marks and not regional:
+                label = ", ".join(marks[:2])
+                if not lead:
+                    d = f"({label}) {d}"
+                sn = {**sn, "definition": d, "label": label}
+            senses.append(sn)
+        out.append({**m, "senses": senses})
+    return out
+
+
+# Pronunciation tips: sentences about the pipeline's own transcription ("The
+# provided IPA … is incorrect") mean nothing to the learner.
+TIP_META = re.compile(
+    r"\b(provided|given|supplied|listed|dictionary(?:'s)?|app's|shown|above|original|source|your|item's)\s+"
+    r"(?:\w+\s+){0,2}(IPA|transcription|pronunciation)\b|"
+    r"\bIPA\b[^.]*\b(incorrect|wrong|corrected|error|mistaken|typo|not standard|does not match|doesn't match)\b|"
+    r"\b(in|from) the (supplied|given|provided|listed|dictionary) (IPA|transcription)|"
+    r"\bthe IPA (here|given|shown|above)\b", re.I)
+_TIP_SENTENCE = re.compile(r"[^.!?]+(?:[.!?]+['\"’”]?|$)")
+_ORDINALS = ["first", "second", "third", "fourth", "fifth", "sixth"]
+
+
+def clean_tip(tip: str, respelling: str) -> str:
+    """Drop meta sentences; "the only syllable" in a word of several syllables
+    becomes the stressed syllable's ordinal, read from the respelling."""
+    if not tip:
+        return tip
+    kept = [s for s in _TIP_SENTENCE.findall(tip) if not TIP_META.search(s)]
+    tip = re.sub(r"\s{2,}", " ", "".join(kept)).strip()
+    parts = [p for p in re.split(r"[-\s]+", respelling or "") if p]
+    stressed = next((i for i, p in enumerate(parts) if p.isupper() and len(p) > 1), None)
+    if len(parts) > 1 and stressed is not None and stressed < len(_ORDINALS) and \
+            re.search(r"only syllable(?! with)", tip):
+        ordinal = _ORDINALS[stressed]
+        tip = re.sub(r"\bthe only syllable( that matters| after the first)?", f"the {ordinal} syllable", tip)
+        tip = re.sub(r"\bits only syllable\b", f"its {ordinal} syllable", tip)
+        tip = re.sub(r",? which is the (first|second|third)( syllable of the word)?(?=[.;])", "", tip)
+    return tip
+
+
+# Displayed IPA: General American, broad transcription.
+NON_GA_PHONETIC = re.compile(
+    r"\([ɹr]\)|[̝̞̯̠̈]|ɛə|eə|ʊə(?!ɹ)|ɐ|ʌi|æʊ|ɘ|ɵ|ʉ|[ɑɔɜ]ː|əʊ")
+
+
+def normalize_ipa(ipa: str) -> str:
+    """r -> ɹ, no tie bars or non-syllabic marks, first variant only."""
+    if not ipa:
+        return ipa
+    ipa = ipa.split(",")[0].strip()
+    if ipa.startswith("/") and not ipa.endswith("/"):
+        ipa += "/"
+    if ipa.startswith("[") and not ipa.endswith("]"):
+        ipa += "]"
+    ipa = re.sub(r"\(([ɹr])\)", "ɹ", ipa)
+    ipa = ipa.replace("͡", "").replace("͜", "").replace("̯", "").replace("r", "ɹ")
+    return re.sub(r"\s+(?=[/\]]$)", "", ipa)
+
+
+def _syllables(ipa: str) -> int:
+    n, prev = 0, False
+    for ch in re.sub(r"[ˈˌ./\[\] ]", "", ipa):
+        v = ch in _IPA_VOWELS or ch in "ɚɝ"
+        n += v and not prev
+        prev = v
+    return n + len(re.findall(r"[lmn]̩", ipa))
+
+
+def phonetic_needs_study_ipa(w: dict) -> bool:
+    p = w["phonetic"]
+    if not p:
+        return True
+    word = w["word"].lower()
+    if re.search(r"(er|ar|or|our|ure|ere|ore|ire|ear|eer|air)$", word) and re.search(r"[əʊɪɛ][/\]]$", p):
+        return True  # non-rhotic ending: "amber" /ˈæm.bə/
+    if NON_GA_PHONETIC.search(p):
+        return True
+    return "ˈ" not in p and " " not in p.strip("/[]") and _syllables(p) > 1
+
+
+def polish_ipa(w: dict) -> str:
+    """The displayed IPA, replaced by the study notes' General American IPA
+    when ours is empty, non-rhotic, narrow or regional, or has no stress mark
+    (and the notes' respelling agrees with it, as in assemble's own check);
+    returns what was done ("study", "normalized" or "")."""
+    pron = (w.get("nuance") or {}).get("pronunciation") or {}
+    study = normalize_ipa(pron.get("ipa", "").strip())
+    before = w["phonetic"]
+    if phonetic_needs_study_ipa(w) and study.startswith("/") and study != normalize_ipa(before) and \
+            respelling_matches_ipa(pron.get("respelling", ""), study) is not False:
+        tmp = {**w, "phonetic": study}
+        if not NON_GA_PHONETIC.search(study) and not phonetic_needs_study_ipa(tmp):
+            w["phonetic"], w["phonetic_source"] = us_style(study), "reviewed"
+            return "study"
+    w["phonetic"] = normalize_ipa(before)
+    return "normalized" if w["phonetic"] != before else ""
+
+
+_NEG = re.compile(r"^(un|in|im|il|ir|en|em|dis|non|mis|anti|counter|over|under|re|de|pre)")
+
+
+def _common_run(a: str, b: str) -> int:
+    """Length of the longest stretch of letters a and b share."""
+    best = 0
+    for i in range(len(a)):
+        for j in range(i + best + 1, len(a) + 1):
+            if a[i:j] in b:
+                best = j - i
+            else:
+                break
+    return best
+
+
+def _stem_pair(x: str, y: str, strict: bool) -> bool:
+    if len(y) <= 3 or len(x) <= 3:
+        short, long_ = sorted((x, y), key=len)
+        return not strict and len(short) >= 2 and (long_.startswith(short) or long_.endswith(short))
+    if x in y or y in x or (not strict and _common_run(x, y) >= 6):
+        return True
+    for a in {x, _NEG.sub("", x)}:
+        for b in {y, _NEG.sub("", y)}:
+            n = 0
+            while n < min(len(a), len(b)) and a[n] == b[n]:
+                n += 1
+            if n >= 4 or (n >= 3 and not strict and n >= min(len(a), len(b)) - 2):
+                return True
+    return False
+
+
+def shares_stem(member: str, headword: str) -> bool:
+    """A word-family member must share a stem with the headword (or one word
+    of a phrase): one containing the other, a common beginning of 4+ letters
+    ("receive", "reception"), or the same after a prefix ("inability",
+    "ability"). A capitalized member of a lowercase word needs a real stem
+    ("dan" is not "Danish")."""
+    base = member.split(" (")[0].strip()
+    strict = base[:1].isupper() and not headword[:1].isupper()
+    xs = [t for t in re.split(r"[\s-]+", base.lower()) if len(t) >= 2]
+    ys = [t for t in re.split(r"[\s-]+", headword.lower()) if len(t) >= 2 and t not in _STOP] or \
+        [headword.lower()]
+    return any(_stem_pair(x, y, strict) for x in xs for y in ys)
+
+
+_ARTICLE = re.compile(r"(?:(?<=^)|(?<=[.!?:;]\s)|(?<=[\"'“]))A (?=[aeio])|(?<![\w'’-])a (?=(?:[aeio]|un(?!i|an|ary))[\w-])")
+
+
+def fix_articles(text: str) -> str:
+    """"a idea" -> "an idea" (not "a one-time", "a user", "a European", nor
+    the letter a, nor a note that is itself about the article)."""
+    if not text or re.search(r"\b(say|use|write) an\b|vowel sound", text):
+        return text
+
+    def sub(m: re.Match) -> str:
+        nxt = re.match(r"[\w'-]+", text[m.end():]).group(0).lower()
+        if re.match(r"(as|in|of|is|and|at|or|are|into|also|instead|it|an|if|on|ok|ai|api|auc|url)$", nxt) or \
+                re.match(r"(eu|one|once|ewe|uni|use|usu|uti|ura|uri|ure|ut|ub)", nxt) or \
+                text[m.end() + len(nxt):m.end() + len(nxt) + 1] in "'’\"" or \
+                text[max(0, m.start() - 1):m.start()] in "'’\"":
+            return m.group(0)
+        return m.group(0)[0] + "n "
+    return _ARTICLE.sub(sub, text)
+
+
+def _map_strings(value, fn, skip=("etymology",)):
+    if isinstance(value, str):
+        return fn(value)
+    if isinstance(value, list):
+        return [_map_strings(v, fn, skip) for v in value]
+    if isinstance(value, dict):
+        return {k: (v if k in skip else _map_strings(v, fn, skip)) for k, v in value.items()}
+    return value
+
+
+def polish_entry(w: dict, stats: dict) -> None:
+    """Display clean-ups: synonyms, IPA, tips, distinctions, word family,
+    connotation and article errors (see the functions above)."""
+    def count(name: str, changed: bool) -> None:
+        if changed:
+            stats[name] = stats.get(name, 0) + 1
+    word = w["word"]
+    for field in ("synonyms", "antonyms"):
+        new = clean_related(w.get(field) or [], word)
+        count(field, new != w.get(field))
+        w[field] = new
+        for m in w["meanings"]:
+            if m.get(field):
+                new = clean_related(m[field], word)
+                count(f"meaning {field}", new != m[field])
+                m[field] = new
+            for sn in m["senses"]:
+                if sn.get(field):
+                    sn[field] = clean_related(sn[field], word)
+    count(f"ipa {polish_ipa(w)}", True)
+    n = w.get("nuance")
+    if not n:
+        return
+    if n.get("antonyms"):
+        # The study notes' own antonyms were chosen by hand: same checks, but
+        # rare words stay ("decorous", "heteroscedasticity") and so does the order.
+        new = clean_related(n["antonyms"], word, by_frequency=False, min_zipf=0)
+        count("note antonyms", new != n["antonyms"])
+        n["antonyms"] = new
+    pron = n.get("pronunciation") or {}
+    if pron.get("tip"):
+        new = clean_tip(pron["tip"], pron.get("respelling", ""))
+        count("tip", new != pron["tip"])
+        pron["tip"] = new
+    if n.get("distinctions"):
+        heads = {word.lower(), w["key"].replace("-", " ")}
+        new = [d for d in n["distinctions"] if (d.get("vs") or "").strip().lower() not in heads]
+        count("distinctions vs headword", len(new) != len(n["distinctions"]))
+        n["distinctions"] = new
+    if n.get("word_family"):
+        new = [x for x in n["word_family"] if shares_stem(x, word)]
+        stats["word family members dropped"] = stats.get("word family members dropped", 0) + \
+            len(n["word_family"]) - len(new)
+        n["word_family"] = new
+    c = n.get("connotation") or ""
+    if c[:1].islower():
+        n["connotation"] = c[0].upper() + c[1:]
+        count("connotation capitalized", True)
+    new = _map_strings(n, fix_articles)
+    count("article fixes (notes)", new != n)
+    w["nuance"] = n = new
+    conv = [{**e, "text": fix_articles(e["text"])} for e in w.get("conversation") or []]
+    count("article fixes (conversation)", conv != (w.get("conversation") or []))
+    w["conversation"] = conv
 
 
 def apply_fixes(words: list[dict]) -> None:
@@ -2343,6 +2671,7 @@ def assemble(quiet: bool = False) -> dict:
                 else:
                     continue
         meanings = rank_senses(meanings, set(c["tags"]), label_map)
+        meanings = label_marginal(meanings, label_map)
         if all(FORM_OF_RE.match(sn["definition"]) for m in meanings for sn in m["senses"]):
             if k not in fallback_meanings:
                 continue  # nothing but "alternative spelling of ...": not an entry worth showing
@@ -2448,9 +2777,29 @@ def assemble(quiet: bool = False) -> dict:
         t = tts.get(w["key"])
         if not w["has_audio"] and t and (DATA / t["file"]).exists():
             w["tts"] = {"file": t["file"], "voice": t["voice"]}
-    dropped = {norm_key(x) for path in sorted((SEEDS / "drop").glob("*.txt")) for x, _ in load_seed_file(path)}
+    global POLISH_STATS
+    POLISH_STATS = {}
+    for w in words:
+        polish_entry(w, POLISH_STATS)
+    # seeds/drop: "key" leaves an entry out; "key | kept-key" also records the
+    # dropped spelling on the kept entry ("also": ["naivety"]) with its domains.
+    drops = [(norm_key(x), norm_key(g) if g else "") for path in sorted((SEEDS / "drop").glob("*.txt"))
+             for x, g in load_seed_file(path)]
+    dropped = {x for x, _ in drops}
+    by_key = {w["key"]: w for w in words}
+    for x, kept in drops:
+        if kept and x in by_key and kept in by_key:
+            k_ = by_key[kept]
+            k_.setdefault("also", []).append(by_key[x]["word"])
+            k_["domains"] = sorted(set(k_["domains"]) | set(by_key[x]["domains"]))
     words = [w for w in words if w["key"] not in dropped]
     apply_fixes(words)
+    for w in words:  # a hand-fixed "(archaic) …" definition gets its label too
+        for m in w["meanings"]:
+            for sn in m["senses"]:
+                lead = leading_labels(sn["definition"])
+                if lead and "label" not in sn and any(re.search(rf"\b{x}\b", lead) for x in SHOWN_MARGINAL):
+                    sn["label"] = lead
     # Frequency rank within the dataset (1 = most common), the order new
     # words are studied in.
     for rank, w in enumerate(sorted(words, key=lambda w: -rank_zipf(w)), start=1):

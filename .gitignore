@@ -10,3 +10,7 @@ __pycache__/
 
 # Generated data, your progress database and recordings (the site's copy is in docs/)
 /data/
+
+# Snapshots from `make backup`, and test caches
+/backups/
+.pytest_cache/

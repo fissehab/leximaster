@@ -7,13 +7,15 @@ import sqlite3
 import threading
 import time
 from contextlib import contextmanager
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 # LEXIMASTER_DB points the app at another database (e.g. a copy for testing).
 DB_PATH = Path(os.environ.get("LEXIMASTER_DB") or DATA / "leximaster.db")
-WORDS_JSON = DATA / "words.json"
+# LEXIMASTER_WORDS points at another word list (the tests use a small sample).
+WORDS_JSON = Path(os.environ.get("LEXIMASTER_WORDS") or DATA / "words.json")
 RECORDINGS = DATA / "recordings"
 
 SCHEMA = """
@@ -134,14 +136,77 @@ def tx():
         conn.close()
 
 
+# ------------------------------------------------------------------ migrations
+# The schema's version lives in PRAGMA user_version. SCHEMA above always
+# describes the newest layout for a fresh database (CREATE ... IF NOT EXISTS);
+# an older database is brought forward by the steps below, one version at a
+# time. To change the schema: update SCHEMA, bump SCHEMA_VERSION, and add a
+# step that turns version N-1 into N, e.g.
+#     2: ["ALTER TABLE srs ADD COLUMN stability REAL"],
+# Steps run inside the startup transaction, so a failed step changes nothing.
+SCHEMA_VERSION = 1
+MIGRATIONS: dict[int, list[str]] = {
+    1: [],  # the baseline: the schema as first released (created by SCHEMA)
+}
+
+
+def schema_version(c: sqlite3.Connection) -> int:
+    return c.execute("PRAGMA user_version").fetchone()[0]
+
+
+def migrate(c: sqlite3.Connection) -> int:
+    """Run the steps between the database's version and SCHEMA_VERSION."""
+    current = schema_version(c)
+    if current > SCHEMA_VERSION:
+        raise RuntimeError(f"{DB_PATH} was written by a newer LexiMaster (schema {current}, "
+                           f"this app knows {SCHEMA_VERSION}); update the app.")
+    for version in range(current + 1, SCHEMA_VERSION + 1):
+        for statement in MIGRATIONS[version]:
+            c.execute(statement)
+        c.execute(f"PRAGMA user_version = {int(version)}")
+    return SCHEMA_VERSION
+
+
 def init() -> None:
     DATA.mkdir(parents=True, exist_ok=True)
     RECORDINGS.mkdir(parents=True, exist_ok=True)
     with tx() as c:
         c.executescript(SCHEMA)
+        migrate(c)
         for k, v in DEFAULT_SETTINGS.items():
             c.execute("INSERT OR IGNORE INTO settings(key, value) VALUES (?, ?)", (k, v))
     sync_words()
+
+
+# --------------------------------------------------------------------- backups
+BACKUPS_KEPT = 7
+
+
+def backup_daily(keep: int = BACKUPS_KEPT) -> Path | None:
+    """Snapshot the database once a day into backups/ next to it
+    (backups/YYYY-MM-DD.db, a consistent copy made with VACUUM INTO) and keep
+    the newest `keep`. Runs at startup, before any migration. Returns the new
+    snapshot, or None when there was nothing to do."""
+    if not DB_PATH.exists() or DB_PATH.stat().st_size == 0:
+        return None
+    folder = DB_PATH.parent / "backups"
+    target = folder / f"{date.today().isoformat()}.db"
+    made = None
+    if not target.exists():
+        folder.mkdir(parents=True, exist_ok=True)
+        partial = target.with_suffix(".db.partial")
+        partial.unlink(missing_ok=True)
+        conn = sqlite3.connect(DB_PATH, timeout=30)
+        try:
+            conn.execute("VACUUM INTO ?", (str(partial),))
+        finally:
+            conn.close()
+        partial.replace(target)
+        made = target
+    snapshots = sorted(p for p in folder.glob("????-??-??.db") if p.is_file())
+    for old in snapshots[:-keep] if keep > 0 else []:
+        old.unlink(missing_ok=True)
+    return made
 
 
 def sync_words(force: bool = False) -> int:
@@ -160,7 +225,7 @@ def sync_words(force: bool = False) -> int:
     for w in payload.get("words", []):
         data = {k: w.get(k) for k in ("phonetic", "audio", "meanings", "nuance", "source",
                                       "synonyms", "antonyms", "etymology", "variant_of",
-                                      "conversation", "name_kind", "tts")}
+                                      "conversation", "name_kind", "tts", "also")}
         rows.append((w["key"], w["word"], w.get("freq_rank"), w.get("zipf"),
                      json.dumps(w.get("domains", [])), int(bool(w.get("has_audio"))),
                      int(w.get("nuance") is not None), json.dumps(data, ensure_ascii=False)))

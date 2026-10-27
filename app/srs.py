@@ -7,12 +7,15 @@ and the starting ease reflects how well the word is already known.
 """
 from __future__ import annotations
 
+import random
 import sqlite3
 from datetime import date, timedelta
 
 QUALITY = {0: 1, 1: 3, 2: 4, 3: 5}
 MIN_EASE = 1.3
 LAPSE_EASE = 0.2                           # ease lost when a learned word is forgotten
+LAPSE_KEEP = 0.2                           # share of the interval a forgotten word keeps
+GOOD_PULL = 0.05                           # "Good" moves ease this share of the way back to 2.5
 STAR_INTERVAL_CAP = {1: 4, 2: 7}          # days
 STAR_START_EASE = {0: 2.5, 1: 2.2, 2: 2.35, 3: 2.5, 4: 2.65, 5: 2.8}
 
@@ -45,8 +48,22 @@ def ensure_card(c: sqlite3.Connection, word_id: int) -> dict:
     return get_card(c, word_id)
 
 
+def fuzz(interval: int) -> int:
+    """±5% on intervals over 3 days, so words learned together don't stay due together."""
+    if interval <= 3:
+        return interval
+    spread = max(1, round(interval * 0.05))
+    return interval + random.randint(-spread, spread)
+
+
 def schedule(card: dict, grade: int, stars: int) -> dict:
-    """Pure SM-2 step; returns the updated card fields."""
+    """SM-2 step; returns the updated card fields.
+
+    Adjustments to plain SM-2: a lapse keeps a fifth of the old interval (the
+    word comes back tomorrow, then grows from there instead of from zero);
+    "Good" eases ease back toward 2.5, so it can recover after hard days; a
+    word recalled late gets credit for the extra days it survived; intervals
+    over 3 days get ±5% fuzz."""
     q = QUALITY[grade]
     ease, interval, reps, lapses = card["ease"], card["interval_days"], card["reps"], card["lapses"]
     if q < 3 and reps == 0 and lapses == 0 and not card.get("last_reviewed"):
@@ -55,22 +72,33 @@ def schedule(card: dict, grade: int, stars: int) -> dict:
         return {"ease": ease, "interval_days": 1, "reps": 0, "lapses": 0,
                 "due_date": iso(today() + timedelta(days=1)), "last_reviewed": iso(today())}
     if q < 3:
-        reps = 0
         lapses += 1
-        interval = 1
-    else:
-        if reps == 0:
-            interval = 1 if grade == 1 else (4 if grade == 3 else 1)
-        elif reps == 1:
-            interval = 3 if grade == 1 else (6 if grade == 2 else 8)
-        else:
-            factor = {1: 1.2, 2: ease, 3: ease * 1.3}[grade]
-            interval = max(interval + 1, round(interval * factor))
-        reps += 1
-    if q < 3:
         ease = max(MIN_EASE, ease - LAPSE_EASE)   # SM-2's own formula takes 0.54 and soon pins ease at the floor
+        if reps >= 2:
+            interval, reps = max(1, round(interval * LAPSE_KEEP)), 2
+        else:
+            interval, reps = 1, 0
+        cap = STAR_INTERVAL_CAP.get(stars)
+        if cap:
+            interval = min(interval, cap)
+        # Back tomorrow whatever the kept interval: the next good review grows from it.
+        return {"ease": round(ease, 3), "interval_days": interval, "reps": reps, "lapses": lapses,
+                "due_date": iso(today() + timedelta(days=1)), "last_reviewed": iso(today())}
+    if reps == 0:
+        interval = 1 if grade == 1 else (4 if grade == 3 else 1)
+    elif reps == 1:
+        interval = 3 if grade == 1 else (6 if grade == 2 else 8)
     else:
-        ease = max(MIN_EASE, ease + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))
+        overdue = 0
+        if card.get("due_date"):
+            overdue = max(0, (today() - date.fromisoformat(card["due_date"])).days)
+        base = interval + {1: 0, 2: overdue / 2, 3: overdue}[grade]
+        factor = {1: 1.2, 2: ease, 3: ease * 1.3}[grade]
+        interval = fuzz(max(interval + 1, round(base * factor)))
+    reps += 1
+    ease = max(MIN_EASE, ease + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))
+    if grade == 2:
+        ease += GOOD_PULL * (2.5 - ease)
     cap = STAR_INTERVAL_CAP.get(stars)
     if cap:
         interval = min(interval, cap)
@@ -89,15 +117,19 @@ def review(c: sqlite3.Connection, word_id: int, grade: int) -> dict:
 
 
 def penalise_miss(c: sqlite3.Connection, word_id: int, first_miss_today: bool, mode: str = "quiz") -> None:
-    """A wrong answer in a quiz or game: the word is due today. Only a quiz
-    miss (a wrong meaning) lowers ease, once per word per day, so several
-    misclicks in one round don't compound; a miss in listening or matching is
-    about hearing or speed. A word never studied before gets a fresh card and
-    arrives as a new word."""
+    """A wrong answer in a quiz or game: the word is due today. A quiz miss (a
+    wrong meaning) also halves the interval and lowers ease, once per word per
+    day, so several misclicks in one round don't compound. A miss in
+    listening, matching or flashcards is about hearing or speed: the word comes
+    up today, and a good review picks its interval up again. A word never
+    studied before gets a fresh card and arrives as a new word."""
     card = ensure_card(c, word_id)
-    ease = max(MIN_EASE, card["ease"] - 0.2) if first_miss_today and card["reps"] and mode == "quiz" else card["ease"]
-    c.execute("UPDATE srs SET due_date=?, ease=?, interval_days=MIN(interval_days, 1) WHERE word_id=?",
-              (iso(today()), ease, word_id))
+    interval, ease = card["interval_days"], card["ease"]
+    if first_miss_today and card["reps"] and mode == "quiz":
+        ease = max(MIN_EASE, ease - 0.2)
+        interval = max(1, interval // 2)
+    c.execute("UPDATE srs SET due_date=?, ease=?, interval_days=? WHERE word_id=?",
+              (iso(today()), ease, interval, word_id))
 
 
 def on_stars_changed(c: sqlite3.Connection, word_id: int, stars: int) -> None:

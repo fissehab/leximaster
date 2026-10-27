@@ -22,8 +22,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from tools.check_examples import uses_entry  # noqa: E402
-from build_dataset import (ENRICH_CACHE, FORM_OF_RE, WORDS_JSON, _flat, _similar,  # noqa: E402
-                           append_jsonl, respelling_matches_ipa, sense_dup, us_spelling)
+from build_dataset import (ENRICH_CACHE, FORM_OF_RE, TIP_META, WORDS_JSON, _flat, _similar,  # noqa: E402
+                           append_jsonl, respelling_matches_ipa, sense_dup, us_spelling_deep)
 
 TRADITIONS = {"Eastern Orthodox", "Roman Catholic", "Protestant"}
 
@@ -40,8 +40,8 @@ def note_problems(w: dict) -> list[str]:
     for field in ("core", "usage_note", "collocations", "examples", "common_mistakes"):
         if not n.get(field):
             out.append(f"empty {field}")
-    text = json.dumps({k: v for k, v in n.items() if k != "etymology"}, ensure_ascii=False)
-    if us_spelling(text) != text:
+    # The build's own rule: sentences about British spelling keep it.
+    if us_spelling_deep(n) != n:
         out.append("British spelling")
     ex = n.get("examples") or {}
     missing = [k for k, s in ex.items() if s and not uses_entry(w["word"], s)]
@@ -95,6 +95,14 @@ def display_problems(w: dict) -> list[str]:
     reg = n.get("register") or []
     if "neutral" in reg and len(reg) > 1:
         out.append("neutral beside another register")
+    if any(len(w.get(f) or []) > 8 for f in ("synonyms", "antonyms")):
+        out.append("more than 8 synonyms or antonyms")
+    if any((d.get("vs") or "").strip().lower() == word for d in n.get("distinctions") or []):
+        out.append("distinction with the headword itself")
+    if TIP_META.search((n.get("pronunciation") or {}).get("tip", "")):
+        out.append("pipeline talk in the pronunciation tip")
+    if re.search(r"\u0361|\u035c|\([ɹr]\)|,", w.get("phonetic", "")):
+        out.append("tie bar, optional r or variants in the IPA")
     conv = [e["text"] for e in w.get("conversation") or []]
     if any(_similar(a, b) for i, a in enumerate(conv) for b in conv[i + 1:]):
         out.append("near-duplicate conversation lines")

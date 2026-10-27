@@ -1,7 +1,7 @@
 // My lists: named lists, words with personal notes, and words of your own.
 
 import { allWords, api, invalidateWords } from "../api.js";
-import { confirmDialog, emptyState, formDialog, h, icon, pageHead, playButton, showError, toast } from "../ui.js";
+import { confirmDialog, debounced, emptyState, formDialog, h, icon, pageHead, playButton, showError, toast } from "../ui.js";
 
 let lists = [];
 let activeId = null;
@@ -12,7 +12,8 @@ async function loadLists() {
   els.index.replaceChildren(
     ...lists.map(l => h("button", { type: "button", "aria-current": String(l.id === activeId), on: { click: () => open(l.id) } },
       h("span", l.name), h("span.n", l.count))),
-    ...(lists.length ? [] : [h("p.muted", { style: { padding: "10px" } }, "No lists yet.")]));
+  );
+  els.index.hidden = !lists.length;   // the empty state on the right says it once
 }
 
 async function createList() {
@@ -27,13 +28,14 @@ async function createList() {
 async function open(id) {
   activeId = id;
   history.replaceState(null, "", `#lists/${id}`);
-  await loadLists();
+  try { await loadLists(); } catch (e) { return showError(e); }
   let data;
   try { data = await api.get(`/api/lists/${id}`); } catch (e) { return showError(e); }
   const rows = data.words.map(w => {
     const note = h("input.input", { type: "text", value: w.list_note || "", placeholder: "Add a note", "aria-label": `Note for ${w.word}` });
-    let t;
-    note.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => api.patch(`/api/lists/${id}/words/${w.id}`, { note: note.value }).catch(showError), 500); });
+    const save = debounced(() => api.patch(`/api/lists/${id}/words/${w.id}`, { note: note.value }), 500);
+    note.addEventListener("input", save);
+    note.addEventListener("blur", () => save.now());
     return h("div.lw-row",
       h("div", { style: { display: "flex", alignItems: "center", gap: "10px", minWidth: 0 } },
         playButton(w, { small: true }),
@@ -45,7 +47,14 @@ async function open(id) {
           try { await api.del(`/api/words/${w.id}`); invalidateWords(); open(id); } catch (e) { showError(e); }
         } } }, "Delete word") : null,
         h("button.btn.btn-quiet", { type: "button", title: "Remove from list", "aria-label": `Remove ${w.word} from this list`, on: { click: async () => {
-          try { await api.del(`/api/lists/${id}/words/${w.id}`); open(id); } catch (e) { showError(e); }
+          try {
+            await api.del(`/api/lists/${id}/words/${w.id}`);
+            open(id);
+            toast(`Removed “${w.word}”`, { action: ["Undo", async () => {
+              await api.post(`/api/lists/${id}/words`, { word_id: w.id, note: note.value });
+              if (activeId === id) open(id);
+            }] });
+          } catch (e) { showError(e); }
         } } }, icon("trash"))),
       h("p.lw-def", w.def),
       h("div.lw-note", note));
@@ -54,7 +63,7 @@ async function open(id) {
     h("div.page-head", { style: { marginBottom: "14px" } },
       h("div", h("h2", { style: { font: "600 22px/1.2 var(--font-word)" } }, data.name), h("p.sub", `${data.words.length} word${data.words.length === 1 ? "" : "s"}`)),
       h("div.toolbar",
-        h("button.btn", { type: "button", on: { click: () => (practice(id)) } }, "Practice with flashcards"),
+        data.words.length ? practiceMenu(id) : null,
         h("button.btn", { type: "button", on: { click: () => rename(data) } }, "Rename"),
         h("button.btn.btn-quiet", { type: "button", on: { click: () => remove(data) } }, icon("trash"), "Delete list"))),
     adder(id),
@@ -62,11 +71,20 @@ async function open(id) {
       : h("div.panel.empty", { style: { marginTop: "14px" } }, h("p", "This list is empty. Search above to add words from the lexicon, or add a word of your own.")));
 }
 
-function practice(id) {
+/** Practise just this list in any game: the game's scope and rating are
+ * cleared so the whole list is in play. */
+function practice(id, tab) {
   import("../state.js").then(({ loadFilter, saveFilter }) => {
-    saveFilter("flashcards", { ...loadFilter("flashcards"), list_id: String(id) });
-    location.hash = "#flashcards";
+    saveFilter(tab, { ...loadFilter(tab), list_id: String(id), stars: "", domain: "" });
+    location.hash = `#${tab}`;
   });
+}
+function practiceMenu(id) {
+  return h("details.menu-btn",
+    h("summary.btn.btn-primary", "Practice this list"),
+    h("div.menu-pop", { role: "group", "aria-label": "Practice this list with" },
+      [["flashcards", "Flashcards"], ["quiz", "Quiz"], ["matching", "Matching"], ["listen", "Listen"]].map(([tab, label]) =>
+        h("button.menu-item", { type: "button", on: { click: () => practice(id, tab) } }, label))));
 }
 
 async function rename(data) {

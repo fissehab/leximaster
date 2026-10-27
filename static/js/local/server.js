@@ -123,9 +123,30 @@ async function boot() {
   await withWriteLock(async () => {
     const state = await readState();
     const migrated = await migrateV1(state);
-    rebuild(state);
-    if (migrated) await persist();
+    if ((await safeRebuild(state) || migrated) && !newerFormat) await persist();
   });
+}
+
+// Saved by a newer version of the app (another tab already updated): this
+// tab reads it but never writes over it, or the newer data would be lost.
+let newerFormat = false;
+let notice = "";
+// A saved snapshot that can't be read is set aside (kept under its own key),
+// and progress is rebuilt from the answer log, which is saved answer by
+// answer. Returns true when it had to do that (the caller saves the result).
+async function safeRebuild(state) {
+  newerFormat = !!(state.saved && state.saved.format > FORMAT);
+  try {
+    rebuild(state);
+    return false;
+  } catch (e) {
+    console.error(e);
+    try { await idbPut("state", state.saved, `progress_damaged_${Date.now()}`); } catch (err) { /* keep going */ }
+    rebuild({ ...state, saved: null });
+    notice = "Your saved progress snapshot was damaged. LexiMaster rebuilt it from your answer history " +
+      "(review dates and ratings may be reset); the damaged copy is kept on this device.";
+    return true;
+  }
 }
 
 // Detail data for a word: a shard file for dictionary words (the few most
@@ -167,6 +188,8 @@ let dirty = false;
 let persistedLogId = 0;           // review_log rows up to this id are saved
 let orphans = noOrphans();
 let askedPersist = false;
+const logKeys = new Map();        // review_log id -> its saved key (this tab's saves)
+let pendingLogDeletes = [];       // saved answers taken back, removed at the next save
 const channel = typeof BroadcastChannel === "function" ? new BroadcastChannel("leximaster") : null;
 if (channel) channel.onmessage = e => { if (!e.data || e.data.rev !== localRev) dirty = true; };
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") dirty = true; });
@@ -192,7 +215,7 @@ async function readState() {
 // snapshot, and continue in the new format. Returns whether it migrated.
 async function migrateV1(state) {
   const old = state.saved && (state.saved.progress || state.saved);
-  if (!old || state.saved.format === FORMAT) return false;
+  if (!old || (state.saved.format && state.saved.format !== 1)) return false;   // only the first format migrates
   const have = new Map();
   for (const r of state.log) have.set(logSig(r), (have.get(logSig(r)) || 0) + 1);
   const add = [];
@@ -255,8 +278,7 @@ async function syncIfStale() {
   if (rev !== localRev) {
     const state = await readState();
     const migrated = await migrateV1(state);   // a tab still running the old version saved
-    rebuild(state);
-    if (migrated) await persist();
+    if ((await safeRebuild(state) || migrated) && !newerFormat) await persist();
   }
   dirty = false;
 }
@@ -269,10 +291,16 @@ async function persist() {
   const rev = localRev + 1;
   await idbTx("state", "readwrite", s => {
     s.put({ format: FORMAT, progress, meta }, "progress");
-    for (const { id, ...row } of newLog) s.put(row, newLogKey(row.ts));
+    for (const { id, ...row } of newLog) {
+      const k = newLogKey(row.ts);
+      logKeys.set(id, k);
+      s.put(row, k);
+    }
+    for (const k of pendingLogDeletes) s.delete(k);
     s.put(rev, "rev");
   });
   if (newLog.length) persistedLogId = newLog[newLog.length - 1].id;
+  pendingLogDeletes = [];
   localRev = rev;
   if (channel) channel.postMessage({ rev });
   if (!askedPersist && navigator.storage && navigator.storage.persist) {
@@ -326,7 +354,7 @@ async function full(row) {
     audio_accent: out.audio_url ? "us" : "",
     meanings: data.meanings || [], nuance: data.nuance || null,
     synonyms: data.synonyms || [], antonyms: data.antonyms || [],
-    etymology: data.etymology || "", variant_of: data.variant_of || "",
+    etymology: data.etymology || "", variant_of: data.variant_of || "", also: data.also || [],
     conversation: data.conversation || [], source: data.source || "",
     notes: row.notes,
     srs: row.due_date == null ? null : {
@@ -426,12 +454,14 @@ function shuffle(a) {
 }
 const choice = a => a[Math.floor(Math.random() * a.length)];
 
-// Prefer weaker words: low stars and recent misses are drawn more often.
+// Prefer weaker words: low stars and recent misses (fading after a month) are drawn more often.
 function weightedSample(ids, n) {
   if (ids.length <= n) return shuffle([...ids]);
   const info = new Map(all(
     `SELECT w.id, COALESCE(u.stars, 0) AS stars,
-            (SELECT COUNT(*) FROM review_log r WHERE r.word_id = w.id AND r.correct = 0) AS misses
+            (SELECT COALESCE(SUM(CASE WHEN julianday('now') - julianday(r.ts) <= 30 THEN 1.0
+                                      WHEN julianday('now') - julianday(r.ts) <= 90 THEN 0.4 ELSE 0.1 END), 0)
+             FROM review_log r WHERE r.word_id = w.id AND r.correct = 0 AND r.mode != 'repeat') AS misses
      FROM words w LEFT JOIN user_word u ON u.word_id = w.id`).map(r => [r.id, r]));
   const starW = { 0: 1.0, 1: 2.5, 2: 2.0, 3: 1.2, 4: 0.7, 5: 0.4 };
   const pool = [...ids];
@@ -459,6 +489,8 @@ const STAR_INTERVAL_CAP = { 1: 4, 2: 7 };
 const STAR_START_EASE = { 0: 2.5, 1: 2.2, 2: 2.35, 3: 2.5, 4: 2.65, 5: 2.8 };
 
 const LAPSE_EASE = 0.2;
+const LAPSE_KEEP = 0.2;
+const GOOD_PULL = 0.05;
 // Python's round(): halves go to the even number, so both apps schedule alike.
 function roundHalfEven(x) {
   const f = Math.floor(x);
@@ -477,6 +509,15 @@ function ensureCard(id) {
   return getCard(id);
 }
 
+// ±5% on intervals over 3 days, so words learned together don't stay due together.
+function fuzz(interval) {
+  if (interval <= 3) return interval;
+  const spread = Math.max(1, roundHalfEven(interval * 0.05));
+  return interval - spread + Math.floor(Math.random() * (2 * spread + 1));
+}
+
+// A lapse keeps a fifth of the interval; "Good" eases ease back toward 2.5;
+// a late recall gets credit for the extra days; ±5% fuzz (app/srs.py).
 function schedule(card, grade, stars) {
   const q = QUALITY[grade];
   let { ease, interval_days: interval, reps, lapses } = card;
@@ -485,20 +526,27 @@ function schedule(card, grade, stars) {
     // back tomorrow without lowering its ease.
     return { ease, interval_days: 1, reps: 0, lapses: 0, due_date: addDays(1), last_reviewed: todayIso() };
   }
-  if (q < 3) {
-    reps = 0; lapses += 1; interval = 1;
-  } else {
-    if (reps === 0) interval = grade === 1 ? 1 : (grade === 3 ? 4 : 1);
-    else if (reps === 1) interval = grade === 1 ? 3 : (grade === 2 ? 6 : 8);
-    else {
-      const factor = { 1: 1.2, 2: ease, 3: ease * 1.3 }[grade];
-      interval = Math.max(interval + 1, roundHalfEven(interval * factor));
-    }
-    reps += 1;
-  }
-  ease = q < 3 ? Math.max(MIN_EASE, ease - LAPSE_EASE)   // SM-2's own formula takes 0.54
-    : Math.max(MIN_EASE, ease + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
   const cap = STAR_INTERVAL_CAP[stars];
+  if (q < 3) {
+    lapses += 1;
+    ease = Math.max(MIN_EASE, ease - LAPSE_EASE);   // SM-2's own formula takes 0.54
+    if (reps >= 2) { interval = Math.max(1, roundHalfEven(interval * LAPSE_KEEP)); reps = 2; }
+    else { interval = 1; reps = 0; }
+    if (cap) interval = Math.min(interval, cap);
+    return { ease: Math.round(ease * 1000) / 1000, interval_days: interval, reps, lapses,
+             due_date: addDays(1), last_reviewed: todayIso() };
+  }
+  if (reps === 0) interval = grade === 1 ? 1 : (grade === 3 ? 4 : 1);
+  else if (reps === 1) interval = grade === 1 ? 3 : (grade === 2 ? 6 : 8);
+  else {
+    const overdue = card.due_date ? Math.max(0, Math.round((new Date(todayIso()) - new Date(card.due_date)) / 86400000)) : 0;
+    const base = interval + { 1: 0, 2: overdue / 2, 3: overdue }[grade];
+    const factor = { 1: 1.2, 2: ease, 3: ease * 1.3 }[grade];
+    interval = fuzz(Math.max(interval + 1, roundHalfEven(base * factor)));
+  }
+  reps += 1;
+  ease = Math.max(MIN_EASE, ease + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
+  if (grade === 2) ease += GOOD_PULL * (2.5 - ease);
   if (cap) interval = Math.min(interval, cap);
   return { ease: Math.round(ease * 1000) / 1000, interval_days: interval, reps, lapses,
            due_date: addDays(Math.trunc(interval)), last_reviewed: todayIso() };
@@ -511,11 +559,16 @@ function review(id, grade) {
   return next;
 }
 
-// Only a quiz miss (a wrong meaning) lowers ease (app/srs.py penalise_miss).
+// A quiz miss halves the interval and lowers ease; any miss makes the word
+// due today (app/srs.py penalise_miss).
 function penaliseMiss(id, firstMissToday, mode = "quiz") {
   const card = ensureCard(id);
-  const ease = firstMissToday && card.reps && mode === "quiz" ? Math.max(MIN_EASE, card.ease - 0.2) : card.ease;
-  run("UPDATE srs SET due_date=?, ease=?, interval_days=MIN(interval_days, 1) WHERE word_id=?", [todayIso(), ease, id]);
+  let { ease, interval_days: interval } = card;
+  if (firstMissToday && card.reps && mode === "quiz") {
+    ease = Math.max(MIN_EASE, ease - 0.2);
+    interval = Math.max(1, Math.floor(interval / 2));
+  }
+  run("UPDATE srs SET due_date=?, ease=?, interval_days=? WHERE word_id=?", [todayIso(), ease, interval, id]);
 }
 
 function onStarsChanged(id, stars) {
@@ -548,7 +601,7 @@ async function wordDetail(id) {
   const row = fetchWord(id);
   if (!row) throw new HttpError(404, "Word not found");
   const out = await full(row);
-  const st = get("SELECT COUNT(*) AS n, COALESCE(SUM(correct), 0) AS ok FROM review_log WHERE word_id=? AND mode != 'review'", [id]);
+  const st = get("SELECT COUNT(*) AS n, COALESCE(SUM(correct), 0) AS ok FROM review_log WHERE word_id=? AND mode NOT IN ('review', 'repeat')", [id]);
   out.accuracy = { attempts: st.n, correct: st.ok };
   out.lists = all("SELECT l.id, l.name, lw.note FROM list_words lw JOIN lists l ON l.id = lw.list_id WHERE lw.word_id=? ORDER BY l.name", [id]);
   out.recording_url = get("SELECT 1 AS x FROM recordings WHERE word_id=?", [id]) ? await recordingUrl(id) : null;
@@ -688,12 +741,26 @@ function avgReviewSeconds() {
 function newWords(clause, n) {
   if (n <= 0) return [];
   const then = clause === trackClause("everyday") ? "(w.id * 7919) % 10007" : "w.freq_rank";
-  const order = "ORDER BY CASE WHEN COALESCE(u.stars,0) BETWEEN 1 AND 2 THEN 0 " +
+  const order = "ORDER BY EXISTS (SELECT 1 FROM list_words lw WHERE lw.word_id = w.id) DESC, " +
+                "CASE WHEN COALESCE(u.stars,0) BETWEEN 1 AND 2 THEN 0 " +
                 `WHEN COALESCE(u.stars,0) = 0 THEN 1 ELSE 2 END, ${then} ASC LIMIT ?`;
   const base = `SELECT ${WORD_COLUMNS} ${WORD_FROM} WHERE s.word_id IS NULL AND COALESCE(u.known, 0) = 0 AND ${clause} `;
   let rows = all(base + "AND (w.enriched = 1 OR w.is_custom = 1 OR w.has_conv = 1) " + order, [n]);
   if (!rows.length) rows = all(base + order, [n]);
   return rows;
+}
+
+// New words spread through the reviews, one after every three (practice.py).
+function interleave(rows) {
+  let old = rows.filter(([, isNew]) => !isNew);
+  const fresh = rows.filter(([, isNew]) => isNew);
+  const out = [];
+  while (old.length || fresh.length) {
+    out.push(...old.slice(0, 3));
+    old = old.slice(3);
+    if (fresh.length) out.push(fresh.shift());
+  }
+  return out;
 }
 
 async function reviewQueue(q) {
@@ -737,6 +804,7 @@ async function reviewQueue(q) {
     }
     for (const r of fresh) rows.push([r, true]);
   }
+  rows.splice(0, rows.length, ...interleave(rows));
   if (q.count) {
     // Only the numbers (Home, the nav badge): same selection, no card details.
     const nNewCards = rows.filter(([, isNew]) => isNew).length;
@@ -757,11 +825,45 @@ function submitReview(id, body) {
   needWord(id);
   const grade = Number(body.grade);
   if (![0, 1, 2, 3].includes(grade)) throw new HttpError(422, "Grade must be 0-3.");
-  const result = body.repeat ? (getCard(id) || {}) : review(id, grade);
-  run("INSERT INTO review_log(word_id, mode, grade, correct, ms_taken) VALUES (?, 'review', ?, ?, ?)",
-      [id, grade, grade >= 1 ? 1 : 0, Number(body.ms) || 0]);
+  const before = getCard(id) || null;
+  const result = body.repeat ? (before || {}) : review(id, grade);
+  run("INSERT INTO review_log(word_id, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?)",
+      [id, body.repeat ? "repeat" : "review", grade, grade >= 1 ? 1 : 0, Number(body.ms) || 0]);
   bumpActivity({ reviews: 1, newWords: body.is_new && !body.repeat ? 1 : 0 });
-  return result;
+  // The card as it was, so the grade can be undone.
+  const previous = before && { ease: before.ease, interval_days: before.interval_days, reps: before.reps,
+    lapses: before.lapses, due_date: before.due_date, last_reviewed: before.last_reviewed };
+  return { ...result, previous };
+}
+
+// Take back the last grade given to this word today (app/api/practice.py undo_review).
+async function undoReview(id, body) {
+  needWord(id);
+  const last = get(`SELECT r.id, w.key, r.ts, r.mode, r.grade, r.correct, r.ms_taken FROM review_log r
+                    JOIN words w ON w.id = r.word_id WHERE r.word_id=? AND r.mode IN ('review', 'repeat')
+                    AND date(r.ts) = date('now', 'localtime') ORDER BY r.id DESC LIMIT 1`, [id]);
+  if (!last) throw new HttpError(409, "There's no grade from today to undo.");
+  if (last.id <= persistedLogId) {
+    let key = logKeys.get(last.id);
+    if (!key) {   // saved by another tab: find it by its contents
+      const sig = logSig(last);
+      const hit = (await idbEntries("state", "log:")).reverse().find(([, r]) => logSig(r) === sig);
+      key = hit && hit[0];
+    }
+    if (key) pendingLogDeletes.push(key);
+  }
+  run("DELETE FROM review_log WHERE id=?", [last.id]);
+  if (!body.repeat) {
+    const p = body.previous;
+    const isDate = v => typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v);
+    if (p && isDate(p.due_date)) {
+      run("UPDATE srs SET ease=?, interval_days=?, reps=?, lapses=?, due_date=?, last_reviewed=? WHERE word_id=?",
+          [clamp(p.ease, 1.3, 5, 2.5, false), clamp(p.interval_days, 0, 36500, 0), clamp(p.reps, 0, 10000, 0),
+           clamp(p.lapses, 0, 10000, 0), p.due_date, isDate(p.last_reviewed) ? p.last_reviewed : null, id]);
+    } else run("DELETE FROM srs WHERE word_id=?", [id]);
+  }
+  bumpActivity({ reviews: -1, newWords: body.is_new && !body.repeat ? -1 : 0 });
+  return { ok: true };
 }
 
 function recordAnswer(body) {
@@ -771,7 +873,7 @@ function recordAnswer(body) {
   run("INSERT INTO review_log(word_id, mode, correct, ms_taken) VALUES (?, ?, ?, ?)",
       [id, body.mode, body.correct ? 1 : 0, Number(body.ms) || 0]);
   if (!body.correct) {
-    const n = get("SELECT COUNT(*) AS n FROM review_log WHERE word_id=? AND correct=0 AND mode != 'review' " +
+    const n = get("SELECT COUNT(*) AS n FROM review_log WHERE word_id=? AND correct=0 AND mode NOT IN ('review', 'repeat') " +
                   "AND date(ts) = date('now', 'localtime')", [id]).n;
     penaliseMiss(id, n <= 1, body.mode);
   }
@@ -862,11 +964,13 @@ async function makeQuiz(q) {
       if (qtype === "word_meaning" && definition && others.length >= 3) {
         return { prompt: word, ask: nameKind ? `Who or what is ${word}?` : "What does this word mean?",
                  answer: option(word, definition),
-                 options: [...others.slice(0, 3).map(o => option(o[0], o[2])), option(word, definition)] };
+                 options: [...others.slice(0, 3).map(o => option(o[0], o[2])), option(word, definition)],
+                 explain: Object.fromEntries(others.slice(0, 3).map(o => [option(o[0], o[2]), `That's the meaning of “${o[0]}”.`])) };
       }
       if (qtype === "meaning_word" && definition && others.length >= 3) {
         return { prompt: mask(word, definition), ask: "Which word fits this meaning?", answer: word,
-                 options: [...others.slice(0, 3).map(o => o[0]), word] };
+                 options: [...others.slice(0, 3).map(o => o[0]), word],
+                 explain: Object.fromEntries(others.slice(0, 3).map(o => [o[0], `“${o[0]}” means: ${o[2]}`])) };
       }
       if (qtype === "fill_blank" && others.length >= 3) {
         const examples = examplesFor(data);
@@ -875,7 +979,8 @@ async function makeQuiz(q) {
         const sentences = (usable.length ? usable : examples).map(e => blankSentence(word, e)).filter(Boolean);
         if (sentences.length) {
           return { prompt: choice(sentences), ask: "Fill in the blank.", answer: word,
-                   options: [...others.slice(0, 3).map(o => o[0]), word] };
+                   options: [...others.slice(0, 3).map(o => o[0]), word],
+                 explain: Object.fromEntries(others.slice(0, 3).map(o => [o[0], `“${o[0]}” means: ${o[2]}`])) };
         }
       }
       if (qtype === "synonym" || qtype === "antonym") {
@@ -1024,11 +1129,14 @@ function streak() {
 }
 
 const STUDIED = "FROM srs s LEFT JOIN user_word u ON u.word_id=s.word_id WHERE COALESCE(u.known,0)=0";
+// Mastered and retention, as in app/api/stats.py.
+const MASTERED_SQL = "SELECT COUNT(*) AS n {studied} AND s.interval_days >= ? AND s.word_id IN (SELECT word_id FROM (SELECT word_id, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE mode = 'review') WHERE grade >= 2 AND gap >= ?)";
+const RETENTION_SQL = "SELECT CASE WHEN gap < 8 THEN 'days' WHEN gap <= 30 THEN 'weeks' ELSE 'months' END AS span, COUNT(*) AS n, SUM(CASE WHEN grade >= 1 THEN 1 ELSE 0 END) AS ok FROM (SELECT ts, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE mode = 'review') WHERE gap IS NOT NULL AND julianday('now') - julianday(ts) <= 30 GROUP BY span";
 
 function stats() {
   const one = sql => get(sql).n;
   const byDomain = new Map();
-  for (const r of all("SELECT w.domains, r.correct FROM review_log r JOIN words w ON w.id = r.word_id")) {
+  for (const r of all("SELECT w.domains, r.correct FROM review_log r JOIN words w ON w.id = r.word_id WHERE r.mode != 'repeat'")) {
     for (const d of JSON.parse(r.domains)) {
       const agg = byDomain.get(d) || [0, 0];
       agg[0]++; agg[1] += r.correct;
@@ -1042,26 +1150,30 @@ function stats() {
     const a = act.get(date) || {};
     days.push({ date, reviews: a.reviews || 0, seconds: a.seconds || 0 });
   }
-  const overall = get("SELECT COUNT(*) AS n, COALESCE(SUM(correct),0) AS ok FROM review_log");
+  const overall = get("SELECT COUNT(*) AS n, COALESCE(SUM(correct),0) AS ok FROM review_log WHERE mode NOT IN ('review', 'repeat')");
+  const mastered = get(MASTERED_SQL.replace("{studied}", STUDIED), [MASTERED_INTERVAL, MASTERED_INTERVAL]).n;
+  const retention = Object.fromEntries(all(RETENTION_SQL).map(r => [r.span, { n: r.n, ok: r.ok }]));
   return {
     words: {
       total: one("SELECT COUNT(*) AS n FROM words"),
       enriched: one("SELECT COUNT(*) AS n FROM words WHERE enriched=1"),
       with_audio: one("SELECT COUNT(*) AS n FROM words WHERE has_audio=1"),
       // Words marked known are counted apart (app/api/stats.py).
-      mastered: get(`SELECT COUNT(*) AS n ${STUDIED} AND s.interval_days >= ?`, [MASTERED_INTERVAL]).n,
-      learning: get(`SELECT COUNT(*) AS n ${STUDIED} AND s.interval_days < ?`, [MASTERED_INTERVAL]).n,
+      mastered,
+      learning: get(`SELECT COUNT(*) AS n ${STUDIED}`).n - mastered,
       due: get(`SELECT COUNT(*) AS n ${STUDIED} AND s.due_date <= ? AND NOT (s.reps = 0 AND s.last_reviewed IS NULL)`, [todayIso()]).n,
       known: get("SELECT COUNT(*) AS n FROM user_word WHERE known=1").n,
       stars: Object.fromEntries(all("SELECT stars, COUNT(*) AS n FROM user_word WHERE stars > 0 GROUP BY stars").map(r => [r.stars, r.n])),
     },
     accuracy: { attempts: overall.n, correct: overall.ok },
+    retention,
+    notice,
     streak: streak(),
     by_domain: [...byDomain].map(([domain, [a, k]]) => ({ domain, attempts: a, correct: k, accuracy: k / a }))
       .sort((x, y) => x.accuracy - y.accuracy),
     weakest: all("SELECT w.id, w.word, COUNT(*) AS attempts, SUM(r.correct) AS correct, " +
                  "ROUND(1.0 * SUM(r.correct) / COUNT(*), 3) AS accuracy, SUM(CASE WHEN r.correct = 0 THEN 1 ELSE 0 END) AS misses " +
-                 "FROM review_log r JOIN words w ON w.id = r.word_id GROUP BY w.id " +
+                 "FROM review_log r JOIN words w ON w.id = r.word_id WHERE r.mode != 'repeat' GROUP BY w.id " +
                  "HAVING attempts >= 2 AND misses > 0 ORDER BY accuracy ASC, misses DESC, attempts DESC LIMIT 25"),
     days,
     tests: all("SELECT id, ts, kind, score, total, duration_s FROM test_session ORDER BY id DESC LIMIT 40"),
@@ -1151,6 +1263,24 @@ function cleanCustomWord(cw) {
 // restore: reloading this site's own saved snapshot, so keep ids, keep every
 // row as it is (no merging of identical rows), and keep rows for words this
 // build doesn't have as orphans instead of dropping them.
+// Import validation, as in app/api/stats.py: a date is YYYY-MM-DD; a
+// datetime is ISO (T or space, optional fraction and offset), stored as
+// "YYYY-MM-DD HH:MM:SS" (UTC for user_word.updated_at, local time elsewhere).
+const isDateStr = v => typeof v === "string" && v.length === 10 && /^\d{4}-\d{2}-\d{2}$/.test(v) &&
+  !Number.isNaN(new Date(v + "T00:00:00Z").getTime()) && new Date(v + "T00:00:00Z").toISOString().slice(0, 10) === v;
+function cleanDatetime(v, utc) {
+  if (typeof v !== "string" || v.length < 16 || v.length > 40) return null;
+  const m = v.match(/^(\d{4}-\d{2}-\d{2})[T ](\d{2}:\d{2})(:\d{2})?(\.\d+)?(Z|[+-]\d{2}:?\d{2})?$/);
+  if (!m || !isDateStr(m[1])) return null;
+  if (!m[5]) return `${m[1]} ${m[2]}${m[3] || ":00"}`;
+  const d = new Date(v.replace(" ", "T"));
+  if (Number.isNaN(d.getTime())) return null;
+  if (utc) return d.toISOString().slice(0, 19).replace("T", " ");
+  return `${isoDate(d)} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+}
+const isInt = v => typeof v === "number" && Number.isInteger(v);
+const isFlag = v => v === 0 || v === 1 || v === true || v === false;
+
 function importProgress(data, { restore = false } = {}) {
   if (!data || typeof data !== "object" || Array.isArray(data) || data.app !== "LexiMaster") {
     throw new HttpError(400, "That file isn't a LexiMaster progress export.");
@@ -1160,6 +1290,7 @@ function importProgress(data, { restore = false } = {}) {
     .filter(r => r && typeof r === "object");
   const counts = {};
   let skipped = 0;
+  let invalid = 0;
   db.exec("BEGIN");
   try {
     for (const raw of rows("custom_words")) {
@@ -1176,10 +1307,19 @@ function importProgress(data, { restore = false } = {}) {
     const ids = new Map(all("SELECT id, key FROM words").map(r => [r.key, r.id]));
     const orphan = (name, r) => { if (restore) orphans[name].push(r); };
     let n = 0;
+    // Keep the newer copy of each word's state and card: an old backup never
+    // overwrites what you did since.
     for (const u of rows("user_word")) {
       if (!ids.has(u.key)) { orphan("user_word", u); continue; }
+      const stars = u.stars ?? 0;
+      // Restoring this browser's own save: take it as saved (older saves may lack a time).
+      const when = cleanDatetime(u.updated_at, true) || (restore ? String(u.updated_at || "") : null);
+      if (!isInt(stars) || stars < 0 || stars > 5 || (u.known != null && !isFlag(u.known)) ||
+          (u.notes != null && typeof u.notes !== "string") || when === null) { invalid++; continue; }
+      const have = get("SELECT updated_at FROM user_word WHERE word_id=?", [ids.get(u.key)]);
+      if (have && (cleanDatetime(have.updated_at, true) || "") >= when) continue;
       run("INSERT OR REPLACE INTO user_word(word_id, stars, known, notes, updated_at) VALUES (?, ?, ?, ?, ?)",
-          [ids.get(u.key), clamp(u.stars, 0, 5, 0), clamp(u.known, 0, 1, 0), String(u.notes || ""), String(u.updated_at || "")]);
+          [ids.get(u.key), stars, u.known ? 1 : 0, (u.notes || "").slice(0, 5000), when]);
       n++;
     }
     counts["word states"] = n;
@@ -1187,17 +1327,30 @@ function importProgress(data, { restore = false } = {}) {
     for (const s of rows("srs")) {
       if (!s.due_date) continue;
       if (!ids.has(s.key)) { orphan("srs", s); continue; }
+      const num = v => typeof v === "number" && !Number.isNaN(v);
+      if (!num(s.ease) || !num(s.interval_days) || s.interval_days < 0 || s.interval_days > 1e9 ||
+          !isInt(s.reps ?? 0) || (s.reps ?? 0) < 0 || !isInt(s.lapses ?? 0) || (s.lapses ?? 0) < 0 ||
+          !isDateStr(s.due_date) || (s.last_reviewed != null && !isDateStr(s.last_reviewed))) { invalid++; continue; }
+      const have = get("SELECT reps, last_reviewed FROM srs WHERE word_id=?", [ids.get(s.key)]);
+      if (have) {
+        const mine = [have.last_reviewed || "", have.reps], theirs = [s.last_reviewed || "", s.reps ?? 0];
+        if (!(theirs[0] > mine[0] || (theirs[0] === mine[0] && theirs[1] > mine[1]))) continue;
+      }
       run("INSERT OR REPLACE INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed) VALUES (?, ?, ?, ?, ?, ?, ?)",
           [ids.get(s.key), clamp(s.ease, 1.3, 5.0, 2.5, false), clamp(s.interval_days, 0, 36500, 0, false),
-           clamp(s.reps, 0, 10000, 0), clamp(s.lapses, 0, 10000, 0), String(s.due_date).slice(0, 10), s.last_reviewed ?? null]);
+           clamp(s.reps, 0, 10000, 0), clamp(s.lapses, 0, 10000, 0), s.due_date, s.last_reviewed ?? null]);
       n++;
     }
     counts["review cards"] = n;
     const seen = new Set(all("SELECT word_id, ts, mode, grade, correct, ms_taken FROM review_log").map(r => JSON.stringify(Object.values(r))));
     n = 0;
     for (const r of rows("review_log")) {
-      if (!ids.has(r.key) || !["review", "quiz", "match", "listen", "spell", "flash"].includes(r.mode)) continue;
-      const row = [ids.get(r.key), String(r.ts), r.mode, r.grade ?? null, clamp(r.correct, 0, 1, 0), r.ms_taken ?? null];
+      if (!ids.has(r.key)) continue;
+      const ts = cleanDatetime(r.ts, false);
+      if (!ts || !["review", "repeat", "quiz", "match", "listen", "spell", "flash"].includes(r.mode) ||
+          (r.grade != null && !(isInt(r.grade) && r.grade >= 0 && r.grade <= 3)) || !isFlag(r.correct ?? 0) ||
+          (r.ms_taken != null && !(isInt(r.ms_taken) && r.ms_taken >= 0 && r.ms_taken <= 86400000))) { invalid++; continue; }
+      const row = [ids.get(r.key), restore ? String(r.ts) : ts, r.mode, r.grade ?? null, r.correct ? 1 : 0, r.ms_taken ?? null];
       const sig = JSON.stringify(row);
       if (seen.has(sig) && !restore) continue;
       run("INSERT INTO review_log(word_id, ts, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?, ?)", row);
@@ -1219,19 +1372,21 @@ function importProgress(data, { restore = false } = {}) {
       const lid = listIds.get(String(lw.list || "").split(/\s+/).filter(Boolean).join(" ").toLowerCase());
       if (!lid) continue;
       if (!ids.has(lw.key)) { orphan("list_words", lw); continue; }
-      run("INSERT OR IGNORE INTO list_words(list_id, word_id, note, added_at) VALUES (?, ?, ?, ?)",
-          [lid, ids.get(lw.key), String(lw.note || ""), lw.added_at || ""]);
-      n++;
+      if (lw.note != null && typeof lw.note !== "string") { invalid++; continue; }
+      n += run("INSERT OR IGNORE INTO list_words(list_id, word_id, note, added_at) VALUES (?, ?, ?, ?)",
+               [lid, ids.get(lw.key), (lw.note || "").slice(0, 5000), lw.added_at || ""]).changes;
     }
     counts["list entries"] = n;
     const seenTests = new Set(all("SELECT ts, kind, score, total, duration_s FROM test_session").map(r => JSON.stringify(Object.values(r))));
     for (const t of rows("test_session")) {
+      if (!cleanDatetime(t.ts, false) || typeof t.kind !== "string") { invalid++; continue; }
       const row = [String(t.ts), String(t.kind).slice(0, 40), clamp(t.score, 0, 1e6, 0), clamp(t.total, 0, 1e6, 0),
                    clamp(t.duration_s, 0, 1e7, 0)];
       if (restore || !seenTests.has(JSON.stringify(row))) run("INSERT INTO test_session(ts, kind, score, total, duration_s) VALUES (?, ?, ?, ?, ?)", row);
     }
     for (const a of rows("daily_activity")) {
       if (!a.date) continue;
+      if (!isDateStr(String(a.date).slice(0, 10))) { invalid++; continue; }
       run(`INSERT INTO daily_activity(date, seconds, reviews, new_words) VALUES (?, ?, ?, ?)
            ON CONFLICT(date) DO UPDATE SET seconds=MAX(seconds, excluded.seconds), reviews=MAX(reviews, excluded.reviews),
            new_words=MAX(new_words, excluded.new_words)`,
@@ -1244,6 +1399,7 @@ function importProgress(data, { restore = false } = {}) {
     if ("speech_rate" in st) clean.speech_rate = clamp(st.speech_rate, 0.5, 2, 0.9, false);
     if ("autoplay" in st) clean.autoplay = ["1", "True", "true"].includes(String(st.autoplay));
     saveSettings(clean);
+    if (invalid) counts.skipped = invalid;
     db.exec("COMMIT");
   } catch (e) {
     db.exec("ROLLBACK");
@@ -1264,15 +1420,40 @@ async function importFile(body) {
 async function downloadForOffline() {
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   // Fetching each file is enough: the service worker stores it. Not parsing
-  // them keeps 46 MB of entries out of memory.
+  // them keeps 46 MB of entries out of memory. A few at a time, each retried,
+  // with progress reported to the page ("lexi-offline-progress").
   const shards = [...new Set([...INDEX.values()].map(w => w.s))];
-  await Promise.all(shards.map(async s => {
-    const url = `data/detail/${String(s).padStart(2, "0")}.json`;
-    let res;
-    try { res = await fetch(url); } catch (e) { throw new HttpError(503, "The download stopped: check your connection and try again."); }
-    if (!res.ok) throw new HttpError(503, `Couldn't download ${url} (${res.status}).`);
-    await res.arrayBuffer();   // read to the end so the copy is complete
+  const urls = shards.map(s => `data/detail/${String(s).padStart(2, "0")}.json`);
+  // Today's review words' recordings too, so the daily session sounds right offline.
+  try {
+    const q = await reviewQueue({});
+    for (const w of q.queue.slice(0, 80)) { const u = w.audio_url || w.tts_url; if (u) urls.push(u); }
+  } catch (e) { /* recordings are a bonus */ }
+  let done = 0;
+  const report = () => dispatchEvent(new CustomEvent("lexi-offline-progress", { detail: { done, total: urls.length } }));
+  report();
+  const fetchOne = async url => {
+    for (let attempt = 0; ; attempt++) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(String(res.status));
+        await res.arrayBuffer();   // read to the end so the copy is complete
+        return;
+      } catch (e) {
+        if (attempt >= 2) throw new HttpError(503, `The download stopped at ${url}: check your connection and try again (what's done is kept).`);
+        await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
+      }
+    }
+  };
+  const queue = [...urls];
+  await Promise.all(Array.from({ length: 5 }, async () => {
+    while (queue.length) {
+      await fetchOne(queue.shift());
+      done++;
+      report();
+    }
   }));
+  try { localStorage.setItem("lexi-offline", "1"); } catch (e) { /* unavailable */ }
   return { ok: true, files: shards.length };
 }
 
@@ -1302,6 +1483,7 @@ const ROUTES = [
   }],
   ["GET", /^\/api\/review\/queue$/, (m, q) => reviewQueue(q)],
   ["POST", /^\/api\/review\/(\d+)$/, (m, q, b) => submitReview(+m[1], b)],
+  ["POST", /^\/api\/review\/(\d+)\/undo$/, (m, q, b) => undoReview(+m[1], b)],
   ["POST", /^\/api\/answer$/, (m, q, b) => recordAnswer(b)],
   ["POST", /^\/api\/sessions$/, (m, q, b) => {
     run("INSERT INTO test_session(kind, score, total, duration_s) VALUES (?, ?, ?, ?)",
@@ -1353,6 +1535,9 @@ export async function handle(method, url, body) {
     }
     return withWriteLock(async () => {
       await syncIfStale();
+      if (newerFormat) {
+        throw new HttpError(409, "A newer version of LexiMaster saved your progress in another tab. Reload this page to update; nothing was changed.");
+      }
       const result = await fn(m, query, body);
       try {
         await persist();
