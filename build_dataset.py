@@ -4,22 +4,29 @@
 Stages (run in order; every stage is resumable):
 
   collect  merge seed lists in seeds/ into a tagged candidate set
-  expand   ask Claude Haiku for more candidates per category, up to quota
-  filter   drop basic words by wordfreq Zipf score, cap at --target (15,000)
+  expand   PAID: ask Claude for more candidates per category, up to quota
+  filter   drop basic words by wordfreq Zipf score; cap at --target if given
+           (default 0: no cap)
   fetch    look up each word (Free Dictionary API, Wiktionary fallback)
   audio    download American English recordings to data/audio/
   extras   synonyms, antonyms and a one-line etymology from Wiktionary
-  enrich   generate the `nuance` section with Claude Haiku in batches
+  enrich   PAID: generate the `nuance` section with Claude in batches
+
+The paid stages (expand, enrich) call the Claude API and run only when asked
+for: name them in --stages, or pass --paid to add them to the default stages.
+Before a paid stage starts, its estimated cost is printed, and it stops once
+the spend reaches --budget (default $5; 0 means no limit).
 
 Progress is cached under data/cache/ (append-only JSONL), and data/words.json
 is reassembled from the caches after each stage and periodically during long
 stages. Interrupt at any time with Ctrl-C and rerun the same command.
 
 Examples:
-  python build_dataset.py                 # full build
+  python build_dataset.py                 # free stages only (no Claude calls)
+  python build_dataset.py --paid          # every stage, with the $5 budget
   python build_dataset.py --limit 20      # quick end-to-end test on 20 words
-  python build_dataset.py --status        # show progress only
-  python build_dataset.py --stages enrich --retry-failed
+  python build_dataset.py --status        # show progress only (writes nothing)
+  python build_dataset.py --stages enrich --retry-failed --budget 10
 """
 from __future__ import annotations
 
@@ -78,11 +85,13 @@ EXAMPLES = SEEDS / "examples"  # hand-written conversation examples, one file pe
 MEANINGS = SEEDS / "meanings"  # meanings for everyday entries no dictionary lists
 BIBLE_NAMES = SEEDS / "names" / "bible.txt"  # name | person, place or people | everyday meaning
 SENSES = SEEDS / "senses"  # <domain>.txt: a domain sense shown before the dictionary's
+ENTRIES = SEEDS / "entries"  # *.json: whole entries written by hand (see load_hand_entries)
 CMUDICT = CACHE / "cmudict.dict"
 CMUDICT_URL = "https://raw.githubusercontent.com/cmusphinx/cmudict/master/cmudict.dict"
 SELECTED = CACHE / "selected.json"
 
 STAGES = ["collect", "expand", "filter", "fetch", "audio", "extras", "enrich"]
+PAID_STAGES = {"expand", "enrich"}  # Claude API calls: run only when asked for
 # Wikimedia rejects some User-Agents; set LEXIMASTER_CONTACT (a URL or email)
 # to identify yourself as their policy recommends.
 _CONTACT = os.environ.get("LEXIMASTER_CONTACT", "").strip()
@@ -423,7 +432,8 @@ EXPAND_SCHEMA = {
 }
 
 
-async def expand_once(anthropic, client, args, tag: str, existing: list[str], n: int) -> list[str]:
+async def expand_once(anthropic, client, args, tag: str, existing: list[str], n: int,
+                      usage: "Usage | None" = None) -> list[str]:
     prompt = (
         f"List {n} English words for this category: {EXPAND_DESCRIPTIONS[tag]}.\n\n"
         "Requirements:\n"
@@ -441,6 +451,8 @@ async def expand_once(anthropic, client, args, tag: str, existing: list[str], n:
         output_config={"effort": "low", "format": {"type": "json_schema", "schema": EXPAND_SCHEMA}},
         messages=[{"role": "user", "content": prompt}],
     )
+    if usage is not None:
+        usage.add(resp.usage)
     if resp.stop_reason == "refusal":
         return []
     text = next((b.text for b in resp.content if b.type == "text"), "")
@@ -448,6 +460,36 @@ async def expand_once(anthropic, client, args, tag: str, existing: list[str], n:
         return [w.strip() for w in json.loads(text)["words"] if w and w.strip()]
     except (json.JSONDecodeError, KeyError):
         return []  # truncated at max_tokens; the next round asks again
+
+
+def budget_text(budget: float) -> str:
+    return f"${budget:.2f}" if budget else "none (--budget 0)"
+
+
+# Rough token counts for the cost estimates printed before a paid stage.
+EXPAND_OUT_TOKENS = 1500           # per request: ~150 words as JSON
+EXPAND_TOKENS_PER_WORD = 4         # each word in the exclusion list
+ENRICH_IN_TOKENS_PER_WORD = 250    # the word's brief
+ENRICH_OUT_TOKENS_PER_WORD = 1100  # one study entry, with some thinking
+ENRICH_SYSTEM_TOKENS = 2500        # cached system prompt, read once per batch
+
+
+def estimate_expand_cost(cands: dict, model: str) -> float:
+    p_in, p_out = prices(model)
+    total = 0.0
+    for tag, quota in EXPAND_QUOTA.items():
+        have = sum(1 for c in cands.values() if tag in c["tags"])
+        while have < quota:
+            total += (have * EXPAND_TOKENS_PER_WORD + 300) * p_in + EXPAND_OUT_TOKENS * p_out
+            have += 150
+    return total / 1e6
+
+
+def estimate_enrich_cost(n_words: int, batch_size: int, model: str) -> float:
+    p_in, p_out = prices(model)
+    batches = -(-n_words // max(1, batch_size))
+    tokens_in = n_words * ENRICH_IN_TOKENS_PER_WORD + batches * ENRICH_SYSTEM_TOKENS * 0.1
+    return (tokens_in * p_in + n_words * ENRICH_OUT_TOKENS_PER_WORD * p_out) / 1e6
 
 
 async def stage_expand(args) -> None:
@@ -460,15 +502,21 @@ async def stage_expand(args) -> None:
     if problem:
         sys.exit(f"[expand] {problem}")
     cands: dict[str, dict] = read_json(CANDIDATES, {})
+    log(f"[expand] estimated cost: about ${estimate_expand_cost(cands, args.model):.2f} with "
+        f"{model_id(args.model)}; budget {budget_text(args.budget)}")
+    usage = Usage(args.model)
     for tag, quota in EXPAND_QUOTA.items():
         stalls = 0
         while True:
             have = [c["word"] for c in cands.values() if tag in c["tags"]]
             if len(have) >= quota or stalls >= 2:
                 break
+            if args.budget and usage.cost() >= args.budget:
+                log(f"[expand] budget of ${args.budget:.2f} reached; rerun to continue")
+                return
             n = min(150, quota - len(have) + 20)
             try:
-                words = await expand_once(anthropic, client, args, tag, sorted(have), n)
+                words = await expand_once(anthropic, client, args, tag, sorted(have), n, usage)
             except anthropic.AuthenticationError:
                 sys.exit(f"[expand] authentication failed: {auth_hint()}.")
             except anthropic.APIError as e:
@@ -490,7 +538,7 @@ async def stage_expand(args) -> None:
             stalls = stalls + 1 if added < 10 else 0
             log(f"[expand] {tag}: +{added} → {len(have) + added}/{quota} "
                 f"(total candidates {len(cands)})")
-    log(f"[expand] done: {len(cands)} candidates")
+    log(f"[expand] done: {len(cands)} candidates · estimated cost ${usage.cost():.2f}")
 
 
 # ------------------------------------------------------------------- stage: filter
@@ -1449,6 +1497,8 @@ async def stage_enrich(args) -> None:
         f"(batch {args.batch_size}, concurrency {args.concurrency})")
     if not todo:
         return
+    log(f"[enrich] estimated cost: about ${estimate_enrich_cost(len(todo), args.batch_size, args.model):.2f}"
+        f"; budget {budget_text(args.budget)}")
     problem = await preflight(anthropic, client, args.model)
     if problem:
         sys.exit(f"[enrich] {problem}")
@@ -2476,6 +2526,84 @@ def _map_strings(value, fn, skip=("etymology",)):
     return value
 
 
+# Register labels follow the word, not its domain: a common word the
+# enrichment called "informal" (bean, voicemail) or "formal" (appointment)
+# only because of the domain it was listed under is shown as "neutral",
+# unless the study note itself says the word is informal or formal.
+_LEVEL = r"(slang|slangy|informal|casual|formal|literary)"
+_SAYS_INFORMAL = re.compile(
+    r"\b(in|for)\s+(formal|professional|serious|official)\b[^.]*\b(use|say|prefer|avoid|choose)\b|"
+    r"\b(avoid|not)\b[^.]*\bin\s+(formal|professional|serious|official)\b|"
+    r"\b(and|but)\s+(slang|slangy|informal|casual)\b", re.I)
+_SAYS_FORMAL = re.compile(
+    r"\b(in|for)\s+(casual|informal|everyday)\s+(speech|conversation|talk)\b[^.]*\b(say|use|prefer)\b|"
+    r"\b(and|but)\s+(formal|literary)\b", re.I)
+_SHORT_PHRASE_DOMAINS = {"small_talk", "phone_calls", "meetings"}
+
+
+def note_states_register(w: dict, n: dict) -> bool:
+    """Whether the usage note or connotation says this word is slang,
+    informal, casual, formal or literary ("It is informal", "warm but
+    casual", "in formal writing, say police officer")."""
+    text = f"{n.get('usage_note', '')} {n.get('connotation', '')}"
+    hw = re.escape(w["word"].lower().rstrip("?.!…"))
+    subject = rf"(it|this|this word|the word|the term|the phrase|the expression|['‘\"]?{hw}['’\"]?)"
+    verb = (r"(is|sounds|can sound|may sound|feels|remains|stays|is considered)\s+"
+            r"(too\s+|very\s+|quite\s+|rather\s+|a bit\s+|slightly\s+|somewhat\s+|more\s+|fairly\s+|"
+            r"mainly\s+|mostly\s+|usually\s+)?")
+    said = re.search(rf"\b{subject}\s+{verb}{_LEVEL}\b|"
+                     rf"\b(a|an)\s+(\w+\s+)?{_LEVEL}\s+(word|term|expression|phrase|verb|noun|adjective|adverb)\b|"
+                     rf"^{_LEVEL}\b", text, re.I)
+    reg = n.get("register") or []
+    alt = _SAYS_INFORMAL if reg == ["informal"] else _SAYS_FORMAL if reg == ["formal"] else None
+    # "In formal writing, say police officer" names another word for the
+    # other register; "in professional settings, people say 'leave a
+    # voicemail'" uses the headword itself, so it says nothing against it.
+    advised = alt and any(alt.search(sent) and not re.search(rf"\b{hw}", sent, re.I)
+                          for sent in re.split(r"(?<=[.!?])\s+", text))
+    return bool(said or advised)
+
+
+def neutral_register(w: dict, n: dict) -> str:
+    """"A" or "B" when the register should become ["neutral"] (rules above)."""
+    reg = n.get("register") or []
+    if reg not in (["informal"], ["formal"]) or note_states_register(w, n):
+        return ""
+    word = w["word"].strip()
+    single = not re.search(r"[\s-]", word)
+    domains = set(w.get("domains") or [])
+    if reg == ["informal"]:
+        if single and not domains & {"idioms", "phrasal_verbs"} and zipf_frequency(word, "en") >= 4.0:
+            return "A"
+        return ""
+    if single and zipf_frequency(word, "en") >= 4.3:
+        return "B"
+    if not single and domains & _SHORT_PHRASE_DOMAINS and len(word.split()) <= 6:
+        return "B"
+    return ""
+
+
+# The everyday example slot is forced for archaic and very rare words whose
+# note says they are rare in speech ("I could hear the soft susurration...").
+# Their professional and analytical examples stay.
+_RARE_IN_SPEECH = re.compile(
+    r"\b(rarely|seldom|almost never|hardly ever|never|not|rare)\b[^.]{0,60}?"
+    r"\b(speech|conversation|spoken|talk|say|says|said|heard|hear)\b", re.I)
+
+
+def drop_forced_everyday(w: dict, n: dict) -> bool:
+    ex = n.get("examples") or {}
+    if not ex.get("everyday") or not (ex.get("professional") or ex.get("analytical")):
+        return False  # never leave an entry without an example
+    if w.get("name_kind") or "bible" in (w.get("domains") or []):
+        return False  # Bible study talk is the natural everyday setting
+    if set(w.get("domains") or []) & set(EVERYDAY_DOMAINS):
+        return False
+    if not (w.get("zipf", 0) < 1 or "archaic" in (n.get("register") or [])):
+        return False
+    return bool(_RARE_IN_SPEECH.search(n.get("usage_note") or ""))
+
+
 def polish_entry(w: dict, stats: dict) -> None:
     """Display clean-ups: synonyms, IPA, tips, distinctions, word family,
     connotation and article errors (see the functions above)."""
@@ -2527,6 +2655,13 @@ def polish_entry(w: dict, stats: dict) -> None:
     new = _map_strings(n, fix_articles)
     count("article fixes (notes)", new != n)
     w["nuance"] = n = new
+    rule = neutral_register(w, n)
+    if rule:
+        n["register"] = ["neutral"]
+        stats.setdefault(f"register neutral (rule {rule})", []).append(word)
+    if drop_forced_everyday(w, n):
+        n["examples"] = {**n["examples"], "everyday": ""}
+        stats.setdefault("everyday example dropped (rare in speech)", []).append(word)
     conv = [{**e, "text": fix_articles(e["text"])} for e in w.get("conversation") or []]
     count("article fixes (conversation)", conv != (w.get("conversation") or []))
     w["conversation"] = conv
@@ -2563,7 +2698,46 @@ def apply_fixes(words: list[dict]) -> None:
         normalize_display(by_key[key])
 
 
-def assemble(quiet: bool = False) -> dict:
+def load_hand_entries(taken: set[str]) -> list[dict]:
+    """Whole entries written by hand in seeds/entries/*.json, for terms no
+    dictionary lists or that the paid stages never reached ("miaphysite",
+    "Tewahedo"). Each file is a JSON list of objects with "word", "domains",
+    "phonetic", "meanings" ([{"pos", "senses": [definition, ...]}]), "nuance"
+    (the enrichment schema) and optionally "etymology" and "conversation".
+    A key that the caches already produce is skipped (the dictionary entry
+    wins), so a hand entry can't silently duplicate a word."""
+    out = []
+    for path in sorted(ENTRIES.glob("*.json")) if ENTRIES.exists() else []:
+        for e in json.loads(path.read_text(encoding="utf-8")):
+            k = norm_key(e["word"])
+            if k in taken:
+                log(f"[assemble] {path.name}: {k!r} already in the lexicon; hand entry skipped")
+                continue
+            taken.add(k)
+            domains = sorted(set(e["domains"]))
+            nuance = us_spelling_deep({**e["nuance"], "domains": domains})
+            for f in ("word_family", "distinctions", "antonyms", "collocations", "common_mistakes", "traditions"):
+                nuance.setdefault(f, [])
+            for f in ("analogy", "etymology", "biblical_note"):
+                nuance.setdefault(f, "")
+            meanings = [{"pos": m.get("pos", ""), "synonyms": [], "antonyms": [],
+                         "senses": [{"definition": d, "example": "", "synonyms": [], "antonyms": []}
+                                    for d in m["senses"]]} for m in e["meanings"]]
+            out.append({
+                "word": e["word"], "key": k, "zipf": round(zipf(e["word"]), 2), "domains": domains,
+                "phonetic": e["phonetic"], "audio": None, "has_audio": False, "meanings": meanings,
+                "synonyms": [], "antonyms": [], "etymology": e.get("etymology", ""), "variant_of": "",
+                "conversation": [{**c, "text": us_spelling(c["text"])} for c in e.get("conversation", [])],
+                "nuance": nuance, "source": "leximaster", "name_kind": "",
+                "status": {"fetched": True, "audio": False, "enriched": True},
+                "phonetic_source": "manual",
+            })
+    return out
+
+
+def assemble(quiet: bool = False, write: bool = True) -> dict:
+    """Build data/words.json from the caches and seeds. With write=False
+    nothing is written (``--status``): the summary is only computed."""
     sel = read_json(SELECTED, None)
     if sel is None:
         return {}
@@ -2738,6 +2912,7 @@ def assemble(quiet: bool = False) -> dict:
             "name_kind": name_kind,
             "status": {"fetched": True, "audio": has_audio, "enriched": nuance is not None},
         })
+    words += load_hand_entries({w["key"] for w in words})
     for w in words:
         normalize_display(w)
     # Words with no US transcription on Wiktionary: the CMU Pronouncing
@@ -2747,7 +2922,7 @@ def assemble(quiet: bool = False) -> dict:
               for x, g in load_seed_file(path) if g}
     for w in words:
         if w["phonetic"]:
-            w["phonetic_source"] = "wiktionary"
+            w.setdefault("phonetic_source", "wiktionary")
             continue
         w["phonetic"] = cmu_ipa(w["key"], known, w["word"])
         w["phonetic_source"] = "cmu" if w["phonetic"] else ""
@@ -2805,8 +2980,9 @@ def assemble(quiet: bool = False) -> dict:
     for rank, w in enumerate(sorted(words, key=lambda w: -rank_zipf(w)), start=1):
         w["freq_rank"] = rank
     words.sort(key=lambda w: w["word"].lower())
-    atomic_write_json(WORDS_JSON, {"version": 1, "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
-                                   "count": len(words), "words": words})
+    if write:
+        atomic_write_json(WORDS_JSON, {"version": 1, "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+                                       "count": len(words), "words": words})
     summary = {
         "selected": len(sel["words"]),
         "fetched": len(words),
@@ -2816,7 +2992,8 @@ def assemble(quiet: bool = False) -> dict:
         "enriched": sum(w["nuance"] is not None for w in words),
         "updated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
     }
-    atomic_write_json(STATE_JSON, summary)
+    if write:
+        atomic_write_json(STATE_JSON, summary)
     if not quiet:
         log(f"[assemble] words.json: {summary['fetched']} words · {summary['with_audio']} with "
             f"recorded audio · {summary['enriched']} enriched")
@@ -2826,7 +3003,7 @@ def assemble(quiet: bool = False) -> dict:
 def show_status() -> None:
     cands = read_json(CANDIDATES, {})
     sel = read_json(SELECTED, {"words": []})
-    s = assemble(quiet=True) or {}
+    s = assemble(quiet=True, write=False) or {}
     log(f"candidates       {len(cands)}")
     log(f"selected         {len(sel['words'])}")
     for k in ("fetched", "not_found", "with_audio", "speech_fallback", "enriched"):
@@ -2837,18 +3014,23 @@ def show_status() -> None:
 
 def parse_args():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--stages", default=",".join(STAGES),
-                   help=f"comma-separated subset of: {','.join(STAGES)}")
+    p.add_argument("--stages", default="",
+                   help=f"comma-separated subset of: {','.join(STAGES)} (default: every stage except "
+                        f"the paid ones, {', '.join(sorted(PAID_STAGES))})")
+    p.add_argument("--paid", action="store_true",
+                   help="also run the paid stages (Claude API) when --stages is not given")
     p.add_argument("--limit", type=int, help="only fetch/download/enrich the first N selected words (testing)")
-    p.add_argument("--target", type=int, default=0, help="maximum number of words to keep (default 0: no limit)")
+    p.add_argument("--target", type=int, default=0,
+                   help="filter: maximum number of words to keep (default 0: no limit)")
     p.add_argument("--max-zipf", type=float, default=4.6,
                    help="drop words more common than this Zipf frequency (default 4.6)")
     p.add_argument("--general-margin", type=float, default=0.5,
                    help="how much rarer general-vocabulary words must be than domain terms (default 0.5)")
     p.add_argument("--model", default="claude-haiku-5-5")
     p.add_argument("--only", default="", help="enrich only these comma-separated words (redoes them)")
-    p.add_argument("--budget", type=float, default=0,
-                   help="stop enrichment once the estimated cost reaches this many US dollars")
+    p.add_argument("--budget", type=float, default=5.0,
+                   help="stop a paid stage once its estimated spend reaches this many US dollars "
+                        "(default 5; 0 means no limit)")
     p.add_argument("--effort", default="medium", choices=["low", "medium", "high"],
                    help="Claude effort level for enrichment (default medium)")
     p.add_argument("--batch-size", type=int, default=10)
@@ -2866,10 +3048,20 @@ async def main() -> None:
     if args.status:
         show_status()
         return
-    stages = [s.strip() for s in args.stages.split(",") if s.strip()]
+    if args.stages:
+        stages = [s.strip() for s in args.stages.split(",") if s.strip()]
+    else:
+        stages = [s for s in STAGES if args.paid or s not in PAID_STAGES]
     unknown = set(stages) - set(STAGES)
     if unknown:
         sys.exit(f"Unknown stage(s): {', '.join(sorted(unknown))}")
+    paid = [s for s in STAGES if s in stages and s in PAID_STAGES]
+    if paid:
+        log(f"Paid stages: {', '.join(paid)} with {model_id(args.model)}; "
+            f"budget {budget_text(args.budget)} per stage. Estimated costs are printed before each starts.")
+    else:
+        log(f"Free stages only ({', '.join(stages)}); no Claude API calls. "
+            f"Add --paid or name expand/enrich in --stages to run them.")
     t0 = time.time()
     for stage in STAGES:
         if stage not in stages:
@@ -2890,6 +3082,7 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         try:
-            assemble(quiet=True)
+            if "--status" not in sys.argv:  # --status never writes
+                assemble(quiet=True)
         finally:
             print("\nInterrupted. Progress is saved; rerun the same command to resume.")

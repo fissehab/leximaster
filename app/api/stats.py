@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from datetime import date, timedelta
 
 from fastapi import APIRouter, HTTPException, UploadFile, File
@@ -164,9 +165,53 @@ PROGRESS_TABLES = {
 }
 
 
+# Your own pronunciation recordings, in an export when asked for (they make
+# the file much larger): base64, keyed by word, like everything else.
+RECORDING_TYPES = {".webm": "audio/webm", ".ogg": "audio/ogg", ".m4a": "audio/mp4", ".mp3": "audio/mpeg", ".wav": "audio/wav"}
+MAX_RECORDING_BYTES = 5_000_000
+
+
+def _export_recordings(c) -> list[dict]:
+    import base64
+    out = []
+    for r in c.execute("SELECT w.key, r.path, r.created_at FROM recordings r JOIN words w ON w.id = r.word_id"):
+        p = db.RECORDINGS / Path(r["path"]).name
+        if p.exists() and p.suffix in RECORDING_TYPES:
+            out.append({"key": r["key"], "type": RECORDING_TYPES[p.suffix], "created_at": r["created_at"],
+                        "data": base64.b64encode(p.read_bytes()).decode("ascii")})
+    return out
+
+
+def _import_recordings(c, items) -> int:
+    """Add recordings for words that have none here (never replaces yours)."""
+    import base64
+    ext = {v: k for k, v in RECORDING_TYPES.items()}
+    n = 0
+    for r in items if isinstance(items, list) else []:
+        if not isinstance(r, dict) or r.get("type") not in ext or not isinstance(r.get("data"), str):
+            continue
+        row = c.execute("SELECT id FROM words WHERE key=?", (r.get("key"),)).fetchone()
+        if not row or c.execute("SELECT 1 FROM recordings WHERE word_id=?", (row["id"],)).fetchone():
+            continue
+        try:
+            blob = base64.b64decode(r["data"], validate=True)
+        except ValueError:
+            continue
+        if not blob or len(blob) > MAX_RECORDING_BYTES:
+            continue
+        db.RECORDINGS.mkdir(parents=True, exist_ok=True)
+        path = db.RECORDINGS / f"{row['id']}{ext[r['type']]}"
+        path.write_bytes(blob)
+        c.execute("INSERT INTO recordings(word_id, path, created_at) VALUES (?, ?, datetime('now','localtime'))",
+                  (row["id"], path.name))
+        n += 1
+    return n
+
+
 @router.get("/export")
-def export_progress():
-    """Progress keyed by word key (not row id), so it imports into any build."""
+def export_progress(recordings: bool = False):
+    """Progress keyed by word key (not row id), so it imports into any build.
+    recordings=1 adds your own pronunciation recordings."""
     with db.tx() as c:
         out = {"app": "LexiMaster", "version": 1, "exported_at": today_iso()}
         for name, sql in PROGRESS_TABLES.items():
@@ -177,6 +222,8 @@ def export_progress():
         out["test_session"] = [dict(r) for r in c.execute("SELECT ts, kind, score, total, duration_s FROM test_session")]
         out["daily_activity"] = [dict(r) for r in c.execute("SELECT * FROM daily_activity")]
         out["settings"] = db.settings(c)
+        if recordings:
+            out["recordings"] = _export_recordings(c)
     return JSONResponse(out, headers={
         "Content-Disposition": f'attachment; filename="leximaster-progress-{today_iso()}.json"'})
 
@@ -218,7 +265,7 @@ def _clamp(v, lo, hi, default):
 
 # Import validation. A row that fails these checks is skipped and counted in
 # the response's "skipped"; static/js/local/server.js mirrors these rules.
-MAX_IMPORT_BYTES = 20 * 1024 * 1024
+MAX_IMPORT_BYTES = 200 * 1024 * 1024   # room for an export with recordings
 MAX_NOTE_CHARS = 5000
 LOG_MODES = ("review", "repeat", "quiz", "match", "listen", "spell", "flash")
 MAX_MS_TAKEN = 24 * 3600 * 1000
@@ -452,6 +499,8 @@ async def import_progress(file: UploadFile = File(...)):
             if "autoplay" in st:
                 clean["autoplay"] = str(st["autoplay"]) in ("1", "True", "true")
             save_settings(c, clean)
+            if "recordings" in data:
+                counts["recordings"] = _import_recordings(c, data.get("recordings"))
             if bad:
                 counts["skipped"] = bad
     except sqlite3.Error as e:

@@ -171,3 +171,28 @@ def test_repeat_mode_is_accepted(client, word_keys):
     r = upload(client, {"app": "LexiMaster", "review_log": [
         {"key": word_keys[0], "ts": "2026-10-01 10:00:00", "mode": "repeat", "grade": 2, "correct": 1, "ms_taken": 900}]})
     assert r.json()["imported"]["answers"] == 1
+
+
+def test_recordings_round_trip(client, tmp_path, monkeypatch):
+    """Your own recordings travel in an export when asked for, and an import
+    adds them only where there's none (never replacing yours)."""
+    import io
+    import json
+    from app import db
+    monkeypatch.setattr(db, "RECORDINGS", tmp_path / "rec")
+    wid = client.get("/api/words").json()["words"][0]["id"]
+    r = client.post(f"/api/recordings/{wid}", files={"file": ("r", io.BytesIO(b"OggS-fake-audio"), "audio/ogg")})
+    assert r.status_code == 200
+    plain = client.get("/api/export").json()
+    assert "recordings" not in plain
+    full = client.get("/api/export?recordings=1").json()
+    assert len(full["recordings"]) == 1 and full["recordings"][0]["type"] == "audio/ogg"
+    with db.tx() as c:
+        c.execute("DELETE FROM recordings")
+    for f in (tmp_path / "rec").iterdir():
+        f.unlink()
+    res = client.post("/api/import", files={"file": ("x.json", io.BytesIO(json.dumps(full).encode()), "application/json")})
+    assert res.json()["imported"]["recordings"] == 1
+    assert client.get(f"/api/recordings/{wid}").content == b"OggS-fake-audio"
+    again = client.post("/api/import", files={"file": ("x.json", io.BytesIO(json.dumps(full).encode()), "application/json")})
+    assert again.json()["imported"]["recordings"] == 0

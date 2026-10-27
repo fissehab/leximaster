@@ -1054,6 +1054,18 @@ async function matching(q) {
   return { pairs };
 }
 
+const soundKey = ipa => ipa.split(",")[0].normalize("NFD").replace(/[\u0300-\u036f/\[\]ˈˌː.‿ \-()']/g, "");
+function soundDistance(a, b) {
+  if (!a || !b) return 1;
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    for (let j = 1; j <= b.length; j++) cur.push(Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)));
+    prev = cur;
+  }
+  return prev[b.length] / Math.max(a.length, b.length);
+}
+
 async function listen(q) {
   const n = Math.min(50, Math.max(1, Number(q.n) || 10));
   const filters = parseFilters(q);
@@ -1067,14 +1079,20 @@ async function listen(q) {
     const item = await full(fetchWord(wid));
     const w = item.word;
     const spaces = (w.match(/ /g) || []).length;
-    const words = all("SELECT word FROM words WHERE length(word) - length(replace(word, ' ', '')) = ? " +
-                      "AND lower(word) != lower(?) ORDER BY random() LIMIT 200", [spaces, w]).map(r => r.word);
-    if (words.length < 3) {
-      words.push(...all("SELECT word FROM words WHERE lower(word) != lower(?) ORDER BY random() LIMIT 200", [w]).map(r => r.word));
+    // Sound-alikes first (never a homophone), then look-alikes (practice.py).
+    const me = soundKey(item.phonetic || "");
+    const cands = all("SELECT id, word FROM words WHERE length(word) - length(replace(word, ' ', '')) = ? " +
+                      "AND lower(word) != lower(?) ORDER BY random() LIMIT 400", [spaces, w]);
+    if (cands.length < 3) cands.push(...all("SELECT id, word FROM words WHERE lower(word) != lower(?) ORDER BY random() LIMIT 200", [w]));
+    const scored = [];
+    for (const c of cands) {
+      const ph = (INDEX.get(c.id) || {}).p || "";
+      const d = me && ph ? soundDistance(me, soundKey(ph)) : 1;
+      if (d === 0) continue;
+      scored.push([d, c.word[0].toLowerCase() !== w[0].toLowerCase() ? 1 : 0, Math.abs(c.word.length - w.length), c.word]);
     }
-    words.sort((a, b) => ((a[0].toLowerCase() !== w[0].toLowerCase()) - (b[0].toLowerCase() !== w[0].toLowerCase())) ||
-                         (Math.abs(a.length - w.length) - Math.abs(b.length - w.length)));
-    item.options = shuffle([...words.slice(0, 3), w]);
+    scored.sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || (a[3] < b[3] ? -1 : 1));
+    item.options = shuffle([...scored.slice(0, 3).map(s => s[3]), w]);
     items.push(item);
   }
   return { items, fallback };
@@ -1411,9 +1429,44 @@ function importProgress(data, { restore = false } = {}) {
 async function importFile(body) {
   const file = body instanceof FormData ? body.get("file") : null;
   if (!file) throw new HttpError(422, "No file received.");
+  if (file.size > 200 * 1024 * 1024) throw new HttpError(413, "That file is too large (over 200 MB).");
   let data;
   try { data = JSON.parse(await file.text()); } catch (e) { throw new HttpError(400, "That file isn't valid JSON."); }
-  return importProgress(data);
+  const result = importProgress(data);
+  if (Array.isArray(data.recordings)) result.imported.recordings = await importRecordings(data.recordings);
+  return result;
+}
+
+// Your own pronunciation recordings in an export (app/api/stats.py): added
+// for words that have none in this browser, never replacing yours.
+const RECORDING_TYPES = ["audio/webm", "audio/ogg", "audio/mp4", "audio/mpeg", "audio/wav"];
+async function exportRecordings() {
+  const out = [];
+  for (const r of all("SELECT w.id, w.key, r.created_at FROM recordings r JOIN words w ON w.id = r.word_id")) {
+    const blob = await idbGet("recordings", r.key).catch(() => undefined);
+    if (!blob) continue;
+    const bytes = new Uint8Array(await blob.arrayBuffer());
+    let bin = "";
+    for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+    const type = (blob.type || "audio/webm").split(";")[0];
+    out.push({ key: r.key, type: RECORDING_TYPES.includes(type) ? type : "audio/webm", created_at: r.created_at, data: btoa(bin) });
+  }
+  return out;
+}
+async function importRecordings(items) {
+  let n = 0;
+  for (const r of items) {
+    if (!r || typeof r !== "object" || !RECORDING_TYPES.includes(r.type) || typeof r.data !== "string") continue;
+    const w = get("SELECT id FROM words WHERE key=?", [r.key]);
+    if (!w || get("SELECT 1 AS x FROM recordings WHERE word_id=?", [w.id])) continue;
+    let bytes;
+    try { bytes = Uint8Array.from(atob(r.data), ch => ch.charCodeAt(0)); } catch (e) { continue; }
+    if (!bytes.length || bytes.length > 5_000_000) continue;
+    await idbPut("recordings", r.key, new Blob([bytes], { type: r.type }));
+    run("INSERT OR REPLACE INTO recordings(word_id, path, created_at) VALUES (?, 'idb', datetime('now','localtime'))", [w.id]);
+    n++;
+  }
+  return n;
 }
 
 // Fetch every detail file so the whole lexicon works offline.
@@ -1505,7 +1558,11 @@ const ROUTES = [
   ["GET", /^\/api\/stats$/, () => stats()],
   ["GET", /^\/api\/settings$/, () => settingsMap()],
   ["PATCH", /^\/api\/settings$/, (m, q, b) => updateSettings(b)],
-  ["GET", /^\/api\/export$/, () => exportProgress()],
+  ["GET", /^\/api\/export$/, async (m, q) => {
+    const out = exportProgress();
+    if (q.recordings === "1" || q.recordings === "true") out.recordings = await exportRecordings();
+    return out;
+  }],
   ["POST", /^\/api\/import$/, (m, q, b) => importFile(b)],
   ["POST", /^\/api\/offline$/, () => downloadForOffline()],
 ];

@@ -1,0 +1,664 @@
+[
+{
+ "word": "miaphysite",
+ "domains": ["theology"],
+ "phonetic": "/maɪˈæfəˌsaɪt/",
+ "meanings": [
+  {"pos": "adjective", "senses": ["Relating to the Christology of the Oriental Orthodox churches, which confesses one united nature of God the Word incarnate, without mixture or separation."]},
+  {"pos": "noun", "senses": ["A Christian who holds this Christology, especially a member of an Oriental Orthodox church."]}
+ ],
+ "etymology": "From Greek *mia* (“one”) + *physis* (“nature”) + English *-ite*.",
+ "nuance": {
+  "core": {"pos": "adjective", "definition": "Holding that in the incarnate Christ divinity and humanity are united in one nature, without mixture, confusion, change or separation."},
+  "pronunciation": {"ipa": "/maɪˈæfəˌsaɪt/", "respelling": "my-AF-uh-site", "tip": "Stress falls on AF, the second syllable. The first syllable is 'my', not 'mee', and 'phy' is a light 'fuh', as in monophysite."},
+  "us_usage": "formal or literary",
+  "register": ["technical", "academic"],
+  "connotation": "Neutral and respectful. It is the name the Oriental Orthodox churches accept for their own Christology, unlike the older polemical label 'monophysite'.",
+  "usage_note": "Americans meet this word in church history, ecumenical dialogue and in Coptic, Ethiopian, Eritrean, Syriac, Armenian and Indian Orthodox communities. It rests on Saint Cyril of Alexandria's formula 'one incarnate nature of God the Word.' Use it instead of 'monophysite' when you describe the Oriental Orthodox fairly; members of these churches often simply say 'Orthodox' or, in Ethiopia and Eritrea, 'Tewahedo.'",
+  "word_family": ["miaphysitism (noun)"],
+  "distinctions": [
+   {"vs": "monophysite", "note": "Monophysite is the older, often hostile label that suggests Christ's humanity was absorbed into his divinity, a view the miaphysite churches themselves condemn as the error of Eutyches."},
+   {"vs": "dyophysite", "note": "Dyophysite describes the Chalcedonian confession of two natures in one person; miaphysites affirm the same full divinity and humanity but speak of one united nature."},
+   {"vs": "Chalcedonian", "note": "Chalcedonian names the churches that accept the Council of Chalcedon (451); miaphysite churches do not accept that council."}
+  ],
+  "antonyms": ["dyophysite"],
+  "collocations": ["miaphysite Christology", "miaphysite churches", "miaphysite tradition", "the miaphysite position", "miaphysite and Chalcedonian"],
+  "examples": {
+   "everyday": "My Coptic friend corrected me gently: her church is miaphysite, not monophysite.",
+   "professional": "In today's lecture we will read Severus of Antioch as the leading miaphysite theologian of the sixth century.",
+   "analytical": "The miaphysite formula insists that the union of divinity and humanity is so real that one cannot speak of two natures after the union, without implying any confusion of the two."
+  },
+  "analogy": "Think of iron in a fire: the glowing iron is one thing, fully iron and fully fiery, yet neither the iron nor the fire is lost.",
+  "etymology": "From Greek mia 'one' and physis 'nature', echoing Cyril of Alexandria's phrase 'one incarnate nature of God the Word.'",
+  "common_mistakes": [
+   "Using miaphysite and monophysite as if they were the same; the churches concerned reject the Eutychian teaching that the second label implies.",
+   "Pronouncing the first syllable 'mee' or stressing it: say my-AF-uh-site."
+  ],
+  "biblical_note": "",
+  "traditions": [
+   {"tradition": "Eastern Orthodox", "view": "Official dialogues between the Eastern and Oriental Orthodox churches (agreed statements of 1989 and 1990) concluded that both families confess the same faith in Christ in different terms. The statements have not been formally received by every church, and the two families are not yet in full communion."},
+   {"tradition": "Roman Catholic", "view": "Catholic popes have signed common Christological declarations with the Coptic, Syriac and Armenian heads of church, affirming that Christ is true God and true man and that the remaining differences are largely of terminology."},
+   {"tradition": "Protestant", "view": "Most Protestant churches accept the Chalcedonian definition as a sound summary of Scripture and have had little formal contact with miaphysite churches. Anglicans have reached an agreed statement on Christology with the Oriental Orthodox, and older Protestant textbooks often still use the label 'monophysite.'"}
+  ]
+ }
+},
+{
+ "word": "miaphysitism",
+ "domains": ["theology"],
+ "phonetic": "/maɪˈæfəsaɪˌtɪzəm/",
+ "meanings": [
+  {"pos": "noun", "senses": ["The Christological doctrine of the Oriental Orthodox churches: one united nature of the incarnate Word, from two natures, without confusion or division."]}
+ ],
+ "etymology": "From *miaphysite* + *-ism*.",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The teaching that the incarnate Christ has one united divine-human nature, held by the Oriental Orthodox churches since their rejection of Chalcedon."},
+  "pronunciation": {"ipa": "/maɪˈæfəsaɪˌtɪzəm/", "respelling": "my-AF-uh-sye-tiz-um", "tip": "Primary stress falls on AF, the second syllable, with a lighter beat on 'tiz'. Do not drop the 'sye' in the middle."},
+  "us_usage": "formal or literary",
+  "register": ["technical", "academic"],
+  "connotation": "Neutral. Scholars use it to describe Oriental Orthodox Christology without the negative overtones of 'monophysitism.'",
+  "usage_note": "This is a word for seminary classes, church history and ecumenical writing. It is often contrasted with Chalcedonian 'dyophysitism' (two natures in one person). When speaking with Oriental Orthodox Christians, it is respectful to use this term rather than 'monophysitism.'",
+  "word_family": ["miaphysite (adjective, noun)"],
+  "distinctions": [
+   {"vs": "monophysitism", "note": "Monophysitism, strictly, is the view that Christ's humanity is swallowed up in his divinity, associated with Eutyches; miaphysitism rejects that and keeps Christ's humanity complete."},
+   {"vs": "Nestorianism", "note": "Nestorianism is the charge of dividing Christ into two subjects; miaphysitism stresses the opposite, the unity of the one Christ."}
+  ],
+  "antonyms": ["dyophysitism"],
+  "collocations": ["Cyrilline miaphysitism", "the history of miaphysitism", "miaphysitism and Chalcedon", "Oriental Orthodox miaphysitism"],
+  "examples": {
+   "everyday": "Our priest said miaphysitism is not about making Christ less human but about how closely God and man are united in him.",
+   "professional": "The paper traces how miaphysitism spread through Syria and Egypt after the Council of Chalcedon.",
+   "analytical": "Read carefully, miaphysitism and Chalcedonian Christology defend the same truth against opposite dangers, one guarding Christ's unity, the other the integrity of his two natures."
+  },
+  "analogy": "",
+  "etymology": "From Greek mia 'one' and physis 'nature', with the English suffix -ism.",
+  "common_mistakes": [
+   "Treating miaphysitism as a fringe heresy; it is the ancient confession of millions of Coptic, Ethiopian, Eritrean, Syriac, Armenian and Indian Christians.",
+   "Spelling it 'mia-physitism' with a hyphen."
+  ],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "dyophysite",
+ "domains": ["theology"],
+ "phonetic": "/daɪˈɑfəˌsaɪt/",
+ "meanings": [
+  {"pos": "adjective", "senses": ["Holding that Christ has two natures, divine and human, in one person, as defined at the Council of Chalcedon."]},
+  {"pos": "noun", "senses": ["One who holds this Christology."]}
+ ],
+ "etymology": "From Greek *dyo* (“two”) + *physis* (“nature”) + English *-ite*.",
+ "nuance": {
+  "core": {"pos": "adjective", "definition": "Confessing that the one Christ exists in two complete natures, divine and human, as the Council of Chalcedon defined in 451."},
+  "pronunciation": {"ipa": "/daɪˈɑfəˌsaɪt/", "respelling": "dye-AH-fuh-site", "tip": "Stress falls on AH, the second syllable. The first syllable is 'dye', like the word die."},
+  "us_usage": "formal or literary",
+  "register": ["technical", "academic"],
+  "connotation": "Neutral; a descriptive term in historical theology.",
+  "usage_note": "Used almost only in church history and comparative Christology, usually paired with 'miaphysite.' Eastern Orthodox, Roman Catholic and most Protestant Christians are dyophysite in this sense, though few would describe themselves with the word.",
+  "word_family": ["dyophysitism (noun)"],
+  "distinctions": [
+   {"vs": "miaphysite", "note": "Miaphysite speaks of one united nature of the incarnate Word; dyophysite speaks of two natures united in one person."},
+   {"vs": "Nestorian", "note": "Nestorian implies two natures divided as if two persons; dyophysite, as Chalcedon uses it, insists on one person."}
+  ],
+  "antonyms": ["miaphysite", "monophysite"],
+  "collocations": ["dyophysite Christology", "the dyophysite formula", "dyophysite churches", "dyophysite language"],
+  "examples": {
+   "everyday": "In our Bible study someone asked whether we are dyophysite, and the pastor said yes: two natures, one Christ.",
+   "professional": "The course compares dyophysite and miaphysite readings of Cyril of Alexandria.",
+   "analytical": "The dyophysite definition of Chalcedon protects the full humanity of Christ by refusing to let his human nature be absorbed into the divine."
+  },
+  "analogy": "",
+  "etymology": "From Greek dyo 'two' and physis 'nature'.",
+  "common_mistakes": ["Equating dyophysite with Nestorian; Chalcedon condemned Nestorius while teaching two natures."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "Christology",
+ "domains": ["theology"],
+ "phonetic": "/kɹɪˈstɑlədʒi/",
+ "meanings": [
+  {"pos": "noun", "senses": ["The branch of Christian theology concerned with the person, natures and work of Jesus Christ.", "A particular account or understanding of Christ, as held by a writer, text or tradition."]}
+ ],
+ "etymology": "From *Christ* + *-ology*, from Greek *Christos* (“anointed”) + *-logia* (“study”).",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The part of theology that studies who Jesus Christ is, especially how he is both God and man; also a particular view of this."},
+  "pronunciation": {"ipa": "/kɹɪˈstɑlədʒi/", "respelling": "krih-STAH-luh-jee", "tip": "Stress falls on STAH, the second syllable, as in biology. The 'Ch' is a hard 'k', and the first vowel is short 'ih', not 'Christ' with a long 'eye'."},
+  "us_usage": "formal or literary",
+  "register": ["academic", "technical"],
+  "connotation": "Neutral; a standard academic term.",
+  "usage_note": "Americans use Christology in seminaries, sermons that teach doctrine and biblical scholarship. Scholars speak of 'high Christology' (stressing Christ's divinity) and 'low Christology' (beginning from his humanity), and of the Christology of a particular Gospel. It is capitalized because it comes from Christ.",
+  "word_family": ["Christological (adjective)", "Christologically (adverb)"],
+  "distinctions": [
+   {"vs": "soteriology", "note": "Soteriology is the doctrine of salvation; Christology is the doctrine of the person of Christ, though the two are closely linked."},
+   {"vs": "Christocentric", "note": "Christocentric describes theology or preaching that centers on Christ; Christology is the study itself."}
+  ],
+  "antonyms": [],
+  "collocations": ["high Christology", "low Christology", "Johannine Christology", "Chalcedonian Christology", "the Christology of Mark", "Christological controversies"],
+  "examples": {
+   "everyday": "Our Bible study is reading John this fall, and the leader keeps pointing out how high its Christology is.",
+   "professional": "The doctoral seminar on early Christology starts with Paul's letters and ends with the Council of Chalcedon.",
+   "analytical": "Every Christology must explain how one subject can both suffer on the cross and be the eternal Son without denying either claim."
+  },
+  "analogy": "",
+  "etymology": "From Greek Christos 'anointed one' (translating Hebrew mashiach, 'Messiah') and -logia 'study, account'.",
+  "common_mistakes": [
+   "Pronouncing it 'KRIES-tology' with the vowel of Christ; Americans say krih-STAH-luh-jee.",
+   "Writing it with a lowercase c."
+  ],
+  "biblical_note": "The word is not in Scripture, but the New Testament supplies its material. The prologue of John presents the Word who was with God, was God and became flesh (John 1:1-14). Philippians 2:5-11 describes Christ, who was in the form of God, emptying himself and taking the form of a servant. Colossians 1:15-20 calls him the image of the invisible God in whom all things hold together.",
+  "traditions": []
+ }
+},
+{
+ "word": "homoousios",
+ "domains": ["theology"],
+ "phonetic": "/ˌhoʊmoʊˈusiəs/",
+ "meanings": [
+  {"pos": "adjective", "senses": ["(Greek, used in English writing) Of one and the same substance or essence; the term of the Nicene Creed for the Son's relation to the Father."]}
+ ],
+ "etymology": "From Ancient Greek *ὁμοούσιος* (*homooúsios*), from *homos* (“same”) + *ousia* (“being, essence”).",
+ "nuance": {
+  "core": {"pos": "adjective", "definition": "Of the same essence; the Nicene term confessing that the Son is fully God, sharing one being with the Father."},
+  "pronunciation": {"ipa": "/ˌhoʊmoʊˈusiəs/", "respelling": "hoh-moh-OO-see-us", "tip": "Stress falls on OO, the third syllable. Keep 'oo' and 'see' as separate syllables; you will also hear a Greek-style ending '-ohs'."},
+  "us_usage": "formal or literary",
+  "register": ["technical", "academic"],
+  "connotation": "Neutral; for Nicene Christians it carries the weight of orthodox confession.",
+  "usage_note": "Used in theology and church history, often italicized as a Greek word. English creeds translate it 'of one substance with the Father' (older) or 'consubstantial with the Father' (current Catholic Mass). Mention it when explaining the Arian controversy and the Council of Nicaea in 325.",
+  "word_family": ["homoousian (adjective, noun)"],
+  "distinctions": [
+   {"vs": "homoiousios", "note": "Homoiousios, with one extra iota, means 'of similar essence'; the Nicene party rejected it as too weak."},
+   {"vs": "consubstantial", "note": "Consubstantial is the Latin-derived English equivalent of homoousios, used in liturgy and catechisms."}
+  ],
+  "antonyms": ["heteroousios"],
+  "collocations": ["the homoousios of the Son", "the Nicene homoousios", "defend the homoousios", "homoousios with the Father"],
+  "examples": {
+   "everyday": "Our priest said the whole fight at Nicaea came down to one word, homoousios, and whether Jesus is truly God.",
+   "professional": "Athanasius defended the homoousios for decades, even when emperors and councils turned against it.",
+   "analytical": "By applying homoousios to the Son, the council moved beyond biblical vocabulary in order to protect what it saw as the biblical claim that the Son is not a creature."
+  },
+  "analogy": "",
+  "etymology": "From Greek homos 'same' and ousia 'being, essence'.",
+  "common_mistakes": [
+   "Confusing it with homoiousios; the difference is a single letter but the opposite conclusion.",
+   "Using it as a noun without the article: say 'the homoousios'."
+  ],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "homoiousios",
+ "domains": ["theology"],
+ "phonetic": "/ˌhoʊmɔɪˈusiəs/",
+ "meanings": [
+  {"pos": "adjective", "senses": ["(Greek, used in English writing) Of like or similar substance; the term preferred by a fourth-century party wary of the Nicene homoousios."]}
+ ],
+ "etymology": "From Ancient Greek *ὁμοιούσιος* (*homoioúsios*), from *homoios* (“like”) + *ousia* (“being, essence”).",
+ "nuance": {
+  "core": {"pos": "adjective", "definition": "Of similar essence; the fourth-century formula saying the Son is like the Father in being, rejected in favor of Nicaea's homoousios."},
+  "pronunciation": {"ipa": "/ˌhoʊmɔɪˈusiəs/", "respelling": "hoh-moy-OO-see-us", "tip": "Stress falls on OO, the third syllable. The 'oi' is 'oy', which is the one sound that separates it from homoousios."},
+  "us_usage": "formal or literary",
+  "register": ["technical", "academic"],
+  "connotation": "Neutral in history writing; from the Nicene side it marks an inadequate confession.",
+  "usage_note": "Heard almost only in church history, especially in telling the story of the Arian controversy after Nicaea. Its supporters, sometimes called homoiousians or (unfairly) semi-Arians, were led by Basil of Ancyra; many of them later accepted the Nicene term. The proverb about a difference of 'one iota' comes from this pair of words.",
+  "word_family": ["homoiousian (adjective, noun)"],
+  "distinctions": [
+   {"vs": "homoousios", "note": "Homoousios means 'the same essence'; homoiousios means only 'a similar essence'."},
+   {"vs": "homoios", "note": "Homoios, 'like', was the vaguer formula of a different party that avoided essence language altogether."}
+  ],
+  "antonyms": ["homoousios"],
+  "collocations": ["the homoiousios party", "homoiousios and homoousios", "the homoiousian position"],
+  "examples": {
+   "everyday": "When the professor wrote homoiousios on the board, half the class thought it was a typo.",
+   "professional": "This lecture explains why many bishops who preferred homoiousios eventually accepted the Nicene Creed.",
+   "analytical": "Homoiousios safeguarded the distinction of the Son from the Father, but at the price of leaving open whether the Son is God in the same sense."
+  },
+  "analogy": "Two coins can be 'of similar metal' or 'struck from the same gold': the first is homoiousios, the second homoousios.",
+  "etymology": "From Greek homoios 'like, similar' and ousia 'being, essence'.",
+  "common_mistakes": ["Mixing up the spellings: homoiousios has the extra 'i' (similar), homoousios does not (same)."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "Chalcedonian",
+ "domains": ["theology"],
+ "phonetic": "/ˌkælsəˈdoʊniən/",
+ "meanings": [
+  {"pos": "adjective", "senses": ["Relating to the Council of Chalcedon (451) or to its definition that Christ is one person in two natures.", "Of a church that accepts that council."]},
+  {"pos": "noun", "senses": ["A Christian who accepts the Council of Chalcedon."]}
+ ],
+ "etymology": "From *Chalcedon*, an ancient city on the Bosporus (now Kadıköy in Istanbul), + *-ian*.",
+ "nuance": {
+  "core": {"pos": "adjective", "definition": "Accepting or relating to the Council of Chalcedon (451), which defined Christ as one person in two natures, divine and human."},
+  "pronunciation": {"ipa": "/ˌkælsəˈdoʊniən/", "respelling": "kal-suh-DOH-nee-un", "tip": "Stress falls on DOH, the third syllable. 'Ch' is a hard 'k', and the 'c' is a soft 's'."},
+  "us_usage": "formal or literary",
+  "register": ["technical", "academic"],
+  "connotation": "Neutral; for the churches that accept the council, it is a mark of orthodoxy.",
+  "usage_note": "Used in church history and theology. Eastern Orthodox, Roman Catholic and most Protestant Christians are Chalcedonian; the Oriental Orthodox churches (Coptic, Ethiopian, Eritrean, Syriac, Armenian, Indian) are not. The council's definition says the two natures are united 'without confusion, without change, without division, without separation,' a phrase theologians quote often.",
+  "word_family": ["non-Chalcedonian (adjective)", "Chalcedonianism (noun)", "Chalcedon (noun)"],
+  "distinctions": [
+   {"vs": "Nicene", "note": "Nicene refers to the councils of 325 and 381 and the doctrine of the Trinity; Chalcedonian refers to the later definition about Christ's natures."},
+   {"vs": "Orthodox", "note": "Orthodox names a church family; Chalcedonian names a position on one council, which Eastern Orthodox accept and Oriental Orthodox do not."}
+  ],
+  "antonyms": ["non-Chalcedonian", "miaphysite"],
+  "collocations": ["Chalcedonian definition", "Chalcedonian Christology", "Chalcedonian churches", "the Chalcedonian formula", "post-Chalcedonian"],
+  "examples": {
+   "everyday": "I didn't know Catholics and Eastern Orthodox are both Chalcedonian until our Ethiopian neighbor explained why his church isn't.",
+   "professional": "The reading for next week contrasts the Chalcedonian definition with the Christology of Severus of Antioch.",
+   "analytical": "The Chalcedonian formula is less an explanation of the incarnation than a set of boundaries that rule out the errors on either side."
+  },
+  "analogy": "The Chalcedonian definition works like guardrails on a mountain road: it does not describe the road, it keeps you from falling off either side.",
+  "etymology": "From Chalcedon, the city in Asia Minor where the Fourth Ecumenical Council met in 451.",
+  "common_mistakes": [
+   "Pronouncing 'Ch' as in church; say kal-suh-DOH-nee-un.",
+   "Assuming all Orthodox churches are Chalcedonian."
+  ],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "non-Chalcedonian",
+ "domains": ["theology"],
+ "phonetic": "/ˌnɑnkælsəˈdoʊniən/",
+ "meanings": [
+  {"pos": "adjective", "senses": ["Of the churches that do not accept the Council of Chalcedon (451): the Oriental Orthodox churches and, by some usage, the Assyrian Church of the East."]}
+ ],
+ "etymology": "From *non-* + *Chalcedonian*.",
+ "nuance": {
+  "core": {"pos": "adjective", "definition": "Not accepting the Council of Chalcedon (451); used especially of the Oriental Orthodox churches."},
+  "pronunciation": {"ipa": "/ˌnɑnkælsəˈdoʊniən/", "respelling": "nahn-kal-suh-DOH-nee-un", "tip": "The main stress stays on DOH, as in Chalcedonian; 'non' gets a lighter secondary beat."},
+  "us_usage": "formal or literary",
+  "register": ["technical", "academic"],
+  "connotation": "Neutral and descriptive, though it defines these churches by what they reject. Many members prefer 'Oriental Orthodox'.",
+  "usage_note": "Scholars use non-Chalcedonian as a neutral alternative to the polemical 'monophysite.' In ecumenical settings, 'Oriental Orthodox' is the preferred self-designation, and some writers say 'pre-Chalcedonian.' The Assyrian Church of the East also rejects Chalcedon but for the opposite reason, so be clear which churches you mean.",
+  "word_family": ["Chalcedonian (adjective, noun)"],
+  "distinctions": [
+   {"vs": "Oriental Orthodox", "note": "Oriental Orthodox is the church family's own name; non-Chalcedonian describes its position on one council."},
+   {"vs": "miaphysite", "note": "Miaphysite names the positive Christology; non-Chalcedonian names only the rejection of the council."}
+  ],
+  "antonyms": ["Chalcedonian"],
+  "collocations": ["non-Chalcedonian churches", "non-Chalcedonian Christians", "the non-Chalcedonian tradition", "Chalcedonian and non-Chalcedonian"],
+  "examples": {
+   "everyday": "Our Armenian friends belong to a non-Chalcedonian church, but they recite the same Nicene Creed we do.",
+   "professional": "The conference brought together scholars from Chalcedonian and non-Chalcedonian churches to discuss shared patristic sources.",
+   "analytical": "Calling these churches non-Chalcedonian is accurate but incomplete, because it defines a living tradition only by its refusal of one council."
+  },
+  "analogy": "",
+  "etymology": "From non- 'not' and Chalcedonian.",
+  "common_mistakes": ["Using it as a synonym for 'heretical'; it is a descriptive historical term."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "Nicene Creed",
+ "domains": ["theology"],
+ "phonetic": "/ˌnaɪsin ˈkɹid/",
+ "meanings": [
+  {"pos": "noun", "senses": ["The creed adopted at the Council of Nicaea (325) and expanded at the Council of Constantinople (381), confessing the Father, the Son and the Holy Spirit; recited in the liturgy of most Christian churches."]}
+ ],
+ "etymology": "From *Nicene* (“of Nicaea”, an ancient city in Asia Minor, now İznik) + *creed*, from Latin *credo* (“I believe”).",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The Christian statement of faith from the councils of Nicaea (325) and Constantinople (381), confessing one God in Trinity and Christ's full divinity."},
+  "pronunciation": {"ipa": "/ˌnaɪsin ˈkɹid/", "respelling": "NYE-seen KREED", "tip": "Nicene is 'NYE-seen', with a long 'i'; the main phrase stress lands on Creed."},
+  "us_usage": "formal or literary",
+  "register": ["formal", "technical"],
+  "connotation": "Positive and reverent for most Christians; it is the most widely shared creed in Christianity.",
+  "usage_note": "Americans hear the Nicene Creed recited each Sunday in Catholic, Orthodox, Episcopal, Lutheran and many Methodist and Presbyterian churches; many evangelical and Baptist churches do not use creeds in worship. Historians call the full text the Niceno-Constantinopolitan Creed. The Oriental Orthodox churches, including the Ethiopian Orthodox Tewahedo Church, also recite it, without the Filioque.",
+  "word_family": ["Nicene (adjective)", "Nicaea (noun)"],
+  "distinctions": [
+   {"vs": "Apostles' Creed", "note": "The Apostles' Creed is a shorter, Western baptismal creed; the Nicene Creed is the conciliar creed shared by East and West."},
+   {"vs": "Athanasian Creed", "note": "The Athanasian Creed is a longer Latin statement on the Trinity and incarnation, used mainly in Western churches."}
+  ],
+  "antonyms": [],
+  "collocations": ["recite the Nicene Creed", "the Nicene Creed says", "the Filioque in the Nicene Creed", "the original Nicene Creed", "affirm the Nicene Creed"],
+  "examples": {
+   "everyday": "We say the Nicene Creed every Sunday, but I never knew it was written in the fourth century.",
+   "professional": "The confirmation class will spend six weeks walking through the Nicene Creed line by line.",
+   "analytical": "The Nicene Creed's phrase 'begotten, not made' draws the line between the Son and every creature."
+  },
+  "analogy": "",
+  "etymology": "From Nicaea, where the First Ecumenical Council met in 325, and creed, from Latin credo 'I believe'.",
+  "common_mistakes": [
+   "Pronouncing Nicene as 'NEE-seen' or 'nih-SEEN'.",
+   "Assuming the version you know is word-for-word the text of 325; the familiar form comes from 381, and Western churches added the Filioque later."
+  ],
+  "biblical_note": "",
+  "traditions": [
+   {"tradition": "Eastern Orthodox", "view": "The Orthodox recite the creed as the Council of Constantinople left it, saying the Holy Spirit proceeds from the Father, and regard the Western addition of the Filioque as unauthorized and theologically mistaken."},
+   {"tradition": "Roman Catholic", "view": "The Latin Church says the Spirit proceeds from the Father 'and the Son' (Filioque), an addition that spread in the West and was adopted in Rome's liturgy in the eleventh century. The Catholic Church holds it expresses legitimate doctrine, while Eastern Catholic churches may recite the creed without it."},
+   {"tradition": "Protestant", "view": "Lutheran, Anglican, Reformed and Methodist churches inherited the Western text with the Filioque and treat the creed as a faithful summary of Scripture under its authority. Many Baptist, evangelical and free churches respect its teaching but do not recite creeds in worship, and some Anglicans have proposed dropping the Filioque."}
+  ]
+ }
+},
+{
+ "word": "Oriental Orthodox",
+ "domains": ["theology"],
+ "phonetic": "/ˌɔɹiˈɛntəl ˈɔɹθəˌdɑks/",
+ "meanings": [
+  {"pos": "adjective", "senses": ["Of the family of ancient churches that accept the first three ecumenical councils but not Chalcedon: the Coptic, Ethiopian, Eritrean, Syriac, Armenian and Malankara (Indian) Orthodox churches."]}
+ ],
+ "etymology": "From *Oriental* (“eastern”), from Latin *oriens* (“rising, the east”), + *Orthodox*, from Greek *orthos* (“right”) + *doxa* (“belief, glory”).",
+ "nuance": {
+  "core": {"pos": "adjective", "definition": "Of the communion of Coptic, Ethiopian, Eritrean, Syriac, Armenian and Indian Orthodox churches, which accept three ecumenical councils and a miaphysite Christology."},
+  "pronunciation": {"ipa": "/ˌɔɹiˈɛntəl ˈɔɹθəˌdɑks/", "respelling": "or-ee-EN-tul OR-thuh-dahks", "tip": "Stress EN in Oriental and OR in Orthodox. Americans often flap or drop the t in 'Oriental', close to 'or-ee-EN-ul'."},
+  "us_usage": "formal or literary",
+  "register": ["formal", "technical"],
+  "connotation": "Neutral and respectful; it is the churches' accepted English name. Outside this name, 'Oriental' for people sounds dated and offensive in the US.",
+  "usage_note": "Use 'Oriental Orthodox' for this church family and 'Eastern Orthodox' for the Greek, Russian, Serbian, Romanian and other Chalcedonian churches; the two are separate communions. In the US you will meet Oriental Orthodox Christians in Coptic, Ethiopian, Eritrean, Armenian, Syriac and Malankara parishes. Never describe Asian people as 'Oriental' in American English: that use is considered offensive, even though the church name is fine.",
+  "word_family": ["Orthodoxy (noun)"],
+  "distinctions": [
+   {"vs": "Eastern Orthodox", "note": "Eastern Orthodox churches accept seven ecumenical councils, including Chalcedon; the Oriental Orthodox accept three."},
+   {"vs": "Eastern Catholic", "note": "Eastern Catholic churches share Eastern liturgies but are in communion with the pope; some descend from the Oriental Orthodox churches."}
+  ],
+  "antonyms": [],
+  "collocations": ["Oriental Orthodox churches", "the Oriental Orthodox communion", "Oriental Orthodox Christians", "Eastern and Oriental Orthodox", "Oriental Orthodox liturgy"],
+  "examples": {
+   "everyday": "My coworker said her Eritrean church is Oriental Orthodox, which is different from the Greek Orthodox church downtown.",
+   "professional": "The ecumenical dialogue included bishops from all six Oriental Orthodox churches.",
+   "analytical": "The Oriental Orthodox churches preserve forms of Christianity, in Ge'ez, Syriac, Coptic and Armenian, that developed largely outside the Greek and Latin worlds."
+  },
+  "analogy": "",
+  "etymology": "Oriental from Latin oriens 'the east, where the sun rises'; Orthodox from Greek orthos 'right' and doxa 'belief, glory'.",
+  "common_mistakes": [
+   "Using Oriental Orthodox and Eastern Orthodox interchangeably.",
+   "Carrying 'Oriental' over to describe people from Asia, which is offensive in American English."
+  ],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "Tewahedo",
+ "domains": ["theology"],
+ "phonetic": "/ˌtɛwəˈhɛdoʊ/",
+ "meanings": [
+  {"pos": "noun", "senses": ["(Ge'ez, 'made one') The union of divinity and humanity in the one nature of the incarnate Christ, as confessed by the Ethiopian and Eritrean Orthodox churches; also used in the names of those churches."]}
+ ],
+ "etymology": "From Ge'ez *ተዋሕዶ* (*täwaḥədo*, “union, being made one”).",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "Ge'ez for 'made one': the union of divinity and humanity in Christ, and the name of the Ethiopian and Eritrean Orthodox Tewahedo churches."},
+  "pronunciation": {"ipa": "/ˌtɛwəˈhɛdoʊ/", "respelling": "teh-wuh-HEH-doh", "tip": "American speakers usually stress HEH, the third syllable. In Ge'ez and Amharic the stress is lighter and the 'h' is a breathy, throaty sound."},
+  "us_usage": "formal or literary",
+  "register": ["formal", "technical"],
+  "connotation": "Positive and reverent for Ethiopian and Eritrean Christians; it names their confession and identity.",
+  "usage_note": "In the US you meet the word mainly in church names, such as the Ethiopian Orthodox Tewahedo Church and the Eritrean Orthodox Tewahedo Church, and in Ethiopian community life. It expresses the miaphysite confession that Christ's divinity and humanity are made one. Most Americans will not know it, so add a short gloss in writing.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "miaphysite", "note": "Miaphysite is the Greek-based scholarly term; Tewahedo is the Ge'ez word Ethiopian and Eritrean Christians use for the same confession."},
+   {"vs": "hypostatic union", "note": "Hypostatic union is the Chalcedonian term for two natures in one person; Tewahedo stresses that the natures are made one."}
+  ],
+  "antonyms": [],
+  "collocations": ["Ethiopian Orthodox Tewahedo Church", "Eritrean Orthodox Tewahedo Church", "Tewahedo faith", "Tewahedo Christology", "Tewahedo tradition"],
+  "examples": {
+   "everyday": "The sign outside said Ethiopian Orthodox Tewahedo Church, and my friend explained that Tewahedo means 'made one.'",
+   "professional": "Her dissertation studies Tewahedo Christology in medieval Ge'ez homilies.",
+   "analytical": "The word Tewahedo turns a technical Christology into a confession of identity: the church is named for the union it proclaims."
+  },
+  "analogy": "",
+  "etymology": "From Ge'ez täwaḥədo 'being made one, union', from a root meaning 'one'.",
+  "common_mistakes": ["Treating Tewahedo as a place name or a person; it names a doctrine and appears in church names."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "Ge'ez",
+ "domains": ["theology"],
+ "phonetic": "/ˈɡiˌɛz/",
+ "meanings": [
+  {"pos": "noun", "senses": ["Classical Ethiopic, an ancient Semitic language of the kingdom of Aksum, now used mainly as the liturgical language of the Ethiopian and Eritrean Orthodox Tewahedo churches.", "The script (fidel) in which Ge'ez is written, also used for Amharic and Tigrinya."]}
+ ],
+ "etymology": "From Ge'ez *ግዕዝ* (*gəʿəz*).",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "Classical Ethiopic, an ancient Semitic language that is the liturgical language of the Ethiopian and Eritrean Orthodox churches; also its script."},
+  "pronunciation": {"ipa": "/ˈɡiˌɛz/", "respelling": "GEE-ez", "tip": "Americans usually say GEE-ez, with a hard 'g' as in 'geese'. The apostrophe marks a throat sound in Ethiopian pronunciation, closer to 'geh-EZ'."},
+  "us_usage": "formal or literary",
+  "register": ["formal", "academic"],
+  "connotation": "Neutral; for Ethiopian and Eritrean Christians it carries deep liturgical and cultural reverence.",
+  "usage_note": "Ge'ez is no longer anyone's mother tongue, but it is chanted in the liturgy and used in Ethiopian and Eritrean church schools. Scholars in Semitic studies and Ethiopian studies use it; the Ethiopian biblical canon, including books such as 1 Enoch and Jubilees, survives complete in Ge'ez. Its script, also called fidel or Ethiopic, is used today for Amharic and Tigrinya.",
+  "word_family": ["Ethiopic (adjective, noun)"],
+  "distinctions": [
+   {"vs": "Amharic", "note": "Amharic is Ethiopia's living national working language; Ge'ez is the classical and liturgical language."},
+   {"vs": "Ethiopic", "note": "Ethiopic is the scholarly English name for Ge'ez and for its script."}
+  ],
+  "antonyms": [],
+  "collocations": ["chanted in Ge'ez", "the Ge'ez liturgy", "Ge'ez manuscripts", "Ge'ez script", "classical Ge'ez"],
+  "examples": {
+   "everyday": "At my friend's church the priests chant in Ge'ez, and the youth follow along in Amharic.",
+   "professional": "The project is digitizing Ge'ez manuscripts from monastery libraries around Lake Tana.",
+   "analytical": "Because 1 Enoch survives complete only in Ge'ez, the language is indispensable for the study of Second Temple Judaism."
+  },
+  "analogy": "Ge'ez is to the Ethiopian church roughly what Latin long was to the Catholic Church: no longer spoken at home, but alive in prayer.",
+  "etymology": "From the language's own name, gəʿəz.",
+  "common_mistakes": ["Calling it a dialect of Amharic; Ge'ez is the older, separate classical language."],
+  "biblical_note": "The Ethiopian Orthodox Bible, preserved in Ge'ez, has a broader canon than other churches, including 1 Enoch and Jubilees. The Letter of Jude cites a prophecy of Enoch (Jude 14-15), a text otherwise known in full only through the Ge'ez tradition.",
+  "traditions": []
+ }
+},
+{
+ "word": "oikonomia",
+ "domains": ["theology", "orthodox_mysticism"],
+ "phonetic": "/ˌɔɪkoʊnoʊˈmiə/",
+ "meanings": [
+  {"pos": "noun", "senses": ["(Greek, 'household management') God's saving plan and its working-out in history, above all the incarnation; the 'economy' of salvation.", "In Orthodox church practice, the pastoral relaxation of the strict application of a canon for the spiritual good of a person, as opposed to akribeia (strictness)."]}
+ ],
+ "etymology": "From Ancient Greek *οἰκονομία* (*oikonomía*, “household management”), from *oikos* (“house”) + *nomos* (“law, management”).",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "God's plan of salvation carried out in history; in Orthodox church practice, the merciful, flexible application of church rules for someone's good."},
+  "pronunciation": {"ipa": "/ˌɔɪkoʊnoʊˈmiə/", "respelling": "oy-koh-noh-MEE-uh", "tip": "Stress MEE, the fourth syllable. In modern Greek the first syllable sounds like 'ee'; English-speaking scholars usually say 'oy'."},
+  "us_usage": "formal or literary",
+  "register": ["technical", "academic"],
+  "connotation": "Positive; it suggests wisdom and pastoral mercy, though critics say it can excuse inconsistency.",
+  "usage_note": "English writers often translate it simply as 'economy': 'the divine economy' or 'economy versus strictness.' The patristic contrast is between theologia (God in himself) and oikonomia (God's acts for our salvation). In Orthodox church life, a bishop may act 'by economy,' for example in receiving converts or in pastoral cases, without changing the rule itself.",
+  "word_family": ["economy (noun)", "economic (adjective)"],
+  "distinctions": [
+   {"vs": "akribeia", "note": "Akribeia is the strict, exact application of the canons; oikonomia is their pastoral relaxation."},
+   {"vs": "dispensation", "note": "Dispensation is the Western canonical term for a permitted exception to a law; oikonomia is broader and also names God's whole plan of salvation."}
+  ],
+  "antonyms": ["akribeia"],
+  "collocations": ["by oikonomia", "the divine oikonomia", "oikonomia and akribeia", "exercise oikonomia", "theologia and oikonomia"],
+  "examples": {
+   "everyday": "Our priest said the bishop allowed it by oikonomia, which I took to mean as a pastoral exception.",
+   "professional": "The canon lawyer's paper compares Orthodox oikonomia with Catholic dispensation.",
+   "analytical": "For the Cappadocians, we know God's being only through his oikonomia, his saving acts in creation and in Christ."
+  },
+  "analogy": "Oikonomia is like a wise doctor bending a standard treatment plan for one patient's sake, without throwing out the plan.",
+  "etymology": "From Greek oikos 'house' and nomos 'law, management'; the same word gives English economy.",
+  "common_mistakes": ["Reading 'economy' in theology as money or finance; it means God's ordered plan or pastoral management."],
+  "biblical_note": "The Greek word appears in the New Testament. Ephesians 1:10 speaks of God's plan for the fullness of time, to unite all things in Christ, and Ephesians 3:9 of the plan of the mystery hidden for ages; the Greek in both places is oikonomia. In Luke 16:2-4 the same word names the steward's management in the parable of the dishonest steward.",
+  "traditions": []
+ }
+},
+{
+ "word": "sola fide",
+ "domains": ["theology"],
+ "phonetic": "/ˌsoʊlə ˈfideɪ/",
+ "meanings": [
+  {"pos": "noun", "senses": ["(Latin, 'by faith alone') The Reformation principle that sinners are justified before God through faith alone, apart from works."]}
+ ],
+ "etymology": "From Latin *sōlā fidē* (“by faith alone”).",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The Protestant principle that a person is justified before God through faith alone in Christ, not by good works."},
+  "pronunciation": {"ipa": "/ˌsoʊlə ˈfideɪ/", "respelling": "SOH-luh FEE-day", "tip": "Stress SOH and FEE. Fide has two syllables, 'FEE-day', and does not rhyme with 'hide'."},
+  "us_usage": "formal or literary",
+  "register": ["technical", "academic"],
+  "connotation": "Positive and central for many Protestants; Catholic and Orthodox writers treat it as a formula they reject or qualify.",
+  "usage_note": "Americans meet sola fide in Reformation history, evangelical preaching and Catholic-Protestant debate. It belongs with the other Reformation 'solas', especially sola scriptura and sola gratia. Even its defenders add that saving faith is never alone: it produces good works.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "sola gratia", "note": "Sola gratia says salvation is by grace alone; sola fide says faith is the means by which that grace is received."},
+   {"vs": "sola scriptura", "note": "Sola scriptura concerns authority in doctrine; sola fide concerns how a person is justified."}
+  ],
+  "antonyms": [],
+  "collocations": ["the doctrine of sola fide", "sola fide and sola scriptura", "Luther's sola fide", "affirm sola fide", "justification sola fide"],
+  "examples": {
+   "everyday": "My Lutheran roommate and I argued about sola fide until two in the morning.",
+   "professional": "The seminar reads Luther, the Council of Trent and the 1999 Joint Declaration to trace the debate over sola fide.",
+   "analytical": "Defenders of sola fide insist that faith is not a work that earns salvation but the empty hand that receives it."
+  },
+  "analogy": "Sola fide pictures faith as an open hand receiving a gift, not a wage paid for labor.",
+  "etymology": "Latin sola 'alone' and fide 'by faith', from fides 'faith, trust'.",
+  "common_mistakes": [
+   "Pronouncing fide as one syllable, 'fide' like 'hide'.",
+   "Taking it to mean good works don't matter; Reformers taught that true faith always produces them."
+  ],
+  "biblical_note": "Supporters point to Romans 3:28, where Paul says a person is justified by faith apart from works of law (Luther added 'alone' in his German translation), and to Galatians 2:16 and Ephesians 2:8-9, which say salvation is by grace through faith and not by works. The phrase 'faith alone' appears in the Bible only in James 2:24, which says a man is justified by works and not by faith alone; the debate turns on how Paul and James fit together.",
+  "traditions": [
+   {"tradition": "Eastern Orthodox", "view": "The Orthodox do not use the formula. They describe salvation as union with God (theosis) in which God's grace and human cooperation (synergy) work together, and they read Paul and James as one teaching in which faith and works are not opposed."},
+   {"tradition": "Roman Catholic", "view": "The Council of Trent rejected justification by faith alone, teaching that justification comes by grace and includes inner renewal, with faith working through love. The 1999 Joint Declaration with the Lutheran World Federation affirmed a shared understanding that justification is by grace alone, through faith in Christ, not by merit, while differences remain."},
+   {"tradition": "Protestant", "view": "Lutheran, Reformed and Anglican confessions affirm justification by faith alone as a core of the gospel, and most evangelicals hold it firmly. Wesleyan Methodists affirm it while stressing holiness, and some recent scholars, such as those of the New Perspective on Paul, have reframed what 'works of the law' means."}
+  ]
+ }
+},
+{
+ "word": "penal substitution",
+ "domains": ["theology"],
+ "phonetic": "/ˈpinəl ˌsʌbstɪˈtuʃən/",
+ "meanings": [
+  {"pos": "noun", "senses": ["A theory of the atonement holding that Christ, in his death, took on himself the punishment due to sinners, satisfying God's justice in their place."]}
+ ],
+ "etymology": "From *penal* (“relating to punishment”), from Latin *poena* (“penalty”), + *substitution*.",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The view of the atonement that Christ died in sinners' place, bearing the punishment their sins deserved and so satisfying God's justice."},
+  "pronunciation": {"ipa": "/ˈpinəl ˌsʌbstɪˈtuʃən/", "respelling": "PEE-nul sub-stih-TOO-shun", "tip": "Penal is PEE-nul, like 'penalty' without its short 'e'. In substitution, stress TOO; Americans say 'too', not 'tyoo'."},
+  "us_usage": "formal or literary",
+  "register": ["technical", "academic"],
+  "connotation": "Neutral as a label; for many evangelicals it is the heart of the gospel, while critics see it as too legal or violent.",
+  "usage_note": "This is a common term in American evangelical theology, seminary courses and debates about the cross. It is often shortened to 'PSA' (penal substitutionary atonement). It is one of several 'atonement theories' along with Christus Victor, satisfaction and moral influence, and many theologians hold more than one together.",
+  "word_family": ["penal (adjective)", "substitutionary (adjective)", "substitute (noun, verb)"],
+  "distinctions": [
+   {"vs": "satisfaction theory", "note": "Anselm's satisfaction theory says Christ restored the honor due to God; penal substitution, developed by the Reformers, says Christ bore the penalty for sin."},
+   {"vs": "Christus Victor", "note": "Christus Victor stresses Christ's victory over sin, death and the devil; penal substitution stresses his bearing judgment in our place."},
+   {"vs": "moral influence", "note": "The moral influence view says the cross changes us by showing God's love, rather than dealing with a debt or penalty."}
+  ],
+  "antonyms": [],
+  "collocations": ["penal substitutionary atonement", "the doctrine of penal substitution", "defend penal substitution", "critics of penal substitution", "penal substitution theory"],
+  "examples": {
+   "everyday": "Our small group got into a long talk about penal substitution after the pastor said Jesus took our punishment.",
+   "professional": "The systematic theology course devotes two weeks to penal substitution and its critics.",
+   "analytical": "Penal substitution assumes that forgiveness without justice would compromise God's holiness, an assumption its critics challenge."
+  },
+  "analogy": "",
+  "etymology": "Penal from Latin poena 'penalty, punishment'; substitution from Latin substituere 'to put in place of'.",
+  "common_mistakes": ["Pronouncing penal as 'PEN-ul'; say PEE-nul."],
+  "biblical_note": "Supporters cite Isaiah 53:5-6, where the servant is wounded for our transgressions and the Lord lays on him the iniquity of us all; 2 Corinthians 5:21, where God made him to be sin who knew no sin; Galatians 3:13, where Christ became a curse for us; and 1 Peter 2:24, where he bore our sins in his body on the tree. In Romans 3:25 the RSV translates the key Greek word hilasterion as 'expiation', where some other versions say 'propitiation', a difference at the center of this debate.",
+  "traditions": [
+   {"tradition": "Eastern Orthodox", "view": "Orthodox theology generally does not frame the cross in terms of the Father punishing the Son. It speaks of Christ trampling down death by death, healing human nature and opening the way to theosis, and many Orthodox writers criticize penal substitution as a Western legal framework."},
+   {"tradition": "Roman Catholic", "view": "Catholic teaching describes Christ's death as a sacrifice of atonement and as satisfaction for sin, drawing on Anselm and Aquinas, but it does not teach that the Father punished the Son. It stresses Christ's loving obedience offered on our behalf."},
+   {"tradition": "Protestant", "view": "Penal substitution is central for Reformed and most evangelical Protestants and is taught by many Lutherans and Anglicans. Some Anabaptist, Wesleyan and mainline Protestants criticize it or place it beside other views such as Christus Victor."}
+  ]
+ }
+},
+{
+ "word": "Christus Victor",
+ "domains": ["theology"],
+ "phonetic": "/ˈkɹɪstəs ˈvɪktɚ/",
+ "meanings": [
+  {"pos": "noun", "senses": ["(Latin, 'Christ the Victor') The view of the atonement that sees Christ's death and resurrection as a victory over sin, death and the powers of evil; named after Gustaf Aulén's 1931 book."]}
+ ],
+ "etymology": "From Latin *Christus* (“Christ”) + *victor* (“conqueror”).",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The view that Christ saves by defeating sin, death and the devil through his death and resurrection, freeing humanity from their power."},
+  "pronunciation": {"ipa": "/ˈkɹɪstəs ˈvɪktɚ/", "respelling": "KRIS-tus VIK-ter", "tip": "Stress the first syllable of each word: KRIS-tus VIK-ter. The 'Ch' is a hard 'k'."},
+  "us_usage": "formal or literary",
+  "register": ["technical", "academic"],
+  "connotation": "Positive; it carries a sense of triumph and liberation.",
+  "usage_note": "The term comes from Swedish Lutheran bishop Gustaf Aulén, who argued that this 'classic' view dominated the early church. Americans hear it in seminary debates and in books contrasting it with penal substitution. Orthodox Christians recognize its theme in the Paschal hymn 'Christ is risen from the dead, trampling down death by death.'",
+  "word_family": ["victory (noun)", "victorious (adjective)"],
+  "distinctions": [
+   {"vs": "penal substitution", "note": "Penal substitution centers on Christ bearing the penalty for sin; Christus Victor centers on his triumph over the powers that enslave humanity."},
+   {"vs": "ransom theory", "note": "The ransom theory, a patristic form of the same idea, pictures Christ's death as a price that frees captives; Christus Victor is the broader modern label."}
+  ],
+  "antonyms": [],
+  "collocations": ["the Christus Victor model", "Christus Victor theory", "a Christus Victor reading", "Aulén's Christus Victor"],
+  "examples": {
+   "everyday": "Our pastor's Easter sermon was pure Christus Victor: death lost, and Jesus won.",
+   "professional": "The reading list pairs Aulén's Christus Victor with a recent defense of penal substitution.",
+   "analytical": "Christus Victor frames salvation as liberation from hostile powers rather than as the settling of a legal account."
+  },
+  "analogy": "Christus Victor pictures the cross as a rescue mission: the champion enters the enemy's fortress, is seemingly defeated, and breaks it open from inside.",
+  "etymology": "Latin Christus 'Christ' and victor 'conqueror', from vincere 'to conquer'.",
+  "common_mistakes": ["Treating it as a modern invention; Aulén argued it is the oldest model of the atonement."],
+  "biblical_note": "Key passages include Colossians 2:15, where God disarms the principalities and powers and triumphs over them in Christ; Hebrews 2:14-15, where Christ through death destroys the one who has the power of death and frees those held in fear; 1 John 3:8, where the Son appears to destroy the works of the devil; and 1 Corinthians 15:54-57, where death is swallowed up in victory.",
+  "traditions": [
+   {"tradition": "Eastern Orthodox", "view": "The Orthodox see the victory of Christ over death and Hades as central to salvation; it fills the Paschal liturgy and icons of the Resurrection, which show Christ breaking the gates of Hades. Many Orthodox writers regard it as closer to their tradition than Western legal models."},
+   {"tradition": "Roman Catholic", "view": "Catholic teaching and liturgy include the theme of Christ's victory over sin and death, especially at Easter, but present it alongside the language of sacrifice, satisfaction and merit rather than as a single theory."},
+   {"tradition": "Protestant", "view": "Aulén argued that Luther recovered this view. Anabaptist and some mainline Protestants favor it, while many evangelicals affirm it as a real theme but treat penal substitution as the foundation."}
+  ]
+ }
+},
+{
+ "word": "Kidase",
+ "domains": ["theology", "orthodox_mysticism"],
+ "phonetic": "/kɪˈdɑseɪ/",
+ "meanings": [
+  {"pos": "noun", "senses": ["(Ge'ez qəddase, also spelled Qidase or Qiddase, 'sanctification') The eucharistic Divine Liturgy of the Ethiopian and Eritrean Orthodox Tewahedo churches, celebrated in Ge'ez."]}
+ ],
+ "etymology": "From Ge'ez *ቅዳሴ* (*qəddase*, “sanctification, hallowing”), from a Semitic root meaning “holy”.",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The Divine Liturgy, or eucharistic service, of the Ethiopian and Eritrean Orthodox Tewahedo churches, chanted mainly in Ge'ez."},
+  "pronunciation": {"ipa": "/kɪˈdɑseɪ/", "respelling": "kih-DAH-say", "tip": "English speakers usually stress DAH. Ethiopians begin with a clipped, ejective 'k' sound that English lacks."},
+  "us_usage": "formal or literary",
+  "register": ["formal", "technical"],
+  "connotation": "Reverent; it names the central act of worship.",
+  "usage_note": "Used among Ethiopian and Eritrean Orthodox Christians in the US and in liturgical studies. The Ethiopian tradition has a notably large number of anaphoras, traditionally counted as fourteen, which can be used in the Kidase. Spellings vary in English: Kidase, Qidase, Qiddase or Qeddase.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "Divine Liturgy", "note": "Divine Liturgy is the general Orthodox term; Kidase is the Ethiopian and Eritrean name for their form of it."},
+   {"vs": "anaphora", "note": "An anaphora is the central eucharistic prayer; the Kidase is the whole service in which an anaphora is prayed."},
+   {"vs": "Qurbana", "note": "Qurbana is the Syriac-tradition name for the eucharistic liturgy; Kidase is the Ge'ez one."}
+  ],
+  "antonyms": [],
+  "collocations": ["attend Kidase", "the Sunday Kidase", "Kidase in Ge'ez", "the anaphoras of the Kidase", "Kidase begins early"],
+  "examples": {
+   "everyday": "Kidase starts at six in the morning on Sundays, so we bring the kids a little later.",
+   "professional": "The study compares the anaphoras used in the Ethiopian Kidase with Coptic and Syriac liturgies.",
+   "analytical": "The Kidase preserves an ancient sense of the liturgy as heaven and earth worshiping together, which shapes Ethiopian church architecture itself."
+  },
+  "analogy": "",
+  "etymology": "From Ge'ez qəddase 'sanctification', related to Hebrew qadosh 'holy'.",
+  "common_mistakes": ["Using Kidase for any prayer service; it refers to the eucharistic liturgy."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "Qurbana",
+ "domains": ["theology"],
+ "phonetic": "/kʊɹˈbɑnə/",
+ "meanings": [
+  {"pos": "noun", "senses": ["(Syriac, 'offering') The eucharistic liturgy of the Syriac churches, including the Syriac Orthodox and Malankara Orthodox churches and the Syro-Malabar and Syro-Malankara Catholic churches; usually called the Holy Qurbana."]}
+ ],
+ "etymology": "From Classical Syriac *qurbānā* (“offering, sacrifice”), from a Semitic root meaning “to bring near”.",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The eucharistic liturgy of the Syriac Christian traditions, especially in India and the Middle East; usually called the Holy Qurbana."},
+  "pronunciation": {"ipa": "/kʊɹˈbɑnə/", "respelling": "koor-BAH-nuh", "tip": "Stress BAH, the second syllable. The first syllable rhymes with 'poor', with an American r."},
+  "us_usage": "formal or literary",
+  "register": ["formal", "technical"],
+  "connotation": "Reverent; it names the central act of worship.",
+  "usage_note": "Americans meet the word in Indian Christian communities (Malankara Orthodox, Syro-Malabar and others) and in Syriac Orthodox parishes, almost always as 'Holy Qurbana.' The West Syriac form is based on the Liturgy of Saint James. It is related to the Hebrew korban, an offering brought to God.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "Divine Liturgy", "note": "Divine Liturgy is the Byzantine and general Orthodox term; Qurbana is the Syriac name."},
+   {"vs": "Kidase", "note": "Kidase is the Ethiopian and Eritrean name for their eucharistic liturgy; Qurbana is the Syriac one."}
+  ],
+  "antonyms": [],
+  "collocations": ["Holy Qurbana", "celebrate the Qurbana", "attend Qurbana", "Qurbana in Malayalam", "the Qurbana of Saint James"],
+  "examples": {
+   "everyday": "My Malayali neighbor invited me to Holy Qurbana on Sunday, and the incense alone was unforgettable.",
+   "professional": "The parish now celebrates Qurbana in both Malayalam and English for its American-born youth.",
+   "analytical": "The Qurbana's Syriac name, 'offering,' keeps the sacrificial language of the Hebrew Scriptures at the center of the Eucharist."
+  },
+  "analogy": "",
+  "etymology": "From Syriac qurbānā 'offering', related to Hebrew qorban.",
+  "common_mistakes": ["Leaving out 'Holy': in practice people almost always say 'Holy Qurbana'."],
+  "biblical_note": "The related Hebrew word qorban means an offering brought near to God and appears throughout Leviticus. In Mark 7:11 Jesus cites the term Corban, an offering vowed to God, when criticizing those who used it to avoid supporting their parents.",
+  "traditions": []
+ }
+}
+]

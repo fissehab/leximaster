@@ -468,6 +468,26 @@ def matching(kind: str = "meaning", n: int = Query(6, ge=3, le=10), stars: str |
 
 # ---------------------------------------------------------------------- listening
 
+def sound_key(ipa: str) -> str:
+    """IPA without slashes, stress, length, syllable dots or diacritics."""
+    import unicodedata
+    s = unicodedata.normalize("NFD", ipa.split(",")[0])
+    return "".join(ch for ch in s if not unicodedata.combining(ch) and ch not in "/[]ˈˌː.‿ -()'")
+
+
+def sound_distance(a: str, b: str) -> float:
+    """Edit distance between two sound keys, 0 (same) to 1."""
+    if not a or not b:
+        return 1.0
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        cur = [i]
+        for j, cb in enumerate(b, 1):
+            cur.append(min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (ca != cb)))
+        prev = cur
+    return prev[-1] / max(len(a), len(b))
+
+
 @router.get("/listen")
 def listen(n: int = Query(10, ge=1, le=50), stars: str | None = None,
            list_id: int | None = None, domain: str | None = None, audio_only: bool = False):
@@ -485,20 +505,29 @@ def listen(n: int = Query(10, ge=1, le=50), stars: str | None = None,
         items = []
         for wid in chosen:
             item = full(fetch_word(c, wid))
-            # Distractors that look alike are the useful ones: same first letter
-            # or similar length.
+            # Distractors that sound alike are the useful ones (affect,
+            # effect), but never a homophone, which would be unfair; then
+            # look-alikes (same first letter, similar length).
             w = item["word"]
+            me = sound_key(item.get("phonetic") or "")
             # Same number of words: a sentence among single words is a giveaway.
-            words = [r["word"] for r in c.execute(
-                "SELECT word FROM words WHERE length(word) - length(replace(word, ' ', '')) = ? "
-                "AND lower(word) != lower(?) ORDER BY random() LIMIT 200", (w.count(" "), w))]
-            if len(words) < 3:
+            cands = [(r["word"], r["ph"] or "") for r in c.execute(
+                "SELECT word, json_extract(data, '$.phonetic') AS ph FROM words "
+                "WHERE length(word) - length(replace(word, ' ', '')) = ? "
+                "AND lower(word) != lower(?) ORDER BY random() LIMIT 400", (w.count(" "), w))]
+            if len(cands) < 3:
                 sample = random.sample(all_ids, k=min(200, len(all_ids)))
-                words += [r["word"] for r in c.execute(
+                cands += [(r["word"], "") for r in c.execute(
                     f"SELECT word FROM words WHERE id IN ({','.join('?' * len(sample))})", sample)
                     if r["word"].lower() != w.lower()]
-            words.sort(key=lambda x: (x[0].lower() != w[0].lower(), abs(len(x) - len(w))))
-            opts = words[:3] + [w]
+            scored = []
+            for x, ph in cands:
+                d = sound_distance(me, sound_key(ph)) if me and ph else 1.0
+                if d == 0:
+                    continue   # sounds the same: no fair way to tell them apart by ear
+                scored.append((d, x[0].lower() != w[0].lower(), abs(len(x) - len(w)), x))
+            scored.sort()
+            opts = [s[3] for s in scored[:3]] + [w]
             random.shuffle(opts)
             item["options"] = opts
             items.append(item)
@@ -521,6 +550,7 @@ async def save_recording(word_id: int, file: UploadFile = File(...)):
         old = c.execute("SELECT path FROM recordings WHERE word_id=?", (word_id,)).fetchone()
         if old and Path(old["path"]).name != path.name:
             (db.RECORDINGS / Path(old["path"]).name).unlink(missing_ok=True)
+        db.RECORDINGS.mkdir(parents=True, exist_ok=True)
         path.write_bytes(content)
         c.execute("INSERT OR REPLACE INTO recordings(word_id, path, created_at) VALUES (?, ?, datetime('now','localtime'))",
                   (word_id, path.name))

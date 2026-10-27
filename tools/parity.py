@@ -69,7 +69,7 @@ def js_side(url: str, keys: list[str]) -> tuple[list[dict], dict[str, dict]]:
         b = p.chromium.launch(channel="chrome", headless=True)
         pg = b.new_page()
         pg.goto(url + "#home")
-        pg.wait_for_function("!document.querySelector('.boot-note')", timeout=120000)
+        pg.wait_for_function("() => !document.querySelector('.boot-note')", timeout=120000)
         words, full = pg.evaluate("""async keys => {
             const { api } = await import('./static/js/api.js');
             const words = (await api.get('/api/words')).words;

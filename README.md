@@ -21,7 +21,7 @@ local app on your Mac. Both work the same and share the same progress file forma
 
 ## What's in it
 
-16,381 entries. 5,823 have a human American recording; the other 10,558 have a natural synthesized
+16,406 entries. 5,821 have a human American recording; the other 10,585 have a natural synthesized
 American recording made for LexiMaster (Kokoro, an open neural voice), spoken from each entry's reviewed
 IPA for rare words and names.
 
@@ -29,13 +29,13 @@ IPA for rare words and names.
 
 | Domain | Entries | Domain | Entries |
 |---|---|---|---|
-| Advanced (GRE/SAT level) | 7,448 | Artificial intelligence | 590 |
-| Professional | 1,312 | Software engineering | 483 |
-| Literary | 577 | Data science | 425 |
-| Academic | 415 | Statistics & probability | 411 |
-| Theology | 850 | Mathematics | 600 |
-| Philosophy | 720 | Logic | 291 |
-| Christian anthropology | 208 | Orthodox mysticism | 143 |
+| Advanced (GRE/SAT level) | 7,445 | Artificial intelligence | 594 |
+| Professional | 1,313 | Software engineering | 483 |
+| Literary | 577 | Data science | 428 |
+| Academic | 415 | Statistics & probability | 413 |
+| Theology | 869 | Mathematics | 600 |
+| Philosophy | 723 | Logic | 294 |
+| Christian anthropology | 208 | Orthodox mysticism | 145 |
 
 **Everyday English** (scope "Everyday English", 3,211 entries): the words, phrasal verbs and
 expressions of daily American life, each with hand-written conversation examples labeled by meaning.
@@ -138,9 +138,10 @@ This creates `.venv/`, installs `requirements-tools.txt` (the app and the build 
 ## 1. Build the dataset
 
 ```bash
-.venv/bin/python build_dataset.py --limit 20   # quick end-to-end test on 20 words
-.venv/bin/python build_dataset.py              # full build
-.venv/bin/python build_dataset.py --status     # show progress
+.venv/bin/python build_dataset.py --limit 20   # quick end-to-end test on 20 words (free stages)
+.venv/bin/python build_dataset.py              # the free stages: collect, filter, fetch, audio, extras
+.venv/bin/python build_dataset.py --paid       # also expand and enrich (Claude; costs money)
+.venv/bin/python build_dataset.py --status     # show progress (writes nothing)
 ```
 
 The build runs seven stages. Each stage is resumable: press Ctrl-C at any time and run the
@@ -161,7 +162,10 @@ Useful options:
 - `--stages fetch,audio`: run only those stages.
 - `--retry-failed`: retry words that failed in an earlier run.
 - `--only "word1,word2"`: redo the study notes for just these words.
-- `--budget 18`: stop enrichment once the estimated cost reaches $18 (rerun to continue).
+- `--paid`: include the paid stages (expand, enrich); naming them in `--stages` does the same. The
+  estimated cost is printed before each paid stage.
+- `--budget 18`: stop the paid stages once the estimated cost reaches $18 (default $5; 0 means no
+  limit; rerun to continue).
 - `--effort low|medium|high`: how carefully Claude works (default medium).
 - `--concurrency 8`: number of parallel enrichment requests.
 
@@ -265,7 +269,7 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings, then "Missed it" or "Knew it" (a miss brings the word into today's review). Swipe on a phone. You can shuffle, play audio on flip, rate the word (1–5) or mark it known, and choose a scope, rating or list. The deck ends with a summary. |
 | Matching | Timed rounds that pair words with meanings or with example sentences, with a score. |
 | Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, and for Bible names "who or what is it?" or "person, place or people?". Only the question types you pick are asked. A wrong answer says what the option you chose actually means. A changed setting applies to the next quiz; opening an entry and coming back keeps your place. "Retry the misses" at the end; misses go back into today's review. |
-| Listen | Hear a word, then pick it or type it. Also has a spelling test that compares your spelling letter by letter. "Can't listen now?" shows the pronunciation instead (the answer then isn't scored as heard). |
+| Listen | Hear a word, then pick it or type it; the wrong choices sound like the word (affect, effect), never exact homophones. Also has a spelling test that compares your spelling letter by letter, and "Where's the stress?", which asks which syllable is strong. "Can't listen now?" shows the pronunciation instead (the answer then isn't scored as heard). |
 | Pronounce | Play the reference recording, record yourself, and play both back. The two waveforms are trimmed of silence and drawn on one time scale, so length and stress line up. |
 | Browse | The full lexicon. It has A–Z jump, instant search across words and meanings, sorting by A–Z, frequency, stars or domain, and filters. On a phone, tapping a word brings its page into view (← List goes back). |
 | My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen. Words in your lists come first among new review words. |
@@ -346,7 +350,8 @@ Everything is stored locally:
 - `data/words.json` and `data/audio/` hold the dataset.
 
 **Stats → Export progress** saves a JSON file keyed by word rather than database ids, so it imports
-into a rebuilt dataset too. The local app also keeps a copy of its database each day in
+into a rebuilt dataset too. Tick "Include my pronunciation recordings" to add your own recordings (the
+file gets larger); importing adds them only for words that have none. The local app also keeps a copy of its database each day in
 `data/backups/` (the last 7), and `make backup` copies the database and `data/cache` (the dataset's
 costly build caches) into `backups/`.
 
@@ -375,6 +380,8 @@ build_dataset.py   dataset builder (resumable)
 seeds/             seed word lists, one word or phrase per line
 seeds/examples/    hand-written conversation examples for the everyday domains
 seeds/fixes/       hand corrections to any field of an entry (see its README.txt)
+seeds/entries/     hand-written entries for words the dictionaries lack (Oriental Orthodox theology and more)
+seeds/drop/        entries left out of the build (duplicates, stray seeds)
 seeds/drop/        keys left out of the build (not real words, British spellings)
 tools/             build_site.py (the website), audit.py (content checks), parity.py (website vs
                    local app), gen_shared.py (constants shared with the browser code),

@@ -1,0 +1,312 @@
+[
+{
+ "word": "paycheck",
+ "domains": ["home_health", "small_talk"],
+ "phonetic": "/ˈpeɪˌtʃɛk/",
+ "meanings": [
+  {"pos": "noun", "senses": ["A check or direct deposit for wages or salary paid to an employee.", "The amount of money a person is paid each pay period; one's regular income."]}
+ ],
+ "etymology": "From *pay* + *check*; American English.",
+ "conversation": [
+  {"sense": "regular wages", "text": "I get paid every other Friday, so I'll pay you back after my next paycheck."},
+  {"sense": "living on tight income", "text": "A lot of families here are living paycheck to paycheck."}
+ ],
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The wages you receive from your employer each pay period, now usually by direct deposit rather than a paper check."},
+  "pronunciation": {"ipa": "/ˈpeɪˌtʃɛk/", "respelling": "PAY-chek", "tip": "Stress PAY, the first syllable; 'check' is lighter. It is one word, said quickly as a compound."},
+  "us_usage": "common",
+  "register": ["neutral"],
+  "connotation": "Neutral; 'living paycheck to paycheck' suggests financial strain.",
+  "usage_note": "Americans say paycheck even when the money arrives by direct deposit. Most are paid weekly, biweekly (every two weeks) or twice a month; the breakdown of taxes and deductions is on the pay stub. British English says 'pay packet' or 'payslip' for related ideas.",
+  "word_family": ["pay (noun, verb)", "payday (noun)"],
+  "distinctions": [
+   {"vs": "salary", "note": "Salary is your fixed annual pay; a paycheck is each individual payment of it."},
+   {"vs": "pay stub", "note": "A pay stub is the statement showing gross pay, taxes and deductions; the paycheck is the money itself."},
+   {"vs": "take-home pay", "note": "Take-home pay is the amount left after deductions, which is what your paycheck actually delivers."}
+  ],
+  "antonyms": [],
+  "collocations": ["live paycheck to paycheck", "my next paycheck", "a steady paycheck", "direct deposit of your paycheck", "first paycheck", "cash a paycheck"],
+  "examples": {
+   "everyday": "I'll buy the new tires after my next paycheck comes in.",
+   "professional": "HR confirmed that the raise will show up on your first paycheck in March.",
+   "analytical": "Survey data suggest that many middle-income households, not only low-income ones, live paycheck to paycheck."
+  },
+  "analogy": "",
+  "etymology": "A compound of pay and check, the American spelling of cheque.",
+  "common_mistakes": ["Writing 'pay cheque' (British spelling) or 'pay check' as two words; Americans write paycheck."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "mortgage",
+ "domains": ["home_health"],
+ "phonetic": "/ˈmɔɹɡɪdʒ/",
+ "meanings": [
+  {"pos": "noun", "senses": ["A loan used to buy a home or other property, secured by that property, which the lender can take if the loan is not repaid.", "The monthly payment on such a loan."]},
+  {"pos": "verb", "senses": ["To pledge property as security for a loan."]}
+ ],
+ "etymology": "From Old French *mort gage* (“dead pledge”).",
+ "conversation": [
+  {"sense": "home loan", "text": "We finally paid off our mortgage last year."},
+  {"sense": "monthly payment", "text": "Our mortgage is about the same as what we used to pay in rent."}
+ ],
+ "nuance": {
+  "core": {"pos": "noun", "definition": "A long-term loan to buy a home, secured by the home itself; also the monthly payment on that loan."},
+  "pronunciation": {"ipa": "/ˈmɔɹɡɪdʒ/", "respelling": "MOR-gij", "tip": "The t is silent: say MOR-gij, two syllables. Stress the first syllable."},
+  "us_usage": "common",
+  "register": ["neutral"],
+  "connotation": "Neutral; it can suggest both the security of owning a home and the burden of debt.",
+  "usage_note": "Americans talk about their mortgage constantly: 'our mortgage is due on the first,' 'we refinanced our mortgage.' The most common US mortgage is a 30-year fixed-rate loan; 'mortgage' often means the monthly payment, which may include property tax and insurance held in escrow. Buying a home usually requires a down payment plus closing costs.",
+  "word_family": ["mortgagor (noun)", "mortgagee (noun)"],
+  "distinctions": [
+   {"vs": "loan", "note": "A loan is any borrowed money; a mortgage is a loan secured by real estate."},
+   {"vs": "rent", "note": "Rent is paid to a landlord for use of a property; a mortgage payment goes to a lender toward owning it."},
+   {"vs": "home equity loan", "note": "A home equity loan borrows against the value you already own in your home, often as a second loan on top of the mortgage."}
+  ],
+  "antonyms": [],
+  "collocations": ["take out a mortgage", "pay off the mortgage", "refinance a mortgage", "30-year fixed mortgage", "mortgage rate", "mortgage payment", "qualify for a mortgage"],
+  "examples": {
+   "everyday": "With rates this high, our mortgage would be almost double what we pay in rent.",
+   "professional": "The bank's model predicts mortgage default risk using income, credit score and loan-to-value ratio.",
+   "analytical": "Because most American mortgages carry fixed rates, rising interest rates discourage owners from selling, which reduces housing supply."
+  },
+  "analogy": "",
+  "etymology": "From Old French mort gage, literally 'dead pledge': the pledge 'dies' when the debt is paid or the property is lost.",
+  "common_mistakes": [
+   "Pronouncing the t: it is MOR-gij, not 'mort-gage'.",
+   "Saying 'make a mortgage' instead of 'take out a mortgage' or 'get a mortgage'."
+  ],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "down payment",
+ "domains": ["home_health", "shopping"],
+ "phonetic": "/ˈdaʊn ˌpeɪmənt/",
+ "meanings": [
+  {"pos": "noun", "senses": ["The part of the price of something, such as a house or car, that is paid up front in cash, with the rest financed by a loan."]}
+ ],
+ "etymology": "",
+ "conversation": [
+  {"sense": "saving for a house", "text": "We're saving for a down payment on a house."},
+  {"sense": "buying a car", "text": "How much do you want to put down? A bigger down payment lowers your monthly payment."}
+ ],
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The cash you pay up front when buying something expensive, like a home or car, with the rest paid through a loan."},
+  "pronunciation": {"ipa": "/ˈdaʊn ˌpeɪmənt/", "respelling": "DOWN pay-ment", "tip": "Stress DOWN more than payment, as in most compound nouns."},
+  "us_usage": "common",
+  "register": ["neutral"],
+  "connotation": "Neutral; a large one suggests financial strength.",
+  "usage_note": "Americans usually discuss down payments as a percentage: '20 percent down' on a house avoids private mortgage insurance on a conventional loan. As a verb phrase people say 'put down': 'we put 10 percent down.' It is also used figuratively: 'a down payment on future success.'",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "deposit", "note": "A deposit (such as earnest money) secures a deal or a rental; the down payment is the buyer's share of the price at purchase."},
+   {"vs": "closing costs", "note": "Closing costs are the fees for completing a home purchase, paid on top of the down payment."}
+  ],
+  "antonyms": [],
+  "collocations": ["save for a down payment", "make a down payment", "a 20 percent down payment", "down payment assistance", "a down payment on a house"],
+  "examples": {
+   "everyday": "My parents helped us with the down payment, or we'd still be renting.",
+   "professional": "The lender requires a down payment of at least 3.5 percent for this loan program.",
+   "analytical": "Rising home prices make the down payment, more than the monthly payment, the main barrier for first-time buyers."
+  },
+  "analogy": "",
+  "etymology": "",
+  "common_mistakes": ["Saying 'pay a down' instead of 'put money down' or 'make a down payment'."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "out-of-pocket",
+ "domains": ["home_health", "shopping"],
+ "phonetic": "/ˌaʊt əv ˈpɑkɪt/",
+ "meanings": [
+  {"pos": "adjective", "senses": ["(of costs) Paid directly by you rather than covered by insurance, an employer or someone else."]},
+  {"pos": "adverb", "senses": ["Out of one's own money: 'I paid for it out of pocket.'"]}
+ ],
+ "etymology": "",
+ "conversation": [
+  {"sense": "health insurance cost", "text": "How much will this cost me out of pocket?"},
+  {"sense": "work expense", "text": "I paid for the client lunch out of pocket, so I need to file a reimbursement."}
+ ],
+ "nuance": {
+  "core": {"pos": "adjective", "definition": "Paid with your own money, not covered by insurance or reimbursed by someone else."},
+  "pronunciation": {"ipa": "/ˌaʊt əv ˈpɑkɪt/", "respelling": "owt uv PAH-kit", "tip": "Link the words: 'ow-duv-PAH-kit', with stress on PAH. The t in 'out' is flapped before a vowel."},
+  "us_usage": "common",
+  "register": ["neutral"],
+  "connotation": "Neutral; it often signals an unwelcome expense.",
+  "usage_note": "Americans use it all the time with health insurance: 'out-of-pocket costs' and the 'out-of-pocket maximum,' the most you pay in a year before insurance covers everything. It is hyphenated before a noun ('out-of-pocket expenses') and usually not after a verb ('I paid out of pocket'). In casual slang, 'out of pocket' can also mean behaving inappropriately or being unreachable, so context matters.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "deductible", "note": "A deductible is the amount you pay before insurance starts paying; out-of-pocket costs include the deductible plus copays and coinsurance."},
+   {"vs": "copay", "note": "A copay is one fixed fee per visit or prescription; out-of-pocket is the total you pay yourself."}
+  ],
+  "antonyms": ["covered", "reimbursed"],
+  "collocations": ["out-of-pocket costs", "out-of-pocket maximum", "pay out of pocket", "out-of-pocket expenses", "high out-of-pocket"],
+  "examples": {
+   "everyday": "My plan has a high deductible, so the MRI was mostly out-of-pocket.",
+   "professional": "Please submit receipts for any out-of-pocket expenses from the conference by Friday.",
+   "analytical": "High out-of-pocket costs lead some patients to skip prescriptions, which can raise total health spending later."
+  },
+  "analogy": "",
+  "etymology": "",
+  "common_mistakes": ["Saying 'from my pocket'; the fixed expression is 'out of pocket'."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "for what it's worth",
+ "domains": ["idioms", "meetings", "small_talk"],
+ "phonetic": "/fɚ ˈwʌt ɪts ˈwɝθ/",
+ "meanings": [
+  {"pos": "expression", "senses": ["Used to offer an opinion or piece of information modestly, without claiming it is important or certain (often abbreviated FWIW in writing)."]}
+ ],
+ "etymology": "",
+ "conversation": [
+  {"sense": "modest opinion", "text": "For what it's worth, I think you made the right call."},
+  {"sense": "offering information", "text": "For what it's worth, the café on the corner is open until ten."}
+ ],
+ "nuance": {
+  "core": {"pos": "expression", "definition": "A modest way to offer your opinion or information, meaning 'this may or may not help, but here it is.'"},
+  "pronunciation": {"ipa": "/fɚ ˈwʌt ɪts ˈwɝθ/", "respelling": "fer WUT its WURTH", "tip": "'For' reduces to 'fer'; stress 'what' and 'worth'. Americans flap the t: 'fer WUH-dits WURTH'."},
+  "us_usage": "common",
+  "register": ["informal", "neutral"],
+  "connotation": "Polite and humble; it softens advice or disagreement.",
+  "usage_note": "Americans use it at the start or end of a sentence to make an opinion sound less pushy: 'For what it's worth, I liked your talk.' In chat and email it is often written FWIW. It can sound slightly resigned if said with a sigh ('I told him, for what it's worth').",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "in my opinion", "note": "In my opinion simply labels a view; for what it's worth also signals modesty about how much it matters."},
+   {"vs": "just so you know", "note": "Just so you know shares information directly; for what it's worth offers it humbly, with no pressure."}
+  ],
+  "antonyms": [],
+  "collocations": ["for what it's worth, I think", "and, for what it's worth", "FWIW"],
+  "examples": {
+   "everyday": "For what it's worth, I think the blue one looks better on you.",
+   "professional": "For what it's worth, the smaller model performed almost as well in our last eval, at a third of the cost.",
+   "analytical": "For what it's worth, the author concedes in a footnote that the evidence for this claim is thin."
+  },
+  "analogy": "",
+  "etymology": "",
+  "common_mistakes": ["Writing 'for what its worth' without the apostrophe; it is 'it's' (it is)."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "point taken",
+ "domains": ["idioms", "meetings"],
+ "phonetic": "/ˈpɔɪnt ˈteɪkən/",
+ "meanings": [
+  {"pos": "expression", "senses": ["Used to acknowledge that someone has made a valid point, often without fully conceding the argument."]}
+ ],
+ "etymology": "",
+ "conversation": [
+  {"sense": "acknowledging a fair objection", "text": "Point taken. I'll double-check the numbers before I send it."},
+  {"sense": "partial agreement", "text": "Okay, point taken, but I still think we should try it."}
+ ],
+ "nuance": {
+  "core": {"pos": "expression", "definition": "A short way to say 'I understand and accept your point,' often while keeping your overall position."},
+  "pronunciation": {"ipa": "/ˈpɔɪnt ˈteɪkən/", "respelling": "POYNT TAY-kun", "tip": "Stress both words, a little more on TAY. The t at the end of point is often barely released."},
+  "us_usage": "common",
+  "register": ["informal", "neutral"],
+  "connotation": "Usually cooperative; said flatly, it can sound curt, as if ending the discussion.",
+  "usage_note": "Americans say it in meetings and arguments to show they heard a fair criticism: 'Point taken, let's add a test for that.' It is shorter and a bit more businesslike than 'That's a good point.' Tone matters: said with a smile it is gracious, said sharply it can mean 'okay, you can stop now.'",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "fair point", "note": "Fair point praises the point; point taken says you accept it and will act on it."},
+   {"vs": "noted", "note": "Noted only acknowledges hearing something and can sound cold; point taken admits the point has merit."}
+  ],
+  "antonyms": [],
+  "collocations": ["point taken, but", "okay, point taken", "point well taken"],
+  "examples": {
+   "everyday": "Point taken, I'll stop eating your leftovers.",
+   "professional": "Point taken on the sample size; we'll rerun the analysis with the full quarter's data.",
+   "analytical": "The reviewer's objection about confounding is a point taken, but it does not overturn the main result."
+  },
+  "analogy": "",
+  "etymology": "",
+  "common_mistakes": ["Saying 'I take point'; the expression is 'point taken' or 'I take your point'."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "to be fair",
+ "domains": ["small_talk", "meetings"],
+ "phonetic": "/tə bi ˈfɛɹ/",
+ "meanings": [
+  {"pos": "expression", "senses": ["Used to add a point that balances or softens a criticism just made, often in someone's defense."]}
+ ],
+ "etymology": "",
+ "conversation": [
+  {"sense": "defending someone", "text": "The service was slow, but to be fair, they were really short-staffed."},
+  {"sense": "balancing a criticism", "text": "To be fair, nobody told him the deadline had moved."}
+ ],
+ "nuance": {
+  "core": {"pos": "expression", "definition": "Used to introduce a point that balances a criticism, giving someone or something fair credit."},
+  "pronunciation": {"ipa": "/tə bi ˈfɛɹ/", "respelling": "tuh bee FAIR", "tip": "'To' reduces to 'tuh'; stress FAIR, with a clear American r."},
+  "us_usage": "common",
+  "register": ["informal", "neutral"],
+  "connotation": "Generous and balanced; it shows you are not being one-sided.",
+  "usage_note": "Americans use it constantly in conversation and at work, usually after a complaint: 'The app crashed, but to be fair, it's still in beta.' 'To be fair to him' points the defense at a person. Overused, it can sound like you are excusing everything.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "in fairness", "note": "In fairness means the same and sounds slightly more formal."},
+   {"vs": "to be honest", "note": "To be honest introduces a frank opinion; to be fair introduces a balancing point."}
+  ],
+  "antonyms": [],
+  "collocations": ["but to be fair", "to be fair to him", "to be fair, though", "to be fair to the team"],
+  "examples": {
+   "everyday": "The movie was too long, but to be fair, the ending was great.",
+   "professional": "The model missed the target, but to be fair, the training data ended before the policy change.",
+   "analytical": "To be fair to Hume, he never claimed that morality is arbitrary, only that it does not follow from facts alone."
+  },
+  "analogy": "",
+  "etymology": "",
+  "common_mistakes": ["Confusing it with 'to be honest'; they introduce different kinds of comments."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "take-home pay",
+ "domains": ["home_health", "small_talk"],
+ "phonetic": "/ˈteɪk ˌhoʊm ˈpeɪ/",
+ "meanings": [
+  {"pos": "noun", "senses": ["The amount of pay left after taxes, insurance and other deductions are taken out."]}
+ ],
+ "etymology": "",
+ "conversation": [
+  {"sense": "net pay", "text": "My salary sounds good, but my take-home pay is a lot less after taxes and insurance."}
+ ],
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The money you actually receive after taxes, insurance, retirement contributions and other deductions."},
+  "pronunciation": {"ipa": "/ˈteɪk ˌhoʊm ˈpeɪ/", "respelling": "TAYK-hohm PAY", "tip": "Stress TAYK and PAY; 'home' is lighter."},
+  "us_usage": "common",
+  "register": ["neutral"],
+  "connotation": "Neutral.",
+  "usage_note": "Americans use take-home pay when comparing jobs or budgeting, since federal and state income tax, Social Security, Medicare, health insurance and 401(k) contributions can reduce a paycheck a lot. The technical term is 'net pay', as opposed to 'gross pay'.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "gross pay", "note": "Gross pay is the full amount before deductions; take-home pay is what is left."},
+   {"vs": "salary", "note": "A salary is quoted before deductions, so it is always more than take-home pay."}
+  ],
+  "antonyms": ["gross pay"],
+  "collocations": ["increase your take-home pay", "monthly take-home pay", "take-home pay after taxes", "lower take-home pay"],
+  "examples": {
+   "everyday": "After the new health plan, my take-home pay dropped by about a hundred dollars a month.",
+   "professional": "Raising your 401(k) contribution reduces your take-home pay but also your taxable income.",
+   "analytical": "Comparisons of wages across states mislead unless they consider take-home pay, since state income taxes vary widely."
+  },
+  "analogy": "",
+  "etymology": "",
+  "common_mistakes": ["Saying 'home-take pay' or 'take-home salary'; the usual phrase is take-home pay."],
+  "biblical_note": "",
+  "traditions": []
+ }
+}
+]

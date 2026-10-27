@@ -1,36 +1,63 @@
 """Word list, detail, user state (stars/known/notes), custom words, word of the day."""
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 from datetime import date
 from pathlib import Path
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request, Response
 from pydantic import BaseModel, Field
 
 from .. import db, srs
-from ..common import WORD_COLUMNS, WORD_FROM, compact, fetch_word, full, track_clause
+from ..common import compact_heads, compact_json, fetch_word, full, track_clause
 
 router = APIRouter(prefix="/api")
 
 
+# The gzipped list, kept while it is unchanged (body, gzip of body).
+_gzip_memo: tuple[bytes, bytes] | None = None
+
+
+def _gzipped(body: bytes) -> bytes:
+    """The gzip of the body, reused while the body is unchanged."""
+    global _gzip_memo
+    memo = _gzip_memo
+    if memo is not None and memo[0] == body:
+        return memo[1]
+    gz = gzip.compress(body, compresslevel=1, mtime=0)   # 40 ms for 7 MB; the app is served on this computer
+    _gzip_memo = (body, gz)
+    return gz
+
+
 @router.get("/words")
-def list_words():
+def list_words(request: Request):
     """Every word in compact form; the client searches and sorts locally."""
     db.sync_words()
     with db.tx() as c:
-        rows = c.execute(f"SELECT {WORD_COLUMNS} {WORD_FROM} ORDER BY w.word COLLATE NOCASE").fetchall()
+        entries = compact_heads(c)   # word-derived fields, cached in the database
+        user = {r["word_id"]: (r["stars"], r["known"]) for r in c.execute("SELECT word_id, stars, known FROM user_word")}
+        due = {r["word_id"]: r["due_date"] for r in c.execute("SELECT word_id, due_date FROM srs")}
         lists = c.execute("SELECT list_id, word_id FROM list_words").fetchall()
     membership: dict[int, list[int]] = {}
     for r in lists:
         membership.setdefault(r["word_id"], []).append(r["list_id"])
-    out = []
-    for r in rows:
-        item = compact(r)
-        item["lists"] = membership.get(r["id"], [])
-        out.append(item)
-    return {"words": out}
+    parts = []
+    for wid, head in entries:
+        stars, known = user.get(wid, (0, 0))
+        d = due.get(wid)
+        ls = membership.get(wid)
+        parts.append(f'{head[:-1]},"stars":{compact_json(stars)},"known":{"true" if known else "false"},'
+                     f'"due":{"null" if d is None else compact_json(d)},'
+                     f'"lists":[{",".join(map(str, ls)) if ls else ""}]}}')
+    body = ('{"words":[' + ",".join(parts) + "]}").encode("utf-8")
+    if "gzip" in request.headers.get("accept-encoding", "").lower():
+        # Compressed here (and kept while unchanged) rather than by GZipMiddleware,
+        # which passes a response that already has a Content-Encoding through.
+        return Response(_gzipped(body), media_type="application/json",
+                        headers={"Content-Encoding": "gzip", "Vary": "Accept-Encoding"})
+    return Response(body, media_type="application/json")
 
 
 @router.get("/words/{word_id}")

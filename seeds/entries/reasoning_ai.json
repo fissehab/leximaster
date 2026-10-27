@@ -1,0 +1,284 @@
+[
+{
+ "word": "is-ought problem",
+ "domains": ["philosophy", "logic"],
+ "phonetic": "/ˈɪz ˈɔt ˌpɹɑbləm/",
+ "meanings": [
+  {"pos": "noun", "senses": ["The problem, first stated by David Hume, of how conclusions about what ought to be can be validly drawn from premises only about what is; also called Hume's law or Hume's guillotine."]}
+ ],
+ "etymology": "From the verbs *is* and *ought*, after a passage in David Hume's *A Treatise of Human Nature* (1739–40).",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The point, from David Hume, that you cannot logically derive what ought to be done from facts about what is without an added value premise."},
+  "pronunciation": {"ipa": "/ˈɪz ˈɔt ˌpɹɑbləm/", "respelling": "IZ AWT PRAH-blum", "tip": "Stress both 'is' and 'ought' evenly, then 'PRAH' in problem. Ought rhymes with 'caught'; many Americans say it with the same vowel as 'hot'."},
+  "us_usage": "formal or literary",
+  "register": ["academic", "technical"],
+  "connotation": "Neutral; often used to point out a gap in someone's argument.",
+  "usage_note": "Philosophers, ethicists and increasingly data and AI people use it to warn that data alone cannot settle a policy question: a model can tell you what is likely, not what you should do. In speech people often say 'you can't get an ought from an is.' It is related to, but not the same as, the naturalistic fallacy.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "naturalistic fallacy", "note": "The naturalistic fallacy (G. E. Moore) is the mistake of identifying goodness with a natural property; the is-ought problem concerns the logical gap between factual and moral statements."},
+   {"vs": "fact-value distinction", "note": "The fact-value distinction is the broader claim that facts and values are different kinds of statements; the is-ought problem is the inference problem that follows from it."}
+  ],
+  "antonyms": [],
+  "collocations": ["Hume's is-ought problem", "bridge the is-ought gap", "run into the is-ought problem", "the is-ought distinction"],
+  "examples": {
+   "everyday": "He kept saying people have always eaten meat, so it's fine, and I told him that's the is-ought problem in action.",
+   "professional": "The churn model shows which customers are likely to leave, but deciding whom to offer discounts runs straight into the is-ought problem: that is a business and ethical choice.",
+   "analytical": "Natural law theorists answer the is-ought problem by arguing that human nature already contains purposes, so certain facts are not value-neutral."
+  },
+  "analogy": "A map shows where the roads go, but it cannot tell you where you should travel; that is the is-ought problem.",
+  "etymology": "Named for Hume's remark that authors move from 'is' and 'is not' to 'ought' and 'ought not' without explaining how.",
+  "common_mistakes": ["Calling every appeal to nature 'the is-ought problem'; it is specifically about deriving obligations from facts."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "problem of evil",
+ "domains": ["philosophy", "theology"],
+ "phonetic": "/ˈpɹɑbləm əv ˈivəl/",
+ "meanings": [
+  {"pos": "noun", "senses": ["The philosophical and theological question of how evil and suffering can exist if God is all-powerful, all-knowing and wholly good."]}
+ ],
+ "etymology": "",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The question of how evil and suffering can exist if God is all-powerful, all-knowing and perfectly good."},
+  "pronunciation": {"ipa": "/ˈpɹɑbləm əv ˈivəl/", "respelling": "PRAH-blum uv EE-vul", "tip": "Stress PRAH and EE. 'Of' reduces to 'uv', and evil is two syllables, 'EE-vul', not 'EE-vil'."},
+  "us_usage": "formal or literary",
+  "register": ["academic", "formal"],
+  "connotation": "Neutral as a term, but it names a heavy, often painful question.",
+  "usage_note": "Americans use the phrase in philosophy classes, apologetics and conversations about faith after tragedies. Philosophers distinguish the logical problem (evil is incompatible with God) from the evidential problem (so much evil makes God unlikely). An answer to it is called a theodicy or, more modestly, a defense.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "theodicy", "note": "The problem of evil is the question; a theodicy is an attempted answer that justifies God's ways."},
+   {"vs": "free will defense", "note": "The free will defense, associated with Alvin Plantinga, is one specific response arguing that evil is possible because God created free creatures."}
+  ],
+  "antonyms": [],
+  "collocations": ["the logical problem of evil", "the evidential problem of evil", "respond to the problem of evil", "wrestle with the problem of evil", "the problem of evil and suffering"],
+  "examples": {
+   "everyday": "After her friend's accident, she said the problem of evil wasn't abstract to her anymore.",
+   "professional": "Next week's apologetics class covers the problem of evil, starting with Job and ending with Plantinga.",
+   "analytical": "The evidential problem of evil does not claim contradiction; it claims that the amount and distribution of suffering make theism improbable."
+  },
+  "analogy": "",
+  "etymology": "",
+  "common_mistakes": ["Saying 'the evil problem'; the fixed phrase is 'the problem of evil'."],
+  "biblical_note": "Scripture does not pose the question as a philosophical puzzle, but it faces it directly. The book of Job explores the suffering of a righteous man and ends with God speaking from the whirlwind rather than giving an explanation (Job 38-42). Habakkuk 1:2-4 asks how long God will tolerate violence, and Psalm 73 describes the psalmist's distress at the prosperity of the wicked. Romans 8:18-28 sets present suffering against the coming glory.",
+  "traditions": []
+ }
+},
+{
+ "word": "whataboutism",
+ "domains": ["logic"],
+ "phonetic": "/ˌwʌtəˈbaʊˌtɪzəm/",
+ "meanings": [
+  {"pos": "noun", "senses": ["The practice of answering a criticism or accusation by pointing to someone else's wrongdoing ('What about...?') instead of addressing it."]}
+ ],
+ "etymology": "From *what about* + *-ism*.",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "Deflecting criticism by pointing to another person's wrongdoing ('But what about...?') instead of answering the criticism itself."},
+  "pronunciation": {"ipa": "/ˌwʌtəˈbaʊˌtɪzəm/", "respelling": "wuh-tuh-BOW-tiz-um", "tip": "Stress BOW, the third syllable, which rhymes with 'cow'. Americans flap both t's, so it sounds like 'wuh-duh-BOW-diz-um'."},
+  "us_usage": "common",
+  "register": ["informal", "neutral"],
+  "connotation": "Negative; calling something whataboutism accuses the speaker of dodging.",
+  "usage_note": "Americans use whataboutism in political commentary, social media and arguments at work or home. It became widely used in describing Cold War Soviet propaganda and is now common in US media. Note that pointing out a double standard is not always whataboutism; it becomes whataboutism when it replaces an answer.",
+  "word_family": ["whataboutist (noun)", "whatabout (noun)"],
+  "distinctions": [
+   {"vs": "tu quoque", "note": "Tu quoque ('you too') dismisses a claim because the critic is a hypocrite; whataboutism changes the subject to a third party's wrongs as well."},
+   {"vs": "red herring", "note": "A red herring is any distracting irrelevance; whataboutism is a specific distraction built on a counter-accusation."},
+   {"vs": "false equivalence", "note": "False equivalence treats two very different things as the same; whataboutism often relies on it."}
+  ],
+  "antonyms": [],
+  "collocations": ["classic whataboutism", "engage in whataboutism", "pure whataboutism", "a case of whataboutism", "resort to whataboutism"],
+  "examples": {
+   "everyday": "I asked him why he was late again and he said, 'What about you last month?' Classic whataboutism.",
+   "professional": "When the audit found errors in our pipeline, pointing at the other team's bugs was just whataboutism; we still had to fix ours.",
+   "analytical": "Whataboutism trades on a real moral principle, consistency, but uses it to avoid judgment rather than to apply it evenly."
+  },
+  "analogy": "Whataboutism is like answering 'your car is on fire' with 'well, your neighbor's lawn is a mess.'",
+  "etymology": "From the phrase 'what about...?', the usual way such a reply begins, plus -ism.",
+  "common_mistakes": ["Spelling it 'what-about-ism' with hyphens or 'whataboutery' (mainly British)."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "motte-and-bailey",
+ "domains": ["logic", "philosophy"],
+ "phonetic": "/ˌmɑt ən ˈbeɪli/",
+ "meanings": [
+  {"pos": "adjective", "senses": ["Describing an argumentative tactic in which someone advances a bold, hard-to-defend claim (the bailey) but, when challenged, retreats to a modest, easily defended claim (the motte), then returns to the bold claim later."]},
+  {"pos": "noun", "senses": ["A type of medieval castle with a fortified mound (motte) and an enclosed courtyard (bailey)."]}
+ ],
+ "etymology": "From the medieval motte-and-bailey castle; the argumentative sense was introduced by the philosopher Nicholas Shackel in 2005.",
+ "nuance": {
+  "core": {"pos": "adjective", "definition": "Describing an argument that swaps a bold claim for a modest, defensible one when challenged, then returns to the bold claim once the challenge passes."},
+  "pronunciation": {"ipa": "/ˌmɑt ən ˈbeɪli/", "respelling": "MAHT un BAY-lee", "tip": "Motte sounds like 'mott' (rhymes with 'hot'); 'and' shrinks to 'un'. The main stress lands on BAY."},
+  "us_usage": "formal or literary",
+  "register": ["academic", "informal"],
+  "connotation": "Negative when applied to an argument: it implies a subtle bait-and-switch.",
+  "usage_note": "The term spread through online rationalist writing, especially Scott Alexander's blog, and is now used in tech, academic and debate circles. It is usually a noun modifier: 'a motte-and-bailey argument' or 'that's a motte and bailey.' Many Americans outside those circles won't know it, so explain it briefly.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "equivocation", "note": "Equivocation shifts the meaning of one word within an argument; motte-and-bailey shifts between two whole claims of different strength."},
+   {"vs": "moving the goalposts", "note": "Moving the goalposts changes the standard of proof demanded of an opponent; motte-and-bailey changes what the speaker is claiming."},
+   {"vs": "strawman", "note": "A strawman distorts the opponent's claim; motte-and-bailey disguises the speaker's own."}
+  ],
+  "antonyms": ["steelman"],
+  "collocations": ["a motte-and-bailey argument", "motte-and-bailey fallacy", "motte-and-bailey tactic", "retreat to the motte"],
+  "examples": {
+   "everyday": "First he said all diets are scams, then he said 'I just mean some diets are overhyped.' That's a motte-and-bailey move.",
+   "professional": "The vendor's pitch was a motte-and-bailey: 'our AI replaces analysts' in the deck, 'it assists analysts' when we pushed back.",
+   "analytical": "Shackel's motte-and-bailey doctrine describes how a theorist can enjoy the excitement of a radical thesis while defending only a trivial one."
+  },
+  "analogy": "Like the castle: you live in the pleasant courtyard (the bold claim), and when attacked you run up the tower (the safe claim) until the attackers leave.",
+  "etymology": "From Old French motte 'mound' and bailey, from Old French baile 'enclosure'.",
+  "common_mistakes": ["Mixing up which part is which: the motte is the safe, defensible claim; the bailey is the bold, desirable one."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "A/B test",
+ "domains": ["data_science", "statistics", "artificial_intelligence"],
+ "phonetic": "/ˌeɪ ˈbi ˌtɛst/",
+ "meanings": [
+  {"pos": "noun", "senses": ["A randomized controlled experiment in which users are randomly split between two versions (A and B) of a product, page or model to measure which performs better on a chosen metric."]},
+  {"pos": "verb", "senses": ["To compare two versions by running such an experiment."]}
+ ],
+ "etymology": "From the labels *A* and *B* for the two variants compared.",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "A randomized experiment that splits users between two versions, A and B, to measure which performs better on a chosen metric."},
+  "pronunciation": {"ipa": "/ˌeɪ ˈbi ˌtɛst/", "respelling": "AY-BEE test", "tip": "Say the letters 'A' and 'B' with the stronger beat on B; the slash is not pronounced."},
+  "us_usage": "common",
+  "register": ["technical"],
+  "connotation": "Neutral; in tech it signals a data-driven decision.",
+  "usage_note": "American product, marketing and data teams say this constantly: 'let's A/B test it,' 'the A/B test is still running.' It is used as both a noun and a verb, and 'A/B testing' names the practice. For an AI model, teams often A/B test a new model against the current one on live traffic.",
+  "word_family": ["A/B testing (noun)"],
+  "distinctions": [
+   {"vs": "multivariate test", "note": "A multivariate test varies several elements at once to measure their combinations; an A/B test compares two versions."},
+   {"vs": "A/A test", "note": "An A/A test shows the same version to both groups to check that the experiment setup itself is unbiased."},
+   {"vs": "multi-armed bandit", "note": "A bandit shifts traffic toward the better variant while the test runs; a classic A/B test keeps a fixed split until it ends."}
+  ],
+  "antonyms": [],
+  "collocations": ["run an A/B test", "A/B test results", "the A/B test is significant", "A/B test the new model", "set up an A/B test", "underpowered A/B test"],
+  "examples": {
+   "everyday": "My sister's company ran an A/B test on two signup buttons, and the green one won.",
+   "professional": "Before we roll out the new ranking model, let's A/B test it against production for two weeks with a pre-registered primary metric.",
+   "analytical": "An A/B test estimates the average treatment effect only for the population and period sampled, so novelty effects can mislead a short test."
+  },
+  "analogy": "An A/B test is a clinical trial for a product: half the users get the new pill, half get the old one, and chance decides who is who.",
+  "etymology": "From the conventional names A (control) and B (variant).",
+  "common_mistakes": [
+   "Stopping the test as soon as the result looks significant ('peeking'), which inflates false positives.",
+   "Writing 'AB test' or 'A-B test'; the standard spelling is A/B test."
+  ],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "sandbagging",
+ "domains": ["artificial_intelligence", "professional"],
+ "phonetic": "/ˈsændˌbæɡɪŋ/",
+ "meanings": [
+  {"pos": "noun", "senses": ["In AI safety, a model deliberately underperforming on an evaluation, for example to hide a dangerous capability.", "Deliberately underperforming or setting low expectations so as to look better later or gain an advantage, as in sales targets, poker or golf."]}
+ ],
+ "etymology": "From *sandbag* (“to hit with a sandbag; to deceive by feigning weakness”) + *-ing*.",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "Deliberately underperforming to hide one's true ability; in AI safety, a model strategically doing worse on capability evaluations."},
+  "pronunciation": {"ipa": "/ˈsændˌbæɡɪŋ/", "respelling": "SAND-bag-ing", "tip": "Stress SAND. Both a's are the flat American 'a' of 'cat', and the 'g' is fully pronounced."},
+  "us_usage": "common",
+  "register": ["informal", "technical"],
+  "connotation": "Negative; it implies strategic deception.",
+  "usage_note": "In American business, sandbagging means lowballing forecasts so you can beat them ('he's sandbagging his quarterly numbers'). AI safety researchers borrowed it for models that underperform on dangerous-capability evals, which would make safety testing unreliable. It is informal but standard in both settings.",
+  "word_family": ["sandbag (verb, noun)", "sandbagger (noun)"],
+  "distinctions": [
+   {"vs": "reward hacking", "note": "Reward hacking exploits flaws in the objective to score higher; sandbagging deliberately scores lower."},
+   {"vs": "deceptive alignment", "note": "Deceptive alignment is the broader hypothesis of a model hiding misaligned goals; sandbagging is one specific behavior it might produce."},
+   {"vs": "underpromise", "note": "To underpromise is a usually harmless way to manage expectations; sandbagging implies hiding true ability for advantage."}
+  ],
+  "antonyms": [],
+  "collocations": ["detect sandbagging", "evidence of sandbagging", "sandbagging on evals", "accuse someone of sandbagging", "sandbagging the forecast"],
+  "examples": {
+   "everyday": "He says he's terrible at pool, but I think he's sandbagging so we'll bet on the game.",
+   "professional": "Our safety evals include checks for sandbagging, such as comparing scores with and without a hint that the test is an evaluation.",
+   "analytical": "If capable models can engage in sandbagging, a passed evaluation is weaker evidence of safety than it appears."
+  },
+  "analogy": "Sandbagging is the pool hustler's trick: miss easy shots until the stakes are high enough to matter.",
+  "etymology": "From sandbag; the sense of feigning weakness to gain an advantage comes from American card-playing and sports slang.",
+  "common_mistakes": ["Using it for honest poor performance; sandbagging is always deliberate."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "data drift",
+ "domains": ["data_science", "artificial_intelligence"],
+ "phonetic": "/ˈdeɪtə ˌdɹɪft/",
+ "meanings": [
+  {"pos": "noun", "senses": ["A change over time in the statistical distribution of the input data a model receives in production, compared with the data it was trained on."]}
+ ],
+ "etymology": "",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "A change over time in the distribution of a model's input data compared with its training data, which can quietly degrade performance."},
+  "pronunciation": {"ipa": "/ˈdeɪtə ˌdɹɪft/", "respelling": "DAY-tuh drift", "tip": "Stress DAY. Americans usually flap the t in data, so it sounds like 'DAY-duh'; 'DAT-uh' is also heard."},
+  "us_usage": "common",
+  "register": ["technical"],
+  "connotation": "Negative; it signals a model at risk of going stale.",
+  "usage_note": "MLOps and data science teams use it in monitoring dashboards and incident reviews: 'we're seeing data drift in the age feature.' Some teams use it loosely for any drift, but careful writers separate data drift (inputs change) from concept drift (the input-output relationship changes). Common checks include the population stability index and the Kolmogorov-Smirnov test.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "concept drift", "note": "Concept drift is a change in the relationship between inputs and the target; data drift is a change in the inputs themselves."},
+   {"vs": "covariate shift", "note": "Covariate shift is the formal statistical term for input distribution change with a stable conditional relationship; data drift is the practical, monitoring term."},
+   {"vs": "training-serving skew", "note": "Training-serving skew is a mismatch caused by different pipelines from day one; data drift develops over time."}
+  ],
+  "antonyms": [],
+  "collocations": ["detect data drift", "monitor for data drift", "data drift alert", "significant data drift", "data drift in production"],
+  "examples": {
+   "everyday": "My friend's fraud model got worse after the holidays, and she said it was data drift from all the unusual shopping.",
+   "professional": "The dashboard flagged data drift in three features after the app redesign, so let's check whether accuracy dropped before retraining.",
+   "analytical": "Data drift does not by itself imply degraded accuracy; a model can be robust to shifts in features that carry little predictive weight."
+  },
+  "analogy": "Data drift is like a weather model trained on summer days slowly being fed winter; nothing breaks at once, but its forecasts get worse.",
+  "etymology": "",
+  "common_mistakes": ["Assuming data drift always requires retraining; first check whether performance actually changed."],
+  "biblical_note": "",
+  "traditions": []
+ }
+},
+{
+ "word": "Goodhart's law",
+ "domains": ["data_science", "artificial_intelligence", "statistics"],
+ "phonetic": "/ˈɡʊdˌhɑɹts ˈlɔ/",
+ "meanings": [
+  {"pos": "noun", "senses": ["The principle that when a measure becomes a target, it ceases to be a good measure; named after the economist Charles Goodhart."]}
+ ],
+ "etymology": "Named after British economist Charles Goodhart, who stated a version of it in 1975 about monetary policy; the familiar wording comes from anthropologist Marilyn Strathern.",
+ "nuance": {
+  "core": {"pos": "noun", "definition": "The principle that when a measure becomes a target, people or systems optimize the measure itself, and it stops reflecting what it was meant to measure."},
+  "pronunciation": {"ipa": "/ˈɡʊdˌhɑɹts ˈlɔ/", "respelling": "GOOD-harts LAW", "tip": "Goodhart's sounds like 'good' plus 'hearts' with an American r; stress GOOD and LAW."},
+  "us_usage": "common",
+  "register": ["academic", "technical"],
+  "connotation": "Cautionary; invoking it warns that a metric is being gamed.",
+  "usage_note": "American data, AI and management people cite it whenever a KPI or benchmark starts driving behavior: test scores, ticket counts, leaderboard results. In AI it underlies reward hacking and benchmark overfitting. Saying 'that's Goodhart's law' in a meeting is a polite way to say the metric has been gamed.",
+  "word_family": [],
+  "distinctions": [
+   {"vs": "Campbell's law", "note": "Campbell's law, from social science, says the more a quantitative indicator is used for decisions, the more it corrupts the process it monitors; it is a close cousin."},
+   {"vs": "reward hacking", "note": "Reward hacking is the AI behavior; Goodhart's law is the general principle behind it."}
+  ],
+  "antonyms": [],
+  "collocations": ["a textbook case of Goodhart's law", "Goodhart's law applies", "fall victim to Goodhart's law", "avoid Goodhart's law"],
+  "examples": {
+   "everyday": "The school taught to the test so hard that scores rose but kids learned less, which is Goodhart's law in action.",
+   "professional": "Once we tied bonuses to tickets closed, people split tickets in half; Goodhart's law again.",
+   "analytical": "Goodhart's law suggests that any benchmark used to select models will gradually measure benchmark-fitting rather than general capability."
+  },
+  "analogy": "Goodhart's law is like a thermometer you are paid to keep at 70 degrees: soon someone holds an ice cube against it.",
+  "etymology": "From the surname of economist Charles Goodhart.",
+  "common_mistakes": ["Dropping the possessive: say 'Goodhart's law', not 'Goodhart law'."],
+  "biblical_note": "",
+  "traditions": []
+ }
+}
+]
