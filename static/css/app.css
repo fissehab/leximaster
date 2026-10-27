@@ -762,8 +762,26 @@ main:has(.grade-dock) { scroll-padding-bottom: 190px; }   /* a focused control n
 .related .tags, .card-collocations { display: flex; flex-wrap: wrap; gap: 6px; }
 /* Focus moved by the app (to a new card's headword) needs no ring. */
 [tabindex="-1"]:focus { outline: none; }
-a.chip-link { color: var(--lapis); text-decoration: none; border-color: color-mix(in srgb, var(--lapis) 30%, transparent); }
-a.chip-link:hover { background: var(--lapis-soft); }
+/* Related words: an entry opens (solid lapis); a word without one opens a
+   short definition (dotted underline). */
+a.chip.has-entry { color: var(--lapis); text-decoration: none; border-color: color-mix(in srgb, var(--lapis) 30%, transparent); }
+a.chip.has-entry:hover { background: var(--lapis-soft); }
+button.chip.term { text-decoration: underline dotted color-mix(in srgb, var(--ink-2) 55%, transparent); text-underline-offset: 3px; }
+button.chip.term:hover { background: var(--surface); border-color: var(--muted); }
+button.term:not(.chip), a.term:not(.chip) {
+  font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; background: none; border: 0; padding: 0;
+  cursor: pointer; text-decoration: underline dotted; text-underline-offset: 3px;
+}
+a.term.has-entry:not(.chip) { color: var(--lapis); text-decoration: underline solid color-mix(in srgb, var(--lapis) 40%, transparent); }
+button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: currentColor; }
+.gloss { display: flex; flex-direction: column; gap: 12px; max-width: 60ch; }
+.gloss-group { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+.gloss ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font: 400 15px/1.5 var(--font-body); }
+.gloss-example { color: var(--ink-2); }
+.gloss-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.gloss-links a { color: var(--lapis); }
+.gloss-source, .gloss-base { font-size: 12px; }
+.gloss .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .also { font-size: 14px; }
 .sense-label { font: 600 11px/1 var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
 .save-status { font: 500 12px/1 var(--font-ui); text-transform: none; letter-spacing: 0; margin-left: 6px; }

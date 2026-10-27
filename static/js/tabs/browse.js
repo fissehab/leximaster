@@ -270,7 +270,8 @@ export async function render(root, { param, view, live: isLive }) {
   if (want) {
     const i = shown.findIndex(w => w.id === want);
     if (i >= 0) els.vlist.scrollTop = Math.max(0, i * ROW_H - 120);
-    select(want);
+    // Opened from a link (a related word, a search result): on a phone, show it.
+    select(want, { reveal: !!Number(param) });
   }
   const onResize = () => renderRows();
   addEventListener("resize", onResize);
