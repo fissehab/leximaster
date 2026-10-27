@@ -12,8 +12,12 @@ let shown = [];
 let els = {};
 let detail = null;     // full word currently displayed
 let lists = [];
+let live = () => true;
 
 function norm(s) { return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
+// Normalized once per word list, not on every keystroke.
+const nw = w => w._nw || (w._nw = norm(w.word));
+const nd = w => w._nd || (w._nd = norm(w.def || ""));
 
 function applyFilters() {
   const q = norm(state.q.trim());
@@ -26,10 +30,10 @@ function applyFilters() {
   if (q) {
     const prefix = [], inner = [], inDef = [];
     for (const w of out) {
-      const n = norm(w.word);
+      const n = nw(w);
       if (n.startsWith(q)) prefix.push(w);
       else if (n.includes(q)) inner.push(w);
-      else if (q.length >= 3 && norm(w.def).includes(q)) inDef.push(w);
+      else if (q.length >= 3 && nd(w).includes(q)) inDef.push(w);
     }
     out = [...prefix, ...inner, ...inDef];
     if (state.sort === "alpha") { shown = out; return; } // keep relevance order
@@ -85,7 +89,7 @@ function refreshList({ keepScroll = false } = {}) {
 }
 
 function paintAz() {
-  const letters = new Set(shown.map(w => norm(w.word)[0]));
+  const letters = new Set(shown.map(w => nw(w)[0]));
   els.az.querySelectorAll("button").forEach(b => (b.disabled = !letters.has(b.dataset.l)));
 }
 
@@ -94,7 +98,7 @@ function jumpTo(letter) {
     state.sort = "alpha"; state.q = ""; els.search.value = ""; els.sort.value = "alpha";
     applyFilters();
   }
-  const i = shown.findIndex(w => norm(w.word)[0] >= letter);
+  const i = shown.findIndex(w => nw(w)[0] >= letter);
   if (i >= 0) {
     els.vlist.scrollTop = i * ROW_H;
     renderRows();
@@ -107,6 +111,7 @@ const narrow = () => matchMedia("(max-width: 900px)").matches;
 /** Show a word. `reveal`: picked by the user, so on a narrow screen (list
  * above, entry below) bring the entry into view. */
 async function select(id, { scroll = true, reveal = false } = {}) {
+  if (!live()) return;   // Browse was left before this ran
   state.selectedId = id;
   detail = null;  // keyboard actions wait for the new entry
   history.replaceState(null, "", `#browse/${id}`);
@@ -119,7 +124,7 @@ async function select(id, { scroll = true, reveal = false } = {}) {
   renderRows();
   let w;
   try { w = await api.get(`/api/words/${id}`); } catch (e) { return showError(e); }
-  if (state.selectedId !== id) return;
+  if (state.selectedId !== id || !live()) return;
   detail = w;
   w.list_actions = listActions(w);
   const back = h("button.btn.btn-quiet.back-to-list", { type: "button",
@@ -135,33 +140,44 @@ function syncCached(w) {
 }
 
 function listActions(w) {
-  const btn = h("button.btn", { type: "button", title: "Add to one of your lists" }, icon("plus"), "Add to list");
-  btn.addEventListener("click", async () => {
-    if (!lists.length) lists = (await api.get("/api/lists")).lists;
-    const v = await formDialog({
-      title: `Add “${w.word}” to a list`,
-      fields: [
-        { id: "list", label: "List", type: "select", options: [["new", "New list…"], ...lists.map(l => [String(l.id), l.name])], value: lists[0] ? String(lists[0].id) : "new" },
-        { id: "name", label: "New list name (if creating)", placeholder: "e.g. Words I confuse", maxlength: 60 },
-        { id: "note", label: "Note (optional)", placeholder: "Why this word belongs here" },
-      ],
-      submit: "Add",
-      onSubmit: async v => {
-        let listId = v.list;
-        if (listId === "new") {
-          if (!v.name.trim()) throw new Error("Give the new list a name.");
-          const created = await api.post("/api/lists", { name: v.name.trim() });
-          lists.push({ ...created, count: 0 });
-          listId = created.id;
-        }
-        const res = await api.post(`/api/lists/${listId}/words`, { word_id: w.id, note: v.note });
-        return { name: lists.find(l => String(l.id) === String(listId)).name, added: res.added !== false };
-      },
-    });
-    if (v) toast(v.added ? `Added to “${v.name}”` : `Already in “${v.name}”`);
+  const btn = h("button.btn", { type: "button", title: "Add to one of your lists · L", "aria-keyshortcuts": "L" }, icon("plus"), "Add to list");
+  const chips = h("span", { style: { display: "contents" } }, (w.lists || []).map(l => h("a.chip", { href: `#lists/${l.id}` }, l.name)));
+  btn.addEventListener("click", () => addToList(w, chips).catch(showError));
+  return h("span", { style: { display: "contents" } }, btn, chips);
+}
+
+async function addToList(w, chips) {
+  if (!lists.length) lists = (await api.get("/api/lists")).lists;
+  let last = "";
+  try { last = localStorage.getItem("lexi-last-list") || ""; } catch (e) { /* unavailable */ }
+  const start = lists.some(l => String(l.id) === last) ? last : lists[0] ? String(lists[0].id) : "new";
+  const v = await formDialog({
+    title: `Add “${w.word}” to a list`,
+    fields: [
+      { id: "list", label: "List", type: "select", options: [...lists.map(l => [String(l.id), l.name]), ["new", "New list…"]], value: start },
+      { id: "name", label: "New list name", placeholder: "e.g. Words I confuse", maxlength: 60, showIf: ["list", "new"] },
+      { id: "note", label: "Note (optional)", placeholder: "Why this word belongs here" },
+    ],
+    submit: "Add",
+    onSubmit: async v => {
+      let listId = v.list;
+      if (listId === "new") {
+        if (!v.name.trim()) throw new Error("Give the new list a name.");
+        const created = await api.post("/api/lists", { name: v.name.trim() });
+        lists.push({ ...created, count: 0 });
+        listId = created.id;
+      }
+      const res = await api.post(`/api/lists/${listId}/words`, { word_id: w.id, note: v.note });
+      return { id: listId, name: lists.find(l => String(l.id) === String(listId)).name, added: res.added !== false };
+    },
   });
-  const inLists = (w.lists || []).map(l => h("a.chip", { href: `#lists/${l.id}` }, l.name));
-  return h("span", { style: { display: "contents" } }, btn, inLists);
+  if (!v) return;
+  try { localStorage.setItem("lexi-last-list", String(v.id)); } catch (e) { /* unavailable */ }
+  if (v.added) {
+    w.lists = [...(w.lists || []), { id: v.id, name: v.name }];
+    if (chips.isConnected) chips.append(h("a.chip", { href: `#lists/${v.id}` }, v.name));
+  }
+  toast(v.added ? `Added to “${v.name}”` : `Already in “${v.name}”`, { action: ["Open list", () => { location.hash = `#lists/${v.id}`; }] });
 }
 
 function move(delta) {
@@ -171,11 +187,13 @@ function move(delta) {
   select(shown[i].id);
 }
 
-export async function render(root, { param, view }) {
+export async function render(root, { param, view, live: isLive }) {
+  live = isLive || (() => true);
   view.classList.add("flush");
   detail = null;
-  words = await allWords(true);
-  lists = (await api.get("/api/lists")).lists;
+  // The word list is kept up to date as you rate and mark words, so it's
+  // fetched once, not on every visit.
+  [words, { lists }] = await Promise.all([allWords(), api.get("/api/lists")]);
   const domains = [...new Set(words.flatMap(w => w.domains))].sort((a, b) => domainLabel(a).localeCompare(domainLabel(b)));
 
   els.search = h("input.input#browse-search", { type: "search", placeholder: "Search words or meanings  ( / )", autocomplete: "off", spellcheck: false });
@@ -210,7 +228,8 @@ export async function render(root, { param, view }) {
     "abcdefghijklmnopqrstuvwxyz".split("").map(l => h("button", { type: "button", "data-l": l, on: { click: () => jumpTo(l) } }, l.toUpperCase())));
   els.inner = h("div.vlist-inner");
   els.vlist = h("div.vlist", { "aria-label": "Words (use the arrow keys to move through them)", tabindex: "0" }, els.inner);
-  els.vlist.addEventListener("scroll", () => requestAnimationFrame(renderRows), { passive: true });
+  let frame = 0;
+  els.vlist.addEventListener("scroll", () => { if (!frame) frame = requestAnimationFrame(() => { frame = 0; renderRows(); }); }, { passive: true });
   els.vlist.addEventListener("click", e => { const r = e.target.closest(".row"); if (r) select(Number(r.dataset.id), { scroll: false, reveal: true }); });
   els.meta = h("div.list-meta.tnum");
   els.detail = h("div.detail-col");
@@ -234,7 +253,8 @@ export async function render(root, { param, view }) {
     els.az,
     h("div.list-col#browse-list",
       h("div.search-row", h("div.search", icon("search"), els.search), hideBtn),
-      h("div.list-filters", els.sort, dom, stars, known),
+      // On a phone the filters fold away, so the results come first.
+      h("details.filters-fold", { open: !narrow() }, h("summary", "Sort & filter"), h("div.list-filters", els.sort, dom, stars, known)),
       els.meta,
       els.vlist),
     h("div.detail-wrap", showBtn, els.detail));
@@ -245,7 +265,8 @@ export async function render(root, { param, view }) {
     els.detail.append(h("div.panel.empty", h("h2", "No words yet"), h("p", "Run build_dataset.py to build the lexicon, then reload this page.")));
   }
   refreshList({ keepScroll: true });
-  const want = Number(param) || state.selectedId || (shown[0] && shown[0].id);
+  // On a phone (list above, entry below) nothing is opened until you pick a word.
+  const want = Number(param) || state.selectedId || (!narrow() && shown[0] && shown[0].id);
   if (want) {
     const i = shown.findIndex(w => w.id === want);
     if (i >= 0) els.vlist.scrollTop = Math.max(0, i * ROW_H - 120);
@@ -260,6 +281,7 @@ export async function onKey(e) {
   if (e.key === "/") { e.preventDefault(); els.search.focus(); els.search.select(); return; }
   if (!detail || detail.id !== state.selectedId) return;
   if (e.key === " ") { e.preventDefault(); playWord(detail, els.detail.querySelector(".play")); }
+  else if (e.key === "l" || e.key === "L") { e.preventDefault(); els.detail.querySelector(".entry-actions .btn:not(.known-toggle)")?.click(); }
   else if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); move(1); }
   else if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); move(-1); }
   else if (/^[1-5]$/.test(e.key)) {

@@ -1,20 +1,49 @@
 // Pronunciation playback: an American English recording when available, then
 // a natural synthesized recording made for LexiMaster (tts_url), and only as
 // a last resort the device's own speech synthesis with its best American voice.
+//
+// One <audio> element serves every play: iOS only lets an element play
+// without a fresh tap once a tap has started it, so the first play button
+// tapped unlocks it for later automatic plays. Each play gets a sequence number;
+// a play that was superseded (stopped, or replaced by a newer one) never
+// falls back to the device voice.
 
 import { settings } from "./state.js";
 
-let current = null;
+const player = new Audio();
+player.preload = "auto";
+let seq = 0;               // the newest play
+let settle = null;         // resolves the pending play's promise
 let currentBtn = null;
 
-function stop() {
-  if (current) { current.pause(); current = null; }
-  if (window.speechSynthesis) speechSynthesis.cancel();
+function finish() {
   if (currentBtn) currentBtn.classList.remove("playing");
   currentBtn = null;
+  const s = settle;
+  settle = null;
+  if (s) s();
+}
+
+function stop() {
+  seq++;
+  player.pause();
+  if (window.speechSynthesis) speechSynthesis.cancel();
+  finish();
 }
 
 const LANG = "en-US";
+
+// Recordings follow the Slow setting (0.75, pitch kept natural); at Measured
+// and Natural they play as recorded, already at a learner's pace.
+function rate() {
+  const r = parseFloat(settings.speech_rate);
+  return r >= 0.5 && r <= 2 ? r : 0.9;
+}
+function recordingRate(slow) {
+  if (slow) return 0.7;
+  const r = rate();
+  return r <= 0.8 ? 0.75 : 1;
+}
 
 // The smoothest American voice the device has. Neural and downloaded voices
 // (Edge's "Natural", Apple's "Premium" and "Enhanced") sound human; the small
@@ -43,50 +72,64 @@ function pickVoice() {
 }
 if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { chosen = null; };
 
+function speakNow(text, btn, mine) {
+  if (!window.speechSynthesis) { finish(); return; }
+  const u = new SpeechSynthesisUtterance(text);
+  const v = pickVoice();
+  if (v) u.voice = v;
+  u.lang = LANG;
+  u.rate = rate();
+  if (btn) { btn.classList.add("playing"); currentBtn = btn; }
+  u.onend = u.onerror = () => { if (mine === seq) finish(); };
+  speechSynthesis.speak(u);
+}
+
 export function speak(text, btn) {
-  if (!window.speechSynthesis) return Promise.resolve();
   stop();
+  const mine = seq;
   return new Promise(resolve => {
-    const u = new SpeechSynthesisUtterance(text);
-    const v = pickVoice();
-    if (v) u.voice = v;
-    u.lang = LANG;
-    const rate = parseFloat(settings.speech_rate);
-    u.rate = rate >= 0.5 && rate <= 2 ? rate : 0.9;
+    settle = resolve;
+    speakNow(text, btn, mine);
+  });
+}
+
+function playSrc(url, btn, fallbackText, speed) {
+  stop();
+  const mine = seq;
+  return new Promise(resolve => {
+    settle = resolve;
     if (btn) { btn.classList.add("playing"); currentBtn = btn; }
-    u.onend = u.onerror = () => { if (btn) btn.classList.remove("playing"); resolve(); };
-    speechSynthesis.speak(u);
+    player.src = url;
+    player.preservesPitch = player.webkitPreservesPitch = true;
+    player.playbackRate = speed;
+    player.defaultPlaybackRate = player.playbackRate;
+    const fail = e => {
+      if (mine !== seq) return;                       // superseded: stay quiet
+      if (e && (e.name === "AbortError" || e.name === "NotAllowedError")) {
+        // Aborted, or the browser wants a tap first: not a missing recording.
+        if (btn && e.name === "NotAllowedError") btn.classList.add("needs-tap");
+        finish();
+        return;
+      }
+      if (fallbackText) { if (btn) btn.classList.remove("playing"); speakNow(fallbackText, btn, mine); }
+      else finish();
+    };
+    player.onended = () => { if (mine === seq) finish(); };
+    player.onerror = () => fail(null);
+    player.play().then(() => { if (btn) btn.classList.remove("needs-tap"); }, fail);
   });
 }
 
 /** Play a word: its recording (human, else natural synthesized), else the device's voice. */
-export function playWord(word, btn) {
-  stop();
-  if (!word) return Promise.resolve();
+export function playWord(word, btn, { slow = false } = {}) {
+  if (!word) { stop(); return Promise.resolve(); }
   const url = word.audio_url || word.tts_url;
-  if (url) {
-    return new Promise(resolve => {
-      const a = new Audio(url);
-      current = a;
-      if (btn) { btn.classList.add("playing"); currentBtn = btn; }
-      const done = () => { if (btn) btn.classList.remove("playing"); resolve(); };
-      a.onended = done;
-      a.onerror = () => { done(); speak(word.word, btn); };
-      a.play().catch(() => { done(); speak(word.word, btn); });
-    });
-  }
+  if (url) return playSrc(url, btn, word.word, recordingRate(slow));
   return speak(word.word, btn);
 }
 
 export function playUrl(url, btn) {
-  stop();
-  return new Promise(resolve => {
-    const a = new Audio(url);
-    current = a;
-    if (btn) { btn.classList.add("playing"); currentBtn = btn; }
-    a.onended = a.onerror = () => { if (btn) btn.classList.remove("playing"); resolve(); };
-    a.play().catch(() => resolve());
-  });
+  return playSrc(url, btn, null, 1);   // the learner's own take: as recorded
 }
 
 export { stop as stopAudio };

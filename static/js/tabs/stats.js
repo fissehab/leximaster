@@ -20,6 +20,9 @@ export async function render(root) {
   const s = await api.get("/api/stats");
   const w = s.words;
   const acc = s.accuracy;
+  // Retention: reviews of words seen before, recalled (Hard or better).
+  const spans = s.retention || {};
+  const ret = Object.values(spans).reduce((a, x) => ({ n: a.n + x.n, ok: a.ok + x.ok }), { n: 0, ok: 0 });
   const tile = (label, value, note) => h("div.panel.stat", h("p.label", label), h("div.big-num.tnum", value), note ? h("small", note) : null);
 
   const activeDays = s.days.filter(d => d.reviews > 0);
@@ -36,17 +39,24 @@ export async function render(root) {
     : h("p.muted", "No reviews scheduled in the next two weeks yet.");
 
   root.append(
+    s.notice ? h("p.build-banner", { role: "alert" }, s.notice) : null,
     pageHead("Stats", [`${w.total.toLocaleString()} words in the lexicon`,
       `${w.with_audio.toLocaleString()} with American recordings`,
       w.enriched ? `${w.enriched.toLocaleString()} with nuance notes` : null].filter(Boolean).join(" · ")),
     h("div.stat-row",
-      tile("Words mastered", w.mastered.toLocaleString(), `remembered over 3+ weeks · ${(w.known || 0).toLocaleString()} more marked known`),
+      tile("Words mastered", w.mastered.toLocaleString(), `recalled after a 3+ week gap · ${(w.known || 0).toLocaleString()} more marked known`),
       tile("Learning", w.learning.toLocaleString(), `${w.due} due now`),
       tile("Daily streak", `${s.streak.current}`, `best ${s.streak.best} day${s.streak.best === 1 ? "" : "s"}${s.streak.today_done ? " · today done" : ""}`),
-      tile("Accuracy", acc.attempts ? `${pct(acc.correct, acc.attempts)}%` : "—", `${acc.attempts.toLocaleString()} answers`)),
+      tile("Retention", ret.n ? `${pct(ret.ok, ret.n)}%` : "—",
+        ret.n ? `recalled at review, last 30 days · practice ${acc.attempts ? `${pct(acc.correct, acc.attempts)}%` : "—"}`
+          : `shows after your first reviews · practice ${acc.attempts ? `${pct(acc.correct, acc.attempts)}%` : "—"}`)),
     h("div.stats-grid",
       h("section.panel", h("h2", "Activity"), heat, h("p.muted", { style: { fontSize: "12.5px" } }, "Last 12 weeks; a stronger color means more reviews.")),
       h("section.panel", h("h2", "Reviews due, next 14 days"), forecast),
+      ret.n ? h("section.panel", h("h2", "Retention by gap"),
+        h("div.bars", [["days", "After days"], ["weeks", "After weeks"], ["months", "After a month+"]]
+          .filter(([k]) => spans[k]).map(([k, label]) => bar(label, spans[k].ok, spans[k].n, `${pct(spans[k].ok, spans[k].n)}% · ${spans[k].n}`))),
+        h("p.muted", { style: { fontSize: "12.5px" } }, "Share of reviews you recalled, last 30 days. Around 85–90% means the schedule suits you.")) : null,
       h("section.panel", h("h2", "Accuracy by domain"),
         s.by_domain.length ? h("div.bars", s.by_domain.map(d => bar(domainLabel(d.domain), d.correct, d.attempts, `${pct(d.correct, d.attempts)}% · ${d.attempts}`)))
           : h("p.muted", "Answer some quiz, listening or review questions to see this.")),
@@ -102,6 +112,37 @@ async function exportProgress() {
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 10000);
+    try { localStorage.setItem("lexi-last-export", String(Date.now())); } catch (e) { /* unavailable */ }
+    const last = document.getElementById("last-backup");
+    if (last) last.textContent = backupText();
+  } catch (e) { showError(e); }
+}
+
+/** "Last backup: today" / "3 days ago" / "never". */
+export function lastExportDays() {
+  try {
+    const t = Number(localStorage.getItem("lexi-last-export"));
+    return t ? Math.floor((Date.now() - t) / 86400000) : null;
+  } catch (e) { return null; }
+}
+function backupText() {
+  const d = lastExportDays();
+  return `Last export from this browser: ${d === null ? "never" : d === 0 ? "today" : d === 1 ? "yesterday" : `${d} days ago`}.`;
+}
+
+// Everything this browser saved, as it is stored, for when the app itself
+// can't read it (a damaged save): nothing is interpreted or changed.
+async function downloadRaw() {
+  try {
+    const { idbEntries } = await import("../local/idb.js");
+    const entries = await idbEntries("state", "");
+    const url = URL.createObjectURL(new Blob([JSON.stringify({ app: "LexiMaster raw save", saved_at: new Date().toISOString(),
+      entries: Object.fromEntries(entries) })], { type: "application/json" }));
+    const a = h("a", { href: url, download: `leximaster-raw-save-${new Date().toISOString().slice(0, 10)}.json` });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
   } catch (e) { showError(e); }
 }
 
@@ -120,7 +161,9 @@ function dataPanel() {
     file.value = "";
   });
   return h("section.panel", h("h2", "Your data"),
-    h("p.muted", "Export saves ratings, review schedules, answers, lists, notes and your own words as JSON. Import merges an export back in."),
+    h("p.muted", "Export saves ratings, review schedules, answers, lists, notes and your own words as JSON. " +
+      "Import merges an export back in, keeping whichever copy of each word is newer. (Your own pronunciation recordings aren't included.)"),
+    window.LEXI_STATIC ? h("p#last-backup", backupText()) : null,
     h("div.toolbar",
       h("button.btn", { type: "button", on: { click: exportProgress } }, icon("download"), "Export progress"),
       h("button.btn", { type: "button", on: { click: () => file.click() } }, icon("upload"), "Import progress"),
@@ -147,13 +190,33 @@ function sitePanel() {
   // Already downloaded: the data cache holds every detail file.
   if (window.caches) {
     caches.keys().then(async keys => {
-      const data = keys.find(k => k.startsWith("data-"));
+      const data = keys.find(k => /^(lexi-)?data-/.test(k));
       if (!data) return;
       const files = (await (await caches.open(data)).keys()).filter(r => r.url.includes("/data/detail/"));
       if (files.length >= 64) { btn.disabled = true; btn.lastChild.textContent = "Available offline"; }
     }).catch(() => {});
   }
+  const progressNote = h("span.muted.tnum", { "aria-live": "polite" });
+  const onProgress = e => {
+    if (!btn.isConnected) return removeEventListener("lexi-offline-progress", onProgress);
+    progressNote.textContent = `${e.detail.done} of ${e.detail.total} files`;
+  };
+  addEventListener("lexi-offline-progress", onProgress);
+  // Whether the browser has agreed not to clear this site's data on its own.
+  const storageNote = h("p.muted");
+  if (navigator.storage && navigator.storage.persisted) {
+    navigator.storage.persisted().then(yes => {
+      const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      storageNote.textContent = yes ? "This browser keeps your progress until you clear it."
+        : ios && !navigator.standalone ? "Safari clears a site's data after 7 days unused. Add LexiMaster to your Home Screen (Share → Add to Home Screen) to keep it, and export now and then."
+        : "This browser may clear site data when space runs low: export now and then.";
+    }).catch(() => {});
+  }
   return h("div", { style: { marginTop: "14px" } },
     h("p.muted", "Your progress is saved in this browser on this device only. Use Export and Import to move it between devices."),
-    h("div.toolbar", btn, h("a.btn", { href: "credits.html" }, "Sources & credits")));
+    storageNote,
+    h("div.toolbar", btn, progressNote, h("a.btn", { href: "credits.html" }, "Sources & credits")),
+    h("details.fold", h("summary", "Trouble with saved progress?"),
+      h("div.fold-body", h("p.muted", "If LexiMaster can't read what this browser saved, download it exactly as stored and keep it safe."),
+        h("button.btn", { type: "button", on: { click: downloadRaw } }, icon("download"), "Download raw saved data"))));
 }

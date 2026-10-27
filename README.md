@@ -97,7 +97,10 @@ kept unless the word data changed.
 1. **Home** shows how many cards are left today and the word of the day. Press **Start daily review**.
 2. **Daily review** (10–20 minutes): say the word's meaning aloud, reveal, and grade yourself honestly.
    New words are answered Show again, Got it or Know it; words you've seen before Again, Hard, Good or
-   Easy. Choose a scope at the top (Everything, Everyday English, Advanced & subjects, or a Bible scope).
+   Easy. From a word's third review on, some cards show the meaning (and a sentence with a blank)
+   and ask for the word itself: type it or say it, then reveal. Choose a scope at the top
+   (Everything, Everyday English, Advanced & subjects, or a Bible scope). "Undo last grade" (or Z)
+   takes back a slip, and leaving the tab keeps your place for the day.
 3. **Practice** when you have more time: Flashcards, Matching, Quiz, Listen (including a spelling
    test) and Pronounce. Misses go back into today's review.
 4. **Browse** to look up any word, and **My lists** to collect words with your own notes.
@@ -108,7 +111,11 @@ kept unless the word data changed.
 - **Settings** (in Stats): session length, new words per day, and the speed of the synthesized voice.
   Flashcards has its own "Play audio on flip" switch.
 - **Your own words:** My lists → "Add my own word" adds a word with your definition and example.
-- **Moving between devices:** Stats → Export progress saves a file; Import on the other device.
+- **Moving between devices:** Stats → Export progress saves a file; Import on the other device. Import
+  keeps whichever copy of each word is newer, so an old backup never undoes later study.
+- **Backups on the website:** progress lives in that browser only. Home reminds you to export once a
+  week; on iPhone and iPad, add LexiMaster to the Home Screen, or Safari clears its data after a week
+  without a visit.
 - **Sources:** Stats → "Sources & credits" (website) lists the dictionaries and the recording
   credits.
 
@@ -120,7 +127,8 @@ The local app needs no API key to run. The key is only for building the dataset 
 ./setup.sh
 ```
 
-This creates `.venv/`, installs `requirements.txt`, and creates a `.env` file. Edit `.env`:
+This creates `.venv/`, installs `requirements-tools.txt` (the app and the build tools; set
+`LEXIMASTER_APP_ONLY=1` for the app alone), and creates a `.env` file. Edit `.env`:
 
 | Setting | Why |
 |---|---|
@@ -184,7 +192,11 @@ Words, meanings, spelling and pronunciation are all American English:
   open neural voice (`tools/tts.py`; the model goes in `data/models/`, see the tool's header). Rare
   words and names are spoken from the entry's reviewed American IPA, so they come out as the entry
   says; common words and phrases are read by the model. `tools/tts.py verify` has Whisper transcribe
-  every recording to catch bad ones.
+  every recording to catch bad ones. File names carry a content hash, so a corrected recording
+  reaches devices that saved the old one.
+- **Even volume:** `tools/audio_norm.py` evens out the human recordings for the website (about −20
+  LUFS, peaks limited, clipped ones repaired where possible) and adds a short lead-in so phones don't
+  swallow the first sound.
 - **Device voice:** only if a recording can't play does the app fall back to the device's own
   American voice, choosing the most natural one installed. For a smoother fallback, download a
   premium voice: on a Mac, System Settings → Accessibility → Spoken Content → System voice → Manage
@@ -249,15 +261,15 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Tab | What it's for |
 |---|---|
 | Home | How many cards are left today (the same number as the badge), word of the day, streak and time studied. |
-| Daily review | SM-2 spaced repetition, sized to your session length (default 15 minutes). Choose a scope: Everything, Everyday English, Advanced & subjects, or Bible vocabulary, names or both. A new word is answered Show again, Got it or Know it (known words leave the review); a word you've seen before is graded Again, Hard, Good or Easy. The answer shows a short card; "Full entry" opens the whole page. |
-| Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings. You can shuffle, play audio on flip, rate the word (1–5) or mark it known, and choose a scope, rating or list. |
+| Daily review | SM-2 spaced repetition, sized to your session length (default 15 minutes). Choose a scope: Everything, Everyday English, Advanced & subjects, or Bible vocabulary, names or both. A new word is answered Show again, Got it or Know it (known words leave the review), and gets a second look a few cards later, asked the other way round (meaning → word); a word you've seen before is graded Again, Hard, Good or Easy, and is asked meaning → word every other time from its third review. The answer shows a short card with one "vs" contrast and one common mistake; "Full entry" opens the whole page. The last grade can be undone. |
+| Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings, then "Missed it" or "Knew it" (a miss brings the word into today's review). Swipe on a phone. You can shuffle, play audio on flip, rate the word (1–5) or mark it known, and choose a scope, rating or list. The deck ends with a summary. |
 | Matching | Timed rounds that pair words with meanings or with example sentences, with a score. |
-| Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, and for Bible names "who or what is it?" or "person, place or people?". Only the question types you pick are asked. Changing a setting starts a new quiz; opening an entry and coming back keeps your place. Misses go back into today's review. |
-| Listen | Hear a word, then pick it or type it. Also has a spelling test that compares your spelling letter by letter. |
-| Pronounce | Play the reference recording, record yourself, and play both back with waveforms. |
+| Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, and for Bible names "who or what is it?" or "person, place or people?". Only the question types you pick are asked. A wrong answer says what the option you chose actually means. A changed setting applies to the next quiz; opening an entry and coming back keeps your place. "Retry the misses" at the end; misses go back into today's review. |
+| Listen | Hear a word, then pick it or type it. Also has a spelling test that compares your spelling letter by letter. "Can't listen now?" shows the pronunciation instead (the answer then isn't scored as heard). |
+| Pronounce | Play the reference recording, record yourself, and play both back. The two waveforms are trimmed of silence and drawn on one time scale, so length and stress line up. |
 | Browse | The full lexicon. It has A–Z jump, instant search across words and meanings, sorting by A–Z, frequency, stars or domain, and filters. On a phone, tapping a word brings its page into view (← List goes back). |
-| My lists | Named lists with a note on each word, plus your own custom words. |
-| Stats | Words mastered (and marked known), streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. Also holds the settings, progress export/import, and on the website "Download for offline use" and the sources. |
+| My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen. Words in your lists come first among new review words. |
+| Stats | Words mastered (and marked known), retention (the share of reviews you recalled, by gap), practice accuracy, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. Also holds the settings, progress export/import, and on the website "Download for offline use" and the sources. |
 
 The sidebar runs in the order of a study day: Home, Daily review, the Practice group (easiest to
 hardest: Flashcards, Matching, Quiz, Listen, Pronounce), the Words group (Browse, My lists), then Stats.
@@ -269,13 +281,14 @@ On a phone the bottom bar has five buttons in the same order: Home, Review, Prac
 Each entry reads from the top down:
 
 1. The word, its sound, IPA and respelling, and one row of labels.
-2. The meaning, with one example under it. For a Bible name, what the Bible says about it.
+2. The meaning, with one example under it, and its synonyms and antonyms (each opens its own entry
+   when it has one). For a Bible name, what the Bible says about it.
 3. **Use it right:** how Americans use it, how it differs from near-synonyms, common mistakes, and
    common pairings.
 4. **In the Bible**, and Orthodox, Catholic and Protestant views where they differ.
 5. **More examples:** two shown, the rest folded.
 6. **More meanings:** the dictionary's other senses, folded, in the dictionary's order.
-7. **Pronunciation, register, related words, origin:** folded.
+7. **Pronunciation, register, word family, origin:** folded.
 8. Your notes.
 
 Dictionary senses that only restate the meaning in step 2 are marked when the data is built
@@ -290,30 +303,39 @@ Dictionary senses that only restate the meaning in step 2 are marked when the da
 | ← → (↑ ↓ in Browse) | Previous / next word |
 | 1–5 | Set star rating (Browse, Flashcards) |
 | M | Know it: stop studying the word (in Daily review, after the answer; Undo in the message) |
+| Z | Undo the last grade (Daily review) |
+| K / X | Knew it / Missed it (Flashcards, after the flip) |
+| L | Add to list (Browse) |
 | / | Search (Browse) |
 | Enter | Flip card / reveal / next |
 | 1–4 | Answer in Daily review (the buttons are numbered); choose an answer in Quiz and Listen |
 | R | Record (Pronounce) |
-| ? | Show all shortcuts |
+| ? | Show all shortcuts (single-key shortcuts can be switched off there) |
 
 ### How scheduling works
 
-- **Grades:** Again, Hard, Good and Easy map to SM-2 quality scores 1, 3, 4 and 5. "Again" also puts the
-  card back at the end of today's session, and lowers the word's ease by 0.2 (SM-2's own formula takes
-  0.54, which soon pins a word at the minimum).
+- **Grades:** Again, Hard, Good and Easy map to SM-2 quality scores 1, 3, 4 and 5. "Again" brings the
+  card back five cards later in today's session, lowers the word's ease by 0.2 (SM-2's own formula
+  takes 0.54, which soon pins a word at the minimum), and keeps a fifth of its interval: the word comes
+  back tomorrow, then grows from there rather than from zero. "Good" moves ease a little back toward
+  2.5, so it recovers after hard days. A word recalled late gets credit for the extra days it lasted,
+  and intervals over three days vary by ±5% so words learned together spread out.
 - **First sight:** Show again brings the word back later in the session and tomorrow, without counting as a
   lapse; Got it is a Good; Know it marks the word known (Undo in the message).
 - **Stars:** 1★ and 2★ words never go more than 4 or 7 days between reviews. A word's star rating also
   sets its starting ease (1★ = 2.2 … 5★ = 2.8).
-- **Practice misses:** a wrong answer in Quiz, Matching, Listen or the spelling test makes the word due
-  today; only a quiz miss (a wrong meaning) lowers its ease. A word you missed before studying it
-  counts as one of the day's new words.
+- **Practice misses:** a wrong answer in Quiz, Matching, Listen, Flashcards or the spelling test makes the
+  word due today, keeping its interval, so a good review picks up where it was. Only a quiz miss (a
+  wrong meaning) also halves the interval and lowers ease, once per word per day. A word you missed
+  before studying it counts as one of the day's new words.
 - **New words:** each day introduces up to "New words per day" new words (default 12; set in Stats).
-  1–2★ words come first, then unrated words, most frequent first (a phrase counts as common as its
-  rarest word). With the Everything scope, everyday and advanced words alternate. Words marked known
-  are skipped.
-- **Mastered:** a word counts as mastered once its review interval reaches 21 days. Words marked known
-  are counted separately in Stats.
+  Words in your own lists come first, then 1–2★ words, then unrated words, most frequent first (a
+  phrase counts as common as its rarest word). With the Everything scope, everyday and advanced words
+  alternate. New words are spread through the session, one after every three reviews. Words marked
+  known are skipped.
+- **Mastered:** a word counts as mastered once you've recalled it (Good or Easy) at a review three or
+  more weeks after the one before, and it is still scheduled weeks apart. Words marked known are
+  counted separately in Stats.
 
 ### Your data
 
@@ -324,7 +346,9 @@ Everything is stored locally:
 - `data/words.json` and `data/audio/` hold the dataset.
 
 **Stats → Export progress** saves a JSON file keyed by word rather than database ids, so it imports
-into a rebuilt dataset too.
+into a rebuilt dataset too. The local app also keeps a copy of its database each day in
+`data/backups/` (the last 7), and `make backup` copies the database and `data/cache` (the dataset's
+costly build caches) into `backups/`.
 
 ### Testing on a copy of your data
 
@@ -332,9 +356,17 @@ into a rebuilt dataset too.
 touching your real progress:
 
 ```bash
-cp data/leximaster.db /tmp/test.db
+sqlite3 data/leximaster.db ".backup /tmp/test.db"   # a consistent copy, even while the app runs
 LEXIMASTER_DB=/tmp/test.db PORT=8766 ./run.sh
 ```
+
+### Development
+
+`make setup` installs everything (`LEXIMASTER_APP_ONLY=1 ./setup.sh` for just the app); ffmpeg is
+needed for audio builds. `requirements.txt` pins what the app needs and `requirements-tools.txt` what
+the build tools need. `make test` runs the tests on a temporary database built from
+`tests/fixtures/words_sample.json`, never your `data/`; GitHub Actions runs them on every push.
+`make parity` checks that the website and the local app give the same answers.
 
 ## Project layout
 
@@ -349,8 +381,10 @@ tools/             build_site.py (the website), audit.py (content checks), parit
                    check_examples.py, classify_names.py, check_bible.py (fact-checks the
                    "In the Bible" notes: verse references, Hebrew and Greek words),
                    audio_credits.py (each recording's author and license, for the credits page),
-                   tts.py (natural synthesized recordings for words without a human one)
-app/               FastAPI backend: db.py (schema), srs.py (SM-2), api/ (routes)
+                   tts.py (natural synthesized recordings for words without a human one),
+                   audio_norm.py (even loudness and a lead-in for the human recordings)
+app/               FastAPI backend: db.py (schema, migrations, daily backups), srs.py (SM-2), api/ (routes)
+tests/             pytest suite (a 200-word fixture; never touches data/)
 static/            single-page app, with no build step: index.html, css/, js/, fonts/
 data/              dataset, audio, SQLite database, recordings
 ```

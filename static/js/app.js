@@ -125,19 +125,34 @@ async function route() {
     if (a.dataset.tab === tab || a.dataset.tab === under) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
-  const mod = await import(`./tabs/${tab}.js`);
-  if (token !== navToken) return;
-  view.className = "";
-  view.replaceChildren();
-  const root = h("div.view-enter");
-  view.append(root);
+  // A slow screen (the word list on first visit) says so instead of staying blank.
+  const slow = setTimeout(() => { if (token === navToken) view.classList.add("is-loading"); }, 250);
+  // `live()` lets a screen that finishes loading after you've left it stay quiet.
+  const live = () => token === navToken;
   try {
-    const cleanup = await mod.render(root, { param, view });
-    if (token !== navToken) { cleanup && cleanup(); return; }
-    current = { id: tab, module: mod, cleanup };
-  } catch (e) {
+    const mod = await import(`./tabs/${tab}.js`);
+    if (!live()) return;
+    view.className = "";
+    view.replaceChildren();
+    const root = h("div.view-enter");
+    view.append(root);
+    try {
+      const cleanup = await mod.render(root, { param, view, live });
+      if (!live()) { cleanup && cleanup(); return; }
+      current = { id: tab, module: mod, cleanup };
+    } catch (e) {
+      console.error(e);
+      if (!live()) return;
+      root.replaceChildren(h("div.panel.empty", h("h2", "Something went wrong"), h("p", e.message)));
+    }
+  } catch (e) {   // the screen's code didn't load (offline, or a new version replaced it)
     console.error(e);
-    root.replaceChildren(h("div.panel.empty", h("h2", "Something went wrong"), h("p", e.message)));
+    if (!live()) return;
+    view.replaceChildren(h("div.panel.empty", h("h2", "This screen didn't load"),
+      h("p", navigator.onLine ? "Reload the page to try again." : "You're offline, and this screen isn't saved on this device yet.")));
+  } finally {
+    clearTimeout(slow);
+    if (live()) view.classList.remove("is-loading");
   }
   view.scrollTop = 0;
   view.focus({ preventScroll: true });
@@ -159,9 +174,17 @@ let themeMenu = null;
 function savedTheme() {
   return document.documentElement.dataset.theme || "system";
 }
+// The phone's status bar takes the theme's background.
+function syncThemeColor() {
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.content = getComputedStyle(document.body).backgroundColor;
+}
+syncThemeColor();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", syncThemeColor);
 function setTheme(id) {
   if (id === "system") delete document.documentElement.dataset.theme;
   else document.documentElement.dataset.theme = id;
+  syncThemeColor();
   try {
     if (id === "system") localStorage.removeItem("lexi-theme");
     else localStorage.setItem("lexi-theme", id);
@@ -232,6 +255,9 @@ document.addEventListener("click", e => {
 
 // ---------------------------------------------------------------- shortcuts
 
+function keysOn() {
+  try { return localStorage.getItem("lexi-keys") !== "off"; } catch (e) { return true; }
+}
 function showShortcuts() {
   const rows = [
     ["Space", "Play pronunciation"], ["← →", "Previous / next word"], ["↑ ↓", "Previous / next word (Browse, Pronounce)"],
@@ -239,9 +265,16 @@ function showShortcuts() {
     ["Enter", "Flip card / reveal answer"], ["1–4", "Grade recall in Daily review; choose an answer in Quiz"],
     ["R", "Record yourself (Pronounce)"], ["?", "Show this help"],
   ];
+  // Single-key shortcuts can be switched off (speech-input users trigger them by accident).
+  const toggle = h("input#keys-on", { type: "checkbox", checked: keysOn() });
+  toggle.addEventListener("change", () => {
+    try { localStorage.setItem("lexi-keys", toggle.checked ? "" : "off"); } catch (e) { /* storage unavailable */ }
+  });
   formDialog({
     title: "Keyboard shortcuts", submit: null,
-    body: h("div.shortcuts", rows.flatMap(([k, v]) => [h("span", k.split(" ").map(x => h("kbd", x))), h("span", v)])),
+    body: h("div",
+      h("div.shortcuts", rows.flatMap(([k, v]) => [h("span", k.split(" ").map(x => h("kbd", x))), h("span", v)])),
+      h("label.check-row", toggle, " Use single-key shortcuts (? still opens this help)")),
   });
 }
 document.getElementById("help-btn").addEventListener("click", showShortcuts);
@@ -255,7 +288,8 @@ document.addEventListener("keydown", e => {
   if ((e.key === "Enter" || e.key === " ") && t.closest && t.closest("button, a, summary")) return;
   if (document.getElementById("dialog").open) return;
   if (e.key === "?") { e.preventDefault(); showShortcuts(); return; }
-  if (current && current.module.onKey) current.module.onKey(e);
+  if (!keysOn()) return;
+  if (current && current.module.onKey) Promise.resolve(current.module.onKey(e)).catch(showError);
 });
 
 // ---------------------------------------------------------------- activity

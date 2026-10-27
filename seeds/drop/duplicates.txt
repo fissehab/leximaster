@@ -1,0 +1,11 @@
+# Duplicate entries (identical study notes): the less American or less
+# frequent spelling is left out and shown on the kept entry as "also"
+# (build_dataset.assemble). Format: dropped key | kept key
+naivety | naivete
+hits-the-spot | hit-the-spot
+doggie-bag | doggy-bag
+chthonian | chthonic
+anarchical | anarchic
+cellphone | cell-phone
+offseason | off-season
+accouterment | accoutrement

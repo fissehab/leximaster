@@ -11,7 +11,15 @@ fi
 
 [ -d .venv ] || "$PY" -m venv .venv
 .venv/bin/pip install --quiet --upgrade pip
-.venv/bin/pip install --quiet -r requirements.txt
+# requirements.txt runs the app; requirements-tools.txt adds the dataset
+# build, audio and test tools. Set LEXIMASTER_APP_ONLY=1 to skip the tools.
+if [ "${LEXIMASTER_APP_ONLY:-0}" = "1" ]; then
+  .venv/bin/pip install --quiet -r requirements.txt
+else
+  .venv/bin/pip install --quiet -r requirements-tools.txt
+fi
+# ffmpeg (a system package, e.g. `brew install ffmpeg`) is needed for audio builds.
+command -v ffmpeg >/dev/null || echo "Note: ffmpeg not found; install it to build audio (brew install ffmpeg)."
 mkdir -p data/audio data/cache data/recordings
 
 if [ ! -f .env ]; then

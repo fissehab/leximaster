@@ -1,0 +1,195 @@
+# October 2026 content review, part 2 (see build_dataset.polish_entry for the
+# mechanical fixes made in the same review).
+
+# --- Core definitions that gave only a domain sense for a common word:
+# the general sense first, then the domain sense.
+works | nuance.core.definition | Things a person does or makes, such as deeds or creative works; in theology, good deeds done in obedience to God, often contrasted with faith in discussions of salvation.
+election | nuance.core.definition | A vote to choose people for official positions or to decide a question; in theology, God's choice of certain people, or of Israel, for salvation or a special purpose.
+episode | nuance.core.definition | A single event or period in a series, or one installment of a TV show or podcast; in AI, one complete run of an agent from a starting state to an ending state.
+faith | nuance.core.definition | Strong trust or confidence in someone or something, or a religion; in Christian theology, trust in God and his promises, especially in Christ.
+agent | nuance.core.definition | A person who acts or does business for someone else, such as a travel, real estate or customer service agent; in AI, a software system that observes its environment and takes actions, often over several steps, to reach a goal.
+platform | nuance.core.definition | A raised flat surface, such as where people wait for a train or where a speaker stands; in software, a system such as an operating system or cloud service that other applications are built on or run on.
+serving | nuance.core.definition | One portion of food or drink; in AI, running a trained model so applications can send it requests and get its outputs.
+branch | nuance.core.definition | A part of a tree that grows out from the trunk, or a local office of a bank or business; in version control like Git, a separate line of development where you can make changes without affecting the main code.
+independence | nuance.core.definition | Freedom from control by or reliance on others, such as a country's self-rule; in statistics, the property that knowing one event or variable gives no information about another.
+shift | nuance.core.definition | A change in position, direction or attitude, or a set period of work (the night shift); in computing, an operation that moves the bits of a binary number left or right.
+grace | nuance.core.definition | Smooth, elegant movement, polite goodwill, or a short prayer before a meal; in theology, God's free, undeserved favor toward humans.
+factory | nuance.core.definition | A building where goods are made, mostly with machines; in software, a function, method or class that creates and returns new objects so the calling code does not build them directly.
+circuit | nuance.core.definition | A closed path that electric current flows around, or a regular route or series of events (the lecture circuit); in AI interpretability, a small set of connected neurons or features in a neural network that together carry out one specific computation.
+ideal | nuance.core.definition | A standard of perfection or a principle worth aiming for; in algebra, a subset of a ring that is closed under addition and under multiplication by any element of the ring.
+passion | nuance.core.definition | A very strong feeling, such as love, anger or enthusiasm for something; in Christian usage, the suffering of Jesus Christ from his arrest through his crucifixion.
+rank | nuance.core.definition | A position in a hierarchy or order, such as a military rank; in linear algebra, the maximum number of linearly independent columns (or rows) of a matrix.
+label | nuance.core.definition | A small piece of paper, cloth or plastic attached to something that gives information about it; in AI, the correct output attached to a training example, such as "cat" for a photo of a cat.
+inspiration | nuance.core.definition | A sudden good idea, or someone or something that makes you want to do or create something; in theology, the belief that God guided the human writers of Scripture.
+layer | nuance.core.definition | A sheet or level of material lying over or under another, such as a layer of paint or of clothing; in AI, one stage of a neural network that transforms its input and passes the result to the next stage.
+recall | nuance.core.definition | The ability to remember things, or a company's request that buyers return a faulty product; in AI and statistics, the share of truly positive cases that a model correctly finds.
+monitoring | nuance.core.definition | Watching or checking something regularly over a period of time; in AI, continuously tracking a deployed model's performance, inputs and outputs to catch problems early.
+reward | nuance.core.definition | Something given in return for good work, effort or help; in reinforcement learning, a numerical score an agent receives after an action, used to guide it toward desired outcomes.
+domain | nuance.core.definition | An area of knowledge, activity or control, or the name of a website (a domain name); in mathematics, the set of all input values for which a function is defined.
+filter | nuance.core.definition | A device or material that removes unwanted things from a liquid, gas or light, such as a coffee or water filter; in AI, a small grid of learned weights in a convolutional neural network that detects one kind of pattern, such as an edge.
+accuracy | nuance.core.definition | The quality of being correct or exact; in AI, the fraction of a model's predictions that are correct.
+conversion | nuance.core.definition | The act of changing something into another form, use or unit; in theology, a deep change of heart in which a person turns to God, often to Christian faith.
+functional | nuance.core.definition | Working properly, or designed to be practical and useful rather than decorative; in programming, describing a style that builds computations from functions without side effects or changing state.
+substance | nuance.core.definition | A particular kind of material, or the real, important content of something; in philosophy, the underlying reality that a thing is, as distinct from its qualities or appearances.
+completion | nuance.core.definition | The act of finishing something; in AI, the text a language model generates to continue a given prompt.
+evaluation | nuance.core.definition | A careful judgment of the quality, value or performance of something; in AI, measuring how well a model performs, usually with test data, benchmarks or human ratings.
+exploration | nuance.core.definition | Traveling through or examining an unfamiliar place or subject to learn about it; in reinforcement learning, trying new actions to discover their results and possibly higher rewards.
+classification | nuance.core.definition | Arranging things into groups or categories by shared features; in AI, the task of assigning each input to one of several predefined categories, such as spam or not spam.
+adoption | nuance.core.definition | Legally taking another person's child into your family as your own, or starting to use a new idea or product; in theology, God's act of receiving believers into his family as his children through Christ.
+icon | nuance.core.definition | A small picture on a screen that stands for a program or action, or a famous person seen as a symbol of something; in Christian use, a sacred painted image of Christ, Mary or a saint, used in worship, especially in Eastern churches.
+matching | nuance.core.definition | The process of pairing things that belong together; in graph theory, a set of edges in a graph where no two edges share a vertex.
+span | nuance.core.definition | To extend across a distance or a period of time (the bridge spans the river); in linear algebra, to be the set of all linear combinations of a given set of vectors.
+pipeline | nuance.core.definition | A long pipe that carries oil, gas or water over a distance, or a series of stages things pass through (a sales pipeline); in AI and data science, a sequence of automated steps, such as cleaning data, training a model and deploying it.
+cluster | nuance.core.definition | A group of similar things or people close together; in AI, a group of connected computers or chips that work together, for example to train a large model.
+expectation | nuance.core.definition | A strong belief that something will happen, or a standard someone is expected to meet; in statistics, the expected value: the long-run average of a random variable.
+honesty | nuance.core.definition | The quality of being truthful and sincere, not lying, cheating or stealing; in AI, the goal that a model tells the truth, avoids deception and openly states its uncertainty and limits.
+injection | nuance.core.definition | Putting a drug or other liquid into the body with a needle (a shot), or adding something new to a situation (an injection of cash); in mathematics, a function where different inputs always give different outputs.
+revelation | nuance.core.definition | A surprising fact that is made known, or the act of making it known; in theology, God's making himself and his truth known to humans, especially through Scripture and the prophets.
+sensitivity | nuance.core.definition | Awareness of and care for other people's feelings, or a tendency to react easily to something (sensitivity to light); in statistics, the proportion of actual positive cases that a test correctly detects.
+generator | nuance.core.definition | A machine that produces electricity; in AI, the network in a GAN that creates fake samples meant to fool the discriminator.
+conjunction | nuance.core.definition | A joining together or a happening at the same time (in conjunction with), or a word such as "and" or "but" that joins words or clauses; in logic, the operation that is true only when both joined propositions are true, written p ∧ q.
+steering | nuance.core.definition | Controlling the direction of a vehicle, or guiding how something develops; in AI, guiding a model's behavior in a desired direction, such as by editing its internal activations or its instructions.
+reliability | nuance.core.definition | The quality of being dependable and performing well every time; in statistics and software, the consistency of a measure or system, so repeated runs give the same results under the same conditions.
+deployment | nuance.core.definition | Moving troops, equipment or people into position for use; in AI and software, putting a trained model or a system into production so real users can use it.
+slope | nuance.core.definition | A surface that goes up or down, such as the side of a hill; in math, the ratio of vertical change to horizontal change between two points on a line.
+confession | nuance.core.definition | An admission that you did something wrong or embarrassing; in Christian practice, acknowledging your sins to God, often to a priest, to seek forgiveness.
+mapping | nuance.core.definition | Making maps, or matching the items of one set or system with those of another; in mathematics, a function that assigns each element of one set to exactly one element of another.
+weights | nuance.core.definition | Heavy objects lifted for exercise or used to measure how heavy something is; in AI, the learned numbers in a neural network that set how strongly each input affects each output.
+exploitation | nuance.core.definition | Treating someone unfairly to profit from their work, or making full use of a resource; in reinforcement learning, choosing the action currently known to give the highest reward instead of trying new ones.
+grounded | nuance.core.definition | Sensible and emotionally stable, or (of a child) not allowed to go out as a punishment; in AI, describing an answer that is based on and supported by provided sources or data.
+justification | nuance.core.definition | A good reason or explanation that shows something is right or reasonable; in theology, God's act of declaring or making a sinner right with him.
+token | nuance.core.definition | A small object or gesture that stands for something (a token of thanks), or a coin-like piece used instead of money; in AI, the unit of text a language model reads and writes, often a whole word or part of a word.
+vocabulary | nuance.core.definition | The words a person knows and uses, or all the words of a language or subject; in AI, the fixed set of tokens a model's tokenizer can produce and the model can understand.
+assurance | nuance.core.definition | A promise or statement that gives confidence, or a feeling of certainty; in theology, confident certainty that one is saved.
+aligned | nuance.core.definition | Placed in a straight line or in the right position, or in agreement (aligned with our goals); in AI, describing a system whose goals and behavior match what its designers and the people it serves intend.
+alignment | nuance.core.definition | Arrangement in a straight line or the correct position, or agreement among people or groups; in AI, the degree to which a system's goals and behavior match human intentions and values.
+queue | nuance.core.definition | A line of people or things waiting their turn; in software, a data structure where items are added at one end and removed from the other, usually first in, first out.
+sampling | nuance.core.definition | Trying a small amount of something, such as food, to find out what it is like; in statistics, selecting a subset of a population so that it represents the whole.
+singular | nuance.core.definition | Remarkable or unusual, or (in grammar) referring to just one person or thing; in mathematics, describing a square matrix whose determinant is zero, so it has no inverse.
+null | nuance.core.definition | Nothing, or having no value or legal force (null and void); in statistics, the null hypothesis: the default claim that there is no effect or difference, which a test tries to reject.
+ensemble | nuance.core.definition | A group of musicians, actors or dancers who perform together, or a set of clothes worn together; in machine learning, a method that combines several models to make a single, more accurate prediction.
+contamination | nuance.core.definition | Making something dirty, impure or poisonous by adding a harmful substance; in AI, the presence of test data in a model's training data, which makes its evaluation scores misleadingly high.
+partition | nuance.core.definition | A wall or screen that divides a room, or the division of something into parts (the partition of a country); in mathematics, a collection of nonempty, non-overlapping subsets whose union is the whole set.
+prevalence | nuance.core.definition | How common or widespread something is; in statistics, the proportion of a population that has a condition at a given time.
+anthropology | nuance.core.definition | The study of human beings, their societies and cultures; in theology, the study of what a human being is in relation to God, including creation, sin and redemption.
+chord | nuance.core.definition | A group of musical notes played together; in geometry, a straight line segment joining two points on a curve, such as a circle.
+derivative | nuance.core.definition | Something developed from something else, such as a financial contract whose value depends on an asset; in calculus, the rate at which a function's output changes as its input changes.
+query | nuance.core.definition | A question, especially a request for information, or a request for data from a database; in AI, a vector a token uses to look for relevant information in other tokens' keys.
+downstream | nuance.core.definition | In the direction a river flows, or at a later stage of a process; in software, describing a component or user that receives and depends on output from another.
+pointer | nuance.core.definition | Something that points, such as a stick or the hand on a dial, or a useful tip (a few pointers); in programming, a variable that stores the memory address of another value.
+regeneration | nuance.core.definition | Renewal or regrowth of something damaged or decayed; in theology, God's act of giving a person new spiritual life.
+trajectory | nuance.core.definition | The path an object follows through the air or space, or the course of development over time (a career trajectory); in reinforcement learning, the sequence of states, actions and rewards an agent experiences in one episode.
+kernel | nuance.core.definition | The soft inner part of a nut or seed, or the most important part of something (a kernel of truth); in computing, the core of an operating system; in machine learning and statistics, a function that measures the similarity of two inputs.
+tracing | nuance.core.definition | Copying a drawing by following its lines through thin paper, or finding where someone or something is (contact tracing); in software engineering, recording a request as it moves through a system to diagnose problems and performance.
+upstream | nuance.core.definition | Toward the source of a river, or at an earlier stage of a process; in software, describing code or a project maintained by the original developers, as opposed to a modified copy.
+labeling | nuance.core.definition | Attaching labels to things, or describing someone with a word or category, often unfairly; in AI, attaching correct outputs (labels) to examples so they can be used to train or evaluate a model.
+planner | nuance.core.definition | A person who makes plans (a wedding planner), or a notebook or calendar for organizing your schedule; in AI, the part of an agent that works out a sequence of actions to reach a goal.
+boosting | nuance.core.definition | Increasing or improving something (boosting sales); in machine learning, an ensemble method that builds models in sequence, each one correcting the errors of the previous ones.
+residual | nuance.core.definition | An amount that remains after most of something is gone or used; in statistics, the difference between an observed value and the value a model predicts for it.
+bounded | nuance.core.definition | Having limits or borders; in mathematics, describing a set or function whose values stay between a fixed upper limit and a fixed lower limit.
+regression | nuance.core.definition | A return to an earlier or less developed state; in statistics and AI, a method of predicting a continuous number, such as a price, from other variables; in software, a bug that breaks something that used to work.
+gradient | nuance.core.definition | A gradual change in something, such as color, or how steep a road or slope is; in machine learning, the vector of partial derivatives that shows the direction and size of change needed to reduce a model's loss.
+coupling | nuance.core.definition | A device or act that joins two things together; in software, the degree to which one module depends on another.
+variance | nuance.core.definition | A difference from what is expected or usual, or official permission to break a zoning rule; in statistics, the average squared distance of data values from their mean, measuring how spread out they are.
+canary | nuance.core.definition | A small yellow songbird often kept as a pet; in software deployment, a test release sent first to a small group of servers or users to catch problems before a full rollout.
+prism | nuance.core.definition | A clear block of glass or plastic that splits light into the colors of the rainbow, or a way of seeing something (through the prism of history); in geometry, a solid with two identical, parallel polygon ends joined by flat sides.
+abduction | nuance.core.definition | Kidnapping: taking someone away by force; in AI and logic, reasoning from an observation to the most plausible explanation for it.
+posterior | nuance.core.definition | The back part of something, or informally a person's bottom; in Bayesian statistics, the updated probability of a hypothesis after taking the observed data into account.
+inverse | nuance.core.definition | The opposite or reverse of something (an inverse relationship); in mathematics, an element or operation that undoes another, so that combining the two gives the identity.
+parity | nuance.core.definition | Equality, especially in pay, status or value (pay parity); in mathematics, the property of an integer being even or odd.
+checkpoint | nuance.core.definition | A place where people or vehicles are stopped and checked, such as at a border or an airport; in machine learning, a saved copy of a model's state, including its weights, used to resume or restore training.
+transformer | nuance.core.definition | A device that changes the voltage of electricity between two circuits; in AI, a neural network architecture that uses attention to process sequences such as text.
+handshake | nuance.core.definition | Gripping and shaking another person's hand as a greeting or to seal an agreement; in software, an exchange of messages between two devices before data transfer, to agree on settings.
+payload | nuance.core.definition | The load a vehicle, aircraft or rocket carries, such as cargo, passengers or a satellite; in software, the data a message carries, or the part of malware that does the actual harm.
+calibration | nuance.core.definition | Adjusting or checking a measuring instrument so its readings are accurate; in AI and statistics, how closely a model's stated confidence matches how often its predictions turn out to be correct.
+degenerate | nuance.core.definition | Having fallen from a normal, healthy or moral condition; in mathematics, describing a case that collapses into a simpler form, such as an eigenvalue with several independent eigenvectors.
+latency | nuance.core.definition | A delay, or the state of being present but not yet active or visible (the latency of a virus); in computing and AI, the delay between sending a request and receiving the first response.
+limbo | nuance.core.definition | A state of uncertainty while waiting for a decision (in limbo); in Catholic theology, a speculative state for souls, such as unbaptized infants, excluded from heaven but not punished.
+cnn | nuance.core.definition | In AI, short for convolutional neural network, a deep learning model that processes grid-like data such as images; also the name of a major US cable news channel.
+
+# --- One-offs
+oversample | nuance.core.pos | verb
+oversample | nuance.core.definition | To include more people or cases from a subgroup in a sample than their share of the population, so there are enough of them for reliable analysis.
+parallelism | nuance.core.definition | The quality of being parallel, or close similarity in structure, direction or character between things; in computing, doing many calculations at the same time, for example across several processors or GPUs.
+platykurtic | nuance.examples.everyday | The test scores were platykurtic: spread fairly evenly across the range, with a flat peak and few extreme scores.
+platykurtic | nuance.examples.professional | The residuals look platykurtic, so the normal model overstates the chance of extreme errors; check normality with a Q-Q plot before trusting the intervals.
+linear-independence | nuance.usage_note | Americans use this term in university math courses, data science, and engineering. It usually appears with the adjective phrase linearly independent, as in 'the columns are linearly independent.' You will rarely hear it in casual speech.
+linear-independence | nuance.common_mistakes.1 | Stressing the wrong syllable in independence: say in-dih-PEN-dence, not in-DEE-pen-dence.
+overpriced | nuance.pronunciation.respelling | OH-ver-pryst
+overpriced | nuance.pronunciation.tip | The stress is on the first syllable, OH-. The final -ced is pronounced as a 't' sound, so the end sounds like 'pryst', not 'prized'.
+sine | nuance.pronunciation.tip | It is one syllable with a long i, sounding exactly like 'sign' in American speech. Say it with the 'eye' vowel and a soft n at the end.
+lyft | nuance.common_mistakes.0 | Pronouncing it with a long i, like 'lyfe-t', because of the y; it sounds exactly like 'lift'.
+atheism | nuance.common_mistakes.0 | Saying 'AY-tee-iz-um' with a t sound; the th is voiceless, as in 'think', and the first syllable is AY.
+
+# --- Sense labels the dictionary data lacked
+caller | meanings.0.senses.4.definition | (rare) A whistle or similar item used to call foxes.
+broil | meanings.0.senses.3.definition | (archaic) To cause a rowdy disturbance; embroil.
+
+# --- Synonyms of frequent words: the dictionary's list mixed in other senses
+like | synonyms | ["enjoy", "love", "be fond of", "such as", "similar to"]
+get-in | synonyms | ["enter", "arrive", "get into", "be admitted"]
+get-on | synonyms | ["board", "get along", "continue", "manage"]
+you-know | synonyms | ["you see", "I mean", "right"]
+get-up | synonyms | ["get out of bed", "rise", "stand up"]
+get-out | synonyms | ["leave", "exit", "escape", "go out"]
+go-to | synonyms | ["favorite", "reliable", "trusted"]
+go-with | synonyms | ["choose", "pick", "match", "accompany"]
+make-out | synonyms | ["manage", "see", "understand", "kiss"]
+great | synonyms | ["excellent", "wonderful", "terrific", "huge", "important"]
+down | synonyms | ["sad", "unhappy", "depressed", "low", "miserable"]
+back-up | synonyms | ["support", "confirm", "reverse", "copy"]
+work-out | synonyms | ["exercise", "figure out", "solve", "sort out", "turn out"]
+get-off | synonyms | ["leave", "get out", "finish", "exit"]
+get-down | synonyms | ["depress", "discourage", "descend", "dance"]
+go-off | synonyms | ["ring", "explode", "spoil", "go bad"]
+put-on | synonyms | ["wear", "dress in", "pretend", "stage", "gain"]
+feel-up-to | synonyms | ["be able to", "be ready for", "manage"]
+put-out | synonyms | ["extinguish", "publish", "release", "inconvenience"]
+night-out | synonyms | ["evening out", "night on the town"]
+full | synonyms | ["filled", "packed", "complete", "entire", "stuffed"]
+change | synonyms | ["coins", "alter", "modify", "transform", "adjust", "switch"]
+side | synonyms | ["side dish", "edge", "team", "part", "aspect"]
+order | synonyms | ["request", "command", "sequence", "arrangement"]
+line | synonyms | ["queue", "row", "rope", "route"]
+season | synonyms | ["time", "period", "spice", "flavor"]
+open | synonyms | ["unlocked", "available", "accessible", "start"]
+car | synonyms | ["automobile", "auto", "vehicle"]
+single | synonyms | ["unmarried", "unattached", "sole", "lone", "individual"]
+tell-off | synonyms | ["scold", "reprimand", "chew out"]
+off-season | synonyms | ["low season"]
+light | synonyms | ["brightness", "lamp", "bright", "pale", "lightweight", "ignite"]
+heart | synonyms | ["feelings", "courage", "spirit", "core", "center"]
+deal | synonyms | ["agreement", "bargain", "transaction", "handle"]
+check | synonyms | ["bill", "examine", "inspect", "verify", "restrain"]
+turn-out | synonyms | ["prove", "end up", "attend", "switch off"]
+type | synonyms | ["kind", "sort", "class", "category", "genre"]
+present | synonyms | ["here", "current", "gift", "give", "show"]
+king | synonyms | ["monarch", "ruler", "sovereign"]
+hot | synonyms | ["warm", "heated", "spicy", "popular"]
+cool | synonyms | ["great", "stylish", "chilly", "calm", "fashionable"]
+blue | synonyms | ["sad", "down", "unhappy", "navy", "azure"]
+stand-by | synonyms | ["support", "stick by", "wait", "stand ready"]
+football | synonyms | ["American football", "gridiron"]
+church | synonyms | ["chapel", "congregation", "denomination", "house of worship"]
+it's-a-deal | synonyms | ["agreed", "you're on", "sounds good"]
+check-in | synonyms | ["register", "sign in"]
+get-out-of-hand | synonyms | ["get out of control", "spiral out of control"]
+long-shot | synonyms | ["outside chance", "gamble", "remote possibility"]
+answer | synonyms | ["reply", "response", "solution", "respond"]
+cut-up | synonyms | ["chop", "dice", "upset", "distressed"]
+wrong-number | synonyms | []
+turn-in | synonyms | ["hand in", "submit", "go to bed"]
+light-up | synonyms | ["brighten", "illuminate", "cheer up", "glow"]
+come-to | synonyms | ["come around", "regain consciousness", "wake up", "amount to"]
+take-off | synonyms | ["remove", "leave", "depart", "succeed", "imitate"]
+get-through | synonyms | ["reach", "survive", "endure", "finish"]
+run-through | synonyms | ["rehearse", "review", "go over"]
+exceptional | synonyms | ["outstanding", "remarkable", "extraordinary", "unusual", "rare"]
+peaceful | synonyms | ["calm", "quiet", "tranquil", "serene", "placid", "peaceable", "nonviolent"]
+axis | synonyms | ["pivot", "line", "alliance", "pact", "coalition"]
+acre | synonyms | []
+commit | synonyms | ["pledge", "promise", "dedicate", "perpetrate"]
+pharmacy | synonyms | ["drugstore", "dispensary", "apothecary"]
+coerce | nuance.pronunciation.tip | Stress the second syllable, URS, with a strong American r. Do not add a vowel after the r; the word ends in a plain s sound.
+compile | nuance.pronunciation.tip | The second syllable, PYLE, is stressed, so say it with a strong, long vowel. The final l is clear, and the word rhymes with mile.
+ineffable | synonyms | ["indescribable", "inexpressible", "unspeakable", "unutterable", "transcendent"]

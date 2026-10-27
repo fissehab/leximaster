@@ -25,6 +25,11 @@
   --sage: #3B7637;           /* correct, "good" */
   --sage-soft: #E2F0DF;
   --plum: #7A3E8C;
+  /* Filled buttons: in dark themes the bright text accents would make pale
+     slabs, so fills get a deeper tone of their own. */
+  --accent-fill: #2B47A8;
+  --danger-fill: #B23A3F;
+  --on-fill: #FFFFFF;
 
   --pos-noun: #2B47A8;
   --pos-verb: #0D7465;
@@ -68,6 +73,9 @@
     --sage: #86CF7F;
     --sage-soft: #1D3320;
     --plum: #D29BE2;
+    --accent-fill: #3B57C4;
+    --danger-fill: #B8474C;
+    --on-fill: #F3F5FF;
     --pos-noun: #93A8FF;
     --pos-verb: #4CC3AE;
     --pos-adjective: #F08C8F;
@@ -99,6 +107,9 @@
   --sage: #86CF7F;
   --sage-soft: #1D3320;
   --plum: #D29BE2;
+  --accent-fill: #3B57C4;
+  --danger-fill: #B8474C;
+  --on-fill: #F3F5FF;
   --pos-noun: #93A8FF;
   --pos-verb: #4CC3AE;
   --pos-adjective: #F08C8F;
@@ -133,6 +144,9 @@
   --sage: #99C794;
   --sage-soft: #364A3B;
   --plum: #D1A9D1;
+  --accent-fill: #3D6E9E;
+  --danger-fill: #B5545B;
+  --on-fill: #F3F5FF;
   --pos-noun: #8CBDEC;
   --pos-verb: #80C3C3;
   --pos-adjective: #F9AE58;

@@ -41,6 +41,7 @@ def prune(v):
 
 def python_side(keys: list[str]) -> tuple[list[dict], dict[str, dict]]:
     os.environ["LEXIMASTER_DB"] = str(Path(tempfile.mkdtemp()) / "parity.db")
+    os.environ["LEXIMASTER_TESTING"] = "1"   # lets the test client's host name through (app/main.py)
     sys.path.insert(0, str(ROOT))
     from fastapi.testclient import TestClient
     from app.main import app

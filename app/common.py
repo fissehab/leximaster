@@ -95,6 +95,7 @@ def full(row: sqlite3.Row) -> dict:
         "antonyms": data.get("antonyms") or [],
         "etymology": data.get("etymology") or "",
         "variant_of": data.get("variant_of") or "",
+        "also": data.get("also") or [],
         "conversation": data.get("conversation") or [],
         "source": data.get("source", ""),
         "notes": row["notes"],
@@ -239,14 +240,18 @@ def pool_ids(c: sqlite3.Connection, *, stars: list[int] | None = None, list_id: 
 
 
 def weighted_sample(c: sqlite3.Connection, ids: list[int], n: int) -> list[int]:
-    """Prefer weaker words: low stars and recent misses are drawn more often."""
+    """Prefer weaker words: low stars and recent misses are drawn more often.
+    A miss counts fully for a month, then fades; re-passes in a review don't
+    count again."""
     if len(ids) <= n:
         random.shuffle(ids)
         return ids
     weights = {}
     rows = c.execute(
         f"""SELECT w.id, COALESCE(u.stars, 0) AS stars,
-                   (SELECT COUNT(*) FROM review_log r WHERE r.word_id = w.id AND r.correct = 0) AS misses
+                   (SELECT COALESCE(SUM(CASE WHEN julianday('now') - julianday(r.ts) <= 30 THEN 1.0
+                                             WHEN julianday('now') - julianday(r.ts) <= 90 THEN 0.4 ELSE 0.1 END), 0)
+                    FROM review_log r WHERE r.word_id = w.id AND r.correct = 0 AND r.mode != 'repeat') AS misses
             FROM words w LEFT JOIN user_word u ON u.word_id = w.id
             WHERE w.id IN ({','.join('?' * len(ids))})""", ids).fetchall() if len(ids) <= 30000 else []
     for r in rows:
