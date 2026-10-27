@@ -1,6 +1,6 @@
 // Shared UI: DOM helper, icons, the dictionary entry, stars, toasts, dialogs.
 
-import { api, allWords, cachedWords, patchCachedWord } from "./api.js";
+import { api, allWords, cachedWords, invalidateWords, patchCachedWord } from "./api.js";
 import { playWord } from "./audio.js";
 import { EVERYDAY_DOMAINS } from "./shared.gen.js";
 import { loadFilter, saveFilter } from "./state.js";
@@ -304,7 +304,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
     const mistake = n && pick((n.common_mistakes || []).filter(m => !/pronounc|stress|syllable|sound|rhyme|said like|say it/i.test(m)));
     if (d || mistake) {
       parts.push(h("div.card-notes",
-        d ? h("p.card-note", h("span.card-note-label", `vs ${d.vs}`), " ", smart(d.note)) : null,
+        d ? h("p.card-note", h("span.card-note-label", "vs ", termLink(d.vs, { chip: false })), " ", smart(d.note)) : null,
         mistake ? h("p.card-note", h("span.card-note-label", "Watch out"), " ", smart(mistake)) : null));
     }
     if (n && n.patterns && n.patterns.length) parts.push(grammarBlock(n.patterns.slice(0, 2)));
@@ -333,7 +333,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
       n.patterns && n.patterns.length ? grammarBlock(n.patterns) : null,
       n.usage_note ? h("p", smart(n.usage_note)) : null,
       n.distinctions && n.distinctions.length ? block("Compared with",
-        h("dl.distinctions", n.distinctions.map(d => [h("dt", d.vs), h("dd", smart(d.note))]))) : null,
+        h("dl.distinctions", n.distinctions.map(d => [h("dt", termLink(d.vs, { chip: false })), h("dd", smart(d.note))]))) : null,
       mistakes.length ? block("Common mistakes", h("ul", mistakes.map(m => h("li", smart(m))))) : null,
       n.collocations && n.collocations.length ? block("Common pairings",
         h("div.tags", n.collocations.map(c => h("span.chip", c)))) : null,
@@ -386,7 +386,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
         pron.tip ? h("p", smart(pron.tip)) : null, pronMistakes.length ? h("ul", pronMistakes.map(m => h("li", smart(m)))) : null) : null,
       showRegister || connotation ? block("Register",
         showRegister ? h("div.tags", register.map(r => h("span.chip", r))) : null, connotation ? h("p", smart(connotation)) : null) : null,
-      n && n.word_family && n.word_family.length ? block("Word family", h("div.tags", n.word_family.map(x => h("span.chip", x)))) : null,
+      n && n.word_family && n.word_family.length ? block("Word family", wordChips(n.word_family)) : null,
       n && n.analogy ? block("Analogy", h("p", smart(n.analogy))) : null,
       (n && n.etymology) || w.etymology ? block("Etymology", h("p", italicize((n && n.etymology) || w.etymology)),
         dictEtym ? h("p.muted", "Dictionary: ", italicize(dictEtym)) : null) : null,
@@ -428,20 +428,93 @@ function grammarBlock(patterns) {
       i % 2 ? h("span.slot", part) : part)))));
 }
 
-/** Words as chips; a word with its own entry opens it. */
+/** Words as chips; each opens its entry, or a short definition when it has none. */
 function wordChips(words) {
-  const wrap = h("div.tags", words.map(x => h("span.chip", smart(x))));
-  const link = list => {
-    const byWord = new Map(list.map(e => [e.word.toLowerCase(), e.id]));
-    [...wrap.children].forEach((chip, i) => {
-      const id = byWord.get(words[i].toLowerCase());
-      if (id) chip.replaceWith(h("a.chip.chip-link", { href: `#browse/${id}`, title: `Open “${words[i]}”` }, chip.textContent));
-    });
-  };
+  return h("div.tags", words.map(x => termLink(x)));
+}
+
+// Lookup form of a related word: as the glossary keys it (app/common.py gloss_key).
+const termKey = t => String(t).replace(/[\u2018\u2019]/g, "'").trim().replace(/\s*\([^()]*\)\s*$/, "")
+  .replace(/\s+/g, " ").toLowerCase();
+let entryMap = null;   // [word list, Map of lowercase word -> id]
+function entryIds(list) {
+  if (!entryMap || entryMap[0] !== list) entryMap = [list, new Map(list.map(e => [e.word.toLowerCase(), e.id]))];
+  return entryMap[1];
+}
+
+/** A related word or phrase: a link to its entry when it has one (once the
+ * word list is loaded), otherwise a button that opens a short definition. */
+export function termLink(text, { chip = true } = {}) {
+  const cls = chip ? "chip.term" : "term";
+  const key = termKey(text);
+  const entry = id => h(`a.${cls}.has-entry`, { href: `#browse/${id}`, title: `Open “${key}”`,
+    on: { click: e => e.stopPropagation() } }, smart(text));
   const list = cachedWords();
-  if (list) link(list);
-  else allWords().then(link).catch(() => {});
-  return wrap;
+  const id = list && entryIds(list).get(key);
+  if (id) return entry(id);
+  const btn = h(`button.${cls}`, { type: "button", title: `What does “${key}” mean?`,
+    on: { click: e => { e.stopPropagation(); defineTerm(text); } } }, smart(text));
+  // Not loaded yet: becomes a link once the list arrives (by then it's on the page).
+  if (!list) allWords().then(l => { const i = entryIds(l).get(key); if (i) btn.replaceWith(entry(i)); }).catch(() => {});
+  return btn;
+}
+
+/** The short definition of a word without an entry (Open English WordNet),
+ * in the dialog; a form of a headword ("kings") opens that entry instead. */
+async function defineTerm(text) {
+  let g;
+  try {
+    g = await api.get("/api/gloss", { w: text });
+  } catch (e) { return showError(e); }
+  const list = await allWords().catch(() => null);
+  const ids = list ? entryIds(list) : new Map();
+  // A form of a headword opens it, unless that's the entry already open ("abased" under "abase").
+  if (g.see && ids.get(g.see.toLowerCase()) && location.hash !== `#browse/${ids.get(g.see.toLowerCase())}`) {
+    const dlg = document.getElementById("dialog");
+    if (dlg.open) dlg.close();
+    location.hash = `#browse/${ids.get(g.see.toLowerCase())}`;
+    return;
+  }
+  const term = termKey(text);
+  const shown = g.base || term;
+  const byPos = [];
+  for (const [pos, definition, example] of g.senses || []) {
+    let group = byPos.find(x => x.pos === pos);
+    if (!group) byPos.push(group = { pos, senses: [] });
+    group.senses.push([definition, example]);
+  }
+  const wiktionary = `https://en.wiktionary.org/wiki/${encodeURIComponent(shown.replace(/ /g, "_"))}`;
+  const first = (g.senses || [])[0];
+  const body = h("div.gloss",
+    g.base ? h("p.muted.gloss-base", "Defined under ", h("em", g.base)) : null,
+    g.see ? h("p", "A form of ", h("em", g.see), ".") : byPos.length ? byPos.map(x => h("div.gloss-group", posBadge(x.pos),
+      h("ol", x.senses.map(([d, ex]) => h("li", smart(d), ex ? h("span.gloss-example", " · ", h("em", smart(ex))) : null)))))
+      : h("p", "LexiMaster has no short definition for this word or phrase. Wiktionary may have one."),
+    g.form_of ? h("p.gloss-also", "Also a form of ", termLink(g.form_of, { chip: false })) : null,
+    g.syn && g.syn.length ? h("div.related-row", h("span.related-label", "Similar"), wordChips(g.syn)) : null,
+    h("p.gloss-links",
+      h("a", { href: wiktionary, target: "_blank", rel: "noopener" }, "Wiktionary ↗"),
+      first ? h("button.btn.btn-quiet", { type: "button", on: { click: () => addAsMyWord(shown, first) } }, "Add to my words") : null),
+    byPos.length ? h("p.gloss-source.muted", "Short definition from Open English WordNet") : null);
+  // A link inside (an entry, or a word that has one) leaves the dialog behind.
+  body.addEventListener("click", e => { if (e.target.closest("a[href^='#']")) document.getElementById("dialog").close(); }, true);
+  const dlg = document.getElementById("dialog");
+  if (dlg.open) dlg.close();   // from a word inside the dialog: this one replaces it
+  formDialog({ title: term, body, submit: null });
+  // Start at the word, not on its first link (no focus ring on a link nobody chose).
+  const title = document.getElementById("dlg-title");
+  title.tabIndex = -1;
+  title.focus();
+}
+
+async function addAsMyWord(word, [pos, definition, example]) {
+  try {
+    const w = await api.post("/api/words", { word, pos, definition: smart(definition), example: example || "" });
+    document.getElementById("dialog").close();
+    invalidateWords();
+    toast(`Added “${word}” to My words`);
+    location.hash = `#browse/${w.id}`;
+  } catch (e) { showError(e); }
 }
 
 function notesEditor(w) {

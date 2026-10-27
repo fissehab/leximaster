@@ -84,6 +84,7 @@ phone, use your browser's "Add to Home Screen" to install it like an app.
 To rebuild the site after changing the dataset:
 
 ```bash
+.venv/bin/python tools/glossary.py     # short definitions for related words without an entry (Open English WordNet)
 .venv/bin/python tools/build_site.py   # checks the display rules, then writes docs/ (GitHub Pages serves it)
 .venv/bin/python tools/parity.py       # the website and the local app give the same answers
 ```
@@ -285,14 +286,19 @@ On a phone the bottom bar has five buttons in the same order: Home, Review, Prac
 Each entry reads from the top down:
 
 1. The word, its sound, IPA and respelling, and one row of labels.
-2. The meaning, with one example under it, and its synonyms and antonyms (each opens its own entry
-   when it has one). For a Bible name, what the Bible says about it.
+2. The meaning, with one example under it, and its synonyms and antonyms. For a Bible name, what the
+   Bible says about it.
 3. **Use it right:** the grammar patterns it's used in ("insist on doing sth", "[U] advice on sth"),
    how Americans use it, how it differs from near-synonyms, common mistakes, and common pairings.
 4. **In the Bible**, and Orthodox, Catholic and Protestant views where they differ.
 5. **More examples:** two shown, the rest folded.
 6. **More meanings:** the dictionary's other senses, folded, in the dictionary's order.
 7. **Pronunciation, register, word family, origin:** folded.
+
+Every synonym, antonym, "Compared with" word and word-family word can be tapped. A word with its own
+entry (blue) opens it; a form of one ("kings") opens "king". Any other word (grey, dotted underline)
+opens a short definition from Open English WordNet, with similar words (tappable too), a Wiktionary
+link and "Add to my words". Phrases WordNet lacks get the Wiktionary link only.
 8. Your notes.
 
 Dictionary senses that only restate the meaning in step 2 are marked when the data is built
@@ -390,7 +396,8 @@ tools/             build_site.py (the website), audit.py (content checks), parit
                    "In the Bible" notes: verse references, Hebrew and Greek words),
                    audio_credits.py (each recording's author and license, for the credits page),
                    tts.py (natural synthesized recordings for words without a human one),
-                   audio_norm.py (even loudness and a lead-in for the human recordings)
+                   audio_norm.py (even loudness and a lead-in for the human recordings),
+                   glossary.py (short WordNet definitions for related words without an entry)
 app/               FastAPI backend: db.py (schema, migrations, daily backups), srs.py (SM-2), api/ (routes)
 tests/             pytest suite (a 200-word fixture; never touches data/)
 static/            single-page app, with no build step: index.html, css/, js/, fonts/

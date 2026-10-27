@@ -172,6 +172,27 @@ async function detail(id) {
   return shard[w.k] || {};
 }
 
+// Short definitions of related words without an entry (tools/glossary.py):
+// data/gloss/NN.json, the shard and key computed as app/common.py does.
+const GLOSS_SHARDS = 16;
+const GLOSS = new Map();     // shard number -> Promise of {key: record}
+function glossKey(term) {
+  return String(term).replace(/[\u2018\u2019]/g, "'").trim().replace(/\s*\([^()]*\)\s*$/, "")
+    .replace(/\s+/g, " ").toLowerCase();
+}
+function glossShard(key) {
+  let h = 0x811c9dc5;
+  for (const b of new TextEncoder().encode(key)) h = Math.imul(h ^ b, 0x01000193) >>> 0;
+  return h % GLOSS_SHARDS;
+}
+const glossUrl = s => `data/gloss/${String(s).padStart(2, "0")}.json`;
+async function gloss(term) {
+  const key = glossKey(term || "").slice(0, 200);
+  const s = glossShard(key);
+  if (!GLOSS.has(s)) GLOSS.set(s, fetchJson(glossUrl(s)).catch(e => { GLOSS.delete(s); throw e; }));
+  return (await GLOSS.get(s))[key] || { w: key, senses: [], syn: [] };
+}
+
 // --------------------------------------------------------------- persistence
 
 // IndexedDB "state" holds a snapshot ("progress": the export without the
@@ -1515,6 +1536,7 @@ async function downloadForOffline() {
   // with progress reported to the page ("lexi-offline-progress").
   const shards = [...new Set([...INDEX.values()].map(w => w.s))];
   const urls = shards.map(s => `data/detail/${String(s).padStart(2, "0")}.json`);
+  for (let s = 0; s < GLOSS_SHARDS; s++) urls.push(glossUrl(s));
   // Today's review words' recordings too, so the daily session sounds right offline.
   try {
     const q = await reviewQueue({});
@@ -1558,6 +1580,7 @@ const ROUTES = [
   ["POST", /^\/api\/words$/, (m, q, b) => addCustomWord(b)],
   ["DELETE", /^\/api\/words\/(\d+)$/, (m) => deleteCustomWord(+m[1])],
   ["GET", /^\/api\/wotd$/, () => wordOfTheDay()],
+  ["GET", /^\/api\/gloss$/, (m, q) => gloss(q.w)],
   ["GET", /^\/api\/lists$/, () => allLists()],
   ["POST", /^\/api\/lists$/, (m, q, b) => createList(b)],
   ["PATCH", /^\/api\/lists\/(\d+)$/, (m, q, b) => renameList(+m[1], b)],
@@ -1604,7 +1627,7 @@ const ROUTES = [
   ["POST", /^\/api\/import$/, (m, q, b) => importFile(b)],
   ["POST", /^\/api\/offline$/, () => downloadForOffline()],
 ];
-const READ_ONLY = new Set(["/api/health", "/api/words", "/api/lists", "/api/stats", "/api/settings", "/api/export",
+const READ_ONLY = new Set(["/api/health", "/api/words", "/api/gloss", "/api/lists", "/api/stats", "/api/settings", "/api/export",
                            "/api/quiz", "/api/matching", "/api/listen", "/api/flashcards", "/api/practice/words",
                            "/api/review/queue", "/api/offline"]);
 

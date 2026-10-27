@@ -11,7 +11,7 @@ from fastapi import APIRouter, HTTPException, Request, Response
 from pydantic import BaseModel, Field
 
 from .. import db, srs
-from ..common import compact_heads, compact_json, fetch_word, full, track_clause
+from ..common import compact_heads, compact_json, fetch_word, full, gloss_key, track_clause
 
 router = APIRouter(prefix="/api")
 
@@ -77,6 +77,23 @@ def word_detail(word_id: int):
         out["recording_url"] = f"/api/recordings/{word_id}" if rec else None
     return out
 
+
+# data/glossary.json (tools/glossary.py), read on first use and kept.
+_glossary: tuple[float, dict] | None = None
+
+
+@router.get("/gloss")
+def gloss(w: str):
+    """A short definition of a related word without its own entry: WordNet
+    senses, or {"see": headword} for a form of a headword. Senses are empty
+    when the glossary doesn't have the term."""
+    global _glossary
+    path = db.DATA / "glossary.json"
+    mtime = path.stat().st_mtime if path.exists() else 0.0
+    if _glossary is None or _glossary[0] != mtime:
+        _glossary = (mtime, json.loads(path.read_text(encoding="utf-8")) if mtime else {})
+    key = gloss_key(w)[:200]
+    return _glossary[1].get(key) or {"w": key, "senses": [], "syn": []}
 
 class StateIn(BaseModel):
     stars: int | None = Field(None, ge=0, le=5)

@@ -23,6 +23,27 @@ WORD_FROM = """
 """
 
 
+# The glossary (data/glossary.json, tools/glossary.py): short definitions for
+# related words that have no entry. Its key for a term, and the shard of the
+# published copy (docs/data/gloss/NN.json) that holds it; static/js/local/server.js
+# computes both the same way.
+GLOSS_SHARDS = 16
+
+
+def gloss_key(term: str) -> str:
+    """Lowercase, straight quotes, no trailing "(noun)" label, single spaces."""
+    t = term.replace("\u2019", "'").replace("\u2018", "'").strip()
+    t = re.sub(r"\s*\([^()]*\)\s*$", "", t)
+    return re.sub(r"\s+", " ", t).lower()
+
+
+def gloss_shard(key: str) -> int:
+    """FNV-1a (32-bit) of the key's UTF-8 bytes, modulo the shard count."""
+    h = 0x811C9DC5
+    for b in key.encode("utf-8"):
+        h = ((h ^ b) * 0x01000193) & 0xFFFFFFFF
+    return h % GLOSS_SHARDS
+
 # Inflection-only senses ("simple past of bemuse") say nothing about meaning.
 FORM_OF = re.compile(
     r"^(simple past|past participle|present participle|plural|third-person|"

@@ -6,9 +6,9 @@
 // page asks (on Home, Browse and other calm screens, never mid-session).
 // Every cache name starts with "lexi-": the site shares its origin
 // (fissehab.github.io) with other projects, whose caches are left alone.
-const VERSION = "20261027002712";
+const VERSION = "20261027083021";
 const SHELL = `lexi-shell-${VERSION}`;
-const DATA = "lexi-data-0f20f948";   // changes only when the published word data does
+const DATA = "lexi-data-dff06471";   // changes only when the published word data does
 // Recording names carry a hash of their content (media/audio/<word>.<hash>.m4a),
 // so a corrected recording has a new URL: the media cache can outlive deploys.
 const MEDIA = "lexi-media-v2";
@@ -63,7 +63,7 @@ const SHELL_FILES = [
 "static/vendor/sql-wasm.js",
 "static/vendor/sql-wasm.wasm"
 ];
-// Content hash (SHA-256, first 16 hex digits) of each word-detail file in this
+// Content hash (SHA-256, first 16 hex digits) of each word-detail and glossary file in this
 // build: an offline download made under an earlier version keeps the files
 // that haven't changed.
 const DETAIL_HASHES = {
@@ -130,7 +130,23 @@ const DETAIL_HASHES = {
 "data/detail/60.json": "87f1b8525ff3f127",
 "data/detail/61.json": "b2a6970c1b3bc5cb",
 "data/detail/62.json": "39f47bbebd0c1b2a",
-"data/detail/63.json": "342baa75c72e0bfa"
+"data/detail/63.json": "342baa75c72e0bfa",
+"data/gloss/00.json": "b1ec07929273ea52",
+"data/gloss/01.json": "734686ee1a0489f5",
+"data/gloss/02.json": "cd63ee9b7a1e1aa8",
+"data/gloss/03.json": "8f19807dd2b90fe5",
+"data/gloss/04.json": "b5975f1c58783a7f",
+"data/gloss/05.json": "1f16313337b989cd",
+"data/gloss/06.json": "1306ca8ade33b248",
+"data/gloss/07.json": "4291f35b20b2d67a",
+"data/gloss/08.json": "efffbef4fdc6e9ea",
+"data/gloss/09.json": "e993e1d3bf3afe15",
+"data/gloss/10.json": "03a5b15257d049ce",
+"data/gloss/11.json": "e55673388e983ddc",
+"data/gloss/12.json": "af5807a833ed754a",
+"data/gloss/13.json": "7a53fb5ad2f4fd83",
+"data/gloss/14.json": "8637e64f64635e11",
+"data/gloss/15.json": "0e6e3c8c1bfaaba5"
 };
 // Caches of this app from before the "lexi-" prefix.
 const LEGACY = /^(shell-\d{14}|data-[0-9a-f]{8}|media-v1)$/;
@@ -163,7 +179,7 @@ async function migrateDetails(oldNames) {
   for (const name of oldNames) {
     const old = await caches.open(name);
     for (const req of await old.keys()) {
-      const path = new URL(req.url).pathname.replace(/^.*\/(data\/detail\/[^/]+)$/, "$1");
+      const path = new URL(req.url).pathname.replace(/^.*\/(data\/(?:detail|gloss)\/[^/]+)$/, "$1");
       const want = DETAIL_HASHES[path];
       if (!want || await cache.match(req, { ignoreSearch: true })) continue;
       const res = await old.match(req);
@@ -273,7 +289,7 @@ self.addEventListener("fetch", e => {
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
   const path = url.pathname;
   if (path.includes("/media/")) { e.respondWith(media(e.request).catch(() => fetch(e.request))); return; }
-  if (path.includes("/data/detail/") || path.endsWith("/data/index.json")) { e.respondWith(cacheFirst(e.request, DATA)); return; }
+  if (path.includes("/data/detail/") || path.includes("/data/gloss/") || path.endsWith("/data/index.json")) { e.respondWith(cacheFirst(e.request, DATA)); return; }
   if (e.request.mode === "navigate" && /\/(index\.html)?$/.test(path)) {
     // The app's page comes from the same version's cache as its scripts.
     e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));

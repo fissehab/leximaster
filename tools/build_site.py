@@ -10,6 +10,7 @@ progress is kept in their own browser (IndexedDB). Output:
     docs/static/...            CSS, JS, fonts, sql.js
     docs/data/index.json       one compact record per word (search, filters, quizzes)
     docs/data/detail/NN.json   full entries, 64 shards loaded on demand
+    docs/data/gloss/NN.json    short definitions of related words without an entry (16 shards)
     docs/media/audio/...       American recordings
     docs/credits.html          sources, licenses and per-recording attribution
     docs/sw.js, manifest       offline use and "Add to Home Screen"
@@ -30,7 +31,7 @@ from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from app.common import core_definition, quiz_synonyms  # noqa: E402
+from app.common import GLOSS_SHARDS, core_definition, gloss_shard, quiz_synonyms  # noqa: E402
 from app.main import content_security_policy, inline_script_hashes  # noqa: E402
 
 DOCS = ROOT / "docs"
@@ -160,6 +161,17 @@ def build_data(words: list[dict], media: dict[str, tuple[str, Path]]) -> tuple[i
     return size, total
 
 
+def build_glossary() -> int:
+    """data/glossary.json (tools/glossary.py) in shards, by app.common.gloss_shard."""
+    path = DATA / "glossary.json"
+    if not path.exists():
+        sys.exit("Not building the site: data/glossary.json is missing (run tools/glossary.py).")
+    shards = {i: {} for i in range(GLOSS_SHARDS)}
+    for key, rec in json.loads(path.read_text(encoding="utf-8")).items():
+        shards[gloss_shard(key)][key] = rec
+    return sum(write_json(DOCS / "data" / "gloss" / f"{i:02d}.json", shard) for i, shard in shards.items())
+
+
 def copy_audio(words: list[dict], media: dict[str, tuple[str, Path]]) -> list[dict]:
     """Copy the recordings the lexicon uses (only those: docs/ is rebuilt from
     scratch, so nothing stale stays); return their attribution rows."""
@@ -267,7 +279,7 @@ const DATA = "lexi-data-{data_hash}";   // changes only when the published word 
 // so a corrected recording has a new URL: the media cache can outlive deploys.
 const MEDIA = "lexi-media-v2";
 const SHELL_FILES = {json.dumps(shell, indent=0)};
-// Content hash (SHA-256, first 16 hex digits) of each word-detail file in this
+// Content hash (SHA-256, first 16 hex digits) of each word-detail and glossary file in this
 // build: an offline download made under an earlier version keeps the files
 // that haven't changed.
 const DETAIL_HASHES = {json.dumps(details, indent=0, sort_keys=True)};
@@ -302,7 +314,7 @@ async function migrateDetails(oldNames) {{
   for (const name of oldNames) {{
     const old = await caches.open(name);
     for (const req of await old.keys()) {{
-      const path = new URL(req.url).pathname.replace(/^.*\\/(data\\/detail\\/[^/]+)$/, "$1");
+      const path = new URL(req.url).pathname.replace(/^.*\\/(data\\/(?:detail|gloss)\\/[^/]+)$/, "$1");
       const want = DETAIL_HASHES[path];
       if (!want || await cache.match(req, {{ ignoreSearch: true }})) continue;
       const res = await old.match(req);
@@ -412,7 +424,7 @@ self.addEventListener("fetch", e => {{
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
   const path = url.pathname;
   if (path.includes("/media/")) {{ e.respondWith(media(e.request).catch(() => fetch(e.request))); return; }}
-  if (path.includes("/data/detail/") || path.endsWith("/data/index.json")) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
+  if (path.includes("/data/detail/") || path.includes("/data/gloss/") || path.endsWith("/data/index.json")) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
   if (e.request.mode === "navigate" && /\\/(index\\.html)?$/.test(path)) {{
     // The app's page comes from the same version's cache as its scripts.
     e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));
@@ -524,6 +536,12 @@ def build_credits(audio_rows: list[dict], n_words: int, n_tts: int = 0) -> None:
 They were selected, re-ordered, shortened and converted to American spelling for this app; that adapted material is
 shared under the same license. Some entries came from the
 <a href="https://dictionaryapi.dev/">Free Dictionary API</a>, which is also built on Wiktionary.</p>
+<p>Short definitions of related words that have no entry of their own (a synonym, antonym or compared word
+you tap) come from <a href="https://en-word.net/">Open English WordNet</a> 2025, by the Global WordNet
+Association and its contributors, under the
+<a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a> license; it builds on
+Princeton WordNet, WordNet 3.1 Copyright 2011 by Princeton University
+(<a href="licenses/wordnet-LICENSE.txt">license</a>).</p>
 <p>American IPA for words without a Wiktionary transcription was converted from the
 <a href="https://github.com/cmusphinx/cmudict">CMU Pronouncing Dictionary</a>, Copyright © 1993–2015
 Carnegie Mellon University (<a href="licenses/cmudict-LICENSE.txt">license</a>).</p>
@@ -561,7 +579,8 @@ each entry's reviewed American IPA; common words and everyday phrases are read b
     (DOCS / "credits.html").write_text(page, encoding="utf-8")
     lic = DOCS / "licenses"
     lic.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(ROOT / "tools" / "licenses" / "cmudict-LICENSE.txt", lic / "cmudict-LICENSE.txt")
+    for name in ("cmudict-LICENSE.txt", "wordnet-LICENSE.txt"):
+        shutil.copy2(ROOT / "tools" / "licenses" / name, lic / name)
 
 
 def main() -> None:
@@ -583,6 +602,7 @@ def main() -> None:
     version = time.strftime("%Y%m%d%H%M%S")
     media = media_files(words)
     index_size, detail_size = build_data(words, media)
+    gloss_size = build_glossary()
     audio_rows = copy_audio(words, media)
     build_index_html(version)
     build_icons()
@@ -590,11 +610,12 @@ def main() -> None:
     build_credits(audio_rows, len(words), sum(1 for w in words if not w.get("has_audio") and w["key"] in media))
     h = hashlib.sha256()
     details = {}
-    for f in [DOCS / "data" / "index.json", *sorted((DOCS / "data" / "detail").glob("*.json"))]:
+    for f in [DOCS / "data" / "index.json", *sorted((DOCS / "data" / "detail").glob("*.json")),
+              *sorted((DOCS / "data" / "gloss").glob("*.json"))]:
         b = f.read_bytes()
         h.update(b)
-        if f.parent.name == "detail":
-            details[f"data/detail/{f.name}"] = hashlib.sha256(b).hexdigest()[:16]
+        if f.parent.name in ("detail", "gloss"):
+            details[f"data/{f.parent.name}/{f.name}"] = hashlib.sha256(b).hexdigest()[:16]
     data_hash = h.hexdigest()[:8]
     build_service_worker(version, data_hash, details)
     (DOCS / ".nojekyll").write_text("")
@@ -602,7 +623,8 @@ def main() -> None:
     total = sum(p.stat().st_size for p in files)
     biggest = max(files, key=lambda p: p.stat().st_size)
     print(f"docs/: {len(files):,} files, {total / 1e6:.1f} MB · index.json {index_size / 1e6:.1f} MB · "
-          f"details {detail_size / 1e6:.1f} MB in {SHARDS} files · {len(audio_rows):,} recordings · "
+          f"details {detail_size / 1e6:.1f} MB in {SHARDS} files · glossary {gloss_size / 1e6:.1f} MB · "
+          f"{len(audio_rows):,} recordings · "
           f"largest file {biggest.relative_to(DOCS)} {biggest.stat().st_size / 1e6:.1f} MB")
 
 
