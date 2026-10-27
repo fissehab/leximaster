@@ -18,6 +18,29 @@ DB_PATH = Path(os.environ.get("LEXIMASTER_DB") or DATA / "leximaster.db")
 WORDS_JSON = Path(os.environ.get("LEXIMASTER_WORDS") or DATA / "words.json")
 RECORDINGS = DATA / "recordings"
 
+# words_compact caches, per word, the JSON of the word-derived fields that
+# GET /api/words sends (common.compact_word), so that request needn't parse
+# every word's data. Triggers drop a word's row whenever the word is added,
+# changed or removed by any code path (sync, custom words, an import); a
+# missing row is rebuilt on the next request (common.compact_heads). The
+# learner's stars, known flag and due date are not cached.
+WORDS_COMPACT = [
+    """CREATE TABLE IF NOT EXISTS words_compact (
+        word_id INTEGER PRIMARY KEY REFERENCES words(id) ON DELETE CASCADE,
+        body    TEXT NOT NULL                 -- JSON object: common.compact_word(row)
+    )""",
+    """CREATE TRIGGER IF NOT EXISTS words_compact_ins AFTER INSERT ON words
+       BEGIN DELETE FROM words_compact WHERE word_id = NEW.id; END""",
+    """CREATE TRIGGER IF NOT EXISTS words_compact_upd AFTER UPDATE ON words
+       WHEN OLD.id IS NOT NEW.id OR OLD.word IS NOT NEW.word OR OLD.data IS NOT NEW.data
+         OR OLD.domains IS NOT NEW.domains OR OLD.freq_rank IS NOT NEW.freq_rank
+         OR OLD.has_audio IS NOT NEW.has_audio OR OLD.enriched IS NOT NEW.enriched
+         OR OLD.is_custom IS NOT NEW.is_custom
+       BEGIN DELETE FROM words_compact WHERE word_id IN (OLD.id, NEW.id); END""",
+    """CREATE TRIGGER IF NOT EXISTS words_compact_del AFTER DELETE ON words
+       BEGIN DELETE FROM words_compact WHERE word_id = OLD.id; END""",
+]
+
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS meta (
     key   TEXT PRIMARY KEY,
@@ -99,7 +122,7 @@ CREATE TABLE IF NOT EXISTS settings (
     key   TEXT PRIMARY KEY,
     value TEXT NOT NULL
 );
-"""
+""" + "".join(f"{t};\n" for t in WORDS_COMPACT)
 
 DEFAULT_SETTINGS = {
     "session_minutes": "15",
@@ -144,9 +167,10 @@ def tx():
 # step that turns version N-1 into N, e.g.
 #     2: ["ALTER TABLE srs ADD COLUMN stability REAL"],
 # Steps run inside the startup transaction, so a failed step changes nothing.
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 MIGRATIONS: dict[int, list[str]] = {
     1: [],  # the baseline: the schema as first released (created by SCHEMA)
+    2: WORDS_COMPACT,  # filled by init() and on demand (common.compact_heads)
 }
 
 
@@ -176,6 +200,9 @@ def init() -> None:
         for k, v in DEFAULT_SETTINGS.items():
             c.execute("INSERT OR IGNORE INTO settings(key, value) VALUES (?, ?)", (k, v))
     sync_words()
+    from .common import compact_heads   # common doesn't import db; here to keep db.py standalone
+    with tx() as c:
+        compact_heads(c)   # so the first GET /api/words after a sync or migration is fast
 
 
 # --------------------------------------------------------------------- backups

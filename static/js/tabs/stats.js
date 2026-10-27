@@ -51,12 +51,12 @@ export async function render(root) {
         ret.n ? `recalled at review, last 30 days · practice ${acc.attempts ? `${pct(acc.correct, acc.attempts)}%` : "—"}`
           : `shows after your first reviews · practice ${acc.attempts ? `${pct(acc.correct, acc.attempts)}%` : "—"}`)),
     h("div.stats-grid",
-      h("section.panel", h("h2", "Activity"), heat, h("p.muted", { style: { fontSize: "12.5px" } }, "Last 12 weeks; a stronger color means more reviews.")),
+      h("section.panel", h("h2", "Activity"), heat, h("p.muted.bar-note", "Last 12 weeks; a stronger color means more reviews.")),
       h("section.panel", h("h2", "Reviews due, next 14 days"), forecast),
       ret.n ? h("section.panel", h("h2", "Retention by gap"),
         h("div.bars", [["days", "After days"], ["weeks", "After weeks"], ["months", "After a month+"]]
           .filter(([k]) => spans[k]).map(([k, label]) => bar(label, spans[k].ok, spans[k].n, `${pct(spans[k].ok, spans[k].n)}% · ${spans[k].n}`))),
-        h("p.muted", { style: { fontSize: "12.5px" } }, "Share of reviews you recalled, last 30 days. Around 85–90% means the schedule suits you.")) : null,
+        h("p.muted.bar-note", "Share of reviews you recalled, last 30 days. Around 85–90% means the schedule suits you.")) : null,
       h("section.panel", h("h2", "Accuracy by domain"),
         s.by_domain.length ? h("div.bars", s.by_domain.map(d => bar(domainLabel(d.domain), d.correct, d.attempts, `${pct(d.correct, d.attempts)}% · ${d.attempts}`)))
           : h("p.muted", "Answer some quiz, listening or review questions to see this.")),
@@ -77,7 +77,7 @@ export async function render(root) {
             h("td", fmtDuration(t.duration_s)))))))
           : h("p.muted", "Quizzes, matching rounds and listening tests are recorded here.")),
       h("section.panel", h("h2", "Ratings"),
-        h("div.bars", [5, 4, 3, 2, 1].map(n => bar("★".repeat(n), w.stars[n] || 0, Math.max(1, ...Object.values(w.stars)), String(w.stars[n] || 0), { count: true })))),
+        h("div.bars", [5, 4, 3, 2, 1].map(n => bar(h("span.star-label", { "aria-label": `${n} star${n > 1 ? "s" : ""}` }, "★".repeat(n)), w.stars[n] || 0, Math.max(1, ...Object.values(w.stars)), String(w.stars[n] || 0), { count: true })))),
       settingsPanel(),
       dataPanel()));
 }
@@ -105,7 +105,8 @@ function settingsPanel() {
 
 async function exportProgress() {
   try {
-    const data = await api.get("/api/export");
+    const withRecordings = document.getElementById("export-recordings");
+    const data = await api.get("/api/export", withRecordings && withRecordings.checked ? { recordings: 1 } : {});
     const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 1)], { type: "application/json" }));
     const a = h("a", { href: url, download: `leximaster-progress-${data.exported_at}.json` });
     document.body.append(a);
@@ -162,7 +163,9 @@ function dataPanel() {
   });
   return h("section.panel", h("h2", "Your data"),
     h("p.muted", "Export saves ratings, review schedules, answers, lists, notes and your own words as JSON. " +
-      "Import merges an export back in, keeping whichever copy of each word is newer. (Your own pronunciation recordings aren't included.)"),
+      "Import merges an export back in, keeping whichever copy of each word is newer."),
+    h("label.check-row", h("input#export-recordings", { type: "checkbox" }),
+      " Include my pronunciation recordings (a larger file)"),
     window.LEXI_STATIC ? h("p#last-backup", backupText()) : null,
     h("div.toolbar",
       h("button.btn", { type: "button", on: { click: exportProgress } }, icon("download"), "Export progress"),

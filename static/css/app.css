@@ -251,13 +251,13 @@ button.chip[aria-pressed="true"] { background: var(--lapis-soft); color: var(--l
 .sense-group { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
 .senses-label { margin: 0; font: 600 11px/1.2 var(--font-ui); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
 .sense-list { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
-.sense-list li { font: 400 16.5px/1.55 var(--font-body); color: var(--ink); max-width: 68ch; }
+.sense-list li { font: 400 17px/1.55 var(--font-body); color: var(--ink); max-width: 68ch; }
 .sense-list li::marker { color: var(--muted); font: 600 13px var(--font-ui); }
 .sense-ex { display: block; margin-top: 3px; font-style: italic; color: var(--ink-2); font-size: 15px; }
 .more-senses { align-self: flex-start; }
 
 .example {
-  font: italic 400 16.5px/1.55 var(--font-body); color: var(--ink-2);
+  font: italic 400 17px/1.55 var(--font-body); color: var(--ink-2);
   padding-left: 14px; border-left: 3px solid var(--gilt);
 }
 .example mark { background: none; color: var(--ink); font-weight: 600; font-style: italic; }
@@ -304,7 +304,7 @@ button.chip[aria-pressed="true"] { background: var(--lapis-soft); color: var(--l
   .traditions dl { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: column; grid-template-rows: auto auto; }
   .traditions dd { padding-left: 13px; }
 }
-.ex-ctx { display: block; font: 600 10.5px/1.2 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--gilt); margin-bottom: 2px; font-style: normal; }
+.ex-ctx { display: block; font: 600 11px/1.2 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--gilt); margin-bottom: 2px; font-style: normal; }
 .examples-list { display: flex; flex-direction: column; gap: 12px; }
 
 /* ---------------------------------------------------------------- browse */
@@ -348,8 +348,8 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .row:hover { background: var(--surface-2); }
 .row.sel { background: var(--lapis-soft); }
 .row.sel .row-word { color: var(--lapis); }
-.row-word { font: 600 15.5px/1.2 var(--font-word); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.row-def { grid-column: 1 / -1; font-size: 12.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row-word { font: 600 15px/1.2 var(--font-word); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row-def { grid-column: 1 / -1; font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .row-side { display: flex; align-items: center; gap: 6px; }
 .row .known-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); }
 .detail-wrap { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
@@ -379,7 +379,7 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 }
 .quick a:hover { border-color: var(--lapis); }
 .quick strong { font: 600 15px/1.2 var(--font-word); }
-.quick span { font-size: 12.5px; color: var(--muted); }
+.quick span { font-size: 13px; color: var(--muted); }
 .build-banner { padding: 14px 16px; border-radius: var(--radius); background: var(--gilt-soft); color: var(--ink); font-size: 14px; }
 
 /* ---------------------------------------------------------------- progress & review */
@@ -450,7 +450,7 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .flip-face.front .flip-hint { display: block; }
 .front-stars { color: var(--gilt); }
 .flip-face.back { transform: rotateY(180deg); }
-.flip-hint { font-size: 12.5px; color: var(--muted); }
+.flip-hint { font-size: 13px; color: var(--muted); }
 .fc-nav { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
 .fc-dock { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; max-width: 760px; }
 .fc-answer { display: flex; justify-content: center; gap: 10px; }
@@ -492,13 +492,13 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .feedback.ok strong { color: var(--sage); }
 .feedback.bad strong { color: var(--madder); }
 .fb-word { font-family: var(--font-word); color: var(--lapis); }
-.chose { font-size: 14.5px; }
+.chose { font-size: 15px; }
 .chose .label { font: 600 11px/1.2 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .score-line { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
 .result { padding: 36px 24px; display: grid; justify-items: center; gap: 12px; text-align: center; }
 .result .big-num { font-size: 56px; color: var(--lapis); }
 .missed { width: 100%; max-width: 560px; text-align: left; display: flex; flex-direction: column; gap: 6px; }
-.missed li { font-size: 14.5px; }
+.missed li { font-size: 15px; }
 .type-in { font: 600 26px/1.2 var(--font-word); text-align: center; padding: 12px; letter-spacing: .01em; }
 .diff { font: 600 22px/1.3 var(--font-word); letter-spacing: .02em; }
 .diff .ok { color: var(--sage); }
@@ -513,7 +513,7 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
   transition: border-color .15s, background .15s, opacity .3s, transform .15s;
 }
 .tile.word { font: 600 17px/1.3 var(--font-word); color: var(--lapis); }
-.tile.def { font: 400 14.5px/1.45 var(--font-body); }
+.tile.def { font: 400 15px/1.45 var(--font-body); }
 .tile:hover:not(:disabled) { border-color: var(--lapis); }
 .tile.picked { border-color: var(--lapis); background: var(--lapis-soft); }
 .tile.matched { border-color: var(--sage); background: var(--sage-soft); opacity: .55; cursor: default; }
@@ -543,7 +543,7 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
   text-align: left; border: 0; border-bottom: 1px solid var(--rule); background: none; padding: 9px 12px; cursor: pointer;
   font: 600 15px/1.3 var(--font-word); color: var(--ink);
 }
-.pick-list button small { display: block; font: 400 12.5px/1.4 var(--font-ipa); color: var(--verdigris); }
+.pick-list button small { display: block; font: 400 13px/1.4 var(--font-ipa); color: var(--verdigris); }
 .pick-list button[aria-current="true"] { background: var(--lapis-soft); color: var(--lapis); }
 
 /* ---------------------------------------------------------------- lists */
@@ -555,13 +555,13 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 }
 .list-index button:hover { background: var(--surface-2); }
 .list-index button[aria-current="true"] { background: var(--lapis-soft); color: var(--lapis); }
-.list-index .n { color: var(--muted); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.list-index .n { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
 .lw-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 12px 16px; border-bottom: 1px solid var(--rule); }
 .lw-row:last-child { border-bottom: 0; }
 .lw-word { font: 600 17px/1.3 var(--font-word); color: var(--lapis); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
-.lw-def { font-size: 13.5px; color: var(--ink-2); grid-column: 1 / -1; }
+.lw-def { font-size: 13px; color: var(--ink-2); grid-column: 1 / -1; }
 .lw-note { grid-column: 1 / -1; }
-.lw-note input { width: 100%; font-size: 13.5px; min-height: 32px; }
+.lw-note input { width: 100%; font-size: 13px; min-height: 32px; }
 .typeahead { position: relative; }
 .typeahead-menu {
   position: absolute; z-index: 5; left: 0; right: 0; top: calc(100% + 4px);
@@ -571,14 +571,14 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .typeahead-menu button { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 8px 12px; cursor: pointer; }
 .typeahead-menu button:hover, .typeahead-menu button.on { background: var(--surface-2); }
 .typeahead-menu b { font-family: var(--font-word); }
-.typeahead-menu span { color: var(--muted); font-size: 12.5px; margin-left: 6px; }
+.typeahead-menu span { color: var(--muted); font-size: 13px; margin-left: 6px; }
 
 /* ---------------------------------------------------------------- stats */
 .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 18px; }
 .stat { padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
 .stat .label { margin: 0; }
 .stat .big-num { font-size: 32px; }
-.stat small { color: var(--muted); font-size: 12.5px; }
+.stat small { color: var(--muted); font-size: 13px; }
 .stats-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .stats-grid .panel { padding: 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .stats-grid h2 { font: 600 17px/1.3 var(--font-word); }
@@ -589,7 +589,7 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .heat span[data-l="3"] { background: color-mix(in srgb, var(--lapis) 80%, var(--surface-2)); }
 .heat span[data-l="4"] { background: var(--lapis); }
 .bars { display: flex; flex-direction: column; gap: 9px; }
-.bar-row { display: grid; grid-template-columns: minmax(90px, 160px) minmax(0, 1fr) 54px; gap: 10px; align-items: center; font-size: 13.5px; }
+.bar-row { display: grid; grid-template-columns: minmax(90px, 160px) minmax(0, 1fr) 54px; gap: 10px; align-items: center; font-size: 13px; }
 .bar { height: 10px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
 .bar > span { display: block; height: 100%; border-radius: inherit; background: var(--sage); }
 .bar > span.mid { background: var(--gilt); }
@@ -597,28 +597,28 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .bar > span.count { background: var(--gilt); }
 .bar-row .v { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); }
 .table-wrap { overflow-x: auto; }
-table.data { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+table.data { width: 100%; border-collapse: collapse; font-size: 13px; }
 table.data th { text-align: left; font: 600 11px/1.2 var(--font-ui); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--rule); }
 table.data td { padding: 7px 8px; border-bottom: 1px solid var(--rule); font-variant-numeric: tabular-nums; }
 table.data td.w { font: 600 15px/1.3 var(--font-word); }
 table.data td.w button { all: unset; cursor: pointer; color: var(--lapis); }
 table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 4px; }
 .forecast { display: flex; align-items: flex-end; gap: 4px; height: 90px; }
-.forecast div { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; justify-content: flex-end; height: 100%; font-size: 10.5px; color: var(--muted); }
+.forecast div { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; justify-content: flex-end; height: 100%; font-size: 11px; color: var(--muted); }
 .forecast i { display: block; width: 100%; background: var(--lapis); border-radius: 3px 3px 0 0; min-height: 2px; opacity: .8; }
 
 /* ---------------------------------------------------------------- toast / dialog / setup */
 .toast-wrap { position: fixed; z-index: 50; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 8px; }
 .toast {
   padding: 10px 14px; border-radius: 9px; background: var(--ink); color: var(--bg);
-  font-size: 13.5px; box-shadow: var(--shadow); animation: rise .25s var(--ease); max-width: 340px;
+  font-size: 13px; box-shadow: var(--shadow); animation: rise .25s var(--ease); max-width: 340px;
 }
 .toast.err { background: var(--madder); color: var(--surface); }
 .dialog {
   border: 1px solid var(--rule); border-radius: 14px; padding: 0; width: min(520px, calc(100vw - 32px));
   background: var(--surface); color: var(--ink); box-shadow: var(--shadow);
 }
-.form-error { margin: 4px 0 0; color: var(--madder); font-size: 13.5px; }
+.form-error { margin: 4px 0 0; color: var(--madder); font-size: 13px; }
 .dialog::backdrop { background: rgba(10, 12, 18, .45); }
 .dialog form { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
 .dialog h2 { font: 600 20px/1.25 var(--font-word); }
@@ -674,12 +674,12 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .rail-foot { margin: 0; padding: 0 4px; flex-direction: column; justify-content: center; }
   .rail-foot .icon-btn { width: 30px; height: 30px; }
   .nav-links { flex-direction: row; gap: 2px; }
-  .nav-link { flex: 1 1 0; min-width: 0; flex-direction: column; gap: 2px; font-size: 10.5px; padding: 6px 2px; position: relative; }
+  .nav-link { flex: 1 1 0; min-width: 0; flex-direction: column; gap: 2px; font-size: 11px; padding: 6px 2px; position: relative; }
   .nav-link .count { position: absolute; top: 2px; left: calc(50% + 6px); margin: 0; padding: 0 5px; font-size: 10px; }
   main { grid-row: 1; padding-top: 20px; }
   .pron-grid { grid-template-columns: minmax(0, 1fr); }
   .match-grid { grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: 8px; }
-  .match-grid .tile { font-size: 13.5px; padding: 8px; }
+  .match-grid .tile { font-size: 13px; padding: 8px; }
   .grade-row { gap: 6px; }
   .grade { min-height: 56px; padding: 6px 4px; }
   /* The dock is just the buttons: the bottom bar already clears the home indicator. */
@@ -824,3 +824,19 @@ a.chip-link:hover { background: var(--lapis-soft); }
   .icon-btn { min-width: 40px; min-height: 40px; }
 }
 .play.needs-tap { outline: 2px dashed var(--verdigris); outline-offset: 2px; }
+
+/* One small-caps label style everywhere (one size, one tracking); color
+   says what kind: gold for dates and example contexts, plum for review
+   notes, muted otherwise. */
+.eyebrow, .q-ask, .pron-box h3, .settings-fold > summary, .filters-fold > summary, .related-label,
+.card-note-label, .chose .label, .npanel h3, .senses-label, .ex-ctx, .new-badge, .traditions dt {
+  font-family: var(--font-ui); font-weight: 600; font-size: 11px; line-height: 1.2; letter-spacing: .08em;
+  text-transform: uppercase; font-style: normal;
+}
+.stats-grid { align-items: start; }
+.star-label { color: var(--gilt); letter-spacing: 1px; }
+.stress-opts .opt span:last-child { font: 600 18px/1.4 var(--font-ui); letter-spacing: .04em; }
+.bar-note { font-size: 13px; }
+#about-btn[aria-current] { background: var(--lapis-soft); color: var(--lapis); }
+/* Quiet text buttons line up with the text column, not their own padding. */
+.full-entry, .open-entry { margin-left: -14px; }

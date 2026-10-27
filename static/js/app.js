@@ -125,6 +125,8 @@ async function route() {
     if (a.dataset.tab === tab || a.dataset.tab === under) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
+  const about = document.getElementById("about-btn");
+  if (tab === "about") about.setAttribute("aria-current", "page"); else about.removeAttribute("aria-current");
   // A slow screen (the word list on first visit) says so instead of staying blank.
   const slow = setTimeout(() => { if (token === navToken) view.classList.add("is-loading"); }, 250);
   // `live()` lets a screen that finishes loading after you've left it stay quiet.

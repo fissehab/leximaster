@@ -3,3 +3,6 @@
 drach
 wearin
 licence
+# Not a Bible word: a stray token in the Bible list. The dictionary found only
+# the fairy-chess piece; Bible terms near it are covered by manna and Immanuel.
+mann

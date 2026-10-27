@@ -16,6 +16,7 @@ progress is kept in their own browser (IndexedDB). Output:
 """
 from __future__ import annotations
 
+import base64
 import hashlib
 import html
 import json
@@ -30,6 +31,7 @@ from urllib.parse import unquote, urlparse
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from app.common import core_definition, quiz_synonyms  # noqa: E402
+from app.main import content_security_policy, inline_script_hashes  # noqa: E402
 
 DOCS = ROOT / "docs"
 STATIC = ROOT / "static"
@@ -38,6 +40,31 @@ SHARDS = 64
 DETAIL_FIELDS = ("phonetic", "meanings", "nuance", "source", "synonyms", "antonyms", "etymology",
                  "variant_of", "conversation", "also")
 SITE_URL = "https://fissehab.github.io/leximaster/"
+
+# The sql.js release vendored in static/vendor/ (from
+# https://cdnjs.cloudflare.com/ajax/libs/sql.js/<version>/), checked before
+# every build so a changed or corrupted file is never published. To update
+# sql.js: replace both files (and sql.js-LICENSE) from the new release, then
+# set the version and the hashes printed by
+#     shasum -a 256 static/vendor/sql-wasm.js static/vendor/sql-wasm.wasm
+SQLJS = {
+    "version": "1.10.3",   # SQLite 3.45.2
+    "sha256": {
+        "sql-wasm.js": "558a72c3ab3415d0e6d243cfd23f9d61543600d59054b4b7b8da3cd65f6b9fd4",
+        "sql-wasm.wasm": "d7e61b828523001f26ce0b3f88dabcf6c12e5e6edf80eb4f08b26ac7b946ff88",
+    },
+}
+
+
+def check_sqljs(vendor: Path = STATIC / "vendor") -> list[str]:
+    """Problems with the vendored sql.js files (empty when they match SQLJS)."""
+    problems = []
+    for name, want in SQLJS["sha256"].items():
+        f = vendor / name
+        got = hashlib.sha256(f.read_bytes()).hexdigest() if f.exists() else "missing"
+        if got != want:
+            problems.append(f"static/vendor/{name}: sha256 {got}, expected {want} (sql.js {SQLJS['version']})")
+    return problems
 
 
 def shard_of(key: str) -> int:
@@ -177,6 +204,12 @@ def build_index_html(version: str) -> None:
 """
     out = out.replace("</body>", sw + "</body>", 1)
     assert "/static/" not in out, "absolute /static/ path left in index.html"
+    # Content-Security-Policy, first in <head> so it covers everything after it.
+    # The inline scripts are allowed by hash; sql.js needs WebAssembly.
+    csp = content_security_policy(inline_script_hashes(out), header=False, wasm=True)
+    charset = '<meta charset="utf-8">'
+    assert out.count(charset) == 1, "index.html needs one <meta charset> to put the CSP after"
+    out = out.replace(charset, f'{charset}\n  <meta http-equiv="Content-Security-Policy" content="{csp}">', 1)
     (DOCS / "index.html").write_text(out, encoding="utf-8")
 
 
@@ -440,6 +473,17 @@ def recording_credits(audio_rows: list[dict]) -> str:
     return "\n".join(out)
 
 
+def credits_csp(page: str) -> str:
+    """credits.html runs only its inline theme script and its <style> block."""
+    styles = [f"'sha256-{base64.b64encode(hashlib.sha256(m.encode()).digest()).decode()}'"
+              for m in re.findall(r"<style>(.*?)</style>", page, re.S)]
+    return "; ".join([
+        "default-src 'self'", " ".join(["script-src", *inline_script_hashes(page)]),
+        " ".join(["style-src 'self'", *styles]), "img-src 'self' data:", "font-src 'self'",
+        "object-src 'none'", "base-uri 'none'", "form-action 'none'",
+    ])
+
+
 def build_credits(audio_rows: list[dict], n_words: int, n_tts: int = 0) -> None:
     rows = recording_credits(audio_rows)
     page = f"""<!doctype html>
@@ -512,6 +556,8 @@ each entry's reviewed American IPA; common words and everyday phrases are read b
 </body>
 </html>
 """
+    page = page.replace('<meta charset="utf-8">',
+                        f'<meta charset="utf-8">\n<meta http-equiv="Content-Security-Policy" content="{credits_csp(page)}">', 1)
     (DOCS / "credits.html").write_text(page, encoding="utf-8")
     lic = DOCS / "licenses"
     lic.mkdir(parents=True, exist_ok=True)
@@ -520,6 +566,10 @@ each entry's reviewed American IPA; common words and everyday phrases are read b
 
 def main() -> None:
     sys.path.insert(0, str(ROOT))
+    if problems := check_sqljs():
+        sys.exit("Not building the site: static/vendor/ doesn't match the sql.js release recorded in "
+                 "tools/build_site.py (SQLJS).\n  " + "\n  ".join(problems) + "\nIf you updated sql.js on "
+                 "purpose, set SQLJS's version and hashes (shasum -a 256 static/vendor/sql-wasm.*).")
     from tools.audit import check
     if check():
         sys.exit("Not building the site: the word data breaks a display rule (tools/audit.py --check).")

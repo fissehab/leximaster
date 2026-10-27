@@ -1,6 +1,8 @@
 """Shared helpers for turning word rows into API payloads."""
 from __future__ import annotations
 
+import hashlib
+import inspect
 import json
 import random
 import re
@@ -60,8 +62,12 @@ def core_definition(data: dict) -> tuple[str, str]:
     return first or ("", "")
 
 
-def compact(row: sqlite3.Row) -> dict:
-    data = json.loads(row["data"])
+def compact_word(row: sqlite3.Row, data: dict | None = None) -> dict:
+    """The fields of compact() that come from the word itself (not from the
+    learner's progress), in the order the API sends them. GET /api/words
+    caches these (app/api/words.py)."""
+    if data is None:
+        data = json.loads(row["data"])
     pos, definition = core_definition(data)
     return {
         "id": row["id"],
@@ -78,15 +84,60 @@ def compact(row: sqlite3.Row) -> dict:
         "tts_url": None if row["has_audio"] else tts_url(data),
         "enriched": bool(row["enriched"]),
         "is_custom": bool(row["is_custom"]),
-        "stars": row["stars"],
-        "known": bool(row["known"]),
-        "due": row["due_date"],
     }
+
+
+def compact_json(v) -> str:
+    """JSON as FastAPI's JSONResponse writes it."""
+    return json.dumps(v, ensure_ascii=False, allow_nan=False, separators=(",", ":"))
+
+
+def _code_stamp() -> str | None:
+    """A hash of the code behind compact_word, so a change to it rebuilds the cache."""
+    try:
+        src = "".join(inspect.getsource(f) for f in (compact_word, core_definition, audio_url, tts_url))
+    except (OSError, TypeError):
+        return None   # no source (a frozen build): the cache is still dropped per word on change
+    return hashlib.sha256((src + FORM_OF.pattern).encode()).hexdigest()[:16]
+
+
+def compact_heads(c: sqlite3.Connection) -> list[tuple[int, str]]:
+    """(id, JSON of compact_word) for every word, sorted as GET /api/words
+    sends them. Read from the words_compact cache (app/db.py); words missing
+    from it (new, changed, or after the migration) are built and stored. The
+    cache is emptied when the code that builds it changes."""
+    if _compact_code is not None:
+        row = c.execute("SELECT value FROM meta WHERE key='compact_code'").fetchone()
+        if not row or row["value"] != _compact_code:
+            c.execute("DELETE FROM words_compact")
+            c.execute("INSERT OR REPLACE INTO meta(key, value) VALUES ('compact_code', ?)", (_compact_code,))
+    rows = c.execute("""SELECT w.id, wc.body FROM words w LEFT JOIN words_compact wc ON wc.word_id = w.id
+                        ORDER BY w.word COLLATE NOCASE, w.id""").fetchall()
+    missing = [r["id"] for r in rows if r["body"] is None]
+    if not missing:
+        return [(r["id"], r["body"]) for r in rows]
+    built = {}
+    for i in range(0, len(missing), 500):
+        chunk = missing[i:i + 500]
+        for r in c.execute("SELECT id, word, freq_rank, domains, has_audio, enriched, data, is_custom "
+                           f"FROM words WHERE id IN ({','.join('?' * len(chunk))})", chunk):
+            built[r["id"]] = compact_json(compact_word(r))
+    c.executemany("INSERT OR REPLACE INTO words_compact(word_id, body) VALUES (?, ?)", built.items())
+    return [(r["id"], r["body"] if r["body"] is not None else built[r["id"]]) for r in rows]
+
+
+_compact_code = _code_stamp()
+
+
+def compact(row: sqlite3.Row, data: dict | None = None) -> dict:
+    out = compact_word(row, data)
+    out.update({"stars": row["stars"], "known": bool(row["known"]), "due": row["due_date"]})
+    return out
 
 
 def full(row: sqlite3.Row) -> dict:
     data = json.loads(row["data"])
-    out = compact(row)
+    out = compact(row, data)
     out.update({
         "audio_accent": (data.get("audio") or {}).get("accent", ""),
         "meanings": data.get("meanings") or [],
