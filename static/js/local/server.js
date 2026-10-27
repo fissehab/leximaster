@@ -890,7 +890,44 @@ async function flashcards(q) {
   return { cards: await Promise.all(ids.map(i => card(fetchWord(i)))), pool: pool.length };
 }
 
-const QUIZ_TYPES = ["word_meaning", "meaning_word", "fill_blank", "synonym", "antonym", "name_kind"];
+const QUIZ_TYPES = ["word_meaning", "meaning_word", "fill_blank", "synonym", "antonym", "name_kind", "pattern"];
+const PREPOSITIONS = ["on", "in", "at", "of", "to", "for", "with", "about", "from", "by", "into", "against",
+                      "over", "toward", "onto", "upon", "after", "among", "between", "through", "under"];
+const COMMON_PREPS = ["on", "in", "at", "of", "to", "for", "with", "about", "from", "by"];
+// "insist ___ doing sth" → on (practice.py pattern_question).
+function patternQuestion(word, patterns, pos = "verb") {
+  if (!["verb", "adjective"].includes(String(pos).toLowerCase())) return null;   // nouns: several prepositions often fit
+  const stem = word.toLowerCase().slice(0, 4);
+  const usable = [], listed = new Set();
+  const bare = t => t.split("/").map(a => a.replace(/[()]/g, ""));
+  for (const p of patterns) {
+    for (let seg of p.split(" / ")) {   // one frame at a time
+      seg = seg.replace(/\[[^\]]*\]/g, " ");
+      if ((seg.match(/\(/g) || []).length !== (seg.match(/\)/g) || []).length) continue;
+      seg = seg.replace(/\((?=(?:at|on|in|of|to|for|with|about|from|by|into|against|over|toward)\b)([^)]*)\)/g, "$1");
+      const tokens = seg.split(/\s+/).filter(Boolean);
+      tokens.forEach(t => bare(t).forEach(a => listed.add(a)));
+      if (!tokens.some(t => t.toLowerCase().startsWith(stem))) continue;
+      for (let i = 1; i < tokens.length; i++) {
+        const alts = bare(tokens[i]);
+        if (alts.every(a => PREPOSITIONS.includes(a))) {
+          const later = tokens.slice(i + 1).flatMap(bare);
+          if (!alts.some(a => later.includes(a))) usable.push([tokens, i, alts]);
+          break;
+        }
+      }
+    }
+  }
+  if (!usable.length) return null;
+  const [tokens, i, alts] = choice(usable);
+  // Wrong choices: never a preposition any of the word's patterns uses.
+  // (and not "by" after a past participle: "disappointed by" is fine English).
+  const wrong = shuffle(COMMON_PREPS.filter(x => !listed.has(x) && !(x === "by" && /ed$/i.test(word)))).slice(0, 3);
+  const frame = [...tokens.slice(0, i), alts.join("/"), ...tokens.slice(i + 1)].join(" ");
+  return { prompt: [...tokens.slice(0, i), "___", ...tokens.slice(i + 1)].join(" "), ask: "Which word completes the pattern?",
+           answer: alts[0], options: [...wrong, alts[0]],
+           explain: Object.fromEntries(wrong.map(x => [x, `The pattern to learn is “${frame}”.`])) };
+}
 const NAME_KINDS = { person: "A person", place: "A place", people: "A people or nation" };
 const mask = (word, text) => text.replace(new RegExp(escapeRe(word), "gi"), "…");
 // A definition as a quiz option: masked, without a leading "In statistics,".
@@ -958,6 +995,7 @@ async function makeQuiz(q) {
       .sort((a, b) => ((a[0].split(/\s+/).length !== nWords) - (b[0].split(/\s+/).length !== nWords)) ||
                       ((a[1] !== pos) - (b[1] !== pos)));
     const build = qtype => {
+      if (qtype === "pattern") return patternQuestion(word, ((data && data.nuance) || {}).patterns || [], pos);
       if (qtype === "name_kind") {
         return { prompt: word, ask: `Who or what is ${word}?`, answer: NAME_KINDS[nameKind], options: Object.values(NAME_KINDS) };
       }

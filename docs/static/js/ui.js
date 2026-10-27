@@ -307,6 +307,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
         d ? h("p.card-note", h("span.card-note-label", `vs ${d.vs}`), " ", smart(d.note)) : null,
         mistake ? h("p.card-note", h("span.card-note-label", "Watch out"), " ", smart(mistake)) : null));
     }
+    if (n && n.patterns && n.patterns.length) parts.push(grammarBlock(n.patterns.slice(0, 2)));
     if (n && n.collocations && n.collocations.length) {
       parts.push(h("div.tags.card-collocations", n.collocations.slice(0, 3).map(c => h("span.chip", c))));
     }
@@ -329,6 +330,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   if (n) {
     const mistakes = (n.common_mistakes || []).filter(m => !isPron(m));
     const use = [
+      n.patterns && n.patterns.length ? grammarBlock(n.patterns) : null,
       n.usage_note ? h("p", smart(n.usage_note)) : null,
       n.distinctions && n.distinctions.length ? block("Compared with",
         h("dl.distinctions", n.distinctions.map(d => [h("dt", d.vs), h("dd", smart(d.note))]))) : null,
@@ -414,6 +416,16 @@ export function debounced(fn, ms) {
   const call = () => { clearTimeout(t); t = setTimeout(run, ms); pendingSaves.add(run); };
   call.now = () => (t ? run() : Promise.resolve());
   return call;
+}
+
+/** Grammar patterns: "insist on doing sth", "[U] advice on sth". The
+ * placeholders (sb, sth) and labels ([U], [C]) are set apart from the words
+ * you actually say. */
+const PATTERN_TOKEN = /(\bsb\/sth\b|\bsb\b|\bsth\b|\bdo sth\b|\bdoing sth\b|\[[^\]]+\]|\((?:not|only|usually)[^)]*\)|…)/g;
+function grammarBlock(patterns) {
+  return h("div.grammar", h("span.grammar-label", "Grammar"),
+    h("ul.patterns", patterns.map(p => h("li", p.split(PATTERN_TOKEN).map((part, i) =>
+      i % 2 ? h("span.slot", part) : part)))));
 }
 
 /** Words as chips; a word with its own entry opens it. */

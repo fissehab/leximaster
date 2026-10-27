@@ -268,7 +268,47 @@ def flashcards(stars: str | None = None, list_id: int | None = None, domain: str
 
 # ------------------------------------------------------------------------- quiz
 
-QUIZ_TYPES = ("word_meaning", "meaning_word", "fill_blank", "synonym", "antonym", "name_kind")
+QUIZ_TYPES = ("word_meaning", "meaning_word", "fill_blank", "synonym", "antonym", "name_kind", "pattern")
+PREPOSITIONS = ("on", "in", "at", "of", "to", "for", "with", "about", "from", "by", "into", "against",
+                "over", "toward", "onto", "upon", "after", "among", "between", "through", "under")
+COMMON_PREPS = ("on", "in", "at", "of", "to", "for", "with", "about", "from", "by")
+
+
+def pattern_question(word: str, patterns: list[str], pos: str = "verb") -> dict | None:
+    """"insist ___ doing sth" → on: a preposition from one of the word's
+    grammar patterns. Alternatives in the pattern ("with/at/about") all
+    count, so none of them is offered as a wrong answer."""
+    if pos.lower() not in ("verb", "adjective"):
+        return None   # nouns often take several prepositions ("intuition about/for"): too easy to be unfair
+    stem = word.lower()[:4]
+    usable, listed = [], set()
+    for p in patterns:
+        for seg in p.split(" / "):   # "insist on sth / on doing sth": one frame at a time
+            seg = re.sub(r"\[[^\]]*\]", " ", seg)
+            if seg.count("(") != seg.count(")"):
+                continue
+            seg = re.sub(r"\((?=(?:at|on|in|of|to|for|with|about|from|by|into|against|over|toward)\b)([^)]*)\)", r"\1", seg)
+            tokens = seg.split()
+            listed |= {a.strip("()") for t in tokens for a in t.split("/")}
+            if not any(t.lower().startswith(stem) for t in tokens):
+                continue
+            for i, t in enumerate(tokens):
+                alts = [a.strip("()") for a in t.split("/")]
+                if i and all(a in PREPOSITIONS for a in alts):
+                    if not any(a in (x.strip("()") for x in tokens[i + 1:]) for a in alts):
+                        usable.append((tokens, i, alts))
+                    break
+    if not usable:
+        return None
+    tokens, i, alts = random.choice(usable)
+    # Wrong choices: never a preposition any of the word's patterns uses.
+    # (and not "by" after a past participle: "disappointed by" is fine English).
+    wrong = random.sample([x for x in COMMON_PREPS if x not in listed
+                           and not (x == "by" and word.lower().endswith("ed"))], 3)
+    frame = " ".join(tokens[:i] + ["/".join(alts)] + tokens[i + 1:])
+    return {"prompt": " ".join(tokens[:i] + ["___"] + tokens[i + 1:]), "ask": "Which word completes the pattern?",
+            "answer": alts[0], "options": wrong + [alts[0]],
+            "explain": {x: f"The pattern to learn is “{frame}”." for x in wrong}}
 NAME_KINDS = {"person": "A person", "place": "A place", "people": "A people or nation"}
 
 
@@ -311,7 +351,7 @@ def _rights(data: dict, kind: str) -> list[str]:
 
 
 @router.get("/quiz")
-def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym,name_kind",
+def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym,name_kind,pattern",
               n: int = Query(10, ge=1, le=50), stars: str | None = None,
               list_id: int | None = None, domain: str | None = None):
     wanted = [t for t in types.split(",") if t in QUIZ_TYPES] or list(QUIZ_TYPES)
@@ -363,6 +403,8 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                             key=lambda v: (len(v[0].split()) != n_words, v[1] != pos))
 
             def build(qtype):
+                if qtype == "pattern":
+                    return pattern_question(word, nuance.get("patterns") or [], pos)
                 if qtype == "name_kind":
                     return {"prompt": word, "ask": f"Who or what is {word}?", "answer": NAME_KINDS[name_kind],
                             "options": list(NAME_KINDS.values())}
