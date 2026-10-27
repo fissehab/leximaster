@@ -847,3 +847,5 @@ a.chip-link:hover { background: var(--lapis-soft); }
 .patterns { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; }
 .patterns li { font: 500 15px/1.5 var(--font-body); color: var(--ink); }
 .patterns .slot { font-family: var(--font-ui); font-size: 13px; font-style: italic; color: var(--muted); }
+
+.card-front .entry-top { justify-content: center; }
