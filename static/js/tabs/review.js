@@ -13,7 +13,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import { settings } from "../state.js";
-import { SCOPES, fmtDuration, h, highlight, icon, pageHead, renderEntry, setKnown, showError, smart, toast } from "../ui.js";
+import { SCOPES, fmtDuration, h, highlight, icon, pageHead, playButton, renderEntry, setKnown, showError, smart, toast } from "../ui.js";
 
 let queue = [];
 let pos = 0;
@@ -126,14 +126,17 @@ function show() {
   } else {
     front = h("div.panel.card.card-front",
       w.is_new ? h("span.new-badge", "New word") : null,
-      h("h2.headword", { tabindex: "-1" }, w.word),
+      // A new word can be heard before the answer (a play button too, for
+      // phones that block sound until a tap).
+      w.is_new ? h("div.entry-top", h("h2.headword", { tabindex: "-1" }, w.word), playButton(w))
+        : h("h2.headword", { tabindex: "-1" }, w.word),
       h("p.muted", w.is_new ? "A new word. Read it, listen, then reveal the meaning." : "Recall the meaning and say it aloud, then reveal."),
       h("button.btn.btn-primary.btn-lg", { type: "button", on: { click: reveal } }, "Reveal ", h("kbd", "Enter")));
   }
   els.stage.replaceChildren(front);
   els.status.textContent = `Card ${pos + 1} of ${total}. ${asksForWord(w) ? "Recall the word for this meaning." : w.word}`;
   (typed && !matchMedia("(hover: none)").matches ? typed : front.querySelector("[tabindex='-1']")).focus({ preventScroll: true });
-  if (!asksForWord(w) && w.is_new && settings.autoplay === "1") playWord(w);
+  if (!asksForWord(w) && w.is_new && settings.autoplay === "1") playWord(w, front.querySelector(".play"));
 }
 
 // ------------------------------------------------------------ grading
