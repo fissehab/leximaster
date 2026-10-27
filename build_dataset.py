@@ -2697,6 +2697,33 @@ def _tidy_pattern(p: str, word: str) -> str:
     return p
 
 
+def apply_related(words: list[dict]) -> None:
+    """Vetted synonym and antonym lists from seeds/related/*.tsv:
+    `key<TAB>synonyms<TAB>antonyms`, each "=" (keep as built), "-" (none) or
+    a comma-separated list that replaces the built one (dictionary senses'
+    own lists included, so nothing unvetted shows)."""
+    by_key = {w["key"]: w for w in words}
+    split = lambda v: [x.strip() for x in v.split(",") if x.strip()]
+    for path in sorted((SEEDS / "related").glob("*.tsv")):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            parts = line.split("\t")
+            if len(parts) != 3 or parts[0] not in by_key:
+                continue
+            w, syn, ant = by_key[parts[0]], parts[1].strip(), parts[2].strip()
+            if syn != "=" and not w.get("name_kind"):   # names have no synonyms
+                w["synonyms"] = [] if syn == "-" else split(syn)[:6]
+                for m in w.get("meanings") or []:
+                    m["synonyms"] = []
+            if ant != "=":
+                w["antonyms"] = []
+                for m in w.get("meanings") or []:
+                    m["antonyms"] = []
+                if w.get("nuance") is not None:
+                    w["nuance"]["antonyms"] = [] if ant == "-" else split(ant)[:4]
+                elif ant != "-":
+                    w["antonyms"] = split(ant)[:4]
+
+
 def apply_fixes(words: list[dict]) -> None:
     """Hand corrections from seeds/fixes/*.txt (see its README.txt). A
     corrected entry is normalized again, so its senses are compared with the
@@ -2999,6 +3026,7 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
             k_["domains"] = sorted(set(k_["domains"]) | set(by_key[x]["domains"]))
     words = [w for w in words if w["key"] not in dropped]
     apply_patterns(words)
+    apply_related(words)
     apply_fixes(words)
     for w in words:  # a hand-fixed "(archaic) …" definition gets its label too
         for m in w["meanings"]:
