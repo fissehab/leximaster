@@ -425,9 +425,8 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   return h("article.entry", parts);
 }
 
-// How to say it: a closed row under the IPA; opening it loads the mouth
-// drawing (say.js). It opens on the word's hardest sound, named on the row.
-// Open or closed is remembered for the next word page.
+// How to say it: a row under the IPA, always closed at first; opening it
+// loads the mouth drawing (say.js) on the word's hardest sound, named on the row.
 const SAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12.5c2.5-4.5 14.5-4.5 17 0-2.5 5-14.5 5-17 0z"/><path d="M7.5 12.8c3 1.4 6 1.4 9 0"/></svg>';
 function sayRow(w) {
   const tokens = tokenize(w.phonetic);
@@ -437,12 +436,10 @@ function sayRow(w) {
     h("span", "How to say it"), h("span.say-hint", soundLabel(tokens[hardestIndex(tokens)].sym))), body);
   let loaded = false;
   row.addEventListener("toggle", async () => {
-    try { localStorage.setItem("lexi-say-open", row.open ? "1" : ""); } catch (e) { /* storage unavailable */ }
     if (!row.open || loaded) return;
     loaded = true;
     try { (await import("./say.js")).fillPanel(body, w, tokens); } catch (e) { loaded = false; showError(e); }
   });
-  try { if (localStorage.getItem("lexi-say-open") === "1") row.open = true; } catch (e) { /* storage unavailable */ }
   return row;
 }
 

@@ -297,7 +297,7 @@ On a phone the bottom bar has five buttons in the same order: Today, Review, Pra
 Each entry reads from the top down:
 
 1. The word, its sound, IPA and respelling, and one row of labels.
-   **How to say it** (closed until you open it; it remembers) has a button for each sound of the word,
+   **How to say it** (closed until you open it) has a button for each sound of the word,
    read from its IPA, and opens on the hardest one: a drawing of the mouth seen from the front, as in a
    mirror (how wide it opens, spread, rounded or closed lips, the teeth, the tongue between the teeth
    for th or up behind them for l), with the spot that matters ringed in gold, Voice ON/OFF, and a
