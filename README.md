@@ -293,13 +293,15 @@ Each entry reads from the top down:
 
 1. The word, its sound, IPA and respelling, and one row of labels.
    **How to say it** (closed until you open it; it remembers) has a button for each sound of the word,
-   read from its IPA, and opens on the hardest one: a side drawing of the mouth with the spot that
-   matters ringed in gold, a front view of the lips, Voice ON/OFF, and a short tip. "Watch the word"
+   read from its IPA, and opens on the hardest one: a drawing of the mouth seen from the front, as in a
+   mirror (how wide it opens, spread, rounded or closed lips, the teeth, the tongue between the teeth
+   for th or up behind them for l), with the spot that matters ringed in gold, Voice ON/OFF, and a
+   short tip. "Watch the word"
    plays the recording at half speed with the drawing moving along (each sound placed by its usual
    length within the recording's speech, as recordings carry no per-sound timings); "Slow motion"
    walks the drawing through the sounds slowly without sound (slower still at .75× and .5×). Seven
-   sounds also have a real MRI clip of a speaker's mouth, behind "See a real mouth". The drawings
-   were checked by the review panel's phonetician.
+   sounds also have a real MRI clip of a speaker's mouth, behind "See a real mouth". The positions
+   behind the drawings were checked by the review panel's phonetician.
 2. The meaning, with one example under it, and its synonyms and antonyms. For a Bible name, what the
    Bible says about it.
 3. **Word forms:** the tenses of a verb (abides, abided/abode, abiding), a noun's plural, an

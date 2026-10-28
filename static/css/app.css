@@ -904,57 +904,36 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
 @media (pointer: coarse) { .speed-btn { min-height: 44px; } }
 .play-group { display: inline-flex; align-items: center; gap: 8px; flex: none; }
 
-/* How to say it: the mouth drawing (static/js/mouth.js). Only the tongue is a
-   strong color; skin, bone and lips are neutrals told apart by lightness. */
+/* How to say it: the mouth seen from the front (static/js/mouth.js). The
+   tongue is the one strong color; skin, lips and teeth are told apart by
+   lightness, and the inside of the mouth is dark in every theme. */
 .mouth {
-  --m-skin: #EFE6DF; --m-bone: #D3CCC6; --m-bone-line: #8A7F77; --m-velum: #C9C0B9; --m-cavity: #E4DDD7;
-  --m-lip: #B88A80; --m-lip-line: #6E4A43; --m-tongue: #D2465F; --m-tongue-line: #8C1F35;
-  --m-air: #FFFFFF; --m-tooth: #FFFFFF; --m-line: #5A5560;
+  --m-skin: #F1E4DA; --m-lip: #C98F86; --m-lip-line: #8C524A; --m-inside: #3A2228;
+  --m-tongue: #D2465F; --m-tongue-line: #8C1F35; --m-tooth: #FFFFFF; --m-tooth-line: #B9B2AC; --m-line: #B59A8C;
   display: block; width: 100%; height: auto; max-width: 320px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .mouth {
-    --m-skin: #2C2A2E; --m-bone: #4A4650; --m-bone-line: #8F8A96; --m-velum: #5A5560; --m-cavity: #353238;
-    --m-lip: #7A6A68; --m-lip-line: #C4B2AE; --m-tongue: #F0708A; --m-tongue-line: #FFC2CD;
-    --m-air: #1D2230; --m-tooth: #E8EAF0; --m-line: #AAB2C2;
+    --m-skin: #3A302C; --m-lip: #9A6E68; --m-lip-line: #D6AAA2; --m-inside: #120A0D;
+    --m-tongue: #F0708A; --m-tongue-line: #FFC2CD; --m-tooth: #ECEAE6; --m-tooth-line: #8F8A86; --m-line: #7E6A60;
   }
 }
 :root[data-theme="dark"] .mouth, :root[data-theme="mariana"] .mouth {
-  --m-skin: #2C2A2E; --m-bone: #4A4650; --m-bone-line: #8F8A96; --m-velum: #5A5560; --m-cavity: #353238;
-  --m-lip: #7A6A68; --m-lip-line: #C4B2AE; --m-tongue: #F0708A; --m-tongue-line: #FFC2CD;
-  --m-air: #1D2230; --m-tooth: #E8EAF0; --m-line: #AAB2C2;
+  --m-skin: #3A302C; --m-lip: #9A6E68; --m-lip-line: #D6AAA2; --m-inside: #120A0D;
+  --m-tongue: #F0708A; --m-tongue-line: #FFC2CD; --m-tooth: #ECEAE6; --m-tooth-line: #8F8A86; --m-line: #7E6A60;
 }
-:root[data-theme="mariana"] .mouth { --m-air: #3A444F; --m-skin: #262C33; }
 .mouth .m-head { fill: var(--m-skin); }
-.mouth .m-air { fill: var(--m-air); }
-.mouth .m-cavity { fill: var(--m-cavity); }
-.mouth .m-palate { fill: var(--m-bone); stroke: var(--m-bone-line); stroke-width: 1; }
-.mouth .m-velum { fill: var(--m-velum); stroke: var(--m-bone-line); stroke-width: 1; }
-.mouth .m-throat { fill: none; stroke: var(--m-bone-line); stroke-width: 1.5; }
-.mouth .m-teeth { fill: var(--m-tooth); stroke: var(--m-line); stroke-width: 1.1; }
-.mouth .m-tongue { fill: var(--m-tongue); stroke: var(--m-tongue-line); stroke-width: 1.6; }
+.mouth .m-face { fill: none; stroke: var(--m-line); stroke-width: 1.6; stroke-linecap: round; }
+.mouth .m-inside { fill: var(--m-inside); stroke: var(--m-lip-line); stroke-width: 1.2; }
+.mouth .m-teeth { fill: var(--m-tooth); stroke: var(--m-tooth-line); stroke-width: .8; }
+.mouth .m-gap { stroke: var(--m-tooth-line); stroke-width: .8; }
+.mouth .m-tongue { fill: var(--m-tongue); stroke: var(--m-tongue-line); stroke-width: 1.2; }
 .mouth .m-lip { fill: var(--m-lip); stroke: var(--m-lip-line); stroke-width: 1; }
-.mouth .m-face { fill: none; stroke: var(--m-line); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
 .mouth .m-ring { fill: none; stroke: var(--gilt); stroke-width: 2.5; }
-.mouth .m-ring.near { stroke-dasharray: 3 2.5; }
-.mouth .m-arrow { fill: none; stroke: var(--m-air); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.mouth .m-voice { fill: none; stroke: var(--gilt); stroke-width: 2; stroke-linejoin: round; }
-.mouth .m-lead { fill: none; stroke: var(--muted); stroke-width: .8; }
-.mouth .m-label { font: 600 8px var(--font-ui); fill: var(--ink-2); }
-.mouth .m-label.m-in { fill: var(--m-air); font-size: 9px; }
-.mouth .m-eye { fill: var(--m-line); }
 @media (prefers-reduced-motion: no-preference) {
   .mouth .m-ring { animation: m-pulse .9s var(--ease) 1; transform-box: fill-box; transform-origin: center; }
-  .mouth .m-voice { stroke-dasharray: 4 2; animation: m-buzz .5s linear infinite; }
 }
 @keyframes m-pulse { from { transform: scale(1.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-@keyframes m-buzz { to { stroke-dashoffset: -6; } }
-.lip-icon { width: 48px; height: 30px; flex: none; }
-.lip-icon .li-lip { fill: var(--m-lip, #B88A80); }
-.lip-icon .li-mouth { fill: #3A2228; }
-.lip-icon .li-teeth { fill: #FFFFFF; }
-.lip-icon .li-tongue { fill: var(--m-tongue, #D2465F); }
-.lip-icon .li-line { fill: none; stroke: #3A2228; stroke-width: 1.6; stroke-linecap: round; }
 
 /* The row under the IPA on a word page, and its panel. */
 details.say { margin-top: 10px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); }
@@ -985,9 +964,6 @@ details.say > summary:hover { background: var(--surface-2); border-radius: var(-
 @media (min-width: 760px) { .say-main { grid-template-columns: minmax(260px, 320px) minmax(0, 1fr); align-items: start; } }
 .say-fig { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; }
 .say-fig .mouth { min-width: 260px; }
-.say-fig-foot { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
-.lip-view { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px 2px 2px; border-radius: 99px; background: var(--surface-2); }
-.lip-view small { font: 600 12px/1 var(--font-ui); color: var(--muted); }
 .voice-badge { font: 600 13px/1.2 var(--font-ui); color: var(--ink-2); }
 .voice-badge.on { color: var(--gilt); }
 .say-text { display: grid; gap: 10px; align-content: start; min-width: 0; }

@@ -11,7 +11,6 @@ export const UI = {
   slow: "Slow motion",
   voiceOn: "Voice ON",
   voiceOff: "Voice OFF (only air)",
-  lips: "Lips",
   mri: "See a real mouth (MRI)",
   mriHide: "Hide the real mouth",
   more: s => `More about ${s} →`,

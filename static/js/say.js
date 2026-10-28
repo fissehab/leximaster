@@ -11,7 +11,7 @@
 
 import { allWords } from "./api.js";
 import { playbackSpeed, playbackTime, playWord, speedButton, stopAudio } from "./audio.js";
-import { DIPHTHONGS, lipIcon, mouthDiagram, SOUNDS } from "./mouth.js";
+import { DIPHTHONGS, mouthDiagram } from "./mouth.js";
 import { CLIPS } from "./mri.gen.js";
 import { speechSpan } from "./recorder.js";
 import { hardestIndex, isVowel, keyWord, label, PRIORITY, tokenize } from "./phonemes.js";
@@ -78,18 +78,12 @@ function positions(tokens) {
 
 function figure(sym) {
   const svg = mouthDiagram({ label: describe(sym) });
-  const lips = lipIcon(SOUNDS[sym] ? SOUNDS[sym].lips : "neutral");
   const badge = h("p.voice-badge");
-  const fig = h("div.say-fig", svg, h("div.say-fig-foot", h("span.lip-view", lips, h("small", UI.lips)), badge));
+  const fig = h("div.say-fig", svg, badge);
   fig.svg = svg;
-  let lipsEl = lips;
-  // Lips and voice follow the sound; a diphthong shows where it starts.
+  // The label and Voice ON/OFF follow the sound.
   fig.set = (s, opts) => {
-    const pose = SOUNDS[s] || SOUNDS[{ eɪ: "e", oʊ: "o", aɪ: "a", aʊ: "a", ɔɪ: "ɔ" }[s]] || SOUNDS.rest;
     svg.setAttribute("aria-label", describe(s));
-    const next = lipIcon(pose.lips);
-    lipsEl.replaceWith(next);
-    lipsEl = next;
     const voiced = TIPS[s] && TIPS[s].voice !== undefined ? TIPS[s].voice : null;
     badge.textContent = voiced === null ? "" : voiced ? UI.voiceOn : UI.voiceOff;
     badge.classList.toggle("on", !!voiced);
