@@ -272,7 +272,7 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 
 | Tab | What it's for |
 |---|---|
-| Home | How many cards are left today (the same number as the badge), word of the day, streak and time studied. |
+| Home | Today's review first: how many cards are left (the same number as the badge) and a button to start, then the day so far (streak, reviews, time, words mastered) and the word of the day. |
 | Daily review | SM-2 spaced repetition, sized to your session length (default 15 minutes). Choose a scope: Everything, Everyday English, Advanced & subjects, or Bible vocabulary, names or both. A new word is answered Show again, Got it or Know it (known words leave the review), and gets a second look a few cards later, asked the other way round (meaning → word); a word you've seen before is graded Again, Hard, Good or Easy, and is asked meaning → word every other time from its third review. The answer shows a short card with one "vs" contrast and one common mistake; "Full entry" opens the whole page. The last grade can be undone. |
 | Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings, then "Missed it" or "Knew it" (a miss brings the word into today's review). Swipe on a phone. You can shuffle, play audio on flip, rate the word (1–5) or mark it known, and choose a scope, rating or list. The deck ends with a summary. |
 | Matching | Timed rounds that pair words with meanings or with example sentences, with a score. |
@@ -286,7 +286,8 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Settings | Study settings (study focus, session length, new words per day, word levels, pronunciation speed), the theme, progress export/import, and on the website "Download for offline use" and the sources. |
 
 The sidebar runs in the order of a study day: Home, Daily review, the Practice group (easiest to
-hardest: Flashcards, Matching, Quiz, Listen, Pronounce, Sounds), the Words group (Browse, My lists), then Stats and Settings.
+hardest: Flashcards, Matching, Quiz, Listen, Pronounce, Sounds; click its heading to fold it, and a
+folded group still shows the practice you're on), the Words group (Browse, My lists), then Stats and Settings.
 On a phone the bottom bar has five buttons in the same order: Home, Review, Practice, Browse and More
 (My lists, Stats, Settings). Each practice tab remembers its own settings.
 

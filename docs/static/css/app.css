@@ -72,6 +72,12 @@ a { color: var(--lapis); }
 .nav-link.hub, .nav-link .short { display: none; }   /* phone only */
 .nav-group { display: flex; flex-direction: column; gap: 2px; margin-top: 10px; }
 .nav-heading { padding: 0 10px 2px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.nav-fold { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 28px; border: 0;
+  background: none; cursor: pointer; font-family: var(--font-ui); text-align: left; border-radius: var(--radius-sm); }
+.nav-fold:hover { color: var(--ink); background: var(--surface-2); }
+.nav-fold .fold-mark::after { content: "▾"; font-size: 12px; letter-spacing: 0; }
+.nav-group.folded .fold-mark::after { content: "▸"; }
+.nav-group.folded .nav-link:not([aria-current]) { display: none; }
 .nav-link.sep { margin-top: 10px; border-top: 1px solid var(--rule); border-radius: 0 0 var(--radius-sm) var(--radius-sm); padding-top: 12px; }
 
 /* Practice and More pages (phone): large links */
@@ -368,23 +374,22 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .browse.list-collapsed .show-list { display: inline-flex; }
 
 /* ---------------------------------------------------------------- home */
-.home { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.home { display: flex; flex-direction: column; gap: 18px; max-width: 980px; }
 .wotd { padding: 26px 28px; display: flex; flex-direction: column; gap: 16px; }
 .eyebrow { font: 600 11px/1.2 var(--font-ui); letter-spacing: .1em; text-transform: uppercase; color: var(--gilt); }
-.today { padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+.today-hero { padding: 22px 24px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px 24px; align-items: center;
+  border-left: 4px solid var(--lapis); }
+.today-hero p { margin: 4px 0 0; }
+.today-left { font: 500 18px/1.2 var(--font-ui); color: var(--ink-2); }
+.today-left .big-num { color: var(--ink); margin-right: 2px; }
+.today-stats { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px 32px; margin: 0; padding-top: 12px; border-top: 1px solid var(--rule); }
+.today-stats div { display: flex; flex-direction: column; gap: 2px; }
+.today-stats dt { font-size: 12px; color: var(--muted); }
+.today-stats dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
 .big-num { font: 600 40px/1 var(--font-word); font-variant-numeric: tabular-nums; }
 .kv { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; font-size: 14px; }
 .kv dt { color: var(--muted); }
 .kv dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
-.quick { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-.quick a {
-  display: flex; flex-direction: column; gap: 4px; padding: 14px;
-  border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface);
-  text-decoration: none; color: var(--ink);
-}
-.quick a:hover { border-color: var(--lapis); }
-.quick strong { font: 600 15px/1.2 var(--font-word); }
-.quick span { font-size: 13px; color: var(--muted); }
 .build-banner { padding: 14px 16px; border-radius: var(--radius); background: var(--gilt-soft); color: var(--ink); font-size: 14px; }
 
 /* ---------------------------------------------------------------- progress & review */
@@ -644,8 +649,8 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
 
 /* ---------------------------------------------------------------- responsive */
 @media (max-width: 1100px) {
-  .home { grid-template-columns: minmax(0, 1fr); }
-  .home > :last-child { order: -1; }  /* today's session first on narrow screens */
+  .today-hero { grid-template-columns: minmax(0, 1fr); }
+  .today-hero .btn-lg { justify-content: center; }
   .stats-grid { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 900px) {
@@ -689,7 +694,6 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .grade-dock { bottom: 0; margin-bottom: 0; padding-bottom: 12px; }
   .in-session .page-head .sub, .in-session .page-head .toolbar { display: none; }
   .in-session .page-head { margin-bottom: 10px; }
-  .home .quick { display: none; }   /* the Practice tab holds these on a phone */
   /* The keyboard is up: give the screen to what's being typed. */
   .shell:has(input[type="text"]:focus, input[type="search"]:focus, textarea:focus) .rail { display: none; }
   /* Before the flip, a card of fixed height with the word centered in view
@@ -711,7 +715,9 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .rail-collapsed .rail { padding-inline: 10px; }
   .rail-collapsed .brand { padding-inline: 6px; }
   .rail-collapsed .brand-name, .rail-collapsed .nav-link .nav-text { display: none; }
-  .rail-collapsed .nav-heading { font-size: 0; height: 1px; padding: 0; margin: 0 8px 4px; background: var(--rule); }
+  .rail-collapsed .nav-heading { font-size: 0; height: 1px; min-height: 0; padding: 0; margin: 0 8px 4px; background: var(--rule); pointer-events: none; }
+  .rail-collapsed .nav-heading .fold-mark { display: none; }
+  .rail-collapsed .nav-group.folded .nav-link { display: flex; }
   .rail-collapsed .nav-link { justify-content: center; position: relative; padding-inline: 0; }
   .rail-collapsed .nav-link .count { position: absolute; top: 3px; right: 6px; min-width: 8px; height: 8px;
     padding: 0; font-size: 0; }
