@@ -280,6 +280,9 @@ const DATA = "lexi-data-{data_hash}";   // changes only when the published word 
 // Recording names carry a hash of their content (media/audio/<word>.<hash>.m4a),
 // so a corrected recording has a new URL: the media cache can outlive deploys.
 const MEDIA = "lexi-media-v2";
+// The real-mouth (MRI) clips of "How to say it", cached when first played;
+// their names carry a hash of their content too.
+const MOUTH = "lexi-mouth-v1";
 const SHELL_FILES = {json.dumps(shell, indent=0)};
 // Content hash (SHA-256, first 16 hex digits) of each word-detail and glossary file in this
 // build: an offline download made under an earlier version keeps the files
@@ -350,7 +353,7 @@ self.addEventListener("activate", e => {{
     const oldData = ours.filter(k => k !== DATA && /^(lexi-)?data-/.test(k));
     let refetch = [];
     try {{ refetch = await migrateDetails(oldData); }} catch (err) {{}}
-    await Promise.all(ours.filter(k => ![SHELL, DATA, MEDIA].includes(k)).map(k => caches.delete(k)));
+    await Promise.all(ours.filter(k => ![SHELL, DATA, MEDIA, MOUTH].includes(k)).map(k => caches.delete(k)));
     await self.clients.claim();
     // In the background: changed detail files of an offline download, and
     // recordings nothing refers to any more.
@@ -406,8 +409,8 @@ async function rangeResponse(full, range) {{
   }});
 }}
 
-async function media(req) {{
-  const cache = await caches.open(MEDIA);
+async function media(req, name = MEDIA) {{
+  const cache = await caches.open(name);
   const range = req.headers.get("Range");
   let hit = await cache.match(req.url, {{ ignoreSearch: true }});
   if (!hit) {{
@@ -426,6 +429,7 @@ self.addEventListener("fetch", e => {{
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
   const path = url.pathname;
   if (path.includes("/media/")) {{ e.respondWith(media(e.request).catch(() => fetch(e.request))); return; }}
+  if (path.includes("/static/mouth/")) {{ e.respondWith(media(e.request, MOUTH).catch(() => fetch(e.request))); return; }}
   if (path.includes("/data/detail/") || path.includes("/data/gloss/") || path.endsWith("/data/index.json")) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
   if (e.request.mode === "navigate" && /\\/(index\\.html)?$/.test(path)) {{
     // The app's page comes from the same version's cache as its scripts.
@@ -550,6 +554,14 @@ of the U.S. National Library of Medicine.</p>
 <p>American IPA for words without a Wiktionary transcription was converted from the
 <a href="https://github.com/cmusphinx/cmudict">CMU Pronouncing Dictionary</a>, Copyright © 1993–2015
 Carnegie Mellon University (<a href="licenses/cmudict-LICENSE.txt">license</a>).</p>
+
+<h2>How to say it</h2>
+<p>The mouth drawings were made for LexiMaster. The real-mouth clips are short, trimmed, evenly lit excerpts of
+speaker sub009 from the <a href="https://doi.org/10.6084/m9.figshare.13725546">USC 75-Speaker Speech MRI
+Database</a> (Lim et al., 2021, <i>Scientific Data</i> 8:187), by the Signal Analysis and Interpretation
+Laboratory of the University of Southern California, under the
+<a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a> license; the tongue
+and teeth outlines on them were added for LexiMaster.</p>
 
 <h2>Example sentences, meanings and study notes</h2>
 <p>Conversation examples, meanings for expressions that dictionaries don't list, the AI senses and the study notes

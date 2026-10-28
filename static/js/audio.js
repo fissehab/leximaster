@@ -145,11 +145,12 @@ function playSrc(url, btn, fallbackText, speed) {
   });
 }
 
-/** Play a word: its recording (human, else natural synthesized), else the device's voice. */
-export function playWord(word, btn, { slow = false } = {}) {
+/** Play a word: its recording (human, else natural synthesized), else the
+ * device's voice. `rate` overrides the playback speed setting. */
+export function playWord(word, btn, { slow = false, rate = null } = {}) {
   if (!word) { stop(); return Promise.resolve(); }
   const url = word.audio_url || word.tts_url;
-  if (url) return playSrc(url, btn, word.word, recordingRate(slow));
+  if (url) return playSrc(url, btn, word.word, rate || recordingRate(slow));
   return speak(word.word, btn);
 }
 

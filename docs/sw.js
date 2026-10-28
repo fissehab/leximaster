@@ -6,12 +6,15 @@
 // page asks (on Home, Browse and other calm screens, never mid-session).
 // Every cache name starts with "lexi-": the site shares its origin
 // (fissehab.github.io) with other projects, whose caches are left alone.
-const VERSION = "20261028151349";
+const VERSION = "20261028174757";
 const SHELL = `lexi-shell-${VERSION}`;
-const DATA = "lexi-data-0203e00e";   // changes only when the published word data does
+const DATA = "lexi-data-ae5bfd8d";   // changes only when the published word data does
 // Recording names carry a hash of their content (media/audio/<word>.<hash>.m4a),
 // so a corrected recording has a new URL: the media cache can outlive deploys.
 const MEDIA = "lexi-media-v2";
+// The real-mouth (MRI) clips of "How to say it", cached when first played;
+// their names carry a hash of their content too.
+const MOUTH = "lexi-mouth-v1";
 const SHELL_FILES = [
 "./",
 "index.html",
@@ -44,6 +47,11 @@ const SHELL_FILES = [
 "static/js/audio.js",
 "static/js/local/idb.js",
 "static/js/local/server.js",
+"static/js/mouth.js",
+"static/js/mri.gen.js",
+"static/js/phonemes.js",
+"static/js/say-strings.js",
+"static/js/say.js",
 "static/js/shared.gen.js",
 "static/js/state.js",
 "static/js/tabs/about.js",
@@ -58,6 +66,7 @@ const SHELL_FILES = [
 "static/js/tabs/pronounce.js",
 "static/js/tabs/quiz.js",
 "static/js/tabs/review.js",
+"static/js/tabs/sounds.js",
 "static/js/tabs/stats.js",
 "static/js/ui.js",
 "static/vendor/sql-wasm.js",
@@ -67,70 +76,70 @@ const SHELL_FILES = [
 // build: an offline download made under an earlier version keeps the files
 // that haven't changed.
 const DETAIL_HASHES = {
-"data/detail/00.json": "519ebb8b96258bc9",
-"data/detail/01.json": "f60676eb477db36b",
-"data/detail/02.json": "57889381a76e8c53",
+"data/detail/00.json": "57ef821a58088e16",
+"data/detail/01.json": "78d6dafd70321971",
+"data/detail/02.json": "7fc28ff31920714d",
 "data/detail/03.json": "29a1a4096f219b06",
-"data/detail/04.json": "3ec609369a99ee48",
-"data/detail/05.json": "dd4e99067322d9c6",
-"data/detail/06.json": "e61df3c39be9e787",
-"data/detail/07.json": "b5db118b1f5c14d5",
-"data/detail/08.json": "9beeda0c55d2ede7",
-"data/detail/09.json": "4a937056e0e9ebf1",
-"data/detail/10.json": "304adbbd96f4de7f",
-"data/detail/11.json": "d3cfacd4bcba9ae4",
-"data/detail/12.json": "db98fb5eb4627466",
-"data/detail/13.json": "5d8f337a1619db56",
-"data/detail/14.json": "ad3a3cf0e41483d3",
+"data/detail/04.json": "73d5da65f16aa78e",
+"data/detail/05.json": "7446bad644e4770f",
+"data/detail/06.json": "4b8b7dfbb45208e7",
+"data/detail/07.json": "39d07950aab3283f",
+"data/detail/08.json": "67889cfe3873b6cf",
+"data/detail/09.json": "e4a89922d0d2f578",
+"data/detail/10.json": "87b96cd1cc0ba64e",
+"data/detail/11.json": "1d41dc56516ebfe2",
+"data/detail/12.json": "11112deae3008ea1",
+"data/detail/13.json": "e3c44915901501ad",
+"data/detail/14.json": "f97ebfb2f0cb2d3e",
 "data/detail/15.json": "1ddec550a7b41674",
-"data/detail/16.json": "4c78fa0c60a40698",
-"data/detail/17.json": "1158b518c6f8cb0b",
-"data/detail/18.json": "e8475fa6297f38ec",
-"data/detail/19.json": "d0246cc9cad01465",
-"data/detail/20.json": "3f7bc6f565eed1c1",
-"data/detail/21.json": "1cb610e9cc186b80",
-"data/detail/22.json": "f97ab20f2b56207e",
-"data/detail/23.json": "738a53eb0df1955f",
-"data/detail/24.json": "40ccac2d9af72748",
-"data/detail/25.json": "c9dc25fa10808846",
+"data/detail/16.json": "d131e9333fe9c317",
+"data/detail/17.json": "82a7d673ffba553e",
+"data/detail/18.json": "d7e7f8a03ad045f0",
+"data/detail/19.json": "b6609facde9c25aa",
+"data/detail/20.json": "43f33b83a757d218",
+"data/detail/21.json": "7382939f89a435b6",
+"data/detail/22.json": "fc629b54c5d21944",
+"data/detail/23.json": "33959bbddd397f06",
+"data/detail/24.json": "f0d7fbc005c87284",
+"data/detail/25.json": "b2aa12b47c38f5e5",
 "data/detail/26.json": "5e810741ec32470b",
-"data/detail/27.json": "6b492736f8389d50",
-"data/detail/28.json": "f192bb0fb1ce748c",
-"data/detail/29.json": "eede882c9aec6dc0",
+"data/detail/27.json": "a7eea99b9d1b187d",
+"data/detail/28.json": "a71e427bd463c8b6",
+"data/detail/29.json": "8c9ef70552ad6376",
 "data/detail/30.json": "6554306b1b9d4358",
-"data/detail/31.json": "879d5fcac6e406d4",
-"data/detail/32.json": "c83cce381f60c523",
-"data/detail/33.json": "de395466885344e3",
-"data/detail/34.json": "4c0c5e8af49a39a6",
-"data/detail/35.json": "bd77189f5c81379e",
-"data/detail/36.json": "b7c103751343bee1",
-"data/detail/37.json": "bbe5c9d47757f027",
-"data/detail/38.json": "af131cc18edbb513",
-"data/detail/39.json": "b272e16071129671",
-"data/detail/40.json": "e940399b0360dec2",
-"data/detail/41.json": "134425c9c0e56dc5",
-"data/detail/42.json": "9de656418947a58c",
-"data/detail/43.json": "8eecc4e1c4014f38",
-"data/detail/44.json": "553f1bead1ddf143",
-"data/detail/45.json": "5c421d390e663905",
-"data/detail/46.json": "704a1c3a8cd78fc0",
-"data/detail/47.json": "628ab18a7f22ae78",
-"data/detail/48.json": "d9ced32111749274",
-"data/detail/49.json": "1fd9b39bb427539f",
-"data/detail/50.json": "a399f655bc734043",
-"data/detail/51.json": "8cc84781fe6adb23",
-"data/detail/52.json": "f270c8e301823c3a",
-"data/detail/53.json": "1c8e223aa6a0e59d",
-"data/detail/54.json": "eaf502852f2abf75",
-"data/detail/55.json": "60f8aa661902b832",
-"data/detail/56.json": "bda0f06e0768f8ae",
+"data/detail/31.json": "63198141c5ef77cd",
+"data/detail/32.json": "73eb2bbb2da30882",
+"data/detail/33.json": "d635973c3dff7764",
+"data/detail/34.json": "53aa3eb83eb31fac",
+"data/detail/35.json": "efb5f523f43a9aff",
+"data/detail/36.json": "c39a9e93dfdae3e2",
+"data/detail/37.json": "8de63d2a4a5b72d1",
+"data/detail/38.json": "e7b5014d17565c62",
+"data/detail/39.json": "daf071b2f63f5640",
+"data/detail/40.json": "fa46b86ca1084447",
+"data/detail/41.json": "dceec8ddac43686a",
+"data/detail/42.json": "0c97fa8a172b046a",
+"data/detail/43.json": "49617722818928ca",
+"data/detail/44.json": "eb274f54d1f99763",
+"data/detail/45.json": "6d175e704e8f957d",
+"data/detail/46.json": "ac1b749d8665f7b3",
+"data/detail/47.json": "4d3f87fb7feda02d",
+"data/detail/48.json": "083d8d90cb7690fb",
+"data/detail/49.json": "81fadee58809c8e1",
+"data/detail/50.json": "958c40b19ef4e357",
+"data/detail/51.json": "aee93fddfdb0e428",
+"data/detail/52.json": "196db09c0f598cc3",
+"data/detail/53.json": "95e1ccc4e0c08c1d",
+"data/detail/54.json": "69aa47448eeb0226",
+"data/detail/55.json": "8313f02388e1117e",
+"data/detail/56.json": "71004a16d4b1d327",
 "data/detail/57.json": "587abfd035e932e1",
-"data/detail/58.json": "04ea1e393f0c0b5c",
+"data/detail/58.json": "cec21671e3531962",
 "data/detail/59.json": "3c91a6fde4e9a6bd",
-"data/detail/60.json": "26519234bcc1b742",
-"data/detail/61.json": "1914c77016202e40",
-"data/detail/62.json": "52a95d868cf8bbb0",
-"data/detail/63.json": "664313cae949d861",
+"data/detail/60.json": "8a6946cdc686780a",
+"data/detail/61.json": "5aa15a5fa23313ac",
+"data/detail/62.json": "8683f8ce3b30168e",
+"data/detail/63.json": "a9bf2f9f04c36b80",
 "data/gloss/00.json": "6ce70ec0b36bb4ab",
 "data/gloss/01.json": "e77c7c8aea929aa5",
 "data/gloss/02.json": "8a022b45fc9abcfd",
@@ -213,7 +222,7 @@ self.addEventListener("activate", e => {
     const oldData = ours.filter(k => k !== DATA && /^(lexi-)?data-/.test(k));
     let refetch = [];
     try { refetch = await migrateDetails(oldData); } catch (err) {}
-    await Promise.all(ours.filter(k => ![SHELL, DATA, MEDIA].includes(k)).map(k => caches.delete(k)));
+    await Promise.all(ours.filter(k => ![SHELL, DATA, MEDIA, MOUTH].includes(k)).map(k => caches.delete(k)));
     await self.clients.claim();
     // In the background: changed detail files of an offline download, and
     // recordings nothing refers to any more.
@@ -269,8 +278,8 @@ async function rangeResponse(full, range) {
   });
 }
 
-async function media(req) {
-  const cache = await caches.open(MEDIA);
+async function media(req, name = MEDIA) {
+  const cache = await caches.open(name);
   const range = req.headers.get("Range");
   let hit = await cache.match(req.url, { ignoreSearch: true });
   if (!hit) {
@@ -289,6 +298,7 @@ self.addEventListener("fetch", e => {
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
   const path = url.pathname;
   if (path.includes("/media/")) { e.respondWith(media(e.request).catch(() => fetch(e.request))); return; }
+  if (path.includes("/static/mouth/")) { e.respondWith(media(e.request, MOUTH).catch(() => fetch(e.request))); return; }
   if (path.includes("/data/detail/") || path.includes("/data/gloss/") || path.endsWith("/data/index.json")) { e.respondWith(cacheFirst(e.request, DATA)); return; }
   if (e.request.mode === "navigate" && /\/(index\.html)?$/.test(path)) {
     // The app's page comes from the same version's cache as its scripts.
