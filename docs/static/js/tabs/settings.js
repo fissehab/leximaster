@@ -24,7 +24,7 @@ function settingsPanel() {
   focus.addEventListener("change", () => {
     setStudyFocus(focus.value);
     refreshDueCount();
-    toast(`Daily review, Home and the practice tabs now study: ${focus.selectedOptions[0].textContent}`);
+    toast(`Daily review, Today and the practice tabs now study: ${focus.selectedOptions[0].textContent}`);
   });
   const save = h("button.btn.btn-primary", { type: "button", on: { click: async () => {
     try {
@@ -40,7 +40,7 @@ function settingsPanel() {
       h("div.field", h("label", { for: "set-new" }, "New words per day"), perDay),
       h("div.field", h("label", { for: "set-rate" }, "Pronunciation speed"), rate),
       h("div.field", h("span.label", "Word levels"), levelPicker())),
-    h("p.muted", "Study focus is what Daily review and Home study, and where every practice tab starts (each tab can " +
+    h("p.muted", "Study focus is what Daily review and Today study, and where every practice tab starts (each tab can " +
       "still pick its own). Study focus and word levels change at once; the other settings when you save. Both are " +
       "also in Daily review."),
     h("div", save));
