@@ -1,8 +1,10 @@
 """Word forms: inflections and related forms (tools/forms.py)."""
 from __future__ import annotations
 
+import pytest
+
 from build_dataset import shares_stem
-from tools.forms import forms_for
+from tools.forms import WORDNET, forms_for
 
 
 def inflections(word, poses):
@@ -31,4 +33,8 @@ def test_related_forms():
     assert f["related"][0] == "abiding (adjective)"                # an -ing form used as its own word
     f = forms_for("criterion", ["noun"], ["criteria (plural noun)"], shares_stem)
     assert "criteria (plural noun)" not in f.get("related", [])    # already shown as the plural
-    assert "analysis (noun)" in forms_for("analyze", ["verb"], [], shares_stem)["related"]   # from WordNet
+
+
+@pytest.mark.skipif(not WORDNET.exists(), reason="Open English WordNet not downloaded (tools/glossary.py fetches it)")
+def test_related_forms_from_wordnet():
+    assert "analysis (noun)" in forms_for("analyze", ["verb"], [], shares_stem)["related"]
