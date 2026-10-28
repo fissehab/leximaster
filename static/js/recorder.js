@@ -34,11 +34,15 @@ function envelope(url) {
       while (b > a && vals[b] <= peak * 0.06) b--;
       if (a < 0) a = 0;
       const trimmed = vals.slice(Math.max(0, a - 3), b + 4);
-      return { vals: trimmed, secs: trimmed.length / 100 };
+      return { vals: trimmed, secs: trimmed.length / 100, from: a / 100, to: (b + 1) / 100 };
     })().catch(e => { envelopes.delete(url); throw e; }));
   }
   return envelopes.get(url);
 }
+
+/** Where the speech is in a recording: { from, to } in seconds, the silence
+ * before and after left out. */
+export const speechSpan = url => envelope(url).then(e => ({ from: e.from, to: e.to }));
 
 async function drawWaves(pairs) {
   const loaded = await Promise.all(pairs.map(([canvas, url]) => url ? envelope(url).catch(() => null) : null));

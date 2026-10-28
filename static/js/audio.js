@@ -154,6 +154,10 @@ export function playWord(word, btn, { slow = false, rate = null } = {}) {
   return speak(word.word, btn);
 }
 
+/** Where the recording now playing is, in seconds of the recording (for a
+ * drawing that follows it). */
+export const playbackTime = () => player.currentTime;
+
 export function playUrl(url, btn) {
   return playSrc(url, btn, null, 1);   // the learner's own take: as recorded
 }
