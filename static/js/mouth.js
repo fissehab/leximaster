@@ -19,18 +19,18 @@ const J = (x, y) => ({ j: [x, y] });
 // head, J(x, y) riding on the jaw. `focus` is the point the gold ring marks
 // (dashed: the place the tongue comes near but does not touch).
 // Landmarks: upper incisor edge (78, 150); the underside of the roof of the
-// mouth: y 138 at x 94 (the bump behind the teeth), 134 at x 118, 132 from
-// x 140 back to the soft palate at 166; throat wall x = 203. Vowels, r, w, j,
+// mouth: lowest at y 141, x 98 (the bump behind the teeth), then 134 at
+// x 118 and 132 from x 140 back to the soft palate at 166; throat wall x = 203. Vowels, r, w, j,
 // s and z keep at least 3 units clear of the roof; l, the stops and ŋ touch.
 const REST_TONGUE = [J(92, 160), J(104, 150), [124, 144], [152, 142], [178, 152], [186, 190]];
-const TIP_UP = [[90, 138], [100, 139], [122, 146], [150, 145], [178, 154], [186, 190]];      // t d n
-const GROOVE = [[93, 142], [102, 141], [122, 145], [150, 144], [178, 154], [186, 190]];      // s z
+const TIP_UP = [[90, 139], [100, 141], [122, 147], [150, 145], [178, 154], [186, 190]];      // t d n
+const GROOVE = [[93, 145], [102, 145], [122, 147], [150, 145], [178, 154], [186, 190]];      // s z
 const POST = [[97, 147], [106, 140], [122, 138], [150, 142], [178, 154], [186, 190]];        // ʃ ʒ
-const POST_STOP = [[95, 143], [104, 137], [122, 137], [150, 142], [178, 154], [186, 190]];   // tʃ dʒ
-const BACK_UP = [J(92, 162), J(104, 154), [126, 148], [150, 138], [168, 132], [186, 190]];   // k g ŋ
-const BUNCHED = [[108, 154], [120, 143], [140, 136], [162, 137], [192, 162], [198, 192]];    // r, er
-const LIGHT_L = [[90, 136], [100, 142], [124, 150], [152, 146], [182, 150], [188, 190]];
-const DARK_L = [[90, 136], [100, 142], [124, 150], [152, 146], [188, 148], [196, 192]];
+const POST_STOP = [[96, 145], [104, 139], [122, 137], [150, 142], [178, 154], [186, 190]];   // tʃ dʒ
+const BACK_UP = [J(92, 162), J(104, 155), [130, 145], [162, 132], [184, 146], [190, 191]];   // k g ŋ
+const BUNCHED = [[108, 154], [120, 144], [140, 137], [162, 138], [192, 162], [198, 192]];    // r, er
+const LIGHT_L = [[90, 137], [100, 142], [124, 150], [152, 146], [182, 150], [188, 190]];
+const DARK_L = [[90, 137], [100, 142], [124, 150], [152, 146], [188, 148], [196, 192]];
 const TEETH_TIP = [[66, 151], [84, 153], [118, 146], [150, 142], [178, 154], [186, 190]];    // θ ð
 
 const P = (o) => Object.freeze({ jaw: 3, round: 0, lipToTeeth: 0, lipClose: 0, velum: 0, voiced: true,
@@ -52,8 +52,8 @@ export const SOUNDS = Object.freeze({
   t: P({ jaw: 3, voiced: false, tongue: TIP_UP }),
   d: P({ jaw: 3, tongue: TIP_UP }),
   n: P({ jaw: 3, velum: 1, tongue: TIP_UP }),
-  s: P({ jaw: 2, voiced: false, lips: "spread", tongue: GROOVE }),
-  z: P({ jaw: 2, lips: "spread", focus: [96, 140], near: true, tongue: GROOVE }),
+  s: P({ jaw: 2, voiced: false, tongue: GROOVE }),
+  z: P({ jaw: 2, focus: [96, 140], near: true, tongue: GROOVE }),
   l: P({ jaw: 4, focus: [91, 137], tongue: LIGHT_L }),
   ɫ: P({ jaw: 4, focus: [91, 137], tongue: DARK_L }),
   ʃ: P({ jaw: 3, round: .45, voiced: false, lips: "forward", focus: [104, 139], near: true, tongue: POST }),
@@ -62,16 +62,16 @@ export const SOUNDS = Object.freeze({
   dʒ: P({ jaw: 3, round: .4, lips: "forward", tongue: POST_STOP }),
   ɹ: P({ jaw: 4, round: .3, lips: "forward", focus: [108, 149], near: true, back: true, tongue: BUNCHED }),
   ɚ: P({ jaw: 4, round: .3, lips: "forward", focus: [108, 149], near: true, back: true, tongue: BUNCHED }),
-  j: P({ jaw: 2, lips: "spread", tongue: [J(90, 158), J(100, 147), [116, 137], [138, 136], [170, 150], [182, 192]] }),
+  j: P({ jaw: 2, lips: "spread", tongue: [J(90, 158), J(100, 148), [116, 139], [138, 137], [170, 150], [182, 192]] }),
   // Back of the tongue
   k: P({ jaw: 3, voiced: false, tongue: BACK_UP }),
   ɡ: P({ jaw: 3, tongue: BACK_UP }),
   ŋ: P({ jaw: 3, velum: 1, focus: [165, 133], tongue: BACK_UP }),
   h: P({ jaw: 6, voiced: false, tongue: [J(92, 162), J(104, 154), [126, 148], [154, 146], [180, 156], [188, 194]] }),
   // Vowels: front (i ɪ e ɛ æ), low (a ɑ), back and rounded (ɔ o ʊ u), middle (ʌ ə)
-  i: P({ jaw: 3, lips: "spread", tongue: [J(90, 158), J(100, 148), [116, 137], [138, 135], [170, 150], [182, 192]] }),
-  ɪ: P({ jaw: 5, focus: J(118, 140), tongue: [J(90, 160), J(102, 150), [118, 137], [140, 135], [172, 150], [182, 192]] }),
-  e: P({ jaw: 6, lips: "spread", tongue: [J(90, 161), J(101, 152), [120, 141], [142, 139], [172, 152], [184, 192]] }),
+  i: P({ jaw: 3, lips: "spread", tongue: [J(90, 158), J(100, 148), [116, 139], [138, 137], [170, 150], [182, 192]] }),
+  ɪ: P({ jaw: 5, focus: J(118, 142), tongue: [J(90, 160), J(102, 151), [120, 141], [144, 140], [172, 152], [184, 192]] }),
+  e: P({ jaw: 6, lips: "spread", tongue: [J(90, 161), J(101, 152), [120, 143], [144, 142], [172, 153], [184, 192]] }),
   ɛ: P({ jaw: 8, tongue: [J(90, 162), J(100, 154), [120, 146], [146, 144], [174, 154], [184, 194]] }),
   æ: P({ jaw: 12, lips: "spread", focus: "gap", tongue: [J(88, 162), J(98, 154), [122, 156], [150, 160], [180, 168], [188, 198]] }),
   a: P({ jaw: 13, tongue: [J(90, 164), J(102, 160), [126, 162], [154, 162], [182, 168], [190, 198]] }),
@@ -105,7 +105,9 @@ function rotate([x, y], deg) {
   const a = -deg * Math.PI / 180, [cx, cy] = PIVOT, dx = x - cx, dy = y - cy;
   return [cx + dx * Math.cos(a) - dy * Math.sin(a), cy + dx * Math.sin(a) + dy * Math.cos(a)];
 }
-/** A sound's position as plain numbers, ready to mix. */
+/** A sound's position as plain numbers, ready to mix. A step marked `h`
+ * (the h of "hat") has the next sound's position, without voice or ring. */
+const stepPose = s => s.h ? { ...pose(s.sym), voiced: false, focus: null, back: false } : pose(s.sym);
 export function pose(sym) {
   const s = SOUNDS[sym] || SOUNDS.rest;
   const at = p => (p.j ? rotate(p.j, s.jaw) : p);
@@ -281,8 +283,11 @@ export function mouthDiagram({ label = "Side view of the mouth" } = {}) {
     halt(false);
     settle = resolve;
     setKey("");
+    // A diphthong glides on into its second vowel: 40% of its time to reach
+    // the first (and hold briefly), 60% gliding to the second.
     const seq = steps.flatMap(s => DIPHTHONGS[s.sym]
-      ? DIPHTHONGS[s.sym].map((x, k) => ({ ...s, sym: x, ms: s.ms / 2, first: k === 0 }))
+      ? [{ ...s, sym: DIPHTHONGS[s.sym][0], ms: s.ms * .4, first: true },
+         { ...s, sym: DIPHTHONGS[s.sym][1], ms: s.ms * .6, glide: 1 }]
       : [{ ...s, first: true }]);
     let k = 0;
     const next = () => {
@@ -290,19 +295,56 @@ export function mouthDiagram({ label = "Side view of the mouth" } = {}) {
       if (k >= seq.length) { halt(true); return; }
       const s = seq[k++];
       if (s.first && onStep) onStep(s.index);
-      const target = pose(s.sym);
-      glide(target, s.ms * .6, () => {
+      const target = stepPose(s);
+      const g = s.glide || .6;
+      glide(target, s.ms * g, () => {
         if (!settle) return;
         let start;
         const hold = now => {
           start ??= now;
-          if (now - start >= s.ms * (REDUCED() ? 1 : .4)) next();
+          if (now - start >= s.ms * (REDUCED() ? 1 : 1 - g)) next();
           else frame = requestAnimationFrame(hold);
         };
         frame = requestAnimationFrame(hold);
       });
     };
     next();
+  });
+  /** Follow a recording: steps [{ sym, t0, t1, index }] in seconds of the
+   * recording, clock() its current time (null once it has ended). Each sound
+   * is reached halfway through its time and held; before the first and
+   * after the last the mouth is at rest. onStep(index) when a sound starts. */
+  svg.follow = (steps, clock, onStep) => new Promise(resolve => {
+    halt(false);
+    settle = resolve;
+    setKey("");
+    const seq = steps.flatMap(s => {
+      if (!DIPHTHONGS[s.sym]) return [{ ...s, first: true }];
+      const mid = s.t0 + (s.t1 - s.t0) * .4;
+      return [{ ...s, sym: DIPHTHONGS[s.sym][0], first: true, t1: mid },
+              { ...s, sym: DIPHTHONGS[s.sym][1], t0: mid, reach: 1 }];
+    });
+    const poses = seq.map(stepPose), rest = pose("rest"), end = seq.length ? seq[seq.length - 1].t1 : 0;
+    let last = -2;
+    const step = () => {
+      const t = clock();
+      if (t === null) { current = rest; draw(parts, current); halt(true); return; }
+      let k = seq.findIndex(s => t < s.t1);
+      if (k < 0) k = seq.length;
+      else if (t < seq[k].t0 && k === 0) k = -1;
+      if (k !== last) {
+        last = k;
+        if (onStep && seq[k] && seq[k].first) onStep(seq[k].index);
+        if (onStep && (k < 0 || k === seq.length)) onStep(-1);
+      }
+      let from = rest, to = rest, u = 1;
+      if (k === seq.length) { from = poses[seq.length - 1] || rest; u = (t - end) / .15; }
+      else if (k >= 0) { from = k ? poses[k - 1] : rest; to = poses[k]; u = (t - seq[k].t0) / ((seq[k].reach || .5) * (seq[k].t1 - seq[k].t0)); }
+      current = REDUCED() ? to : mix(from, to, ease(Math.min(1, Math.max(0, u))));
+      draw(parts, current);
+      frame = requestAnimationFrame(step);
+    };
+    frame = requestAnimationFrame(step);
   });
   return svg;
 }

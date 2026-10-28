@@ -6,6 +6,7 @@
 export const UI = {
   row: "How to say it",
   watch: "Watch the word",
+  together: "Half speed, with the sound",
   stop: "Stop",
   slow: "Slow motion",
   voiceOn: "Voice ON",
@@ -151,6 +152,7 @@ export const MRI_TEXT = {
   drill: "The person says the sound between two ah sounds.",
   word: w => `The person says the word ${w}.`,
   teeth: "Teeth do not show in a scan. The dashed line shows the top teeth.",
+  th: "This person keeps the tongue tip at the edge of the top teeth. Between the teeth is easier and sounds the same.",
   r: "This person lifts the tongue tip. Pressing the sides works the same. Both sound the same.",
   play: "Play slowly",
   credit: "MRI: USC 75-Speaker Speech MRI Database, CC BY 4.0",

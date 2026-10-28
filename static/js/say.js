@@ -2,15 +2,18 @@
 // the listening game and the MRI clip. Loaded only when first needed (the
 // row on a word page is built by ui.js from phonemes.js alone).
 //
-// A word's sounds come from its IPA. "Watch the word" plays the word, then
-// walks the drawing slowly through its sounds without sound ("Slow motion"),
-// then plays the word again: the drawing is never shown as in step with the
-// recording, which has no timings for each sound.
+// A word's sounds come from its IPA. "Watch the word" plays the recording at
+// half speed with the drawing moving along: the recording has no timings for
+// each sound, so the time between where its speech starts and ends is shared
+// out among the sounds by their usual length (a stressed vowel longest, a
+// stop shortest). "Slow motion" walks the drawing through the sounds slowly,
+// without sound.
 
 import { allWords } from "./api.js";
-import { playbackSpeed, playWord, speedButton, stopAudio } from "./audio.js";
-import { lipIcon, mouthDiagram, SOUNDS } from "./mouth.js";
+import { playbackSpeed, playbackTime, playWord, speedButton, stopAudio } from "./audio.js";
+import { DIPHTHONGS, lipIcon, mouthDiagram, SOUNDS } from "./mouth.js";
 import { CLIPS } from "./mri.gen.js";
+import { speechSpan } from "./recorder.js";
 import { hardestIndex, isVowel, keyWord, label, PRIORITY, tokenize } from "./phonemes.js";
 import { CARDS, MRI, MRI_TEXT, PAIRS, UI } from "./say-strings.js";
 import { h } from "./ui.js";
@@ -35,13 +38,43 @@ const weight = t => t.syllabic ? 1.2 : ["eɪ", "aɪ", "ɔɪ", "oʊ", "aʊ"].incl
  * part at 1× (less for a long word, so it stays near 6 s), longer when the
  * playback speed is slower. */
 export function walkSteps(tokens) {
-  const steps = tokens.map((t, index) => ({ sym: t.sym, index, w: weight(t) }));
+  const steps = positions(tokens).map((p, index) => ({ ...p, index, w: weight(tokens[index]) }));
   steps.push({ sym: "rest", index: -1, w: .8 });
   const total = steps.reduce((a, s) => a + s.w, 0);
   const base = (total * 600 > 6000 ? Math.max(400, 6000 / total) : 600) / playbackSpeed();
   return steps.map(s => ({ sym: s.sym, index: s.index, ms: s.w * base }));
 }
 const wait = ms => new Promise(r => setTimeout(r, ms));
+// The recording is slowed to this for "Watch the word" (pitch kept).
+const TOGETHER_RATE = .5;
+/** The sounds placed on the recording's speech, from `from` to `to` seconds. */
+export function syncSteps(tokens, { from, to }) {
+  const ws = tokens.map(weight);
+  const total = ws.reduce((a, x) => a + x, 0);
+  let t = from;
+  return tokens.map((tok, index) => {
+    const t0 = t;
+    t += (to - from) * ws[index] / total;
+    return { ...positions(tokens)[index], index, t0, t1: t };
+  });
+}
+/** Where the mouth is for each token: h takes the next sound's position
+ * (without voice), and the gap between two words holds the last one. */
+function positions(tokens) {
+  const last = sym => DIPHTHONGS[sym] ? DIPHTHONGS[sym][1] : sym;
+  const first = sym => DIPHTHONGS[sym] ? DIPHTHONGS[sym][0] : sym;
+  return tokens.map((t, k) => {
+    if (t.sym === "h") {
+      const next = tokens.slice(k + 1).find(x => !x.gap && x.sym !== "h");
+      return { sym: next ? first(next.sym) : "ə", h: true };
+    }
+    if (t.gap) {
+      const prev = tokens.slice(0, k).reverse().find(x => !x.gap);
+      return { sym: prev ? last(prev.sym) : "rest" };
+    }
+    return { sym: t.sym };
+  });
+}
 
 function figure(sym) {
   const svg = mouthDiagram({ label: describe(sym) });
@@ -107,11 +140,22 @@ export function fillPanel(body, w, tokens = tokenize(w.phonetic)) {
     mriBtn.textContent = UI.mriHide;
   });
 
-  // Watch the word: the word, the slow walk, the word again.
+  // Watch the word (the recording at half speed, the drawing along with it)
+  // and Slow motion (the drawing alone, slowly). One runs at a time.
   let watching = 0;
+  const url = w.audio_url || w.tts_url;
   const watchBtn = h("button.btn.btn-primary", { type: "button" });
-  const showWatch = on => {
-    watchBtn.replaceChildren(h("span", { html: on ? "" : PLAY_SVG, style: { display: "contents" } }), on ? UI.stop : UI.watch);
+  const slowBtn = h("button.btn", { type: "button" });
+  const showWatch = (on, which) => {
+    watchBtn.replaceChildren(h("span", { html: on && which === watchBtn ? "" : PLAY_SVG, style: { display: "contents" } }),
+      on && which === watchBtn ? UI.stop : UI.watch);
+    slowBtn.textContent = on && which === slowBtn ? UI.stop : UI.slow;
+    watchBtn.hidden = !url || (on && which !== watchBtn);
+    slowBtn.hidden = on && which !== slowBtn;
+  };
+  const mark = (k, label) => {
+    buttons.forEach((b, i) => b.classList.toggle("now", i === k));
+    status.textContent = k >= 0 ? `${label} · ${titleOf(tokens[k].sym)}` : label;
   };
   const stopWatch = () => {
     if (!watching) return;
@@ -122,30 +166,35 @@ export function fillPanel(body, w, tokens = tokenize(w.phonetic)) {
     status.textContent = "";
     showWatch(false);
   };
+  const finish = () => {
+    watching = 0;
+    buttons.forEach(b => b.classList.remove("now"));
+    status.textContent = "";
+    showWatch(false);
+    select(selected, true);
+  };
   watchBtn.addEventListener("click", async () => {
     if (watching) { stopWatch(); select(selected, false); return; }
     const mine = watching = Date.now();
     const live = () => watching === mine && body.isConnected;
-    showWatch(true);
-    await playWord(w, null);
+    showWatch(true, watchBtn);
+    let span = null;
+    try { span = await speechSpan(url); } catch (e) { /* not decodable: play from start to end */ }
     if (!live()) return;
-    await wait(300);
-    if (!live()) return;
+    let ended = false;
+    const audio = playWord(w, null, { rate: TOGETHER_RATE }).then(() => { ended = true; });
+    const steps = syncSteps(tokens, span || { from: 0, to: .8 });
+    await fig.svg.follow(steps, () => ended ? null : playbackTime(), k => mark(k, UI.together));
+    await audio;
+    if (live()) finish();
+  });
+  slowBtn.addEventListener("click", async () => {
+    if (watching) { stopWatch(); select(selected, false); return; }
+    const mine = watching = Date.now();
+    showWatch(true, slowBtn);
     status.textContent = UI.slow;
-    const done = await fig.svg.walk(walkSteps(tokens), k => {
-      buttons.forEach((b, i) => b.classList.toggle("now", i === k));
-      if (k >= 0) status.textContent = `${UI.slow} · ${titleOf(tokens[k].sym)}`;
-    });
-    buttons.forEach(b => b.classList.remove("now"));
-    if (!done || !live()) return;
-    status.textContent = "";
-    await wait(300);
-    if (!live()) return;
-    await playWord(w, null);
-    if (!live()) return;
-    watching = 0;
-    showWatch(false);
-    select(selected, true);
+    const done = await fig.svg.walk(walkSteps(tokens), k => mark(k, UI.slow));
+    if (done && watching === mine && body.isConnected) finish();
   });
   showWatch(false);
 
@@ -160,7 +209,7 @@ export function fillPanel(body, w, tokens = tokenize(w.phonetic)) {
     h("div.say-sounds", { role: "group", "aria-label": UI.sounds_in_word }, buttons),
     h("div.say-main", fig,
       h("div.say-text", title, tip,
-        h("div.say-actions", watchBtn, speedButton()), status,
+        h("div.say-actions", watchBtn, slowBtn, speedButton()), status,
         h("div.say-actions", mriBtn), mriSlot, more)));
   select(selected, false);
 }
@@ -200,6 +249,7 @@ export function mriViewer(sym) {
     h("p", MRI_TEXT.all),
     h("p", m.drill ? MRI_TEXT.drill : MRI_TEXT.word(m.word)),
     sym === "ɹ" ? h("p", MRI_TEXT.r) : null,
+    sym === "θ" ? h("p", MRI_TEXT.th) : null,
     m.teeth ? h("p", MRI_TEXT.teeth) : null,
     h("p.mri-credit", MRI_TEXT.credit));
 }
