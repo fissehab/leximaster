@@ -98,7 +98,7 @@ async function fetchJson(url) {
   let res;
   try { res = await fetch(url); } catch (e) {
     throw new HttpError(503, "You're offline, and this part isn't saved on this device yet. " +
-      "Stats → Download for offline use makes all of LexiMaster work offline.");
+      "Settings → Download for offline use makes all of LexiMaster work offline.");
   }
   if (!res.ok) throw new HttpError(503, `Couldn't load ${url} (${res.status}). Check your connection.`);
   return res.json();

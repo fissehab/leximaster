@@ -269,7 +269,7 @@ def build_service_worker(version: str, data_hash: str, details: dict[str, str]) 
     sw = f"""// LexiMaster offline support. The app shell and word index are cached on
 // install (the index in the data cache, so a code-only update doesn't fetch it
 // again); word details and recordings are cached the first time they load
-// (or all at once from Stats → "Download for offline use").
+// (or all at once from Settings → "Download for offline use").
 // A new version installs in the background and takes over only when the
 // page asks (on Home, Browse and other calm screens, never mid-session).
 // Every cache name starts with "lexi-": the site shares its origin

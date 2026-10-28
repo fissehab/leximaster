@@ -22,7 +22,7 @@ export async function render(root) {
       h("p", "I also included words of every difficulty, from the most common everyday words to rare ones, so " +
         "that others can use it too, whatever their level of English. Words are grouped into five levels, from " +
         "1 (most common) to 5 (rare). Choose the levels you want to study from the ", h("b", "Word levels"),
-        " dropdown in Review (it's also in Stats → Study settings). Tick one level or several, and change them " +
+        " dropdown in Review (it's also in Settings). Tick one level or several, and change them " +
         "any time; every word still opens from links and search."),
       h("p", "To help with the sounds of English, each word page has ", h("b", "How to say it"), ": a drawing of the " +
         "mouth for each sound in the word, with a short tip. Practice → ", h("b", "Sounds"), " has the hardest sounds, " +

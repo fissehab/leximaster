@@ -43,7 +43,7 @@ function welcomeCard(root) {
     h("div.choice-row", ENGLISH.map(([label, levels]) =>
       h("button.btn", { type: "button", on: { click: () => pick(levels) } }, label))),
     h("button.btn.btn-quiet", { type: "button", on: { click: () => pick("1,2,3,4,5") } }, "Skip: show all words"),
-    h("p.muted", "You can change this any time with the Word levels menu in Review or Stats → Study settings."));
+    h("p.muted", "You can change this any time with the Word levels menu in Review or in Settings."));
   return card;
 }
 
@@ -56,10 +56,10 @@ function backupCard(studied) {
   const snoozed = Number(stored("lexi-backup-snooze")) > Date.now();
   if ((days !== null && days < 7) || snoozed) return null;
   const card = h("section.panel.notice-card", { "aria-label": "Backup reminder" },
-    h("p", days === null ? "Your progress lives only in this browser. Export a copy now and then (Stats → Export progress)."
+    h("p", days === null ? "Your progress lives only in this browser. Export a copy now and then (Settings → Export progress)."
       : `Your last export was ${days} days ago. Export a fresh copy so a cleared browser can't cost you your progress.`),
     h("div.toolbar",
-      h("a.btn.btn-primary", { href: "#stats" }, "Go to export"),
+      h("a.btn.btn-primary", { href: "#settings" }, "Go to export"),
       h("button.btn.btn-quiet", { type: "button", on: { click: () => {
         store("lexi-backup-snooze", String(Date.now() + 3 * 86400000));
         card.remove();
