@@ -3,17 +3,17 @@
 // row on a word page is built by ui.js from phonemes.js alone).
 //
 // A word's sounds come from its IPA. "Watch the word" plays the recording at
-// half speed with the drawing moving along: the recording has no timings for
-// each sound, so the time between where its speech starts and ends is shared
-// out among the sounds by their usual length (a stressed vowel longest, a
-// stop shortest). "Slow motion" walks the drawing through the sounds slowly,
-// without sound.
+// half speed with the drawing moving along: where each sound is in the
+// recording is read from the recording itself (align.js), and the mouth moves
+// into each sound just before it is heard, as a speaker's does. "Slow motion"
+// walks the drawing through the sounds slowly, without sound.
 
 import { allWords } from "./api.js";
-import { playbackSpeed, playbackTime, playWord, speedButton, stopAudio } from "./audio.js";
+import { alignTokens, weight } from "./align.js";
+import { playbackRunning, playbackSpeed, playbackTime, playWord, speedButton, stopAudio } from "./audio.js";
 import { DIPHTHONGS, mouthDiagram } from "./mouth.js";
 import { CLIPS } from "./mri.gen.js";
-import { speechSpan } from "./recorder.js";
+import { decodeAudio } from "./recorder.js";
 import { hardestIndex, isVowel, keyWord, label, PRIORITY, tokenize } from "./phonemes.js";
 import { CARDS, MRI, MRI_TEXT, PAIRS, UI } from "./say-strings.js";
 import { h } from "./ui.js";
@@ -29,11 +29,6 @@ for (const c of CARDS) {
 }
 const titleOf = sym => UI.as(label(sym), keyWord(sym));
 
-// Time on each sound in the slow walk-through, in parts of the base time.
-const WEIGHT = { p: .6, b: .6, t: .6, d: .6, k: .6, ɡ: .6, tʃ: .8, dʒ: .8, f: .9, v: .9, θ: .9, ð: .9, s: .9, z: .9,
-                 ʃ: .9, ʒ: .9, h: .9, m: .8, n: .8, ŋ: .8, l: .8, ɫ: .8, ɹ: .8, w: .8, j: .8, ə: .8, rest: .8 };
-const weight = t => t.syllabic ? 1.2 : ["eɪ", "aɪ", "ɔɪ", "oʊ", "aʊ"].includes(t.sym) ? 1.8
-  : isVowel(t.sym) ? (t.stress === 1 ? 1.6 : 1.2) : WEIGHT[t.sym] || .9;
 /** The walk through a word: [{ sym, ms, index }], ending at rest. 600 ms a
  * part at 1× (less for a long word, so it stays near 6 s), longer when the
  * playback speed is slower. */
@@ -47,16 +42,33 @@ export function walkSteps(tokens) {
 const wait = ms => new Promise(r => setTimeout(r, ms));
 // The recording is slowed to this for "Watch the word" (pitch kept).
 const TOGETHER_RATE = .5;
-/** The sounds placed on the recording's speech, from `from` to `to` seconds. */
-export function syncSteps(tokens, { from, to }) {
-  const ws = tokens.map(weight);
-  const total = ws.reduce((a, x) => a + x, 0);
-  let t = from;
-  return tokens.map((tok, index) => {
-    const t0 = t;
-    t += (to - from) * ws[index] / total;
-    return { ...positions(tokens)[index], index, t0, t1: t };
-  });
+/** Each sound's place in the recording (align.js): [{ sym, index, t0, t1 }]. */
+async function syncSteps(tokens, url) {
+  let times = null;
+  try {
+    const audio = await decodeAudio(url);
+    const found = alignTokens(tokens, audio.getChannelData(0), audio.sampleRate);
+    times = found && found.times;
+  } catch (e) { /* can't be decoded: shared out below */ }
+  if (!times) {
+    const ws = tokens.map(weight), total = ws.reduce((a, x) => a + x, 0);
+    let t = .15;
+    times = ws.map(x => { const t0 = t; t += .6 * x / total; return [t0, t]; });
+  }
+  const pos = positions(tokens);
+  return tokens.map((tok, index) => ({ ...pos[index], index, t0: times[index][0], t1: times[index][1] }));
+}
+/** Where the recording is, in seconds: its own clock, carried on between
+ * the browser's updates of it (some update it only a few times a second). */
+function recordingClock(rate) {
+  let last = -1, at = 0, started = false;
+  return () => {
+    // Until this recording plays, the player may still hold the last one's time.
+    if (!started && !(started = playbackRunning())) return -1;
+    const v = playbackTime(), now = performance.now();
+    if (v !== last) { last = v; at = now; return v; }
+    return playbackRunning() ? v + Math.min(.12, (now - at) / 1000 * rate) : v;
+  };
 }
 /** Where the mouth is for each token: h takes the next sound's position
  * (without voice), and the gap between two words holds the last one. */
@@ -172,13 +184,12 @@ export function fillPanel(body, w, tokens = tokenize(w.phonetic)) {
     const mine = watching = Date.now();
     const live = () => watching === mine && body.isConnected;
     showWatch(true, watchBtn);
-    let span = null;
-    try { span = await speechSpan(url); } catch (e) { /* not decodable: play from start to end */ }
+    const steps = await syncSteps(tokens, url);
     if (!live()) return;
     let ended = false;
     const audio = playWord(w, null, { rate: TOGETHER_RATE }).then(() => { ended = true; });
-    const steps = syncSteps(tokens, span || { from: 0, to: .8 });
-    await fig.svg.follow(steps, () => ended ? null : playbackTime(), k => mark(k, UI.together));
+    const clock = recordingClock(TOGETHER_RATE);
+    await fig.svg.follow(steps, () => ended ? null : clock(), k => mark(k, UI.together));
     await audio;
     if (live()) finish();
   });
