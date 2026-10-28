@@ -1,5 +1,9 @@
-# What CI needs to run tests/ : runtime plus the test client.
+# What CI needs to run tests/ : runtime plus the test client, and what the
+# build code the tests import needs (build_dataset.py, tools/forms.py).
 -r requirements.txt
 httpx==0.28.1
 httpx2==2.16.0
 pytest==9.1.1
+truststore==0.10.5
+wordfreq==3.1.1
+lemminflect==0.2.3
