@@ -23,6 +23,7 @@ export const TABS = [
   { id: "quiz", label: "Quiz", icon: "quiz", under: "practice", group: "Practice", note: "Meanings, blanks, synonyms" },
   { id: "listen", label: "Listen", icon: "listen", under: "practice", group: "Practice", note: "Hear it, name it, spell it" },
   { id: "pronounce", label: "Pronounce", icon: "mic", under: "practice", group: "Practice", note: "Record and compare" },
+  { id: "sounds", label: "Sounds", icon: "mouth", under: "practice", group: "Practice", note: "How the mouth makes hard sounds" },
   { id: "browse", label: "Browse", icon: "book", group: "Words", note: "The full lexicon" },
   { id: "lists", label: "My lists", icon: "list", under: "more", group: "Words", note: "Your word lists and notes" },
   { id: "more", label: "More", icon: "more", hub: true },

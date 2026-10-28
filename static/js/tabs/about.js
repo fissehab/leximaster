@@ -24,5 +24,9 @@ export async function render(root) {
         "1 (most common) to 5 (rare). Choose the levels you want to study from the ", h("b", "Word levels"),
         " dropdown in Review (it's also in Stats → Study settings). Tick one level or several, and change them " +
         "any time; every word still opens from links and search."),
+      h("p", "To help with the sounds of English, each word page has ", h("b", "How to say it"), ": a drawing of the " +
+        "mouth for each sound in the word, with a short tip. Practice → ", h("b", "Sounds"), " has the hardest sounds, " +
+        "words to try and a listening game. The real-mouth clips come from the USC 75-Speaker Speech MRI Database " +
+        "(CC BY 4.0)."),
       h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser.")));
 }

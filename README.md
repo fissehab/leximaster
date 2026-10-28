@@ -275,12 +275,13 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, grammar (the preposition a pattern takes: "insist ___ sth"), and for Bible names "who or what is it?" or "person, place or people?". Only the question types you pick are asked. A wrong answer says what the option you chose actually means. A changed setting applies to the next quiz; opening an entry and coming back keeps your place. "Retry the misses" at the end; misses go back into today's review. |
 | Listen | Hear a word, then pick it or type it; the wrong choices sound like the word (affect, effect), never exact homophones. Also has a spelling test that compares your spelling letter by letter, and "Where's the stress?", which asks which syllable is strong. "Can't listen now?" shows the pronunciation instead (the answer then isn't scored as heard). |
 | Pronounce | Play the reference recording, record yourself, and play both back. The two waveforms are trimmed of silence and drawn on one time scale, so length and stress line up. |
+| Sounds | The 16 sounds learners of English find hardest (th, r and l, v and w, short i and ee, …): the mouth drawing, a plain tip, words to try and compare (all recorded by people), a "Which word did you hear?" game with word pairs (right/light, ship/sheep), and the MRI clips. |
 | Browse | The full lexicon. It has A–Z jump, instant search across words and meanings, sorting by A–Z, frequency, stars or domain, and filters. On a phone, tapping a word brings its page into view (← List goes back). |
 | My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen. Words in your lists come first among new review words. |
 | Stats | Words mastered (and marked known), retention (the share of reviews you recalled, by gap), practice accuracy, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. Also holds the settings, progress export/import, and on the website "Download for offline use" and the sources. |
 
 The sidebar runs in the order of a study day: Home, Daily review, the Practice group (easiest to
-hardest: Flashcards, Matching, Quiz, Listen, Pronounce), the Words group (Browse, My lists), then Stats.
+hardest: Flashcards, Matching, Quiz, Listen, Pronounce, Sounds), the Words group (Browse, My lists), then Stats.
 On a phone the bottom bar has five buttons in the same order: Home, Review, Practice, Browse and More
 (My lists, Stats). Each practice tab remembers its own settings.
 
@@ -289,6 +290,12 @@ On a phone the bottom bar has five buttons in the same order: Home, Review, Prac
 Each entry reads from the top down:
 
 1. The word, its sound, IPA and respelling, and one row of labels.
+   **How to say it** (closed until you open it; it remembers) has a button for each sound of the word,
+   read from its IPA, and opens on the hardest one: a side drawing of the mouth with the spot that
+   matters ringed in gold, a front view of the lips, Voice ON/OFF, and a short tip. "Watch the word"
+   plays the word, walks the drawing slowly through its sounds without sound ("Slow motion", slower at
+   .75× and .5×), then plays the word again. Seven sounds also have a real MRI clip of a speaker's
+   mouth, behind "See a real mouth".
 2. The meaning, with one example under it, and its synonyms and antonyms. For a Bible name, what the
    Bible says about it.
 3. **Word forms:** the tenses of a verb (abides, abided/abode, abiding), a noun's plural, an
@@ -414,7 +421,10 @@ tools/             build_site.py (the website), audit.py (content checks), parit
                    tts.py (natural synthesized recordings for words without a human one),
                    audio_norm.py (even loudness and a lead-in for the human recordings),
                    glossary.py (short WordNet definitions for related words without an entry),
-                   forms.py (each entry's tenses, plural, comparative and related forms)
+                   forms.py (each entry's tenses, plural, comparative and related forms),
+                   build_mouth.py (the MRI clips for How to say it, from the USC 75-Speaker
+                   Speech MRI Database), pron_audit.py (shown IPA vs the CMU Pronouncing Dictionary;
+                   reviewed corrections go in seeds/fixes/pronunciation.txt)
 app/               FastAPI backend: db.py (schema, migrations, daily backups), srs.py (SM-2), api/ (routes)
 tests/             pytest suite (a 200-word fixture; never touches data/)
 static/            single-page app, with no build step: index.html, css/, js/, fonts/

@@ -2,6 +2,7 @@
 
 import { api, allWords, cachedWords, invalidateWords, patchCachedWord } from "./api.js";
 import { playWord, speedButton } from "./audio.js";
+import { hardestIndex, label as soundLabel, tokenize } from "./phonemes.js";
 import { EVERYDAY_DOMAINS } from "./shared.gen.js";
 import { loadFilter, saveFilter, saveSettings, settings } from "./state.js";
 
@@ -62,6 +63,7 @@ const ICONS = {
   upload: '<path d="M12 21V9M7 14l5-5 5 5M4 3h16"/>',
   trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
   info: '<circle cx="12" cy="12" r="9.5"/><path d="M12 11v6"/><path d="M12 7.5v.3"/>',
+  mouth: '<path d="M3.5 12.5c2.5-4.5 14.5-4.5 17 0-2.5 5-14.5 5-17 0z"/><path d="M7.5 12.8c3 1.4 6 1.4 9 0"/>',
 };
 export function icon(name) {
   const span = document.createElement("span");
@@ -247,6 +249,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
     w.phonetic || respelling ? h("div.entry-pron",
       w.phonetic ? h("span.ipa", { lang: "en-fonipa", title: "IPA" }, h("span.sr-only", "IPA: "), w.phonetic) : null,
       respelling ? h("span.respell", respelling) : null) : null,
+    full ? sayRow(w) : null,
     h("div.entry-meta",
       pos ? posBadge(pos) : null,
       w.level && mode !== "card" ? h("span.chip.level", { title: `How common the word is: level ${w.level} of 5` },
@@ -418,6 +421,27 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   if (nuanceParts.length) parts.push(h("div.nuance", nuanceParts));
   if (w.notes !== undefined) parts.push(notesEditor(w));
   return h("article.entry", parts);
+}
+
+// How to say it: a closed row under the IPA; opening it loads the mouth
+// drawing (say.js). It opens on the word's hardest sound, named on the row.
+// Open or closed is remembered for the next word page.
+const SAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12.5c2.5-4.5 14.5-4.5 17 0-2.5 5-14.5 5-17 0z"/><path d="M7.5 12.8c3 1.4 6 1.4 9 0"/></svg>';
+function sayRow(w) {
+  const tokens = tokenize(w.phonetic);
+  if (!tokens) return null;
+  const body = h("div.say-body");
+  const row = h("details.say", h("summary", h("span", { html: SAY_ICON, style: { display: "contents" } }),
+    h("span", "How to say it"), h("span.say-hint", soundLabel(tokens[hardestIndex(tokens)].sym))), body);
+  let loaded = false;
+  row.addEventListener("toggle", async () => {
+    try { localStorage.setItem("lexi-say-open", row.open ? "1" : ""); } catch (e) { /* storage unavailable */ }
+    if (!row.open || loaded) return;
+    loaded = true;
+    try { (await import("./say.js")).fillPanel(body, w, tokens); } catch (e) { loaded = false; showError(e); }
+  });
+  try { if (localStorage.getItem("lexi-say-open") === "1") row.open = true; } catch (e) { /* storage unavailable */ }
+  return row;
 }
 
 /** fn after `ms` of quiet; .now() runs a pending call at once. Pending calls

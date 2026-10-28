@@ -2563,16 +2563,19 @@ NON_GA_PHONETIC = re.compile(
 
 
 def normalize_ipa(ipa: str) -> str:
-    """r -> ɹ, no tie bars or non-syllabic marks, first variant only."""
+    """r -> ɹ, no tie bars or non-syllabic marks, first variant only, no
+    English notes ("(unstressed)"); the vowels of sing and boy as ɪ and ɔɪ."""
     if not ipa:
         return ipa
-    ipa = ipa.split(",")[0].strip()
+    ipa = re.split(r"[,;]", ipa)[0].strip()
+    ipa = re.sub(r"\s*\([a-zɹ ]{3,}\)", "", ipa)
     if ipa.startswith("/") and not ipa.endswith("/"):
         ipa += "/"
     if ipa.startswith("[") and not ipa.endswith("]"):
         ipa += "]"
     ipa = re.sub(r"\(([ɹr])\)", "ɹ", ipa)
     ipa = ipa.replace("͡", "").replace("͜", "").replace("̯", "").replace("r", "ɹ")
+    ipa = ipa.replace("iŋ", "ɪŋ").replace("oɪ", "ɔɪ")
     return re.sub(r"\s+(?=[/\]]$)", "", ipa)
 
 

@@ -922,3 +922,131 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
 .speed-btn:hover { background: var(--verdigris-soft); }
 @media (pointer: coarse) { .speed-btn { min-height: 44px; } }
 .play-group { display: inline-flex; align-items: center; gap: 8px; flex: none; }
+
+/* How to say it: the mouth drawing (static/js/mouth.js). Only the tongue is a
+   strong color; skin, bone and lips are neutrals told apart by lightness. */
+.mouth {
+  --m-skin: #EFE6DF; --m-bone: #D3CCC6; --m-bone-line: #8A7F77; --m-velum: #C9C0B9; --m-cavity: #E4DDD7;
+  --m-lip: #B88A80; --m-lip-line: #6E4A43; --m-tongue: #D2465F; --m-tongue-line: #8C1F35;
+  --m-air: #FFFFFF; --m-tooth: #FFFFFF; --m-line: #5A5560;
+  display: block; width: 100%; height: auto; max-width: 320px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .mouth {
+    --m-skin: #2C2A2E; --m-bone: #4A4650; --m-bone-line: #8F8A96; --m-velum: #5A5560; --m-cavity: #353238;
+    --m-lip: #7A6A68; --m-lip-line: #C4B2AE; --m-tongue: #F0708A; --m-tongue-line: #FFC2CD;
+    --m-air: #1D2230; --m-tooth: #E8EAF0; --m-line: #AAB2C2;
+  }
+}
+:root[data-theme="dark"] .mouth, :root[data-theme="mariana"] .mouth {
+  --m-skin: #2C2A2E; --m-bone: #4A4650; --m-bone-line: #8F8A96; --m-velum: #5A5560; --m-cavity: #353238;
+  --m-lip: #7A6A68; --m-lip-line: #C4B2AE; --m-tongue: #F0708A; --m-tongue-line: #FFC2CD;
+  --m-air: #1D2230; --m-tooth: #E8EAF0; --m-line: #AAB2C2;
+}
+:root[data-theme="mariana"] .mouth { --m-air: #3A444F; --m-skin: #262C33; }
+.mouth .m-head { fill: var(--m-skin); }
+.mouth .m-air { fill: var(--m-air); }
+.mouth .m-cavity { fill: var(--m-cavity); }
+.mouth .m-palate { fill: var(--m-bone); stroke: var(--m-bone-line); stroke-width: 1; }
+.mouth .m-velum { fill: var(--m-velum); stroke: var(--m-bone-line); stroke-width: 1; }
+.mouth .m-throat { fill: none; stroke: var(--m-bone-line); stroke-width: 1.5; }
+.mouth .m-teeth { fill: var(--m-tooth); stroke: var(--m-line); stroke-width: 1.1; }
+.mouth .m-tongue { fill: var(--m-tongue); stroke: var(--m-tongue-line); stroke-width: 1.6; }
+.mouth .m-lip { fill: var(--m-lip); stroke: var(--m-lip-line); stroke-width: 1; }
+.mouth .m-face { fill: none; stroke: var(--m-line); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+.mouth .m-ring { fill: none; stroke: var(--gilt); stroke-width: 2.5; }
+.mouth .m-ring.near { stroke-dasharray: 3 2.5; }
+.mouth .m-arrow { fill: none; stroke: var(--m-air); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.mouth .m-voice { fill: none; stroke: var(--gilt); stroke-width: 2; stroke-linejoin: round; }
+.mouth .m-lead { fill: none; stroke: var(--muted); stroke-width: .8; }
+.mouth .m-label { font: 600 8px var(--font-ui); fill: var(--ink-2); }
+.mouth .m-label.m-in { fill: var(--m-air); font-size: 9px; }
+.mouth .m-eye { fill: var(--m-line); }
+@media (prefers-reduced-motion: no-preference) {
+  .mouth .m-ring { animation: m-pulse .9s var(--ease) 1; transform-box: fill-box; transform-origin: center; }
+  .mouth .m-voice { stroke-dasharray: 4 2; animation: m-buzz .5s linear infinite; }
+}
+@keyframes m-pulse { from { transform: scale(1.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes m-buzz { to { stroke-dashoffset: -6; } }
+.lip-icon { width: 48px; height: 30px; flex: none; }
+.lip-icon .li-lip { fill: var(--m-lip, #B88A80); }
+.lip-icon .li-mouth { fill: #3A2228; }
+.lip-icon .li-teeth { fill: #FFFFFF; }
+.lip-icon .li-tongue { fill: var(--m-tongue, #D2465F); }
+.lip-icon .li-line { fill: none; stroke: #3A2228; stroke-width: 1.6; stroke-linecap: round; }
+
+/* The row under the IPA on a word page, and its panel. */
+details.say { margin-top: 10px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); }
+details.say > summary {
+  display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; cursor: pointer; list-style: none;
+  font: 600 15px/1.2 var(--font-ui); color: var(--verdigris);
+}
+details.say > summary::-webkit-details-marker { display: none; }
+details.say > summary svg { width: 22px; height: 22px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+details.say > summary .say-hint { margin-left: auto; font-weight: 600; color: var(--ink-2); }
+details.say > summary .say-hint::after { content: " ▸"; color: var(--muted); }
+details.say[open] > summary .say-hint::after { content: " ▾"; }
+details.say > summary:hover { background: var(--surface-2); border-radius: var(--radius); }
+.say-body { padding: 4px 14px 16px; display: grid; gap: 14px; }
+.say-sounds { display: flex; flex-wrap: wrap; gap: 6px; }
+.say-snd {
+  position: relative; min-width: 48px; min-height: 48px; padding: 4px 8px; display: inline-flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1px; border: 1px solid var(--rule-strong); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--ink); cursor: pointer; font: 600 16px/1.1 var(--font-ui);
+}
+.say-snd small { font: 400 12px/1 var(--font-ipa); color: var(--muted); }
+.say-snd[aria-pressed="true"] { border-color: var(--verdigris); background: var(--verdigris-soft); box-shadow: inset 0 0 0 1px var(--verdigris); }
+.say-snd.dot { padding-right: 14px; }
+.say-snd.dot::after { content: ""; position: absolute; top: 5px; right: 4px; width: 7px; height: 7px; border-radius: 50%; background: var(--gilt); }
+.say-snd.gap { min-width: 14px; padding: 0; border: 0; background: none; cursor: default; }
+.say-snd.now { outline: 2px solid var(--gilt); outline-offset: 1px; }
+.say-main { display: grid; gap: 14px; }
+@media (min-width: 760px) { .say-main { grid-template-columns: minmax(260px, 320px) minmax(0, 1fr); align-items: start; } }
+.say-fig { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; }
+.say-fig .mouth { min-width: 260px; }
+.say-fig-foot { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.lip-view { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px 2px 2px; border-radius: 99px; background: var(--surface-2); }
+.lip-view small { font: 600 12px/1 var(--font-ui); color: var(--muted); }
+.voice-badge { font: 600 13px/1.2 var(--font-ui); color: var(--ink-2); }
+.voice-badge.on { color: var(--gilt); }
+.say-text { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.say-title { margin: 0; font: 600 17px/1.3 var(--font-ui); color: var(--ink); }
+.say-title .ipa { font-family: var(--font-ipa); font-weight: 400; color: var(--muted); margin-left: 6px; }
+.say-tip { margin: 0; font: 17px/1.45 var(--font-ui); color: var(--ink-2); max-width: 36ch; }
+.say-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.say-status { margin: 0; min-height: 1.3em; font: 600 13px/1.3 var(--font-ui); color: var(--muted); }
+.say-more { font: 600 15px/1.3 var(--font-ui); }
+
+/* The MRI clip: a real person's mouth. */
+.mri { display: grid; gap: 8px; justify-items: start; }
+.mri-frame { position: relative; width: 240px; max-width: 100%; aspect-ratio: 1; border-radius: var(--radius-sm); overflow: hidden; background: #000; }
+.mri-frame video, .mri-frame svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mri-frame svg { pointer-events: none; }
+.mri-frame .mri-tongue { fill: none; stroke: #F0708A; stroke-width: 2.5; stroke-linejoin: round; }
+.mri-frame .mri-teeth { fill: none; stroke: #FFFFFF; stroke-width: 2; stroke-dasharray: 4 3; }
+.mri-frame.playing svg { display: none; }
+.mri p { margin: 0; font-size: 14px; color: var(--ink-2); max-width: 44ch; }
+.mri .mri-credit { font-size: 12px; color: var(--muted); }
+
+/* The Sounds page. */
+.sound-cards { display: grid; gap: 16px; }
+@media (min-width: 900px) { .sound-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.sound-card { display: grid; gap: 12px; padding: 16px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); min-width: 0; }
+.sound-card h3 { margin: 0; font: 600 20px/1.2 var(--font-word); }
+.sound-card .say-fig .mouth { min-width: 0; max-width: 280px; }
+.sound-card .try { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.sound-card .try > b { font: 600 13px/1 var(--font-ui); color: var(--muted); }
+.word-play { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 12px; border: 1px solid var(--rule-strong);
+  border-radius: 99px; background: var(--surface); color: var(--ink); font: 500 15px/1 var(--font-ui); cursor: pointer; }
+.word-play svg { width: 14px; height: 14px; fill: var(--verdigris); }
+.word-play.playing { border-color: var(--verdigris); background: var(--verdigris-soft); }
+.sound-card .help { margin: 0; font-size: 15px; color: var(--ink-2); }
+.sound-group-title { margin: 8px 0 0; font: 600 13px/1.2 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.drill { display: grid; gap: 12px; padding: 14px; border-radius: var(--radius); background: var(--surface-2); }
+.drill-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.drill-choice { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 56px; padding: 0 10px 0 14px;
+  border: 1px solid var(--rule-strong); border-radius: var(--radius); background: var(--surface); }
+.drill-choice > button.pick { flex: 1; min-height: 52px; border: 0; background: none; text-align: left; font: 600 18px/1.2 var(--font-ui); color: var(--ink); cursor: pointer; }
+.drill-choice.right { border-color: var(--sage); background: var(--sage-soft); }
+.drill-choice.wrong { border-color: var(--madder); background: var(--madder-soft); }
+.drill p { margin: 0; }
