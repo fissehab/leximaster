@@ -1,9 +1,9 @@
-// Home: word of the day, today's progress, quick links.
+// Home: today's review first (what's left, one button to start, the day so far), then the word of the day.
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
-import { TABS, reviewTrack } from "../app.js";
-import { saveSettings } from "../state.js";
+import { reviewTrack } from "../app.js";
+import { saveSettings, setStudyFocus } from "../state.js";
 import { SCOPES, fmtDuration, h, renderEntry, showError } from "../ui.js";
 
 const stored = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
@@ -26,7 +26,7 @@ function welcomeCard(root) {
       h("div.choice-row", order.map(v => {
         const label = SCOPES.find(([s]) => s === v)[1];
         return h("button.btn", { type: "button", on: { click: () => {
-          store("lexi-review-track", v);
+          setStudyFocus(v);
           store("lexi-welcomed", "1");
           location.hash = "#review";
         } } }, beginner && v === "everyday" ? `${label} (recommended)` : label);
@@ -99,38 +99,37 @@ export async function render(root) {
     : h("section.panel.wotd", h("span.eyebrow", "Word of the day"),
         h("p", "No words yet. Build the dataset with build_dataset.py, then reload."));
 
+  // Today's review first: what's left, one button to start, then the day so far.
   const w = stats.words;
-  const todayPanel = h("section.panel.today", { "aria-label": "Today" },
-    h("span.eyebrow", "Today"),
-    queued
-      ? h("div", h("div.big-num.tnum", queued),
-          h("p.muted", `left today · ${review.due} due · ${review.new} new · about ${minutes} min`))
-      : h("div", h("div.big-num", "Done"), h("p.muted", "Nothing left in today's review queue.")),
-    h("a.btn.btn-primary.btn-lg", { href: queued ? "#review" : "#review/more" }, queued ? "Start daily review" : "Learn 5 more words"),
-    h("dl.kv",
-      h("dt", "Reviewed today"), h("dd", review.done_today.reviews),
-      h("dt", "Time studied today"), h("dd", fmtDuration(review.done_today.seconds)),
-      h("dt", "Current streak"), h("dd", `${stats.streak.current} day${stats.streak.current === 1 ? "" : "s"}`),
-      h("dt", "Words mastered"), h("dd", `${w.mastered.toLocaleString()} of ${(w.mastered + w.learning).toLocaleString()} studied`)),
-  );
+  const stat = (label, value) => h("div", h("dt", label), h("dd", value));
+  const todayPanel = h("section.panel.today-hero", { "aria-label": "Today's review" },
+    h("div",
+      h("span.eyebrow", "Today's review"),
+      queued
+        ? [h("p.today-left", h("span.big-num.tnum", queued), queued === 1 ? " card left" : " cards left"),
+           h("p.muted", `${review.due} due · ${review.new} new · about ${minutes} min`)]
+        : [h("p.today-left", h("span.big-num", "Done"), " for today"), h("p.muted", "Nothing left in today's review. Well done.")]),
+    h("a.btn.btn-primary.btn-lg", { href: queued ? "#review" : "#review/more" }, queued ? "Start today's review" : "Learn 5 more words"),
+    h("dl.today-stats",
+      stat("Streak", `${stats.streak.current} day${stats.streak.current === 1 ? "" : "s"}`),
+      stat("Reviewed today", review.done_today.reviews),
+      stat("Time today", fmtDuration(review.done_today.seconds)),
+      stat("Words mastered", `${w.mastered.toLocaleString()} of ${(w.mastered + w.learning).toLocaleString()}`)));
 
   const banner = w.total === 0
     ? h("p.build-banner", "No words yet. Build the dataset with build_dataset.py (see README.md), then reload this page.")
     : null;
 
-  const quick = h("nav.quick", { "aria-label": "Practice and words" },
-    TABS.filter(t => t.under === "practice" || t.id === "browse" || t.id === "lists")
-      .map(t => h("a", { href: `#${t.id}` }, h("strong", t.label), h("span", t.note))));
   const studied = w.mastered + w.learning;
   const fresh = !studied && !stats.accuracy.attempts && !stored("lexi-welcomed");
 
   root.append(...[
-    h("div.page-head", h("div", h("h1", greet), h("p.sub", "Ten to twenty minutes keeps precise words within reach."))),
+    h("div.page-head", h("div", h("h1", greet), h("p.sub", "Ten to twenty minutes a day keeps your words within reach."))),
     banner ? h("div", { style: { marginBottom: "16px" } }, banner) : null,
     fresh && w.total ? welcomeCard(root) : null,
     installCard(),
     backupCard(studied),
-    h("div.home", wotdPanel, h("div", { style: { display: "flex", flexDirection: "column", gap: "18px" } }, todayPanel, quick)),
+    h("div.home", todayPanel, wotdPanel),
   ].filter(Boolean));
 }
 

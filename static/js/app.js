@@ -50,9 +50,26 @@ function buildNav() {
     if (!t.group) items.push(link(t));
     else if (last && last.dataset.group === t.group) last.append(link(t));
     else items.push(h("div.nav-group", { role: "group", "aria-label": t.group, "data-group": t.group },
-      h("span.nav-heading", { "aria-hidden": "true" }, t.group), link(t)));
+      t.group === FOLDING ? foldButton() : h("span.nav-heading", { "aria-hidden": "true" }, t.group), link(t)));
   }
   wrap.replaceChildren(...items);
+  const group = wrap.querySelector(`[data-group="${FOLDING}"]`);
+  if (group) setFolded(group, stored("lexi-nav-fold") === "1");
+}
+
+// The Practice group folds on a wide screen (a click on its heading); a
+// folded group still shows the practice you're on. Remembered.
+const FOLDING = "Practice";
+function stored(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function setFolded(group, folded) {
+  group.classList.toggle("folded", folded);
+  group.querySelector(".nav-fold").setAttribute("aria-expanded", String(!folded));
+  try { localStorage.setItem("lexi-nav-fold", folded ? "1" : ""); } catch (e) { /* storage unavailable */ }
+}
+function foldButton() {
+  return h("button.nav-heading.nav-fold", { type: "button", "aria-expanded": "true", title: `Show or hide the ${FOLDING.toLowerCase()} tabs`,
+    on: { click: e => { const g = e.currentTarget.closest(".nav-group"); setFolded(g, !g.classList.contains("folded")); } } },
+    FOLDING, h("span.fold-mark", { "aria-hidden": "true" }));
 }
 
 /** Cards left in today's review (the Review track you chose): the same
