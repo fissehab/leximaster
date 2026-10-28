@@ -13,7 +13,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import { settings } from "../state.js";
-import { SCOPES, fmtDuration, h, highlight, icon, pageHead, playButton, renderEntry, setKnown, showError, smart, toast } from "../ui.js";
+import { SCOPES, fmtDuration, h, highlight, icon, levelPicker, levelsText, pageHead, playButton, renderEntry, setKnown, showError, smart, toast } from "../ui.js";
 
 let queue = [];
 let pos = 0;
@@ -25,6 +25,7 @@ let els = {};
 let busy = false;
 let posted = false;
 let lastGrade = null;   // { w, at, body, previous } for Undo
+let levelShort = false; // the chosen word levels ran out of new words
 let live = () => true;
 let track = "";
 try { track = localStorage.getItem("lexi-review-track") || ""; } catch (e) { /* storage unavailable */ }
@@ -57,6 +58,7 @@ async function load(extra = 0) {
   const res = await api.get("/api/review/queue", { extra, track });
   if (!live()) return;
   queue = res.queue;
+  levelShort = !!res.level_short;
   pos = 0;
   total = queue.length;
   sessionStart = Date.now();
@@ -266,6 +268,21 @@ async function undo() {
   busy = false;
 }
 
+// Out of new words at the chosen levels: offer the next one, never widen silently.
+function addLevelNote() {
+  const chosen = String(settings.word_levels || "").split(",").map(Number);
+  const next = [1, 2, 3, 4, 5].find(n => !chosen.includes(n) && n > Math.max(...chosen))
+    || [1, 2, 3, 4, 5].find(n => !chosen.includes(n));
+  return h("p.muted", `You've met every new word at ${levelsText(chosen).toLowerCase()} here. `,
+    next ? h("button.btn.btn-quiet", { type: "button", on: { click: async () => {
+      const { saveSettings } = await import("../state.js");
+      try { await saveSettings({ word_levels: [...chosen, next].sort().join(",") }); } catch (e) { return showError(e); }
+      toast(`Added level ${next}`);
+      refreshDueCount();
+      load().catch(showError);
+    } } }, `Add level ${next}`) : null);
+}
+
 async function done() {
   clearSession();
   els.root.classList.remove("in-session");
@@ -279,6 +296,7 @@ async function done() {
       ? `You studied ${words} word${words === 1 ? "" : "s"} in ${fmtDuration(mins)}. Each comes back when you're about to forget it.`
       : "Nothing is due right now. Come back tomorrow, or learn a few new words now."),
     els.more = h("p.muted"),
+    levelShort ? addLevelNote() : null,
     h("div.toolbar",
       h("button.btn.btn-primary", { type: "button", on: { click: () => load(5).catch(showError) } }, "Learn 5 more words"),
       h("a.btn", { href: "#quiz" }, "Take a quiz"))));
@@ -327,9 +345,14 @@ export async function render(root, { param, live: isLive } = {}) {
     clearSession();
     load().catch(showError);
   });
+  // Word levels apply to new words in the broad tracks, not to a Bible track.
+  const levels = levelPicker({ onChange: () => { refreshDueCount(); if (pos === 0 || pos >= queue.length) load().catch(showError); } });
+  const showLevels = () => { levels.hidden = track.startsWith("bible"); };
+  trackSel.addEventListener("change", showLevels);
+  showLevels();
   root.append(
     pageHead("Daily review", "Spaced repetition (SM-2). Grade honestly: low stars and quiz misses bring words back sooner.",
-      trackSel, minutes),
+      trackSel, levels, minutes),
     h("div.study-card.progress-wrap",
       h("div.progress-row", h("div.progress", els.bar), els.count), els.undo),
     els.status,

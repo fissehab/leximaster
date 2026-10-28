@@ -109,7 +109,7 @@ def test_migration_from_version_1(fresh_db):
     with TestClient(app) as c:
         got = words(c)
     with db.tx() as c:
-        assert db.schema_version(c) == 2
+        assert db.schema_version(c) == db.SCHEMA_VERSION
         assert c.execute("SELECT COUNT(*) FROM words_compact").fetchone()[0] == 200   # backfilled at startup
         assert len(c.execute("SELECT name FROM sqlite_master WHERE type='trigger' "
                              "AND name LIKE 'words_compact_%'").fetchall()) == 3
@@ -164,3 +164,19 @@ def test_credits_csp_allows_only_its_inline_code():
     page = "<script>x()</script><style>p{}</style>"
     csp = build_site.credits_csp(page)
     assert sha("x()") in csp and sha("p{}") in csp and "unsafe-inline" not in csp
+
+
+def test_migration_adds_word_levels(fresh_db):
+    conn = sqlite3.connect(fresh_db)
+    conn.execute("DROP TRIGGER words_compact_upd")
+    conn.execute("ALTER TABLE words DROP COLUMN level")
+    conn.execute("PRAGMA user_version = 2")
+    conn.commit()
+    conn.close()
+    with TestClient(app) as c:
+        words(c)
+    with db.tx() as c:
+        assert db.schema_version(c) == db.SCHEMA_VERSION
+        assert "level" in {r[1] for r in c.execute("PRAGMA table_info(words)")}
+        trigger = c.execute("SELECT sql FROM sqlite_master WHERE name='words_compact_upd'").fetchone()[0]
+        assert "OLD.level" in trigger

@@ -17,14 +17,15 @@ const EVERYDAY_SQL = `EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each
 const NEW_CARD_SECONDS = 35;
 const DEFAULT_REVIEW_SECONDS = 14;
 const MASTERED_INTERVAL = 21;
-const DEFAULT_SETTINGS = { session_minutes: "15", new_per_day: "12", accent: "us", autoplay: "1", speech_rate: "0.9" };
+const DEFAULT_SETTINGS = { session_minutes: "15", new_per_day: "12", accent: "us", autoplay: "1", speech_rate: "0.9",
+                           word_levels: "1,2,3,4,5" };
 
 const SCHEMA = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
 CREATE TABLE words (
   id INTEGER PRIMARY KEY, key TEXT UNIQUE NOT NULL, word TEXT NOT NULL, freq_rank INTEGER, zipf REAL,
   domains TEXT NOT NULL DEFAULT '[]', has_audio INTEGER NOT NULL DEFAULT 0, enriched INTEGER NOT NULL DEFAULT 0,
-  has_conv INTEGER NOT NULL DEFAULT 0, is_custom INTEGER NOT NULL DEFAULT 0,
+  has_conv INTEGER NOT NULL DEFAULT 0, is_custom INTEGER NOT NULL DEFAULT 0, level INTEGER,
   created_at TEXT NOT NULL DEFAULT (datetime('now')));
 CREATE TABLE user_word (word_id INTEGER PRIMARY KEY, stars INTEGER NOT NULL DEFAULT 0,
   known INTEGER NOT NULL DEFAULT 0, notes TEXT NOT NULL DEFAULT '', updated_at TEXT NOT NULL DEFAULT (datetime('now')));
@@ -48,7 +49,7 @@ CREATE TABLE recordings (word_id INTEGER PRIMARY KEY, path TEXT NOT NULL,
 CREATE TABLE settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
 `;
 
-const WORD_COLUMNS = `w.id, w.key, w.word, w.freq_rank, w.zipf, w.domains, w.has_audio, w.enriched, w.is_custom,
+const WORD_COLUMNS = `w.id, w.key, w.word, w.freq_rank, w.zipf, w.domains, w.has_audio, w.enriched, w.is_custom, w.level,
   COALESCE(u.stars, 0) AS stars, COALESCE(u.known, 0) AS known, COALESCE(u.notes, '') AS notes,
   s.due_date, s.interval_days, s.reps, s.ease, s.lapses, s.last_reviewed`;
 const WORD_FROM = `FROM words w LEFT JOIN user_word u ON u.word_id = w.id LEFT JOIN srs s ON s.word_id = w.id`;
@@ -111,12 +112,13 @@ async function boot() {
   for (const [k, v] of Object.entries(DEFAULT_SETTINGS)) run("INSERT INTO settings(key, value) VALUES (?, ?)", [k, v]);
   const index = await fetchJson("data/index.json");
   db.exec("BEGIN");
-  const stmt = db.prepare("INSERT INTO words(id, key, word, freq_rank, zipf, domains, has_audio, enriched, has_conv) " +
-                          "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  const stmt = db.prepare("INSERT INTO words(id, key, word, freq_rank, zipf, domains, has_audio, enriched, has_conv, level) " +
+                          "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
   index.words.forEach((w, i) => {
     const id = i + 1;
     INDEX.set(id, w);
-    stmt.run([id, w.k, w.w, w.f ?? null, w.z ?? null, JSON.stringify(w.d || []), w.a ? 1 : 0, w.e ? 1 : 0, w.c ? 1 : 0]);
+    stmt.run([id, w.k, w.w, w.f ?? null, w.z ?? null, JSON.stringify(w.d || []), w.a ? 1 : 0, w.e ? 1 : 0, w.c ? 1 : 0,
+              w.l ?? 5]);   // the index leaves out level 5
   });
   stmt.free();
   db.exec("COMMIT");
@@ -360,7 +362,7 @@ function compact(row) {
     core_pos: corePos, def,
     domains: JSON.parse(row.domains),
     name_kind: w ? w.nk || "" : d.name_kind || "",
-    freq_rank: row.freq_rank, has_audio: !!row.has_audio,
+    freq_rank: row.freq_rank, level: row.level ?? null, has_audio: !!row.has_audio,
     audio_url: w ? audioUrl(w.a) : null,
     tts_url: w && !w.a ? audioUrl(w.t) : null,
     enriched: !!row.enriched, is_custom: !!row.is_custom,
@@ -375,7 +377,7 @@ async function full(row) {
     audio_accent: out.audio_url ? "us" : "",
     meanings: data.meanings || [], nuance: data.nuance || null,
     synonyms: data.synonyms || [], antonyms: data.antonyms || [],
-    etymology: data.etymology || "", variant_of: data.variant_of || "", also: data.also || [],
+    etymology: data.etymology || "", variant_of: data.variant_of || "", also: data.also || [], forms: data.forms || null,
     conversation: data.conversation || [], source: data.source || "",
     notes: row.notes,
     srs: row.due_date == null ? null : {
@@ -436,7 +438,26 @@ function bumpActivity({ seconds = 0, reviews = 0, newWords = 0 } = {}) {
 // Bible names that aren't also vocabulary: studied only when chosen.
 const NAMES_ONLY_SQL = "(EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'bible_names') " +
   "AND NOT EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'bible_vocab'))";
-const SCOPES = ["everyday", "core", ...BIBLE_TRACKS];  // study tracks, usable wherever a domain filter is
+// Related words other entries link to that are very rare or very common
+// (domain "reference"; the others are "linked" and studied after the rest):
+// studied only when chosen (a list of yours, starred, or that filter); app/common.py.
+const REFERENCE_SQL = "EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'reference')";
+const LINKED_SQL = "EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'linked')";
+const CHOSEN_SQL = `(NOT ${REFERENCE_SQL} OR COALESCE(u.stars, 0) > 0 ` +
+  "OR EXISTS (SELECT 1 FROM list_words lw2 WHERE lw2.word_id = w.id))";
+const SCOPES = ["everyday", "core", ...BIBLE_TRACKS];
+// Word levels (app/common.py LEVELED, parse_levels, level_clause): the
+// levels new words come from, setting "word_levels" = "1,2,3".
+const LEVELED = ["", "everyday", "core"];
+const ALL_LEVELS = "1,2,3,4,5";
+const parseLevels = v => (v && /^[1-5](,[1-5])*$/.test(v) ? [...new Set(v.split(",").map(Number))].sort() : [1, 2, 3, 4, 5]);
+function levelClause(v) {
+  const levels = parseLevels(v);
+  if (levels.length === 5) return "1=1";
+  return `(w.level IS NULL OR w.level IN (${levels.join(",")}) OR COALESCE(u.stars, 0) > 0 ` +
+    "OR EXISTS (SELECT 1 FROM list_words lw3 WHERE lw3.word_id = w.id))";
+}
+const levelsSetting = () => (get("SELECT value FROM settings WHERE key = 'word_levels'") || {}).value || ALL_LEVELS;  // study tracks, usable wherever a domain filter is
 
 function trackClause(track) {
   if (track === "everyday") return EVERYDAY_SQL;
@@ -460,6 +481,8 @@ function poolIds({ stars = null, list_id = null, domain = null, need_audio = fal
   if (SCOPES.includes(domain)) where.push(trackClause(domain));
   else if (domain) { where.push("EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = ?)"); args.push(domain); }
   else if (!list_id) where.push(`NOT ${NAMES_ONLY_SQL}`);  // Bible names only when chosen (or in your own list)
+  if (domain !== "reference" && !list_id) where.push(CHOSEN_SQL);
+  if (LEVELED.includes(domain || "") && !list_id) where.push(levelClause(levelsSetting()));
   if (need_audio) where.push("w.has_audio = 1");
   if (need_enriched) where.push("w.enriched = 1");
   if (exclude_known) where.push("COALESCE(u.known, 0) = 0");
@@ -683,14 +706,23 @@ async function deleteCustomWord(id) {
 
 async function wordOfTheDay() {
   const today = todayIso();
-  const todayKey = `wotd:${today}`;
+  const levels = parseLevels(levelsSetting());
+  const todayKey = `wotd:${today}` + (levels.length === 5 ? "" : ":" + levels.join(","));
   const saved = get("SELECT value FROM meta WHERE key=?", [todayKey]);
   if (saved && get("SELECT 1 AS x FROM words WHERE id=?", [Number(saved.value)])) return full(fetchWord(Number(saved.value)));
-  const base = "SELECT w.id FROM words w LEFT JOIN user_word u ON u.word_id = w.id LEFT JOIN srs s ON s.word_id = w.id " +
-               `WHERE COALESCE(u.known, 0) = 0 AND s.word_id IS NULL AND w.is_custom = 0 AND ${trackClause("core")} `;
+  let base = "SELECT w.id FROM words w LEFT JOIN user_word u ON u.word_id = w.id LEFT JOIN srs s ON s.word_id = w.id " +
+               `WHERE COALESCE(u.known, 0) = 0 AND s.word_id IS NULL AND w.is_custom = 0 AND NOT ${REFERENCE_SQL} AND ${trackClause("core")} `;
   let ids = [];
-  for (const extra of ["AND w.enriched = 1 AND w.zipf < 3.5",
-                       `AND w.zipf < 3.3 AND w.domains NOT IN ('["academic"]', '["professional"]')`, ""]) {
+  const tries = ["AND w.enriched = 1 AND w.zipf < 3.5",
+                 `AND w.zipf < 3.3 AND w.domains NOT IN ('["academic"]', '["professional"]')`, ""];
+  if (levels.length < 5) {   // from the chosen levels, the hardest first (app/api/words.py)
+    base = "SELECT w.id FROM words w LEFT JOIN user_word u ON u.word_id = w.id LEFT JOIN srs s ON s.word_id = w.id " +
+            `WHERE COALESCE(u.known, 0) = 0 AND s.word_id IS NULL AND w.is_custom = 0 AND NOT ${REFERENCE_SQL} AND NOT ${NAMES_ONLY_SQL} `;
+    const chosen = levels.join(",");
+    tries.unshift(`AND w.enriched = 1 AND w.level = ${levels[levels.length - 1]}`,
+                  `AND w.enriched = 1 AND w.level IN (${chosen})`, `AND w.level IN (${chosen})`);
+  }
+  for (const extra of tries) {
     ids = all(base + extra + " ORDER BY w.id").map(r => r.id);
     if (ids.length) break;
   }
@@ -759,13 +791,14 @@ function avgReviewSeconds() {
   return row && row.ms ? row.ms / 1000 + 3 : DEFAULT_REVIEW_SECONDS;
 }
 
-function newWords(clause, n) {
+function newWords(clause, n, { shuffle = false, level = "1=1" } = {}) {
   if (n <= 0) return [];
-  const then = clause === trackClause("everyday") ? "(w.id * 7919) % 10007" : "w.freq_rank";
+  const then = shuffle ? "(w.id * 7919) % 10007" : "w.freq_rank";
   const order = "ORDER BY EXISTS (SELECT 1 FROM list_words lw WHERE lw.word_id = w.id) DESC, " +
                 "CASE WHEN COALESCE(u.stars,0) BETWEEN 1 AND 2 THEN 0 " +
-                `WHEN COALESCE(u.stars,0) = 0 THEN 1 ELSE 2 END, ${then} ASC LIMIT ?`;
-  const base = `SELECT ${WORD_COLUMNS} ${WORD_FROM} WHERE s.word_id IS NULL AND COALESCE(u.known, 0) = 0 AND ${clause} `;
+                `WHEN COALESCE(u.stars,0) = 0 THEN 1 ELSE 2 END, ${LINKED_SQL}, ${then} ASC LIMIT ?`;   // linked words last (practice.py)
+  const base = `SELECT ${WORD_COLUMNS} ${WORD_FROM} WHERE s.word_id IS NULL AND COALESCE(u.known, 0) = 0 ` +
+               `AND ${CHOSEN_SQL} AND ${clause} AND ${level} `;
   let rows = all(base + "AND (w.enriched = 1 OR w.is_custom = 1 OR w.has_conv = 1) " + order, [n]);
   if (!rows.length) rows = all(base + order, [n]);
   return rows;
@@ -789,6 +822,7 @@ async function reviewQueue(q) {
   const track = q.track || "";
   const tr = trackClause(track);
   const st = settingsMap();
+  const level = LEVELED.includes(track) ? levelClause(st.word_levels) : "1=1";
   const budget = Number(st.session_minutes) * 60;
   const perReview = avgReviewSeconds();
   const act = get("SELECT reviews, new_words, seconds FROM daily_activity WHERE date=?", [todayIso()]);
@@ -810,12 +844,13 @@ async function reviewQueue(q) {
   const unseen = due.filter(isUnseen).slice(0, Math.max(0, nNew));
   for (const r of unseen) rows.push([r, true]);
   nNew -= unseen.length;
+  let levelShort = false;
   if (nNew > 0) {
     let fresh;
-    if (track) fresh = newWords(tr, nNew);
+    if (track) fresh = newWords(tr, nNew, { shuffle: track === "everyday", level });
     else {
-      const a = newWords(trackClause("everyday"), Math.ceil(nNew / 2));
-      const b = newWords(trackClause("core"), nNew);
+      const a = newWords(trackClause("everyday"), Math.ceil(nNew / 2), { shuffle: true, level });
+      const b = newWords(trackClause("core"), nNew, { level });
       fresh = [];
       for (let i = 0; i < Math.max(a.length, b.length); i++) {
         if (i < a.length) fresh.push(a[i]);
@@ -823,19 +858,22 @@ async function reviewQueue(q) {
       }
       fresh = fresh.slice(0, nNew);
     }
+    // Fewer new words than asked for, because of the chosen levels.
+    levelShort = level !== "1=1" && fresh.length < nNew;
     for (const r of fresh) rows.push([r, true]);
   }
   rows.splice(0, rows.length, ...interleave(rows));
   if (q.count) {
     // Only the numbers (Home, the nav badge): same selection, no card details.
     const nNewCards = rows.filter(([, isNew]) => isNew).length;
-    return { total: rows.length, due: rows.length - nNewCards, new: nNewCards, due_total: due.length,
+    return { total: rows.length, due: rows.length - nNewCards, new: nNewCards, level_short: levelShort,
+             due_total: due.length,
              est_seconds: rows.length ? Math.round(used + nNewCards * NEW_CARD_SECONDS) : 0,
              done_today: { reviews: act ? act.reviews : 0, new: act ? act.new_words : 0, seconds: act ? act.seconds : 0 } };
   }
   const queue = await Promise.all(rows.map(async ([r, isNew]) => ({ ...(await full(r)), is_new: isNew })));
   return {
-    queue, due_total: due.length,
+    queue, level_short: levelShort, due_total: due.length,
     done_today: { reviews: act ? act.reviews : 0, new: act ? act.new_words : 0, seconds: act ? act.seconds : 0 },
     target_seconds: budget,
     est_seconds: queue.length ? Math.round(used + queue.filter(c => c.is_new).length * NEW_CARD_SECONDS) : 0,
@@ -987,7 +1025,8 @@ async function makeQuiz(q) {
   }
   const pool = poolIds(filters);
   if (pool.length < 4) throw new HttpError(400, "Not enough words match these filters. Choose a wider set.");
-  let allIds = all(`SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT ${NAMES_ONLY_SQL}`).map(r => r.id);
+  let allIds = all(`SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT ${NAMES_ONLY_SQL} ` +
+                   `AND NOT ${REFERENCE_SQL}`).map(r => r.id);
   if (allIds.length < 50) allIds = all("SELECT id FROM words").map(r => r.id);
   const questions = [];
   // Fewer question types fit fewer words: look at more of them.
@@ -1268,7 +1307,7 @@ function saveSettings(values) {
 
 function updateSettings(body) {
   const values = {};
-  for (const k of ["session_minutes", "new_per_day", "autoplay", "speech_rate"]) if (body[k] != null) values[k] = body[k];
+  for (const k of ["session_minutes", "new_per_day", "autoplay", "speech_rate", "word_levels"]) if (body[k] != null) values[k] = body[k];
   const num = k => Number(values[k]);
   if ("session_minutes" in values && !(num("session_minutes") >= 5 && num("session_minutes") <= 60)) {
     throw new HttpError(400, "Session length must be between 5 and 60 minutes.");
@@ -1282,6 +1321,10 @@ function updateSettings(body) {
   for (const k of ["session_minutes", "new_per_day"]) if (k in values) values[k] = Math.trunc(num(k));
   if ("speech_rate" in values) values.speech_rate = num("speech_rate");
   if ("autoplay" in values) values.autoplay = !!values.autoplay && values.autoplay !== "0";
+  if ("word_levels" in values) {
+    if (!/^[1-5](,[1-5])*$/.test(String(values.word_levels))) throw new HttpError(400, "Choose at least one word level (1 to 5).");
+    values.word_levels = parseLevels(String(values.word_levels)).join(",");
+  }
   saveSettings(values);
   return settingsMap();
 }
@@ -1475,6 +1518,7 @@ function importProgress(data, { restore = false } = {}) {
     if ("new_per_day" in st) clean.new_per_day = clamp(st.new_per_day, 0, 100, 12);
     if ("speech_rate" in st) clean.speech_rate = clamp(st.speech_rate, 0.5, 2, 0.9, false);
     if ("autoplay" in st) clean.autoplay = ["1", "True", "true"].includes(String(st.autoplay));
+    if (/^[1-5](,[1-5])*$/.test(String(st.word_levels ?? ""))) clean.word_levels = parseLevels(String(st.word_levels)).join(",");
     saveSettings(clean);
     if (invalid) counts.skipped = invalid;
     db.exec("COMMIT");

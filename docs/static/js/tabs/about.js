@@ -19,5 +19,10 @@ export async function render(root) {
         "definitions, real examples, and notes on how each word is actually used. It covers advanced and " +
         "professional vocabulary, data science and AI, mathematics, philosophy and theology, the Bible (with " +
         "Orthodox, Catholic and Protestant perspectives), and everyday American English."),
+      h("p", "I also included words of every difficulty, from the most common everyday words to rare ones, so " +
+        "that others can use it too, whatever their level of English. Words are grouped into five levels, from " +
+        "1 (most common) to 5 (rare). Choose the levels you want to study from the ", h("b", "Word levels"),
+        " dropdown in Review (it's also in Stats → Study settings). Tick one level or several, and change them " +
+        "any time; every word still opens from links and search."),
       h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser.")));
 }

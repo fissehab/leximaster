@@ -3,10 +3,10 @@
 import { allWords, api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
-import { domainLabel, domainOptions, formDialog, isEveryday, h, icon, renderEntry, scrollBehavior, setKnown, setStars, showError, toast } from "../ui.js";
+import { LEVELS, domainLabel, domainOptions, formDialog, isEveryday, h, icon, renderEntry, scrollBehavior, setKnown, setStars, showError, toast } from "../ui.js";
 
 const ROW_H = 54;
-const state = { q: "", sort: "alpha", domain: "", stars: "", known: "", selectedId: null };
+const state = { q: "", sort: "alpha", domain: "", stars: "", known: "", level: "", selectedId: null };
 let words = [];
 let shown = [];
 let els = {};
@@ -25,6 +25,7 @@ function applyFilters() {
   if (state.domain === "everyday") out = out.filter(isEveryday);
   else if (state.domain) out = out.filter(w => w.domains.includes(state.domain));
   if (state.stars !== "") out = out.filter(w => state.stars.split(",").map(Number).includes(w.stars));
+  if (state.level) out = out.filter(w => w.level === Number(state.level));
   if (state.known === "known") out = out.filter(w => w.known);
   if (state.known === "unknown") out = out.filter(w => !w.known);
   if (q) {
@@ -224,6 +225,12 @@ export async function render(root, { param, view, live: isLive }) {
   known.value = state.known;
   known.addEventListener("change", () => { state.known = known.value; refreshList(); });
 
+  // Browse is for looking up: every level by default, whatever you study.
+  const level = h("select.input#browse-level", { "aria-label": "Word level" }, h("option", { value: "" }, "All levels"),
+    LEVELS.map(([n, label]) => h("option", { value: n }, `Level ${n} · ${label}`)));
+  level.value = state.level;
+  level.addEventListener("change", () => { state.level = level.value; refreshList(); });
+
   els.az = h("nav.az", { "aria-label": "Jump to letter" },
     "abcdefghijklmnopqrstuvwxyz".split("").map(l => h("button", { type: "button", "data-l": l, on: { click: () => jumpTo(l) } }, l.toUpperCase())));
   els.inner = h("div.vlist-inner");
@@ -254,7 +261,7 @@ export async function render(root, { param, view, live: isLive }) {
     h("div.list-col#browse-list",
       h("div.search-row", h("div.search", icon("search"), els.search), hideBtn),
       // On a phone the filters fold away, so the results come first.
-      h("details.filters-fold", { open: !narrow() }, h("summary", "Sort & filter"), h("div.list-filters", els.sort, dom, stars, known)),
+      h("details.filters-fold", { open: !narrow() }, h("summary", "Sort & filter"), h("div.list-filters", els.sort, dom, level, stars, known)),
       els.meta,
       els.vlist),
     h("div.detail-wrap", showBtn, els.detail));

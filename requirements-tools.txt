@@ -9,6 +9,7 @@ anthropic[bedrock]==2.3.0
 httpx==0.28.1
 truststore==0.10.5
 wordfreq==3.1.1
+lemminflect==0.2.3
 
 # tools/tts.py (Kokoro TTS + Whisper check)
 kokoro-onnx==0.6.1

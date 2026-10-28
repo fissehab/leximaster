@@ -11,7 +11,7 @@ from datetime import date
 
 WORD_COLUMNS = """
     w.id, w.key, w.word, w.freq_rank, w.zipf, w.domains, w.has_audio, w.enriched,
-    w.data, w.is_custom,
+    w.data, w.is_custom, w.level,
     COALESCE(u.stars, 0) AS stars, COALESCE(u.known, 0) AS known,
     COALESCE(u.notes, '') AS notes,
     s.due_date, s.interval_days, s.reps, s.ease, s.lapses, s.last_reviewed
@@ -100,6 +100,7 @@ def compact_word(row: sqlite3.Row, data: dict | None = None) -> dict:
         "domains": json.loads(row["domains"]),
         "name_kind": data.get("name_kind") or "",
         "freq_rank": row["freq_rank"],
+        "level": row["level"],
         "has_audio": bool(row["has_audio"]),
         "audio_url": audio_url(data),
         "tts_url": None if row["has_audio"] else tts_url(data),
@@ -140,7 +141,7 @@ def compact_heads(c: sqlite3.Connection) -> list[tuple[int, str]]:
     built = {}
     for i in range(0, len(missing), 500):
         chunk = missing[i:i + 500]
-        for r in c.execute("SELECT id, word, freq_rank, domains, has_audio, enriched, data, is_custom "
+        for r in c.execute("SELECT id, word, freq_rank, domains, has_audio, enriched, data, is_custom, level "
                            f"FROM words WHERE id IN ({','.join('?' * len(chunk))})", chunk):
             built[r["id"]] = compact_json(compact_word(r))
     c.executemany("INSERT OR REPLACE INTO words_compact(word_id, body) VALUES (?, ?)", built.items())
@@ -168,6 +169,7 @@ def full(row: sqlite3.Row) -> dict:
         "etymology": data.get("etymology") or "",
         "variant_of": data.get("variant_of") or "",
         "also": data.get("also") or [],
+        "forms": data.get("forms"),
         "conversation": data.get("conversation") or [],
         "source": data.get("source", ""),
         "notes": row["notes"],
@@ -265,7 +267,43 @@ _EVERYDAY_SQL = ("EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.val
 # Bible names that aren't also vocabulary: studied only when chosen.
 NAMES_ONLY_SQL = ("(EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'bible_names') "
                   "AND NOT EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'bible_vocab'))")
+# Related words that other entries link to (seeds/reference.txt) and that are
+# very rare or very common (outside build_dataset.LINKED_ZIPF; the others are
+# "linked" and studied after the rest): there to look up, so they're studied
+# only when you choose them: in a list of yours, starred, or with that filter.
+REFERENCE_SQL = "EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'reference')"
+LINKED_SQL = "EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'linked')"
+CHOSEN_SQL = (f"(NOT {REFERENCE_SQL} OR COALESCE(u.stars, 0) > 0 "
+              "OR EXISTS (SELECT 1 FROM list_words lw2 WHERE lw2.word_id = w.id))")   # needs `u` (user_word)
 BIBLE_TRACKS = ("bible", "bible_vocab", "bible_names")
+# Word levels (build_dataset.word_level; 1 most common .. 5 rare): the ones
+# new words come from, setting "word_levels" = "1,2,3". They narrow only these
+# broad scopes; a Bible track or one subject is a choice of its own.
+LEVELED = ("", "everyday", "core")
+ALL_LEVELS = "1,2,3,4,5"
+_LEVELS = re.compile(r"[1-5](,[1-5])*")
+
+
+def parse_levels(value: str | None) -> list[int]:
+    """The levels in "1,3,4", sorted; anything else is all of them."""
+    if value and _LEVELS.fullmatch(value):
+        return sorted({int(x) for x in value.split(",")})
+    return [1, 2, 3, 4, 5]
+
+
+def level_clause(value: str | None) -> str:
+    """SQL on `w` and `u` (user_word): the word is at a chosen level, has no
+    level (your own words), or you chose it (starred or in a list of yours)."""
+    levels = parse_levels(value)
+    if len(levels) == 5:
+        return "1=1"
+    return (f"(w.level IS NULL OR w.level IN ({','.join(map(str, levels))}) OR COALESCE(u.stars, 0) > 0 "
+            "OR EXISTS (SELECT 1 FROM list_words lw3 WHERE lw3.word_id = w.id))")
+
+
+def levels_setting(c: sqlite3.Connection) -> str:
+    row = c.execute("SELECT value FROM settings WHERE key = 'word_levels'").fetchone()
+    return row["value"] if row else ALL_LEVELS
 SCOPES = ("everyday", "core", *BIBLE_TRACKS)  # study tracks, usable wherever a domain filter is
 
 
@@ -301,6 +339,10 @@ def pool_ids(c: sqlite3.Connection, *, stars: list[int] | None = None, list_id: 
         args.append(domain)
     elif not list_id:
         where.append(f"NOT {NAMES_ONLY_SQL}")  # Bible names only when chosen (or in your own list)
+    if domain != "reference" and not list_id:
+        where.append(CHOSEN_SQL)
+    if (domain or "") in LEVELED and not list_id:
+        where.append(level_clause(levels_setting(c)))
     if need_audio:
         where.append("w.has_audio = 1")
     if need_enriched:
