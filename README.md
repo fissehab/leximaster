@@ -310,7 +310,9 @@ Each entry reads from the top down:
 7. **All meanings:** every dictionary sense, open, in the dictionary's order, each with an example
    sentence: the dictionary's own, or one written by the `examples` build stage.
 8. **Pronunciation, register, origin:** folded.
-9. Your notes.
+9. **Say it yourself:** record yourself saying the word and compare it with the reference (waveforms on
+   one time scale, then "Reference, then mine"), as in the Pronounce tab, for any word.
+10. Your notes.
 
 Every synonym, antonym, "Compared with" word and related form can be tapped. A word with its own
 entry (blue) opens it; a form of one ("kings") opens "king". Any other word (grey, dotted underline)
