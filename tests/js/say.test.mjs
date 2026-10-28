@@ -17,11 +17,20 @@ test("every position draws: six tongue points, all numbers", () => {
   for (const [sym, s] of Object.entries(SOUNDS)) {
     assert.equal(s.tongue.length, 6, sym);
     const p = pose(sym);
-    for (const v of [p.jaw, p.round, p.velum, p.lipToTeeth, p.lipClose, ...p.tongue.flat(), ...(p.focus || [])]) {
-      assert.ok(Number.isFinite(v), `${sym}: ${v}`);
-    }
+    for (const k of ["w", "h", "lip", "bite", "out", "up", "level"]) assert.ok(Number.isFinite(p[k]), `${sym}.${k}: ${p[k]}`);
+    assert.ok(p.w > 0 && p.h >= 0 && p.level >= 0 && p.level <= 1, sym);
   }
   assert.equal(Object.keys(SOUNDS).length, 40);
+});
+
+test("the front view shows what a learner can copy", () => {
+  assert.equal(pose("p").h, 0);                         // lips closed
+  assert.equal(pose("f").bite, 1);                      // top teeth on the lower lip
+  assert.equal(pose("θ").out, 1);                       // tongue between the teeth
+  assert.equal(pose("l").up, 1);                        // tongue tip up behind the teeth
+  assert.ok(pose("u").w < pose("i").w);                 // rounded is narrower than spread
+  assert.ok(pose("æ").h > pose("ɪ").h);                 // open wider for short a
+  assert.ok(pose("i").level > pose("ɑ").level);         // tongue high for ee, low for o
 });
 
 test("every sound the reader can return has a position", () => {
