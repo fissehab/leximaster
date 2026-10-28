@@ -14,13 +14,23 @@ function waveCanvas() { return h("canvas.wave", { width: 600, height: 72, "aria-
 // Waveforms: silence trimmed from both ends and both drawn on one time
 // scale, so the reference and your take line up and their lengths compare.
 let audioCtx = null;
+const decoded = new Map();     // url -> Promise of an AudioBuffer
+/** A recording, decoded (kept for the page's life). */
+export function decodeAudio(url) {
+  if (!decoded.has(url)) {
+    decoded.set(url, (async () => {
+      const buf = await (await fetch(url)).arrayBuffer();
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      return audioCtx.decodeAudioData(buf);
+    })().catch(e => { decoded.delete(url); throw e; }));
+  }
+  return decoded.get(url);
+}
 const envelopes = new Map();   // url -> Promise of { vals (per 10 ms), secs }
 function envelope(url) {
   if (!envelopes.has(url)) {
     envelopes.set(url, (async () => {
-      const buf = await (await fetch(url)).arrayBuffer();
-      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-      const audio = await audioCtx.decodeAudioData(buf);
+      const audio = await decodeAudio(url);
       const data = audio.getChannelData(0);
       const step = Math.max(1, Math.round(audio.sampleRate / 100));
       const vals = [];
@@ -34,15 +44,11 @@ function envelope(url) {
       while (b > a && vals[b] <= peak * 0.06) b--;
       if (a < 0) a = 0;
       const trimmed = vals.slice(Math.max(0, a - 3), b + 4);
-      return { vals: trimmed, secs: trimmed.length / 100, from: a / 100, to: (b + 1) / 100 };
+      return { vals: trimmed, secs: trimmed.length / 100 };
     })().catch(e => { envelopes.delete(url); throw e; }));
   }
   return envelopes.get(url);
 }
-
-/** Where the speech is in a recording: { from, to } in seconds, the silence
- * before and after left out. */
-export const speechSpan = url => envelope(url).then(e => ({ from: e.from, to: e.to }));
 
 async function drawWaves(pairs) {
   const loaded = await Promise.all(pairs.map(([canvas, url]) => url ? envelope(url).catch(() => null) : null));

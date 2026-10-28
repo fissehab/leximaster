@@ -300,8 +300,9 @@ Each entry reads from the top down:
    mirror (how wide it opens, spread, rounded or closed lips, the teeth, the tongue between the teeth
    for th or up behind them for l), with the spot that matters ringed in gold, Voice ON/OFF, and a
    short tip. "Watch the word"
-   plays the recording at half speed with the drawing moving along (each sound placed by its usual
-   length within the recording's speech, as recordings carry no per-sound timings); "Slow motion"
+   plays the recording at half speed with the drawing moving along: where each sound is in the
+   recording is read from the recording itself (static/js/align.js: voiced stretches, hiss and stop
+   bursts, fitted to the word's sounds), and the mouth moves into each sound just before it is heard; "Slow motion"
    walks the drawing through the sounds slowly without sound (slower still at .75× and .5×). Seven
    sounds also have a real MRI clip of a speaker's mouth, behind "See a real mouth". The positions
    behind the drawings were checked by the review panel's phonetician.

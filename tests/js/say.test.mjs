@@ -80,3 +80,26 @@ test("cards, pairs and clips line up", () => {
     if (m.teeth) assert.ok(clip.teeth, `${m.file}: teeth outline`);
   }
 });
+
+test("each sound is placed where it is in the recording", async () => {
+  const { alignTokens } = await import("../../static/js/align.js");
+  // A made-up "think": 0.15 s digital silence, room noise throughout, a hiss
+  // (th) 0.20–0.30, a voiced vowel 0.30–0.42, silence, a burst (k) 0.50–0.54.
+  const sr = 16000, x = new Float32Array(Math.round(.8 * sr));
+  let seed = 1;
+  const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647) * 2 - 1;
+  for (let i = 0; i < x.length; i++) {
+    const t = i / sr;
+    if (t < .15) continue;
+    let v = rnd() * .0005;
+    if (t >= .2 && t < .3) v += rnd() * .02 * Math.sin(2 * Math.PI * 4000 * t);
+    if (t >= .3 && t < .42) v += .5 * Math.sin(2 * Math.PI * 180 * t) + .2 * Math.sin(2 * Math.PI * 360 * t);
+    if (t >= .5 && t < .54) v += rnd() * .1;
+    x[i] = v;
+  }
+  const { times, how } = alignTokens(tokenize("/θɪk/"), x, sr);
+  assert.equal(how, "stretches");
+  assert.ok(Math.abs(times[0][0] - .2) <= .03, `th starts ${times[0][0]}`);
+  assert.ok(Math.abs(times[1][0] - .3) <= .02 && Math.abs(times[1][1] - .42) <= .02, `vowel ${times[1]}`);
+  assert.ok(times[2][1] >= .53, `k ends ${times[2][1]}`);
+});

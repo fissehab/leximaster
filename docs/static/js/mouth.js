@@ -167,6 +167,10 @@ function draw(parts, s) {
 }
 
 const REDUCED = () => window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+// Seconds of recording by which the mouth moves ahead of the sound (twice
+// that at half speed): a speaker's lips and tongue get there first, and a
+// mouth a little early looks right where one late looks out of step.
+const LEAD = .05;
 let clipIds = 0;
 
 /**
@@ -268,9 +272,11 @@ export function mouthDiagram({ label = "The mouth, seen from the front" } = {}) 
     next();
   });
   /** Follow a recording: steps [{ sym, t0, t1, index }] in seconds of the
-   * recording, clock() its current time (null once it has ended). Each sound
-   * is reached halfway through its time and held; before the first and
-   * after the last the mouth is at rest. onStep(index) when a sound starts. */
+   * recording, clock() its current time (null once it has ended). As a
+   * speaker's mouth does, the drawing moves into each sound just before it is
+   * heard (LEAD) and is there as it starts; a diphthong glides on through its
+   * second half. Before the first sound and after the last the mouth is at
+   * rest. onStep(index) when a sound is heard. */
   svg.follow = (steps, clock, onStep) => new Promise(resolve => {
     halt(false);
     settle = resolve;
@@ -280,22 +286,26 @@ export function mouthDiagram({ label = "The mouth, seen from the front" } = {}) 
       return [{ ...s, sym: DIPHTHONGS[s.sym][0], first: true, t1: mid },
               { ...s, sym: DIPHTHONGS[s.sym][1], t0: mid, reach: 1 }];
     });
+    seq.forEach((s, k) => {
+      const prev = seq[k - 1];
+      if (s.reach) { s.go = s.t0; s.arrive = s.t1; return; }
+      s.go = Math.max(s.t0 - LEAD, prev ? (prev.t0 + prev.t1) / 2 : -Infinity);
+      s.arrive = s.t0 + Math.min(.03, (s.t1 - s.t0) * .3);
+    });
     const poses = seq.map(stepPose), rest = pose("rest"), end = seq.length ? seq[seq.length - 1].t1 : 0;
-    let last = -2;
+    let heard = -2;
     const step = () => {
       const t = clock();
       if (t === null) { current = rest; draw(parts, current); halt(true); return; }
-      let k = seq.findIndex(s => t < s.t1);
-      if (k < 0) k = seq.length;
-      else if (t < seq[k].t0 && k === 0) k = -1;
-      if (k !== last) {
-        last = k;
-        if (onStep && seq[k] && seq[k].first) onStep(seq[k].index);
-        if (onStep && (k < 0 || k === seq.length)) onStep(-1);
-      }
+      let k = -1;
+      while (k + 1 < seq.length && seq[k + 1].go <= t) k++;
+      let now = -1;
+      while (now + 1 < seq.length && seq[now + 1].t0 <= t) now++;
+      const shown = now >= 0 && t < end ? seq[now].index : -1;
+      if (shown !== heard) { heard = shown; if (onStep) onStep(shown); }
       let from = rest, to = rest, u = 1;
-      if (k === seq.length) { from = poses[seq.length - 1] || rest; u = (t - end) / .15; }
-      else if (k >= 0) { from = k ? poses[k - 1] : rest; to = poses[k]; u = (t - seq[k].t0) / ((seq[k].reach || .5) * (seq[k].t1 - seq[k].t0)); }
+      if (t >= end && seq.length) { from = poses[seq.length - 1]; u = (t - end) / .15; }
+      else if (k >= 0) { from = k ? poses[k - 1] : rest; to = poses[k]; u = (t - seq[k].go) / Math.max(.001, seq[k].arrive - seq[k].go); }
       current = REDUCED() ? to : mix(from, to, ease(Math.min(1, Math.max(0, u))));
       draw(parts, current);
       frame = requestAnimationFrame(step);
