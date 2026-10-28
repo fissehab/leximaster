@@ -3,7 +3,7 @@
 
 // A fetch that fails outright (no network) throws a TypeError.
 const OFFLINE = "You're offline, and this part isn't saved on this device yet. " +
-  "Stats → Download for offline use makes all of LexiMaster work offline.";
+  "Settings → Download for offline use makes all of LexiMaster work offline.";
 
 async function request(method, url, body) {
   if (window.LEXI_STATIC) {

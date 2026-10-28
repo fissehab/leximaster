@@ -27,7 +27,8 @@ export const TABS = [
   { id: "browse", label: "Browse", icon: "book", group: "Words", note: "The full lexicon" },
   { id: "lists", label: "My lists", icon: "list", under: "more", group: "Words", note: "Your word lists and notes" },
   { id: "more", label: "More", icon: "more", hub: true },
-  { id: "stats", label: "Stats", icon: "stats", under: "more", sep: true, note: "Progress, backup and offline use" },
+  { id: "stats", label: "Stats", icon: "stats", under: "more", sep: true, note: "Progress, retention and test history" },
+  { id: "settings", label: "Settings", icon: "gear", under: "more", note: "Study settings, theme, backup and offline use" },
   // Reached from the button at the foot of the menu (and More on a phone), not a menu link.
   { id: "about", label: "About", icon: "info", under: "more", foot: true, note: "Who made LexiMaster and why" },
 ];
@@ -77,7 +78,7 @@ function parseHash() {
 // then takes over and the page reloads on the same screen. Every open tab
 // reloads when the new version takes over (at its own next calm screen), and
 // the switch waits for any save in progress to finish.
-const CALM_TABS = ["home", "browse", "lists", "stats", "more", "practice", "about"];
+const CALM_TABS = ["home", "browse", "lists", "stats", "settings", "more", "practice", "about"];
 let updating = false;
 let reloadPending = false;
 if ("serviceWorker" in navigator) {
@@ -165,7 +166,7 @@ async function route() {
 // ---------------------------------------------------------------- theme
 
 // Paper and Night keep the old "light"/"dark" values; "system" follows the OS.
-const THEMES = [
+export const THEMES = [
   { id: "system", name: "Match system", swatch: ["#F3F4F7", "#0F121A", "#2B47A8"] },
   { id: "light", name: "Paper", swatch: ["#F3F4F7", "#2B47A8", "#0D7465"] },
   { id: "dark", name: "Night", swatch: ["#0F121A", "#93A8FF", "#4CC3AE"] },
@@ -174,7 +175,7 @@ const THEMES = [
 const themeBtn = document.getElementById("theme-toggle");
 let themeMenu = null;
 
-function savedTheme() {
+export function savedTheme() {
   return document.documentElement.dataset.theme || "system";
 }
 // The phone's status bar takes the theme's background.
@@ -184,7 +185,7 @@ function syncThemeColor() {
 }
 syncThemeColor();
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", syncThemeColor);
-function setTheme(id) {
+export function setTheme(id) {
   if (id === "system") delete document.documentElement.dataset.theme;
   else document.documentElement.dataset.theme = id;
   syncThemeColor();

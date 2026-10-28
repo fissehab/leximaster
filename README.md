@@ -78,8 +78,8 @@ dictionary's other meanings, register, word family, synonyms, antonyms and origi
 The website version runs entirely in your browser: https://fissehab.github.io/leximaster/
 
 Your progress is saved in that browser on that device, each change as it happens; several open tabs
-share it safely (one saves at a time, and the others reload what it saved). Use Stats → Export / Import
-to move it between devices, and Stats → "Download for offline use" to study without a connection. On a
+share it safely (one saves at a time, and the others reload what it saved). Use Settings → Export / Import
+to move it between devices, and Settings → "Download for offline use" to study without a connection. On a
 phone, use your browser's "Add to Home Screen" to install it like an app.
 
 To rebuild the site after changing the dataset:
@@ -90,7 +90,7 @@ To rebuild the site after changing the dataset:
 .venv/bin/python tools/parity.py       # the website and the local app give the same answers
 ```
 
-After you publish, the site updates itself the next time you open Home, Browse, Lists or Stats, in
+After you publish, the site updates itself the next time you open Home, Browse, Lists, Stats or Settings, in
 every open tab. It never reloads in the middle of a review or quiz, and your downloaded offline data is
 kept unless the word data changed.
 
@@ -110,17 +110,18 @@ kept unless the word data changed.
 - **Stars** (1–5, on any word page or flashcard) say how familiar a word is: 1–2★ words come back
   more often.
 - **Know it** takes a word you already know out of your study (press it again to bring it back).
-- **Settings** (in Stats): session length, new words per day, word levels, and pronunciation speed.
+- **Settings** (sidebar; under More on a phone): session length, new words per day, word levels,
+  pronunciation speed, the theme, and your data (export, import, offline use).
 - **Pronunciation speed:** the button beside each play button switches between 1×, .75× and .5×
   (pitch stays natural) for every recording and voice; the choice is remembered.
   Flashcards has its own "Play audio on flip" switch.
 - **Your own words:** My lists → "Add my own word" adds a word with your definition and example.
-- **Moving between devices:** Stats → Export progress saves a file; Import on the other device. Import
+- **Moving between devices:** Settings → Export progress saves a file; Import on the other device. Import
   keeps whichever copy of each word is newer, so an old backup never undoes later study.
 - **Backups on the website:** progress lives in that browser only. Home reminds you to export once a
   week; on iPhone and iPad, add LexiMaster to the Home Screen, or Safari clears its data after a week
   without a visit.
-- **Sources:** Stats → "Sources & credits" (website) lists the dictionaries and the recording
+- **Sources:** Settings → "Sources & credits" (website) lists the dictionaries and the recording
   credits.
 
 ## Setup (local app)
@@ -278,12 +279,13 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Sounds | The 16 sounds learners of English find hardest (th, r and l, v and w, short i and ee, …): the mouth drawing, a plain tip, words to try and compare (all recorded by people), a "Which word did you hear?" game with word pairs (right/light, ship/sheep), and the MRI clips. |
 | Browse | The full lexicon. It has A–Z jump, instant search across words and meanings, sorting by A–Z, frequency, stars or domain, and filters. On a phone, tapping a word brings its page into view (← List goes back). |
 | My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen. Words in your lists come first among new review words. |
-| Stats | Words mastered (and marked known), retention (the share of reviews you recalled, by gap), practice accuracy, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. Also holds the settings, progress export/import, and on the website "Download for offline use" and the sources. |
+| Stats | Words mastered (and marked known), retention (the share of reviews you recalled, by gap), practice accuracy, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. |
+| Settings | Study settings (session length, new words per day, word levels, pronunciation speed), the theme, progress export/import, and on the website "Download for offline use" and the sources. |
 
 The sidebar runs in the order of a study day: Home, Daily review, the Practice group (easiest to
-hardest: Flashcards, Matching, Quiz, Listen, Pronounce, Sounds), the Words group (Browse, My lists), then Stats.
+hardest: Flashcards, Matching, Quiz, Listen, Pronounce, Sounds), the Words group (Browse, My lists), then Stats and Settings.
 On a phone the bottom bar has five buttons in the same order: Home, Review, Practice, Browse and More
-(My lists, Stats). Each practice tab remembers its own settings.
+(My lists, Stats, Settings). Each practice tab remembers its own settings.
 
 ### The word page
 
@@ -365,7 +367,7 @@ Dictionary senses that only restate the meaning in step 2 are marked when the da
   word due today, keeping its interval, so a good review picks up where it was. Only a quiz miss (a
   wrong meaning) also halves the interval and lowers ease, once per word per day. A word you missed
   before studying it counts as one of the day's new words.
-- **New words:** each day introduces up to "New words per day" new words (default 12; set in Stats).
+- **New words:** each day introduces up to "New words per day" new words (default 12; set in Settings).
   Words in your own lists come first, then 1–2★ words, then unrated words, most frequent first (a
   phrase counts as common as its rarest word). With the Everything scope, everyday and advanced words
   alternate. New words are spread through the session, one after every three reviews. Words marked
@@ -382,7 +384,7 @@ Everything is stored locally:
 - `data/recordings/` holds your voice recordings.
 - `data/words.json` and `data/audio/` hold the dataset.
 
-**Stats → Export progress** saves a JSON file keyed by word rather than database ids, so it imports
+**Settings → Export progress** saves a JSON file keyed by word rather than database ids, so it imports
 into a rebuilt dataset too. Tick "Include my pronunciation recordings" to add your own recordings (the
 file gets larger); importing adds them only for words that have none. The local app also keeps a copy of its database each day in
 `data/backups/` (the last 7), and `make backup` copies the database and `data/cache` (the dataset's

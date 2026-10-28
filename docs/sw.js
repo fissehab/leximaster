@@ -1,12 +1,12 @@
 // LexiMaster offline support. The app shell and word index are cached on
 // install (the index in the data cache, so a code-only update doesn't fetch it
 // again); word details and recordings are cached the first time they load
-// (or all at once from Stats → "Download for offline use").
+// (or all at once from Settings → "Download for offline use").
 // A new version installs in the background and takes over only when the
 // page asks (on Home, Browse and other calm screens, never mid-session).
 // Every cache name starts with "lexi-": the site shares its origin
 // (fissehab.github.io) with other projects, whose caches are left alone.
-const VERSION = "20261028182052";
+const VERSION = "20261028183450";
 const SHELL = `lexi-shell-${VERSION}`;
 const DATA = "lexi-data-ae5bfd8d";   // changes only when the published word data does
 // Recording names carry a hash of their content (media/audio/<word>.<hash>.m4a),
@@ -67,6 +67,7 @@ const SHELL_FILES = [
 "static/js/tabs/pronounce.js",
 "static/js/tabs/quiz.js",
 "static/js/tabs/review.js",
+"static/js/tabs/settings.js",
 "static/js/tabs/sounds.js",
 "static/js/tabs/stats.js",
 "static/js/ui.js",
