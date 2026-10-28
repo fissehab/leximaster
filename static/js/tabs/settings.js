@@ -79,7 +79,7 @@ async function downloadRaw() {
   } catch (e) { showError(e); }
 }
 
-// The same four themes as the palette button at the foot of the menu.
+// The four themes (app.js); the choice is kept in this browser.
 function themePanel() {
   const current = savedTheme();
   return h("section.panel", h("h2", "Theme"),
