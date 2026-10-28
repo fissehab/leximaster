@@ -419,6 +419,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   }
 
   if (nuanceParts.length) parts.push(h("div.nuance", nuanceParts));
+  if (full && w.id !== undefined && navigator.mediaDevices && window.MediaRecorder) parts.push(sayYourself(w));
   if (w.notes !== undefined) parts.push(notesEditor(w));
   return h("article.entry", parts);
 }
@@ -572,6 +573,24 @@ async function addAsMyWord(word, [pos, definition, example]) {
     toast(`Added “${word}” to My words`);
     location.hash = `#browse/${w.id}`;
   } catch (e) { showError(e); }
+}
+
+// Say it yourself: record your own take and compare it with the reference,
+// as in the Pronounce tab (recorder.js, loaded when first opened).
+function sayYourself(w) {
+  const body = h("div.fold-body");
+  const fold = h("details.fold", h("summary", "Record yourself and compare",
+    w.recording_url ? h("span.muted", " · you have a recording") : null), body);
+  let box = null;
+  const stop = () => { if (box) box.stop(); };
+  fold.addEventListener("toggle", async () => {
+    if (!fold.open) { stop(); return; }
+    if (box && box.isConnected) return;
+    try { box = (await import("./recorder.js")).recordCompare(w); } catch (e) { return showError(e); }
+    body.replaceChildren(box);
+    addEventListener("hashchange", stop, { once: true });
+  });
+  return h("section.npanel.wide.say-yourself", h("h3", "Say it yourself"), fold);
 }
 
 function notesEditor(w) {
