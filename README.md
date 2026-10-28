@@ -472,6 +472,6 @@ The bracketed meaning label is optional. After editing, check coverage and rebui
 
 ### Themes
 
-The palette button at the bottom of the navigation picks a theme: Paper (light), Night (dark),
+Settings → Theme picks a theme: Paper (light), Night (dark),
 Mariana (slate blue-gray), or Match system, which follows your system's
 light/dark setting. The choice is remembered in this browser.

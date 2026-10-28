@@ -674,10 +674,8 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .nav-link .short { display: inline; }
   .nav-group { display: contents; }
   .nav-heading { display: none; }
-  #help-btn, #about-btn { display: none; }   /* on a phone: More → About */
+  .rail-foot { display: none; }   /* on a phone: More → About; the menu doesn't collapse */
   .brand { display: none; }
-  .rail-foot { margin: 0; padding: 0 4px; flex-direction: column; justify-content: center; }
-  .rail-foot .icon-btn { width: 30px; height: 30px; }
   .nav-links { flex-direction: row; gap: 2px; }
   .nav-link { flex: 1 1 0; min-width: 0; flex-direction: column; gap: 2px; font-size: 11px; padding: 6px 2px; position: relative; }
   .nav-link .count { position: absolute; top: 2px; left: calc(50% + 6px); margin: 0; padding: 0 5px; font-size: 10px; }
@@ -705,23 +703,6 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .grade.for-good small { display: block; }   /* "Know it" is for good: say so even here */
 }
 .typeahead input { width: 100%; }
-
-/* ---------------------------------------------------------------- theme picker */
-.theme-menu {
-  position: fixed; z-index: 60; min-width: 200px; padding: 6px;
-  display: flex; flex-direction: column; gap: 2px;
-  background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-.theme-item {
-  display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 10px;
-  border: 0; border-radius: var(--radius-sm); background: none; cursor: pointer;
-  font: 500 14px/1.2 var(--font-ui); color: var(--ink); text-align: left;
-}
-.theme-item:hover, .theme-item:focus-visible { background: var(--surface-2); }
-.theme-item[aria-checked="true"] { background: var(--lapis-soft); color: var(--lapis); font-weight: 600; }
-.swatch { display: inline-flex; flex: none; border-radius: 50%; overflow: hidden; border: 1px solid var(--rule-strong); }
-.swatch i { display: block; width: 9px; height: 18px; }
 
 /* ---------------------------------------------------------------- collapsed menu (wide screens) */
 @media (min-width: 761px) {

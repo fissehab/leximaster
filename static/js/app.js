@@ -119,7 +119,6 @@ async function route() {
   if (applyWaitingUpdate(tab)) return;
   const token = ++navToken;
   stopAudio();
-  closeThemeMenu();
   if (current && current.cleanup) { try { current.cleanup(); } catch (e) { console.error(e); } }
   current = null;
   const under = (TABS.find(t => t.id === tab) || {}).under;
@@ -165,16 +164,14 @@ async function route() {
 
 // ---------------------------------------------------------------- theme
 
-// Paper and Night keep the old "light"/"dark" values; "system" follows the OS.
+// Chosen in Settings. Paper and Night keep the old "light"/"dark" values;
+// "system" follows the OS.
 export const THEMES = [
   { id: "system", name: "Match system", swatch: ["#F3F4F7", "#0F121A", "#2B47A8"] },
   { id: "light", name: "Paper", swatch: ["#F3F4F7", "#2B47A8", "#0D7465"] },
   { id: "dark", name: "Night", swatch: ["#0F121A", "#93A8FF", "#4CC3AE"] },
   { id: "mariana", name: "Mariana", swatch: ["#303841", "#7DB4EA", "#FAC761"] },
 ];
-const themeBtn = document.getElementById("theme-toggle");
-let themeMenu = null;
-
 export function savedTheme() {
   return document.documentElement.dataset.theme || "system";
 }
@@ -194,43 +191,6 @@ export function setTheme(id) {
     else localStorage.setItem("lexi-theme", id);
   } catch (e) { /* storage unavailable */ }
 }
-function closeThemeMenu({ focus = false } = {}) {
-  if (!themeMenu) return;
-  themeMenu.remove();
-  themeMenu = null;
-  themeBtn.setAttribute("aria-expanded", "false");
-  if (focus) themeBtn.focus();
-}
-function openThemeMenu() {
-  const current = savedTheme();
-  themeMenu = h("div.theme-menu", { role: "menu", "aria-label": "Theme" },
-    THEMES.map(t => {
-      const item = h("button.theme-item", {
-        type: "button", role: "menuitemradio", "aria-checked": String(t.id === current), tabindex: "-1",
-      }, h("span.swatch", { "aria-hidden": "true" },
-        t.swatch.map(c => h("i", { style: { background: c } }))), t.name);
-      item.addEventListener("click", () => { setTheme(t.id); closeThemeMenu({ focus: true }); });
-      return item;
-    }));
-  themeMenu.addEventListener("keydown", e => {
-    const items = [...themeMenu.querySelectorAll(".theme-item")];
-    const i = items.indexOf(document.activeElement);
-    if (e.key === "Escape") { e.preventDefault(); closeThemeMenu({ focus: true }); }
-    else if (e.key === "ArrowDown") { e.preventDefault(); items[(i + 1) % items.length].focus(); }
-    else if (e.key === "ArrowUp") { e.preventDefault(); items[(i - 1 + items.length) % items.length].focus(); }
-    else if (e.key === "Tab") closeThemeMenu();   // a menu is one stop: Tab leaves it
-    e.stopPropagation();  // keep the app's single-key shortcuts out of the menu
-  });
-  document.body.append(themeMenu);
-  const r = themeBtn.getBoundingClientRect();
-  const m = themeMenu.getBoundingClientRect();
-  const left = Math.min(Math.max(8, r.left), innerWidth - m.width - 8);
-  const top = r.top - m.height - 8 > 8 ? r.top - m.height - 8 : r.bottom + 8;
-  Object.assign(themeMenu.style, { left: `${left}px`, top: `${top}px` });
-  themeBtn.setAttribute("aria-expanded", "true");
-  (themeMenu.querySelector('[aria-checked="true"]') || themeMenu.querySelector(".theme-item")).focus();
-}
-themeBtn.replaceChildren(icon("palette"));
 
 // ---------------------------------------------------------------- collapsible menu
 
@@ -247,15 +207,6 @@ function setRail(collapsed) {
 railBtn.replaceChildren(icon("sidebar"));
 try { setRail(localStorage.getItem("lexi-rail") === "collapsed"); } catch (e) { setRail(false); }
 railBtn.addEventListener("click", () => setRail(!shell.classList.contains("rail-collapsed")));
-themeBtn.setAttribute("aria-haspopup", "menu");
-themeBtn.setAttribute("aria-expanded", "false");
-themeBtn.addEventListener("click", e => {
-  e.stopPropagation();
-  if (themeMenu) closeThemeMenu(); else openThemeMenu();
-});
-document.addEventListener("click", e => {
-  if (themeMenu && !themeMenu.contains(e.target)) closeThemeMenu();
-});
 
 // ---------------------------------------------------------------- shortcuts
 
