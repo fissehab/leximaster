@@ -704,20 +704,23 @@ async function deleteCustomWord(id) {
   return { ok: true };
 }
 
-async function wordOfTheDay() {
+async function wordOfTheDay(q = {}) {
   const today = todayIso();
-  const levels = parseLevels(levelsSetting());
-  const todayKey = `wotd:${today}` + (levels.length === 5 ? "" : ":" + levels.join(","));
+  const track = ["everyday", ...BIBLE_TRACKS].includes(q.track) ? q.track : "";   // see app/api/words.py
+  const levels = track === "" || track === "everyday" ? parseLevels(levelsSetting()) : [1, 2, 3, 4, 5];
+  const todayKey = `wotd:${today}` + (levels.length === 5 ? "" : ":" + levels.join(",")) + (track ? `:${track}` : "");
+  const scope = trackClause(track || "core");
   const saved = get("SELECT value FROM meta WHERE key=?", [todayKey]);
   if (saved && get("SELECT 1 AS x FROM words WHERE id=?", [Number(saved.value)])) return full(fetchWord(Number(saved.value)));
   let base = "SELECT w.id FROM words w LEFT JOIN user_word u ON u.word_id = w.id LEFT JOIN srs s ON s.word_id = w.id " +
-               `WHERE COALESCE(u.known, 0) = 0 AND s.word_id IS NULL AND w.is_custom = 0 AND NOT ${REFERENCE_SQL} AND ${trackClause("core")} `;
+               `WHERE COALESCE(u.known, 0) = 0 AND s.word_id IS NULL AND w.is_custom = 0 AND NOT ${REFERENCE_SQL} AND ${scope} `;
   let ids = [];
   const tries = ["AND w.enriched = 1 AND w.zipf < 3.5",
                  `AND w.zipf < 3.3 AND w.domains NOT IN ('["academic"]', '["professional"]')`, ""];
   if (levels.length < 5) {   // from the chosen levels, the hardest first (app/api/words.py)
     base = "SELECT w.id FROM words w LEFT JOIN user_word u ON u.word_id = w.id LEFT JOIN srs s ON s.word_id = w.id " +
-            `WHERE COALESCE(u.known, 0) = 0 AND s.word_id IS NULL AND w.is_custom = 0 AND NOT ${REFERENCE_SQL} AND NOT ${NAMES_ONLY_SQL} `;
+            `WHERE COALESCE(u.known, 0) = 0 AND s.word_id IS NULL AND w.is_custom = 0 AND NOT ${REFERENCE_SQL} AND NOT ${NAMES_ONLY_SQL} ` +
+            (track ? `AND ${scope} ` : "");
     const chosen = levels.join(",");
     tries.unshift(`AND w.enriched = 1 AND w.level = ${levels[levels.length - 1]}`,
                   `AND w.enriched = 1 AND w.level IN (${chosen})`, `AND w.level IN (${chosen})`);
@@ -1623,7 +1626,7 @@ const ROUTES = [
   ["PATCH", /^\/api\/words\/(\d+)\/state$/, (m, q, b) => setState(+m[1], b)],
   ["POST", /^\/api\/words$/, (m, q, b) => addCustomWord(b)],
   ["DELETE", /^\/api\/words\/(\d+)$/, (m) => deleteCustomWord(+m[1])],
-  ["GET", /^\/api\/wotd$/, () => wordOfTheDay()],
+  ["GET", /^\/api\/wotd$/, (m, q) => wordOfTheDay(q)],
   ["GET", /^\/api\/gloss$/, (m, q) => gloss(q.w)],
   ["GET", /^\/api\/lists$/, () => allLists()],
   ["POST", /^\/api\/lists$/, (m, q, b) => createList(b)],

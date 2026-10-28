@@ -11,7 +11,7 @@ from fastapi import APIRouter, HTTPException, Request, Response
 from pydantic import BaseModel, Field
 
 from .. import db, srs
-from ..common import NAMES_ONLY_SQL, REFERENCE_SQL, levels_setting, parse_levels, compact_heads, compact_json, fetch_word, full, gloss_key, track_clause
+from ..common import BIBLE_TRACKS, NAMES_ONLY_SQL, REFERENCE_SQL, levels_setting, parse_levels, compact_heads, compact_json, fetch_word, full, gloss_key, track_clause
 
 router = APIRouter(prefix="/api")
 
@@ -176,28 +176,34 @@ def delete_custom_word(word_id: int):
 
 
 @router.get("/wotd")
-def word_of_the_day():
+def word_of_the_day(track: str = ""):
     """One word per day, saved so it stays put while the dataset changes.
     Chosen among words not yet known or in review, favouring rarer words from
     the GRE, literary and subject lists, and enriched words once they exist.
     With some word levels chosen, it comes from those levels (the hardest
-    first), saved per set of levels."""
+    first), saved per set of levels. With a study focus of everyday English
+    or the Bible (`track`), it comes from that, saved per focus."""
+    if track not in ("everyday", *BIBLE_TRACKS):
+        track = ""   # everything and advanced & subjects share one
     with db.tx() as c:
-        levels = parse_levels(levels_setting(c))
-        today_key = f"wotd:{date.today().isoformat()}" + ("" if len(levels) == 5 else ":" + ",".join(map(str, levels)))
+        levels = parse_levels(levels_setting(c)) if track in ("", "everyday") else [1, 2, 3, 4, 5]
+        today_key = (f"wotd:{date.today().isoformat()}" + ("" if len(levels) == 5 else ":" + ",".join(map(str, levels)))
+                     + (f":{track}" if track else ""))
+        scope = track_clause(track or "core")
         saved = c.execute("SELECT value FROM meta WHERE key=?", (today_key,)).fetchone()
         if saved and c.execute("SELECT 1 FROM words WHERE id=?", (int(saved["value"]),)).fetchone():
             return full(fetch_word(c, int(saved["value"])))
         base = ("SELECT w.id FROM words w LEFT JOIN user_word u ON u.word_id = w.id "
                 "LEFT JOIN srs s ON s.word_id = w.id WHERE COALESCE(u.known, 0) = 0 AND s.word_id IS NULL "
-                "AND w.is_custom = 0 AND NOT " + REFERENCE_SQL + " AND " + track_clause("core") + " ")
+                "AND w.is_custom = 0 AND NOT " + REFERENCE_SQL + " AND " + scope + " ")
         ids = []
         tries = ["AND w.enriched = 1 AND w.zipf < 3.5",
                  "AND w.zipf < 3.3 AND w.domains NOT IN ('[\"academic\"]', '[\"professional\"]')", ""]
         if len(levels) < 5:
             base = ("SELECT w.id FROM words w LEFT JOIN user_word u ON u.word_id = w.id "
                     "LEFT JOIN srs s ON s.word_id = w.id WHERE COALESCE(u.known, 0) = 0 AND s.word_id IS NULL "
-                    "AND w.is_custom = 0 AND NOT " + REFERENCE_SQL + " AND NOT " + NAMES_ONLY_SQL + " ")
+                    "AND w.is_custom = 0 AND NOT " + REFERENCE_SQL + " AND NOT " + NAMES_ONLY_SQL
+                    + (" AND " + scope if track else "") + " ")
             chosen = ",".join(map(str, levels))
             tries = [f"AND w.enriched = 1 AND w.level = {levels[-1]}",
                      f"AND w.enriched = 1 AND w.level IN ({chosen})", f"AND w.level IN ({chosen})", *tries]

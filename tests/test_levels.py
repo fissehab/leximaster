@@ -92,3 +92,13 @@ def test_linked_words_come_last_in_every_track(client):
         c.execute("UPDATE words SET domains=? WHERE id=?", (json.dumps(doms + ["linked"]), first))
         again = [r["id"] for r in new_words(c, track_clause("everyday"), 200, shuffle=True)]
     assert again[0] != first and again[-1] == first
+
+
+def test_word_of_the_day_follows_the_study_focus(client):
+    """Everyday English or the Bible as the focus: the word of the day comes from it."""
+    every = client.get("/api/wotd").json()
+    day = client.get("/api/wotd", params={"track": "everyday"}).json()
+    from app.common import EVERYDAY_DOMAINS
+    assert set(day["domains"]) & set(EVERYDAY_DOMAINS)
+    assert client.get("/api/wotd", params={"track": "everyday"}).json()["id"] == day["id"]   # kept for the day
+    assert every["id"] == client.get("/api/wotd", params={"track": "nonsense"}).json()["id"]

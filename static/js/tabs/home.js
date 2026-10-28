@@ -84,7 +84,7 @@ export async function render(root) {
   const [stats, review, word] = await Promise.all([
     api.get("/api/stats"),
     api.get("/api/review/queue", { count: 1, track: reviewTrack() }),
-    api.get("/api/wotd").catch(() => null),
+    api.get("/api/wotd", { track: reviewTrack() }).catch(() => null),
   ]);
   wotd = word;
   const hour = new Date().getHours();
