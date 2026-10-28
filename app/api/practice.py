@@ -11,9 +11,9 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from .. import db, srs
-from ..common import (BIBLE_TRACKS, EVERYDAY_DOMAINS, NAMES_ONLY_SQL, WORD_COLUMNS, WORD_FROM, blank_sentence,
+from ..common import (BIBLE_TRACKS, CHOSEN_SQL, EVERYDAY_DOMAINS, LEVELED, LINKED_SQL, NAMES_ONLY_SQL, REFERENCE_SQL, WORD_COLUMNS, WORD_FROM, blank_sentence,
                       bump_activity, compact, core_definition, examples_for, fetch_word, full, is_base_form, pool_ids, quiz_synonyms,
-                      today_iso, track_clause, weighted_sample)
+                      level_clause, today_iso, track_clause, weighted_sample)
 
 router = APIRouter(prefix="/api")
 
@@ -37,20 +37,24 @@ def avg_review_seconds(c) -> float:
     return (row["ms"] / 1000.0 + 3) if row and row["ms"] else DEFAULT_REVIEW_SECONDS
 
 
-def new_words(c, clause: str, n: int) -> list:
+def new_words(c, clause: str, n: int, *, shuffle: bool = False, level: str = "1=1") -> list:
     """Unseen words for today's session: words you put in a list of your own
     first, then low-star words (you flagged them as unfamiliar), then unrated
     words, most frequent first (everyday entries in a fixed mixed order).
-    Words with notes or examples to study come before bare dictionary words."""
+    Words with notes or examples to study come before bare dictionary words.
+    `shuffle`: everyday entries; `level`: common.level_clause."""
     if n <= 0:
         return []
     # Everyday entries are all common, so frequency would serve "is this"
     # and "like" first; a fixed shuffle mixes the situations instead.
-    then = "(w.id * 7919) % 10007" if clause == track_clause("everyday") else "w.freq_rank"
+    then = "(w.id * 7919) % 10007" if shuffle else "w.freq_rank"
+    # Linked words (related words other entries link to) come after the rest
+    # in every track, whatever its order.
     order = ("ORDER BY EXISTS (SELECT 1 FROM list_words lw WHERE lw.word_id = w.id) DESC, "
              "CASE WHEN COALESCE(u.stars,0) BETWEEN 1 AND 2 THEN 0 "
-             f"WHEN COALESCE(u.stars,0) = 0 THEN 1 ELSE 2 END, {then} ASC LIMIT ?")
-    base = f"SELECT {WORD_COLUMNS} {WORD_FROM} WHERE s.word_id IS NULL AND COALESCE(u.known, 0) = 0 AND {clause} "
+             f"WHEN COALESCE(u.stars,0) = 0 THEN 1 ELSE 2 END, {LINKED_SQL}, {then} ASC LIMIT ?")
+    base = (f"SELECT {WORD_COLUMNS} {WORD_FROM} WHERE s.word_id IS NULL AND COALESCE(u.known, 0) = 0 "
+            f"AND {CHOSEN_SQL} AND {clause} AND {level} ")
     rows = c.execute(base + "AND (w.enriched = 1 OR w.is_custom = 1 "
                      "OR json_array_length(json_extract(w.data, '$.conversation')) > 0) " + order,
                      (n,)).fetchall()
@@ -84,6 +88,7 @@ def review_queue(extra: int = 0, track: str = "", count: int = 0):
     tr = track_clause(track)
     with db.tx() as c:
         st = db.settings(c)
+        level = level_clause(st.get("word_levels")) if track in LEVELED else "1=1"
         budget = int(st["session_minutes"]) * 60
         per_review = avg_review_seconds(c)
         act = c.execute("SELECT reviews, new_words, seconds FROM daily_activity WHERE date=?",
@@ -109,26 +114,31 @@ def review_queue(extra: int = 0, track: str = "", count: int = 0):
         n_new = min(new_cap, int(remaining // NEW_CARD_SECONDS) + max(0, extra))
         queue += [(r, True) for r in unseen[:max(0, n_new)]]
         n_new -= min(len(unseen), max(0, n_new))
+        level_short = False
         if n_new > 0:
             if track:
-                new_rows = new_words(c, tr, n_new)
+                new_rows = new_words(c, tr, n_new, shuffle=track == "everyday", level=level)
             else:
                 # Both tracks: alternate, or the far more frequent everyday
                 # words would crowd out the advanced ones.
-                a = new_words(c, track_clause("everyday"), (n_new + 1) // 2)
-                b = new_words(c, track_clause("core"), n_new)
+                a = new_words(c, track_clause("everyday"), (n_new + 1) // 2, shuffle=True, level=level)
+                b = new_words(c, track_clause("core"), n_new, level=level)
                 new_rows = [r for pair in zip(a, b) for r in pair] + a[len(b):] + b[len(a):]
                 new_rows = new_rows[:n_new]
+            # Fewer new words than asked for, because of the chosen levels.
+            level_short = level != "1=1" and len(new_rows) < n_new
             queue += [(r, True) for r in new_rows]
         queue = interleave(queue)
         if count:
             n_new_cards = sum(1 for _, is_new in queue if is_new)
             return {"total": len(queue), "due": len(queue) - n_new_cards, "new": n_new_cards,
+                    "level_short": level_short,
                     "due_total": len(due), "est_seconds": round(used + n_new_cards * NEW_CARD_SECONDS) if queue else 0,
                     "done_today": {"reviews": done_reviews, "new": done_new,
                                    "seconds": act["seconds"] if act else 0}}
         return {
             "queue": [{**full(r), "is_new": is_new} for r, is_new in queue],
+            "level_short": level_short,
             "due_total": len(due),
             "done_today": {"reviews": done_reviews, "new": done_new,
                            "seconds": act["seconds"] if act else 0},
@@ -363,7 +373,8 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
         if len(pool) < 4:
             raise HTTPException(400, "Not enough words match these filters. Choose a wider set.")
         all_ids = [r["id"] for r in c.execute(
-            f"SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT {NAMES_ONLY_SQL}")]
+            f"SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT {NAMES_ONLY_SQL} "
+            f"AND NOT {REFERENCE_SQL}")]
         if len(all_ids) < 50:  # dataset not enriched yet: draw distractors from every word
             all_ids = [r["id"] for r in c.execute("SELECT id FROM words")]
         # Fewer question types fit fewer words: look at more of them.

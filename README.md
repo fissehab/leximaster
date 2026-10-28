@@ -21,50 +21,51 @@ local app on your Mac. Both work the same and share the same progress file forma
 
 ## What's in it
 
-16,406 entries. 5,821 have a human American recording; the other 10,585 have a natural synthesized
+43,273 entries. 13,880 have a human American recording; the other 29,393 have a natural synthesized
 American recording made for LexiMaster (Kokoro, an open neural voice), spoken from each entry's reviewed
 IPA for rare words and names.
 
-**Advanced & subjects** (scope "Advanced & subjects", 12,239 entries including the Bible vocabulary):
+**Advanced & subjects** (scope "Advanced & subjects", 34,931 entries including the Bible vocabulary and
+linked words; an entry can be in several domains):
 
 | Domain | Entries | Domain | Entries |
 |---|---|---|---|
-| Advanced (GRE/SAT level) | 7,445 | Artificial intelligence | 594 |
-| Professional | 1,313 | Software engineering | 483 |
-| Literary | 577 | Data science | 428 |
-| Academic | 415 | Statistics & probability | 413 |
-| Theology | 869 | Mathematics | 600 |
-| Philosophy | 723 | Logic | 294 |
-| Christian anthropology | 208 | Orthodox mysticism | 145 |
+| Advanced (GRE/SAT level) | 7,632 | Artificial intelligence | 861 |
+| Professional | 4,157 | Software engineering | 1,360 |
+| Literary | 581 | Data science | 1,052 |
+| Academic | 765 | Statistics & probability | 907 |
+| Theology | 1,807 | Mathematics | 1,554 |
+| Philosophy | 1,752 | Logic | 577 |
+| Christian anthropology | 293 | Orthodox mysticism | 163 |
 
-**Everyday English** (scope "Everyday English", 3,211 entries): the words, phrasal verbs and
-expressions of daily American life, each with hand-written conversation examples labeled by meaning.
+**Everyday English** (scope "Everyday English", 7,426 entries, linked words included): the words, phrasal verbs and
+expressions of daily American life, each most with hand-written conversation examples labeled by meaning.
 
 | Domain | Entries | Domain | Entries |
 |---|---|---|---|
-| Idioms & expressions | 342 | Beach & outdoors | 295 |
-| Home & health | 323 | Sports & pop culture | 273 |
-| Phrasal verbs | 318 | Dining out | 263 |
-| Food & taste | 306 | Meetings | 262 |
-| Feelings & reactions | 303 | Getting around | 249 |
-| Small talk | 299 | Shopping & errands | 232 |
-| | | Phone & video calls | 189 |
+| Idioms & expressions | 1,022 | Beach & outdoors | 864 |
+| Home & health | 825 | Sports & pop culture | 770 |
+| Phrasal verbs | 806 | Dining out | 600 |
+| Food & taste | 1,025 | Meetings | 453 |
+| Feelings & reactions | 529 | Getting around | 441 |
+| Small talk | 669 | Shopping & errands | 561 |
+| | | Phone & video calls | 242 |
 
-**Bible** (3,281 entries), following the Revised Standard Version (RSV), in two parts:
+**Bible** (4,039 entries), following the Revised Standard Version (RSV), in two parts:
 
-- **Bible · Vocabulary** (2,350): the vocabulary of Scripture and biblical studies (canon and
+- **Bible · Vocabulary** (3,123): the vocabulary of Scripture and biblical studies (canon and
   versions, names of God, covenant and salvation, worship and offices, Hebrew and Greek terms,
   English expressions from the Bible, the books of the Bible) and the distinctive words of the
   biblical text.
-- **Bible · Names** (967): every person and place named five or more times from Genesis to
+- **Bible · Names** (952): every person and place named five or more times from Genesis to
   Revelation, each labeled Person, Place or People. Names come up in review only on a Bible scope.
   Names that became everyday English words (Goliath, Judas, good Samaritan, raise Cain) are in both
   parts, with the everyday meaning first. The labels live in `seeds/names/bible.txt`
   (`name | kind | everyday meaning`), written by `tools/classify_names.py` and checked by hand.
 
-3,185 entries have an "In the Bible" note citing RSV passages and the Hebrew or Greek word behind
+5,203 entries have an "In the Bible" note citing RSV passages and the Hebrew or Greek word behind
 them; the notes were fact-checked (`tools/check_bible.py`). Where Eastern Orthodox, Roman Catholic and
-Protestant Christians understand a term differently (419 entries), each tradition's view is given.
+Protestant Christians understand a term differently (900 entries), each tradition's view is given.
 
 **Each entry has** the American IPA and a stress respelling (in-ter-SEED), a pronunciation tip, a
 learner's definition with an example, how Americans use the word, how it differs from near-synonyms,
@@ -109,7 +110,9 @@ kept unless the word data changed.
 - **Stars** (1–5, on any word page or flashcard) say how familiar a word is: 1–2★ words come back
   more often.
 - **Know it** takes a word you already know out of your study (press it again to bring it back).
-- **Settings** (in Stats): session length, new words per day, and the speed of the synthesized voice.
+- **Settings** (in Stats): session length, new words per day, word levels, and pronunciation speed.
+- **Pronunciation speed:** the button beside each play button switches between 1×, .75× and .5×
+  (pitch stays natural) for every recording and voice; the choice is remembered.
   Flashcards has its own "Play audio on flip" switch.
 - **Your own words:** My lists → "Add my own word" adds a word with your definition and example.
 - **Moving between devices:** Stats → Export progress saves a file; Import on the other device. Import
@@ -288,18 +291,31 @@ Each entry reads from the top down:
 1. The word, its sound, IPA and respelling, and one row of labels.
 2. The meaning, with one example under it, and its synonyms and antonyms. For a Bible name, what the
    Bible says about it.
-3. **Use it right:** the grammar patterns it's used in ("insist on doing sth", "[U] advice on sth"),
+3. **Word forms:** the tenses of a verb (abides, abided/abode, abiding), a noun's plural, an
+   adjective's comparative and superlative, and the related words in other parts of speech
+   (analyze: analysis, analyst, analytical). Built by tools/forms.py from lemminflect's lexicon (no
+   guessed forms; no plural for uncountable nouns like "information"), the study notes' word family
+   and Open English WordNet's derivation links.
+4. **Use it right:** the grammar patterns it's used in ("insist on doing sth", "[U] advice on sth"),
    how Americans use it, how it differs from near-synonyms, common mistakes, and common pairings.
-4. **In the Bible**, and Orthodox, Catholic and Protestant views where they differ.
-5. **More examples:** two shown, the rest folded.
-6. **More meanings:** the dictionary's other senses, folded, in the dictionary's order.
-7. **Pronunciation, register, word family, origin:** folded.
+5. **In the Bible**, and Orthodox, Catholic and Protestant views where they differ.
+6. **More examples:** two shown, the rest folded.
+7. **All meanings:** every dictionary sense, open, in the dictionary's order, each with an example
+   sentence: the dictionary's own, or one written by the `examples` build stage.
+8. **Pronunciation, register, origin:** folded.
+9. Your notes.
 
-Every synonym, antonym, "Compared with" word and word-family word can be tapped. A word with its own
+Every synonym, antonym, "Compared with" word and related form can be tapped. A word with its own
 entry (blue) opens it; a form of one ("kings") opens "king". Any other word (grey, dotted underline)
 opens a short definition from Open English WordNet, with similar words (tappable too), a Wiktionary
 link and "Add to my words". Phrases WordNet lacks get the Wiktionary link only.
-8. Your notes.
+
+Related words without an entry of their own get one: `tools/glossary.py --seed` lists them in
+seeds/reference.txt and the build gives each a full entry. The ones of ordinary commonness (Zipf 1.0–5.5, about 85% of them) become **Linked words**:
+studied like the rest, but only after every other word, so the topic lists keep their place. The
+very rare and very common ones ("to", "steatopygic") are **look-up only**: they open from any link
+but stay out of new-word study, practice, quizzes and the word of the day until you choose one:
+star it, add it to a list, or filter by that domain.
 
 Dictionary senses that only restate the meaning in step 2 are marked when the data is built
 (`build_dataset.normalize_display`) and listed only under "Dictionary wording" in step 7.
@@ -397,7 +413,8 @@ tools/             build_site.py (the website), audit.py (content checks), parit
                    audio_credits.py (each recording's author and license, for the credits page),
                    tts.py (natural synthesized recordings for words without a human one),
                    audio_norm.py (even loudness and a lead-in for the human recordings),
-                   glossary.py (short WordNet definitions for related words without an entry)
+                   glossary.py (short WordNet definitions for related words without an entry),
+                   forms.py (each entry's tenses, plural, comparative and related forms)
 app/               FastAPI backend: db.py (schema, migrations, daily backups), srs.py (SM-2), api/ (routes)
 tests/             pytest suite (a 200-word fixture; never touches data/)
 static/            single-page app, with no build step: index.html, css/, js/, fonts/

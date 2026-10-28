@@ -254,6 +254,11 @@ button.chip[aria-pressed="true"] { background: var(--lapis-soft); color: var(--l
 .sense-list li { font: 400 17px/1.55 var(--font-body); color: var(--ink); max-width: 68ch; }
 .sense-list li::marker { color: var(--muted); font: 600 13px var(--font-ui); }
 .sense-ex { display: block; margin-top: 3px; font-style: italic; color: var(--ink-2); font-size: 15px; }
+.all-meanings > h3 { margin: 0; }
+.all-meanings > .fold > .fold-body { padding-top: 12px; }
+.card-senses { display: flex; flex-direction: column; gap: 4px; }
+.card-senses ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+.card-senses li { font-size: 15px; line-height: 1.45; }
 .more-senses { align-self: flex-start; }
 
 .example {
@@ -759,7 +764,12 @@ main:has(.grade-dock) { scroll-padding-bottom: 190px; }   /* a focused control n
 .related { display: flex; flex-direction: column; gap: 6px; }
 .related-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
 .related-label { font: 600 11px/1.2 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); min-width: 72px; }
-.related .tags, .card-collocations { display: flex; flex-wrap: wrap; gap: 6px; }
+.related .tags, .card-collocations, .word-forms .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.word-forms { display: flex; flex-direction: column; gap: 8px; }
+.forms-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.forms-list { display: flex; flex-wrap: wrap; gap: 4px 16px; min-width: 0; }
+.form-label { color: var(--muted); font-size: .9em; }
+.form b { font-weight: 600; }
 /* Focus moved by the app (to a new card's headword) needs no ring. */
 [tabindex="-1"]:focus { outline: none; }
 /* Related words: an entry opens (solid lapis); a word without one opens a
@@ -847,7 +857,7 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
    says what kind: gold for dates and example contexts, plum for review
    notes, muted otherwise. */
 .eyebrow, .q-ask, .pron-box h3, .settings-fold > summary, .filters-fold > summary, .related-label,
-.card-note-label, .chose .label, .npanel h3, .senses-label, .ex-ctx, .new-badge, .traditions dt {
+.card-note-label, .chose .label, .npanel h3, .all-meanings > h3, .senses-label, .ex-ctx, .new-badge, .traditions dt {
   font-family: var(--font-ui); font-weight: 600; font-size: 11px; line-height: 1.2; letter-spacing: .08em;
   text-transform: uppercase; font-style: normal;
 }
@@ -867,3 +877,48 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
 .patterns .slot { font-family: var(--font-ui); font-size: 13px; font-style: italic; color: var(--muted); }
 
 .card-front .entry-top { justify-content: center; }
+
+/* ---------------------------------------------------------------- word levels */
+/* The Word levels dropdown: a summary that looks like a select, opening a
+   menu of five checkboxes. Saved on each change. */
+.level-picker { position: relative; }
+.level-picker > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.level-picker > summary::-webkit-details-marker { display: none; }
+.level-picker > summary::after { content: ""; width: 7px; height: 7px; margin: -3px 2px 0 4px;
+  border: solid var(--muted); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); }
+.level-picker[open] > summary::after { transform: rotate(-135deg); margin-top: 3px; }
+.level-menu {
+  position: absolute; z-index: 30; top: calc(100% + 6px); right: 0; width: min(300px, calc(100vw - 32px));
+  margin: 0; padding: 10px 12px 8px; display: flex; flex-direction: column; gap: 2px;
+  background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.level-menu legend { float: left; width: 100%; margin-bottom: 4px; font: 600 11px/1.2 var(--font-ui);
+  text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.level-option { display: flex; align-items: flex-start; gap: 10px; min-height: 44px; padding: 6px 4px; border-radius: var(--radius-sm); cursor: pointer; }
+.level-option:hover { background: var(--surface-2); }
+.level-option input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--lapis); flex: none; }
+.level-option > span { display: flex; flex-direction: column; font-size: 14px; line-height: 1.35; }
+.level-option b { font-weight: 600; color: var(--ink); }
+.level-option input:disabled + span { opacity: 1; }
+.level-note { margin: 4px 4px 0; font-size: 12px; }
+.stats-settings .level-menu, .field .level-menu { left: 0; right: auto; }
+.chip.level { font-weight: 600; }
+/* Inside a .field the generic label style (small caps) must not apply. */
+.level-menu .level-option { font: inherit; text-transform: none; letter-spacing: normal; color: var(--ink-2); }
+/* On a phone the menu is a sheet across the screen, above the tab bar. */
+@media (max-width: 760px) {
+  .level-menu, .field .level-menu {
+    position: fixed; left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px));
+    top: auto; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); width: auto;
+  }
+}
+
+/* Playback speed beside the play button: 1× → .75× → .5×. */
+.speed-btn {
+  min-width: 44px; min-height: 32px; padding: 0 8px; align-self: center;
+  border: 1px solid var(--rule-strong); border-radius: 99px; background: var(--surface);
+  font: 600 12px/1 var(--font-ui); color: var(--verdigris); cursor: pointer; font-variant-numeric: tabular-nums;
+}
+.speed-btn:hover { background: var(--verdigris-soft); }
+@media (pointer: coarse) { .speed-btn { min-height: 44px; } }
+.play-group { display: inline-flex; align-items: center; gap: 8px; flex: none; }

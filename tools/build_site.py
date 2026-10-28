@@ -39,7 +39,7 @@ STATIC = ROOT / "static"
 DATA = ROOT / "data"
 SHARDS = 64
 DETAIL_FIELDS = ("phonetic", "meanings", "nuance", "source", "synonyms", "antonyms", "etymology",
-                 "variant_of", "conversation", "also")
+                 "variant_of", "conversation", "also", "forms")
 SITE_URL = "https://fissehab.github.io/leximaster/"
 
 # The sql.js release vendored in static/vendor/ (from
@@ -150,6 +150,8 @@ def build_data(words: list[dict], media: dict[str, tuple[str, Path]]) -> tuple[i
             entry["c"] = 1
         if w.get("name_kind"):
             entry["nk"] = w["name_kind"]
+        if w.get("level", 5) != 5:                 # the site reads a missing level as 5
+            entry["l"] = w["level"]
         if syn := quiz_synonyms(w):
             entry["sy"] = syn
         index.append(entry)
@@ -537,11 +539,14 @@ They were selected, re-ordered, shortened and converted to American spelling for
 shared under the same license. Some entries came from the
 <a href="https://dictionaryapi.dev/">Free Dictionary API</a>, which is also built on Wiktionary.</p>
 <p>Short definitions of related words that have no entry of their own (a synonym, antonym or compared word
-you tap) come from <a href="https://en-word.net/">Open English WordNet</a> 2025, by the Global WordNet
+you tap), and the related forms under Word forms, come from <a href="https://en-word.net/">Open English WordNet</a> 2025, by the Global WordNet
 Association and its contributors, under the
 <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a> license; it builds on
 Princeton WordNet, WordNet 3.1 Copyright 2011 by Princeton University
-(<a href="licenses/wordnet-LICENSE.txt">license</a>).</p>
+(<a href="licenses/wordnet-LICENSE.txt">license</a>). Tenses, plurals and comparatives come from
+<a href="https://github.com/bjascob/LemmInflect">LemmInflect</a> (MIT license), built on the
+<a href="https://lhncbc.nlm.nih.gov/LSG/Projects/lexicon/current/web/index.html">SPECIALIST Lexicon</a>
+of the U.S. National Library of Medicine.</p>
 <p>American IPA for words without a Wiktionary transcription was converted from the
 <a href="https://github.com/cmusphinx/cmudict">CMU Pronouncing Dictionary</a>, Copyright © 1993–2015
 Carnegie Mellon University (<a href="licenses/cmudict-LICENSE.txt">license</a>).</p>

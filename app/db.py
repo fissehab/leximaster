@@ -35,7 +35,7 @@ WORDS_COMPACT = [
        WHEN OLD.id IS NOT NEW.id OR OLD.word IS NOT NEW.word OR OLD.data IS NOT NEW.data
          OR OLD.domains IS NOT NEW.domains OR OLD.freq_rank IS NOT NEW.freq_rank
          OR OLD.has_audio IS NOT NEW.has_audio OR OLD.enriched IS NOT NEW.enriched
-         OR OLD.is_custom IS NOT NEW.is_custom
+         OR OLD.is_custom IS NOT NEW.is_custom OR OLD.level IS NOT NEW.level
        BEGIN DELETE FROM words_compact WHERE word_id IN (OLD.id, NEW.id); END""",
     """CREATE TRIGGER IF NOT EXISTS words_compact_del AFTER DELETE ON words
        BEGIN DELETE FROM words_compact WHERE word_id = OLD.id; END""",
@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS words (
     enriched   INTEGER NOT NULL DEFAULT 0,
     data       TEXT NOT NULL,                -- JSON: phonetic, audio, meanings, nuance
     is_custom  INTEGER NOT NULL DEFAULT 0,
+    level      INTEGER,                      -- 1 most common .. 5 rare; NULL for your own words
     created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE TABLE IF NOT EXISTS user_word (
@@ -130,6 +131,7 @@ DEFAULT_SETTINGS = {
     "accent": "us",
     "autoplay": "1",
     "speech_rate": "0.9",
+    "word_levels": "1,2,3,4,5",   # the levels new words come from (common.parse_levels)
 }
 
 _lock = threading.Lock()
@@ -167,10 +169,16 @@ def tx():
 # step that turns version N-1 into N, e.g.
 #     2: ["ALTER TABLE srs ADD COLUMN stability REAL"],
 # Steps run inside the startup transaction, so a failed step changes nothing.
-SCHEMA_VERSION = 2
-MIGRATIONS: dict[int, list[str]] = {
+SCHEMA_VERSION = 3
+MIGRATIONS: dict[int, list] = {   # SQL strings, or functions of the connection
     1: [],  # the baseline: the schema as first released (created by SCHEMA)
     2: WORDS_COMPACT,  # filled by init() and on demand (common.compact_heads)
+    # Word levels: the column, the cache trigger that watches it, and a sync
+    # (words.json is unchanged, so its stamp would skip one) to fill it.
+    3: [lambda c: "level" in {r[1] for r in c.execute("PRAGMA table_info(words)")}
+        or c.execute("ALTER TABLE words ADD COLUMN level INTEGER"),   # a new database has it
+        "DROP TRIGGER IF EXISTS words_compact_upd", WORDS_COMPACT[2],
+        "DELETE FROM meta WHERE key = 'words_stamp'"],
 }
 
 
@@ -186,7 +194,7 @@ def migrate(c: sqlite3.Connection) -> int:
                            f"this app knows {SCHEMA_VERSION}); update the app.")
     for version in range(current + 1, SCHEMA_VERSION + 1):
         for statement in MIGRATIONS[version]:
-            c.execute(statement)
+            statement(c) if callable(statement) else c.execute(statement)
         c.execute(f"PRAGMA user_version = {int(version)}")
     return SCHEMA_VERSION
 
@@ -252,18 +260,18 @@ def sync_words(force: bool = False) -> int:
     for w in payload.get("words", []):
         data = {k: w.get(k) for k in ("phonetic", "audio", "meanings", "nuance", "source",
                                       "synonyms", "antonyms", "etymology", "variant_of",
-                                      "conversation", "name_kind", "tts", "also")}
+                                      "conversation", "name_kind", "tts", "also", "forms")}
         rows.append((w["key"], w["word"], w.get("freq_rank"), w.get("zipf"),
                      json.dumps(w.get("domains", [])), int(bool(w.get("has_audio"))),
-                     int(w.get("nuance") is not None), json.dumps(data, ensure_ascii=False)))
+                     int(w.get("nuance") is not None), json.dumps(data, ensure_ascii=False), w.get("level")))
     with tx() as c:
         c.executemany(
-            """INSERT INTO words(key, word, freq_rank, zipf, domains, has_audio, enriched, data)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """INSERT INTO words(key, word, freq_rank, zipf, domains, has_audio, enriched, data, level)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                ON CONFLICT(key) DO UPDATE SET
                  word=excluded.word, freq_rank=excluded.freq_rank, zipf=excluded.zipf,
                  domains=excluded.domains, has_audio=excluded.has_audio,
-                 enriched=excluded.enriched, data=excluded.data
+                 enriched=excluded.enriched, data=excluded.data, level=excluded.level
                WHERE words.is_custom = 0""",
             rows,
         )

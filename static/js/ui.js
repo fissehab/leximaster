@@ -1,9 +1,9 @@
 // Shared UI: DOM helper, icons, the dictionary entry, stars, toasts, dialogs.
 
 import { api, allWords, cachedWords, invalidateWords, patchCachedWord } from "./api.js";
-import { playWord } from "./audio.js";
+import { playWord, speedButton } from "./audio.js";
 import { EVERYDAY_DOMAINS } from "./shared.gen.js";
-import { loadFilter, saveFilter } from "./state.js";
+import { loadFilter, saveFilter, saveSettings, settings } from "./state.js";
 
 /** h("div.cls#id", {attrs, on: {click}}, ...children) — text children are escaped. */
 export function h(tag, attrs, ...children) {
@@ -87,7 +87,7 @@ export function playButton(word, { small = false } = {}) {
 }
 
 export const EVERYDAY = EVERYDAY_DOMAINS;
-const GENERAL = ["advanced", "academic", "literary", "professional"];
+const GENERAL = ["advanced", "academic", "literary", "professional", "linked", "reference"];
 
 export const DOMAIN_LABELS = {
   everyday: "All everyday English",
@@ -99,7 +99,7 @@ export const DOMAIN_LABELS = {
   mathematics: "Mathematics", statistics: "Statistics & probability", data_science: "Data science",
   philosophy: "Philosophy", theology: "Theology", christian_anthropology: "Christian anthropology",
   orthodox_mysticism: "Orthodox mysticism", artificial_intelligence: "Artificial intelligence", bible: "Bible", bible_vocab: "Bible · Vocabulary", bible_names: "Bible · Names", logic: "Logic", software_engineering: "Software engineering",
-  custom: "My words",
+  custom: "My words", linked: "Linked words", reference: "Look-up only (linked, very rare or very common)",
 };
 const NAME_KIND_LABELS = { person: "Person", place: "Place", people: "People" };
 export const domainLabel = d => DOMAIN_LABELS[d] || d.replace(/_/g, " ");
@@ -243,12 +243,14 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   }, icon("check"), h("span", w.known ? "Known" : "Know it"));
   const respelling = n && n.pronunciation && n.pronunciation.respelling;
   const parts = [h("header.entry-head",
-    h("div.entry-top", h("h2.headword", w.word), playButton(w)),
+    h("div.entry-top", h("h2.headword", w.word), h("span.play-group", playButton(w), speedButton())),
     w.phonetic || respelling ? h("div.entry-pron",
       w.phonetic ? h("span.ipa", { lang: "en-fonipa", title: "IPA" }, h("span.sr-only", "IPA: "), w.phonetic) : null,
       respelling ? h("span.respell", respelling) : null) : null,
     h("div.entry-meta",
       pos ? posBadge(pos) : null,
+      w.level && mode !== "card" ? h("span.chip.level", { title: `How common the word is: level ${w.level} of 5` },
+        `Level ${w.level} · ${levelLabel(w.level)}`) : null,
       isName ? h("span.chip.name-kind", `Bible name · ${NAME_KIND_LABELS[w.name_kind] || w.name_kind}`) : null,
       domains.slice(0, 2).map(d => h("span.chip", domainLabel(d))),
       domains.length > 2 ? h("span.chip", { title: domains.slice(2).map(domainLabel).join(", ") }, `+${domains.length - 2}`) : null),
@@ -260,8 +262,26 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   const senseList = list => {
     const many = list.length > 1;
     return list.map(g => h("div.sense-group", many ? posBadge(g.pos) : null,
-      h("ol.sense-list", g.senses.map(s => h("li", smart(s.definition),
+      h("ol.sense-list", { start: g.start || 1 }, g.senses.map(s => h("li", smart(s.definition),
         s.example ? h("span.sense-ex", smart(s.example)) : null)))));
+  };
+  // All the dictionary's meanings, in its order, each with its example: the
+  // first few in view, the rest one tap away.
+  const MEANINGS_SHOWN = 6;
+  const meaningsList = () => {
+    const count = groups.reduce((a, g) => a + g.senses.length, 0);
+    let left = MEANINGS_SHOWN;
+    const head = [], rest = [];
+    for (const g of groups) {
+      const a = g.senses.slice(0, Math.max(0, left)), b = g.senses.slice(a.length);
+      left -= a.length;
+      if (a.length) head.push({ pos: g.pos, senses: a });
+      if (b.length) rest.push({ pos: g.pos, senses: b, start: a.length + 1 });
+    }
+    return h("section.senses.all-meanings", { "aria-label": "All meanings" },
+      h("h3", count > 1 ? `Meanings (${count})` : "Meaning"), senseList(head),
+      rest.length ? h("details.fold", h("summary", `Show all ${count} meanings`),
+        h("div.fold-body", senseList(rest))) : null);
   };
   const exampleLine = (text, label) => h("p.example", label ? h("span.ex-ctx", label) : null, highlight(text, w.word));
 
@@ -295,6 +315,10 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
     antonyms.length ? h("div.related-row", h("span.related-label", "Antonyms"), wordChips(antonyms.slice(0, mode === "card" ? 3 : 6))) : null) : null;
 
   if (mode === "card") {
+    const others = core ? groups.flatMap(g => g.senses.map(s => ({ pos: g.pos, s })))
+      .filter(x => x.s.definition !== core.definition).slice(0, 3) : [];
+    if (others.length) parts.push(h("div.card-senses", h("span.related-label", "Also means"),
+      h("ol", others.map(x => h("li", h("span.muted", `${x.pos} · `), smart(x.s.definition))))));
     if (related) parts.push(related);
     // One contrast and one pitfall, a different one each day, so repeat
     // reviews bring something new to notice.
@@ -325,8 +349,11 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   const isPron = m => /pronounc|stress|syllable|sound|rhyme|said like|say it/i.test(m);
   const nuanceParts = [];
 
+  if (core && groups.length) parts.push(meaningsList());
   // Use it right: what an advanced learner needs to use the word well.
   if (related) parts.push(related);
+  const forms = wordForms(w, n);
+  if (forms) parts.push(forms);
   if (n) {
     const mistakes = (n.common_mistakes || []).filter(m => !isPron(m));
     const use = [
@@ -366,12 +393,6 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
       lines.length > 2 ? fold(`${lines.length - 2} more`, h("div.examples-list", lines.slice(2))) : null));
   }
 
-  // Other dictionary meanings: folded, in the dictionary's order.
-  if (core && groups.length) {
-    const count = groups.reduce((a, g) => a + g.senses.length, 0);
-    nuanceParts.push(h("section.senses.npanel.wide", { "aria-label": "Other meanings" },
-      fold(`More meanings (${count})`, senseList(groups))));
-  }
 
   // Reference: folded; each block only when it has something to say.
   if (n || w.etymology || wording.length) {
@@ -386,13 +407,12 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
         pron.tip ? h("p", smart(pron.tip)) : null, pronMistakes.length ? h("ul", pronMistakes.map(m => h("li", smart(m)))) : null) : null,
       showRegister || connotation ? block("Register",
         showRegister ? h("div.tags", register.map(r => h("span.chip", r))) : null, connotation ? h("p", smart(connotation)) : null) : null,
-      n && n.word_family && n.word_family.length ? block("Word family", wordChips(n.word_family)) : null,
       n && n.analogy ? block("Analogy", h("p", smart(n.analogy))) : null,
       (n && n.etymology) || w.etymology ? block("Etymology", h("p", italicize((n && n.etymology) || w.etymology)),
         dictEtym ? h("p.muted", "Dictionary: ", italicize(dictEtym)) : null) : null,
       wording.length ? block("Dictionary wording", h("ul.muted", wording.map(s => h("li", smart(s.definition))))) : null,
     ].filter(Boolean);
-    if (ref.length) nuanceParts.push(h("section.npanel.wide.reference", fold("Pronunciation, register, word family, origin", h("div.ref-grid", ref))));
+    if (ref.length) nuanceParts.push(h("section.npanel.wide.reference", fold("Pronunciation, register, origin", h("div.ref-grid", ref))));
   }
 
   if (nuanceParts.length) parts.push(h("div.nuance", nuanceParts));
@@ -429,6 +449,19 @@ function grammarBlock(patterns) {
 }
 
 /** Words as chips; each opens its entry, or a short definition when it has none. */
+// Word forms: tenses, plural, comparative; then the words built from it in
+// other parts of speech (each opens its entry or a short definition).
+function wordForms(w, n) {
+  const f = w.forms || {};
+  // A word added since the last build has no forms yet: its word family.
+  const related = f.related || (!w.forms && n && n.word_family) || [];
+  const rows = (f.inflections || []).map(([pos, list]) => h("div.forms-row",
+    h("span.related-label", pos),
+    h("span.forms-list", list.map(([label, value]) => h("span.form", h("span.form-label", label), " ", h("b", value))))));
+  if (related.length) rows.push(h("div.forms-row", h("span.related-label", "Related"), wordChips(related)));
+  return rows.length ? h("section.npanel.wide.word-forms", h("h3", "Word forms"), rows) : null;
+}
+
 function wordChips(words) {
   return h("div.tags", words.map(x => termLink(x)));
 }
@@ -637,6 +670,61 @@ export function formDialog({ title, fields = [], submit = "Save", body = null, o
 
 export function confirmDialog(title, message, action = "Delete") {
   return formDialog({ title, body: h("p", message), submit: action }).then(v => v !== null);
+}
+
+// ---------------------------------------------------------------- word levels
+
+/** Word levels by how common a word is (build_dataset.word_level). */
+export const LEVELS = [[1, "Most common", "believe, need, busy"], [2, "Common", "schedule, goodbye, fully"],
+  [3, "Less common", "receipt, grasp, vicinity"], [4, "Uncommon", "avid, outburst, reaffirm"],
+  [5, "Rare", "loquacity, symbiosis, mentee"]];
+export const levelLabel = n => (LEVELS.find(([l]) => l === n) || [])[1] || "";
+const chosenLevels = () => String(settings.word_levels || "1,2,3,4,5").split(",").map(Number);
+/** "Levels 1–3", "Levels 1, 3", "All levels". */
+export function levelsText(levels = chosenLevels()) {
+  if (levels.length === 5) return "All levels";
+  if (levels.length === 1) return `Level ${levels[0]} only`;
+  const run = levels.every((l, i) => !i || l === levels[i - 1] + 1);
+  return `Levels ${run ? `${levels[0]}–${levels[levels.length - 1]}` : levels.join(", ")}`;
+}
+
+/**
+ * The word-level dropdown: tick the levels new words come from. Saved at
+ * once (an app-wide setting); at least one stays ticked. onChange(levels)
+ * runs after a save.
+ */
+export function levelPicker({ onChange } = {}) {
+  const summary = h("summary.input.level-summary", { "aria-label": "Word levels to study" }, levelsText());
+  const boxes = LEVELS.map(([n, label, eg]) => {
+    const box = h("input", { type: "checkbox", value: n, checked: chosenLevels().includes(n) });
+    return [box, h("label.level-option", box, h("span", h("b", `${n} · ${label}`), h("span.muted", eg)))];
+  });
+  const sync = () => {
+    const on = boxes.filter(([b]) => b.checked);
+    on.forEach(([b]) => { b.disabled = on.length === 1; });   // never none
+    boxes.filter(([b]) => !b.checked).forEach(([b]) => { b.disabled = false; });
+  };
+  boxes.forEach(([box]) => box.addEventListener("change", async () => {
+    const levels = boxes.filter(([b]) => b.checked).map(([b]) => Number(b.value));
+    sync();
+    try { await saveSettings({ word_levels: levels.join(",") }); } catch (e) { return showError(e); }
+    summary.textContent = levelsText(levels);
+    toast(`New words: ${levelsText(levels).toLowerCase()}`);
+    try { sessionStorage.removeItem("lexi-review-session"); } catch (e) { /* unavailable */ }
+    onChange && onChange(levels);
+  }));
+  sync();
+  const menu = h("details.level-picker", summary,
+    h("fieldset.level-menu", h("legend", "Study new words from"), boxes.map(([, l]) => l),
+      h("p.muted.level-note", "Every word still opens from links and search.")));
+  // Closes like a menu: Escape, or a click elsewhere.
+  menu.addEventListener("keydown", e => { if (e.key === "Escape" && menu.open) { menu.open = false; summary.focus(); } });
+  const close = e => {
+    if (!menu.isConnected) return document.removeEventListener("click", close);   // its page was left
+    if (menu.open && !menu.contains(e.target)) menu.open = false;
+  };
+  document.addEventListener("click", close);
+  return menu;
 }
 
 // ---------------------------------------------------------------- practice filters

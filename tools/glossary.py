@@ -1,8 +1,14 @@
 """Short definitions for the related words that have no entry of their own:
-synonyms, antonyms, "Compared with" and word-family words. Tapping one of
+synonyms, antonyms, "Compared with", word-family and related-form words. Tapping one of
 those opens a small definition from Open English WordNet instead of nothing.
 
     .venv/bin/python tools/glossary.py
+    .venv/bin/python tools/glossary.py --seed   # also write seeds/reference.txt
+
+--seed adds every related word that has no entry yet (the dictionary form
+of each, and plain phrases WordNet lacks) in seeds/reference.txt, so the
+dataset build gives each a full entry ("reference" domain: reachable from
+the words that mention it, kept out of new-word study unless you pick it).
 
 Reads data/words.json and Open English WordNet (downloaded once to
 data/cache/, CC BY 4.0), writes data/glossary.json:
@@ -22,6 +28,7 @@ from __future__ import annotations
 
 import gzip
 import json
+import re
 import sys
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -37,6 +44,8 @@ WORDNET = DATA / "cache" / "english-wordnet-2025.xml.gz"
 WORDNET_URL = ("https://github.com/globalwordnet/english-wordnet/releases/download/"
                "2025-edition/english-wordnet-2025.xml.gz")
 OUT = DATA / "glossary.json"
+SEED = ROOT / "seeds" / "reference.txt"
+PHRASE = re.compile(r"[a-z][a-z' -]*[a-z]")   # a word or plain phrase, not a sentence or "x vs. y"
 POS = {"n": "noun", "v": "verb", "a": "adjective", "s": "adjective", "r": "adverb"}
 MAX_SENSES, MAX_PER_POS, MAX_SYN = 5, 3, 6
 
@@ -74,12 +83,14 @@ def load_wordnet() -> tuple[dict[str, list[str]], dict[str, tuple]]:
         urllib.request.urlretrieve(WORDNET_URL, tmp)
         tmp.rename(WORDNET)
     lemmas: dict[str, list[str]] = defaultdict(list)
+    lemmas["#form"] = {}                                     # lowercase -> WordNet's spelling ("Abrahamic")
     entry_form: dict[str, str] = {}
     raw: dict[str, tuple] = {}
     for _, el in ET.iterparse(gzip.open(WORDNET), events=("end",)):
         if el.tag == "LexicalEntry":
             form = el.find("Lemma").get("writtenForm")
             entry_form[el.get("id")] = form
+            lemmas["#form"].setdefault(form.lower(), form)
             for s in el.findall("Sense"):
                 lemmas[form.lower()].append(s.get("synset"))
             for f in el.findall("Form"):                 # irregular forms ("went", "mice")
@@ -95,9 +106,10 @@ def load_wordnet() -> tuple[dict[str, list[str]], dict[str, tuple]]:
     return lemmas, synsets
 
 
-def referenced_terms(words: list[dict]) -> set[str]:
-    """Every synonym, antonym, compared-with and word-family term the app shows."""
-    terms = set()
+def referenced_terms(words: list[dict]) -> dict[str, str]:
+    """Every synonym, antonym, compared-with and word-family term the app
+    shows: lookup key -> the term as first written (label dropped)."""
+    terms = {}
     for w in words:
         n = w.get("nuance") or {}
         meanings = w.get("meanings") or []
@@ -105,9 +117,10 @@ def referenced_terms(words: list[dict]) -> set[str]:
                  *(s for m in meanings for s in (m.get("synonyms") or [])),
                  *(s for m in meanings for s in (m.get("antonyms") or [])),
                  *((d or {}).get("vs", "") for d in (n.get("distinctions") or [])),
-                 *(n.get("word_family") or [])]
-        terms.update(norm(t) for t in found if isinstance(t, str) and t.strip())
-    terms.discard("")
+                 *(n.get("word_family") or []), *((w.get("forms") or {}).get("related") or [])]
+        for t in found:
+            if isinstance(t, str) and norm(t):
+                terms.setdefault(norm(t), re.sub(r"\s*\([^()]*\)\s*$", "", t.replace("\u2019", "'")).strip())
     return terms
 
 
@@ -138,8 +151,9 @@ def main() -> None:
         for a in w.get("also") or []:
             heads.setdefault(a.lower(), w["word"])
     lemmas, synsets = load_wordnet()
-    out, counts = {}, defaultdict(int)
-    for term in sorted(referenced_terms(words)):
+    out, counts, seed = {}, defaultdict(int), {}
+    terms = referenced_terms(words)
+    for term in sorted(terms):
         if term in heads and heads[term].lower() == term:
             counts["entry"] += 1
             continue
@@ -161,12 +175,27 @@ def main() -> None:
             if lemma == term and base:                       # "stopped": an adjective, and a form of "stop"
                 out[term]["form_of"] = heads.get(base, base)
             counts["wordnet"] += 1
+            if lemma not in heads:
+                seed.setdefault(lemma, lemmas["#form"].get(lemma, lemma))
         else:
             counts["none"] += 1
+            if PHRASE.fullmatch(term) and len(term.split()) <= 4:
+                seed.setdefault(term, terms[term])
     OUT.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":"), sort_keys=True), encoding="utf-8")
     print(f"{OUT.relative_to(ROOT)}: {len(out):,} terms ({OUT.stat().st_size / 1e6:.1f} MB) · "
           f"{counts['entry']:,} have entries · {counts['see']:,} point to an entry · "
           f"{counts['wordnet']:,} defined from WordNet · {counts['none']:,} not found")
+    if "--seed" in sys.argv:
+        # Words listed before stay listed: once built they have entries, and
+        # the "reference" tag comes from this file.
+        if SEED.exists():
+            for line in SEED.read_text(encoding="utf-8").splitlines():
+                if line.strip() and not line.startswith("#"):
+                    seed.setdefault(line.strip().lower(), line.strip())
+        SEED.write_text("# Related words (synonyms, antonyms, compared and word-family words) without an\n"
+                        "# entry of their own, written by tools/glossary.py --seed. Tag: reference.\n"
+                        + "".join(f"{seed[k]}\n" for k in sorted(seed)), encoding="utf-8")
+        print(f"{SEED.relative_to(ROOT)}: {len(seed):,} words and phrases")
 
 
 if __name__ == "__main__":

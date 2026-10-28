@@ -8,7 +8,7 @@
 // a play that was superseded (stopped, or replaced by a newer one) never
 // falls back to the device voice.
 
-import { settings } from "./state.js";
+import { saveSettings, settings } from "./state.js";
 
 const player = new Audio();
 player.preload = "auto";
@@ -33,16 +33,41 @@ function stop() {
 
 const LANG = "en-US";
 
-// Recordings follow the Slow setting (0.75, pitch kept natural); at Measured
-// and Natural they play as recorded, already at a learner's pace.
-function rate() {
+// Playback speed (setting speech_rate): 1, 0.75 or 0.5, pitch kept
+// natural. Older values ("0.9", Measured) read as 1.
+export const SPEEDS = [1, 0.75, 0.5];
+export function playbackSpeed() {
   const r = parseFloat(settings.speech_rate);
-  return r >= 0.5 && r <= 2 ? r : 0.9;
+  return r <= 0.6 ? 0.5 : r <= 0.8 ? 0.75 : 1;
 }
+// The device's voice at 1 speaks a little slower than its default.
+const rate = () => Math.max(0.5, 0.9 * playbackSpeed());
 function recordingRate(slow) {
-  if (slow) return 0.7;
-  const r = rate();
-  return r <= 0.8 ? 0.75 : 1;
+  return slow ? Math.min(0.7, playbackSpeed()) : playbackSpeed();
+}
+const speedText = s => `${s}×`.replace(/^0\./, ".");
+
+/** A button beside a play button: 1× → .75× → .5×, saved for every word. */
+export function speedButton() {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "speed-btn";
+  const show = () => {
+    const s = playbackSpeed();
+    btn.textContent = speedText(s);
+    btn.setAttribute("aria-label", `Playback speed ${s} times. Change`);
+    btn.title = "Playback speed: tap to slow down (pitch stays natural)";
+  };
+  show();
+  btn.addEventListener("click", async e => {
+    e.stopPropagation();
+    const next = SPEEDS[(SPEEDS.indexOf(playbackSpeed()) + 1) % SPEEDS.length];
+    try { await saveSettings({ speech_rate: next }); } catch (err) { return; }
+    if (!player.paused) player.playbackRate = next;   // the word playing now, too
+    document.querySelectorAll(".speed-btn").forEach(b => b.dispatchEvent(new Event("lexi-speed")));
+  });
+  btn.addEventListener("lexi-speed", show);
+  return btn;
 }
 
 // The smoothest American voice the device has. Neural and downloaded voices

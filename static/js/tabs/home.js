@@ -3,24 +3,47 @@
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { TABS, reviewTrack } from "../app.js";
-import { SCOPES, fmtDuration, h, renderEntry } from "../ui.js";
+import { saveSettings } from "../state.js";
+import { SCOPES, fmtDuration, h, renderEntry, showError } from "../ui.js";
 
 const stored = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const store = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* unavailable */ } };
 
-/** First visit: pick what to study before the first session. */
+// First visit, step 1: how much English, which sets the word levels.
+const ENGLISH = [["I know some simple words", "1,2"], ["I can talk about everyday things", "1,2,3"],
+  ["I use English at work or school", "2,3,4"], ["I read books and news easily", "3,4,5"]];
+
+/** First visit: how much English you know, then what to study first. */
 function welcomeCard(root) {
-  const card = h("section.panel.welcome", { "aria-label": "Welcome" },
-    h("h2", "Welcome to LexiMaster"),
-    h("p", "Daily review brings back each word just before you'd forget it, a few minutes a day. " +
-      "Practice (flashcards, quizzes, listening) is extra and any time. What would you like to study first?"),
-    h("div.choice-row", SCOPES.filter(([v]) => ["", "everyday", "core", "bible"].includes(v)).map(([v, label]) =>
-      h("button.btn", { type: "button", on: { click: () => {
-        store("lexi-review-track", v);
-        store("lexi-welcomed", "1");
-        location.hash = "#review";
-      } } }, label))),
-    h("button.btn.btn-quiet", { type: "button", on: { click: () => { store("lexi-welcomed", "1"); card.remove(); } } }, "Not now"));
+  const close = () => { store("lexi-welcomed", "1"); card.remove(); };
+  const body = h("div.welcome-body");
+  const card = h("section.panel.welcome", { "aria-label": "Welcome" }, h("h2", "Welcome to LexiMaster"), body);
+  const step2 = beginner => {
+    const order = beginner ? ["everyday", "", "core", "bible"] : ["", "everyday", "core", "bible"];
+    body.replaceChildren(
+      h("p", "Daily review brings back each word just before you'd forget it, a few minutes a day. " +
+        "Practice (flashcards, quizzes, listening) is extra and any time. What would you like to study first?"),
+      h("div.choice-row", order.map(v => {
+        const label = SCOPES.find(([s]) => s === v)[1];
+        return h("button.btn", { type: "button", on: { click: () => {
+          store("lexi-review-track", v);
+          store("lexi-welcomed", "1");
+          location.hash = "#review";
+        } } }, beginner && v === "everyday" ? `${label} (recommended)` : label);
+      })),
+      h("button.btn.btn-quiet", { type: "button", on: { click: close } }, "Not now"));
+  };
+  const pick = async levels => {
+    try { await saveSettings({ word_levels: levels }); } catch (e) { return showError(e); }
+    step2(levels.startsWith("1,"));
+  };
+  body.append(
+    h("p", h("b", "How much English do you know?"), " LexiMaster has words from the most common to the rare; " +
+      "this picks where your new words come from."),
+    h("div.choice-row", ENGLISH.map(([label, levels]) =>
+      h("button.btn", { type: "button", on: { click: () => pick(levels) } }, label))),
+    h("button.btn.btn-quiet", { type: "button", on: { click: () => pick("1,2,3,4,5") } }, "Skip: show all words"),
+    h("p.muted", "You can change this any time with the Word levels menu in Review or Stats → Study settings."));
   return card;
 }
 

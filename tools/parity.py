@@ -22,7 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 LIST_FIELDS = ("word", "def", "core_pos", "pos", "phonetic", "domains", "name_kind", "has_audio", "enriched",
-               "freq_rank")
+               "freq_rank", "level")
 SKIP = {"id", "audio_url", "tts_url", "audio_accent", "notes", "list_actions"}  # ids and URL prefixes differ by design
 
 

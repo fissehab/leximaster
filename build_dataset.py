@@ -81,6 +81,7 @@ DICT_CACHE = CACHE / "dict.jsonl"
 AUDIO_CACHE = CACHE / "audio.jsonl"
 ENRICH_CACHE = CACHE / "enrich.jsonl"
 EXTRAS_CACHE = CACHE / "extras.jsonl"
+SENSE_EXAMPLES_CACHE = CACHE / "sense_examples.jsonl"
 EXAMPLES = SEEDS / "examples"  # hand-written conversation examples, one file per domain
 MEANINGS = SEEDS / "meanings"  # meanings for everyday entries no dictionary lists
 BIBLE_NAMES = SEEDS / "names" / "bible.txt"  # name | person, place or people | everyday meaning
@@ -90,8 +91,8 @@ CMUDICT = CACHE / "cmudict.dict"
 CMUDICT_URL = "https://raw.githubusercontent.com/cmusphinx/cmudict/master/cmudict.dict"
 SELECTED = CACHE / "selected.json"
 
-STAGES = ["collect", "expand", "filter", "fetch", "audio", "extras", "enrich"]
-PAID_STAGES = {"expand", "enrich"}  # Claude API calls: run only when asked for
+STAGES = ["collect", "expand", "filter", "fetch", "audio", "extras", "enrich", "examples"]
+PAID_STAGES = {"expand", "enrich", "examples"}  # Claude API calls: run only when asked for
 # Wikimedia rejects some User-Agents; set LEXIMASTER_CONTACT (a URL or email)
 # to identify yourself as their policy recommends.
 _CONTACT = os.environ.get("LEXIMASTER_CONTACT", "").strip()
@@ -115,6 +116,13 @@ EVERYDAY_DOMAINS = ["dining", "food", "shopping", "outdoors", "small_talk", "phr
                     "idioms", "feelings", "home_health", "getting_around", "sports_culture",
                     "meetings", "phone_calls"]
 ALL_TAGS = ["advanced", "academic", "literary"] + SUBJECT_DOMAINS + EVERYDAY_DOMAINS
+# seeds/reference.txt (tools/glossary.py --seed): synonyms, antonyms and other
+# related words that entries link to. Their entries are for looking up; the
+# app keeps them out of new-word study unless you choose them.
+REFERENCE = "reference"
+# Related words in this band of commonness (Zipf) are studied like the rest,
+# after them ("linked"); rarer or more common ones are look-up only.
+LINKED, LINKED_ZIPF = "linked", (1.0, 5.5)
 
 # Candidate quota per tag for the expand stage (before filtering/dedup).
 EXPAND_QUOTA = {
@@ -552,9 +560,10 @@ def stage_filter(args) -> None:
         tags = set(c["tags"])
         if not tags:
             continue  # removed from every seed list
-        if tags & (set(EVERYDAY_DOMAINS) | {"bible"}):
-            # Common on purpose: conversation vocabulary, and Bible words such
-            # as "church", "sin" or "cross".
+        if tags & (set(EVERYDAY_DOMAINS) | {"bible", REFERENCE}):
+            # Common on purpose: conversation vocabulary, Bible words such as
+            # "church", "sin" or "cross", and the related words other entries
+            # link to ("normal" under "abnormal").
             kept.append(k)
             continue
         specialist = bool(tags & (set(SUBJECT_DOMAINS) - {"professional"}))
@@ -1386,8 +1395,8 @@ def word_brief(entry: dict) -> str:
                      "for a person or place, say who or what it is, its role and where it appears)")
     if entry.get("phonetic"):
         lines.append(f"IPA (General American): {entry['phonetic']}")
-    if entry.get("domains"):
-        lines.append("domains: " + ", ".join(entry["domains"]))
+    if [d for d in entry.get("domains") or [] if d not in (REFERENCE, LINKED)]:
+        lines.append("domains: " + ", ".join(d for d in entry["domains"] if d not in (REFERENCE, LINKED)))
     for m in entry.get("meanings", [])[:4]:
         defs = "; ".join(s["definition"] for s in m["senses"][:3])
         lines.append(f"- {m['pos']}: {defs[:400]}")
@@ -1571,6 +1580,146 @@ async def stage_enrich(args) -> None:
         sys.exit(f"[enrich] {fatal[0]}")
     log(f"[enrich] done: {failed['n']} failed (rerun with --retry-failed) · "
         f"estimated cost ${usage.cost():.2f}")
+
+
+EXAMPLES_SYSTEM = """You write example sentences for an American learner's dictionary. The learner is an advanced non-native speaker (a data scientist and theologian living in the US).
+
+For each numbered sense, write ONE natural sentence in American English, 8 to 20 words, that uses the headword (any inflected form: "abided", "criteria") in exactly that sense, so the meaning is clear from the context. Rules:
+- Use the headword itself, not a synonym. Keep a phrase whole ("give up", "in lieu of").
+- Do not define or explain the word inside the sentence.
+- Match the sense's register: a technical sense gets a sentence from that field; a slang or old-fashioned sense gets a sentence where that use is natural (dialogue, a novel, a sermon).
+- Everyday, believable situations; no real living people; American spelling.
+- If a sense cannot be illustrated (a bare cross-reference, a symbol, a letter name), return "".
+Return every id you were given."""
+
+EXAMPLES_SCHEMA = {
+    "type": "object",
+    "properties": {"items": {"type": "array", "items": {
+        "type": "object",
+        "properties": {"id": {"type": "string"}, "example": {"type": "string"}},
+        "required": ["id", "example"], "additionalProperties": False}}},
+    "required": ["items"], "additionalProperties": False,
+}
+EXAMPLES_PER_REQUEST = 40      # senses
+EXAMPLES_MAX_PER_WORD = 16
+
+
+def senses_without_example(w: dict) -> list[tuple[str, str]]:
+    """(pos, definition) of the shown senses that have no example."""
+    return [(m.get("pos", ""), sn["definition"]) for m in w["meanings"] for sn in m["senses"]
+            if sn.get("definition") and not sn.get("example") and not sn.get("dup")][:EXAMPLES_MAX_PER_WORD]
+
+
+def uses_word(sentence: str, word: str, forms: dict | None) -> bool:
+    """The example shows the headword (or one of its inflections)."""
+    s = sentence.lower()
+    cands = {word.lower()} | {f.strip().lower() for _, rows in (forms or {}).get("inflections", [])
+                              for _, v in rows for f in v.split(",")}
+    head = word.lower().split(" ")[0]
+    stem = head[:max(3, len(head) - 2)]
+    return any(c in s for c in cands) or bool(re.search(rf"\b{re.escape(stem)}", s))
+
+
+async def stage_examples(args) -> None:
+    """One example sentence for every shown dictionary sense that lacks one."""
+    if not have_credentials():
+        log("[examples] skipped: no Claude credentials.")
+        return
+    anthropic, client = anthropic_client()
+    assemble(quiet=True)
+    lexicon = {w["key"]: w for w in read_json(WORDS_JSON, {"words": []})["words"]}
+    done = read_jsonl(SENSE_EXAMPLES_CACHE)
+    keys = [k for k in selected_words(args.limit) if k in lexicon and not lexicon[k].get("name_kind")
+            and (k not in done or (args.retry_failed and done[k]["status"] != "ok"))
+            and senses_without_example(lexicon[k])]
+    # The words most worth it first, so a budget that runs out leaves the
+    # rarest unexampled: the study order (freq_rank: topic words before
+    # linked ones, common before rare), look-up-only words last.
+    keys.sort(key=lambda k: (REFERENCE in lexicon[k]["domains"], lexicon[k].get("freq_rank") or 10**9))
+    n_senses = sum(len(senses_without_example(lexicon[k])) for k in keys)
+    log(f"[examples] {n_senses:,} senses in {len(keys):,} words without an example")
+    if not keys:
+        return
+    p_in, p_out = prices(args.model)
+    log(f"[examples] estimated cost: about ${(n_senses * 45 * p_in + n_senses * 40 * p_out) / 1e6:.2f}"
+        f"; budget {budget_text(args.budget)}")
+    problem = await preflight(anthropic, client, args.model)
+    if problem:
+        sys.exit(f"[examples] {problem}")
+    batches, cur, size = [], [], 0          # a word's senses stay in one request
+    for k in keys:
+        n = len(senses_without_example(lexicon[k]))
+        if cur and size + n > EXAMPLES_PER_REQUEST:
+            batches.append(cur)
+            cur, size = [], 0
+        cur.append(k)
+        size += n
+    if cur:
+        batches.append(cur)
+    prog = Progress("examples", len(keys))
+    usage = Usage(args.model)
+    stats = {"failed": 0, "rejected": 0}
+    fatal: list[str] = []
+
+    async def process(batch: list[str]):
+        if fatal:
+            return
+        if args.budget and usage.cost() >= args.budget:
+            fatal.append(f"budget of ${args.budget:.2f} reached; rerun to continue where it stopped")
+            return
+        ids, lines = {}, []
+        for i, k in enumerate(batch):
+            w = lexicon[k]
+            lines.append(f"## {w['word']}")
+            for j, (pos, d) in enumerate(senses_without_example(w)):
+                ids[f"{i}.{j}"] = (k, d)
+                lines.append(f"{i}.{j} ({pos}) {d}")
+        try:
+            async with client.messages.stream(
+                model=model_id(args.model), max_tokens=16000,
+                system=[{"type": "text", "text": EXAMPLES_SYSTEM, "cache_control": {"type": "ephemeral"}}],
+                output_config={"format": {"type": "json_schema", "schema": EXAMPLES_SCHEMA}},
+                messages=[{"role": "user", "content": "Write one example for each sense:\n\n" + "\n".join(lines)}],
+            ) as stream:
+                msg = await stream.get_final_message()
+        except anthropic.AuthenticationError:
+            fatal.append(f"authentication failed: {auth_hint()}")
+            return
+        except (anthropic.RateLimitError, anthropic.APIConnectionError, anthropic.InternalServerError) as e:
+            log(f"[examples] transient error after retries ({type(e).__name__}); left for the next run")
+            return
+        except anthropic.APIStatusError as e:
+            log(f"[examples] API error {e.status_code}: {e.message}")
+            return
+        usage.add(msg.usage)
+        items = []
+        if msg.stop_reason not in ("refusal", "max_tokens"):
+            try:
+                items = json.loads(next((b.text for b in msg.content if b.type == "text"), ""))["items"]
+            except (json.JSONDecodeError, KeyError):
+                items = []
+        got: dict[str, dict] = {k: {} for k in batch}
+        for it in items:
+            if it.get("id") in ids:
+                k, d = ids[it["id"]]
+                ex = (it.get("example") or "").strip()
+                if ex and uses_word(ex, lexicon[k]["word"], lexicon[k].get("forms")):
+                    got[k][sense_key(d)] = ex
+                elif ex:
+                    stats["rejected"] += 1
+        for k in batch:
+            if got[k] or items:
+                append_jsonl(SENSE_EXAMPLES_CACHE, {"key": k, "status": "ok", "examples": got[k]})
+            else:
+                stats["failed"] += 1
+                append_jsonl(SENSE_EXAMPLES_CACHE, {"key": k, "status": "failed", "reason": msg.stop_reason})
+        prog.tick(len(batch), extra=f"failed {stats['failed']} · rejected {stats['rejected']} · ~${usage.cost():.2f}")
+
+    await run_bounded(batches, process, args.concurrency, every=20, on_checkpoint=lambda: assemble(quiet=True))
+    if fatal:
+        sys.exit(f"[examples] {fatal[0]}")
+    log(f"[examples] done: {stats['failed']} words failed (rerun with --retry-failed), "
+        f"{stats['rejected']} examples left out (headword missing) · estimated cost ${usage.cost():.2f}")
 
 
 # ---------------------------------------------------------------- sense ranking
@@ -2278,6 +2427,21 @@ def rank_zipf(w: dict) -> float:
     return min(zipf_frequency(x, "en") for x in tokens) - 1.0
 
 
+# Word levels (1 most common .. 5 rare), what a learner chooses to study:
+# rank_zipf at or above each cut is one level easier. Multi-word idioms and
+# phrasal verbs are one level harder than their common words suggest
+# ("go back on").
+LEVEL_CUTS = (5.0, 4.3, 3.6, 2.8)
+
+
+def word_level(w: dict) -> int:
+    z = rank_zipf(w)
+    level = 1 + sum(z < cut for cut in LEVEL_CUTS)
+    if " " in w["word"] and {"idioms", "phrasal_verbs"} & set(w["domains"]):
+        level = min(5, level + 1)
+    return level
+
+
 # ------------------------------------------------------------ display polish
 # Mechanical clean-ups of the assembled entries (October 2026 content review).
 
@@ -2792,6 +2956,28 @@ def load_hand_entries(taken: set[str]) -> list[dict]:
     return out
 
 
+def add_sense_examples(words: list[dict]) -> None:
+    """An example for each dictionary sense that has none (stage examples)."""
+    cache = read_jsonl(SENSE_EXAMPLES_CACHE)
+    for w in words:
+        got = (cache.get(w["key"]) or {}).get("examples") or {}
+        for m in w["meanings"]:
+            for sn in m["senses"]:
+                if not sn.get("example") and got.get(sense_key(sn["definition"])):
+                    sn["example"] = got[sense_key(sn["definition"])]
+
+
+def add_forms(words: list[dict]) -> None:
+    """Each entry's inflections and related forms (tools/forms.py)."""
+    from tools.forms import forms_for
+    for w in words:
+        n = w.get("nuance") or {}
+        poses = [(n.get("core") or {}).get("pos", "")] + [m["pos"] for m in w["meanings"]]
+        if not w.get("name_kind") and (f := forms_for(w["word"], [p for p in poses if p],
+                                                         n.get("word_family") or [], shares_stem)):
+            w["forms"] = f
+
+
 def assemble(quiet: bool = False, write: bool = True) -> dict:
     """Build data/words.json from the caches and seeds. With write=False
     nothing is written (``--status``): the summary is only computed."""
@@ -3028,16 +3214,24 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     apply_patterns(words)
     apply_related(words)
     apply_fixes(words)
+    add_forms(words)
+    add_sense_examples(words)
     for w in words:  # a hand-fixed "(archaic) …" definition gets its label too
         for m in w["meanings"]:
             for sn in m["senses"]:
                 lead = leading_labels(sn["definition"])
                 if lead and "label" not in sn and any(re.search(rf"\b{x}\b", lead) for x in SHOWN_MARGINAL):
                     sn["label"] = lead
+    for w in words:
+        if REFERENCE in w["domains"] and LINKED_ZIPF[0] <= w["zipf"] <= LINKED_ZIPF[1]:
+            w["domains"] = sorted({*w["domains"], LINKED} - {REFERENCE})
     # Frequency rank within the dataset (1 = most common), the order new
-    # words are studied in.
-    for rank, w in enumerate(sorted(words, key=lambda w: -rank_zipf(w)), start=1):
+    # words are studied in; related words only after all the others.
+    def order(w):
+        return (any(d in (REFERENCE, LINKED) for d in w["domains"]), -rank_zipf(w))
+    for rank, w in enumerate(sorted(words, key=order), start=1):
         w["freq_rank"] = rank
+        w["level"] = word_level(w)
     words.sort(key=lambda w: w["word"].lower())
     if write:
         atomic_write_json(WORDS_JSON, {"version": 1, "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
@@ -3131,7 +3325,7 @@ async def main() -> None:
             await fn(args)
         else:
             fn(args)
-        if stage in ("fetch", "audio", "extras", "enrich", "filter"):
+        if stage in ("fetch", "audio", "extras", "enrich", "examples", "filter"):
             assemble()
     log(f"\nFinished in {fmt_secs(time.time() - t0)}. Run with --status to see totals.")
 

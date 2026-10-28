@@ -2,8 +2,9 @@
 // settings and progress export/import.
 
 import { api, invalidateWords } from "../api.js";
+import { playbackSpeed } from "../audio.js";
 import { loadSettings, saveSettings, settings } from "../state.js";
-import { domainLabel, fmtDuration, h, icon, pageHead, showError, toast } from "../ui.js";
+import { domainLabel, fmtDuration, h, icon, levelPicker, pageHead, showError, toast } from "../ui.js";
 
 const pct = (a, b) => (b ? Math.round((100 * a) / b) : 0);
 
@@ -85,9 +86,9 @@ export async function render(root) {
 function settingsPanel() {
   const minutes = h("input.input#set-minutes", { type: "number", min: 5, max: 60, value: settings.session_minutes });
   const perDay = h("input.input#set-new", { type: "number", min: 0, max: 100, value: settings.new_per_day });
-  const rate = h("select.input#set-rate", [["0.75", "Slow"], ["0.9", "Measured"], ["1", "Natural"]].map(([v, l]) => h("option", { value: v }, l)));
-  rate.value = String(parseFloat(settings.speech_rate));
-  if (!rate.value) rate.value = "0.9";
+  const rate = h("select.input#set-rate", [["1", "Normal (1×)"], ["0.75", "Slower (0.75×)"], ["0.5", "Slowest (0.5×)"]]
+    .map(([v, l]) => h("option", { value: v }, l)));
+  rate.value = String(playbackSpeed());
   const save = h("button.btn.btn-primary", { type: "button", on: { click: async () => {
     try {
       await saveSettings({ session_minutes: Number(minutes.value), new_per_day: Number(perDay.value), speech_rate: Number(rate.value) });
@@ -99,7 +100,8 @@ function settingsPanel() {
     h("div.setup-row",
       h("div.field", h("label", { for: "set-minutes" }, "Session minutes"), minutes),
       h("div.field", h("label", { for: "set-new" }, "New words per day"), perDay),
-      h("div.field", h("label", { for: "set-rate" }, "Voice speed"), rate)),
+      h("div.field", h("label", { for: "set-rate" }, "Pronunciation speed"), rate),
+      h("div.field", h("span.label", "Word levels"), levelPicker())),
     h("div", save));
 }
 

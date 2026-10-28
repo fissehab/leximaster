@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from datetime import date, timedelta
 
@@ -10,7 +11,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 from .. import db
-from ..common import today_iso
+from ..common import parse_levels, today_iso
 
 router = APIRouter(prefix="/api")
 
@@ -122,6 +123,7 @@ class SettingsIn(BaseModel):
     new_per_day: int | None = None
     autoplay: bool | None = None
     speech_rate: float | None = None
+    word_levels: str | None = None     # "1,2,3": common.parse_levels
 
 
 @router.get("/settings")
@@ -139,6 +141,10 @@ def update_settings(body: SettingsIn):
         raise HTTPException(400, "New words per day must be between 0 and 100.")
     if "speech_rate" in values and not 0.5 <= values["speech_rate"] <= 2:
         raise HTTPException(400, "Voice speed must be between 0.5 and 2.")
+    if "word_levels" in values:
+        if not re.fullmatch(r"[1-5](,[1-5])*", values["word_levels"]):
+            raise HTTPException(400, "Choose at least one word level (1 to 5).")
+        values["word_levels"] = ",".join(map(str, parse_levels(values["word_levels"])))
     with db.tx() as c:
         save_settings(c, values)
         return db.settings(c)
@@ -498,6 +504,8 @@ async def import_progress(file: UploadFile = File(...)):
                 clean["speech_rate"] = _clamp(st["speech_rate"], 0.5, 2.0, 0.9)
             if "autoplay" in st:
                 clean["autoplay"] = str(st["autoplay"]) in ("1", "True", "true")
+            if re.fullmatch(r"[1-5](,[1-5])*", str(st.get("word_levels", ""))):
+                clean["word_levels"] = ",".join(map(str, parse_levels(st["word_levels"])))
             save_settings(c, clean)
             if "recordings" in data:
                 counts["recordings"] = _import_recordings(c, data.get("recordings"))
