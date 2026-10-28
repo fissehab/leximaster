@@ -110,8 +110,11 @@ kept unless the word data changed.
 - **Stars** (1–5, on any word page or flashcard) say how familiar a word is: 1–2★ words come back
   more often.
 - **Know it** takes a word you already know out of your study (press it again to bring it back).
-- **Settings** (sidebar; under More on a phone): session length, new words per day, word levels,
-  pronunciation speed, the theme, and your data (export, import, offline use).
+- **Settings** (sidebar; under More on a phone): study focus, session length, new words per day, word
+  levels, pronunciation speed, the theme, and your data (export, import, offline use).
+- **Study focus** (Settings, or the scope menu in Daily review): Everything, Everyday English, Advanced &
+  subjects, or the Bible. Daily review, Home's count and word of the day follow it, and every practice
+  tab is set to it when it changes (a tab can still pick its own).
 - **Pronunciation speed:** the button beside each play button switches between 1×, .75× and .5×
   (pitch stays natural) for every recording and voice; the choice is remembered.
   Flashcards has its own "Play audio on flip" switch.
@@ -280,7 +283,7 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Browse | The full lexicon. It has A–Z jump, instant search across words and meanings, sorting by A–Z, frequency, stars or domain, and filters. On a phone, tapping a word brings its page into view (← List goes back). |
 | My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen. Words in your lists come first among new review words. |
 | Stats | Words mastered (and marked known), retention (the share of reviews you recalled, by gap), practice accuracy, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. |
-| Settings | Study settings (session length, new words per day, word levels, pronunciation speed), the theme, progress export/import, and on the website "Download for offline use" and the sources. |
+| Settings | Study settings (study focus, session length, new words per day, word levels, pronunciation speed), the theme, progress export/import, and on the website "Download for offline use" and the sources. |
 
 The sidebar runs in the order of a study day: Home, Daily review, the Practice group (easiest to
 hardest: Flashcards, Matching, Quiz, Listen, Pronounce, Sounds), the Words group (Browse, My lists), then Stats and Settings.

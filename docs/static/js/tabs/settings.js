@@ -4,8 +4,9 @@
 import { api, invalidateWords } from "../api.js";
 import { savedTheme, setTheme, THEMES } from "../app.js";
 import { playbackSpeed } from "../audio.js";
-import { loadSettings, saveSettings, settings } from "../state.js";
-import { h, icon, levelPicker, pageHead, showError, toast } from "../ui.js";
+import { refreshDueCount } from "../app.js";
+import { loadSettings, saveSettings, setStudyFocus, settings, studyFocus } from "../state.js";
+import { h, icon, levelPicker, pageHead, SCOPES, showError, toast } from "../ui.js";
 
 export async function render(root) {
   root.append(pageHead("Settings", "How you study, how LexiMaster looks, and your saved progress."),
@@ -18,6 +19,13 @@ function settingsPanel() {
   const rate = h("select.input#set-rate", [["1", "Normal (1×)"], ["0.75", "Slower (0.75×)"], ["0.5", "Slowest (0.5×)"]]
     .map(([v, l]) => h("option", { value: v }, l)));
   rate.value = String(playbackSpeed());
+  const focus = h("select.input#set-focus", SCOPES.map(([v, l]) => h("option", { value: v }, l)));
+  focus.value = studyFocus();
+  focus.addEventListener("change", () => {
+    setStudyFocus(focus.value);
+    refreshDueCount();
+    toast(`Daily review, Home and the practice tabs now study: ${focus.selectedOptions[0].textContent}`);
+  });
   const save = h("button.btn.btn-primary", { type: "button", on: { click: async () => {
     try {
       await saveSettings({ session_minutes: Number(minutes.value), new_per_day: Number(perDay.value), speech_rate: Number(rate.value) });
@@ -27,11 +35,14 @@ function settingsPanel() {
   } } }, "Save settings");
   return h("section.panel", h("h2", "Study"),
     h("div.setup-row",
+      h("div.field", h("label", { for: "set-focus" }, "Study focus"), focus),
       h("div.field", h("label", { for: "set-minutes" }, "Session minutes"), minutes),
       h("div.field", h("label", { for: "set-new" }, "New words per day"), perDay),
       h("div.field", h("label", { for: "set-rate" }, "Pronunciation speed"), rate),
       h("div.field", h("span.label", "Word levels"), levelPicker())),
-    h("p.muted", "Word levels change at once; the other settings when you save. The Word levels menu is also in Review."),
+    h("p.muted", "Study focus is what Daily review and Home study, and where every practice tab starts (each tab can " +
+      "still pick its own). Study focus and word levels change at once; the other settings when you save. Both are " +
+      "also in Daily review."),
     h("div", save));
 }
 

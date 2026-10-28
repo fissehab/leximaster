@@ -12,7 +12,7 @@
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
-import { settings } from "../state.js";
+import { setStudyFocus, settings, studyFocus } from "../state.js";
 import { SCOPES, fmtDuration, h, highlight, icon, levelPicker, levelsText, pageHead, playButton, renderEntry, setKnown, showError, smart, toast } from "../ui.js";
 
 let queue = [];
@@ -27,8 +27,7 @@ let posted = false;
 let lastGrade = null;   // { w, at, body, previous } for Undo
 let levelShort = false; // the chosen word levels ran out of new words
 let live = () => true;
-let track = "";
-try { track = localStorage.getItem("lexi-review-track") || ""; } catch (e) { /* storage unavailable */ }
+let track = studyFocus();
 const GRADES = [["again", "Again", "forgot"], ["hard", "Hard", "struggled"], ["good", "Good", "recalled"], ["easy", "Easy", "instant"]];
 const AGAIN_GAP = 5;    // an "Again" card comes back at least this many cards later
 const CHECK_GAP = 6;    // a new word's second look
@@ -317,6 +316,7 @@ async function done() {
 
 export async function render(root, { param, live: isLive } = {}) {
   live = isLive || (() => true);
+  track = studyFocus();   // may have changed in Settings
   els.root = root;
   els.bar = h("span");
   els.count = h("span.tnum");
@@ -341,7 +341,7 @@ export async function render(root, { param, live: isLive } = {}) {
   trackSel.value = track;
   trackSel.addEventListener("change", () => {
     track = trackSel.value;
-    try { localStorage.setItem("lexi-review-track", track); } catch (e) { /* storage unavailable */ }
+    setStudyFocus(track);
     clearSession();
     load().catch(showError);
   });

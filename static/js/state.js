@@ -14,11 +14,28 @@ export async function saveSettings(patch) {
   return settings;
 }
 
-// Practice filters (scope / rating / list), remembered separately for each tab.
+// Study focus (Settings → Study, and the scope menu in Daily review): what
+// Daily review and Home's count study ("" everything, "everyday", "core",
+// a Bible track), and the scope every practice tab is set to when it changes.
+// Kept in this browser.
+const FOCUS_KEY = "lexi-review-track";
+const PRACTICE_TABS = ["flashcards", "matching", "quiz", "listen", "pronounce"];
+export function studyFocus() {
+  try { return localStorage.getItem(FOCUS_KEY) || ""; } catch (e) { return ""; }
+}
+export function setStudyFocus(value) {
+  try { localStorage.setItem(FOCUS_KEY, value); } catch (e) { return; }
+  for (const tab of PRACTICE_TABS) saveFilter(tab, { ...loadFilter(tab), domain: value });
+}
+
+// Practice filters (scope / rating / list), remembered separately for each
+// tab; a tab not used yet starts from the study focus.
 const NO_FILTER = { stars: "", list_id: "", domain: "" };
 export function loadFilter(tab) {
-  try { return { ...NO_FILTER, ...JSON.parse(localStorage.getItem(`lexi-filter-${tab}`) || "{}") }; }
-  catch (e) { return { ...NO_FILTER }; }
+  try {
+    const saved = localStorage.getItem(`lexi-filter-${tab}`);
+    return { ...NO_FILTER, domain: studyFocus(), ...JSON.parse(saved || "{}") };
+  } catch (e) { return { ...NO_FILTER }; }
 }
 export function saveFilter(tab, filter) {
   try { localStorage.setItem(`lexi-filter-${tab}`, JSON.stringify(filter)); } catch (e) { /* storage unavailable */ }
