@@ -1,4 +1,4 @@
-// Home: today's review first (what's left, one button to start, the day so far), then the word of the day.
+// Today (the home screen, #home): today's review first (what's left, one button to start, the day so far), then the word of the day.
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";

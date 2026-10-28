@@ -90,13 +90,14 @@ To rebuild the site after changing the dataset:
 .venv/bin/python tools/parity.py       # the website and the local app give the same answers
 ```
 
-After you publish, the site updates itself the next time you open Home, Browse, Lists, Stats or Settings, in
+After you publish, the site updates itself the next time you open Today, Browse, Lists, Stats or Settings, in
 every open tab. It never reloads in the middle of a review or quiz, and your downloaded offline data is
 kept unless the word data changed.
 
 ## Using it day to day
 
-1. **Home** shows how many cards are left today and the word of the day. Press **Start daily review**.
+1. **Today** (the home screen) shows how many cards are left today and the word of the day. Press
+   **Start today's review**.
 2. **Daily review** (10–20 minutes): say the word's meaning aloud, reveal, and grade yourself honestly.
    New words are answered Show again, Got it or Know it; words you've seen before Again, Hard, Good or
    Easy. From a word's third review on, some cards show the meaning (and a sentence with a blank)
@@ -113,7 +114,7 @@ kept unless the word data changed.
 - **Settings** (sidebar; under More on a phone): study focus, session length, new words per day, word
   levels, pronunciation speed, the theme, and your data (export, import, offline use).
 - **Study focus** (Settings, or the scope menu in Daily review): Everything, Everyday English, Advanced &
-  subjects, or the Bible. Daily review, Home's count and word of the day follow it, and every practice
+  subjects, or the Bible. Daily review, Today's count and word of the day follow it, and every practice
   tab is set to it when it changes (a tab can still pick its own).
 - **Pronunciation speed:** the button beside each play button switches between 1×, .75× and .5×
   (pitch stays natural) for every recording and voice; the choice is remembered.
@@ -121,7 +122,7 @@ kept unless the word data changed.
 - **Your own words:** My lists → "Add my own word" adds a word with your definition and example.
 - **Moving between devices:** Settings → Export progress saves a file; Import on the other device. Import
   keeps whichever copy of each word is newer, so an old backup never undoes later study.
-- **Backups on the website:** progress lives in that browser only. Home reminds you to export once a
+- **Backups on the website:** progress lives in that browser only. Today reminds you to export once a
   week; on iPhone and iPad, add LexiMaster to the Home Screen, or Safari clears its data after a week
   without a visit.
 - **Sources:** Settings → "Sources & credits" (website) lists the dictionaries and the recording
@@ -272,7 +273,7 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 
 | Tab | What it's for |
 |---|---|
-| Home | Today's review first: how many cards are left (the same number as the badge) and a button to start, then the day so far (streak, reviews, time, words mastered) and the word of the day. |
+| Today | The home screen. Today's review first: how many cards are left (the same number as the badge) and a button to start, then the day so far (streak, reviews, time, words mastered) and the word of the day. |
 | Daily review | SM-2 spaced repetition, sized to your session length (default 15 minutes). Choose a scope: Everything, Everyday English, Advanced & subjects, or Bible vocabulary, names or both. A new word is answered Show again, Got it or Know it (known words leave the review), and gets a second look a few cards later, asked the other way round (meaning → word); a word you've seen before is graded Again, Hard, Good or Easy, and is asked meaning → word every other time from its third review. The answer shows a short card with one "vs" contrast and one common mistake; "Full entry" opens the whole page. The last grade can be undone. |
 | Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings, then "Missed it" or "Knew it" (a miss brings the word into today's review). Swipe on a phone. You can shuffle, play audio on flip, rate the word (1–5) or mark it known, and choose a scope, rating or list. The deck ends with a summary. |
 | Matching | Timed rounds that pair words with meanings or with example sentences, with a score. |
@@ -285,10 +286,10 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Stats | Words mastered (and marked known), retention (the share of reviews you recalled, by gap), practice accuracy, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. |
 | Settings | Study settings (study focus, session length, new words per day, word levels, pronunciation speed), the theme, progress export/import, and on the website "Download for offline use" and the sources. |
 
-The sidebar runs in the order of a study day: Home, Daily review, the Practice group (easiest to
-hardest: Flashcards, Matching, Quiz, Listen, Pronounce, Sounds; click its heading to fold it, and a
+The sidebar runs in the order of a study day: Today, Daily review, the Practice group (easiest to
+hardest: Flashcards, Matching, Quiz, Listen, Pronounce, Sounds; folded until you click its heading, and a
 folded group still shows the practice you're on), the Words group (Browse, My lists), then Stats and Settings.
-On a phone the bottom bar has five buttons in the same order: Home, Review, Practice, Browse and More
+On a phone the bottom bar has five buttons in the same order: Today, Review, Practice, Browse and More
 (My lists, Stats, Settings). Each practice tab remembers its own settings.
 
 ### The word page
