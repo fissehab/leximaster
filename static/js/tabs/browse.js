@@ -3,7 +3,7 @@
 import { allWords, api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
-import { LEVELS, domainLabel, domainOptions, formDialog, isEveryday, h, icon, renderEntry, scrollBehavior, setKnown, setStars, showError, toast } from "../ui.js";
+import { LEVELS, chosenLevels, domainLabel, levelsText, domainOptions, formDialog, isEveryday, h, icon, renderEntry, scrollBehavior, setKnown, setStars, showError, toast } from "../ui.js";
 
 const ROW_H = 54;
 const state = { q: "", domain: "", stars: "", known: "", level: "", selectedId: null };
@@ -25,7 +25,13 @@ function applyFilters() {
   if (state.domain === "everyday") out = out.filter(isEveryday);
   else if (state.domain) out = out.filter(w => w.domains.includes(state.domain));
   if (state.stars !== "") out = out.filter(w => state.stars.split(",").map(Number).includes(w.stars));
-  if (state.level) out = out.filter(w => w.level === Number(state.level));
+  // The list keeps to your study levels (a new learner's skip the most common
+  // words, "a", "the"); a search looks through every word, so any word you
+  // meet can be found. An explicit level always applies.
+  if (state.level === "" && !q) {
+    const mine = chosenLevels();
+    if (mine.length < 5) out = out.filter(w => w.level == null || mine.includes(w.level));
+  } else if (state.level !== "" && state.level !== "all") out = out.filter(w => w.level === Number(state.level));
   if (state.known === "known") out = out.filter(w => w.known);
   if (state.known === "unknown") out = out.filter(w => !w.known);
   if (q) {
@@ -212,8 +218,11 @@ export async function render(root, { param, view, live: isLive }) {
   known.value = state.known;
   known.addEventListener("change", () => { state.known = known.value; refreshList(); });
 
-  // Browse is for looking up: every level by default, whatever you study.
-  const level = h("select.input#browse-level", { "aria-label": "Word level" }, h("option", { value: "" }, "All levels"),
+  // Your study levels by default; search still finds every word.
+  const mine = chosenLevels().length < 5;
+  const level = h("select.input#browse-level", { "aria-label": "Word level" },
+    h("option", { value: "" }, mine ? `${levelsText()} (yours)` : "All levels"),
+    mine ? h("option", { value: "all" }, "All levels") : null,
     LEVELS.map(([n, label]) => h("option", { value: n }, `Level ${n} · ${label}`)));
   level.value = state.level;
   level.addEventListener("change", () => { state.level = level.value; refreshList(); });
