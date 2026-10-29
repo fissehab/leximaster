@@ -344,6 +344,8 @@ Dictionary senses that only restate the meaning in step 2 are marked when the da
 
 ### Keyboard shortcuts
 
+Listed in Settings → Keyboard shortcuts, and by pressing ? anywhere (single-key shortcuts can be switched off there).
+
 | Key | Action |
 |---|---|
 | Space | Play pronunciation (in Quiz, only after you answer) |
