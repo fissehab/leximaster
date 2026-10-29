@@ -1,4 +1,4 @@
-// Browse / Study: A–Z rail, instant search, sortable virtual list, full entry.
+// Browse / Study: A–Z rail, instant search, filtered A–Z virtual list, full entry.
 
 import { allWords, api } from "../api.js";
 import { playWord } from "../audio.js";
@@ -6,7 +6,7 @@ import { refreshDueCount } from "../app.js";
 import { LEVELS, domainLabel, domainOptions, formDialog, isEveryday, h, icon, renderEntry, scrollBehavior, setKnown, setStars, showError, toast } from "../ui.js";
 
 const ROW_H = 54;
-const state = { q: "", sort: "alpha", domain: "", stars: "", known: "", level: "", selectedId: null };
+const state = { q: "", domain: "", stars: "", known: "", level: "", selectedId: null };
 let words = [];
 let shown = [];
 let els = {};
@@ -36,18 +36,10 @@ function applyFilters() {
       else if (n.includes(q)) inner.push(w);
       else if (q.length >= 3 && nd(w).includes(q)) inDef.push(w);
     }
-    out = [...prefix, ...inner, ...inDef];
-    if (state.sort === "alpha") { shown = out; return; } // keep relevance order
+    shown = [...prefix, ...inner, ...inDef];   // best matches first
+    return;
   }
-  const byWord = (a, b) => a.word.localeCompare(b.word, undefined, { sensitivity: "base" });
-  const sorters = {
-    alpha: byWord,
-    freq: (a, b) => (a.freq_rank ?? 1e9) - (b.freq_rank ?? 1e9) || byWord(a, b),
-    stars: (a, b) => b.stars - a.stars || byWord(a, b),
-    stars_low: (a, b) => (a.stars || 9) - (b.stars || 9) || byWord(a, b),
-    domain: (a, b) => (domainLabel(a.domains[0] || "~")).localeCompare(domainLabel(b.domains[0] || "~")) || byWord(a, b),
-  };
-  shown = [...out].sort(sorters[state.sort]);
+  shown = [...out].sort((a, b) => a.word.localeCompare(b.word, undefined, { sensitivity: "base" }));
 }
 
 function renderRows() {
@@ -95,8 +87,8 @@ function paintAz() {
 }
 
 function jumpTo(letter) {
-  if (state.sort !== "alpha" || state.q) {
-    state.sort = "alpha"; state.q = ""; els.search.value = ""; els.sort.value = "alpha";
+  if (state.q) {
+    state.q = ""; els.search.value = "";
     applyFilters();
   }
   const i = shown.findIndex(w => nw(w)[0] >= letter);
@@ -207,11 +199,6 @@ export async function render(root, { param, view, live: isLive }) {
     if (e.key === "Escape") els.search.blur();
   });
 
-  els.sort = h("select.input#browse-sort", { "aria-label": "Sort" },
-    [["alpha", "Sort: A–Z"], ["freq", "Sort: most common first"], ["stars", "Sort: most stars"], ["stars_low", "Sort: fewest stars"], ["domain", "Sort: by domain"]]
-      .map(([v, l]) => h("option", { value: v }, l)));
-  els.sort.value = state.sort;
-  els.sort.addEventListener("change", () => { state.sort = els.sort.value; refreshList(); });
   const dom = h("select.input#browse-domain", { "aria-label": "Domain" }, h("option", { value: "" }, "All domains"),
     domainOptions(domains));
   dom.value = state.domain;
@@ -261,7 +248,7 @@ export async function render(root, { param, view, live: isLive }) {
     h("div.list-col#browse-list",
       h("div.search-row", h("div.search", icon("search"), els.search), hideBtn),
       // On a phone the filters fold away, so the results come first.
-      h("details.filters-fold", { open: !narrow() }, h("summary", "Sort & filter"), h("div.list-filters", els.sort, dom, level, stars, known)),
+      h("details.filters-fold", { open: !narrow() }, h("summary", "Filter"), h("div.list-filters", dom, level, stars, known)),
       els.meta,
       els.vlist),
     h("div.detail-wrap", showBtn, els.detail));
