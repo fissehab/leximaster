@@ -71,13 +71,13 @@ def test_import_is_idempotent(client, word_keys):
     export = client.get("/api/export").json()
     wipe_progress()
     one = upload(client, export).json()["imported"]
-    assert one["list entries"] == 5 and one["answers"] == 10
+    assert one["list entries"] == 5 and one["answers"] == 10 and one["own words"] == 1
     after_one = canonical(client.get("/api/export").json())
     two = upload(client, export).json()["imported"]
     assert canonical(client.get("/api/export").json()) == after_one
     # Nothing new the second time; the list count reports only inserted rows.
     assert two["answers"] == 0 and two["list entries"] == 0
-    assert two["word states"] == 0 and two["review cards"] == 0
+    assert two["word states"] == 0 and two["review cards"] == 0 and two["own words"] == 0
 
 
 MALFORMED = [
