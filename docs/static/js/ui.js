@@ -720,7 +720,8 @@ export const LEVELS = [[1, "Most common", "believe, need, month"], [2, "Common",
   [3, "Less common", "receipt, grasp, vicinity"], [4, "Uncommon", "avid, outburst, reaffirm"],
   [5, "Rare", "loquacity, symbiosis, mentee"]];
 export const levelLabel = n => (LEVELS.find(([l]) => l === n) || [])[1] || "";
-const chosenLevels = () => String(settings.word_levels || "2,3,4").split(",").map(Number);
+/** The levels new words come from (Settings → Word levels). */
+export const chosenLevels = () => String(settings.word_levels || "2,3,4").split(",").map(Number);
 /** "Levels 1–3", "Levels 1, 3", "All levels". */
 export function levelsText(levels = chosenLevels()) {
   if (levels.length === 5) return "All levels";
