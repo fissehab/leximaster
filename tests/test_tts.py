@@ -50,3 +50,37 @@ def test_listed_words_are_synthesized_entries():
     words = {w["word"]: w for w in json.loads(tts.WORDS_JSON.read_text(encoding="utf-8"))["words"]}
     missing = sorted(n for n in tts.NO_FLAP if n not in words or words[n].get("has_audio"))
     assert not missing, f"NO_FLAP words that aren't synthesized entries: {missing}"
+
+
+def test_remade_recording_keeps_the_voice_a_retry_chose(tmp_path, monkeypatch):
+    """A re-made word keeps the voice and speed a retry chose for it, and the
+    retry mark, so the next re-make keeps them too."""
+    class Kokoro:
+        def __init__(self, *a):
+            self.tokenizer = Tokenizer()
+            self.calls = []
+        def create(self, ph, voice, speed, is_phonemes):
+            self.calls.append((voice, speed))
+            return [0.0] * 240, 24000
+    fake = type(sys)("kokoro_onnx")
+    fake.Kokoro = Kokoro
+    monkeypatch.setitem(sys.modules, "kokoro_onnx", fake)
+    for name in ("MODEL", "VOICES"):
+        (tmp_path / name).touch()
+        monkeypatch.setattr(tts, name, tmp_path / name)
+    (tmp_path / "tts").mkdir()
+    monkeypatch.setattr(tts, "DATA", tmp_path)
+    monkeypatch.setattr(tts, "OUT_DIR", tmp_path / "tts")
+    monkeypatch.setattr(tts, "MANIFEST", tmp_path / "tts.json")
+    monkeypatch.setattr(tts, "targets", lambda only=None: [{"key": "meta", "word": "meta", "phonetic": ""}])
+    def write_hashed(audio, sr, stem):
+        p = tmp_path / "tts" / f"{stem}.0123abcd.m4a"
+        p.touch()
+        return p
+    monkeypatch.setattr(tts, "write_hashed", write_hashed)
+    (tmp_path / "tts" / "meta.89abcdef.m4a").touch()
+    tts.save_manifest({"meta": {"file": "tts/meta.89abcdef.m4a", "phonemes": "mˈɛɾə.", "source": "text",
+                                "voice": "am_michael", "speed": 0.8, "retried": True}})
+    tts.generate()
+    entry = tts.load_manifest()["meta"]
+    assert (entry["phonemes"], entry["voice"], entry["speed"], entry["retried"]) == ("mˈɛtə.", "am_michael", 0.8, True)
