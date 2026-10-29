@@ -133,6 +133,8 @@ def review_queue(extra: int = 0, track: str = "", count: int = 0):
             n_new_cards = sum(1 for _, is_new in queue if is_new)
             return {"total": len(queue), "due": len(queue) - n_new_cards, "new": n_new_cards,
                     "level_short": level_short,
+                    # A few of today's new words, as the session will show them (Home).
+                    "samples": [r["word"] for r, is_new in queue if is_new][:3],
                     "due_total": len(due), "est_seconds": round(used + n_new_cards * NEW_CARD_SECONDS) if queue else 0,
                     "done_today": {"reviews": done_reviews, "new": done_new,
                                    "seconds": act["seconds"] if act else 0}}

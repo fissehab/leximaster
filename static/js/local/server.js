@@ -18,7 +18,7 @@ const NEW_CARD_SECONDS = 35;
 const DEFAULT_REVIEW_SECONDS = 14;
 const MASTERED_INTERVAL = 21;
 const DEFAULT_SETTINGS = { session_minutes: "15", new_per_day: "12", accent: "us", autoplay: "1", speech_rate: "0.9",
-                           word_levels: "1,2,3,4,5" };
+                           word_levels: "2,3,4" };
 
 const SCHEMA = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
@@ -449,7 +449,7 @@ const SCOPES = ["everyday", "core", ...BIBLE_TRACKS];
 // Word levels (app/common.py LEVELED, parse_levels, level_clause): the
 // levels new words come from, setting "word_levels" = "1,2,3".
 const LEVELED = ["", "everyday", "core"];
-const ALL_LEVELS = "1,2,3,4,5";
+const DEFAULT_LEVELS = "2,3,4";   // a new learner's (app/common.py)
 const parseLevels = v => (v && /^[1-5](,[1-5])*$/.test(v) ? [...new Set(v.split(",").map(Number))].sort() : [1, 2, 3, 4, 5]);
 function levelClause(v) {
   const levels = parseLevels(v);
@@ -457,7 +457,7 @@ function levelClause(v) {
   return `(w.level IS NULL OR w.level IN (${levels.join(",")}) OR COALESCE(u.stars, 0) > 0 ` +
     "OR EXISTS (SELECT 1 FROM list_words lw3 WHERE lw3.word_id = w.id))";
 }
-const levelsSetting = () => (get("SELECT value FROM settings WHERE key = 'word_levels'") || {}).value || ALL_LEVELS;  // study tracks, usable wherever a domain filter is
+const levelsSetting = () => (get("SELECT value FROM settings WHERE key = 'word_levels'") || {}).value || DEFAULT_LEVELS;  // study tracks, usable wherever a domain filter is
 
 function trackClause(track) {
   if (track === "everyday") return EVERYDAY_SQL;
@@ -870,6 +870,7 @@ async function reviewQueue(q) {
     // Only the numbers (Home, the nav badge): same selection, no card details.
     const nNewCards = rows.filter(([, isNew]) => isNew).length;
     return { total: rows.length, due: rows.length - nNewCards, new: nNewCards, level_short: levelShort,
+             samples: rows.filter(([, isNew]) => isNew).slice(0, 3).map(([r]) => r.word),
              due_total: due.length,
              est_seconds: rows.length ? Math.round(used + nNewCards * NEW_CARD_SECONDS) : 0,
              done_today: { reviews: act ? act.reviews : 0, new: act ? act.new_words : 0, seconds: act ? act.seconds : 0 } };

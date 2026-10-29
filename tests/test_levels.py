@@ -102,3 +102,36 @@ def test_word_of_the_day_follows_the_study_focus(client):
     assert set(day["domains"]) & set(EVERYDAY_DOMAINS)
     assert client.get("/api/wotd", params={"track": "everyday"}).json()["id"] == day["id"]   # kept for the day
     assert every["id"] == client.get("/api/wotd", params={"track": "nonsense"}).json()["id"]
+
+
+def test_default_levels_agree_everywhere():
+    """A new learner's levels are written in five places; they must match."""
+    import re
+    from pathlib import Path
+    from app.common import DEFAULT_LEVELS, levels_setting
+    root = Path(__file__).resolve().parent.parent
+    assert db.DEFAULT_SETTINGS["word_levels"] == DEFAULT_LEVELS == "2,3,4"
+    js = {f: (root / "static/js" / f).read_text(encoding="utf-8") for f in ("state.js", "ui.js", "local/server.js")}
+    assert f'word_levels: "{DEFAULT_LEVELS}"' in js["state.js"]
+    assert f'settings.word_levels || "{DEFAULT_LEVELS}"' in js["ui.js"]
+    assert f'word_levels: "{DEFAULT_LEVELS}"' in js["local/server.js"]
+    assert f'const DEFAULT_LEVELS = "{DEFAULT_LEVELS}"' in js["local/server.js"]
+    with db.tx() as c:
+        c.execute("DELETE FROM settings WHERE key = 'word_levels'")
+        assert levels_setting(c) == DEFAULT_LEVELS
+    # The level picker's examples are at the level they illustrate.
+    from wordfreq import zipf_frequency
+    rows = re.findall(r'\[(\d), "[^"]+", "([^"]+)"\]', js["ui.js"])
+    assert len(rows) == 5
+    for n, words in rows:
+        for x in words.split(", "):
+            assert word_level({"word": x, "zipf": zipf_frequency(x, "en"), "domains": []}) == int(n), x
+
+
+def test_count_lists_todays_new_words(client):
+    """Home shows a few of today's new words: the ones the session brings."""
+    client.patch("/api/settings", json={"word_levels": "1,2,3,4,5"})
+    count = client.get("/api/review/queue", params={"count": 1}).json()
+    session = client.get("/api/review/queue").json()["queue"]
+    assert count["samples"] == [c["word"] for c in session if c["is_new"]][:3]
+    assert len(count["samples"]) == min(3, count["new"])

@@ -116,6 +116,10 @@ kept unless the word data changed.
 - **Study focus** (Settings, or the scope menu in Daily review): Everything, Everyday English, Advanced &
   subjects, or the Bible. Daily review, Today's count and word of the day follow it, and every practice
   tab is set to it when it changes (a tab can still pick its own).
+- **Word levels** (Settings, or the menu in Daily review): new words come from levels 1 (most common)
+  to 5 (rare). A new learner starts on 2–4. Until you've studied 50 words, Today lists a few of the day's
+  new words with **Too hard? Easier words**, one step easier per tap (2–4, 1–3, 1–2, 1), with Undo;
+  it goes away once you pick levels yourself (and never shows while rare words are on).
 - **Pronunciation speed:** the button beside each play button switches between 1×, .75× and .5×
   (pitch stays natural) for every recording and voice; the choice is remembered.
   Flashcards has its own "Play audio on flip" switch.

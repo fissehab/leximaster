@@ -2,49 +2,48 @@
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
-import { reviewTrack } from "../app.js";
-import { saveSettings, setStudyFocus } from "../state.js";
-import { SCOPES, fmtDuration, h, renderEntry, showError } from "../ui.js";
+import { refreshDueCount, reviewTrack } from "../app.js";
+import { saveSettings, settings } from "../state.js";
+import { fmtDuration, h, renderEntry, showError, toast } from "../ui.js";
 
 const stored = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const store = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* unavailable */ } };
 
-// First visit, step 1: how much English, which sets the word levels.
-const ENGLISH = [["I know some simple words", "1,2"], ["I can talk about everyday things", "1,2,3"],
-  ["I use English at work or school", "2,3,4"], ["I read books and news easily", "3,4,5"]];
+// A new learner starts on levels 2-4 (app/common.py DEFAULT_LEVELS). While
+// they're new and haven't chosen levels themselves, Today shows a few of the
+// day's new words and a way to easier ones: one step down at a time
+// (2-4, 1-3, 1-2, 1), each with Undo.
+const NEW_LEARNER = 50;          // words studied
+const LEVELED = ["", "everyday", "core"];   // the study tracks levels narrow (app/common.py)
+/** The next easier set of levels, or null at the easiest. */
+export function easierLevels(levels) {
+  if (levels[0] > 1) return levels.map(l => l - 1);
+  return levels.length > 1 ? levels.slice(0, -1) : null;
+}
 
-/** First visit: how much English you know, then what to study first. */
-function welcomeCard(root) {
-  const close = () => { store("lexi-welcomed", "1"); card.remove(); };
-  const body = h("div.welcome-body");
-  const card = h("section.panel.welcome", { "aria-label": "Welcome" }, h("h2", "Welcome to LexiMaster"), body);
-  const step2 = beginner => {
-    const order = beginner ? ["everyday", "", "core", "bible"] : ["", "everyday", "core", "bible"];
-    body.replaceChildren(
-      h("p", "Daily review brings back each word just before you'd forget it, a few minutes a day. " +
-        "Practice (flashcards, quizzes, listening) is extra and any time. What would you like to study first?"),
-      h("div.choice-row", order.map(v => {
-        const label = SCOPES.find(([s]) => s === v)[1];
-        return h("button.btn", { type: "button", on: { click: () => {
-          setStudyFocus(v);
-          store("lexi-welcomed", "1");
-          location.hash = "#review";
-        } } }, beginner && v === "everyday" ? `${label} (recommended)` : label);
-      })),
-      h("button.btn.btn-quiet", { type: "button", on: { click: close } }, "Not now"));
+function easierLine(root, review, studied) {
+  const levels = String(settings.word_levels).split(",").map(Number);
+  const easier = easierLevels(levels);
+  // Not for anyone studying rare words: they chose them, or started before
+  // the 2-4 default (all levels) and keep what they had.
+  if (studied >= NEW_LEARNER || stored("lexi-levels-set") || levels.includes(5) || !LEVELED.includes(reviewTrack())
+      || !easier) return null;
+  const set = async (to, msg, action) => {
+    try { await saveSettings({ word_levels: to.join(",") }); } catch (e) { return showError(e); }
+    try { sessionStorage.removeItem("lexi-review-session"); } catch (e) { /* unavailable */ }
+    toast(msg, action ? { action } : {});
+    root.replaceChildren();
+    await render(root);
+    refreshDueCount();
   };
-  const pick = async levels => {
-    try { await saveSettings({ word_levels: levels }); } catch (e) { return showError(e); }
-    step2(levels.startsWith("1,"));
-  };
-  body.append(
-    h("p", h("b", "How much English do you know?"), " LexiMaster has words from the most common to the rare; " +
-      "this picks where your new words come from."),
-    h("div.choice-row", ENGLISH.map(([label, levels]) =>
-      h("button.btn", { type: "button", on: { click: () => pick(levels) } }, label))),
-    h("button.btn.btn-quiet", { type: "button", on: { click: () => pick("1,2,3,4,5") } }, "Skip: show all words"),
-    h("p.muted", "You can change this any time with the Word levels menu in Review or in Settings."));
-  return card;
+  // Words and short phrases; a whole sentence ("Did you catch the game?") would crowd the line.
+  const samples = (review.samples || []).filter(x => !/[?.!]/.test(x) && x.split(" ").length <= 3);
+  return h("p.easier-line",
+    samples.length ? [`New words today: ${samples.join(", ")}`, " · "] : null,
+    h("span.nowrap", "Too hard? ",
+      h("button.link-btn", { type: "button", on: { click: () =>
+        set(easier, "Easier words from now on.", ["Undo", () => set(levels, "Back to your earlier words.")]) } },
+        "Easier words")));
 }
 
 /** The website keeps progress in this browser only: nudge a backup now and then. */
@@ -107,7 +106,8 @@ export async function render(root) {
       h("span.eyebrow", "Today's review"),
       queued
         ? [h("p.today-left", h("span.big-num.tnum", queued), queued === 1 ? " card left" : " cards left"),
-           h("p.muted", `${review.due} due · ${review.new} new · about ${minutes} min`)]
+           h("p.muted", `${review.due} due · ${review.new} new · about ${minutes} min`),
+           easierLine(root, review, w.mastered + w.learning)]
         : [h("p.today-left", h("span.big-num", "Done"), " for today"), h("p.muted", "Nothing left in today's review. Well done.")]),
     h("a.btn.btn-primary.btn-lg", { href: queued ? "#review" : "#review/more" }, queued ? "Start today's review" : "Learn 5 more words"),
     h("dl.today-stats",
@@ -121,12 +121,10 @@ export async function render(root) {
     : null;
 
   const studied = w.mastered + w.learning;
-  const fresh = !studied && !stats.accuracy.attempts && !stored("lexi-welcomed");
 
   root.append(...[
     h("div.page-head", h("div", h("h1", greet), h("p.sub", "Ten to twenty minutes a day keeps your words within reach."))),
     banner ? h("div", { style: { marginBottom: "16px" } }, banner) : null,
-    fresh && w.total ? welcomeCard(root) : null,
     installCard(),
     backupCard(studied),
     h("div.home", todayPanel, wotdPanel),
