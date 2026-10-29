@@ -3,7 +3,7 @@
 import { h, pageHead } from "../ui.js";
 
 export async function render(root) {
-  root.append(
+  root.append(h("div.about-page",
     pageHead("About LexiMaster"),
     h("div.panel.about",
       h("p", "I'm Fisseha, a non-native English speaker who works in data science and AI. I studied civil " +
@@ -28,5 +28,5 @@ export async function render(root) {
         "mouth for each sound in the word, with a short tip. Practice → ", h("b", "Sounds"), " has the hardest sounds, " +
         "words to try and a listening game. The real-mouth clips come from the USC 75-Speaker Speech MRI Database " +
         "(CC BY 4.0)."),
-      h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser.")));
+      h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser."))));
 }
