@@ -348,7 +348,7 @@ Dictionary senses that only restate the meaning in step 2 are marked when the da
 
 ### Keyboard shortcuts
 
-Listed in Settings → Keyboard shortcuts, and by pressing ? anywhere (single-key shortcuts can be switched off there).
+Listed in Settings → Keyboard shortcuts on a computer (a touch screen hides the list and key hints), and by pressing ? anywhere (single-key shortcuts can be switched off there).
 
 | Key | Action |
 |---|---|

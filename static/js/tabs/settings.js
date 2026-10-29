@@ -11,7 +11,7 @@ import { h, icon, levelPicker, pageHead, SCOPES, showError, toast } from "../ui.
 export async function render(root) {
   root.append(pageHead("Settings", "How you study, how LexiMaster looks, and your saved progress."),
     h("div.settings-grid", settingsPanel(), themePanel(),
-      h("section.panel", h("h2", "Keyboard shortcuts"),
+      h("section.panel.kbd-panel", h("h2", "Keyboard shortcuts"),
         h("p.muted", "On a computer. Press ? anywhere to see this list."), shortcutsList()),
       dataPanel()));
 }

@@ -19,7 +19,8 @@ a { color: var(--lapis); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* Keyboard hints mean nothing on a touch screen. */
-@media (hover: none) { kbd { display: none; } }
+/* A touch screen has no keyboard: no key hints, and no shortcuts list in Settings. */
+@media (hover: none) { kbd, .settings-grid .panel.kbd-panel { display: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important;
