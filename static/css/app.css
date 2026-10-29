@@ -545,9 +545,13 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .rec-btn.on .dot { animation: blink 1s infinite; }
 @keyframes blink { 50% { opacity: .2; } }
 .no-match { padding: 16px; margin: 0; }
-/* A reading page: the column sits in the middle, its title over its text. */
-.about-page { width: fit-content; max-width: 100%; margin-inline: auto; }
-.about { max-width: 68ch; display: flex; flex-direction: column; gap: 14px; padding: 24px 28px; font: 400 16px/1.65 var(--font-body); }
+/* A reading page: short topics side by side, each line a comfortable length;
+   one column on narrow screens. */
+.about-page { max-width: 1080px; margin-inline: auto; }
+.about-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.about { display: flex; flex-direction: column; gap: 8px; padding: 22px 26px; min-width: 0; font: 400 16px/1.65 var(--font-body); }
+.about h2 { font: 600 18px/1.3 var(--font-word); }
+@media (max-width: 900px) { .about-grid { grid-template-columns: minmax(0, 1fr); } .about { max-width: 68ch; } }
 @media (max-width: 760px) { .about { padding: 18px; } }
 .pron-layout { display: grid; grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); gap: 18px; align-items: start; }
 .pick-list { max-height: 70vh; overflow-y: auto; display: flex; flex-direction: column; }
