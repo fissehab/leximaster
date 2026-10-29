@@ -385,14 +385,16 @@ async def import_progress(file: UploadFile = File(...)):
     counts = {}
     try:
         with db.tx() as c:
-            skipped = 0
+            skipped = added = 0
             bad = 0
             for raw in rows("custom_words"):
                 cw = _clean_custom_word(raw)
                 if cw is None:
                     skipped += 1
                     continue
-                c.execute("INSERT OR IGNORE INTO words(key, word, domains, data, is_custom) VALUES (?, ?, ?, ?, 1)", cw)
+                added += c.execute("INSERT OR IGNORE INTO words(key, word, domains, data, is_custom) VALUES (?, ?, ?, ?, 1)",
+                                   cw).rowcount
+            counts["own words"] = added
             if skipped:
                 counts["damaged custom words skipped"] = skipped
             ids = {r["key"]: r["id"] for r in c.execute("SELECT id, key FROM words")}

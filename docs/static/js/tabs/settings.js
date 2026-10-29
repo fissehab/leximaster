@@ -93,6 +93,27 @@ async function downloadRaw() {
   } catch (e) { showError(e); }
 }
 
+// What an import brought in, in plain words: the counts from /api/import
+// (both servers), each as [one, many]; settings come in with any import.
+const IMPORTED = {
+  "word states": ["word you rated or marked", "words you rated or marked"],
+  "review cards": ["word in your review", "words in your review"],
+  answers: ["answer", "answers"],
+  "list entries": ["word in your lists", "words in your lists"],
+  "own words": ["word you added", "words you added"],
+  recordings: ["recording", "recordings"],
+};
+const SKIPPED = { "damaged custom words skipped": ["damaged added word", "damaged added words"], skipped: ["damaged line", "damaged lines"] };
+export function importSummary(counts) {
+  const say = (n, [one, many]) => `${n.toLocaleString()} ${n === 1 ? one : many}`;
+  const parts = Object.entries(IMPORTED).filter(([k]) => counts[k] > 0).map(([k, w]) => say(counts[k], w));
+  const skipped = Object.entries(SKIPPED).filter(([k]) => counts[k] > 0).map(([k, w]) => say(counts[k], w));
+  const left = skipped.length ? ` Left out ${skipped.join(" and ")}.` : "";
+  if (!parts.length) return { changed: false, text: `Nothing new: everything in that file is already here.${left}` };
+  const list = parts.length > 1 ? `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}` : parts[0];
+  return { changed: true, text: `Imported ${list}.${left}` };
+}
+
 // The four themes (app.js); the choice is kept in this browser.
 function themePanel() {
   const current = savedTheme();
@@ -113,15 +134,17 @@ function dataPanel() {
     fd.append("file", file.files[0]);
     try {
       const res = await api.post("/api/import", fd);
+      const { text, changed } = importSummary(res.imported);
+      if (!changed) { await loadSettings(); toast(text, { ms: 4500 }); file.value = ""; return; }
       invalidateWords();
-      toast(`Imported ${Object.entries(res.imported).map(([k, v]) => `${v} ${k}`).join(", ")}. Reloading…`, { ms: 3000 });
-      setTimeout(() => location.reload(), 2500);
+      toast(`${text} Reloading…`, { ms: 3500 });
+      setTimeout(() => location.reload(), 3000);
     } catch (e) { showError(e); }
     file.value = "";
   });
   return h("section.panel", h("h2", "Your data"),
-    h("p.muted", "Export saves ratings, review schedules, answers, lists, notes and your own words as JSON. " +
-      "Import merges an export back in, keeping whichever copy of each word is newer."),
+    h("p.muted", "Export saves your ratings, review schedule, answers, lists, notes and the words you added in one file. " +
+      "Import adds a saved file back in; where both have the same word, the newer copy is kept."),
     h("label.check-row", h("input#export-recordings", { type: "checkbox" }),
       " Include my pronunciation recordings (a larger file)"),
     window.LEXI_STATIC ? h("p#last-backup", backupText()) : null,

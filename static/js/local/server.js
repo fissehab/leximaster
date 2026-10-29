@@ -1438,7 +1438,7 @@ function importProgress(data, { restore = false } = {}) {
   const rows = name => (Array.isArray(data[name]) ? data[name] : []).concat(Array.isArray(saved[name]) ? saved[name] : [])
     .filter(r => r && typeof r === "object");
   const counts = {};
-  let skipped = 0;
+  let skipped = 0, added = 0;
   let invalid = 0;
   db.exec("BEGIN");
   try {
@@ -1451,7 +1451,9 @@ function importProgress(data, { restore = false } = {}) {
         ? run("INSERT INTO words(id, key, word, domains, is_custom) VALUES (?, ?, ?, ?, 1)", [raw.id, cw.key, cw.word, cw.domains])
         : run("INSERT INTO words(key, word, domains, is_custom) VALUES (?, ?, ?, 1)", [cw.key, cw.word, cw.domains]);
       CUSTOM.set(keepId ? raw.id : lastId, cw.data);
+      added++;
     }
+    counts["own words"] = added;
     if (skipped) counts["damaged custom words skipped"] = skipped;
     const ids = new Map(all("SELECT id, key FROM words").map(r => [r.key, r.id]));
     const orphan = (name, r) => { if (restore) orphans[name].push(r); };
