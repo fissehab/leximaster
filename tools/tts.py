@@ -67,6 +67,7 @@ def to_phonemes(ipa: str, vocab: dict, words: list[str] | None = None, flap: boo
     flap for t between vowels before an unstressed one, and a final "." so the
     word ends as a statement. flap=False keeps every t (NO_FLAP)."""
     s = clean_ipa(ipa)
+    s = re.sub(r"k\(?ə\)?lli\b", "kli", s)          # "-ically" written /ɪkəlli/ is "-ick-lee", not "-ick-uh-lee"
     s = re.sub(r"\(([^)]*)\)", r"\1", s)             # "(ɹ)": the American r is said
     for a, b in (("ɝ", "ɜɹ"), ("r", "ɹ"), ("ɫ", "l"), ("g", "ɡ"), ("'", "ˈ"), ("ʉ", "u"), ("ʍ", "w"),
                  ("n̩", "ən"), ("l̩", "əl"), ("m̩", "əm"), ("‿", " "), ("-", " ")):
@@ -157,6 +158,35 @@ NO_FLAP = {
 }
 
 
+# Pronunciations written by hand, checked against the entry's meaning and its
+# respelling, where neither Kokoro's reading nor the entry's IPA is right: IPA
+# that leaves part of the entry out ("F1 score" /ˌɛf ˈskɔɹ/), names written as
+# their letters ("Meshach" /ˈmɛʃˌeɪˌsiˌeɪtʃ/), initialisms read as words ("DWI",
+# "MCMC"), and words Kokoro guesses wrong from the spelling ("refill", "seer").
+# Found 2026-10-29 comparing every text reading with the IPA, every recording's
+# syllables with its respelling, and every recording Whisper base.en and
+# small.en both heard badly with its respelling ("heroic couplet" said
+# "heroic KOOL-et", "quester" said "KYOOZ-ter").
+SAY = {
+    "A* search": "ˈeɪ stˈɑːɹ sˈɜːtʃ.", "acetylate": "əsˈɛtəlˌeɪt.", "Achish": "ˈeɪkɪʃ.",
+    "adamance": "ˈædəməns.", "apodeictic": "ˌæpədˈaɪktɪk.", "apodeictically": "ˌæpədˈaɪktɪkli.",
+    "archiepiscopal": "ˌɑːɹkiːɪpˈɪskəpəl.", "arete": "ˌæɹətˈeɪ.", "avant-garde": "ˌɑːvɑːntɡˈɑːɹd.",
+    "Ca": "sˌiːˈeɪ.", "camo": "kˈæmoʊ.", "catechetic": "kˌætəkˈɛtɪk.", "chemic": "kˈɛmɪk.", "cussed": "kˈʌsɪd.",
+    "Diophantine": "dˌaɪəfˈæntaɪn.", "DWI": "dˌiːdˌʌbəljuːˈaɪ.", "effaceable": "ɪfˈeɪsəbəl.",
+    "F1 score": "ˌɛf wˈʌn skˈɔːɹ.", "feuilletonist": "fɔɪtˈɑːnɪst.", "gemütlich": "ɡəmˈuːtlɪk.",
+    "gestator": "dʒˈɛsteɪtɚ.", "Gilles de la Tourette syndrome": "ʒˈiːl də lɑː tʊɹˈɛt sˈɪndɹoʊm.",
+    "haughtily": "hˈɔːtɪli.", "haut monde": "ˌoʊ mˈɑːnd.", "heroic couplet": "hɪɹˈoʊɪk kˈʌplɪt.",
+    "hypochondriasis": "hˌaɪpoʊkɑːndɹˈaɪəsɪs.", "in fine": "ɪn fˈiːneɪ.", "ineradicable": "ˌɪnɪɹˈædɪkəbəl.",
+    "maimer": "mˈeɪmɚ.", "MCMC": "ˌɛmsiːˌɛmsˈiː.", "Meshach": "mˈiːʃæk.", "overture": "ˈoʊvɚtʃɚ.",
+    "Pascha": "pˈɑːskə.", "pentagon": "pˈɛntəɡˌɑːn.", "per diem": "pɚ dˈiːəm.",
+    "proletarianize": "pɹˌoʊlətˈɛɹiənaɪz.", "quester": "kwˈɛstɚ.", "refill": "ɹˈiːfɪl.", "rehab": "ɹˈiːhæb.",
+    "reranker": "ɹiːɹˈæŋkɚ.", "ressentiment": "ɹəsˌɑːntiːmˈɑːn.", "ruach": "ɹˈuːɑːk.",
+    "rubicundity": "ɹˌuːbɪkˈʌndɪti.", "seba": "sˈiːbə.", "seer": "sˈɪɹ.", "Sethite": "sˈɛθaɪt.",
+    "Sirach": "sˈaɪɹæk.", "to the nth degree": "tə ðɪ ˈɛnθ dɪɡɹˈiː.", "uncoated": "ʌnkˈoʊtɪd.",
+    "vasodilator": "vˌeɪzoʊdaɪlˈeɪtɚ.",
+}
+
+
 COMMON = 3.0              # wordfreq Zipf: every word of the entry at least this common
 NUMERALS = {"II": "two", "III": "three"}   # "type II error" is "type two error"
 
@@ -225,6 +255,8 @@ def plan(w: dict, tokenizer) -> tuple[str, str]:
     too when Kokoro's reading of it says something else (diocese, wan, shalom).
     Sentences are always read as text."""
     from wordfreq import zipf_frequency
+    if w["word"] in SAY:
+        return SAY[w["word"]], "said"
     ipa = w.get("phonetic") or ""
     if ipa and bad_ipa(w["word"], ipa):
         ipa = ""
