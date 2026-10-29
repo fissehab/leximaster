@@ -6,7 +6,7 @@
 // page asks (on Home, Browse and other calm screens, never mid-session).
 // Every cache name starts with "lexi-": the site shares its origin
 // (fissehab.github.io) with other projects, whose caches are left alone.
-const VERSION = "20261029103630";
+const VERSION = "20261029105038";
 const SHELL = `lexi-shell-${VERSION}`;
 const DATA = "lexi-data-fe3a889e";   // changes only when the published word data does
 // Recording names carry a hash of their content (media/audio/<word>.<hash>.m4a),
