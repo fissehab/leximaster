@@ -2,7 +2,7 @@
 import { api } from "./api.js";
 
 export const settings = { accent: "us", autoplay: "1", speech_rate: "0.9", session_minutes: "15", new_per_day: "12",
-                          word_levels: "1,2,3,4,5" };
+                          word_levels: "2,3,4" };
 
 export async function loadSettings() {
   Object.assign(settings, await api.get("/api/settings"));

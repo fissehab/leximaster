@@ -131,7 +131,7 @@ DEFAULT_SETTINGS = {
     "accent": "us",
     "autoplay": "1",
     "speech_rate": "0.9",
-    "word_levels": "1,2,3,4,5",   # the levels new words come from (common.parse_levels)
+    "word_levels": "2,3,4",   # the levels new words come from (common.DEFAULT_LEVELS)
 }
 
 _lock = threading.Lock()

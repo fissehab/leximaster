@@ -280,7 +280,9 @@ BIBLE_TRACKS = ("bible", "bible_vocab", "bible_names")
 # new words come from, setting "word_levels" = "1,2,3". They narrow only these
 # broad scopes; a Bible track or one subject is a choice of its own.
 LEVELED = ("", "everyday", "core")
-ALL_LEVELS = "1,2,3,4,5"
+# A new learner's levels: past the most common words, short of the rare ones.
+# Kept equal to db.DEFAULT_SETTINGS and the JS twins (tests/test_levels.py).
+DEFAULT_LEVELS = "2,3,4"
 _LEVELS = re.compile(r"[1-5](,[1-5])*")
 
 
@@ -303,7 +305,7 @@ def level_clause(value: str | None) -> str:
 
 def levels_setting(c: sqlite3.Connection) -> str:
     row = c.execute("SELECT value FROM settings WHERE key = 'word_levels'").fetchone()
-    return row["value"] if row else ALL_LEVELS
+    return row["value"] if row else DEFAULT_LEVELS
 SCOPES = ("everyday", "core", *BIBLE_TRACKS)  # study tracks, usable wherever a domain filter is
 
 

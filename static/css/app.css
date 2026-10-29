@@ -821,12 +821,15 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
 .menu-item:hover, .menu-item:focus-visible { background: var(--surface-2); }
 
 /* Home cards */
-.welcome, .notice-card { padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
-.welcome h2 { font: 600 22px/1.2 var(--font-word); }
-.welcome p, .notice-card p { max-width: 70ch; }
-.choice-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.notice-card { padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+.notice-card p { max-width: 70ch; }
 .notice-card { border-left: 3px solid var(--gilt); }
-.welcome > .btn-quiet, .notice-card > .btn-quiet { align-self: flex-start; }
+.notice-card > .btn-quiet { align-self: flex-start; }
+/* Today, for a new learner: a few of the day's new words, and easier ones a tap away. */
+.easier-line { font-size: 14px; color: var(--muted); }
+.easier-line .nowrap { white-space: nowrap; }
+.link-btn { border: 0; background: none; padding: 12px 2px; margin: -12px 0; min-height: 44px; cursor: pointer;
+  font: inherit; color: var(--lapis); text-decoration: underline; text-underline-offset: 2px; }
 
 /* Browse: filters fold on a phone */
 .filters-fold > summary { cursor: pointer; list-style: none; font: 600 12px/1.2 var(--font-ui); letter-spacing: .06em;

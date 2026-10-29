@@ -716,11 +716,11 @@ export function confirmDialog(title, message, action = "Delete") {
 // ---------------------------------------------------------------- word levels
 
 /** Word levels by how common a word is (build_dataset.word_level). */
-export const LEVELS = [[1, "Most common", "believe, need, busy"], [2, "Common", "schedule, goodbye, fully"],
+export const LEVELS = [[1, "Most common", "believe, need, month"], [2, "Common", "schedule, goodbye, fully"],
   [3, "Less common", "receipt, grasp, vicinity"], [4, "Uncommon", "avid, outburst, reaffirm"],
   [5, "Rare", "loquacity, symbiosis, mentee"]];
 export const levelLabel = n => (LEVELS.find(([l]) => l === n) || [])[1] || "";
-const chosenLevels = () => String(settings.word_levels || "1,2,3,4,5").split(",").map(Number);
+const chosenLevels = () => String(settings.word_levels || "2,3,4").split(",").map(Number);
 /** "Levels 1–3", "Levels 1, 3", "All levels". */
 export function levelsText(levels = chosenLevels()) {
   if (levels.length === 5) return "All levels";
@@ -749,6 +749,7 @@ export function levelPicker({ onChange } = {}) {
     const levels = boxes.filter(([b]) => b.checked).map(([b]) => Number(b.value));
     sync();
     try { await saveSettings({ word_levels: levels.join(",") }); } catch (e) { return showError(e); }
+    try { localStorage.setItem("lexi-levels-set", "1"); } catch (e) { /* unavailable */ }   // Today stops offering easier words
     summary.textContent = levelsText(levels);
     toast(`New words: ${levelsText(levels).toLowerCase()}`);
     try { sessionStorage.removeItem("lexi-review-session"); } catch (e) { /* unavailable */ }
