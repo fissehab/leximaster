@@ -231,7 +231,9 @@ railBtn.addEventListener("click", () => setRail(!shell.classList.contains("rail-
 function keysOn() {
   try { return localStorage.getItem("lexi-keys") !== "off"; } catch (e) { return true; }
 }
-function showShortcuts() {
+/** The keyboard shortcuts, with the switch for single-key ones: the ? help
+ * and Settings → Keyboard shortcuts. */
+export function shortcutsList() {
   const rows = [
     ["Space", "Play pronunciation"], ["← →", "Previous / next word"], ["↑ ↓", "Previous / next word (Browse, Pronounce)"],
     ["1–5", "Set star rating"], ["M", "Know it (after the answer in Daily review)"], ["/", "Search (Browse)"],
@@ -239,18 +241,17 @@ function showShortcuts() {
     ["R", "Record yourself (Pronounce)"], ["?", "Show this help"],
   ];
   // Single-key shortcuts can be switched off (speech-input users trigger them by accident).
-  const toggle = h("input#keys-on", { type: "checkbox", checked: keysOn() });
+  const toggle = h("input", { type: "checkbox", checked: keysOn() });
   toggle.addEventListener("change", () => {
     try { localStorage.setItem("lexi-keys", toggle.checked ? "" : "off"); } catch (e) { /* storage unavailable */ }
   });
-  formDialog({
-    title: "Keyboard shortcuts", submit: null,
-    body: h("div",
-      h("div.shortcuts", rows.flatMap(([k, v]) => [h("span", k.split(" ").map(x => h("kbd", x))), h("span", v)])),
-      h("label.check-row", toggle, " Use single-key shortcuts (? still opens this help)")),
-  });
+  return h("div",
+    h("div.shortcuts", rows.flatMap(([k, v]) => [h("span", k.split(" ").map(x => h("kbd", x))), h("span", v)])),
+    h("label.check-row", toggle, " Use single-key shortcuts (? still opens this help)"));
 }
-document.getElementById("help-btn").addEventListener("click", showShortcuts);
+function showShortcuts() {
+  formDialog({ title: "Keyboard shortcuts", submit: null, body: shortcutsList() });
+}
 document.getElementById("about-btn").replaceChildren(icon("info"));
 
 document.addEventListener("keydown", e => {

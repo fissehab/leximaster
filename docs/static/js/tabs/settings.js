@@ -2,7 +2,7 @@
 // pronunciation speed), the theme, and your data (export, import, offline use).
 
 import { api, invalidateWords } from "../api.js";
-import { savedTheme, setTheme, THEMES } from "../app.js";
+import { savedTheme, setTheme, shortcutsList, THEMES } from "../app.js";
 import { playbackSpeed } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import { loadSettings, saveSettings, setStudyFocus, settings, studyFocus } from "../state.js";
@@ -10,7 +10,10 @@ import { h, icon, levelPicker, pageHead, SCOPES, showError, toast } from "../ui.
 
 export async function render(root) {
   root.append(pageHead("Settings", "How you study, how LexiMaster looks, and your saved progress."),
-    h("div.settings-grid", settingsPanel(), themePanel(), dataPanel()));
+    h("div.settings-grid", settingsPanel(), themePanel(),
+      h("section.panel", h("h2", "Keyboard shortcuts"),
+        h("p.muted", "On a computer. Press ? anywhere to see this list."), shortcutsList()),
+      dataPanel()));
 }
 
 function settingsPanel() {
