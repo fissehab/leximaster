@@ -244,6 +244,37 @@ def quiz_synonyms(data: dict) -> list[str]:
     return [s for s in dict.fromkeys(out) if s][:3]
 
 
+# Synonyms, antonyms, "Compared with" and related words without an entry of
+# their own, so a search finds the entries that list them. Kinds: s synonym,
+# a antonym, c compared with, f related (word family, related forms).
+MENTION_PARENTS = 4
+
+
+def mentions(words, heads: set[str]) -> list[list]:
+    """[[term, [[kind, headword], ...]], ...] for every related term whose
+    lookup key (gloss_key) isn't in `heads`. `words` gives (headword, data)
+    pairs, most common first, so each term keeps its commonest few parents.
+    GET /api/mentions sends it; tools/build_site.py publishes it."""
+    out: dict[str, list] = {}
+    for word, data in words:
+        n = data.get("nuance") or {}
+        ms = data.get("meanings") or []
+        groups = (("s", [*(data.get("synonyms") or []), *(t for m in ms for t in m.get("synonyms") or [])]),
+                  ("a", [*(n.get("antonyms") or []), *(data.get("antonyms") or []),
+                         *(t for m in ms for t in m.get("antonyms") or [])]),
+                  ("c", [(d or {}).get("vs", "") for d in n.get("distinctions") or []]),
+                  ("f", [*(n.get("word_family") or []), *((data.get("forms") or {}).get("related") or [])]))
+        for kind, terms in groups:
+            for t in terms:
+                key = gloss_key(t) if isinstance(t, str) else ""
+                if not key or key in heads or len(key) > 40:
+                    continue
+                rec = out.setdefault(key, [re.sub(r"\s*\([^()]*\)\s*$", "", t.replace("\u2019", "'")).strip(), []])
+                if len(rec[1]) < MENTION_PARENTS and all(p != word for _, p in rec[1]):
+                    rec[1].append([kind, word])
+    return list(out.values())
+
+
 def today_iso() -> str:
     return date.today().isoformat()
 

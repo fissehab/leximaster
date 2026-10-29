@@ -6,9 +6,9 @@
 // page asks (on Home, Browse and other calm screens, never mid-session).
 // Every cache name starts with "lexi-": the site shares its origin
 // (fissehab.github.io) with other projects, whose caches are left alone.
-const VERSION = "20261029110228";
+const VERSION = "20261029130702";
 const SHELL = `lexi-shell-${VERSION}`;
-const DATA = "lexi-data-fe3a889e";   // changes only when the published word data does
+const DATA = "lexi-data-6c074c1e";   // changes only when the published word data does
 // Recording names carry a hash of their content (media/audio/<word>.<hash>.m4a),
 // so a corrected recording has a new URL: the media cache can outlive deploys.
 const MEDIA = "lexi-media-v2";
@@ -302,7 +302,7 @@ self.addEventListener("fetch", e => {
   const path = url.pathname;
   if (path.includes("/media/")) { e.respondWith(media(e.request).catch(() => fetch(e.request))); return; }
   if (path.includes("/static/mouth/")) { e.respondWith(media(e.request, MOUTH).catch(() => fetch(e.request))); return; }
-  if (path.includes("/data/detail/") || path.includes("/data/gloss/") || path.endsWith("/data/index.json")) { e.respondWith(cacheFirst(e.request, DATA)); return; }
+  if (path.includes("/data/detail/") || path.includes("/data/gloss/") || /\/data\/(index|mentions)\.json$/.test(path)) { e.respondWith(cacheFirst(e.request, DATA)); return; }
   if (e.request.mode === "navigate" && /\/(index\.html)?$/.test(path)) {
     // The app's page comes from the same version's cache as its scripts.
     e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));

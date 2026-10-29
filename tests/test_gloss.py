@@ -37,3 +37,21 @@ def test_gloss_endpoint(client, tmp_path, monkeypatch):
     assert client.get("/api/gloss", params={"w": "Normal"}).json()["senses"][0][0] == "adjective"
     assert client.get("/api/gloss", params={"w": "kings (noun)"}).json() == {"see": "king"}
     assert client.get("/api/gloss", params={"w": "zzz"}).json() == {"w": "zzz", "senses": [], "syn": []}
+
+
+def test_mentions_lists_related_words_without_an_entry(client):
+    from app.common import mentions
+    words_ = [("happy", {"synonyms": ["joyful", "Glad (adjective)"], "antonyms": ["sad"],
+                         "meanings": [{"synonyms": ["jubilant"]}]}),
+              ("glad", {"synonyms": ["joyful"], "nuance": {"distinctions": [{"vs": "content"}]}})]
+    out = {t: ps for t, ps in mentions(words_, {"happy", "glad", "sad"})}
+    assert out == {"joyful": [["s", "happy"], ["s", "glad"]], "jubilant": [["s", "happy"]],
+                   "content": [["c", "glad"]]}
+    # The endpoint: every term is a related word that isn't a headword.
+    res = client.get("/api/mentions")
+    assert res.status_code == 200
+    terms = res.json()["terms"]
+    with db.tx() as c:
+        heads = {gloss_key(r["word"]) for r in c.execute("SELECT word FROM words")}
+    assert terms and not any(gloss_key(t) in heads for t, _ in terms)
+    assert all(ps and all(k in "sacf" and gloss_key(p) in heads for k, p in ps) for _, ps in terms)
