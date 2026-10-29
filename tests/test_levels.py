@@ -135,3 +135,15 @@ def test_count_lists_todays_new_words(client):
     session = client.get("/api/review/queue").json()["queue"]
     assert count["samples"] == [c["word"] for c in session if c["is_new"]][:3]
     assert len(count["samples"]) == min(3, count["new"])
+
+
+def test_old_default_levels_move_to_the_new_default(fresh_db):
+    """Migration 4: the all-levels default stored before 2026-10-29 becomes
+    2-4; any other choice is kept."""
+    for stored, after in (("1,2,3,4,5", "2,3,4"), ("3,4,5", "3,4,5"), ("1,2", "1,2")):
+        with db.tx() as c:
+            c.execute("INSERT OR REPLACE INTO settings(key, value) VALUES ('word_levels', ?)", (stored,))
+            c.execute("PRAGMA user_version = 3")
+            db.migrate(c)
+            assert c.execute("SELECT value FROM settings WHERE key = 'word_levels'").fetchone()[0] == after
+            assert db.schema_version(c) == db.SCHEMA_VERSION
