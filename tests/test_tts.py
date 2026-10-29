@@ -84,3 +84,23 @@ def test_remade_recording_keeps_the_voice_a_retry_chose(tmp_path, monkeypatch):
     tts.generate()
     entry = tts.load_manifest()["meta"]
     assert (entry["phonemes"], entry["voice"], entry["speed"], entry["retried"]) == ("mˈɛtə.", "am_michael", 0.8, True)
+
+
+def test_ically_written_with_an_extra_syllable_is_said_ick_lee():
+    assert tts.to_phonemes("/hɪpəˈkɹɪtɪkəlli/", AnySymbol(), ["hypocritically"], flap=False) == "hɪpəkɹˈɪtɪkli."
+    assert tts.to_phonemes("/ˈkwɪzək(ə)lli/", AnySymbol(), ["quizzically"]) == "kwˈɪzəkli."
+    assert tts.to_phonemes("/ˈsoʊlli/", AnySymbol(), ["solely"]) == "sˈoʊlli."      # a real double l stays
+
+
+def test_hand_written_pronunciations_come_first():
+    tok = Tokenizer()
+    assert tts.plan({"word": "F1 score", "phonetic": "/ˌɛf ˈskɔɹ/"}, tok) == ("ˌɛf wˈʌn skˈɔːɹ.", "said")
+    assert tts.plan({"word": "Meshach", "phonetic": "/ˈmɛʃˌeɪˌsiˌeɪtʃ/", "name_kind": "person"}, tok) == ("mˈiːʃæk.", "said")
+
+
+@pytest.mark.skipif(not tts.WORDS_JSON.exists(), reason="no dataset")
+def test_hand_written_words_are_synthesized_entries():
+    words = {w["word"]: w for w in json.loads(tts.WORDS_JSON.read_text(encoding="utf-8"))["words"]}
+    missing = sorted(n for n in tts.SAY if n not in words or words[n].get("has_audio"))
+    assert not missing, f"SAY words that aren't synthesized entries: {missing}"
+    assert all(ph.endswith(".") and "ɾ" not in ph for ph in tts.SAY.values())
