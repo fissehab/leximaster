@@ -208,7 +208,7 @@ export async function render(root, { param, view, live: isLive }) {
   });
 
   els.sort = h("select.input#browse-sort", { "aria-label": "Sort" },
-    [["alpha", "A–Z"], ["freq", "Most frequent first"], ["stars", "Most stars"], ["stars_low", "Fewest stars"], ["domain", "Domain"]]
+    [["alpha", "Sort: A–Z"], ["freq", "Sort: most common first"], ["stars", "Sort: most stars"], ["stars_low", "Sort: fewest stars"], ["domain", "Sort: by domain"]]
       .map(([v, l]) => h("option", { value: v }, l)));
   els.sort.value = state.sort;
   els.sort.addEventListener("change", () => { state.sort = els.sort.value; refreshList(); });
