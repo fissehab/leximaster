@@ -8,7 +8,7 @@ repetition and six kinds of practice.
 
 Why it exists, in the words of its author:
 
-> I'm Fisseha, a non-native English speaker working in data science and AI, with a background in civil
+> I'm Fisseha, a non-native English speaker working in data science and artificial intelligence (AI), with a background in civil
 > engineering, environmental science (MS, University of Connecticut) and atmospheric physics (MS and
 > PhD, Johns Hopkins University). I built LexiMaster to spend a few minutes a day keeping the words
 > and ideas I care about in active memory, ready for professional work, writing and everyday

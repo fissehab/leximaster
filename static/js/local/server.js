@@ -125,8 +125,25 @@ async function boot() {
   await withWriteLock(async () => {
     const state = await readState();
     const migrated = await migrateV1(state);
-    if ((await safeRebuild(state) || migrated) && !newerFormat) await persist();
+    const rebuilt = await safeRebuild(state);
+    if ((rebuilt || migrated || oldDefaultLevels()) && !newerFormat) await persist();
   });
+}
+
+// Until 2026-10-29 every level was the default, and progress saved then
+// stored it as if chosen. Once per browser, a stored 1-5 that wasn't picked
+// in Settings (which sets "lexi-levels-set") moves to the new default, as
+// app/db.py migration 4 does on a computer.
+function oldDefaultLevels() {
+  try {
+    if (localStorage.getItem("lexi-levels-v2")) return false;
+    localStorage.setItem("lexi-levels-v2", "1");
+    if (localStorage.getItem("lexi-levels-set")) return false;
+  } catch (e) { return false; }   // no storage: a choice can't be told from the old default
+  const row = get("SELECT value FROM settings WHERE key = 'word_levels'");
+  if (!row || row.value !== "1,2,3,4,5") return false;
+  run("UPDATE settings SET value = ? WHERE key = 'word_levels'", [DEFAULT_LEVELS]);
+  return true;
 }
 
 // Saved by a newer version of the app (another tab already updated): this

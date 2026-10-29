@@ -7,7 +7,7 @@ export async function render(root) {
     pageHead("About LexiMaster"),
     h("div.about-grid",
       card("Who I am",
-        h("p", "I'm Fisseha, a non-native English speaker who works in data science and AI. I studied civil " +
+        h("p", "I'm Fisseha, a non-native English speaker who works in data science and artificial intelligence (AI). I studied civil " +
           "engineering, then earned a master's in environmental science at the University of Connecticut and a " +
           "master's and PhD in atmospheric physics at Johns Hopkins University, before moving into data science. " +
           "Theology has been a parallel path: I hold a master's in theology from Agora University and am now " +

@@ -169,7 +169,7 @@ def tx():
 # step that turns version N-1 into N, e.g.
 #     2: ["ALTER TABLE srs ADD COLUMN stability REAL"],
 # Steps run inside the startup transaction, so a failed step changes nothing.
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 MIGRATIONS: dict[int, list] = {   # SQL strings, or functions of the connection
     1: [],  # the baseline: the schema as first released (created by SCHEMA)
     2: WORDS_COMPACT,  # filled by init() and on demand (common.compact_heads)
@@ -179,6 +179,9 @@ MIGRATIONS: dict[int, list] = {   # SQL strings, or functions of the connection
         or c.execute("ALTER TABLE words ADD COLUMN level INTEGER"),   # a new database has it
         "DROP TRIGGER IF EXISTS words_compact_upd", WORDS_COMPACT[2],
         "DELETE FROM meta WHERE key = 'words_stamp'"],
+    # Until 2026-10-29 every level was the default, and the default was stored
+    # as if chosen; it moves to the new default (2-4). A later choice stays.
+    4: ["UPDATE settings SET value = '2,3,4' WHERE key = 'word_levels' AND value = '1,2,3,4,5'"],
 }
 
 
