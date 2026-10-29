@@ -31,7 +31,7 @@ from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from app.common import GLOSS_SHARDS, core_definition, gloss_shard, quiz_synonyms  # noqa: E402
+from app.common import GLOSS_SHARDS, core_definition, gloss_key, gloss_shard, mentions, quiz_synonyms  # noqa: E402
 from app.main import content_security_policy, inline_script_hashes  # noqa: E402
 
 DOCS = ROOT / "docs"
@@ -172,6 +172,14 @@ def build_glossary() -> int:
     for key, rec in json.loads(path.read_text(encoding="utf-8")).items():
         shards[gloss_shard(key)][key] = rec
     return sum(write_json(DOCS / "data" / "gloss" / f"{i:02d}.json", shard) for i, shard in shards.items())
+
+
+def build_mentions(words: list[dict]) -> int:
+    """Related words without an entry and the entries that list them
+    (app.common.mentions), for Browse's search."""
+    common = sorted(words, key=lambda w: (w.get("freq_rank") is None, w.get("freq_rank") or 0))
+    terms = mentions(((w["word"], w) for w in common), {gloss_key(w["word"]) for w in words})
+    return write_json(DOCS / "data" / "mentions.json", {"terms": terms})
 
 
 def copy_audio(words: list[dict], media: dict[str, tuple[str, Path]]) -> list[dict]:
@@ -430,7 +438,7 @@ self.addEventListener("fetch", e => {{
   const path = url.pathname;
   if (path.includes("/media/")) {{ e.respondWith(media(e.request).catch(() => fetch(e.request))); return; }}
   if (path.includes("/static/mouth/")) {{ e.respondWith(media(e.request, MOUTH).catch(() => fetch(e.request))); return; }}
-  if (path.includes("/data/detail/") || path.includes("/data/gloss/") || path.endsWith("/data/index.json")) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
+  if (path.includes("/data/detail/") || path.includes("/data/gloss/") || /\\/data\\/(index|mentions)\\.json$/.test(path)) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
   if (e.request.mode === "navigate" && /\\/(index\\.html)?$/.test(path)) {{
     // The app's page comes from the same version's cache as its scripts.
     e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));
@@ -620,6 +628,7 @@ def main() -> None:
     media = media_files(words)
     index_size, detail_size = build_data(words, media)
     gloss_size = build_glossary()
+    mentions_size = build_mentions(words)
     audio_rows = copy_audio(words, media)
     build_index_html(version)
     build_icons()
@@ -627,7 +636,7 @@ def main() -> None:
     build_credits(audio_rows, len(words), sum(1 for w in words if not w.get("has_audio") and w["key"] in media))
     h = hashlib.sha256()
     details = {}
-    for f in [DOCS / "data" / "index.json", *sorted((DOCS / "data" / "detail").glob("*.json")),
+    for f in [DOCS / "data" / "index.json", DOCS / "data" / "mentions.json", *sorted((DOCS / "data" / "detail").glob("*.json")),
               *sorted((DOCS / "data" / "gloss").glob("*.json"))]:
         b = f.read_bytes()
         h.update(b)
@@ -641,6 +650,7 @@ def main() -> None:
     biggest = max(files, key=lambda p: p.stat().st_size)
     print(f"docs/: {len(files):,} files, {total / 1e6:.1f} MB · index.json {index_size / 1e6:.1f} MB · "
           f"details {detail_size / 1e6:.1f} MB in {SHARDS} files · glossary {gloss_size / 1e6:.1f} MB · "
+          f"related words {mentions_size / 1e6:.1f} MB · "
           f"{len(audio_rows):,} recordings · "
           f"largest file {biggest.relative_to(DOCS)} {biggest.stat().st_size / 1e6:.1f} MB")
 

@@ -14,7 +14,7 @@ Why it exists, in the words of its author:
 > and ideas I care about in active memory, ready for professional work, writing and everyday
 > conversation.
 
-The app's About page (the ⓘ button at the foot of the menu; More → About on a phone) says more.
+The app's About page (in the menu under Settings; More → About on a phone) says more.
 
 It runs two ways: as a website (https://fissehab.github.io/leximaster/, nothing to install) or as a
 local app on your Mac. Both work the same and share the same progress file format.
@@ -285,7 +285,7 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Listen | Hear a word, then pick it or type it; the wrong choices sound like the word (affect, effect), never exact homophones. Also has a spelling test that compares your spelling letter by letter, and "Where's the stress?", which asks which syllable is strong. "Can't listen now?" shows the pronunciation instead (the answer then isn't scored as heard). |
 | Pronounce | Play the reference recording, record yourself, and play both back. The two waveforms are trimmed of silence and drawn on one time scale, so length and stress line up. |
 | Sounds | The 16 sounds learners of English find hardest (th, r and l, v and w, short i and ee, …): the mouth drawing, a plain tip, words to try and compare (all recorded by people), a "Which word did you hear?" game with word pairs (right/light, ship/sheep), and the MRI clips. |
-| Browse | The full lexicon. It runs A–Z with a letter strip to jump, instant search across words and meanings (best matches first), and filters by domain, level, rating and known words. The list keeps to your word levels (Settings) unless you pick "All levels" or one level; a search looks through every word. On a phone, tapping a word brings its page into view (← List goes back). |
+| Browse | The full lexicon. It runs A–Z with a letter strip to jump, instant search across words and meanings (best matches first), and filters by domain, level, rating and known words. The list keeps to your word levels (Settings) unless you pick "All levels" or one level; a search looks through every word, and also finds the synonyms, antonyms and related words listed under an entry that have no entry of their own ("jubilant: Synonym of joyful"), opening the entry that lists them with the word highlighted. On a phone, tapping a word brings its page into view (← List goes back). |
 | My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen. Words in your lists come first among new review words. |
 | Stats | Words mastered (and marked known), retention (the share of reviews you recalled, by gap), practice accuracy, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. |
 | Settings | Study settings (study focus, session length, new words per day, word levels, pronunciation speed), the theme, progress export/import, and on the website "Download for offline use" and the sources. |

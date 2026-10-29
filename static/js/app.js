@@ -29,8 +29,7 @@ export const TABS = [
   { id: "more", label: "More", icon: "more", hub: true },
   { id: "stats", label: "Stats", icon: "stats", under: "more", sep: true, note: "Progress, retention and test history" },
   { id: "settings", label: "Settings", icon: "gear", under: "more", note: "Study settings, theme, backup and offline use" },
-  // Reached from the button at the foot of the menu (and More on a phone), not a menu link.
-  { id: "about", label: "About", icon: "info", under: "more", foot: true, note: "Who made LexiMaster and why" },
+  { id: "about", label: "About", icon: "info", under: "more", note: "Who made LexiMaster and why" },
 ];
 
 const view = document.getElementById("view");
@@ -45,7 +44,7 @@ function buildNav() {
       t.id === "review" ? h("span.short", "Review") : null),
     t.id === "review" ? h("span.count#due-count", { hidden: true }) : null);
   const items = [];
-  for (const t of TABS.filter(t => !t.foot)) {
+  for (const t of TABS) {
     const last = items[items.length - 1];
     if (!t.group) items.push(link(t));
     else if (last && last.dataset.group === t.group) last.append(link(t));
@@ -144,8 +143,6 @@ async function route() {
     if (a.dataset.tab === tab || a.dataset.tab === under) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
-  const about = document.getElementById("about-btn");
-  if (tab === "about") about.setAttribute("aria-current", "page"); else about.removeAttribute("aria-current");
   // A slow screen (the word list on first visit) says so instead of staying blank.
   const slow = setTimeout(() => { if (token === navToken) view.classList.add("is-loading"); }, 250);
   // `live()` lets a screen that finishes loading after you've left it stay quiet.
@@ -252,7 +249,6 @@ export function shortcutsList() {
 function showShortcuts() {
   formDialog({ title: "Keyboard shortcuts", submit: null, body: shortcutsList() });
 }
-document.getElementById("about-btn").replaceChildren(icon("info"));
 
 document.addEventListener("keydown", e => {
   if (e.metaKey || e.ctrlKey || e.altKey) return;

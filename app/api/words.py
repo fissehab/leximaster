@@ -11,7 +11,7 @@ from fastapi import APIRouter, HTTPException, Request, Response
 from pydantic import BaseModel, Field
 
 from .. import db, srs
-from ..common import BIBLE_TRACKS, NAMES_ONLY_SQL, REFERENCE_SQL, levels_setting, parse_levels, compact_heads, compact_json, fetch_word, full, gloss_key, track_clause
+from ..common import BIBLE_TRACKS, NAMES_ONLY_SQL, REFERENCE_SQL, levels_setting, parse_levels, compact_heads, compact_json, fetch_word, full, gloss_key, mentions, track_clause
 
 router = APIRouter(prefix="/api")
 
@@ -94,6 +94,30 @@ def gloss(w: str):
         _glossary = (mtime, json.loads(path.read_text(encoding="utf-8")) if mtime else {})
     key = gloss_key(w)[:200]
     return _glossary[1].get(key) or {"w": key, "senses": [], "syn": []}
+
+# The related terms without an entry, kept while the words are unchanged.
+_mentions: tuple[tuple, bytes] | None = None
+
+
+@router.get("/mentions")
+def related_terms(request: Request):
+    """Synonyms, antonyms and other related words that have no entry, each
+    with the entries that list it (app.common.mentions): Browse's search
+    finds them."""
+    global _mentions
+    with db.tx() as c:
+        stamp = tuple(c.execute("SELECT COUNT(*), MAX(id), SUM(LENGTH(data)) FROM words").fetchone())
+        if _mentions is None or _mentions[0] != stamp:
+            rows = c.execute("SELECT word, data FROM words ORDER BY freq_rank IS NULL, freq_rank, id").fetchall()
+            heads = {gloss_key(r["word"]) for r in rows}
+            terms = mentions(((r["word"], json.loads(r["data"] or "{}")) for r in rows), heads)
+            _mentions = (stamp, gzip.compress(json.dumps({"terms": terms}, separators=(",", ":")).encode("utf-8"),
+                                              compresslevel=6, mtime=0))
+    if "gzip" in request.headers.get("accept-encoding", "").lower():
+        return Response(_mentions[1], media_type="application/json",
+                        headers={"Content-Encoding": "gzip", "Vary": "Accept-Encoding"})
+    return Response(gzip.decompress(_mentions[1]), media_type="application/json")
+
 
 class StateIn(BaseModel):
     stars: int | None = Field(None, ge=0, le=5)

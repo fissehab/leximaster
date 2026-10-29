@@ -195,6 +195,14 @@ async function gloss(term) {
   return (await GLOSS.get(s))[key] || { w: key, senses: [], syn: [] };
 }
 
+// Related words without an entry and the entries that list them
+// (app/common.py mentions), for Browse's search; fetched on the first search.
+let MENTIONS = null;
+function mentions() {
+  if (!MENTIONS) MENTIONS = fetchJson("data/mentions.json").catch(e => { MENTIONS = null; throw e; });
+  return MENTIONS;
+}
+
 // --------------------------------------------------------------- persistence
 
 // IndexedDB "state" holds a snapshot ("progress": the export without the
@@ -1585,6 +1593,7 @@ async function downloadForOffline() {
   const shards = [...new Set([...INDEX.values()].map(w => w.s))];
   const urls = shards.map(s => `data/detail/${String(s).padStart(2, "0")}.json`);
   for (let s = 0; s < GLOSS_SHARDS; s++) urls.push(glossUrl(s));
+  urls.push("data/mentions.json");
   // Today's review words' recordings too, so the daily session sounds right offline.
   try {
     const q = await reviewQueue({});
@@ -1629,6 +1638,7 @@ const ROUTES = [
   ["DELETE", /^\/api\/words\/(\d+)$/, (m) => deleteCustomWord(+m[1])],
   ["GET", /^\/api\/wotd$/, (m, q) => wordOfTheDay(q)],
   ["GET", /^\/api\/gloss$/, (m, q) => gloss(q.w)],
+  ["GET", /^\/api\/mentions$/, () => mentions()],
   ["GET", /^\/api\/lists$/, () => allLists()],
   ["POST", /^\/api\/lists$/, (m, q, b) => createList(b)],
   ["PATCH", /^\/api\/lists\/(\d+)$/, (m, q, b) => renameList(+m[1], b)],
@@ -1675,7 +1685,7 @@ const ROUTES = [
   ["POST", /^\/api\/import$/, (m, q, b) => importFile(b)],
   ["POST", /^\/api\/offline$/, () => downloadForOffline()],
 ];
-const READ_ONLY = new Set(["/api/health", "/api/words", "/api/gloss", "/api/lists", "/api/stats", "/api/settings", "/api/export",
+const READ_ONLY = new Set(["/api/health", "/api/words", "/api/gloss", "/api/mentions", "/api/lists", "/api/stats", "/api/settings", "/api/export",
                            "/api/quiz", "/api/matching", "/api/listen", "/api/flashcards", "/api/practice/words",
                            "/api/review/queue", "/api/offline"]);
 

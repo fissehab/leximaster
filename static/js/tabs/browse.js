@@ -19,6 +19,49 @@ function norm(s) { return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase
 const nw = w => w._nw || (w._nw = norm(w.word));
 const nd = w => w._nd || (w._nd = norm(w.def || ""));
 
+// Synonyms, antonyms and other related words that have no entry of their
+// own: a search finds them and opens an entry that lists them. Loaded on the
+// first search: [{ t: term, n: normalized, ps: [[kind, headword], ...] }].
+let related = null;
+let relatedLoading = false;
+const KIND = { s: "Synonym of", a: "Opposite of", c: "Compared with", f: "Related to" };
+function loadRelated() {
+  if (related || relatedLoading) return;
+  relatedLoading = true;
+  api.get("/api/mentions")
+    .then(r => {
+      related = r.terms.map(([t, ps]) => ({ t, n: norm(t), ps }));
+      if (state.q.trim() && els.vlist && els.vlist.isConnected) refreshList({ keepScroll: true });
+    })
+    .catch(() => { /* search still finds the words themselves */ })
+    .finally(() => { relatedLoading = false; });
+}
+// Lowercase headword -> word, for each list searched (kept while it is the same list).
+const byWord = new WeakMap();
+function wordMap(list) {
+  if (!byWord.has(list)) byWord.set(list, new Map(list.map(w => [w.word.toLowerCase(), w])));
+  return byWord.get(list);
+}
+/** Rows for the related words matching q, in the entries left by the filters. */
+function relatedRows(q, out) {
+  const prefix = [], inner = [];
+  if (!related || q.length < 2) return [prefix, inner];
+  const all = wordMap(words), here = wordMap(out);
+  for (const r of related) {
+    const at = r.n.indexOf(q);
+    if (at < 0 || (at > 0 && q.length < 3) || all.has(r.n)) continue;   // a word you added has its own row
+    const parents = r.ps.map(([k, p]) => [k, here.get(p.toLowerCase())]).filter(x => x[1]);
+    if (!parents.length) continue;
+    const kinds = [...new Set(parents.map(x => x[0]))];
+    const def = kinds.map(k => `${KIND[k]} ${parents.filter(x => x[0] === k).map(x => x[1].word).join(", ")}`).join(" · ");
+    const row = { id: parents[0][1].id, word: r.t, def, mention: r.t, _nw: r.n };
+    if (at > 0) inner.push(row);
+    else if (r.n === q) prefix.unshift(row);
+    else prefix.push(row);
+  }
+  return [prefix, inner];
+}
+
 function applyFilters() {
   const q = norm(state.q.trim());
   let out = words;
@@ -35,6 +78,7 @@ function applyFilters() {
   if (state.known === "known") out = out.filter(w => w.known);
   if (state.known === "unknown") out = out.filter(w => !w.known);
   if (q) {
+    loadRelated();
     const prefix = [], inner = [], inDef = [];
     for (const w of out) {
       const n = nw(w);
@@ -42,7 +86,8 @@ function applyFilters() {
       else if (n.includes(q)) inner.push(w);
       else if (q.length >= 3 && nd(w).includes(q)) inDef.push(w);
     }
-    shown = [...prefix, ...inner, ...inDef];   // best matches first
+    const [relPrefix, relInner] = relatedRows(q, out);
+    shown = [...prefix, ...inner, ...relPrefix, ...inDef, ...relInner];   // best matches first
     return;
   }
   shown = [...out].sort((a, b) => a.word.localeCompare(b.word, undefined, { sensitivity: "base" }));
@@ -58,8 +103,9 @@ function renderRows() {
   const frag = document.createDocumentFragment();
   for (let i = start; i < end; i++) {
     const w = shown[i];
-    const row = h(`div.row${w.id === state.selectedId ? ".sel" : ""}`, {
-      style: { top: `${i * ROW_H}px` }, "data-id": w.id, "aria-current": w.id === state.selectedId ? "true" : null,
+    const sel = w.id === state.selectedId && !w.mention;
+    const row = h(`div.row${sel ? ".sel" : ""}${w.mention ? ".mention" : ""}`, {
+      style: { top: `${i * ROW_H}px` }, "data-id": w.id, "data-term": w.mention || null, "aria-current": sel ? "true" : null,
     },
       h("span.row-word", w.word),
       h("span.row-side",
@@ -109,7 +155,7 @@ const narrow = () => matchMedia("(max-width: 900px)").matches;
 
 /** Show a word. `reveal`: picked by the user, so on a narrow screen (list
  * above, entry below) bring the entry into view. */
-async function select(id, { scroll = true, reveal = false } = {}) {
+async function select(id, { scroll = true, reveal = false, mark = "" } = {}) {
   if (!live()) return;   // Browse was left before this ran
   state.selectedId = id;
   detail = null;  // keyboard actions wait for the new entry
@@ -131,6 +177,16 @@ async function select(id, { scroll = true, reveal = false } = {}) {
   els.detail.replaceChildren(back, renderEntry(w, { onChange: () => { syncCached(w); renderRows(); } }));
   els.detail.scrollTop = 0;
   if (reveal && narrow()) els.detail.scrollIntoView({ block: "start" });
+  if (mark) markTerm(mark);
+}
+
+/** Show where the entry lists a related word found by a search. */
+function markTerm(term) {
+  const key = norm(term);
+  const el = [...els.detail.querySelectorAll(".term")].find(t => norm(t.textContent.replace(/[\u2018\u2019]/g, "'")) === key);
+  if (!el) return;
+  el.classList.add("found");
+  el.scrollIntoView({ block: "center", behavior: scrollBehavior() });
 }
 
 function syncCached(w) {
@@ -201,7 +257,7 @@ export async function render(root, { param, view, live: isLive }) {
   els.search.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => { state.q = els.search.value; refreshList(); }, 60); });
   els.search.addEventListener("keydown", e => {
     if (e.key === "ArrowDown") { e.preventDefault(); els.search.blur(); move(state.selectedId ? 1 : 0); }
-    if (e.key === "Enter" && shown[0]) { e.preventDefault(); els.search.blur(); select(shown[0].id, { reveal: true }); }
+    if (e.key === "Enter" && shown[0]) { e.preventDefault(); els.search.blur(); select(shown[0].id, { reveal: true, mark: shown[0].mention || "" }); }
     if (e.key === "Escape") els.search.blur();
   });
 
@@ -233,7 +289,7 @@ export async function render(root, { param, view, live: isLive }) {
   els.vlist = h("div.vlist", { "aria-label": "Words (use the arrow keys to move through them)", tabindex: "0" }, els.inner);
   let frame = 0;
   els.vlist.addEventListener("scroll", () => { if (!frame) frame = requestAnimationFrame(() => { frame = 0; renderRows(); }); }, { passive: true });
-  els.vlist.addEventListener("click", e => { const r = e.target.closest(".row"); if (r) select(Number(r.dataset.id), { scroll: false, reveal: true }); });
+  els.vlist.addEventListener("click", e => { const r = e.target.closest(".row"); if (r) select(Number(r.dataset.id), { scroll: false, reveal: true, mark: r.dataset.term || "" }); });
   els.meta = h("div.list-meta.tnum");
   els.detail = h("div.detail-col");
 
