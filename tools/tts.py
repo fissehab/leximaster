@@ -7,6 +7,7 @@ sentences and entries without IPA are read as text.
     .venv/bin/python tools/tts.py generate        # words not yet done (resumable)
     .venv/bin/python tools/tts.py verify          # transcribe each with Whisper; flag doubtful ones
     .venv/bin/python tools/tts.py generate --only "word1,word2"
+    .venv/bin/python tools/tts.py retry --only "word1,word2"   # other voices; keep the clearest
 
 Files: data/tts/<slug>.<hash8>.m4a (the hash of the file's content, so
 corrected audio gets a new URL), listed in data/cache/tts.json (key → file, the
@@ -121,9 +122,10 @@ def to_phonemes(ipa: str, vocab: dict, words: list[str] | None = None) -> str:
         # unstressed one stays short ("happy" hˈæpi).
         tok = re.sub(r"([ˈˌ])i$", r"\1iː", tok)
         # The American flap: t between vowels, before an unstressed one
-        # (abnormality …mˈæləɾi, "party" pˈɑːɹɾi), never word-initial, and
-        # not before a syllabic n ("button", "heightened": a held t).
-        tok = re.sub(r"(?<=[aeiouæɑɒɔəɛɜɚɪʊʌᵻː])(ɹ?)t(?=[aeiouæɑɒɔəɛɜɚɪʊʌᵻ])(?![əɪ]n(?![aeiouæɑɒɔəɛɜɚɪʊʌᵻ]))",
+        # (abnormality …mˈæləɾi, "party" pˈɑːɹɾi), never word-initial, not
+        # before a syllabic n ("button", "heightened": a held t), and not
+        # before aɪ aʊ ɔɪ, which keep their stress ("archetype", "satire").
+        tok = re.sub(r"(?<=[aeiouæɑɒɔəɛɜɚɪʊʌᵻː])(ɹ?)t(?=[aeiouæɑɒɔəɛɜɚɪʊʌᵻ])(?![əɪ]n(?![aeiouæɑɒɔəɛɜɚɪʊʌᵻ]))(?!aɪ|aʊ|ɔɪ)",
                      r"\1ɾ", tok)
         out_words.append(tok)
     return (" ".join(out_words) + ".") if out_words else ""
@@ -162,10 +164,18 @@ def differs(text_ph: str, ipa_ph: str, words: list[str]) -> bool:
     after merging what doesn't change the word (reduced vowels, ɔ/ɑ, flaps);
     the little words of a phrase don't count."""
     a, b = strip_stress(text_ph).split(), strip_stress(ipa_ph).split()
+    # A syllable dropped or added is always another word ("forex" as "forks").
+    if syllables(" ".join(a)) != syllables(" ".join(b)):
+        return True
     if len(a) == len(b):
         names = [x.lower() for x in words] if len(words) == len(a) else [""] * len(a)
         return max((distance(x, y) for x, y, n in zip(a, b, names) if n not in UNSTRESSED), default=0) > 0.25
     return distance(" ".join(a), " ".join(b)) > 0.25
+
+
+def syllables(ph: str) -> int:
+    """Vowel nuclei (a diphthong is one), syllabic consonants included."""
+    return len(re.findall(r"aɪ|aʊ|ɔɪ|eɪ|oʊ|[aeiouæɑɒɔəɛɜɚɪʊʌᵻᵊ]|\u0329", unicodedata.normalize("NFD", ph)))
 
 
 ODD_IPA = re.compile(r"e(?![ɪə])|æɪ|ɑe|ej|ɪj|ʌɪ|a(?![ɪʊ])|o(?![ʊɹɪ])|ʰ|eɪŋ|\[")
@@ -294,6 +304,15 @@ def audio16k(path: Path):
     return np.frombuffer(raw, dtype=np.float32)
 
 
+def resample16k(audio, sr: int):
+    """Synthesized samples at 16 kHz for Whisper, resampled with ffmpeg."""
+    import numpy as np
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-f", "f32le", "-ar", str(sr), "-ac", "1", "-i", "-",
+                          "-f", "f32le", "-ar", "16000", "-"],
+                         input=np.asarray(audio, dtype=np.float32).tobytes(), capture_output=True, check=True).stdout
+    return np.frombuffer(raw, dtype=np.float32)
+
+
 ONES = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen " \
        "seventeen eighteen nineteen".split()
 TENS = "_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()
@@ -361,6 +380,50 @@ def verify(only: set[str] | None = None) -> int:
     return 0
 
 
+# Tried in turn when Whisper can't make out a recording: Kokoro's next
+# best-rated American voices, and the first voice a little slower.
+RETRY = [("af_bella", SPEED), ("am_michael", SPEED), (VOICE, 0.8)]
+
+
+def retry(only: set[str]) -> int:
+    """Speak each word again in other voices, check each with Whisper, and
+    keep the take it hears best (the current one unless another does
+    better). For recordings the check flagged: the phonemes are right but
+    the voice blurred a sound."""
+    from faster_whisper import WhisperModel
+    from kokoro_onnx import Kokoro
+    kokoro = Kokoro(str(MODEL), str(VOICES))
+    model = WhisperModel("base.en", device="cpu", compute_type="int8")
+    m = load_manifest()
+    words = {w["key"]: w for w in targets(only)}
+    keys = [k for k in m if k in words and "match" in m[k] and "retried" not in m[k]]
+    print(f"{len(keys):,} to retry", flush=True)
+    t0, better = time.time(), 0
+    for n, k in enumerate(keys, start=1):
+        best = m[k]
+        for voice, speed in RETRY:
+            audio, sr = kokoro.create(best["phonemes"], voice=voice, speed=speed, is_phonemes=True)
+            segs, _ = model.transcribe(resample16k(audio, sr), language="en", beam_size=1)
+            heard = " ".join(s.text for s in segs).strip()
+            match = round(similar(heard, words[k]["word"]), 2)
+            if match > best["match"]:
+                best = {**best, "voice": voice, "speed": speed, "heard": heard, "match": match, "audio": (audio, sr)}
+        if "audio" in best:
+            better += 1
+            audio, sr = best.pop("audio")
+            dst = write_hashed(audio, sr, slug(k))
+            if m[k]["file"] != f"tts/{dst.name}":
+                (DATA / m[k]["file"]).unlink(missing_ok=True)
+            best["file"], best["seconds"] = f"tts/{dst.name}", round(len(audio) / sr, 2)
+        m[k] = {**best, "retried": True}
+        if n % 50 == 0 or n == len(keys):
+            save_manifest(m)
+            rate = n / (time.time() - t0)
+            print(f"  {n:,}/{len(keys):,} · {better:,} improved · {rate:.2f}/s", flush=True)
+    save_manifest(m)
+    return 0
+
+
 def main() -> int:
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     only = set(sys.argv[sys.argv.index("--only") + 1].split(",")) if "--only" in sys.argv else None
@@ -368,6 +431,8 @@ def main() -> int:
         return generate(only, force="--force" in sys.argv)
     if cmd == "verify":
         return verify(only)
+    if cmd == "retry" and only:
+        return retry(only)
     sys.exit(__doc__)
 
 
