@@ -137,15 +137,23 @@ def to_phonemes(ipa: str, vocab: dict, words: list[str] | None = None, flap: boo
 # 2026-10-29 by hearing every flapped recording both ways with Whisper base.en
 # and small.en (the plain t clearly better to both, or heard exactly by both
 # while small.en missed the flap), then keeping the new recording only where
-# both judges heard it better in two runs. Elsewhere the flap stays (2,298 of 2,347).
+# both judges heard it better in two runs; a second, wider pass the same way
+# the same day ("unmitigated" heard as "un-Marigated"). Elsewhere the flap stays
+# (2,254 of 2,347).
 NO_FLAP = {
-    "ad infinitum", "apocatastasis", "Artaxerxes", "auditability", "BTW", "catechist", "chronotope",
-    "comforter", "coruscating", "dedicator", "disunity", "dubitable", "endogeneity", "Etam", "etiological",
-    "ETL", "expropriator", "habitability", "ill at ease", "incorrigibility", "innatism", "involutory",
-    "kittle", "lentitude", "meta", "mitigated", "mouthwatering", "nubility", "palatinate", "pertinence",
-    "Platonist", "pseudonymity", "salutariness", "sanguinity", "saturninity", "seltzer water", "submittal",
-    "substitutive", "tautologize", "tentativeness", "titillate", "tumidity", "turtledove", "unedited",
-    "unwitting", "validator", "vomitus", "witting", "wittol"
+    "ad infinitum", "Ahitub", "amativeness", "anathematization", "apocatastasis", "Artaxerxes",
+    "asyndetically", "auditability", "authenticator", "beta-test", "Botany Bay dozen", "BTW", "catechist",
+    "chronotope", "comforter", "coruscating", "crepitus", "dedicator", "delineator", "disunity", "dubitable",
+    "editorship", "embitterment", "emulative", "endogeneity", "epitomist", "Etam", "etiological",
+    "etiologist", "ETL", "Eupator", "expropriator", "habitability", "habitus", "hamartiology", "heartening",
+    "hypostatization", "iconolater", "ill at ease", "incorrigibility", "infinitist", "innatism", "involutory",
+    "irresistibility", "iterable", "Jezreelitess", "kittle", "lentitude", "maieutic", "martinetism", "meta",
+    "mitigated", "mitotically", "mouthwatering", "nepotist", "nubility", "nugatoriness", "palatinate",
+    "pertinence", "Platonist", "plebiscitary", "potability", "pseudonymity", "rewriter", "salutariness",
+    "sanative", "sanguinity", "saturninity", "schematization", "seltzer water", "sfumato", "stridulatory",
+    "submittal", "substitutability", "substitutable", "substitutive", "take out of context", "tautologize",
+    "tentativeness", "the writing on the wall", "titillate", "tumidity", "turtledove", "uberty", "unedited",
+    "unmitigated", "unwitting", "validator", "vitalist", "vitiator", "vomitus", "witting", "wittol"
 }
 
 
@@ -306,6 +314,8 @@ def generate(only: set[str] | None = None, force: bool = False) -> int:
                        "seconds": round(len(audio) / sr, 2)}
         if voice != VOICE or speed != SPEED:
             m[w["key"]]["speed"] = speed
+        if old.get("retried"):
+            m[w["key"]]["retried"] = True
         if n % 200 == 0 or n == len(todo):
             save_manifest(m)
             rate = n / (time.time() - t0)
