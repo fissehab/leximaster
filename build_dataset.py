@@ -79,6 +79,7 @@ STATE_JSON = DATA / "build_state.json"
 CANDIDATES = CACHE / "candidates.json"
 DICT_CACHE = CACHE / "dict.jsonl"
 AUDIO_CACHE = CACHE / "audio.jsonl"
+COMMONS_US = CACHE / "commons_us.json"
 ENRICH_CACHE = CACHE / "enrich.jsonl"
 EXTRAS_CACHE = CACHE / "extras.jsonl"
 SENSE_EXAMPLES_CACHE = CACHE / "sense_examples.jsonl"
@@ -849,6 +850,54 @@ def rank_audio(phonetics: list[dict], accent: str) -> list[dict]:
     return out
 
 
+# American English recordings on Wikimedia Commons beyond those the dictionary
+# entries link: files named "En-us-<word>", and Lingua Libre recordings by
+# speakers whose recordings Wiktionary has labelled US hundreds of times.
+COMMONS_API = "https://commons.wikimedia.org/w/api.php"
+COMMONS_US_SPEAKERS = ["Flame, not lame", "Wodencafe", "Vealhurl", "Vininn126", "NaomiAmethyst", "Persent101",
+                       "Qwertygiy", "Neøn", "Sapaa"]
+
+
+async def commons_us_index(http: httpx.AsyncClient, refresh: bool = False) -> dict[str, list[str]]:
+    """{word (lowercase): [Commons file names, best first]}, listed once and
+    kept in data/cache/commons_us.json (--refresh-commons lists again)."""
+    if COMMONS_US.exists() and not refresh:
+        return read_json(COMMONS_US, {})
+
+    async def listing(params: dict) -> list[str]:
+        out, cont = [], {}
+        while True:
+            for attempt in range(6):
+                r = await http.get(COMMONS_API, params={"format": "json", **params, **cont})
+                if r.status_code == 200:
+                    break
+                await asyncio.sleep(2 ** attempt)
+            data = r.json()
+            out += [x.get("name") or x["title"].split(":", 1)[1]
+                    for x in data["query"].get("allimages", data["query"].get("categorymembers", []))]
+            if "continue" not in data:
+                return out
+            cont = data["continue"]
+            await asyncio.sleep(.2)
+
+    index: dict[str, list[str]] = {}
+    for name in await listing({"action": "query", "list": "allimages", "aiprefix": "En-us-", "ailimit": 500}):
+        m = re.match(r"En-us-(.+)\.(ogg|oga|wav|mp3|flac)$", name, re.I)
+        if m:
+            index.setdefault(re.sub(r"\s*\(\w+\)$", "", m.group(1).replace("_", " ")).lower(), []).append(name)
+    for speaker in COMMONS_US_SPEAKERS:
+        names = await listing({"action": "query", "list": "categorymembers", "cmtype": "file", "cmlimit": 500,
+                               "cmtitle": f"Category:Lingua Libre pronunciation by {speaker}"})
+        for name in names:
+            # English (Q1860) or American English (Q7976); speaker names have no hyphen.
+            m = re.match(r"LL-Q(?:1860 \(eng\)|7976 \(mis\))-([^-]+)-(.+)\.(wav|ogg|mp3|flac)$", name)
+            if m:
+                index.setdefault(m.group(2).replace("_", " ").lower(), []).append(name)
+    atomic_write_json(COMMONS_US, index)
+    log(f"[audio] Commons: {len(index):,} words with American recordings listed")
+    return index
+
+
 async def stage_fetch(args) -> None:
     words = selected_words(args.limit)
     cands = read_json(CANDIDATES, {})
@@ -936,13 +985,19 @@ async def stage_audio(args) -> None:
     words = selected_words(args.limit)
     dict_cache = read_jsonl(DICT_CACHE)
     done = read_jsonl(AUDIO_CACHE)
-    todo = []
+    async with httpx.AsyncClient(headers={"User-Agent": USER_AGENT}, timeout=60, follow_redirects=True) as http:
+        commons = await commons_us_index(http, args.refresh_commons) if args.accent == "us" else {}
+    todo, cands = [], {}
     removed = 0
     for k in words:
         rec = dict_cache.get(k)
-        if not rec or rec["status"] != "ok":
-            continue
-        candidates = rank_audio(rec["entry"]["phonetics"], args.accent)
+        ok_entry = bool(rec and rec["status"] == "ok")
+        candidates = rank_audio(rec["entry"]["phonetics"], args.accent) if ok_entry else []
+        # None linked from the dictionary: an American recording on Commons.
+        if not candidates:
+            word = (rec["entry"].get("word") if ok_entry else "") or k.replace("-", " ")
+            candidates = [{"url": "https://commons.wikimedia.org/wiki/Special:FilePath/" + quote(n.replace(" ", "_")),
+                           "accent": args.accent} for n in commons.get(word.lower(), commons.get(k.replace("-", " "), []))]
         prev = done.get(k)
         if prev and prev["status"] == "ok" and prev.get("accent") != args.accent:
             # Downloaded under the old "preferred accent" rule: remove it.
@@ -957,7 +1012,7 @@ async def stage_audio(args) -> None:
             continue
         if prev and prev["status"] == "failed" and not args.retry_failed:
             continue
-        rec["entry"]["audio_candidates"] = candidates
+        cands[k] = candidates
         todo.append(k)
     if removed:
         log(f"[audio] removed {removed} recordings not in accent '{args.accent}'")
@@ -991,7 +1046,7 @@ async def stage_audio(args) -> None:
             return None
 
         async def one(k: str):
-            candidates = dict_cache[k]["entry"]["audio_candidates"]
+            candidates = cands[k]
             ok = None
             for cand in candidates:
                 url = cand["url"]
@@ -3292,6 +3347,8 @@ def parse_args():
     p.add_argument("--batch-size", type=int, default=10)
     p.add_argument("--concurrency", type=int, default=8, help="parallel enrichment requests")
     p.add_argument("--retry-failed", action="store_true", help="retry words that failed before")
+    p.add_argument("--refresh-commons", action="store_true",
+                   help="list the American recordings on Wikimedia Commons again (audio stage)")
     p.add_argument("--status", action="store_true", help="print progress and exit")
     return p.parse_args()
 
