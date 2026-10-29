@@ -60,12 +60,12 @@ def clean_ipa(ipa: str) -> str:
 STRESSABLE = VOWELS | {"ː"}
 
 
-def to_phonemes(ipa: str, vocab: dict, words: list[str] | None = None) -> str:
+def to_phonemes(ipa: str, vocab: dict, words: list[str] | None = None, flap: bool = True) -> str:
     """The entry's General American IPA in the notation Kokoro was trained on:
     stress marks just before the stressed vowel (not at the syllable start),
     ɹ for r, ɜɹ for ɝ, no syllable dots, brackets or diacritics, the American
     flap for t between vowels before an unstressed one, and a final "." so the
-    word ends as a statement."""
+    word ends as a statement. flap=False keeps every t (NO_FLAP)."""
     s = clean_ipa(ipa)
     s = re.sub(r"\(([^)]*)\)", r"\1", s)             # "(ɹ)": the American r is said
     for a, b in (("ɝ", "ɜɹ"), ("r", "ɹ"), ("ɫ", "l"), ("g", "ɡ"), ("'", "ˈ"), ("ʉ", "u"), ("ʍ", "w"),
@@ -125,10 +125,28 @@ def to_phonemes(ipa: str, vocab: dict, words: list[str] | None = None) -> str:
         # (abnormality …mˈæləɾi, "party" pˈɑːɹɾi), never word-initial, not
         # before a syllabic n ("button", "heightened": a held t), and not
         # before aɪ aʊ ɔɪ, which keep their stress ("archetype", "satire").
-        tok = re.sub(r"(?<=[aeiouæɑɒɔəɛɜɚɪʊʌᵻː])(ɹ?)t(?=[aeiouæɑɒɔəɛɜɚɪʊʌᵻ])(?![əɪ]n(?![aeiouæɑɒɔəɛɜɚɪʊʌᵻ]))(?!aɪ|aʊ|ɔɪ)",
-                     r"\1ɾ", tok)
+        if flap:
+            tok = re.sub(r"(?<=[aeiouæɑɒɔəɛɜɚɪʊʌᵻː])(ɹ?)t(?=[aeiouæɑɒɔəɛɜɚɪʊʌᵻ])(?![əɪ]n(?![aeiouæɑɒɔəɛɜɚɪʊʌᵻ]))(?!aɪ|aʊ|ɔɪ)",
+                         r"\1ɾ", tok)
         out_words.append(tok)
     return (" ".join(out_words) + ".") if out_words else ""
+
+
+# Words whose flap Kokoro says like an r ("Platonist" heard as "Player nest",
+# "catechist" as "Karakist"): spoken with the t (or d) the entry shows. Chosen
+# 2026-10-29 by hearing every flapped recording both ways with Whisper base.en
+# and small.en (the plain t clearly better to both, or heard exactly by both
+# while small.en missed the flap), then keeping the new recording only where
+# both judges heard it better in two runs. Elsewhere the flap stays (2,298 of 2,347).
+NO_FLAP = {
+    "ad infinitum", "apocatastasis", "Artaxerxes", "auditability", "BTW", "catechist", "chronotope",
+    "comforter", "coruscating", "dedicator", "disunity", "dubitable", "endogeneity", "Etam", "etiological",
+    "ETL", "expropriator", "habitability", "ill at ease", "incorrigibility", "innatism", "involutory",
+    "kittle", "lentitude", "meta", "mitigated", "mouthwatering", "nubility", "palatinate", "pertinence",
+    "Platonist", "pseudonymity", "salutariness", "sanguinity", "saturninity", "seltzer water", "submittal",
+    "substitutive", "tautologize", "tentativeness", "titillate", "tumidity", "turtledove", "unedited",
+    "unwitting", "validator", "vomitus", "witting", "wittol"
+}
 
 
 COMMON = 3.0              # wordfreq Zipf: every word of the entry at least this common
@@ -206,7 +224,8 @@ def plan(w: dict, tokenizer) -> tuple[str, str]:
     rare = min((zipf_frequency(x, "en") for x in tokens), default=0) < COMMON
     rare = rare or bool(w.get("name_kind")) or w["word"][:1].isupper()   # names: "Ira" isn't the IRA
     sentence = bool(re.search(r"[?!.,]", w["word"]))
-    ipa_ph = to_phonemes(ipa, tokenizer.vocab, tokens) if ipa and not sentence and len(tokens) <= 4 else ""
+    flap = w["word"] not in NO_FLAP
+    ipa_ph = to_phonemes(ipa, tokenizer.vocab, tokens, flap) if ipa and not sentence and len(tokens) <= 4 else ""
     if ipa_ph and rare:
         return ipa_ph, "ipa"
     text = " ".join(NUMERALS.get(x, x) for x in w["word"].split())
@@ -217,6 +236,8 @@ def plan(w: dict, tokenizer) -> tuple[str, str]:
     acronym = any(len(x) > 1 and x.isupper() for x in tokens)   # "meeting ID" is said as letters
     if ipa_ph and len(tokens) <= 3 and whole and text == w["word"] and not acronym and differs(ph, ipa_ph, tokens):
         return ipa_ph, "ipa"
+    if not flap:   # Kokoro's own flap: the letter the word is spelled with
+        ph = ph.replace("ɾ", "d" if "d" in w["word"].lower() and "t" not in w["word"].lower() else "t")
     if ph and ph[-1] not in ".!?":
         ph += "."
     return ph, "text"
@@ -274,13 +295,17 @@ def generate(only: set[str] | None = None, force: bool = False) -> int:
     print(f"{len(todo):,} to generate", flush=True)
     t0 = time.time()
     for n, (w, ph, source) in enumerate(todo, start=1):
-        audio, sr = kokoro.create(ph, voice=VOICE, speed=SPEED, is_phonemes=True)
+        # A voice an earlier retry chose (it says this word's sounds most clearly) is kept.
+        old = m.get(w["key"]) or {}
+        voice, speed = (old.get("voice", VOICE), old.get("speed", SPEED)) if old.get("retried") else (VOICE, SPEED)
+        audio, sr = kokoro.create(ph, voice=voice, speed=speed, is_phonemes=True)
         dst = write_hashed(audio, sr, slug(w["key"]))
-        old = m.get(w["key"])
         if old and old.get("file") != f"tts/{dst.name}":
             (DATA / old["file"]).unlink(missing_ok=True)      # the replaced recording
-        m[w["key"]] = {"file": f"tts/{dst.name}", "phonemes": ph, "source": source, "voice": VOICE,
+        m[w["key"]] = {"file": f"tts/{dst.name}", "phonemes": ph, "source": source, "voice": voice,
                        "seconds": round(len(audio) / sr, 2)}
+        if voice != VOICE or speed != SPEED:
+            m[w["key"]]["speed"] = speed
         if n % 200 == 0 or n == len(todo):
             save_manifest(m)
             rate = n / (time.time() - t0)
