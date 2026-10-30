@@ -172,7 +172,7 @@ SAY = {
     "adamance": "ˈædəməns.", "apodeictic": "ˌæpədˈaɪktɪk.", "apodeictically": "ˌæpədˈaɪktɪkli.",
     "archiepiscopal": "ˌɑːɹkiːɪpˈɪskəpəl.", "arete": "ˌæɹətˈeɪ.", "avant-garde": "ˌɑːvɑːntɡˈɑːɹd.",
     "Ca": "sˌiːˈeɪ.", "camo": "kˈæmoʊ.", "catechetic": "kˌætəkˈɛtɪk.", "chemic": "kˈɛmɪk.", "cussed": "kˈʌsɪd.",
-    "Diophantine": "dˌaɪəfˈæntaɪn.", "DWI": "dˌiːdˌʌbəljuːˈaɪ.", "effaceable": "ɪfˈeɪsəbəl.",
+    "dequeue": "dˌiːkjˈuː.", "Diophantine": "dˌaɪəfˈæntaɪn.", "DWI": "dˌiːdˌʌbəljuːˈaɪ.", "effaceable": "ɪfˈeɪsəbəl.",
     "F1 score": "ˌɛf wˈʌn skˈɔːɹ.", "feuilletonist": "fɔɪtˈɑːnɪst.", "gemütlich": "ɡəmˈuːtlɪk.",
     "gestator": "dʒˈɛsteɪtɚ.", "Gilles de la Tourette syndrome": "ʒˈiːl də lɑː tʊɹˈɛt sˈɪndɹoʊm.",
     "haughtily": "hˈɔːtɪli.", "haut monde": "ˌoʊ mˈɑːnd.", "heroic couplet": "hɪɹˈoʊɪk kˈʌplɪt.",

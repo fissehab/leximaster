@@ -104,3 +104,10 @@ def test_hand_written_words_are_synthesized_entries():
     missing = sorted(n for n in tts.SAY if n not in words or words[n].get("has_audio"))
     assert not missing, f"SAY words that aren't synthesized entries: {missing}"
     assert all(ph.endswith(".") and "ɾ" not in ph for ph in tts.SAY.values())
+
+
+def test_wrong_recordings_are_synthesized():
+    import build_dataset
+    words = {w["key"]: w for w in json.loads(tts.WORDS_JSON.read_text(encoding="utf-8"))["words"]}
+    wrong = sorted(k for k in build_dataset.WRONG_RECORDING if k not in words or words[k].get("has_audio"))
+    assert not wrong, f"WRONG_RECORDING words that still play the recording, or aren't entries: {wrong}"
