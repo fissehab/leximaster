@@ -99,6 +99,18 @@ PAID_STAGES = {"expand", "enrich", "examples"}  # Claude API calls: run only whe
 _CONTACT = os.environ.get("LEXIMASTER_CONTACT", "").strip()
 # All pronunciations (recordings and IPA) are American English.
 ACCENT = "us"
+# Commons recordings that say another word ("adjourn" is someone saying
+# "fretfully"; "entrance" is the verb en-TRANCE; "cud" is "could") or leave
+# part of the entry out ("fall in love with" says "fall in love"). These words
+# use speech synthesis instead. Found 2026-10-29 by comparing every
+# recording's file name with its word and running Whisper on every recording.
+WRONG_RECORDING = {
+    "adjourn", "bruiser", "collegiate", "commanding", "cud", "dequeue", "emeritus", "entrance",
+    "flatulence", "lordly", "nondisclosure", "surroundings", "wearable",
+    "a-piece-of-cake", "amount-to", "be-fond-of", "dwell-on", "fall-in-love-with", "get-used-to",
+    "have-money-to-burn", "in-high-spirits", "let-go-of", "make-sense-of", "make-up-for",
+    "out-of-style", "stuff-oneself", "the-big-sleep", "the-masses", "yell-at",
+}
 
 USER_AGENT = (f"LexiMaster/1.0 (personal vocabulary study tool{'; ' + _CONTACT if _CONTACT else ''}) "
               f"python-httpx/{httpx.__version__}")
@@ -3192,7 +3204,7 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
                 domains.append("bible_vocab")
             domains = sorted(set(domains))
         has_audio = bool(a and a["status"] == "ok" and a.get("accent") == ACCENT
-                         and (AUDIO / a["file"]).exists())
+                         and (AUDIO / a["file"]).exists() and k not in WRONG_RECORDING)
         words.append({
             "word": word,
             "key": k,
