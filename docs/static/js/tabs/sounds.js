@@ -1,14 +1,16 @@
-// Sounds: a card for each sound learners of English find hard: how the mouth
-// makes it, words to try, and a listening game. #sounds/<card> opens on one.
+// Sounds: the listening game first, then a card for each sound learners of
+// English find hard: how the mouth makes it, words to try, and that sound's
+// game. #sounds/<card> opens on one.
 
 import { CARDS, PAIRS, UI } from "../say-strings.js";
 import { DRILL_ROUNDS, soundCard, wordsBySpelling } from "../say.js";
-import { h, pageHead } from "../ui.js";
+import { h } from "../ui.js";
 
 export async function render(root, { param } = {}) {
   const words = await wordsBySpelling();
   const group = (title, cards) => [h("h2.sound-group-title", title), h("div.sound-cards", cards.map(c => soundCard(c, words)))];
-  root.append(pageHead(UI.sounds, UI.soundsSub), gameIntro(root), h("p.muted", UI.ends),
+  root.append(gameIntro(root),
+    h("div.page-head.sounds-head", h("div", h("h2", UI.sounds), h("p.sub", UI.soundsSub))), h("p.muted", UI.ends),
     ...group(UI.consonants, CARDS.filter(c => !c.vowels)),
     ...group(UI.vowels, CARDS.filter(c => c.vowels)));
   const card = param && root.querySelector(`#sound-${CSS.escape(param)}`);
@@ -29,7 +31,7 @@ function gameIntro(root) {
     drill.querySelector("button.pick")?.focus({ preventScroll: true });
   };
   return h("section.panel.sound-game", { "aria-labelledby": "sound-game-title" },
-    h("h2#sound-game-title", UI.game),
+    h("h1#sound-game-title", UI.game),
     h("p", UI.gameWhy),
     h("p", UI.gameHow(pairs, DRILL_ROUNDS)),
     h("p.muted", UI.gamePick),

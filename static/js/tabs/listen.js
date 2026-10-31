@@ -1,5 +1,6 @@
 // Listen & Identify: hear the word, then pick or type it.
-// Spelling test: hear it, type it exactly; letters are compared one by one.
+// Type the word with "Exact spelling" on is a spelling test: no hint, and
+// letters are compared one by one.
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
@@ -7,7 +8,7 @@ import { refreshDueCount } from "../app.js";
 import { loadFilter } from "../state.js";
 import { diffView, filterBar, filterSources, fmtDuration, h, markOption, pageHead, reveal, showError, toast } from "../ui.js";
 
-let mode = "choose";       // choose | type | spell
+let mode = "choose";       // choose | type | stress
 let items = [];
 let i = 0;
 let score = 0;
@@ -22,7 +23,11 @@ let playTimer = null;
 let startToken = 0;
 let hinted = false;   // the pronunciation was shown instead of heard
 
-const MODES = [["choose", "Pick the word"], ["type", "Type the word"], ["spell", "Spelling test"], ["stress", "Where's the stress?"]];
+const MODES = [["choose", "Pick the word"], ["type", "Type the word"], ["stress", "Where's the stress?"]];
+const STRICT_KEY = "lexi-listen-strict";
+let strict = (() => { try { return localStorage.getItem(STRICT_KEY) === "1"; } catch (e) { return false; } })();
+/** Typing with exact spelling: a spelling test. */
+const spell = () => mode === "type" && strict;
 
 /** For "Where's the stress?": the respelling with each syllable stressed in
  * turn (in-EF-uh-bul, IN-ef-uh-bul…), at most four, the right one included.
@@ -84,8 +89,8 @@ function show() {
       h("button.opt.word-opt", { type: "button", "data-v": o, on: { click: () => check(o) } }, h("span.key", { "aria-hidden": "true" }, String(k + 1)), h("span", o))));
   } else {
     const input = h("input.input.type-in#listen-input", { type: "text", autocomplete: "off", autocapitalize: "off", spellcheck: false,
-      "aria-label": mode === "spell" ? "Spelling" : "The word you hear",
-      placeholder: mode === "spell" ? "Type the exact spelling" : "Type the word you hear" });
+      "aria-label": spell() ? "Spelling" : "The word you hear",
+      placeholder: spell() ? "Type the exact spelling" : "Type the word you hear" });
     input.addEventListener("keydown", e => {
       if (e.key === "Enter") { e.preventDefault(); answered ? next() : check(input.value); }
       if (e.key === " " && !input.value) { e.preventDefault(); play(); }
@@ -93,7 +98,7 @@ function show() {
     body = h("form", { on: { submit: e => { e.preventDefault(); check(input.value); } } }, input,
       h("div.toolbar", { style: { marginTop: "10px", justifyContent: "center" } },
         h("button.btn.btn-primary", { type: "submit" }, "Check ", h("kbd", { "aria-hidden": "true" }, "Enter")),
-        mode === "type" ? h("button.btn", { type: "button", on: { click: () => hint(input) } }, "Hint") : null));
+        !spell() ? h("button.btn", { type: "button", on: { click: () => hint(input) } }, "Hint") : null));
   }
   els.stage.replaceChildren(h("div.panel.q-card", { style: { alignItems: "center", textAlign: "center" } },
     h("div.score-line", h("span.tnum", `${i + 1} of ${items.length}`), h("span.tnum", `Score ${score}`)),
@@ -129,7 +134,7 @@ function check(value) {
   if (answered || !value.trim()) return;
   answered = true;
   const w = items[i];
-  const right = mode === "spell" ? spelling(value) === spelling(w.word)
+  const right = spell() ? spelling(value) === spelling(w.word)
     : mode === "stress" ? value === w.answer
     : clean(spelling(value)) === clean(spelling(w.word));
   const ok = right && !hinted;
@@ -154,7 +159,7 @@ function check(value) {
   // The answer and the way on stay in view, even on a phone.
   reveal(fb);
   nextBtn.focus({ preventScroll: true });
-  api.post("/api/answer", { word_id: w.id, mode: mode === "spell" ? "spell" : "listen", correct: right, ms: Date.now() - shownAt })
+  api.post("/api/answer", { word_id: w.id, mode: spell() ? "spell" : "listen", correct: right, ms: Date.now() - shownAt })
     .then(() => !right && refreshDueCount()).catch(showError);
 }
 
@@ -163,9 +168,9 @@ function next() {
   i++;
   if (i < items.length) return show();
   const secs = (Date.now() - started) / 1000;
-  api.post("/api/sessions", { kind: mode === "spell" ? "spelling" : mode === "stress" ? "stress" : "listening", score, total: items.length, duration_s: Math.round(secs) }).catch(() => {});
+  api.post("/api/sessions", { kind: spell() ? "spelling" : mode === "stress" ? "stress" : "listening", score, total: items.length, duration_s: Math.round(secs) }).catch(() => {});
   els.stage.replaceChildren(h("div.panel.result",
-    h("span.eyebrow", mode === "spell" ? "Spelling test complete" : mode === "stress" ? "Stress round complete" : "Listening round complete"),
+    h("span.eyebrow", spell() ? "Spelling test complete" : mode === "stress" ? "Stress round complete" : "Listening round complete"),
     h("div.big-num.tnum", `${score}/${items.length}`),
     h("p.muted", fmtDuration(secs)),
     missed.length ? h("div.missed", h("p.label", "Added back to today's review"),
@@ -177,15 +182,30 @@ export async function render(root) {
   const src = await filterSources();
   const seg = h("div.seg", { role: "group", "aria-label": "Mode" }, MODES.map(([v, l]) => {
     const b = h("button", { type: "button", "aria-pressed": String(mode === v) }, l);
-    b.addEventListener("click", () => { mode = v; seg.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); start(); });
+    b.addEventListener("click", () => {
+      mode = v;
+      seg.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      exact.hidden = mode !== "type";
+      start();
+    });
     return b;
   }));
+  // Only for typing: off, small slips (accents, a hyphen or a space) still
+  // count and there is a hint; on, it is a spelling test.
+  const exact = h("label.chip", { style: { cursor: "pointer" }, hidden: mode !== "type",
+    title: "On: the spelling must be exact, with no hint. Off: small slips like accents or hyphens still count." },
+    h("input#listen-exact", { type: "checkbox", checked: strict, on: { change: e => {
+      strict = e.target.checked;
+      try { localStorage.setItem(STRICT_KEY, strict ? "1" : "0"); } catch (err) { /* unavailable */ }
+      start();
+    } } }),
+    "Exact spelling");
   const rec = h("label.chip", { style: { cursor: "pointer" } },
     h("input#listen-audio-only", { type: "checkbox", checked: audioOnly, on: { change: e => { audioOnly = e.target.checked; start(); } } }),
     "US recordings only");
   els.stage = h("div.q-wrap");
   root.append(
-    pageHead("Listen & identify", "The audio plays first. Name the word you hear, or spell it exactly.", seg, rec),
+    pageHead("Listen & identify", "The audio plays first. Name the word you hear, or type it. Turn on Exact spelling for a spelling test.", seg, exact, rec),
     await filterBar(f => { filter = f; start(); }, src, { tab: "listen" }),
     els.stage);
   filter = loadFilter("listen");
