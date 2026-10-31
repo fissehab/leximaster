@@ -26,13 +26,20 @@ export const UI = {
   done: (n, of) => `You got ${n} of ${of}. Try another round any time.`,
   sounds: "Sounds",
   soundsSub: "See how the mouth makes the sounds that are hard in English. Tap a word to hear it.",
-  game: "Listen and choose: a game for your ear",
-  gameWhy: "Some English sounds are very close, like ship and sheep, or right and light. " +
-    "Many learners hear them as one sound. A trained ear helps you say them, too.",
-  gameHow: (pairs, rounds) => `You hear one word. You choose the word you heard. Then you hear both words, one after the other. ` +
-    `There are ${pairs} pairs of words, all said by real people. A round has ${rounds} words.`,
-  gamePick: "Pick two sounds to start, or tap Listen and choose on any card below.",
-  gameOpen: (a, b) => `Listen and choose: ${a} or ${b}`,
+  // The pairs of sounds in the game, as a learner reads them.
+  contrasts: {
+    "θ-s": "th or s", "θ-t": "th or t", "ð-d": "th or d", "v-b": "v or b", "v-w": "v or w", "f-p": "f or p",
+    "p-b": "p or b", "ɹ-l": "r or l", "ʃ-tʃ": "sh or ch", "ʃ-s": "sh or s", "z-s": "z or s", "ŋ-n": "ng or n",
+    "ɪ-i": "i or ee", "æ-ɛ": "a or e", "ʌ-ɑ": "u or o", "ɝ-ʌ": "er or u",
+  },
+  game: "Listen and choose",
+  gameSub: "You hear a word. Pick the word you heard. Some English sounds are very close, like ship and sheep. " +
+    "Practice helps you hear the difference. Then you can say it, too.",
+  gameCount: (pairs, rounds) => `${pairs} pairs of words, all said by real people. A round has ${rounds} words.`,
+  gamePick: "Sounds to practice",
+  gameAll: "All sounds, mixed",
+  gameStart: "Start",
+  tutorial: "How to make the sounds",
   ends: "Sounds at the end of words, like in street and film: listen and say them. A picture cannot show these.",
   consonants: "Consonants",
   vowels: "Vowel pairs",
@@ -49,7 +56,7 @@ export const CARDS = [
   { id: "th-this", sym: "ð", voice: true,
     short: "Tongue between your teeth. Turn your voice on.",
     full: "Put your tongue between your teeth, like in think. Turn your voice ON. Put your hand on your throat. You feel a buzz.",
-    try: ["this", "that", "mother"] },
+    try: ["this", "that", "mother"], drill: ["ð-d"] },
   { id: "r", sym: "ɹ", voice: true,
     short: "Pull your tongue back. The tip touches nothing.",
     full: "Pull your tongue back. Press the sides of your tongue on your top back teeth. The tip touches nothing. Hold it: rrrr. Do not round your lips much. That makes w.",
@@ -58,7 +65,7 @@ export const CARDS = [
   { id: "er", sym: "ɚ", voice: true,
     short: "Pull your tongue back. Hold the sound: errr.",
     full: "Pull your tongue back. Press the sides of your tongue on your top back teeth. The tip touches nothing. Hold the sound: errr. Make one sound, not a and then r.",
-    try: ["bird", "work", "nurse"] },
+    try: ["bird", "work", "nurse"], drill: ["ɝ-ʌ"] },
   { id: "l", sym: "l", also: ["ɫ"], voice: true,
     short: "Touch the bump behind your top teeth with your tongue tip.",
     full: "Touch the bump behind your top teeth with your tongue tip. Hold it there: llll. At the end of a word, also pull the back of your tongue back. Try that in feel and ball.",
@@ -76,7 +83,7 @@ export const CARDS = [
   { id: "f", sym: "f", voice: false,
     short: "Top teeth on your bottom lip. Blow air out.",
     full: "Put your top teeth on your bottom lip. Blow air out. Voice OFF. Do not close your lips. That makes p.",
-    try: ["fish", "phone", "off"] },
+    try: ["fish", "phone", "off"], drill: ["f-p"] },
   { id: "p", sym: "p", voice: false,
     short: "Close your lips. Open them fast with a puff of air.",
     full: "Close your lips. Push air behind them. Open them fast. A puff of air comes out. Hold paper in front of your mouth. The paper moves. For b, do the same with your voice ON.",
@@ -88,11 +95,11 @@ export const CARDS = [
   { id: "ng", sym: "ŋ", voice: true,
     short: "Lift the back of your tongue. Air goes out through your nose.",
     full: "Lift the back of your tongue. Touch the back of the top of your mouth. Air goes out through your nose. Do not add a g at the end.",
-    try: ["ring", "long", "thing"] },
+    try: ["ring", "long", "thing"], drill: ["ŋ-n"] },
   { id: "z", sym: "z", voice: true,
     short: "Like s, with your voice on. It buzzes like a bee.",
     full: "Put your tongue tip near the bump behind your top teeth. Do not touch it. Blow air with your voice ON. You hear a buzz, like a bee. Keep the buzz at the end of a word too.",
-    try: ["zoo", "nose", "please"] },
+    try: ["zoo", "nose", "please"], drill: ["z-s"] },
   { id: "ee-i", vowels: true, parts: [
     { sym: "i", short: "Smile. Tongue high. Make it long.", full: "Smile. Lift your tongue high. Make the sound long.", try: ["see", "sheep", "seat"] },
     { sym: "ɪ", short: "Do not smile. Make it short.", full: "Do not smile. Relax your mouth. Your tongue is a little lower than for ee. Make the sound short.", try: ["sit", "ship", "big"] }],
@@ -112,18 +119,18 @@ export const CARDS = [
 
 // The listening game: pairs of words that differ in one sound, both
 // recorded by a person (data/words.json, has_audio). The first word has
-// the card's sound.
+// the card's sound. Chosen by hand; say-pairs.js adds the pairs
+// tools/minimal_pairs.py finds in the dictionary.
 export const PAIRS = {
   "θ-s": [["think", "sink"], ["thing", "sing"], ["thick", "sick"], ["thin", "sin"], ["faith", "face"], ["math", "mass"],
-          ["worth", "worse"], ["theme", "seem"], ["thumb", "sum"], ["youth", "use"]],
+          ["worth", "worse"], ["theme", "seem"], ["thumb", "sum"]],
   "θ-t": [["three", "tree"], ["bath", "bat"], ["both", "boat"], ["through", "true"], ["thin", "tin"], ["death", "debt"],
           ["faith", "fate"], ["booth", "boot"], ["math", "mat"], ["thrust", "trust"]],
-  "v-b": [["vest", "best"], ["vote", "boat"], ["very", "bury"], ["vent", "bent"], ["marvel", "marble"], ["vow", "bow"],
-          ["veil", "bail"], ["vat", "bat"]],
+  "v-b": [["vest", "best"], ["vote", "boat"], ["very", "bury"], ["vent", "bent"], ["marvel", "marble"], ["veil", "bail"], ["vat", "bat"]],
   "v-w": [["vest", "west"], ["vine", "wine"], ["verse", "worse"], ["vow", "wow"], ["veal", "wheel"], ["vile", "while"]],
   "ɹ-l": [["right", "light"], ["rock", "lock"], ["rate", "late"], ["road", "load"], ["rain", "lane"], ["raw", "law"],
-          ["ray", "lay"], ["crowd", "cloud"], ["reading", "leading"], ["war", "wall"]],
-  "ɪ-i": [["sit", "seat"], ["ship", "sheep"], ["hit", "heat"], ["live", "leave"], ["bit", "beat"], ["rich", "reach"],
+          ["ray", "lay"], ["crowd", "cloud"], ["reading", "leading"]],
+  "ɪ-i": [["sit", "seat"], ["ship", "sheep"], ["hit", "heat"], ["bit", "beat"], ["rich", "reach"],
           ["still", "steal"], ["fill", "feel"], ["sick", "seek"], ["list", "least"]],
   "æ-ɛ": [["bad", "bed"], ["man", "men"], ["bat", "bet"], ["pan", "pen"], ["sand", "send"], ["mass", "mess"],
           ["bag", "beg"], ["gas", "guess"], ["dad", "dead"], ["latter", "letter"]],

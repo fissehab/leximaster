@@ -8,7 +8,8 @@ import { fileURLToPath } from "node:url";
 import { DIPHTHONGS, pose, SOUNDS } from "../../static/js/mouth.js";
 import { CLIPS } from "../../static/js/mri.gen.js";
 import { hardestIndex, LABELS, PRIORITY, tokenize } from "../../static/js/phonemes.js";
-import { CARDS, MRI, PAIRS } from "../../static/js/say-strings.js";
+import { PAIRS_FOUND } from "../../static/js/say-pairs.js";
+import { CARDS, MRI, PAIRS, UI } from "../../static/js/say-strings.js";
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 const syms = ipa => tokenize(ipa).map(t => t.sym).join(" ");
@@ -70,7 +71,10 @@ test("cards, pairs and clips line up", () => {
       assert.ok(SOUNDS[p.sym] && LABELS[p.sym] && PRIORITY.has(p.sym) || ["i", "ɛ", "ɑ", "u"].includes(p.sym), p.sym);
       assert.ok(p.short && p.full && p.try.length, p.sym);
     }
-    for (const d of c.drill || []) assert.ok(PAIRS[d] && PAIRS[d].length >= 6, d);
+    for (const d of c.drill || []) {
+      assert.ok([...(PAIRS[d] || []), ...(PAIRS_FOUND[d] || [])].length >= 6, d);
+      assert.ok(UI.contrasts[d], `${d}: a name for the game`);
+    }
   }
   for (const m of Object.values(MRI)) {
     const clip = CLIPS[m.file];
@@ -79,6 +83,23 @@ test("cards, pairs and clips line up", () => {
     assert.ok(clip.tongue, `${m.file}: tongue outline`);
     if (m.teeth) assert.ok(clip.teeth, `${m.file}: teeth outline`);
   }
+});
+
+test("the found pairs are plain, different words, each used a few times at most", () => {
+  const rude = /^(shit|bitch|piss|fuck|dick|cock|cunt|tits?|ass|crap|fart|cum|sex|porn|slut|whore|queer)$/;
+  let total = 0;
+  for (const [c, pairs] of Object.entries(PAIRS_FOUND)) {
+    assert.ok(UI.contrasts[c], c);
+    const uses = {};
+    for (const [a, b] of pairs) {
+      assert.ok(/^[a-z]{2,}$/.test(a) && /^[a-z]{2,}$/.test(b) && a !== b, `${c}: ${a}/${b}`);
+      assert.ok(!rude.test(a) && !rude.test(b), `${c}: ${a}/${b}`);
+      for (const w of [a, b]) uses[w] = (uses[w] || 0) + 1;
+    }
+    assert.ok(Math.max(...Object.values(uses)) <= 3, c);
+    total += pairs.length;
+  }
+  assert.ok(total > 400, `only ${total} pairs`);
 });
 
 test("each sound is placed where it is in the recording", async () => {
