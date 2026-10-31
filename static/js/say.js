@@ -317,12 +317,15 @@ export function soundCard(card, words) {
     extra.length ? h("div.say-actions", extra) : null, drillSlot, mriSlot);
 }
 
-/** Five rounds of "Which word did you hear?" from these contrasts. */
+export const DRILL_ROUNDS = 5;
+
+/** Five rounds of "Which word did you hear?" from these contrasts; no pair
+ * twice in a round while there are enough. */
 function drill(contrasts, words) {
   const pool = contrasts.flatMap(c => PAIRS[c]).filter(([a, b]) => words.get(a) && words.get(b));
   const box = h("div.drill", { role: "group", "aria-label": UI.listen });
-  const ROUNDS = 5;
-  let n = 0, right = 0;
+  const ROUNDS = DRILL_ROUNDS;
+  let n = 0, right = 0, left = [];
   const rate = () => Math.max(.75, playbackSpeed());
   const say = word => playWord(words.get(word), null, { rate: rate() });
   const trial = () => {
@@ -332,7 +335,8 @@ function drill(contrasts, words) {
       again.focus();
       return;
     }
-    const pair = pool[Math.floor(Math.random() * pool.length)];
+    if (!n || !left.length) left = [...pool];
+    const pair = left.splice(Math.floor(Math.random() * left.length), 1)[0];
     const answer = pair[Math.floor(Math.random() * 2)];
     const order = Math.random() < .5 ? pair : [pair[1], pair[0]];
     const note = h("p", { "aria-live": "polite" });

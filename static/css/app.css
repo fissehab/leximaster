@@ -1033,6 +1033,10 @@ details.say > summary:hover { background: var(--surface-2); border-radius: var(-
 .word-play svg { width: 14px; height: 14px; fill: var(--verdigris); }
 .word-play.playing { border-color: var(--verdigris); background: var(--verdigris-soft); }
 .sound-card .help { margin: 0; font-size: 15px; color: var(--ink-2); }
+.sound-game { display: grid; gap: 10px; padding: 18px 20px; margin-bottom: 14px; border-left: 3px solid var(--verdigris); }
+.sound-game h2 { margin: 0; font: 600 20px/1.25 var(--font-word); text-wrap: balance; }
+.sound-game p { margin: 0; max-width: 68ch; }
+.sound-game-pairs { display: flex; flex-wrap: wrap; gap: 8px; }
 .sound-group-title { margin: 8px 0 0; font: 600 13px/1.2 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .drill { display: grid; gap: 12px; padding: 14px; border-radius: var(--radius); background: var(--surface-2); }
 .drill-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
