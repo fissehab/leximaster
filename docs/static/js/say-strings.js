@@ -26,6 +26,13 @@ export const UI = {
   done: (n, of) => `You got ${n} of ${of}. Try another round any time.`,
   sounds: "Sounds",
   soundsSub: "See how the mouth makes the sounds that are hard in English. Tap a word to hear it.",
+  game: "Listen and choose: a game for your ear",
+  gameWhy: "Some English sounds are very close, like ship and sheep, or right and light. " +
+    "Many learners hear them as one sound. A trained ear helps you say them, too.",
+  gameHow: (pairs, rounds) => `You hear one word. You choose the word you heard. Then you hear both words, one after the other. ` +
+    `There are ${pairs} pairs of words, all said by real people. A round has ${rounds} words.`,
+  gamePick: "Pick two sounds to start, or tap Listen and choose on any card below.",
+  gameOpen: (a, b) => `Listen and choose: ${a} or ${b}`,
   ends: "Sounds at the end of words, like in street and film: listen and say them. A picture cannot show these.",
   consonants: "Consonants",
   vowels: "Vowel pairs",
