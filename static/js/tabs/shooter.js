@@ -1,23 +1,27 @@
-// Word Shooter: read the clue, shoot the word that fits before it lands.
-// 15 words a round, 3 hearts. Each word falls in its own lane; the lanes
+// Word Shooter: read the clue (or hear the word), shoot the word that fits
+// before it lands. 15 words a round, or Endless (more words keep coming until
+// the hearts run out); 3 hearts. Each word falls in its own lane; the lanes
 // are still, full-height buttons, so you never aim at something moving.
-// Answers are logged as `match` (a miss makes the word due today).
+// Answers are logged as `match` (`listen` when heard): a miss makes the word
+// due today.
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import {
-  bestScore, buzz, comboFor, fallTime, fontFor, HEART_BACK_EVERY, nextLevel, PERFECT_BONUS, pickLanes, points, pref,
-  saveBest, setPref, setSounds, sfx, soundsOn, START_LEVEL, unlockSounds,
+  bestScore, buzz, comboFor, fallTime, fontFor, freshOnly, fromListen, HEART_BACK_EVERY, nextLevel, PERFECT_BONUS, pickLanes,
+  points, pref, REFILL_AT, saveBest, setPref, setSounds, sfx, soundsOn, START_LEVEL, unlockSounds,
 } from "../games.js";
+import { scoreBoard, scoreResult } from "../gameui.js";
 import { loadFilter, settings } from "../state.js";
 import {
   filterBar, filterSources, fmtDuration, h, highlight, pageHead, playButton, scrollBehavior, shuffle, smart, toast,
 } from "../ui.js";
 
 const CLUES = [["meaning", "Meanings", "meaning_word"], ["sentence", "Sentences", "fill_blank"],
-  ["mixed", "Mixed", "meaning_word,fill_blank,synonym"]];
+  ["mixed", "Mixed", "meaning_word,fill_blank,synonym"], ["hear", "Hear it", null]];
 const SPEEDS = [["calm", "Calm"], ["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]];
+const LENGTHS = [["round", "15 words"], ["endless", "Endless"]];
 const WAVES = 15;
 const GROUND = 44;        // px under the lanes: the ground line, key hints and cannon
 const HIT_STRIP = 1200;   // ms the "✓ word — meaning" line stays after a hit
@@ -25,8 +29,10 @@ const CARD_ARM = 400;     // ms before the miss card's buttons work: the tap tha
 
 let clues = pref("lexi-shooter-clues", "meaning");
 let speed = pref("lexi-shooter-speed", "slow");
+let length = pref("lexi-shooter-length", "round");
 if (!CLUES.some(c => c[0] === clues)) clues = "meaning";
 if (!SPEEDS.some(s => s[0] === speed)) speed = "slow";
+if (!LENGTHS.some(l => l[0] === length)) length = "round";
 let filter = loadFilter("shooter");
 let els = {};
 let alive = false;
@@ -45,6 +51,9 @@ let bestRun = 0;
 let hits = 0;
 let level = 1;
 let missed = [];
+let endless = false;     // this game: more words come until the hearts run out
+let seen = new Set();    // endless: the words shown so far
+let refilling = false;
 let logged = new Set();
 let posts = [];
 let still = false;       // reduced motion: nothing falls
@@ -65,7 +74,9 @@ let shownSecs = -1;
 
 const later = (fn, ms) => { const t = setTimeout(() => { timers.delete(t); fn(); }, ms); timers.add(t); return t; };
 const clearTimers = () => { timers.forEach(clearTimeout); timers.clear(); };
-const bestKey = () => (speed === "calm" ? "shooter:calm" : "shooter:timed");
+// Best and top scores: one board for each length and clock (clues share it).
+const bestKey = () => `shooter:${length === "endless" ? "endless:" : ""}${speed === "calm" ? "calm" : "timed"}`;
+const boardLabel = () => `${length === "endless" ? "Endless" : "15 words"}, ${speed === "calm" ? "Calm" : "with a clock"}`;
 const plural = (n, one, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
 const num = n => n.toLocaleString("en-US");
 const inRound = () => ["ready", "falling", "hit", "miss"].includes(phase);
@@ -95,10 +106,13 @@ function startCard() {
   const go = h("button.btn.btn-primary.btn-lg", { type: "button", on: { click: () => start() } }, "Start ",
     h("kbd", { "aria-hidden": "true" }, "Enter"));
   els.stage.replaceChildren(h("div.panel.shoot-start",
-    h("ol.shoot-steps", h("li", "Read the clue."), h("li", "Tap the word that fits before it lands."), h("li", "You have 3 hearts.")),
+    h("ol.shoot-steps", h("li", clues === "hear" ? "Listen to the word." : "Read the clue."),
+      h("li", clues === "hear" ? "Tap the word you hear before it lands." : "Tap the word that fits before it lands."),
+      h("li", length === "endless" ? "You have 3 hearts. Play until they are gone." : "You have 3 hearts.")),
     h("p.muted", "Need more time? Choose Calm."),
     go,
-    best > 0 ? h("p.shoot-best.tnum", `Best: ${num(best)}`) : null));
+    best > 0 ? h("p.shoot-best.tnum", `Best: ${num(best)}`) : null),
+  scoreBoard(bestKey(), boardLabel(), { limit: 5 }));
 }
 
 function empty(text) {
@@ -111,9 +125,8 @@ async function start(replay = null) {
   const mine = ++token;
   let list = replay;
   if (!list) {
-    const types = CLUES.find(c => c[0] === clues)[2];
     try {
-      list = (await api.get("/api/quiz", { ...filter, types, n: WAVES })).questions;
+      list = await batch();
     } catch (e) {
       if (mine === token && alive) empty(e.message);
       return;
@@ -123,6 +136,9 @@ async function start(replay = null) {
     if (list.length < WAVES) toast(`Only ${list.length} words match these settings.`);
   }
   qs = list;
+  endless = length === "endless" && !replay;   // "Practice the misses" is a round
+  seen = new Set(list.map(q => q.word_id));
+  refilling = false;
   w = 0; hearts = 3; score = 0; streak = 0; bestRun = 0; hits = 0; missed = []; logged = new Set(); posts = [];
   level = START_LEVEL[speed] || 1;
   still = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -133,6 +149,26 @@ async function start(replay = null) {
   els.stage.firstChild.scrollIntoView({ block: "start", behavior: scrollBehavior() });
   els.field.focus({ preventScroll: true });
   wave();
+}
+
+/** 15 questions for the chosen clues. */
+async function batch() {
+  if (clues === "hear") return (await api.get("/api/listen", { ...filter, n: WAVES })).items.map(fromListen);
+  const types = CLUES.find(c => c[0] === clues)[2];
+  return (await api.get("/api/quiz", { ...filter, types, n: WAVES })).questions;
+}
+
+/** Endless: fetch the next words while a few are still left. New words come
+ * first; once every word here has been shown, they come round again. */
+function refill() {
+  if (!endless || refilling || qs.length - w - 1 > REFILL_AT) return;
+  refilling = true;
+  const mine = token;
+  batch().then(list => {
+    if (mine !== token) return;
+    const fresh = freshOnly(list, seen);
+    qs.push(...(fresh.length ? fresh : list));
+  }).catch(() => {}).finally(() => { if (mine === token) refilling = false; });
 }
 
 function buildScreen() {
@@ -174,7 +210,7 @@ function hud() {
   const combo = comboFor(streak);
   els.combo.textContent = `×${combo}`;
   els.combo.hidden = combo === 1;
-  els.count.textContent = `Word ${w + 1} of ${qs.length}`;
+  els.count.textContent = endless ? `Word ${w + 1}` : `Word ${w + 1} of ${qs.length}`;
 }
 
 // ---------------------------------------------------------------- a wave
@@ -188,7 +224,10 @@ function wave() {
   shownSecs = -1;
   fall = speed === "calm" ? Infinity : fallTime(q.prompt, level);
   lanes = pickLanes(q.options, q.answer, matchMedia("(max-width: 600px)").matches ? 3 : 4);
-  els.clue.replaceChildren(h("p.q-ask", q.ask), h("p.shoot-prompt", smart(q.prompt)));
+  els.clue.replaceChildren(h("p.q-ask", q.ask), q.hear
+    ? h("button.btn.shoot-hear", { type: "button", on: { click: () => playWord(q) } }, "▶ Hear it again ",
+      h("kbd", { "aria-hidden": "true" }, "Space"))
+    : h("p.shoot-prompt", smart(q.prompt)));
   els.clue.onclick = null;
   els.pills = [];
   els.lanes = lanes.map((word, k) => {
@@ -215,10 +254,12 @@ function wave() {
   measure();
   place();
   if (hadFocus >= 0) els.lanes[Math.min(hadFocus, els.lanes.length - 1)].focus({ preventScroll: true });
-  els.status.textContent = `Word ${w + 1} of ${qs.length}. ${q.ask} ${q.prompt}. Choices: ${lanes.map((x, k) => `${k + 1} ${x}`).join(", ")}.`;
+  els.status.textContent = `Word ${endless ? w + 1 : `${w + 1} of ${qs.length}`}. ${q.ask} ${q.prompt}. Choices: ${lanes.map((x, k) => `${k + 1} ${x}`).join(", ")}.`;
   els.alert.textContent = "";
   shownAt = performance.now();
+  if (q.hear) later(() => playWord(q), 300);
   later(startFall, w === 0 ? 2000 : 900);
+  refill();
 }
 
 /** Sizes read once per wave (and on resize), never inside the loop. */
@@ -279,7 +320,7 @@ function log(q, correct) {
   if (logged.has(q.word_id)) return;
   logged.add(q.word_id);
   const ms = Math.round(performance.now() - shownAt);
-  posts.push(api.post("/api/answer", { word_id: q.word_id, mode: "match", correct, ms }).catch(() => {}));
+  posts.push(api.post("/api/answer", { word_id: q.word_id, mode: q.hear ? "listen" : "match", correct, ms }).catch(() => {}));
 }
 
 function mark(lane, right) {
@@ -310,7 +351,7 @@ function hit(k) {
     h("b.fb-word", smart(q.word)), " — ", smart(q.definition)));
   els.clue.onclick = next;
   els.alert.textContent = `Right: ${q.word}. Plus ${add}.${heartBack ? " One heart back." : ""}`;
-  if (settings.autoplay === "1") later(() => playWord(q), 150);
+  if (settings.autoplay === "1" && !q.hear) later(() => playWord(q), 150);
   later(next, HIT_STRIP);
 }
 
@@ -381,6 +422,7 @@ function next() {
   if (paused || (phase !== "hit" && phase !== "miss")) return;
   const wasMiss = phase === "miss";
   clearTimers();
+  if (hearts > 0 && w + 1 >= qs.length && refilling) return void later(next, 300);   // endless: more words are on the way
   if (hearts <= 0 || w + 1 >= qs.length) return finish();
   w++;
   wave();
@@ -429,23 +471,26 @@ function finish() {
   halt();
   phase = "done";
   const played = w + 1;
-  const perfect = hits === qs.length;
+  const perfect = !endless && hits === qs.length;
   if (perfect) score += PERFECT_BONUS;
   activeMs += performance.now() - runFrom;
   const secs = activeMs / 1000;
   sfx("end");
-  api.post("/api/sessions", { kind: "word-shooter", score: hits, total: played, duration_s: Math.round(secs) }).catch(() => {});
+  const kind = `word-shooter${endless ? "-endless" : ""}${clues === "hear" ? "-hear" : ""}`;
+  api.post("/api/sessions", { kind, score: hits, total: played, duration_s: Math.round(secs) }).catch(() => {});
   if (missed.length) Promise.allSettled(posts).then(refreshDueCount);
   const { best, isNew } = saveBest(bestKey(), score);
+  const top = scoreResult(bestKey(), boardLabel(), score);
   const again = h("button.btn.btn-primary.btn-lg", { type: "button", on: { click: () => start() } }, "Play again");
   const retry = missed.length ? h("button.btn.btn-lg", { type: "button", on: {
     click: () => start(shuffle(missed.map(q => ({ ...q, options: shuffle([...q.options]) })))),
   } }, `Practice the ${plural(missed.length, "miss", "misses")}`) : null;
   els.stage.replaceChildren(h("div.panel.result",
-    h("span.eyebrow", hearts > 0 ? "Round complete" : "Out of hearts"),
+    h("span.eyebrow", hearts > 0 ? "Round complete" : endless ? `Out of hearts after ${plural(played, "word")}` : "Out of hearts"),
     h("div.big-num.tnum", num(score)),
     perfect ? h("p.shoot-best", "Perfect round!") : null,
     isNew ? h("p.shoot-best", "New best!") : best > 0 ? h("p.muted.tnum", `Best: ${num(best)}`) : null,
+    top.el,
     h("p.muted", `${hits} of ${played} words · best run ${bestRun} · ${fmtDuration(secs)}`),
     h("p.muted", "100 a word, more for fast shots, ×2 ×3 ×4 for hits in a row"),
     missed.length ? h("div.missed", h("p.label", "Added back to today's review"),
@@ -474,10 +519,13 @@ export async function render(root) {
   const speedSel = h("select.input", { "aria-label": "Speed" }, SPEEDS.map(([v, l]) => h("option", { value: v }, l)));
   speedSel.value = speed;
   speedSel.addEventListener("change", () => { speed = speedSel.value; setPref("lexi-shooter-speed", speed); startCard(); });
+  const lengthSel = h("select.input", { "aria-label": "Length" }, LENGTHS.map(([v, l]) => h("option", { value: v }, l)));
+  lengthSel.value = length;
+  lengthSel.addEventListener("change", () => { length = lengthSel.value; setPref("lexi-shooter-length", length); startCard(); });
   els.root = root;
   els.stage = h("div.shoot-wrap");
   root.append(
-    pageHead("Word Shooter", "Read the clue. Tap the word that fits before it falls.", seg, speedSel),
+    pageHead("Word Shooter", "Read the clue, or hear the word. Tap the word that fits before it falls.", seg, speedSel, lengthSel),
     await filterBar(f => { filter = f; startCard(); }, src, { tab: "shooter" }),
     els.stage);
   filter = loadFilter("shooter");
@@ -511,7 +559,7 @@ export function onKey(e) {
     if (phase === "idle" && els.stage.querySelector(".shoot-start")) { e.preventDefault(); start(); }
     else if (phase === "hit" || phase === "miss") { e.preventDefault(); next(); }
     else if (phase === "done") { e.preventDefault(); start(); }
-  } else if (k === " " && phase === "miss") {
+  } else if (k === " " && (phase === "miss" || (qs[w] && qs[w].hear && (phase === "ready" || phase === "falling")))) {
     e.preventDefault();
     playWord(qs[w]);
   }

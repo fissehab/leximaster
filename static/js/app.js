@@ -22,6 +22,7 @@ export const TABS = [
   { id: "matching", label: "Matching", icon: "match", under: "practice", group: "Practice", note: "Timed pairs" },
   { id: "shooter", label: "Word Shooter", icon: "target", under: "practice", group: "Practice", note: "Shoot the word that fits" },
   { id: "rush", label: "Word Rush", icon: "bolt", under: "practice", group: "Practice", note: "Yes or no, against the clock" },
+  { id: "typeit", label: "Type It", icon: "keys", under: "practice", group: "Practice", note: "Type the word before time runs out" },
   { id: "quiz", label: "Quiz", icon: "quiz", under: "practice", group: "Practice", note: "Meanings, blanks, synonyms" },
   { id: "listen", label: "Listen", icon: "listen", under: "practice", group: "Practice", note: "Hear it, name it, spell it" },
   { id: "pronounce", label: "Pronounce", icon: "mic", under: "practice", group: "Practice", note: "Record and compare" },
@@ -237,7 +238,7 @@ export function shortcutsList() {
     ["Space", "Play pronunciation"], ["← →", "Previous / next word"], ["↑ ↓", "Previous / next word (Browse, Pronounce)"],
     ["1–5", "Set star rating"], ["M", "Know it (after the answer in Daily review)"], ["/", "Search (Browse)"],
     ["Enter", "Flip card / reveal answer"], ["1–4", "Grade recall in Daily review; choose an answer in Quiz"],
-    ["1–4", "Shoot a word (Word Shooter)"], ["Y N", "Yes / no (Word Rush)"], ["P Esc", "Pause (games)"],
+    ["1–4", "Shoot a word (Word Shooter)"], ["Y N", "Yes / no (Word Rush)"], ["P Esc", "Pause (games; Esc while typing)"],
     ["R", "Record yourself (Pronounce)"], ["?", "Show this help"],
   ];
   // Single-key shortcuts can be switched off (speech-input users trigger them by accident).

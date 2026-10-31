@@ -32,6 +32,7 @@ a { color: var(--lapis); }
   .shoot-pill { transform: none !important; }
   .shoot-beam, .shoot-float { display: none; }
   .shoot-cannon { transform: translateX(-50%) !important; }
+  .type-game-in.shake { animation: none; }
 }
 
 /* ---------------------------------------------------------------- shell */
@@ -1169,3 +1170,42 @@ details.say > summary:hover { background: var(--surface-2); border-radius: var(-
 .rush-yes:hover { border-color: var(--sage); }
 .rush-buttons kbd { margin-left: 4px; }
 .rush-buttons.wait button { opacity: .5; cursor: default; }
+
+/* Hear it (Word Shooter and Type It): the word plays; this plays it again. */
+.shoot-hear { justify-self: start; min-height: 48px; font-size: 16px; }
+
+/* Type It */
+.type-box { position: relative; display: grid; gap: 12px; padding: 16px clamp(14px, 4vw, 24px);
+  border: 2px solid var(--rule); border-radius: var(--radius); background: var(--surface); }
+.type-box .shoot-clue { border: 0; padding: 0; min-height: 0; background: none; }
+.type-box.right { border-color: var(--sage); }
+.type-box.wrong { border-color: var(--madder); }
+.type-box.is-paused > :not(.shoot-pause) { visibility: hidden; }
+.type-blanks { font: 600 24px/1.3 var(--font-word); color: var(--lapis); letter-spacing: .04em; white-space: pre-wrap;
+  overflow-wrap: anywhere; text-align: center; }
+.type-form { display: grid; gap: 10px; }
+.type-form .toolbar { justify-content: center; }
+.type-game-in { width: 100%; }
+.type-game-in.shake { animation: shake .35s; }
+.type-try { min-height: 1.4em; text-align: center; font: 600 15px/1.4 var(--font-ui); color: var(--madder); }
+.shoot-clock.low .shoot-timebar > span { background: var(--gilt); }
+
+/* Top scores on this device (all three games) */
+.game-board { display: grid; gap: 8px; padding: 14px 16px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); }
+.game-board-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.game-board-head .label { margin: 0; }
+.game-board-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+.game-board-list li { display: grid; grid-template-columns: 2.2em minmax(0, 1fr) auto auto; align-items: baseline; gap: 10px;
+  padding: 6px 8px; border-radius: 6px; font: 400 15px/1.3 var(--font-ui); }
+.game-board-list li:nth-child(-n+3) .place { color: var(--gilt); font-weight: 700; }
+.game-board-list li.mine { background: var(--sage-soft); font-weight: 600; }
+.game-board-list .who { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.game-board-list .pts { font-weight: 600; text-align: right; }
+.game-board-list .when { font-size: 13px; min-width: 4.5em; text-align: right; }
+.game-board-clear { justify-self: start; }
+.shoot-wrap > .game-board, .rush-wrap > .game-board { margin-top: 12px; }
+.game-place { display: grid; gap: 10px; width: 100%; text-align: left; }
+.game-place .shoot-best { text-align: center; }
+.game-name { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.game-name label { font: 600 14px/1.3 var(--font-ui); }
+.game-name .input { flex: 1 1 140px; min-width: 0; max-width: 240px; }

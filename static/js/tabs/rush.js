@@ -8,6 +8,7 @@ import { refreshDueCount } from "../app.js";
 import {
   bestScore, buzz, comboFor, points, pref, rushDeck, saveBest, setPref, setSounds, sfx, soundsOn, unlockSounds,
 } from "../games.js";
+import { scoreBoard, scoreResult } from "../gameui.js";
 import { loadFilter } from "../state.js";
 import { filterBar, filterSources, h, pageHead, playButton, smart } from "../ui.js";
 
@@ -48,6 +49,7 @@ let timers = new Set();
 const later = (fn, ms) => { const t = setTimeout(() => { timers.delete(t); fn(); }, ms); timers.add(t); return t; };
 const clearTimers = () => { timers.forEach(clearTimeout); timers.clear(); };
 const timed = () => time !== "calm";
+const boardLabel = () => TIMES.find(t => t[0] === time)[1];
 const num = n => n.toLocaleString("en-US");
 const clockText = secs => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
 
@@ -68,7 +70,8 @@ function startCard() {
     h("ol.shoot-steps", h("li", "Read the word and the meaning."), h("li", "Tap Yes if it is right, No if it is wrong."),
       h("li", "Get as many as you can.")),
     h("button.btn.btn-primary.btn-lg", { type: "button", on: { click: start } }, "Start ", h("kbd", { "aria-hidden": "true" }, "Enter")),
-    best > 0 ? h("p.shoot-best.tnum", `Best: ${num(best)}`) : null));
+    best > 0 ? h("p.shoot-best.tnum", `Best: ${num(best)}`) : null),
+  scoreBoard(`rush:${time}`, boardLabel(), { limit: 5 }));
 }
 
 async function start() {
@@ -312,6 +315,7 @@ function finish(allDone) {
   api.post("/api/sessions", { kind: "word-rush", score: right, total: answered, duration_s: Math.round(secs) }).catch(() => {});
   if (missed.length) Promise.allSettled(posts).then(refreshDueCount);
   const { best, isNew } = saveBest(`rush:${time}`, score);
+  const top = scoreResult(`rush:${time}`, boardLabel(), score);
   const again = h("button.btn.btn-primary.btn-lg", { type: "button", on: { click: start } }, "Play again");
   els.stage.replaceChildren(h("div.panel.result",
     h("span.eyebrow", "Round complete"),
@@ -319,6 +323,7 @@ function finish(allDone) {
     allDone ? h("p", "You did every card!") : null,
     isNew ? h("p.shoot-best", "New best!") : best > 0 ? h("p.muted.tnum", `Best: ${num(best)}`) : null,
     h("p.muted", `${right} right · ${wrong} wrong`),
+    top.el,
     missed.length ? h("div.missed", h("p.label", "Added back to today's review"),
       h("ul", missed.map(q => h("li", playButton(q, { small: true }), " ",
         h("a", { href: `#browse/${q.word_id}` }, q.word), " — ", smart(q.definition))))) : null,

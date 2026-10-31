@@ -1,5 +1,6 @@
-// What the practice games share (Word Shooter, Word Rush): points, speed,
-// lanes, the Rush deck, best scores, saved choices and sound effects.
+// What the practice games share (Word Shooter, Word Rush, Type It): points,
+// speed, lanes, the Rush deck, endless refills, typed answers, best and top
+// scores, saved choices and sound effects.
 // No DOM at import time, so node can test it (tests/js/games.test.mjs).
 
 // ---------------------------------------------------------------- points
@@ -79,6 +80,55 @@ export function rushDeck(questions, rng = Math.random) {
   });
 }
 
+/** A Word Shooter wave from an /api/listen item: hear the word, shoot it.
+ * The options are words that sound alike (never a homophone). */
+export function fromListen(item) {
+  const core = (item.nuance || {}).core || {};
+  const sense = ((item.meanings || [])[0] || { senses: [] }).senses[0] || {};
+  return {
+    word_id: item.id, word: item.word, answer: item.word, options: item.options, hear: true,
+    ask: "Which word do you hear?", prompt: "", definition: core.definition || item.def || sense.definition || "",
+    phonetic: item.phonetic || "", example: sense.example || "", audio_url: item.audio_url, tts_url: item.tts_url,
+  };
+}
+
+/** Endless mode: the questions of a new batch that this game hasn't shown yet. */
+export function freshOnly(list, seen) {
+  const out = [];
+  for (const q of list) {
+    if (seen.has(q.word_id)) continue;
+    seen.add(q.word_id);
+    out.push(q);
+  }
+  return out;
+}
+export const REFILL_AT = 5;   // endless: fetch more when this many words are left
+
+// ---------------------------------------------------------------- typing
+
+// The letters that count: case, accents, curly apostrophes, hyphens and
+// spaces don't ("Self-esteem" = "self esteem"), sentence punctuation neither.
+const letters = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[’‘]/g, "'")
+  .replace(/[?!.,…"“”]/g, "").toLowerCase().replace(/[\s-]+/g, " ").trim();
+export const typedRight = (typed, word) => letters(typed) !== "" && letters(typed) === letters(word);
+
+/** The word with `shown` letters given and the rest as blanks; spaces,
+ * hyphens and apostrophes always show: "e _ _ _ _ _" for "esteem", 1. */
+export function hintFor(word, shown = 1) {
+  let n = 0;
+  return [...String(word)].map(ch => {
+    if (!/[\p{L}\p{N}]/u.test(ch)) return ch === " " ? "\u2003" : ch;   // a wide gap between words
+    return n++ < shown ? ch : "_";
+  }).join(" ");
+}
+export const letterCount = word => [...String(word)].filter(ch => /[\p{L}\p{N}]/u.test(ch)).length;
+
+/** Milliseconds to type a word at this level: time to read the clue (or
+ * hear the word) plus a little more for each letter. */
+export function typeTime(clue, word, level) {
+  return (readTime(clue) + 0.6 * letterCount(word)) * SPEED_FACTORS[clamp(level, 1, 5) - 1] * 1000;
+}
+
 // ---------------------------------------------------------------- kept in this browser
 
 // Best scores, one JSON object: shooter:timed, shooter:calm, rush:60,
@@ -101,6 +151,65 @@ export function saveBest(key, score) {
     return { best: score, isNew: true };
   } catch (e) { return { best: 0, isNew: false }; }
 }
+
+// Top scores on this device: the 10 best of each board ("shooter:timed",
+// "typeit:endless:calm"...), each with a name and a date. Several people can
+// share one phone; a list shared between devices would need accounts.
+const LEADERS = "lexi-game-leaders";
+const NAME = "lexi-game-name";
+export const TOP = 10;
+function readLeaders() {
+  const all = JSON.parse(globalThis.localStorage.getItem(LEADERS) || "{}");
+  return all && typeof all === "object" ? all : {};
+}
+export function topScores(board) {
+  try {
+    const list = readLeaders()[board];
+    return Array.isArray(list) ? list.filter(e => e && Number.isFinite(e.score)) : [];
+  } catch (e) { return []; }
+}
+/** Add a score: returns its place (1 = top) or 0 if it didn't make the list,
+ * and the list. A tie goes under the score that was there first. */
+/** Today on this device's calendar, as YYYY-MM-DD. */
+export function today(d = new Date()) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+export function addScore(board, score, { name = playerName(), at = today() } = {}) {
+  if (!(score > 0)) return { place: 0, list: topScores(board) };
+  const list = topScores(board);
+  let place = list.findIndex(e => score > e.score);
+  if (place < 0) place = list.length;
+  if (place >= TOP) return { place: 0, list };
+  const entry = { name, score, at, id: `${at}-${score}-${list.length}-${Math.floor(Math.random() * 1e6)}` };
+  list.splice(place, 0, entry);
+  list.length = Math.min(list.length, TOP);
+  try {
+    const all = readLeaders();
+    all[board] = list;
+    globalThis.localStorage.setItem(LEADERS, JSON.stringify(all));
+  } catch (e) { /* storage unavailable: shown, not kept */ }
+  return { place: place + 1, list, entry };
+}
+/** Put a new name on a score already in the list. */
+export function renameScore(board, id, name) {
+  try {
+    const all = readLeaders();
+    const e = (all[board] || []).find(x => x.id === id);
+    if (!e) return;
+    e.name = name;
+    globalThis.localStorage.setItem(LEADERS, JSON.stringify(all));
+  } catch (e) { /* storage unavailable */ }
+}
+export function clearScores(board) {
+  try {
+    const all = readLeaders();
+    delete all[board];
+    globalThis.localStorage.setItem(LEADERS, JSON.stringify(all));
+  } catch (e) { /* storage unavailable */ }
+}
+export const cleanName = s => String(s || "").replace(/\s+/g, " ").trim().slice(0, 20);
+export const playerName = () => cleanName(pref(NAME, "")) || "Me";
+export const setPlayerName = name => setPref(NAME, cleanName(name));
 
 /** A choice remembered on this device (speed, clue type, Rush time, sounds). */
 export function pref(key, fallback) {

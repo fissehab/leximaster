@@ -1,4 +1,4 @@
-"""What Word Shooter and Word Rush (static/js/tabs/shooter.js, rush.js) rely
+"""What Word Shooter, Word Rush and Type It (static/js/tabs/shooter.js, rush.js, typeit.js) rely
 on from the API: word-shaped options from /api/quiz, the "too few words"
 error, test history for their sessions, and `match` answers in the log."""
 from __future__ import annotations
@@ -65,3 +65,27 @@ def test_a_game_miss_is_logged_as_match(client):
     with db.tx() as c:
         row = c.execute("SELECT mode, correct, ms_taken FROM review_log WHERE word_id=? ORDER BY id DESC", (wid,)).fetchone()
     assert (row["mode"], row["correct"], row["ms_taken"]) == ("match", 0, 2400)
+
+
+def test_hear_mode_items_carry_a_word_its_sound_alikes_and_a_meaning(client):
+    """Word Shooter and Type It "Hear it" (games.js fromListen) use /api/listen."""
+    items = client.get("/api/listen", params={"n": 15}).json()["items"]
+    assert items
+    for it in items:
+        assert it["id"] and it["word"]
+        assert len(it["options"]) == 4 and it["word"] in it["options"]
+        assert it.get("audio_url") or it.get("tts_url") or it["word"]   # something to play (or the device voice)
+        assert (it.get("nuance") or {}).get("core", {}).get("definition") or it.get("def") or it["meanings"]
+
+
+def test_type_it_meanings_give_the_word_as_the_answer(client):
+    for q in client.get("/api/quiz", params={"types": "meaning_word", "n": 15}).json()["questions"]:
+        assert q["answer"] == q["word"] and q["prompt"]
+
+
+@pytest.mark.parametrize("mode", ["listen", "spell"])
+def test_heard_game_answers_are_logged_as_listening_or_spelling(client, mode):
+    wid = client.get("/api/words").json()["words"][1]["id"]
+    assert client.post("/api/answer", json={"word_id": wid, "mode": mode, "correct": True, "ms": 1800}).status_code == 200
+    with db.tx() as c:
+        assert c.execute("SELECT mode FROM review_log WHERE word_id=? ORDER BY id DESC", (wid,)).fetchone()["mode"] == mode

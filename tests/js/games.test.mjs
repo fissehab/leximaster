@@ -1,11 +1,13 @@
 // The games' shared logic (static/js/games.js): points, speed, lanes, the
-// Rush deck and best scores.
+// Rush deck, hear mode, endless refills, typed answers, best and top scores.
 //     node --test tests/js/
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 
 import {
+  addScore, cleanName, clearScores, freshOnly, fromListen, hintFor, letterCount, playerName, renameScore, setPlayerName,
+  today, topScores, typedRight, typeTime, TOP,
   bestScore, buzz, comboFor, fallTime, fontFor, nextLevel, pickLanes, points, pref, readTime, rushDeck, saveBest, setPref,
   setSounds, sfx, soundsOn, SPEED_FACTORS, unlockSounds,
 } from "../../static/js/games.js";
@@ -163,4 +165,115 @@ test("blocked or broken storage never throws: no best", () => {
       delete globalThis.localStorage;
     }
   }
+});
+
+test("a heard word becomes a Shooter wave: its own word is the answer, options kept", () => {
+  const item = { id: 7, word: "affect", options: ["effect", "affect", "infect", "afford"], phonetic: "/əˈfɛkt/",
+    audio_url: "/media/audio/affect.m4a", tts_url: null, def: "short meaning",
+    nuance: { core: { definition: "To change or influence something." } },
+    meanings: [{ senses: [{ definition: "dictionary meaning", example: "The cold affects her mood." }] }] };
+  const q = fromListen(item);
+  assert.equal(q.word_id, 7);
+  assert.equal(q.answer, "affect");
+  assert.deepEqual(q.options, item.options);
+  assert.equal(q.hear, true);
+  assert.equal(q.prompt, "");
+  assert.equal(q.definition, "To change or influence something.");
+  assert.equal(q.example, "The cold affects her mood.");
+  assert.equal(q.audio_url, "/media/audio/affect.m4a");
+  // No nuance: the short meaning, then the dictionary's.
+  assert.equal(fromListen({ ...item, nuance: null }).definition, "short meaning");
+  assert.equal(fromListen({ ...item, nuance: null, def: "" }).definition, "dictionary meaning");
+  assert.equal(fromListen({ id: 1, word: "x", options: [] }).definition, "");
+});
+
+test("endless refills skip words already shown", () => {
+  const seen = new Set([1, 2]);
+  const got = freshOnly([{ word_id: 2 }, { word_id: 3 }, { word_id: 3 }, { word_id: 4 }], seen);
+  assert.deepEqual(got.map(q => q.word_id), [3, 4]);
+  assert.deepEqual([...seen].sort(), [1, 2, 3, 4]);
+  assert.deepEqual(freshOnly([{ word_id: 1 }], seen), []);
+});
+
+test("a typed word is right whatever its case, accents, hyphens, spaces or apostrophes", () => {
+  assert.ok(typedRight("Esteem", "esteem"));
+  assert.ok(typedRight("  esteem ", "esteem"));
+  assert.ok(typedRight("self esteem", "self-esteem"));
+  assert.ok(typedRight("selfesteem", "self-esteem") === false);
+  assert.ok(typedRight("cafe", "café"));
+  assert.ok(typedRight("don't", "don’t"));
+  assert.ok(typedRight("How are you", "How are you?"));
+  assert.ok(!typedRight("esteam", "esteem"));
+  assert.ok(!typedRight("", "a"));
+  assert.ok(!typedRight("   ", "a"));
+});
+
+test("blanks show the given letters and how many are left", () => {
+  assert.equal(hintFor("esteem", 1), "e _ _ _ _ _");
+  assert.equal(hintFor("esteem", 0), "_ _ _ _ _ _");
+  assert.equal(hintFor("esteem", Infinity), "e s t e e m");
+  assert.equal(hintFor("self-esteem", 2), "s e _ _ - _ _ _ _ _ _");
+  assert.equal(hintFor("let go", 1), "l _ _ \u2003 _ _");
+  assert.equal(letterCount("self-esteem"), 10);
+  assert.equal(letterCount("let go of"), 7);
+});
+
+test("typing time: reading time, more for longer words, faster at higher levels", () => {
+  assert.equal(typeTime("", "cat", 2), (6 + 1.8) * 1000);
+  assert.ok(typeTime("", "extraordinary", 2) > typeTime("", "cat", 2));
+  assert.ok(typeTime("a long clue to read with many many words in it here", "cat", 2) > typeTime("", "cat", 2));
+  assert.ok(typeTime("", "cat", 5) < typeTime("", "cat", 1));
+});
+
+test("top scores: best first, 10 kept, a tie goes under, names and clearing", () => {
+  const ls = fakeStorage();
+  globalThis.localStorage = ls;
+  try {
+    assert.deepEqual(topScores("shooter:timed"), []);
+    assert.equal(playerName(), "Me");
+    assert.equal(addScore("shooter:timed", 0).place, 0);   // nothing scored: not listed
+    assert.equal(addScore("shooter:timed", 500, { at: "2026-10-30" }).place, 1);
+    assert.equal(addScore("shooter:timed", 900, { at: "2026-10-30" }).place, 1);
+    const tie = addScore("shooter:timed", 500, { name: "Abebe", at: "2026-10-30" });
+    assert.equal(tie.place, 3);
+    assert.deepEqual(topScores("shooter:timed").map(e => [e.score, e.name]), [[900, "Me"], [500, "Me"], [500, "Abebe"]]);
+    for (let i = 0; i < 12; i++) addScore("shooter:timed", 1000 + i);
+    const list = topScores("shooter:timed");
+    assert.equal(list.length, TOP);
+    assert.equal(list[0].score, 1011);
+    assert.equal(addScore("shooter:timed", 1).place, 0);   // too low for the list
+    assert.deepEqual(topScores("rush:60"), []);            // boards are apart
+    setPlayerName("  Sara   T  ");
+    assert.equal(playerName(), "Sara T");
+    const { entry } = addScore("rush:60", 300);
+    assert.equal(entry.name, "Sara T");
+    renameScore("rush:60", entry.id, "Liya");
+    assert.equal(topScores("rush:60")[0].name, "Liya");
+    assert.equal(cleanName("x".repeat(40)).length, 20);
+    clearScores("rush:60");
+    assert.deepEqual(topScores("rush:60"), []);
+    assert.equal(topScores("shooter:timed").length, TOP);
+  } finally {
+    delete globalThis.localStorage;
+  }
+});
+
+test("top scores with blocked or broken storage never throw", () => {
+  const boom = () => { throw new Error("blocked"); };
+  for (const ls of [{ getItem: boom, setItem: boom }, fakeStorage({ "lexi-game-leaders": "not json" }), undefined]) {
+    globalThis.localStorage = ls;
+    try {
+      assert.deepEqual(topScores("typeit:timed"), []);
+      assert.equal(addScore("typeit:timed", 300).place, 1);   // shown, not kept
+      assert.doesNotThrow(() => { renameScore("typeit:timed", "x", "y"); clearScores("typeit:timed"); setPlayerName("A"); });
+      assert.equal(typeof playerName(), "string");
+    } finally {
+      delete globalThis.localStorage;
+    }
+  }
+});
+
+test("a score's date is the day on this device's calendar, not in London", () => {
+  assert.equal(today(new Date(2026, 9, 30, 23, 30)), "2026-10-30");
+  assert.equal(today(new Date(2026, 0, 5, 0, 10)), "2026-01-05");
 });
