@@ -1,6 +1,7 @@
 # Secrets and personal files: never publish
 .env
 instructions
+/exports/
 
 # Local environment and build caches
 .venv/
