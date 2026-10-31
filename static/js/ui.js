@@ -105,7 +105,7 @@ export const DOMAIN_LABELS = {
   advanced: "Advanced", academic: "Academic", literary: "Literary", professional: "Professional",
   mathematics: "Mathematics", statistics: "Statistics & probability", data_science: "Data science",
   philosophy: "Philosophy", theology: "Theology", christian_anthropology: "Christian anthropology",
-  orthodox_mysticism: "Orthodox mysticism", artificial_intelligence: "Artificial intelligence", bible: "Bible", bible_vocab: "Bible · Vocabulary", bible_names: "Bible · Names", logic: "Logic", software_engineering: "Software engineering",
+  orthodox_mysticism: "Orthodox asceticism & mysticism", liturgical_theology: "Liturgical theology", artificial_intelligence: "Artificial intelligence", bible: "Bible", bible_vocab: "Bible · Vocabulary", bible_names: "Bible · Names", logic: "Logic", software_engineering: "Software engineering",
   custom: "My words", linked: "Linked words", reference: "Look-up only (linked, very rare or very common)",
 };
 const NAME_KIND_LABELS = { person: "Person", place: "Place", people: "People" };
