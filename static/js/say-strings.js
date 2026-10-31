@@ -24,7 +24,8 @@ export const UI = {
   right: "Yes! That's right.",
   wrong: w => `Not this time. You heard: ${w}.`,
   done: (n, of) => `You got ${n} of ${of}. Try another round any time.`,
-  sounds: "Sounds",
+  sounds: "Hard sounds",
+  soundsLead: "Some English sounds are hard to hear and to say. Train your ear here, then learn how the mouth makes each sound.",
   soundsSub: "See how the mouth makes the sounds that are hard in English. Tap a word to hear it.",
   // The pairs of sounds in the game, as a learner reads them.
   contrasts: {
@@ -33,7 +34,7 @@ export const UI = {
     "ɪ-i": "i or ee", "æ-ɛ": "a or e", "ʌ-ɑ": "u or o", "ɝ-ʌ": "er or u",
   },
   game: "Listen and choose",
-  gameSub: "You hear a word. Pick the word you heard. Some English sounds are very close, like ship and sheep. " +
+  gameSub: "You hear a word. Pick the word you heard. Some sounds are very close, like ship and sheep. " +
     "Practice helps you hear the difference. Then you can say it, too.",
   gameCount: (pairs, rounds) => `${pairs} pairs of words, all said by real people. A round has ${rounds} words.`,
   gamePick: "Sounds to practice",

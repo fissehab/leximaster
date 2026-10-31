@@ -1,4 +1,4 @@
-// Browse / Study: A–Z rail, instant search, filtered A–Z virtual list, full entry.
+// Dictionary (the browse tab): A–Z rail, instant search, filtered A–Z virtual list, full entry.
 
 import { allWords, api } from "../api.js";
 import { playWord } from "../audio.js";
@@ -317,11 +317,11 @@ export async function render(root, { param, view, live: isLive }) {
       els.meta,
       els.vlist),
     h("div.detail-wrap", showBtn, els.detail));
-  root.append(h("h1.sr-only", "Browse"), browse);   // the page heading, for screen readers (the entry is h2)
+  root.append(h("h1.sr-only", "Dictionary"), browse);   // the page heading, for screen readers (the entry is h2)
   try { setList(localStorage.getItem("lexi-browse-list") === "collapsed"); } catch (e) { setList(false); }
 
   if (!words.length) {
-    els.detail.append(h("div.panel.empty", h("h2", "No words yet"), h("p", "Run build_dataset.py to build the lexicon, then reload this page.")));
+    els.detail.append(h("div.panel.empty", h("h2", "No words yet"), h("p", "Run build_dataset.py to build the dictionary, then reload this page.")));
   }
   refreshList({ keepScroll: true });
   // On a phone (list above, entry below) nothing is opened until you pick a word.

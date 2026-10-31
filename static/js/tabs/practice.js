@@ -10,5 +10,5 @@ export function hubTiles(group) {
 }
 
 export async function render(root) {
-  root.append(pageHead("Practice", "Pick a way to practice. Each one remembers its own settings."), hubTiles("practice"));
+  root.append(pageHead("Practice", "Pick one way to learn."), hubTiles("practice"));
 }

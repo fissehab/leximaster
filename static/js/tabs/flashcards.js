@@ -219,7 +219,7 @@ export async function render(root, { live: isLive } = {}) {
     h("div.fc-nav", els.stars,
       h("button.btn.btn-quiet", { type: "button", on: { click: e => { unfocus(e); knowIt(); } } }, "Know it & next ", h("kbd", { "aria-hidden": "true" }, "M"))));
   root.append(
-    pageHead("Flashcards", "Recall first, then check. Weaker words come up more often.", autoplay, shuffleBtn),
+    pageHead("Flashcards", "Think of the meaning, then turn the card. Words you find hard come back more often.", autoplay, shuffleBtn),
     await filterBar(f => { filter = f; load(); }, src, { tab: "flashcards" }),
     els.stage,
     els.nav,
