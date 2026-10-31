@@ -28,6 +28,10 @@ a { color: var(--lapis); }
   /* Playing and recording show as a still ring, not a flicker. */
   .play.playing { box-shadow: 0 0 0 4px color-mix(in srgb, var(--verdigris) 35%, transparent); }
   .rec-btn.on .dot { opacity: 1; box-shadow: 0 0 0 3px color-mix(in srgb, var(--on-fill) 45%, transparent); }
+  /* Games: nothing falls, flies, turns or shakes (shooter.js checks too). */
+  .shoot-pill { transform: none !important; }
+  .shoot-beam, .shoot-float { display: none; }
+  .shoot-cannon { transform: translateX(-50%) !important; }
 }
 
 /* ---------------------------------------------------------------- shell */
@@ -296,6 +300,18 @@ button.chip[aria-pressed="true"] { background: var(--lapis-soft); color: var(--l
 @media (max-width: 600px) {
   .npanel dl.distinctions { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .npanel dl.distinctions dd { margin-bottom: 8px; }
+  /* Games: three lanes, and room for the field and the Yes/No buttons. */
+  /* The HUD stays one line (just the number for the score), so the field
+     never jumps down between words. */
+  .shoot-game .shoot-hud, .rush-game .shoot-hud { flex-wrap: nowrap; font-size: 13px; gap: 10px; }
+  .shoot-hud .shoot-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .shoot-hud-tools { min-width: 0; }
+  .shoot-game .shoot-clue { padding: 10px 12px; min-height: 112px; }   /* most clues fit: the field stays put */
+  .shoot-game .shoot-field { height: clamp(220px, calc(100dvh - 330px), 460px); }
+  .shoot-lanes .shoot-lane { min-width: 96px; padding-inline: 2px; }
+  .shoot-lanes .shoot-pill { padding-inline: 3px; }
+  .rush-game .rush-card { min-height: 170px; padding: 16px; }
+  .rush-game .rush-time .shoot-timebar { width: 60px; }
 }
 .fold > summary {
   cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px;
@@ -1037,3 +1053,119 @@ details.say > summary:hover { background: var(--surface-2); border-radius: var(-
 .theme-choice input { width: 18px; height: 18px; margin: 0; accent-color: var(--lapis); }
 .theme-swatch { display: inline-flex; border-radius: 6px; overflow: hidden; border: 1px solid var(--rule-strong); }
 .theme-swatch i { display: block; width: 12px; height: 22px; }
+
+/* ---------------------------------------------------------------- games: Word Shooter and Word Rush */
+.shoot-wrap, .rush-wrap { max-width: 760px; }
+.shoot-start { padding: 28px clamp(18px, 4vw, 34px); display: grid; justify-items: start; gap: 14px; }
+.shoot-steps { margin: 0; padding-left: 24px; display: grid; gap: 6px; font: 400 17px/1.45 var(--font-body); }
+.shoot-best { font: 600 15px/1.3 var(--font-ui); color: var(--gilt); }
+.shoot-game, .rush-game { display: flex; flex-direction: column; gap: 12px; }
+.shoot-hud { gap: 8px 14px; font-size: 14px; color: var(--ink-2); }
+.shoot-hearts { color: var(--madder); font-size: 18px; letter-spacing: 2px; }
+.shoot-combo { font-weight: 700; color: var(--gilt); }
+.shoot-hud-tools { display: flex; gap: 6px; margin-left: auto; }
+.shoot-clue { display: grid; gap: 6px; min-height: 76px; padding: 12px 16px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); }
+.shoot-prompt { font: 400 17px/1.45 var(--font-body); }
+.shoot-strip { font: 400 16px/1.45 var(--font-body); cursor: pointer; }
+.shoot-strip .mark { color: var(--sage); font-weight: 700; }
+/* The clock under reduced motion: a bar that steps once a second. */
+.shoot-clock { display: flex; align-items: center; gap: 10px; }
+.shoot-timebar { flex: 1; height: 6px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
+.shoot-timebar > span { display: block; width: 100%; height: 100%; background: var(--lapis); }
+.shoot-secs { min-width: 3ch; font: 600 14px/1 var(--font-ui); text-align: right; }
+
+/* The field: still, full-height lanes; only the word inside moves. */
+.shoot-field {
+  position: relative; overflow: hidden;
+  height: 50vh; height: clamp(260px, 50dvh, 460px);
+  border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface-2);
+}
+.shoot-field, .shoot-lane, .rush-buttons button {
+  touch-action: manipulation; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.shoot-field:focus-visible { outline-offset: -2px; }
+/* A short screen (a phone on its side): the HUD, clue and field all fit. */
+@media (max-height: 480px) {
+  .shoot-game { gap: 8px; }
+  .shoot-game .shoot-field { height: max(130px, calc(100dvh - 230px)); }
+}
+.shoot-lanes { display: grid; grid-template-columns: repeat(var(--lanes, 4), minmax(0, 1fr)); height: 100%; }
+.shoot-lane {
+  position: relative; display: flex; flex-direction: column; align-items: stretch; min-width: 0;
+  padding: 10px 6px 44px; border: 0; border-right: 1px dashed var(--rule); background: transparent; cursor: pointer;
+}
+.shoot-lane:last-child { border-right: 0; }
+.shoot-lane[aria-disabled="true"] { cursor: default; }
+.shoot-lane:focus-visible { outline: 2px solid var(--lapis); outline-offset: -3px; }
+.shoot-lane:focus-visible .shoot-pill, .rush-buttons button:focus-visible { box-shadow: var(--focus); }
+.shoot-pill {   /* a block, not a grid: a long word may then wrap as a last resort */
+  display: block; align-content: center; min-height: 48px; padding: 8px 6px;
+  border: 1.5px solid var(--rule-strong); border-radius: var(--radius); background: var(--surface);
+  font-family: var(--font-word); font-weight: 600; line-height: 1.25; color: var(--lapis);
+  text-align: center; overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto;   /* a broken word shows a hyphen */
+}
+.shoot-pill.live { will-change: transform; }
+.shoot-lane:hover:not([aria-disabled]) .shoot-pill { border-color: var(--lapis); }
+.shoot-lane kbd { position: absolute; left: 6px; bottom: 12px; }
+.shoot-lane .mark { position: absolute; top: 2px; right: 6px; font: 700 18px/1 var(--font-ui); }
+.shoot-lane.right .shoot-pill { border-color: var(--sage); background: var(--sage-soft); }
+.shoot-lane.wrong .shoot-pill { border-color: var(--madder); background: var(--madder-soft); }
+.shoot-lane.right .mark { color: var(--sage); }
+.shoot-lane.wrong .mark { color: var(--madder); }
+.shoot-lane.shake { animation: shake .35s; }
+.shoot-ground { position: absolute; left: 0; right: 0; bottom: 44px; border-top: 2px solid var(--rule-strong); pointer-events: none; }
+.shoot-cannon {
+  position: absolute; left: 50%; bottom: 8px; width: 16px; height: 28px; pointer-events: none;
+  border-radius: 8px 8px 4px 4px; background: var(--lapis);
+  transform: translateX(-50%); transform-origin: 50% 80%; transition: transform .12s var(--ease);
+}
+.shoot-ready { position: absolute; left: 0; right: 0; top: 45%; text-align: center; pointer-events: none;
+  font: 600 15px/1 var(--font-ui); color: var(--muted); }
+/* Effects: transform and opacity only, and each one removes itself. */
+.shoot-beam { position: absolute; width: 3px; border-radius: 2px; background: var(--gilt); transform-origin: 50% 100%;
+  opacity: 0; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .shoot-beam { animation: shoot-beam .12s ease-out; }
+  @keyframes shoot-beam { from { opacity: 1; } to { opacity: 0; } }
+}
+.shoot-pill.pop { animation: shoot-pop .3s ease-out; }
+@keyframes shoot-pop { 40% { scale: 1.18; opacity: .5; } to { scale: 1; opacity: 1; } }
+.shoot-float { position: absolute; transform: translate(-50%, -50%); pointer-events: none;
+  font: 700 18px/1 var(--font-ui); color: var(--gilt); animation: shoot-float .9s ease-out forwards; }
+.shoot-float.heart { font-size: 15px; color: var(--madder); }
+@keyframes shoot-float { to { transform: translate(-50%, -250%); opacity: 0; } }
+/* After a miss: the lesson waits for "Go on". */
+.shoot-card { position: absolute; inset: 0; z-index: 2; overflow-y: auto; border-radius: 0; background: var(--surface); }
+.shoot-card .toolbar { position: sticky; bottom: -14px; margin-top: auto; padding-block: 8px; background: var(--surface); }   /* "Go on" stays in view */
+.shoot-pause { position: absolute; inset: 0; z-index: 3; display: grid; place-content: center; justify-items: center; gap: 14px;
+  background: var(--surface); border-radius: inherit; }
+.shoot-pause p { font: 600 22px/1.2 var(--font-word); }
+
+/* Word Rush */
+.rush-time { display: inline-flex; align-items: center; gap: 10px; }
+.rush-time .shoot-timebar { flex: none; width: 90px; }
+.rush-clock { font-size: 20px; }
+.rush-clock.low { color: var(--gilt); }
+.rush-card { position: relative; display: grid; align-content: start; gap: 10px; min-height: 190px;
+  padding: 20px clamp(16px, 4vw, 28px); border-width: 2px; }
+.rush-card.enter { animation: rise .2s var(--ease); }
+.rush-card.right { border-color: var(--sage); }
+.rush-card.wrong { border-color: var(--madder); }
+.rush-word { font: 700 28px/1.15 var(--font-word); color: var(--lapis); overflow-wrap: anywhere; }
+.rush-word .mark { font: 700 22px/1 var(--font-ui); }
+.rush-card.right .rush-word .mark { color: var(--sage); }
+.rush-card.wrong .rush-word .mark { color: var(--madder); }
+.rush-meaning { font: 400 18px/1.45 var(--font-body); }
+.rush-card.is-paused > :not(.shoot-pause) { visibility: hidden; }
+.rush-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.rush-buttons button {
+  display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 56px;
+  border: 2px solid var(--rule-strong); border-radius: var(--radius); background: var(--surface);
+  font: 600 18px/1 var(--font-ui); cursor: pointer;
+}
+.rush-no { color: var(--madder); }
+.rush-yes { color: var(--sage); }
+.rush-no:hover { border-color: var(--madder); }
+.rush-yes:hover { border-color: var(--sage); }
+.rush-buttons kbd { margin-left: 4px; }
+.rush-buttons.wait button { opacity: .5; cursor: default; }
