@@ -5,13 +5,13 @@ import { stopAudio } from "./audio.js";
 import { loadSettings } from "./state.js";
 import { formDialog, h, icon, showError } from "./ui.js";
 
-// The rail lists every tab. On a phone the bottom bar has five: Today,
-// Review, Practice, Browse and More; Practice and More are pages of links
-// (`hub`), and the tabs they hold are reached from there (`under`).
-// One order for the sidebar and the phone bar: today's review first, then
-// practice from easiest to hardest (see the answer, recognize it, recall it,
-// hear it, say it), then the words themselves, then progress. The phone shows
-// only Today, Review, the two hubs and Browse, in this same page order, so
+// The rail lists every tab. On a phone the bottom bar has six: Today,
+// Review, Practice, Games, Browse and More; Practice, Games and More are
+// pages of links (`hub`), and the tabs they hold are reached from there
+// (`under`). One order for the sidebar and the phone bar: today's review
+// first, then calm practice (see it, recall it, hear it, say it), then the
+// timed games, then the words themselves, then progress. The phone shows
+// only Today, Review, the three hubs and Browse, in this same page order, so
 // keyboard and screen-reader order match what is on screen. `group` makes a
 // labeled group in the sidebar; `sep` draws a line above a link.
 export const TABS = [
@@ -19,14 +19,15 @@ export const TABS = [
   { id: "review", label: "Daily review", icon: "review" },
   { id: "practice", label: "Practice", icon: "cards", hub: true },
   { id: "flashcards", label: "Flashcards", icon: "cards", under: "practice", group: "Practice", note: "Flip through words" },
-  { id: "matching", label: "Matching", icon: "match", under: "practice", group: "Practice", note: "Timed pairs" },
-  { id: "shooter", label: "Word Shooter", icon: "target", under: "practice", group: "Practice", note: "Shoot the word that fits" },
-  { id: "rush", label: "Word Rush", icon: "bolt", under: "practice", group: "Practice", note: "Yes or no, against the clock" },
-  { id: "typeit", label: "Type It", icon: "keys", under: "practice", group: "Practice", note: "Type the word before time runs out" },
   { id: "quiz", label: "Quiz", icon: "quiz", under: "practice", group: "Practice", note: "Meanings, blanks, synonyms" },
   { id: "listen", label: "Listen", icon: "listen", under: "practice", group: "Practice", note: "Hear it, name it, spell it" },
   { id: "pronounce", label: "Pronounce", icon: "mic", under: "practice", group: "Practice", note: "Record and compare" },
   { id: "sounds", label: "Sounds", icon: "mouth", under: "practice", group: "Practice", note: "How the mouth makes hard sounds" },
+  { id: "games", label: "Games", icon: "game", hub: true },
+  { id: "shooter", label: "Word Shooter", icon: "target", under: "games", group: "Games", note: "Shoot the word that fits" },
+  { id: "rush", label: "Word Rush", icon: "bolt", under: "games", group: "Games", note: "Yes or no, against the clock" },
+  { id: "typeit", label: "Type It", icon: "keys", under: "games", group: "Games", note: "Type the word before time runs out" },
+  { id: "matching", label: "Matching", icon: "match", under: "games", group: "Games", note: "Timed pairs" },
   { id: "browse", label: "Browse", icon: "book", group: "Words", note: "The full lexicon" },
   { id: "lists", label: "My lists", icon: "list", under: "more", group: "Words", note: "Your word lists and notes" },
   { id: "more", label: "More", icon: "more", hub: true },
@@ -52,27 +53,30 @@ function buildNav() {
     if (!t.group) items.push(link(t));
     else if (last && last.dataset.group === t.group) last.append(link(t));
     else items.push(h("div.nav-group", { role: "group", "aria-label": t.group, "data-group": t.group },
-      t.group === FOLDING ? foldButton() : h("span.nav-heading", { "aria-hidden": "true" }, t.group), link(t)));
+      FOLDING.includes(t.group) ? foldButton(t.group) : h("span.nav-heading", { "aria-hidden": "true" }, t.group), link(t)));
   }
   wrap.replaceChildren(...items);
-  const group = wrap.querySelector(`[data-group="${FOLDING}"]`);
-  if (group) setFolded(group, stored("lexi-nav-practice") !== "open");
+  for (const name of FOLDING) {
+    const group = wrap.querySelector(`[data-group="${name}"]`);
+    if (group) setFolded(group, stored(foldKey(name)) !== "open");
+  }
 }
 
-// The Practice group folds on a wide screen (a click on its heading): folded
-// until opened, and a folded group still shows the practice you're on.
-// Remembered.
-const FOLDING = "Practice";
+// The Practice and Games groups fold on a wide screen (a click on the
+// heading): folded until opened, and a folded group still shows the tab
+// you're on. Each is remembered.
+const FOLDING = ["Practice", "Games"];
+const foldKey = group => `lexi-nav-${group.toLowerCase()}`;
 function stored(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 function setFolded(group, folded) {
   group.classList.toggle("folded", folded);
   group.querySelector(".nav-fold").setAttribute("aria-expanded", String(!folded));
-  try { localStorage.setItem("lexi-nav-practice", folded ? "closed" : "open"); } catch (e) { /* storage unavailable */ }
+  try { localStorage.setItem(foldKey(group.dataset.group), folded ? "closed" : "open"); } catch (e) { /* storage unavailable */ }
 }
-function foldButton() {
-  return h("button.nav-heading.nav-fold", { type: "button", "aria-expanded": "true", title: `Show or hide the ${FOLDING.toLowerCase()} tabs`,
+function foldButton(name) {
+  return h("button.nav-heading.nav-fold", { type: "button", "aria-expanded": "true", title: `Show or hide the ${name.toLowerCase()} tabs`,
     on: { click: e => { const g = e.currentTarget.closest(".nav-group"); setFolded(g, !g.classList.contains("folded")); } } },
-    FOLDING, h("span.fold-mark", { "aria-hidden": "true" }));
+    name, h("span.fold-mark", { "aria-hidden": "true" }));
 }
 
 /** Cards left in today's review (the Review track you chose): the same
@@ -98,7 +102,7 @@ function parseHash() {
 // then takes over and the page reloads on the same screen. Every open tab
 // reloads when the new version takes over (at its own next calm screen), and
 // the switch waits for any save in progress to finish.
-const CALM_TABS = ["home", "browse", "lists", "stats", "settings", "more", "practice", "about"];
+const CALM_TABS = ["home", "browse", "lists", "stats", "settings", "more", "practice", "games", "about"];
 let updating = false;
 let reloadPending = false;
 if ("serviceWorker" in navigator) {
