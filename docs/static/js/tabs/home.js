@@ -46,26 +46,6 @@ function easierLine(root, review, studied) {
         "Easier words")));
 }
 
-/** The website keeps progress in this browser only: nudge a backup now and then. */
-function backupCard(studied) {
-  if (!window.LEXI_STATIC || studied < 10) return null;
-  let days = null;
-  const t = Number(stored("lexi-last-export"));
-  if (t) days = Math.floor((Date.now() - t) / 86400000);
-  const snoozed = Number(stored("lexi-backup-snooze")) > Date.now();
-  if ((days !== null && days < 7) || snoozed) return null;
-  const card = h("section.panel.notice-card", { "aria-label": "Backup reminder" },
-    h("p", days === null ? "Your progress lives only in this browser. Export a copy now and then (Settings → Export progress)."
-      : `Your last export was ${days} days ago. Export a fresh copy so a cleared browser can't cost you your progress.`),
-    h("div.toolbar",
-      h("a.btn.btn-primary", { href: "#settings" }, "Go to export"),
-      h("button.btn.btn-quiet", { type: "button", on: { click: () => {
-        store("lexi-backup-snooze", String(Date.now() + 3 * 86400000));
-        card.remove();
-      } } }, "Remind me later")));
-  return card;
-}
-
 /** iPhone/iPad Safari clears an unused site's data after a week; a Home Screen app keeps it. */
 function installCard() {
   const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -120,13 +100,10 @@ export async function render(root) {
     ? h("p.build-banner", "No words yet. Build the dataset with build_dataset.py (see README.md), then reload this page.")
     : null;
 
-  const studied = w.mastered + w.learning;
-
   root.append(...[
     h("div.page-head", h("div", h("h1", greet), h("p.sub", "Ten to twenty minutes a day keeps your words within reach."))),
     banner ? h("div", { style: { marginBottom: "16px" } }, banner) : null,
     installCard(),
-    backupCard(studied),
     h("div.home", todayPanel, wotdPanel),
   ].filter(Boolean));
 }
