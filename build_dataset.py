@@ -120,7 +120,7 @@ SOURCE_TAGS = {"gre": "advanced", "sat": "advanced", "advanced": "advanced",
                "awl": "academic", "academic": "academic",
                "literary": "literary", "professional": "professional"}
 SUBJECT_DOMAINS = ["mathematics", "statistics", "data_science", "philosophy",
-                   "theology", "christian_anthropology", "orthodox_mysticism", "logic",
+                   "theology", "christian_anthropology", "orthodox_mysticism", "liturgical_theology", "logic",
                    "software_engineering", "artificial_intelligence", "bible", "professional"]
 # Everyday American English: common words, phrasal verbs and expressions for
 # conversation. They skip the frequency filter that keeps basic words out of
@@ -142,7 +142,8 @@ EXPAND_QUOTA = {
     "advanced": 6000, "academic": 1000, "professional": 2200, "literary": 1500,
     "mathematics": 900, "statistics": 900, "data_science": 900,
     "philosophy": 1000, "theology": 1000, "christian_anthropology": 600, "logic": 600,
-    "orthodox_mysticism": 600, "software_engineering": 900, "artificial_intelligence": 900, "bible": 900,
+    "orthodox_mysticism": 800, "liturgical_theology": 500,
+    "software_engineering": 900, "artificial_intelligence": 900, "bible": 900,
 }
 EXPAND_DESCRIPTIONS = {
     "advanced": "advanced vocabulary of the GRE and SAT verbal sections: precise, "
@@ -162,10 +163,17 @@ EXPAND_DESCRIPTIONS = {
                               "virtue, personhood, embodiment and human destiny, across patristic, "
                               "Catholic, Orthodox and Protestant traditions",
     "logic": "formal and informal logic, argumentation and rhetoric vocabulary",
-    "orthodox_mysticism": "Eastern Orthodox Christian mysticism and spirituality: hesychasm, "
-                          "the Philokalia, the desert fathers, theosis, apophatic theology, "
-                          "ascetic and liturgical vocabulary, including Greek and Slavonic terms "
+    "orthodox_mysticism": "Eastern Orthodox asceticism and mysticism: hesychasm, the Philokalia, "
+                          "theosis, apophatic theology, the struggle with the passions and the "
+                          "eight logismoi, the virtues, fasting, vigil, prostrations, the prayer "
+                          "rope, monastic life and its ranks, spiritual fatherhood, the desert "
+                          "fathers and the ascetic writers, including Greek and Slavonic terms "
                           "used in English writing",
+    "liturgical_theology": "liturgical theology: the theology of Christian worship (lex orandi, ordo, "
+                           "anamnesis, epiclesis, Eucharistic ecclesiology), the Divine Liturgy and its "
+                           "parts, the daily services, liturgical books, the church year, hymnography, "
+                           "vestments, church spaces and the sacraments, centered on the Orthodox "
+                           "tradition with the shared Catholic, Anglican and Protestant vocabulary",
     "software_engineering": "software engineering and architecture vocabulary used by senior "
                             "engineers: design, reliability, distributed systems, testing, "
                             "code quality and delivery practices",
@@ -1812,7 +1820,9 @@ DOMAIN_LABELS = {
                  "biblical", "eastern orthodoxy", "protestantism", "liturgy", "judaism"],
     "christian_anthropology": ["theology", "christianity", "religion", "philosophy"],
     "orthodox_mysticism": ["eastern orthodoxy", "orthodoxy", "christianity", "theology",
-                           "religion", "mysticism"],
+                           "religion", "mysticism", "monasticism", "asceticism", "ecclesiastical"],
+    "liturgical_theology": ["liturgy", "christianity", "ecclesiastical", "eastern orthodoxy", "catholicism",
+                            "theology", "religion", "christian", "anglicanism"],
 }
 # Labels that make a sense a poor first choice for a general learner.
 MARGINAL_LABELS = ["obsolete", "archaic", "rare", "dated", "dialectal", "dialect", "historical",
@@ -2180,7 +2190,10 @@ def load_domain_senses() -> dict[str, dict[str, tuple[str, str]]]:
     return out
 
 
-DOMAIN_SENSE_PREFIX = {"artificial_intelligence": "In AI: ", "bible": "In the Bible: "}
+# Church subjects: a word in these alone is a church word.
+CHURCH_DOMAINS = {"orthodox_mysticism", "liturgical_theology", "theology", "bible", "christian_anthropology"}
+DOMAIN_SENSE_PREFIX = {"artificial_intelligence": "In AI: ", "bible": "In the Bible: ",
+                       "orthodox_mysticism": "In Orthodox spirituality: ", "liturgical_theology": "In liturgy: "}
 
 
 def add_domain_senses(meanings: list[dict], key: str, tags: set[str],
@@ -2195,9 +2208,19 @@ def add_domain_senses(meanings: list[dict], key: str, tags: set[str],
             sense = {"definition": DOMAIN_SENSE_PREFIX.get(domain, "") + meaning, "example": "",
                      "synonyms": [], "antonyms": []}
             same = next((m for m in meanings if m.get("pos") == pos), None)
-            if same:
+            # A church sense leads only for a church word ("elder", "Mass"):
+            # a word another subject or everyday English also uses ("schema",
+            # "host", "asterisk") keeps its usual meaning first, and the
+            # church sense comes second.
+            second = domain in CHURCH_DOMAINS and bool(tags - CHURCH_DOMAINS)
+            if same and second and same["senses"]:
+                rest = [m for m in meanings if m is not same]
+                meanings = [{**same, "senses": same["senses"][:1] + [sense] + same["senses"][1:]}] + rest
+            elif same:
                 rest = [m for m in meanings if m is not same]
                 meanings = [{**same, "senses": [sense] + same["senses"]}] + rest
+            elif second:
+                meanings = meanings[:1] + [{"pos": pos, "senses": [sense]}] + meanings[1:]
             else:
                 meanings = [{"pos": pos, "senses": [sense]}] + meanings
     return meanings

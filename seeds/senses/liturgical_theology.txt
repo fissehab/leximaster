@@ -1,0 +1,37 @@
+# Liturgical senses shown first ("In liturgy: ...") for words whose everyday
+# meaning is another. Format: entry | part of speech | meaning
+Lamb | noun | the square piece cut from the prosphora loaf at the preparation of the Divine Liturgy, which is consecrated as the Body of Christ.
+lance | noun | the small spear-shaped knife a priest uses to cut the bread at the preparation, recalling the spear that pierced Christ's side.
+asterisk | noun | the folding metal star placed over the bread on the diskos, so that the veil does not touch it.
+host | noun | the wafer of bread consecrated at Mass.
+font | noun | the basin that holds the water of baptism.
+tone | noun | one of the eight melodic modes of Byzantine chant; each week of the year is sung in one of them.
+ode | noun | one of the nine sections of a kanon, each based on a biblical song.
+proper | noun | the texts of a service that change with the day or feast, such as readings and hymns.
+ordinary | noun | the texts of the Mass that stay the same at every celebration, such as the Kyrie, Gloria, Creed, Sanctus and Agnus Dei.
+collect | noun | a short prayer said by the priest that gathers the people's prayers into one, especially at the opening of Mass.
+gradual | noun | the psalm chant sung between the readings at Mass.
+preface | noun | the opening thanksgiving of the Eucharistic prayer, after "Lift up your hearts," leading into the Sanctus.
+elevation | noun | the lifting up of the consecrated bread and cup for the people to see.
+fraction | noun | the breaking of the consecrated bread before communion.
+canon | noun | the fixed central Eucharistic prayer of the Roman Mass.
+lite | noun | the procession to the narthex with special petitions at a festal vigil.
+Mass | noun | the Eucharist as celebrated in the Roman Catholic Church and some Anglican and Lutheran churches.
+Gloria | noun | the hymn "Glory to God in the highest," sung or said at Mass and, as the Great Doxology, at Orthodox matins.
+stole | noun | the long strip of cloth worn around the neck by ordained clergy as a sign of their office.
+assembly | noun | the people of God gathered for worship, which for Orthodox theology is itself the Church made visible.
+communion | noun | receiving the consecrated bread and wine, the Body and Blood of Christ, in the Eucharist.
+symbol | noun | for Schmemann, a reality that makes present what it shows, not just a sign that points to something absent.
+secularism | noun | for Schmemann, the denial of worship: living as if the world were not a gift to be offered back to God in thanksgiving.
+feast | noun | a day of the church year that celebrates an event in the life of Christ or the Theotokos, or a saint.
+vigil | noun | a night service on the eve of a feast; in Russian practice, vespers and matins joined as the All-Night Vigil.
+mystery | noun | the Orthodox word for a sacrament, such as baptism or the Eucharist: a rite in which God's grace is truly given.
+reader | noun | a minor order of the church whose member reads the Epistle and psalms at services.
+sanctuary | noun | the area around the altar, behind the iconostasis in an Orthodox church.
+dismissal | noun | the closing blessing that sends the people out at the end of a service.
+rubrics | noun | the directions in a liturgical book that tell how a service is to be done, once printed in red.
+litany | noun | a series of petitions said by the deacon or priest, each answered by the people with "Lord, have mercy."
+Lamentations | noun | the verses sung around the tomb of Christ at matins of Holy Saturday.
+Advent | noun | the season of preparation before Christmas in the Western church year.
+tabernacle | noun | the box on or near the altar where the consecrated bread is kept in Catholic churches.
+confession | noun | the sacrament of repentance, in which sins are confessed and absolution is given.

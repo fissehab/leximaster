@@ -13,7 +13,7 @@ export async function render(root) {
           "engineering, then earned a master's in environmental science at the University of Connecticut and a " +
           "master's and PhD in atmospheric physics at Johns Hopkins University, before moving into data science. " +
           "Theology has been a parallel path: I hold a master's in theology from Agora University and am now " +
-          "pursuing a Doctor of Theology (ThD) there, with a particular love for philosophy and Christian mysticism.")),
+          "pursuing a Doctor of Theology (ThD) there, with a particular love for philosophy and Christian asceticism and mysticism.")),
       card("Why I built it",
         h("p", "That mix means I need English in several registers at once: precise technical language at work, " +
           "the vocabulary of philosophical and theological dialogue, and the easy idioms of everyday American " +

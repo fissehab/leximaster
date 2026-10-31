@@ -1,0 +1,25 @@
+# Ascetic senses shown first ("In Orthodox spirituality: ...") for words whose
+# everyday meaning is another. Format: entry | part of speech | meaning
+passion | noun | a disordered impulse of the soul, such as gluttony, anger or pride, that enslaves a person and that ascetic struggle aims to heal.
+dispassion | noun | freedom from the passions: not coldness, but a settled inner peace in which love for God and neighbor can grow.
+sobriety | noun | spiritual watchfulness (nepsis): a clear, alert mind that notices tempting thoughts and does not let them in.
+attention | noun | inner watchfulness in prayer: keeping the mind gathered on God and aware of every thought that comes.
+watchfulness | noun | nepsis: keeping guard over the heart and the thoughts, so that temptation is noticed at its first approach.
+mourning | noun | penthos: sorrow for one's sins that softens the heart and, the fathers say, brings joy.
+cell | noun | the small room where a monk or nun lives and prays; the desert fathers said, "Sit in your cell, and your cell will teach you everything."
+schema | noun | the monastic habit and grade of profession; the great schema is the highest grade of monastic life in the Orthodox Church.
+coupling | noun | the stage of temptation in which the mind starts to talk with a tempting thought instead of rejecting it.
+assent | noun | the stage of temptation in which the will agrees to a sinful thought, before any outward act.
+captivity | noun | the state in which the mind is carried away by a thought against its will, after long consent to it.
+provocation | noun | the first onset of a tempting thought, which is not yet a sin if it is rejected at once.
+prepossession | noun | the lasting hold a sinful thought keeps on the mind because of past consent to it.
+illumination | noun | the second stage of the spiritual life, after purification: the enlightening of the mind (nous) by grace.
+purification | noun | the first stage of the spiritual life: cleansing the heart from the passions by repentance, ascetic effort and grace.
+discretion | noun | discernment: the gift of telling good thoughts from bad ones and knowing the right measure in ascetic effort.
+exile | noun | xeniteia: leaving homeland and family by choice to live as a stranger for the sake of God.
+elder | noun | an experienced monk or nun (geron, starets) who guides others in the spiritual life by prayer, discernment and love.
+recollection | noun | gathering the scattered mind and senses back into the heart, to stand before God in prayer.
+insensibility | noun | hardness of heart: a dead, unfeeling state of the soul toward God, sin and death.
+obedience | noun | cutting off one's own will by doing what one's spiritual father or abbot asks; also a monk's assigned work.
+desert | noun | the wilderness of Egypt, Palestine and Syria where the first monks went to pray, and any place of solitude for God.
+praxis | noun | the practice of the commandments and the virtues, the first stage of the spiritual life before contemplation.
