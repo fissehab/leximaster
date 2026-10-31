@@ -5,7 +5,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import { loadFilter } from "../state.js";
-import { filterBar, filterSources, fmtDuration, h, markOption, pageHead, reveal, showError, toast } from "../ui.js";
+import { diffView, filterBar, filterSources, fmtDuration, h, markOption, pageHead, reveal, showError, toast } from "../ui.js";
 
 let mode = "choose";       // choose | type | spell
 let items = [];
@@ -123,32 +123,6 @@ function hint(input) {
   const w = items[i].word;
   input.value = w.slice(0, Math.min(w.length - 1, input.value.length + 1));
   input.focus();
-}
-
-function diffView(typed, target) {
-  // The correct spelling, each letter marked right or wrong after aligning the
-  // two spellings (edit distance), so one missing letter marks one letter,
-  // not everything after it. A letter typed but not in the word shows as "·".
-  const a = typed.toLowerCase(), b = target.toLowerCase();
-  const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
-  for (let j = 1; j <= b.length; j++) d[0][j] = j;
-  for (let i = 1; i <= a.length; i++) {
-    for (let j = 1; j <= b.length; j++) {
-      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
-    }
-  }
-  const out = [];
-  let i = a.length, j = b.length;
-  while (i > 0 || j > 0) {
-    if (i > 0 && j > 0 && d[i][j] === d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)) {
-      out.push(h(`span.${a[i - 1] === b[j - 1] ? "ok" : "no"}`, target[j - 1])); i--; j--;
-    } else if (j > 0 && d[i][j] === d[i][j - 1] + 1) {
-      out.push(h("span.no", target[j - 1])); j--;      // a letter left out
-    } else {
-      out.push(h("span.no.extra", "·")); i--;          // a letter too many
-    }
-  }
-  return h("div.diff", out.reverse());
 }
 
 function check(value) {

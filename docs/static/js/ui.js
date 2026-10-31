@@ -46,6 +46,7 @@ const ICONS = {
   quiz: '<circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6"/><path d="M12 17.2v.3"/>',
   target: '<circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/>',
   bolt: '<path d="M13.5 2.5 4.5 13.5h7l-1 8 9-11h-7z"/>',
+  keys: '<rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/>',
   match: '<rect x="2.5" y="4" width="7" height="6" rx="1.5"/><rect x="14.5" y="14" width="7" height="6" rx="1.5"/><path d="M9.5 7h3a2 2 0 0 1 2 2v8"/>',
   listen: '<path d="M3 14v-2a9 9 0 0 1 18 0v2"/><rect x="2.5" y="14" width="5" height="7" rx="2"/><rect x="16.5" y="14" width="5" height="7" rx="2"/>',
   mic: '<rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5"/>',
@@ -863,6 +864,33 @@ export function markOption(button, right, chosen) {
   if (right) button.append(h("span.mark", { "aria-hidden": "true" }, "✓"), h("span.sr-only", " (correct answer)"));
   else if (chosen) button.append(h("span.mark", { "aria-hidden": "true" }, "✗"), h("span.sr-only", " (your answer)"));
   if (right) button.classList.add("right"); else if (chosen) button.classList.add("wrong");
+}
+
+/** A typed spelling against the right one (Listen, Type It). */
+export function diffView(typed, target) {
+  // The correct spelling, each letter marked right or wrong after aligning the
+  // two spellings (edit distance), so one missing letter marks one letter,
+  // not everything after it. A letter typed but not in the word shows as "·".
+  const a = typed.toLowerCase(), b = target.toLowerCase();
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+  }
+  const out = [];
+  let i = a.length, j = b.length;
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && d[i][j] === d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)) {
+      out.push(h(`span.${a[i - 1] === b[j - 1] ? "ok" : "no"}`, target[j - 1])); i--; j--;
+    } else if (j > 0 && d[i][j] === d[i][j - 1] + 1) {
+      out.push(h("span.no", target[j - 1])); j--;      // a letter left out
+    } else {
+      out.push(h("span.no.extra", "·")); i--;          // a letter too many
+    }
+  }
+  return h("div.diff", out.reverse());
 }
 
 export function fmtDuration(s) {

@@ -19,7 +19,7 @@ export async function saveSettings(patch) {
 // a Bible track), and the scope every practice tab is set to when it changes.
 // Kept in this browser.
 const FOCUS_KEY = "lexi-review-track";
-const PRACTICE_TABS = ["flashcards", "matching", "shooter", "rush", "quiz", "listen", "pronounce"];
+const PRACTICE_TABS = ["flashcards", "matching", "shooter", "rush", "typeit", "quiz", "listen", "pronounce"];
 export function studyFocus() {
   try { return localStorage.getItem(FOCUS_KEY) || ""; } catch (e) { return ""; }
 }

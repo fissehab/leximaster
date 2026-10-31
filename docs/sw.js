@@ -6,7 +6,7 @@
 // page asks (on Home, Browse and other calm screens, never mid-session).
 // Every cache name starts with "lexi-": the site shares its origin
 // (fissehab.github.io) with other projects, whose caches are left alone.
-const VERSION = "20261030201740";
+const VERSION = "20261030203528";
 const SHELL = `lexi-shell-${VERSION}`;
 const DATA = "lexi-data-c3711919";   // changes only when the published word data does
 // Recording names carry a hash of their content (media/audio/<word>.<hash>.m4a),
@@ -47,6 +47,7 @@ const SHELL_FILES = [
 "static/js/app.js",
 "static/js/audio.js",
 "static/js/games.js",
+"static/js/gameui.js",
 "static/js/local/idb.js",
 "static/js/local/server.js",
 "static/js/mouth.js",
@@ -74,6 +75,7 @@ const SHELL_FILES = [
 "static/js/tabs/shooter.js",
 "static/js/tabs/sounds.js",
 "static/js/tabs/stats.js",
+"static/js/tabs/typeit.js",
 "static/js/ui.js",
 "static/vendor/sql-wasm.js",
 "static/vendor/sql-wasm.wasm"
