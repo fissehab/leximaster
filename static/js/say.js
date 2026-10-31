@@ -15,6 +15,7 @@ import { DIPHTHONGS, mouthDiagram } from "./mouth.js";
 import { CLIPS } from "./mri.gen.js";
 import { decodeAudio } from "./recorder.js";
 import { hardestIndex, isVowel, keyWord, label, PRIORITY, tokenize } from "./phonemes.js";
+import { PAIRS_FOUND } from "./say-pairs.js";
 import { CARDS, MRI, MRI_TEXT, PAIRS, UI } from "./say-strings.js";
 import { h } from "./ui.js";
 
@@ -289,7 +290,7 @@ export function soundCard(card, words) {
   }
   if (card.compare) body.push(h("div.try", h("b", UI.compare), card.compare.map(([a, b]) => [wordButton(a, words), "–", wordButton(b, words)])));
   const drillSlot = h("div");
-  const drills = (card.drill || []).filter(d => PAIRS[d]);
+  const drills = (card.drill || []).filter(d => pairsOf(d).length);
   const extra = [];
   if (drills.length) {
     const b = h("button.btn", { type: "button" }, UI.listen);
@@ -319,12 +320,24 @@ export function soundCard(card, words) {
 
 export const DRILL_ROUNDS = 5;
 
-/** Five rounds of "Which word did you hear?" from these contrasts; no pair
- * twice in a round while there are enough. */
-function drill(contrasts, words) {
-  const pool = contrasts.flatMap(c => PAIRS[c]).filter(([a, b]) => words.get(a) && words.get(b));
+/** The pairs for a contrast: the hand-picked ones first, then the ones
+ * found in the dictionary. */
+export function pairsOf(contrast) {
+  const seen = new Set();
+  return [...(PAIRS[contrast] || []), ...(PAIRS_FOUND[contrast] || [])].filter(([a, b]) => {
+    const k = [a, b].sort().join(" ");
+    return !seen.has(k) && seen.add(k);
+  });
+}
+/** Every contrast with pairs, in card order. */
+export const CONTRASTS = [...new Set(CARDS.flatMap(c => c.drill || []))].filter(c => pairsOf(c).length);
+
+/** Rounds of "Which word did you hear?" from these contrasts; no pair twice
+ * in a round while there are enough. */
+export function drill(contrasts, words, { rounds = DRILL_ROUNDS } = {}) {
+  const pool = contrasts.flatMap(pairsOf).filter(([a, b]) => words.get(a) && words.get(b));
   const box = h("div.drill", { role: "group", "aria-label": UI.listen });
-  const ROUNDS = DRILL_ROUNDS;
+  const ROUNDS = rounds;
   let n = 0, right = 0, left = [];
   const rate = () => Math.max(.75, playbackSpeed());
   const say = word => playWord(words.get(word), null, { rate: rate() });
