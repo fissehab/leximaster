@@ -64,7 +64,7 @@ export async function render(root) {
   els.picker = h("div.panel.pick-list", { "aria-label": "Words to practice" });
   els.stage = h("div");
   root.append(
-    pageHead("Pronunciation", "Listen to the reference, record yourself (up to 8 seconds), then play both back to compare."),
+    pageHead("Pronounce", "Hear the word. Record yourself (up to 8 seconds). Then play both and compare."),
     await filterBar(f => { filter = f; loadWords().catch(showError); }, src, { tab: "pronounce" }),
     h("div.pron-layout", els.picker, els.stage));
   filter = loadFilter("pronounce");

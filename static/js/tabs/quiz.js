@@ -149,7 +149,7 @@ export async function render(root) {
   len.addEventListener("change", () => { length = Number(len.value); changed(); });
   els.stage = h("div.q-wrap");
   root.append(
-    pageHead("Quiz", "Multiple choice, fill-in-the-blank and synonym questions. Misses return to your review queue."),
+    pageHead("Quiz", "Choose the meaning, the missing word, or a word that means the same. Words you get wrong come back in your review."),
     await filterBar(f => { filter = f; changed(); }, src, { tab: "quiz", extra: [
       h("div.field", h("label", { for: "quiz-length" }, "Length"), len),
       h("div.field.field-wide", h("label", "Question types"), typeChips)] }),

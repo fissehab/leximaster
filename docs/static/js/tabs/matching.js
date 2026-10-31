@@ -121,7 +121,7 @@ export async function render(root) {
   els.stage = h("div");
   els.status = h("p.sr-only", { role: "status" });
   root.append(
-    pageHead("Matching", "Pair each word with its meaning or with a sentence it completes. Faster and cleaner scores higher.", seg, sizeSel,
+    pageHead("Matching", "Match each word to its meaning, or to a sentence it fits. Be fast and make few mistakes for more points.", seg, sizeSel,
       h("button.btn.btn-primary", { type: "button", on: { click: start } }, "New round")),
     await filterBar(f => { filter = f; start(); }, src, { tab: "matching" }),
     h("div.score-line", { style: { marginBottom: "14px", justifyContent: "center" } }, els.timer, els.score),

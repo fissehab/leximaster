@@ -216,7 +216,7 @@ def build_index_html(version: str) -> None:
 """
     out = out.replace("</head>", head_extra + "</head>", 1)
     out = out.replace('<main id="view" tabindex="-1"></main>',
-                      '<main id="view" tabindex="-1"><p class="boot-note">Loading the lexicon…</p></main>', 1)
+                      '<main id="view" tabindex="-1"><p class="boot-note">Getting your words ready…</p></main>', 1)
     sw = """  <script>
     if ("serviceWorker" in navigator) {
       addEventListener("load", () => navigator.serviceWorker.register("sw.js")
@@ -265,7 +265,7 @@ def build_manifest() -> None:
                    "purpose": "maskable"}],
         "shortcuts": [{"name": "Daily review", "short_name": "Review", "url": "./#review",
                        "icons": [{"src": "static/icons/icon-192.png", "sizes": "192x192", "type": "image/png"}]},
-                      {"name": "Browse the lexicon", "short_name": "Browse", "url": "./#browse",
+                      {"name": "Dictionary", "short_name": "Words", "url": "./#browse",
                        "icons": [{"src": "static/icons/icon-192.png", "sizes": "192x192", "type": "image/png"}]}],
     })
 

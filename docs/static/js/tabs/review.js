@@ -351,7 +351,7 @@ export async function render(root, { param, live: isLive } = {}) {
   trackSel.addEventListener("change", showLevels);
   showLevels();
   root.append(
-    pageHead("Daily review", "Words come back just before you'd forget them. Grade honestly: words you miss come back sooner.",
+    pageHead("Daily review", "Words come back just before you would forget them. Be honest: words you miss come back sooner.",
       trackSel, levels, minutes),
     h("div.study-card.progress-wrap",
       h("div.progress-row", h("div.progress", els.bar), els.count), els.undo),

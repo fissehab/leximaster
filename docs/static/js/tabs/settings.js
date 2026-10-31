@@ -43,9 +43,9 @@ function settingsPanel() {
       h("div.field", h("label", { for: "set-new" }, "New words per day"), perDay),
       h("div.field", h("label", { for: "set-rate" }, "Pronunciation speed"), rate),
       h("div.field", h("span.label", "Word levels"), levelPicker())),
-    h("p.muted", "Study focus is what Daily review and Today study, and where every practice tab starts (each tab can " +
-      "still pick its own). Study focus and word levels change at once; the other settings when you save. Both are " +
-      "also in Daily review."),
+    h("p.muted", "Study focus is the group of words you study in Daily review and on Today. Practice pages start with " +
+      "the same words, and each page can pick other words."),
+    h("p.muted", "Study focus and Word levels save right away. For the other settings, press Save settings."),
     h("div", save));
 }
 

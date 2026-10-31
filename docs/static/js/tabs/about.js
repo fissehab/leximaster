@@ -2,6 +2,8 @@
 
 import { h, pageHead } from "../ui.js";
 
+const REPO = "https://github.com/fissehab/leximaster";
+
 export async function render(root) {
   root.append(h("div.about-page",
     pageHead("About LexiMaster"),
@@ -30,12 +32,16 @@ export async function render(root) {
           "any time; every word still opens from links and search.")),
       card("How to say it",
         h("p", "To help with the sounds of English, each word page has ", h("b", "How to say it"), ": a drawing of the " +
-          "mouth for each sound in the word, with a short tip. Practice → ", h("b", "Sounds"), " has the hardest sounds, " +
+          "mouth for each sound in the word, with a short tip. Practice → ", h("b", "Hard sounds"), " has the hardest sounds, " +
           "words to try and a listening game. The real-mouth clips come from the USC 75-Speaker Speech MRI Database " +
           "(CC BY 4.0).")),
       card("Use it freely",
-        h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser.")))));
+        h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser.")),
+      card("The code",
+        h("p", "All of LexiMaster's code is open on GitHub. You can read it, and see how each part works."),
+        h("p", h("a.btn", { href: REPO, target: "_blank", rel: "noopener noreferrer" },
+          "See the code on GitHub", h("span.sr-only", " (opens in a new tab)")))))));
 }
 
 // One topic: a heading over its paragraph.
-const card = (title, text) => h("section.panel.about", h("h2", title), text);
+const card = (title, ...text) => h("section.panel.about", h("h2", title), text);

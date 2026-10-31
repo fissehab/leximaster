@@ -1,4 +1,4 @@
-// Stats: mastery, streak, accuracy by domain, weakest words, test history.
+// Progress: mastery, streak, accuracy by domain, weakest words, test history.
 // Settings, backup and offline use are on the Settings page.
 
 import { api } from "../api.js";
@@ -38,10 +38,10 @@ export async function render(root) {
     : h("p.muted", "No reviews scheduled in the next two weeks yet.");
 
   root.append(
-    s.notice ? h("p.build-banner", { role: "alert" }, s.notice) : null,
-    pageHead("Stats", [`${w.total.toLocaleString()} words in the lexicon`,
+    ...(s.notice ? [h("p.build-banner", { role: "alert" }, s.notice)] : []),
+    pageHead("Progress", [`${w.total.toLocaleString()} words in the dictionary`,
       `${w.with_audio.toLocaleString()} with American recordings`,
-      w.enriched ? `${w.enriched.toLocaleString()} with nuance notes` : null].filter(Boolean).join(" · ")),
+      w.enriched ? `${w.enriched.toLocaleString()} with notes on how to use them` : null].filter(Boolean).join(" · ")),
     h("div.stat-row",
       tile("Words mastered", w.mastered.toLocaleString(), `recalled after a 3+ week gap · ${(w.known || 0).toLocaleString()} more marked known`),
       tile("Learning", w.learning.toLocaleString(), `${w.due} due now`),

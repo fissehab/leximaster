@@ -205,7 +205,7 @@ export async function render(root) {
     "US recordings only");
   els.stage = h("div.q-wrap");
   root.append(
-    pageHead("Listen & identify", "The audio plays first. Name the word you hear, or type it. Turn on Exact spelling for a spelling test.", seg, exact, rec),
+    pageHead("Listen", "You hear a word. Pick it or type it. Turn on Exact spelling for a spelling test.", seg, exact, rec),
     await filterBar(f => { filter = f; start(); }, src, { tab: "listen" }),
     els.stage);
   filter = loadFilter("listen");

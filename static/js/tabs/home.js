@@ -86,7 +86,8 @@ export async function render(root) {
       h("span.eyebrow", "Today's review"),
       queued
         ? [h("p.today-left", h("span.big-num.tnum", queued), queued === 1 ? " card left" : " cards left"),
-           h("p.muted", `${review.due} due · ${review.new} new · about ${minutes} min`),
+           h("p.muted", [review.due ? `${review.due} to review` : null, review.new ? `${review.new} new word${review.new === 1 ? "" : "s"}` : null,
+             `about ${minutes} min`].filter(Boolean).join(" · ")),
            easierLine(root, review, w.mastered + w.learning)]
         : [h("p.today-left", h("span.big-num", "Done"), " for today"), h("p.muted", "Nothing left in today's review. Well done.")]),
     h("a.btn.btn-primary.btn-lg", { href: queued ? "#review" : "#review/more" }, queued ? "Start today's review" : "Learn 5 more words"),
@@ -94,7 +95,8 @@ export async function render(root) {
       stat("Streak", `${stats.streak.current} day${stats.streak.current === 1 ? "" : "s"}`),
       stat("Reviewed today", review.done_today.reviews),
       stat("Time today", fmtDuration(review.done_today.seconds)),
-      stat("Words mastered", `${w.mastered.toLocaleString()} of ${(w.mastered + w.learning).toLocaleString()}`)));
+      w.mastered + w.learning ? stat("Words mastered", `${w.mastered.toLocaleString()} of ${(w.mastered + w.learning).toLocaleString()}`) : null),
+    h("a.today-more", { href: "#stats" }, "See all your progress →"));
 
   const banner = w.total === 0
     ? h("p.build-banner", "No words yet. Build the dataset with build_dataset.py (see README.md), then reload this page.")

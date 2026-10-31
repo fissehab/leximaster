@@ -45,8 +45,8 @@ a { color: var(--lapis); }
 .rail {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 20px 12px 16px;
+  gap: 12px;
+  padding: 20px 12px 0;
   border-right: 1px solid var(--rule);
   background: var(--surface);
   overflow-y: auto;
@@ -66,7 +66,7 @@ a { color: var(--lapis); }
 .nav-links { display: flex; flex-direction: column; gap: 2px; }
 .nav-link {
   display: flex; align-items: center; gap: 11px;
-  padding: 8px 10px;
+  padding: 7px 10px;
   border-radius: var(--radius-sm);
   color: var(--ink-2); text-decoration: none;
   font-weight: 500; font-size: 14px;
@@ -76,15 +76,19 @@ a { color: var(--lapis); }
 .nav-link:hover { background: var(--surface-2); color: var(--ink); }
 .nav-link[aria-current="page"] { background: var(--lapis-soft); color: var(--lapis); }
 .nav-link.hub, .nav-link .short { display: none; }   /* phone only */
-.nav-group { display: flex; flex-direction: column; gap: 2px; margin-top: 10px; }
-.nav-heading { padding: 0 10px 2px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.nav-fold { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 28px; border: 0;
+.nav-group { display: flex; flex-direction: column; gap: 2px; margin-top: 6px; }
+.nav-heading { display: block; padding: 0 10px 2px; font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+/* A group that folds reads as a button: darker, with its arrow beside the name. */
+.nav-fold { display: flex; align-items: center; gap: 6px; width: 100%; min-height: 32px; border: 0; color: var(--ink-2);
   background: none; cursor: pointer; font-family: var(--font-ui); text-align: left; border-radius: var(--radius-sm); }
 .nav-fold:hover { color: var(--ink); background: var(--surface-2); }
-.nav-fold .fold-mark::after { content: "▾"; font-size: 12px; letter-spacing: 0; }
+.nav-fold .fold-mark::after { content: "▾"; font-size: 13px; letter-spacing: 0; }
 .nav-group.folded .fold-mark::after { content: "▸"; }
+.nav-group.current-hub .nav-fold { color: var(--lapis); }
 .nav-group.folded .nav-link:not([aria-current]) { display: none; }
-.nav-link.sep { margin-top: 10px; border-top: 1px solid var(--rule); border-radius: 0 0 var(--radius-sm) var(--radius-sm); padding-top: 12px; }
+/* The line above Progress: drawn apart from the link, so its highlight keeps its shape. */
+.nav-link.sep { position: relative; margin-top: 17px; }
+.nav-link.sep::before { content: ""; position: absolute; left: 10px; right: 10px; top: -9px; border-top: 1px solid var(--rule); }
 
 /* Practice and More pages (phone): large links */
 .hub-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 18px; }
@@ -96,13 +100,14 @@ a { color: var(--lapis); }
 .hub-tile svg { width: 22px; height: 22px; stroke: var(--lapis); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .hub-tile strong { font: 600 16px/1.2 var(--font-ui); }
 .hub-tile span { font-size: 13px; color: var(--muted); }
-.version-note { margin-bottom: 6px; }
+.version-note { margin-bottom: 6px; font-size: 13px; }
 .nav-link .count {
   margin-left: auto; font-size: 11px; font-weight: 600;
   padding: 1px 7px; border-radius: 99px;
   background: var(--gilt-soft); color: var(--gilt);
 }
-.rail-foot { margin-top: auto; display: flex; gap: 6px; padding: 0 6px; }
+/* Stays in view at the bottom of the menu, even when the menu scrolls. */
+.rail-foot { margin-top: auto; display: flex; gap: 6px; padding: 8px 6px 16px; position: sticky; bottom: 0; background: var(--surface); }
 .icon-btn {
   display: grid; place-items: center;
   width: 34px; height: 34px; border-radius: 8px;
@@ -406,6 +411,7 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .today-stats div { display: flex; flex-direction: column; gap: 2px; }
 .today-stats dt { font-size: 12px; color: var(--muted); }
 .today-stats dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+.today-more { grid-column: 1 / -1; justify-self: start; font-size: 14px; }
 .big-num { font: 600 40px/1 var(--font-word); font-variant-numeric: tabular-nums; }
 .kv { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; font-size: 14px; }
 .kv dt { color: var(--muted); }
@@ -665,8 +671,8 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
 .filters-bar .field-wide { flex-basis: 100%; }
 .settings-fold { margin-bottom: 18px; }
 .settings-fold > summary {
-  cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 8px; min-height: 32px;
-  font: 600 12px/1.2 var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+  cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-right: 8px;
+  font: 600 15px/1.2 var(--font-ui); color: var(--ink-2);
 }
 .settings-fold > summary::-webkit-details-marker { display: none; }
 .settings-fold > summary::before { content: "▸"; transition: transform .15s; }
@@ -684,7 +690,7 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .browse { grid-template-columns: 26px minmax(0, 1fr); height: auto; }
   .browse .detail-wrap { grid-column: 1 / -1; }
   .browse .detail-col { overflow: visible; }
-  .browse .vlist { height: 46vh; flex: none; }
+  .browse .vlist { height: 62vh; flex: none; }
   .browse .detail-col { scroll-margin-top: 8px; }
   .back-to-list { display: inline-flex; align-self: flex-start; margin-bottom: 4px; }
   .lists-layout, .pron-layout { grid-template-columns: minmax(0, 1fr); }
@@ -697,7 +703,7 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
     grid-row: 2; flex-direction: row; padding: 6px max(8px, env(safe-area-inset-left, 0px)) calc(6px + env(safe-area-inset-bottom, 0px));
     border-right: 0; border-top: 1px solid var(--rule); gap: 4px;
   }
-  /* Five tabs that always fit: Home, Review, Practice, Browse, More. */
+  /* Six tabs that always fit: Today, Review, Practice, Games, Words, More. */
   .nav-links { flex: 1; min-width: 0; justify-content: space-around; }
   .nav-link.under { display: none; }
   .nav-link.hub { display: flex; }
@@ -745,9 +751,10 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .rail-collapsed .nav-heading .fold-mark { display: none; }
   .rail-collapsed .nav-group.folded .nav-link { display: flex; }
   .rail-collapsed .nav-link { justify-content: center; position: relative; padding-inline: 0; }
-  .rail-collapsed .nav-link .count { position: absolute; top: 3px; right: 6px; min-width: 8px; height: 8px;
-    padding: 0; font-size: 0; }
-  .rail-collapsed .rail-foot { flex-direction: column; align-items: center; padding: 0; }
+  .rail-collapsed .nav-link .count { position: absolute; top: 3px; right: 6px; min-width: 10px; height: 10px;
+    padding: 0; font-size: 0; background: var(--gilt); box-shadow: 0 0 0 2px var(--surface); }
+  .rail-collapsed .nav-link.sep::before { left: 8px; right: 8px; }
+  .rail-collapsed .rail-foot { flex-direction: column; align-items: center; padding: 8px 0 16px; }
 }
 @media (max-width: 760px) {
   #rail-toggle { display: none; }
@@ -853,18 +860,22 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
   font: inherit; color: var(--lapis); text-decoration: underline; text-underline-offset: 2px; }
 
 /* Browse: filters fold on a phone */
-.filters-fold > summary { cursor: pointer; list-style: none; font: 600 12px/1.2 var(--font-ui); letter-spacing: .06em;
-  text-transform: uppercase; color: var(--muted); padding: 6px 0; }
+.filters-fold > summary { cursor: pointer; list-style: none; display: flex; align-items: center; min-height: 44px;
+  font: 600 15px/1.2 var(--font-ui); color: var(--ink-2); }
 .filters-fold > summary::-webkit-details-marker { display: none; }
+.filters-fold > summary::before { content: "▸"; margin-right: 8px; transition: transform .15s; }
+.filters-fold[open] > summary::before { transform: rotate(90deg); }
 @media (min-width: 901px) { .filters-fold > summary { display: none; } }
 @media (max-width: 900px) {
-  .az button { min-height: 24px; }
+  .az button { min-height: 30px; font-size: 13px; }
   .az { overflow-y: auto; }
 }
 
 /* Touch screens: fingers need room (44 px targets). */
 @media (pointer: coarse) {
-  .btn, select.input, button.chip, a.chip, .seg button, .toast-action { min-height: 44px; }
+  .btn, select.input, button.chip, a.chip, label.chip, .seg button, .toast-action { min-height: 44px; }
+  label.chip { font-size: 14px; padding-inline: 12px; }
+  .seg button { font-size: 14px; }
   .stars:not(.readonly) button { min-width: 40px; min-height: 40px; }
   .icon-btn { min-width: 40px; min-height: 40px; }
 }
@@ -873,9 +884,9 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
 /* One small-caps label style everywhere (one size, one tracking); color
    says what kind: gold for dates and example contexts, plum for review
    notes, muted otherwise. */
-.eyebrow, .q-ask, .pron-box h3, .settings-fold > summary, .filters-fold > summary, .related-label,
+.eyebrow, .q-ask, .pron-box h3, .related-label,
 .card-note-label, .chose .label, .npanel h3, .all-meanings > h3, .senses-label, .ex-ctx, .new-badge, .traditions dt {
-  font-family: var(--font-ui); font-weight: 600; font-size: 11px; line-height: 1.2; letter-spacing: .08em;
+  font-family: var(--font-ui); font-weight: 600; font-size: 12px; line-height: 1.25; letter-spacing: .05em;
   text-transform: uppercase; font-style: normal;
 }
 .stats-grid { align-items: start; }
@@ -1034,7 +1045,7 @@ details.say > summary:hover { background: var(--surface-2); border-radius: var(-
 .word-play.playing { border-color: var(--verdigris); background: var(--verdigris-soft); }
 .sound-card .help { margin: 0; font-size: 15px; color: var(--ink-2); }
 .sound-game { display: grid; gap: 12px; padding: 18px 20px; margin-bottom: 28px; border-left: 3px solid var(--verdigris); }
-.sound-game h1 { margin: 0; font: 600 26px/1.2 var(--font-word); letter-spacing: -.01em; text-wrap: balance; }
+.sound-game h2 { margin: 0; font: 600 22px/1.2 var(--font-word); letter-spacing: -.01em; text-wrap: balance; }
 .sound-game p { margin: 0; max-width: 68ch; }
 .sound-game-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
 .sound-game-bar label { font-weight: 600; }
