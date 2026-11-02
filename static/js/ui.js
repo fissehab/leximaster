@@ -96,34 +96,45 @@ export function playButton(word, { small = false } = {}) {
 export const EVERYDAY = EVERYDAY_DOMAINS;
 const GENERAL = ["advanced", "academic", "literary", "professional", "linked", "reference"];
 
+// In the order the menus list them: like next to like.
 export const DOMAIN_LABELS = {
   everyday: "All everyday English",
-  dining: "Dining out", food: "Food & taste", shopping: "Shopping & errands", outdoors: "Beach & outdoors",
-  small_talk: "Small talk", phrasal_verbs: "Phrasal verbs", idioms: "Idioms & expressions",
-  feelings: "Feelings & reactions", home_health: "Home & health", getting_around: "Getting around",
-  sports_culture: "Sports & pop culture", meetings: "Meetings", phone_calls: "Phone & video calls",
-  advanced: "Advanced", academic: "Academic", literary: "Literary", professional: "Professional",
+  small_talk: "Small talk", feelings: "Feelings & reactions", idioms: "Idioms & expressions", phrasal_verbs: "Phrasal verbs",
+  meetings: "Meetings", phone_calls: "Phone & video calls",
+  food: "Food & taste", dining: "Dining out", shopping: "Shopping & errands", home_health: "Home & health",
+  getting_around: "Getting around", outdoors: "Beach & outdoors", sports_culture: "Sports & pop culture",
+  bible: "Bible", bible_vocab: "Bible · Vocabulary", bible_names: "Bible · Names", theology: "Theology",
+  liturgical_theology: "Liturgical theology", orthodox_mysticism: "Orthodox asceticism & mysticism",
+  christian_anthropology: "Christian anthropology", philosophy: "Philosophy", logic: "Logic",
   mathematics: "Mathematics", statistics: "Statistics & probability", data_science: "Data science",
-  philosophy: "Philosophy", theology: "Theology", christian_anthropology: "Christian anthropology",
-  orthodox_mysticism: "Orthodox asceticism & mysticism", liturgical_theology: "Liturgical theology", artificial_intelligence: "Artificial intelligence", bible: "Bible", bible_vocab: "Bible · Vocabulary", bible_names: "Bible · Names", logic: "Logic", software_engineering: "Software engineering",
-  custom: "My words", linked: "Linked words", reference: "Look-up only (linked, very rare or very common)",
+  artificial_intelligence: "Artificial intelligence", software_engineering: "Software engineering",
+  advanced: "Advanced", academic: "Academic", literary: "Literary", professional: "Professional",
+  linked: "Linked words", reference: "Look-up only (linked, very rare or very common)", custom: "My words",
 };
 const NAME_KIND_LABELS = { person: "Person", place: "Place", people: "People" };
 export const domainLabel = d => DOMAIN_LABELS[d] || d.replace(/_/g, " ");
 export const isEveryday = w => (w.domains || []).some(d => EVERYDAY.includes(d));
 
-/** Domain <option>s grouped as Everyday English, Subjects and General. */
+const ORDER = Object.keys(DOMAIN_LABELS);
+const rank = d => (ORDER.includes(d) ? ORDER.indexOf(d) : ORDER.length);
+/** Domains in the menus' order (DOMAIN_LABELS); any other at the end, A to Z. */
+export const byDomainOrder = (a, b) => rank(a) - rank(b) || domainLabel(a).localeCompare(domainLabel(b));
+const FAITH = ["bible", "bible_vocab", "bible_names", "theology", "liturgical_theology", "orthodox_mysticism",
+  "christian_anthropology", "philosophy", "logic"];
+
+/** Domain <option>s grouped: Everyday English, Faith & philosophy, Math, data & computing, General. */
 export function domainOptions(domains) {
-  const byLabel = list => list.sort((a, b) => domainLabel(a).localeCompare(domainLabel(b)))
-    .map(d => h("option", { value: d }, domainLabel(d)));
+  const opts = list => [...list].sort(byDomainOrder).map(d => h("option", { value: d }, domainLabel(d)));
   const everyday = domains.filter(d => EVERYDAY.includes(d));
   const general = domains.filter(d => GENERAL.includes(d));
-  const subjects = domains.filter(d => !EVERYDAY.includes(d) && !GENERAL.includes(d) && d !== "custom");
+  const faith = domains.filter(d => FAITH.includes(d));
+  const tech = domains.filter(d => !EVERYDAY.includes(d) && !GENERAL.includes(d) && !FAITH.includes(d) && d !== "custom");
   return [
     everyday.length ? h("optgroup", { label: "Everyday English" },
-      h("option", { value: "everyday" }, domainLabel("everyday")), byLabel(everyday)) : null,
-    subjects.length ? h("optgroup", { label: "Subjects" }, byLabel(subjects)) : null,
-    h("optgroup", { label: "General" }, byLabel(general),
+      h("option", { value: "everyday" }, domainLabel("everyday")), opts(everyday)) : null,
+    faith.length ? h("optgroup", { label: "Faith & philosophy" }, opts(faith)) : null,
+    tech.length ? h("optgroup", { label: "Math, data & computing" }, opts(tech)) : null,
+    h("optgroup", { label: "General" }, opts(general),
       domains.includes("custom") ? h("option", { value: "custom" }, domainLabel("custom")) : null),
   ].filter(Boolean);
 }
@@ -831,7 +842,7 @@ export async function filterBar(onChange, { lists = [], domains = [] } = {}, { t
 
 export async function filterSources() {
   const [{ lists }, words] = await Promise.all([api.get("/api/lists"), allWords()]);
-  const domains = [...new Set(words.flatMap(w => w.domains))].sort((a, b) => domainLabel(a).localeCompare(domainLabel(b)));
+  const domains = [...new Set(words.flatMap(w => w.domains))].sort(byDomainOrder);
   return { lists, domains };
 }
 
