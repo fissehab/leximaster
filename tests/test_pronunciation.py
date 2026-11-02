@@ -27,3 +27,21 @@ def test_pronunciation_fixes_are_well_formed():
         assert key not in keys, key
         keys.add(key)
     assert {"thank", "five", "bus", "milk", "to"} <= keys
+
+
+def test_british_transcriptions_that_drop_an_r_are_caught():
+    assert B.drops_r("artful", "/ˈɑtf(ʊ)l/")
+    assert B.drops_r("computer vision", "/kəmˈpjutə ˈvɪʒən/")
+    assert not B.drops_r("artful", "/ˈɑɹtfəl/")
+    assert not B.drops_r("overlap", "/ˌoʊvɚˈlæp/")
+    assert not B.drops_r("rhythm", "/ˈɹɪðəm/")            # no r after a vowel
+    assert not B.drops_r("bulimia nervosa", "/-ˈlɪm.i.ə-/")  # IPA for part of the phrase: not judged
+
+
+def test_recordings_by_british_speakers_are_never_american():
+    url = "https://commons.wikimedia.org/wiki/Special:FilePath/LL-Q1860_%28eng%29-Vealhurl-circadian.wav"
+    assert B.lingua_libre_speaker(url) == "Vealhurl" and "Vealhurl" in B.NOT_US_SPEAKERS
+    assert B.lingua_libre_speaker("https://x/LL-Q1860_(eng)-Vealhurl-low-key.wav") == "Vealhurl"
+    assert B.lingua_libre_speaker("https://x/LL-Q1860_(eng)-Flame,_not_lame-abductive.wav") == "Flame, not lame"
+    assert B.lingua_libre_speaker("https://x/en-us-abandon.ogg") == ""
+    assert not B.NOT_US_SPEAKERS & set(B.COMMONS_US_SPEAKERS)

@@ -41,7 +41,7 @@ import subprocess
 import sys
 import time
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
 import httpx
 import truststore
@@ -874,8 +874,19 @@ def rank_audio(phonetics: list[dict], accent: str) -> list[dict]:
 # entries link: files named "En-us-<word>", and Lingua Libre recordings by
 # speakers whose recordings Wiktionary has labelled US hundreds of times.
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
-COMMONS_US_SPEAKERS = ["Flame, not lame", "Wodencafe", "Vealhurl", "Vininn126", "NaomiAmethyst", "Persent101",
+COMMONS_US_SPEAKERS = ["Flame, not lame", "Wodencafe", "Vininn126", "NaomiAmethyst", "Persent101",
                        "Qwertygiy", "Neøn", "Sapaa"]
+# Lingua Libre speakers who are not American, whatever a file's label says:
+# Vealhurl is from southern England (Wiktionary labels 11,000+ of the
+# recordings "Southern England"; they drop the r of "circadian").
+NOT_US_SPEAKERS = {"Vealhurl"}
+
+
+def lingua_libre_speaker(url: str) -> str:
+    """The speaker of a Lingua Libre recording ("LL-Q1860 (eng)-Name-word.wav"), or ""."""
+    name = unquote(url).rsplit("/", 1)[-1].rsplit(":", 1)[-1].replace("_", " ")
+    m = re.match(r"LL-Q\d+ \(\w+\)-([^-]+)-", name)  # speaker names have no hyphen
+    return m.group(1) if m else ""
 
 
 async def commons_us_index(http: httpx.AsyncClient, refresh: bool = False) -> dict[str, list[str]]:
@@ -1018,8 +1029,10 @@ async def stage_audio(args) -> None:
             word = (rec["entry"].get("word") if ok_entry else "") or k.replace("-", " ")
             candidates = [{"url": "https://commons.wikimedia.org/wiki/Special:FilePath/" + quote(n.replace(" ", "_")),
                            "accent": args.accent} for n in commons.get(word.lower(), commons.get(k.replace("-", " "), []))]
+        candidates = [c for c in candidates if lingua_libre_speaker(c["url"]) not in NOT_US_SPEAKERS]
         prev = done.get(k)
-        if prev and prev["status"] == "ok" and prev.get("accent") != args.accent:
+        if prev and prev["status"] == "ok" and (prev.get("accent") != args.accent
+                                                or lingua_libre_speaker(prev.get("source_url", "")) in NOT_US_SPEAKERS):
             # Downloaded under the old "preferred accent" rule: remove it.
             (AUDIO / prev["file"]).unlink(missing_ok=True)
             append_jsonl(AUDIO_CACHE, {"key": k, "status": "removed", "reason": "accent",
@@ -2685,9 +2698,18 @@ def phonetic_needs_study_ipa(w: dict) -> bool:
     word = w["word"].lower()
     if re.search(r"(er|ar|or|our|ure|ere|ore|ire|ear|eer|air)$", word) and re.search(r"[əʊɪɛ][/\]]$", p):
         return True  # non-rhotic ending: "amber" /ˈæm.bə/
-    if NON_GA_PHONETIC.search(p):
+    if NON_GA_PHONETIC.search(p) or drops_r(word, p):
         return True
     return "ˈ" not in p and " " not in p.strip("/[]") and _syllables(p) > 1
+
+
+def drops_r(word: str, ipa: str) -> bool:
+    """A word with an r after a vowel ("artful", "overlap") whose IPA has no
+    r sound in that part: a British transcription, /ˈɑtf(ʊ)l/."""
+    parts, sounds = word.lower().split(), ipa.strip("/[]").split()
+    if len(parts) != len(sounds):
+        return False
+    return any(re.search(r"[aeiouy]r", s) and not re.search(r"[ɹrɚɝɾ]", i) for s, i in zip(parts, sounds))
 
 
 def polish_ipa(w: dict) -> str:
@@ -2702,10 +2724,22 @@ def polish_ipa(w: dict) -> str:
             respelling_matches_ipa(pron.get("respelling", ""), study) is not False:
         tmp = {**w, "phonetic": study}
         if not NON_GA_PHONETIC.search(study) and not phonetic_needs_study_ipa(tmp):
-            w["phonetic"], w["phonetic_source"] = us_style(study), "reviewed"
+            w["phonetic"], w["phonetic_source"] = drop_yod(w["key"], us_style(study)), "reviewed"
             return "study"
-    w["phonetic"] = normalize_ipa(before)
+    w["phonetic"] = drop_yod(w["key"], normalize_ipa(before))
     return "normalized" if w["phonetic"] != before else ""
+
+
+# Words that keep the y sound after t, d, n, s, z, th or l in American English
+# too: "unusable" is un + usable; the rest are spelled-out letters or foreign names.
+KEEP_YOD = {"unusable", "unused-to", "dwi", "dobrotolubiye", "zizioulas", "jeduthun"}
+YOD = re.compile(r"([ˈˌ]s?[tdnszθl])(?:j|\(j\))(?=[uʊ])")
+
+
+def drop_yod(key: str, ipa: str) -> str:
+    """American English has no y sound after t, d, n, s, z, th or l at the
+    start of a stressed syllable: duty /ˈduti/, not the British /ˈdjuti/."""
+    return ipa if key in KEEP_YOD else YOD.sub(r"\1", ipa)
 
 
 _NEG = re.compile(r"^(un|in|im|il|ir|en|em|dis|non|mis|anti|counter|over|under|re|de|pre)")
@@ -3227,7 +3261,8 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
                 domains.append("bible_vocab")
             domains = sorted(set(domains))
         has_audio = bool(a and a["status"] == "ok" and a.get("accent") == ACCENT
-                         and (AUDIO / a["file"]).exists() and k not in WRONG_RECORDING)
+                         and (AUDIO / a["file"]).exists() and k not in WRONG_RECORDING
+                         and lingua_libre_speaker(a.get("source_url", "")) not in NOT_US_SPEAKERS)
         words.append({
             "word": word,
             "key": k,
