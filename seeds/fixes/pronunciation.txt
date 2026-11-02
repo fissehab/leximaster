@@ -152,3 +152,40 @@ worry | phonetic | /ˈwɝi/
 write | phonetic | /ɹaɪt/
 yeah | phonetic | /jæ/
 zoe | phonetic | /ˈzoʊi/
+
+# British (r-less) transcriptions the automatic check (drops_r) can't repair:
+# the study notes' IPA drops the r too, or the IPA covers only part of the phrase. 2026-11-01.
+lumber | phonetic | /ˈlʌmbɚ/
+as-for | phonetic | /æz fɚ/
+extrasensory-perception | phonetic | /ˌɛkstɹəˈsɛnsəɹi pɚˈsɛpʃən/
+set-theoretic | phonetic | /ˌsɛt θiəˈɹɛtɪk/
+bulimia-nervosa | phonetic | /bəˈlɪmiə nɝˈvoʊsə/
+computer-vision | phonetic | /kəmˈpjutɚ ˈvɪʒən/
+make-up-for | phonetic | /ˌmeɪk ˈʌp fɚ/
+
+# Other British forms (2026-11-01): -ile as "isle" (futile), -ary/-ory without
+# the American second stress (dietary), the broad a of bath (unfasten), and garbled ones.
+agile | phonetic | /ˈædʒəl/
+facile | phonetic | /ˈfæsəl/
+futile | phonetic | /ˈfjutəl/
+gracile | phonetic | /ˈɡɹæsəl/
+turnstile | phonetic | /ˈtɝnˌstaɪl/
+adulatory | phonetic | /ˈædʒələˌtɔɹi/
+biliary | phonetic | /ˈbɪliˌɛɹi/
+dietary | phonetic | /ˈdaɪəˌtɛɹi/
+explanatory | phonetic | /ɪkˈsplænəˌtɔɹi/
+feudatory | phonetic | /ˈfjudəˌtɔɹi/
+incendiary | phonetic | /ɪnˈsɛndiˌɛɹi/
+lavatory | phonetic | /ˈlævəˌtɔɹi/
+plenipotentiary | phonetic | /ˌplɛnəpəˈtɛnʃiˌɛɹi/
+preliminary | phonetic | /pɹɪˈlɪməˌnɛɹi/
+retaliatory | phonetic | /ɹɪˈtæliəˌtɔɹi/
+subsidiary | phonetic | /səbˈsɪdiˌɛɹi/
+supererogatory | phonetic | /ˌsupəɹɪˈɹɑɡəˌtɔɹi/
+tributary | phonetic | /ˈtɹɪbjəˌtɛɹi/
+objurgatory | phonetic | /əbˈdʒɝɡəˌtɔɹi/
+oblatory | phonetic | /ˈɑbləˌtɔɹi/
+unfasten | phonetic | /ʌnˈfæsən/
+passible | phonetic | /ˈpæsəbəl/
+franchisable | phonetic | /ˈfɹænˌtʃaɪzəbəl/
+franchisor | phonetic | /ˈfɹænˌtʃaɪˌzɔɹ/

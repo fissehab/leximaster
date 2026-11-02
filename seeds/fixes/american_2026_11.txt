@@ -1,0 +1,10 @@
+# American pronunciation only (2026-11-01): the study notes' IPA where it
+# dropped an r (the shown IPA is fixed in pronunciation.txt), and the th of
+# rhythm, which is voiced.
+lumber | nuance.pronunciation.ipa | /ˈlʌmbɚ/
+as-for | nuance.pronunciation.ipa | /æz fɚ/
+as-for | nuance.pronunciation.respelling | az fer
+extrasensory-perception | nuance.pronunciation.ipa | /ˌɛkstɹəˈsɛnsəɹi pɚˈsɛpʃən/
+set-theoretic | nuance.pronunciation.ipa | /ˌsɛt θiəˈɹɛtɪk/
+circadian-rhythm | nuance.pronunciation.tip | Put the main stress on KAY in circadian and on RITH in rhythm, keeping the first syllable light. Rhythm ends in an unstressed -um, not -ihm, and its th is voiced, as in this.
+rhythm | nuance.pronunciation.tip | Stress the first syllable. The rh is just the r sound, the th is voiced as in 'this', and the ending -thm is a weak 'um' with no extra vowel.
