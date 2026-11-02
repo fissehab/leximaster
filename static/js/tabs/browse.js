@@ -3,7 +3,7 @@
 import { allWords, api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
-import { LEVELS, chosenLevels, domainLabel, levelsText, domainOptions, formDialog, isEveryday, h, icon, renderEntry, scrollBehavior, setKnown, setStars, showError, toast } from "../ui.js";
+import { LEVELS, byDomainOrder, chosenLevels, domainLabel, levelsText, domainOptions, formDialog, isEveryday, h, icon, renderEntry, scrollBehavior, setKnown, setStars, showError, toast } from "../ui.js";
 
 const ROW_H = 54;
 const state = { q: "", domain: "", stars: "", known: "", level: "", selectedId: null };
@@ -249,7 +249,7 @@ export async function render(root, { param, view, live: isLive }) {
   // The word list is kept up to date as you rate and mark words, so it's
   // fetched once, not on every visit.
   [words, { lists }] = await Promise.all([allWords(), api.get("/api/lists")]);
-  const domains = [...new Set(words.flatMap(w => w.domains))].sort((a, b) => domainLabel(a).localeCompare(domainLabel(b)));
+  const domains = [...new Set(words.flatMap(w => w.domains))].sort(byDomainOrder);
 
   els.search = h("input.input#browse-search", { type: "search", placeholder: "Search words or meanings  ( / )", autocomplete: "off", spellcheck: false });
   els.search.value = state.q;
