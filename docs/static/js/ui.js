@@ -99,7 +99,8 @@ const GENERAL = ["advanced", "academic", "literary", "professional", "linked", "
 // In the order the menus list them: like next to like.
 export const DOMAIN_LABELS = {
   everyday: "All everyday English",
-  small_talk: "Small talk", feelings: "Feelings & reactions", idioms: "Idioms & expressions", phrasal_verbs: "Phrasal verbs",
+  small_talk: "Small talk", feelings: "Feelings & reactions", idioms: "Idioms & sayings", phrasal_verbs: "Phrasal verbs",
+  common_phrases: "Common phrases & terms",
   meetings: "Meetings", phone_calls: "Phone & video calls",
   food: "Food & taste", dining: "Dining out", shopping: "Shopping & errands", home_health: "Home & health",
   getting_around: "Getting around", outdoors: "Beach & outdoors", sports_culture: "Sports & pop culture",

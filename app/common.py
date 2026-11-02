@@ -200,6 +200,23 @@ def examples_for(data: dict) -> list[str]:
     return out
 
 
+FULL_SENTENCE = re.compile(r"^[\"“'(]?[A-Z0-9].*[.!?][\"”')]*$")
+
+
+def quiz_examples(data: dict) -> list[str]:
+    """Sentences a quiz may blank: those for the meaning the learner studies
+    (conversation and study-note examples, then the first dictionary sense's),
+    and only whole sentences, not a rare sense's fragment ("the cynic, or
+    Sothic, year; cynic cycle")."""
+    out = [e["text"] for e in data.get("conversation") or []]
+    ex = (data.get("nuance") or {}).get("examples") or {}
+    out += [ex[k] for k in ("everyday", "professional", "analytical") if ex.get(k)]
+    first = next((s for m in data.get("meanings") or [] for s in m.get("senses") or []), None)
+    if first and first.get("example"):
+        out.append(first["example"])
+    return [e for e in out if FULL_SENTENCE.match(e.strip()) and len(e.split()) >= 5]
+
+
 # Endings an inflected form may add (after a final e or y is dropped):
 # abate → abated, abates, abating; carry → carries, carried. Only real
 # endings, so "patriarch" doesn't match "patriarchal".
@@ -289,7 +306,7 @@ def bump_activity(c: sqlite3.Connection, seconds: int = 0, reviews: int = 0, new
 
 # Everyday American English domains (see build_dataset.EVERYDAY_DOMAINS).
 EVERYDAY_DOMAINS = ("dining", "food", "shopping", "outdoors", "small_talk", "phrasal_verbs", "idioms",
-                    "feelings", "home_health", "getting_around", "sports_culture", "meetings",
+                    "common_phrases", "feelings", "home_health", "getting_around", "sports_culture", "meetings",
                     "phone_calls")
 _EVERYDAY_SQL = ("EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value IN ("
                  + ",".join(f"'{d}'" for d in EVERYDAY_DOMAINS) + "))")

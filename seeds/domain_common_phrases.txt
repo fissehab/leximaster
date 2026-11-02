@@ -1,0 +1,2769 @@
+# Common American phrases and terms: set phrases, discourse markers and compounds
+# with a meaning of their own ("line item", "as well as", "real estate"), from Wiktionary's
+# multiword entries, chosen by frequency in American books (Google Books Ngram,
+# 2015-2019) and reviewed by hand (November 2026).
+a fair bit
+a good many
+a great many
+a hundred percent
+a long time coming
+a lot
+a number of
+a ton
+a wee bit
+about time
+about to
+above all
+above and beyond
+above average
+according to
+according to plan
+account holder
+account manager
+accounts payable
+acid rain
+across the way
+active duty
+active ingredient
+active listening
+address bar
+adrenaline rush
+advance directive
+advanced degree
+affirmative action
+after a while
+after all
+after hours
+after the fact
+against all odds
+against the law
+age limit
+age of consent
+age of majority
+aggravated assault
+ahead of
+air bag
+air traffic control
+alive and well
+all but
+all eyes
+all good
+all in all
+all of a sudden
+all over
+all over again
+all over the world
+all right
+all rights reserved
+all set
+all the best
+all the more
+all the same
+all the time
+all the way
+all the while
+all together
+all too well
+all very well
+alma mater
+along the lines of
+along the way
+along with
+alpha male
+alphabetical order
+also known as
+alternative dispute resolution
+alternative energy
+alternative medicine
+among other things
+and counting
+and so on
+and stuff
+and the like
+and then some
+and whatnot
+anecdotal evidence
+anger management
+animal control
+another story
+any and all
+any day now
+any longer
+any minute now
+any number of
+any old
+any old thing
+any time now
+any time soon
+anything but
+anytime soon
+anywhere near
+arm in arm
+arms race
+around and around
+arranged marriage
+art form
+article of faith
+arts and crafts
+as a result of
+as always
+as far as
+as follows
+as for
+as good as
+as if
+as if nothing had happened
+as it gets
+as it happens
+as it stands
+as it were
+as long as
+as much as
+as much as possible
+as of
+as of late
+as of yet
+as often as not
+as opposed to
+as per
+as previously mentioned
+as regards
+as such
+as the case may be
+as the saying goes
+as they come
+as they say
+as though
+as we know it
+as we speak
+as well
+as well as
+as you know
+as you wish
+aside from
+asking price
+assault and battery
+assembly line
+assisted living
+associate degree
+assumed name
+at a discount
+at a glance
+at a minimum
+at a premium
+at a price
+at a profit
+at a time
+at all
+at all costs
+at all hours
+at any cost
+at any given moment
+at best
+at cost
+at every turn
+at first
+at gunpoint
+at heart
+at home
+at issue
+at last
+at least
+at long last
+at minimum
+at most
+at no time
+at one time
+at pains
+at peace with
+at scale
+at short notice
+at some point
+at the disposal of
+at the earliest
+at the expense of
+at the latest
+at the mercy of
+at the most
+at the risk of
+at the same time
+at the time
+at the very least
+at the very most
+at this rate
+at times
+at war
+at will
+at work
+at worst
+at your service
+attention deficit disorder
+attention span
+attract attention
+augmented reality
+authority figure
+automatic transmission
+baby boom
+baby boomer
+back and forth
+back at you
+back door
+back east
+back office
+back pay
+back then
+back to back
+back to front
+background check
+bad boy
+bad breath
+bad debt
+bad guy
+bad influence
+bad news
+bad press
+bad sign
+bad word
+balance of power
+balance of trade
+balance sheet
+balanced budget
+balanced diet
+ball cap
+ballot box
+banged up
+bank statement
+bar code
+bar exam
+bare minimum
+bargaining power
+base camp
+based on
+basic income
+basic training
+batting average
+battle cry
+be all about
+be done with
+be going to
+be on the lookout
+be rid of
+be that as it may
+be used to
+beach ball
+bear hug
+bear in mind
+beauty queen
+beauty salon
+because of
+become of
+bed and breakfast
+bed rest
+bedtime story
+beef jerky
+beet red
+before long
+behind the counter
+believe it or not
+believe me
+belly button
+below average
+bench press
+bent on
+best man
+best of luck
+best of the best
+best part of
+best regards
+best seller
+better and better
+better known as
+better off
+better part of
+better place
+better than nothing
+between jobs
+between ourselves
+between you and me
+beyond a reasonable doubt
+beyond question
+beyond words
+big brother
+big business
+big data
+big day
+big fat
+big government
+big money
+big old
+big screen
+big time
+bill of rights
+bill of sale
+binary code
+birth defect
+birth rate
+birthday card
+bitter cold
+black belt
+black eye
+black hole
+black market
+black tie
+blacked out
+blah blah
+blanket term
+blind date
+block grant
+blood pressure
+blood work
+blue state
+board of directors
+body count
+body language
+body odor
+bolt upright
+book burning
+book value
+boom and bust
+boom box
+boot camp
+border patrol
+borderline case
+bound to
+bowel movement
+brand awareness
+breach of trust
+bread pudding
+break a promise
+break free
+break the news
+break time
+breaking and entering
+breaking news
+bright line
+bright spot
+bring to a boil
+bring to an end
+broad daylight
+broadly speaking
+broken hearted
+broken home
+brown bag
+buffer zone
+build a case
+build character
+building block
+building permit
+bull market
+bulletin board
+bumper sticker
+bunk bed
+burnt out
+burst into flames
+burst into tears
+burst out laughing
+business as usual
+business case
+business class
+business cycle
+busy work
+but hey
+but then
+button nose
+buy and hold
+buying power
+by a long way
+by all accounts
+by all means
+by any means
+by comparison
+by default
+by degrees
+by extension
+by heart
+by means of
+by now
+by sight
+by the same token
+by the time
+by trade
+by virtue of
+by way of
+calculated risk
+call an ambulance
+call and response
+call center
+call to action
+call to arms
+calling card
+can opener
+capital gain
+capital gains tax
+capital letter
+captive audience
+car lot
+car wash
+carbon footprint
+care package
+case in point
+case study
+cash flow
+cast iron
+cast member
+catch of the day
+cause and effect
+cease and desist
+center field
+center of gravity
+center stage
+central bank
+certified mail
+chain of events
+chamber of commerce
+chances are
+change course
+change of scenery
+change of venue
+charitable organization
+cheat sheet
+check mark
+checked out
+checks and balances
+chest of drawers
+chicken pox
+chief financial officer
+chief operating officer
+chilling effect
+chosen one
+cigarette lighter
+circle of friends
+circumstantial evidence
+city block
+civil rights
+civil servant
+class action
+class clown
+cleaning lady
+clear the table
+client base
+climate change
+close at hand
+close enough
+closed circuit
+closing date
+cloud storage
+coast guard
+cocktail dress
+coffee bar
+coffee break
+cognitive dissonance
+coin toss
+cold case
+cold cuts
+collateral damage
+collective bargaining
+come and go
+come as no surprise
+come first
+come in handy
+come into being
+come into play
+come into the world
+come naturally
+come on
+come online
+come running
+come to a close
+come to a stop
+come to an end
+come to fruition
+come to life
+come to mind
+come to power
+come to rest
+come true
+comic relief
+coming of age
+coming right up
+command performance
+commander in chief
+common cause
+common cold
+common good
+common practice
+community garden
+company town
+comparative advantage
+compare and contrast
+compared with
+compassion fatigue
+complete and utter
+compound interest
+con man
+concentration camp
+concession stand
+condensed milk
+constructive criticism
+consumer price index
+contact details
+contact lens
+contact person
+contempt of court
+continental breakfast
+contingency plan
+contrary to
+control freak
+controlling interest
+conventional wisdom
+conversion rate
+conveyor belt
+cookie jar
+cool it
+coping mechanism
+coping strategy
+copy and paste
+copy that
+core belief
+core business
+core competency
+corner office
+cost cutting
+cottage cheese
+cottage industry
+cotton candy
+could do with
+could have sworn
+county fair
+couples therapy
+court appearance
+courtesy of
+cover letter
+cracked up
+crawl space
+credit history
+credit line
+credit rating
+credit report
+credit score
+credit union
+crew cut
+crime against humanity
+criminal record
+critical condition
+critical mass
+crochet hook
+cross country
+crowd control
+cruise control
+crush on
+cry for help
+cue ball
+cult of personality
+culture shock
+culture war
+curb appeal
+current affairs
+customer base
+cyber attack
+damage control
+damn it
+damn right
+dark ages
+dark side
+dark web
+data breach
+data entry
+date night
+date rape
+day after day
+day after tomorrow
+day before yesterday
+day by day
+day care
+day care center
+day job
+day off
+day one
+day out
+day shift
+day to day
+dead asleep
+dead bolt
+dead center
+dead last
+dead on
+dead or alive
+dead set
+dead silence
+dead wrong
+death penalty
+death row
+death toll
+debt ceiling
+decimal point
+declare war
+deep state
+deep thinker
+deep tissue
+default judgment
+defense mechanism
+defining moment
+depending on
+developing country
+developmental disability
+difference of opinion
+different story
+diminishing returns
+direct descendant
+direct mail
+dirty look
+dirty money
+disc jockey
+discretionary spending
+disorderly conduct
+disposable income
+divine intervention
+do business
+do drugs
+do it yourself
+do justice
+do tell
+do the right thing
+do the talking
+do you mind
+dog park
+domestic partner
+door knob
+door to door
+dotted line
+double check
+double duty
+double major
+double meaning
+double play
+double take
+double taxation
+double vision
+down south
+down the middle
+down time
+drag and drop
+drag queen
+dream world
+dress code
+dress rehearsal
+dressed up
+dried up
+drinking age
+dripping wet
+drive by
+driving force
+driving range
+drop dead
+drug of choice
+drug store
+dry cough
+duct tape
+due course
+dust storm
+duty bound
+each and every
+each other
+early days
+early on
+early warning system
+easy target
+editor in chief
+either way
+elder abuse
+electoral college
+element of surprise
+emergency exit
+emerging market
+emotional intelligence
+employee handbook
+employment agency
+en route
+end game
+end goal
+end in itself
+end of life
+end of the world
+end result
+energy efficient
+engine oil
+enough already
+enough is enough
+entrance exam
+entry fee
+entry point
+equal time
+estate planning
+even if
+even number
+even so
+ever since
+every bit
+every now and again
+every now and then
+every once in a while
+every other
+every single time
+every so often
+every step of the way
+every time
+every which way
+exact same
+except for
+exchange rate
+exchange student
+exclamation point
+executive summary
+existential crisis
+exit strategy
+expense account
+expert witness
+expiration date
+extended family
+extra credit
+eye contact
+eye roll
+eye shadow
+face value
+fact is
+fact of the matter
+fact sheet
+fair share
+fair trade
+fair warning
+fake news
+fall in love
+fall prey
+fall silent
+fall victim
+falling asleep
+false dichotomy
+false imprisonment
+false teeth
+family resemblance
+far and wide
+far from
+far from it
+far out
+far removed
+far right
+father figure
+fault line
+feel free
+feel like
+feng shui
+fetal position
+field trip
+fight or flight
+figure eight
+filing cabinet
+fill in the blank
+fill in the blanks
+final cut
+final say
+finance charge
+find oneself
+find time
+finger pointing
+finishing touch
+fire escape
+fire hazard
+fired up
+firing squad
+first aid
+first aid kit
+first base
+first choice
+first class
+first down
+first hand
+first impression
+first lady
+first love
+first off
+first shift
+first thing
+first things first
+first up
+fiscal year
+fishing rod
+fixed asset
+fixed income
+fixed mindset
+fixed price
+fixing to
+flash drive
+flash flood
+flat out
+flat rate
+flood plain
+floor plan
+focus group
+food bank
+food chain
+food insecurity
+food poisoning
+food stamp
+foot traffic
+for a change
+for a while
+for all practical purposes
+for better or for worse
+for better or worse
+for cheap
+for fear of
+for free
+for fun
+for good measure
+for here
+for lack of
+for nothing
+for once
+for one
+for one reason or another
+for one thing
+for short
+for show
+for starters
+for that matter
+for the best
+for the better
+for the fun of it
+for the last time
+for the longest time
+for the most part
+for the record
+for the sake of
+for the time being
+for the worse
+for want of
+for your information
+foreign national
+forever and ever
+forget about it
+foster parent
+foul language
+foul play
+founding father
+four corners
+frame of mind
+freak show
+free agent
+free and clear
+free cash flow
+free country
+free fall
+free press
+free time
+free trial
+free world
+freedom fighter
+freedom of speech
+freedom of the press
+freezing cold
+freezing point
+frequent flyer
+frequently asked questions
+fresh out of
+fresh start
+friend of mine
+friendly fire
+from a distance
+from an early age
+from beginning to end
+from head to toe
+from here on out
+from now on
+from nowhere
+from the heart
+from the start
+from the top
+from then on
+from time to time
+front bumper
+front office
+full bloom
+full disclosure
+full house
+full ride
+full term
+full well
+fully fledged
+gag reflex
+gain momentum
+game show
+gated community
+gateway drug
+gender gap
+gene pool
+general contractor
+general counsel
+general practitioner
+generally speaking
+genetically modified
+gestation period
+get a feel for
+get a hold of
+get busy
+get dressed
+get drunk
+get even
+get going
+get in the way
+get into trouble
+get out the vote
+get real
+get the door
+get the idea
+get the job done
+get the point
+get to know
+get to work
+getting used to
+ghost town
+gig economy
+give a damn
+give chase
+give credit
+give notice
+give rise to
+give voice
+give way
+given that
+glimmer of hope
+global positioning system
+global village
+glove box
+glove compartment
+go bankrupt
+go easy
+go far
+go for it
+go free
+go hungry
+go into detail
+go missing
+go nowhere
+go public
+go so far as
+go to the bathroom
+go to war
+go to waste
+go to work
+goal setting
+going away
+going on
+going rate
+gold rush
+golden brown
+good as new
+good bye
+good deal
+good evening
+good game
+good guy
+good job
+good night
+good standing
+good stuff
+good times
+good will
+got to
+government bond
+grab hold
+grace period
+grad student
+grade point average
+grand finale
+grand opening
+grand total
+graphic design
+graphic novel
+grass roots
+great outdoors
+greater good
+green card
+green room
+grilled cheese
+gross margin
+gross profit
+ground crew
+ground rule
+ground zero
+growth mindset
+grunt work
+guard dog
+guardian angel
+guess what
+guest of honor
+guidance counselor
+guilty conscience
+gun control
+had best
+had better
+half a dozen
+half dead
+half dozen
+half past
+halfway decent
+halfway house
+hands up
+happily ever after
+happy birthday
+happy ending
+hard and fast
+hard at work
+hard candy
+hard copy
+hard currency
+hard feelings
+hard hat
+hard line
+hard sell
+hard time
+hard up
+hate speech
+haunted house
+have a clue
+have a good time
+have a hard time
+have a look
+have a moment
+have a point
+have a say
+have a word
+have an accident
+have an affair
+have fun
+have got to
+have had enough
+have in mind
+have it all
+have mercy
+have no business
+have no idea
+have no use for
+have nothing to lose
+have to
+head count
+head of hair
+head of household
+head of state
+head start
+head to toe
+health care
+heart rate
+heck of a
+hedge fund
+hell no
+help desk
+here and now
+here and there
+here goes
+here we are
+here we go
+here you are
+hidden agenda
+hide and seek
+high and low
+high hopes
+high school
+high score
+higher education
+higher power
+highway patrol
+hip hop
+hit and run
+hit hard
+hit man
+hold dear
+hold hands
+hold still
+hold true
+hole in one
+holed up
+holy cow
+holy crap
+home equity
+home improvement
+home plate
+home town
+homeland security
+honor roll
+honorable mention
+horror story
+horse and buggy
+hot dog
+hot glue
+hot pursuit
+hourly wage
+house arrest
+housing bubble
+how about
+how are you
+how are you doing
+how come
+how do you do
+how so
+human being
+human error
+human interest
+human rights
+human trafficking
+hung over
+hunger strike
+hunting ground
+ice age
+ice cap
+ice cream
+identity crisis
+if and when
+if anything
+if ever there was one
+if it were not for
+if need be
+if not for
+if nothing else
+if only
+if possible
+if so
+if you will
+immune system
+in a bad way
+in a big way
+in a huff
+in a hurry
+in a little while
+in a manner of speaking
+in a minute
+in a sense
+in a similar vein
+in a way
+in accordance with
+in addition
+in addition to
+in advance of
+in all likelihood
+in and of themselves
+in back of
+in between
+in broad daylight
+in case
+in case of
+in character
+in charge
+in circulation
+in common
+in comparison
+in conjunction with
+in contrast
+in contrast to
+in debt
+in due course
+in due time
+in duplicate
+in essence
+in excess of
+in exchange for
+in favor of
+in flames
+in focus
+in force
+in full
+in full swing
+in general
+in good conscience
+in good hands
+in good repair
+in good time
+in half
+in hiding
+in honor of
+in house
+in its entirety
+in jest
+in league with
+in lieu of
+in light of
+in line with
+in living memory
+in love
+in memory of
+in mind
+in moderation
+in need
+in no small measure
+in no small part
+in no time
+in no way
+in office
+in one go
+in one sitting
+in order for
+in order that
+in order to
+in part
+in passing
+in person
+in perspective
+in place
+in place of
+in plain sight
+in plain view
+in power
+in practice
+in progress
+in protest
+in public
+in question
+in quick succession
+in real life
+in reality
+in recent memory
+in record time
+in reference to
+in regard to
+in regards to
+in relation to
+in return
+in ruins
+in search of
+in session
+in short order
+in so many words
+in store
+in tandem
+in terms of
+in that case
+in the abstract
+in the distance
+in the end
+in the event of
+in the eyes of
+in the face of
+in the final analysis
+in the first place
+in the hunt
+in the interim
+in the lead
+in the least
+in the line of duty
+in the making
+in the meantime
+in the middle of
+in the mood
+in the name of
+in the near future
+in the neighborhood of
+in the process
+in the process of
+in the region of
+in the same vein
+in the shadow of
+in the space of
+in the vein of
+in the wake of
+in the way
+in the wrong
+in time
+in tow
+in truth
+in tune
+in view of
+in vitro fertilization
+in writing
+incident report
+income tax return
+independent contractor
+indirect object
+industrial park
+information overload
+initial public offering
+inner workings
+inside information
+inside out
+insider trading
+instant messaging
+instead of
+intensive care
+internal affairs
+into shape
+invasion of privacy
+is that so
+it depends
+it goes without saying
+it happens
+jet stream
+jigsaw puzzle
+job market
+job security
+joint venture
+junior high
+jury box
+jury duty
+jury service
+just a second
+just about
+just as well
+just because
+just friends
+just in time
+just kidding
+just like that
+just now
+just saying
+just the same
+just wondering
+just yet
+keen on
+keep in mind
+keep it moving
+keep it up
+keep the peace
+keep track
+key chain
+key ring
+key word
+keyboard shortcut
+kidney stone
+killed in action
+killer whale
+kind of like
+kind regards
+kitchen sink
+know any better
+know better
+know full well
+ladies and gentlemen
+laid up
+land of opportunity
+landing page
+language barrier
+last but not least
+last call
+last mile
+last moment
+last will and testament
+late model
+launch pad
+laundry detergent
+law of attraction
+law of the land
+lay bare
+lay claim
+lead by example
+lead the way
+lead time
+learning disability
+leave it alone
+leave it at that
+leave me alone
+leave of absence
+left and right
+left out
+left over
+left wing
+legal aid
+legal pad
+legally binding
+legislative branch
+lend itself to
+less and less
+less is more
+lessons learned
+let alone
+let it be
+let loose
+let me see
+let me tell you
+lethal injection
+letter of credit
+letter of intent
+letter of recommendation
+letter of the law
+letter opener
+library card
+lie detector
+life coach
+life expectancy
+life goes on
+life lesson
+life or death
+life savings
+life span
+life style
+life support
+like crazy
+like it or not
+like mad
+like magic
+like new
+like no other
+limited edition
+line by line
+line item
+line of attack
+line of business
+line of communication
+line of credit
+line of duty
+line of questioning
+line of scrimmage
+line of sight
+lip balm
+litter box
+little bit
+little one
+little wonder
+living memory
+living room
+living soul
+living trust
+living wage
+living will
+loaded word
+loading dock
+loan officer
+lock screen
+locked up
+lone gunman
+long division
+long lost
+long weekend
+look alike
+look and feel
+lose control
+lose patience
+lose track
+loss prevention
+lost wages
+loud and clear
+love affair
+love life
+love seat
+love triangle
+loved one
+lower case
+lunch break
+lying in wait
+mac and cheese
+macaroni and cheese
+mad scientist
+magic number
+magic wand
+magical thinking
+maid of honor
+maiden name
+mail order
+main character
+main drag
+main event
+main thing
+majority rule
+make a case
+make a decision
+make a difference
+make a fool of
+make a fortune
+make a habit of
+make a living
+make a point
+make all the difference
+make an appearance
+make an exception
+make an impression
+make an offer
+make believe
+make contact with
+make conversation
+make do
+make every effort
+make friends
+make good
+make good on
+make happen
+make love
+make matters worse
+make mention of
+make money
+make no mistake
+make or break
+make room
+make sure
+make the best of
+make the case for
+make the difference
+make the most of
+make time
+make way
+man down
+man enough
+man of the house
+managing director
+manila envelope
+many a time
+many thanks
+market leader
+marriage certificate
+marriage license
+martial law
+masking tape
+mason jar
+mass destruction
+mass market
+mass transit
+master of ceremonies
+master plan
+maternity leave
+matter at hand
+matter of course
+matter of time
+maximum security
+may as well
+me either
+me three
+me time
+mean well
+meaning of life
+meant to be
+measuring tape
+med school
+media outlet
+medical examiner
+medical marijuana
+meet and greet
+memorandum of understanding
+mental health
+mental illness
+mergers and acquisitions
+message board
+metal detector
+metric system
+middle age
+middle aged
+middle ages
+middle child
+middle management
+might as well
+mind control
+mind map
+mind set
+mind you
+minimum wage
+minor league
+minority leader
+mirror image
+miscarriage of justice
+missing in action
+missing link
+mistaken identity
+mitigating circumstances
+mix and match
+mobile home
+money laundering
+money market
+money order
+monkey bars
+moot point
+moral support
+morally bankrupt
+more and more
+more like
+more like it
+more to the point
+morning after
+morning person
+morning sickness
+most of all
+most of the time
+most wanted
+mother country
+mother figure
+motion sickness
+motor pool
+much appreciated
+much less
+much needed
+much obliged
+much too
+mug shot
+muscle memory
+mushroom cloud
+must watch
+mutual consent
+mutual fund
+my apologies
+my goodness
+my gosh
+naked eye
+name calling
+national anthem
+native speaker
+natural causes
+natural disaster
+near at hand
+near term
+neat and tidy
+necessary evil
+needless to say
+negotiating table
+nervous breakdown
+net neutrality
+net worth
+never fear
+never mind
+new normal
+new year
+news channel
+news cycle
+next level
+next of kin
+next to
+nice one
+niche market
+night after night
+night and day
+night school
+night stand
+no clue
+no comment
+no comparison
+no contest
+no fun
+no good
+no idea
+no joke
+no longer
+no matter
+no more
+no need
+no one
+no pressure
+no pun intended
+no question
+no sooner than
+no such thing
+no thanks
+no use
+no way
+no wonder
+noise pollution
+none other than
+none the less
+not a soul
+not again
+not an option
+not anymore
+not at all
+not by any means
+not exactly
+not going anywhere
+not guilty
+not in the slightest
+not least
+not so fast
+not to brag
+not to mention
+not to speak of
+nothing but
+nothing if not
+nothing less than
+nothing like
+nothing personal
+nothing short of
+nothing special
+now and again
+now and then
+now that
+nowhere in sight
+nowhere near
+nowhere to be found
+nuclear family
+null and void
+number one
+nurse practitioner
+nursery rhyme
+nursery school
+oath of office
+object lesson
+obstacle course
+obstruction of justice
+odd number
+odds are
+of a kind
+of a lifetime
+of all people
+of all places
+of all things
+of all time
+of its kind
+of sorts
+of the essence
+off and on
+off balance
+off the air
+oh my goodness
+oh my gosh
+oh well
+oh yeah
+oil rig
+old folks
+old guard
+old maid
+old school
+older adult
+on a daily basis
+on a full stomach
+on a mission
+on a regular basis
+on account of
+on alert
+on all fours
+on and off
+on and on
+on average
+on bail
+on balance
+on behalf of
+on command
+on condition that
+on credit
+on cue
+on display
+on end
+on equal terms
+on file
+on good terms
+on impulse
+on its merits
+on loan
+on notice
+on occasion
+on offer
+on one hand
+on order
+on par
+on principle
+on record
+on reflection
+on short notice
+on sight
+on silent
+on stage
+on strike
+on tape
+on task
+on that score
+on the air
+on the alert
+on the basis of
+on the books
+on the brink of
+on the case
+on the cheap
+on the contrary
+on the defensive
+on the hour
+on the lookout
+on the market
+on the off chance
+on the one hand
+on the outside
+on the part of
+on the pill
+on the regular
+on the safe side
+on the scene
+on the spectrum
+on the surface
+on the verge of
+on the way
+on top of
+on top of that
+on trial
+once again
+once or twice
+once over
+once upon a time
+one after the other
+one and a half
+one and all
+one and only
+one and the same
+one another
+one at a time
+one by one
+one hundred percent
+one more time
+one of these days
+one thing or another
+one way or another
+one way or the other
+only child
+only just
+only too
+open air
+open door
+open enrollment
+open fire
+open invitation
+open letter
+open mind
+open question
+opening hours
+opportunity cost
+or else
+or so
+or something
+or words to that effect
+order form
+order of business
+order of operations
+other half
+other than
+other things being equal
+other woman
+ought to
+out of a job
+out of action
+out of business
+out of context
+out of court
+out of fashion
+out of favor
+out of focus
+out of luck
+out of practice
+out of print
+out of service
+out of the way
+out of time
+out of tune
+out of turn
+out of work
+out sick
+out west
+out with it
+outside world
+over and above
+over and done
+over and done with
+over and out
+over and over
+over time
+ozone layer
+package deal
+paid up
+pain and suffering
+pain threshold
+paint job
+pair of scissors
+panic attack
+paper clip
+paper work
+parallel universe
+parochial school
+part and parcel
+part of speech
+part time
+partial to
+party line
+pass judgment
+passive income
+past due
+patrol officer
+pay gap
+pay homage to
+pay the rent
+payroll tax
+peace out
+peer group
+peer pressure
+penalty box
+people skills
+people watching
+pepper spray
+per capita
+percentage point
+performance anxiety
+periodic table
+permanent marker
+permanent resident
+person of interest
+personal best
+personal effects
+personal finance
+personal protective equipment
+personal space
+personal trainer
+personnel file
+petroleum jelly
+petty cash
+phantom limb
+phone book
+pick and choose
+pick up the phone
+picket fence
+picket line
+pie chart
+piece by piece
+piping hot
+pit bull
+pitch dark
+pivot table
+place an order
+plain and simple
+plain clothes
+plain old
+plain to see
+plan of action
+plan of attack
+plastic surgery
+play a part
+play a role
+play nice
+playing field
+plea bargain
+plea bargaining
+plugged in
+pocket money
+point of contact
+point of contention
+point of order
+pointer finger
+polar opposite
+police brutality
+police state
+political asylum
+political correctness
+political prisoner
+politically correct
+politically incorrect
+polling place
+popular opinion
+pork chop
+port of call
+positive reinforcement
+positive thinking
+poverty line
+powder room
+powdered milk
+power button
+power failure
+power grab
+power grid
+power of attorney
+power of the purse
+power outage
+power struggle
+power vacuum
+practical joke
+precious few
+precious little
+preferential treatment
+prepared statement
+present perfect
+present value
+press charges
+pressure cooker
+presumption of innocence
+price point
+price range
+pride of place
+primary election
+primary residence
+prime suspect
+prime time
+prisoner of war
+private eye
+private parts
+pro and con
+probable cause
+problem solving
+problem statement
+process of elimination
+product placement
+profit and loss
+profit margin
+profit sharing
+progress report
+project management
+prone to
+proof of concept
+proper noun
+protective order
+provided that
+public figure
+public knowledge
+public offering
+public record
+public transit
+public utility
+public works
+publicly held
+pumped up
+pun intended
+punch bowl
+punch line
+purchasing power
+pure and simple
+put a stop to
+put an end to
+put into effect
+put it mildly
+put it there
+put to good use
+put to the test
+put to use
+put to work
+put upon
+quality control
+quality of life
+quality over quantity
+quality time
+quarter of an hour
+question mark
+quick read
+quite a bit
+quite a few
+quite the contrary
+quite the opposite
+quotation marks
+race riot
+race track
+rag doll
+rallying point
+rate of return
+rather than
+reaction time
+read lips
+ready or not
+real estate
+real estate agent
+real live
+real quick
+real time
+real world
+reality show
+reality television
+reap the benefits
+rear end
+reasonable doubt
+received wisdom
+record book
+record player
+red light
+red line
+red velvet
+reference point
+regime change
+registered nurse
+remote access
+remote control
+rent control
+report card
+resident alien
+respite care
+rest assured
+rest in peace
+restricted area
+retirement community
+return fire
+return the favor
+revolving door
+right now
+right of way
+right off
+right side up
+right to remain silent
+right to work
+right wing
+rightly or wrongly
+ripple effect
+risk appetite
+risk factor
+risk management
+rite of passage
+road map
+rock and roll
+rock climbing
+rock hard
+rock on
+rocking chair
+role play
+role reversal
+roller coaster
+room and board
+room for doubt
+room service
+room temperature
+room to maneuver
+root beer
+root canal
+round and round
+round of applause
+round table
+round the corner
+rubber band
+rubbing alcohol
+rule book
+rules of the game
+run dry
+run the risk
+running commentary
+running mate
+safe deposit box
+safe house
+safe sex
+safe space
+safety pin
+salad bar
+sales force
+sales pitch
+sales rep
+sales representative
+same to you
+satellite television
+saving grace
+savings and loan
+say goodbye
+say grace
+say hello
+say no more
+scavenger hunt
+school of thought
+scratch that
+screen time
+screw it
+screwed up
+scroll bar
+sea level
+search and rescue
+second base
+second best
+second chance
+second cousin
+second home
+second in command
+second opinion
+second shift
+second thought
+second thoughts
+secondhand smoke
+secret ballot
+secret service
+secret weapon
+secretary of state
+see fit
+see the point
+see to it
+see ya
+see you
+seeing as
+selling point
+send word
+sense of direction
+sense of humor
+separation anxiety
+separation of powers
+septic tank
+serial killer
+serial number
+service dog
+set an example
+set foot
+set free
+set sail
+set the table
+set the tone
+set up camp
+sex appeal
+sex drive
+sexual predator
+sexual preference
+sexually transmitted disease
+sharing economy
+shed blood
+shelf life
+shell shock
+shift work
+shook up
+shop floor
+short circuit
+short cut
+short for
+short list
+short of
+short of breath
+short order
+short sale
+shots fired
+shoulder blade
+show business
+show of force
+show of hands
+sibling rivalry
+sick list
+side by side
+side note
+sign language
+sign of life
+silky smooth
+silly me
+simple as that
+simple interest
+since when
+single file
+single parent
+single story
+sinking feeling
+skill set
+sleep paralysis
+slide show
+sliding scale
+slot machine
+slowly but surely
+small claims court
+small fortune
+small screen
+small stuff
+small time
+smash hit
+smear campaign
+sneak peek
+so and so
+so as to
+so be it
+so called
+so help me
+so it goes
+so it seems
+so long as
+so much for
+so much so
+so much the better
+so that
+so to say
+so to speak
+so what
+soaking wet
+soap opera
+social circle
+social construct
+social distance
+social justice
+social media
+social safety net
+social security number
+soda fountain
+soda jerk
+soft on
+software developer
+sole proprietor
+someplace else
+something like
+something or other
+soon enough
+sooner rather than later
+sooner than later
+sought after
+soul mate
+sound asleep
+sound mind
+sound track
+soup kitchen
+spaced out
+speak ill of
+special counsel
+special delivery
+special interest
+special needs
+special prosecutor
+sperm donor
+sports bra
+spot check
+spring break
+spring training
+square footage
+stage fright
+stand guard
+stand trial
+standard operating procedure
+standard practice
+standard time
+standing ovation
+standing room
+stark naked
+start a family
+state line
+state of affairs
+state of emergency
+state of mind
+state trooper
+station wagon
+status quo
+status report
+status symbol
+statutory rape
+stay the night
+stay tuned
+steaming hot
+steering committee
+stem cell
+step change
+still life
+stock market
+stock option
+stone dead
+storm surge
+straight away
+straight edge
+straight forward
+straight man
+straight off
+straight up
+straw poll
+street name
+strictly speaking
+strike a balance
+strike price
+strike zone
+stripped down
+strong language
+strung out
+stuck on
+student loan
+student teacher
+study abroad
+stuffed animal
+subject matter
+substitute teacher
+success story
+such and such
+such as
+suffice it to say
+suit and tie
+sum of its parts
+sum total
+supply and demand
+supposed to
+sure enough
+surrogate mother
+survival instinct
+sweat equity
+sweet and sour
+sweet dreams
+sweet on
+table manners
+table tennis
+tail end
+take a chance
+take a look
+take a nap
+take a number
+take a risk
+take account of
+take aim
+take care of yourself
+take command
+take cover
+take delight in
+take flight
+take form
+take hold
+take home
+take into consideration
+take issue with
+take its course
+take no notice of
+take note
+take notes
+take notice
+take offense
+take orders
+take part
+take pity
+take pleasure
+take possession
+take pride
+take refuge
+take sides
+take steps
+take the initiative
+take the place of
+take the time
+take the trouble
+take time
+take time off
+take turns
+take up arms
+take up residence
+tap dance
+tape measure
+target audience
+task force
+tax avoidance
+tax bracket
+tax cut
+tax free
+tax year
+team building
+tear gas
+teddy bear
+tell all
+tell the difference
+tell you the truth
+tell you what
+temper tantrum
+term paper
+terminal illness
+terminally ill
+terms and conditions
+terms of service
+test drive
+test run
+test tube
+testing ground
+text messaging
+thank goodness
+thank you
+thank you very much
+thanks to
+that being said
+that did it
+that is
+that is it
+that is that
+that is to say
+that said
+that was it
+that will do
+the day after tomorrow
+the day before yesterday
+the heck out of
+the next best thing
+the other day
+the other way around
+the other way round
+the story goes
+the thing is
+the time has come
+the wrong side of
+then again
+then and there
+there and then
+there is no telling
+there we go
+there you are
+there you go
+there you have it
+these days
+these things happen
+thesis statement
+they say
+think again
+think aloud
+think better of
+think much of
+think out loud
+think straight
+think tank
+think twice
+thinly veiled
+third base
+third party
+third world
+this and that
+this is it
+this minute
+thought bubble
+thought out
+thought process
+three figures
+through with
+thumbs up
+tied up
+tight end
+time after time
+time and again
+time and material
+time and time again
+time capsule
+time clock
+time frame
+time is of the essence
+time is short
+time is up
+time machine
+time of day
+time off
+time out
+time served
+time slot
+time stamp
+time travel
+time warp
+time zone
+tiny house
+tired out
+tissue paper
+to a fault
+to a great extent
+to a large extent
+to and fro
+to be continued
+to be precise
+to begin with
+to blame
+to boot
+to do with
+to hell with
+to little avail
+to name a few
+to no avail
+to no end
+to reckon with
+to say nothing of
+to say the least
+to some extent
+to spare
+to start with
+to tell the truth
+to tell you the truth
+to that effect
+to that end
+to the contrary
+to the core
+to the extent that
+to the fore
+to the fullest
+to the rescue
+to the touch
+to this day
+to this end
+to what end
+toilet training
+too big to fail
+too far gone
+too much
+too much information
+top line
+top of the hour
+top priority
+top secret
+top spot
+top tier
+top to bottom
+topic of conversation
+tore up
+touch screen
+tour de force
+track and field
+track record
+trade balance
+trade mark
+trade secret
+trade show
+traffic stop
+travel agent
+traveling salesman
+treasure trove
+trial and error
+trick question
+trigger finger
+tropical storm
+true believer
+true or false
+truth be told
+turn a profit
+turn of events
+turn of phrase
+turn of the century
+twelfth grade
+twists and turns
+two by two
+ultimate sacrifice
+umbrella organization
+umbrella term
+under arrest
+under construction
+under cover of darkness
+under no circumstances
+under oath
+under the impression
+under the influence
+under way
+unfinished business
+unintended consequence
+until further notice
+until proven otherwise
+until such time as
+up against
+up and around
+up and down
+up and leave
+up and running
+up close
+up for sale
+up front
+up to
+up to a point
+up to now
+up until
+upper middle class
+upset stomach
+upside down
+upward mobility
+upward of
+upwards of
+use the restroom
+used to
+used up
+user base
+user name
+vacant lot
+value chain
+value judgment
+value proposition
+vantage point
+variable cost
+vast majority
+vending machine
+venture capital
+venture capitalist
+vested interest
+vice chair
+visually impaired
+vital sign
+vital signs
+voice mail
+voice of reason
+vote of confidence
+wait and see
+wait for it
+walking distance
+walled garden
+want in
+war of attrition
+war room
+warning sign
+washed out
+washed up
+waste of time
+watch list
+water cooler
+way of life
+way of thinking
+way to go
+way too
+weak spot
+web browser
+wee hours
+welcome back
+well and good
+well aware
+well being
+well deserved
+well off
+well versed
+were it not for
+western hemisphere
+what are you waiting for
+what can you do
+what do you know
+what do you mean
+what do you say
+what does it matter
+what for
+what have you
+what if
+what in the world
+what is more
+what it takes
+what next
+what of it
+what the heck
+what the hell
+what with
+what would you like
+whatever it takes
+whatever you do
+whatever you say
+wheelchair accessible
+when it comes to
+when the time comes
+which is which
+white collar
+white flight
+white paper
+who cares
+who knows
+why me
+why not
+wide open
+will power
+window of opportunity
+window of time
+winning streak
+winter wonderland
+wire transfer
+with an eye to
+with any luck
+with regard to
+with regards to
+with the passage of time
+within reach
+within reason
+without doubt
+without fail
+without incident
+without question
+witness protection
+witness stand
+wolf pack
+word problem
+word processor
+work ethic
+work in progress
+work permit
+work week
+working conditions
+working from home
+working hypothesis
+working knowledge
+working order
+working poor
+world record
+world view
+world war
+worse and worse
+worse off
+would like
+would you believe
+wrapped up
+wrapping up
+wrecking ball
+writ large
+wrong side
+wrongful death
+yes and no
+yet again
+you are welcome
+you got it
+you guys
+you know something
+you know what
+you never know
+you said it
+you see
+you tell me
+you were saying
+you would think
+yours sincerely
+zero tolerance

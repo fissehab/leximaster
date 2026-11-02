@@ -1,0 +1,90 @@
+# LexiMaster November 2026 phrases: meaning and usage review (fixes).
+# Scope: core.definition, usage_note, examples.* and us_usage of the 5,442 new phrase entries (American English, adult ESL learners).
+# Method: scripted scans of all entries (offensive/sexual/drug terms, British/Australian/cricket/rugby/football vocabulary and spellings,
+# examples that omit the phrase or use another sense, wiki markup and editor notes such as 'Can we verify', very short definitions,
+# register/us_usage contradictions, philosophy/theology examples) plus a full read of 741 entries spread across the alphabet and all three domains.
+# Fixes: wrong or misleading definitions, examples in the wrong sense or unnatural/obscure for learners, notes with errors, us_usage corrections.
+# Lines: 90. Format: key | field | new text.
+be-into | nuance.core.definition | To like something or someone a lot, or to be very interested in it, such as a hobby, a kind of music or a person.
+how-do-you-do | nuance.us_usage | formal or literary
+behind-the-curtain | nuance.examples.analytical | The documentary shows what happens behind the curtain when campaign donors help shape a party's platform.
+come-down | nuance.examples.everyday | Wait until the price comes down before you buy a new TV.
+come-down | nuance.examples.analytical | Mortgage rates usually come down when the Federal Reserve cuts interest rates.
+come-down | nuance.usage_note | Very common for things that fall or get lower: a tree comes down in a storm, and prices, rents and temperatures come down. Also "come down to" (depend on). Do not confuse it with "come down with" (start to get sick) or "come down on" (punish or criticize), which are separate phrases.
+go-all-the-way | nuance.examples.everyday | Our team went all the way to the state championship this year.
+get-a-leg-up | nuance.examples.everyday | My son got a leg up in his freshman year by taking summer classes.
+look-on-the-bright-side | nuance.examples.professional | The flight was canceled, but look on the bright side: the airline paid for our hotel.
+make-out-with | nuance.examples.everyday | Everyone at school heard that Jake made out with Maria at the party.
+make-out-with | nuance.examples.professional | HR reminded staff that making out with a coworker at the office party is not a good idea.
+make-out-with | nuance.examples.analytical | In many teen movies, the plot turns when the shy hero finally makes out with his crush.
+have-in-mind | nuance.examples.professional | When we built the app, we had small businesses in mind.
+key-chain | nuance.examples.analytical | Many companies give away key chains with their logo because people carry them every day.
+moot-point | nuance.examples.analytical | Once the law was repealed, the question of how to enforce it became a moot point.
+same-to-you | nuance.examples.professional | "Thanks for your help today, and have a great holiday." "Same to you!"
+same-to-you | nuance.examples.analytical | Replies like "same to you" return the speaker's good wish instead of just saying thanks.
+not-a-soul | nuance.examples.professional | When I got to the office at 6 a.m., there was not a soul at the front desk.
+take-time-off | nuance.examples.professional | Employees who want to take time off must ask at least two weeks in advance.
+for-your-information | nuance.examples.professional | For your information, the office will be closed on Monday for the holiday.
+talk-dirty | nuance.core.definition | To use rude or vulgar language, usually about sex.
+by-virtue-of | nuance.usage_note | A formal phrase used in legal, official and written language: "By virtue of her seniority, she leads the meeting." Some wedding officials say "by virtue of the authority vested in me." In casual talk, use "because of."
+for-a-while | nuance.core.definition | For some time; for a period that is not exactly stated, which can be short or fairly long.
+for-a-while | nuance.usage_note | Very common in speech and writing: "Want to stay for a while?" "I haven't seen him for a while" (for quite a long time). It can describe a period now, in the past or in the future. "For a little while" makes it shorter; "for quite a while" makes it longer.
+cry-for-help | nuance.examples.everyday | When my quiet nephew started skipping meals and staying in his room, we saw it as a cry for help.
+drop-a-bomb | nuance.core.definition | To suddenly tell people shocking or upsetting news.
+drop-a-bomb | nuance.usage_note | Used in casual talk: "She dropped a bomb on us at dinner." The fuller form "drop a bombshell" means the same and sounds a little more standard. Use "on" for the people who hear the news. In crude slang it can also mean using the toilet, so be aware of that meaning.
+for-here | nuance.examples.professional | At the coffee shop, our manager ordered six lattes for here because we were meeting at a table inside.
+frame-up | nuance.core.definition | To make an innocent person look guilty of a crime with false evidence or lies; as a noun, a frame-up is such a dishonest plan.
+frame-up | nuance.examples.everyday | My brother says it was a frame-up and that he never ate the last slice of cake.
+frame-up | nuance.examples.professional | The defense lawyer argued that the case against her client was a frame-up by two officers.
+frame-up | nuance.examples.analytical | The documentary argues that the murder charge was a frame-up built on one false witness.
+get-out-of | nuance.examples.analytical | Surveys show that many workers try to get out of meetings they think are a waste of time.
+go-for-it | nuance.examples.analytical | Career coaches often tell people to go for it and apply for jobs even when they meet only some of the requirements.
+just-a-second | nuance.examples.analytical | When the professor said the results proved her point, a student raised his hand and said, "Just a second, the sample was only ten people."
+look-back | nuance.examples.analytical | When historians look back on the 1930s, they often see the Great Depression as a turning point for the US government.
+nothing-like | nuance.usage_note | Two main uses: "He's nothing like his brother" (not at all similar) and the positive "There's nothing like a hot shower after work" (nothing is better). For amounts, Americans say "nowhere near as hard as I thought"; "nothing like as hard" is mainly British.
+one-at-a-time | nuance.examples.analytical | In the study, children solved puzzles faster when the teacher gave them the steps one at a time.
+rear-end | nuance.examples.everyday | A guy rear-ended me at the stop light, and now the rear end of my car is dented.
+see-to-it | nuance.examples.everyday | Don't worry about the kids; I'll see to it that they get home safe.
+splash-around | nuance.core.definition | To play or move around in water so that it splashes; also, with money ("splash money around"), to spend it freely and showily so people notice.
+splash-around | nuance.usage_note | The everyday meaning is playing in water: "The kids splashed around in the pool all afternoon." For spending, the usual pattern is "splash money around" or "splash cash around," meaning spending to impress. Both uses are casual.
+splash-around | nuance.examples.everyday | The kids splashed around in the lake until their lips turned blue.
+stand-back | nuance.examples.analytical | When you stand back and look at ten years of data, a clear pattern of rising costs appears.
+after-all | nuance.examples.analytical | The new law may not hurt small businesses after all, according to the latest survey.
+all-right | nuance.examples.analytical | Reviewers said the plan was all right in general but needed more detail on costs.
+and-so-on | nuance.examples.analytical | The survey asked about income, age, education and so on.
+as-if | nuance.examples.analytical | Prices kept rising as if the Federal Reserve had never raised interest rates.
+as-much-as | nuance.examples.analytical | As much as voters say they want change, many still choose the candidate they already know.
+as-such | nuance.examples.analytical | The report is a first draft and, as such, should not be quoted in the press.
+at-one-time | nuance.examples.analytical | At one time, most American workers had a pension; today most rely on 401(k) plans.
+come-after | nuance.examples.analytical | Federal regulators came after the bank for hiding its losses from investors.
+come-by | nuance.examples.analytical | Census workers come by homes that did not mail back their forms.
+come-up | nuance.examples.analytical | The question of school funding comes up in almost every local election.
+come-what-may | nuance.examples.analytical | Many immigrant families promise to send their children to college, come what may.
+for-good | nuance.examples.analytical | Economists are not sure whether the factory jobs have left the region for good.
+from-now-on | nuance.examples.analytical | The study's authors said that from now on they will share all of their data online.
+get-on-with | nuance.examples.analytical | After the storm, most residents simply cleaned up and got on with their lives.
+get-out-of-here | nuance.examples.analytical | When the announcer said the ticket prices had doubled, many fans reacted with a loud "Get out of here!"
+get-up | nuance.examples.analytical | Studies show that people who get up at the same time every day tend to sleep better.
+in-good-time | nuance.examples.analytical | The agency says it will release the full report in good time, once the review is finished.
+keep-up-with | nuance.examples.analytical | Many schools struggle to keep up with changes in technology.
+look-at | nuance.examples.analytical | The researchers looked at ten years of data from small hospitals.
+make-over | nuance.examples.analytical | The city plans to make over the old train station into a public market.
+make-way | nuance.examples.analytical | Several old buildings were torn down to make way for the new highway.
+no-more | nuance.examples.analytical | After the factory closed, the town had no more large employers.
+not-at-all | nuance.examples.analytical | The results were not at all what the scientists expected.
+put-up | nuance.examples.analytical | Developers put up hundreds of new homes in the area between 2010 and 2020.
+say-no-more | nuance.examples.analytical | In the comedy, whenever someone hints at a secret, the nosy neighbor winks and says, "Say no more."
+so-called | nuance.examples.analytical | The so-called gig economy includes drivers, delivery workers and freelancers.
+take-up | nuance.examples.analytical | The Supreme Court agreed to take up the case next year.
+think-much-of | nuance.examples.analytical | Many economists did not think much of the plan, saying it would cost too much.
+think-of | nuance.examples.analytical | Most Americans think of the Fourth of July as a day for family and fireworks.
+time-and-again | nuance.examples.analytical | Studies have shown time and again that regular exercise lowers the risk of heart disease.
+time-and-time-again | nuance.examples.analytical | Time and time again, surveys show that workers value flexible hours as much as higher pay.
+to-that-end | nuance.examples.analytical | The city wants to reduce traffic deaths; to that end, it has lowered speed limits on busy streets.
+to-the-point | nuance.examples.analytical | The judge's ruling was short and to the point.
+to-this-end | nuance.examples.analytical | The school wants every child to read by third grade, and to this end it has hired more reading teachers.
+up-until | nuance.examples.analytical | Up until the 1960s, most American homes had only one telephone.
+that-said | nuance.examples.analytical | The new drug works well in most patients; that said, it can cause serious side effects.
+keep-out | nuance.examples.analytical | The new fence is meant to keep out deer, which have been eating the crops.
+go-from-strength-to-strength | nuance.us_usage | mainly British
+tuck-into | nuance.core.definition | To put or fit something snugly into a small space, like a note into an envelope; also, informally, to start eating a meal eagerly.
