@@ -1,0 +1,144 @@
+# November 2026 phrases left out after review. "key | kept-key": a second form
+# of an entry the app keeps (a clipped idiom, an inflected form, a less
+# American variant). A key alone: a misspelling, a crude slang item, or a
+# phrase that is only its words.
+cake-walk | cakewalk
+grey-area | gray-area
+macaroni-and-cheese | mac-and-cheese
+loose-end | loose-ends
+live-up | live-up-to
+rounded-up | round-up
+falling-asleep | fall-asleep
+figuring-out | figure-out
+get-wind | get-wind-of
+kindred-soul | kindred-spirit
+jury-service | jury-duty
+hit-off | hit-it-off
+nick-of-time | in-the-nick-of-time
+over-and-done | over-and-done-with
+insult-to-injury | add-insult-to-injury
+settle-upon | settle-on
+sign-onto | sign-on
+the-other-way-round | the-other-way-around
+off-the-beaten-track | off-the-beaten-path
+off-the-scale | off-the-charts
+pro-and-con | pros-and-cons
+second-thought | on-second-thought
+killing-time | kill-time
+wrapping-up | wrap-up
+give-into
+front-bumper
+soft-on
+sit-on-it
+break-the-seal
+not-an-option
+hang-off
+tore-up
+
+# Senior review of the word list (November 2026).
+# Duplicate: hyphenated/spaced spelling of a word Americans write solid; the solid form is in the lexicon
+grass-roots | grassroots
+none-the-less | nonetheless
+under-way | underway
+up-front | upfront
+left-over | leftover
+# Duplicate: article-less clip of an idiom the lexicon already has with "the"
+best-of-both-worlds | the-best-of-both-worlds
+blind-leading-the-blind | the-blind-leading-the-blind
+powers-that-be | the-powers-that-be
+day-after-tomorrow | the-day-after-tomorrow
+day-before-yesterday | the-day-before-yesterday
+# Duplicate: fragment of a fuller idiom; learners meet it only inside the full form, which is in the lexicon
+cats-and-dogs | rain-cats-and-dogs
+cold-blood | in-cold-blood
+dead-horse | beat-a-dead-horse
+due-course | in-due-course
+end-of-the-day | at-the-end-of-the-day
+fast-one | pull-a-fast-one
+fits-and-starts | in-fits-and-starts
+full-well | know-full-well
+grand-scheme | grand-scheme-of-things
+hard-feelings | no-hard-feelings
+high-road | take-the-high-road
+lay-it-on | lay-it-on-thick
+little-bit | a-little-bit
+living-memory | in-living-memory
+long-arm | long-arm-of-the-law
+new-leaf | turn-over-a-new-leaf
+no-strings | no-strings-attached
+off-chance | on-the-off-chance
+same-boat | in-the-same-boat
+small-stuff | sweat-the-small-stuff
+test-of-time | stand-the-test-of-time
+the-dumps | down-in-the-dumps
+thick-and-thin | through-thick-and-thin
+top-it-all | top-it-all-off
+two-birds-with-one-stone | kill-two-birds-with-one-stone
+waiting-to-happen | accident-waiting-to-happen
+beaten-track | off-the-beaten-path
+tell-you-the-truth | to-tell-you-the-truth
+# Duplicate: same expression with/without "it" or the article; keep the form Americans use most
+in-the-thick-of-it | in-the-thick-of
+sleep-on | sleep-on-it
+take-to-heart | take-it-to-heart
+draw-a-line | draw-the-line
+on-the-alert | on-alert
+be-on-the-lookout | on-the-lookout
+to-tell-the-truth | to-tell-you-the-truth
+half-dozen | half-a-dozen
+a-hundred-percent | one-hundred-percent
+leave-it-be | let-it-be
+back-to-the-wall | back-against-the-wall
+keep-an-eye-open | keep-an-eye-out
+cut-the-umbilical-cord | cut-the-cord
+# Duplicate: inflected or participle form of an entry the lexicon has (the kept form is the one Americans use as the headword)
+lost-ground | lose-ground
+showing-off | show-off
+lying-in-wait | lie-in-wait
+lay-up | laid-up
+vital-sign | vital-signs
+upward-of | upwards-of
+# Duplicate: "upon" doublet of a phrasal verb; American English uses the "on" form (or the stronger variant) far more
+act-upon | act-on
+frown-upon | frown-on
+descend-upon | descend-on
+prey-upon | prey-on
+shed-light-upon | shed-light-on
+stumble-on | stumble-upon
+# Duplicate: spelling/form variant of an entry kept
+get-outta-here | get-out-of-here
+in-and-of-themselves | in-and-of-itself
+you-are-welcome | you're-welcome
+log-onto | log-into
+think-aloud | think-out-loud
+# Duplicate: British variant of an American expression the lexicon has
+lost-for-words | at-a-loss-for-words
+man-in-the-street | man-on-the-street
+small-print | fine-print
+under-the-carpet | under-the-rug
+answer-back | talk-back
+take-account-of | take-into-account
+top-up | top-off
+scrape-along | scrape-by
+tried-and-tested | tried-and-true
+breathing-space | breathing-room
+# Not American: chiefly British (or Indian English) in this sense; American learners would sound off using it
+early-days
+opposite-number
+muck-up
+pocket-money
+step-change
+straight-away
+hot-on
+pin-drop
+three-figures
+# Offensive: an ethnic/immigrant insult aimed at exactly the people this app teaches; little recognition value beyond the insult
+fresh-off-the-boat
+# Dated: rare in current American English (writer flag)
+pitch-into
+# Not a fixed expression: free combination of its words (or a bare number)
+call-an-ambulance
+birthday-card
+one-and-a-half
+over-the-head
+wrong-side

@@ -265,3 +265,1016 @@ work out
 wrap up
 write down
 zone out
+
+# Common American phrasal verbs from Wiktionary's multiword entries, chosen by frequency
+# in American books (Google Books Ngram, 2015-2019) and reviewed by hand (November 2026).
+ache for
+act on
+act upon
+advise against
+age out
+aim at
+allow for
+answer back
+answer for
+ante up
+ask around
+ask out
+auction off
+average out
+back away
+back onto
+bail out
+balance out
+bang into
+bang out
+bargain for
+bargain on
+barge into
+battle it out
+be into
+be on to
+bear down
+bear down on
+bear out
+bear with
+beat back
+beat down
+beat out
+beat up
+beat up on
+beef up
+beg off
+belt out
+bend over
+bid up
+bite back
+bite off
+blank on
+blank out
+blast off
+bleed out
+block off
+block out
+block up
+blot out
+blow apart
+blow away
+blow in
+blow past
+blow through
+board up
+bolt down
+bone up
+bottom out
+bounce around
+bounce off
+bow out
+bowl over
+brag on
+break it down
+break with
+brew up
+bring along
+bring off
+bring out
+bring over
+brush aside
+brush past
+bubble over
+bubble up
+buckle down
+buckle under
+buddy up
+bug out
+build into
+build out
+bump up
+bunch up
+bundle up
+burn down
+burn off
+burn through
+burst into
+burst out
+bust into
+bust out
+bust up
+butt out
+buy off
+buy out
+buy up
+buzz in
+buzz off
+call over
+call upon
+camp out
+camp out on
+care for
+carry away
+carry forward
+carry over
+carry through
+carve up
+chalk up
+chance upon
+change out
+change up
+chase after
+chase away
+chase down
+chase off
+cheat on
+check off
+check over
+check up
+chew on
+chew up
+chicken out
+chip at
+choke down
+choke off
+choke on
+chop down
+churn out
+churn up
+clamp down on
+class up
+claw back
+clean off
+clean up after
+click off
+click through
+climb up
+cling on
+close in
+close in on
+clue in
+clutter up
+comb through
+come about
+come after
+come at
+come away
+come back from
+come between
+come by
+come down
+come down on
+come down to
+come down upon
+come forward
+come from
+come in
+come off
+come on in
+come on over
+come on to
+come out
+come out with
+come round
+come through
+come under
+come up
+come up against
+come up to
+come upon
+comment out
+contend with
+contract out
+copy down
+cordon off
+cough up
+count against
+count down
+count in
+count off
+count out
+count towards
+count up
+cozy up
+cozy up to
+crack open
+cramp up
+crank out
+crap out
+crash out
+crawl with
+creep in
+creep out
+creep up
+creep up on
+cross off
+crowd out
+cry it out
+cry out for
+cuddle up
+curl up
+cut through
+damp down
+dance around
+dash off
+date back
+dawn upon
+deal in
+decide on
+descend on
+descend upon
+dial back
+dial down
+dial up
+die away
+dig around
+dig down
+dig out
+dispose of
+dive in
+divide up
+do away with
+do up
+double back
+double down
+double over
+double up
+drag down
+drag into
+drag up
+draw back
+draw down
+dream up
+dredge up
+drink up
+drive at
+drive down
+drop behind
+drown out
+drum up
+duck down
+duck out
+dump on
+dump out
+dust down
+dust off
+dust up
+dwell upon
+eat away at
+eat into
+edge out
+edit out
+enter into
+even out
+even up
+eye up
+face off
+factor in
+factor out
+fade away
+fade in
+fall away
+fall back on
+fall down
+fall down on
+fall in with
+fall over
+fall under
+fan out
+feed into
+feed off
+feed on
+feel out
+fence off
+ferret out
+fight it out
+figure on
+figuring out
+file out
+file past
+filter down
+filter out
+finish out
+fire away
+fire off
+fish out
+fit into
+fit together
+flag up
+flake off
+flame out
+flare out
+flick through
+flip off
+flip over
+float around
+flock together
+flop down
+fluff up
+fly apart
+fly into
+fly off
+fog up
+fold down
+fold out
+fold up
+follow along
+fool with
+forge ahead
+fork out
+fork over
+frame up
+free up
+freeze out
+freeze over
+frown on
+frown upon
+fuel up
+fuss over
+gang up
+gas up
+gear up
+geek out
+get about
+get ahead of
+get around to
+get at
+get away with
+get back at
+get down on
+get down to
+get in on
+get into
+get on it
+get on with
+get out of
+get round to
+get straight
+get up
+get up to
+get with it
+gin up
+give into
+give it up
+give off
+give out
+glaze over
+go about
+go after
+go against
+go around
+go at it
+go back on
+go back to
+go by
+go down
+go down with
+go in for
+go in on
+go off
+go round
+go through with
+go together
+go towards
+go under
+go up
+go up against
+grandfather in
+grapple with
+grind down
+grind out
+grind up
+grow apart
+grow into
+grow on
+grow out
+grow out of
+guard against
+gum up
+gun down
+gun for
+hack away
+hail from
+hammer out
+hang off
+hang onto
+happen across
+happen along
+happen upon
+hatch out
+hate on
+haul in
+haul off
+haul out
+haul up
+have against
+have down
+have it out
+have over
+heal up
+heap on
+help along
+help out
+hide away
+hide behind
+hide out
+hike up
+hinge upon
+hire out
+hit off
+hit up
+hit upon
+hitch up
+hold against
+hold back on
+hold down
+hole up
+hollow out
+hone in
+hook it up
+hop in
+horn in
+hum along
+hunch over
+hunt out
+hush up
+improve upon
+inform on
+jazz up
+jump around
+jump out
+jump up
+keep around
+keep at
+keep away
+keep away from
+keep back
+keep from
+keep off
+keep out
+keep out of
+keep to
+keep up with
+kick around
+kick down
+kick over
+kick up
+kid around
+kneel down
+knock back
+knock into
+knuckle down
+knuckle under
+lace up
+lap up
+latch on
+latch onto
+laugh off
+lawyer up
+lay aside
+lay into
+lay up
+layer up
+lead on
+lead up to
+leaf through
+leak out
+lean in
+lean into
+lean towards
+leap ahead
+leap at
+lease out
+leave aside
+let in on
+let on
+level out
+level up
+level with
+lie ahead
+lie around
+lie behind
+lift off
+lift up
+line up behind
+listen in
+listen up
+live down
+live out
+live through
+live up
+load down
+lock away
+lock down
+lock into
+log into
+log onto
+long for
+look ahead to
+look at
+look back
+look down
+look down upon
+look in on
+look like
+look past
+look through
+luck out
+major in
+make for
+make of
+make off
+make off with
+make out
+make out with
+make over
+man up
+marry into
+marry off
+mash up
+mask up
+match up
+max out
+measure out
+measure up
+mellow out
+mess about
+mess with
+mill around
+minor in
+mop up
+mouth off
+move along
+move in on
+move over
+mow down
+muck up
+munch on
+muster up
+nail down
+name after
+nip at
+nose around
+offer up
+order around
+own up
+pack in
+pack it in
+pack on
+pad out
+paint over
+pair off
+pair up
+pal around
+pan out
+part with
+pass along
+pass as
+pass for
+pass off as
+pass through
+pat down
+patch together
+patch up
+pay down
+peel away
+peel off
+peel out
+pencil in
+pencil out
+peter out
+phase in
+phase out
+pick apart
+pick it up
+pick over
+pick through
+pile on
+pile out
+pin down
+pin up
+pitch into
+plan on
+play along
+play around
+play into
+play out
+play up
+play up to
+plot out
+plow into
+plow through
+pluck out
+plug into
+plug up
+plunge into
+poke around
+poke out
+pony up
+pop off
+pop out
+portion out
+post up
+pound out
+pour in
+pour out
+power off
+power through
+press down
+pretty up
+prevail upon
+prey upon
+prick up
+print off
+print up
+puff out
+pull apart
+pull down
+pull for
+pull into
+pull on
+pump out
+punch down
+punch up
+push away
+push over
+push through
+put across
+put down to
+put it down
+put up
+put up to
+puzzle out
+puzzle over
+rag on
+rain down
+rain out
+rake in
+rake up
+rally around
+rally behind
+ratchet up
+rattle around
+reach down
+reach for
+read along
+read off
+read out
+read over
+read through
+read up
+rear up
+reckon on
+reckon with
+rein in
+remark on
+rent out
+report back
+rest on
+result in
+revert back
+revolve around
+ride along
+rig up
+rinse out
+rip apart
+rip into
+rip out
+rock out
+roll off
+roll on
+roll over
+root around
+rope in
+rope into
+rope off
+rough out
+rough up
+round down
+round up
+rounded up
+rub down
+rub off on
+run across
+run after
+run against
+run ahead
+run along
+run around
+run around with
+run away from
+run behind
+run off with
+run out on
+run up against
+run up on
+run with
+rush in
+rush out
+saddle up
+sail through
+scale back
+scale down
+scale up
+scare away
+scare off
+scoop up
+scope out
+scout out
+scrape along
+scrape together
+scrape up
+scratch out
+screen off
+screen out
+screw around
+screw with
+scrub in
+seal off
+seal up
+search out
+see about
+see past
+see through
+see to
+seize on
+send in
+send out
+send out for
+serve up
+set about
+set in
+set out
+settle for
+settle on
+settle upon
+sew up
+shack up
+shake down
+shake out
+shake up
+shave off
+shell out
+shine through
+ship out
+shoot back
+shoot down
+shoot it out
+short out
+shout down
+shout out
+shovel out
+show around
+showing off
+shuffle off
+shy away from
+sift out
+sift through
+sign away
+sign onto
+sign over
+sing along
+single out
+sit around
+sit back
+sit in on
+sit in with
+sit on it
+sit through
+size up
+skim off
+skim through
+skip out
+skirt around
+slap on
+sleep around
+sleep off
+sleep over
+slice up
+slim down
+slip away
+slip by
+slip into
+slip off
+slip through
+slump down
+smash up
+smell out
+smoke out
+smooth over
+snap back
+snap out of
+snap up
+sneak around
+sneak in
+sneak out
+sneak past
+sneak up
+sniff around
+sniff out
+snoop around
+snow under
+snuggle up
+soak in
+soften up
+soldier on
+sort through
+sound off
+sound out
+sour on
+speak for
+spill out
+spin out
+spin up
+spit up
+splash around
+splash out
+spout off
+spring back
+spring for
+sprout up
+spur on
+spy on
+squeeze in
+squeeze into
+stack up
+staff up
+stake out
+stall out
+stand around
+stand back
+stand behind
+stand between
+stand in for
+stand off
+stand together
+stand up against
+stand with
+stare down
+start in on
+stave off
+stay over
+steam up
+step forward
+step into
+step off
+stick it out
+stink up
+stitch together
+stomp on
+stomp out
+stop up
+storm off
+storm out
+stow away
+strap on
+strike up
+string along
+string out
+string together
+strip away
+strip off
+strip out
+study up on
+stumble across
+stumble into
+stumble on
+stumble onto
+stumble upon
+sub in
+suffer from
+suit up
+swallow up
+swap in
+swap out
+swear at
+swear in
+sweat out
+sweep aside
+sweep away
+sweep up
+swing back
+switch out
+switch up
+tag on
+tail off
+take away from
+take in
+take off
+take up
+take up with
+talk back
+talk down
+talk out
+tally up
+tank up
+tap into
+tap out
+tape off
+tape up
+team up with
+tear away
+tear into
+tear off
+tear out
+tease apart
+tease out
+tell on
+test out
+think back
+think highly of
+think of
+think out
+think up
+throw back
+throw in
+throw in with
+throw on
+thumb through
+tick away
+tick by
+tick off
+tide over
+tie back
+tie in
+tie in with
+tie into
+tie off
+tip over
+top out
+top up
+toss around
+toss away
+toss in
+toss out
+total up
+touch off
+touch upon
+tough it out
+towel off
+tower over
+trade in
+trade up
+trail off
+trickle down
+trim down
+trip over
+trip up
+trot off
+tuck away
+tuck in
+tuck into
+turn against
+type out
+type up
+urge on
+usher in
+verge on
+vibe with
+vomit up
+vote out
+wade through
+wait around
+wait out
+wait up
+walk around
+walk away
+walk away from
+walk in on
+walk into
+walk off
+walk off with
+walk out
+walk out on
+wall off
+wander off
+want out
+warn off
+wash away
+wash out
+water down
+wave through
+weigh on
+well up
+wheel out
+whip out
+whip through
+whisk away
+white out
+wiggle out of
+win back
+win out
+wipe down
+wipe up
+wise up
+work around
+work off
+work on
+work over
+work through
+work up
+work up to
+wrap around
+wrestle with
+write off
+write up
+yell out
+zero out
+zoom in on

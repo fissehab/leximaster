@@ -1,0 +1,409 @@
+[
+ {
+  "word": "dark web",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˈdɑɹk ˌwɛb/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "Hidden websites that need special software to reach and are often used to sell illegal goods or stolen data anonymously."
+    ]
+   }
+  ],
+  "etymology": "From dark (hidden) + web (the World Wide Web); in wide use since the 2010s.",
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "Hidden websites that need special software to reach and are often used to sell illegal goods or stolen data anonymously."
+   },
+   "pronunciation": {
+    "ipa": "/ˈdɑɹk ˌwɛb/",
+    "respelling": "DAHRK web",
+    "tip": "Stress DARK, like other compounds (a DARK web, not a dark WEB). Say the r in \"dark\"; Americans don't drop it."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "technical"
+   ],
+   "connotation": "Negative: it suggests crime, stolen data and danger, though some people use it for privacy.",
+   "usage_note": "Common in American news and security warnings: \"Your password was found on the dark web.\" Usually said with \"the\". People often mix it up with the \"deep web\", which is any page search engines can't find, such as your online bank account. The dark web is a small, hidden part of it.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "deep web",
+     "note": "The deep web is everything search engines don't index (email, bank pages); the dark web is the small hidden part reached with special tools like Tor."
+    },
+    {
+     "vs": "black market",
+     "note": "A black market is any illegal trade; the dark web is one place online where such trade happens."
+    }
+   ],
+   "antonyms": [
+    "surface web",
+    "open web"
+   ],
+   "collocations": [
+    "on the dark web",
+    "sold on the dark web",
+    "dark web marketplace",
+    "dark web monitoring",
+    "found on the dark web"
+   ],
+   "examples": {
+    "everyday": "My bank emailed me that my old password showed up on the dark web, so I changed it.",
+    "professional": "Our security team scans the dark web for any of our customers' leaked data.",
+    "analytical": "The dark web complicates law enforcement, since anonymity protects both dissidents and drug dealers."
+   },
+   "analogy": "Like a back alley of the internet with no street signs, reachable only if you know the hidden door.",
+   "etymology": "From dark (hidden) + web (the World Wide Web); in wide use since the 2010s.",
+   "common_mistakes": [
+    "Using it for the whole hidden internet (that is the deep web).",
+    "Leaving out \"the\": say \"on the dark web\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "Third World",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌθɝd ˈwɝld/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "An older term for the poorer, less industrialized countries of the world; today \"developing countries\" is preferred."
+    ]
+   }
+  ],
+  "etymology": "From French tiers monde, coined in 1952 by Alfred Sauvy on the model of the \"Third Estate\".",
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "An older term for the poorer, less industrialized countries of the world; today \"developing countries\" is preferred."
+   },
+   "pronunciation": {
+    "ipa": "/ˌθɝd ˈwɝld/",
+    "respelling": "thurd WURLD",
+    "tip": "Stress WORLD. Both words have the American r-colored vowel /ɝ/; keep the th in \"third\" as /θ/ (tongue between the teeth), not t or s."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Negative or dated: many people find it condescending, so careful speakers avoid it.",
+   "usage_note": "Americans still hear it, often as an adjective (\"Third World conditions\"), but in news, schools and at work \"developing countries\", \"low-income countries\" or \"the Global South\" is preferred. Saying a place \"looks Third World\" can offend. It began in the Cold War: the First World was the US and its allies, the Second the Soviet bloc, the Third the rest.",
+   "word_family": [
+    "Third-World (adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "developing countries",
+     "note": "The neutral, respectful term used today for the same countries."
+    },
+    {
+     "vs": "Global South",
+     "note": "A newer term used in politics and academia that avoids ranking countries."
+    }
+   ],
+   "antonyms": [
+    "developed countries",
+    "First World"
+   ],
+   "collocations": [
+    "Third World countries",
+    "Third World debt",
+    "Third World conditions",
+    "the developing world"
+   ],
+   "examples": {
+    "everyday": "My grandfather still says \"Third World,\" but my teacher told us to say \"developing countries.\"",
+    "professional": "The report replaced the phrase \"Third World\" with \"low- and middle-income countries.\"",
+    "analytical": "The term \"Third World\" began as a Cold War category of nonaligned nations before it came to mean poverty."
+   },
+   "analogy": "",
+   "etymology": "From French tiers monde, coined in 1952 by Alfred Sauvy on the model of the \"Third Estate\".",
+   "common_mistakes": [
+    "Using it in polite or professional speech, where it can offend.",
+    "Writing it in lowercase when used as a name (\"the Third World\")."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "Middle Ages",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌmɪdəl ˈeɪdʒəz/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "The period of European history from about AD 500 to 1500, between the fall of Rome and the Renaissance."
+    ]
+   }
+  ],
+  "etymology": "A translation of Latin medium aevum, \"the middle age\", used by Renaissance scholars.",
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "The period of European history from about AD 500 to 1500, between the fall of Rome and the Renaissance."
+   },
+   "pronunciation": {
+    "ipa": "/ˌmɪdəl ˈeɪdʒəz/",
+    "respelling": "mid-uhl AY-juhz",
+    "tip": "Stress AGES. In \"middle\" the dd is a quick, soft d and the ending is a syllabic l: MID-l. \"Ages\" has two syllables: AY-juhz."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "academic"
+   ],
+   "connotation": "Neutral as history; jokingly negative for something old-fashioned (\"That rule is straight out of the Middle Ages\").",
+   "usage_note": "Always plural, with capitals and \"the\": the Middle Ages. Americans use it in history class and, in casual talk, to mock outdated things (\"My dad's phone is from the Middle Ages\"). The adjective is \"medieval\".",
+   "word_family": [
+    "medieval (adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "the Dark Ages",
+     "note": "An older, judgmental name for the early Middle Ages that historians now avoid."
+    },
+    {
+     "vs": "middle age",
+     "note": "Middle age (singular, lowercase) is the time of a person's life around 45 to 65."
+    }
+   ],
+   "antonyms": [
+    "modern times",
+    "the modern era"
+   ],
+   "collocations": [
+    "in the Middle Ages",
+    "during the Middle Ages",
+    "the late Middle Ages",
+    "the early Middle Ages",
+    "straight out of the Middle Ages"
+   ],
+   "examples": {
+    "everyday": "We toured a castle in Germany that was built in the Middle Ages.",
+    "professional": "Our sales process is stuck in the Middle Ages; we still fax contracts.",
+    "analytical": "Monasteries preserved classical learning in the West throughout the Middle Ages."
+   },
+   "analogy": "Like the long middle chapter of Europe's story, between ancient Rome and the modern world.",
+   "etymology": "A translation of Latin medium aevum, \"the middle age\", used by Renaissance scholars.",
+   "common_mistakes": [
+    "Saying \"the Middle Age\" (it is plural).",
+    "Confusing it with \"middle age\", a time of life.",
+    "Leaving out \"the\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "free world",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌfɹi ˈwɝld/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "The democratic countries, especially the US and its allies, as opposed to countries ruled by dictators; first used in the Cold War."
+    ]
+   }
+  ],
+  "etymology": "Popular in the 1940s and 1950s, during World War II and the Cold War.",
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "The democratic countries, especially the US and its allies, as opposed to countries ruled by dictators; first used in the Cold War."
+   },
+   "pronunciation": {
+    "ipa": "/ˌfɹi ˈwɝld/",
+    "respelling": "free WURLD",
+    "tip": "Stress WORLD. Say the r clearly in both words, and blend \"world\" as one syllable: WURLD, not wor-ld."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Positive in American political speech; some people hear it as old-fashioned or self-congratulating.",
+   "usage_note": "Mostly heard with \"the\" in speeches, news and history. The US president is often called \"the leader of the free world\", sometimes jokingly. It can sound like Cold War language.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "the West",
+     "note": "\"The West\" is cultural and geographic (Europe and North America); \"the free world\" stresses democracy and freedom."
+    },
+    {
+     "vs": "democracies",
+     "note": "\"Democracies\" is the neutral, everyday word; \"the free world\" is more emotional and political."
+    }
+   ],
+   "antonyms": [
+    "the communist bloc",
+    "authoritarian countries"
+   ],
+   "collocations": [
+    "the free world",
+    "leader of the free world",
+    "defend the free world",
+    "across the free world"
+   ],
+   "examples": {
+    "everyday": "My uncle always calls the president \"the leader of the free world.\"",
+    "professional": "The speechwriter cut \"the free world\" because it sounded like a Cold War newsreel.",
+    "analytical": "Cold War rhetoric divided the globe into the free world and the communist bloc."
+   },
+   "analogy": "",
+   "etymology": "Popular in the 1940s and 1950s, during World War II and the Cold War.",
+   "common_mistakes": [
+    "Leaving out \"the\".",
+    "Using it as a neutral geographic term; it is political."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "land of the living",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌlænd əv ðə ˈlɪvɪŋ/",
+  "meanings": [
+   {
+    "pos": "idiom",
+    "senses": [
+     "Being alive, or (jokingly) awake and active again after sleep, illness or a long absence."
+    ]
+   }
+  ],
+  "etymology": "From the Bible (for example Psalm 27:13 and Job 28:13), where it means the world of people who are alive.",
+  "nuance": {
+   "core": {
+    "pos": "idiom",
+    "definition": "Being alive, or (jokingly) awake and active again after sleep, illness or a long absence."
+   },
+   "pronunciation": {
+    "ipa": "/ˌlænd əv ðə ˈlɪvɪŋ/",
+    "respelling": "land uhv thuh LIV-ing",
+    "tip": "Stress LIV in \"living\". \"Of the\" is quick and weak: uhv-thuh. Say the final ng, not n."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Positive and humorous in everyday use; serious in prayers and the Bible.",
+   "usage_note": "Americans say it with a smile to someone who just woke up, got over the flu or finally answered a text: \"Look who's back in the land of the living!\" A natural reply is \"Barely!\" or \"Finally!\" It also comes from the Bible, where it means life on earth.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "back on my feet",
+     "note": "\"Back on my feet\" means recovered; \"back in the land of the living\" is more playful."
+    },
+    {
+     "vs": "alive and kicking",
+     "note": "\"Alive and kicking\" stresses being active and well; \"the land of the living\" often greets a return."
+    }
+   ],
+   "antonyms": [
+    "dead to the world"
+   ],
+   "collocations": [
+    "back in the land of the living",
+    "rejoin the land of the living",
+    "still in the land of the living",
+    "welcome back to the land of the living"
+   ],
+   "examples": {
+    "everyday": "You slept till noon! Welcome back to the land of the living.",
+    "professional": "After a week of flu, I'm back in the land of the living and catching up on email.",
+    "analytical": "The psalmist trusts that he will see the goodness of the Lord in the land of the living."
+   },
+   "analogy": "Like stepping back into a bright room after time in the dark.",
+   "etymology": "From the Bible (for example Psalm 27:13 and Job 28:13), where it means the world of people who are alive.",
+   "common_mistakes": [
+    "Saying \"land of living\" without \"the\".",
+    "Using it in a serious medical situation, where the joke may hurt."
+   ],
+   "biblical_note": "In the Old Testament \"the land of the living\" means life on earth, as opposed to death and Sheol. In Psalm 27:13 the psalmist trusts that he will see the goodness of the Lord in the land of the living, and in Isaiah 38:11 King Hezekiah, sick and expecting to die, fears he will not see the Lord in the land of the living.",
+   "traditions": []
+  }
+ },
+ {
+  "word": "land of opportunity",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌlænd əv ˌɑpɚˈtunəti/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "A country, usually the United States, where people believe anyone can succeed through hard work."
+    ]
+   }
+  ],
+  "etymology": "",
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "A country, usually the United States, where people believe anyone can succeed through hard work."
+   },
+   "pronunciation": {
+    "ipa": "/ˌlænd əv ˌɑpɚˈtunəti/",
+    "respelling": "land uhv ah-per-TOO-nuh-tee",
+    "tip": "Stress TOO in \"opportunity\" (op-por-TOO-ni-ty), with no y sound: TOO, not TYOO. The t before the last syllable is a soft flap in American speech."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Positive and proud; sometimes said with irony when people point out barriers to success.",
+   "usage_note": "Used about America in speeches, immigrant stories and ads, usually with \"the\": \"the land of opportunity\". It is tied to the idea of the American Dream. Some people say it sarcastically about high costs or inequality.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "the American Dream",
+     "note": "The American Dream is the hope of success itself; the land of opportunity is the place that offers it."
+    },
+    {
+     "vs": "promised land",
+     "note": "A promised land is a place of hope and happiness, from the Bible; the land of opportunity is about work and success."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "the land of opportunity",
+    "America, the land of opportunity",
+    "a true land of opportunity",
+    "came to the land of opportunity"
+   ],
+   "examples": {
+    "everyday": "My parents moved here because they believed America was the land of opportunity.",
+    "professional": "The startup's founders, both immigrants, still call the US the land of opportunity.",
+    "analytical": "The image of America as a land of opportunity has drawn immigrants for two centuries, even as mobility has declined."
+   },
+   "analogy": "Like a field where anyone may plant and harvest, whatever family they come from.",
+   "etymology": "",
+   "common_mistakes": [
+    "Saying \"land of opportunities\"; the usual phrase is singular.",
+    "Misplacing the stress in opportunity: op-por-TU-ni-ty."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ }
+]

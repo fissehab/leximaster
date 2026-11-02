@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 
 from .. import db, srs
 from ..common import (BIBLE_TRACKS, CHOSEN_SQL, EVERYDAY_DOMAINS, LEVELED, LINKED_SQL, NAMES_ONLY_SQL, REFERENCE_SQL, WORD_COLUMNS, WORD_FROM, blank_sentence,
-                      bump_activity, compact, core_definition, examples_for, fetch_word, full, is_base_form, pool_ids, quiz_synonyms,
+                      bump_activity, compact, core_definition, examples_for, fetch_word, full, is_base_form, pool_ids, quiz_examples, quiz_synonyms,
                       level_clause, today_iso, track_clause, weighted_sample)
 
 router = APIRouter(prefix="/api")
@@ -432,7 +432,7 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                             "answer": word, "options": [o[0] for o in others[:3]] + [word],
                             "explain": {o[0]: f"“{o[0]}” means: {o[2]}" for o in others[:3]}}
                 if qtype == "fill_blank" and len(others) >= 3:
-                    examples = examples_for(data)
+                    examples = quiz_examples(data)
                     # Prefer sentences that use the word as the options show it.
                     usable = [e for e in examples if is_base_form(word, e)] or examples
                     sentences = [s for s in (blank_sentence(word, e) for e in usable) if s]
@@ -506,7 +506,7 @@ def matching(kind: str = "meaning", n: int = Query(6, ge=3, le=10), stars: str |
             row = fetch_word(c, wid)
             data = json.loads(row["data"])
             if kind == "example":
-                sentences = [s for s in (blank_sentence(row["word"], e) for e in examples_for(data)) if s]
+                sentences = [s for s in (blank_sentence(row["word"], e) for e in quiz_examples(data)) if s]
                 if not sentences:
                     continue
                 right = random.choice(sentences)

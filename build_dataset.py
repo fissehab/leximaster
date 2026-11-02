@@ -126,7 +126,7 @@ SUBJECT_DOMAINS = ["mathematics", "statistics", "data_science", "philosophy",
 # conversation. They skip the frequency filter that keeps basic words out of
 # the advanced lexicon.
 EVERYDAY_DOMAINS = ["dining", "food", "shopping", "outdoors", "small_talk", "phrasal_verbs",
-                    "idioms", "feelings", "home_health", "getting_around", "sports_culture",
+                    "idioms", "common_phrases", "feelings", "home_health", "getting_around", "sports_culture",
                     "meetings", "phone_calls"]
 ALL_TAGS = ["advanced", "academic", "literary"] + SUBJECT_DOMAINS + EVERYDAY_DOMAINS
 # seeds/reference.txt (tools/glossary.py --seed): synonyms, antonyms and other
@@ -2429,8 +2429,17 @@ def us_spelling_deep(value):
         keep = {"etymology"}
         if "vs" in value and SPELLING_TALK.search(str(value.get("note", ""))):
             keep.add("vs")
-        return {k: (v if k in keep else us_spelling_deep(v)) for k, v in value.items()}
+        out = {k: (v if k in keep else us_spelling_deep(v)) for k, v in value.items()}
+        if isinstance(value.get("common_mistakes"), list):
+            # A mistake about spelling names the British form on purpose:
+            # "Spelling it 'humour' in American English".
+            out["common_mistakes"] = [m if isinstance(m, str) and MISTAKE_SPELLING.search(m) else us_spelling_deep(m)
+                                      for m in value["common_mistakes"]]
+        return out
     return value
+
+
+MISTAKE_SPELLING = re.compile(r"\b(British|[Ss]pell(s|ed|ing|ings)?|[Ww]riting)\b")
 
 
 def mainly_british(nuance: dict) -> bool:
@@ -2700,6 +2709,11 @@ def phonetic_needs_study_ipa(w: dict) -> bool:
         return True  # non-rhotic ending: "amber" /ˈæm.bə/
     if NON_GA_PHONETIC.search(p) or drops_r(word, p):
         return True
+    if w.get("phonetic_source") in ("cmu", "wiktionary") and " " in word.strip():
+        # Phrase IPA put together word by word guesses the stress ("ˌline ˈitem")
+        # and the sound of heteronyms ("lead", "live", "wind"); Wiktionary's often
+        # covers one word of the phrase or is unstressed (/staɪl/ for "out of style").
+        return True
     return "ˈ" not in p and " " not in p.strip("/[]") and _syllables(p) > 1
 
 
@@ -2712,6 +2726,17 @@ def drops_r(word: str, ipa: str) -> bool:
     return any(re.search(r"[aeiouy]r", s) and not re.search(r"[ɹrɚɝɾ]", i) for s, i in zip(parts, sounds))
 
 
+def phrase_ipa_ok(word: str, ipa: str) -> bool:
+    """Whether study-note IPA for a phrase can replace the dictionary's: a
+    sound for every word, no narrow or stray symbols (ɾ, ɜ, syllable dots,
+    syllabic l, ASCII g), and not a main stress on every word of a short
+    compound ("ˈbeɪsˌbɔl ˈfild")."""
+    sounds = ipa.strip("/[]").split()
+    if len(sounds) != len(word.replace("-", " ").split()) or re.search(r"[ɾɜ.g]|l̩", ipa):
+        return False
+    return not (2 <= len(sounds) <= 3 and all("ˈ" in x for x in sounds))
+
+
 def polish_ipa(w: dict) -> str:
     """The displayed IPA, replaced by the study notes' General American IPA
     when ours is empty, non-rhotic, narrow or regional, or has no stress mark
@@ -2722,12 +2747,20 @@ def polish_ipa(w: dict) -> str:
     before = w["phonetic"]
     if phonetic_needs_study_ipa(w) and study.startswith("/") and study != normalize_ipa(before) and \
             respelling_matches_ipa(pron.get("respelling", ""), study) is not False:
-        tmp = {**w, "phonetic": study}
-        if not NON_GA_PHONETIC.search(study) and not phonetic_needs_study_ipa(tmp):
+        tmp = {**w, "phonetic": study, "phonetic_source": "reviewed"}
+        if not NON_GA_PHONETIC.search(study) and not phonetic_needs_study_ipa(tmp) and \
+                (" " not in w["word"].strip() or phrase_ipa_ok(w["word"], study)):
             w["phonetic"], w["phonetic_source"] = drop_yod(w["key"], us_style(study)), "reviewed"
             return "study"
     w["phonetic"] = drop_yod(w["key"], normalize_ipa(before))
     return "normalized" if w["phonetic"] != before else ""
+
+
+# Forms that stay entries of their own though the dictionary calls them a
+# form of another entry: the usual American spelling ("flowchart", not "flow
+# chart"), a software term ("test-driven", not "test-drive") and the Bible's
+# wording ("keys of the kingdom").
+OWN_ENTRY = {"flowchart", "hotspot", "test-driven", "keys-of-the-kingdom"}
 
 
 # Words that keep the y sound after t, d, n, s, z, th or l in American English
@@ -3083,6 +3116,30 @@ def load_hand_entries(taken: set[str]) -> list[dict]:
     return out
 
 
+def hide_senses(words: list[dict]) -> None:
+    """seeds/hide/*.txt: dictionary senses an entry leaves out, one per line as
+    "key | sense id" (sense_key: the definition's first six words): wrong,
+    obsolete or explicit senses ("bottom out", "damaged goods"), and bare
+    "used other than figuratively" pointers. An entry left with no sense
+    shows only its study notes' definition, as hand entries do."""
+    hide: dict[str, set[str]] = {}
+    for path in sorted((SEEDS / "hide").glob("*.txt")):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.strip() and not line.startswith("#"):
+                k, sid = (x.strip() for x in line.split("|", 1))
+                hide.setdefault(k, set()).add(sid)
+    for w in words:
+        ids = hide.get(w["key"])
+        if not ids:
+            continue
+        kept = [{**m, "senses": [sn for sn in m["senses"] if sense_key(sn["definition"]) not in ids]}
+                for m in w["meanings"]]
+        kept = [m for m in kept if m["senses"]]
+        if kept or (w.get("nuance") or {}).get("core"):
+            w["meanings"] = kept
+            normalize_display(w)
+
+
 def add_sense_examples(words: list[dict]) -> None:
     """An example for each dictionary sense that has none (stage examples)."""
     cache = read_jsonl(SENSE_EXAMPLES_CACHE)
@@ -3163,6 +3220,7 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
             # "blandishments" goes when "blandishment" is in the lexicon; an
             # everyday entry with its own examples ("wiped out") stays.
             if lemma_key != k and lemma_key in selected_set and not conversation.get(k) and \
+                    k not in OWN_ENTRY and \
                     dict_cache.get(lemma_key, {}).get("status") == "ok":
                 continue
             if x.get("lemma_meanings"):
@@ -3342,6 +3400,7 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     apply_patterns(words)
     apply_related(words)
     apply_fixes(words)
+    hide_senses(words)
     add_forms(words)
     add_sense_examples(words)
     for w in words:  # a hand-fixed "(archaic) …" definition gets its label too

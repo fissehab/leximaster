@@ -1,0 +1,493 @@
+# LexiMaster November 2026 phrases: dictionary senses to hide (meaning/usage review).
+# Hidden: wrong senses, sexually explicit or crude senses, drug-slang senses, demeaning or violent example senses, British/Commonwealth-only
+# senses or examples (Mum, lorry, petrol, pounds, cricket, rugby, headmaster, 'give way' in traffic), obsolete/dated senses learners would
+# misread, bare 'used other than figuratively or idiomatically' pointers, 'translation hub' stubs, senses carrying editor notes
+# ('Can we verify/add an example'), and senses with wiki markup or placeholder examples.
+# Sense id = first six words of the sense definition, lowercased, non-letters to spaces, spaces collapsed.
+# Lines: 504. Format: key | sense id.
+arm-candy | rare a luxury wristwatch or some
+be-into | to be very interested in or
+birds-and-bees | informal by analogy sex itself
+blast-off | to get high on drugs
+blow-away | to kill someone by shooting them
+bring-out | to introduce a person to gay
+bring-out | historical to introduce a young woman
+burn-down | to kill someone especially by shooting
+chop-down | used other than figuratively or idiomatically
+crash-out | to produce or create rapidly to
+damaged-goods | used other than figuratively or idiomatically
+damaged-goods | a person who is no longer
+down-low | the state of being a man
+down-low | a man who secretly sleeps with
+down-low | purporting to be heterosexual while engaged
+first-base | kissing regarded as the first phase
+fluff-up | to make a gaffe or blunder
+get-busy | to have sex
+get-drunk | to intoxicate oneself with alcohol this
+get-drunk | to make drunk this entry is
+hit-up | to take an intoxicating drug
+hit-up | the act of taking a pass
+ice-cream | a portion of ice cream on
+ice-cream | the drug methamphetamine
+lame-duck | a person or thing that is
+lame-duck | dated a person who invests or
+lame-duck | followed by the dummy pronoun it
+make-an-honest-woman | to marry a woman especially if
+make-quick-work-of | to kill a specified person easily
+performance-anxiety | a similar anxiety about the impressiveness
+tear-it-up | to behave with wild abandon to
+tie-off | to tie something around the arm
+gin-up | to generate devise or create
+go-all-the-way | to have sexual intercourse
+hot-and-bothered | sexually aroused
+sex-appeal | sexual attractiveness
+under-the-counter | illicitly against regulations of goods kept
+from-pillar-to-post | dated from one place place or
+in-for-the-kill | intending to kill or destroy someone
+chop-down | dated to attack someone with a
+gin-up | dated to make drunk especially on
+at-home | used other than figuratively or idiomatically
+at-home | dated available or willing to receive
+at-home | historical a type of reception or
+bag-of-tricks | dated a collection of items especially
+beat-up | can we verify this sense to
+beat-up | dated to go diligently about in
+black-eye | dated an eye having a dark
+bust-out | dated to buy an interest in
+chicken-pox | rare the blisters formed by the
+chip-at | dated to argue with someone to
+guinea-pig | dated a professional company director without
+in-a-corner | dated secretly covertly
+in-charge | dated in the care custody or
+keep-company | dated to court
+kick-around | an informal game of football rugby
+let-alone | rare not to mention as well
+let-alone | dated to rely on a person
+listen-in | dated to listen to a radio
+make-over | dated to praise someone excessively
+make-time | dated to spend time with a
+no-more | dated equally not not either
+no-more | rare something that is from a
+picket-line | rare a line or rope held
+power-play | a similar situation in other ball
+take-part | dated to support or ally oneself
+trick-question | rare a complex question whose wording
+walk-out | dated to go out with to
+ball-game | any game played with a ball
+batting-average | a statistical estimation of the scoring
+bed-and-breakfast | the number
+benefit-of-the-doubt | the principle employed by umpires in
+business-end | the part of an object chiefly
+coin-toss | a particular instance where a coin
+concentration-camp | a situation of overcrowding and extremely
+dead-duck | a project that is doomed to
+fall-down | to fall to the ground to
+final-say | the right to make a final
+fit-for-a-king | lavish luxurious
+free-and-easy | historical a tavern offering informal entertainment
+full-house | a single player scoring a try
+go-back-to | to stem from to originate in
+go-bankrupt | to become bankrupt to go into
+hot-dog | a battered deep fried sausage or
+ice-cap | historical an ice pack designed to
+kitchen-sink | of or pertaining to a mid
+powder-room | historical a room used to store
+powder-room | historical a room used to powder
+rubbing-alcohol | synonym of surgical spirit
+stay-over | to stay overnight in a place
+walk-away | to survive a challenging or dangerous
+wash-out | to cancel due to bad weather
+a-lot | used other than figuratively or idiomatically
+aim-at | used other than figuratively or idiomatically
+all-the-same | used other than figuratively or idiomatically
+all-very-well | true as far as it goes
+along-the-lines-of | used other than figuratively or idiomatically
+answer-for | used other than figuratively or idiomatically
+anything-but | used other than figuratively or idiomatically
+as-a-result-of | this entry is a translation hub
+as-far-as | used other than figuratively or idiomatically
+as-good-as | used other than figuratively or idiomatically
+as-long-as | used other than figuratively or idiomatically
+as-much-as | used other than figuratively or idiomatically
+as-previously-mentioned | used before referring to or elaborating
+as-well-as | used other than figuratively or idiomatically
+ask-for-it | used other than figuratively or idiomatically
+assume-the-position | often used other than figuratively or
+at-a-time | used other than figuratively or idiomatically
+at-work | used other than figuratively or idiomatically
+attract-attention | this entry is a translation hub
+bad-actor | used other than figuratively or idiomatically
+bad-boy | used other than figuratively or idiomatically
+bad-name | used other than figuratively or idiomatically
+bad-penny | used other than figuratively or idiomatically
+be-going-to | used other than figuratively or idiomatically
+bear-down | used other than figuratively or idiomatically
+beat-down | used other than figuratively or idiomatically
+beat-out | used other than figuratively or idiomatically
+beats-me | used other than figuratively or idiomatically
+behind-the-curtain | used other than figuratively or idiomatically
+believe-me | used other than figuratively or idiomatically
+below-the-belt | used other than figuratively or idiomatically
+bend-over | used other than figuratively or idiomatically
+best-man | used other than figuratively or idiomatically
+better-and-better | increasingly good this entry is a
+big-fat | used other than figuratively or idiomatically
+big-hand | used other than figuratively or idiomatically
+birthday-suit | used other than figuratively or idiomatically
+black-tie | used other than figuratively or idiomatically
+blank-canvas | used other than figuratively or idiomatically
+blood-in-the-water | used other than figuratively or idiomatically
+brick-wall | used other than figuratively or idiomatically
+bring-over | used other than figuratively or idiomatically
+carry-over | used other than figuratively or idiomatically
+carry-the-torch | used other than figuratively or idiomatically
+cast-a-shadow | used other than figuratively or idiomatically
+chalk-up | to attribute to something often tangentially
+chase-after | used other than figuratively or idiomatically
+cheat-on | used other than figuratively or idiomatically
+chew-on | used other than figuratively or idiomatically
+close-one | used other than figuratively or idiomatically
+cold-feet | used other than figuratively or idiomatically
+come-forward | used other than figuratively or idiomatically
+come-naturally | used other than figuratively or idiomatically
+come-out | used other than figuratively or idiomatically
+come-through | used other than figuratively or idiomatically
+common-cause | used other than figuratively or idiomatically
+cool-it | used other than figuratively or idiomatically
+crack-open | used other than figuratively or idiomatically
+critical-condition | a precarious state of health of
+cross-swords | used other than figuratively or idiomatically
+cry-for-help | used other than figuratively or idiomatically
+cut-both-ways | used other than figuratively or idiomatically
+cut-down-to-size | used other than figuratively or idiomatically
+cut-through | to dispense with or quickly deal
+cut-through | used other than figuratively or idiomatically
+dance-around | to lead on or delay by
+dance-around | used other than figuratively or idiomatically
+day-by-day | used other than figuratively or idiomatically
+deal-in | to accept something or a piece
+deal-in | to have an interest in something
+different-story | used other than figuratively or idiomatically
+dig-down | used other than figuratively or idiomatically
+dirty-laundry | used other than figuratively or idiomatically
+do-the-talking | used other than figuratively or idiomatically
+down-for-the-count | used other than figuratively or idiomatically
+down-the-drain | used other than figuratively or idiomatically
+drag-down | used other than figuratively or idiomatically
+drag-up | used other than figuratively or idiomatically
+dredge-up | used other than figuratively or idiomatically
+drinking-age | used other than figuratively or idiomatically
+drive-a-wedge | to separate
+drive-at | used other than figuratively or idiomatically
+drive-home | used other than figuratively or idiomatically
+fair-game | used other than figuratively or idiomatically
+fair-trade | used other than figuratively or idiomatically
+far-from | used other than figuratively or idiomatically
+far-gone | used other than figuratively or idiomatically
+far-out | used other than figuratively or idiomatically
+federal-case | used other than figuratively or idiomatically
+feet-on-the-ground | used other than figuratively or idiomatically
+fight-fires | used other than figuratively or idiomatically
+for-a-while | used other than figuratively or idiomatically
+for-your-information | used other than figuratively or idiomatically
+free-hand | used other than figuratively or idiomatically
+freezing-cold | used other than figuratively or idiomatically
+friend-of-mine | used other than figuratively or idiomatically
+from-an-early-age | since childhood this entry is a
+get-ahead-of | used other than figuratively or idiomatically
+get-on-it | used other than figuratively or idiomatically
+get-out-of-here | used other than figuratively or idiomatically
+get-the-memo | used other than figuratively or idiomatically
+get-to-know | used other than figuratively or idiomatically
+give-notice | used other than figuratively or idiomatically
+go-around | used other than figuratively or idiomatically
+go-astray | used other than figuratively or idiomatically
+go-back-on | used other than figuratively or idiomatically
+go-back-to | used other than figuratively or idiomatically
+go-down-in-flames | used other than figuratively or idiomatically
+go-down-with | used other than figuratively or idiomatically
+go-nuts | go ahead feel free
+go-to-town | used other than figuratively or idiomatically
+go-to-work | used other than figuratively or idiomatically
+go-towards | used other than figuratively or idiomatically
+good-deal | used other than figuratively or idiomatically
+good-job | used other than figuratively or idiomatically
+green-card | used other than figuratively or idiomatically
+guess-what | used other than figuratively or idiomatically
+hack-away | used other than figuratively or idiomatically
+hack-it | used other than figuratively or idiomatically
+hard-nut-to-crack | used other than figuratively or idiomatically
+hard-pill-to-swallow | used other than figuratively or idiomatically
+haul-in | used other than figuratively or idiomatically
+haul-out | used other than figuratively or idiomatically
+haul-up | used other than figuratively or idiomatically
+haul-up | to come or bring to rest
+haunted-house | used other than figuratively or idiomatically
+have-an-accident | used other than figuratively or idiomatically
+have-an-affair | to engage in a romantic or
+have-it-all | used other than figuratively or idiomatically
+have-legs | used other than figuratively or idiomatically
+head-of-steam | used other than figuratively or idiomatically
+hear-the-end-of-it | used other than figuratively or idiomatically
+hear-things | used other than figuratively or idiomatically
+heavy-lifting | used other than figuratively or idiomatically
+hide-behind | used other than figuratively or idiomatically
+high-ground | used other than figuratively or idiomatically
+high-note | used other than figuratively or idiomatically
+hit-the-jackpot | used other than figuratively or idiomatically
+hit-the-roof | used other than figuratively or idiomatically
+home-training | used other than figuratively or idiomatically
+hot-dog | an expression of disappointment
+hot-stuff | used other than figuratively or idiomatically
+if-only | used other than figuratively or idiomatically
+in-flames | used other than figuratively or idiomatically
+in-the-game | used other than figuratively or idiomatically
+in-the-groove | used other than figuratively or idiomatically
+in-the-middle-of | used other than figuratively or idiomatically
+in-the-weeds | used other than figuratively or idiomatically
+in-the-works | used other than figuratively or idiomatically
+in-the-worst-way | used other than figuratively or idiomatically
+in-view-of | used other than figuratively or idiomatically
+juggling-act | used other than figuratively or idiomatically
+just-as-well | used other than figuratively or idiomatically
+lay-a-finger-on | used other than figuratively or idiomatically
+lead-on | used other than figuratively or idiomatically
+lean-into | used other than figuratively or idiomatically
+lean-towards | used other than figuratively or idiomatically
+leave-the-nest | used other than figuratively or idiomatically
+legally-binding | used other than figuratively or idiomatically
+let-me-see | used other than figuratively or idiomatically
+let-on | used other than figuratively or idiomatically
+let-slide | used other than figuratively or idiomatically
+lie-behind | used other than figuratively or idiomatically
+lift-a-finger | used other than figuratively or idiomatically
+log-into | used other than figuratively or idiomatically
+look-back | used other than figuratively or idiomatically
+look-down | used other than figuratively or idiomatically
+look-through | used other than figuratively or idiomatically
+lose-sight-of | used other than figuratively or idiomatically
+mad-scientist | used other than figuratively or idiomatically
+main-character | used other than figuratively or idiomatically
+make-for | used other than figuratively or idiomatically
+make-it | used other than figuratively or idiomatically
+make-it-rain | used other than figuratively or idiomatically
+make-no-mistake | used other than figuratively or idiomatically
+make-of | used other than figuratively or idiomatically
+mass-destruction | used other than figuratively or idiomatically
+matter-at-hand | the current issue which requires immediate
+matter-of-course | used other than figuratively or idiomatically
+might-as-well | used other than figuratively or idiomatically
+moral-of-the-story | used other than figuratively or idiomatically
+more-like | used other than figuratively or idiomatically
+move-in-on | used other than figuratively or idiomatically
+much-less | used other than figuratively or idiomatically
+munch-on | used other than figuratively or idiomatically
+mutual-consent | used other than figuratively or idiomatically
+never-fear | used other than figuratively or idiomatically
+next-big-thing | used other than figuratively or idiomatically
+next-level | used other than figuratively or idiomatically
+nine-times-out-of-ten | used other than figuratively or idiomatically
+no-one | used other than figuratively or idiomatically
+no-sooner-than | used other than figuratively or idiomatically
+not-going-anywhere | used other than figuratively or idiomatically
+not-so-fast | used other than figuratively or idiomatically
+odd-number | any integer that produces a noninteger
+of-a-certain-age | used other than figuratively or idiomatically
+on-the-contrary | opposite of what had earlier been
+on-the-run | used other than figuratively or idiomatically
+one-hundred-percent | used other than figuratively or idiomatically
+one-too-many | used other than figuratively or idiomatically
+open-secret | can we verify this sense information
+out-of-gas | used other than figuratively or idiomatically
+out-of-the-way | improper or offensive can we add
+piping-hot | used other than figuratively or idiomatically
+play-along | used other than figuratively or idiomatically
+play-up | used other than figuratively or idiomatically
+pressed-for-time | in a hurry without spare time
+probable-cause | used other than figuratively or idiomatically
+prone-to | having the potential to
+public-transit | public transport
+push-through | used other than figuratively or idiomatically
+put-it-past | used other than figuratively or idiomatically
+rabbit-hole | used other than figuratively or idiomatically
+raise-the-stakes | used other than figuratively or idiomatically
+reach-down | used other than figuratively or idiomatically
+run-around | used other than figuratively or idiomatically
+run-deep | used other than figuratively or idiomatically
+run-with | used other than figuratively or idiomatically
+rush-out | used other than figuratively or idiomatically
+see-you | used other than figuratively or idiomatically
+settle-on | used other than figuratively or idiomatically
+shake-down | to shake someone so money falls
+shots-fired | used other than figuratively or idiomatically
+side-by-side | in peace can we add an
+spill-out | used other than figuratively or idiomatically
+spout-off | to utter something in a brash
+stay-over | used other than figuratively or idiomatically
+steaming-hot | used other than figuratively or idiomatically
+step-off | used other than figuratively or idiomatically
+straight-man | used other than figuratively or idiomatically
+street-name | used other than figuratively or idiomatically
+supposed-to | used other than figuratively or idiomatically
+swear-at | used other than figuratively or idiomatically
+take-a-load-off | used other than figuratively or idiomatically
+take-home | used other than figuratively or idiomatically
+take-up-with | used other than figuratively or idiomatically
+tell-all | used other than figuratively or idiomatically
+that-was-it | used other than figuratively or idiomatically
+there-you-have-it | used to introduce a speaker s
+they-say | used other than figuratively or idiomatically
+they-say | used to introduce a statement as
+thin-air | used other than figuratively or idiomatically
+think-of | used other than figuratively or idiomatically
+throw-back | used other than figuratively or idiomatically
+time-of-day | the greeting appropriate to the time
+to-the-point | used other than figuratively or idiomatically
+toss-around | used other than figuratively or idiomatically
+turn-the-page | used other than figuratively or idiomatically
+under-the-hood | used other than figuratively or idiomatically
+up-and-leave | to leave abruptly
+up-to | used other than figuratively or idiomatically
+up-to-here | used other than figuratively or idiomatically
+walk-all-over | used other than figuratively or idiomatically
+walk-away | of an object to go missing
+walk-away | used other than figuratively or idiomatically
+waste-of-space | used other than figuratively or idiomatically
+weak-tea | used other than figuratively or idiomatically
+what-do-you-know | used other than figuratively or idiomatically
+wiggle-out-of | used other than figuratively or idiomatically
+without-a-hitch | used other than figuratively or idiomatically
+work-around | used other than figuratively or idiomatically
+work-on | used other than figuratively or idiomatically
+work-through | used other than figuratively or idiomatically
+worse-and-worse | increasingly bad this entry is a
+write-up | used other than figuratively or idiomatically
+yes-and-no | used other than figuratively or idiomatically
+auction-off | to sell something at auction
+block-off | to obstruct
+come-off-it | an expression of disbelief
+come-up | to draw near in time
+could-do-with | to need something that would be
+flat-rate | a rate typically of money that
+food-stamp | a stamp or similar paper document
+get-away-with | to get away or escape taking
+go-far | to cover significant expenses
+grow-into | to grow in size so as
+look-back | to think of past events in
+phase-out | to remove or relinquish the use
+plow-into | to crash into something
+tell-you-what | introduces a compromise or arrangement where
+tide-over | to support or sustain someone especially
+bad-trip | an acute adverse psychological reaction to
+make-out-with | see make out with
+make-out-with | synonym of deal with
+for-your-information | used as a satiric preface to
+talk-dirty | to use profane language especially sexual
+a-fair-bit | a little bit somewhat kind of
+against-the-grain | contrary to what is expected especially
+around-the-bend | crazy mad or insane
+around-the-bend | close to or in close proximity
+banged-up | spending time in prison or jail
+as-well | an intensifier actually really
+bear-down-on | to approach someone in a very
+black-market | the people who engage in such
+block-out | to prevent from entering or penetrating
+building-permit | synonym of planning permission
+come-in | to surrender to turn oneself in
+concentration-camp | a camp where troops are assembled
+chief-financial-officer | the executive who is in charge
+chief-operating-officer | a corporate officer of a corporation
+for-a-while | ellipsis of please wait for a
+on-top-of | in addition to something else
+in-the-bag | of a desirable thing certain or
+drop-a-bomb | to suddenly tell people shocking or
+every-single-time | used to remark or assert the
+err-on-the-side-of | to behave in a manner which
+first-class | of or relating to a first
+geek-out | to be scared freak out panic
+geek-out | to scare or freak out somebody
+give-out | to utter publish to announce proclaim
+give-out | to announce a hymn to be
+give-out | to put forth utter prayers
+glaze-over | to gloss over
+go-astray | to be undesirable or unhelpful
+grind-up | to skateboard on a surface or
+haul-out | to turn sharply in order to
+hit-man | a goalscorer someone who scores goals
+hitch-up | to marry
+keep-out | to dress up
+kitchen-sink | to raise to someone unrelated complaints
+knock-back | to withstand or endure a difficult
+knock-back | to achieve a significant accomplishment or
+love-at-first-sight | an instantaneous attraction
+like-the-wind | invisibly mysteriously unpredictably
+new-lease-on-life | an opportunity to live longer than
+new-lease-on-life | an opportunity for an improved quality
+next-of-kin | closest blood relative heir to inheritance
+nothing-like | not nearly
+open-book | an open book decomposition
+open-book | an inside angle in the rock
+out-of-the-way | unusual or out of the ordinary
+out-of-the-way | unusually or excessively
+political-correctness | an avoidance of expressions or actions
+post-up | to affix a notice announcement etc
+pure-and-simple | plain and unadorned
+reach-down | to take an item down from
+revert-back | to reply respond
+roll-off | to spontaneously roll suddenly and rapidly
+roll-off | to show reduced response at the
+safe-in-the-knowledge | confidently because one is certain that
+second-home | a secondary residence country house vacation
+sneak-in | to barely advance or be allowed
+smooth-over | to pacify e g rumours
+substitute-teacher | a supply teacher
+stake-a-claim | to take an action that asserts
+speak-for | to claim reserve or occupy
+take-turns | of two or more people to
+that-said | even so nonetheless
+the-wrong-side-of | used in various other expressions to
+these-days | currently at present
+travel-agent | synonym of travel agency
+tuck-in | to eat heartily
+up-in-arms | vigourously protesting against something
+upside-down | inverted so that the top is
+used-up | worn out depleted exhausted having nothing
+watch-the-world-go-by | to pause and remain still whilst
+allow-for | to take into account consider
+bed-and-breakfast | a score of made up of
+entry-fee | money needed to gain admittance to
+in-excess-of | more than
+give-way | to allow another person to intervene
+well-deserved | emphatic form of deserved when used
+scale-down | to reduce the size of something
+scale-up | to increase the size of something
+give-way | to give precedence to other road
+give-way | to begin rowing
+go-down-with | to catch or contract an illness
+count-out | to declare adjourned as a sitting
+count-out | to prevent the accession of a
+capital-gain | an increase in the value of
+come-down | shortening of of come down the
+come-down | to behave in a particular way
+come-on | to appear or seem to be
+come-up | to approach a time or scheduled
+come-up-to | to approach
+cozy-up | to snuggle
+cozy-up-to | to come physically close to using
+cozy-up-to | to form a relationship with some
+friend-of-mine | a personal friend of the speaker
+grey-matter | literal brains as a general substance
+heck-of-a | intensifier indicates that someone or something
+hone-in | to focus or narrow down to
+metric-system | the modern version of that system
+mother-of-all | used before a plural noun to
+old-school | now often old school characteristic of
+play-a-role | to have an effect or influence
+role-play | to act out a scenario or
+root-around | to rummage to look for something
+same-old-story | what usually happens an occurrence that
+second-skin | describing something which so perfectly suits
+slide-show | any sequence of images shown one
+take-off | to imitate somebody often in a
+to-the-fullest | without any reservation taking the greatest
+with-bells-on | with eager anticipation and enthusiasm especially

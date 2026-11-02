@@ -422,6 +422,18 @@ function examplesFor(data) {
   return out;
 }
 
+// Sentences a quiz may blank (app/common.py quiz_examples): the studied
+// meaning's examples, and only whole sentences.
+const FULL_SENTENCE = /^["“'(]?[A-Z0-9].*[.!?]["”')]*$/;
+function quizExamples(data) {
+  const out = (data.conversation || []).map(e => e.text);
+  const ex = (data.nuance || {}).examples || {};
+  for (const k of ["everyday", "professional", "analytical"]) if (ex[k]) out.push(ex[k]);
+  const first = (data.meanings || []).flatMap(m => m.senses || [])[0];
+  if (first && first.example) out.push(first.example);
+  return out.filter(e => FULL_SENTENCE.test(e.trim()) && e.split(/\s+/).length >= 5);
+}
+
 const escapeRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 // Endings an inflected form may add (app/common.py SUFFIX).
 const SUFFIX = "(?:e|es|ed|ing|er|ers|est|s|d|ly|y|ies|ied|ier|iest|ily)?";
@@ -1100,7 +1112,7 @@ async function makeQuiz(q) {
                  explain: Object.fromEntries(others.slice(0, 3).map(o => [o[0], `“${o[0]}” means: ${o[2]}`])) };
       }
       if (qtype === "fill_blank" && others.length >= 3) {
-        const examples = examplesFor(data);
+        const examples = quizExamples(data);
         // Prefer sentences that use the word as the options show it.
         const usable = examples.filter(e => isBaseForm(word, e));
         const sentences = (usable.length ? usable : examples).map(e => blankSentence(word, e)).filter(Boolean);
@@ -1167,7 +1179,7 @@ async function matching(q) {
     const row = fetchWord(wid);
     let right;
     if (q.kind === "example") {
-      const sentences = examplesFor(await detail(wid)).map(e => blankSentence(row.word, e)).filter(Boolean);
+      const sentences = quizExamples(await detail(wid)).map(e => blankSentence(row.word, e)).filter(Boolean);
       if (!sentences.length) continue;
       right = choice(sentences);
     } else {

@@ -1,0 +1,100 @@
+# Headwords renamed after the senior word-list review (November 2026): the
+# spelling Americans write (one word, "gray", "toward") and the full form of
+# clipped idioms ("when all is said and done"), with their pronunciation.
+life-style | word | lifestyle
+life-style | phonetic | /ˈlaɪfˌstaɪl/
+life-style | nuance.pronunciation.ipa | /ˈlaɪfˌstaɪl/
+life-style | nuance.pronunciation.respelling | LYFE-styl
+door-knob | word | doorknob
+door-knob | phonetic | /ˈdɔɹˌnɑb/
+door-knob | nuance.pronunciation.ipa | /ˈdɔɹˌnɑb/
+door-knob | nuance.pronunciation.respelling | DOR-nahb
+night-stand | word | nightstand
+night-stand | phonetic | /ˈnaɪtˌstænd/
+night-stand | nuance.pronunciation.ipa | /ˈnaɪtˌstænd/
+night-stand | nuance.pronunciation.respelling | NYTE-stand
+busy-work | word | busywork
+busy-work | phonetic | /ˈbɪziˌwɝk/
+busy-work | nuance.pronunciation.ipa | /ˈbɪziˌwɝk/
+busy-work | nuance.pronunciation.respelling | BIZ-ee-werk
+chicken-pox | word | chickenpox
+chicken-pox | phonetic | /ˈtʃɪkənˌpɑks/
+chicken-pox | nuance.pronunciation.ipa | /ˈtʃɪkənˌpɑks/
+chicken-pox | nuance.pronunciation.respelling | CHIK-uhn-pahks
+dead-bolt | word | deadbolt
+dead-bolt | phonetic | /ˈdɛdˌboʊlt/
+dead-bolt | nuance.pronunciation.ipa | /ˈdɛdˌboʊlt/
+dead-bolt | nuance.pronunciation.respelling | DED-bohlt
+end-game | word | endgame
+end-game | phonetic | /ˈɛndˌɡeɪm/
+end-game | nuance.pronunciation.ipa | /ˈɛndˌɡeɪm/
+end-game | nuance.pronunciation.respelling | END-gaym
+plain-clothes | word | plainclothes
+plain-clothes | phonetic | /ˈpleɪnˌkloʊðz/
+plain-clothes | nuance.pronunciation.ipa | /ˈpleɪnˌkloʊðz/
+plain-clothes | nuance.pronunciation.respelling | PLAYN-klohthz
+broken-hearted | word | brokenhearted
+broken-hearted | phonetic | /ˌbɹoʊkənˈhɑɹtɪd/
+broken-hearted | nuance.pronunciation.ipa | /ˌbɹoʊkənˈhɑɹtɪd/
+broken-hearted | nuance.pronunciation.respelling | broh-kuhn-HAHR-tid
+grey-matter | word | gray matter
+grey-matter | phonetic | /ˈɡɹeɪ ˌmætɚ/
+grey-matter | nuance.pronunciation.ipa | /ˈɡɹeɪ ˌmætɚ/
+grey-matter | nuance.pronunciation.respelling | GRAY mat-er
+breeding-ground | word | breeding ground
+breeding-ground | phonetic | /ˈbɹidɪŋ ˌɡɹaʊnd/
+breeding-ground | nuance.pronunciation.ipa | /ˈbɹidɪŋ ˌɡɹaʊnd/
+breeding-ground | nuance.pronunciation.respelling | BREE-ding grownd
+cyber-attack | word | cyberattack
+cyber-attack | phonetic | /ˈsaɪbɚəˌtæk/
+cyber-attack | nuance.pronunciation.ipa | /ˈsaɪbɚəˌtæk/
+cyber-attack | nuance.pronunciation.respelling | SY-ber-uh-tak
+count-towards | word | count toward
+count-towards | phonetic | /ˌkaʊnt ˈtɔɹd/
+count-towards | nuance.pronunciation.ipa | /ˌkaʊnt ˈtɔɹd/
+count-towards | nuance.pronunciation.respelling | kownt TORD
+go-towards | word | go toward
+go-towards | phonetic | /ˌɡoʊ ˈtɔɹd/
+go-towards | nuance.pronunciation.ipa | /ˌɡoʊ ˈtɔɹd/
+go-towards | nuance.pronunciation.respelling | goh TORD
+lean-towards | word | lean toward
+lean-towards | phonetic | /ˌlin ˈtɔɹd/
+lean-towards | nuance.pronunciation.ipa | /ˌlin ˈtɔɹd/
+lean-towards | nuance.pronunciation.respelling | leen TORD
+when-all-is-said | word | when all is said and done
+when-all-is-said | phonetic | /wɛn ˌɔl ɪz ˌsɛd ən ˈdʌn/
+when-all-is-said | nuance.pronunciation.ipa | /wɛn ˌɔl ɪz ˌsɛd ən ˈdʌn/
+when-all-is-said | nuance.pronunciation.respelling | wen awl iz sed uhn DUN
+hold-a-candle | word | can't hold a candle to
+hold-a-candle | phonetic | /ˌkænt ˌhoʊld ə ˈkændəl tu/
+hold-a-candle | nuance.pronunciation.ipa | /ˌkænt ˌhoʊld ə ˈkændəl tu/
+hold-a-candle | nuance.pronunciation.respelling | kant hohld uh KAN-duhl too
+put-the-screws | word | put the screws to
+put-the-screws | phonetic | /ˌpʊt ðə ˈskɹuz tu/
+put-the-screws | nuance.pronunciation.ipa | /ˌpʊt ðə ˈskɹuz tu/
+put-the-screws | nuance.pronunciation.respelling | puut thuh SKROOZ too
+cracked-up | word | cracked up to be
+cracked-up | phonetic | /ˈkɹækt ˌʌp tə bi/
+cracked-up | nuance.pronunciation.ipa | /ˈkɹækt ˌʌp tə bi/
+cracked-up | nuance.pronunciation.respelling | KRAKT up tuh bee
+in-the-shoes-of | word | in someone's shoes
+in-the-shoes-of | phonetic | /ɪn ˌsʌmwʌnz ˈʃuz/
+in-the-shoes-of | nuance.pronunciation.ipa | /ɪn ˌsʌmwʌnz ˈʃuz/
+in-the-shoes-of | nuance.pronunciation.respelling | in sum-wuhnz SHOOZ
+to-the-tee | word | to a T
+to-the-tee | phonetic | /tu ə ˈti/
+to-the-tee | nuance.pronunciation.ipa | /tu ə ˈti/
+to-the-tee | nuance.pronunciation.respelling | too uh TEE
+time-and-material | word | time and materials
+time-and-material | phonetic | /ˌtaɪm ən məˈtɪɹiəlz/
+time-and-material | nuance.pronunciation.ipa | /ˌtaɪm ən məˈtɪɹiəlz/
+time-and-material | nuance.pronunciation.respelling | tyme uhn muh-TEER-ee-uhlz
+that-is-it | word | that's it
+that-is-it | phonetic | /ðæts ˈɪt/
+that-is-it | nuance.pronunciation.ipa | /ðæts ˈɪt/
+that-is-it | nuance.pronunciation.respelling | thats IT
+
+# The renamed headword was the first "compare with" item: it goes.
+count-towards | nuance.distinctions | [{"vs": "add up to", "note": "\"Add up to\" means make a total."}, {"vs": "contribute to", "note": "\"Contribute to\" means help cause a result."}]
+in-the-shoes-of | nuance.distinctions | [{"vs": "in someone's place", "note": "Means the same, a little more formal."}, {"vs": "step into someone's shoes", "note": "Means taking over someone's job."}]
+to-the-tee | nuance.distinctions | [{"vs": "exactly", "note": "Plain single-word equivalent."}, {"vs": "down to the last detail", "note": "Stresses careful completeness."}]

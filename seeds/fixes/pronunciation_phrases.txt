@@ -1,0 +1,1721 @@
+# LexiMaster pronunciation review (General American), 2026-11-02.
+# Read every line of new_pron.tsv (5,442 new phrase entries) and old_ipa_changed.tsv (1,871 changed older entries), with script scans for malformed IPA (dots, ‿, parentheses, ɾ, ɜ, syllabic marks, ASCII g), stress/respelling disagreement, word-count mismatches, stressed function words and heteronyms.
+# Checked: compound vs phrase stress (N+N compounds first-stressed; adj+N final), phrasal verbs (particle stressed) vs prepositional verbs (verb stressed: CHEAT on, WORK on, LOOK for), idiom nuclear stress, heteronyms (live/lead/read/use(d)/close/permit/tear/wound/bow/row/sow/record...), segment errors and British forms, respelling-vs-IPA agreement (only the ˈ syllable capitalized).
+# For old_ipa_changed.tsv, where the new study-note IPA is worse (lost words such as "Book of", flaps, dots, double/triple primaries on compounds, wrong vowels/stress), a corrected IPA is given (usually the old pattern, cleaned up).
+# Each corrected item has three lines (shown IPA, study IPA, respelling) that agree. Only real errors are listed.
+all-that-jazz | phonetic | /ˌɔl ðæt ˈdʒæz/
+all-that-jazz | nuance.pronunciation.ipa | /ˌɔl ðæt ˈdʒæz/
+all-that-jazz | nuance.pronunciation.respelling | awl that JAZ
+and-then-some | phonetic | /ən ˌðɛn ˈsʌm/
+and-then-some | nuance.pronunciation.ipa | /ən ˌðɛn ˈsʌm/
+and-then-some | nuance.pronunciation.respelling | uhn then SUM
+in-order-that | phonetic | /ɪn ˈɔɹdɚ ðət/
+in-order-that | nuance.pronunciation.ipa | /ɪn ˈɔɹdɚ ðət/
+in-order-that | nuance.pronunciation.respelling | in OR-der thuht
+as-good-as | phonetic | /əz ˈɡʊd əz/
+as-good-as | nuance.pronunciation.ipa | /əz ˈɡʊd əz/
+as-good-as | nuance.pronunciation.respelling | uhz GUUD uhz
+as-for | phonetic | /ˈæz fɚ/
+as-for | nuance.pronunciation.ipa | /ˈæz fɚ/
+as-for | nuance.pronunciation.respelling | AZ fer
+as-if | phonetic | /əz ˈɪf/
+as-if | nuance.pronunciation.ipa | /əz ˈɪf/
+as-if | nuance.pronunciation.respelling | uhz IF
+as-well | phonetic | /əz ˈwɛl/
+as-well | nuance.pronunciation.ipa | /əz ˈwɛl/
+as-well | nuance.pronunciation.respelling | uhz WEL
+oh-yeah | phonetic | /oʊ ˈjæ/
+oh-yeah | nuance.pronunciation.ipa | /oʊ ˈjæ/
+oh-yeah | nuance.pronunciation.respelling | oh YEH
+set-about | phonetic | /ˌsɛt əˈbaʊt/
+set-about | nuance.pronunciation.ipa | /ˌsɛt əˈbaʊt/
+set-about | nuance.pronunciation.respelling | set uh-BOWT
+take-in | phonetic | /ˌteɪk ˈɪn/
+take-in | nuance.pronunciation.ipa | /ˌteɪk ˈɪn/
+take-in | nuance.pronunciation.respelling | tayk IN
+well-being | phonetic | /ˌwɛlˈbiɪŋ/
+well-being | nuance.pronunciation.ipa | /ˌwɛlˈbiɪŋ/
+well-being | nuance.pronunciation.respelling | wel-BEE-ing
+poetry-in-motion | phonetic | /ˌpoʊətɹi ɪn ˈmoʊʃən/
+poetry-in-motion | nuance.pronunciation.ipa | /ˌpoʊətɹi ɪn ˈmoʊʃən/
+poetry-in-motion | nuance.pronunciation.respelling | poh-uh-tree in MOH-shuhn
+only-just | phonetic | /ˌoʊnli ˈdʒʌst/
+only-just | nuance.pronunciation.ipa | /ˌoʊnli ˈdʒʌst/
+only-just | nuance.pronunciation.respelling | ohn-lee JUST
+over-time | phonetic | /ˌoʊvɚ ˈtaɪm/
+over-time | nuance.pronunciation.ipa | /ˌoʊvɚ ˈtaɪm/
+over-time | nuance.pronunciation.respelling | oh-ver TYME
+just-in-time | phonetic | /ˌdʒʌst ɪn ˈtaɪm/
+just-in-time | nuance.pronunciation.ipa | /ˌdʒʌst ɪn ˈtaɪm/
+just-in-time | nuance.pronunciation.respelling | juhst in TYME
+hip-hop | phonetic | /ˈhɪpˌhɑp/
+hip-hop | nuance.pronunciation.ipa | /ˈhɪpˌhɑp/
+hip-hop | nuance.pronunciation.respelling | HIP-hahp
+once-over | phonetic | /ˈwʌnsˌoʊvɚ/
+once-over | nuance.pronunciation.ipa | /ˈwʌnsˌoʊvɚ/
+once-over | nuance.pronunciation.respelling | WUNS-oh-ver
+cheat-on | phonetic | /ˈtʃit ɑn/
+cheat-on | nuance.pronunciation.ipa | /ˈtʃit ɑn/
+cheat-on | nuance.pronunciation.respelling | CHEET ahn
+chew-on | phonetic | /ˈtʃu ɑn/
+chew-on | nuance.pronunciation.ipa | /ˈtʃu ɑn/
+chew-on | nuance.pronunciation.respelling | CHOO ahn
+choke-on | phonetic | /ˈtʃoʊk ɑn/
+choke-on | nuance.pronunciation.ipa | /ˈtʃoʊk ɑn/
+choke-on | nuance.pronunciation.respelling | CHOHK ahn
+feed-on | phonetic | /ˈfid ɑn/
+feed-on | nuance.pronunciation.ipa | /ˈfid ɑn/
+feed-on | nuance.pronunciation.respelling | FEED ahn
+frown-on | phonetic | /ˈfɹaʊn ɑn/
+frown-on | nuance.pronunciation.ipa | /ˈfɹaʊn ɑn/
+frown-on | nuance.pronunciation.respelling | FROWN ahn
+dump-on | phonetic | /ˈdʌmp ɑn/
+dump-on | nuance.pronunciation.ipa | /ˈdʌmp ɑn/
+dump-on | nuance.pronunciation.respelling | DUHMP ahn
+stomp-on | phonetic | /ˈstɑmp ɑn/
+stomp-on | nuance.pronunciation.ipa | /ˈstɑmp ɑn/
+stomp-on | nuance.pronunciation.respelling | STAHMP ahn
+work-on | phonetic | /ˈwɝk ɑn/
+work-on | nuance.pronunciation.ipa | /ˈwɝk ɑn/
+work-on | nuance.pronunciation.respelling | WURK ahn
+seize-on | phonetic | /ˈsiz ɑn/
+seize-on | nuance.pronunciation.ipa | /ˈsiz ɑn/
+seize-on | nuance.pronunciation.respelling | SEEZ ahn
+inform-on | phonetic | /ɪnˈfɔɹm ɑn/
+inform-on | nuance.pronunciation.ipa | /ɪnˈfɔɹm ɑn/
+inform-on | nuance.pronunciation.respelling | in-FAWRM ahn
+rag-on | phonetic | /ˈɹæɡ ɑn/
+rag-on | nuance.pronunciation.ipa | /ˈɹæɡ ɑn/
+rag-on | nuance.pronunciation.respelling | RAG ahn
+come-at | phonetic | /ˈkʌm æt/
+come-at | nuance.pronunciation.ipa | /ˈkʌm æt/
+come-at | nuance.pronunciation.respelling | KUM at
+get-at | phonetic | /ˈɡɛt æt/
+get-at | nuance.pronunciation.ipa | /ˈɡɛt æt/
+get-at | nuance.pronunciation.respelling | GET at
+keep-at | phonetic | /ˈkip æt/
+keep-at | nuance.pronunciation.ipa | /ˈkip æt/
+keep-at | nuance.pronunciation.respelling | KEEP at
+come-from | phonetic | /ˈkʌm fɹʌm/
+come-from | nuance.pronunciation.ipa | /ˈkʌm fɹʌm/
+come-from | nuance.pronunciation.respelling | KUM fruhm
+far-from-it | phonetic | /ˈfɑɹ fɹəm ɪt/
+far-from-it | nuance.pronunciation.ipa | /ˈfɑɹ fɹəm ɪt/
+far-from-it | nuance.pronunciation.respelling | FAHR fruhm it
+copy-that | phonetic | /ˈkɑpi ðæt/
+copy-that | nuance.pronunciation.ipa | /ˈkɑpi ðæt/
+copy-that | nuance.pronunciation.respelling | KAH-pee that
+get-down-on | phonetic | /ˌɡɛt ˈdaʊn ɑn/
+get-down-on | nuance.pronunciation.ipa | /ˌɡɛt ˈdaʊn ɑn/
+get-down-on | nuance.pronunciation.respelling | get DOWN ahn
+beat-up-on | phonetic | /ˌbit ˈʌp ɑn/
+beat-up-on | nuance.pronunciation.ipa | /ˌbit ˈʌp ɑn/
+beat-up-on | nuance.pronunciation.respelling | beet UP ahn
+hold-back-on | phonetic | /ˌhoʊld ˈbæk ɑn/
+hold-back-on | nuance.pronunciation.ipa | /ˌhoʊld ˈbæk ɑn/
+hold-back-on | nuance.pronunciation.respelling | hohld BAK ahn
+rub-off-on | phonetic | /ˌɹʌb ˈɔf ɑn/
+rub-off-on | nuance.pronunciation.ipa | /ˌɹʌb ˈɔf ɑn/
+rub-off-on | nuance.pronunciation.respelling | ruhb AWF ahn
+run-out-on | phonetic | /ˌɹʌn ˈaʊt ɑn/
+run-out-on | nuance.pronunciation.ipa | /ˌɹʌn ˈaʊt ɑn/
+run-out-on | nuance.pronunciation.respelling | ruhn OWT ahn
+run-up-on | phonetic | /ˌɹʌn ˈʌp ɑn/
+run-up-on | nuance.pronunciation.ipa | /ˌɹʌn ˈʌp ɑn/
+run-up-on | nuance.pronunciation.respelling | ruhn UHP ahn
+start-in-on | phonetic | /ˌstɑɹt ˈɪn ɑn/
+start-in-on | nuance.pronunciation.ipa | /ˌstɑɹt ˈɪn ɑn/
+start-in-on | nuance.pronunciation.respelling | stahrt IN ahn
+get-in-on | phonetic | /ˌɡɛt ˈɪn ɑn/
+get-in-on | nuance.pronunciation.ipa | /ˌɡɛt ˈɪn ɑn/
+get-in-on | nuance.pronunciation.respelling | get IN ahn
+move-in-on | phonetic | /ˌmuv ˈɪn ɑn/
+move-in-on | nuance.pronunciation.ipa | /ˌmuv ˈɪn ɑn/
+move-in-on | nuance.pronunciation.respelling | moov IN ahn
+look-in-on | phonetic | /ˌlʊk ˈɪn ɑn/
+look-in-on | nuance.pronunciation.ipa | /ˌlʊk ˈɪn ɑn/
+look-in-on | nuance.pronunciation.respelling | luuk IN ahn
+board-of-directors | phonetic | /ˌbɔɹd əv dəˈɹɛktɚz/
+board-of-directors | nuance.pronunciation.ipa | /ˌbɔɹd əv dəˈɹɛktɚz/
+board-of-directors | nuance.pronunciation.respelling | bord uhv duh-REK-terz
+bowel-movement | phonetic | /ˈbaʊəl ˌmuvmənt/
+bowel-movement | nuance.pronunciation.ipa | /ˈbaʊəl ˌmuvmənt/
+bowel-movement | nuance.pronunciation.respelling | BOW-uhl moov-muhnt
+breeding-ground | phonetic | /ˈbɹidɪŋ ˌɡɹaʊnd/
+breeding-ground | nuance.pronunciation.ipa | /ˈbɹidɪŋ ˌɡɹaʊnd/
+breeding-ground | nuance.pronunciation.respelling | BREE-ding grownd
+care-for | phonetic | /ˈkɛɹ fɚ/
+care-for | nuance.pronunciation.ipa | /ˈkɛɹ fɚ/
+care-for | nuance.pronunciation.respelling | KAIR fer
+come-by | phonetic | /ˌkʌm ˈbaɪ/
+come-by | nuance.pronunciation.ipa | /ˌkʌm ˈbaɪ/
+come-by | nuance.pronunciation.respelling | kum BY
+come-what-may | phonetic | /ˌkʌm ˌwʌt ˈmeɪ/
+come-what-may | nuance.pronunciation.ipa | /ˌkʌm ˌwʌt ˈmeɪ/
+come-what-may | nuance.pronunciation.respelling | kum wuht MAY
+irons-in-the-fire | phonetic | /ˌaɪɚnz ɪn ðə ˈfaɪɚ/
+irons-in-the-fire | nuance.pronunciation.ipa | /ˌaɪɚnz ɪn ðə ˈfaɪɚ/
+irons-in-the-fire | nuance.pronunciation.respelling | eye-ernz in thuh FY-er
+day-off | phonetic | /ˌdeɪ ˈɔf/
+day-off | nuance.pronunciation.ipa | /ˌdeɪ ˈɔf/
+day-off | nuance.pronunciation.respelling | day AWF
+death-row | phonetic | /ˌdɛθ ˈɹoʊ/
+death-row | nuance.pronunciation.ipa | /ˌdɛθ ˈɹoʊ/
+death-row | nuance.pronunciation.respelling | deth ROH
+even-so | phonetic | /ˌivən ˈsoʊ/
+even-so | nuance.pronunciation.ipa | /ˌivən ˈsoʊ/
+even-so | nuance.pronunciation.respelling | ee-vuhn SOH
+eye-roll | phonetic | /ˈaɪ ˌɹoʊl/
+eye-roll | nuance.pronunciation.ipa | /ˈaɪ ˌɹoʊl/
+eye-roll | nuance.pronunciation.respelling | EYE rohl
+finger-pointing | phonetic | /ˈfɪŋɡɚ ˌpɔɪntɪŋ/
+finger-pointing | nuance.pronunciation.ipa | /ˈfɪŋɡɚ ˌpɔɪntɪŋ/
+finger-pointing | nuance.pronunciation.respelling | FING-ger poyn-ting
+fish-to-fry | phonetic | /ˌfɪʃ tə ˈfɹaɪ/
+fish-to-fry | nuance.pronunciation.ipa | /ˌfɪʃ tə ˈfɹaɪ/
+fish-to-fry | nuance.pronunciation.respelling | fish tuh FRY
+for-good | phonetic | /fɔɹ ˈɡʊd/
+for-good | nuance.pronunciation.ipa | /fɔɹ ˈɡʊd/
+for-good | nuance.pronunciation.respelling | fawr GUUD
+for-here | phonetic | /fɔɹ ˈhɪɹ/
+for-here | nuance.pronunciation.ipa | /fɔɹ ˈhɪɹ/
+for-here | nuance.pronunciation.respelling | fawr HEER
+for-the-time-being | phonetic | /fɔɹ ðə ˌtaɪm ˈbiɪŋ/
+for-the-time-being | nuance.pronunciation.ipa | /fɔɹ ðə ˌtaɪm ˈbiɪŋ/
+for-the-time-being | nuance.pronunciation.respelling | fawr thuh tyme BEE-ing
+get-out-of-here | phonetic | /ˌɡɛt ˌaʊt əv ˈhɪɹ/
+get-out-of-here | nuance.pronunciation.ipa | /ˌɡɛt ˌaʊt əv ˈhɪɹ/
+get-out-of-here | nuance.pronunciation.respelling | get owt uhv HEER
+gift-that-keeps-on-giving | phonetic | /ˌɡɪft ðət ˌkips ɑn ˈɡɪvɪŋ/
+gift-that-keeps-on-giving | nuance.pronunciation.ipa | /ˌɡɪft ðət ˌkips ɑn ˈɡɪvɪŋ/
+gift-that-keeps-on-giving | nuance.pronunciation.respelling | gift thut keeps ahn GIV-ing
+go-around | phonetic | /ˌɡoʊ əˈɹaʊnd/
+go-around | nuance.pronunciation.ipa | /ˌɡoʊ əˈɹaʊnd/
+go-around | nuance.pronunciation.respelling | goh uh-ROWND
+highway-patrol | phonetic | /ˌhaɪweɪ pəˈtɹoʊl/
+highway-patrol | nuance.pronunciation.ipa | /ˌhaɪweɪ pəˈtɹoʊl/
+highway-patrol | nuance.pronunciation.respelling | hy-way puh-TROHL
+hit-a-home-run | phonetic | /ˌhɪt ə ˈhoʊm ˌɹʌn/
+hit-a-home-run | nuance.pronunciation.ipa | /ˌhɪt ə ˈhoʊm ˌɹʌn/
+hit-a-home-run | nuance.pronunciation.respelling | hit uh HOHM ruhn
+invasion-of-privacy | phonetic | /ɪnˌveɪʒən əv ˈpɹaɪvəsi/
+invasion-of-privacy | nuance.pronunciation.ipa | /ɪnˌveɪʒən əv ˈpɹaɪvəsi/
+invasion-of-privacy | nuance.pronunciation.respelling | in-vay-zhuhn uhv PRY-vuh-see
+it-is-what-it-is | phonetic | /ɪt ˌɪz ˌwʌt ɪt ˈɪz/
+it-is-what-it-is | nuance.pronunciation.ipa | /ɪt ˌɪz ˌwʌt ɪt ˈɪz/
+it-is-what-it-is | nuance.pronunciation.respelling | it iz wuht it IZ
+just-a-second | phonetic | /ˌdʒʌst ə ˈsɛkənd/
+just-a-second | nuance.pronunciation.ipa | /ˌdʒʌst ə ˈsɛkənd/
+just-a-second | nuance.pronunciation.respelling | juhst uh SEK-uhnd
+keep-up-with | phonetic | /ˌkip ˈʌp wɪð/
+keep-up-with | nuance.pronunciation.ipa | /ˌkip ˈʌp wɪð/
+keep-up-with | nuance.pronunciation.respelling | keep UHP with
+kitchen-sink | phonetic | /ˈkɪtʃən ˌsɪŋk/
+kitchen-sink | nuance.pronunciation.ipa | /ˈkɪtʃən ˌsɪŋk/
+kitchen-sink | nuance.pronunciation.respelling | KICH-uhn singk
+life-or-death | phonetic | /ˌlaɪf ɔɹ ˈdɛθ/
+life-or-death | nuance.pronunciation.ipa | /ˌlaɪf ɔɹ ˈdɛθ/
+life-or-death | nuance.pronunciation.respelling | lyfe or DETH
+long-for | phonetic | /ˈlɔŋ fɚ/
+long-for | nuance.pronunciation.ipa | /ˈlɔŋ fɚ/
+long-for | nuance.pronunciation.respelling | LAWNG fer
+look-like | phonetic | /ˈlʊk laɪk/
+look-like | nuance.pronunciation.ipa | /ˈlʊk laɪk/
+look-like | nuance.pronunciation.respelling | LUUK lyke
+love-life | phonetic | /ˈlʌv ˌlaɪf/
+love-life | nuance.pronunciation.ipa | /ˈlʌv ˌlaɪf/
+love-life | nuance.pronunciation.respelling | LUV lyfe
+meet-and-greet | phonetic | /ˈmit ənd ˌɡɹit/
+meet-and-greet | nuance.pronunciation.ipa | /ˈmit ənd ˌɡɹit/
+meet-and-greet | nuance.pronunciation.respelling | MEET uhnd greet
+name-calling | phonetic | /ˈneɪm ˌkɔlɪŋ/
+name-calling | nuance.pronunciation.ipa | /ˈneɪm ˌkɔlɪŋ/
+name-calling | nuance.pronunciation.respelling | NAYM kaw-ling
+new-year | phonetic | /ˌnu ˈjɪɹ/
+new-year | nuance.pronunciation.ipa | /ˌnu ˈjɪɹ/
+new-year | nuance.pronunciation.respelling | noo YEER
+no-good | phonetic | /noʊ ˈɡʊd/
+no-good | nuance.pronunciation.ipa | /noʊ ˈɡʊd/
+no-good | nuance.pronunciation.respelling | noh GUUD
+on-the-one-hand | phonetic | /ɑn ðə ˌwʌn ˈhænd/
+on-the-one-hand | nuance.pronunciation.ipa | /ɑn ðə ˌwʌn ˈhænd/
+on-the-one-hand | nuance.pronunciation.respelling | ahn thuh wun HAND
+on-top-of-that | phonetic | /ɑn ˌtɑp əv ˈðæt/
+on-top-of-that | nuance.pronunciation.ipa | /ɑn ˌtɑp əv ˈðæt/
+on-top-of-that | nuance.pronunciation.respelling | ahn tahp uhv THAT
+play-for-time | phonetic | /ˌpleɪ fɚ ˈtaɪm/
+play-for-time | nuance.pronunciation.ipa | /ˌpleɪ fɚ ˈtaɪm/
+play-for-time | nuance.pronunciation.respelling | play fer TYME
+positive-reinforcement | phonetic | /ˌpɑzətɪv ˌɹiɪnˈfɔɹsmənt/
+positive-reinforcement | nuance.pronunciation.ipa | /ˌpɑzətɪv ˌɹiɪnˈfɔɹsmənt/
+positive-reinforcement | nuance.pronunciation.respelling | pahz-uh-tiv ree-in-FORS-muhnt
+pull-a-fast-one | phonetic | /ˌpʊl ə ˈfæst ˌwʌn/
+pull-a-fast-one | nuance.pronunciation.ipa | /ˌpʊl ə ˈfæst ˌwʌn/
+pull-a-fast-one | nuance.pronunciation.respelling | puul uh FAST wun
+put-up | phonetic | /ˌpʊt ˈʌp/
+put-up | nuance.pronunciation.ipa | /ˌpʊt ˈʌp/
+put-up | nuance.pronunciation.respelling | puut UHP
+quality-control | phonetic | /ˈkwɑləti kənˌtɹoʊl/
+quality-control | nuance.pronunciation.ipa | /ˈkwɑləti kənˌtɹoʊl/
+quality-control | nuance.pronunciation.respelling | KWAH-luh-tee kuhn-trohl
+real-time | phonetic | /ˈɹilˌtaɪm/
+real-time | nuance.pronunciation.ipa | /ˈɹilˌtaɪm/
+real-time | nuance.pronunciation.respelling | REEL-tyme
+revolving-door | phonetic | /ɹɪˈvɑlvɪŋ ˌdɔɹ/
+revolving-door | nuance.pronunciation.ipa | /ɹɪˈvɑlvɪŋ ˌdɔɹ/
+revolving-door | nuance.pronunciation.respelling | rih-VAHL-ving dor
+same-to-you | phonetic | /ˌseɪm tə ˈju/
+same-to-you | nuance.pronunciation.ipa | /ˌseɪm tə ˈju/
+same-to-you | nuance.pronunciation.respelling | saym tuh YOO
+settle-for | phonetic | /ˈsɛtəl fɚ/
+settle-for | nuance.pronunciation.ipa | /ˈsɛtəl fɚ/
+settle-for | nuance.pronunciation.respelling | SET-ul fer
+shoulder-to-cry-on | phonetic | /ˈʃoʊldɚ tə ˌkɹaɪ ɑn/
+shoulder-to-cry-on | nuance.pronunciation.ipa | /ˈʃoʊldɚ tə ˌkɹaɪ ɑn/
+shoulder-to-cry-on | nuance.pronunciation.respelling | SHOHL-der tuh kry ahn
+so-and-so | phonetic | /ˈsoʊ ən ˌsoʊ/
+so-and-so | nuance.pronunciation.ipa | /ˈsoʊ ən ˌsoʊ/
+so-and-so | nuance.pronunciation.respelling | SOH un soh
+sought-after | phonetic | /ˈsɔt ˌæftɚ/
+sought-after | nuance.pronunciation.ipa | /ˈsɔt ˌæftɚ/
+sought-after | nuance.pronunciation.respelling | SAWT af-ter
+such-and-such | phonetic | /ˈsʌtʃ ən ˌsʌtʃ/
+such-and-such | nuance.pronunciation.ipa | /ˈsʌtʃ ən ˌsʌtʃ/
+such-and-such | nuance.pronunciation.respelling | SUCH un such
+used-to | phonetic | /ˈjust tə/
+used-to | nuance.pronunciation.ipa | /ˈjust tə/
+used-to | nuance.pronunciation.respelling | YOOST tuh
+building-permit | phonetic | /ˈbɪldɪŋ ˌpɝmɪt/
+building-permit | nuance.pronunciation.ipa | /ˈbɪldɪŋ ˌpɝmɪt/
+building-permit | nuance.pronunciation.respelling | BIL-ding per-mit
+a-law-unto-themselves | phonetic | /ə ˌlɔ ˌʌntu ðəmˈsɛlvz/
+a-law-unto-themselves | nuance.pronunciation.ipa | /ə ˌlɔ ˌʌntu ðəmˈsɛlvz/
+a-law-unto-themselves | nuance.pronunciation.respelling | uh law un-too thuhm-SELVZ
+ab-ovo | phonetic | /æb ˈoʊvoʊ/
+ab-ovo | nuance.pronunciation.ipa | /æb ˈoʊvoʊ/
+ab-ovo | nuance.pronunciation.respelling | ab OH-voh
+ablation-study | phonetic | /əˈbleɪʃən ˌstʌdi/
+ablation-study | nuance.pronunciation.ipa | /əˈbleɪʃən ˌstʌdi/
+ablation-study | nuance.pronunciation.respelling | uh-BLAY-shun stuh-dee
+access-code | phonetic | /ˈækˌsɛs ˌkoʊd/
+access-code | nuance.pronunciation.ipa | /ˈækˌsɛs ˌkoʊd/
+access-code | nuance.pronunciation.respelling | AK-ses kohd
+added-value | phonetic | /ˌædɪd ˈvælju/
+added-value | nuance.pronunciation.ipa | /ˌædɪd ˈvælju/
+added-value | nuance.pronunciation.respelling | ad-id VAL-yoo
+aha-moment | phonetic | /ɑˈhɑ ˌmoʊmənt/
+aha-moment | nuance.pronunciation.ipa | /ɑˈhɑ ˌmoʊmənt/
+aha-moment | nuance.pronunciation.respelling | ah-HAH moh-muhnt
+air-conditioning | phonetic | /ˈɛɹ kənˌdɪʃənɪŋ/
+air-conditioning | nuance.pronunciation.ipa | /ˈɛɹ kənˌdɪʃənɪŋ/
+air-conditioning | nuance.pronunciation.respelling | AIR kuhn-dish-uh-ning
+all-around | phonetic | /ˌɔl əˈɹaʊnd/
+all-around | nuance.pronunciation.ipa | /ˌɔl əˈɹaʊnd/
+all-around | nuance.pronunciation.respelling | awl uh-ROWND
+all-things-being-equal | phonetic | /ˌɔl ˌθɪŋz ˌbiɪŋ ˈikwəl/
+all-things-being-equal | nuance.pronunciation.ipa | /ˌɔl ˌθɪŋz ˌbiɪŋ ˈikwəl/
+all-things-being-equal | nuance.pronunciation.respelling | awl thingz bee-ing EE-kwul
+alter-ego | phonetic | /ˌɔltɚ ˈiɡoʊ/
+alter-ego | nuance.pronunciation.ipa | /ˌɔltɚ ˈiɡoʊ/
+alter-ego | nuance.pronunciation.respelling | awl-ter EE-goh
+alternative-hypothesis | phonetic | /ɔlˌtɝnətɪv haɪˈpɑθəsɪs/
+alternative-hypothesis | nuance.pronunciation.ipa | /ɔlˌtɝnətɪv haɪˈpɑθəsɪs/
+alternative-hypothesis | nuance.pronunciation.respelling | awl-ter-nuh-tiv hy-PAH-thuh-sis
+amicus-curiae | phonetic | /əˌmikəs ˈkjʊɹiˌaɪ/
+amicus-curiae | nuance.pronunciation.ipa | /əˌmikəs ˈkjʊɹiˌaɪ/
+amicus-curiae | nuance.pronunciation.respelling | uh-mee-kus KYOOR-ee-eye
+angel-of-the-lord | phonetic | /ˌeɪndʒəl əv ðə ˈlɔɹd/
+angel-of-the-lord | nuance.pronunciation.ipa | /ˌeɪndʒəl əv ðə ˈlɔɹd/
+angel-of-the-lord | nuance.pronunciation.respelling | ayn-jul uhv thuh LORD
+are-there-any-side-effects | phonetic | /ɑɹ ðɛɹ ˌɛni ˈsaɪd ɪˌfɛkts/
+are-there-any-side-effects | nuance.pronunciation.ipa | /ɑɹ ðɛɹ ˌɛni ˈsaɪd ɪˌfɛkts/
+are-there-any-side-effects | nuance.pronunciation.respelling | ahr thair en-ee SIDE ih-fekts
+baby-shower | phonetic | /ˈbeɪbi ˌʃaʊɚ/
+baby-shower | nuance.pronunciation.ipa | /ˈbeɪbi ˌʃaʊɚ/
+baby-shower | nuance.pronunciation.respelling | BAY-bee show-er
+bachelorette-party | phonetic | /ˈbætʃələˌɹɛt ˌpɑɹti/
+bachelorette-party | nuance.pronunciation.ipa | /ˈbætʃələˌɹɛt ˌpɑɹti/
+bachelorette-party | nuance.pronunciation.respelling | BACH-uh-luh-ret par-tee
+background-noise | phonetic | /ˈbækˌɡɹaʊnd ˌnɔɪz/
+background-noise | nuance.pronunciation.ipa | /ˈbækˌɡɹaʊnd ˌnɔɪz/
+background-noise | nuance.pronunciation.respelling | BAK-grownd noyz
+background-process | phonetic | /ˈbækˌɡɹaʊnd ˌpɹɑˌsɛs/
+background-process | nuance.pronunciation.ipa | /ˈbækˌɡɹaʊnd ˌpɹɑˌsɛs/
+background-process | nuance.pronunciation.respelling | BAK-grownd prah-ses
+backseat-driver | phonetic | /ˈbækˌsit ˌdɹaɪvɚ/
+backseat-driver | nuance.pronunciation.ipa | /ˈbækˌsit ˌdɹaɪvɚ/
+backseat-driver | nuance.pronunciation.respelling | BAK-seet dry-ver
+backup-camera | phonetic | /ˈbækˌʌp ˌkæmɚə/
+backup-camera | nuance.pronunciation.ipa | /ˈbækˌʌp ˌkæmɚə/
+backup-camera | nuance.pronunciation.respelling | BAK-up kam-er-uh
+bandwagon-effect | phonetic | /ˈbændˌwæɡən ɪˌfɛkt/
+bandwagon-effect | nuance.pronunciation.ipa | /ˈbændˌwæɡən ɪˌfɛkt/
+bandwagon-effect | nuance.pronunciation.respelling | BAND-wag-un ih-fekt
+bandwagon-fan | phonetic | /ˈbændˌwæɡən ˌfæn/
+bandwagon-fan | nuance.pronunciation.ipa | /ˈbændˌwæɡən ˌfæn/
+bandwagon-fan | nuance.pronunciation.respelling | BAND-wag-un fan
+bargain-hunter | phonetic | /ˈbɑɹɡən ˌhʌntɚ/
+bargain-hunter | nuance.pronunciation.ipa | /ˈbɑɹɡən ˌhʌntɚ/
+bargain-hunter | nuance.pronunciation.respelling | BAR-guhn hun-ter
+bark-up-the-wrong-tree | phonetic | /ˌbɑɹk ʌp ðə ˌɹɔŋ ˈtɹi/
+bark-up-the-wrong-tree | nuance.pronunciation.ipa | /ˌbɑɹk ʌp ðə ˌɹɔŋ ˈtɹi/
+bark-up-the-wrong-tree | nuance.pronunciation.respelling | bahrk up thuh rawng TREE
+baseball-field | phonetic | /ˈbeɪsˌbɔl ˌfild/
+baseball-field | nuance.pronunciation.ipa | /ˈbeɪsˌbɔl ˌfild/
+baseball-field | nuance.pronunciation.respelling | BAYS-bawl feeld
+baseball-player | phonetic | /ˈbeɪsˌbɔl ˌpleɪɚ/
+baseball-player | nuance.pronunciation.ipa | /ˈbeɪsˌbɔl ˌpleɪɚ/
+baseball-player | nuance.pronunciation.respelling | BAYS-bawl play-er
+basketball-court | phonetic | /ˈbæskətˌbɔl ˌkɔɹt/
+basketball-court | nuance.pronunciation.ipa | /ˈbæskətˌbɔl ˌkɔɹt/
+basketball-court | nuance.pronunciation.respelling | BAS-kit-bawl kort
+batch-processing | phonetic | /ˈbætʃ ˌpɹɑsɛsɪŋ/
+batch-processing | nuance.pronunciation.ipa | /ˈbætʃ ˌpɹɑsɛsɪŋ/
+batch-processing | nuance.pronunciation.respelling | BACH prah-ses-ing
+bathroom-tissue | phonetic | /ˈbæθˌɹum ˌtɪʃu/
+bathroom-tissue | nuance.pronunciation.ipa | /ˈbæθˌɹum ˌtɪʃu/
+bathroom-tissue | nuance.pronunciation.respelling | BATH-room tish-oo
+battle-buddy | phonetic | /ˈbætəl ˌbʌdi/
+battle-buddy | nuance.pronunciation.ipa | /ˈbætəl ˌbʌdi/
+battle-buddy | nuance.pronunciation.respelling | BAT-uhl buh-dee
+beach-umbrella | phonetic | /ˈbitʃ əmˌbɹɛlə/
+beach-umbrella | nuance.pronunciation.ipa | /ˈbitʃ əmˌbɹɛlə/
+beach-umbrella | nuance.pronunciation.respelling | BEECH um-brel-uh
+beam-search | phonetic | /ˈbim ˌsɝtʃ/
+beam-search | nuance.pronunciation.ipa | /ˈbim ˌsɝtʃ/
+beam-search | nuance.pronunciation.respelling | BEEM surch
+big-box-store | phonetic | /ˈbɪɡˌbɑks ˌstɔɹ/
+big-box-store | nuance.pronunciation.ipa | /ˈbɪɡˌbɑks ˌstɔɹ/
+big-box-store | nuance.pronunciation.respelling | BIG-bahks stor
+black-and-white | phonetic | /ˌblæk ənd ˈwaɪt/
+black-and-white | nuance.pronunciation.ipa | /ˌblæk ənd ˈwaɪt/
+black-and-white | nuance.pronunciation.respelling | blak uhnd WYT
+black-ice | phonetic | /ˌblæk ˈaɪs/
+black-ice | nuance.pronunciation.ipa | /ˌblæk ˈaɪs/
+black-ice | nuance.pronunciation.respelling | blak ICE
+black-sheep | phonetic | /ˌblæk ˈʃip/
+black-sheep | nuance.pronunciation.ipa | /ˌblæk ˈʃip/
+black-sheep | nuance.pronunciation.respelling | blak SHEEP
+blank-slate | phonetic | /ˌblæŋk ˈsleɪt/
+blank-slate | nuance.pronunciation.ipa | /ˌblæŋk ˈsleɪt/
+blank-slate | nuance.pronunciation.respelling | blangk SLAYT
+block-letters | phonetic | /ˈblɑk ˌlɛtɚz/
+block-letters | nuance.pronunciation.ipa | /ˈblɑk ˌlɛtɚz/
+block-letters | nuance.pronunciation.respelling | BLAHK let-erz
+blowout-sale | phonetic | /ˈbloʊˌaʊt ˌseɪl/
+blowout-sale | nuance.pronunciation.ipa | /ˈbloʊˌaʊt ˌseɪl/
+blowout-sale | nuance.pronunciation.respelling | BLOH-owt sayl
+bon-appétit | phonetic | /ˌbɑn ɑpəˈti/
+bon-appétit | nuance.pronunciation.ipa | /ˌbɑn ɑpəˈti/
+bon-appétit | nuance.pronunciation.respelling | bahn ah-puh-TEE
+book-of-isaiah | phonetic | /ˌbʊk əv aɪˈzeɪə/
+book-of-isaiah | nuance.pronunciation.ipa | /ˌbʊk əv aɪˈzeɪə/
+book-of-isaiah | nuance.pronunciation.respelling | buuk uhv eye-ZAY-uh
+book-of-job | phonetic | /ˌbʊk əv ˈdʒoʊb/
+book-of-job | nuance.pronunciation.ipa | /ˌbʊk əv ˈdʒoʊb/
+book-of-job | nuance.pronunciation.respelling | buuk uhv JOHB
+book-of-judges | phonetic | /ˌbʊk əv ˈdʒʌdʒɪz/
+book-of-judges | nuance.pronunciation.ipa | /ˌbʊk əv ˈdʒʌdʒɪz/
+book-of-judges | nuance.pronunciation.respelling | buuk uhv JUH-jiz
+book-of-lamentations | phonetic | /ˌbʊk əv ˌlæmənˈteɪʃənz/
+book-of-lamentations | nuance.pronunciation.ipa | /ˌbʊk əv ˌlæmənˈteɪʃənz/
+book-of-lamentations | nuance.pronunciation.respelling | buuk uhv lam-un-TAY-shunz
+book-of-numbers | phonetic | /ˌbʊk əv ˈnʌmbɚz/
+book-of-numbers | nuance.pronunciation.ipa | /ˌbʊk əv ˈnʌmbɚz/
+book-of-numbers | nuance.pronunciation.respelling | buuk uhv NUHM-berz
+book-of-proverbs | phonetic | /ˌbʊk əv ˈpɹɑvɚbz/
+book-of-proverbs | nuance.pronunciation.ipa | /ˌbʊk əv ˈpɹɑvɚbz/
+book-of-proverbs | nuance.pronunciation.respelling | buuk uhv PRAH-verbz
+book-of-ruth | phonetic | /ˌbʊk əv ˈɹuθ/
+book-of-ruth | nuance.pronunciation.ipa | /ˌbʊk əv ˈɹuθ/
+book-of-ruth | nuance.pronunciation.respelling | buuk uhv ROOTH
+books-of-chronicles | phonetic | /ˌbʊks əv ˈkɹɑnɪkəlz/
+books-of-chronicles | nuance.pronunciation.ipa | /ˌbʊks əv ˈkɹɑnɪkəlz/
+books-of-chronicles | nuance.pronunciation.respelling | buuks uhv KRAH-nih-kulz
+books-of-kings | phonetic | /ˌbʊks əv ˈkɪŋz/
+books-of-kings | nuance.pronunciation.ipa | /ˌbʊks əv ˈkɪŋz/
+books-of-kings | nuance.pronunciation.respelling | buuks uhv KINGZ
+books-of-samuel | phonetic | /ˌbʊks əv ˈsæmjuəl/
+books-of-samuel | nuance.pronunciation.ipa | /ˌbʊks əv ˈsæmjuəl/
+books-of-samuel | nuance.pronunciation.respelling | buuks uhv SAM-yoo-uhl
+botanical-garden | phonetic | /bəˌtænɪkəl ˈɡɑɹdən/
+botanical-garden | nuance.pronunciation.ipa | /bəˌtænɪkəl ˈɡɑɹdən/
+botanical-garden | nuance.pronunciation.respelling | buh-tan-ih-kul GAHR-dun
+breadth-first-search | phonetic | /ˌbɹɛdθ ˌfɝst ˈsɝtʃ/
+breadth-first-search | nuance.pronunciation.ipa | /ˌbɹɛdθ ˌfɝst ˈsɝtʃ/
+breadth-first-search | nuance.pronunciation.respelling | bredth ferst SURCH
+bubble-water | phonetic | /ˈbʌbəl ˌwɔtɚ/
+bubble-water | nuance.pronunciation.ipa | /ˈbʌbəl ˌwɔtɚ/
+bubble-water | nuance.pronunciation.respelling | BUB-uhl waw-ter
+buckle-in | phonetic | /ˌbʌkəl ˈɪn/
+buckle-in | nuance.pronunciation.ipa | /ˌbʌkəl ˈɪn/
+buckle-in | nuance.pronunciation.respelling | buk-uhl IN
+butcher-shop | phonetic | /ˈbʊtʃɚ ˌʃɑp/
+butcher-shop | nuance.pronunciation.ipa | /ˈbʊtʃɚ ˌʃɑp/
+butcher-shop | nuance.pronunciation.respelling | BUUCH-er shahp
+by-the-skin-of-your-teeth | phonetic | /baɪ ðə ˌskɪn əv jɚ ˈtiθ/
+by-the-skin-of-your-teeth | nuance.pronunciation.ipa | /baɪ ðə ˌskɪn əv jɚ ˈtiθ/
+by-the-skin-of-your-teeth | nuance.pronunciation.respelling | by thuh skin uhv yer TEETH
+by-the-sweat-of-your-brow | phonetic | /baɪ ðə ˌswɛt əv jɚ ˈbɹaʊ/
+by-the-sweat-of-your-brow | nuance.pronunciation.ipa | /baɪ ðə ˌswɛt əv jɚ ˈbɹaʊ/
+by-the-sweat-of-your-brow | nuance.pronunciation.respelling | by thuh swet uhv yer BROW
+caller-id | phonetic | /ˌkɔlɚ ˌaɪ ˈdi/
+caller-id | nuance.pronunciation.ipa | /ˌkɔlɚ ˌaɪ ˈdi/
+caller-id | nuance.pronunciation.respelling | kaw-ler eye DEE
+cargo-ship | phonetic | /ˈkɑɹɡoʊ ˌʃɪp/
+cargo-ship | nuance.pronunciation.ipa | /ˈkɑɹɡoʊ ˌʃɪp/
+cargo-ship | nuance.pronunciation.respelling | KAHR-goh ship
+catch-one's-breath | phonetic | /ˌkætʃ wʌnz ˈbɹɛθ/
+catch-one's-breath | nuance.pronunciation.ipa | /ˌkætʃ wʌnz ˈbɹɛθ/
+catch-one's-breath | nuance.pronunciation.respelling | kach wunz BRETH
+catch-you-later | phonetic | /ˌkætʃ ju ˈleɪtɚ/
+catch-you-later | nuance.pronunciation.ipa | /ˌkætʃ ju ˈleɪtɚ/
+catch-you-later | nuance.pronunciation.respelling | kach yoo LAY-ter
+cattle-beast | phonetic | /ˈkætəl ˌbist/
+cattle-beast | nuance.pronunciation.ipa | /ˈkætəl ˌbist/
+cattle-beast | nuance.pronunciation.respelling | KAT-uhl beest
+central-limit-theorem | phonetic | /ˌsɛntɹəl ˌlɪmɪt ˈθɪɹəm/
+central-limit-theorem | nuance.pronunciation.ipa | /ˌsɛntɹəl ˌlɪmɪt ˈθɪɹəm/
+central-limit-theorem | nuance.pronunciation.respelling | sen-truhl lim-it THEER-um
+chain-of-thought | phonetic | /ˌtʃeɪn əv ˈθɔt/
+chain-of-thought | nuance.pronunciation.ipa | /ˌtʃeɪn əv ˈθɔt/
+chain-of-thought | nuance.pronunciation.respelling | chayn uhv THAWT
+chalk-up-to | phonetic | /ˌtʃɔk ˈʌp tə/
+chalk-up-to | nuance.pronunciation.ipa | /ˌtʃɔk ˈʌp tə/
+chalk-up-to | nuance.pronunciation.respelling | chawk UP tuh
+change-of-heart | phonetic | /ˌtʃeɪndʒ əv ˈhɑɹt/
+change-of-heart | nuance.pronunciation.ipa | /ˌtʃeɪndʒ əv ˈhɑɹt/
+change-of-heart | nuance.pronunciation.respelling | chaynj uhv HAHRT
+city-center | phonetic | /ˌsɪti ˈsɛntɚ/
+city-center | nuance.pronunciation.ipa | /ˌsɪti ˈsɛntɚ/
+city-center | nuance.pronunciation.respelling | sit-ee SEN-ter
+city-hall | phonetic | /ˌsɪti ˈhɔl/
+city-hall | nuance.pronunciation.ipa | /ˌsɪti ˈhɔl/
+city-hall | nuance.pronunciation.respelling | sit-ee HAWL
+cluster-analysis | phonetic | /ˈklʌstɚ əˌnæləsɪs/
+cluster-analysis | nuance.pronunciation.ipa | /ˈklʌstɚ əˌnæləsɪs/
+cluster-analysis | nuance.pronunciation.respelling | KLUS-ter uh-nal-uh-sis
+cocktail-party | phonetic | /ˈkɑkteɪl ˌpɑɹti/
+cocktail-party | nuance.pronunciation.ipa | /ˈkɑkteɪl ˌpɑɹti/
+cocktail-party | nuance.pronunciation.respelling | KAHK-tayl par-tee
+code-review | phonetic | /ˈkoʊd ɹɪˌvju/
+code-review | nuance.pronunciation.ipa | /ˈkoʊd ɹɪˌvju/
+code-review | nuance.pronunciation.respelling | KOHD rih-vyoo
+cold-caller | phonetic | /ˈkoʊld ˌkɔlɚ/
+cold-caller | nuance.pronunciation.ipa | /ˈkoʊld ˌkɔlɚ/
+cold-caller | nuance.pronunciation.respelling | KOHLD kaw-ler
+come-to-someone's-aid | phonetic | /ˌkʌm tu ˌsʌmwənz ˈeɪd/
+come-to-someone's-aid | nuance.pronunciation.ipa | /ˌkʌm tu ˌsʌmwənz ˈeɪd/
+come-to-someone's-aid | nuance.pronunciation.respelling | kum too sum-wuhnz AYD
+comeback-kid | phonetic | /ˈkʌmˌbæk ˌkɪd/
+comeback-kid | nuance.pronunciation.ipa | /ˈkʌmˌbæk ˌkɪd/
+comeback-kid | nuance.pronunciation.respelling | KUM-bak kid
+command-line-interface | phonetic | /kəˌmænd ˌlaɪn ˈɪntɚˌfeɪs/
+command-line-interface | nuance.pronunciation.ipa | /kəˌmænd ˌlaɪn ˈɪntɚˌfeɪs/
+command-line-interface | nuance.pronunciation.respelling | kuh-mand lyne IN-ter-fays
+compound-word | phonetic | /ˈkɑmpaʊnd ˌwɝd/
+compound-word | nuance.pronunciation.ipa | /ˈkɑmpaʊnd ˌwɝd/
+compound-word | nuance.pronunciation.respelling | KAHM-pownd werd
+con-artist | phonetic | /ˈkɑn ˌɑɹtɪst/
+con-artist | nuance.pronunciation.ipa | /ˈkɑn ˌɑɹtɪst/
+con-artist | nuance.pronunciation.respelling | KAHN ahr-tist
+confession-booth | phonetic | /kənˈfɛʃən ˌbuθ/
+confession-booth | nuance.pronunciation.ipa | /kənˈfɛʃən ˌbuθ/
+confession-booth | nuance.pronunciation.respelling | kuhn-FESH-uhn booth
+confidence-man | phonetic | /ˈkɑnfɪdəns ˌmæn/
+confidence-man | nuance.pronunciation.ipa | /ˈkɑnfɪdəns ˌmæn/
+confidence-man | nuance.pronunciation.respelling | KAHN-fuh-duhns man
+consignment-shop | phonetic | /kənˈsaɪnmənt ˌʃɑp/
+consignment-shop | nuance.pronunciation.ipa | /kənˈsaɪnmənt ˌʃɑp/
+consignment-shop | nuance.pronunciation.respelling | kuhn-SYNE-muhnt shahp
+context-window | phonetic | /ˈkɑntɛkst ˌwɪndoʊ/
+context-window | nuance.pronunciation.ipa | /ˈkɑntɛkst ˌwɪndoʊ/
+context-window | nuance.pronunciation.respelling | KAHN-tekst win-doh
+control-group | phonetic | /kənˈtɹoʊl ˌɡɹup/
+control-group | nuance.pronunciation.ipa | /kənˈtɹoʊl ˌɡɹup/
+control-group | nuance.pronunciation.respelling | kuhn-TROHL groop
+control-panel | phonetic | /kənˈtɹoʊl ˌpænəl/
+control-panel | nuance.pronunciation.ipa | /kənˈtɹoʊl ˌpænəl/
+control-panel | nuance.pronunciation.respelling | kuhn-TROHL pan-uhl
+control-variable | phonetic | /kənˈtɹoʊl ˌvɛɹiəbəl/
+control-variable | nuance.pronunciation.ipa | /kənˈtɹoʊl ˌvɛɹiəbəl/
+control-variable | nuance.pronunciation.respelling | kuhn-TROHL vair-ee-uh-buhl
+cookie-sheet | phonetic | /ˈkʊki ˌʃit/
+cookie-sheet | nuance.pronunciation.ipa | /ˈkʊki ˌʃit/
+cookie-sheet | nuance.pronunciation.respelling | KUUK-ee sheet
+cooking-turner | phonetic | /ˈkʊkɪŋ ˌtɝnɚ/
+cooking-turner | nuance.pronunciation.ipa | /ˈkʊkɪŋ ˌtɝnɚ/
+cooking-turner | nuance.pronunciation.respelling | KUUK-ing ter-ner
+copy-machine | phonetic | /ˈkɑpi məˌʃin/
+copy-machine | nuance.pronunciation.ipa | /ˈkɑpi məˌʃin/
+copy-machine | nuance.pronunciation.respelling | KAH-pee muh-sheen
+cough-syrup | phonetic | /ˈkɔf ˌsɪɹəp/
+cough-syrup | nuance.pronunciation.ipa | /ˈkɔf ˌsɪɹəp/
+cough-syrup | nuance.pronunciation.respelling | KAWF sir-up
+cover-charge | phonetic | /ˈkʌvɚ ˌtʃɑɹdʒ/
+cover-charge | nuance.pronunciation.ipa | /ˈkʌvɚ ˌtʃɑɹdʒ/
+cover-charge | nuance.pronunciation.respelling | KUV-er chahrj
+crack-up | phonetic | /ˌkɹæk ˈʌp/
+crack-up | nuance.pronunciation.ipa | /ˌkɹæk ˈʌp/
+crack-up | nuance.pronunciation.respelling | krak UP
+crowd-surfing | phonetic | /ˈkɹaʊd ˌsɝfɪŋ/
+crowd-surfing | nuance.pronunciation.ipa | /ˈkɹaʊd ˌsɝfɪŋ/
+crowd-surfing | nuance.pronunciation.respelling | KROWD ser-fing
+data-privacy | phonetic | /ˌdeɪtə ˈpɹaɪvəsi/
+data-privacy | nuance.pronunciation.ipa | /ˌdeɪtə ˈpɹaɪvəsi/
+data-privacy | nuance.pronunciation.respelling | day-tuh PRY-vuh-see
+dead-sea-scrolls | phonetic | /ˌdɛd ˌsi ˈskɹoʊlz/
+dead-sea-scrolls | nuance.pronunciation.ipa | /ˌdɛd ˌsi ˈskɹoʊlz/
+dead-sea-scrolls | nuance.pronunciation.respelling | ded see SKROHLZ
+deep-neural-network | phonetic | /ˌdip ˌnʊɹəl ˈnɛtˌwɝk/
+deep-neural-network | nuance.pronunciation.ipa | /ˌdip ˌnʊɹəl ˈnɛtˌwɝk/
+deep-neural-network | nuance.pronunciation.respelling | deep noor-uhl NET-werk
+deficit-spending | phonetic | /ˈdɛfəsɪt ˌspɛndɪŋ/
+deficit-spending | nuance.pronunciation.ipa | /ˈdɛfəsɪt ˌspɛndɪŋ/
+deficit-spending | nuance.pronunciation.respelling | DEF-uh-sit spen-ding
+delusions-of-grandeur | phonetic | /dɪˌluʒənz əv ˈɡɹændʒɚ/
+delusions-of-grandeur | nuance.pronunciation.ipa | /dɪˌluʒənz əv ˈɡɹændʒɚ/
+delusions-of-grandeur | nuance.pronunciation.respelling | dih-loo-zhunz uhv GRAN-jer
+design-by-contract | phonetic | /dɪˌzaɪn baɪ ˈkɑntɹækt/
+design-by-contract | nuance.pronunciation.ipa | /dɪˌzaɪn baɪ ˈkɑntɹækt/
+design-by-contract | nuance.pronunciation.respelling | dih-zyne by KAHN-trakt
+difference-equation | phonetic | /ˈdɪfɹəns ɪˌkweɪʒən/
+difference-equation | nuance.pronunciation.ipa | /ˈdɪfɹəns ɪˌkweɪʒən/
+difference-equation | nuance.pronunciation.respelling | DIF-runs ih-kway-zhun
+differential-calculus | phonetic | /ˌdɪfəˈɹɛnʃəl ˈkælkjələs/
+differential-calculus | nuance.pronunciation.ipa | /ˌdɪfəˈɹɛnʃəl ˈkælkjələs/
+differential-calculus | nuance.pronunciation.respelling | dif-uh-REN-shul KAL-kyuh-lus
+dig-in | phonetic | /ˌdɪɡ ˈɪn/
+dig-in | nuance.pronunciation.ipa | /ˌdɪɡ ˈɪn/
+dig-in | nuance.pronunciation.respelling | dig IN
+digital-gap | phonetic | /ˌdɪdʒɪtəl ˈɡæp/
+digital-gap | nuance.pronunciation.ipa | /ˌdɪdʒɪtəl ˈɡæp/
+digital-gap | nuance.pronunciation.respelling | dij-ih-tuhl GAP
+discount-store | phonetic | /ˈdɪskaʊnt ˌstɔɹ/
+discount-store | nuance.pronunciation.ipa | /ˈdɪskaʊnt ˌstɔɹ/
+discount-store | nuance.pronunciation.respelling | DIS-kownt stor
+display-case | phonetic | /dɪˈspleɪ ˌkeɪs/
+display-case | nuance.pronunciation.ipa | /dɪˈspleɪ ˌkeɪs/
+display-case | nuance.pronunciation.respelling | dih-SPLAY kays
+divine-proportion | phonetic | /dɪˌvaɪn pɹəˈpɔɹʃən/
+divine-proportion | nuance.pronunciation.ipa | /dɪˌvaɪn pɹəˈpɔɹʃən/
+divine-proportion | nuance.pronunciation.respelling | dih-vyne pruh-POR-shun
+divinity-school | phonetic | /dɪˈvɪnɪti ˌskul/
+divinity-school | nuance.pronunciation.ipa | /dɪˈvɪnɪti ˌskul/
+divinity-school | nuance.pronunciation.respelling | dih-VIN-ih-tee skool
+do-you-know-when-it'll-be-back-in-stock | phonetic | /du ju ˈnoʊ ˌwɛn ˌɪtəl bi ˈbæk ɪn ˈstɑk/
+do-you-know-when-it'll-be-back-in-stock | nuance.pronunciation.ipa | /du ju ˈnoʊ ˌwɛn ˌɪtəl bi ˈbæk ɪn ˈstɑk/
+do-you-know-when-it'll-be-back-in-stock | nuance.pronunciation.respelling | doo yoo NOH wen it-uhl bee BAK in STAHK
+dog-it | phonetic | /ˈdɔɡ ɪt/
+dog-it | nuance.pronunciation.ipa | /ˈdɔɡ ɪt/
+dog-it | nuance.pronunciation.respelling | DAWG it
+dominical-letter | phonetic | /dəˌmɪnɪkəl ˈlɛtɚ/
+dominical-letter | nuance.pronunciation.ipa | /dəˌmɪnɪkəl ˈlɛtɚ/
+dominical-letter | nuance.pronunciation.respelling | duh-min-ih-kuhl LET-er
+domino-effect | phonetic | /ˈdɑməˌnoʊ ɪˌfɛkt/
+domino-effect | nuance.pronunciation.ipa | /ˈdɑməˌnoʊ ɪˌfɛkt/
+domino-effect | nuance.pronunciation.respelling | DAH-muh-noh ih-fekt
+dressing-room | phonetic | /ˈdɹɛsɪŋ ˌɹum/
+dressing-room | nuance.pronunciation.ipa | /ˈdɹɛsɪŋ ˌɹum/
+dressing-room | nuance.pronunciation.respelling | DRES-ing room
+driver's-license | phonetic | /ˈdɹaɪvɚz ˌlaɪsəns/
+driver's-license | nuance.pronunciation.ipa | /ˈdɹaɪvɚz ˌlaɪsəns/
+driver's-license | nuance.pronunciation.respelling | DRY-verz ly-suhns
+dry-cleaner | phonetic | /ˈdɹaɪ ˌklinɚ/
+dry-cleaner | nuance.pronunciation.ipa | /ˈdɹaɪ ˌklinɚ/
+dry-cleaner | nuance.pronunciation.respelling | DRY klee-ner
+dry-cleaning | phonetic | /ˈdɹaɪ ˌklinɪŋ/
+dry-cleaning | nuance.pronunciation.ipa | /ˈdɹaɪ ˌklinɪŋ/
+dry-cleaning | nuance.pronunciation.respelling | DRY klee-ning
+duck-typing | phonetic | /ˈdʌk ˌtaɪpɪŋ/
+duck-typing | nuance.pronunciation.ipa | /ˈdʌk ˌtaɪpɪŋ/
+duck-typing | nuance.pronunciation.respelling | DUHK ty-ping
+due-diligence | phonetic | /ˌdu ˈdɪlɪdʒəns/
+due-diligence | nuance.pronunciation.ipa | /ˌdu ˈdɪlɪdʒəns/
+due-diligence | nuance.pronunciation.respelling | doo DIL-ih-juhns
+due-process | phonetic | /ˌdu ˈpɹɑsɛs/
+due-process | nuance.pronunciation.ipa | /ˌdu ˈpɹɑsɛs/
+due-process | nuance.pronunciation.respelling | doo PRAH-ses
+dungeon-master | phonetic | /ˈdʌndʒən ˌmæstɚ/
+dungeon-master | nuance.pronunciation.ipa | /ˈdʌndʒən ˌmæstɚ/
+dungeon-master | nuance.pronunciation.respelling | DUN-juhn mas-ter
+duty-of-care | phonetic | /ˌduti əv ˈkɛɹ/
+duty-of-care | nuance.pronunciation.ipa | /ˌduti əv ˈkɛɹ/
+duty-of-care | nuance.pronunciation.respelling | doo-tee uhv KAIR
+emergency-brake | phonetic | /ɪˈmɝdʒənsi ˌbɹeɪk/
+emergency-brake | nuance.pronunciation.ipa | /ɪˈmɝdʒənsi ˌbɹeɪk/
+emergency-brake | nuance.pronunciation.respelling | ih-MER-juhn-see brayk
+emergency-department | phonetic | /ɪˈmɝdʒənsi dɪˌpɑɹtmənt/
+emergency-department | nuance.pronunciation.ipa | /ɪˈmɝdʒənsi dɪˌpɑɹtmənt/
+emergency-department | nuance.pronunciation.respelling | ih-MER-juhn-see dih-pahrt-muhnt
+emergency-room | phonetic | /ɪˈmɝdʒənsi ˌɹum/
+emergency-room | nuance.pronunciation.ipa | /ɪˈmɝdʒənsi ˌɹum/
+emergency-room | nuance.pronunciation.respelling | ih-MER-juhn-see room
+error-analysis | phonetic | /ˈɛɹɚ əˌnæləsɪs/
+error-analysis | nuance.pronunciation.ipa | /ˈɛɹɚ əˌnæləsɪs/
+error-analysis | nuance.pronunciation.respelling | AIR-er uh-nal-uh-sis
+excavating-machine | phonetic | /ˈɛkskəˌveɪtɪŋ məˌʃin/
+excavating-machine | nuance.pronunciation.ipa | /ˈɛkskəˌveɪtɪŋ məˌʃin/
+excavating-machine | nuance.pronunciation.respelling | EKS-kuh-vay-ting muh-sheen
+excise-tax | phonetic | /ˈɛksaɪz ˌtæks/
+excise-tax | nuance.pronunciation.ipa | /ˈɛksaɪz ˌtæks/
+excise-tax | nuance.pronunciation.respelling | EK-syze taks
+expert-system | phonetic | /ˈɛkspɚt ˌsɪstəm/
+expert-system | nuance.pronunciation.ipa | /ˈɛkspɚt ˌsɪstəm/
+expert-system | nuance.pronunciation.respelling | EKS-pert sis-tuhm
+eye-for-an-eye | phonetic | /ˌaɪ fɚ ən ˈaɪ/
+eye-for-an-eye | nuance.pronunciation.ipa | /ˌaɪ fɚ ən ˈaɪ/
+eye-for-an-eye | nuance.pronunciation.respelling | eye fer uhn EYE
+fabric-softener | phonetic | /ˈfæbɹɪk ˌsɔfənɚ/
+fabric-softener | nuance.pronunciation.ipa | /ˈfæbɹɪk ˌsɔfənɚ/
+fabric-softener | nuance.pronunciation.respelling | FAB-rik saw-fuh-ner
+factor-analysis | phonetic | /ˈfæktɚ əˌnæləsɪs/
+factor-analysis | nuance.pronunciation.ipa | /ˈfæktɚ əˌnæləsɪs/
+factor-analysis | nuance.pronunciation.respelling | FAK-ter uh-nal-uh-sis
+fallen-angel | phonetic | /ˌfɔlən ˈeɪndʒəl/
+fallen-angel | nuance.pronunciation.ipa | /ˌfɔlən ˈeɪndʒəl/
+fallen-angel | nuance.pronunciation.respelling | faw-luhn AYN-juhl
+fancy-meeting-you-here | phonetic | /ˌfænsi ˌmitɪŋ ju ˈhɪɹ/
+fancy-meeting-you-here | nuance.pronunciation.ipa | /ˌfænsi ˌmitɪŋ ju ˈhɪɹ/
+fancy-meeting-you-here | nuance.pronunciation.respelling | fan-see mee-ting yoo HEER
+fantasy-football | phonetic | /ˈfæntəsi ˌfʊtˌbɔl/
+fantasy-football | nuance.pronunciation.ipa | /ˈfæntəsi ˌfʊtˌbɔl/
+fantasy-football | nuance.pronunciation.respelling | FAN-tuh-see fuut-bawl
+farmers-market | phonetic | /ˈfɑɹmɚz ˌmɑɹkɪt/
+farmers-market | nuance.pronunciation.ipa | /ˈfɑɹmɚz ˌmɑɹkɪt/
+farmers-market | nuance.pronunciation.respelling | FAHR-merz mahr-kit
+fault-tolerance | phonetic | /ˈfɔlt ˌtɑlɚəns/
+fault-tolerance | nuance.pronunciation.ipa | /ˈfɔlt ˌtɑlɚəns/
+fault-tolerance | nuance.pronunciation.respelling | FAWLT tah-ler-uhns
+feast-of-tabernacles | phonetic | /ˌfist əv ˈtæbɚˌnækəlz/
+feast-of-tabernacles | nuance.pronunciation.ipa | /ˌfist əv ˈtæbɚˌnækəlz/
+feast-of-tabernacles | nuance.pronunciation.respelling | feest uhv TAB-er-nak-uhlz
+feature-engineering | phonetic | /ˈfitʃɚ ˌɛndʒəˌnɪɹɪŋ/
+feature-engineering | nuance.pronunciation.ipa | /ˈfitʃɚ ˌɛndʒəˌnɪɹɪŋ/
+feature-engineering | nuance.pronunciation.respelling | FEE-cher en-juh-neer-ing
+feedforward-neural-network | phonetic | /ˈfidˌfɔɹwɚd ˌnʊɹəl ˌnɛtˌwɝk/
+feedforward-neural-network | nuance.pronunciation.ipa | /ˈfidˌfɔɹwɚd ˌnʊɹəl ˌnɛtˌwɝk/
+feedforward-neural-network | nuance.pronunciation.respelling | FEED-for-werd noor-uhl net-werk
+field-goal | phonetic | /ˈfild ˌɡoʊl/
+field-goal | nuance.pronunciation.ipa | /ˈfild ˌɡoʊl/
+field-goal | nuance.pronunciation.respelling | FEELD gohl
+fifth-wheel | phonetic | /ˌfɪfθ ˈwil/
+fifth-wheel | nuance.pronunciation.ipa | /ˌfɪfθ ˈwil/
+fifth-wheel | nuance.pronunciation.respelling | fifth WEEL
+fire-alarm | phonetic | /ˈfaɪɚ əˌlɑɹm/
+fire-alarm | nuance.pronunciation.ipa | /ˈfaɪɚ əˌlɑɹm/
+fire-alarm | nuance.pronunciation.respelling | FY-er uh-lahrm
+fish-out-of-water | phonetic | /ˌfɪʃ ˌaʊt əv ˈwɔtɚ/
+fish-out-of-water | nuance.pronunciation.ipa | /ˌfɪʃ ˌaʊt əv ˈwɔtɚ/
+fish-out-of-water | nuance.pronunciation.respelling | fish owt uhv WAW-ter
+fit-in | phonetic | /ˌfɪt ˈɪn/
+fit-in | nuance.pronunciation.ipa | /ˌfɪt ˈɪn/
+fit-in | nuance.pronunciation.respelling | fit IN
+flat-water | phonetic | /ˌflæt ˈwɔtɚ/
+flat-water | nuance.pronunciation.ipa | /ˌflæt ˈwɔtɚ/
+flat-water | nuance.pronunciation.respelling | flat WAW-ter
+flea-collar | phonetic | /ˈfli ˌkɑlɚ/
+flea-collar | nuance.pronunciation.ipa | /ˈfli ˌkɑlɚ/
+flea-collar | nuance.pronunciation.respelling | FLEE kah-ler
+following-up-on | phonetic | /ˌfɑloʊɪŋ ˈʌp ɑn/
+following-up-on | nuance.pronunciation.ipa | /ˌfɑloʊɪŋ ˈʌp ɑn/
+following-up-on | nuance.pronunciation.respelling | fah-loh-ing UP ahn
+fortune-teller | phonetic | /ˈfɔɹtʃən ˌtɛlɚ/
+fortune-teller | nuance.pronunciation.ipa | /ˈfɔɹtʃən ˌtɛlɚ/
+fortune-teller | nuance.pronunciation.respelling | FOR-chuhn tel-er
+forty-legs | phonetic | /ˌfɔɹti ˈlɛɡz/
+forty-legs | nuance.pronunciation.ipa | /ˌfɔɹti ˈlɛɡz/
+forty-legs | nuance.pronunciation.respelling | for-tee LEGZ
+foundation-model | phonetic | /faʊnˈdeɪʃən ˌmɑdəl/
+foundation-model | nuance.pronunciation.ipa | /faʊnˈdeɪʃən ˌmɑdəl/
+foundation-model | nuance.pronunciation.respelling | fown-DAY-shuhn mah-duhl
+frontier-model | phonetic | /fɹʌnˈtɪɹ ˌmɑdəl/
+frontier-model | nuance.pronunciation.ipa | /fɹʌnˈtɪɹ ˌmɑdəl/
+frontier-model | nuance.pronunciation.respelling | fruhn-TEER mah-duhl
+fuzz-testing | phonetic | /ˈfʌz ˌtɛstɪŋ/
+fuzz-testing | nuance.pronunciation.ipa | /ˈfʌz ˌtɛstɪŋ/
+fuzz-testing | nuance.pronunciation.respelling | FUHZ tes-ting
+gamma-function | phonetic | /ˈɡæmə ˌfʌŋkʃən/
+gamma-function | nuance.pronunciation.ipa | /ˈɡæmə ˌfʌŋkʃən/
+gamma-function | nuance.pronunciation.respelling | GAM-uh fungk-shuhn
+garage-sale | phonetic | /ɡəˈɹɑʒ ˌseɪl/
+garage-sale | nuance.pronunciation.ipa | /ɡəˈɹɑʒ ˌseɪl/
+garage-sale | nuance.pronunciation.respelling | guh-RAHZH sayl
+general-store | phonetic | /ˌdʒɛnɚəl ˈstɔɹ/
+general-store | nuance.pronunciation.ipa | /ˌdʒɛnɚəl ˈstɔɹ/
+general-store | nuance.pronunciation.respelling | jen-er-uhl STOR
+genre-fiction | phonetic | /ˈʒɑnɹə ˌfɪkʃən/
+genre-fiction | nuance.pronunciation.ipa | /ˈʒɑnɹə ˌfɪkʃən/
+genre-fiction | nuance.pronunciation.respelling | ZHAHN-ruh fik-shuhn
+get-a-sad-on | phonetic | /ˌɡɛt ə ˈsæd ɑn/
+get-a-sad-on | nuance.pronunciation.ipa | /ˌɡɛt ə ˈsæd ɑn/
+get-a-sad-on | nuance.pronunciation.respelling | get uh SAD ahn
+get-used-to | phonetic | /ˌɡɛt ˈjust tə/
+get-used-to | nuance.pronunciation.ipa | /ˌɡɛt ˈjust tə/
+get-used-to | nuance.pronunciation.respelling | get YOOST tuh
+gift-receipt | phonetic | /ˈɡɪft ɹɪˌsit/
+gift-receipt | nuance.pronunciation.ipa | /ˈɡɪft ɹɪˌsit/
+gift-receipt | nuance.pronunciation.respelling | GIFT rih-seet
+girls'-night-out | phonetic | /ˌɡɝlz ˌnaɪt ˈaʊt/
+girls'-night-out | nuance.pronunciation.ipa | /ˌɡɝlz ˌnaɪt ˈaʊt/
+girls'-night-out | nuance.pronunciation.respelling | gerlz nyte OWT
+go-outside | phonetic | /ˌɡoʊ ˌaʊtˈsaɪd/
+go-outside | nuance.pronunciation.ipa | /ˌɡoʊ ˌaʊtˈsaɪd/
+go-outside | nuance.pronunciation.respelling | goh owt-SYDE
+go-straight-for-two-blocks | phonetic | /ˌɡoʊ ˌstɹeɪt fɚ ˌtu ˈblɑks/
+go-straight-for-two-blocks | nuance.pronunciation.ipa | /ˌɡoʊ ˌstɹeɪt fɚ ˌtu ˈblɑks/
+go-straight-for-two-blocks | nuance.pronunciation.respelling | goh strayt fer too BLAHKS
+go-the-extra-mile | phonetic | /ˌɡoʊ ði ˌɛkstɹə ˈmaɪl/
+go-the-extra-mile | nuance.pronunciation.ipa | /ˌɡoʊ ði ˌɛkstɹə ˈmaɪl/
+go-the-extra-mile | nuance.pronunciation.respelling | goh thee ek-struh MYLE
+golden-hour | phonetic | /ˈɡoʊldən ˌaʊɚ/
+golden-hour | nuance.pronunciation.ipa | /ˈɡoʊldən ˌaʊɚ/
+golden-hour | nuance.pronunciation.respelling | GOHL-duhn ow-er
+good-news | phonetic | /ˌɡʊd ˈnuz/
+good-news | nuance.pronunciation.ipa | /ˌɡʊd ˈnuz/
+good-news | nuance.pronunciation.respelling | guud NOOZ
+graph-neural-network | phonetic | /ˈɡɹæf ˌnʊɹəl ˌnɛtˌwɝk/
+graph-neural-network | nuance.pronunciation.ipa | /ˈɡɹæf ˌnʊɹəl ˌnɛtˌwɝk/
+graph-neural-network | nuance.pronunciation.respelling | GRAF noor-uhl net-werk
+graph-theory | phonetic | /ˈɡɹæf ˌθiəɹi/
+graph-theory | nuance.pronunciation.ipa | /ˈɡɹæf ˌθiəɹi/
+graph-theory | nuance.pronunciation.respelling | GRAF thee-uh-ree
+gray-area | phonetic | /ˌɡɹeɪ ˈɛɹiə/
+gray-area | nuance.pronunciation.ipa | /ˌɡɹeɪ ˈɛɹiə/
+gray-area | nuance.pronunciation.respelling | gray AIR-ee-uh
+greatest-common-divisor | phonetic | /ˌɡɹeɪtɪst ˌkɑmən dɪˈvaɪzɚ/
+greatest-common-divisor | nuance.pronunciation.ipa | /ˌɡɹeɪtɪst ˌkɑmən dɪˈvaɪzɚ/
+greatest-common-divisor | nuance.pronunciation.respelling | gray-tist kah-muhn dih-VY-zer
+green-light | phonetic | /ˌɡɹin ˈlaɪt/
+green-light | nuance.pronunciation.ipa | /ˌɡɹin ˈlaɪt/
+green-light | nuance.pronunciation.respelling | green LYTE
+gut-instinct | phonetic | /ˈɡʌt ˌɪnstɪŋkt/
+gut-instinct | nuance.pronunciation.ipa | /ˈɡʌt ˌɪnstɪŋkt/
+gut-instinct | nuance.pronunciation.respelling | GUHT in-stingkt
+half-bathroom | phonetic | /ˌhæf ˈbæθˌɹum/
+half-bathroom | nuance.pronunciation.ipa | /ˌhæf ˈbæθˌɹum/
+half-bathroom | nuance.pronunciation.respelling | haf BATH-room
+hardware-store | phonetic | /ˈhɑɹdˌwɛɹ ˌstɔɹ/
+hardware-store | nuance.pronunciation.ipa | /ˈhɑɹdˌwɛɹ ˌstɔɹ/
+hardware-store | nuance.pronunciation.respelling | HAHRD-wair stor
+head-man | phonetic | /ˈhɛd ˌmæn/
+head-man | nuance.pronunciation.ipa | /ˈhɛd ˌmæn/
+head-man | nuance.pronunciation.respelling | HED man
+hear-me-out | phonetic | /ˌhɪɹ mi ˈaʊt/
+hear-me-out | nuance.pronunciation.ipa | /ˌhɪɹ mi ˈaʊt/
+hear-me-out | nuance.pronunciation.respelling | heer mee OWT
+heating-pad | phonetic | /ˈhitɪŋ ˌpæd/
+heating-pad | nuance.pronunciation.ipa | /ˈhitɪŋ ˌpæd/
+heating-pad | nuance.pronunciation.respelling | HEE-ting pad
+herb-doctor | phonetic | /ˈɝb ˌdɑktɚ/
+herb-doctor | nuance.pronunciation.ipa | /ˈɝb ˌdɑktɚ/
+herb-doctor | nuance.pronunciation.respelling | ERB dahk-ter
+high-five | phonetic | /ˌhaɪ ˈfaɪv/
+high-five | nuance.pronunciation.ipa | /ˌhaɪ ˈfaɪv/
+high-five | nuance.pronunciation.respelling | hy FYVE
+history-repeats-itself | phonetic | /ˌhɪstəɹi ɹɪˌpits ɪtˈsɛlf/
+history-repeats-itself | nuance.pronunciation.ipa | /ˌhɪstəɹi ɹɪˌpits ɪtˈsɛlf/
+history-repeats-itself | nuance.pronunciation.respelling | his-tuh-ree rih-peets it-SELF
+hold-in | phonetic | /ˌhoʊld ˈɪn/
+hold-in | nuance.pronunciation.ipa | /ˌhoʊld ˈɪn/
+hold-in | nuance.pronunciation.respelling | hohld IN
+holding-company | phonetic | /ˈhoʊldɪŋ ˌkʌmpəni/
+holding-company | nuance.pronunciation.ipa | /ˈhoʊldɪŋ ˌkʌmpəni/
+holding-company | nuance.pronunciation.respelling | HOHL-ding kum-puh-nee
+holding-pattern | phonetic | /ˈhoʊldɪŋ ˌpætɚn/
+holding-pattern | nuance.pronunciation.ipa | /ˈhoʊldɪŋ ˌpætɚn/
+holding-pattern | nuance.pronunciation.respelling | HOHL-ding pat-ern
+hot-potato | phonetic | /ˌhɑt pəˈteɪtoʊ/
+hot-potato | nuance.pronunciation.ipa | /ˌhɑt pəˈteɪtoʊ/
+hot-potato | nuance.pronunciation.respelling | haht puh-TAY-toh
+hov-lane | phonetic | /ˌeɪtʃ ˌoʊ ˈvi ˌleɪn/
+hov-lane | nuance.pronunciation.ipa | /ˌeɪtʃ ˌoʊ ˈvi ˌleɪn/
+hov-lane | nuance.pronunciation.respelling | aych oh VEE layn
+human-calculator | phonetic | /ˌhjumən ˈkælkjəˌleɪtɚ/
+human-calculator | nuance.pronunciation.ipa | /ˌhjumən ˈkælkjəˌleɪtɚ/
+human-calculator | nuance.pronunciation.respelling | hyoo-muhn KAL-kyuh-lay-ter
+i-am | phonetic | /ˌaɪ ˈæm/
+i-am | nuance.pronunciation.ipa | /ˌaɪ ˈæm/
+i-am | nuance.pronunciation.respelling | eye AM
+i'm-full | phonetic | /aɪm ˈfʊl/
+i'm-full | nuance.pronunciation.ipa | /aɪm ˈfʊl/
+i'm-full | nuance.pronunciation.respelling | eyem FUUL
+i'm-here-for-you | phonetic | /aɪm ˈhɪɹ fɚ ju/
+i'm-here-for-you | nuance.pronunciation.ipa | /aɪm ˈhɪɹ fɚ ju/
+i'm-here-for-you | nuance.pronunciation.respelling | eyem HEER fer yoo
+i'm-hooked | phonetic | /aɪm ˈhʊkt/
+i'm-hooked | nuance.pronunciation.ipa | /aɪm ˈhʊkt/
+i'm-hooked | nuance.pronunciation.respelling | eyem HUUKT
+i'm-kind-of-bummed | phonetic | /aɪm ˌkaɪnd əv ˈbʌmd/
+i'm-kind-of-bummed | nuance.pronunciation.ipa | /aɪm ˌkaɪnd əv ˈbʌmd/
+i'm-kind-of-bummed | nuance.pronunciation.respelling | eyem kynd uhv BUHMD
+ice-pack | phonetic | /ˈaɪs ˌpæk/
+ice-pack | nuance.pronunciation.ipa | /ˈaɪs ˌpæk/
+ice-pack | nuance.pronunciation.respelling | AHYS pak
+id-card | phonetic | /ˌaɪ ˈdi ˌkɑɹd/
+id-card | nuance.pronunciation.ipa | /ˌaɪ ˈdi ˌkɑɹd/
+id-card | nuance.pronunciation.respelling | eye DEE kahrd
+imperative-mood | phonetic | /ɪmˌpɛɹətɪv ˈmud/
+imperative-mood | nuance.pronunciation.ipa | /ɪmˌpɛɹətɪv ˈmud/
+imperative-mood | nuance.pronunciation.respelling | im-pair-uh-tiv MOOD
+imperative-programming | phonetic | /ɪmˌpɛɹətɪv ˈpɹoʊɡɹæmɪŋ/
+imperative-programming | nuance.pronunciation.ipa | /ɪmˌpɛɹətɪv ˈpɹoʊɡɹæmɪŋ/
+imperative-programming | nuance.pronunciation.respelling | im-pair-uh-tiv PROH-gram-ing
+improve-on | phonetic | /ɪmˈpɹuv ɑn/
+improve-on | nuance.pronunciation.ipa | /ɪmˈpɹuv ɑn/
+improve-on | nuance.pronunciation.respelling | im-PROOV ahn
+in-fine | phonetic | /ɪn ˈfineɪ/
+in-fine | nuance.pronunciation.ipa | /ɪn ˈfineɪ/
+in-fine | nuance.pronunciation.respelling | in FEE-nay
+in-itself | phonetic | /ɪn ɪtˈsɛlf/
+in-itself | nuance.pronunciation.ipa | /ɪn ɪtˈsɛlf/
+in-itself | nuance.pronunciation.respelling | in it-SELF
+in-tears | phonetic | /ɪn ˈtɪɹz/
+in-tears | nuance.pronunciation.ipa | /ɪn ˈtɪɹz/
+in-tears | nuance.pronunciation.respelling | in TEERZ
+independence-day | phonetic | /ˌɪndɪˈpɛndəns ˌdeɪ/
+independence-day | nuance.pronunciation.ipa | /ˌɪndɪˈpɛndəns ˌdeɪ/
+independence-day | nuance.pronunciation.respelling | in-dih-PEN-duhns day
+information-desk | phonetic | /ˌɪnfɚˈmeɪʃən ˌdɛsk/
+information-desk | nuance.pronunciation.ipa | /ˌɪnfɚˈmeɪʃən ˌdɛsk/
+information-desk | nuance.pronunciation.respelling | in-fer-MAY-shuhn desk
+information-theory | phonetic | /ˌɪnfɚˈmeɪʃən ˌθiəɹi/
+information-theory | nuance.pronunciation.ipa | /ˌɪnfɚˈmeɪʃən ˌθiəɹi/
+information-theory | nuance.pronunciation.respelling | in-fer-MAY-shuhn thee-uh-ree
+input-layer | phonetic | /ˈɪnpʊt ˌleɪɚ/
+input-layer | nuance.pronunciation.ipa | /ˈɪnpʊt ˌleɪɚ/
+input-layer | nuance.pronunciation.respelling | IN-puut lay-er
+inside-joke | phonetic | /ˌɪnˌsaɪd ˈdʒoʊk/
+inside-joke | nuance.pronunciation.ipa | /ˌɪnˌsaɪd ˈdʒoʊk/
+inside-joke | nuance.pronunciation.respelling | in-syde JOHK
+insofar-as | phonetic | /ˌɪnsoʊˈfɑɹ əz/
+insofar-as | nuance.pronunciation.ipa | /ˌɪnsoʊˈfɑɹ əz/
+insofar-as | nuance.pronunciation.respelling | in-soh-FAHR uhz
+installment-plan | phonetic | /ɪnˈstɔlmənt ˌplæn/
+installment-plan | nuance.pronunciation.ipa | /ɪnˈstɔlmənt ˌplæn/
+installment-plan | nuance.pronunciation.respelling | in-STAWL-muhnt plan
+instant-replay | phonetic | /ˌɪnstənt ˈɹiˌpleɪ/
+instant-replay | nuance.pronunciation.ipa | /ˌɪnstənt ˈɹiˌpleɪ/
+instant-replay | nuance.pronunciation.respelling | in-stuhnt REE-play
+instrument-panel | phonetic | /ˈɪnstɹəmənt ˌpænəl/
+instrument-panel | nuance.pronunciation.ipa | /ˈɪnstɹəmənt ˌpænəl/
+instrument-panel | nuance.pronunciation.respelling | IN-struh-muhnt pan-uhl
+integration-testing | phonetic | /ˌɪntəˈɡɹeɪʃən ˌtɛstɪŋ/
+integration-testing | nuance.pronunciation.ipa | /ˌɪntəˈɡɹeɪʃən ˌtɛstɪŋ/
+integration-testing | nuance.pronunciation.respelling | in-tuh-GRAY-shuhn tes-ting
+interior-monologue | phonetic | /ɪnˌtɪɹiɚ ˈmɑnəˌlɔɡ/
+interior-monologue | nuance.pronunciation.ipa | /ɪnˌtɪɹiɚ ˈmɑnəˌlɔɡ/
+interior-monologue | nuance.pronunciation.respelling | in-teer-ee-er MAH-nuh-lawg
+intermediate-value-theorem | phonetic | /ˌɪntɚˌmidiət ˌvælju ˈθɪɹəm/
+intermediate-value-theorem | nuance.pronunciation.ipa | /ˌɪntɚˌmidiət ˌvælju ˈθɪɹəm/
+intermediate-value-theorem | nuance.pronunciation.respelling | in-ter-mee-dee-uht val-yoo THEER-uhm
+intrinsic-value | phonetic | /ɪnˌtɹɪnsɪk ˈvælju/
+intrinsic-value | nuance.pronunciation.ipa | /ɪnˌtɹɪnsɪk ˈvælju/
+intrinsic-value | nuance.pronunciation.respelling | in-trin-sik VAL-yoo
+ironing-board | phonetic | /ˈaɪɚnɪŋ ˌbɔɹd/
+ironing-board | nuance.pronunciation.ipa | /ˈaɪɚnɪŋ ˌbɔɹd/
+ironing-board | nuance.pronunciation.respelling | EYE-er-ning bord
+it's-not-rocket-science | phonetic | /ˌɪts nɑt ˈɹɑkɪt ˌsaɪəns/
+it's-not-rocket-science | nuance.pronunciation.ipa | /ˌɪts nɑt ˈɹɑkɪt ˌsaɪəns/
+it's-not-rocket-science | nuance.pronunciation.respelling | its naht RAH-kit sy-uhns
+javelin-throw | phonetic | /ˈdʒævələn ˌθɹoʊ/
+javelin-throw | nuance.pronunciation.ipa | /ˈdʒævələn ˌθɹoʊ/
+javelin-throw | nuance.pronunciation.respelling | JAV-uh-luhn throh
+je-ne-sais-quoi | phonetic | /ˌʒə nə ˌseɪ ˈkwɑ/
+je-ne-sais-quoi | nuance.pronunciation.ipa | /ˌʒə nə ˌseɪ ˈkwɑ/
+je-ne-sais-quoi | nuance.pronunciation.respelling | zhuh nuh say KWAH
+jump-on-the-bandwagon | phonetic | /ˌdʒʌmp ɑn ðə ˈbændˌwæɡən/
+jump-on-the-bandwagon | nuance.pronunciation.ipa | /ˌdʒʌmp ɑn ðə ˈbændˌwæɡən/
+jump-on-the-bandwagon | nuance.pronunciation.respelling | juhmp ahn thuh BAND-wag-uhn
+just-water-for-now-thanks | phonetic | /dʒʌst ˈwɔtɚ fɔɹ ˈnaʊ ˈθæŋks/
+just-water-for-now-thanks | nuance.pronunciation.ipa | /dʒʌst ˈwɔtɚ fɔɹ ˈnaʊ ˈθæŋks/
+just-water-for-now-thanks | nuance.pronunciation.respelling | just WAW-ter for NOW THANKS
+kangaroo-jacket | phonetic | /ˌkæŋɡəˈɹu ˌdʒækɪt/
+kangaroo-jacket | nuance.pronunciation.ipa | /ˌkæŋɡəˈɹu ˌdʒækɪt/
+kangaroo-jacket | nuance.pronunciation.respelling | kang-guh-ROO jak-it
+keep-going | phonetic | /ˌkip ˈɡoʊɪŋ/
+keep-going | nuance.pronunciation.ipa | /ˌkip ˈɡoʊɪŋ/
+keep-going | nuance.pronunciation.respelling | keep GOH-ing
+king-james-version | phonetic | /ˌkɪŋ ˌdʒeɪmz ˈvɝʒən/
+king-james-version | nuance.pronunciation.ipa | /ˌkɪŋ ˌdʒeɪmz ˈvɝʒən/
+king-james-version | nuance.pronunciation.respelling | king jaymz VER-zhuhn
+labor-day | phonetic | /ˈleɪbɚ ˌdeɪ/
+labor-day | nuance.pronunciation.ipa | /ˈleɪbɚ ˌdeɪ/
+labor-day | nuance.pronunciation.respelling | LAY-ber day
+lamb-of-god | phonetic | /ˌlæm əv ˈɡɑd/
+lamb-of-god | nuance.pronunciation.ipa | /ˌlæm əv ˈɡɑd/
+lamb-of-god | nuance.pronunciation.respelling | lam uhv GAHD
+lattice-point | phonetic | /ˈlætɪs ˌpɔɪnt/
+lattice-point | nuance.pronunciation.ipa | /ˈlætɪs ˌpɔɪnt/
+lattice-point | nuance.pronunciation.respelling | LAT-is poynt
+leap-year | phonetic | /ˈlip ˌjɪɹ/
+leap-year | nuance.pronunciation.ipa | /ˈlip ˌjɪɹ/
+leap-year | nuance.pronunciation.respelling | LEEP yeer
+lie-of-the-land | phonetic | /ˌlaɪ əv ðə ˈlænd/
+lie-of-the-land | nuance.pronunciation.ipa | /ˌlaɪ əv ðə ˈlænd/
+lie-of-the-land | nuance.pronunciation.respelling | ly uhv thuh LAND
+limbic-system | phonetic | /ˈlɪmbɪk ˌsɪstəm/
+limbic-system | nuance.pronunciation.ipa | /ˈlɪmbɪk ˌsɪstəm/
+limbic-system | nuance.pronunciation.respelling | LIM-bik sis-tuhm
+limit-point | phonetic | /ˈlɪmɪt ˌpɔɪnt/
+limit-point | nuance.pronunciation.ipa | /ˈlɪmɪt ˌpɔɪnt/
+limit-point | nuance.pronunciation.respelling | LIM-it poynt
+line-cook | phonetic | /ˈlaɪn ˌkʊk/
+line-cook | nuance.pronunciation.ipa | /ˈlaɪn ˌkʊk/
+line-cook | nuance.pronunciation.respelling | LYNE kuuk
+little-league | phonetic | /ˌlɪtəl ˈliɡ/
+little-league | nuance.pronunciation.ipa | /ˌlɪtəl ˈliɡ/
+little-league | nuance.pronunciation.respelling | lit-uhl LEEG
+live-in | phonetic | /ˌlɪv ˈɪn/
+live-in | nuance.pronunciation.ipa | /ˌlɪv ˈɪn/
+live-in | nuance.pronunciation.respelling | liv IN
+live-to-regret | phonetic | /ˌlɪv tə ɹɪˈɡɹɛt/
+live-to-regret | nuance.pronunciation.ipa | /ˌlɪv tə ɹɪˈɡɹɛt/
+live-to-regret | nuance.pronunciation.respelling | liv tuh rih-GRET
+living-under-a-rock | phonetic | /ˌlɪvɪŋ ˌʌndɚ ə ˈɹɑk/
+living-under-a-rock | nuance.pronunciation.ipa | /ˌlɪvɪŋ ˌʌndɚ ə ˈɹɑk/
+living-under-a-rock | nuance.pronunciation.respelling | liv-ing un-der uh RAHK
+login-name | phonetic | /ˈlɔɡɪn ˌneɪm/
+login-name | nuance.pronunciation.ipa | /ˈlɔɡɪn ˌneɪm/
+login-name | nuance.pronunciation.respelling | LAWG-in naym
+look-for | phonetic | /ˈlʊk fɚ/
+look-for | nuance.pronunciation.ipa | /ˈlʊk fɚ/
+look-for | nuance.pronunciation.respelling | LUUK fer
+look-up-to | phonetic | /ˌlʊk ˈʌp tə/
+look-up-to | nuance.pronunciation.ipa | /ˌlʊk ˈʌp tə/
+look-up-to | nuance.pronunciation.respelling | luuk UP tuh
+looking-forward-to | phonetic | /ˌlʊkɪŋ ˈfɔɹwɚd tə/
+looking-forward-to | nuance.pronunciation.ipa | /ˌlʊkɪŋ ˈfɔɹwɚd tə/
+looking-forward-to | nuance.pronunciation.respelling | luuk-ing FOR-werd tuh
+lookout-tower | phonetic | /ˈlʊkˌaʊt ˌtaʊɚ/
+lookout-tower | nuance.pronunciation.ipa | /ˈlʊkˌaʊt ˌtaʊɚ/
+lookout-tower | nuance.pronunciation.respelling | LUUK-owt tow-er
+looks-like-it's-clearing-up | phonetic | /ˌlʊks laɪk ɪts ˌklɪɹɪŋ ˈʌp/
+looks-like-it's-clearing-up | nuance.pronunciation.ipa | /ˌlʊks laɪk ɪts ˌklɪɹɪŋ ˈʌp/
+looks-like-it's-clearing-up | nuance.pronunciation.respelling | luuks lyke its kleer-ing UP
+loss-function | phonetic | /ˈlɔs ˌfʌŋkʃən/
+loss-function | nuance.pronunciation.ipa | /ˈlɔs ˌfʌŋkʃən/
+loss-function | nuance.pronunciation.respelling | LAWS fuhngk-shuhn
+luke-the-evangelist | phonetic | /ˌluk ði ɪˈvændʒəlɪst/
+luke-the-evangelist | nuance.pronunciation.ipa | /ˌluk ði ɪˈvændʒəlɪst/
+luke-the-evangelist | nuance.pronunciation.respelling | look thee ih-VAN-juh-list
+mark-the-evangelist | phonetic | /ˌmɑɹk ði ɪˈvændʒəlɪst/
+mark-the-evangelist | nuance.pronunciation.ipa | /ˌmɑɹk ði ɪˈvændʒəlɪst/
+mark-the-evangelist | nuance.pronunciation.respelling | mahrk thee ih-VAN-juh-list
+master-key | phonetic | /ˈmæstɚ ˌki/
+master-key | nuance.pronunciation.ipa | /ˈmæstɚ ˌki/
+master-key | nuance.pronunciation.respelling | MAS-ter kee
+maximum-likelihood | phonetic | /ˌmæksɪməm ˈlaɪkliˌhʊd/
+maximum-likelihood | nuance.pronunciation.ipa | /ˌmæksɪməm ˈlaɪkliˌhʊd/
+maximum-likelihood | nuance.pronunciation.respelling | mak-sih-muhm LYKE-lee-huud
+mean-value-theorem | phonetic | /ˌmin ˌvælju ˈθɪɹəm/
+mean-value-theorem | nuance.pronunciation.ipa | /ˌmin ˌvælju ˈθɪɹəm/
+mean-value-theorem | nuance.pronunciation.respelling | meen val-yoo THEER-uhm
+meeting-id | phonetic | /ˈmitɪŋ ˌaɪˌdi/
+meeting-id | nuance.pronunciation.ipa | /ˈmitɪŋ ˌaɪˌdi/
+meeting-id | nuance.pronunciation.respelling | MEE-ting eye-dee
+memento-mori | phonetic | /məˌmɛntoʊ ˈmɔɹi/
+memento-mori | nuance.pronunciation.ipa | /məˌmɛntoʊ ˈmɔɹi/
+memento-mori | nuance.pronunciation.respelling | muh-men-toh MOR-ee
+memorial-day | phonetic | /məˈmɔɹiəl ˌdeɪ/
+memorial-day | nuance.pronunciation.ipa | /məˈmɔɹiəl ˌdeɪ/
+memorial-day | nuance.pronunciation.respelling | muh-MOR-ee-uhl day
+memory-bandwidth | phonetic | /ˈmɛmɚi ˌbændwɪdθ/
+memory-bandwidth | nuance.pronunciation.ipa | /ˈmɛmɚi ˌbændwɪdθ/
+memory-bandwidth | nuance.pronunciation.respelling | MEM-uh-ree band-width
+menu-bar | phonetic | /ˈmɛnju ˌbɑɹ/
+menu-bar | nuance.pronunciation.ipa | /ˈmɛnju ˌbɑɹ/
+menu-bar | nuance.pronunciation.respelling | MEN-yoo bahr
+merge-request | phonetic | /ˈmɝdʒ ɹɪˌkwɛst/
+merge-request | nuance.pronunciation.ipa | /ˈmɝdʒ ɹɪˌkwɛst/
+merge-request | nuance.pronunciation.respelling | MERJ rih-kwest
+mix-in | phonetic | /ˌmɪks ˈɪn/
+mix-in | nuance.pronunciation.ipa | /ˌmɪks ˈɪn/
+mix-in | nuance.pronunciation.respelling | miks IN
+morning-prayer | phonetic | /ˌmɔɹnɪŋ ˈpɹɛɹ/
+morning-prayer | nuance.pronunciation.ipa | /ˌmɔɹnɪŋ ˈpɹɛɹ/
+morning-prayer | nuance.pronunciation.respelling | mor-ning PRAIR
+morning-show | phonetic | /ˈmɔɹnɪŋ ˌʃoʊ/
+morning-show | nuance.pronunciation.ipa | /ˈmɔɹnɪŋ ˌʃoʊ/
+morning-show | nuance.pronunciation.respelling | MOR-ning shoh
+movie-theater | phonetic | /ˈmuvi ˌθiətɚ/
+movie-theater | nuance.pronunciation.ipa | /ˈmuvi ˌθiətɚ/
+movie-theater | nuance.pronunciation.respelling | MOO-vee thee-uh-ter
+muddle-through | phonetic | /ˌmʌdəl ˈθɹu/
+muddle-through | nuance.pronunciation.ipa | /ˌmʌdəl ˈθɹu/
+muddle-through | nuance.pronunciation.respelling | muh-duhl THROO
+muddle-up | phonetic | /ˌmʌdəl ˈʌp/
+muddle-up | nuance.pronunciation.ipa | /ˌmʌdəl ˈʌp/
+muddle-up | nuance.pronunciation.respelling | muh-duhl UP
+nanny-state | phonetic | /ˈnæni ˌsteɪt/
+nanny-state | nuance.pronunciation.ipa | /ˈnæni ˌsteɪt/
+nanny-state | nuance.pronunciation.respelling | NAN-ee stayt
+near-miss | phonetic | /ˌnɪɹ ˈmɪs/
+near-miss | nuance.pronunciation.ipa | /ˌnɪɹ ˈmɪs/
+near-miss | nuance.pronunciation.respelling | neer MIS
+net-pay | phonetic | /ˌnɛt ˈpeɪ/
+net-pay | nuance.pronunciation.ipa | /ˌnɛt ˈpeɪ/
+net-pay | nuance.pronunciation.respelling | net PAY
+net-sales | phonetic | /ˌnɛt ˈseɪlz/
+net-sales | nuance.pronunciation.ipa | /ˌnɛt ˈseɪlz/
+net-sales | nuance.pronunciation.respelling | net SAYLZ
+new-revised-standard-version | phonetic | /ˌnu ɹɪˌvaɪzd ˌstændɚd ˈvɝʒən/
+new-revised-standard-version | nuance.pronunciation.ipa | /ˌnu ɹɪˌvaɪzd ˌstændɚd ˈvɝʒən/
+new-revised-standard-version | nuance.pronunciation.respelling | noo rih-vyzd stan-derd VER-zhuhn
+new-year's-eve | phonetic | /ˌnu ˌjɪɹz ˈiv/
+new-year's-eve | nuance.pronunciation.ipa | /ˌnu ˌjɪɹz ˈiv/
+new-year's-eve | nuance.pronunciation.respelling | noo yeerz EEV
+not-a-big-deal | phonetic | /nɑt ə ˌbɪɡ ˈdil/
+not-a-big-deal | nuance.pronunciation.ipa | /nɑt ə ˌbɪɡ ˈdil/
+not-a-big-deal | nuance.pronunciation.respelling | naht uh big DEEL
+nothing-new-under-the-sun | phonetic | /ˌnʌθɪŋ ˌnu ˌʌndɚ ðə ˈsʌn/
+nothing-new-under-the-sun | nuance.pronunciation.ipa | /ˌnʌθɪŋ ˌnu ˌʌndɚ ðə ˈsʌn/
+nothing-new-under-the-sun | nuance.pronunciation.respelling | nuh-thing noo un-der thuh SUN
+odds-and-ends | phonetic | /ˌɑdz ənd ˈɛndz/
+odds-and-ends | nuance.pronunciation.ipa | /ˌɑdz ənd ˈɛndz/
+odds-and-ends | nuance.pronunciation.respelling | ahdz uhnd ENDZ
+off-duty | phonetic | /ˌɔf ˈduti/
+off-duty | nuance.pronunciation.ipa | /ˌɔf ˈduti/
+off-duty | nuance.pronunciation.respelling | awf DOO-tee
+optical-character-recognition | phonetic | /ˌɑptɪkəl ˌkɛɹɪktɚ ˌɹɛkəɡˈnɪʃən/
+optical-character-recognition | nuance.pronunciation.ipa | /ˌɑptɪkəl ˌkɛɹɪktɚ ˌɹɛkəɡˈnɪʃən/
+optical-character-recognition | nuance.pronunciation.respelling | ahp-tih-kuhl kair-ik-ter rek-uhg-NISH-uhn
+order-in | phonetic | /ˌɔɹdɚ ˈɪn/
+order-in | nuance.pronunciation.ipa | /ˌɔɹdɚ ˈɪn/
+order-in | nuance.pronunciation.respelling | or-der IN
+paradigm-shift | phonetic | /ˈpɛɹəˌdaɪm ˌʃɪft/
+paradigm-shift | nuance.pronunciation.ipa | /ˈpɛɹəˌdaɪm ˌʃɪft/
+paradigm-shift | nuance.pronunciation.respelling | PAIR-uh-dyme shift
+parallel-parking | phonetic | /ˈpɛɹəˌlɛl ˌpɑɹkɪŋ/
+parallel-parking | nuance.pronunciation.ipa | /ˈpɛɹəˌlɛl ˌpɑɹkɪŋ/
+parallel-parking | nuance.pronunciation.respelling | PAIR-uh-lel pahr-king
+parity-bit | phonetic | /ˈpɛɹəti ˌbɪt/
+parity-bit | nuance.pronunciation.ipa | /ˈpɛɹəti ˌbɪt/
+parity-bit | nuance.pronunciation.respelling | PAIR-uh-tee bit
+parking-area | phonetic | /ˈpɑɹkɪŋ ˌɛɹiə/
+parking-area | nuance.pronunciation.ipa | /ˈpɑɹkɪŋ ˌɛɹiə/
+parking-area | nuance.pronunciation.respelling | PAHR-king air-ee-uh
+parking-place | phonetic | /ˈpɑɹkɪŋ ˌpleɪs/
+parking-place | nuance.pronunciation.ipa | /ˈpɑɹkɪŋ ˌpleɪs/
+parking-place | nuance.pronunciation.respelling | PAHR-king plays
+parking-space | phonetic | /ˈpɑɹkɪŋ ˌspeɪs/
+parking-space | nuance.pronunciation.ipa | /ˈpɑɹkɪŋ ˌspeɪs/
+parking-space | nuance.pronunciation.respelling | PAHR-king spays
+parking-ticket | phonetic | /ˈpɑɹkɪŋ ˌtɪkɪt/
+parking-ticket | nuance.pronunciation.ipa | /ˈpɑɹkɪŋ ˌtɪkɪt/
+parking-ticket | nuance.pronunciation.respelling | PAHR-king tik-it
+parole-officer | phonetic | /pəˈɹoʊl ˌɔfɪsɚ/
+parole-officer | nuance.pronunciation.ipa | /pəˈɹoʊl ˌɔfɪsɚ/
+parole-officer | nuance.pronunciation.respelling | puh-ROHL aw-fih-ser
+pastoral-epistles | phonetic | /ˌpæstɚəl ɪˈpɪsəlz/
+pastoral-epistles | nuance.pronunciation.ipa | /ˌpæstɚəl ɪˈpɪsəlz/
+pastoral-epistles | nuance.pronunciation.respelling | pas-ter-uhl ih-PIS-uhlz
+pawn-off | phonetic | /ˌpɔn ˈɔf/
+pawn-off | nuance.pronunciation.ipa | /ˌpɔn ˈɔf/
+pawn-off | nuance.pronunciation.respelling | pawn AWF
+peer-review | phonetic | /ˈpɪɹ ɹɪˌvju/
+peer-review | nuance.pronunciation.ipa | /ˈpɪɹ ɹɪˌvju/
+peer-review | nuance.pronunciation.respelling | PEER rih-vyoo
+permutation-group | phonetic | /ˌpɝmjəˈteɪʃən ˌɡɹup/
+permutation-group | nuance.pronunciation.ipa | /ˌpɝmjəˈteɪʃən ˌɡɹup/
+permutation-group | nuance.pronunciation.respelling | per-myuh-TAY-shuhn groop
+petty-crime | phonetic | /ˌpɛti ˈkɹaɪm/
+petty-crime | nuance.pronunciation.ipa | /ˌpɛti ˈkɹaɪm/
+petty-crime | nuance.pronunciation.respelling | pet-ee KRYME
+ph-meter | phonetic | /ˌpi ˈeɪtʃ ˌmitɚ/
+ph-meter | nuance.pronunciation.ipa | /ˌpi ˈeɪtʃ ˌmitɚ/
+ph-meter | nuance.pronunciation.respelling | pee AYCH mee-ter
+pick-someone-up | phonetic | /ˌpɪk ˌsʌmwən ˈʌp/
+pick-someone-up | nuance.pronunciation.ipa | /ˌpɪk ˌsʌmwən ˈʌp/
+pick-someone-up | nuance.pronunciation.respelling | pik sum-wuhn UP
+pickup-truck | phonetic | /ˈpɪkˌʌp ˌtɹʌk/
+pickup-truck | nuance.pronunciation.ipa | /ˈpɪkˌʌp ˌtɹʌk/
+pickup-truck | nuance.pronunciation.respelling | PIK-up truhk
+picnic-table | phonetic | /ˈpɪknɪk ˌteɪbəl/
+picnic-table | nuance.pronunciation.ipa | /ˈpɪknɪk ˌteɪbəl/
+picnic-table | nuance.pronunciation.respelling | PIK-nik tay-buhl
+piece-of-cake | phonetic | /ˌpis əv ˈkeɪk/
+piece-of-cake | nuance.pronunciation.ipa | /ˌpis əv ˈkeɪk/
+piece-of-cake | nuance.pronunciation.respelling | pees uhv KAYK
+pitch-accent | phonetic | /ˈpɪtʃ ˌæksɛnt/
+pitch-accent | nuance.pronunciation.ipa | /ˈpɪtʃ ˌæksɛnt/
+pitch-accent | nuance.pronunciation.respelling | PICH ak-sent
+plastic-bag | phonetic | /ˌplæstɪk ˈbæɡ/
+plastic-bag | nuance.pronunciation.ipa | /ˌplæstɪk ˈbæɡ/
+plastic-bag | nuance.pronunciation.respelling | plas-tik BAG
+police-officer | phonetic | /pəˈlis ˌɔfəsɚ/
+police-officer | nuance.pronunciation.ipa | /pəˈlis ˌɔfəsɚ/
+police-officer | nuance.pronunciation.respelling | puh-LEES aw-fuh-ser
+polish-off | phonetic | /ˌpɑlɪʃ ˈɔf/
+polish-off | nuance.pronunciation.ipa | /ˌpɑlɪʃ ˈɔf/
+polish-off | nuance.pronunciation.respelling | pah-lish AWF
+polish-up-on | phonetic | /ˌpɑlɪʃ ˈʌp ɑn/
+polish-up-on | nuance.pronunciation.ipa | /ˌpɑlɪʃ ˈʌp ɑn/
+polish-up-on | nuance.pronunciation.respelling | pah-lish UP ahn
+post-mortem | phonetic | /ˌpoʊst ˈmɔɹtəm/
+post-mortem | nuance.pronunciation.ipa | /ˌpoʊst ˈmɔɹtəm/
+post-mortem | nuance.pronunciation.respelling | pohst MOR-tuhm
+powder-magazine | phonetic | /ˈpaʊdɚ ˌmæɡəˌzin/
+powder-magazine | nuance.pronunciation.ipa | /ˈpaʊdɚ ˌmæɡəˌzin/
+powder-magazine | nuance.pronunciation.respelling | POW-der mag-uh-zeen
+practice-makes-perfect | phonetic | /ˌpɹæktɪs ˌmeɪks ˈpɝfɪkt/
+practice-makes-perfect | nuance.pronunciation.ipa | /ˌpɹæktɪs ˌmeɪks ˈpɝfɪkt/
+practice-makes-perfect | nuance.pronunciation.respelling | prak-tis mayks PER-fikt
+presence-of-mind | phonetic | /ˌpɹɛzəns əv ˈmaɪnd/
+presence-of-mind | nuance.pronunciation.ipa | /ˌpɹɛzəns əv ˈmaɪnd/
+presence-of-mind | nuance.pronunciation.respelling | prez-uhns uhv MYND
+primary-care | phonetic | /ˌpɹaɪˌmɛɹi ˈkɛɹ/
+primary-care | nuance.pronunciation.ipa | /ˌpɹaɪˌmɛɹi ˈkɛɹ/
+primary-care | nuance.pronunciation.respelling | pry-mair-ee KAIR
+prix-fixe | phonetic | /ˌpɹi ˈfiks/
+prix-fixe | nuance.pronunciation.ipa | /ˌpɹi ˈfiks/
+prix-fixe | nuance.pronunciation.respelling | pree FEEKS
+proximal-policy-optimization | phonetic | /ˌpɹɑksɪməl ˌpɑləsi ˌɑptəməˈzeɪʃən/
+proximal-policy-optimization | nuance.pronunciation.ipa | /ˌpɹɑksɪməl ˌpɑləsi ˌɑptəməˈzeɪʃən/
+proximal-policy-optimization | nuance.pronunciation.respelling | prahk-sih-muhl pah-luh-see ahp-tuh-muh-ZAY-shuhn
+pull-in | phonetic | /ˌpʊl ˈɪn/
+pull-in | nuance.pronunciation.ipa | /ˌpʊl ˈɪn/
+pull-in | nuance.pronunciation.respelling | puul IN
+pull-someone's-leg | phonetic | /ˌpʊl ˌsʌmwənz ˈlɛɡ/
+pull-someone's-leg | nuance.pronunciation.ipa | /ˌpʊl ˌsʌmwənz ˈlɛɡ/
+pull-someone's-leg | nuance.pronunciation.respelling | puul sum-wuhnz LEG
+put-in | phonetic | /ˌpʊt ˈɪn/
+put-in | nuance.pronunciation.ipa | /ˌpʊt ˈɪn/
+put-in | nuance.pronunciation.respelling | puut IN
+put-into-practice | phonetic | /ˌpʊt ˌɪntu ˈpɹæktɪs/
+put-into-practice | nuance.pronunciation.ipa | /ˌpʊt ˌɪntu ˈpɹæktɪs/
+put-into-practice | nuance.pronunciation.respelling | puut in-too PRAK-tis
+put-lie-to | phonetic | /ˌpʊt ˈlaɪ tə/
+put-lie-to | nuance.pronunciation.ipa | /ˌpʊt ˈlaɪ tə/
+put-lie-to | nuance.pronunciation.respelling | puut LY tuh
+put-up-with | phonetic | /ˌpʊt ˈʌp wɪð/
+put-up-with | nuance.pronunciation.ipa | /ˌpʊt ˈʌp wɪð/
+put-up-with | nuance.pronunciation.respelling | puut UP with
+qr-code | phonetic | /ˌkju ˈɑɹ ˌkoʊd/
+qr-code | nuance.pronunciation.ipa | /ˌkju ˈɑɹ ˌkoʊd/
+qr-code | nuance.pronunciation.respelling | kyoo AHR kohd
+quotient-group | phonetic | /ˈkwoʊʃənt ˌɡɹup/
+quotient-group | nuance.pronunciation.ipa | /ˈkwoʊʃənt ˌɡɹup/
+quotient-group | nuance.pronunciation.respelling | KWOH-shuhnt groop
+rain-barrel | phonetic | /ˈɹeɪn ˌbæɹəl/
+rain-barrel | nuance.pronunciation.ipa | /ˈɹeɪn ˌbæɹəl/
+rain-barrel | nuance.pronunciation.respelling | RAYN bair-uhl
+read-up-on | phonetic | /ˌɹid ˈʌp ɑn/
+read-up-on | nuance.pronunciation.ipa | /ˌɹid ˈʌp ɑn/
+read-up-on | nuance.pronunciation.respelling | reed UP ahn
+rear-guard | phonetic | /ˈɹɪɹ ˌɡɑɹd/
+rear-guard | nuance.pronunciation.ipa | /ˈɹɪɹ ˌɡɑɹd/
+rear-guard | nuance.pronunciation.respelling | REER gahrd
+rearview-camera | phonetic | /ˈɹɪɹˌvju ˌkæmɚə/
+rearview-camera | nuance.pronunciation.ipa | /ˈɹɪɹˌvju ˌkæmɚə/
+rearview-camera | nuance.pronunciation.respelling | REER-vyoo kam-er-uh
+rearview-mirror | phonetic | /ˈɹɪɹˌvju ˌmɪɹɚ/
+rearview-mirror | nuance.pronunciation.ipa | /ˈɹɪɹˌvju ˌmɪɹɚ/
+rearview-mirror | nuance.pronunciation.respelling | REER-vyoo meer-er
+recurrence-relation | phonetic | /ɹɪˌkɝəns ɹɪˈleɪʃən/
+recurrence-relation | nuance.pronunciation.ipa | /ɹɪˌkɝəns ɹɪˈleɪʃən/
+recurrence-relation | nuance.pronunciation.respelling | rih-ker-uhns rih-LAY-shuhn
+reel-in | phonetic | /ˌɹil ˈɪn/
+reel-in | nuance.pronunciation.ipa | /ˌɹil ˈɪn/
+reel-in | nuance.pronunciation.respelling | reel IN
+reel-off | phonetic | /ˌɹil ˈɔf/
+reel-off | nuance.pronunciation.ipa | /ˌɹil ˈɔf/
+reel-off | nuance.pronunciation.respelling | reel AWF
+regression-to-the-mean | phonetic | /ɹɪˌɡɹɛʃən tə ðə ˈmin/
+regression-to-the-mean | nuance.pronunciation.ipa | /ɹɪˌɡɹɛʃən tə ðə ˈmin/
+regression-to-the-mean | nuance.pronunciation.respelling | rih-gresh-uhn tuh thuh MEEN
+reinforcement-learning-from-human-feedback | phonetic | /ˌɹiɪnˌfɔɹsmənt ˌlɝnɪŋ fɹəm ˌhjumən ˈfidˌbæk/
+reinforcement-learning-from-human-feedback | nuance.pronunciation.ipa | /ˌɹiɪnˌfɔɹsmənt ˌlɝnɪŋ fɹəm ˌhjumən ˈfidˌbæk/
+reinforcement-learning-from-human-feedback | nuance.pronunciation.respelling | ree-in-fors-muhnt ler-ning fruhm hyoo-muhn FEED-bak
+rental-car | phonetic | /ˈɹɛntəl ˌkɑɹ/
+rental-car | nuance.pronunciation.ipa | /ˈɹɛntəl ˌkɑɹ/
+rental-car | nuance.pronunciation.respelling | REN-tuhl kahr
+reopen-old-wounds | phonetic | /ɹiˈoʊpən ˌoʊld ˈwundz/
+reopen-old-wounds | nuance.pronunciation.ipa | /ɹiˈoʊpən ˌoʊld ˈwundz/
+reopen-old-wounds | nuance.pronunciation.respelling | ree-OH-puhn ohld WOONDZ
+repeat-offender | phonetic | /ɹɪˌpit əˈfɛndɚ/
+repeat-offender | nuance.pronunciation.ipa | /ɹɪˌpit əˈfɛndɚ/
+repeat-offender | nuance.pronunciation.respelling | rih-peet uh-FEN-der
+reverse-proxy | phonetic | /ɹɪˌvɝs ˈpɹɑksi/
+reverse-proxy | nuance.pronunciation.ipa | /ɹɪˌvɝs ˈpɹɑksi/
+reverse-proxy | nuance.pronunciation.respelling | rih-vers PRAHK-see
+ring-theory | phonetic | /ˈɹɪŋ ˌθɪɹi/
+ring-theory | nuance.pronunciation.ipa | /ˈɹɪŋ ˌθɪɹi/
+ring-theory | nuance.pronunciation.respelling | RING theer-ee
+road-rage | phonetic | /ˈɹoʊd ˌɹeɪdʒ/
+road-rage | nuance.pronunciation.ipa | /ˈɹoʊd ˌɹeɪdʒ/
+road-rage | nuance.pronunciation.respelling | ROHD rayj
+road-rager | phonetic | /ˈɹoʊd ˌɹeɪdʒɚ/
+road-rager | nuance.pronunciation.ipa | /ˈɹoʊd ˌɹeɪdʒɚ/
+road-rager | nuance.pronunciation.respelling | ROHD ray-jer
+romantic-comedy | phonetic | /ɹoʊˌmæntɪk ˈkɑmədi/
+romantic-comedy | nuance.pronunciation.ipa | /ɹoʊˌmæntɪk ˈkɑmədi/
+romantic-comedy | nuance.pronunciation.respelling | roh-man-tik KAH-muh-dee
+round-trip | phonetic | /ˌɹaʊnd ˈtɹɪp/
+round-trip | nuance.pronunciation.ipa | /ˌɹaʊnd ˈtɹɪp/
+round-trip | nuance.pronunciation.respelling | rownd TRIP
+rv-park | phonetic | /ˌɑɹ ˈvi ˌpɑɹk/
+rv-park | nuance.pronunciation.ipa | /ˌɑɹ ˈvi ˌpɑɹk/
+rv-park | nuance.pronunciation.respelling | ahr VEE pahrk
+sanity-test | phonetic | /ˈsænɪti ˌtɛst/
+sanity-test | nuance.pronunciation.ipa | /ˈsænɪti ˌtɛst/
+sanity-test | nuance.pronunciation.respelling | SAN-ih-tee test
+saturation-point | phonetic | /ˌsætʃəˈɹeɪʃən ˌpɔɪnt/
+saturation-point | nuance.pronunciation.ipa | /ˌsætʃəˈɹeɪʃən ˌpɔɪnt/
+saturation-point | nuance.pronunciation.respelling | sach-uh-RAY-shuhn poynt
+scuba-diving | phonetic | /ˈskubə ˌdaɪvɪŋ/
+scuba-diving | nuance.pronunciation.ipa | /ˈskubə ˌdaɪvɪŋ/
+scuba-diving | nuance.pronunciation.respelling | SKOO-buh dy-ving
+search-for | phonetic | /ˈsɝtʃ fɚ/
+search-for | nuance.pronunciation.ipa | /ˈsɝtʃ fɚ/
+search-for | nuance.pronunciation.respelling | SERCH fer
+seat-belt | phonetic | /ˈsit ˌbɛlt/
+seat-belt | nuance.pronunciation.ipa | /ˈsit ˌbɛlt/
+seat-belt | nuance.pronunciation.respelling | SEET belt
+security-guard | phonetic | /sɪˈkjʊɹəti ˌɡɑɹd/
+security-guard | nuance.pronunciation.ipa | /sɪˈkjʊɹəti ˌɡɑɹd/
+security-guard | nuance.pronunciation.respelling | sih-KYUUR-uh-tee gahrd
+security-officer | phonetic | /sɪˈkjʊɹəti ˌɔfəsɚ/
+security-officer | nuance.pronunciation.ipa | /sɪˈkjʊɹəti ˌɔfəsɚ/
+security-officer | nuance.pronunciation.respelling | sih-KYUUR-uh-tee aw-fuh-ser
+seltzer-water | phonetic | /ˈsɛltsɚ ˌwɔtɚ/
+seltzer-water | nuance.pronunciation.ipa | /ˈsɛltsɚ ˌwɔtɚ/
+seltzer-water | nuance.pronunciation.respelling | SELT-ser waw-ter
+sermon-on-the-mount | phonetic | /ˌsɝmən ɑn ðə ˈmaʊnt/
+sermon-on-the-mount | nuance.pronunciation.ipa | /ˌsɝmən ɑn ðə ˈmaʊnt/
+sermon-on-the-mount | nuance.pronunciation.respelling | ser-muhn ahn thuh MOWNT
+service-oriented-architecture | phonetic | /ˌsɝvɪs ˌɔɹiˌɛntɪd ˈɑɹkɪˌtɛktʃɚ/
+service-oriented-architecture | nuance.pronunciation.ipa | /ˌsɝvɪs ˌɔɹiˌɛntɪd ˈɑɹkɪˌtɛktʃɚ/
+service-oriented-architecture | nuance.pronunciation.respelling | ser-vis or-ee-en-tid AHR-kih-tek-cher
+set-menu | phonetic | /ˌsɛt ˈmɛnju/
+set-menu | nuance.pronunciation.ipa | /ˌsɛt ˈmɛnju/
+set-menu | nuance.pronunciation.respelling | set MEN-yoo
+settle-a-score | phonetic | /ˌsɛtəl ə ˈskɔɹ/
+settle-a-score | nuance.pronunciation.ipa | /ˌsɛtəl ə ˈskɔɹ/
+settle-a-score | nuance.pronunciation.respelling | set-uhl uh SKOR
+severance-pay | phonetic | /ˈsɛvɹəns ˌpeɪ/
+severance-pay | nuance.pronunciation.ipa | /ˈsɛvɹəns ˌpeɪ/
+severance-pay | nuance.pronunciation.respelling | SEV-ruhns pay
+severance-payment | phonetic | /ˈsɛvɹəns ˌpeɪmənt/
+severance-payment | nuance.pronunciation.ipa | /ˈsɛvɹəns ˌpeɪmənt/
+severance-payment | nuance.pronunciation.respelling | SEV-ruhns pay-muhnt
+shut-up | phonetic | /ˌʃʌt ˈʌp/
+shut-up | nuance.pronunciation.ipa | /ˌʃʌt ˈʌp/
+shut-up | nuance.pronunciation.respelling | shuht UP
+side-mirror | phonetic | /ˈsaɪd ˌmɪɹɚ/
+side-mirror | nuance.pronunciation.ipa | /ˈsaɪd ˌmɪɹɚ/
+side-mirror | nuance.pronunciation.respelling | SYDE meer-er
+sidereal-time | phonetic | /saɪˈdɪɹiəl ˌtaɪm/
+sidereal-time | nuance.pronunciation.ipa | /saɪˈdɪɹiəl ˌtaɪm/
+sidereal-time | nuance.pronunciation.respelling | sy-DEER-ee-uhl tyme
+significance-level | phonetic | /sɪɡˈnɪfɪkəns ˌlɛvəl/
+significance-level | nuance.pronunciation.ipa | /sɪɡˈnɪfɪkəns ˌlɛvəl/
+significance-level | nuance.pronunciation.respelling | sig-NIF-ih-kuhns lev-uhl
+singular-value-decomposition | phonetic | /ˌsɪŋɡjəlɚ ˌvælju ˌdikɑmpəˈzɪʃən/
+singular-value-decomposition | nuance.pronunciation.ipa | /ˌsɪŋɡjəlɚ ˌvælju ˌdikɑmpəˈzɪʃən/
+singular-value-decomposition | nuance.pronunciation.respelling | sing-gyuh-ler val-yoo dee-kahm-puh-ZISH-uhn
+sleeping-bag | phonetic | /ˈslipɪŋ ˌbæɡ/
+sleeping-bag | nuance.pronunciation.ipa | /ˈslipɪŋ ˌbæɡ/
+sleeping-bag | nuance.pronunciation.respelling | SLEE-ping bag
+slippery-slope | phonetic | /ˌslɪpəɹi ˈsloʊp/
+slippery-slope | nuance.pronunciation.ipa | /ˌslɪpəɹi ˈsloʊp/
+slippery-slope | nuance.pronunciation.respelling | slip-uh-ree SLOHP
+small-world | phonetic | /ˌsmɔl ˈwɝld/
+small-world | nuance.pronunciation.ipa | /ˌsmɔl ˈwɝld/
+small-world | nuance.pronunciation.respelling | smawl WERLD
+smallest-common-multiple | phonetic | /ˌsmɔləst ˌkɑmən ˈmʌltəpəl/
+smallest-common-multiple | nuance.pronunciation.ipa | /ˌsmɔləst ˌkɑmən ˈmʌltəpəl/
+smallest-common-multiple | nuance.pronunciation.respelling | smaw-luhst kah-muhn MUHL-tuh-puhl
+smooth-operator | phonetic | /ˌsmuð ˈɑpəˌɹeɪtɚ/
+smooth-operator | nuance.pronunciation.ipa | /ˌsmuð ˈɑpəˌɹeɪtɚ/
+smooth-operator | nuance.pronunciation.respelling | smooth AH-puh-ray-ter
+soft-spot | phonetic | /ˌsɔft ˈspɑt/
+soft-spot | nuance.pronunciation.ipa | /ˌsɔft ˈspɑt/
+soft-spot | nuance.pronunciation.respelling | sawft SPAHT
+sore-throat | phonetic | /ˌsɔɹ ˈθɹoʊt/
+sore-throat | nuance.pronunciation.ipa | /ˌsɔɹ ˈθɹoʊt/
+sore-throat | nuance.pronunciation.respelling | sor THROHT
+spam-call | phonetic | /ˈspæm ˌkɔl/
+spam-call | nuance.pronunciation.ipa | /ˈspæm ˌkɔl/
+spam-call | nuance.pronunciation.respelling | SPAM kawl
+speech-bubble | phonetic | /ˈspitʃ ˌbʌbəl/
+speech-bubble | nuance.pronunciation.ipa | /ˈspitʃ ˌbʌbəl/
+speech-bubble | nuance.pronunciation.respelling | SPEECH buh-buhl
+speeding-ticket | phonetic | /ˈspidɪŋ ˌtɪkɪt/
+speeding-ticket | nuance.pronunciation.ipa | /ˈspidɪŋ ˌtɪkɪt/
+speeding-ticket | nuance.pronunciation.respelling | SPEE-ding tik-it
+spontaneous-abortion | phonetic | /spɑnˌteɪniəs əˈbɔɹʃən/
+spontaneous-abortion | nuance.pronunciation.ipa | /spɑnˌteɪniəs əˈbɔɹʃən/
+spontaneous-abortion | nuance.pronunciation.respelling | spahn-tay-nee-uhs uh-BOR-shuhn
+spontaneous-generation | phonetic | /spɑnˌteɪniəs ˌdʒɛnəˈɹeɪʃən/
+spontaneous-generation | nuance.pronunciation.ipa | /spɑnˌteɪniəs ˌdʒɛnəˈɹeɪʃən/
+spontaneous-generation | nuance.pronunciation.respelling | spahn-tay-nee-uhs jen-uh-RAY-shuhn
+stag-party | phonetic | /ˈstæɡ ˌpɑɹti/
+stag-party | nuance.pronunciation.ipa | /ˈstæɡ ˌpɑɹti/
+stag-party | nuance.pronunciation.respelling | STAG pahr-tee
+steadfast-love | phonetic | /ˌstɛdˌfæst ˈlʌv/
+steadfast-love | nuance.pronunciation.ipa | /ˌstɛdˌfæst ˈlʌv/
+steadfast-love | nuance.pronunciation.respelling | sted-fast LUHV
+steering-wheel | phonetic | /ˈstɪɹɪŋ ˌwil/
+steering-wheel | nuance.pronunciation.ipa | /ˈstɪɹɪŋ ˌwil/
+steering-wheel | nuance.pronunciation.respelling | STEER-ing weel
+stiffen-up | phonetic | /ˌstɪfən ˈʌp/
+stiffen-up | nuance.pronunciation.ipa | /ˌstɪfən ˈʌp/
+stiffen-up | nuance.pronunciation.respelling | stif-uhn UP
+still-and-all | phonetic | /ˌstɪl ən ˈɔl/
+still-and-all | nuance.pronunciation.ipa | /ˌstɪl ən ˈɔl/
+still-and-all | nuance.pronunciation.respelling | stil uhn AWL
+stochastic-gradient-descent | phonetic | /stəˌkæstɪk ˌɡɹeɪdiənt dɪˈsɛnt/
+stochastic-gradient-descent | nuance.pronunciation.ipa | /stəˌkæstɪk ˌɡɹeɪdiənt dɪˈsɛnt/
+stochastic-gradient-descent | nuance.pronunciation.respelling | stuh-kas-tik gray-dee-uhnt dih-SENT
+stuck-up | phonetic | /ˌstʌk ˈʌp/
+stuck-up | nuance.pronunciation.ipa | /ˌstʌk ˈʌp/
+stuck-up | nuance.pronunciation.respelling | stuhk UP
+stuffy-nose | phonetic | /ˌstʌfi ˈnoʊz/
+stuffy-nose | nuance.pronunciation.ipa | /ˌstʌfi ˈnoʊz/
+stuffy-nose | nuance.pronunciation.respelling | stuhf-ee NOHZ
+style-transfer | phonetic | /ˈstaɪl ˌtɹænsfɚ/
+style-transfer | nuance.pronunciation.ipa | /ˈstaɪl ˌtɹænsfɚ/
+style-transfer | nuance.pronunciation.respelling | STYLE trans-fer
+subroutine-call | phonetic | /ˈsʌbɹuˌtin ˌkɔl/
+subroutine-call | nuance.pronunciation.ipa | /ˈsʌbɹuˌtin ˌkɔl/
+subroutine-call | nuance.pronunciation.respelling | SUHB-roo-teen kawl
+suffering-servant | phonetic | /ˌsʌfɚɪŋ ˈsɝvənt/
+suffering-servant | nuance.pronunciation.ipa | /ˌsʌfɚɪŋ ˈsɝvənt/
+suffering-servant | nuance.pronunciation.respelling | suhf-er-ing SER-vuhnt
+summary-judgment | phonetic | /ˌsʌmɚi ˈdʒʌdʒmənt/
+summary-judgment | nuance.pronunciation.ipa | /ˌsʌmɚi ˈdʒʌdʒmənt/
+summary-judgment | nuance.pronunciation.respelling | suhm-uh-ree JUJ-muhnt
+support-vector-machine | phonetic | /səˈpɔɹt ˌvɛktɚ məˌʃin/
+support-vector-machine | nuance.pronunciation.ipa | /səˈpɔɹt ˌvɛktɚ məˌʃin/
+support-vector-machine | nuance.pronunciation.respelling | suh-PORT vek-ter muh-sheen
+swear-by | phonetic | /ˈswɛɹ baɪ/
+swear-by | nuance.pronunciation.ipa | /ˈswɛɹ baɪ/
+swear-by | nuance.pronunciation.respelling | SWAIR by
+syntactic-sugar | phonetic | /ˌsɪnˈtæktɪk ˈʃʊɡɚ/
+syntactic-sugar | nuance.pronunciation.ipa | /ˌsɪnˈtæktɪk ˈʃʊɡɚ/
+syntactic-sugar | nuance.pronunciation.respelling | sin-TAK-tik SHUUG-er
+team-player | phonetic | /ˈtim ˌpleɪɚ/
+team-player | nuance.pronunciation.ipa | /ˈtim ˌpleɪɚ/
+team-player | nuance.pronunciation.respelling | TEEM play-er
+team-spirit | phonetic | /ˈtim ˌspɪɹɪt/
+team-spirit | nuance.pronunciation.ipa | /ˈtim ˌspɪɹɪt/
+team-spirit | nuance.pronunciation.respelling | TEEM speer-it
+tension-headache | phonetic | /ˈtɛnʃən ˌhɛdˌeɪk/
+tension-headache | nuance.pronunciation.ipa | /ˈtɛnʃən ˌhɛdˌeɪk/
+tension-headache | nuance.pronunciation.respelling | TEN-shuhn hed-ayk
+text-message | phonetic | /ˈtɛkst ˌmɛsɪdʒ/
+text-message | nuance.pronunciation.ipa | /ˈtɛkst ˌmɛsɪdʒ/
+text-message | nuance.pronunciation.respelling | TEKST mes-ij
+the-land-of-milk-and-honey | phonetic | /ðə ˌlænd əv ˌmɪlk ənd ˈhʌni/
+the-land-of-milk-and-honey | nuance.pronunciation.ipa | /ðə ˌlænd əv ˌmɪlk ənd ˈhʌni/
+the-land-of-milk-and-honey | nuance.pronunciation.respelling | thuh land uhv milk uhnd HUN-ee
+theological-virtues | phonetic | /ˌθiəˈlɑdʒɪkəl ˈvɝtʃuz/
+theological-virtues | nuance.pronunciation.ipa | /ˌθiəˈlɑdʒɪkəl ˈvɝtʃuz/
+theological-virtues | nuance.pronunciation.respelling | thee-uh-LAH-jih-kuhl VER-chooz
+they-pulled-it-off | phonetic | /ðeɪ pʊld ɪt ˈɔf/
+they-pulled-it-off | nuance.pronunciation.ipa | /ðeɪ pʊld ɪt ˈɔf/
+they-pulled-it-off | nuance.pronunciation.respelling | thay puuld it AWF
+throat-lozenge | phonetic | /ˈθɹoʊt ˌlɑzɪndʒ/
+throat-lozenge | nuance.pronunciation.ipa | /ˈθɹoʊt ˌlɑzɪndʒ/
+throat-lozenge | nuance.pronunciation.respelling | THROHT lah-zinj
+tickle-the-ear | phonetic | /ˌtɪkəl ðə ˈɪɹ/
+tickle-the-ear | nuance.pronunciation.ipa | /ˌtɪkəl ðə ˈɪɹ/
+tickle-the-ear | nuance.pronunciation.respelling | tik-uhl thuh EER
+tightrope-artist | phonetic | /ˈtaɪtˌɹoʊp ˌɑɹtɪst/
+tightrope-artist | nuance.pronunciation.ipa | /ˈtaɪtˌɹoʊp ˌɑɹtɪst/
+tightrope-artist | nuance.pronunciation.respelling | TYTE-rohp ahr-tist
+tightrope-dancer | phonetic | /ˈtaɪtˌɹoʊp ˌdænsɚ/
+tightrope-dancer | nuance.pronunciation.ipa | /ˈtaɪtˌɹoʊp ˌdænsɚ/
+tightrope-dancer | nuance.pronunciation.respelling | TYTE-rohp dan-ser
+tightrope-walker | phonetic | /ˈtaɪtˌɹoʊp ˌwɔkɚ/
+tightrope-walker | nuance.pronunciation.ipa | /ˈtaɪtˌɹoʊp ˌwɔkɚ/
+tightrope-walker | nuance.pronunciation.respelling | TYTE-rohp waw-ker
+tightrope-walking | phonetic | /ˈtaɪtˌɹoʊp ˌwɔkɪŋ/
+tightrope-walking | nuance.pronunciation.ipa | /ˈtaɪtˌɹoʊp ˌwɔkɪŋ/
+tightrope-walking | nuance.pronunciation.respelling | TYTE-rohp waw-king
+time-complexity | phonetic | /ˈtaɪm kəmˌplɛksəti/
+time-complexity | nuance.pronunciation.ipa | /ˈtaɪm kəmˌplɛksəti/
+time-complexity | nuance.pronunciation.respelling | TYME kuhm-plek-suh-tee
+to-add-to-that | phonetic | /tə ˈæd tə ðæt/
+to-add-to-that | nuance.pronunciation.ipa | /tə ˈæd tə ðæt/
+to-add-to-that | nuance.pronunciation.respelling | tuh AD tuh that
+top-dog | phonetic | /ˌtɑp ˈdɔɡ/
+top-dog | nuance.pronunciation.ipa | /ˌtɑp ˈdɔɡ/
+top-dog | nuance.pronunciation.respelling | tahp DAWG
+tower-of-babel | phonetic | /ˌtaʊɚ əv ˈbeɪbəl/
+tower-of-babel | nuance.pronunciation.ipa | /ˌtaʊɚ əv ˈbeɪbəl/
+tower-of-babel | nuance.pronunciation.respelling | tow-er uhv BAY-buhl
+town-meeting | phonetic | /ˈtaʊn ˌmitɪŋ/
+town-meeting | nuance.pronunciation.ipa | /ˈtaʊn ˌmitɪŋ/
+town-meeting | nuance.pronunciation.respelling | TOWN mee-ting
+traffic-officer | phonetic | /ˈtɹæfɪk ˌɔfɪsɚ/
+traffic-officer | nuance.pronunciation.ipa | /ˈtɹæfɪk ˌɔfɪsɚ/
+traffic-officer | nuance.pronunciation.respelling | TRAF-ik aw-fih-ser
+traffic-signal | phonetic | /ˈtɹæfɪk ˌsɪɡnəl/
+traffic-signal | nuance.pronunciation.ipa | /ˈtɹæfɪk ˌsɪɡnəl/
+traffic-signal | nuance.pronunciation.respelling | TRAF-ik sig-nuhl
+trespass-offering | phonetic | /ˈtɹɛspæs ˌɔfɚɪŋ/
+trespass-offering | nuance.pronunciation.ipa | /ˈtɹɛspæs ˌɔfɚɪŋ/
+trespass-offering | nuance.pronunciation.respelling | TRES-pas aw-fer-ing
+trick-up-one's-sleeve | phonetic | /ˌtɹɪk ʌp wʌnz ˈsliv/
+trick-up-one's-sleeve | nuance.pronunciation.ipa | /ˌtɹɪk ʌp wʌnz ˈsliv/
+trick-up-one's-sleeve | nuance.pronunciation.respelling | trik up wuhnz SLEEV
+trot-out | phonetic | /ˌtɹɑt ˈaʊt/
+trot-out | nuance.pronunciation.ipa | /ˌtɹɑt ˈaʊt/
+trot-out | nuance.pronunciation.respelling | traht OWT
+turn-in | phonetic | /ˌtɝn ˈɪn/
+turn-in | nuance.pronunciation.ipa | /ˌtɝn ˈɪn/
+turn-in | nuance.pronunciation.respelling | tern IN
+twelve-tribes | phonetic | /twɛlv ˈtɹaɪbz/
+twelve-tribes | nuance.pronunciation.ipa | /twɛlv ˈtɹaɪbz/
+twelve-tribes | nuance.pronunciation.respelling | twelv TRYBZ
+twist-someone's-arm | phonetic | /ˌtwɪst ˌsʌmwənz ˈɑɹm/
+twist-someone's-arm | nuance.pronunciation.ipa | /ˌtwɪst ˌsʌmwənz ˈɑɹm/
+twist-someone's-arm | nuance.pronunciation.respelling | twist sum-wuhnz AHRM
+two-cents | phonetic | /ˌtu ˈsɛnts/
+two-cents | nuance.pronunciation.ipa | /ˌtu ˈsɛnts/
+two-cents | nuance.pronunciation.respelling | too SENTS
+type-ii-error | phonetic | /ˌtaɪp ˈtu ˌɛɹɚ/
+type-ii-error | nuance.pronunciation.ipa | /ˌtaɪp ˈtu ˌɛɹɚ/
+type-ii-error | nuance.pronunciation.respelling | tyep TOO air-er
+unused-to | phonetic | /ʌnˈjust tə/
+unused-to | nuance.pronunciation.ipa | /ʌnˈjust tə/
+unused-to | nuance.pronunciation.respelling | uhn-YOOST tuh
+user-prompt | phonetic | /ˈjuzɚ ˌpɹɑmpt/
+user-prompt | nuance.pronunciation.ipa | /ˈjuzɚ ˌpɹɑmpt/
+user-prompt | nuance.pronunciation.respelling | YOO-zer prahmpt
+vacuum-cleaner | phonetic | /ˈvækjum ˌklinɚ/
+vacuum-cleaner | nuance.pronunciation.ipa | /ˈvækjum ˌklinɚ/
+vacuum-cleaner | nuance.pronunciation.respelling | VAK-yoom klee-ner
+valet-parking | phonetic | /væˈleɪ ˌpɑɹkɪŋ/
+valet-parking | nuance.pronunciation.ipa | /væˈleɪ ˌpɑɹkɪŋ/
+valet-parking | nuance.pronunciation.respelling | va-LAY pahr-king
+vegetative-nervous-system | phonetic | /ˌvɛdʒəˌteɪtɪv ˌnɝvəs ˈsɪstəm/
+vegetative-nervous-system | nuance.pronunciation.ipa | /ˌvɛdʒəˌteɪtɪv ˌnɝvəs ˈsɪstəm/
+vegetative-nervous-system | nuance.pronunciation.respelling | vej-uh-tay-tiv ner-vuhs SIS-tuhm
+video-call | phonetic | /ˈvɪdiˌoʊ ˌkɔl/
+video-call | nuance.pronunciation.ipa | /ˈvɪdiˌoʊ ˌkɔl/
+video-call | nuance.pronunciation.respelling | VID-ee-oh kawl
+violin-maker | phonetic | /ˌvaɪəˈlɪn ˌmeɪkɚ/
+violin-maker | nuance.pronunciation.ipa | /ˌvaɪəˈlɪn ˌmeɪkɚ/
+violin-maker | nuance.pronunciation.respelling | vy-uh-LIN may-ker
+visceral-nervous-system | phonetic | /ˌvɪsɚəl ˌnɝvəs ˈsɪstəm/
+visceral-nervous-system | nuance.pronunciation.ipa | /ˌvɪsɚəl ˌnɝvəs ˈsɪstəm/
+visceral-nervous-system | nuance.pronunciation.respelling | vis-er-uhl ner-vuhs SIS-tuhm
+wade-in | phonetic | /weɪd ˈɪn/
+wade-in | nuance.pronunciation.ipa | /weɪd ˈɪn/
+wade-in | nuance.pronunciation.respelling | wayd IN
+water-fountain | phonetic | /ˈwɔtɚ ˌfaʊntən/
+water-fountain | nuance.pronunciation.ipa | /ˈwɔtɚ ˌfaʊntən/
+water-fountain | nuance.pronunciation.respelling | WAW-ter fown-tuhn
+water-lily | phonetic | /ˈwɔtɚ ˌlɪli/
+water-lily | nuance.pronunciation.ipa | /ˈwɔtɚ ˌlɪli/
+water-lily | nuance.pronunciation.respelling | WAW-ter lil-ee
+weeping-willow | phonetic | /ˌwipɪŋ ˈwɪˌloʊ/
+weeping-willow | nuance.pronunciation.ipa | /ˌwipɪŋ ˈwɪˌloʊ/
+weeping-willow | nuance.pronunciation.respelling | wee-ping WIL-oh
+welding-machine | phonetic | /ˈwɛldɪŋ məˌʃin/
+welding-machine | nuance.pronunciation.ipa | /ˈwɛldɪŋ məˌʃin/
+welding-machine | nuance.pronunciation.respelling | WEL-ding muh-sheen
+what's-your-return-policy | phonetic | /ˌwʌts jɚ ɹɪˈtɝn ˌpɑləsi/
+what's-your-return-policy | nuance.pronunciation.ipa | /ˌwʌts jɚ ɹɪˈtɝn ˌpɑləsi/
+what's-your-return-policy | nuance.pronunciation.respelling | wuhts yer rih-TERN pah-luh-see
+white-flag | phonetic | /ˌwaɪt ˈflæɡ/
+white-flag | nuance.pronunciation.ipa | /ˌwaɪt ˈflæɡ/
+white-flag | nuance.pronunciation.respelling | wyte FLAG
+wild-goose-chase | phonetic | /ˌwaɪld ˌɡus ˈtʃeɪs/
+wild-goose-chase | nuance.pronunciation.ipa | /ˌwaɪld ˌɡus ˈtʃeɪs/
+wild-goose-chase | nuance.pronunciation.respelling | wyld goos CHAYS
+windshield-wipers | phonetic | /ˈwɪndˌʃild ˌwaɪpɚz/
+windshield-wipers | nuance.pronunciation.ipa | /ˈwɪndˌʃild ˌwaɪpɚz/
+windshield-wipers | nuance.pronunciation.respelling | WIND-sheeld wy-perz
+wolf's-head | phonetic | /ˈwʊlfs ˌhɛd/
+wolf's-head | nuance.pronunciation.ipa | /ˈwʊlfs ˌhɛd/
+wolf's-head | nuance.pronunciation.respelling | WUULFS hed
+yard-sale | phonetic | /ˈjɑɹd ˌseɪl/
+yard-sale | nuance.pronunciation.ipa | /ˈjɑɹd ˌseɪl/
+yard-sale | nuance.pronunciation.respelling | YAHRD sayl
+zero-in-on | phonetic | /ˌzɪɹoʊ ˈɪn ɑn/
+zero-in-on | nuance.pronunciation.ipa | /ˌzɪɹoʊ ˈɪn ɑn/
+zero-in-on | nuance.pronunciation.respelling | zeer-oh IN ahn
+almond-butter | phonetic | /ˈɑmənd ˌbʌtɚ/
+almond-butter | nuance.pronunciation.ipa | /ˈɑmənd ˌbʌtɚ/
+almond-butter | nuance.pronunciation.respelling | AH-muhnd buh-ter
+appeal-to-authority | phonetic | /əˌpil tə əˈθɔɹəti/
+appeal-to-authority | nuance.pronunciation.ipa | /əˌpil tə əˈθɔɹəti/
+appeal-to-authority | nuance.pronunciation.respelling | uh-peel tuh uh-THOR-uh-tee
+backward-incompatibility | phonetic | /ˌbækwɚd ˌɪnkəmˌpætəˈbɪləti/
+backward-incompatibility | nuance.pronunciation.ipa | /ˌbækwɚd ˌɪnkəmˌpætəˈbɪləti/
+backward-incompatibility | nuance.pronunciation.respelling | bak-werd in-kuhm-pat-uh-BIL-uh-tee
+base-class | phonetic | /ˈbeɪs ˌklæs/
+base-class | nuance.pronunciation.ipa | /ˈbeɪs ˌklæs/
+base-class | nuance.pronunciation.respelling | BAYS klas
+be-fond-of | phonetic | /bi ˈfɑnd əv/
+be-fond-of | nuance.pronunciation.ipa | /bi ˈfɑnd əv/
+be-fond-of | nuance.pronunciation.respelling | bee FAHND uhv
+body-fluid | phonetic | /ˌbɑdi ˈfluɪd/
+body-fluid | nuance.pronunciation.ipa | /ˌbɑdi ˈfluɪd/
+body-fluid | nuance.pronunciation.respelling | bah-dee FLOO-id
+box-office-bomb | phonetic | /ˌbɑks ˌɔfɪs ˈbɑm/
+box-office-bomb | nuance.pronunciation.ipa | /ˌbɑks ˌɔfɪs ˈbɑm/
+box-office-bomb | nuance.pronunciation.respelling | bahks aw-fis BAHM
+bury-the-hatchet | phonetic | /ˌbɛɹi ðə ˈhætʃɪt/
+bury-the-hatchet | nuance.pronunciation.ipa | /ˌbɛɹi ðə ˈhætʃɪt/
+bury-the-hatchet | nuance.pronunciation.respelling | bair-ee thuh HACH-it
+catholic-epistles | phonetic | /ˌkæθlɪk ɪˈpɪsəlz/
+catholic-epistles | nuance.pronunciation.ipa | /ˌkæθlɪk ɪˈpɪsəlz/
+catholic-epistles | nuance.pronunciation.respelling | kath-lik ih-PIS-uhlz
+check-engine-light | phonetic | /ˌtʃɛk ˈɛndʒən ˌlaɪt/
+check-engine-light | nuance.pronunciation.ipa | /ˌtʃɛk ˈɛndʒən ˌlaɪt/
+check-engine-light | nuance.pronunciation.respelling | chek EN-juhn lyte
+computational-linguistics | phonetic | /ˌkɑmpjəˌteɪʃənəl lɪŋˈɡwɪstɪks/
+computational-linguistics | nuance.pronunciation.ipa | /ˌkɑmpjəˌteɪʃənəl lɪŋˈɡwɪstɪks/
+computational-linguistics | nuance.pronunciation.respelling | kahm-pyuh-tay-shuh-nuhl ling-GWIS-tiks
+constitutional-ai | phonetic | /ˌkɑnstəˌtuʃənəl ˌeɪˈaɪ/
+constitutional-ai | nuance.pronunciation.ipa | /ˌkɑnstəˌtuʃənəl ˌeɪˈaɪ/
+constitutional-ai | nuance.pronunciation.respelling | kahn-stuh-too-shuh-nuhl ay-EYE
+constitutional-monarch | phonetic | /ˌkɑnstəˌtuʃənəl ˈmɑnɚk/
+constitutional-monarch | nuance.pronunciation.ipa | /ˌkɑnstəˌtuʃənəl ˈmɑnɚk/
+constitutional-monarch | nuance.pronunciation.respelling | kahn-stuh-too-shuh-nuhl MAH-nerk
+deductive-reasoning | phonetic | /dɪˌdʌktɪv ˈɹizənɪŋ/
+deductive-reasoning | nuance.pronunciation.ipa | /dɪˌdʌktɪv ˈɹizənɪŋ/
+deductive-reasoning | nuance.pronunciation.respelling | dih-duk-tiv REE-zuh-ning
+density-function | phonetic | /ˈdɛnsəti ˌfʌŋkʃən/
+density-function | nuance.pronunciation.ipa | /ˈdɛnsəti ˌfʌŋkʃən/
+density-function | nuance.pronunciation.respelling | DEN-suh-tee fuhngk-shuhn
+deus-ex-machina | phonetic | /ˌdeɪəs ˌɛks ˈmɑkɪnə/
+deus-ex-machina | nuance.pronunciation.ipa | /ˌdeɪəs ˌɛks ˈmɑkɪnə/
+deus-ex-machina | nuance.pronunciation.respelling | day-uhs eks MAH-kih-nuh
+does-this-bus-go-downtown | phonetic | /dʌz ðɪs ˌbʌs ˌɡoʊ ˌdaʊnˈtaʊn/
+does-this-bus-go-downtown | nuance.pronunciation.ipa | /dʌz ðɪs ˌbʌs ˌɡoʊ ˌdaʊnˈtaʊn/
+does-this-bus-go-downtown | nuance.pronunciation.respelling | duhz this buhs goh down-TOWN
+educated-guess | phonetic | /ˌɛdʒəˌkeɪtɪd ˈɡɛs/
+educated-guess | nuance.pronunciation.ipa | /ˌɛdʒəˌkeɪtɪd ˈɡɛs/
+educated-guess | nuance.pronunciation.respelling | ej-uh-kay-tid GES
+everything's-great-thanks | phonetic | /ˌɛvɹiˌθɪŋz ˌɡɹeɪt ˈθæŋks/
+everything's-great-thanks | nuance.pronunciation.ipa | /ˌɛvɹiˌθɪŋz ˌɡɹeɪt ˈθæŋks/
+everything's-great-thanks | nuance.pronunciation.respelling | ev-ree-thingz grayt THANGKS
+explicit-function | phonetic | /ɪkˌsplɪsɪt ˈfʌŋkʃən/
+explicit-function | nuance.pronunciation.ipa | /ɪkˌsplɪsɪt ˈfʌŋkʃən/
+explicit-function | nuance.pronunciation.respelling | ik-splis-it FUHNGK-shuhn
+fear-of-god | phonetic | /ˌfɪɹ əv ˈɡɑd/
+fear-of-god | nuance.pronunciation.ipa | /ˌfɪɹ əv ˈɡɑd/
+fear-of-god | nuance.pronunciation.respelling | feer uhv GAHD
+feather-in-one's-cap | phonetic | /ˌfɛðɚ ɪn wʌnz ˈkæp/
+feather-in-one's-cap | nuance.pronunciation.ipa | /ˌfɛðɚ ɪn wʌnz ˈkæp/
+feather-in-one's-cap | nuance.pronunciation.respelling | feth-er in wuhnz KAP
+fight-fire-with-fire | phonetic | /ˌfaɪt ˌfaɪɚ wɪð ˈfaɪɚ/
+fight-fire-with-fire | nuance.pronunciation.ipa | /ˌfaɪt ˌfaɪɚ wɪð ˈfaɪɚ/
+fight-fire-with-fire | nuance.pronunciation.respelling | fyte fy-er with FY-er
+freedom-of-choice | phonetic | /ˌfɹidəm əv ˈtʃɔɪs/
+freedom-of-choice | nuance.pronunciation.ipa | /ˌfɹidəm əv ˈtʃɔɪs/
+freedom-of-choice | nuance.pronunciation.respelling | free-duhm uhv CHOYS
+goal-misgeneralization | phonetic | /ˌɡoʊl ˌmɪsˌdʒɛnɚəlɪˈzeɪʃən/
+goal-misgeneralization | nuance.pronunciation.ipa | /ˌɡoʊl ˌmɪsˌdʒɛnɚəlɪˈzeɪʃən/
+goal-misgeneralization | nuance.pronunciation.respelling | gohl mis-jen-er-uh-lih-ZAY-shuhn
+i'll-follow-up-by-email | phonetic | /aɪl ˌfɑloʊ ˈʌp baɪ ˈiˌmeɪl/
+i'll-follow-up-by-email | nuance.pronunciation.ipa | /aɪl ˌfɑloʊ ˈʌp baɪ ˈiˌmeɪl/
+i'll-follow-up-by-email | nuance.pronunciation.respelling | yle fah-loh UP by EE-mayl
+impulse-purchase | phonetic | /ˈɪmpəls ˌpɝtʃəs/
+impulse-purchase | nuance.pronunciation.ipa | /ˈɪmpəls ˌpɝtʃəs/
+impulse-purchase | nuance.pronunciation.respelling | IM-puhls per-chuhs
+indentured-servant | phonetic | /ɪnˌdɛntʃɚd ˈsɝvənt/
+indentured-servant | nuance.pronunciation.ipa | /ɪnˌdɛntʃɚd ˈsɝvənt/
+indentured-servant | nuance.pronunciation.respelling | in-den-cherd SER-vuhnt
+is-it-within-walking-distance | phonetic | /ɪz ɪt wɪˌðɪn ˈwɔkɪŋ ˌdɪstəns/
+is-it-within-walking-distance | nuance.pronunciation.ipa | /ɪz ɪt wɪˌðɪn ˈwɔkɪŋ ˌdɪstəns/
+is-it-within-walking-distance | nuance.pronunciation.respelling | iz it wih-thin WAW-king dis-tuhns
+laughing-stock | phonetic | /ˈlæfɪŋ ˌstɑk/
+laughing-stock | nuance.pronunciation.ipa | /ˈlæfɪŋ ˌstɑk/
+laughing-stock | nuance.pronunciation.respelling | LAF-ing stahk
+license-and-registration-please | phonetic | /ˌlaɪsəns ənd ˌɹɛdʒɪˈstɹeɪʃən ˈpliz/
+license-and-registration-please | nuance.pronunciation.ipa | /ˌlaɪsəns ənd ˌɹɛdʒɪˈstɹeɪʃən ˈpliz/
+license-and-registration-please | nuance.pronunciation.respelling | ly-suhns uhnd rej-ih-STRAY-shuhn PLEEZ
+modus-tollens | phonetic | /ˌmoʊdəs ˈtɑlɛnz/
+modus-tollens | nuance.pronunciation.ipa | /ˌmoʊdəs ˈtɑlɛnz/
+modus-tollens | nuance.pronunciation.respelling | moh-duhs TAH-lenz
+moral-nihilism | phonetic | /ˌmɔɹəl ˈnaɪəlɪzəm/
+moral-nihilism | nuance.pronunciation.ipa | /ˌmɔɹəl ˈnaɪəlɪzəm/
+moral-nihilism | nuance.pronunciation.respelling | mor-uhl NY-uh-liz-uhm
+mouth-harp | phonetic | /ˈmaʊθ ˌhɑɹp/
+mouth-harp | nuance.pronunciation.ipa | /ˈmaʊθ ˌhɑɹp/
+mouth-harp | nuance.pronunciation.respelling | MOWTH hahrp
+national-socialist | phonetic | /ˌnæʃənəl ˈsoʊʃəlɪst/
+national-socialist | nuance.pronunciation.ipa | /ˌnæʃənəl ˈsoʊʃəlɪst/
+national-socialist | nuance.pronunciation.respelling | nash-uh-nuhl SOH-shuh-list
+obtuse-angle | phonetic | /ɑbˌtus ˈæŋɡəl/
+obtuse-angle | nuance.pronunciation.ipa | /ɑbˌtus ˈæŋɡəl/
+obtuse-angle | nuance.pronunciation.respelling | ahb-toos ANG-guhl
+on-device-ai | phonetic | /ɑn dɪˌvaɪs ˌeɪˈaɪ/
+on-device-ai | nuance.pronunciation.ipa | /ɑn dɪˌvaɪs ˌeɪˈaɪ/
+on-device-ai | nuance.pronunciation.respelling | ahn dih-vyse ay-EYE
+optical-illusion | phonetic | /ˌɑptɪkəl ɪˈluʒən/
+optical-illusion | nuance.pronunciation.ipa | /ˌɑptɪkəl ɪˈluʒən/
+optical-illusion | nuance.pronunciation.respelling | ahp-tih-kuhl ih-LOO-zhuhn
+pauline-epistles | phonetic | /pɔˌlin ɪˈpɪsəlz/
+pauline-epistles | nuance.pronunciation.ipa | /pɔˌlin ɪˈpɪsəlz/
+pauline-epistles | nuance.pronunciation.respelling | paw-leen ih-PIS-uhlz
+pay-raise | phonetic | /ˈpeɪ ˌɹeɪz/
+pay-raise | nuance.pronunciation.ipa | /ˈpeɪ ˌɹeɪz/
+pay-raise | nuance.pronunciation.respelling | PAY rayz
+premature-optimization | phonetic | /ˌpɹiməˌtʃʊɹ ˌɑptəməˈzeɪʃən/
+premature-optimization | nuance.pronunciation.ipa | /ˌpɹiməˌtʃʊɹ ˌɑptəməˈzeɪʃən/
+premature-optimization | nuance.pronunciation.respelling | pree-muh-chuur ahp-tuh-muh-ZAY-shuhn
+prime-number | phonetic | /ˈpɹaɪm ˌnʌmbɚ/
+prime-number | nuance.pronunciation.ipa | /ˈpɹaɪm ˌnʌmbɚ/
+prime-number | nuance.pronunciation.respelling | PRYM nuhm-ber
+probability-density-function | phonetic | /ˌpɹɑbəˈbɪləti ˌdɛnsəti ˈfʌŋkʃən/
+probability-density-function | nuance.pronunciation.ipa | /ˌpɹɑbəˈbɪləti ˌdɛnsəti ˈfʌŋkʃən/
+probability-density-function | nuance.pronunciation.respelling | prah-buh-BIL-uh-tee den-suh-tee FUHNGK-shuhn
+probability-mass-function | phonetic | /ˌpɹɑbəˈbɪləti ˌmæs ˈfʌŋkʃən/
+probability-mass-function | nuance.pronunciation.ipa | /ˌpɹɑbəˈbɪləti ˌmæs ˈfʌŋkʃən/
+probability-mass-function | nuance.pronunciation.respelling | prah-buh-BIL-uh-tee mas FUHNGK-shuhn
+prompt-hacking | phonetic | /ˈpɹɑmpt ˌhækɪŋ/
+prompt-hacking | nuance.pronunciation.ipa | /ˈpɹɑmpt ˌhækɪŋ/
+prompt-hacking | nuance.pronunciation.respelling | PRAHMPT hak-ing
+remote-procedure-call | phonetic | /ɹɪˌmoʊt pɹəˈsidʒɚ ˌkɔl/
+remote-procedure-call | nuance.pronunciation.ipa | /ɹɪˌmoʊt pɹəˈsidʒɚ ˌkɔl/
+remote-procedure-call | nuance.pronunciation.respelling | rih-moht pruh-SEE-jer kawl
+responsible-ai | phonetic | /ɹɪˌspɑnsəbəl ˌeɪˈaɪ/
+responsible-ai | nuance.pronunciation.ipa | /ɹɪˌspɑnsəbəl ˌeɪˈaɪ/
+responsible-ai | nuance.pronunciation.respelling | rih-spahn-suh-buhl ay-EYE
+responsible-scaling | phonetic | /ɹɪˌspɑnsəbəl ˈskeɪlɪŋ/
+responsible-scaling | nuance.pronunciation.ipa | /ɹɪˌspɑnsəbəl ˈskeɪlɪŋ/
+responsible-scaling | nuance.pronunciation.respelling | rih-spahn-suh-buhl SKAY-ling
+restraining-order | phonetic | /ɹɪˈstɹeɪnɪŋ ˌɔɹdɚ/
+restraining-order | nuance.pronunciation.ipa | /ɹɪˈstɹeɪnɪŋ ˌɔɹdɚ/
+restraining-order | nuance.pronunciation.respelling | rih-STRAY-ning or-der
+space-complexity | phonetic | /ˈspeɪs kəmˌplɛksɪti/
+space-complexity | nuance.pronunciation.ipa | /ˈspeɪs kəmˌplɛksɪti/
+space-complexity | nuance.pronunciation.respelling | SPAYS kuhm-plek-sih-tee
+symbolic-ai | phonetic | /sɪmˌbɑlɪk ˌeɪˈaɪ/
+symbolic-ai | nuance.pronunciation.ipa | /sɪmˌbɑlɪk ˌeɪˈaɪ/
+symbolic-ai | nuance.pronunciation.respelling | sim-bah-lik ay-EYE
+test-driven-development | phonetic | /ˈtɛstˌdɹɪvən dɪˈvɛləpmənt/
+test-driven-development | nuance.pronunciation.ipa | /ˈtɛstˌdɹɪvən dɪˈvɛləpmənt/
+test-driven-development | nuance.pronunciation.respelling | TEST-driv-uhn dih-VEL-uhp-muhnt
+textual-critic | phonetic | /ˌtɛkstʃuəl ˈkɹɪtɪk/
+textual-critic | nuance.pronunciation.ipa | /ˌtɛkstʃuəl ˈkɹɪtɪk/
+textual-critic | nuance.pronunciation.respelling | teks-choo-uhl KRIT-ik
+think-outside-the-box | phonetic | /ˌθɪŋk ˌaʊtˈsaɪd ðə ˈbɑks/
+think-outside-the-box | nuance.pronunciation.ipa | /ˌθɪŋk ˌaʊtˈsaɪd ðə ˈbɑks/
+think-outside-the-box | nuance.pronunciation.respelling | thingk owt-SYDE thuh BAHKS
+trustworthy-ai | phonetic | /ˌtɹʌstˌwɝði ˌeɪˈaɪ/
+trustworthy-ai | nuance.pronunciation.ipa | /ˌtɹʌstˌwɝði ˌeɪˈaɪ/
+trustworthy-ai | nuance.pronunciation.respelling | truhst-wer-thee ay-EYE
+value-meal | phonetic | /ˈvælju ˌmil/
+value-meal | nuance.pronunciation.ipa | /ˈvælju ˌmil/
+value-meal | nuance.pronunciation.respelling | VAL-yoo meel
+wake-up-call | phonetic | /ˈweɪkˌʌp ˌkɔl/
+wake-up-call | nuance.pronunciation.ipa | /ˈweɪkˌʌp ˌkɔl/
+wake-up-call | nuance.pronunciation.respelling | WAYK-uhp kawl
+weak-ai | phonetic | /ˌwik ˌeɪˈaɪ/
+weak-ai | nuance.pronunciation.ipa | /ˌwik ˌeɪˈaɪ/
+weak-ai | nuance.pronunciation.respelling | week ay-EYE
+will-i-get-my-security-deposit-back | phonetic | /wɪl aɪ ɡɛt maɪ sɪˌkjʊɹɪti dɪˈpɑzɪt ˈbæk/
+will-i-get-my-security-deposit-back | nuance.pronunciation.ipa | /wɪl aɪ ɡɛt maɪ sɪˌkjʊɹɪti dɪˈpɑzɪt ˈbæk/
+will-i-get-my-security-deposit-back | nuance.pronunciation.respelling | wil eye get my sih-kyuur-ih-tee dih-PAH-zit BAK
+yell-at | phonetic | /ˈjɛl æt/
+yell-at | nuance.pronunciation.ipa | /ˈjɛl æt/
+yell-at | nuance.pronunciation.respelling | YEL at
