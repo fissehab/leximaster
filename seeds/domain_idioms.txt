@@ -2067,3 +2067,324 @@ you wish
 young at heart
 young blood
 yours truly
+
+# Common American idioms and sayings written with hyphens or as one word ("jaw-dropping",
+# "tongue-in-cheek", "clickbait"), missed by the multiword pass: from Wiktionary,
+# ranked by frequency in American books (Google Books Ngram, 2015-2019) and
+# reviewed by hand (November 2026).
+accidentally on purpose
+all-in
+also-ran
+arm-twisting
+back-alley
+backslapping
+backstabbing
+baked-in
+bang-up
+bargain-basement
+battle-hardened
+battle-scarred
+battle-tested
+be-all and end-all
+behind the eight ball
+bigheaded
+birdbrained
+bleeding-heart
+blood-and-guts
+blood-boiling
+bloodsucking
+blue blood
+blue-sky
+bodice-ripper
+bold-faced
+bomb-thrower
+bone-chilling
+bone-crunching
+bone-jarring
+bone-tired
+bottom-feeder
+brain-dead
+bright-eyed
+brother in arms
+bug-eyed
+bullheaded
+bush-league
+card-carrying
+carrot-top
+cash-strapped
+catch-as-catch-can
+chest-thumping
+chicken-and-egg
+cloak-and-dagger
+clock-watcher
+close-knit
+cockeyed
+come-hither
+corn-fed
+course-correct
+cradle-to-grave
+cross-pollination
+cross-purposes
+crow's-feet
+cut and run
+death grip
+deep-pocketed
+deep-six
+dirt-poor
+doe-eyed
+dog-tired
+doom and gloom
+double whammy
+double-talk
+down-at-the-heels
+down-home
+drink the Kool-Aid
+dyed-in-the-wool
+eagle-eyed
+ear-piercing
+earth-shattering
+elbow-deep
+empire-building
+empty-handed
+even-steven
+eye-popping
+eye-watering
+eyeball-to-eyeball
+eyebrow-raising
+face-saving
+fair to middling
+fancy-free
+fancy-pants
+fast-talk
+fat cat
+fat-fingered
+fence-mending
+fig leaf
+fine-toothed comb
+finger-wagging
+five-alarm
+five-finger discount
+flag-waving
+flat-footed
+fly-by-night
+foot-dragging
+friend zone
+get-up-and-go
+glad-hand
+glass-half-empty
+glass-half-full
+going-over
+gold digger
+googly-eyed
+grab bag
+green-eyed monster
+gun-shy
+gut-busting
+gut-churning
+hair-trigger
+half-baked
+half-cocked
+half-pint
+half-wit
+ham-fisted
+hand in glove
+hand-holding
+hard-boiled
+hard-charging
+hard-hitting
+hard-luck
+hard-nosed
+hard-pressed
+hardwired
+has-been
+hawk-eyed
+he said, she said
+head-scratching
+head-spinning
+head-turner
+heart-pounding
+heart-stopping
+heart-tugging
+heart-wrenching
+heavy-hearted
+hell-bent
+hell-raiser
+helter-skelter
+high roller
+high-flier
+high-octane
+high-wire act
+hit-or-miss
+hog-tie
+hog-wild
+hold the purse strings
+horse-trading
+hot-blooded
+hot-button
+hotshot
+hustle and bustle
+ill-gotten gains
+industrial-strength
+iron-fisted
+iron-willed
+ironclad
+jaw-dropping
+kid gloves
+kiss-off
+knee-deep
+knee-jerk
+knock-down-drag-out
+knuckle-dragging
+lady-killer
+laser-focused
+laser-sharp
+lead-footed
+less-than-stellar
+light-fingered
+lip-smacking
+lockstep
+look-at-me
+lovestruck
+lowdown
+mama bear
+maxed-out
+meat-and-potatoes
+mind-bending
+mind-blowing
+mind-boggling
+mind-expanding
+mind-meld
+mini-me
+money-grubbing
+mumbo jumbo
+mustache-twirling
+name-drop
+neck-deep
+never-say-die
+nickel-and-dime
+no-holds-barred
+no-man's-land
+nonstarter
+off-script
+on-again, off-again
+once-in-a-generation
+one-eighty
+one-hit wonder
+one-horse town
+one-note
+one-size-fits-all
+one-track mind
+one-trick pony
+one-two punch
+one-up
+out there
+out-and-out
+paint-by-numbers
+paper-pusher
+pea-brained
+peaches and cream
+penny-ante
+picture-perfect
+pinch-hit
+pint-sized
+pitch-perfect
+plain vanilla
+pooh-pooh
+pork barrel
+potshot
+power-hungry
+pulse-pounding
+punch-drunk
+push and pull
+quick-and-dirty
+rags-to-riches
+rail-thin
+rapid-fire
+red-blooded
+red-letter day
+rent-free
+rib-tickling
+right-hand man
+rip-roaring
+rock-solid
+rock-steady
+rope-a-dope
+rose-colored glasses
+rough-and-tumble
+saber-rattling
+scatterbrained
+scene-stealer
+scorched-earth
+seat-of-the-pants
+second-guess
+sharp-tongued
+shell-shocked
+shifty-eyed
+shoo-in
+shut-eye
+silver-tongued
+skin-crawling
+skirt-chaser
+slack-jawed
+slap-happy
+slash-and-burn
+slave driver
+slow-roll
+smart-mouth
+snot-nosed
+soul-crushing
+soul-sucking
+spaced-out
+spine-chilling
+spine-tingling
+spit-and-polish
+spoon-feed
+squeaky-clean
+stage-manage
+standard-bearer
+star-crossed
+starry-eyed
+starstruck
+sticky-fingered
+stock-in-trade
+stomach-churning
+Stone Age
+stone-faced
+straight arrow
+surefooted
+switch-hitter
+thick-skinned
+thickheaded
+thin-skinned
+three-ring circus
+three-sixty
+tight-knit
+tinpot
+toe-to-toe
+tone-deaf
+tongue-in-cheek
+tongue-lashing
+trigger-happy
+true-blue
+trumped-up
+two-timing
+upper crust
+wall-to-wall
+warmed-over
+watered-down
+well-oiled machine
+whack-a-mole
+wheeler-dealer
+white knight
+white-bread
+white-glove
+white-knuckle
+whoop-de-doo
+widow-maker
+wild-eyed
+wink-wink
+winner-take-all
+wire-to-wire
+with-it
+world-beater
+yellow-bellied

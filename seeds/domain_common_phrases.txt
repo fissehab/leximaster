@@ -2767,3 +2767,337 @@ you were saying
 you would think
 yours sincerely
 zero tolerance
+
+# Common American terms written with hyphens or as one word ("jaw-dropping",
+# "tongue-in-cheek", "clickbait"), missed by the multiword pass: from Wiktionary,
+# ranked by frequency in American books (Google Books Ngram, 2015-2019) and
+# reviewed by hand (November 2026).
+24/7
+A-OK
+accident-prone
+action-packed
+air kiss
+all-consuming
+all-or-nothing
+all-out
+all-time
+baby-faced
+babysitter
+back channel
+back-to-basics
+backbreaking
+bailout
+bait-and-switch
+big-boned
+big-ticket
+bling
+blue-chip
+blue-collar
+blue-plate special
+body-positive
+bombed-out
+bonkers
+boo-hoo
+booby trap
+book learning
+book smart
+boomer
+bottom-up
+buck naked
+bulletproof
+bum-rush
+button-down
+camera-shy
+can-do
+catchall
+catty-corner
+chain-smoker
+chart-topper
+chemo
+chick lit
+chop-chop
+clean-cut
+clickbait
+co-opt
+code-switch
+codependent
+coed
+color-blind
+comb-over
+coming-out
+commitment-phobic
+cord-cutting
+cross-eyed
+cut-rate
+deadbeat
+deal-breaker
+death-defying
+deathbed
+ditto
+dive-bomb
+do-nothing
+dog-eared
+dork
+dot-com
+double time
+double-decker
+double-dip
+double-team
+double-wide
+drug-addled
+drugged-out
+duh
+duty-free
+easy-breezy
+easy-peasy
+eighteen-wheeler
+entry-level
+ex-con
+F-bomb
+F-word
+face-lift
+face-plant
+fake-out
+false-flag
+far-flung
+fast-paced
+feel-good
+fifty-fifty
+finger-licking
+first come, first served
+first-string
+five-and-dime
+folks
+follow the leader
+force-feed
+four-letter word
+freaking
+free-spirited
+freewheeling
+frenemy
+frog-march
+gaga
+gaslighting
+genre-bending
+get-rich-quick
+ghosting
+glassy-eyed
+globe-trotting
+go-round
+GOAT
+God-fearing
+gotcha
+ground floor
+gung-ho
+half measure
+half-and-half
+half-decent
+half-life
+half-mast
+hand-me-down
+handpicked
+handy-dandy
+hanger-on
+hard-core
+hard-liner
+hat trick
+have-nots
+head-on
+heck
+high-maintenance
+high-powered
+high-rise
+high-stakes
+higher-up
+ho-hum
+honest-to-goodness
+honky-tonk
+hot rod
+hot-wire
+how-to
+huh
+hunt-and-peck
+I told you so
+idiot-proof
+ill-thought-out
+in-crowd
+in-law
+info
+itty-bitty
+jack-in-the-box
+jacked-up
+jeez
+jet-setter
+job-hopping
+junkie
+jury-rig
+la-di-da
+laid-off
+land grab
+latchkey
+laugh-out-loud
+lean-to
+leapfrog
+letdown
+light-year
+lights-out
+like-minded
+lived-in
+loose-knit
+love-hate
+lovey-dovey
+low-maintenance
+lowlife
+make-work
+man cave
+man-child
+man-to-man
+mano a mano
+meet-cute
+merry-go-round
+mind reader
+mom-and-pop
+multipronged
+muscle-bound
+nah
+ne'er-do-well
+need-to-know
+nerd
+new-school
+no-lose
+no-name
+no-nonsense
+no-win
+nonanswer
+nonapology
+nonevent
+nonissue
+nope
+number-crunching
+odd job
+odds-on
+off-color
+off-grid
+off-key
+off-the-books
+on-brand
+once-in-a-lifetime
+one-and-done
+one-stop shop
+oops
+op-ed
+out-of-body experience
+pay-to-play
+peekaboo
+peewee
+pent-up
+pick-me-up
+Ping-Pong
+pink-collar
+pinkeye
+plug-and-play
+polka dot
+posthaste
+potty-mouthed
+pound-for-pound
+pregaming
+pseudo-intellectual
+psycho
+push-up
+rah-rah
+rent-a-cop
+ride-or-die
+right on
+round-robin
+runner-up
+rust bucket
+salt-and-pepper
+self-fulfilling prophecy
+self-involved
+self-respecting
+self-styled
+shape-shifter
+shenanigans
+shootout
+shortchange
+shorthanded
+shoutout
+shovel-ready
+show-and-tell
+shut-in
+side-eye
+single-handedly
+sit-in
+six-figure
+six-pack
+skinny-dipping
+slow-witted
+smack-dab
+smart aleck
+smash-and-grab
+soft sell
+spit-take
+spot-on
+spread-eagle
+standard-issue
+stepfather
+sucker punch
+sun-kissed
+super-duper
+surefire
+sus
+swag
+T-bone
+T-shirt
+tad
+tag team
+talking-to
+tear-jerking
+tech-savvy
+telltale
+ten-four
+third-rate
+thought-provoking
+three-peat
+thumbs-down
+tic-tac-toe
+time suck
+time-tested
+timeworn
+tip-top
+toe-tapping
+tongue twister
+top-flight
+top-heavy
+touchy-feely
+try-hard
+tut-tut
+two-by-four
+tête-à-tête
+ugh
+uh-huh
+up-to-the-minute
+vis-à-vis
+walk-up
+walkie-talkie
+war zone
+war-torn
+well-connected
+whacked-out
+what's-his-name
+whip-smart
+whoops
+whopping
+Wi-Fi
+wise guy
+wisecracking
+woke
+woo-woo
+world-class
+worrywart
+wound up
+X factor
+x-ray
+yikes
+yo-yo
+you-know-who

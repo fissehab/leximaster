@@ -1,0 +1,59 @@
+# November 2026 hyphenated terms: the usual American headword spelling
+# (Merriam-Webster, AP as tiebreaker), where the dictionary spelled it otherwise.
+bottom-up | word | bottom-up
+go-round | word | go-round
+god-fearing | word | God-fearing
+off-color | word | off-color
+one-size-fits-all | word | one-size-fits-all
+spaced-out | word | spaced-out
+spot-on | word | spot-on
+try-hard | word | try-hard
+punch-drunk | word | punch-drunk
+red-letter-day | word | red-letter day
+one-up | word | one-up
+deep-six | word | deep-six
+woo-woo | word | woo-woo
+x-ray | word | X-ray
+bait-and-switch | word | bait and switch
+behind-the-eight-ball | word | behind the eight ball
+bombed-out | word | bombed-out
+book-learning | word | book learning
+bottom-feeder | word | bottom-feeder
+brother-in-arms | word | brother-in-arms
+chain-smoker | word | chain-smoker
+color-blind | word | color-blind
+crow's-feet | word | crow's-feet
+double-talk | word | double-talk
+easy-peasy | word | easy-peasy
+even-steven | word | even-steven
+f-bomb | word | F-bomb
+f-word | word | F-word
+fine-toothed-comb | word | fine-tooth comb
+frog-march | word | frog-march
+going-over | word | going-over
+half-and-half | word | half-and-half
+half-measure | word | half measure
+in-crowd | word | in-crowd
+light-year | word | light-year
+man-child | word | man-child
+meet-cute | word | meet-cute
+mind-reader | word | mind reader
+new-school | word | new-school
+nickel-and-dime | word | nickel-and-dime
+no-holds-barred | word | no-holds-barred
+no-man's-land | word | no-man's-land
+ping-pong | word | Ping-Pong
+plain-vanilla | word | plain-vanilla
+rock-solid | word | rock-solid
+show-and-tell | word | show-and-tell
+skinny-dipping | word | skinny-dipping
+slash-and-burn | word | slash-and-burn
+slave-driver | word | slave driver
+slow-roll | word | slow-roll
+squeaky-clean | word | squeaky-clean
+standard-issue | word | standard-issue
+tongue-lashing | word | tongue-lashing
+tongue-twister | word | tongue twister
+true-blue | word | true-blue
+white-bread | word | white-bread
+with-it | word | with-it
