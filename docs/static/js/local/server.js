@@ -447,9 +447,27 @@ function wordPattern(word, flags = "i") {
   return new RegExp(`\\b${body}\\b`, flags);
 }
 // Every use of the word blanked; "a"/"an" before a blank written "a(n)".
+// None for three blanks or more: dictionary examples run together.
 function blankSentence(word, sentence) {
   const out = sentence.replace(wordPattern(word, "gi"), "_____");
-  return out === sentence ? null : out.replace(/\b([Aa])n? (?=_____)/g, "$1(n) ");
+  const n = out.split("_____").length - 1;
+  return out === sentence || n > 2 ? null : out.replace(/\b([Aa])n? (?=_____)/g, "$1(n) ");
+}
+// Whether a blanked sentence still shows a related form of the word
+// ("The inspector came to _____ the roof"): quizzes prefer others.
+function hintsWord(word, blanked) {
+  const parts = word.trim().split(/[\s-]+/);
+  const last = parts[parts.length - 1].toLowerCase();
+  return last.length >= 5 && blanked.toLowerCase().includes(last.slice(0, Math.max(4, last.length - 3)));
+}
+// The word hidden (app/common.py mask_word): its forms, and for words of four
+// letters or more a longer word that starts or ends with it, never the
+// letters inside other words ("H" in "alphabet").
+function maskWord(word, text) {
+  text = text.replace(wordPattern(word, "gi"), "…");
+  if (word.length < 4) return text;
+  const w = escapeRe(word);
+  return text.replace(new RegExp(`(?<![\\w'’-])(?:${w}[\\w'’]*|[\\w'’-]*${w})(?![\\w'’])`, "gi"), "…");
 }
 function isBaseForm(word, sentence) {
   const m = sentence.match(wordPattern(word));
@@ -1029,7 +1047,7 @@ function patternQuestion(word, patterns, pos = "verb") {
            explain: Object.fromEntries(wrong.map(x => [x, `The pattern to learn is “${frame}”.`])) };
 }
 const NAME_KINDS = { person: "A person", place: "A place", people: "A people or nation" };
-const mask = (word, text) => text.replace(new RegExp(escapeRe(word), "gi"), "…");
+const mask = maskWord;
 // A definition as a quiz option: masked, without a leading "In statistics,".
 function option(word, definition) {
   const text = mask(word, definition).replace(/^In (?!an? )[A-Za-z' -]{1,40}, /, "");   // not "In a clear, careful way"
@@ -1095,6 +1113,9 @@ async function makeQuiz(q) {
       .filter(v => v[0].toLowerCase() !== word.toLowerCase() && !new RegExp(`\\b${escapeRe(v[0])}\\b`, "i").test(v[2]))
       .sort((a, b) => ((a[0].split(/\s+/).length !== nWords) - (b[0].split(/\s+/).length !== nWords)) ||
                       ((a[1] !== pos) - (b[1] !== pos)));
+    // The word, its synonyms and the words its notes compare it with.
+    const near = new Set([...rightsFor(data || {}, "synonym"), word,
+                          ...(((data || {}).nuance || {}).distinctions || []).map(d => d.vs || "")].map(s => s.toLowerCase()));
     const build = qtype => {
       if (qtype === "pattern") return patternQuestion(word, ((data && data.nuance) || {}).patterns || [], pos);
       if (qtype === "name_kind") {
@@ -1111,15 +1132,20 @@ async function makeQuiz(q) {
                  options: [...others.slice(0, 3).map(o => o[0]), word],
                  explain: Object.fromEntries(others.slice(0, 3).map(o => [o[0], `“${o[0]}” means: ${o[2]}`])) };
       }
-      if (qtype === "fill_blank" && others.length >= 3) {
+      if (qtype === "fill_blank") {
+        // Never a word the entry names as near in meaning: it would fit too.
+        const fits = others.filter(o => !near.has(o[0].toLowerCase()));
         const examples = quizExamples(data);
-        // Prefer sentences that use the word as the options show it.
+        // Prefer sentences that use the word as the options show it, then
+        // those that don't show it in another form ("inspector").
         const usable = examples.filter(e => isBaseForm(word, e));
-        const sentences = (usable.length ? usable : examples).map(e => blankSentence(word, e)).filter(Boolean);
-        if (sentences.length) {
+        const blanked = (usable.length ? usable : examples).map(e => blankSentence(word, e)).filter(Boolean);
+        const clean = blanked.filter(s => !hintsWord(word, s));
+        const sentences = clean.length ? clean : blanked;
+        if (sentences.length && fits.length >= 3) {
           return { prompt: choice(sentences), ask: "Fill in the blank.", answer: word,
-                   options: [...others.slice(0, 3).map(o => o[0]), word],
-                 explain: Object.fromEntries(others.slice(0, 3).map(o => [o[0], `“${o[0]}” means: ${o[2]}`])) };
+                   options: [...fits.slice(0, 3).map(o => o[0]), word],
+                 explain: Object.fromEntries(fits.slice(0, 3).map(o => [o[0], `“${o[0]}” means: ${o[2]}`])) };
         }
       }
       if (qtype === "synonym" || qtype === "antonym") {
@@ -1127,8 +1153,9 @@ async function makeQuiz(q) {
         if (!rights.length) return null;
         const right = choice(rights);
         // Wrong options: other words' synonyms; never this word's own
-        // synonyms or antonyms, and for antonyms never from its own subject.
-        const own = new Set([...rightsFor(data, "synonym"), ...rightsFor(data, "antonym"), word].map(s => s.toLowerCase()));
+        // synonyms, antonyms or compared-with words, and for antonyms never
+        // from its own subject.
+        const own = new Set([...near, ...rightsFor(data, "antonym").map(s => s.toLowerCase())]);
         let wrongs = [];
         for (const id of shuffle([...allIds]).slice(0, 80)) {
           const e = INDEX.get(id);
@@ -1179,7 +1206,9 @@ async function matching(q) {
     const row = fetchWord(wid);
     let right;
     if (q.kind === "example") {
-      const sentences = quizExamples(await detail(wid)).map(e => blankSentence(row.word, e)).filter(Boolean);
+      const blanked = quizExamples(await detail(wid)).map(e => blankSentence(row.word, e)).filter(Boolean);
+      const clean = blanked.filter(s => !hintsWord(row.word, s));
+      const sentences = clean.length ? clean : blanked;
       if (!sentences.length) continue;
       right = choice(sentences);
     } else {
