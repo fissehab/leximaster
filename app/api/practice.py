@@ -11,7 +11,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from .. import db, srs
-from ..common import (BIBLE_TRACKS, CHOSEN_SQL, EVERYDAY_DOMAINS, LEVELED, LINKED_SQL, NAMES_ONLY_SQL, REFERENCE_SQL, WORD_COLUMNS, WORD_FROM, blank_sentence,
+from ..common import (BIBLE_TRACKS, CHOSEN_SQL, EVERYDAY_DOMAINS, LEVELED, LINKED_SQL, NAMES_ONLY_SQL, REFERENCE_SQL, WORD_COLUMNS, WORD_FROM, blank_sentence, hints_word, mask_word,
                       bump_activity, compact, core_definition, examples_for, fetch_word, full, is_base_form, pool_ids, quiz_examples, quiz_synonyms,
                       level_clause, today_iso, track_clause, weighted_sample)
 
@@ -338,7 +338,7 @@ def _defs_by_id(c, ids: list[int]) -> dict[int, tuple[str, str, str]]:
 
 def _mask(word: str, text: str) -> str:
     """Hide the headword inside a definition so it doesn't give itself away."""
-    return re.sub(re.escape(word), "…", text, flags=re.I)
+    return mask_word(word, text)
 
 
 def _option(word: str, definition: str) -> str:
@@ -415,6 +415,10 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                              and not re.search(rf"\b{re.escape(v[0])}\b", v[2], re.I)),
                             key=lambda v: (len(v[0].split()) != n_words, v[1] != pos))
 
+            # The word, its synonyms and the words its notes compare it with.
+            near = ({x.lower() for x in _rights(data, "synonym")} | {word.lower()}
+                    | {(d.get("vs") or "").lower() for d in nuance.get("distinctions") or []})
+
             def build(qtype):
                 if qtype == "pattern":
                     return pattern_question(word, nuance.get("patterns") or [], pos)
@@ -431,15 +435,20 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                     return {"prompt": _mask(word, definition), "ask": "Which word fits this meaning?",
                             "answer": word, "options": [o[0] for o in others[:3]] + [word],
                             "explain": {o[0]: f"“{o[0]}” means: {o[2]}" for o in others[:3]}}
-                if qtype == "fill_blank" and len(others) >= 3:
+                if qtype == "fill_blank":
+                    # Never a word the entry names as near in meaning ("go over":
+                    # "run through"): it would fit the blank too.
+                    fits = [o for o in others if o[0].lower() not in near]
                     examples = quiz_examples(data)
-                    # Prefer sentences that use the word as the options show it.
+                    # Prefer sentences that use the word as the options show it,
+                    # then those that don't show it in another form ("inspector").
                     usable = [e for e in examples if is_base_form(word, e)] or examples
                     sentences = [s for s in (blank_sentence(word, e) for e in usable) if s]
-                    if sentences:
+                    sentences = [s for s in sentences if not hints_word(word, s)] or sentences
+                    if sentences and len(fits) >= 3:
                         return {"prompt": random.choice(sentences), "ask": "Fill in the blank.",
-                                "answer": word, "options": [o[0] for o in others[:3]] + [word],
-                                "explain": {o[0]: f"“{o[0]}” means: {o[2]}" for o in others[:3]}}
+                                "answer": word, "options": [o[0] for o in fits[:3]] + [word],
+                                "explain": {o[0]: f"“{o[0]}” means: {o[2]}" for o in fits[:3]}}
                 if qtype in ("synonym", "antonym"):
                     rights = [r for r in _rights(data, qtype) if r.lower() != word.lower()]
                     if not rights:
@@ -447,9 +456,10 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                     right = random.choice(rights)
                     # Wrong options: other words' synonyms, so the answer isn't
                     # the one plain word among headwords; never one of this
-                    # word's own synonyms or antonyms, and for antonyms never
+                    # word's own synonyms, antonyms or compared-with words
+                    # (determination: "tenacity"), and for antonyms never
                     # from its own subject ("glad": sorry, disappointed…).
-                    own = {x.lower() for x in _rights(data, "synonym") + _rights(data, "antonym")} | {word.lower()}
+                    own = near | {x.lower() for x in _rights(data, "antonym")}
                     src = random.sample(all_ids, k=min(80, len(all_ids)))
                     wrongs = []
                     for r in c.execute(f"SELECT id, domains, data FROM words WHERE id IN ({','.join('?' * len(src))})", src):
@@ -507,6 +517,7 @@ def matching(kind: str = "meaning", n: int = Query(6, ge=3, le=10), stars: str |
             data = json.loads(row["data"])
             if kind == "example":
                 sentences = [s for s in (blank_sentence(row["word"], e) for e in quiz_examples(data)) if s]
+                sentences = [s for s in sentences if not hints_word(row["word"], s)] or sentences
                 if not sentences:
                     continue
                 right = random.choice(sentences)

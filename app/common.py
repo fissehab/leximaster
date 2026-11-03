@@ -238,11 +238,32 @@ def word_pattern(word: str) -> re.Pattern:
 
 def blank_sentence(word: str, sentence: str) -> str | None:
     """The sentence with every use of the word blanked, and "a"/"an" before a
-    blank written "a(n)" so the article doesn't give the answer away."""
+    blank written "a(n)" so the article doesn't give the answer away. None
+    for three blanks or more: dictionary examples run together ("A vase
+    stood upon the table. — The painting hangs upon the wall. — ...")."""
     out, n = word_pattern(word).subn("_____", sentence)
-    if not n:
+    if not n or n > 2:
         return None
     return re.sub(r"\b([Aa])n? (?=_____)", r"\1(n) ", out)
+
+
+def hints_word(word: str, blanked: str) -> bool:
+    """Whether a blanked sentence still shows a related form of the word
+    ("The inspector came to _____ the roof"): quizzes prefer others."""
+    last = re.split(r"[\s-]+", word.strip())[-1].lower()
+    return len(last) >= 5 and last[:max(4, len(last) - 3)] in blanked.lower()
+
+
+def mask_word(word: str, text: str) -> str:
+    """The text with the word hidden: its forms ("…s"), and for words of
+    four letters or more a longer word that starts or ends with it
+    ("moisture", "Stonehenge"), never the letters inside other words ("H"
+    in "alphabet")."""
+    text = word_pattern(word).sub("…", text)
+    if len(word) < 4:
+        return text
+    w = re.escape(word)
+    return re.sub(rf"(?<![\w'’-])(?:{w}[\w'’]*|[\w'’-]*{w})(?![\w'’])", "…", text, flags=re.I)
 
 
 def is_base_form(word: str, sentence: str) -> bool:
