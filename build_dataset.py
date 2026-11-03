@@ -2702,17 +2702,18 @@ def _syllables(ipa: str) -> int:
 
 def phonetic_needs_study_ipa(w: dict) -> bool:
     p = w["phonetic"]
-    if not p:
+    if not p.strip("/[] "):
         return True
     word = w["word"].lower()
     if re.search(r"(er|ar|or|our|ure|ere|ore|ire|ear|eer|air)$", word) and re.search(r"[əʊɪɛ][/\]]$", p):
         return True  # non-rhotic ending: "amber" /ˈæm.bə/
     if NON_GA_PHONETIC.search(p) or drops_r(word, p):
         return True
-    if w.get("phonetic_source") in ("cmu", "wiktionary") and " " in word.strip():
-        # Phrase IPA put together word by word guesses the stress ("ˌline ˈitem")
-        # and the sound of heteronyms ("lead", "live", "wind"); Wiktionary's often
-        # covers one word of the phrase or is unstressed (/staɪl/ for "out of style").
+    if w.get("phonetic_source") in ("cmu", "wiktionary") and re.search(r"[\s-]", word.strip()):
+        # Phrase IPA put together word by word guesses the stress ("ˌline ˈitem",
+        # "ˌnail ˈbiting" for NAIL-biting) and the sound of heteronyms ("lead",
+        # "live", "wind"); Wiktionary's often covers one word of the phrase or is
+        # unstressed (/staɪl/ for "out of style").
         return True
     return "ˈ" not in p and " " not in p.strip("/[]") and _syllables(p) > 1
 
@@ -2749,7 +2750,7 @@ def polish_ipa(w: dict) -> str:
             respelling_matches_ipa(pron.get("respelling", ""), study) is not False:
         tmp = {**w, "phonetic": study, "phonetic_source": "reviewed"}
         if not NON_GA_PHONETIC.search(study) and not phonetic_needs_study_ipa(tmp) and \
-                (" " not in w["word"].strip() or phrase_ipa_ok(w["word"], study)):
+                (not re.search(r"[\s-]", w["word"].strip()) or phrase_ipa_ok(w["word"], study)):
             w["phonetic"], w["phonetic_source"] = drop_yod(w["key"], us_style(study)), "reviewed"
             return "study"
     w["phonetic"] = drop_yod(w["key"], normalize_ipa(before))
@@ -2758,9 +2759,12 @@ def polish_ipa(w: dict) -> str:
 
 # Forms that stay entries of their own though the dictionary calls them a
 # form of another entry: the usual American spelling ("flowchart", not "flow
-# chart"), a software term ("test-driven", not "test-drive") and the Bible's
-# wording ("keys of the kingdom").
-OWN_ENTRY = {"flowchart", "hotspot", "test-driven", "keys-of-the-kingdom"}
+# chart"), a software term ("test-driven", not "test-drive"), the Bible's
+# wording ("keys of the kingdom") and nouns or adjectives the dictionary files
+# under a phrasal verb ("a letdown", not "let down"; "doing nothing", which
+# is not the adjective "do-nothing").
+OWN_ENTRY = {"flowchart", "hotspot", "test-driven", "keys-of-the-kingdom",
+             "letdown", "shoutout", "spaced-out", "wound-up", "doing-nothing"}
 
 
 # Words that keep the y sound after t, d, n, s, z, th or l in American English
@@ -3073,7 +3077,7 @@ def apply_fixes(words: list[dict]) -> None:
             last = int(parts[-1]) if isinstance(node, list) else parts[-1]
             if isinstance(node, dict) and last not in node:
                 sys.exit(f"{where}: {key} has no {field}")
-            node[last] = json.loads(value) if value[:1] in "[{" else value
+            node[last] = json.loads(value) if value[:1] in ("[", "{") else value
             fixed.add(key)
     for key in fixed:
         normalize_display(by_key[key])
@@ -3120,8 +3124,10 @@ def hide_senses(words: list[dict]) -> None:
     """seeds/hide/*.txt: dictionary senses an entry leaves out, one per line as
     "key | sense id" (sense_key: the definition's first six words): wrong,
     obsolete or explicit senses ("bottom out", "damaged goods"), and bare
-    "used other than figuratively" pointers. An entry left with no sense
-    shows only its study notes' definition, as hand entries do."""
+    "used other than figuratively" pointers. An id of more than six words
+    picks one of two senses that start alike ("double whammy": the twofold
+    blow stays, the twofold boon goes). An entry left with no sense shows
+    only its study notes' definition, as hand entries do."""
     hide: dict[str, set[str]] = {}
     for path in sorted((SEEDS / "hide").glob("*.txt")):
         for line in path.read_text(encoding="utf-8").splitlines():
@@ -3132,7 +3138,13 @@ def hide_senses(words: list[dict]) -> None:
         ids = hide.get(w["key"])
         if not ids:
             continue
-        kept = [{**m, "senses": [sn for sn in m["senses"] if sense_key(sn["definition"]) not in ids]}
+        long_ids = [i for i in ids if len(i.split()) > 6]
+
+        def hidden(definition: str) -> bool:
+            words = re.sub(r"[^a-z ]+", " ", definition.lower()).split()
+            return " ".join(words[:6]) in ids or any(
+                words[:len(i.split())] == i.split() for i in long_ids)
+        kept = [{**m, "senses": [sn for sn in m["senses"] if not hidden(sn["definition"])]}
                 for m in w["meanings"]]
         kept = [m for m in kept if m["senses"]]
         if kept or (w.get("nuance") or {}).get("core"):

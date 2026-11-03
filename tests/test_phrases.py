@@ -59,7 +59,7 @@ def test_hide_and_drop_lists_are_well_formed():
         for line in path.read_text(encoding="utf-8").splitlines():
             if line.strip() and not line.startswith("#"):
                 key, sid = (x.strip() for x in line.split("|", 1))
-                assert re.fullmatch(r"[a-z0-9'-]+", key) and re.fullmatch(r"[a-z ]+", sid), (path.name, line)
+                assert re.fullmatch(r"[\w'/-]+", key) and key == key.lower() and re.fullmatch(r"[a-z ]+", sid), (path.name, line)
 
 
 @pytest.mark.skipif(not B.WORDS_JSON.exists(), reason="no dataset")

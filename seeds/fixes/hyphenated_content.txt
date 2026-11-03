@@ -1,0 +1,398 @@
+# Review of the 650 November 2026 hyphenated terms, compounds and informal words
+# (2026-11-03), by an American lexicographer/ESL reviewer. Scripted scans
+# (British spellings and vocabulary, wiki markup and editor notes, examples
+# missing the term) plus a full read of every entry's study notes, shown
+# senses, synonyms and antonyms.
+# Fixed here: synonyms/antonyms that are wrong for the main meaning (they feed
+# quiz answers): crude or sexual slang ("heck": "fuck"; "double-decker":
+# "switch, vers"; "switch-hitter": "bisexual"), unrelated words ("dork":
+# "dirk"; "boomer": "chain binder"; "tad": "street urchin"), British forms
+# ("press-up", "boss-eyed", "lucky dip") and opposite-meaning items named in
+# the entry's own distinctions; examples rewritten to the headword spelling
+# chosen in fixes_hold (God-fearing, man-child, meet-cute, nickel-and-dime,
+# one-up, punch-drunk, red-letter day, try-hard, woo-woo, X-ray); a literal
+# example for a figurative core (white-bread); a warning for f-bomb; a crude
+# movie title in mini-me's etymology; doubtful etymologies replaced with
+# safe ones (hard-core: British road rubble; smart-aleck: the Aleck Hoag
+# story), since an empty value cannot be written in this format.
+air-kiss | synonyms | []
+baby-faced | synonyms | ["boyish","youthful","fresh-faced"]
+back-alley | synonyms | ["alley","alleyway"]
+battle-tested | synonyms | ["proven","tried-and-true"]
+blue-sky | synonyms | ["visionary","speculative"]
+you-know-who | synonyms | []
+boomer | synonyms | ["baby boomer"]
+cash-strapped | synonyms | ["strapped","hard up","short of cash"]
+clickbait | synonyms | []
+code-switch | synonyms | []
+cord-cutting | antonyms | []
+cross-eyed | synonyms | []
+deadbeat | nuance.examples.analytical | Studies suggest that many so-called deadbeat dads are simply too poor to pay their child support.
+ditto | synonyms | ["likewise","same here","me too"]
+do-nothing | synonyms | ["lazy","idle","inactive"]
+do-nothing | antonyms | ["active","proactive"]
+dog-tired | synonyms | ["exhausted","worn out","bone-tired"]
+dork | synonyms | ["nerd","geek","dweeb"]
+double-decker | synonyms | []
+eagle-eyed | synonyms | ["sharp-eyed","observant","hawk-eyed"]
+easy-breezy | synonyms | ["easygoing","laid-back","carefree"]
+eye-watering | synonyms | ["exorbitant","sky-high"]
+f-bomb | nuance.usage_note | Used in news and polite conversation to talk about someone swearing ("The actor dropped an f-bomb on live TV"). It lets you mention the word without saying it. The verb is usually "drop": "drop the f-bomb." Warning: the word it stands for is one of the most offensive words in English; never say the real word at work, at school or to strangers.
+fat-cat | synonyms | ["tycoon","moneybags"]
+feel-good | antonyms | ["depressing","downbeat"]
+fly-by-night | synonyms | ["shady","sketchy","untrustworthy"]
+freaking | synonyms | ["frigging","fricking","darn"]
+god-fearing | nuance.examples.everyday | My grandparents were simple, God-fearing farmers who never missed Sunday service.
+god-fearing | nuance.examples.professional | The candidate's ads described the town as full of hardworking, God-fearing families.
+god-fearing | nuance.examples.analytical | Politicians often appeal to "God-fearing Americans" to signal shared religious values.
+god-fearing | nuance.collocations | ["God-fearing people","good, God-fearing folks","a God-fearing man","God-fearing family","God-fearing community"]
+gold-digger | synonyms | ["fortune hunter"]
+grab-bag | synonyms | ["hodgepodge","assortment","mishmash"]
+ground-floor | synonyms | []
+hair-trigger | synonyms | ["touchy","volatile"]
+half-mast | synonyms | ["half-staff"]
+hard-boiled | synonyms | ["tough","hard-nosed"]
+hard-boiled | antonyms | ["soft-boiled"]
+hard-core | nuance.etymology | From "hard core," the most committed central members of a group, a use from the mid-1900s.
+hard-pressed | synonyms | ["hard put","struggling"]
+hawk-eyed | synonyms | ["eagle-eyed","sharp-eyed"]
+head-scratching | synonyms | ["puzzling","baffling","bewildering"]
+heavy-hearted | synonyms | ["sad","sorrowful","downhearted"]
+heck | synonyms | ["darn","gosh"]
+helter-skelter | synonyms | ["pell-mell","haphazardly"]
+high-rise | synonyms | ["skyscraper","tower"]
+high-roller | synonyms | ["big spender","whale"]
+hog-wild | synonyms | []
+honky-tonk | synonyms | []
+hot-blooded | synonyms | ["passionate","excitable","hot-tempered"]
+hot-rod | synonyms | []
+hotshot | synonyms | ["big shot","whiz"]
+in-law | synonyms | []
+junkie | synonyms | ["addict","enthusiast","buff"]
+jury-rig | synonyms | ["jerry-rig","improvise","cobble together"]
+knee-deep | synonyms | ["up to one's neck","bogged down","in the thick of it"]
+knee-jerk | synonyms | ["reflexive","automatic","impulsive"]
+lady-killer | synonyms | ["ladies' man","Romeo","heartthrob"]
+like-minded | antonyms | []
+lovey-dovey | synonyms | ["mushy","affectionate"]
+lowdown | synonyms | ["scoop","inside story","rundown"]
+mama-bear | synonyms | []
+man-child | nuance.examples.everyday | Her ex was a total man-child who wouldn't even do his own laundry.
+man-child | nuance.examples.professional | The manager handled the client's man-child tantrum calmly and professionally.
+man-child | nuance.examples.analytical | Critics have noted a wave of comedies built around a lovable man-child who refuses to grow up.
+man-child | nuance.collocations | ["a total man-child","an overgrown man-child","a spoiled man-child","acting like a man-child","a whiny man-child"]
+mano-a-mano | synonyms | ["head-to-head","one-on-one"]
+meet-cute | nuance.examples.everyday | Spilling coffee on him at the bookstore turned out to be our meet-cute.
+meet-cute | nuance.examples.professional | The screenwriter spent a week rewriting the meet-cute so it felt less forced.
+meet-cute | nuance.examples.analytical | Critics noted that the film's meet-cute borrows heavily from 1930s screwball comedies.
+meet-cute | nuance.collocations | ["the perfect meet-cute","a classic meet-cute","a real-life meet-cute","an awkward meet-cute","rom-com meet-cute"]
+merry-go-round | synonyms | ["carousel"]
+mini-me | nuance.etymology | From Mini-Me, a small clone of the villain Dr. Evil in the second "Austin Powers" movie (1999).
+mom-and-pop | synonyms | ["family-owned","independent"]
+nah | synonyms | ["nope","no"]
+ne'er-do-well | synonyms | ["good-for-nothing","loafer"]
+nerd | synonyms | ["geek"]
+nickel-and-dime | nuance.examples.everyday | The hotel nickel-and-dimed us for everything, even the Wi-Fi.
+nickel-and-dime | nuance.examples.analytical | Consumer groups argue that airlines nickel-and-dime travelers with fees for bags and seats.
+nickel-and-dime | nuance.collocations | ["nickel-and-dime customers","get nickel-and-dimed","nickel-and-dime someone to death","nickel-and-dime fees","a nickel-and-dime operation"]
+off-script | synonyms | ["improvised","ad-lib"]
+once-in-a-lifetime | synonyms | ["one-of-a-kind","rare"]
+one-up | nuance.core.definition | To do something a little better than someone else just did, to show that you are better.
+one-up | nuance.examples.everyday | Every time I mention a trip, my cousin tries to one-up me with a bigger vacation.
+one-up | nuance.examples.analytical | Economists describe the tech companies' rivalry as an endless effort to one-up each other on features.
+oops | synonyms | ["whoops","uh-oh"]
+out-and-out | synonyms | ["outright","downright","utter"]
+pay-to-play | antonyms | ["free-to-play"]
+peekaboo | synonyms | []
+pick-me-up | synonyms | ["boost","bracer"]
+pitch-perfect | synonyms | ["spot-on","flawless"]
+plug-and-play | synonyms | ["user-friendly","turnkey"]
+power-hungry | synonyms | []
+psycho | synonyms | []
+punch-drunk | nuance.examples.everyday | After two all-night shifts, I was so punch-drunk that I laughed at everything.
+punch-drunk | nuance.examples.professional | By the end of the twelve-hour negotiation, both teams were punch-drunk and ready to agree.
+punch-drunk | nuance.examples.analytical | Investors seemed punch-drunk after months of bad news and stopped reacting to new reports.
+punch-drunk | nuance.collocations | ["punch-drunk with exhaustion","feel punch-drunk","a punch-drunk boxer","punch-drunk from"]
+push-up | synonyms | []
+red-blooded | synonyms | ["vigorous","robust","hearty"]
+red-letter-day | nuance.examples.everyday | The day my daughter learned to ride a bike was a real red-letter day for our family.
+red-letter-day | nuance.examples.professional | Opening the first factory was a red-letter day for the small company.
+red-letter-day | nuance.examples.analytical | The signing of the treaty was a red-letter day in the history of both nations.
+red-letter-day | nuance.collocations | ["a red-letter day for","truly a red-letter day","a red-letter day in history","a real red-letter day","mark a red-letter day"]
+second-guess | synonyms | ["doubt","question"]
+self-styled | synonyms | ["self-proclaimed","self-appointed","so-called"]
+shenanigans | synonyms | ["hijinks","mischief","monkey business"]
+shut-eye | synonyms | ["sleep","snooze","forty winks"]
+six-pack | synonyms | []
+skin-crawling | synonyms | ["creepy","hair-raising"]
+slack-jawed | synonyms | ["open-mouthed","dumbfounded","stunned"]
+smart-aleck | nuance.etymology | American, mid-1800s; "Aleck" is a nickname for Alexander, and no real person behind it is known for sure.
+smart-aleck | synonyms | ["wise guy","know-it-all","smarty-pants"]
+soul-crushing | synonyms | ["soul-sucking","demoralizing"]
+spot-on | synonyms | ["dead-on","on the money","on target"]
+standard-bearer | synonyms | ["flag-bearer","leader"]
+stepfather | synonyms | ["stepdad"]
+sucker-punch | synonyms | ["cheap shot"]
+sus | synonyms | ["sketchy","shady","fishy"]
+swag | synonyms | ["freebies","giveaways"]
+switch-hitter | synonyms | []
+tad | synonyms | ["a bit","a little"]
+telltale | synonyms | ["revealing","telling"]
+tic-tac-toe | synonyms | []
+try-hard | nuance.examples.everyday | He wore a suit to a backyard barbecue; what a try-hard.
+try-hard | nuance.examples.professional | Don't send the CEO five follow-up emails, or you'll look like a try-hard.
+try-hard | nuance.examples.analytical | In online gaming slang, players who take casual matches too seriously are called try-hards.
+try-hard | nuance.collocations | ["such a try-hard","a total try-hard","a try-hard outfit","look like a try-hard","call someone a try-hard"]
+uh-huh | synonyms | ["mm-hmm","yeah"]
+upper-crust | synonyms | ["upper class","elite","high society"]
+vis-à-vis | synonyms | ["regarding","compared with"]
+warmed-over | synonyms | ["rehashed","stale","trite"]
+white-knight | synonyms | ["savior","rescuer"]
+whopping | synonyms | ["huge","massive","staggering"]
+widow-maker | synonyms | ["death trap"]
+wise-guy | synonyms | ["smart aleck","know-it-all","wiseacre"]
+woke | synonyms | ["socially conscious"]
+woke | antonyms | []
+woo-woo | nuance.examples.everyday | My sister burns sage to clean the house's energy, which is a little woo-woo for me.
+woo-woo | nuance.examples.professional | The wellness company lost credibility when it started selling woo-woo products with no evidence.
+woo-woo | nuance.examples.analytical | The doctor's book debunks woo-woo cures that promise to fix every disease.
+woo-woo | nuance.collocations | ["a little woo-woo","woo-woo stuff","too woo-woo","woo-woo nonsense","woo-woo crystals"]
+x-factor | synonyms | []
+x-ray | nuance.examples.everyday | The doctor wants an X-ray of my ankle to check if it's broken.
+x-ray | nuance.examples.professional | The dentist takes X-rays once a year to look for cavities.
+x-ray | nuance.examples.analytical | Airport scanners X-ray every bag to detect weapons and explosives.
+knock-down-drag-out | nuance.etymology | American, 1800s.
+white-bread | nuance.examples.everyday | My parents left the city for a quiet, white-bread suburb where every lawn looked the same.
+
+# Spelling remarks and examples follow the reviewed headwords.
+off-color | nuance.usage_note | Mostly used for jokes, remarks and humor: 'He told an off-color joke at the wedding.' It is a polite way to say something was a bit dirty or inappropriate. It keeps the hyphen before a noun ('an off-color remark') and after a verb ('the joke was a little off-color'). In British English 'off colour' can also mean slightly sick.
+off-color | nuance.pronunciation.tip | Said alone the stress is on COL-; before a noun it shifts: an OFF-color joke.
+off-color | nuance.collocations | ["an off-color joke", "an off-color remark", "off-color humor", "a little off-color", "off-color comments"]
+one-size-fits-all | nuance.pronunciation.tip | The main stress is on AWL at the end. Before a noun the stress moves earlier: a one-SIZE-fits-all approach.
+one-size-fits-all | nuance.collocations | ["a one-size-fits-all approach", "a one-size-fits-all solution", "there's no one-size-fits-all answer", "one-size-fits-all policies", "one-size-fits-all hats"]
+spaced-out | nuance.usage_note | People say "I totally spaced out" when they stopped listening, or "He looks spaced-out" about someone dazed from tiredness, medicine or drugs. The verb is "space out." It's casual.
+spaced-out | nuance.examples.everyday | Sorry, I was spaced-out; can you repeat the address?
+spaced-out | nuance.examples.professional | I was so spaced-out after the night shift that I missed my exit.
+spaced-out | nuance.examples.analytical | Students who seem spaced-out in class may simply not be getting enough sleep.
+spaced-out | nuance.collocations | ["totally spaced-out", "look spaced-out", "feel spaced-out", "a little spaced-out", "spaced-out from"]
+spot-on | nuance.usage_note | Spot-on started in British English but is now common in American speech, especially for praise: "Your guess was spot-on." It works after a verb (that's spot-on) or before a noun (a spot-on impression).
+spot-on | nuance.common_mistakes | ["Leaving out the hyphen (\"a spot-on guess,\" \"that's spot-on\").", "Saying \"on spot.\""]
+spot-on | nuance.examples.everyday | Your impression of our math teacher is spot-on!
+spot-on | nuance.examples.professional | The forecast was spot-on; sales came in at exactly two million.
+spot-on | nuance.examples.analytical | Her analysis of the market was spot-on, predicting the slowdown a year early.
+spot-on | nuance.collocations | ["absolutely spot-on", "spot-on with", "a spot-on impression", "spot-on advice", "spot-on about"]
+try-hard | nuance.usage_note | Teenagers, gamers and young adults use it to mock someone whose efforts look desperate: "He's such a try-hard." It also works as an adjective (a try-hard outfit). It is sometimes written as one word, "tryhard." It can hurt feelings, so use it carefully.
+red-letter-day | nuance.usage_note | Used in conversation and writing for births, weddings, first jobs, big wins. It is warm and slightly old-fashioned.
+red-letter-day | nuance.common_mistakes | ["Thinking it has to do with letters you receive in the mail.", "Saying 'red-lettered day'; the phrase is 'red-letter day'."]
+woo-woo | nuance.usage_note | Americans use it casually to make fun of things like healing crystals, energy cleansing or horoscopes: "That's a little woo-woo for me." It works as a noun or adjective. People sometimes say it with humor about their own spiritual habits. It is sometimes spelled "woo woo," without the hyphen.
+x-ray | nuance.usage_note | Doctors, dentists and airport security use it every day: "get an X-ray," "take X-rays," "the X-ray shows a break." It is also a verb: "They X-rayed my wrist." It is usually written "X-ray" with a capital X.
+x-ray | nuance.common_mistakes | ["Writing \"Xray\"; use \"X-ray.\"", "Saying \"do an X-ray\" in a doctor's office; Americans say \"get\" or \"have an X-ray.\""]
+bait-and-switch | nuance.usage_note | Used about stores, car dealers, landlords and politicians: "It was a bait and switch: the cheap TV was 'sold out.'" It is illegal in many states when used in advertising. Hyphenate it before a noun: "a bait-and-switch scheme."
+bait-and-switch | nuance.examples.everyday | The apartment in the ad was gone, and they showed us a pricier one: classic bait and switch.
+bait-and-switch | nuance.examples.analytical | Critics called the policy a bait and switch, since the promised benefits never came.
+bait-and-switch | nuance.collocations | ["a classic bait and switch", "bait-and-switch tactics", "bait-and-switch scheme", "pull a bait and switch", "bait-and-switch advertising"]
+behind-the-eight-ball | nuance.usage_note | A very American idiom, from pool. Used at work, school and sports: "We started the season behind the eight ball after two injuries." Fine in casual talk and newspapers.
+behind-the-eight-ball | nuance.common_mistakes | ["Saying \"behind an eight ball\" or \"behind eight ball\"; use \"the.\"", "Taking it as being \"behind\" in time only; it means any disadvantage."]
+behind-the-eight-ball | nuance.examples.everyday | After missing two weeks of class, I'm really behind the eight ball.
+behind-the-eight-ball | nuance.examples.professional | The late shipment put our whole team behind the eight ball for the launch.
+behind-the-eight-ball | nuance.examples.analytical | Small farms are behind the eight ball when fuel and fertilizer prices rise together.
+behind-the-eight-ball | nuance.collocations | ["behind the eight ball from the start", "put someone behind the eight ball", "really behind the eight ball", "find yourself behind the eight ball"]
+book-learning | nuance.usage_note | Often used to contrast schooling with experience: "Book learning won't teach you how to fix a car." It can sound folksy or old-fashioned. Also written "book-learning."
+book-learning | nuance.examples.everyday | Grandma never had much book learning, but she could run a farm.
+book-learning | nuance.examples.professional | The new nurse had plenty of book learning, but she learned most from the night shift.
+book-learning | nuance.examples.analytical | Apprenticeships combine book learning with work on real job sites.
+book-learning | nuance.collocations | ["just book learning", "book learning and experience", "a lot of book learning", "more than book learning"]
+bottom-feeder | nuance.common_mistakes | ["Using it as a casual joke about someone; it is a strong insult.", "Leaving out the hyphen: \"a bottom-feeder,\" \"bottom-feeder tactics.\""]
+bottom-feeder | nuance.examples.everyday | Catfish are bottom-feeders, so they do well in muddy ponds.
+bottom-feeder | nuance.examples.analytical | Ecologists say bottom-feeders help keep lakes clean by eating waste.
+bottom-feeder | nuance.collocations | ["a bottom-feeder", "bottom-feeder lawyers", "bottom-feeding fish", "corporate bottom-feeders"]
+brother-in-arms | nuance.usage_note | Used by veterans and in speeches, movies and sports: "my brothers-in-arms." It can be used for women too, though "sisters-in-arms" also exists. It sounds serious and respectful.
+brother-in-arms | nuance.common_mistakes | ["Saying \"brother-of-arms\"; it is \"brother-in-arms.\"", "Saying \"brother-in-arm\"; \"arms\" is always plural."]
+brother-in-arms | nuance.pronunciation.tip | Main stress on ARMS: bruh-ther in AHRMZ. Plural: brothers-in-arms.
+brother-in-arms | nuance.examples.everyday | My grandfather still writes to his brothers-in-arms from Vietnam.
+brother-in-arms | nuance.examples.professional | The two union leaders became brothers-in-arms during the long strike.
+brother-in-arms | nuance.examples.analytical | Historians say the bond among brothers-in-arms often matters more than the cause.
+brother-in-arms | nuance.collocations | ["brothers-in-arms", "my brother-in-arms", "a true brother-in-arms", "fallen brothers-in-arms"]
+chain-smoker | nuance.usage_note | Used about heavy smokers: "My grandfather was a chain-smoker." The verb is "chain-smoke." It can be used for other habits jokingly: "a chain coffee drinker."
+chain-smoker | nuance.common_mistakes | ["Writing the verb without a hyphen; use \"chain-smoke.\"", "Saying \"chain smoke\" for the person; the person is a \"chain-smoker.\""]
+chain-smoker | nuance.examples.everyday | My uncle was a chain-smoker until his heart attack.
+chain-smoker | nuance.examples.professional | The clinic runs a program to help chain-smokers quit.
+chain-smoker | nuance.examples.analytical | Chain-smokers face a much higher risk of lung cancer and heart disease.
+chain-smoker | nuance.collocations | ["a chain-smoker", "lifelong chain-smoker", "former chain-smoker", "chain-smoke cigarettes"]
+color-blind | nuance.usage_note | The medical meaning is common and neutral ("About 1 in 12 men is color-blind"). The social meaning, as in "a color-blind society," is often used in debates about race; some people see it as fair, while others say ignoring race ignores real problems. Both senses keep the hyphen: "color-blind policies."
+color-blind | nuance.common_mistakes | ["Writing \"colour blind\" (British spelling); in the US it's color.", "Leaving out the hyphen: \"color-blind policy.\"", "Thinking color-blind people see only black and white; most just confuse some colors."]
+color-blind | nuance.examples.everyday | My dad is color-blind, so I always help him pick matching socks.
+color-blind | nuance.examples.professional | We changed the chart colors so that color-blind employees could read them easily.
+color-blind | nuance.collocations | ["red-green color-blind", "color-blind test", "a color-blind society", "color-blind approach", "partially color-blind"]
+crow's-feet | nuance.usage_note | Common in talk about skin care, beauty and aging. It is always plural. It is fine to say about yourself, but commenting on someone else's crow's-feet can be rude.
+crow's-feet | nuance.common_mistakes | ["Saying \"crow feet\" or \"crows' foot\"; the phrase is crow's-feet.", "Using it for wrinkles on the forehead; it means only at the eye corners."]
+crow's-feet | nuance.pronunciation.tip | Stress "crow's": CROW'S-feet. "Crow's" ends in a z sound.
+crow's-feet | nuance.examples.everyday | I'm starting to get crow's-feet, but my grandma says they come from a lifetime of smiling.
+crow's-feet | nuance.examples.professional | The dermatologist recommended sunscreen to slow the formation of crow's-feet.
+crow's-feet | nuance.examples.analytical | Ads for eye cream promise to smooth crow's-feet, though the evidence is limited.
+crow's-feet | nuance.collocations | ["fine crow's-feet", "get crow's-feet", "reduce crow's-feet", "crow's-feet around the eyes", "deep crow's-feet"]
+double-talk | nuance.usage_note | Used to criticize politicians, companies and officials who avoid giving clear answers. It can also mean comic nonsense speech that sounds real, used by comedians. Also spelled "double talk."
+double-talk | nuance.pronunciation.tip | Stress "double": DOUBLE-talk, like a compound noun. "Talk" has a silent l: TAWK.
+double-talk | nuance.examples.everyday | I asked the salesman about the fees, and all I got was double-talk.
+double-talk | nuance.examples.professional | Employees grew tired of management's double-talk about the layoffs.
+double-talk | nuance.examples.analytical | Critics called the press secretary's answer double-talk designed to avoid the question.
+double-talk | nuance.collocations | ["political double-talk", "corporate double-talk", "pure double-talk", "full of double-talk", "legal double-talk"]
+easy-peasy | nuance.usage_note | Said to children or jokingly among adults: "Just click here, and you're done. Easy-peasy!" It is sometimes extended to "easy-peasy lemon squeezy." It is childlike, so avoid it in serious business situations. Sometimes written "easy peasy."
+easy-peasy | nuance.pronunciation.tip | Stress "peasy": easy-PEASY. Both words rhyme, with long "ee" and a z sound.
+easy-peasy | nuance.examples.everyday | Tie it like this, then pull. See? Easy-peasy!
+easy-peasy | nuance.examples.professional | The trainer said the new software is easy-peasy once you learn the shortcuts.
+easy-peasy | nuance.examples.analytical | Ads for meal kits make cooking look easy-peasy, even for beginners.
+easy-peasy | nuance.collocations | ["easy-peasy lemon squeezy", "it's easy-peasy", "easy-peasy recipe", "that was easy-peasy"]
+even-steven | nuance.usage_note | Said playfully when splitting bills or settling debts: "You paid for lunch, I paid for coffee; we're even-steven." Also for tied scores. It is casual and friendly, often used with kids. Sometimes spelled "even steven" or "even Stephen."
+even-steven | nuance.common_mistakes | ["Using it in formal writing; it is playful and casual.", "Saying \"even-stevens\"; the American form is even-steven."]
+even-steven | nuance.pronunciation.tip | Stress "Steven": even-STEVEN. Both words rhyme: EE-vuhn, STEE-vuhn.
+even-steven | nuance.examples.everyday | You bought the movie tickets and I bought the popcorn, so we're even-steven.
+even-steven | nuance.examples.professional | The two partners split the profits even-steven at the end of the year.
+even-steven | nuance.examples.analytical | At halftime the game was even-steven, with both teams at fourteen points.
+even-steven | nuance.collocations | ["we're even-steven", "split it even-steven", "call it even-steven", "even-steven score"]
+f-bomb | nuance.usage_note | Used in news and polite conversation to talk about someone swearing ("The actor dropped an F-bomb on live TV"). It lets you mention the word without saying it. The verb is usually "drop": "drop the F-bomb." Warning: the word it stands for is one of the most offensive words in English; never say the real word at work, at school or to strangers.
+f-bomb | nuance.common_mistakes | ["Thinking \"F-bomb\" itself is a swear word; it is a polite way to mention one.", "Pronouncing the b in \"bomb\"; it is silent."]
+f-bomb | nuance.examples.everyday | My uncle dropped an F-bomb at Thanksgiving, and Grandma nearly fainted.
+f-bomb | nuance.examples.professional | The network apologized after a guest dropped the F-bomb during the live broadcast.
+f-bomb | nuance.examples.analytical | Researchers found that F-bombs in movies have become more common since the 1980s.
+f-bomb | nuance.collocations | ["drop an F-bomb", "drop the F-bomb", "let the F-bomb fly", "F-bomb on live TV", "a string of F-bombs"]
+f-word | nuance.usage_note | Americans say "the F-word" (almost always with "the") when they need to talk about the swear word itself, for example with children, at work or on the news. Saying "the F-word" is acceptable almost everywhere; saying the real word is not. Some people jokingly use "the F-word" for another word that starts with F ("the F-word: feelings").
+f-word | nuance.common_mistakes | ["Leaving out \"the\": say \"he said the F-word,\" not \"he said F-word.\"", "Thinking it is itself rude: \"the F-word\" is the polite way to mention it.", "Stressing \"word\": Americans say \"the EF-word.\""]
+f-word | nuance.examples.everyday | My little brother got in trouble at school for saying the F-word on the playground.
+f-word | nuance.examples.professional | Our company policy is clear: no F-word in emails or client calls, no matter how stressed you are.
+f-word | nuance.examples.analytical | Broadcast rules in the US still require networks to bleep the F-word during daytime programming.
+f-word | nuance.collocations | ["the F-word", "say the F-word", "use the F-word", "drop the F-word", "bleep out the F-word"]
+fine-toothed-comb | nuance.usage_note | Most often heard in "go over (or through) something with a fine-tooth comb," said of checking contracts, reports, tax returns or a crime scene. It's fine in both casual and work talk. "Fine-toothed comb" is an equally common spelling; both are correct.
+fine-toothed-comb | nuance.pronunciation.tip | Stress "comb": a fine-tooth COMB. The b in comb is silent: "kohm." "Tooth" ends in the soft "th" of "think."
+fine-toothed-comb | nuance.examples.everyday | My mom went over my homework with a fine-tooth comb before letting me turn it in.
+fine-toothed-comb | nuance.examples.professional | Our lawyer will go through the lease with a fine-tooth comb before we sign anything.
+fine-toothed-comb | nuance.examples.analytical | Auditors went over the charity's accounts with a fine-tooth comb and found no missing funds.
+fine-toothed-comb | nuance.collocations | ["go over it with a fine-tooth comb", "go through it with a fine-tooth comb", "a fine-tooth comb for lice", "examine with a fine-tooth comb"]
+frog-march | nuance.usage_note | Used in news and casual speech when someone is roughly led away: "Security frog-marched him out of the building." It often suggests public humiliation, as in a perp walk. The noun is "a frog-march."
+going-over | nuance.usage_note | Usually in "give something (or someone) a going-over" or "get a going-over." A mechanic gives a car a going-over (inspection); a boss gives an employee a going-over (scolding); in crime stories, thugs give someone a going-over (beating). Without the hyphen, "go over" and "going over" are the verb.
+going-over | nuance.common_mistakes | ["Stressing it like the verb: the noun is a GOING-over.", "Saying \"make a going-over\": the verb is \"give\" or \"get.\""]
+going-over | nuance.examples.everyday | Before the trip, I had the mechanic give my car a good going-over.
+going-over | nuance.examples.professional | Legal gave the contract a thorough going-over and found three problems.
+going-over | nuance.examples.analytical | The bill received a careful going-over in committee before reaching the full Senate.
+going-over | nuance.collocations | ["give it a going-over", "a good going-over", "a thorough going-over", "get a going-over", "a going-over from the boss"]
+half-and-half | nuance.usage_note | In American grocery stores, "half-and-half" is a carton of light cream for coffee: "Do you have half-and-half?" People also use it for anything split equally: "The crowd was half-and-half," "a half-and-half pizza."
+half-and-half | nuance.pronunciation.tip | Stress the last word: half-and-HALF. "And" is weak, "un" or just "n": "haf-n-HAF." The l in half is silent.
+half-and-half | nuance.examples.everyday | Can you grab a carton of half-and-half for my coffee?
+half-and-half | nuance.examples.professional | The café started charging extra for oat milk but still offers half-and-half for free.
+half-and-half | nuance.examples.analytical | The town's population is roughly half-and-half between longtime residents and newcomers.
+half-and-half | nuance.collocations | ["coffee with half-and-half", "a splash of half-and-half", "half-and-half pizza", "half-and-half mix", "half-and-half split"]
+half-measure | nuance.usage_note | Usually plural: "half measures won't work," "no more half measures." Common in politics, business and personal advice. Saying "no half measures" means going all the way. Also written "half-measure."
+half-measure | nuance.common_mistakes | ["Using the singular in \"no half measure\": the phrase is \"no half measures.\"", "Confusing it with a literal half measure in a recipe (half a cup): context shows the meaning."]
+half-measure | nuance.pronunciation.tip | Stress "measure": half MEASure. The s in "measure" is the "zh" sound of "vision."
+half-measure | nuance.examples.everyday | When my sister decides to clean, there are no half measures; she empties every closet.
+half-measure | nuance.examples.professional | The consultant warned that half measures would only delay the company's financial problems.
+half-measure | nuance.examples.analytical | Experts called the new emissions rules a half measure that wouldn't meet climate goals.
+half-measure | nuance.collocations | ["no half measures", "half measures won't work", "settle for half measures", "take half measures", "a mere half measure"]
+in-crowd | nuance.usage_note | Used about school cliques, fashion, business and celebrities. People often say it with irony or bitterness about being left out. Usually "the in-crowd".
+in-crowd | nuance.common_mistakes | ["Stressing \"crowd\": say the IN-crowd.", "Saying \"an in-crowd\" in most contexts: usually \"the in-crowd.\""]
+in-crowd | nuance.pronunciation.tip | Stress IN: the IN-crowd. If you stress 'crowd', it sounds like 'in a crowd', a different meaning.
+in-crowd | nuance.examples.everyday | In high school, I was never part of the in-crowd, and that's fine.
+in-crowd | nuance.examples.professional | The new restaurant became a favorite of the city's in-crowd.
+in-crowd | nuance.examples.analytical | Social media lets brands target the in-crowd that sets trends for everyone else.
+in-crowd | nuance.collocations | ["the in-crowd", "part of the in-crowd", "join the in-crowd", "the Hollywood in-crowd", "with the in-crowd"]
+light-year | nuance.usage_note | In science it is a unit of distance, not of time. In everyday speech people use the plural to exaggerate: 'light-years ahead' (far better or more advanced) or 'light-years away' (very far or very different). Dictionaries usually spell it 'light-year' with a hyphen, but 'light year' is also common.
+light-year | nuance.common_mistakes | ["Treating it as a unit of time ('It took light-years'); in science it measures distance.", "In formal writing, check your style guide: many dictionaries prefer 'light-year'."]
+light-year | nuance.pronunciation.tip | Stress LIGHT, like other compound nouns: a LIGHT-year. The t links into the y and may sound like 'ch' in fast speech: 'ligh-chear'.
+light-year | nuance.examples.everyday | This new phone is light-years ahead of the old one I had.
+light-year | nuance.examples.professional | Our startup's software is light-years beyond what the competitors offer, according to our sales pitch.
+light-year | nuance.examples.analytical | The nearest star after the sun is a little more than four light-years from Earth.
+light-year | nuance.collocations | ["light-years away", "light-years ahead", "light-years apart", "light-years beyond", "billions of light-years", "four light-years from Earth"]
+man-child | nuance.common_mistakes | ["Using it for a boy; it describes an adult man acting childish.", "Pluralizing as 'man-childs'; say 'man-children'."]
+meet-cute | nuance.usage_note | A term from film and TV talk, now used in everyday life: 'We had the perfect meet-cute: we both grabbed the last umbrella.' It is common in reviews and casual conversation. It can also be a verb ('the characters meet cute in an elevator'). The noun is hyphenated; the verb is usually two words.
+mind-reader | nuance.usage_note | Most often heard in the complaint 'I'm not a mind reader!', meaning 'Tell me what you want; I can't guess.' It can also compliment someone who knows what you need before you ask. In stage shows, a mind reader claims to read thoughts. Also written 'mind-reader'.
+mind-reader | nuance.common_mistakes | ["Saying 'mind reader' when you mean 'psychic' (seeing the future).", "Writing 'mind-reder'; the word is 'reader'."]
+mind-reader | nuance.pronunciation.tip | Stress MIND: a MIND reader. 'Reader' is REE-der, with a light flap on the d.
+mind-reader | nuance.examples.everyday | Just tell me what you want for dinner; I'm not a mind reader.
+mind-reader | nuance.examples.professional | Our assistant is a mind reader; she had the files ready before I even asked.
+mind-reader | nuance.collocations | ["I'm not a mind reader", "a mind-reader act", "be a mind reader", "some kind of mind reader", "a real mind reader"]
+new-school | nuance.usage_note | The opposite of 'old-school'. Common in music (new-school hip-hop), sports, cooking and work styles. It's casual: 'a new-school chef'. The noun phrase is different: 'a new school of thought'.
+new-school | nuance.examples.everyday | My dad likes old-school rap, but I'm more into the new-school stuff.
+new-school | nuance.examples.analytical | The museum's exhibit contrasts old-school graffiti with new-school street art.
+new-school | nuance.collocations | ["new-school hip-hop", "a new-school approach", "new-school vs. old-school", "new-school chefs", "new-school thinking"]
+nickel-and-dime | nuance.usage_note | Very common in complaints about airlines, banks, landlords and phone plans: 'They nickel-and-dime you with fees.' Usually followed by a person: 'nickel-and-dime customers'. It also works as an adjective meaning small-time or petty: 'a nickel-and-dime business'.
+no-holds-barred | nuance.usage_note | Used for fights, debates, interviews and competitions with no restraint: 'a no-holds-barred interview'. It comes from wrestling, where no grips were forbidden. It's common in journalism and conversation. It keeps its hyphens after a verb too: 'It was no-holds-barred.'
+no-holds-barred | nuance.pronunciation.tip | The main stress is on BARRED. 'Holds' ends with ldz; don't drop the l. Before a noun stress may shift: a no-holds-BARRED fight.
+no-holds-barred | nuance.examples.everyday | Thanksgiving Monopoly at our house is no-holds-barred; even Grandma cheats.
+no-holds-barred | nuance.collocations | ["a no-holds-barred interview", "a no-holds-barred fight", "a no-holds-barred debate", "it was no-holds-barred", "no-holds-barred account"]
+no-man's-land | nuance.usage_note | Literally, the deadly ground between two armies, especially in World War I. Figuratively, Americans use it for any in-between place or state: 'a legal no-man's-land', the empty area at an airport between countries, or a stage of life where you feel you belong nowhere. In tennis it is the middle of the court where it's hard to return the ball. Also written 'no man's land'.
+no-man's-land | nuance.common_mistakes | ["Writing 'no-mans-land' without the apostrophe.", "Stressing 'land'; Americans usually stress NO."]
+no-man's-land | nuance.pronunciation.tip | Stress NO: NO-man's-land. 'Man's' sounds like 'manz', linking with 'land'.
+no-man's-land | nuance.examples.everyday | After the divorce, I felt stuck in a no-man's-land between my old life and a new one.
+no-man's-land | nuance.examples.professional | Contract workers are in a legal no-man's-land, with neither full benefits nor freedom.
+no-man's-land | nuance.examples.analytical | Soldiers in 1916 risked death every time they climbed into no-man's-land.
+no-man's-land | nuance.collocations | ["in no-man's-land", "a legal no-man's-land", "stuck in no-man's-land", "a no-man's-land between", "cross no-man's-land"]
+ping-pong | nuance.usage_note | Americans usually call the game 'Ping-Pong' and the official sport 'table tennis'. The game's name is capitalized because it is a trademark. Lowercase 'ping-pong' is the everyday verb or noun for being sent back and forth (to ping-pong between two offices).
+ping-pong | nuance.common_mistakes | ["Saying 'playing a Ping-Pong'; the game takes no article: 'play Ping-Pong'.", "Pronouncing 'pong' like 'pung'."]
+ping-pong | nuance.examples.everyday | We have a Ping-Pong table in the garage, and the kids play every evening.
+ping-pong | nuance.examples.professional | The proposal went through weeks of ping-pong between legal and sales before anyone signed it.
+ping-pong | nuance.examples.analytical | Ping-Pong diplomacy in the 1970s helped open relations between the United States and China.
+ping-pong | nuance.collocations | ["play Ping-Pong", "a Ping-Pong table", "a Ping-Pong ball", "a Ping-Pong paddle", "ping-pong back and forth"]
+plain-vanilla | nuance.pronunciation.tip | The main stress is on NIL in 'vanilla'; the first syllable is a weak 'vuh'. Before a noun: a plain-vanilla loan.
+plain-vanilla | nuance.examples.everyday | I don't need extra features; a plain-vanilla phone is fine for me.
+plain-vanilla | nuance.examples.analytical | Plain-vanilla index funds have outperformed many complex investment products over time.
+plain-vanilla | nuance.collocations | ["a plain-vanilla version", "plain-vanilla bonds", "a plain-vanilla mortgage", "plain-vanilla service", "pretty plain-vanilla"]
+rock-solid | nuance.usage_note | Common in conversation and business: a rock-solid alibi, rock-solid evidence, a rock-solid friend. Also literal: the ground was rock-solid.
+rock-solid | nuance.examples.everyday | The ice cream was frozen rock-solid, so we waited ten minutes to eat it.
+rock-solid | nuance.examples.professional | Our lawyer says the contract is rock-solid.
+rock-solid | nuance.examples.analytical | The study's results are rock-solid because they were replicated in five countries.
+rock-solid | nuance.collocations | ["a rock-solid alibi", "rock-solid evidence", "rock-solid support", "frozen rock-solid", "a rock-solid case"]
+show-and-tell | nuance.usage_note | Almost every American grew up with show-and-tell in kindergarten or first grade. Adults use it jokingly for any informal demonstration: a quick show-and-tell of the new software. It also works before a noun: a show-and-tell session.
+show-and-tell | nuance.examples.everyday | My daughter wants to bring our turtle to school for show-and-tell.
+show-and-tell | nuance.examples.professional | At the team meeting, each designer did a quick show-and-tell of their new screens.
+show-and-tell | nuance.examples.analytical | Teachers say show-and-tell builds young children's confidence in speaking to a group.
+show-and-tell | nuance.collocations | ["bring something for show-and-tell", "show-and-tell day", "a show-and-tell session", "do show-and-tell", "for show-and-tell"]
+skinny-dipping | nuance.usage_note | Skinny-dipping is a humorous, informal word, often about summer nights, lakes and youthful adventures. It is fine to say in casual talk, though it can be a bit cheeky. Verb: "go skinny-dipping."
+skinny-dipping | nuance.examples.everyday | When we were teenagers, we went skinny-dipping in the lake after midnight.
+skinny-dipping | nuance.examples.professional | The park ranger posted signs reminding campers that skinny-dipping is not allowed.
+skinny-dipping | nuance.examples.analytical | In the old summer-camp novels, skinny-dipping is a symbol of freedom and rule-breaking.
+skinny-dipping | nuance.collocations | ["go skinny-dipping", "skinny-dipping in the lake", "midnight skinny-dipping", "caught skinny-dipping"]
+slash-and-burn | nuance.usage_note | In business and politics, slash-and-burn describes brutal cost-cutting or attack campaigns: slash-and-burn layoffs, slash-and-burn politics. In geography it means a farming method used in tropical forests.
+slash-and-burn | nuance.pronunciation.tip | Stress "BURN": slash uhn BURN. "And" reduces to "uhn." Before a noun the stress can move: SLASH-and-burn tactics.
+slave-driver | nuance.usage_note | People use slave driver half-jokingly about strict bosses, coaches or teachers: "My coach is a slave driver." Because it comes from American slavery, some people find it insensitive, so be careful at work. Also written slave-driver.
+slave-driver | nuance.examples.everyday | Our band teacher is a slave driver; we practice the same song fifty times.
+slave-driver | nuance.examples.professional | Staff complained that the new manager was a slave driver who banned lunch breaks.
+slave-driver | nuance.examples.analytical | Historians describe how slave drivers on plantations enforced work with violence.
+slave-driver | nuance.collocations | ["a real slave driver", "a total slave driver", "act like a slave driver", "my boss is a slave driver"]
+slow-roll | nuance.usage_note | In business and politics, slow-roll means stalling something without saying no: "They're slow-rolling the approval." In poker it's rude: taking forever to show a hand you know wins. Pilots also use it for a slow full rotation of the plane.
+slow-roll | nuance.pronunciation.tip | Stress "ROLL": sloh ROHL. As a noun (a slow-roll), stress often moves to the first word: a SLOW-roll.
+slow-roll | nuance.examples.everyday | I think the landlord is slow-rolling my repair request on purpose.
+slow-roll | nuance.collocations | ["slow-roll the process", "slow-roll a project", "slow-roll the rollout", "accused of slow-rolling", "a poker slow-roll"]
+squeaky-clean | nuance.usage_note | Use squeaky-clean for scrubbed dishes or hair, and for people or brands with spotless reputations: a squeaky-clean image. It can be a little ironic, suggesting someone is too good to be true.
+squeaky-clean | nuance.pronunciation.tip | Stress "CLEAN": skwee-kee KLEEN. Before a noun the stress can shift: a SQUEAKY-clean image.
+squeaky-clean | nuance.examples.everyday | After two hours of scrubbing, the bathtub was squeaky-clean.
+squeaky-clean | nuance.collocations | ["squeaky-clean image", "squeaky-clean record", "squeaky-clean hair", "squeaky-clean reputation"]
+standard-issue | nuance.usage_note | Standard-issue was first military (standard-issue boots) and is now used for anything ordinary: a standard-issue office cubicle, a standard-issue action movie. It can sound slightly dismissive.
+standard-issue | nuance.pronunciation.tip | Stress "ISSUE": stan-derd ISH-oo. Before a noun the stress can shift: a STANDARD-issue rifle.
+standard-issue | nuance.examples.everyday | The hotel room was standard-issue: two beds, a TV and a tiny desk.
+standard-issue | nuance.collocations | ["standard-issue equipment", "standard-issue uniform", "pretty standard-issue", "standard-issue rifle"]
+tongue-lashing | nuance.usage_note | Parents, coaches and bosses give tongue-lashings; you "get" or "receive" one. It is informal and a little dramatic, often told as a story afterward. It is also written "tongue lashing."
+tongue-lashing | nuance.common_mistakes | ["Saying \"a tongue-lash\" for the noun; it is \"a tongue-lashing.\"", "Using it for mild advice; it means angry scolding."]
+tongue-lashing | nuance.examples.everyday | I got a real tongue-lashing from my mom for coming home at two in the morning.
+tongue-lashing | nuance.examples.professional | The coach gave the team a tongue-lashing at halftime.
+tongue-lashing | nuance.examples.analytical | The senator's public tongue-lashing of the bank executives went viral online.
+tongue-lashing | nuance.collocations | ["give someone a tongue-lashing", "get a tongue-lashing", "a severe tongue-lashing", "a public tongue-lashing", "deliver a tongue-lashing"]
+tongue-twister | nuance.usage_note | Children play with tongue twisters, and English learners and actors use them to practice sounds. People also call a long or hard name "a real tongue twister." It is friendly and never rude.
+tongue-twister | nuance.pronunciation.tip | Stress "tongue": TONGUE twister. "Tongue" sounds like "tung"; the "ue" is silent.
+tongue-twister | nuance.examples.everyday | My kids laughed for ten minutes trying the tongue twister "rubber baby buggy bumpers."
+tongue-twister | nuance.examples.professional | The speech coach uses tongue twisters to warm up before each presentation.
+tongue-twister | nuance.examples.analytical | Speech therapists use tongue twisters to help patients practice difficult sound pairs.
+tongue-twister | nuance.collocations | ["a classic tongue twister", "say a tongue twister", "a real tongue twister", "tongue-twister practice", "try this tongue twister"]
+true-blue | nuance.usage_note | Americans use it for loyal fans, friends and patriots, and for someone who is a real, authentic example: a true-blue New Yorker. It sounds warm and slightly old-fashioned. In Britain it can mean a loyal Conservative, and in Australia a real Australian.
+true-blue | nuance.common_mistakes | ["Saying \"real blue\" or \"truly blue\"; the phrase is \"true-blue.\"", "Thinking it refers to sadness (\"feeling blue\"); it means loyal."]
+true-blue | nuance.pronunciation.tip | Stress "blue": true-BLUE; before a noun it may move forward: a TRUE-blue fan. Both words have the long "oo" sound.
+true-blue | nuance.examples.everyday | He's a true-blue Cubs fan, even after a hundred losing seasons.
+true-blue | nuance.examples.professional | She's a true-blue team player who stays late when anyone needs help.
+true-blue | nuance.examples.analytical | The candidate presented himself as a true-blue conservative to win the primary.
+true-blue | nuance.collocations | ["a true-blue friend", "a true-blue fan", "true-blue American", "true-blue loyalty", "true-blue Texan"]
+with-it | nuance.usage_note | Most often in the negative: "Sorry, I'm not with-it today" (tired, distracted). "Get with it!" urges someone to catch up. The meaning "fashionable" sounds a bit dated. It keeps the hyphen before a noun too: a with-it teacher.
+with-it | nuance.common_mistakes | ["Stressing \"it\"; stress \"with.\"", "Using \"with-it\" alone to mean fashionable in formal writing; it sounds dated."]
+with-it | nuance.pronunciation.tip | Stress "with": WITH-it. In "not with-it" and "get with it," "with" still carries the stress. The "th" is the voiced sound of "this."
+with-it | nuance.examples.everyday | Sorry, I'm not with-it this morning; I barely slept.
+with-it | nuance.examples.professional | Our new manager is really with-it and understands the latest software.
+with-it | nuance.examples.analytical | The article mocks parents who try too hard to seem with-it on social media.
+with-it | nuance.collocations | ["not with-it", "get with it", "a with-it teacher", "totally with-it", "with-it today"]
