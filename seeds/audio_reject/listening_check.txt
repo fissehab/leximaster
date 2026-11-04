@@ -1,0 +1,129 @@
+# Recordings the November 2026 listening check found wrong. Every American
+# recording was transcribed into sounds by a phoneme recognizer
+# (wav2vec2-lv-60-espeak-cv-ft) and scored against the entry's IPA; the
+# lowest were checked with Whisper small and large-v3 and against the word's
+# other American recordings. A score near 0 fits; -1.5 or lower means a sound
+# is wrong. "fits" names the recording the word now uses; the rest fall back
+# to speech synthesis from the IPA. Format: see build_dataset.py AUDIO_REJECT.
+#
+# Flagged on Commons itself:
+en-us-nn-coverage.ogg | Commons: recorded by a non-native speaker
+EN-AU ck1 American football.ogg | Commons: Australian accent
+En-au-till death do us part.ogg | Commons: Australian accent
+#
+# Found by the check:
+en-us-ahead.ogg | fits the IPA poorly (score -2.92; heard "Ahead"); ll-q1860 (eng)-wodencafe-ahead.wav fits it
+en-us-automatic.ogg | fits the IPA poorly (score -2.85; heard "Automatic"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-automatic.wav fits it
+en-us-bait.ogg | fits the IPA poorly (score -1.68; heard "beat"); ll-q1860 (eng)-wodencafe-bait.wav fits it
+En-us-be.ogg | fits the IPA poorly (score -4.45; heard "B"); ll-q1860 (eng)-wodencafe-be.wav fits it
+en-us-bird.ogg | fits the IPA poorly (score -2.14; heard "Bird"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-bird.wav fits it
+en-us-board.ogg | fits the IPA poorly (score -2.53; heard "board"); ll-q1860 (eng)-wodencafe-bored.wav fits it | bored
+en-us-bulb.ogg | fits the IPA poorly (score -3.46; heard "Bulb"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-bulb.wav fits it
+en-us-by.ogg | fits the IPA poorly (score -2.33; heard "Bye"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-by.wav fits it
+en-us-call.ogg | fits the IPA poorly (score -2.11; heard "Call"); ll-q1860 (eng)-wodencafe-call.wav fits it
+en-us-clothes.ogg | fits the IPA poorly (score -1.74; heard "Close"); en-us-clothes-2.ogg fits it
+en-us-coal.ogg | fits the IPA poorly (score -2.79; heard "Cole"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-coal.wav fits it
+En-us-COD.oga | fits the IPA poorly (score -4.25; heard "COD"); en-us-cod.ogg fits it
+en-us-come.ogg | says "tum" (Commons: faulty, initial t instead of k)
+en-us-controller.oga | fits the IPA poorly (score -2.6; heard "Controller"); en-us-comptroller.oga fits it | comptroller
+en-us-cord.ogg | fits the IPA poorly (score -1.62; heard "corn"); ll-q1860 (eng)-qwertygiy-cord.wav fits it
+En-us-d.ogg | fits the IPA poorly (score -4.0; heard "D"); ll-q1860 (eng)-flame, not lame-d.wav fits it
+en-us-day.ogg | fits the IPA poorly (score -2.34; heard "Day"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-day.wav fits it
+en-us-deal.ogg | fits the IPA poorly (score -3.6; heard "Deal"); ll-q1860 (eng)-wodencafe-deal.wav fits it
+En-us-dear.ogg | fits the IPA poorly (score -2.4; heard "Dear"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-dear.wav fits it
+En-us-do (unstressed).ogg | fits the IPA poorly (score -5.89; heard "Duh"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-do.wav fits it
+en-us-drug.ogg | fits the IPA poorly (score -2.05; heard "drug"); ll-q1860 (eng)-wodencafe-drug.wav fits it
+En-us-ear.ogg | fits the IPA poorly (score -2.63; heard "Ear"); ll-q1860 (eng)-wodencafe-ear.wav fits it
+LL-Q1860 (eng)-Naomi Persephone Amethyst (NaomiAmethyst)-far.wav | fits the IPA poorly (score -1.83; heard "far"); ll-q1860 (eng)-wodencafe-far.wav fits it
+En-us-feminism.oga | fits the IPA poorly (score -2.18; heard "feminism"); ll-q1860 (eng)-wodencafe-feminism.wav fits it
+en-us-fractal.ogg | fits the IPA poorly (score -2.1; heard "fractal"); ll-q1860 (eng)-wodencafe-fractal.wav fits it
+En-us-fright.ogg | fits the IPA poorly (score -1.8; heard "free"); ll-q1860 (eng)-wodencafe-fright.wav fits it
+en-us-fudge.ogg | fits the IPA poorly (score -2.03; heard "Fudge"); ll-q1860 (eng)-wodencafe-fudge.wav fits it
+en-us-full.ogg | fits the IPA poorly (score -3.46; heard "Full"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-full.wav fits it
+en-us-ne-furrow.ogg | fits the IPA poorly (score -1.92; heard "Thoreau"); en-us-furrow.ogg fits it
+En-us-grit.oga | fits the IPA poorly (score -2.22; heard "Grit"); ll-q1860 (eng)-wodencafe-grit.wav fits it
+En-us-inlandnorth-gut.ogg | fits the IPA poorly (score -2.65; heard "God"); ll-q1860 (eng)-wodencafe-gut.wav fits it
+en-us-have.ogg | fits the IPA poorly (score -3.37; heard "have"); ll-q1860 (eng)-wodencafe-have.wav fits it
+en-us-hill.ogg | fits the IPA poorly (score -2.51; heard "Hill"); ll-q1860 (eng)-wodencafe-hill.wav fits it
+en-us-hole.ogg | fits the IPA poorly (score -2.94; heard "Whole"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-hole.wav fits it
+en-us-ill.ogg | fits the IPA poorly (score -3.34; heard "ill"); ll-q1860 (eng)-wodencafe-ill.wav fits it
+En-us-jail.ogg | fits the IPA poorly (score -1.5; heard "Jail"); ll-q1860 (eng)-wodencafe-jail.wav fits it
+En-us-Jew.oga | fits the IPA poorly (score -6.8; heard "Jew"); en-us-jew.ogg fits it
+Jewish US.ogg | fits the IPA poorly (score -2.22; heard "Jewish"); ll-q1860 (eng)-wodencafe-jewish.wav fits it
+en-us-judge.ogg | fits the IPA poorly (score -2.03; heard "Judge"); ll-q1860 (eng)-wodencafe-judge.wav fits it
+En-us-L.ogg | fits the IPA poorly (score -1.97; heard "L"); ll-q1860 (eng)-flame, not lame-l.wav fits it
+en-us-lacuna.ogg | fits the IPA poorly (score -1.72; heard "lacuna"); en-us-lacuna-2.ogg fits it
+en-us-late.ogg | fits the IPA poorly (score -1.98; heard "late"); ll-q1860 (eng)-wodencafe-late.wav fits it
+en-us-less.ogg | fits the IPA poorly (score -2.08; heard "less"); ll-q1860 (eng)-wodencafe-less.wav fits it
+LL-Q7976 (mis)-Dubna8-lethargy.wav | fits the IPA poorly (score -3.06; heard "My third chair"); ll-q1860 (eng)-wodencafe-lethargy.wav fits it
+LL-Q1860 (eng)-Naomi Persephone Amethyst (NaomiAmethyst)-little.wav | fits the IPA poorly (score -2.51; heard "Little"); en-us-little.ogg fits it
+en-us-lucky.ogg | fits the IPA poorly (score -2.65; heard "lucky"); ll-q1860 (eng)-wodencafe-lucky.wav fits it
+LL-Q1860 (eng)-Vininn126-lye.wav | fits the IPA poorly (score -4.45; heard "Lie"); ll-q1860 (eng)-wodencafe-lye.wav fits it
+LL-Q1860 (eng)-Naomi Persephone Amethyst (NaomiAmethyst)-neck.wav | fits the IPA poorly (score -2.73; heard "neck"); ll-q1860 (eng)-wodencafe-neck.wav fits it
+en-us-ne-nourish.ogg | fits the IPA poorly (score -1.93; heard "Nourish"); en-us-nourish.ogg fits it
+en-us-oar.ogg | fits the IPA poorly (score -1.73; heard "or"); ll-q1860 (eng)-wodencafe-oar.wav fits it
+LL-Q1860 (eng)-Naomi Persephone Amethyst (NaomiAmethyst)-papa.wav | fits the IPA poorly (score -2.36; heard "Papa"); ll-q1860 (eng)-wodencafe-papa.wav fits it
+en-us-Paul.ogg | fits the IPA poorly (score -2.56; heard "Paul"); en-us-paul.oga fits it
+en-us-preaching.ogg | fits the IPA poorly (score -5.52; heard "Preaching.  Pathetic"); ll-q1860 (eng)-wodencafe-preaching.wav fits it
+En-us-pull.ogg | fits the IPA poorly (score -3.23; heard "Pull"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-pull.wav fits it
+en-us-roof.ogg | fits the IPA poorly (score -3.03; heard "Roof"); ll-q1860 (eng)-wodencafe-roof.wav fits it
+en-us-rub.ogg | fits the IPA poorly (score -1.73; heard "Rub"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-rub.wav fits it
+En-us-rule.oga | fits the IPA poorly (score -3.33; heard "Rule"); ll-q1860 (eng)-wodencafe-rule.wav fits it
+en-us-show.ogg | fits the IPA poorly (score -3.8; heard "Show"); ll-q1860 (eng)-wodencafe-show.wav fits it
+en-us-size.ogg | fits the IPA poorly (score -1.79; heard "size"); ll-q1860 (eng)-wodencafe-size.wav fits it
+en-us-smooth.ogg | fits the IPA poorly (score -2.1; heard "smooth"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-smooth.wav fits it
+LL-Q1860 (eng)-Wodencafe-sol.wav | fits the IPA poorly (score -2.27; heard "So"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-sol.wav fits it
+En-us-state.ogg | fits the IPA poorly (score -1.83; heard "State"); ll-q1860 (eng)-wodencafe-state.wav fits it
+en-us-thin.ogg | fits the IPA poorly (score -1.79; heard "Thin"); ll-q1860 (eng)-wodencafe-thin.wav fits it
+en-us-till.ogg | fits the IPA poorly (score -2.07; heard "Till"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-till.wav fits it
+En-us-tooth.ogg | fits the IPA poorly (score -1.54; heard "Tooth"); ll-q1860 (eng)-wodencafe-tooth.wav fits it
+en-us-wait.ogg | fits the IPA poorly (score -1.54; heard "Wait"); ll-q1860 (eng)-wodencafe-wait.wav fits it
+LL-Q1860 (eng)-Nail123Real-water.wav | fits the IPA poorly (score -3.15; heard "Water"); ll-q1860 (eng)-wodencafe-water.wav fits it
+en-ne-while.ogg | fits the IPA poorly (score -3.29; heard "While"); ll-q1860 (eng)-wodencafe-while.wav fits it
+en-us-with.ogg | fits the IPA poorly (score -2.0; heard "with"); ll-q1860 (eng)-wodencafe-with.wav fits it
+En-us-without.ogg | fits the IPA poorly (score -1.76; heard "Without"); ll-q1860 (eng)-wodencafe-without.wav fits it
+en-us-wool.ogg | fits the IPA poorly (score -3.07; heard "Wool"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-wool.wav fits it
+en-us-year.ogg | fits the IPA poorly (score -1.91; heard "Year"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-year.wav fits it
+en-us-bottom.ogg | fits the IPA poorly (score -1.57; heard "Barm"); ll-q1860 (eng)-wodencafe-bottom.wav fits it
+En-us-gif-1.ogg | says "jif"; the entry gives /ɡɪf/
+LL-Q1860 (eng)-JutishMale-glazier.wav | fits the IPA poorly (score -3.32; heard "Leisure"); ll-q1860 (eng)-vininn126-glazier.wav fits it
+LL-Q1860 (eng)-Naomi Persephone Amethyst (NaomiAmethyst)-celestial.wav | fits the IPA poorly (score -1.85; heard "So I steal"); en-us-celestial.ogg fits it
+En-us-tut tut.ogg | fits the IPA poorly (score -2.4; heard "You"); ll-q1860 (eng)-persent101-tut tut.wav fits it
+En-us-ai (sloth).oga | fits the IPA poorly (score None; heard "A.E"); en-us-ai.oga fits it
+en-Aaron.ogg | fits the IPA poorly (score -5.37; heard "Aaron or Aaron"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-aaron.wav fits it
+en-us-mere.ogg | fits the IPA poorly (score -2.01; heard "Mir"); ll-q1860 (eng)-wodencafe-mere.wav fits it
+en-us-per.ogg | fits the IPA poorly (score -2.54; heard "Per"); ll-q1860 (eng)-wodencafe-purr.wav fits it | purr
+en-us-thigh.ogg | fits the IPA poorly (score -1.55; heard "phi"); ll-q1860 (eng)-wodencafe-thigh.wav fits it
+en-us-ugh.ogg | fits the IPA poorly (score -3.43; heard "ICH"); en-us-ugh-2.ogg fits it
+LL-Q1860 (eng)-Flame, not lame-Birth name.wav | cut off: only "name" is heard
+En-us-esp.ogg | says "especially"
+En-us-eloquence.ogg | unclear: heard as "hello, kids"
+LL-Q1860 (eng)-Neøn-glibly.wav | unclear: heard as "quietly"
+en-us-glossy.ogg | unclear: heard as "classic"
+LL-Q1860 (eng)-Wodencafe-gulp.wav | cut off: heard as "go"
+en-us-lodge.ogg | heard as "watch" or "fudge"
+En-us-punk.oga | heard as "pop"
+en-us-raspy.ogg | heard as "crafty" or "practice"
+Troll.wav | heard as "control"
+LL-Q1860 (eng)-Neøn-congruity.wav | cut off: heard as "ready"
+en-us-brazen.ogg | first sound lost: heard as "raisin"
+En-us-blithe.ogg | first sound lost: heard as "live"
+LL-Q1860 (eng)-Wodencafe-spine.wav | heard as "it's fine"
+LL-Q1860 (eng)-Persent101-res.wav | says the word "res", not the letters R-E-S
+En-us-requite.ogg | unclear: heard as "looks white"
+en-us-ochre.ogg | a p sound before the word: heard as "poker"
+LL-Q1860 (eng)-Naomi Persephone Amethyst (NaomiAmethyst)-Thebe.wav | the Greek name Thebe (THEE-bee), not the coin (TEH-beh)
+#
+# Second pass: the build took a word's first remaining recording; where it
+# fit worse than the one chosen above, it is set aside for that word only.
+en-us-eye.ogg | says "eye"; en-us-ai.oga fits it | ai
+En-us-gif-2.ogg | says "jif"; the entry gives /ɡɪf/ | gif
+En-gif.ogg | says "jif"; the entry gives /ɡɪf/ (every GIF recording on Commons says jif) | gif
+LL-Q1860 (eng)-Wodencafe-year.wav | fits the IPA poorly (score -3.24; heard "Here"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-year.wav fits it | year
+en-us-roof2.ogg | fits the IPA poorly (score -2.72; heard "Roof"); ll-q1860 (eng)-wodencafe-roof.wav fits it | roof
+LL-Q1860 (eng)-Wodencafe-pull.wav | fits the IPA poorly (score -2.6; heard "Pull"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-pull.wav fits it | pull
+LL-Q1860 (eng)-Wodencafe-hole.wav | fits the IPA poorly (score -2.4; heard "whole"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-hole.wav fits it | hole
+LL-Q1860 (eng)-Wodencafe-do.wav | fits the IPA poorly (score -2.14; heard "Do"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-do.wav fits it | do
+en-us-far.ogg | fits the IPA poorly (score -1.84; heard "Far"); ll-q1860 (eng)-wodencafe-far.wav fits it | far
+LL-Q1860 (eng)-Wodencafe-full.wav | fits the IPA poorly (score -1.52; heard "full"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-full.wav fits it | full
+En-us-rule.ogg | fits the IPA poorly (score -1.24; heard "Rule"); ll-q1860 (eng)-wodencafe-rule.wav fits it | rule

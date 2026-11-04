@@ -876,10 +876,46 @@ def rank_audio(phonetics: list[dict], accent: str) -> list[dict]:
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 COMMONS_US_SPEAKERS = ["Flame, not lame", "Wodencafe", "Vininn126", "NaomiAmethyst", "Persent101",
                        "Qwertygiy", "Neøn", "Sapaa"]
-# Lingua Libre speakers who are not American, whatever a file's label says:
-# Vealhurl is from southern England (Wiktionary labels 11,000+ of the
-# recordings "Southern England"; they drop the r of "circadian").
-NOT_US_SPEAKERS = {"Vealhurl"}
+# Lingua Libre speakers whose recordings are not used, whatever a file's label
+# says: Vealhurl is from southern England (Wiktionary labels 11,000+ of the
+# recordings "Southern England"; they drop the r of "circadian"). JutishMale's
+# recordings fit the IPA far worse than any other speaker's (median -1.3 in
+# the November 2026 phoneme check, about 0 for everyone else; "Levite" and
+# "Judahite" unrecognizable).
+NOT_US_SPEAKERS = {"Vealhurl", "JutishMale"}
+
+
+# Commons recordings that say the word wrongly or are not American, found by
+# listening checks: seeds/audio_reject/*.txt, "File name | why" for every word
+# that uses the file, or "File name | why | key, key" for those words only (a
+# recording of "controller" is right for controller, not for comptroller).
+# The word takes its next recording or, without one, speech synthesis.
+AUDIO_REJECT = SEEDS / "audio_reject"
+
+
+def commons_file(url: str) -> str:
+    """The Commons file name a recording URL points to, as the reject lists
+    write it ("en-us-come.ogg"), lowercase."""
+    return unquote(url).rsplit("/", 1)[-1].rsplit(":", 1)[-1].replace("_", " ").lower()
+
+
+def rejected_recordings() -> dict[str, set[str] | None]:
+    """{file name: the keys it is rejected for, or None for every key}."""
+    out: dict[str, set[str] | None] = {}
+    for path in sorted(AUDIO_REJECT.glob("*.txt")):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            line = line.split("#", 1)[0].strip()
+            if not line:
+                continue
+            name, _, rest = line.partition("|")
+            keys = rest.partition("|")[2].strip()
+            out[commons_file(name.strip())] = {k.strip() for k in keys.split(",")} if keys else None
+    return out
+
+
+def is_rejected(rejected: dict[str, set[str] | None], url: str, key: str) -> bool:
+    f = commons_file(url)
+    return f in rejected and (rejected[f] is None or key in rejected[f])
 
 
 def lingua_libre_speaker(url: str) -> str:
@@ -1019,17 +1055,20 @@ async def stage_audio(args) -> None:
     async with httpx.AsyncClient(headers={"User-Agent": USER_AGENT}, timeout=60, follow_redirects=True) as http:
         commons = await commons_us_index(http, args.refresh_commons) if args.accent == "us" else {}
     todo, cands = [], {}
-    removed = 0
+    removed = rejects = 0
+    rejected = rejected_recordings()
     for k in words:
         rec = dict_cache.get(k)
         ok_entry = bool(rec and rec["status"] == "ok")
-        candidates = rank_audio(rec["entry"]["phonetics"], args.accent) if ok_entry else []
+        usable = lambda cs: [c for c in cs if lingua_libre_speaker(c["url"]) not in NOT_US_SPEAKERS
+                             and not is_rejected(rejected, c["url"], k)]
+        candidates = usable(rank_audio(rec["entry"]["phonetics"], args.accent) if ok_entry else [])
         # None linked from the dictionary: an American recording on Commons.
         if not candidates:
             word = (rec["entry"].get("word") if ok_entry else "") or k.replace("-", " ")
-            candidates = [{"url": "https://commons.wikimedia.org/wiki/Special:FilePath/" + quote(n.replace(" ", "_")),
-                           "accent": args.accent} for n in commons.get(word.lower(), commons.get(k.replace("-", " "), []))]
-        candidates = [c for c in candidates if lingua_libre_speaker(c["url"]) not in NOT_US_SPEAKERS]
+            candidates = usable([{"url": "https://commons.wikimedia.org/wiki/Special:FilePath/" + quote(n.replace(" ", "_")),
+                                  "accent": args.accent}
+                                 for n in commons.get(word.lower(), commons.get(k.replace("-", " "), []))])
         prev = done.get(k)
         if prev and prev["status"] == "ok" and (prev.get("accent") != args.accent
                                                 or lingua_libre_speaker(prev.get("source_url", "")) in NOT_US_SPEAKERS):
@@ -1038,6 +1077,12 @@ async def stage_audio(args) -> None:
             append_jsonl(AUDIO_CACHE, {"key": k, "status": "removed", "reason": "accent",
                                        "accent": prev.get("accent", "")})
             removed += 1
+            prev = None
+        if prev and prev["status"] == "ok" and is_rejected(rejected, prev.get("source_url", ""), k):
+            (AUDIO / prev["file"]).unlink(missing_ok=True)
+            append_jsonl(AUDIO_CACHE, {"key": k, "status": "removed", "reason": "rejected",
+                                       "source_url": prev["source_url"]})
+            rejects += 1
             prev = None
         if not candidates:
             continue
@@ -1049,6 +1094,8 @@ async def stage_audio(args) -> None:
         todo.append(k)
     if removed:
         log(f"[audio] removed {removed} recordings not in accent '{args.accent}'")
+    if rejects:
+        log(f"[audio] removed {rejects} recordings listed in seeds/audio_reject")
     log(f"[audio] {len(todo)} files to download")
     if not todo:
         return
@@ -2702,8 +2749,8 @@ def _syllables(ipa: str) -> int:
 
 def phonetic_needs_study_ipa(w: dict) -> bool:
     p = w["phonetic"]
-    if not p.strip("/[] "):
-        return True
+    if not p.strip("/[] ") or re.search(r"(^|[\s/\[])-|-($|[\s/\]])", p):
+        return True  # empty, or part of the word only: /æ- -d/ for "astonished"
     word = w["word"].lower()
     if re.search(r"(er|ar|or|our|ure|ere|ore|ire|ear|eer|air)$", word) and re.search(r"[əʊɪɛ][/\]]$", p):
         return True  # non-rhotic ending: "amber" /ˈæm.bə/

@@ -6,9 +6,9 @@
 // page asks (on Home, Browse and other calm screens, never mid-session).
 // Every cache name starts with "lexi-": the site shares its origin
 // (fissehab.github.io) with other projects, whose caches are left alone.
-const VERSION = "20261103142326";
+const VERSION = "20261103212520";
 const SHELL = `lexi-shell-${VERSION}`;
-const DATA = "lexi-data-3cf74799";   // changes only when the published word data does
+const DATA = "lexi-data-64148d94";   // changes only when the published word data does
 // Recording names carry a hash of their content (media/audio/<word>.<hash>.m4a),
 // so a corrected recording has a new URL: the media cache can outlive deploys.
 const MEDIA = "lexi-media-v2";
@@ -95,15 +95,15 @@ const DETAIL_HASHES = {
 "data/detail/06.json": "3f6fe204bdffe43a",
 "data/detail/07.json": "ff3136958f24b8b9",
 "data/detail/08.json": "5d4e1ea06801b57a",
-"data/detail/09.json": "4b63f5c437c36d61",
+"data/detail/09.json": "d52b894517b3b2b6",
 "data/detail/10.json": "965915ff74e7cc96",
-"data/detail/11.json": "29ecf0d836cb63aa",
+"data/detail/11.json": "af247f37ff4b71b5",
 "data/detail/12.json": "4c34276aa589f887",
 "data/detail/13.json": "b178b36d956f0d04",
 "data/detail/14.json": "8dba3235c0974eeb",
 "data/detail/15.json": "f15f41ebe8c28757",
-"data/detail/16.json": "b8ad4fb3924facea",
-"data/detail/17.json": "b0119fd33e2c7f27",
+"data/detail/16.json": "fab53daf8630f13f",
+"data/detail/17.json": "adc7faf5bfc29c7e",
 "data/detail/18.json": "73179c2aea259877",
 "data/detail/19.json": "361b0156b364ec07",
 "data/detail/20.json": "2614ca076f4123d4",
@@ -118,15 +118,15 @@ const DETAIL_HASHES = {
 "data/detail/29.json": "6794db649e944be3",
 "data/detail/30.json": "270aceeb7d06da1a",
 "data/detail/31.json": "5c3895b1dd7082fe",
-"data/detail/32.json": "d2a939ce4883a6b7",
+"data/detail/32.json": "82fb655d74528780",
 "data/detail/33.json": "d9bec686b5a84872",
 "data/detail/34.json": "b572b078f98846be",
 "data/detail/35.json": "67e0bfd4c54d37da",
 "data/detail/36.json": "40674a56ac83369f",
 "data/detail/37.json": "97f05798aec26a28",
 "data/detail/38.json": "d29520c5959d7416",
-"data/detail/39.json": "7ceb83fdbac15ecd",
-"data/detail/40.json": "5d29a86d81381a70",
+"data/detail/39.json": "d355cb4e2a2ef614",
+"data/detail/40.json": "395ff310435c9e8c",
 "data/detail/41.json": "b33960cee6c3b4bd",
 "data/detail/42.json": "59b0920607ed36b8",
 "data/detail/43.json": "b15a20f7b4907897",
@@ -140,7 +140,7 @@ const DETAIL_HASHES = {
 "data/detail/51.json": "6ca0dd4644b5f027",
 "data/detail/52.json": "8728266f5ef802b4",
 "data/detail/53.json": "b0bed35fb34f24df",
-"data/detail/54.json": "a4d537e14bf556a4",
+"data/detail/54.json": "a8fccd5f2e1155c2",
 "data/detail/55.json": "00a3561a34a13643",
 "data/detail/56.json": "f00eac6f1587e9ec",
 "data/detail/57.json": "8b8a593f83a866d0",
