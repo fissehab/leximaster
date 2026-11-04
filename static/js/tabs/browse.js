@@ -153,13 +153,55 @@ function jumpTo(letter) {
 
 const narrow = () => matchMedia("(max-width: 900px)").matches;
 
+// On a phone the list and the entry share one page, so a word picked from the
+// list gets a history step of its own: the phone's Back (or a swipe from the
+// edge) returns to the list instead of leaving the Dictionary. history.state
+// marks the steps: { browse: "list" }, or { browse: "entry", step: true } for
+// an entry whose step before it is the list.
+const step = () => (history.state && history.state.browse) || "";
+function remember(id, via) {
+  const url = `#browse/${id}`;
+  if (via === "list" && narrow() && step() !== "entry") {
+    history.replaceState({ browse: "list" }, "", "#browse");
+    history.pushState({ browse: "entry", step: true }, "", url);
+  } else if (via === "link" && step() !== "entry") {
+    history.replaceState({ browse: "entry" }, "", url);   // the link made its own step
+  } else {
+    history.replaceState(history.state, "", url);
+  }
+}
+
+function showList() {
+  els.vlist.scrollIntoView({ block: "center", behavior: scrollBehavior() });
+}
+
+function backToList() {
+  const s = history.state || {};
+  if (s.browse === "entry" && s.step) { history.back(); return; }   // onRoute shows the list
+  if (narrow()) history.replaceState({ browse: "list" }, "", "#browse");
+  showList();
+}
+
+/** The address changed while the Dictionary is open: Back or Forward between
+ * the list and an entry stays on this page. False: render it again. */
+export function onRoute(param) {
+  if (!els.vlist || !els.vlist.isConnected) return false;
+  if (step() === "list") { showList(); return true; }
+  if (step() === "entry" && Number(param) === state.selectedId && detail && detail.id === state.selectedId) {
+    if (narrow()) els.detail.scrollIntoView({ block: "start" });
+    return true;
+  }
+  return false;
+}
+
 /** Show a word. `reveal`: picked by the user, so on a narrow screen (list
- * above, entry below) bring the entry into view. */
-async function select(id, { scroll = true, reveal = false, mark = "" } = {}) {
+ * above, entry below) bring the entry into view. `via`: "list" (picked from
+ * the list) or "link" (opened from a link to it). */
+async function select(id, { scroll = true, reveal = false, mark = "", via = "" } = {}) {
   if (!live()) return;   // Browse was left before this ran
   state.selectedId = id;
   detail = null;  // keyboard actions wait for the new entry
-  history.replaceState(null, "", `#browse/${id}`);
+  remember(id, via);
   const i = shown.findIndex(w => w.id === id);
   if (scroll && i >= 0) {
     const top = i * ROW_H, list = els.vlist;
@@ -172,8 +214,7 @@ async function select(id, { scroll = true, reveal = false, mark = "" } = {}) {
   if (state.selectedId !== id || !live()) return;
   detail = w;
   w.list_actions = listActions(w);
-  const back = h("button.btn.btn-quiet.back-to-list", { type: "button",
-    on: { click: () => els.vlist.scrollIntoView({ block: "center", behavior: scrollBehavior() }) } }, "← List");
+  const back = h("button.btn.btn-quiet.back-to-list", { type: "button", on: { click: backToList } }, "← List");
   els.detail.replaceChildren(back, renderEntry(w, { onChange: () => { syncCached(w); renderRows(); } }));
   els.detail.scrollTop = 0;
   if (reveal && narrow()) els.detail.scrollIntoView({ block: "start" });
@@ -257,7 +298,7 @@ export async function render(root, { param, view, live: isLive }) {
   els.search.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => { state.q = els.search.value; refreshList(); }, 60); });
   els.search.addEventListener("keydown", e => {
     if (e.key === "ArrowDown") { e.preventDefault(); els.search.blur(); move(state.selectedId ? 1 : 0); }
-    if (e.key === "Enter" && shown[0]) { e.preventDefault(); els.search.blur(); select(shown[0].id, { reveal: true, mark: shown[0].mention || "" }); }
+    if (e.key === "Enter" && shown[0]) { e.preventDefault(); els.search.blur(); select(shown[0].id, { reveal: true, mark: shown[0].mention || "", via: "list" }); }
     if (e.key === "Escape") els.search.blur();
   });
 
@@ -289,7 +330,7 @@ export async function render(root, { param, view, live: isLive }) {
   els.vlist = h("div.vlist", { "aria-label": "Words (use the arrow keys to move through them)", tabindex: "0" }, els.inner);
   let frame = 0;
   els.vlist.addEventListener("scroll", () => { if (!frame) frame = requestAnimationFrame(() => { frame = 0; renderRows(); }); }, { passive: true });
-  els.vlist.addEventListener("click", e => { const r = e.target.closest(".row"); if (r) select(Number(r.dataset.id), { scroll: false, reveal: true, mark: r.dataset.term || "" }); });
+  els.vlist.addEventListener("click", e => { const r = e.target.closest(".row"); if (r) select(Number(r.dataset.id), { scroll: false, reveal: true, mark: r.dataset.term || "", via: "list" }); });
   els.meta = h("div.list-meta.tnum");
   els.detail = h("div.detail-col");
 
@@ -330,7 +371,7 @@ export async function render(root, { param, view, live: isLive }) {
     const i = shown.findIndex(w => w.id === want);
     if (i >= 0) els.vlist.scrollTop = Math.max(0, i * ROW_H - 120);
     // Opened from a link (a related word, a search result): on a phone, show it.
-    select(want, { reveal: !!Number(param) });
+    select(want, { reveal: !!Number(param), via: Number(param) ? "link" : "" });
   }
   const onResize = () => renderRows();
   addEventListener("resize", onResize);

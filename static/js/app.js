@@ -144,6 +144,9 @@ document.addEventListener("visibilitychange", () => {
 async function route() {
   const { tab, param } = parseHash();
   if (applyWaitingUpdate(tab)) return;
+  // A screen can take a step back or forward within itself (the Dictionary's
+  // list and entry on a phone) without being rendered again.
+  if (current && current.id === tab && current.module.onRoute && current.module.onRoute(param)) return;
   const token = ++navToken;
   stopAudio();
   if (current && current.cleanup) { try { current.cleanup(); } catch (e) { console.error(e); } }
