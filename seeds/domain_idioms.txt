@@ -2388,3 +2388,12 @@ wire-to-wire
 with-it
 world-beater
 yellow-bellied
+
+# Everyday American set phrases and compounds ("low-income", "part-time",
+# "user-friendly"): the second tier of the hyphenated and informal terms from
+# Wiktionary, ranked by frequency in American books (Google Books Ngram,
+# 2015-2019) and reviewed by hand (November 2026).
+barn raising
+dollars and cents
+million-dollar
+town and gown

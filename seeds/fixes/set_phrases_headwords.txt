@@ -1,0 +1,68 @@
+# November 2026 set phrases: the usual American headword spelling (Merriam-Webster,
+# AP as tiebreaker), where the dictionary spelled it otherwise.
+attention-seeker | word | attention-seeker
+back-to-nature | word | back-to-nature
+boot-cut | word | boot-cut
+boy-crazy | word | boy-crazy
+bro-hug | word | bro hug
+carpet-bomb | word | carpet-bomb
+case-sensitive | word | case-sensitive
+clothing-optional | word | clothing-optional
+computer-literate | word | computer-literate
+difference-maker | word | difference-maker
+double-tap | word | double-tap
+drop-ship | word | drop-ship
+dry-clean | word | dry-clean
+dry-heave | word | dry-heave
+extra-large | word | extra-large
+extra-small | word | extra-small
+extra-virgin | word | extra-virgin
+fact-checker | word | fact-checker
+fast-fashion | word | fast fashion
+finger-paint | word | finger-paint
+first-year | word | first-year
+fly-fishing | word | fly-fishing
+fun-size | word | fun-size
+go-bag | word | go-bag
+hard-hit | word | hard-hit
+high-definition | word | high-definition
+live-action | word | live-action
+man-bun | word | man bun
+middle-schooler | word | middle schooler
+mind-reading | word | mind reading
+n-word | word | N-word
+night-night | word | night-night
+ob-gyn | word | ob-gyn
+off-label | word | off-label
+off-menu | word | off-menu
+on-air | word | on-air
+out-of-town | word | out-of-town
+park-and-ride | word | park-and-ride
+patty-cake | word | patty-cake
+peg-leg | word | peg leg
+plus-size | word | plus-size
+poli-sci | word | poli sci
+post-it | word | Post-it
+power-walk | word | power-walk
+realtor | word | Realtor
+roller-skate | word | roller-skate
+save-the-date | word | save-the-date
+school-age | word | school-age
+scratch-and-sniff | word | scratch-and-sniff
+seeing-eye-dog | word | Seeing Eye dog
+semi-truck | word | semi-truck
+shoot-'em-up | word | shoot-'em-up
+skinny-dip | word | skinny-dip
+strip-search | word | strip-search
+taste-test | word | taste test
+tee-hee | word | tee-hee
+third-grader | word | third grader
+tsk-tsk | word | tsk-tsk
+work-release | word | work-release
+high-risk | word | high-risk
+goose-step | word | goose step
+half-hour | word | half hour
+road-test | word | road test
+color-blindness | word | color blindness
+half-brother | word | half brother
+half-sibling | word | half sibling

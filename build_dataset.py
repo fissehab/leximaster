@@ -1542,23 +1542,33 @@ def word_brief(entry: dict) -> str:
 
 
 _IPA_VOWELS = set("aeiouyæɑɒɔəɛɜɝɚɪʊʌɐɨʉøœɤɯ")
+# Vowel pairs said as one syllable: diphthongs (also as other dictionaries
+# write them: ʌɪ, əɪ, ai) and r-colored glides ("fair" /fɛɚ/, "tire" /taɪɚ/).
+_DIPHTHONGS = {"aɪ", "aʊ", "eɪ", "oʊ", "ɔɪ", "əʊ", "ʌɪ", "əɪ", "ai", "au", "ei", "ou", "oi",
+               "ɛɚ", "ɪɚ", "ʊɚ", "ɔɚ", "ɑɚ", "ɪə", "ʊə", "eə"}
 
 
 def _ipa_stress_index(ipa: str) -> int | None:
     """Syllable number (0-based) carrying primary stress in a one-word IPA
-    transcription: the vowel groups (a diphthong is one) before the ˈ mark."""
+    transcription: the vowels before the ˈ mark, a diphthong (aɪ, aʊ, eɪ,
+    oʊ, ɔɪ, _DIPHTHONGS) counting once. Other vowels side by side are two syllables:
+    "preapproval" /ˌpɹiəˈpɹuvəl/ is pree-uh-PROO-vul."""
     body = ipa.strip("/[] ")
     if " " in body:
         return None
     if "ˈ" not in body:
         return 0
     before = body.split("ˈ", 1)[0]
-    groups, prev = 0, False
+    groups, prev, paired = 0, "", False
     for ch in before:
         is_v = ch in _IPA_VOWELS or ch == "\u0329"   # syllabic consonant mark
-        if is_v and not prev:
+        # A vowel already ending a diphthong pairs again only with \u025a ("tire"):
+        # /\u02ccp\u0279ida\u026a\u0259\u02c8bitiz/ is pree-dye-uh-BEE-teez.
+        joins = is_v and prev and (prev + ch) in _DIPHTHONGS and (not paired or ch == "\u025a")
+        if is_v and not joins:
             groups += 1
-        prev = is_v
+        paired = bool(joins)
+        prev = ch if is_v else ""
     return groups
 
 
@@ -2751,6 +2761,10 @@ def phonetic_needs_study_ipa(w: dict) -> bool:
     p = w["phonetic"]
     if not p.strip("/[] ") or re.search(r"(^|[\s/\[])-|-($|[\s/\]])", p):
         return True  # empty, or part of the word only: /æ- -d/ for "astonished"
+    if any(x.count("ˈ") > 1 for x in p.strip("/[]").split()) or re.search(r"\([ˈˌ]\)", p):
+        return True  # two main stresses in one word (/ˈsiˈsfaɪɚ/), or an optional "(ˌ)"
+    if len(re.sub(r"[^a-z]", "", w["word"].lower())) >= 4 and len(re.sub(r"[/\[\]ˈˌ.\s()‿-]", "", p)) < 2:
+        return True  # a fragment: /ɔ/ for "dawg"
     word = w["word"].lower()
     if re.search(r"(er|ar|or|our|ure|ere|ore|ire|ear|eer|air)$", word) and re.search(r"[əʊɪɛ][/\]]$", p):
         return True  # non-rhotic ending: "amber" /ˈæm.bə/
@@ -3188,9 +3202,11 @@ def hide_senses(words: list[dict]) -> None:
         long_ids = [i for i in ids if len(i.split()) > 6]
 
         def hidden(definition: str) -> bool:
-            words = re.sub(r"[^a-z ]+", " ", definition.lower()).split()
-            return " ".join(words[:6]) in ids or any(
-                words[:len(i.split())] == i.split() for i in long_ids)
+            for text in {definition, EDITOR_NOTE_RE.sub(" ", definition)}:  # id with or without a note
+                words = re.sub(r"[^a-z ]+", " ", text.lower()).split()
+                if " ".join(words[:6]) in ids or any(words[:len(i.split())] == i.split() for i in long_ids):
+                    return True
+            return False
         kept = [{**m, "senses": [sn for sn in m["senses"] if not hidden(sn["definition"])]}
                 for m in w["meanings"]]
         kept = [m for m in kept if m["senses"]]
@@ -3206,8 +3222,35 @@ def add_sense_examples(words: list[dict]) -> None:
         got = (cache.get(w["key"]) or {}).get("examples") or {}
         for m in w["meanings"]:
             for sn in m["senses"]:
-                if not sn.get("example") and got.get(sense_key(sn["definition"])):
-                    sn["example"] = got[sense_key(sn["definition"])]
+                for sid in (sense_key(sn["definition"]), sense_key(EDITOR_NOTE_RE.sub(" ", sn["definition"]))):
+                    if not sn.get("example") and got.get(sid):
+                        sn["example"] = got[sid]
+
+
+# Wiktionary editors' notes left in a definition. Senses they doubt ("Can we
+# verify this sense?", "Should we delete this sense?") are left out when the
+# entry has something else to show; the other notes are only removed. Done
+# last, after senses are matched to their examples and hide lists by text.
+DOUBTED_SENSE_RE = re.compile(r"\((?:Can we verify this sense|Should we delete this (?:redundant )?sense)[^()]*\?\)", re.I)
+EDITOR_NOTE_RE = re.compile(r"\s*\((?:Can we verify this sense|Should we delete this (?:redundant )?sense"
+                            r"|Can we (?:add an example for|clean up) this sense|Should we move, merge or split this sense"
+                            r"|Can we find and add a quotation)(?:[^()]|\([^()]*\))*\)\s*", re.I)
+
+
+def drop_editor_notes(words: list[dict]) -> None:
+    for w in words:
+        if not any(EDITOR_NOTE_RE.search(sn["definition"]) for m in w["meanings"] for sn in m["senses"]):
+            continue
+        has_core = bool(((w.get("nuance") or {}).get("core") or {}).get("definition"))
+        clean = [sn for m in w["meanings"] for sn in m["senses"] if not DOUBTED_SENSE_RE.search(sn["definition"])]
+        for m in w["meanings"]:
+            if clean or has_core:
+                m["senses"] = [sn for sn in m["senses"] if not DOUBTED_SENSE_RE.search(sn["definition"])]
+            for sn in m["senses"]:
+                if EDITOR_NOTE_RE.search(sn["definition"]):
+                    sn["definition"] = re.sub(r"\s+([.,;:])", r"\1", EDITOR_NOTE_RE.sub(" ", sn["definition"])).strip()
+        w["meanings"] = [m for m in w["meanings"] if m["senses"]]
+        normalize_display(w)  # a cleaned sense may now repeat the learner definition
 
 
 def add_forms(words: list[dict]) -> None:
@@ -3462,6 +3505,7 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     hide_senses(words)
     add_forms(words)
     add_sense_examples(words)
+    drop_editor_notes(words)
     for w in words:  # a hand-fixed "(archaic) …" definition gets its label too
         for m in w["meanings"]:
             for sn in m["senses"]:
