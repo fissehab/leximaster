@@ -2,6 +2,8 @@
 and every word the app gives a recording has one that is not on the list."""
 import json
 
+import pytest
+
 import build_dataset as B
 
 
@@ -24,10 +26,11 @@ def test_rejected_recordings_read_the_seed_lists(tmp_path, monkeypatch):
     assert not B.is_rejected(r, url + "en-us-controller.oga", "controller")
 
 
+@pytest.mark.skipif(not B.WORDS_JSON.exists(), reason="no dataset")
 def test_no_word_plays_a_rejected_recording():
     rejected = B.rejected_recordings()
     assert "en-us-come.ogg" in rejected
-    words = json.loads((B.DATA / "words.json").read_text(encoding="utf-8"))["words"]
+    words = json.loads(B.WORDS_JSON.read_text(encoding="utf-8"))["words"]
     used = {w["key"]: w["audio"]["source_url"] for w in words if w.get("audio") and w["audio"].get("source_url")}
     assert not [k for k, url in used.items() if B.is_rejected(rejected, url, k)
                 or B.lingua_libre_speaker(url) in B.NOT_US_SPEAKERS]
