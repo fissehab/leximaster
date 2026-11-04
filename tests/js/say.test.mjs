@@ -68,7 +68,7 @@ test("a word's panel opens on its hardest sound", () => {
 test("cards, pairs and clips line up", () => {
   for (const c of CARDS) {
     for (const p of c.parts || [c]) {
-      assert.ok(SOUNDS[p.sym] && LABELS[p.sym] && PRIORITY.has(p.sym) || ["i", "ɛ", "ɑ", "u"].includes(p.sym), p.sym);
+      assert.ok(SOUNDS[p.sym] && LABELS[p.sym] && PRIORITY.has(p.sym) || ["i", "ɛ", "ɑ", "u", "ɔ", "oʊ"].includes(p.sym), p.sym);
       assert.ok(p.short && p.full && p.try.length, p.sym);
     }
     for (const d of c.drill || []) {
