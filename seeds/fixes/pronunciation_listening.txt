@@ -1,0 +1,10 @@
+# IPA the November 2026 listening check found wrong (see seeds/audio_reject).
+# CMU pieced "hottie" together as "hot" + "tie".
+hottie | phonetic | /ˈhɑɾi/
+# Wiktionary's /ˈdjɛʃəl/ is Scottish; Americans (Merriam-Webster, the recording) say DEE-zuhl.
+deasil | phonetic | /ˈdizəl/
+deasil | nuance.pronunciation.ipa | /ˈdizəl/
+deasil | nuance.pronunciation.respelling | DEE-zuhl
+deasil | nuance.pronunciation.tip | The stress is on the first syllable, DEE, with the long ee of "see"; the s sounds like a z, so the word rhymes with diesel. The ending is a weak, unstressed uhl.
+# Letter names need their own stress marks, or speech runs them together ("yes-pee").
+esp | phonetic | /ˌiˌɛsˈpi/

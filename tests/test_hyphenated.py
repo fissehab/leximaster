@@ -61,3 +61,11 @@ def test_hyphenated_terms_are_in_the_lexicon():
         assert ipa is None or words[key]["phonetic"] == ipa, (key, words[key]["phonetic"])
     assert words["heck"]["synonyms"] == ["darn", "gosh"]
     assert "doing-nothing" in words and "non-nonsense" not in words
+
+
+def test_partial_ipa_counts_as_missing():
+    # Wiktionary's /æ- -d/ only shows how "astonished" differs from "astonish".
+    w = {"key": "astonished", "word": "astonished", "phonetic": "/æ- -d/", "phonetic_source": "wiktionary",
+         "nuance": {"pronunciation": {"ipa": "/əˈstɑnɪʃt/", "respelling": "uh-STAH-nisht"}}}
+    assert B.polish_ipa(w) == "study" and w["phonetic"] == "/əˈstɑnɪʃt/"
+    assert not B.phonetic_needs_study_ipa({"word": "well-being", "phonetic": "/ˌwɛlˈbiɪŋ/", "phonetic_source": "manual"})
