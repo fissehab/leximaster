@@ -32,6 +32,7 @@ export const UI = {
     "θ-s": "th or s", "θ-t": "th or t", "ð-d": "th or d", "v-b": "v or b", "v-w": "v or w", "f-p": "f or p",
     "p-b": "p or b", "ɹ-l": "r or l", "ʃ-tʃ": "sh or ch", "ʃ-s": "sh or s", "z-s": "z or s", "ŋ-n": "ng or n",
     "ɪ-i": "i or ee", "æ-ɛ": "a or e", "ʌ-ɑ": "u or o", "ɝ-ʌ": "er or u",
+    "ɑ-æ": "o or a", "ɔ-oʊ": "aw or oh", "ɑ-oʊ": "o or oh",
   },
   game: "Listen and choose",
   gameSub: "You hear a word. Pick the word you heard. Some sounds are very close, like ship and sheep. " +
@@ -111,8 +112,12 @@ export const CARDS = [
     compare: [["bad", "bed"], ["man", "men"], ["bat", "bet"]], drill: ["æ-ɛ"] },
   { id: "u-o", vowels: true, parts: [
     { sym: "ʌ", short: "Open your mouth a little. Relax. Make it short.", full: "Open your mouth a little. Relax your lips. Keep your tongue in the middle. Make the sound short.", try: ["cup", "but", "luck"] },
-    { sym: "ɑ", short: "Open your mouth wide. Do not round your lips.", full: "Open your mouth wide. Drop your jaw. Keep your tongue low and back. Do not round your lips.", try: ["hot", "rock", "lock"] }],
-    compare: [["cut", "cot"], ["luck", "lock"]], drill: ["ʌ-ɑ"] },
+    { sym: "ɑ", short: "Open your mouth wide. Do not round your lips.", full: "Open your mouth wide. Drop your jaw. Keep your tongue low and back. Do not round your lips. The o in hot is this sound. It is not the a in hat: for hat, your tongue is forward and you smile a little.", try: ["hot", "rock", "lock"] }],
+    compare: [["cut", "cot"], ["luck", "lock"], ["hot", "hat"], ["lock", "lack"]], drill: ["ʌ-ɑ", "ɑ-æ"] },
+  { id: "aw-oh", vowels: true, parts: [
+    { sym: "ɔ", short: "Open your mouth. Round your lips a little. Keep it still.", full: "Open your mouth, a little less than for the o in hot. Round your lips a little. Keep your tongue low and back. The sound does not move. Many Americans say law just like lah. Both are fine.", try: ["law", "saw", "talk"] },
+    { sym: "oʊ", short: "Round lips, then make them smaller. The sound moves.", full: "Start with round lips. Then make your lips smaller and rounder, like for oo. The sound moves: o, then oo. Low moves. Law does not move.", try: ["low", "boat", "note"] }],
+    compare: [["law", "low"], ["saw", "so"], ["not", "note"], ["hop", "hope"]], drill: ["ɔ-oʊ", "ɑ-oʊ"] },
   { id: "oo", vowels: true, parts: [
     { sym: "u", short: "Small round lips. Make it long.", full: "Make your lips small and round. Push them forward. Make the sound long.", try: ["blue", "school", "soon"] },
     { sym: "ʊ", short: "Lips a little round. Relaxed. Short.", full: "Round your lips a little. Keep them relaxed. Make the sound short.", try: ["book", "good", "put"] }] },
@@ -137,6 +142,9 @@ export const PAIRS = {
           ["bag", "beg"], ["gas", "guess"], ["dad", "dead"], ["latter", "letter"]],
   "ʌ-ɑ": [["cut", "cot"], ["luck", "lock"], ["shut", "shot"], ["bus", "boss"], ["stuck", "stock"], ["nut", "not"],
           ["hut", "hot"], ["duck", "dock"], ["rub", "rob"], ["color", "collar"]],
+  "ɑ-æ": [["hot", "hat"], ["top", "tap"], ["mop", "map"], ["pot", "pat"], ["rock", "rack"], ["sock", "sack"], ["lock", "lack"]],
+  "ɔ-oʊ": [["law", "low"], ["saw", "so"]],
+  "ɑ-oʊ": [["not", "note"], ["hop", "hope"], ["rod", "road"]],
   "ʃ-tʃ": [["ship", "chip"], ["wash", "watch"], ["wish", "witch"], ["sheet", "cheat"], ["dish", "ditch"], ["shop", "chop"],
            ["mash", "match"], ["marsh", "march"]],
   "ʃ-s": [["sheet", "seat"], ["show", "so"], ["short", "sort"], ["shame", "same"], ["shell", "sell"], ["shine", "sign"],
