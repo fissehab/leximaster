@@ -127,3 +127,7 @@ LL-Q1860 (eng)-Wodencafe-do.wav | fits the IPA poorly (score -2.14; heard "Do");
 en-us-far.ogg | fits the IPA poorly (score -1.84; heard "Far"); ll-q1860 (eng)-wodencafe-far.wav fits it | far
 LL-Q1860 (eng)-Wodencafe-full.wav | fits the IPA poorly (score -1.52; heard "full"); ll-q1860 (eng)-naomi persephone amethyst (naomiamethyst)-full.wav fits it | full
 En-us-rule.ogg | fits the IPA poorly (score -1.24; heard "Rule"); ll-q1860 (eng)-wodencafe-rule.wav fits it | rule
+#
+# November 2026 set phrases: their new recordings checked the same way.
+en-us-inlandnorth-ouch.ogg | the final "ch" is cut off: heard as "out"
+en-us-yin-yang.ogg | says "yin yang", not the headword "yin and yang" | yin-and-yang

@@ -69,3 +69,36 @@ def test_partial_ipa_counts_as_missing():
          "nuance": {"pronunciation": {"ipa": "/əˈstɑnɪʃt/", "respelling": "uh-STAH-nisht"}}}
     assert B.polish_ipa(w) == "study" and w["phonetic"] == "/əˈstɑnɪʃt/"
     assert not B.phonetic_needs_study_ipa({"word": "well-being", "phonetic": "/ˌwɛlˈbiɪŋ/", "phonetic_source": "manual"})
+
+
+def test_wiktionary_editor_notes_are_not_shown():
+    sense = lambda d: {"definition": d, "example": ""}
+    w = {"key": "accompany", "word": "accompany", "nuance": None, "meanings": [{"pos": "verb", "senses": [
+        sense("To go with as a companion."), sense("To cohabit (with). (Can we add an example for this sense?)"),
+        sense("(Can we verify this sense?) To be found at the same time."),
+        sense('Totally objectionable (Can we add an example for this sense? (Is it different from "vile"?)).')]}]}
+    B.drop_editor_notes([w])
+    assert [s["definition"] for s in w["meanings"][0]["senses"]] == [
+        "To go with as a companion.", "To cohabit (with).", "Totally objectionable."]
+    # A doubted sense that is all the entry has stays, without the note.
+    w = {"key": "x", "word": "x", "nuance": None, "meanings": [{"pos": "noun", "senses": [sense("(Can we verify this sense?) A thing.")]}]}
+    B.drop_editor_notes([w])
+    assert w["meanings"][0]["senses"][0]["definition"] == "A thing."
+
+
+def test_vowels_side_by_side_are_two_syllables_unless_a_diphthong():
+    # pree-uh-PROO-vul: i and ə are two syllables; aɪ, oʊ and r-colored glides are one.
+    assert B.respelling_matches_ipa("pree-uh-PROO-vul", "/ˌpɹiəˈpɹuvəl/")
+    assert B.respelling_matches_ipa("pree-dye-uh-BEE-teez", "/ˌpɹidaɪəˈbitiz/")
+    assert B.respelling_matches_ipa("ree-ih-LEK-shun", "/ˌɹiɪˈlɛkʃən/")
+    assert B.respelling_matches_ipa("koh-in-SIDE", "/ˌkoʊɪnˈsaɪd/")
+    assert B.respelling_matches_ipa("rih-tire-EE", "/ɹɪˌtaɪɚˈi/")
+    assert B.respelling_matches_ipa("bye-oh-dye-VURS", "/ˌbaɪoʊdaɪˈvɝs/")
+    assert not B.respelling_matches_ipa("pree-UH-proo-vul", "/ˌpɹiəˈpɹuvəl/")
+
+
+def test_broken_dictionary_ipa_takes_the_study_ipa():
+    for p in ["/ˈsiˈsfaɪɚ/", "/ˈkoʊ(ˌ)faʊndɚ/"]:
+        assert B.phonetic_needs_study_ipa({"word": "ceasefire", "phonetic": p, "phonetic_source": "wiktionary"})
+    assert B.phonetic_needs_study_ipa({"word": "dawg", "phonetic": "/ɔ/", "phonetic_source": "wiktionary"})
+    assert not B.phonetic_needs_study_ipa({"word": "awe", "phonetic": "/ɔ/", "phonetic_source": "wiktionary"})

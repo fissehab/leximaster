@@ -1,0 +1,221 @@
+# November 2026 set phrases: senior meaning and usage review (definitions, examples,
+# usage notes, and synonym/antonym lists that feed quiz answers).
+
+# Review fixes for entries_part0.jsonl (331 entries, able-bodied .. goalie).
+# Format: key | field.path | value  (values starting with [ or { are JSON)
+# Mostly synonym/antonym lists that would teach wrong, crude, British or obscure quiz answers.
+able-bodied | synonyms | ["fit","healthy","strong","physically fit"]
+above-the-fold | synonyms | []
+above-the-fold | antonyms | ["below the fold"]
+after-party | synonyms | []
+age-old | synonyms | ["ancient","long-standing","time-honored","very old"]
+all-in-one | synonyms | ["multifunction","two-in-one"]
+all-purpose | synonyms | ["general-purpose","multipurpose","versatile"]
+all-purpose | antonyms | ["specialized","single-purpose","special-purpose"]
+alum | synonyms | ["graduate","alumnus","alumna"]
+attention-seeking | synonyms | ["showy","dramatic","attention-grabbing"]
+babysit | synonyms | ["watch","look after","care for"]
+bingo | synonyms | []
+blah | synonyms | ["dull","boring","bland","meh"]
+bone-in | antonyms | ["boneless"]
+boo-boo | synonyms | ["mistake","slip-up","goof","scrape"]
+bootleg | synonyms | ["illegal","pirated","counterfeit","knockoff"]
+bromance | synonyms | []
+budge | synonyms | ["move","shift","give way"]
+catfish | synonyms | []
+character-building | synonyms | []
+cinder-block | synonyms | ["concrete block","cement block"]
+closed-toe | synonyms | ["closed-toed"]
+coin-operated | synonyms | ["coin-op"]
+couch-surfing | synonyms | []
+cross-dresser | synonyms | []
+cross-dresser | nuance.usage_note | A descriptive term about clothing, not sexual orientation or gender identity. It is different from "transgender." The older word "transvestite" is now often considered offensive. Use "cross-dresser" respectfully, and only if a person describes themselves this way.
+cross-legged | synonyms | ["crisscross applesauce"]
+cross-reference | synonyms | ["cross-check"]
+cross-stitch | synonyms | []
+custom-built | synonyms | ["custom-made","made-to-order"]
+dab | synonyms | ["pat","touch","blot"]
+day-glo | synonyms | ["neon","fluorescent","bright"]
+dealmaker | antonyms | []
+dishwasher-safe | synonyms | []
+double-digit | synonyms | ["two-digit"]
+dweeb | synonyms | ["nerd","dork","geek"]
+e-bike | synonyms | ["electric bike"]
+extramarital | synonyms | ["adulterous"]
+fab | synonyms | ["fabulous","great","awesome"]
+far-left | synonyms | ["extreme left","radical left"]
+fashion-forward | synonyms | ["trendsetting","cutting-edge"]
+first-degree | synonyms | []
+first-time | antonyms | []
+flag-bearer | synonyms | ["standard-bearer"]
+four-leaf-clover | synonyms | []
+four-leaf-clover | nuance.examples.analytical | Only about one clover in every five thousand is a four-leaf clover.
+four-wheel-drive | synonyms | ["4WD","four-by-four"]
+full-blooded | synonyms | ["purebred","thoroughbred"]
+full-grown | synonyms | ["fully grown","grown","adult","mature"]
+full-timer | synonyms | []
+ghetto | synonyms | []
+girly | synonyms | ["feminine","girlish"]
+girly | antonyms | ["masculine","tomboyish"]
+glam | synonyms | ["glamorous","glitzy"]
+
+# LexiMaster review, part 1 (331 entries): content fixes.
+# Format: key | field.path | value  (values starting with [ or { are JSON).
+# Mostly bad quiz synonyms/antonyms (crude, British, wrong sense), plus a few definition/example/note fixes.
+goon | synonyms | ["thug", "henchman", "enforcer"]
+half-caf | nuance.core.definition | Of coffee: made with half regular coffee and half decaf, so it has about half the usual caffeine.
+half-century | nuance.examples.everyday | My grandparents have been married for more than a half-century.
+half-century | nuance.usage_note | Used in news and speeches about anniversaries and history: "for half a century," "a half-century of service." Both "half a century" and "a half-century" are common.
+hang-gliding | nuance.examples.professional | The instructor runs hang-gliding lessons on weekends from April to October.
+heartland | nuance.etymology | From "heart" (center) + "land".
+hella | synonyms | ["super", "really", "wicked"]
+hickey | synonyms | ["love bite"]
+hokey-pokey | synonyms | []
+house-sit | synonyms | []
+ish | synonyms | ["somewhat", "sort of", "kind of", "more or less", "roughly"]
+jock | synonyms | ["athlete"]
+ka-ching | nuance.usage_note | Americans say 'Ka-ching!' jokingly when money comes in: a big sale, a bonus, a lucky win. It can also mock someone's greed: 'They doubled the price, ka-ching.' Also spelled 'cha-ching'. Use it only casually.
+kingpin | synonyms | ["crime boss", "ringleader"]
+left-winger | synonyms | ["leftist", "lefty"]
+left-winger | antonyms | ["right-winger", "rightist"]
+lefty | synonyms | ["left-hander", "southpaw"]
+lefty | antonyms | ["righty"]
+lesser-known | synonyms | ["little-known", "obscure"]
+lip-sync | nuance.common_mistakes | ["Spelling it \"lip-sink\".", "Confusing it with \"lip-read,\" which means understanding speech by watching someone's lips."]
+low-budget | antonyms | ["big-budget"]
+low-lying | antonyms | []
+macho | synonyms | []
+mail-in | nuance.distinctions | [{"vs": "absentee ballot", "note": "An \"absentee ballot\" is a mail ballot for people away from home; \"mail-in ballot\" is broader."}, {"vs": "online", "note": "\"Online\" forms are sent over the internet; \"mail-in\" forms are sent through the mail."}]
+minimum-security | antonyms | ["maximum-security"]
+mixed-race | synonyms | ["biracial", "multiracial"]
+mojo | synonyms | ["confidence", "charisma", "magic touch"]
+mother-in-law | synonyms | ["mom-in-law"]
+mother-tongue | synonyms | ["native language", "first language", "native tongue"]
+mother-tongue | antonyms | []
+multiplayer | antonyms | ["single-player"]
+murder-suicide | synonyms | []
+nab | synonyms | ["catch", "grab", "arrest"]
+nice-looking | antonyms | ["unattractive"]
+nuh-uh | antonyms | ["uh-huh", "yuh-huh"]
+nuke | synonyms | ["nuclear weapon", "atomic bomb"]
+nuke | nuance.common_mistakes | ["Pronouncing it \"nyook\": in American English it rhymes with \"Luke.\"", "Using it in formal writing about weapons: say \"nuclear weapon.\""]
+open-faced | synonyms | ["open-face"]
+part-timer | synonyms | []
+point-and-shoot | synonyms | []
+porta-potty | synonyms | ["porta-john", "portable toilet"]
+
+# LexiMaster review part 2 (entries power-walk .. zombie): content fixes.
+# Format: key | field.path | value  (values starting with [ or { are JSON).
+# Mostly synonym/antonym lists that were wrong, British, crude or loaded (they feed quiz answers),
+# plus a few usage notes, collocations, a register and doubtful etymologies (an empty value means set to "").
+pregame | synonyms | []
+pro-choice | synonyms | ["abortion-rights"]
+pro-choice | antonyms | ["pro-life", "anti-abortion"]
+pro-life | antonyms | ["pro-choice"]
+public-spirited | synonyms | ["civic-minded", "community-minded"]
+putt-putt | synonyms | ["miniature golf", "mini golf"]
+quick-thinking | synonyms | ["fast-thinking", "alert"]
+read-aloud | synonyms | []
+realtor | synonyms | ["real estate agent", "agent"]
+redhead | synonyms | []
+reverse-engineer | synonyms | []
+right-winger | synonyms | ["conservative", "rightist"]
+right-winger | antonyms | ["left-winger", "leftist", "liberal"]
+rizz | synonyms | ["charm", "charisma", "game"]
+self-appointed | synonyms | ["self-proclaimed", "self-styled"]
+self-explanatory | antonyms | ["confusing", "unclear"]
+self-proclaimed | synonyms | ["self-styled", "self-appointed"]
+self-publish | antonyms | []
+self-serve | synonyms | ["self-service"]
+self-harm | synonyms | ["self-injury"]
+semifinal | synonyms | ["semi"]
+semisweet | synonyms | []
+sidesaddle | synonyms | []
+sis | synonyms | ["sister"]
+skintight | synonyms | ["form-fitting", "body-hugging"]
+smiley | synonyms | ["cheerful", "smiling"]
+soon-to-be | synonyms | ["future", "upcoming"]
+spat | synonyms | ["tiff", "squabble"]
+stainless-steel | synonyms | ["stainless"]
+stock-still | synonyms | ["motionless", "unmoving"]
+sweetie-pie | synonyms | ["sweetie", "sweetheart", "honey", "darling"]
+ta-da | synonyms | ["voilà", "presto"]
+tech | synonyms | ["technology"]
+three-in-one | synonyms | ["3-in-1"]
+tie-dye | synonyms | []
+tightwad | synonyms | ["cheapskate", "miser", "penny-pincher"]
+time-consuming | synonyms | ["time-intensive"]
+tractor-trailer | synonyms | ["semi", "big rig", "eighteen-wheeler", "semi-truck"]
+vice-president | synonyms | ["VP", "veep"]
+vote-by-mail | synonyms | ["mail-in voting"]
+water-repellent | synonyms | ["water-resistant"]
+wolf-whistle | synonyms | ["catcall"]
+year-over-year | synonyms | ["YoY"]
+yuppie | synonyms | []
+zombie | synonyms | ["walker", "living dead", "undead"]
+stan | nuance.register | ["informal"]
+teeny | nuance.etymology | 
+varsity | nuance.etymology | A shortened form of "university"; American schools later used it for their top sports teams.
+toon | nuance.etymology | Clipping of "cartoon."
+thingamajig | nuance.usage_note | Used in casual conversation when a word escapes you: "Hand me that thingamajig on the counter." It sounds playful and friendly. Similar playful words include "thingamabob," "whatchamacallit" and "thingy."
+premed | nuance.usage_note | A common US college word: "She's premed," "premed classes." It is not usually a major itself; students major in biology or chemistry while being premed. Also spelled "pre-med." In hospitals, "premed" can also mean medicine given to a patient before surgery.
+stress-free | nuance.usage_note | Very common in ads and everyday talk: stress-free travel, a stress-free move, a stress-free vacation. It often promises more than it delivers, so people use it with a little humor too. Hyphenate before a noun; after a verb, "stress-free" with the hyphen is still usual.
+stress-free | nuance.collocations | ["stress-free vacation", "stress-free move", "stress-free environment", "completely stress-free", "a stress-free way to", "stress-free travel"]
+
+# Reviewer hid the main sense of extracurricular for its British example; the example is fixed instead.
+extracurricular | meanings.0.senses.0.example | The students enjoy a number of extracurricular activities on weekends.
+
+# Spelling remarks and examples follow the reviewed headwords.
+case-sensitive | nuance.common_mistakes | ["Thinking \"case\" means a legal case or a container here.", "Writing it without the hyphen (\"case sensitive\"); write \"case-sensitive.\""]
+dry-heave | nuance.usage_note | Used when talking about sickness, bad smells or hangovers: "The smell made me dry-heave." People also talk about "the dry heaves," a noun with no hyphen. The verb is written with a hyphen: dry-heave.
+dry-heave | nuance.examples.everyday | The smell of the garbage truck almost made me dry-heave.
+dry-heave | nuance.examples.professional | The nurse said dry-heaving after surgery is common and usually passes.
+dry-heave | nuance.examples.analytical | Morning sickness can cause dry-heaving even when the stomach is empty.
+dry-heave | nuance.collocations | ["start to dry-heave", "the dry heaves", "made me dry-heave", "dry-heave from the smell"]
+fast-fashion | nuance.examples.analytical | Critics say fast fashion encourages people to treat clothes as disposable.
+middle-schooler | nuance.usage_note | Common in the US among parents, teachers and news. Middle school comes between elementary school and high school. Also written "middle-schooler".
+middle-schooler | nuance.common_mistakes | ["Hyphenating either part: she is in \"middle school\" and she is a \"middle schooler\", with no hyphen.", "Stressing SCHOOL; stress MID."]
+middle-schooler | nuance.pronunciation.tip | Like "middle school", stress MID: MIDDLE schooler. The d in "middle" sounds soft.
+middle-schooler | nuance.examples.everyday | My middle schooler needs a new backpack before school starts.
+middle-schooler | nuance.examples.professional | The museum runs a free science camp for middle schoolers.
+middle-schooler | nuance.examples.analytical | Surveys show that many middle schoolers already have a smartphone.
+middle-schooler | nuance.collocations | ["a middle schooler", "middle schoolers and high schoolers", "my middle schooler", "a group of middle schoolers"]
+poli-sci | nuance.usage_note | Used by students and professors in casual talk: "I'm majoring in poli sci." As a noun it is two words; before another noun it is usually hyphenated: "a poli-sci major." In formal writing, such as a resume, write "political science." Also spelled "polisci."
+poli-sci | nuance.examples.analytical | Students who major in poli sci often take courses in statistics and economics as well.
+poli-sci | nuance.collocations | ["poli-sci major", "poli-sci class", "poli-sci professor", "poli-sci department", "a degree in poli sci"]
+third-grader | nuance.usage_note | Used by parents, teachers and news reports: "My son is a third grader." Americans name school years by number (first grade to twelfth grade), so you'll hear first grader, fifth grader and so on. It can also be used jokingly: "Even a third grader could do this."
+third-grader | nuance.common_mistakes | ["Saying \"a third-class student\" or \"third-year student\" for a child; Americans say \"third grader.\"", "Writing \"third grader\" and \"third-grader\" in the same text: both appear, but keep one style."]
+third-grader | nuance.pronunciation.tip | Stress THIRD: a THIRD grader. Both th sounds are soft, as in "think"; "third" rhymes with "bird."
+third-grader | nuance.examples.everyday | My third grader just learned her multiplication tables.
+third-grader | nuance.examples.professional | The school's reading program aims to have every third grader reading at grade level.
+third-grader | nuance.examples.analytical | Studies show that a third grader's reading level strongly predicts high school success.
+third-grader | nuance.collocations | ["a third grader at", "third-grade teacher", "third-grade class", "my third grader", "a group of third graders"]
+high-risk | nuance.examples.professional | The bank turned down the high-risk loan because the business had no credit history.
+goose-step | nuance.usage_note | Used in history and news about military parades, for example in North Korea or Nazi-era Germany. Figuratively, it suggests people obeying without thinking: "goose-stepping behind their leader." The noun is two words (the goose step), but the verb is hyphenated (soldiers goose-step), as is the form before a noun (a goose-step parade).
+goose-step | nuance.pronunciation.tip | Stress GOOSE: GOOSE step. Say "goose" with an s, not a z sound.
+goose-step | nuance.examples.professional | The news showed troops doing the goose step in a military parade in Pyongyang.
+half-hour | nuance.core.definition | A period of thirty minutes; also, the time thirty minutes after any hour, as in "on the half hour."
+half-hour | nuance.usage_note | Americans say both "a half hour" and "half an hour." Common in schedules and TV: "a half-hour show," "buses leave on the half hour." Hyphenate it before a noun: "a half-hour break."
+half-hour | nuance.common_mistakes | ["Pronouncing the h in \"hour\".", "Saying \"an half hour\"; say \"a half hour\" because \"half\" starts with an h sound."]
+half-hour | nuance.pronunciation.tip | Main stress on HOUR. The h of "hour" is silent, so it is "haf OW-er," and you say "a half hour," not "an."
+half-hour | nuance.examples.everyday | I'll meet you at the park in a half hour.
+half-hour | nuance.collocations | ["a half-hour break", "every half hour", "on the half hour", "a half-hour show", "a half-hour drive", "within a half hour"]
+color-blindness | nuance.common_mistakes | ["Thinking people with color blindness see only black and white; most just confuse certain colors.", "British spelling \"colour\"; Americans write \"color.\""]
+color-blindness | nuance.examples.everyday | My son has color blindness, so he mixes up red and green crayons.
+color-blindness | nuance.examples.professional | Designers should not rely only on color because of color blindness in users.
+color-blindness | nuance.examples.analytical | Red-green color blindness is much more common in men than in women.
+color-blindness | nuance.collocations | ["red-green color blindness", "test for color blindness", "mild color blindness", "inherited color blindness"]
+half-brother | nuance.usage_note | Used to explain family relationships: "He's my half brother; we have the same dad." Many families just say "brother." Also written "half-brother." Don't confuse it with "stepbrother," who shares no parent.
+half-brother | nuance.common_mistakes | ["Calling a stepbrother a half brother; a half brother shares one parent with you.", "Pronouncing the l in \"half\"."]
+half-brother | nuance.pronunciation.tip | Stress HALF: HALF brother. The l is silent, and "th" is voiced as in "the."
+half-brother | nuance.examples.everyday | My half brother and I have the same mom but different dads.
+half-brother | nuance.examples.professional | The court contacted the deceased man's half brother as his closest relative.
+half-brother | nuance.examples.analytical | DNA tests have helped many Americans discover a half brother they never knew about.
+half-brother | nuance.collocations | ["older half brother", "younger half brother", "half brother on my father's side", "half brothers and sisters"]
+half-sibling | nuance.usage_note | A neutral word that covers both half brothers and half sisters. It is more common in writing, medicine and law ("half siblings share about 25% of their DNA") than in everyday talk, where people say "my half sister" or just "my sister." Also written "half-sibling."
+half-sibling | nuance.common_mistakes | ["Confusing a half sibling with a stepsibling, who shares no parent.", "Pronouncing the l in \"half\"."]
+half-sibling | nuance.pronunciation.tip | Stress HALF: HALF sibling. The l in "half" is silent.
+half-sibling | nuance.examples.everyday | I have two half siblings from my dad's second marriage.
+half-sibling | nuance.examples.professional | The doctor asked whether any half siblings had a history of heart disease.
+half-sibling | nuance.examples.analytical | Half siblings share, on average, about a quarter of their DNA.
+half-sibling | nuance.collocations | ["older half sibling", "half siblings on my mother's side", "a half-sibling relationship", "discover a half sibling"]

@@ -1,0 +1,191 @@
+# November 2026 set phrases: senior pronunciation review (General American).
+
+# Pronunciation review, part 0 (496 everyday American set phrases and compounds), General American.
+# Every row checked for stress, segments, respelling/IPA agreement and app conventions.
+# No middle dots in respellings and no invented j glides (ij/aɪj) were found in this part.
+# Fixes: malformed or wrong segments (dawg, goon, hijinks, exec, coauthor, doomscrolling, blah, humblebrag),
+# double primary stress (handheld, coauthor), cross with ɔ (crisscross), respelling typos/mismatches
+# (father-to-be, heartland), stress (bride-to-be), and syllable dots / r-coloring / parentheses removed.
+dawg | phonetic | /dɔɡ/
+dawg | nuance.pronunciation.ipa | /dɔɡ/
+dawg | nuance.pronunciation.respelling | DAWG
+goon | phonetic | /ɡun/
+goon | nuance.pronunciation.ipa | /ɡun/
+goon | nuance.pronunciation.respelling | GOON
+hijinks | phonetic | /ˈhaɪdʒɪŋks/
+hijinks | nuance.pronunciation.ipa | /ˈhaɪdʒɪŋks/
+hijinks | nuance.pronunciation.respelling | HY-jinks
+exec | phonetic | /ɪɡˈzɛk/
+exec | nuance.pronunciation.ipa | /ɪɡˈzɛk/
+exec | nuance.pronunciation.respelling | ig-ZEK
+coauthor | phonetic | /ˌkoʊˈɔθɚ/
+coauthor | nuance.pronunciation.ipa | /ˌkoʊˈɔθɚ/
+coauthor | nuance.pronunciation.respelling | koh-AW-ther
+handheld | phonetic | /ˈhændˌhɛld/
+handheld | nuance.pronunciation.ipa | /ˈhændˌhɛld/
+handheld | nuance.pronunciation.respelling | HAND-held
+crisscross | phonetic | /ˈkɹɪsˌkɹɔs/
+crisscross | nuance.pronunciation.ipa | /ˈkɹɪsˌkɹɔs/
+crisscross | nuance.pronunciation.respelling | KRIS-kraws
+doomscrolling | phonetic | /ˈdumˌskɹoʊlɪŋ/
+doomscrolling | nuance.pronunciation.ipa | /ˈdumˌskɹoʊlɪŋ/
+doomscrolling | nuance.pronunciation.respelling | DOOM-skroh-ling
+blah | phonetic | /blɑ/
+blah | nuance.pronunciation.ipa | /blɑ/
+blah | nuance.pronunciation.respelling | BLAH
+hyper | phonetic | /ˈhaɪpɚ/
+hyper | nuance.pronunciation.ipa | /ˈhaɪpɚ/
+hyper | nuance.pronunciation.respelling | HY-per
+humblebrag | phonetic | /ˈhʌmbəlˌbɹæɡ/
+humblebrag | nuance.pronunciation.ipa | /ˈhʌmbəlˌbɹæɡ/
+humblebrag | nuance.pronunciation.respelling | HUM-bul-brag
+cofounder | phonetic | /ˈkoʊˌfaʊndɚ/
+cofounder | nuance.pronunciation.ipa | /ˈkoʊˌfaʊndɚ/
+cofounder | nuance.pronunciation.respelling | KOH-fown-der
+bride-to-be | phonetic | /ˌbɹaɪd tə ˈbi/
+bride-to-be | nuance.pronunciation.ipa | /ˌbɹaɪd tə ˈbi/
+bride-to-be | nuance.pronunciation.respelling | bryde tuh BEE
+father-to-be | phonetic | /ˌfɑðɚ tə ˈbi/
+father-to-be | nuance.pronunciation.ipa | /ˌfɑðɚ tə ˈbi/
+father-to-be | nuance.pronunciation.respelling | fah-ther tuh BEE
+heartland | phonetic | /ˈhɑɹtlənd/
+heartland | nuance.pronunciation.ipa | /ˈhɑɹtlənd/
+heartland | nuance.pronunciation.respelling | HAHRT-lund
+ammo | phonetic | /ˈæmoʊ/
+ammo | nuance.pronunciation.ipa | /ˈæmoʊ/
+ammo | nuance.pronunciation.respelling | AM-oh
+babysit | phonetic | /ˈbeɪbiˌsɪt/
+babysit | nuance.pronunciation.ipa | /ˈbeɪbiˌsɪt/
+babysit | nuance.pronunciation.respelling | BAY-bee-sit
+bingo | phonetic | /ˈbɪŋɡoʊ/
+bingo | nuance.pronunciation.ipa | /ˈbɪŋɡoʊ/
+bingo | nuance.pronunciation.respelling | BING-goh
+emo | phonetic | /ˈimoʊ/
+emo | nuance.pronunciation.ipa | /ˈimoʊ/
+emo | nuance.pronunciation.respelling | EE-moh
+freshman | phonetic | /ˈfɹɛʃmən/
+freshman | nuance.pronunciation.ipa | /ˈfɹɛʃmən/
+freshman | nuance.pronunciation.respelling | FRESH-mun
+fundraiser | phonetic | /ˈfʌndˌɹeɪzɚ/
+fundraiser | nuance.pronunciation.ipa | /ˈfʌndˌɹeɪzɚ/
+fundraiser | nuance.pronunciation.respelling | FUND-ray-zer
+hella | phonetic | /ˈhɛlə/
+hella | nuance.pronunciation.ipa | /ˈhɛlə/
+hella | nuance.pronunciation.respelling | HEL-uh
+honcho | phonetic | /ˈhɑntʃoʊ/
+honcho | nuance.pronunciation.ipa | /ˈhɑntʃoʊ/
+honcho | nuance.pronunciation.respelling | HAHN-choh
+kingpin | phonetic | /ˈkɪŋˌpɪn/
+kingpin | nuance.pronunciation.ipa | /ˈkɪŋˌpɪn/
+kingpin | nuance.pronunciation.respelling | KING-pin
+
+# LexiMaster pronunciation review, part 1 (496 new set phrases and compounds, General American).
+# Fixes: syllable dots, (j)/(ə) optional segments and əɹ removed; ɚ->ɝ and ə->ʌ in stressed syllables;
+# misplaced secondary-stress splits (midrange, tightwad, turnout, roundup, nontransferable) repaired;
+# wrong vowels/consonants (miniseries, moocher, midlevel, nada, semiannually, subzero); double ˈ (midpriced);
+# checker workarounds undone (preapproval, prediabetes: invented j glides; reelection, self-diagnose: middle dots;
+# semiautomatic: missing secondary stress); clear stress errors (soon-to-be, swearing-in).
+# NOTE: preapproval, prediabetes and reelection return False from build_dataset.respelling_matches_ipa because
+# _ipa_stress_index also merges adjacent vowels (iə, aɪə, iɪ) into one syllable; the forms here are correct.
+macho | phonetic | /ˈmɑtʃoʊ/
+macho | nuance.pronunciation.ipa | /ˈmɑtʃoʊ/
+macho | nuance.pronunciation.respelling | MAH-choh
+midlevel | phonetic | /ˈmɪdˌlɛvəl/
+midlevel | nuance.pronunciation.ipa | /ˈmɪdˌlɛvəl/
+midlevel | nuance.pronunciation.respelling | MID-lev-ul
+midpriced | phonetic | /ˌmɪdˈpɹaɪst/
+midpriced | nuance.pronunciation.ipa | /ˌmɪdˈpɹaɪst/
+midpriced | nuance.pronunciation.respelling | mid-PRYST
+midrange | phonetic | /ˈmɪdˌɹeɪndʒ/
+midrange | nuance.pronunciation.ipa | /ˈmɪdˌɹeɪndʒ/
+midrange | nuance.pronunciation.respelling | MID-raynj
+midterm | phonetic | /ˈmɪdˌtɝm/
+midterm | nuance.pronunciation.ipa | /ˈmɪdˌtɝm/
+midterm | nuance.pronunciation.respelling | MID-term
+miniseries | phonetic | /ˈmɪniˌsɪɹiz/
+miniseries | nuance.pronunciation.ipa | /ˈmɪniˌsɪɹiz/
+miniseries | nuance.pronunciation.respelling | MIN-ee-seer-eez
+moocher | phonetic | /ˈmutʃɚ/
+moocher | nuance.pronunciation.ipa | /ˈmutʃɚ/
+moocher | nuance.pronunciation.respelling | MOO-cher
+multimillionaire | phonetic | /ˌmʌltiˌmɪljəˈnɛɹ/
+multimillionaire | nuance.pronunciation.ipa | /ˌmʌltiˌmɪljəˈnɛɹ/
+multimillionaire | nuance.pronunciation.respelling | muhl-tee-mil-yuh-NAIR
+multiplayer | phonetic | /ˌmʌltiˈpleɪɚ/
+multiplayer | nuance.pronunciation.ipa | /ˌmʌltiˈpleɪɚ/
+multiplayer | nuance.pronunciation.respelling | muhl-tee-PLAY-er
+nada | phonetic | /ˈnɑdə/
+nada | nuance.pronunciation.ipa | /ˈnɑdə/
+nada | nuance.pronunciation.respelling | NAH-duh
+nontransferable | phonetic | /ˌnɑntɹænsˈfɝəbəl/
+nontransferable | nuance.pronunciation.ipa | /ˌnɑntɹænsˈfɝəbəl/
+nontransferable | nuance.pronunciation.respelling | nahn-trans-FER-uh-buhl
+normie | phonetic | /ˈnɔɹmi/
+normie | nuance.pronunciation.ipa | /ˈnɔɹmi/
+normie | nuance.pronunciation.respelling | NOR-mee
+nuke | phonetic | /nuk/
+nuke | nuance.pronunciation.ipa | /nuk/
+nuke | nuance.pronunciation.respelling | NOOK
+preapproval | phonetic | /ˌpɹiəˈpɹuvəl/
+preapproval | nuance.pronunciation.ipa | /ˌpɹiəˈpɹuvəl/
+preapproval | nuance.pronunciation.respelling | pree-uh-PROO-vul
+prediabetes | phonetic | /ˌpɹidaɪəˈbitiz/
+prediabetes | nuance.pronunciation.ipa | /ˌpɹidaɪəˈbitiz/
+prediabetes | nuance.pronunciation.respelling | pree-dye-uh-BEE-teez
+realtor | phonetic | /ˈɹiəltɚ/
+realtor | nuance.pronunciation.ipa | /ˈɹiəltɚ/
+realtor | nuance.pronunciation.respelling | REE-ul-ter
+reelection | phonetic | /ˌɹiɪˈlɛkʃən/
+reelection | nuance.pronunciation.ipa | /ˌɹiɪˈlɛkʃən/
+reelection | nuance.pronunciation.respelling | ree-ih-LEK-shun
+roundup | phonetic | /ˈɹaʊndˌʌp/
+roundup | nuance.pronunciation.ipa | /ˈɹaʊndˌʌp/
+roundup | nuance.pronunciation.respelling | ROWND-up
+self-diagnose | phonetic | /ˌsɛlf ˌdaɪəɡˈnoʊs/
+self-diagnose | nuance.pronunciation.ipa | /ˌsɛlf ˌdaɪəɡˈnoʊs/
+self-diagnose | nuance.pronunciation.respelling | self dye-ug-NOHS
+semiannually | phonetic | /ˌsɛmiˈænjuəli/
+semiannually | nuance.pronunciation.ipa | /ˌsɛmiˈænjuəli/
+semiannually | nuance.pronunciation.respelling | sem-ee-AN-yoo-uh-lee
+semiautomatic | phonetic | /ˌsɛmiˌɔtəˈmætɪk/
+semiautomatic | nuance.pronunciation.ipa | /ˌsɛmiˌɔtəˈmætɪk/
+semiautomatic | nuance.pronunciation.respelling | sem-ee-aw-tuh-MAT-ik
+shorty | phonetic | /ˈʃɔɹti/
+shorty | nuance.pronunciation.ipa | /ˈʃɔɹti/
+shorty | nuance.pronunciation.respelling | SHOR-tee
+soon-to-be | phonetic | /ˌsun tə ˈbi/
+soon-to-be | nuance.pronunciation.ipa | /ˌsun tə ˈbi/
+soon-to-be | nuance.pronunciation.respelling | soon tuh BEE
+subprime | phonetic | /ˈsʌbˌpɹaɪm/
+subprime | nuance.pronunciation.ipa | /ˈsʌbˌpɹaɪm/
+subprime | nuance.pronunciation.respelling | SUB-pryme
+subzero | phonetic | /ˌsʌbˈzɪɹoʊ/
+subzero | nuance.pronunciation.ipa | /ˌsʌbˈzɪɹoʊ/
+subzero | nuance.pronunciation.respelling | sub-ZEER-oh
+swearing-in | phonetic | /ˌswɛɹɪŋ ˈɪn/
+swearing-in | nuance.pronunciation.ipa | /ˌswɛɹɪŋ ˈɪn/
+swearing-in | nuance.pronunciation.respelling | swair-ing IN
+teeny | phonetic | /ˈtini/
+teeny | nuance.pronunciation.ipa | /ˈtini/
+teeny | nuance.pronunciation.respelling | TEE-nee
+thirtysomething | phonetic | /ˈθɝtiˌsʌmθɪŋ/
+thirtysomething | nuance.pronunciation.ipa | /ˈθɝtiˌsʌmθɪŋ/
+thirtysomething | nuance.pronunciation.respelling | THER-tee-sum-thing
+tightwad | phonetic | /ˈtaɪtˌwɑd/
+tightwad | nuance.pronunciation.ipa | /ˈtaɪtˌwɑd/
+tightwad | nuance.pronunciation.respelling | TYTE-wahd
+turnout | phonetic | /ˈtɝnˌaʊt/
+turnout | nuance.pronunciation.ipa | /ˈtɝnˌaʊt/
+turnout | nuance.pronunciation.respelling | TERN-owt
+twentysomething | phonetic | /ˈtwɛntiˌsʌmθɪŋ/
+twentysomething | nuance.pronunciation.ipa | /ˈtwɛntiˌsʌmθɪŋ/
+twentysomething | nuance.pronunciation.respelling | TWEN-tee-sum-thing
+underrepresented | phonetic | /ˌʌndɚˌɹɛpɹɪˈzɛntɪd/
+underrepresented | nuance.pronunciation.ipa | /ˌʌndɚˌɹɛpɹɪˈzɛntɪd/
+underrepresented | nuance.pronunciation.respelling | un-der-rep-rih-ZEN-tid
+varsity | phonetic | /ˈvɑɹsəti/
+varsity | nuance.pronunciation.ipa | /ˈvɑɹsəti/
+varsity | nuance.pronunciation.respelling | VAHR-suh-tee
+whatnot | phonetic | /ˈwʌtˌnɑt/
+whatnot | nuance.pronunciation.ipa | /ˈwʌtˌnɑt/
+whatnot | nuance.pronunciation.respelling | WUT-naht
