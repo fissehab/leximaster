@@ -283,6 +283,16 @@ def plan(w: dict, tokenizer) -> tuple[str, str]:
     return ph, "text"
 
 
+def doubtful(w: dict, ph: str, source: str, tokenizer) -> bool:
+    """Spoken from IPA no dictionary or reviewer gave (built by rule from CMU,
+    or espeak's), and Kokoro's own reading of the word says something else:
+    worth a look before anyone hears it. Reported, not changed."""
+    if source != "ipa" or w.get("phonetic_source") not in ("cmu", "espeak"):
+        return False
+    tokens = [x for x in re.split(r"[\s-]+", re.sub(r"[?!.,;:]", "", w["word"])) if x]
+    return differs(tokenizer.phonemize(w["word"]), ph, tokens)
+
+
 def encode(audio, sr: int, dst: Path) -> None:
     import numpy as np
     import soundfile as sf
@@ -333,6 +343,10 @@ def generate(only: set[str] | None = None, force: bool = False) -> int:
                 or not re.search(r"\.[0-9a-f]{8}\.m4a$", done["file"])):     # from before names had hashes
             todo.append((w, ph, source))
     print(f"{len(todo):,} to generate", flush=True)
+    doubt = [w["word"] for w, ph, source in todo if doubtful(w, ph, source, kokoro.tokenizer)]
+    if doubt:
+        print(f"{len(doubt):,} spoken from rule-made IPA that Kokoro reads otherwise (check them): "
+              + ", ".join(doubt[:40]), flush=True)
     t0 = time.time()
     for n, (w, ph, source) in enumerate(todo, start=1):
         # A voice an earlier retry chose (it says this word's sounds most clearly) is kept.
@@ -421,6 +435,33 @@ def similar(a: str, b: str) -> float:
     return SequenceMatcher(None, norm(a), norm(b)).ratio()
 
 
+# A headword heard as more words at a prefix is fine ("non-public", "re-enter").
+SPLIT_OK = ("non", "un", "re", "pre", "anti", "multi", "over", "under", "out", "self", "co", "post", "sub")
+
+
+def split_headword(word: str, heard: str) -> bool:
+    """Whisper heard the right letters cut into more words than the headword
+    has: "Red-Action Criticism" for "redaction criticism", "laugh ably" for
+    "laughably", the mark of a word read as two. Reported, never failed:
+    Whisper also writes some real compounds apart ("Lock up")."""
+    said = [x for x in re.split(r"[\s\-]+", re.sub(r"[^\w\s\-']", "", spell_numbers(heard).lower())) if x]
+    own = [x for x in re.split(r"[\s\-]+", word.lower()) if x]
+    while said and said[0] in ("a", "an", "the") and len(said) > len(own):
+        said = said[1:]
+    if len(said) <= len(own) or similar(" ".join(said), word) < 0.8:
+        return False
+    i = 0
+    for w_ in own:                # the heard words that spell this headword word
+        j, run = i, ""
+        while j < len(said) and len(run) < len(w_) - 1:
+            run += said[j]
+            j += 1
+        if j - i > 1 and similar(run, w_) >= 0.8 and said[i] not in SPLIT_OK:
+            return True
+        i = j
+    return False
+
+
 def verify(only: set[str] | None = None) -> int:
     """Transcribe every recording. A low match on a common word means the
     recording is wrong (or garbled); rare words and names are often heard as
@@ -439,11 +480,19 @@ def verify(only: set[str] | None = None) -> int:
         heard = " ".join(s.text for s in segs).strip()
         m[k]["heard"] = heard
         m[k]["match"] = round(similar(heard, words[k]["word"]), 2)
+        if split_headword(words[k]["word"], heard):
+            m[k]["split"] = True
+        else:
+            m[k].pop("split", None)
         if n % 200 == 0 or n == len(keys):
             save_manifest(m)
             rate = n / (time.time() - t0)
             print(f"  {n:,}/{len(keys):,} · {rate:.1f}/s", flush=True)
     save_manifest(m)
+    split = sorted(k for k in keys if m[k].get("split"))
+    if split:
+        print(f"{len(split):,} heard as more words than the headword (check the IPA): "
+              + ", ".join(f"{words[k]['word']} → {m[k]['heard']}" for k in split[:30]), flush=True)
     return 0
 
 
