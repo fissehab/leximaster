@@ -2026,9 +2026,24 @@ def letters_ipa(part: str) -> str:
     return ".".join(ipas[:-1]) + ("." if len(ipas) > 1 else "") + ipas[-1]
 
 
-def compound_ipa(part: str) -> str:
-    """A closed compound of two dictionary words (showerhead, riptide):
-    stress on the first part, as in most English compounds."""
+# Words whose IPA no source settles (both readings doubtful): they keep the
+# old reading until someone checks them and writes one in seeds/ipa.
+KEEP_OLD_IPA = set("""hazeroth dishan parosh ochran araunah bagoas elnathan medeba rephaim sidonian phinees
+hepher basemath zerahites jotham megalomaniacal hyperbaton catalexis madrigalesque supermartingale
+eigendecomposition consanguine coxcomical sensibilia undermost procyclical monadic migrator
+amercement""".split())
+
+
+def same_ipa(a: str, b: str) -> bool:
+    """The same transcription, ignoring slashes, syllable dots, length marks and r/ɹ, g/ɡ."""
+    norm = lambda s: re.sub(r"[/.ː\s]", "", s).replace("r", "ɹ").replace("g", "ɡ")
+    return norm(a) == norm(b)
+
+
+def legacy_compound_ipa(part: str) -> str:
+    """The first split into two CMU words, stressed as a compound. This was the
+    old last resort; it read "redaction" as red + action and "capably" as
+    cap + ably. Kept only to recognize enrichment IPA that copied its output."""
     for i in range(3, len(part) - 2):
         a, b = cmu_lookup(part[:i]), cmu_lookup(part[i:])
         if a and b:
@@ -2036,10 +2051,206 @@ def compound_ipa(part: str) -> str:
     return ""
 
 
-def cmu_ipa(key: str, known: dict[str, str], word: str = "") -> str:
+# More stress-neutral endings, tried after SUFFIX_IPA, on the stem as written,
+# with a silent e restored (validat|or -> validate) or a doubled consonant
+# undone (plodd|er -> plod). "capably" is capable + ly, not cap + ably.
+DERIVED_IPA = [("ably", "able"), ("ibly", "ible"), ("able", "əbəl"), ("ers", "ɚz"), ("er", "ɚ"),
+               ("ors", "ɚz"), ("or", "ɚ"), ("ing", "ɪŋ"), ("ish", "ɪʃ"), ("age", "ɪdʒ"), ("ery", "əɹi"),
+               ("ess", "ɪs"), ("ster", "stɚ"), ("y", "i")]
+# Endings a word split must never treat as a second word: boot|able, not boo|table.
+SUFFIX_LIKE = set("""able ably ability ible ibly ing ish er ers ess ress ster age ate ator ant ent ion ian ery
+ary ory ize ise ism ist ity ive ous al ial ical ic y ly ed let ette ure""".split())
+# Bound prefixes said with secondary stress before a stem that keeps its own
+# stress (nonTRIVial, preTRAINED), or, for some nouns, the main stress (SUBgroup).
+PREFIX_IPA = {"non": "nɑn", "un": "ʌn", "mis": "mɪs", "dis": "dɪs", "re": "ɹi", "pre": "pɹi",
+              "de": "di", "co": "koʊ", "anti": "ænti", "multi": "mʌlti", "semi": "sɛmi",
+              "hyper": "haɪpɚ", "pseudo": "sudoʊ", "proto": "pɹoʊtoʊ", "neo": "nioʊ", "post": "poʊst",
+              "sub": "sʌb", "inter": "ɪntɚ", "trans": "tɹænz", "ultra": "ʌltɹə", "micro": "maɪkɹoʊ",
+              "meta": "mɛtə", "auto": "ɔtoʊ", "tele": "tɛlə", "cyber": "saɪbɚ", "bio": "baɪoʊ",
+              "over": "oʊvɚ", "under": "ʌndɚ", "counter": "kaʊntɚ", "out": "aʊt", "super": "supɚ"}
+_VOWEL_RUN = re.compile(r"[iɪeɛæaɑɒɔoʊuʌəɜɝɚɐᵻ]+")
+
+
+def _vowel_class(ipa: str) -> str:
+    """The first vowel, broadly: re-, de- and pre- may be said with i or ɪ,
+    un- and sub- with ʌ; a schwa (ə) could be either."""
+    m = _VOWEL_RUN.search(re.sub(r"[ˈˌː]", "", ipa))
+    v = m.group(0) if m else ""
+    if v.startswith(("eɪ", "oʊ", "aɪ", "aʊ", "ɔɪ")):
+        return v[:2]
+    return {"i": "i", "ɪ": "i", "ᵻ": "i", "e": "i", "ʌ": "ʌ", "ə": "ə", "ɐ": "ə",
+            "ɑ": "ɑ", "ɔ": "ɑ", "ɒ": "ɑ"}.get(v[:1], v[:1])
+
+
+def _same_vowel(a: str, b: str) -> bool:
+    return a == b or "ə" in (a, b) and {a, b} & {"i", "ʌ", "ə"} == {a, b}
+
+
+def _stress_syllable(ipa: str) -> int | None:
+    """Vowels before the primary stress mark: which syllable is stressed."""
+    if "ˈ" not in ipa:
+        return None
+    return len(_VOWEL_RUN.findall(re.sub(r"[ˌ.]", "", ipa.split("ˈ")[0])))
+
+
+_espeak_tok = None
+
+
+def espeak_reading(text: str) -> str:
+    """espeak's American reading (Kokoro's phonemizer), or "" when it isn't
+    installed: a second opinion on stress for words no dictionary has."""
+    global _espeak_tok
+    if _espeak_tok is None:
+        try:
+            from kokoro_onnx.tokenizer import Tokenizer
+            _espeak_tok = Tokenizer()
+        except Exception:  # noqa: BLE001 — optional: the build works without it
+            _espeak_tok = False
+    return _espeak_tok.phonemize(text) if _espeak_tok else ""
+
+
+_IPA_ONSETS = {"".join(ARPABET[c] for c in o) for o in ONSETS}
+
+
+def espeak_ipa(word: str) -> str:
+    """espeak's reading in this app's IPA style: stress marks at the start of
+    the syllable, no length marks, a plain t or d for the flap. "" when
+    espeak isn't available."""
+    ph = espeak_reading(word.lower())
+    if not ph:
+        return ""
+    out = []
+    for w in ph.split():
+        w = w.strip(".,;:!?")
+        for a, b in (("ː", ""), ("ᵻ", "ɪ"), ("ɐ", "ə"), ("ɜɹ", "ɝ"), ("ɜ", "ɝ"), ("ɹɹ", "ɹ"),
+                     ("oɹ", "ɔɹ"), ("n̩", "ən"), ("l̩", "əl"), ("ʔ", "t"), ("x", "k")):
+            w = w.replace(a, b)
+        w = re.sub(r"ɚɹ(?=[iɪeɛæaɑɔoʊuʌəɝɚ])", "ɚ", w)          # espeak's linking r
+        w = w.replace("ɾ", "d" if "d" in word.lower() and "t" not in word.lower() else "t")
+        tokens = re.findall(r"tʃ|dʒ|.", w)
+        i = 0
+        while i < len(tokens):                      # move each stress mark back over the onset
+            if tokens[i] in "ˈˌ":
+                j = i
+                while j > 0 and not _VOWEL_RUN.fullmatch(tokens[j - 1]) and tokens[j - 1] not in "ˈˌ" \
+                        and "".join(tokens[j - 1:i]) in _IPA_ONSETS:
+                    j -= 1
+                tokens.insert(j, tokens.pop(i))
+            i += 1
+        out.append("".join(tokens))
+    return "/" + " ".join(out) + "/"
+
+
+def _stem_ipa(word: str, known: dict[str, str]) -> str:
+    """A whole word's IPA, stressed: CMU's (always plain American IPA), else
+    Wiktionary's when it is a plain broad transcription."""
+    ipa = arpabet_ipa(cmu_lookup(word)) if cmu_lookup(word) else ""
+    k = known.get(word, "")
+    if not ipa and re.fullmatch(r"/[^/\[\]()<>]+/", k):
+        ipa = k.strip("/")
+    if ipa and "ˈ" not in ipa and "ˌ" not in ipa and _VOWEL_RUN.search(ipa):
+        ipa = "ˈ" + ipa               # Wiktionary leaves one-syllable words unmarked
+    return ipa
+
+
+def derived_ipa(part: str, known: dict[str, str]) -> str:
+    """Stem + a stress-neutral ending from DERIVED_IPA (capably, leaper,
+    validator, witchery), or ""."""
+    for suffix, sound in DERIVED_IPA:
+        base = part[: -len(suffix)]
+        if not part.endswith(suffix) or len(base) < 3 \
+                or suffix in ("er", "ers") and base.endswith("e") \
+                or suffix == "y" and part.endswith(("ory", "ary")):    # balladeer, mediatory
+            continue
+        if sound in ("able", "ible"):                # capably = capable, ending -bli
+            stem = _stem_ipa(base + sound, known)
+            if stem and re.search(r"bəl$|bl̩$|bl$", stem):
+                return re.sub(r"bəl$|bl̩$|bl$", "bli", stem)
+            continue
+        for b in (base + "e", base, base[:-1] if len(base) > 3 and base[-1] == base[-2] else ""):
+            stem = _stem_ipa(b, known) if b else ""
+            if stem and not (sound.startswith("ɚ") and stem.endswith(("ɚ", "ɝ"))):
+                return stem + sound
+    return ""
+
+
+def prefix_ipa(part: str, known: dict[str, str]) -> str:
+    """A bound prefix + a known word (nontrivial, pretrained, multimodal),
+    the stem keeping its stress, unless espeak stresses the prefix."""
+    for pre in sorted(PREFIX_IPA, key=len, reverse=True):
+        rest = part[len(pre):]
+        if not part.startswith(pre) or len(rest) < (4 if len(pre) <= 2 else 3):
+            continue
+        stem = _stem_ipa(rest, known) or derived_ipa(rest, known)
+        if not stem:
+            continue
+        reading = espeak_reading(part)
+        if reading and not _same_vowel(_vowel_class(reading), _vowel_class(PREFIX_IPA[pre])):
+            return ""        # espeak doesn't hear the prefix: descant is not de + scant
+        if reading and (_stress_syllable(reading) or 0) < len(_VOWEL_RUN.findall(PREFIX_IPA[pre])):
+            return "ˈ" + PREFIX_IPA[pre] + stem.replace("ˈ", "ˌ")
+        return "ˌ" + PREFIX_IPA[pre] + stem
+    return ""
+
+
+def compound_ipa(part: str, shown: str = "") -> str:
+    """A closed compound of two common words (showerhead, riptide), stressed
+    on the first part as most English compounds are. Never a name, never a
+    word + ending (boot|able), and, when espeak is available, only when it
+    also stresses the first part."""
+    if shown[:1].isupper():
+        return ""
+    for j in range(3, len(part) - 1):
+        if part[j:] in SUFFIX_LIKE and (cmu_lookup(part[:j]) or cmu_lookup(part[:j] + "e")):
+            return ""
+    reading = espeak_reading(part)
+    heard = _bare(espeak_ipa(part)) if reading else ""
+    # Two common words; failing that, two words of 4+ letters that espeak
+    # also stresses as a compound (eigen|space, concert|goer). Of the splits,
+    # the one that sounds most like espeak's reading (heart|rending, not
+    # hear|trending), and none that sounds far from it (mammon).
+    best = None
+    for i in range(3, len(part) - 2):
+        a, b = cmu_lookup(part[:i]), cmu_lookup(part[i:])
+        if not (a and b) or part[i:] in SUFFIX_LIKE:
+            continue
+        common = zipf_frequency(part[:i], "en") >= 3 and zipf_frequency(part[i:], "en") >= 3
+        if not common and not (reading and i >= 4 and len(part) - i >= 4):
+            continue
+        first = arpabet_ipa(a)
+        ipa = first + arpabet_ipa(b).replace("ˈ", "ˌ")
+        if not reading:
+            return ipa
+        if (_stress_syllable(reading) or 0) >= len(_VOWEL_RUN.findall(first)):
+            continue
+        d = _edit_distance(_bare(ipa), heard)
+        if d <= 0.3 * len(heard) and (best is None or (d, not common) < best[:2]):
+            best = (d, not common, ipa)
+    if best:
+        return best[2]
+    return ""
+
+
+def _bare(ipa: str) -> str:
+    """Sounds only, for comparing readings: no stress, syllable or length marks."""
+    return re.sub(r"[/ˈˌ.ː()\s]", "", ipa).replace("ɚ", "ɝ")
+
+
+def _edit_distance(a: str, b: str) -> int:
+    row = list(range(len(b) + 1))
+    for i, x in enumerate(a, 1):
+        prev, row[0] = row[0], i
+        for j, y in enumerate(b, 1):
+            prev, row[j] = row[j], min(row[j] + 1, row[j - 1] + 1, prev + (x != y))
+    return row[-1]
+
+
+def cmu_ipa(key: str, known: dict[str, str], word: str = "", legacy: bool = False) -> str:
     """US IPA for a word or phrase from the CMU dictionary, or from a stem
-    plus a stress-neutral suffix ("acquiescently" = acquiescent + ly).
-    `known` maps keys to IPA already chosen from Wiktionary."""
+    plus a stress-neutral suffix ("acquiescently" = acquiescent + ly), a bound
+    prefix + a word (nontrivial), or a real compound (showerhead).
+    `known` maps keys to IPA already chosen from Wiktionary. `legacy` gives
+    the old reading (any two-word split), used only to recognize copies of it."""
     parts = [p for p in (re.sub(r"[^a-z']", "", x) for x in re.split(r"[-\s]+", key.lower())) if p]
     shown = [re.sub(r"[^A-Za-z']", "", x) for x in re.split(r"[-\s]+", word)] if word else []
     out = []
@@ -2059,6 +2270,12 @@ def cmu_ipa(key: str, known: dict[str, str], word: str = "") -> str:
         if ph:
             out.append(arpabet_ipa(ph))
             continue
+        # A word of a phrase with its own Wiktionary IPA ("redaction" in
+        # "redaction criticism") is said as Wiktionary says it.
+        own = "" if legacy else _stem_ipa(part, known)
+        if own:
+            out.append(own)
+            continue
         ipa = ""
         for suffix, sound, stem_end in SUFFIX_IPA:
             if part.endswith(suffix) and len(part) - len(suffix) >= 3:
@@ -2073,8 +2290,11 @@ def cmu_ipa(key: str, known: dict[str, str], word: str = "") -> str:
                                       else "s" if stem_ipa[-1:] in "ptkfθ" else "z")
                 if ipa:
                     break
-        if not ipa:
-            ipa = compound_ipa(part)
+        if legacy:
+            ipa = ipa or legacy_compound_ipa(part)
+        else:
+            ipa = ipa or derived_ipa(part, known) or prefix_ipa(part, known) \
+                or compound_ipa(part, shown[n] if n < len(shown) else "")
         if not ipa:
             return ""
         out.append(ipa)
@@ -3285,6 +3505,7 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     for k in sel["words"]:
         d = dict_cache.get(k)
         c = cands.get(k, {"tags": [], "zipf": 0})
+        name_phonetics = []
         if not c.get("gloss") and (not d or d["status"] != "ok") and k in fallback_meanings:
             c = {**c, "gloss": fallback_meanings[k]}
         if c.get("gloss"):
@@ -3298,14 +3519,17 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
                     m.get("pos") == "proper noun" for m in d["entry"]["meanings"])):
             # A Bible name needs its proper-noun sense. Without it the lookup
             # found a different word ("aaron", thieves' slang; "jordan", a
-            # chamber pot), so the definition comes from the study notes.
+            # chamber pot), so the definition comes from the study notes. Its IPA
+            # is kept when the entry is the same name (Amorite, Edomite).
+            if d["entry"]["word"][:1].isupper():
+                name_phonetics = d["entry"].get("phonetics", [])
             d = None
         if (not d or d["status"] != "ok") and "bible" in c.get("tags", []):
             n_ = enrich_cache.get(k)
             core = ((n_ or {}).get("nuance") or {}).get("core") or {}
             if n_ and n_["status"] == "ok" and core.get("definition"):
                 d = {"status": "ok", "entry": {
-                    "word": c["word"], "phonetics": [], "source": "leximaster",
+                    "word": c["word"], "phonetics": name_phonetics, "source": "leximaster",
                     "meanings": [{"pos": core.get("pos") or ("proper noun" if c["word"][:1].isupper() else ""),
                                   "senses": [{"definition": core["definition"], "example": "",
                                               "synonyms": [], "antonyms": []}]}]}}
@@ -3451,24 +3675,36 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     known = {w["key"]: w["phonetic"] for w in words if w["phonetic"] and " " not in w["phonetic"]}
     manual = {norm_key(x): g for path in sorted((SEEDS / "ipa").glob("*.txt"))
               for x, g in load_seed_file(path) if g}
+    old_split: dict[str, str] = {}   # entries the new rules read differently: key -> the old reading
     for w in words:
         if w["phonetic"]:
             w.setdefault("phonetic_source", "wiktionary")
             continue
-        w["phonetic"] = cmu_ipa(w["key"], known, w["word"])
+        old = cmu_ipa(w["key"], known, w["word"], legacy=True)
+        w["phonetic"] = old if w["key"] in KEEP_OLD_IPA else cmu_ipa(w["key"], known, w["word"])
         w["phonetic_source"] = "cmu" if w["phonetic"] else ""
-        if not w["phonetic"] and w["key"] in manual:
+        if old != w["phonetic"]:
+            old_split[w["key"]] = old
+        if w["key"] in manual and (not w["phonetic"] or w["key"] in old_split):
             w["phonetic"], w["phonetic_source"] = manual[w["key"]], "manual"
     # The enrichment returns its own General American IPA. It replaces ours
     # only when ours disagrees with the model's respelling and the model's
     # IPA agrees with it, so one slip can't override a good transcription.
+    # The model was shown our IPA, and often copied it: a copy of the old
+    # word-split reading (red + action) is never taken.
     for w in words:
         pron = (w.get("nuance") or {}).get("pronunciation") or {}
         ipa, resp = pron.get("ipa", "").strip(), pron.get("respelling", "")
         if not ipa.startswith("/") or ipa == w["phonetic"]:
             continue
+        if old_split.get(w["key"]) and same_ipa(ipa, old_split[w["key"]]):
+            continue
         ours = respelling_matches_ipa(resp, w["phonetic"]) if w["phonetic"] else False
         theirs = respelling_matches_ipa(resp, ipa)
+        # Where the old split was wrong, our new reading is a rule's guess
+        # (an ending, a prefix): the model's own reading comes first.
+        if w["key"] in old_split and w["phonetic_source"] == "cmu":
+            ours = False
         if ours is not True and theirs is not False and (not w["phonetic"] or ours is False):
             w["phonetic"], w["phonetic_source"] = us_style(ipa), "reviewed"
     # Narrow transcriptions in brackets ([ˈɛn.əkˌdɐʉt]) are often not
@@ -3477,6 +3713,16 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
         ipa = ((w.get("nuance") or {}).get("pronunciation") or {}).get("ipa", "").strip()
         if w["phonetic"].startswith("[") and ipa.startswith("/"):
             w["phonetic"], w["phonetic_source"] = us_style(ipa), "reviewed"
+    # Still nothing: espeak's reading of a common word; a name keeps the old
+    # reading (espeak guesses names badly) until someone writes one by hand.
+    for w in words:
+        if not w["phonetic"] and w["key"] in old_split:
+            ipa = "" if w["word"][:1].isupper() else espeak_ipa(w["word"])
+            parts = re.split(r"[-\s]+", w["key"].lower())
+            if ipa and len(parts) > 1 and len(parts) == len(ipa.strip("/").split()):
+                ipa = "/" + " ".join(phrase_stress(parts, ipa.strip("/").split())) + "/"
+            old = old_split[w["key"]]
+            w["phonetic"], w["phonetic_source"] = (ipa, "espeak") if ipa else (old, "cmu" if old else "")
     # Natural synthesized recordings (tools/tts.py) for words without a human one.
     tts = read_json(CACHE / "tts.json", {})
     for w in words:
