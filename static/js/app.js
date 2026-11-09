@@ -239,6 +239,23 @@ railBtn.replaceChildren(icon("sidebar"));
 try { setRail(localStorage.getItem("lexi-rail") === "collapsed"); } catch (e) { setRail(false); }
 railBtn.addEventListener("click", () => setRail(!shell.classList.contains("rail-collapsed")));
 
+// ---------------------------------------------------------------- back
+
+// An installed app's window has no browser toolbar, so the menu has its own
+// Back (shown only there, see app.css). Where the browser can tell, it is
+// grayed out on the first screen.
+const backBtn = document.getElementById("go-back");
+backBtn.replaceChildren(icon("arrowL"));
+backBtn.addEventListener("click", () => history.back());
+function syncBack() {
+  const nav = window.navigation;
+  backBtn.disabled = !!nav && "canGoBack" in nav && !nav.canGoBack;
+}
+addEventListener("hashchange", syncBack);
+addEventListener("popstate", syncBack);
+if (window.navigation) window.navigation.addEventListener("currententrychange", syncBack);
+syncBack();
+
 // ---------------------------------------------------------------- shortcuts
 
 function keysOn() {

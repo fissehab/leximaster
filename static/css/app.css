@@ -759,6 +759,13 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
 @media (max-width: 760px) {
   #rail-toggle { display: none; }
 }
+/* An installed app (a computer's app window) has no browser Back button. */
+#go-back { display: none; }
+@media (display-mode: standalone), (display-mode: minimal-ui) {
+  #go-back { display: grid; }
+}
+#go-back:disabled { opacity: .4; cursor: default; }
+#go-back:disabled:hover { background: var(--surface); }
 .boot-note { color: var(--muted); padding: 32px 4px; font: 500 15px/1.4 var(--font-ui); }
 
 /* Orthodox · Catholic · Protestant views, each with its own marker color */
