@@ -759,13 +759,23 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
 @media (max-width: 760px) {
   #rail-toggle { display: none; }
 }
-/* An installed app (a computer's app window) has no browser Back button. */
-#go-back { display: none; }
-@media (display-mode: standalone), (display-mode: minimal-ui) {
-  #go-back { display: grid; }
+/* An installed app (a computer's app window) has no browser toolbar, so the
+   menu has its own Back / Forward pair, joined like Safari's and Finder's. */
+.nav-pair { display: none; }
+@media (display-mode: standalone) {
+  .nav-pair { display: flex; }
+  #rail-toggle { margin-left: auto; }
+  .rail-collapsed #rail-toggle { margin-left: 0; }
 }
-#go-back:disabled { opacity: .4; cursor: default; }
-#go-back:disabled:hover { background: var(--surface); }
+.nav-pair .icon-btn { border-radius: 0; }
+.nav-pair .icon-btn:first-child { border-radius: 8px 0 0 8px; }
+.nav-pair .icon-btn:last-child { border-radius: 0 8px 8px 0; margin-left: -1px; }
+.nav-pair .icon-btn:focus-visible { position: relative; z-index: 1; }
+.rail-collapsed .nav-pair { flex-direction: column; }
+.rail-collapsed .nav-pair .icon-btn:first-child { border-radius: 8px 8px 0 0; }
+.rail-collapsed .nav-pair .icon-btn:last-child { border-radius: 0 0 8px 8px; margin: -1px 0 0; }
+.nav-pair .icon-btn:disabled { opacity: .4; cursor: default; }
+.nav-pair .icon-btn:disabled:hover { background: var(--surface); }
 .boot-note { color: var(--muted); padding: 32px 4px; font: 500 15px/1.4 var(--font-ui); }
 
 /* Orthodox · Catholic · Protestant views, each with its own marker color */

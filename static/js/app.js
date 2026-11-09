@@ -242,19 +242,26 @@ railBtn.addEventListener("click", () => setRail(!shell.classList.contains("rail-
 // ---------------------------------------------------------------- back
 
 // An installed app's window has no browser toolbar, so the menu has its own
-// Back (shown only there, see app.css). Where the browser can tell, it is
-// grayed out on the first screen.
+// Back and Forward (shown only there, see app.css). Where the browser can tell
+// (the Navigation API), each is grayed out when there is nowhere to go; where
+// it can't, both stay enabled and a click with nowhere to go does nothing.
+// No key handlers: the app window already does ⌘[ / ⌘] (and mouse buttons).
 const backBtn = document.getElementById("go-back");
+const fwdBtn = document.getElementById("go-forward");
 backBtn.replaceChildren(icon("arrowL"));
+fwdBtn.replaceChildren(icon("arrowR"));
 backBtn.addEventListener("click", () => history.back());
-function syncBack() {
+fwdBtn.addEventListener("click", () => history.forward());
+function syncNav() {
   const nav = window.navigation;
-  backBtn.disabled = !!nav && "canGoBack" in nav && !nav.canGoBack;
+  const known = !!nav && "canGoBack" in nav;
+  backBtn.disabled = known && !nav.canGoBack;
+  fwdBtn.disabled = known && !nav.canGoForward;
 }
-addEventListener("hashchange", syncBack);
-addEventListener("popstate", syncBack);
-if (window.navigation) window.navigation.addEventListener("currententrychange", syncBack);
-syncBack();
+// currententrychange covers pushState too (no hashchange/popstate for that).
+if (window.navigation) window.navigation.addEventListener("currententrychange", syncNav);
+for (const ev of ["hashchange", "popstate", "pageshow"]) addEventListener(ev, syncNav);
+syncNav();
 
 // ---------------------------------------------------------------- shortcuts
 
