@@ -1,0 +1,1180 @@
+[
+ {
+  "word": "trickle in",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌtɹɪkəl ˈɪn/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "(of people or things) To arrive slowly, a few at a time, rather than all at once.",
+     "(of a liquid) To flow in slowly, in a thin stream or drops."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "people arriving",
+    "text": "Nobody's here yet? Don't worry, people usually trickle in after eight."
+   },
+   {
+    "sense": "results",
+    "text": "The first results are trickling in, but it's too early to call."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To arrive slowly and in small numbers, a few at a time."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtɹɪkəl ˈɪn/",
+    "respelling": "TRIK-uhl IN",
+    "tip": "Stress IN, not trickle: trickle IN. The -le is a soft \"uhl\", and it links into \"in\": TRIK-uh-lin."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; it often hints that you hoped for more, or for them sooner.",
+   "usage_note": "Very common for guests, results, money and replies: \"People started to trickle in around seven.\" \"Votes are still trickling in.\" It usually appears in the -ing form (\"trickling in\") or with \"start/begin to\". Add \"from\" for the source: \"Donations trickled in from around the country.\"",
+   "word_family": [
+    "trickled in (past)",
+    "trickling in (-ing)",
+    "trickle (noun, verb)"
+   ],
+   "distinctions": [
+    {
+     "vs": "pour in",
+     "note": "\"Pour in\" means arriving in large amounts, the opposite picture: replies poured in vs. replies trickled in."
+    },
+    {
+     "vs": "stream in",
+     "note": "\"Stream in\" is a steady, continuous flow, larger and more regular than a trickle."
+    },
+    {
+     "vs": "trickle down",
+     "note": "\"Trickle down\" is about benefits passing from the rich or top level to everyone else, not about arriving."
+    }
+   ],
+   "antonyms": [
+    "pour in",
+    "flood in"
+   ],
+   "collocations": [
+    "guests trickle in",
+    "results trickle in",
+    "votes trickle in",
+    "start to trickle in",
+    "slowly trickle in",
+    "trickle in from"
+   ],
+   "examples": {
+    "everyday": "The party started at eight, but people didn't really trickle in until nine.",
+    "professional": "Survey responses have been trickling in all week, so we'll extend the deadline.",
+    "analytical": "Early returns trickled in from rural counties, so the first numbers overstated the challenger's lead."
+   },
+   "analogy": "Like water from a barely open faucet: it comes, but drop by drop.",
+   "etymology": "From trickle (Middle English triklen, to flow in drops) + in.",
+   "common_mistakes": [
+    "Saying \"trickle\" alone for people arriving (\"guests trickled\"); add \"in\": guests trickled in.",
+    "Using it for large numbers: if hundreds arrive at once, say \"pour in\" or \"flood in\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "trickle out",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌtɹɪkəl ˈaʊt/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "(of people) To leave slowly, a few at a time.",
+     "(of information or news) To become known gradually, in small pieces.",
+     "(of a liquid) To flow out slowly, in a thin stream or drops."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "news",
+    "text": "More details are trickling out about what happened at the plant."
+   },
+   {
+    "sense": "people leaving",
+    "text": "After the speeches, people started to trickle out."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To leave or come out slowly, a little at a time; of news, to become known bit by bit."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtɹɪkəl ˈaʊt/",
+    "respelling": "TRIK-uhl OWT",
+    "tip": "Stress OUT. Link the words: TRIK-uh-lout."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; with news it can suggest information that is being held back or leaked.",
+   "usage_note": "Used for crowds leaving (\"fans trickled out before the final whistle\") and especially for news: \"Details are trickling out.\" \"Information trickled out over several weeks.\" With news, it often suggests nobody is giving the full story at once.",
+   "word_family": [
+    "trickled out (past)",
+    "trickling out (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "leak out",
+     "note": "\"Leak out\" means secret information becomes known without permission; \"trickle out\" only says it comes slowly."
+    },
+    {
+     "vs": "pour out",
+     "note": "\"Pour out\" is a large, fast flow: people poured out of the stadium."
+    },
+    {
+     "vs": "trickle in",
+     "note": "The opposite direction: arriving slowly rather than leaving slowly."
+    }
+   ],
+   "antonyms": [
+    "pour out",
+    "flood out"
+   ],
+   "collocations": [
+    "details trickle out",
+    "news trickles out",
+    "information trickles out",
+    "fans trickle out",
+    "slowly trickle out"
+   ],
+   "examples": {
+    "everyday": "By eleven, the last guests were trickling out to their cars.",
+    "professional": "Details of the merger trickled out for weeks before the official announcement.",
+    "analytical": "Because the data trickled out in small batches, early analyses kept revising their estimates."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Using \"trickle out\" for one sudden announcement; it means gradual release.",
+    "Mixing it up with \"leak out\", which says the information was secret."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "trickle away",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌtɹɪkəl əˈweɪ/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "To decrease or disappear slowly, a little at a time (money, support, time, people).",
+     "(of a liquid) To flow away slowly in drops or a thin stream."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "money",
+    "text": "I don't buy anything big, but my paycheck still trickles away by the end of the month."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To slowly decrease or disappear, a little at a time."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtɹɪkəl əˈweɪ/",
+    "respelling": "TRIK-uhl uh-WAY",
+    "tip": "Stress WAY: trickle a-WAY. The \"a\" is a quick, weak \"uh\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Mildly negative: something valuable is being lost without anyone noticing.",
+   "usage_note": "Common with money, savings, support, customers and time: \"Our savings were trickling away.\" \"Support for the plan trickled away.\" It stresses that the loss is slow and easy to miss. Often with \"slowly\" or \"steadily\".",
+   "word_family": [
+    "trickled away (past)",
+    "trickling away (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "dry up",
+     "note": "\"Dry up\" means something stops completely (\"the money dried up\"); \"trickle away\" is the slow loss before that."
+    },
+    {
+     "vs": "drain away",
+     "note": "\"Drain away\" is similar but stronger and more complete: \"all my energy drained away\"."
+    },
+    {
+     "vs": "dwindle",
+     "note": "\"Dwindle\" is a one-word, slightly more formal way to say the same: \"savings dwindled\"."
+    }
+   ],
+   "antonyms": [
+    "build up",
+    "pour in"
+   ],
+   "collocations": [
+    "savings trickle away",
+    "support trickles away",
+    "customers trickle away",
+    "time trickles away",
+    "slowly trickle away"
+   ],
+   "examples": {
+    "everyday": "Every small subscription adds up, and that's how our money trickles away.",
+    "professional": "Customers were trickling away to cheaper competitors long before sales numbers showed it.",
+    "analytical": "When support trickles away gradually, polls taken months apart can hide how fast it is falling."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Using it for a sudden loss; for that, say \"vanish\" or \"disappear overnight\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "stream in",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌstɹim ˈɪn/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "(of people or things) To arrive in a steady, continuous flow.",
+     "(of light) To shine into a place brightly, especially through a window."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "light",
+    "text": "I love this room in the morning when the sun streams in."
+   },
+   {
+    "sense": "orders",
+    "text": "Orders have been streaming in since the sale started."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To arrive or come in a steady, continuous flow; of light, to shine in brightly."
+   },
+   "pronunciation": {
+    "ipa": "/ˌstɹim ˈɪn/",
+    "respelling": "streem IN",
+    "tip": "Stress IN. Start with a clear \"str\" cluster, no extra vowel: streem, not suh-treem."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral to positive; it suggests a lively, constant flow.",
+   "usage_note": "Used for crowds (\"fans streamed in through the gates\"), messages and data (\"orders are streaming in\"), and very often for light: \"Sunlight streamed in through the windows.\" It means steady and continuous, between a trickle and a flood.",
+   "word_family": [
+    "streamed in (past)",
+    "streaming in (-ing)",
+    "stream into (+ place)"
+   ],
+   "distinctions": [
+    {
+     "vs": "trickle in",
+     "note": "\"Trickle in\" is slow and small; \"stream in\" is steady and continuous."
+    },
+    {
+     "vs": "pour in",
+     "note": "\"Pour in\" suggests a larger, more sudden amount than \"stream in\"."
+    },
+    {
+     "vs": "stream (video)",
+     "note": "To \"stream\" a show is to watch it online; \"stream in\" is about arriving or light, not video."
+    }
+   ],
+   "antonyms": [
+    "trickle in",
+    "stream out"
+   ],
+   "collocations": [
+    "sunlight streams in",
+    "light streaming in",
+    "fans stream in",
+    "orders stream in",
+    "messages stream in",
+    "stream in through"
+   ],
+   "examples": {
+    "everyday": "We opened the blinds, and sunlight streamed in across the kitchen floor.",
+    "professional": "Once the ad aired, orders started streaming in faster than we could ship them.",
+    "analytical": "Sensor readings stream in every second, so the dashboard updates almost in real time."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Using \"stream in\" for a few slow arrivals; that's \"trickle in\".",
+    "Forgetting \"in\" or \"into\": \"light streamed through the window into the room\", not \"light streamed the room\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "file in",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌfaɪl ˈɪn/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "To walk into a place one after another, in a line or orderly group."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "orderly entry",
+    "text": "Everyone stood up as the judge's staff filed in."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To walk in one after another, in a line or orderly way."
+   },
+   "pronunciation": {
+    "ipa": "/ˌfaɪl ˈɪn/",
+    "respelling": "fyl IN",
+    "tip": "Stress IN. \"File\" rhymes with \"mile\"; let the l link into \"in\": fy-lin."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; it suggests order and quiet, as at school, church or court.",
+   "usage_note": "Common for audiences, students, jurors and workers: \"The jury filed in.\" \"Students filed in and took their seats.\" It describes how people enter (one by one, orderly), not just that they came. The opposite is \"file out\".",
+   "word_family": [
+    "filed in (past)",
+    "filing in (-ing)",
+    "file into (+ place)",
+    "file out"
+   ],
+   "distinctions": [
+    {
+     "vs": "file (a document)",
+     "note": "To \"file\" a report or a lawsuit is a different verb; \"file in\" here means walking in a line."
+    },
+    {
+     "vs": "pour in",
+     "note": "\"Pour in\" is many people entering fast and maybe chaotically; \"file in\" is orderly."
+    },
+    {
+     "vs": "trickle in",
+     "note": "\"Trickle in\" is about people arriving slowly over time; \"file in\" is about entering in a line."
+    }
+   ],
+   "antonyms": [
+    "file out"
+   ],
+   "collocations": [
+    "the jury filed in",
+    "students filed in",
+    "file in quietly",
+    "file in one by one",
+    "file into the room"
+   ],
+   "examples": {
+    "everyday": "The kids filed in from recess and hung up their coats.",
+    "professional": "Attendees filed in and found their seats as the keynote began.",
+    "analytical": "Because voters filed in steadily all day, the polling station never had a long line."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Confusing it with filing paperwork (\"file in a form\"); you \"fill in\" or \"fill out\" a form.",
+    "Using it for a disorderly crowd; for that, say \"pour in\" or \"pile in\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "filter in",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌfɪltɚ ˈɪn/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "(of people) To come in slowly or in small groups.",
+     "(of light, sound or air) To come in faintly, partly blocked by something.",
+     "(of news) To become known gradually."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "light",
+    "text": "I keep the blinds half open so some light filters in."
+   },
+   {
+    "sense": "news",
+    "text": "News is still filtering in, so we don't know much yet."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To come in slowly or partly: people in small groups, light or sound faintly, news bit by bit."
+   },
+   "pronunciation": {
+    "ipa": "/ˌfɪltɚ ˈɪn/",
+    "respelling": "FIL-ter IN",
+    "tip": "Stress IN. Say the American r in \"filter\": FIL-ter, which links into \"in\": fil-te-RIN."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; often calm or soft in tone, especially with light and sound.",
+   "usage_note": "Common with light and sound (\"light filtered in through the curtains\", \"traffic noise filtered in\") and with news (\"reports began to filter in\"). With people it's close to \"trickle in\". Often followed by \"through\".",
+   "word_family": [
+    "filtered in (past)",
+    "filtering in (-ing)",
+    "filter through"
+   ],
+   "distinctions": [
+    {
+     "vs": "stream in",
+     "note": "Light that \"streams in\" is bright and strong; light that \"filters in\" is soft and partly blocked."
+    },
+    {
+     "vs": "trickle in",
+     "note": "With people or news, nearly the same; \"filter in\" can also suggest passing through something (a crowd, curtains)."
+    },
+    {
+     "vs": "filter out",
+     "note": "\"Filter out\" means remove something: filter out spam."
+    }
+   ],
+   "antonyms": [
+    "stream in",
+    "pour in"
+   ],
+   "collocations": [
+    "light filters in",
+    "sunlight filtering in",
+    "noise filters in",
+    "news filters in",
+    "reports filter in",
+    "filter in through"
+   ],
+   "examples": {
+    "everyday": "Soft morning light filtered in through the curtains.",
+    "professional": "Reports of the outage began to filter in from customers on the West Coast.",
+    "analytical": "As results filtered in from smaller labs, the original finding started to look less certain."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Mixing it up with \"filter out\", which means to remove.",
+    "Using it for bright, direct light; that's \"stream in\" or \"pour in\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "flood in",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌflʌd ˈɪn/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "(of people or things) To arrive in very large numbers or amounts, all at once.",
+     "(of water) To flow into a place in large amounts."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "messages",
+    "text": "My phone hasn't stopped. Messages have been flooding in all morning."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To arrive in very large numbers or amounts, often more than can be handled."
+   },
+   "pronunciation": {
+    "ipa": "/ˌflʌd ˈɪn/",
+    "respelling": "fluhd IN",
+    "tip": "Stress IN. \"Flood\" has the vowel of \"mud\", not \"food\": fluhd. Link: flu-DIN."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral to dramatic; it can suggest being overwhelmed.",
+   "usage_note": "Very common with messages, calls, applications, donations and people: \"Calls flooded in after the show.\" Stronger than \"pour in\". Often \"start to flood in\" or \"came flooding in\". Also figurative for memories: \"Memories came flooding back\" (note: back, not in).",
+   "word_family": [
+    "flooded in (past)",
+    "flooding in (-ing)",
+    "flood (verb, noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "pour in",
+     "note": "Very close; \"flood in\" sounds even larger and more overwhelming."
+    },
+    {
+     "vs": "trickle in",
+     "note": "The opposite picture: a few at a time."
+    },
+    {
+     "vs": "flood back",
+     "note": "Memories and feelings \"come flooding back\"; \"flood in\" is used less for memories."
+    }
+   ],
+   "antonyms": [
+    "trickle in",
+    "dry up"
+   ],
+   "collocations": [
+    "calls flood in",
+    "messages flooded in",
+    "applications flood in",
+    "donations flood in",
+    "come flooding in",
+    "water flooded in"
+   ],
+   "examples": {
+    "everyday": "The second the tickets went on sale, requests came flooding in.",
+    "professional": "Complaints flooded in after the update, so we rolled it back that night.",
+    "analytical": "When applications flood in faster than reviewers can read them, approval times grow week by week."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Pronouncing \"flood\" like \"food\"; it rhymes with \"mud\".",
+    "Using it for a few arrivals; it means a very large amount."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "pile in",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌpaɪl ˈɪn/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "(informal) (of a group) To get into a car or small space quickly, crowding together.",
+     "(informal) To join an activity eagerly, often all at once."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "car",
+    "text": "Okay, everybody pile in. Seatbelts on!"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To crowd quickly into a car or small space; informally, to join in eagerly."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpaɪl ˈɪn/",
+    "respelling": "pyl IN",
+    "tip": "Stress IN. Link the l into \"in\": py-LIN."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Casual and friendly; it suggests a cheerful, disorganized rush.",
+   "usage_note": "Very common for cars: \"Everyone piled in and we drove off.\" With a place, use \"pile into\": \"We all piled into the van.\" For joining criticism, Americans usually say \"pile on\" instead: \"Everyone piled on.\"",
+   "word_family": [
+    "piled in (past)",
+    "piling in (-ing)",
+    "pile into (+ place)",
+    "pile out",
+    "pile on"
+   ],
+   "distinctions": [
+    {
+     "vs": "pile on",
+     "note": "\"Pile on\" means many people criticize or attack someone together; \"pile in\" is about getting into a space."
+    },
+    {
+     "vs": "pile up",
+     "note": "\"Pile up\" means things accumulate: dishes piled up."
+    },
+    {
+     "vs": "file in",
+     "note": "\"File in\" is orderly; \"pile in\" is crowded and messy."
+    }
+   ],
+   "antonyms": [
+    "pile out"
+   ],
+   "collocations": [
+    "pile in the car",
+    "pile into the van",
+    "everyone piled in",
+    "kids piled in",
+    "pile in the back"
+   ],
+   "examples": {
+    "everyday": "Grab your stuff and pile in; we're already late.",
+    "professional": "The whole team piled into two cars and drove to the client site.",
+    "analytical": "When every investor piles in at once, prices can rise far beyond what the business is worth."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Using it in formal writing; prefer \"crowded into\" or \"got into\".",
+    "Confusing it with \"pile on\" (criticizing someone together)."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "drift in",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌdɹɪft ˈɪn/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "(of people) To arrive casually and slowly, without hurry or any set time.",
+     "(of sound, smell, fog or snow) To come in gradually, carried by the air."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "smell",
+    "text": "Can you smell that? Something good is drifting in from next door."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To arrive slowly and casually, without hurry; of sound or smell, to come in gently."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdɹɪft ˈɪn/",
+    "respelling": "drift IN",
+    "tip": "Stress IN. Keep the ft cluster light and link it: drif-TIN."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Relaxed; with people it can hint mild disapproval of lateness.",
+   "usage_note": "Used for people who show up at no fixed time (\"students drifted in late\") and for things carried on the air: \"The smell of coffee drifted in from the kitchen.\" Often with \"from\".",
+   "word_family": [
+    "drifted in (past)",
+    "drifting in (-ing)",
+    "drift off",
+    "drift away"
+   ],
+   "distinctions": [
+    {
+     "vs": "trickle in",
+     "note": "\"Trickle in\" focuses on small numbers over time; \"drift in\" focuses on the casual, aimless way people arrive."
+    },
+    {
+     "vs": "drift off",
+     "note": "\"Drift off\" means fall asleep slowly."
+    },
+    {
+     "vs": "stroll in",
+     "note": "\"Stroll in\" is one person walking in relaxed, sometimes too relaxed: he strolled in an hour late."
+    }
+   ],
+   "antonyms": [
+    "rush in"
+   ],
+   "collocations": [
+    "drift in late",
+    "students drifted in",
+    "music drifted in",
+    "smell drifted in",
+    "fog drifted in",
+    "drift in from"
+   ],
+   "examples": {
+    "everyday": "The smell of bacon drifted in from the kitchen and woke everyone up.",
+    "professional": "People drifted in over the first ten minutes, so we waited to start the demo.",
+    "analytical": "Fog drifts in from the bay most summer evenings, which keeps the city cool."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Using it for an urgent, fast arrival; that's \"rush in\" or \"burst in\".",
+    "Confusing it with \"drift off\" (to fall asleep)."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "seep in",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌsip ˈɪn/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "(of a liquid or gas) To flow slowly into something through small openings.",
+     "(of an idea or feeling) To become understood or felt gradually."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "water",
+    "text": "There's a stain on the ceiling where rain is seeping in."
+   },
+   {
+    "sense": "feeling",
+    "text": "It took a few days for the reality to seep in."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To slowly get in through small openings; of an idea or feeling, to slowly be understood or felt."
+   },
+   "pronunciation": {
+    "ipa": "/ˌsip ˈɪn/",
+    "respelling": "seep IN",
+    "tip": "Stress IN. Long \"ee\" in seep, like \"sea\", not the short i of \"sip\". Link: see-PIN."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; often slightly negative for liquids (damage) and quiet or reflective for feelings.",
+   "usage_note": "Literal: water, cold and damp seep in (\"cold air seeped in under the door\"). Figurative: a fact or feeling slowly becomes real (\"The news is starting to seep in\"). Close to \"sink in\", which is more common for understanding.",
+   "word_family": [
+    "seeped in (past)",
+    "seeping in (-ing)",
+    "seep into (+ place)",
+    "seepage (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "sink in",
+     "note": "For understanding news, \"sink in\" is far more common: \"It hasn't sunk in yet.\""
+    },
+    {
+     "vs": "leak in",
+     "note": "\"Leak in\" points to a hole or fault; \"seep in\" is slower and through tiny openings."
+    },
+    {
+     "vs": "soak in",
+     "note": "\"Soak in\" means absorbed by something like a sponge or the ground."
+    }
+   ],
+   "antonyms": [
+    "drain out"
+   ],
+   "collocations": [
+    "water seeps in",
+    "cold seeps in",
+    "damp seeping in",
+    "doubt seeps in",
+    "seep in through",
+    "seep into"
+   ],
+   "examples": {
+    "everyday": "The basement smells musty because water seeps in every time it rains.",
+    "professional": "After the layoffs were announced, worry began to seep in across the office.",
+    "analytical": "Moisture seeps in at the joints, so the sealant fails first at the corners."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Pronouncing seep like \"sip\"; it's a long ee.",
+    "Using \"seep in\" for sudden, large flows; that's \"pour in\" or \"flood in\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "dribble out",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌdɹɪbəl ˈaʊt/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "(of a liquid) To come out in small drops or a thin, uneven stream.",
+     "(of information or money) To be released in small amounts over time, often frustratingly slowly."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "information",
+    "text": "They keep dribbling out updates instead of just telling us the plan."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To come out slowly in drops; of information or money, to be released a little at a time."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdɹɪbəl ˈaʊt/",
+    "respelling": "DRIB-uhl OWT",
+    "tip": "Stress OUT. The -ble is a soft \"buhl\" linking into out: DRIB-uh-lout."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Often mildly negative: it suggests the release is too slow or stingy.",
+   "usage_note": "With news and money it often suggests someone is releasing it slowly on purpose: \"The company dribbled out details.\" Unlike \"trickle out\", it's often transitive: someone dribbles out information. Literal use: \"ketchup dribbled out\".",
+   "word_family": [
+    "dribbled out (past)",
+    "dribbling out (-ing)",
+    "dribble (verb, noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "trickle out",
+     "note": "Very close; \"dribble out\" sounds more uneven and is often done on purpose by someone."
+    },
+    {
+     "vs": "dribble (sports)",
+     "note": "In basketball or soccer, to \"dribble\" is to move the ball by bouncing or kicking it."
+    },
+    {
+     "vs": "leak out",
+     "note": "\"Leak out\" means secret information escapes without permission."
+    }
+   ],
+   "antonyms": [
+    "pour out"
+   ],
+   "collocations": [
+    "dribble out details",
+    "information dribbled out",
+    "funds dribbled out",
+    "dribble out slowly",
+    "news dribbles out"
+   ],
+   "examples": {
+    "everyday": "The last of the syrup dribbled out of the bottle.",
+    "professional": "The agency dribbled out the documents a few pages at a time.",
+    "analytical": "When funding dribbles out in small grants, long projects stall between payments."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Thinking it's only about sports; with news and money it means slow, small releases."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "flock to",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˈflɑk tu/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "(of people) To go to a place or event in large numbers, usually because it is popular or attractive.",
+     "(of people) To be strongly attracted to something new (a product, a person, an idea)."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "popular place",
+    "text": "Everyone flocks to that taco truck at lunch, so go early."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To go somewhere in large numbers because it is popular or attractive."
+   },
+   "pronunciation": {
+    "ipa": "/ˈflɑk tu/",
+    "respelling": "FLAHK too",
+    "tip": "Stress FLOCK. In normal speech \"to\" is a weak \"tuh\": FLAHK-tuh the beach. Say the o in flock like \"ah\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral to positive; it suggests popularity and enthusiasm.",
+   "usage_note": "Very common in American news: \"Tourists flock to the beaches every summer.\" \"Shoppers flocked to the new store.\" Also for products and trends: \"Users flocked to the app.\" The idea comes from birds or sheep moving together.",
+   "word_family": [
+    "flocked to (past)",
+    "flocking to (-ing)",
+    "flock (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "crowd into",
+     "note": "\"Crowd into\" is about filling a space; \"flock to\" is about many people choosing to go somewhere."
+    },
+    {
+     "vs": "pour in",
+     "note": "\"Pour in\" describes arrival in a rush; \"flock to\" stresses popularity."
+    },
+    {
+     "vs": "swarm",
+     "note": "\"Swarm\" sounds more chaotic and sometimes threatening."
+    }
+   ],
+   "antonyms": [
+    "avoid",
+    "stay away from"
+   ],
+   "collocations": [
+    "tourists flock to",
+    "fans flock to",
+    "shoppers flocked to",
+    "users flock to",
+    "flock to the beach",
+    "flock to see"
+   ],
+   "examples": {
+    "everyday": "Every Fourth of July, families flock to the lake for fireworks.",
+    "professional": "Small businesses flocked to the program once the fees were waived.",
+    "analytical": "When rents fell, young workers flocked to the city, reversing a decade of decline."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Saying \"flock in\" for going to a place; Americans say \"flock to\".",
+    "Using it for one person; it describes many people together."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "ease into",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌiz ˈɪntu/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "To start something gradually and gently, instead of all at once.",
+     "To move slowly and carefully into a position or space.",
+     "To help someone start a new role or situation gradually (ease someone into)."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "new routine",
+    "text": "Don't run five miles on day one. Ease into it."
+   },
+   {
+    "sense": "new job",
+    "text": "My manager is easing me into the bigger accounts."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To start something slowly and gently, or to move carefully into a place."
+   },
+   "pronunciation": {
+    "ipa": "/ˌiz ˈɪntu/",
+    "respelling": "eez IN-too",
+    "tip": "Stress IN. \"Ease\" ends in a z sound, like \"easy\", which links into \"into\": ee-ZIN-tuh."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Positive and calm; it suggests care and avoiding shock.",
+   "usage_note": "Very common: \"ease into a new job\", \"ease into retirement\", \"ease into a workout\". With someone in the middle: \"We'll ease you into the role.\" Also physical: \"She eased into the hot water.\" \"He eased the car into the spot.\"",
+   "word_family": [
+    "eased into (past)",
+    "easing into (-ing)",
+    "ease someone into",
+    "ease off",
+    "ease up"
+   ],
+   "distinctions": [
+    {
+     "vs": "dive into",
+     "note": "\"Dive into\" is starting quickly and fully; \"ease into\" is the gentle, gradual opposite."
+    },
+    {
+     "vs": "ease off / ease up",
+     "note": "\"Ease off\" and \"ease up\" mean reduce effort or pressure."
+    },
+    {
+     "vs": "settle in",
+     "note": "\"Settle in\" is getting comfortable in a new place; \"ease into\" is about how gradually you start."
+    }
+   ],
+   "antonyms": [
+    "dive into",
+    "jump into"
+   ],
+   "collocations": [
+    "ease into a new job",
+    "ease into retirement",
+    "ease into the day",
+    "ease someone into",
+    "ease into a workout",
+    "ease into the water"
+   ],
+   "examples": {
+    "everyday": "I like to ease into Monday with coffee and email before any meetings.",
+    "professional": "We'll ease new hires into on-call duty over their first two months.",
+    "analytical": "Countries that eased into the new rules saw fewer disruptions than those that switched overnight."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Saying \"ease in\" for starting a job; Americans say \"ease into\" a job.",
+    "Pronouncing ease with an s sound; it's a z sound, like \"easy\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "snow in",
+  "domains": [
+   "phrasal_verbs"
+  ],
+  "phonetic": "/ˌsnoʊ ˈɪn/",
+  "meanings": [
+   {
+    "pos": "phrasal verb",
+    "senses": [
+     "(usually passive: be snowed in) To be unable to leave a place because heavy snow is blocking the roads or doors."
+    ]
+   }
+  ],
+  "conversation": [
+   {
+    "sense": "storm",
+    "text": "The roads are closed. Looks like we're snowed in until tomorrow."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To be trapped indoors because heavy snow blocks the way out (usually \"be snowed in\")."
+   },
+   "pronunciation": {
+    "ipa": "/ˌsnoʊ ˈɪn/",
+    "respelling": "snoh IN",
+    "tip": "Stress IN. Usually heard as \"snowed in\": SNOHD in, with the stress shifting to SNOWED."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; it can feel cozy (a snow day) or frustrating (stuck).",
+   "usage_note": "Almost always passive: \"We were snowed in for three days.\" \"We got snowed in at the cabin.\" Common in the northern US and mountain areas. Related: \"snowed under\" means having too much work.",
+   "word_family": [
+    "snowed in (passive)",
+    "snowbound (adjective)",
+    "snowed under"
+   ],
+   "distinctions": [
+    {
+     "vs": "snowed under",
+     "note": "\"Snowed under\" means having too much work: I'm snowed under this week."
+    },
+    {
+     "vs": "snowbound",
+     "note": "\"Snowbound\" is a one-word adjective with the same meaning, more written."
+    },
+    {
+     "vs": "snow day",
+     "note": "A \"snow day\" is when school or work is canceled because of snow."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "get snowed in",
+    "be snowed in",
+    "snowed in for days",
+    "snowed in at the cabin",
+    "snowed in all weekend"
+   ],
+   "examples": {
+    "everyday": "We got snowed in last winter and spent two days playing board games.",
+    "professional": "Half the team is snowed in, so today's meeting is video only.",
+    "analytical": "When towns are snowed in for days, grocery sales spike right before each forecast."
+   },
+   "analogy": "",
+   "etymology": "",
+   "common_mistakes": [
+    "Saying \"we snowed in\"; it's passive: we were snowed in, or we got snowed in.",
+    "Confusing it with \"snowed under\" (too busy)."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ }
+]
