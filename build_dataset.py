@@ -836,6 +836,12 @@ def us_style(text: str) -> str:
     return text.replace("ː", "").replace("əʊ", "oʊ").replace("ɒ", "ɑ")
 
 
+def ga_or(ipa: str) -> str:
+    """/oɹ/ as /ɔɹ/ ("oral" /ˈɔɹəl/, "board" /bɔɹd/), also across a syllable
+    dot (/ˈo.ɹəl/); /oʊ/ before r ("mower" /ˈmoʊɚ/) is a different sound."""
+    return re.sub(r"o(?=\.?ɹ)", "ɔ", ipa)
+
+
 def us_ipa(text: str) -> str:
     """An unlabelled transcription as US IPA, or "" when it is plainly
     another accent: non-rhotic (ɜː, ɪə, ɑː…) or retroflex (Indian English)."""
@@ -3723,6 +3729,14 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
                 ipa = "/" + " ".join(phrase_stress(parts, ipa.strip("/").split())) + "/"
             old = old_split[w["key"]]
             w["phonetic"], w["phonetic_source"] = (ipa, "espeak") if ipa else (old, "cmu" if old else "")
+    # One symbol for the "or" of more, oral and board: Wiktionary writes /oɹ/
+    # in about 200 entries, the rest of the app /ɔɹ/ (the two are one sound in
+    # American English), and a learner reads the o of /ˈoɹəl/ as the "oh" of go.
+    for w in words:
+        w["phonetic"] = ga_or(w["phonetic"])
+        pron = (w.get("nuance") or {}).get("pronunciation") or {}
+        if pron.get("ipa"):
+            pron["ipa"] = ga_or(pron["ipa"])
     # Natural synthesized recordings (tools/tts.py) for words without a human one.
     tts = read_json(CACHE / "tts.json", {})
     for w in words:

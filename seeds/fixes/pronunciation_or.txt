@@ -1,0 +1,8 @@
+# The "or" of more (2026-11-10): respellings that split it as "oh" + r
+# ("MOH-ruhl") read as the vowel of go. The IPA itself is set by ga_or().
+moral | nuance.pronunciation.respelling | MOR-uhl
+moral | nuance.pronunciation.tip | Stress the first syllable, MOR, with the "or" of more, not the "oh" of go. The second syllable is a weak "uhl". Moral and morale differ by stress: MOR-uhl vs. muh-RAL.
+pejorative | nuance.pronunciation.respelling | pih-JOR-uh-tiv
+pejorative | nuance.pronunciation.tip | Stress the second syllable, JOR, with the "or" of more. The j is the j of judge, the next syllable is a quick "uh", and the ending is a short "tiv".
+pejoratively | nuance.pronunciation.respelling | pih-JOR-uh-tiv-lee
+pejoratively | nuance.pronunciation.tip | Stress JOR, with the "or" of more. The middle "uh" is a quick weak vowel, and the -ly ending is a light, unstressed "lee".
