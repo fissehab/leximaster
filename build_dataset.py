@@ -842,6 +842,17 @@ def ga_or(ipa: str) -> str:
     return re.sub(r"o(?=\.?ɹ)", "ɔ", ipa)
 
 
+def single_l(word: str, ipa: str) -> str:
+    """An -ally or -fully adverb built as adjective + /li/ has one l, not two:
+    "aurally" /ˈɔɹəli/, not /ˈɔɹəlli/; "spitefully" /ˈspaɪtfəli/, not /-fʊlli/."""
+    if not re.search(r"[^-\s](al|ful)ly$", word.lower()):
+        return ipa
+    one = re.sub(r"(?:\(ʊ\)|\(ə\)|ʊ|ə)?(?:l̩|l)\.?li(/?)$", r"əli\1", ipa)
+    if one != ipa and word.lower().endswith("ically"):
+        one = re.sub(r"kəli(/?)$", r"kli\1", one)   # -ically: /-ɪkli/
+    return one
+
+
 def us_ipa(text: str) -> str:
     """An unlabelled transcription as US IPA, or "" when it is plainly
     another accent: non-rhotic (ɜː, ɪə, ɑː…) or retroflex (Indian English)."""
@@ -3733,7 +3744,7 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     # in about 200 entries, the rest of the app /ɔɹ/ (the two are one sound in
     # American English), and a learner reads the o of /ˈoɹəl/ as the "oh" of go.
     for w in words:
-        w["phonetic"] = ga_or(w["phonetic"])
+        w["phonetic"] = single_l(w["word"], ga_or(w["phonetic"]))
         pron = (w.get("nuance") or {}).get("pronunciation") or {}
         if pron.get("ipa"):
             pron["ipa"] = ga_or(pron["ipa"])

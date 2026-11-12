@@ -22,9 +22,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from tools.check_examples import uses_entry  # noqa: E402
+from tools.ipa_compare import differ as ipa_differs  # noqa: E402
 from build_dataset import (ENRICH_CACHE, FORM_OF_RE, TIP_META, WORDS_JSON, _flat, _similar,  # noqa: E402
                            append_jsonl, respelling_matches_ipa, sense_dup, us_spelling_deep)
 
+VARIANTS = ROOT / "seeds" / "ipa_variants.txt"
 TRADITIONS = {"Eastern Orthodox", "Roman Catholic", "Protestant"}
 
 
@@ -121,6 +123,14 @@ def check() -> int:
     for w in words:
         for p in display_problems(w):
             bad[p].append(w["word"])
+    # A synthesized recording says the shown IPA: one that disagrees with
+    # the study note's IPA is heard by the learner (cosmos said "KAHZ-moy").
+    known = {l.strip() for l in VARIANTS.read_text(encoding="utf-8").splitlines() if l.strip() and l[0] != "#"}
+    for w in words:
+        note = ((w.get("nuance") or {}).get("pronunciation") or {}).get("ipa", "")
+        if (w.get("tts") and not w.get("has_audio") and note.startswith("/") and w["key"] not in known
+                and ipa_differs(w["phonetic"], note)):
+            bad["recorded IPA differs from the study note's (see seeds/ipa_variants.txt)"].append(w["word"])
     for k, v in bad.items():
         print(f"  display rule broken: {k}: {len(v)}  e.g. {', '.join(v[:6])}")
     print(f"display rules: {'all hold' if not bad else 'BROKEN'} ({len(words):,} entries)")

@@ -1,0 +1,160 @@
+# Study notes that gave the wrong pronunciation while the main IPA was right
+# (review of 2026-11-11): -able as "ay-bul", -age as "ayj", wrong stress.
+acrophobic | nuance.pronunciation.ipa | /ˌækɹəˈfoʊbɪk/
+acrophobic | nuance.pronunciation.respelling | ak-ruh-FOH-bik
+acrophobic | nuance.pronunciation.tip | Stress FOH, the third syllable: ak-ruh-FOH-bik, like acrophobia (ak-ruh-FOH-bee-uh). The "pho" is "foh", and the -ic ending is a short "bik".
+believer's-baptism | nuance.pronunciation.ipa | /bɪˌlivɚz ˈbæptɪzəm/
+believer's-baptism | nuance.pronunciation.respelling | bih-LEE-verz BAP-tih-zum
+believer's-baptism | nuance.pronunciation.tip | Stress LEE in believer's and BAP in baptism. Believer's ends in a plain American "verz"; baptism is BAP-tih-zum, with a short a and a weak last syllable.
+bootable | nuance.pronunciation.ipa | /ˈbutəbəl/
+bootable | nuance.pronunciation.respelling | BOO-tuh-buhl
+bootable | nuance.pronunciation.tip | Stress BOO. The t between vowels is a quick flap, so it sounds like "BOO-duh-buhl" in fast speech. The ending -able is weak: "uh-buhl", never "ay-bul".
+bridgeable | nuance.pronunciation.ipa | /ˈbɹɪdʒəbəl/
+bridgeable | nuance.pronunciation.respelling | BRIJ-uh-buhl
+bridgeable | nuance.pronunciation.tip | Stress BRIJ, with the j sound of judge. The ending -able is weak: "uh-buhl", never "ay-bul".
+callout | nuance.pronunciation.ipa | /ˈkɔlˌaʊt/
+callout | nuance.pronunciation.respelling | KAWL-owt
+callout | nuance.pronunciation.tip | Stress the first syllable in the noun: a CALL-out. The verb "call out" stresses out. Many Americans say "kahl" for call (the cot-caught merger).
+cartage | nuance.pronunciation.ipa | /ˈkɑɹtɪdʒ/
+cartage | nuance.pronunciation.respelling | KAHR-tij
+cartage | nuance.pronunciation.tip | Stress KAHR, with a clear American r. The ending -age is a weak "ij", as in package, not "ayj".
+coachable | nuance.pronunciation.ipa | /ˈkoʊtʃəbəl/
+coachable | nuance.pronunciation.respelling | KOH-chuh-buhl
+coachable | nuance.pronunciation.tip | Stress KOH, with the "oh" of go, then the ch of church. The ending -able is weak: "uh-buhl", never "ay-bul".
+condonable | nuance.pronunciation.ipa | /kənˈdoʊnəbəl/
+condonable | nuance.pronunciation.respelling | kuhn-DOH-nuh-buhl
+condonable | nuance.pronunciation.tip | Stress DOH, as in the verb condone (kuhn-DOHN). The first syllable is a weak "kuhn". The ending -able is weak: "uh-buhl", never "ay-bul".
+contactable | nuance.pronunciation.ipa | /ˈkɑnˌtæktəbəl/
+contactable | nuance.pronunciation.respelling | KAHN-tak-tuh-buhl
+contactable | nuance.pronunciation.tip | Stress KAHN, as in the noun contact. The ending -able is weak: "uh-buhl", never "ay-bul".
+contrasty | nuance.pronunciation.ipa | /ˈkɑntɹæsti/
+contrasty | nuance.pronunciation.respelling | KAHN-tras-tee
+contrasty | nuance.pronunciation.tip | Stress KAHN, as in the noun contrast, then "tras" with the a of cat. The -y is "tee".
+auditable | nuance.pronunciation.ipa | /ˈɔdɪtəbəl/
+auditable | nuance.pronunciation.respelling | AW-dih-tuh-buhl
+auditable | nuance.pronunciation.tip | Stress AW. The t is a quick flap, so it sounds like "AW-dih-duh-buhl". The ending -able is weak: "uh-buhl", never "ay-bul".
+exceptionable | nuance.pronunciation.ipa | /ɪkˈsɛpʃənəbəl/
+exceptionable | nuance.pronunciation.respelling | ik-SEP-shuh-nuh-buhl
+exceptionable | nuance.pronunciation.tip | Stress SEP. The -tion is a weak "shuhn". The ending -able is weak: "uh-buhl", never "ay-bul". Don't confuse it with exceptional.
+bulimia | phonetic | /buˈlimiə/
+bulimia | nuance.pronunciation.ipa | /buˈlimiə/
+bulimia | nuance.pronunciation.respelling | boo-LEE-mee-uh
+bulimia | nuance.pronunciation.tip | Stress LEE, with the "ee" of see. Americans say "boo-LEE-mee-uh"; "byoo-" is also heard. The ending is a weak "mee-uh".
+factorable | nuance.pronunciation.ipa | /ˈfæktɚəbəl/
+factorable | nuance.pronunciation.respelling | FAK-tuh-ruh-buhl
+factorable | nuance.pronunciation.tip | Stress FAK. The middle "tuh-ruh" is quick and weak. The ending -able is weak: "uh-buhl", never "ay-bul".
+fainéant | phonetic | /ˈfeɪniənt/
+fainéant | nuance.pronunciation.ipa | /ˈfeɪniənt/
+fainéant | nuance.pronunciation.respelling | FAY-nee-uhnt
+fainéant | nuance.pronunciation.tip | Stress FAY. In English the word has three syllables, FAY-nee-uhnt; the French "fay-nay-AHN" is also heard among people who know French.
+fracas | nuance.pronunciation.ipa | /ˈfɹeɪkəs/
+fracas | nuance.pronunciation.respelling | FRAY-kuhs
+fracas | nuance.pronunciation.tip | Americans stress FRAY and pronounce the s: FRAY-kuhs. The British say "FRAK-ah", with a silent s.
+frolicker | nuance.pronunciation.ipa | /ˈfɹɑlɪkɚ/
+frolicker | nuance.pronunciation.respelling | FRAH-lih-ker
+frolicker | nuance.pronunciation.tip | Stress FRAH, with the "ah" of frolic (FRAH-lik), not "froh". The -er is a light American "er".
+homophonic | nuance.pronunciation.ipa | /ˌhɑməˈfɑnɪk/
+homophonic | nuance.pronunciation.respelling | hah-muh-FAH-nik
+homophonic | nuance.pronunciation.tip | Stress FAH, the third syllable: hah-muh-FAH-nik. "hoh-muh-FAH-nik" is also correct.
+inferable | nuance.pronunciation.ipa | /ˌɪnˈfɝəbəl/
+inferable | nuance.pronunciation.respelling | in-FUR-uh-buhl
+inferable | nuance.pronunciation.tip | Stress FUR, as in infer. The ending -able is weak: "uh-buhl", never "ay-bul".
+lapsarian | nuance.pronunciation.ipa | /læpˈsɛɹiən/
+lapsarian | nuance.pronunciation.respelling | lap-SAIR-ee-un
+lapsarian | nuance.pronunciation.tip | Stress SAIR, the second syllable, as in infralapsarian. The first syllable is "lap", the ending a weak "ee-un".
+malingering | nuance.pronunciation.ipa | /məˈlɪŋɡɚɪŋ/
+malingering | nuance.pronunciation.respelling | muh-LING-ger-ing
+malingering | nuance.pronunciation.tip | Stress LING. The first syllable is a weak "muh", and the g is hard: muh-LING-ger-ing, as in finger.
+mentionable | nuance.pronunciation.ipa | /ˈmɛnʃənəbəl/
+mentionable | nuance.pronunciation.respelling | MEN-shuh-nuh-buhl
+mentionable | nuance.pronunciation.tip | Stress MEN. The -tion is a weak "shuhn". The ending -able is weak: "uh-buhl", never "ay-bul".
+metanarrative | nuance.pronunciation.ipa | /ˌmɛtəˈnæɹətɪv/
+metanarrative | nuance.pronunciation.respelling | met-uh-NAIR-uh-tiv
+metanarrative | nuance.pronunciation.tip | Stress NAIR, as in narrative, with a lighter stress on MET. Americans say "met-uh", not "mee-tuh".
+metaprogramming | nuance.pronunciation.ipa | /ˌmɛtəˈpɹoʊˌɡɹæmɪŋ/
+metaprogramming | nuance.pronunciation.respelling | met-uh-PROH-gram-ing
+metaprogramming | nuance.pronunciation.tip | Stress PROH, as in programming, with a lighter stress on MET. Americans say "met-uh", not "mee-tuh".
+monachism | nuance.pronunciation.ipa | /ˈmɑnəˌkɪzəm/
+monachism | nuance.pronunciation.respelling | MAH-nuh-kiz-um
+monachism | nuance.pronunciation.tip | Stress MAH. The ch is a hard k, as in monk and monastic. The ending -ism is "iz-um".
+objurgatory | nuance.pronunciation.ipa | /əbˈdʒɝɡəˌtɔɹi/
+objurgatory | nuance.pronunciation.respelling | uhb-JUR-guh-tor-ee
+objurgatory | nuance.pronunciation.tip | Stress JUR. The ending -atory is "uh-tor-ee" in American English, with a light stress on tor.
+paragraphic | nuance.pronunciation.ipa | /ˌpæɹəˈɡɹæfɪk/
+paragraphic | nuance.pronunciation.respelling | par-uh-GRAF-ik
+paragraphic | nuance.pronunciation.tip | Stress GRAF, the third syllable, with the a of cat. The first syllable is "par" (or "pair").
+paralogistic | nuance.pronunciation.ipa | /ˌpæɹələˈdʒɪstɪk/
+paralogistic | nuance.pronunciation.respelling | par-uh-luh-JIS-tik
+paralogistic | nuance.pronunciation.tip | Stress JIS. The first syllables are quick: par-uh-luh. The ending is a short "tik".
+paratactic | nuance.pronunciation.ipa | /ˌpæɹəˈtæktɪk/
+paratactic | nuance.pronunciation.respelling | par-uh-TAK-tik
+paratactic | nuance.pronunciation.tip | Stress TAK, the third syllable, with the a of cat. The first syllables are a quick "par-uh".
+potability | nuance.pronunciation.ipa | /ˌpoʊtəˈbɪlɪti/
+potability | nuance.pronunciation.respelling | poh-tuh-BIL-ih-tee
+potability | nuance.pronunciation.tip | Stress BIL. The first syllable is "poh", as in potable (POH-tuh-buhl), not "pah".
+pronation | nuance.pronunciation.ipa | /pɹoʊˈneɪʃən/
+pronation | nuance.pronunciation.respelling | proh-NAY-shun
+pronation | nuance.pronunciation.tip | Stress NAY. The first syllable is a clear "proh", the ending a weak "shuhn".
+putdownable | nuance.pronunciation.ipa | /ˈpʊtˌdaʊnəbəl/
+putdownable | nuance.pronunciation.respelling | puut-DOWN-uh-buhl
+putdownable | nuance.pronunciation.tip | Stress DOWN, as in the phrase "put down" (the book). The u of put is short, as in foot. The ending -able is weak: "uh-buhl", never "ay-bul".
+reapable | nuance.pronunciation.ipa | /ˈɹipəbəl/
+reapable | nuance.pronunciation.respelling | REE-puh-buhl
+reapable | nuance.pronunciation.tip | Stress REE. The ending -able is weak: "uh-buhl", never "ay-bul".
+reclaimable | nuance.pronunciation.ipa | /ɹiˈkleɪməbəl/
+reclaimable | nuance.pronunciation.respelling | rih-KLAY-muh-buhl
+reclaimable | nuance.pronunciation.tip | Stress KLAY. The ending -able is weak: "uh-buhl", never "ay-bul".
+reprover | nuance.pronunciation.ipa | /ˌɹiˈpɹuvɚ/
+reprover | nuance.pronunciation.respelling | rih-PROO-ver
+reprover | nuance.pronunciation.tip | Stress PROO, with the "oo" of move, as in reprove. The -er is a light American "er".
+reproving | nuance.pronunciation.ipa | /ˌɹiˈpɹuvɪŋ/
+reproving | nuance.pronunciation.respelling | rih-PROO-ving
+reproving | nuance.pronunciation.tip | Stress PROO, with the "oo" of move, as in reprove. The first syllable is a weak "rih".
+revisable | nuance.pronunciation.ipa | /ɹɪˈvaɪzəbəl/
+revisable | nuance.pronunciation.respelling | rih-VY-zuh-buhl
+revisable | nuance.pronunciation.tip | Stress VY, as in revise; the s sounds like z. The ending -able is weak: "uh-buhl", never "ay-bul".
+reviser | nuance.pronunciation.ipa | /ɹɪˈvaɪzɚ/
+reviser | nuance.pronunciation.respelling | rih-VY-zer
+reviser | nuance.pronunciation.tip | Stress VY, as in revise; the s sounds like z. The -er is a light American "er".
+rewriter | nuance.pronunciation.ipa | /ɹiˈɹaɪtɚ/
+rewriter | nuance.pronunciation.respelling | ree-RY-ter
+rewriter | nuance.pronunciation.tip | Stress RY, as in rewrite (ree-RYTE). The t is a quick flap, so it sounds like "ree-RY-der".
+sanctionable | nuance.pronunciation.ipa | /ˈsæŋkʃənəbəl/
+sanctionable | nuance.pronunciation.respelling | SANGK-shuh-nuh-buhl
+sanctionable | nuance.pronunciation.tip | Stress SANGK. The -tion is a weak "shuhn". The ending -able is weak: "uh-buhl", never "ay-bul".
+shareable | nuance.pronunciation.ipa | /ˈʃɛɹəbəl/
+shareable | nuance.pronunciation.respelling | SHAIR-uh-buhl
+shareable | nuance.pronunciation.tip | Stress SHAIR, with a clear r. The ending -able is weak: "uh-buhl", never "ay-bul".
+shrinkable | nuance.pronunciation.ipa | /ˈʃɹɪŋkəbəl/
+shrinkable | nuance.pronunciation.respelling | SHRING-kuh-buhl
+shrinkable | nuance.pronunciation.tip | Stress SHRING. The ending -able is weak: "uh-buhl", never "ay-bul".
+surplusage | nuance.pronunciation.ipa | /ˈsɝpləsɪdʒ/
+surplusage | nuance.pronunciation.respelling | SUR-pluh-sij
+surplusage | nuance.pronunciation.tip | Stress SUR. The ending -age is a weak "ij", as in package, not "ayj".
+synaesthetic | nuance.pronunciation.ipa | /ˌsɪnisˈθɛtɪk/
+synaesthetic | nuance.pronunciation.respelling | sin-uhs-THET-ik
+synaesthetic | nuance.pronunciation.tip | Stress THET, the third syllable, with a voiceless th. The "ae" is a weak vowel.
+technophobia | nuance.pronunciation.ipa | /ˌtɛknəˈfoʊbiə/
+technophobia | nuance.pronunciation.respelling | tek-nuh-FOH-bee-uh
+technophobia | nuance.pronunciation.tip | Stress FOH, as in every -phobia word: tek-nuh-FOH-bee-uh.
+technophobic | nuance.pronunciation.ipa | /ˌtɛknəˈfoʊbɪk/
+technophobic | nuance.pronunciation.respelling | tek-nuh-FOH-bik
+technophobic | nuance.pronunciation.tip | Stress FOH, as in technophobia. The -ic ending is a short "bik".
+telemeter | nuance.pronunciation.ipa | /ˈtɛləˌmitɚ/
+telemeter | nuance.pronunciation.respelling | TEL-uh-mee-ter
+telemeter | nuance.pronunciation.tip | Stress TEL, with a lighter stress on mee. The t of -ter is a quick flap.
+telemetric | nuance.pronunciation.ipa | /ˌtɛləˈmɛtɹɪk/
+telemetric | nuance.pronunciation.respelling | tel-uh-MET-rik
+telemetric | nuance.pronunciation.tip | Stress MET, the third syllable. The ending is a short "rik".
+telemetrically | nuance.pronunciation.ipa | /ˌtɛləˈmɛtɹɪkəli/
+telemetrically | nuance.pronunciation.respelling | tel-uh-MET-rih-klee
+telemetrically | nuance.pronunciation.tip | Stress MET. The ending -ically is "ih-klee", without a full "-al".
+utterable | nuance.pronunciation.ipa | /ˈʌtɚəbəl/
+utterable | nuance.pronunciation.respelling | UT-er-uh-buhl
+utterable | nuance.pronunciation.tip | Stress UT. The t is a flap, so it sounds like "UD-er". The ending -able is weak: "uh-buhl", never "ay-bul".
+watchable | nuance.pronunciation.ipa | /ˈwɑtʃəbəl/
+watchable | nuance.pronunciation.respelling | WAH-chuh-buhl
+watchable | nuance.pronunciation.tip | Stress WAH, with the "ah" of father. The ending -able is weak: "uh-buhl", never "ay-bul".
+wharfage | nuance.pronunciation.ipa | /ˈwɔɹfɪdʒ/
+wharfage | nuance.pronunciation.respelling | WOR-fij
+wharfage | nuance.pronunciation.tip | Stress WOR, with the "or" of more. The ending -age is a weak "ij", as in package, not "ayj".
