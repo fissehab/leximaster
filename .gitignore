@@ -15,3 +15,4 @@ __pycache__/
 # Snapshots from `make backup`, and test caches
 /backups/
 .pytest_cache/
+.guide-keep/

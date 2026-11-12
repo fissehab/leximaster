@@ -2,6 +2,7 @@
 meaning takes, and the American recordings of each sound.
 
     .venv/bin/python tools/heteronyms.py report        # every meaning and the sound it got
+    .venv/bin/python tools/heteronyms.py report --seed draft.txt   # the same for a draft list
     .venv/bin/python tools/heteronyms.py fetch         # download the Commons recordings named
 
 build_dataset.assemble() calls attach() to give each listed entry "prons"
@@ -163,9 +164,9 @@ def attach(words: list[dict], data_dir: Path, tts: dict) -> int:
     return len(table)
 
 
-def report() -> int:
+def report(seed: Path = SEED) -> int:
     from build_dataset import WORDS_JSON
-    table = load()
+    table = load(seed)
     words = {w["key"]: w for w in json.loads(WORDS_JSON.read_text(encoding="utf-8"))["words"]}
     commons = json.loads(COMMONS.read_text(encoding="utf-8"))
     for key, spec in table.items():
@@ -236,7 +237,7 @@ def fetch() -> int:
 def main() -> int:
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "report":
-        return report()
+        return report(Path(sys.argv[sys.argv.index("--seed") + 1]) if "--seed" in sys.argv else SEED)
     if cmd == "fetch":
         return fetch()
     sys.exit(__doc__)
