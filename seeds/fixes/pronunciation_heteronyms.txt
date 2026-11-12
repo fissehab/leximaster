@@ -5,3 +5,9 @@ dogged | phonetic | /ˈdɔɡɪd/
 blessed | phonetic | /ˈblɛsɪd/
 beloved | phonetic | /bɪˈlʌvɪd/
 profligate | phonetic | /ˈpɹɑflɪɡət/
+debauch | phonetic | /dɪˈbɔtʃ/
+cussed | phonetic | /ˈkʌsɪd/
+reprobate | phonetic | /ˈɹɛpɹəˌbeɪt/
+debauch | nuance.pronunciation.ipa | /dɪˈbɔtʃ/
+debauch | nuance.pronunciation.respelling | dih-BAWCH
+debauch | nuance.pronunciation.tip | Stress the second syllable, dih-BAWCH, for both the noun and the verb. The first syllable is short and light, and the "au" sounds like the "aw" in "law". End with a clear "ch".
