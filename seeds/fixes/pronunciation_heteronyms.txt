@@ -1,0 +1,7 @@
+# Entries whose every meaning takes the other sound of a word said two ways
+# (the -ed adjective, not the past tense; the adjective, not the verb). Found
+# while writing seeds/heteronyms.txt on 2026-11-12.
+dogged | phonetic | /ˈdɔɡɪd/
+blessed | phonetic | /ˈblɛsɪd/
+beloved | phonetic | /bɪˈlʌvɪd/
+profligate | phonetic | /ˈpɹɑflɪɡət/

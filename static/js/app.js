@@ -242,8 +242,8 @@ railBtn.addEventListener("click", () => setRail(!shell.classList.contains("rail-
 // ---------------------------------------------------------------- back
 
 // An installed app's window has no browser toolbar, so it has its own Back
-// and Forward: at the foot of the menu on a computer, in a slim bar at the top
-// on a phone (each shown only there, see app.css). Where the browser can tell
+// and Forward: at the foot of the menu on a computer, at the left end of the
+// tab bar on a phone (shown only there, see app.css). Where the browser can tell
 // (the Navigation API), each is grayed out when there is nowhere to go; where
 // it can't, both stay enabled and a click with nowhere to go does nothing.
 // No key handlers: the app window already does ⌘[ / ⌘] (and mouse buttons).
