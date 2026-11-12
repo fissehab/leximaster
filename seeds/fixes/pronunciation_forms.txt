@@ -1,0 +1,4 @@
+# Shown IPA that Wiktionary gives for another form of the word (2026-11-11):
+# "cosmos" took the US IPA of the plural kosmoi, /ˈkɑzmɔɪ/, and its
+# synthesized recording said "KAHZ-moy".
+cosmos | phonetic | /ˈkɑzmoʊs/
