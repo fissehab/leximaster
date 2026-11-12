@@ -1,0 +1,83 @@
+[
+ {
+  "word": "nondiscretionary",
+  "domains": ["advanced", "professional"],
+  "phonetic": "/ˌnɑndɪsˈkɹɛʃəˌnɛɹi/",
+  "meanings": [
+   {
+    "pos": "adjective",
+    "senses": [
+     "Fixed by law, rule or contract, so that no one may choose whether or how much to do or pay; not left to anyone's judgment.",
+     "(finance) Of an account or service: one in which the adviser recommends but the client approves every trade."
+    ]
+   }
+  ],
+  "etymology": "From non- + discretionary.",
+  "conversation": [
+   {
+    "sense": "budget",
+    "text": "Can we cut the insurance line? No, that's nondiscretionary. Look at travel instead."
+   },
+   {
+    "sense": "investing",
+    "text": "It's a nondiscretionary account, so my adviser has to call me before every trade."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective",
+    "definition": "Required by a rule or law rather than left to someone's choice; not optional."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnɑndɪsˈkɹɛʃəˌnɛɹi/",
+    "respelling": "nahn-dis-KRESH-uh-nair-ee",
+    "tip": "Main stress on KRESH, a lighter stress on the first syllable (NAHN) and on -nair-. Say all six syllables in American English: -tionary is \"shuh-nair-ee\", not the British \"shun-ree\"."
+   },
+   "us_usage": "common",
+   "register": ["formal", "technical"],
+   "connotation": "Neutral: it states that something must happen, often to explain why it can't be cut.",
+   "usage_note": "Used in budgets, government, law and investing: \"nondiscretionary spending\" (in the federal budget, the same as \"mandatory spending\", such as Social Security), \"a nondiscretionary duty\" (one an official must perform), \"a nondiscretionary bonus\" (one promised in advance by a formula, which in US labor law counts toward overtime pay). American style usually writes it as one word; \"non-discretionary\" with a hyphen is also common, especially in British and Canadian writing.",
+   "word_family": [
+    "discretionary (adjective)",
+    "discretion (noun)",
+    "nondiscretionarily (adverb, rare)"
+   ],
+   "distinctions": [
+    {
+     "vs": "mandatory",
+     "note": "Mandatory is the everyday word for required. Nondiscretionary is more technical and stresses that no one has a choice about it, often contrasted directly with discretionary items in the same budget or policy."
+    },
+    {
+     "vs": "nondiscriminatory",
+     "note": "A different word: nondiscriminatory means not treating people unfairly by race, sex and so on. Don't mix up \"discretion\" (choice) and \"discrimination\" (unfair treatment)."
+    },
+    {
+     "vs": "indiscreet",
+     "note": "Indiscreet means careless about secrets or manners. It comes from discreet, not from discretionary in the sense of choice."
+    }
+   ],
+   "antonyms": ["discretionary", "optional", "elective"],
+   "collocations": [
+    "nondiscretionary spending",
+    "nondiscretionary expenses",
+    "nondiscretionary duty",
+    "nondiscretionary bonus",
+    "nondiscretionary account",
+    "nondiscretionary funding"
+   ],
+   "examples": {
+    "everyday": "Rent, insurance and the car payment are nondiscretionary, so we can only trim the eating-out budget.",
+    "professional": "Because the bonus is paid by formula, it's nondiscretionary and has to be included when we calculate overtime.",
+    "analytical": "Nondiscretionary programs make up most of federal outlays, so the annual appropriations debate covers only a minority of total spending."
+   },
+   "analogy": "Like a fixed monthly bill on autopay: it leaves your account whether or not you decide anything.",
+   "etymology": "From non- (not) + discretionary, from discretion (Latin discretio, separation, discernment) + -ary.",
+   "common_mistakes": [
+    "Confusing it with nondiscriminatory (not unfair to groups of people).",
+    "Shortening the American ending to \"dis-KRESH-un-ree\"; Americans say all of -shuh-nair-ee."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ }
+]

@@ -18,6 +18,10 @@ function norm(s) { return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase
 // Normalized once per word list, not on every keystroke.
 const nw = w => w._nw || (w._nw = norm(w.word));
 const nd = w => w._nd || (w._nd = norm(w.def || ""));
+// The word with hyphens and spaces dropped, so "non-discretionary" finds
+// "nondiscretionary" and "buyin" finds "buy-in".
+const squash = s => s.replace(/[-\s]+/g, "");
+const ns = w => w._ns ?? (w._ns = squash(nw(w)));
 
 // Synonyms, antonyms and other related words that have no entry of their
 // own: a search finds them and opens an entry that lists them. Loaded on the
@@ -80,10 +84,11 @@ function applyFilters() {
   if (q) {
     loadRelated();
     const prefix = [], inner = [], inDef = [];
+    const qs = squash(q);
     for (const w of out) {
       const n = nw(w);
-      if (n.startsWith(q)) prefix.push(w);
-      else if (n.includes(q)) inner.push(w);
+      if (n.startsWith(q) || (qs && ns(w).startsWith(qs))) prefix.push(w);
+      else if (n.includes(q) || (qs && ns(w).includes(qs))) inner.push(w);
       else if (q.length >= 3 && nd(w).includes(q)) inDef.push(w);
     }
     const [relPrefix, relInner] = relatedRows(q, out);
