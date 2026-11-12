@@ -219,7 +219,7 @@ async function select(id, { scroll = true, reveal = false, mark = "", via = "" }
   if (state.selectedId !== id || !live()) return;
   detail = w;
   w.list_actions = listActions(w);
-  const back = h("button.btn.btn-quiet.back-to-list", { type: "button", on: { click: backToList } }, "← List");
+  const back = h("button.btn.btn-quiet.back-to-list", { type: "button", on: { click: backToList } }, icon("list"), "List");
   els.detail.replaceChildren(back, renderEntry(w, { onChange: () => { syncCached(w); renderRows(); } }));
   els.detail.scrollTop = 0;
   if (reveal && narrow()) els.detail.scrollIntoView({ block: "start" });

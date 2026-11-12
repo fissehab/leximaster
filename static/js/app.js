@@ -241,22 +241,22 @@ railBtn.addEventListener("click", () => setRail(!shell.classList.contains("rail-
 
 // ---------------------------------------------------------------- back
 
-// An installed app's window has no browser toolbar, so the menu has its own
-// Back and Forward (shown only there, see app.css). Where the browser can tell
+// An installed app's window has no browser toolbar, so it has its own Back
+// and Forward: at the foot of the menu on a computer, in a slim bar at the top
+// on a phone (each shown only there, see app.css). Where the browser can tell
 // (the Navigation API), each is grayed out when there is nowhere to go; where
 // it can't, both stay enabled and a click with nowhere to go does nothing.
 // No key handlers: the app window already does ⌘[ / ⌘] (and mouse buttons).
-const backBtn = document.getElementById("go-back");
-const fwdBtn = document.getElementById("go-forward");
-backBtn.replaceChildren(icon("arrowL"));
-fwdBtn.replaceChildren(icon("arrowR"));
-backBtn.addEventListener("click", () => history.back());
-fwdBtn.addEventListener("click", () => history.forward());
+const goBtns = [...document.querySelectorAll("[data-go]")];
+for (const b of goBtns) {
+  const back = b.dataset.go === "back";
+  b.replaceChildren(icon(back ? "arrowL" : "arrowR"));
+  b.addEventListener("click", () => back ? history.back() : history.forward());
+}
 function syncNav() {
   const nav = window.navigation;
   const known = !!nav && "canGoBack" in nav;
-  backBtn.disabled = known && !nav.canGoBack;
-  fwdBtn.disabled = known && !nav.canGoForward;
+  for (const b of goBtns) b.disabled = known && !(b.dataset.go === "back" ? nav.canGoBack : nav.canGoForward);
 }
 // currententrychange covers pushState too (no hashchange/popstate for that).
 if (window.navigation) window.navigation.addEventListener("currententrychange", syncNav);

@@ -25,13 +25,17 @@
       </a>
       <div class="nav-links" id="nav-links"></div>
       <div class="rail-foot">
-        <div class="nav-pair" role="group" aria-label="History">
-          <button class="icon-btn" id="go-back" type="button" title="Back (⌘[)" aria-label="Back"></button>
-          <button class="icon-btn" id="go-forward" type="button" title="Forward (⌘])" aria-label="Forward"></button>
+        <div class="nav-pair" role="group" aria-label="Back and forward">
+          <button class="icon-btn" data-go="back" type="button" title="Back (⌘[)" aria-label="Back"></button>
+          <button class="icon-btn" data-go="forward" type="button" title="Forward (⌘])" aria-label="Forward"></button>
         </div>
         <button class="icon-btn" id="rail-toggle" type="button" title="Collapse the menu" aria-label="Collapse the menu" aria-expanded="true"></button>
       </div>
     </nav>
+    <div class="appbar" role="group" aria-label="Back and forward">
+      <button class="icon-btn" data-go="back" type="button" aria-label="Back"></button>
+      <button class="icon-btn" data-go="forward" type="button" aria-label="Forward"></button>
+    </div>
     <main id="view" tabindex="-1"></main>
   </div>
   <div class="toast-wrap" id="toasts" role="status" aria-live="polite"></div>
