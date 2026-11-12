@@ -157,6 +157,17 @@ def compact(row: sqlite3.Row, data: dict | None = None) -> dict:
     return out
 
 
+def pron_list(data: dict) -> list[dict]:
+    """A word said more than one way (seeds/heteronyms.txt): each sound with
+    the URL of its recording, American or synthesized."""
+    out = []
+    for p in data.get("prons") or []:
+        rec = p.get("audio") or p.get("tts") or {}
+        out.append({"ipa": p["ipa"], "respell": p["respell"], "gloss": p["gloss"], "pos": p["pos"],
+                    "url": f"/media/{rec['file']}" if rec.get("file") else None, "human": bool(p.get("audio"))})
+    return out
+
+
 def full(row: sqlite3.Row) -> dict:
     data = json.loads(row["data"])
     out = compact(row, data)
@@ -170,6 +181,7 @@ def full(row: sqlite3.Row) -> dict:
         "variant_of": data.get("variant_of") or "",
         "also": data.get("also") or [],
         "forms": data.get("forms"),
+        "prons": pron_list(data),
         "conversation": data.get("conversation") or [],
         "source": data.get("source", ""),
         "notes": row["notes"],

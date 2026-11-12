@@ -129,7 +129,9 @@ def check() -> int:
     for w in words:
         note = ((w.get("nuance") or {}).get("pronunciation") or {}).get("ipa", "")
         if (w.get("tts") and not w.get("has_audio") and note.startswith("/") and w["key"] not in known
-                and ipa_differs(w["phonetic"], note)):
+                and ipa_differs(w["phonetic"], note)
+                # A word said more than one way: the note may describe another of its sounds.
+                and all(ipa_differs(p["ipa"], note) for p in w.get("prons") or [])):
             bad["recorded IPA differs from the study note's (see seeds/ipa_variants.txt)"].append(w["word"])
     for k, v in bad.items():
         print(f"  display rule broken: {k}: {len(v)}  e.g. {', '.join(v[:6])}")

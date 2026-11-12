@@ -39,7 +39,7 @@ STATIC = ROOT / "static"
 DATA = ROOT / "data"
 SHARDS = 64
 DETAIL_FIELDS = ("phonetic", "meanings", "nuance", "source", "synonyms", "antonyms", "etymology",
-                 "variant_of", "conversation", "also", "forms")
+                 "variant_of", "conversation", "also", "forms", "prons")
 SITE_URL = "https://fissehab.github.io/leximaster/"
 
 # The sql.js release vendored in static/vendor/ (from
@@ -128,6 +128,34 @@ def media_files(words: list[dict]) -> dict[str, tuple[str, Path]]:
     return out
 
 
+PRONS: dict[str, list[tuple[str, Path] | None]] = {}   # pron_media(), filled by main()
+
+
+def pron_media(words: list[dict]) -> dict[str, list[tuple[str, Path] | None]]:
+    """Each sound's recording for words said more than one way: key → one
+    (published path, source file) per sound, as media_files() picks them."""
+    norm = _read(DATA / "cache" / "audio_norm.json")
+    out = {}
+    for w in words:
+        if not w.get("prons"):
+            continue
+        row = []
+        for p in w["prons"]:
+            a, t = p.get("audio"), p.get("tts")
+            got = None
+            if a:
+                n = norm.get(a["file"])
+                if n and (DATA / "audio_norm" / Path(n["file"]).name).exists():
+                    got = (n["file"], DATA / "audio_norm" / Path(n["file"]).name)
+                elif (DATA / a["file"]).exists():
+                    got = (a["file"], DATA / a["file"])
+            elif t and (DATA / t["file"]).exists():
+                got = (t["file"], DATA / t["file"])
+            row.append(got)
+        out[w["key"]] = row
+    return out
+
+
 def _read(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
 
@@ -136,6 +164,11 @@ def build_data(words: list[dict], media: dict[str, tuple[str, Path]]) -> tuple[i
     index, shards = [], {i: {} for i in range(SHARDS)}
     for w in words:
         data = slim({k: w.get(k) for k in DETAIL_FIELDS if w.get(k) not in (None, "", [])})
+        if data.get("prons"):
+            files = PRONS.get(w["key"]) or []
+            data["prons"] = [{"ipa": p["ipa"], "respell": p["respell"], "gloss": p["gloss"], "pos": p["pos"],
+                              "file": files[i][0] if i < len(files) and files[i] else None,
+                              "human": bool(p.get("audio"))} for i, p in enumerate(data["prons"])]
         pos, definition = core_definition({"meanings": w.get("meanings") or [], "nuance": w.get("nuance")})
         s = shard_of(w["key"])
         entry = {"k": w["key"], "w": w["word"], "f": w.get("freq_rank"), "z": w.get("zipf"),
@@ -199,6 +232,23 @@ def copy_audio(words: list[dict], media: dict[str, tuple[str, Path]]) -> list[di
         name = unquote(a.get("source_url", "").rsplit("/", 1)[-1])
         page = f"https://commons.wikimedia.org/wiki/File:{name.replace(' ', '_')}" if name else ""
         rows.append({"word": w["word"], "file": name, "page": page})
+    # Each sound of a word said more than one way (the first is the main one).
+    seen = {r["file"] for r in rows}
+    for w in words:
+        for p, got in zip(w.get("prons") or [], PRONS.get(w["key"]) or []):
+            if not got:
+                continue
+            rel, src = got
+            dst = DOCS / "media" / rel
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            if not dst.exists():
+                shutil.copy2(src, dst)
+            a = p.get("audio")
+            name = unquote(a.get("source_url", "").rsplit("/", 1)[-1]) if a else ""
+            if name and name not in seen:
+                seen.add(name)
+                rows.append({"word": w["word"], "file": name,
+                             "page": f"https://commons.wikimedia.org/wiki/File:{name.replace(' ', '_')}"})
     return rows
 
 
@@ -626,6 +676,7 @@ def main() -> None:
     shutil.copytree(STATIC, DOCS / "static", ignore=shutil.ignore_patterns("index.html", ".DS_Store"))
     version = time.strftime("%Y%m%d%H%M%S")
     media = media_files(words)
+    PRONS.update(pron_media(words))
     index_size, detail_size = build_data(words, media)
     gloss_size = build_glossary()
     mentions_size = build_mentions(words)

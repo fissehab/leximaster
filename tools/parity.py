@@ -23,7 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 LIST_FIELDS = ("word", "def", "core_pos", "pos", "phonetic", "domains", "name_kind", "has_audio", "enriched",
                "freq_rank", "level")
-SKIP = {"id", "audio_url", "tts_url", "audio_accent", "notes", "list_actions"}  # ids and URL prefixes differ by design
+SKIP = {"id", "audio_url", "tts_url", "audio_accent", "notes", "list_actions", "url"}  # ids and URL prefixes differ by design
 
 
 def prune(v):
@@ -85,6 +85,7 @@ def js_side(url: str, keys: list[str]) -> tuple[list[dict], dict[str, dict]]:
 def main() -> int:
     data = json.loads((ROOT / "data" / "words.json").read_text(encoding="utf-8"))["words"]
     keys = [w["word"] for w in data[:: max(1, len(data) // 50)]][:50]
+    keys += [w["word"] for w in data if w.get("prons")][::40][:5]   # words said more than one way
     py_words, py_full = python_side(keys)
     js_words, js_full = js_side(serve_docs(), keys)
     problems = []

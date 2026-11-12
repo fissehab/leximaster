@@ -1,0 +1,367 @@
+# Words spelled one way and said two (or three) ways, by part of speech or by
+# meaning: REK-erd (noun) and rih-KAWRD (verb), tair (rip) and teer (from the
+# eye). Each entry shows every sound with its own recording, and each meaning
+# is marked with the sound it takes. Read by build_dataset.assemble() through
+# tools/heteronyms.py; `.venv/bin/python tools/heteronyms.py report` shows
+# which sound every meaning got.
+#
+#   key | applies to | IPA | respelling | short gloss | Commons recording (optional)
+#
+# "applies to" is one or more parts of speech ("noun; adjective"), each of
+# which may carry "~ regex" to pick meanings by their definition ("noun ~
+# drop|eyes"); "*" is everything left. A meaning takes the first sound whose
+# regex matches it, else the first whose parts of speech include it. The
+# entry leads with (shows the IPA of, plays first) the sound of its main
+# meaning, the study notes' core definition; else the first listed.
+# The recording names a Commons file in data/cache/commons_us.json, an
+# American speaker saying that form ("record-verb"); without one the sound is
+# synthesized from its IPA (tools/tts.py).
+
+# ---------------------------------------------------------------- s or z, th or dh
+abuse | noun | /əˈbjus/ | uh-BYOOS | cruel treatment; misuse | abuse-noun
+abuse | verb | /əˈbjuz/ | uh-BYOOZ | to treat cruelly; to misuse | abuse-verb
+excuse | verb | /ɪkˈskjuz/ | ik-SKYOOZ | to forgive; to let someone off | excuse-verb
+excuse | noun | /ɪkˈskjus/ | ik-SKYOOS | a reason you give | excuse-noun
+use | noun | /jus/ | yoos | the act of using; a purpose | use-noun
+use | verb | /juz/ | yooz | to employ
+used | adjective | /juzd/ | yoozd | not new; already used
+used | verb; adjective ~ used to | /just/ | yoost | in "used to" (did in the past; accustomed)
+close | verb; noun | /kloʊz/ | klohz | to shut; to end; an end | close-verb
+close | adjective; adverb; noun ~ fenced|enclosed | /kloʊs/ | klohs | near; almost; careful | close-adj
+closer | noun | /ˈkloʊzɚ/ | KLOH-zer | one that closes or finishes
+closer | adverb; adjective | /ˈkloʊsɚ/ | KLOH-ser | nearer | closer-adj
+house | noun | /haʊs/ | hows | a building to live in | house-noun
+house | verb | /haʊz/ | howz | to give a place to; to hold | house-verb
+mouth | noun | /maʊθ/ | mowth | the opening for eating and speaking
+mouth | verb | /maʊð/ | mowth (th as in "this") | to say; to form words silently
+refuse | verb | /ɹɪˈfjuz/ | rih-FYOOZ | to say no
+refuse | noun; adjective | /ˈɹɛfjus/ | REF-yoos | trash, garbage
+refuse | verb ~ fuse again | /ˌɹiˈfjuz/ | ree-FYOOZ | to melt again
+diffuse | verb | /dɪˈfjuz/ | dih-FYOOZ | to spread out | diffuse-verb
+diffuse | adjective | /dɪˈfjus/ | dih-FYOOS | spread out; wordy | diffuse-adjective
+
+# ---------------------------------------------------------------- different vowels, by meaning
+tear | verb; noun | /tɛɹ/ | tair | to rip; a rip | tear-verb
+tear | noun ~ drop|eyes|tears|lament|vitrified; verb ~ produce tears | /tɪɹ/ | teer | a drop from the eye | tear-noun
+bow | noun; verb | /boʊ/ | boh | a weapon for arrows; a knot; a curve; to play with a bow
+bow | interjection; noun ~ gesture|rower|front of a boat; verb ~ respect|deference|influence|debut|defer|direction, indication|give up|About to|bow-wow | /baʊ/ | bow (rhymes with "how") | to bend in respect; the front of a ship
+row | noun; verb | /ɹoʊ/ | roh | a line; to move a boat with oars
+row | verb ~ argue | /ɹaʊ/ | row (rhymes with "cow") | to argue noisily
+sow | noun | /saʊ/ | sow (rhymes with "cow") | a female pig | sow-noun
+sow | verb | /soʊ/ | soh | to plant seeds; to spread | sow-verb
+wind | noun; verb | /wɪnd/ | wind | moving air; breath | wind-air
+wind | noun ~ act of winding; verb ~ coil|clockwork|entwist|curves|complete control|insinuat|winding force|end for end|wind instrument | /waɪnd/ | wynd | to turn or coil; to wind a clock
+lead | noun; verb; adjective | /lid/ | leed | to guide; first place; a clue
+lead | noun ~ \bmetal\b|graphite|bullets|plummet|lined with lead|lead sheets|plates of lead|known as leading; verb ~ with lead\b|leads between | /lɛd/ | led | the metal; pencil lead
+live | verb | /lɪv/ | liv | to be alive; to have a home | live-verb
+live | adjective; adverb | /laɪv/ | lyve | alive; happening now; carrying power | live-adj
+minute | noun; verb | /ˈmɪnɪt/ | MIN-it | sixty seconds; notes of a meeting | minute-noun
+minute | adjective | /maɪˈnut/ | my-NOOT | very small; very detailed | minute-adjective
+number | noun; verb | /ˈnʌmbɚ/ | NUM-ber | a figure; an amount
+number | noun ~ numbs | /ˈnʌmɚ/ | NUM-er | something that numbs
+sewer | noun; verb | /ˈsuɚ/ | SOO-er | a pipe for waste water
+sewer | noun ~ sews | /ˈsoʊɚ/ | SOH-er | one who sews
+tower | noun; verb | /ˈtaʊɚ/ | TOW-er | a tall building
+tower | noun ~ tows | /ˈtoʊɚ/ | TOH-er | one who tows
+primer | noun; verb | /ˈpɹaɪmɚ/ | PRY-mer | a first coat of paint; something that sets off a charge
+primer | noun ~ children's book|devotional|private prayer | /ˈpɹɪmɚ/ | PRIM-er | a first reading book
+slough | noun; verb | /slʌf/ | sluf | skin a snake sheds; to shed
+slough | noun ~ marsh|swamp|channel|pond|depression | /slu/ | sloo | a swamp; a muddy hollow
+buffet | noun ~ counter|sideboard|laid out | /bəˈfeɪ/ | buh-FAY | a meal where you serve yourself
+buffet | noun; verb | /ˈbʌfɪt/ | BUF-it | to strike again and again; a blow
+learned | adjective | /ˈlɝnɪd/ | LUR-nid | having much knowledge
+learned | adjective ~ derived from experience | /lɝnd/ | lurnd | gained by learning
+supposed | adjective | /səˈpoʊzd/ | suh-POHZD | believed to be; so-called
+supposed | adjective ~ supposed to | /səˈpoʊst/ | suh-POHST | in "supposed to" (should)
+wicked | adjective; noun | /ˈwɪkɪd/ | WIK-id | evil; (slang) excellent
+wicked | adjective ~ having a wick | /wɪkt/ | wikt | having a wick
+hinder | verb | /ˈhɪndɚ/ | HIN-der | to get in the way of
+hinder | adjective; noun | /ˈhaɪndɚ/ | HYNE-der | at the back
+resume | verb | /ɹɪˈzum/ | rih-ZOOM | to start again; to take back
+resume | noun; verb ~ summarize | /ˈɹɛzəˌmeɪ/ | REZ-uh-may | a summary (résumé)
+
+# ---------------------------------------------------------------- stress: first for the noun, later for the verb
+record | noun; adjective | /ˈɹɛkɚd/ | REK-erd | a written account; a disc; the best ever | record-noun
+record | verb | /ɹɪˈkɔɹd/ | rih-KAWRD | to write down; to capture sound or video | record-verb
+content | noun ~ contained|subject matter|creative work|n-dimensional|common divisor|amount of material | /ˈkɑnˌtɛnt/ | KAHN-tent | what is inside; material to read or watch
+content | adjective; verb; noun | /kənˈtɛnt/ | kun-TENT | happy, satisfied
+desert | noun; adjective | /ˈdɛzɚt/ | DEH-zert | a dry, empty land | desert-noun
+desert | verb; noun ~ deserved | /dɪˈzɝt/ | dih-ZURT | to abandon; what you deserve | desert-verb
+invalid | adjective | /ɪnˈvælɪd/ | in-VAL-id | not valid | invalid-adj
+invalid | noun; verb; adjective ~ disability|illness|an invalid | /ˈɪnvəlɪd/ | IN-vuh-lid | a sick or disabled person | invalid-noun
+present | adjective; noun | /ˈpɹɛzənt/ | PREZ-unt | here; now; a gift | present-adjective
+present | verb | /pɹɪˈzɛnt/ | prih-ZENT | to give; to show
+object | noun | /ˈɑbˌdʒɛkt/ | AHB-jekt | a thing; a goal | object-noun
+object | verb | /əbˈdʒɛkt/ | ub-JEKT | to disagree | object-verb
+project | noun | /ˈpɹɑˌdʒɛkt/ | PRAH-jekt | a planned piece of work
+project | verb | /pɹəˈdʒɛkt/ | pruh-JEKT | to stick out; to show on a screen; to forecast
+address | noun ~ location|storage location|network|nodes | /ˈæˌdɹɛs/ | AD-res | where someone lives; a web or email address
+address | verb; noun | /əˈdɹɛs/ | uh-DRES | to speak to; to deal with; a speech
+entrance | noun | /ˈɛntɹəns/ | EN-truns | a way in
+entrance | verb | /ɪnˈtɹæns/ | in-TRANS | to fill with wonder
+console | noun | /ˈkɑnˌsoʊl/ | KAHN-sohl | a control panel; a cabinet | console-noun
+console | verb | /kənˈsoʊl/ | kun-SOHL | to comfort | console-verb
+converse | verb | /kənˈvɝs/ | kun-VURS | to talk
+converse | noun; adjective | /ˈkɑnˌvɝs/ | KAHN-vurs | the opposite
+consort | noun; adjective | /ˈkɑnˌsɔɹt/ | KAHN-sawrt | a spouse; a partner | consort-noun
+consort | verb | /kənˈsɔɹt/ | kun-SAWRT | to keep company with
+commune | noun | /ˈkɑmˌjun/ | KAHM-yoon | a shared community | commune-noun
+commune | verb | /kəˈmjun/ | kuh-MYOON | to share thoughts closely | commune-verb
+excise | noun; verb ~ excise tax | /ˈɛkˌsaɪz/ | EK-syze | a tax on goods | excise-noun
+excise | verb | /ɪkˈsaɪz/ | ik-SYZE | to cut out | excise-verb
+coax | verb | /koʊks/ | kohks | to persuade gently | coax-verb
+coax | noun; adjective | /ˈkoʊˌæks/ | KOH-aks | coaxial cable
+reflex | noun; adjective | /ˈɹiˌflɛks/ | REE-fleks | an automatic reaction
+reflex | verb | /ɹɪˈflɛks/ | rih-FLEKS | to bend back
+intern | noun; verb | /ˈɪnˌtɝn/ | IN-turn | a trainee; to work as a trainee
+intern | verb ~ imprison|confine|internalize | /ɪnˈtɝn/ | in-TURN | to hold as a prisoner
+abstract | noun; adjective | /ˈæbˌstɹækt/ | AB-strakt | a summary; not concrete
+abstract | verb | /æbˈstɹækt/ | ab-STRAKT | to take out; to remove
+addict | noun | /ˈædɪkt/ | AD-ikt | someone who can't stop
+addict | verb; adjective | /əˈdɪkt/ | uh-DIKT | to make dependent
+annex | noun | /ˈænˌɛks/ | AN-eks | an added building
+annex | verb | /əˈnɛks/ | uh-NEKS | to take over (land); to add
+attribute | noun | /ˈætɹəˌbjut/ | AT-ruh-byoot | a quality | attribute-noun
+attribute | verb | /əˈtɹɪbjut/ | uh-TRIB-yoot | to say something comes from | attribute-verb
+combat | noun | /ˈkɑmˌbæt/ | KAHM-bat | fighting
+combat | verb | /kəmˈbæt/ | kum-BAT | to fight against
+combine | verb | /kəmˈbaɪn/ | kum-BYNE | to join together
+combine | noun | /ˈkɑmˌbaɪn/ | KAHM-byne | a harvesting machine; a group of companies
+compact | noun | /ˈkɑmˌpækt/ | KAHM-pakt | an agreement; a small case
+compact | adjective; verb | /kəmˈpækt/ | kum-PAKT | small and tight; to press together
+complex | adjective; verb | /kɑmˈplɛks/ | kahm-PLEKS | complicated | complex-adj
+complex | noun | /ˈkɑmˌplɛks/ | KAHM-pleks | a group of buildings; a strong worry | complex-noun
+compress | verb | /kəmˈpɹɛs/ | kum-PRES | to press together | compress-verb
+compress | noun | /ˈkɑmˌpɹɛs/ | KAHM-pres | a pad pressed on a wound | compress-noun
+conduct | noun | /ˈkɑnˌdʌkt/ | KAHN-dukt | behavior
+conduct | verb | /kənˈdʌkt/ | kun-DUKT | to lead; to carry (heat, electricity)
+conflict | noun | /ˈkɑnˌflɪkt/ | KAHN-flikt | a fight; a disagreement | conflict-noun
+conflict | verb | /kənˈflɪkt/ | kun-FLIKT | to clash | conflict-verb
+conscript | noun; adjective | /ˈkɑnˌskɹɪpt/ | KAHN-skript | someone made to join the army | conscript-noun
+conscript | verb | /kənˈskɹɪpt/ | kun-SKRIPT | to make someone join the army | conscript-verb
+conserve | noun | /ˈkɑnˌsɝv/ | KAHN-surv | jam
+conserve | verb | /kənˈsɝv/ | kun-SURV | to save; to protect | conserve-verb
+construct | noun | /ˈkɑnˌstɹʌkt/ | KAHN-strukt | an idea or model | construct-noun
+construct | verb | /kənˈstɹʌkt/ | kun-STRUKT | to build | construct-verb
+consult | verb | /kənˈsʌlt/ | kun-SULT | to ask for advice | consult-verb
+consult | noun | /ˈkɑnˌsʌlt/ | KAHN-sult | a meeting for advice | consult-noun
+contest | noun | /ˈkɑnˌtɛst/ | KAHN-test | a competition
+contest | verb | /kənˈtɛst/ | kun-TEST | to argue against
+contract | noun | /ˈkɑnˌtɹækt/ | KAHN-trakt | a legal agreement | contract-noun
+contract | verb | /kənˈtɹækt/ | kun-TRAKT | to shrink; to catch (an illness)
+contrast | noun | /ˈkɑnˌtɹæst/ | KAHN-trast | a clear difference
+contrast | verb | /kənˈtɹæst/ | kun-TRAST | to show or be different
+convert | verb | /kənˈvɝt/ | kun-VURT | to change | convert-verb
+convert | noun | /ˈkɑnˌvɝt/ | KAHN-vurt | someone who changed beliefs | convert-noun
+convict | verb | /kənˈvɪkt/ | kun-VIKT | to find guilty | convict-verb
+convict | noun | /ˈkɑnˌvɪkt/ | KAHN-vikt | a prisoner | convict-noun
+decrease | verb | /dɪˈkɹis/ | dih-KREES | to become less
+decrease | noun | /ˈdiˌkɹis/ | DEE-krees | a drop
+defect | noun | /ˈdiˌfɛkt/ | DEE-fekt | a flaw
+defect | verb | /dɪˈfɛkt/ | dih-FEKT | to leave one side for another
+digest | verb | /daɪˈdʒɛst/ | dye-JEST | to break down food; to take in | digest-verb
+digest | noun | /ˈdaɪˌdʒɛst/ | DYE-jest | a summary | digest-noun
+discharge | verb | /dɪsˈtʃɑɹdʒ/ | dis-CHARJ | to release; to let out
+discharge | noun | /ˈdɪsˌtʃɑɹdʒ/ | DIS-charj | a release; fluid let out
+escort | noun | /ˈɛsˌkɔɹt/ | ES-kawrt | a guard or companion
+escort | verb | /ɪˈskɔɹt/ | ih-SKAWRT | to go with someone
+exploit | noun | /ˈɛkˌsplɔɪt/ | EKS-ployt | a bold act
+exploit | verb | /ɪkˈsplɔɪt/ | ik-SPLOYT | to use unfairly; to make use of
+export | verb | /ɪkˈspɔɹt/ | ik-SPAWRT | to sell abroad; to save as a file
+export | noun; adjective | /ˈɛkˌspɔɹt/ | EKS-pawrt | goods sold abroad
+extract | noun | /ˈɛkˌstɹækt/ | EKS-trakt | a short passage; a concentrate
+extract | verb | /ɪkˈstɹækt/ | ik-STRAKT | to pull out
+ferment | verb | /fɚˈmɛnt/ | fer-MENT | to change chemically, as wine does
+ferment | noun | /ˈfɝˌmɛnt/ | FUR-ment | unrest; excitement
+frequent | adjective | /ˈfɹikwənt/ | FREE-kwunt | happening often | frequent-adj
+frequent | verb | /fɹiˈkwɛnt/ | free-KWENT | to visit often | frequent-verb
+impact | noun | /ˈɪmˌpækt/ | IM-pakt | a strong effect; a hit
+impact | verb | /ɪmˈpækt/ | im-PAKT | to affect; to hit
+implant | verb | /ɪmˈplænt/ | im-PLANT | to put in firmly
+implant | noun | /ˈɪmˌplænt/ | IM-plant | something put into the body
+import | noun | /ˈɪmˌpɔɹt/ | IM-pawrt | goods brought in; importance
+import | verb | /ɪmˈpɔɹt/ | im-PAWRT | to bring in
+impress | verb | /ɪmˈpɹɛs/ | im-PRES | to make others admire you | impress-v
+impress | noun | /ˈɪmˌpɹɛs/ | IM-pres | a mark pressed in | impress-n
+imprint | noun | /ˈɪmˌpɹɪnt/ | IM-print | a mark; a publisher's name | imprint-noun
+imprint | verb | /ɪmˈpɹɪnt/ | im-PRINT | to press in; to fix in the mind | imprint-verb
+incense | noun; verb ~ perfume|fumigate|incense to|offer incense|burn incense | /ˈɪnˌsɛns/ | IN-sens | sweet-smelling smoke | incense-noun
+incense | verb | /ɪnˈsɛns/ | in-SENS | to make very angry | incense-verb
+incline | verb | /ɪnˈklaɪn/ | in-KLYNE | to lean; to tend
+incline | noun | /ˈɪnˌklaɪn/ | IN-klyne | a slope
+increase | verb | /ɪnˈkɹis/ | in-KREES | to grow | increase-verb
+increase | noun | /ˈɪnˌkɹis/ | IN-krees | a rise | increase-noun
+infix | noun | /ˈɪnˌfɪks/ | IN-fiks | a part put inside a word
+infix | verb | /ɪnˈfɪks/ | in-FIKS | to fix in
+insert | verb | /ɪnˈsɝt/ | in-SURT | to put in
+insert | noun | /ˈɪnˌsɝt/ | IN-surt | something put in
+insult | verb | /ɪnˈsʌlt/ | in-SULT | to be rude to
+insult | noun | /ˈɪnˌsʌlt/ | IN-sult | a rude remark
+interchange | verb | /ˌɪntɚˈtʃeɪndʒ/ | in-ter-CHAYNJ | to swap | interchange-verb
+interchange | noun | /ˈɪntɚˌtʃeɪndʒ/ | IN-ter-chaynj | a road junction; an exchange | interchange-noun
+overcharge | verb | /ˌoʊvɚˈtʃɑɹdʒ/ | oh-ver-CHARJ | to charge too much
+overcharge | noun | /ˈoʊvɚˌtʃɑɹdʒ/ | OH-ver-charj | too high a price
+overflow | verb | /ˌoʊvɚˈfloʊ/ | oh-ver-FLOH | to spill over
+overflow | noun | /ˈoʊvɚˌfloʊ/ | OH-ver-floh | what spills over
+overhaul | verb | /ˌoʊvɚˈhɔl/ | oh-ver-HAWL | to repair fully
+overhaul | noun | /ˈoʊvɚˌhɔl/ | OH-ver-hawl | a full repair
+overlap | verb | /ˌoʊvɚˈlæp/ | oh-ver-LAP | to partly cover
+overlap | noun | /ˈoʊvɚˌlæp/ | OH-ver-lap | a shared part
+overlay | verb | /ˌoʊvɚˈleɪ/ | oh-ver-LAY | to lay over
+overlay | noun | /ˈoʊvɚˌleɪ/ | OH-ver-lay | a layer on top
+override | verb | /ˌoʊvɚˈɹaɪd/ | oh-ver-RYDE | to cancel; to be more important than
+override | noun | /ˈoʊvɚˌɹaɪd/ | OH-ver-ryde | a manual control; an extra charge
+overrun | verb | /ˌoʊvɚˈɹʌn/ | oh-ver-RUN | to spread over; to go past a limit
+overrun | noun | /ˈoʊvɚˌɹʌn/ | OH-ver-run | an amount over the limit
+overthrow | verb | /ˌoʊvɚˈθɹoʊ/ | oh-ver-THROH | to remove from power
+overthrow | noun | /ˈoʊvɚˌθɹoʊ/ | OH-ver-throh | a removal from power
+overturn | verb | /ˌoʊvɚˈtɝn/ | oh-ver-TURN | to turn over; to cancel
+overturn | noun | /ˈoʊvɚˌtɝn/ | OH-ver-turn | a turning over
+overwork | verb | /ˌoʊvɚˈwɝk/ | oh-ver-WURK | to work too hard
+overwork | noun | /ˈoʊvɚˌwɝk/ | OH-ver-wurk | too much work
+perfect | adjective; noun | /ˈpɝfɪkt/ | PUR-fikt | without fault | perfect-adj
+perfect | verb | /pɚˈfɛkt/ | per-FEKT | to make perfect | perfect-verb
+perfume | noun | /ˈpɝˌfjum/ | PUR-fyoom | a nice-smelling liquid
+perfume | verb | /pɚˈfjum/ | per-FYOOM | to fill with a nice smell
+permit | verb | /pɚˈmɪt/ | per-MIT | to allow | permit-verb
+permit | noun | /ˈpɝˌmɪt/ | PUR-mit | an official paper that allows something | permit-noun
+pervert | verb | /pɚˈvɝt/ | per-VURT | to twist; to corrupt
+pervert | noun | /ˈpɝˌvɝt/ | PUR-vurt | a person with abnormal sexual behavior
+produce | verb | /pɹəˈdus/ | pruh-DOOS | to make
+produce | noun | /ˈpɹoʊˌdus/ | PROH-doos | fruit and vegetables
+progress | noun | /ˈpɹɑˌɡɹɛs/ | PRAH-gres | forward movement | progress-noun
+progress | verb | /pɹəˈɡɹɛs/ | pruh-GRES | to move forward | progress-verb
+protest | verb | /pɹəˈtɛst/ | pruh-TEST | to object | protest-verb
+protest | noun | /ˈpɹoʊˌtɛst/ | PROH-test | a public objection | protest-noun
+rebel | noun | /ˈɹɛbəl/ | REB-ul | someone who fights authority
+rebel | verb | /ɹɪˈbɛl/ | rih-BEL | to fight authority | rebel-verb
+rebound | noun | /ˈɹiˌbaʊnd/ | REE-bownd | a bounce back
+rebound | verb | /ɹɪˈbaʊnd/ | rih-BOWND | to bounce back
+refill | noun | /ˈɹiˌfɪl/ | REE-fil | a new supply
+refill | verb | /ˌɹiˈfɪl/ | ree-FIL | to fill again
+refund | verb | /ɹɪˈfʌnd/ | rih-FUND | to pay back | refund-verb
+refund | noun | /ˈɹiˌfʌnd/ | REE-fund | money paid back | refund-noun
+rehash | verb | /ˌɹiˈhæʃ/ | ree-HASH | to reuse old ideas
+rehash | noun | /ˈɹiˌhæʃ/ | REE-hash | old ideas reused
+reject | verb | /ɹɪˈdʒɛkt/ | rih-JEKT | to refuse
+reject | noun | /ˈɹiˌdʒɛkt/ | REE-jekt | something refused
+reload | verb | /ˌɹiˈloʊd/ | ree-LOHD | to load again
+reload | noun | /ˈɹiˌloʊd/ | REE-lohd | a loading again
+remake | noun | /ˈɹiˌmeɪk/ | REE-mayk | a new version of a film
+remake | verb | /ˌɹiˈmeɪk/ | ree-MAYK | to make again
+remit | verb | /ɹɪˈmɪt/ | rih-MIT | to send (money); to cancel
+remit | noun | /ˈɹiˌmɪt/ | REE-mit | an area of responsibility
+replay | verb | /ˌɹiˈpleɪ/ | ree-PLAY | to play again
+replay | noun | /ˈɹiˌpleɪ/ | REE-play | a recording shown again
+reset | verb | /ˌɹiˈsɛt/ | ree-SET | to set again; to restart
+reset | noun | /ˈɹiˌsɛt/ | REE-set | a restart
+retake | verb | /ˌɹiˈteɪk/ | ree-TAYK | to take again
+retake | noun | /ˈɹiˌteɪk/ | REE-tayk | a second try
+rewrite | noun | /ˈɹiˌɹaɪt/ | REE-ryte | a new version of a text
+rewrite | verb | /ˌɹiˈɹaɪt/ | ree-RYTE | to write again
+subject | noun; adjective | /ˈsʌbdʒɪkt/ | SUB-jikt | a topic; a person under a ruler | subject-noun
+subject | verb | /səbˈdʒɛkt/ | sub-JEKT | to make someone go through something | subject-verb
+sublet | noun | /ˈsʌbˌlɛt/ | SUB-let | a rented place you rent out again
+sublet | verb | /ˌsʌbˈlɛt/ | sub-LET | to rent out what you rent
+survey | noun | /ˈsɝˌveɪ/ | SUR-vay | a set of questions; a study
+survey | verb | /sɚˈveɪ/ | ser-VAY | to look over; to question
+suspect | verb | /səˈspɛkt/ | suh-SPEKT | to think likely | suspect-verb
+suspect | noun; adjective | /ˈsʌsˌpɛkt/ | SUS-pekt | a person thought guilty | suspect-noun-adj
+torment | noun | /ˈtɔɹˌmɛnt/ | TAWR-ment | great pain
+torment | verb | /tɔɹˈmɛnt/ | tawr-MENT | to cause great pain
+transfer | verb | /tɹænsˈfɝ/ | trans-FUR | to move
+transfer | noun | /ˈtɹænsfɚ/ | TRANS-fer | a move
+transform | verb | /tɹænsˈfɔɹm/ | trans-FAWRM | to change
+transform | noun | /ˈtɹænsˌfɔɹm/ | TRANS-fawrm | (math) a changed form
+transplant | verb | /tɹænsˈplænt/ | trans-PLANT | to move to a new place
+transplant | noun | /ˈtɹænsˌplænt/ | TRANS-plant | an organ moved to a new body
+transport | verb | /tɹænsˈpɔɹt/ | trans-PAWRT | to carry | transport-verb
+transport | noun | /ˈtɹænsˌpɔɹt/ | TRANS-pawrt | carrying; vehicles | transport-noun
+transpose | verb | /tɹænsˈpoʊz/ | trans-POHZ | to swap places | transpose-verb
+transpose | noun; adjective | /ˈtɹænsˌpoʊz/ | TRANS-pohz | (math) a flipped matrix | transpose-noun
+update | noun | /ˈʌpˌdeɪt/ | UP-dayt | the latest news
+update | verb | /ˌʌpˈdeɪt/ | up-DAYT | to make current
+upgrade | noun; adverb | /ˈʌpˌɡɹeɪd/ | UP-grayd | a better version
+upgrade | verb | /ˌʌpˈɡɹeɪd/ | up-GRAYD | to improve
+uplift | verb | /ˌʌpˈlɪft/ | up-LIFT | to raise; to cheer
+uplift | noun | /ˈʌpˌlɪft/ | UP-lift | a rise; a lift in spirits
+upset | adjective; verb | /ʌpˈsɛt/ | up-SET | unhappy; to make unhappy
+upset | noun | /ˈʌpˌsɛt/ | UP-set | a surprise win; a stomach problem
+
+# ---------------------------------------------------------------- -ate: "-it" for the noun and adjective, "-ayt" for the verb
+advocate | noun | /ˈædvəkət/ | AD-vuh-kit | someone who speaks for others | advocate-noun
+advocate | verb | /ˈædvəˌkeɪt/ | AD-vuh-kayt | to speak in favor of | advocate-verb
+affiliate | noun | /əˈfɪliət/ | uh-FIL-ee-it | a connected group or station | affiliate-noun
+affiliate | verb | /əˈfɪliˌeɪt/ | uh-FIL-ee-ayt | to join or connect | affiliate-verb
+agglomerate | noun; adjective | /əˈɡlɑməɹət/ | uh-GLAH-muh-rit | a mass, a heap | agglomerate-noun
+agglomerate | verb | /əˈɡlɑməˌɹeɪt/ | uh-GLAH-muh-rayt | to gather into a mass | agglomerate-verb
+aggregate | noun; adjective | /ˈæɡɹɪɡət/ | AG-rih-git | a total; combined | aggregate-noun
+aggregate | verb | /ˈæɡɹɪˌɡeɪt/ | AG-rih-gayt | to combine | aggregate-verb
+alternate | adjective; noun | /ˈɔltɚnət/ | AWL-ter-nit | every other; a substitute | alternate-noun-adj
+alternate | verb | /ˈɔltɚˌneɪt/ | AWL-ter-nayt | to take turns | alternate-verb
+animate | adjective | /ˈænɪmət/ | AN-ih-mit | alive | animate-adj
+animate | verb | /ˈænɪˌmeɪt/ | AN-ih-mayt | to bring to life; to make move | animate-verb
+appropriate | adjective | /əˈpɹoʊpɹiət/ | uh-PROH-pree-it | suitable | appropriate-adj
+appropriate | verb | /əˈpɹoʊpɹiˌeɪt/ | uh-PROH-pree-ayt | to take for yourself; to set aside | appropriate-verb
+approximate | adjective; noun | /əˈpɹɑksəmət/ | uh-PRAHK-suh-mit | close but not exact | approximate-adj
+approximate | verb | /əˈpɹɑksəˌmeɪt/ | uh-PRAHK-suh-mayt | to come close to; to estimate | approximate-verb
+articulate | adjective; noun | /ɑɹˈtɪkjələt/ | ar-TIK-yuh-lit | able to speak clearly | articulate-adj
+articulate | verb | /ɑɹˈtɪkjəˌleɪt/ | ar-TIK-yuh-layt | to say clearly; to put into words | articulate-verb
+aspirate | noun; adjective | /ˈæspəɹət/ | AS-puh-rit | fluid drawn out; a breathy sound | aspirate-noun
+aspirate | verb | /ˈæspəˌɹeɪt/ | AS-puh-rayt | to suck out; to breathe in by accident | aspirate-verb
+associate | noun; adjective | /əˈsoʊʃiət/ | uh-SOH-shee-it | a partner; a colleague
+associate | verb | /əˈsoʊʃiˌeɪt/ | uh-SOH-shee-ayt | to connect; to spend time with
+certificate | noun; adjective | /sɚˈtɪfɪkət/ | ser-TIF-ih-kit | an official document
+certificate | verb | /sɚˈtɪfɪˌkeɪt/ | ser-TIF-ih-kayt | to give a certificate to
+coagulate | verb | /koʊˈæɡjəˌleɪt/ | koh-AG-yuh-layt | to thicken; to clot | coagulate-verb
+coagulate | noun | /koʊˈæɡjələt/ | koh-AG-yuh-lit | a clot | coagulate-noun
+confederate | adjective; noun | /kənˈfɛdəɹət/ | kun-FED-er-it | allied; a partner
+confederate | verb | /kənˈfɛdəˌɹeɪt/ | kun-FED-uh-rayt | to unite in a league
+conglomerate | noun; adjective | /kənˈɡlɑməɹət/ | kun-GLAH-muh-rit | a large company; a mixed mass
+conglomerate | verb | /kənˈɡlɑməˌɹeɪt/ | kun-GLAH-muh-rayt | to gather into a mass
+consummate | adjective | /ˈkɑnsəmət/ | KAHN-suh-mit | complete; perfect | consummate-adj
+consummate | verb | /ˈkɑnsəˌmeɪt/ | KAHN-suh-mayt | to complete | consummate-verb
+coordinate | noun; adjective | /koʊˈɔɹdənət/ | koh-AWR-duh-nit | an equal; a position on a map | coordinate-noun
+coordinate | verb | /koʊˈɔɹdəˌneɪt/ | koh-AWR-duh-nayt | to organize together
+degenerate | adjective; noun | /dɪˈdʒɛnəɹət/ | dih-JEN-er-it | having become worse; a corrupt person | degenerate-na-noun
+degenerate | verb | /dɪˈdʒɛnəˌɹeɪt/ | dih-JEN-uh-rayt | to get worse
+delegate | noun | /ˈdɛlɪɡət/ | DEL-ih-git | a representative
+delegate | verb | /ˈdɛlɪˌɡeɪt/ | DEL-ih-gayt | to give a task to someone
+deliberate | adjective | /dɪˈlɪbəɹət/ | dih-LIB-er-it | on purpose; careful | deliberate-adj
+deliberate | verb | /dɪˈlɪbəˌɹeɪt/ | dih-LIB-uh-rayt | to think carefully | deliberate-verb
+designate | adjective | /ˈdɛzɪɡnət/ | DEZ-ig-nit | chosen but not yet in office
+designate | verb | /ˈdɛzɪɡˌneɪt/ | DEZ-ig-nayt | to name; to choose
+desolate | adjective | /ˈdɛsələt/ | DES-uh-lit | empty; very sad
+desolate | verb | /ˈdɛsəˌleɪt/ | DES-uh-layt | to lay waste; to make very sad
+domesticate | verb | /dəˈmɛstɪˌkeɪt/ | duh-MES-tih-kayt | to tame
+domesticate | noun | /dəˈmɛstɪkət/ | duh-MES-tih-kit | a tamed animal or plant
+duplicate | noun; adjective | /ˈduplɪkət/ | DOO-plih-kit | an exact copy | duplicate-noun
+duplicate | verb | /ˈduplɪˌkeɪt/ | DOO-plih-kayt | to copy | duplicate-verb
+estimate | noun | /ˈɛstɪmət/ | ES-tih-mit | a rough guess | estimate-noun
+estimate | verb | /ˈɛstɪˌmeɪt/ | ES-tih-mayt | to guess roughly | estimate-verb
+expatriate | noun; adjective | /ɛksˈpeɪtɹiət/ | eks-PAY-tree-it | someone living abroad
+expatriate | verb | /ɛksˈpeɪtɹiˌeɪt/ | eks-PAY-tree-ayt | to send or move out of your country
+graduate | noun; adjective | /ˈɡɹædʒuət/ | GRAD-joo-it | someone who finished school
+graduate | verb | /ˈɡɹædʒuˌeɪt/ | GRAD-joo-ayt | to finish school
+initiate | verb | /ɪˈnɪʃiˌeɪt/ | ih-NISH-ee-ayt | to start; to admit as a member
+initiate | noun | /ɪˈnɪʃiət/ | ih-NISH-ee-it | a new member
+intimate | adjective; noun | /ˈɪntɪmət/ | IN-tih-mit | very close; private | intimate-noun-adj
+intimate | verb | /ˈɪntɪˌmeɪt/ | IN-tih-mayt | to hint | intimate-verb
+laminate | verb | /ˈlæməˌneɪt/ | LAM-uh-nayt | to cover with thin layers
+laminate | noun; adjective | /ˈlæmənət/ | LAM-uh-nit | material made of thin layers
+legitimate | adjective; noun | /lɪˈdʒɪtəmət/ | lih-JIT-uh-mit | legal; real
+legitimate | verb | /lɪˈdʒɪtəˌmeɪt/ | lih-JIT-uh-mayt | to make legal
+moderate | adjective; noun | /ˈmɑdəɹət/ | MAH-duh-rit | not extreme | moderate-adj
+moderate | verb | /ˈmɑdəˌɹeɪt/ | MAH-duh-rayt | to make less extreme; to lead a discussion | moderate-verb
+postulate | noun | /ˈpɑstʃələt/ | PAHS-chuh-lit | something assumed true | postulate-noun
+postulate | verb | /ˈpɑstʃəˌleɪt/ | PAHS-chuh-layt | to assume as true | postulate-verb
+precipitate | verb | /pɹɪˈsɪpɪˌteɪt/ | prih-SIP-ih-tayt | to cause suddenly; to fall as rain | precipitate-verb
+precipitate | adjective; noun | /pɹɪˈsɪpɪtət/ | prih-SIP-ih-tit | too hasty; a solid from a solution | precipitate-adj
+predicate | noun; adjective | /ˈpɹɛdɪkət/ | PRED-ih-kit | the part of a sentence about the subject
+predicate | verb | /ˈpɹɛdɪˌkeɪt/ | PRED-ih-kayt | to base on; to state
+regenerate | verb | /ɹiˈdʒɛnəˌɹeɪt/ | ree-JEN-uh-rayt | to grow again; to renew
+regenerate | adjective; noun | /ɹiˈdʒɛnəɹət/ | ree-JEN-er-it | reborn | regenerate-adj
+subordinate | adjective; noun | /səˈbɔɹdənət/ | suh-BAWR-duh-nit | lower in rank
+subordinate | verb | /səˈbɔɹdəˌneɪt/ | suh-BAWR-duh-nayt | to treat as less important
+syndicate | noun | /ˈsɪndɪkət/ | SIN-dih-kit | a group of companies or people
+syndicate | verb | /ˈsɪndɪˌkeɪt/ | SIN-dih-kayt | to sell to many outlets

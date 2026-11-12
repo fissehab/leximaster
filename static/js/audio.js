@@ -159,6 +159,14 @@ export function playWord(word, btn, { slow = false, rate = null } = {}) {
 export const playbackTime = () => player.currentTime;
 export const playbackRunning = () => !player.paused && !player.ended;
 
+/** One sound of a word said more than one way (record: REK-erd, rih-KAWRD),
+ * at the learner's playback speed; the device voice reads the word when the
+ * sound has no recording. */
+export function playSound(url, btn, word) {
+  if (url) return playSrc(url, btn, word, recordingRate(false));
+  return speak(word, btn);
+}
+
 export function playUrl(url, btn) {
   return playSrc(url, btn, null, 1);   // the learner's own take: as recorded
 }

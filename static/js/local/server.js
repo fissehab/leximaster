@@ -403,6 +403,8 @@ async function full(row) {
     meanings: data.meanings || [], nuance: data.nuance || null,
     synonyms: data.synonyms || [], antonyms: data.antonyms || [],
     etymology: data.etymology || "", variant_of: data.variant_of || "", also: data.also || [], forms: data.forms || null,
+    prons: (data.prons || []).map(p => ({ ipa: p.ipa, respell: p.respell, gloss: p.gloss, pos: p.pos,
+                                          url: audioUrl(p.file), human: !!p.human })),
     conversation: data.conversation || [], source: data.source || "",
     notes: row.notes,
     srs: row.due_date == null ? null : {

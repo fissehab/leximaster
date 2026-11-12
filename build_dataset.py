@@ -3776,6 +3776,9 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     hide_senses(words)
     add_forms(words)
     add_sense_examples(words)
+    # Words said more than one way: each sound, and the sound of each meaning.
+    from tools.heteronyms import attach as attach_prons
+    attach_prons(words, DATA, read_json(CACHE / "tts.json", {}))
     drop_editor_notes(words)
     for w in words:  # a hand-fixed "(archaic) …" definition gets its label too
         for m in w["meanings"]:

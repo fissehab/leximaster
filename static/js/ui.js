@@ -1,7 +1,7 @@
 // Shared UI: DOM helper, icons, the dictionary entry, stars, toasts, dialogs.
 
 import { api, allWords, cachedWords, invalidateWords, patchCachedWord } from "./api.js";
-import { playWord, speedButton } from "./audio.js";
+import { playSound, playWord, speedButton } from "./audio.js";
 import { hardestIndex, label as soundLabel, tokenize } from "./phonemes.js";
 import { EVERYDAY_DOMAINS } from "./shared.gen.js";
 import { loadFilter, saveFilter, saveSettings, settings } from "./state.js";
@@ -91,6 +91,42 @@ export function playButton(word, { small = false } = {}) {
   });
   btn.addEventListener("click", e => { e.stopPropagation(); playWord(word, btn); });
   return btn;
+}
+
+/** A small play button for one sound of a word said more than one way. */
+function soundButton(w, p, label) {
+  const btn = h(`button.play.sm${p.human ? "" : ".synth"}`, {
+    type: "button", title: `Play “${p.respell}”${p.human ? " (American recording)" : " (synthesized voice)"}`,
+    "aria-label": `Play ${w.word} said ${label}`, html: PLAY_SVG,
+  });
+  btn.addEventListener("click", e => { e.stopPropagation(); playSound(p.url, btn, w.word); });
+  return btn;
+}
+
+/** Every way the word is said: its parts of speech, a play button, the IPA,
+ * the respelling and what it means said that way. */
+function soundsList(w) {
+  return h("div.entry-sounds", { role: "list", "aria-label": `${w.prons.length} ways to say ${w.word}` },
+    h("p.sounds-note", `Said ${w.prons.length === 2 ? "two" : w.prons.length} ways, by meaning:`),
+    w.prons.map(p => h("div.sound-row", { role: "listitem" },
+      soundButton(w, p, p.respell),
+      h("div.sound-text",
+        h("div.sound-line",
+          h("span.sound-pos", (p.pos || []).join(" · ")),
+          h("span.respell", p.respell),
+          h("span.ipa", { lang: "en-fonipa", title: "IPA" }, h("span.sr-only", "IPA: "), p.ipa)),
+        h("div.sound-gloss", p.gloss)))));
+}
+
+/** The sound a meaning (or a group of meanings) takes, as a small chip that
+ * plays it. */
+function soundChip(w, i) {
+  const p = w.prons[i];
+  if (!p) return null;
+  const chip = h("button.sound-chip", { type: "button", title: `Said ${p.respell} · play`, "aria-label": `Said ${p.respell}. Play` },
+    h("span", { html: PLAY_SVG, "aria-hidden": "true" }), p.respell);
+  chip.addEventListener("click", e => { e.stopPropagation(); playSound(p.url, chip, w.word); });
+  return chip;
 }
 
 export const EVERYDAY = EVERYDAY_DOMAINS;
@@ -261,9 +297,10 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
     } },
   }, icon("check"), h("span", w.known ? "Known" : "Know it"));
   const respelling = n && n.pronunciation && n.pronunciation.respelling;
+  const sounds = (w.prons || []).length > 1;
   const parts = [h("header.entry-head",
     h("div.entry-top", h("h2.headword", w.word), h("span.play-group", playButton(w), speedButton())),
-    w.phonetic || respelling ? h("div.entry-pron",
+    sounds ? soundsList(w) : w.phonetic || respelling ? h("div.entry-pron",
       w.phonetic ? h("span.ipa", { lang: "en-fonipa", title: "IPA" }, h("span.sr-only", "IPA: "), w.phonetic) : null,
       respelling ? h("span.respell", respelling) : null) : null,
     full ? sayRow(w) : null,
@@ -279,11 +316,19 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   if (w.also && w.also.length) parts.push(h("p.also.muted", "Also spelled ", w.also.map((a, i) => [i ? ", " : "", h("em", a)])));
   if (w.variant_of) parts.push(h("p.muted", "Variant of ", h("em", w.variant_of), "; definitions below are for the main form."));
 
+  // A word said more than one way: the sound beside the part of speech when
+  // all its meanings share it, else beside each meaning.
   const senseList = list => {
     const many = list.length > 1;
-    return list.map(g => h("div.sense-group", many ? posBadge(g.pos) : null,
-      h("ol.sense-list", { start: g.start || 1 }, g.senses.map(s => h("li", smart(s.definition),
-        s.example ? h("span.sense-ex", smart(s.example)) : null)))));
+    return list.map(g => {
+      const ps = sounds ? [...new Set(g.senses.map(s => s.pron).filter(x => x != null))] : [];
+      const one = ps.length === 1;
+      return h("div.sense-group",
+        many || one ? h("div.sense-head", many ? posBadge(g.pos) : null, one ? soundChip(w, ps[0]) : null) : null,
+        h("ol.sense-list", { start: g.start || 1 }, g.senses.map(s => h("li",
+          ps.length > 1 && s.pron != null ? soundChip(w, s.pron) : null, smart(s.definition),
+          s.example ? h("span.sense-ex", smart(s.example)) : null))));
+    });
   };
   // All the dictionary's meanings, in its order, each with its example: the
   // first few in view, the rest one tap away.
@@ -308,7 +353,8 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   // Meaning, and one example right under it (for a Bible name, what the Bible says).
   let lead = null;
   if (core) {
-    parts.push(h("p.core-def", smart(core.definition)));
+    const coreSound = sounds ? w.prons.map((p, i) => (p.pos || []).includes(core.pos) ? i : -1).filter(i => i >= 0) : [];
+    parts.push(h("p.core-def", coreSound.length === 1 ? soundChip(w, coreSound[0]) : null, smart(core.definition)));
     if (isName && n.biblical_note) {
       parts.push(h("div.npanel.wide.lead-note", h("h3", "In the Bible"), h("p", italicize(n.biblical_note))));
     } else if (conversation.length) {

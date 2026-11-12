@@ -261,6 +261,10 @@ def plan(w: dict, tokenizer) -> tuple[str, str]:
     if ipa and bad_ipa(w["word"], ipa):
         ipa = ""
     tokens = [x for x in re.split(r"[\s-]+", re.sub(r"[?!.,;:]", "", w["word"])) if x]
+    if ipa and w.get("prons"):
+        # Said more than one way (seeds/heteronyms.txt): read as text, Kokoro
+        # picks one of them; spoken from the IPA, it says the one meant.
+        return to_phonemes(ipa, tokenizer.vocab, tokens, w["word"] not in NO_FLAP), "ipa"
     rare = min((zipf_frequency(x, "en") for x in tokens), default=0) < COMMON
     rare = rare or bool(w.get("name_kind")) or w["word"][:1].isupper()   # names: "Ira" isn't the IRA
     sentence = bool(re.search(r"[?!.,]", w["word"]))
@@ -324,8 +328,17 @@ def save_manifest(m: dict) -> None:
 
 
 def targets(only: set[str] | None = None) -> list[dict]:
+    """Entries without an American recording, and each sound of a word said
+    more than one way (seeds/heteronyms.txt) that has none, as its own
+    target "<key>~<n>" spoken from that sound's IPA."""
     words = json.loads(WORDS_JSON.read_text(encoding="utf-8"))["words"]
-    return [w for w in words if not w.get("has_audio") and (not only or w["key"] in only)]
+    out = [w for w in words if not w.get("has_audio")]
+    for w in words:
+        for n, p in enumerate(w.get("prons") or []):
+            if n and not p.get("audio"):   # the first sound is the entry's own recording
+                out.append({"key": f"{w['key']}~{n}", "word": w["word"], "phonetic": p["ipa"],
+                            "prons": True, "has_audio": False})
+    return [w for w in out if not only or w["key"] in only or w["key"].split("~")[0] in only]
 
 
 def generate(only: set[str] | None = None, force: bool = False) -> int:
