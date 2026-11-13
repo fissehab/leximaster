@@ -29,6 +29,9 @@ audit: ## Check data/words.json for content problems
 site: ## Build the static website into docs/
 	$(PY) tools/build_site.py
 
+deploy: ## Publish docs/ to GitHub Pages (the gh-pages branch, one commit)
+	sh tools/deploy.sh
+
 parity: ## Compare the website with the local app (run `make site` first)
 	$(PY) tools/parity.py
 

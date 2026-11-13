@@ -85,14 +85,15 @@ Your progress is saved in that browser on that device, each change as it happens
 share it safely (one saves at a time, and the others reload what it saved). Use Settings → Export / Import
 to move it between devices, and Settings → "Download for offline use" to study without a connection. On a
 phone, use your browser's "Add to Home Screen" (or Install) to install it like an app; the illustrated
-install guide is at https://fissehab.github.io/leximaster/guide/ (docs/guide/, kept by `build_site.py`).
+install guide is at https://fissehab.github.io/leximaster/guide/ (from guide/, copied in by `build_site.py`).
 
 To rebuild the site after changing the dataset:
 
 ```bash
 .venv/bin/python tools/glossary.py     # short definitions for related words without an entry (Open English WordNet)
-.venv/bin/python tools/build_site.py   # checks the display rules, then writes docs/ (GitHub Pages serves it)
+.venv/bin/python tools/build_site.py   # checks the display rules, then writes docs/
 .venv/bin/python tools/parity.py       # the website and the local app give the same answers
+make deploy                            # publishes docs/ to GitHub Pages (the gh-pages branch)
 ```
 
 After you publish, the site updates itself the next time you open Today, Dictionary, Lists, Progress or Settings, in

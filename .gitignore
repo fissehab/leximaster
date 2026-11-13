@@ -12,7 +12,9 @@ __pycache__/
 # Generated data, your progress database and recordings (the site's copy is in docs/)
 /data/
 
+# The built website: published by `make deploy` to the gh-pages branch
+/docs/
+
 # Snapshots from `make backup`, and test caches
 /backups/
 .pytest_cache/
-.guide-keep/

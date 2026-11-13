@@ -710,18 +710,12 @@ def main() -> None:
     from tools.gen_shared import main as gen_shared
     gen_shared()
     words = json.loads((DATA / "words.json").read_text(encoding="utf-8"))["words"]
-    # docs/ is rebuilt from scratch, except docs/guide/: the install guide
-    # (LexiMaster-Install-Guide.pptx and .pdf), kept there by hand and
-    # published with the site.
-    keep = DOCS.parent / ".guide-keep"
-    if (DOCS / "guide").exists():
-        shutil.rmtree(keep, ignore_errors=True)
-        shutil.move(str(DOCS / "guide"), keep)
+    # docs/ is rebuilt from scratch. The install guide (guide/: a page, the
+    # slides and their PDF) is published with the site at guide/.
     if DOCS.exists():
         shutil.rmtree(DOCS)
     DOCS.mkdir()
-    if keep.exists():
-        shutil.move(str(keep), DOCS / "guide")
+    shutil.copytree(ROOT / "guide", DOCS / "guide", ignore=shutil.ignore_patterns(".DS_Store"))
     shutil.copytree(STATIC, DOCS / "static", ignore=shutil.ignore_patterns("index.html", ".DS_Store"))
     version = time.strftime("%Y%m%d%H%M%S")
     media = media_files(words)
