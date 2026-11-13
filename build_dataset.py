@@ -125,7 +125,7 @@ SUBJECT_DOMAINS = ["mathematics", "statistics", "data_science", "philosophy",
 # Everyday American English: common words, phrasal verbs and expressions for
 # conversation. They skip the frequency filter that keeps basic words out of
 # the advanced lexicon.
-EVERYDAY_DOMAINS = ["dining", "food", "shopping", "outdoors", "small_talk", "phrasal_verbs",
+EVERYDAY_DOMAINS = ["basics", "dining", "food", "shopping", "outdoors", "small_talk", "phrasal_verbs",
                     "idioms", "common_phrases", "feelings", "home_health", "getting_around", "sports_culture",
                     "meetings", "phone_calls"]
 ALL_TAGS = ["advanced", "academic", "literary"] + SUBJECT_DOMAINS + EVERYDAY_DOMAINS
@@ -358,6 +358,14 @@ def load_seed_file(path: Path) -> list[tuple[str, str]]:
     return words
 
 
+# Files in seeds/ that are not word lists: the collect stage skips them.
+NOT_SEED_LISTS = {"heteronyms", "ipa_variants", "lowercase_first"}
+
+
+def seed_lists() -> list[Path]:
+    return [p for p in sorted(SEEDS.glob("*.txt")) if p.stem not in NOT_SEED_LISTS]
+
+
 def stage_collect(args) -> None:
     cands: dict[str, dict] = read_json(CANDIDATES, {})
     # Seed-derived tags are recomputed each run; expanded tags are kept.
@@ -365,12 +373,12 @@ def stage_collect(args) -> None:
         c["tags"] = sorted(set(c.get("expanded_tags", [])))
         c["seeded"] = False
     # Glosses are recomputed from the seed files too.
-    seen_gloss = {norm_key(w): True for path in SEEDS.glob("*.txt")
+    seen_gloss = {norm_key(w): True for path in seed_lists()
                   for w, g in load_seed_file(path) if g}
     for c in cands.values():
         if c.get("gloss") and not seen_gloss.get(norm_key(c["word"])):
             c.pop("gloss")
-    for path in sorted(SEEDS.glob("*.txt")):
+    for path in seed_lists():
         stem = path.stem
         # domain_<tag>.txt, or <source>[_anything].txt, e.g. gre_extra.txt -> gre
         if stem.startswith("domain_"):
@@ -765,12 +773,14 @@ class DictionarySources:
                                  "accent": accent_of(m.group(2) + " " + fname)})
         return out
 
-    async def lookup(self, word: str) -> dict | None:
+    async def lookup(self, word: str, lower_first: bool = False) -> dict | None:
+        """The word's dictionary entry. `lower_first`: try the lowercase
+        page before the capitalized one (seeds/lowercase_first.txt)."""
         variants = [word]
         if "-" in word:
             variants.append(word.replace("-", " "))
         if word != word.lower():
-            variants.append(word.lower())
+            variants.insert(0, word.lower()) if lower_first else variants.append(word.lower())
         result = None
         for v in variants:
             result = await self.freedict(v)
@@ -982,6 +992,21 @@ async def commons_us_index(http: httpx.AsyncClient, refresh: bool = False) -> di
     return index
 
 
+LOWERCASE_FIRST = SEEDS / "lowercase_first.txt"
+
+
+def lowercase_first() -> dict[str, bool]:
+    """seeds/lowercase_first.txt: key -> whether to keep the capitalized
+    page's senses after the lowercase word's."""
+    out = {}
+    if LOWERCASE_FIRST.exists():
+        for line in LOWERCASE_FIRST.read_text(encoding="utf-8").splitlines():
+            line = line.split("#", 1)[0].strip()
+            if line:
+                out[line.rstrip(" +")] = line.endswith("+")
+    return out
+
+
 async def stage_fetch(args) -> None:
     words = selected_words(args.limit)
     cands = read_json(CANDIDATES, {})
@@ -991,6 +1016,7 @@ async def stage_fetch(args) -> None:
     log(f"[fetch] {len(words) - len(todo)} cached or self-defined, {len(todo)} to look up")
     if not todo:
         return
+    lower_first = set(lowercase_first())
     prog = Progress("fetch", len(todo))
     stats = {"ok": 0, "not_found": 0, "audio": 0, "errors": 0}
     blocked: list[str] = []
@@ -1002,7 +1028,7 @@ async def stage_fetch(args) -> None:
             if blocked:
                 return
             try:
-                entry = await src.lookup(cands[k]["word"])
+                entry = await src.lookup(cands[k]["word"], lower_first=k in lower_first)
             except WikimediaBlocked:
                 blocked.append(k)
                 return
@@ -3471,7 +3497,125 @@ def add_sense_examples(words: list[dict]) -> None:
 DOUBTED_SENSE_RE = re.compile(r"\((?:Can we verify this sense|Should we delete this (?:redundant )?sense)[^()]*\?\)", re.I)
 EDITOR_NOTE_RE = re.compile(r"\s*\((?:Can we verify this sense|Should we delete this (?:redundant )?sense"
                             r"|Can we (?:add an example for|clean up) this sense|Should we move, merge or split this sense"
-                            r"|Can we find and add a quotation)(?:[^()]|\([^()]*\))*\)\s*", re.I)
+                            r"|Can we find and add a quotation|clarification of this definition is needed"
+                            r"|This is a hot sense)(?:[^()]|\([^()]*\))*\)\s*", re.I)
+# Sense examples that aren't examples: Wiktionary's requests for one, a lone
+# label ("(oneself)"), a colour swatch's caption ("almond:"), punctuation,
+# a pitch transcription.
+JUNK_EXAMPLE_RE = re.compile(r"^\((?:Can we|The addition of quotations|This entry needs quotations|Concluded on)"
+                             r"|^\(\S+(?: \S+){0,2}\)$|:$|^[^A-Za-z]*$|^Pitch contour", re.I)
+GRAMMAR_LABEL_RE = re.compile(r"^\((?:in)?transitive\)\s+", re.I)
+
+
+# A pronunciation tip that argues with the dictionary's IPA ("The input IPA
+# had the vowel of cot", "the given form /ˈkastələt/ is replaced"): written
+# to the enrich stage, not to the learner. The notes' IPA is the corrected one.
+META_TIP_RE = re.compile(r"\b(?:input|source|given|listed|earlier|dictionary'?s?|Wiktionary)\b[^.;]{0,60}?"
+                         r"\b(?:IPA|transcription|form)\b|\bthe corrected stress\b|\bIPA\b|\btranscription\b"
+                         r"|\bcorrected note\b", re.I)
+
+
+def tidy_tips(words: list[dict]) -> int:
+    """Drop the sentences of a pronunciation tip that talk about the source
+    IPA (META_TIP_RE), and show the notes' IPA, which corrected it."""
+    n = 0
+    for w in words:
+        p = (w.get("nuance") or {}).get("pronunciation") or {}
+        tip = p.get("tip") or ""
+        if not META_TIP_RE.search(tip):
+            continue
+        parts = re.split(r"(?<=[.!?])\s+", tip)
+        keep = [x for x in parts if not META_TIP_RE.search(x)]
+        p["tip"] = " ".join(keep).strip()
+        if p.get("ipa"):
+            w["phonetic"] = p["ipa"]
+        n += 1
+    return n
+
+
+MAIN_SENSES = SEEDS / "main_senses"
+# Not senses for a learner: Wiktionary's radio spelling-alphabet codes
+# ("two": NATO & ICAO radiotelephony clear code) and letter names of other
+# alphabets ("an": the first letter of the Georgian alphabet).
+NOT_A_SENSE_RE = re.compile(r"radiotelephony|spelling[- ]alphabet|\bletter of the (?!Latin|English)\w+ (?:alphabet|script)"
+                            r"|\bname of the (?!Latin|English)\w+ (?:script )?letter\b", re.I)
+
+
+def add_main_senses(words: list[dict]) -> None:
+    """seeds/senses/*.txt: the main sense an entry lacks ("two": the number
+    2), before or after the dictionary's; and senses that aren't
+    (NOT_A_SENSE_RE) left out."""
+    by_key = {w["key"]: w for w in words}
+    for path in sorted(MAIN_SENSES.glob("*.txt")) if MAIN_SENSES.exists() else []:
+        for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            line = line.split("#", 1)[0].strip()
+            if not line:
+                continue
+            parts = [x.strip() for x in line.split("|")]
+            if len(parts) != 4 or parts[1] not in ("first", "last") or parts[0] not in by_key:
+                sys.exit(f"{path.name}:{n}: expected 'key | first|last | pos | definition' for a known key")
+            k, where, pos, definition = parts
+            group = {"pos": pos, "senses": [{"definition": definition, "example": "", "synonyms": [], "antonyms": []}],
+                     "synonyms": [], "antonyms": []}
+            ms = by_key[k]["meanings"]
+            by_key[k]["meanings"] = [group, *ms] if where == "first" else [*ms, group]
+            normalize_display(by_key[k])   # a sense the study notes' definition already says is marked
+    for w in words:
+        for m in w["meanings"]:
+            kept = [sn for sn in m["senses"] if not NOT_A_SENSE_RE.search(sn["definition"])]
+            if kept or len(w["meanings"]) > 1:
+                m["senses"] = kept
+        w["meanings"] = [m for m in w["meanings"] if m["senses"]] or w["meanings"]
+    # A word fetched again in lowercase (seeds/lowercase_first.txt) lists its
+    # main part of speech first: "in" the preposition, not its rare nouns.
+    for k in lowercase_first():
+        w = by_key.get(k)
+        core = ((w or {}).get("nuance") or {}).get("core") or {}
+        if w and core.get("pos"):
+            w["meanings"].sort(key=lambda m: m["pos"] != core["pos"])
+
+
+def tidy_phonetic(words: list[dict]) -> None:
+    """Repair IPA left malformed by the source: an emptied length mark
+    ("/ˈbi()n/"), a stray ">>/" or a narrow transcription after the broad one
+    ("/ˈsɪt.i/ [ˈsɪɾ.i]/"), brackets inside the slashes. An entry with no IPA
+    takes its study notes' ("nuance.pronunciation.ipa")."""
+    for w in words:
+        p = (w.get("phonetic") or "").strip()
+        if p:
+            p = p.replace("()", "")
+            p = re.sub(r"/\s*(?:>>|\[[^\]]*\])\s*/$", "/", p)
+            p = re.sub(r"[\[\]]", "", p)
+            w["phonetic"] = p
+        else:
+            ipa = (((w.get("nuance") or {}).get("pronunciation") or {}).get("ipa") or "").strip()
+            if ipa:
+                w["phonetic"] = ipa if ipa.startswith("/") else f"/{ipa.strip('/')}/"
+
+
+def clean_examples(words: list[dict]) -> int:
+    """Drop the sense examples JUNK_EXAMPLE_RE matches, and a leading
+    "(transitive)" label. Returns how many were dropped."""
+    n = 0
+    for w in words:
+        for m in w["meanings"]:
+            # Wiktionary's group headings ("Terms relating to animals.") aren't senses.
+            kept = [sn for sn in m["senses"] if not re.match(r"Terms relating to ", sn["definition"])]
+            if kept:
+                m["senses"] = kept
+            for sn in m["senses"]:
+                # Leftover wiki markup and a note too nested for EDITOR_NOTE_RE.
+                d = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]|]*)\]\]?", r"\1", sn["definition"])
+                sn["definition"] = re.sub(r"\s*\(clarification of this definition is needed.*$", "", d)
+                e = (sn.get("example") or "").strip()
+                if not e:
+                    continue
+                if JUNK_EXAMPLE_RE.search(e):
+                    sn["example"] = ""
+                    n += 1
+                else:
+                    sn["example"] = GRAMMAR_LABEL_RE.sub("", e)
+    return n
 
 
 def drop_editor_notes(words: list[dict]) -> None:
@@ -3529,7 +3673,9 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
             # An everyday expression defined in the seed file.
             d = {"status": "ok", "entry": {
                 "word": c["word"], "phonetics": [], "source": "leximaster",
-                "meanings": [{"pos": "expression", "senses": [
+                # A capitalized single word (a month) is a proper noun, not an expression.
+                "meanings": [{"pos": "proper noun" if c["word"][:1].isupper() and " " not in c["word"] else "expression",
+                              "senses": [
                     {"definition": c["gloss"], "example": "", "synonyms": [], "antonyms": []}]}]}}
         if d and d["status"] == "ok" and "bible" in c.get("tags", []) and c["word"][:1].isupper() \
                 and not c.get("gloss") and (d["entry"]["word"][:1].islower() or not any(
@@ -3772,7 +3918,9 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     words = [w for w in words if w["key"] not in dropped]
     apply_patterns(words)
     apply_related(words)
+    tidy_tips(words)
     apply_fixes(words)
+    add_main_senses(words)
     hide_senses(words)
     add_forms(words)
     add_sense_examples(words)
@@ -3780,6 +3928,8 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     from tools.heteronyms import attach as attach_prons
     attach_prons(words, DATA, read_json(CACHE / "tts.json", {}))
     drop_editor_notes(words)
+    clean_examples(words)
+    tidy_phonetic(words)
     for w in words:  # a hand-fixed "(archaic) …" definition gets its label too
         for m in w["meanings"]:
             for sn in m["senses"]:

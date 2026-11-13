@@ -44,7 +44,7 @@ diffuse | adjective | /dɪˈfjus/ | dih-FYOOS | spread out; wordy | diffuse-adje
 tear | verb; noun | /tɛɹ/ | tair | to rip; a rip | tear-verb
 tear | noun ~ drop|eyes|tears|lament|vitrified; verb ~ produce tears | /tɪɹ/ | teer | a drop from the eye | tear-noun
 bow | noun; verb | /boʊ/ | boh | a weapon for arrows; a knot; a curve; to play with a bow
-bow | interjection; noun ~ gesture|rower|front of a boat; verb ~ respect|deference|influence|debut|defer|direction, indication|give up|About to|bow-wow | /baʊ/ | bow (rhymes with "how") | to bend in respect; the front of a ship
+bow | interjection; noun ~ gesture|rower|front of a boat|bow-wow; verb ~ respect|deference|influence|debut|defer|direction, indication|give up|About to|bow-wow | /baʊ/ | bow (rhymes with "how") | to bend in respect; the front of a ship
 row | noun; verb | /ɹoʊ/ | roh | a line; to move a boat with oars
 row | verb ~ argue | /ɹaʊ/ | row (rhymes with "cow") | to argue noisily
 sow | noun | /saʊ/ | sow (rhymes with "cow") | a female pig | sow-noun
@@ -64,7 +64,7 @@ sewer | noun ~ sews | /ˈsoʊɚ/ | SOH-er | one who sews
 tower | noun; verb | /ˈtaʊɚ/ | TOW-er | a tall building
 tower | noun ~ tows | /ˈtoʊɚ/ | TOH-er | one who tows
 primer | noun; verb | /ˈpɹaɪmɚ/ | PRY-mer | a first coat of paint; something that sets off a charge
-primer | noun ~ children's book|devotional|private prayer | /ˈpɹɪmɚ/ | PRIM-er | a first reading book
+primer | noun ~ children's book|devotional|private prayer|introductory text | /ˈpɹɪmɚ/ | PRIM-er | a first reading book
 slough | noun; verb | /slʌf/ | sluf | skin a snake sheds; to shed
 slough | noun ~ marsh|swamp|channel|pond|depression | /slu/ | sloo | a swamp; a muddy hollow
 buffet | noun ~ counter|sideboard|laid out | /bəˈfeɪ/ | buh-FAY | a meal where you serve yourself

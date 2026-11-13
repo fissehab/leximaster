@@ -1,0 +1,79 @@
+# Keys whose capitalized Wiktionary page (an acronym, symbol, name or title)
+# was fetched instead of the everyday lowercase word: "cat" got CAT ("Central
+# Atlas Tamazight"), "be" got Be (beryllium). The fetch looks these up in
+# lowercase first (build_dataset.stage_fetch; tools/refetch_lower.py re-fetches
+# them). Found in the review of 2026-11-12.
+#
+# A line "key +" keeps the capitalized page's senses after the everyday ones:
+# a domain list chose that sense on purpose (REST in software engineering).
+be
+in
+it +
+do
+an
+add
+ice
+bar
+pet
+cod
+elf +
+era +
+pie +
+ram +
+seal
+white
+black
+sun
+chin
+nip
+sooner
+wobbly
+wasp
+ace
+ad
+dot +
+flip
+hmm +
+sob
+zip
+pole
+virgin
+empire
+angle
+frank
+miss
+brother
+boxer
+cat
+friend
+father
+sister
+guy
+moon
+fox
+cancer
+lion
+twin
+tom
+chow
+guru
+tang
+mogul
+northern
+western
+continental
+allied
+ionic
+platonic
+treasury
+state
+president
+romance
+rebel
+scout
+shaker
+acid +
+rest +
+dry +
+pin +
+goat +

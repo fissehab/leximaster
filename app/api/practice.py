@@ -410,14 +410,15 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
             # Same shape first (number of words, then part of speech): a
             # sentence among single words would give the answer away.
             n_words = len(word.split())
-            # A definition that names its own word would read "the …eans" once masked.
-            others = sorted((v for v in dmap.values() if v[0].lower() != word.lower()
-                             and not re.search(rf"\b{re.escape(v[0])}\b", v[2], re.I)),
-                            key=lambda v: (len(v[0].split()) != n_words, v[1] != pos))
-
             # The word, its synonyms and the words its notes compare it with.
             near = ({x.lower() for x in _rights(data, "synonym")} | {word.lower()}
                     | {(d.get("vs") or "").lower() for d in nuance.get("distinctions") or []})
+            # A definition that names its own word would read "the …eans" once
+            # masked; a word the entry names as near in meaning would be right too.
+            others = sorted((v for v in dmap.values() if v[0].lower() not in near
+                             and not re.search(rf"\b{re.escape(v[0])}\b", v[2], re.I)),
+                            key=lambda v: (len(v[0].split()) != n_words, v[1] != pos))
+
 
             def build(qtype):
                 if qtype == "pattern":
@@ -541,6 +542,28 @@ def sound_key(ipa: str) -> str:
     return "".join(ch for ch in s if not unicodedata.combining(ch) and ch not in "/[]ˈˌː.‿ -()'")
 
 
+_same_sound: tuple[tuple, dict] | None = None
+
+
+def same_sound(c) -> dict[str, set[str]]:
+    """Sound key -> the single words said that way, every way each is said
+    (in-browser backend: sameSound in static/js/local/server.js). Kept while
+    the words are unchanged."""
+    global _same_sound
+    stamp = tuple(c.execute("SELECT COUNT(*), MAX(id), SUM(LENGTH(data)) FROM words").fetchone())
+    if _same_sound and _same_sound[0] == stamp:
+        return _same_sound[1]
+    out: dict[str, set[str]] = {}
+    for r in c.execute("SELECT word, json_extract(data, '$.phonetic') AS ph, json_extract(data, '$.prons') AS prons "
+                       "FROM words WHERE word NOT LIKE '% %' AND word NOT LIKE '%-%'"):
+        ipas = [r["ph"]] + [p["ipa"] for p in json.loads(r["prons"] or "[]")[1:]]
+        for ipa in ipas:
+            if ipa and (k := sound_key(ipa)):
+                out.setdefault(k, set()).add(r["word"])
+    _same_sound = (stamp, out)
+    return out
+
+
 def sound_distance(a: str, b: str) -> float:
     """Edit distance between two sound keys, 0 (same) to 1."""
     if not a or not b:
@@ -567,6 +590,7 @@ def listen(n: int = Query(10, ge=1, le=50), stars: str | None = None,
         if len(pool) < 4:
             raise HTTPException(400, "Not enough words match these filters.")
         chosen = weighted_sample(c, list(pool), n)
+        same = same_sound(c)
         all_ids = [r["id"] for r in c.execute("SELECT id FROM words")]
         items = []
         for wid in chosen:
@@ -576,6 +600,11 @@ def listen(n: int = Query(10, ge=1, le=50), stars: str | None = None,
             # look-alikes (same first letter, similar length).
             w = item["word"]
             me = sound_key(item.get("phonetic") or "")
+            # Every word said like one of this word's sounds: never a choice,
+            # and a right answer when typed (Type It: "brake" for "break").
+            mine = [sound_key(x) for x in [item.get("phonetic"), *(p["ipa"] for p in item.get("prons") or [])] if x]
+            alike = {x for k in mine for x in same.get(k, ())} - {w}
+            item["same_sound"] = sorted(alike)
             # Same number of words: a sentence among single words is a giveaway.
             cands = [(r["word"], r["ph"] or "") for r in c.execute(
                 "SELECT word, json_extract(data, '$.phonetic') AS ph FROM words "
@@ -589,7 +618,7 @@ def listen(n: int = Query(10, ge=1, le=50), stars: str | None = None,
             scored = []
             for x, ph in cands:
                 d = sound_distance(me, sound_key(ph)) if me and ph else 1.0
-                if d == 0:
+                if d == 0 or x in alike:
                     continue   # sounds the same: no fair way to tell them apart by ear
                 scored.append((d, x[0].lower() != w[0].lower(), abs(len(x) - len(w)), x))
             scored.sort()

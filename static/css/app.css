@@ -907,8 +907,10 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
 .filters-fold[open] > summary::before { transform: rotate(90deg); }
 @media (min-width: 901px) { .filters-fold > summary { display: none; } }
 @media (max-width: 900px) {
-  .az button { min-height: 30px; font-size: 13px; }
-  .az { overflow-y: auto; }
+  /* The letters fit beside the list (as tall as it), Z included: 26 rows of
+     30 px ran past the list and under the tab bar. */
+  .az { align-self: end; height: 62vh; overflow: hidden; padding: 0; }
+  .az button { flex: 1 1 0; min-height: 0; font-size: 12px; padding: 0; }
 }
 
 /* Touch screens: fingers need room (44 px targets). */
@@ -1031,6 +1033,7 @@ details.say > summary::-webkit-details-marker { display: none; }
 details.say > summary svg { width: 22px; height: 22px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 details.say > summary .say-hint { margin-left: auto; font-weight: 600; color: var(--ink-2); }
 details.say > summary .say-hint::after { content: " ▸"; color: var(--muted); }
+details.say > summary .say-hint-label { font-weight: 400; color: var(--muted); }
 details.say[open] > summary .say-hint::after { content: " ▾"; }
 details.say > summary:hover { background: var(--surface-2); border-radius: var(--radius); }
 .say-body { padding: 4px 14px 16px; display: grid; gap: 14px; }
@@ -1289,3 +1292,10 @@ details.say > summary:hover { background: var(--surface-2); border-radius: var(-
   .nav-link { font-size: 10px; letter-spacing: -.01em; flex: 1 1 auto; }
   .nav-pair .icon-btn, .rail-collapsed .nav-pair .icon-btn { width: 30px; }
 }
+
+/* "Practice this list": the list chosen, removable (ui.js filterBar). */
+.list-chip { margin: 0 0 10px; }
+.chip-x { border: 0; background: none; color: inherit; font: inherit; cursor: pointer; padding: 0 2px; margin-left: 2px; }
+.chip-x:hover { color: var(--accent); }
+.did-you-mean { margin: 0; font-size: 14px; }
+.did-you-mean[hidden] { display: none; }

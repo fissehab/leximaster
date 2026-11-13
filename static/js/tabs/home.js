@@ -2,7 +2,7 @@
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
-import { refreshDueCount, reviewTrack } from "../app.js";
+import { installPrompt, refreshDueCount, reviewTrack } from "../app.js";
 import { saveSettings, settings } from "../state.js";
 import { fmtDuration, h, renderEntry, showError, toast } from "../ui.js";
 
@@ -46,14 +46,37 @@ function easierLine(root, review, studied) {
         "Easier words")));
 }
 
-/** iPhone/iPad Safari clears an unused site's data after a week; a Home Screen app keeps it. */
+const GUIDE = "guide/LexiMaster-Install-Guide.pdf";
+
+/** Installing keeps progress safe (iPhone/iPad Safari clears an unused
+ *  site's data after a week) and makes LexiMaster open like an app. iPhone
+ *  and iPad get the Share-menu steps; Chrome and Edge an "Install" button
+ *  once the browser offers one (beforeinstallprompt, app.js). */
 function installCard() {
   const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  if (!window.LEXI_STATIC || !ios || navigator.standalone || stored("lexi-install-hint")) return null;
-  const card = h("section.panel.notice-card", { "aria-label": "Add to Home Screen" },
-    h("p", "On iPhone and iPad, add LexiMaster to your Home Screen (Share → Add to Home Screen). " +
-      "Safari clears a website's saved data after a week without a visit; a Home Screen app keeps your progress."),
-    h("button.btn.btn-quiet", { type: "button", on: { click: () => { store("lexi-install-hint", "1"); card.remove(); } } }, "Got it"));
+  const standalone = navigator.standalone || matchMedia("(display-mode: standalone)").matches;
+  if (!window.LEXI_STATIC || standalone || stored("lexi-install-hint")) return null;
+  let card;
+  const guide = h("a", { href: GUIDE, target: "_blank", rel: "noopener" }, "Step-by-step guide (PDF)");
+  const dismiss = h("button.btn.btn-quiet", { type: "button", on: { click: () => { store("lexi-install-hint", "1"); card.remove(); } } },
+    ios ? "Got it" : "Not now");
+  if (ios) {
+    card = h("section.panel.notice-card", { "aria-label": "Add to Home Screen" },
+      h("p", "On iPhone and iPad, add LexiMaster to your Home Screen (Share → Add to Home Screen). " +
+        "Safari clears a website's saved data after a week without a visit; a Home Screen app keeps your progress. ", guide),
+      dismiss);
+    return card;
+  }
+  const install = h("button.btn.btn-primary", { type: "button", on: { click: async () => {
+    if (!installPrompt) return;
+    installPrompt.prompt();
+    const { outcome } = await installPrompt.userChoice.catch(() => ({}));
+    if (outcome === "accepted") card.remove();
+  } } }, "Install");
+  card = h("section.panel.notice-card", { "aria-label": "Install LexiMaster", hidden: !installPrompt },
+    h("p", "Install LexiMaster as an app: it opens in its own window, works offline and keeps your progress. ", guide),
+    h("div.toolbar", install, dismiss));
+  if (!installPrompt) addEventListener("lexi-installable", () => { card.hidden = false; }, { once: true });
   return card;
 }
 
@@ -95,7 +118,7 @@ export async function render(root) {
       stat("Streak", `${stats.streak.current} day${stats.streak.current === 1 ? "" : "s"}`),
       stat("Reviewed today", review.done_today.reviews),
       stat("Time today", fmtDuration(review.done_today.seconds)),
-      w.mastered + w.learning ? stat("Words mastered", `${w.mastered.toLocaleString()} of ${(w.mastered + w.learning).toLocaleString()}`) : null),
+      w.mastered + w.learning ? stat("Words mastered", `${w.mastered.toLocaleString()} of ${(w.mastered + w.learning).toLocaleString()} studied`) : null),
     h("a.today-more", { href: "#stats" }, "See all your progress →"));
 
   const banner = w.total === 0

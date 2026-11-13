@@ -10,7 +10,7 @@ import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import {
   bestScore, buzz, comboFor, freshOnly, fromListen, HEART_BACK_EVERY, hintFor, letterCount, nextLevel, PERFECT_BONUS, points,
-  pref, REFILL_AT, saveBest, setPref, setSounds, sfx, soundsOn, START_LEVEL, typedRight, typeTime, unlockSounds,
+  pref, REFILL_AT, saveBest, setPref, setSounds, sfx, soundsOn, START_LEVEL, typedRight, typedSameSound, typeTime, unlockSounds,
 } from "../games.js";
 import { scoreBoard, scoreResult } from "../gameui.js";
 import { loadFilter, settings } from "../state.js";
@@ -288,6 +288,8 @@ function check() {
   const typed = els.input.value;
   if (!typed.trim()) { els.input.focus(); return; }
   if (typedRight(typed, q.answer)) { resolved = true; stopLoop(); return hit(); }
+  const alike = q.hear && typedSameSound(typed, q);
+  if (alike) { resolved = true; stopLoop(); return hit(alike); }
   tries++;
   if (tries < 2) {
     sfx("miss");
@@ -311,7 +313,8 @@ function log(q, correct) {
 
 // ---------------------------------------------------------------- right and wrong
 
-function hit() {
+/** `alike`: the learner typed a word said the same way ("break" for "brake"). */
+function hit(alike = null) {
   const q = qs[w];
   phase = "hit";
   log(q, true);
@@ -340,8 +343,9 @@ function hit() {
   els.box.classList.add("right");
   els.blanks.textContent = hintFor(q.answer, Infinity);
   els.fb.replaceChildren(h("p.shoot-strip", { on: { click: next } }, h("span.mark", { "aria-hidden": "true" }, "✓ "),
-    h("b.fb-word", smart(q.word)), " — ", smart(q.definition), add ? h("span.shoot-combo.tnum", `  +${add}`) : null));
-  els.alert.textContent = `Right: ${q.word}.${add ? ` Plus ${add}.` : ""}${heartBack ? " One heart back." : ""}`;
+    h("b.fb-word", smart(q.word)), " — ", smart(q.definition), add ? h("span.shoot-combo.tnum", `  +${add}`) : null,
+    alike ? h("span.muted", ` (“${alike}” sounds the same, so it counts.)`) : null));
+  els.alert.textContent = `Right${alike ? `: ${alike} sounds the same as ${q.word}` : `: ${q.word}`}.${add ? ` Plus ${add}.` : ""}${heartBack ? " One heart back." : ""}`;
   if (settings.autoplay === "1" && !q.hear) later(() => playWord(q), 150);
   later(next, HIT_STRIP);
 }

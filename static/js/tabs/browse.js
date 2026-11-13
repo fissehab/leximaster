@@ -3,7 +3,7 @@
 import { allWords, api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
-import { LEVELS, byDomainOrder, chosenLevels, domainLabel, levelsText, domainOptions, formDialog, isEveryday, h, icon, renderEntry, scrollBehavior, setKnown, setStars, showError, toast } from "../ui.js";
+import { LEVELS, byDomainOrder, chosenLevels, defineTerm, domainLabel, levelsText, domainOptions, formDialog, isEveryday, h, icon, renderEntry, scrollBehavior, setKnown, setStars, showError, toast } from "../ui.js";
 
 const ROW_H = 54;
 const state = { q: "", domain: "", stars: "", known: "", level: "", selectedId: null };
@@ -28,7 +28,7 @@ const ns = w => w._ns ?? (w._ns = squash(nw(w)));
 // first search: [{ t: term, n: normalized, ps: [[kind, headword], ...] }].
 let related = null;
 let relatedLoading = false;
-const KIND = { s: "Synonym of", a: "Opposite of", c: "Compared with", f: "Related to" };
+const KIND = { i: "Form of", s: "Synonym of", a: "Opposite of", c: "Compared with", f: "Related to" };
 function loadRelated() {
   if (related || relatedLoading) return;
   relatedLoading = true;
@@ -54,7 +54,10 @@ function relatedRows(q, out) {
   for (const r of related) {
     const at = r.n.indexOf(q);
     if (at < 0 || (at > 0 && q.length < 3) || all.has(r.n)) continue;   // a word you added has its own row
-    const parents = r.ps.map(([k, p]) => [k, here.get(p.toLowerCase())]).filter(x => x[1]);
+    // A form's word first ("children": child, not its synonym offspring), so
+    // the row opens the entry it's a form of.
+    const parents = r.ps.map(([k, p]) => [k, here.get(p.toLowerCase())]).filter(x => x[1])
+      .sort((a, b) => (a[0] !== "i") - (b[0] !== "i"));
     if (!parents.length) continue;
     const kinds = [...new Set(parents.map(x => x[0]))];
     const def = kinds.map(k => `${KIND[k]} ${parents.filter(x => x[0] === k).map(x => x[1].word).join(", ")}`).join(" · ");
@@ -83,19 +86,65 @@ function applyFilters() {
   if (state.known === "unknown") out = out.filter(w => !w.known);
   if (q) {
     loadRelated();
-    const prefix = [], inner = [], inDef = [];
+    const exact = [], prefix = [], atWord = [], inner = [], inDef = [];
     const qs = squash(q);
+    const wordStart = new RegExp(`[\\s-]${q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`);
     for (const w of out) {
       const n = nw(w);
-      if (n.startsWith(q) || (qs && ns(w).startsWith(qs))) prefix.push(w);
-      else if (n.includes(q) || (qs && ns(w).includes(qs))) inner.push(w);
+      if (n === q || (qs && ns(w) === qs)) exact.push(w);
+      else if (n.startsWith(q) || (qs && ns(w).startsWith(qs))) prefix.push(w);
+      else if (wordStart.test(n)) atWord.push(w);           // "go went": a word of it
+      else if (n.includes(q) || (qs && ns(w).includes(qs))) inner.push(w);   // "twenty" for "went"
       else if (q.length >= 3 && nd(w).includes(q)) inDef.push(w);
     }
     const [relPrefix, relInner] = relatedRows(q, out);
-    shown = [...prefix, ...inner, ...relPrefix, ...inDef, ...relInner];   // best matches first
+    const relExact = relPrefix.filter(r => r._nw === q);
+    // Best matches first: the word itself, a form or synonym spelled exactly
+    // so ("went": form of go), words starting with it, then the rest.
+    shown = [...exact, ...relExact, ...prefix, ...atWord, ...relPrefix.filter(r => r._nw !== q), ...inDef, ...inner, ...relInner];
+    // No word starts with it ("recieve", "colour"): offer near spellings,
+    // above any matches in meanings.
+    suggestions = exact.length || prefix.length || relExact.length ? [] : didYouMean(q, out);
     return;
   }
+  suggestions = [];
   shown = [...out].sort((a, b) => a.word.localeCompare(b.word, undefined, { sensitivity: "base" }));
+}
+
+// Words a misspelled search may have meant ("recieve": receive; "colour":
+// color): within two edits, most common first.
+let suggestions = [];
+function didYouMean(q, list) {
+  if (q.length < 3) return [];
+  const max = q.length <= 4 ? 1 : 2;
+  const sorted = [...q].sort().join("");
+  const found = [];
+  for (const w of list) {
+    const n = nw(w);
+    if (Math.abs(n.length - q.length) > max || /\s/.test(n) !== /\s/.test(q)) continue;
+    const d = editDistance(q, n, max);
+    // Same letters in another order ("recieve": receive) before other edits.
+    const same = [...n].sort().join("") === sorted ? 0 : 1;
+    if (d <= max) found.push([d, same, w.freq_rank ?? 1e9, w]);
+  }
+  return found.sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2]).slice(0, 5).map(x => x[3]);
+}
+/** Levenshtein distance (a swap of two letters counts once), or max + 1 once past max. */
+function editDistance(a, b, max) {
+  let prev2 = null, prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    let best = i;
+    for (let j = 1; j <= b.length; j++) {
+      let v = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (prev2 && i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) v = Math.min(v, prev2[j - 2] + 1);
+      cur.push(v);
+      best = Math.min(best, v);
+    }
+    if (best > max) return max + 1;
+    prev2 = prev; prev = cur;
+  }
+  return prev[b.length];
 }
 
 function renderRows() {
@@ -111,6 +160,7 @@ function renderRows() {
     const sel = w.id === state.selectedId && !w.mention;
     const row = h(`div.row${sel ? ".sel" : ""}${w.mention ? ".mention" : ""}`, {
       style: { top: `${i * ROW_H}px` }, "data-id": w.id, "data-term": w.mention || null, "aria-current": sel ? "true" : null,
+      role: "option", id: `row-${i}`, "aria-selected": sel ? "true" : "false", "aria-setsize": shown.length, "aria-posinset": i + 1,
     },
       h("span.row-word", w.word),
       h("span.row-side",
@@ -121,10 +171,30 @@ function renderRows() {
     frag.append(row);
   }
   els.inner.replaceChildren(frag);
+  // Screen readers follow the selected word while focus stays on the list.
+  const at = shown.findIndex(w => w.id === state.selectedId && !w.mention);
+  if (at >= start && at < end) els.vlist.setAttribute("aria-activedescendant", `row-${at}`);
+  else els.vlist.removeAttribute("aria-activedescendant");
+  els.dym.replaceChildren(...(suggestions.length ? ["Did you mean ", ...suggestions.flatMap((w, i) => [i ? ", " : "",
+    h("button.link-btn", { type: "button", on: { click: () => pickSuggestion(w) } }, w.word)]), "?"] : []));
+  els.dym.hidden = !suggestions.length;
   if (!shown.length && words.length) {
-    els.inner.append(h("p.muted.no-match", "No words match. Try fewer letters, or clear the filters."));
+    const q = state.q.trim();
+    els.inner.append(h("div.no-match",
+      h("p.muted", q ? "No words match. Check the spelling, try fewer letters, or clear the filters."
+        : "No words match these filters."),
+      // The short dictionary (WordNet) has many words without an entry
+      // ("daughter", "the"), and offers to add one to your own words.
+      q ? h("p", h("button.btn", { type: "button", on: { click: () => defineTerm(q) } }, `Look up “${q}”`)) : null));
   }
   els.meta.textContent = `${shown.length.toLocaleString()} of ${words.length.toLocaleString()} words`;
+}
+
+function pickSuggestion(w) {
+  els.search.value = state.q = w.word;
+  refreshList();
+  const i = shown.findIndex(x => x.id === w.id);
+  if (i >= 0) select(w.id, { reveal: true, via: "list" });
 }
 
 function abbrevPos(p) {
@@ -297,13 +367,24 @@ export async function render(root, { param, view, live: isLive }) {
   [words, { lists }] = await Promise.all([allWords(), api.get("/api/lists")]);
   const domains = [...new Set(words.flatMap(w => w.domains))].sort(byDomainOrder);
 
-  els.search = h("input.input#browse-search", { type: "search", placeholder: "Search words or meanings  ( / )", autocomplete: "off", spellcheck: false });
+  els.search = h("input.input#browse-search", { type: "search", placeholder: matchMedia("(pointer: coarse)").matches ? "Search words or meanings" : "Search words or meanings  ( / )", autocomplete: "off", spellcheck: false });
   els.search.value = state.q;
   let t;
   els.search.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => { state.q = els.search.value; refreshList(); }, 60); });
+  // Typed or pasted and Enter at once: search what's in the box now, not the
+  // list from before the last keystroke ("record" opened "24/7").
+  const flush = () => {
+    if (!t && state.q === els.search.value) return;
+    clearTimeout(t); t = null;
+    state.q = els.search.value;
+    refreshList();
+  };
   els.search.addEventListener("keydown", e => {
-    if (e.key === "ArrowDown") { e.preventDefault(); els.search.blur(); move(state.selectedId ? 1 : 0); }
-    if (e.key === "Enter" && shown[0]) { e.preventDefault(); els.search.blur(); select(shown[0].id, { reveal: true, mark: shown[0].mention || "", via: "list" }); }
+    if (e.key === "ArrowDown") { e.preventDefault(); flush(); els.vlist.focus(); move(state.selectedId ? 1 : 0); }
+    if (e.key === "Enter") {
+      flush();
+      if (shown[0]) { e.preventDefault(); els.search.blur(); select(shown[0].id, { reveal: true, mark: shown[0].mention || "", via: "list" }); }
+    }
     if (e.key === "Escape") els.search.blur();
   });
 
@@ -332,11 +413,12 @@ export async function render(root, { param, view, live: isLive }) {
   els.az = h("nav.az", { "aria-label": "Jump to letter" },
     "abcdefghijklmnopqrstuvwxyz".split("").map(l => h("button", { type: "button", "data-l": l, on: { click: () => jumpTo(l) } }, l.toUpperCase())));
   els.inner = h("div.vlist-inner");
-  els.vlist = h("div.vlist", { "aria-label": "Words (use the arrow keys to move through them)", tabindex: "0" }, els.inner);
+  els.vlist = h("div.vlist", { role: "listbox", "aria-label": "Words (use the arrow keys to move through them)", tabindex: "0" }, els.inner);
   let frame = 0;
   els.vlist.addEventListener("scroll", () => { if (!frame) frame = requestAnimationFrame(() => { frame = 0; renderRows(); }); }, { passive: true });
   els.vlist.addEventListener("click", e => { const r = e.target.closest(".row"); if (r) select(Number(r.dataset.id), { scroll: false, reveal: true, mark: r.dataset.term || "", via: "list" }); });
-  els.meta = h("div.list-meta.tnum");
+  els.meta = h("div.list-meta.tnum", { role: "status", "aria-live": "polite" });
+  els.dym = h("p.did-you-mean", { hidden: true, role: "status" });
   els.detail = h("div.detail-col");
 
   // The A–Z strip and word list collapse, so an entry can use the full width.
@@ -361,6 +443,7 @@ export async function render(root, { param, view, live: isLive }) {
       // On a phone the filters fold away, so the results come first.
       h("details.filters-fold", { open: !narrow() }, h("summary", "Filter"), h("div.list-filters", dom, level, stars, known)),
       els.meta,
+      els.dym,
       els.vlist),
     h("div.detail-wrap", showBtn, els.detail));
   root.append(h("h1.sr-only", "Dictionary"), browse);   // the page heading, for screen readers (the entry is h2)

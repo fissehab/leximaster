@@ -4,7 +4,7 @@ A vocabulary trainer for **American English**, built for an advanced learner who
 speaks English at work: precise general vocabulary, the language of everyday American life, the
 vocabulary of data science, AI, mathematics, philosophy and theology, and the Bible. Every word has
 American pronunciation, a learner's definition and study notes, and you learn it with spaced
-repetition and six kinds of practice.
+repetition, six kinds of practice and three word games.
 
 Why it exists, in the words of its author:
 
@@ -21,39 +21,43 @@ local app on your Mac. Both work the same and share the same progress file forma
 
 ## What's in it
 
-43,273 entries. 13,880 have a human American recording; the other 29,393 have a natural synthesized
+50,630 entries. 16,435 have a human American recording; the other 34,195 have a natural synthesized
 American recording made for LexiMaster (Kokoro, an open neural voice), spoken from each entry's reviewed
-IPA for rare words and names.
+IPA for rare words and names. 318 words said two ways by meaning or part of speech (record, tear,
+lead) show each pronunciation, with its own recording, beside the meanings that take it.
 
-**Advanced & subjects** (scope "Advanced & subjects", 34,931 entries including the Bible vocabulary and
-linked words; an entry can be in several domains):
+**Advanced & subjects** (scope "Advanced & subjects", including the Bible vocabulary and linked words; an
+entry can be in several domains):
 
 | Domain | Entries | Domain | Entries |
 |---|---|---|---|
-| Advanced (GRE/SAT level) | 7,632 | Artificial intelligence | 861 |
-| Professional | 4,157 | Software engineering | 1,360 |
+| Advanced (GRE/SAT level) | 7,633 | Artificial intelligence | 860 |
+| Professional | 4,155 | Software engineering | 1,359 |
 | Literary | 581 | Data science | 1,052 |
-| Academic | 765 | Statistics & probability | 907 |
-| Theology | 1,807 | Mathematics | 1,554 |
-| Philosophy | 1,752 | Logic | 577 |
-| Christian anthropology | 293 | Orthodox mysticism | 163 |
+| Academic | 766 | Statistics & probability | 907 |
+| Theology | 1,909 | Mathematics | 1,553 |
+| Philosophy | 1,754 | Logic | 577 |
+| Christian anthropology | 301 | Orthodox mysticism | 536 |
+| Liturgical theology | 358 | | |
 
-**Everyday English** (scope "Everyday English", 7,426 entries, linked words included): the words, phrasal verbs and
-expressions of daily American life, each most with hand-written conversation examples labeled by meaning.
+**Everyday English** (scope "Everyday English", 14,551 entries, linked words included): the words, phrasal verbs and
+expressions of daily American life. About 3,200 of them (most in the situation domains below, few among
+idioms and common phrases) have hand-written conversation examples labeled by meaning.
 
 | Domain | Entries | Domain | Entries |
 |---|---|---|---|
-| Idioms & expressions | 1,022 | Beach & outdoors | 864 |
-| Home & health | 825 | Sports & pop culture | 770 |
-| Phrasal verbs | 806 | Dining out | 600 |
-| Food & taste | 1,025 | Meetings | 453 |
+| Basic words (days, months, numbers, family, home, food…) | 293 | Beach & outdoors | 864 |
+| Idioms & expressions | 3,098 | Common phrases & terms | 3,951 |
+| Home & health | 825 | Sports & pop culture | 769 |
+| Phrasal verbs | 1,758 | Dining out | 600 |
+| Food & taste | 1,025 | Meetings | 449 |
 | Feelings & reactions | 529 | Getting around | 441 |
-| Small talk | 669 | Shopping & errands | 561 |
+| Small talk | 666 | Shopping & errands | 561 |
 | | | Phone & video calls | 242 |
 
-**Bible** (4,039 entries), following the Revised Standard Version (RSV), in two parts:
+**Bible** (4,072 entries), following the Revised Standard Version (RSV), in two parts:
 
-- **Bible · Vocabulary** (3,123): the vocabulary of Scripture and biblical studies (canon and
+- **Bible · Vocabulary** (3,128): the vocabulary of Scripture and biblical studies (canon and
   versions, names of God, covenant and salvation, worship and offices, Hebrew and Greek terms,
   English expressions from the Bible, the books of the Bible) and the distinctive words of the
   biblical text.
@@ -63,9 +67,9 @@ expressions of daily American life, each most with hand-written conversation exa
   parts, with the everyday meaning first. The labels live in `seeds/names/bible.txt`
   (`name | kind | everyday meaning`), written by `tools/classify_names.py` and checked by hand.
 
-5,203 entries have an "In the Bible" note citing RSV passages and the Hebrew or Greek word behind
+5,411 entries have an "In the Bible" note citing RSV passages and the Hebrew or Greek word behind
 them; the notes were fact-checked (`tools/check_bible.py`). Where Eastern Orthodox, Roman Catholic and
-Protestant Christians understand a term differently (900 entries), each tradition's view is given.
+Protestant Christians understand a term differently (949 entries), each tradition's view is given.
 
 **Each entry has** the American IPA and a stress respelling (in-ter-SEED), a pronunciation tip, a
 learner's definition with an example, how Americans use the word, how it differs from near-synonyms,
@@ -80,7 +84,8 @@ The website version runs entirely in your browser: https://fissehab.github.io/le
 Your progress is saved in that browser on that device, each change as it happens; several open tabs
 share it safely (one saves at a time, and the others reload what it saved). Use Settings → Export / Import
 to move it between devices, and Settings → "Download for offline use" to study without a connection. On a
-phone, use your browser's "Add to Home Screen" to install it like an app.
+phone, use your browser's "Add to Home Screen" (or Install) to install it like an app; the illustrated
+install guide is at https://fissehab.github.io/leximaster/guide/ (docs/guide/, kept by `build_site.py`).
 
 To rebuild the site after changing the dataset:
 
@@ -90,7 +95,7 @@ To rebuild the site after changing the dataset:
 .venv/bin/python tools/parity.py       # the website and the local app give the same answers
 ```
 
-After you publish, the site updates itself the next time you open Today, Browse, Lists, Stats or Settings, in
+After you publish, the site updates itself the next time you open Today, Dictionary, Lists, Progress or Settings, in
 every open tab. It never reloads in the middle of a review or quiz, and your downloaded offline data is
 kept unless the word data changed.
 
@@ -106,7 +111,7 @@ kept unless the word data changed.
    takes back a slip, and leaving the tab keeps your place for the day.
 3. **Practice** when you have more time: Flashcards, Matching, Quiz, Listen (including a spelling
    test) and Pronounce. Misses go back into today's review.
-4. **Browse** to look up any word, and **My lists** to collect words with your own notes.
+4. **Dictionary** to look up any word, and **My lists** to collect words with your own notes.
 
 - **Stars** (1–5, on any word page or flashcard) say how familiar a word is: 1–2★ words come back
   more often.
@@ -284,17 +289,19 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, grammar (the preposition a pattern takes: "insist ___ sth"), and for Bible names "who or what is it?" or "person, place or people?". Only the question types you pick are asked. A wrong answer says what the option you chose actually means. A changed setting applies to the next quiz; opening an entry and coming back keeps your place. "Retry the misses" at the end; misses go back into today's review. |
 | Listen | Hear a word, then pick it or type it; the wrong choices sound like the word (affect, effect), never exact homophones. Also has a spelling test that compares your spelling letter by letter, and "Where's the stress?", which asks which syllable is strong. "Can't listen now?" shows the pronunciation instead (the answer then isn't scored as heard). |
 | Pronounce | Play the reference recording, record yourself, and play both back. The two waveforms are trimmed of silence and drawn on one time scale, so length and stress line up. |
-| Sounds | The 16 sounds learners of English find hardest (th, r and l, v and w, short i and ee, …): the mouth drawing, a plain tip, words to try and compare (all recorded by people), a "Which word did you hear?" game with word pairs (right/light, ship/sheep), and the MRI clips. |
-| Browse | The full lexicon. It runs A–Z with a letter strip to jump, instant search across words and meanings (best matches first), and filters by domain, level, rating and known words. The list keeps to your word levels (Settings) unless you pick "All levels" or one level; a search looks through every word, and also finds the synonyms, antonyms and related words listed under an entry that have no entry of their own ("jubilant: Synonym of joyful"), opening the entry that lists them with the word highlighted. On a phone, tapping a word brings its page into view (← List goes back). |
+| Hard sounds | The 16 sounds learners of English find hardest (th, r and l, v and w, short i and ee, …): the mouth drawing, a plain tip, words to try and compare (all recorded by people), a "Which word did you hear?" game with word pairs (right/light, ship/sheep), and the MRI clips. |
+| Dictionary | The full lexicon. It runs A–Z with a letter strip to jump, instant search across words and meanings (best matches first: the word itself, a form of it — "went" opens go — then words starting with it), "Did you mean…" for a misspelling, a short WordNet definition for a word without an entry, and filters by domain, level, rating and known words. The list keeps to your word levels (Settings) unless you pick "All levels" or one level; a search looks through every word, and also finds the synonyms, antonyms and related words listed under an entry that have no entry of their own ("jubilant: Synonym of joyful"), opening the entry that lists them with the word highlighted. On a phone, tapping a word brings its page into view (List goes back). |
 | My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen. Words in your lists come first among new review words. |
-| Stats | Words mastered (and marked known), retention (the share of reviews you recalled, by gap), practice accuracy, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. |
+| Games | Word Shooter (shoot the word that fits the meaning), Word Rush (yes or no against the clock) and Type It (type the word from its meaning, or from hearing it, where a word that sounds the same, brake for break, counts). Misses go back into today's review. |
+| Progress | Words mastered (and marked known), retention (the share of reviews you recalled, by gap), practice accuracy, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. |
 | Settings | Study settings (study focus, session length, new words per day, word levels, pronunciation speed), the theme, progress export/import, and on the website "Download for offline use" and the sources. |
 
 The sidebar runs in the order of a study day: Today, Daily review, the Practice group (easiest to
-hardest: Flashcards, Matching, Quiz, Listen, Pronounce, Sounds; folded until you click its heading, and a
-folded group still shows the practice you're on), the Words group (Browse, My lists), then Stats and Settings.
-On a phone the bottom bar has five buttons in the same order: Today, Review, Practice, Browse and More
-(My lists, Stats, Settings). Each practice tab remembers its own settings.
+hardest: Flashcards, Matching, Quiz, Listen, Pronounce, Hard sounds; folded until you click its heading, and a
+folded group still shows the practice you're on), the Games group (Word Shooter, Word Rush, Type It), the Words
+group (Dictionary, My lists), then Progress, Settings and About. On a phone the bottom bar has six buttons:
+Today, Review, Practice, Games, Words and More (My lists, Progress, Settings, About); in the installed app,
+Back and Forward sit at its left end. Each practice tab remembers its own settings.
 
 ### The word page
 

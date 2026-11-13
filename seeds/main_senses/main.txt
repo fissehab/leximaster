@@ -1,0 +1,37 @@
+# The main sense a dictionary entry lacks or buries: Wiktionary's numeral
+# section isn't always fetched, so "two" began with a radio code and
+# "forty" with a bottle of beer. One per line:
+#   key | first|last | part of speech | definition
+# "first" puts it before the dictionary's meanings, "last" after them
+# (the month May after the verb may). Read by build_dataset.add_main_senses.
+
+zero | first | numeral | The number 0.
+one | first | numeral | The number 1.
+two | first | numeral | The number 2.
+three | first | numeral | The number 3.
+four | first | numeral | The number 4.
+five | first | numeral | The number 5.
+six | first | numeral | The number 6.
+seven | first | numeral | The number 7.
+nine | first | numeral | The number 9.
+ten | first | numeral | The number 10.
+eleven | first | numeral | The number 11.
+twelve | first | numeral | The number 12.
+thirteen | first | numeral | The number 13.
+fourteen | first | numeral | The number 14.
+fifteen | first | numeral | The number 15.
+twenty | first | numeral | The number 20.
+thirty | first | numeral | The number 30.
+forty | first | numeral | The number 40.
+fifty | first | numeral | The number 50.
+sixty | first | numeral | The number 60.
+hundred | first | numeral | The number 100.
+thousand | first | numeral | The number 1,000.
+billion | first | numeral | The number 1,000,000,000.
+
+august | last | proper noun | August: the eighth month of the year, after July and before September.
+may | last | proper noun | May: the fifth month of the year, after April and before June.
+march | last | proper noun | March: the third month of the year, after February and before April.
+planet | first | noun | A large round body in space that travels around a star; Earth is a planet that travels around the sun.
+a | first | article | Used before a singular noun that begins with a consonant sound, to mean one or any: a dog, a university.
+an | first | article | The form of “a” used before a vowel sound: an apple, an hour.

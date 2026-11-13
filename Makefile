@@ -16,8 +16,9 @@ setup: ## Create .venv and install app + tool dependencies
 run: ## Start the app on localhost:$(PORT)
 	.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port $(PORT) --log-level warning
 
-test: ## Run the test suite (uses a temp database, never data/)
+test: ## Run the test suite (uses a temp database, never data/), then the JavaScript tests
 	$(PY) -m pytest
+	node --test tests/js/*.test.mjs
 
 check-js: ## Syntax-check the front-end JavaScript (needs node)
 	@for f in $$(find static/js -name "*.js"); do node --check "$$f" || exit 1; done; echo "js ok"

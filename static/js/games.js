@@ -89,6 +89,7 @@ export function fromListen(item) {
     word_id: item.id, word: item.word, answer: item.word, options: item.options, hear: true,
     ask: "Which word do you hear?", prompt: "", definition: core.definition || item.def || sense.definition || "",
     phonetic: item.phonetic || "", example: sense.example || "", audio_url: item.audio_url, tts_url: item.tts_url,
+    same_sound: item.same_sound || [],
   };
 }
 
@@ -111,6 +112,8 @@ export const REFILL_AT = 5;   // endless: fetch more when this many words are le
 const letters = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[’‘]/g, "'")
   .replace(/[?!.,…"“”]/g, "").toLowerCase().replace(/[\s-]+/g, " ").trim();
 export const typedRight = (typed, word) => letters(typed) !== "" && letters(typed) === letters(word);
+/** A word said exactly like the one heard ("break" for "brake"), or null. */
+export const typedSameSound = (typed, q) => (q.same_sound || []).find(x => typedRight(typed, x)) || null;
 
 /** The word with `shown` letters given and the rest as blanks; spaces,
  * hyphens and apostrophes always show: "e _ _ _ _ _" for "esteem", 1. */

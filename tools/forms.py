@@ -34,6 +34,9 @@ TAGS = {"VERB": [("VBZ", "he/she/it"), ("VBD", "past"), ("VBN", "past participle
         "ADJ": [("JJR", "comparative"), ("JJS", "superlative")],
         "ADV": [("RBR", "comparative"), ("RBS", "superlative")]}
 MAX_RELATED = 12
+# Verbs whose forms the lexicon mixes up: "lie" (rest flat: lay, lain) and
+# "lie" (say what's untrue: lied, lied) share one entry there.
+SPLIT_FORMS = {("lie", "VERB"): {"VBD": ["lay", "lied"], "VBN": ["lain", "lied"]}}
 RARE = 1.5          # Zipf below which a second spelling is left out
 UNCOUNTABLE = 1.8   # a plural this much rarer than the word: an uncountable noun
 
@@ -87,7 +90,7 @@ def derivations() -> dict[str, list[list[str]]]:
 
 def _inflect(word: str, upos: str) -> list[list[str]]:
     """[[label, "form, form"], ...] for one part of speech; [] when the
-    lexicon doesn't know the word or every form is the word itself. A phrasal
+    lexicon doesn't know the word. A phrasal
     verb inflects its first word ("give up" -> "gave up")."""
     head, _, rest = word.partition(" ")
     if rest and upos != "VERB":
@@ -95,6 +98,7 @@ def _inflect(word: str, upos: str) -> list[list[str]]:
     forms = getAllInflections(head, upos=upos)
     if not forms:
         return []
+    forms = {**forms, **SPLIT_FORMS.get((head, upos), {})}
     if "VBN" not in forms and "VBD" in forms:          # regular verbs list the past once
         forms["VBN"] = forms["VBD"]
     rows = []
@@ -108,7 +112,11 @@ def _inflect(word: str, upos: str) -> list[list[str]]:
             # noun) is not shown.
             mass = zipf_frequency(got[0], "en") < zipf_frequency(head, "en") - UNCOUNTABLE
             got = [head] if mass else [g for g in got if g != head]
-        if got and got != [head]:
+        # A past spelled like the word itself is still shown ("put": past
+        # put). A plural spelled so isn't: the lexicon gives that for
+        # uncountable nouns too ("music", "traffic"), not only for "sheep".
+        same_ok = tag in ("VBD", "VBN")
+        if got and (got != [head] or same_ok):
             rows.append([label, ", ".join(f"{g} {rest}".strip() for g in got)])
     return rows
 

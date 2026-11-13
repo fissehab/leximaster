@@ -7,7 +7,7 @@ import { test } from "node:test";
 
 import {
   addScore, cleanName, clearScores, freshOnly, fromListen, hintFor, letterCount, playerName, renameScore, setPlayerName,
-  today, topScores, typedRight, typeTime, TOP,
+  today, topScores, typedRight, typedSameSound, typeTime, TOP,
   bestScore, buzz, comboFor, fallTime, fontFor, nextLevel, pickLanes, points, pref, readTime, rushDeck, saveBest, setPref,
   setSounds, sfx, soundsOn, SPEED_FACTORS, unlockSounds,
 } from "../../static/js/games.js";
@@ -276,4 +276,12 @@ test("top scores with blocked or broken storage never throw", () => {
 test("a score's date is the day on this device's calendar, not in London", () => {
   assert.equal(today(new Date(2026, 9, 30, 23, 30)), "2026-10-30");
   assert.equal(today(new Date(2026, 0, 5, 0, 10)), "2026-01-05");
+});
+
+test("Type It (Hear it): a word said the same way counts", () => {
+  const q = fromListen({ id: 1, word: "brake", same_sound: ["break"] });
+  assert.equal(typedSameSound("break", q), "break");
+  assert.equal(typedSameSound("Break ", q), "break");
+  assert.equal(typedSameSound("brick", q), null);
+  assert.equal(typedSameSound("break", fromListen({ id: 2, word: "brake" })), null);
 });

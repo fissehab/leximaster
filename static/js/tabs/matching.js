@@ -18,13 +18,17 @@ let roundToken = 0;
 let missedIds = new Set();
 let alive = false;
 
+// The clock starts at the first tap, not when the tiles appear (reading
+// them first shouldn't cost points).
+const elapsed = () => (started ? (Date.now() - started) / 1000 : 0);
+
 function score() {
-  const secs = (Date.now() - started) / 1000;
+  const secs = elapsed();
   return Math.max(0, Math.round(matched * 100 - misses * 25 - secs));
 }
 
 function tick() {
-  els.timer.textContent = fmtDuration((Date.now() - started) / 1000);
+  els.timer.textContent = fmtDuration(elapsed());
   els.score.textContent = `${matched}/${pairs.length} matched · ${misses} miss${misses === 1 ? "" : "es"}`;
 }
 
@@ -41,19 +45,19 @@ async function start() {
   if (token !== roundToken || !alive) return;  // a newer round started, or the tab was left
   clearInterval(timer);
   pairs = data.pairs;
-  matched = 0; misses = 0; picked = null; started = Date.now(); missedIds = new Set();
+  matched = 0; misses = 0; picked = null; started = 0; missedIds = new Set();
   const left = h("div.match-col", shuffle([...pairs]).map(p =>
     h("button.tile.word", { type: "button", "aria-pressed": "false", "data-id": p.word_id, on: { click: e => pick("word", e.currentTarget, p) } }, p.word)));
   const right = h("div.match-col", shuffle([...pairs]).map(p =>
     h("button.tile.def", { type: "button", "aria-pressed": "false", "data-id": p.word_id, on: { click: e => pick("def", e.currentTarget, p) } }, p.match)));
   els.stage.replaceChildren(h("div.match-grid", left, right));
-  els.status.textContent = `${pairs.length} pairs. Pick a word, then its ${kind === "meaning" ? "meaning" : "sentence"}.`;
-  timer = setInterval(tick, 250);
+  els.status.textContent = `${pairs.length} pairs. Pick a word, then its ${kind === "meaning" ? "meaning" : "sentence"}. The clock starts at your first pick.`;
   tick();
 }
 
 function pick(side, el, p) {
   if (el.classList.contains("matched")) return;
+  if (!started) { started = Date.now(); timer = setInterval(tick, 250); }
   if (!picked || picked.side === side) {
     if (picked) { picked.el.classList.remove("picked"); picked.el.setAttribute("aria-pressed", "false"); }
     if (picked && picked.el === el) { picked = null; return; }   // the same tile again: unpick
@@ -92,7 +96,7 @@ function pick(side, el, p) {
 
 function finish() {
   clearInterval(timer);
-  const secs = (Date.now() - started) / 1000;
+  const secs = elapsed();
   const pts = score();
   api.post("/api/sessions", { kind: `matching-${kind}`, score: matched, total: matched + misses, duration_s: Math.round(secs) }).catch(() => {});
   const panel = h("div.panel.result", { style: { marginBottom: "18px" }, tabindex: "-1" },

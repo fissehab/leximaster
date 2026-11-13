@@ -105,6 +105,16 @@ function parseHash() {
 // then takes over and the page reloads on the same screen. Every open tab
 // reloads when the new version takes over (at its own next calm screen), and
 // the switch waits for any save in progress to finish.
+// Chrome and Edge (Android, Windows, Mac) offer to install the site as an
+// app; Today shows an "Install" button for it instead of the browser's own bar.
+export let installPrompt = null;
+addEventListener("beforeinstallprompt", e => {
+  e.preventDefault();
+  installPrompt = e;
+  dispatchEvent(new Event("lexi-installable"));
+});
+addEventListener("appinstalled", () => { installPrompt = null; });
+
 const CALM_TABS = ["home", "browse", "lists", "stats", "settings", "more", "practice", "games", "about"];
 let updating = false;
 let reloadPending = false;
@@ -275,6 +285,7 @@ export function shortcutsList() {
     ["Space", "Play pronunciation"], ["← →", "Previous / next word"], ["↑ ↓", "Previous / next word (Dictionary, Pronounce)"],
     ["1–5", "Set star rating"], ["M", "Know it (after the answer in Daily review)"], ["/", "Search (Dictionary)"],
     ["Enter", "Flip card / reveal answer"], ["1–4", "Grade recall in Daily review; choose an answer in Quiz"],
+    ["Z", "Undo the last grade (Daily review)"],
     ["1–4", "Shoot a word (Word Shooter)"], ["Y N", "Yes / no (Word Rush)"], ["P Esc", "Pause (games; Esc while typing)"],
     ["R", "Record yourself (Pronounce)"], ["?", "Show this help"],
   ];

@@ -135,7 +135,7 @@ const GENERAL = ["advanced", "academic", "literary", "professional", "linked", "
 // In the order the menus list them: like next to like.
 export const DOMAIN_LABELS = {
   everyday: "All everyday English",
-  small_talk: "Small talk", feelings: "Feelings & reactions", idioms: "Idioms & sayings", phrasal_verbs: "Phrasal verbs",
+  basics: "Basic words", small_talk: "Small talk", feelings: "Feelings & reactions", idioms: "Idioms & sayings", phrasal_verbs: "Phrasal verbs",
   common_phrases: "Common phrases & terms",
   meetings: "Meetings", phone_calls: "Phone & video calls",
   food: "Food & taste", dining: "Dining out", shopping: "Shopping & errands", home_health: "Home & health",
@@ -146,7 +146,7 @@ export const DOMAIN_LABELS = {
   mathematics: "Mathematics", statistics: "Statistics & probability", data_science: "Data science",
   artificial_intelligence: "Artificial intelligence", software_engineering: "Software engineering",
   advanced: "Advanced", academic: "Academic", literary: "Literary", professional: "Professional",
-  linked: "Linked words", reference: "Look-up only (linked, very rare or very common)", custom: "My words",
+  linked: "Related words", reference: "Look-up only (linked, very rare or very common)", custom: "My words",
 };
 const NAME_KIND_LABELS = { person: "Person", place: "Place", people: "People" };
 export const domainLabel = d => DOMAIN_LABELS[d] || d.replace(/_/g, " ");
@@ -305,7 +305,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
       respelling ? h("span.respell", respelling) : null) : null,
     full ? sayRow(w) : null,
     h("div.entry-meta",
-      pos ? posBadge(pos) : null,
+      pos && !sounds ? posBadge(pos) : null,
       w.level && mode !== "card" ? h("span.chip.level", { title: `How common the word is: level ${w.level} of 5` },
         `Level ${w.level} · ${levelLabel(w.level)}`) : null,
       isName ? h("span.chip.name-kind", `Bible name · ${NAME_KIND_LABELS[w.name_kind] || w.name_kind}`) : null,
@@ -324,7 +324,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
       const ps = sounds ? [...new Set(g.senses.map(s => s.pron).filter(x => x != null))] : [];
       const one = ps.length === 1;
       return h("div.sense-group",
-        many || one ? h("div.sense-head", many ? posBadge(g.pos) : null, one ? soundChip(w, ps[0]) : null) : null,
+        many || one ? h("div.sense-head", many || sounds ? posBadge(g.pos) : null, one ? soundChip(w, ps[0]) : null) : null,
         h("ol.sense-list", { start: g.start || 1 }, g.senses.map(s => h("li",
           ps.length > 1 && s.pron != null ? soundChip(w, s.pron) : null, smart(s.definition),
           s.example ? h("span.sense-ex", smart(s.example)) : null))));
@@ -335,7 +335,16 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   const MEANINGS_SHOWN = 6;
   const meaningsList = () => {
     const count = groups.reduce((a, g) => a + g.senses.length, 0);
+    // A word said more than one way shows a meaning of each sound before the
+    // fold ("tear": the rip and the drop from the eye).
     let left = MEANINGS_SHOWN;
+    if (sounds) {
+      const flat = groups.flatMap(g => g.senses);
+      for (let i = 0; i < w.prons.length; i++) {
+        const at = flat.findIndex(s => s.pron === i);
+        if (at >= left) left = at + 1;
+      }
+    }
     const head = [], rest = [];
     for (const g of groups) {
       const a = g.senses.slice(0, Math.max(0, left)), b = g.senses.slice(a.length);
@@ -353,8 +362,9 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
   // Meaning, and one example right under it (for a Bible name, what the Bible says).
   let lead = null;
   if (core) {
-    const coreSound = sounds ? w.prons.map((p, i) => (p.pos || []).includes(core.pos) ? i : -1).filter(i => i >= 0) : [];
-    parts.push(h("p.core-def", coreSound.length === 1 ? soundChip(w, coreSound[0]) : null, smart(core.definition)));
+    const coreSound = !sounds ? null : core.pron != null ? core.pron
+      : (k => k.length === 1 ? k[0] : null)(w.prons.map((p, i) => (p.pos || []).includes(core.pos) ? i : -1).filter(i => i >= 0));
+    parts.push(h("p.core-def", coreSound != null ? soundChip(w, coreSound) : null, smart(core.definition)));
     if (isName && n.biblical_note) {
       parts.push(h("div.npanel.wide.lead-note", h("h3", "In the Bible"), h("p", italicize(n.biblical_note))));
     } else if (conversation.length) {
@@ -495,7 +505,8 @@ function sayRow(w) {
   if (!tokens) return null;
   const body = h("div.say-body");
   const row = h("details.say", h("summary", h("span", { html: SAY_ICON, style: { display: "contents" } }),
-    h("span", "How to say it"), h("span.say-hint", soundLabel(tokens[hardestIndex(tokens)].sym))), body);
+    h("span", "How to say it"), h("span.say-hint", { title: "The hardest sound in this word" }, h("span.say-hint-label", "Hardest: "),
+      soundLabel(tokens[hardestIndex(tokens)].sym))), body);
   let loaded = false;
   row.addEventListener("toggle", async () => {
     if (!row.open || loaded) return;
@@ -579,7 +590,7 @@ export function termLink(text, { chip = true } = {}) {
 
 /** The short definition of a word without an entry (Open English WordNet),
  * in the dialog; a form of a headword ("kings") opens that entry instead. */
-async function defineTerm(text) {
+export async function defineTerm(text) {
   let g;
   try {
     g = await api.get("/api/gloss", { w: text });
@@ -878,13 +889,24 @@ export async function filterBar(onChange, { lists = [], domains = [] } = {}, { t
   };
   [starSel, listSel, domSel].forEach(s => s.addEventListener("change", fire));
   const set = [practiceFilter.domain, practiceFilter.stars, practiceFilter.list_id].filter(Boolean).length;
-  return h("details.settings-fold", { open: !matchMedia("(max-width: 760px)").matches },
+  const fold = h("details.settings-fold", { open: !matchMedia("(max-width: 760px)").matches },
     h("summary", set ? `Settings (${set})` : "Settings"),
     h("div.filters-bar",
       h("div.field", h("label", { for: "f-domain" }, "Scope"), domSel),
       h("div.field", h("label", { for: "f-stars" }, "Rating"), starSel),
       h("div.field", h("label", { for: "f-list" }, "Word list"), listSel),
       extra));
+  // A list chosen ("Practice this list") stays in view with a way out, even
+  // with Settings folded: weeks later it shouldn't quietly limit the words.
+  const list = practiceFilter.list_id && lists.find(l => String(l.id) === String(practiceFilter.list_id));
+  if (!list) return fold;
+  const chip = h("p.list-chip", h("span.chip", `List: ${list.name} `,
+    h("button.chip-x", { type: "button", "aria-label": `Stop practicing only “${list.name}”`, on: { click: () => {
+      listSel.value = "";
+      fire();
+      chip.remove();
+    } } }, "✕")));
+  return h("div", chip, fold);
 }
 
 export async function filterSources() {

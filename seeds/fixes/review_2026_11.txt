@@ -1,0 +1,77 @@
+# The five-reviewer audit of 2026-11-12: the shown IPA (phonetic) disagreed
+# with the study notes' pronunciation. Where the notes are right, the IPA
+# follows them; where the IPA is right, the notes do.
+a | phonetic | /ə/
+ca | phonetic | /ˌsi ˈeɪ/
+og | phonetic | /ˌoʊ ˈdʒi/
+gui | phonetic | /ˈɡui/
+la | phonetic | /leɪn/
+pa | phonetic | /ˌpi ˈeɪ/
+arab | phonetic | /ˈæɹəb/
+catechetic | phonetic | /ˌkætəˈkɛtɪk/
+cuckoo | phonetic | /ˈkuku/
+ersatz | phonetic | /ˈɛɹzɑts/
+gera | phonetic | /ˈɡɪɹə/
+ich | phonetic | /ɪk/
+satirize | phonetic | /ˈsætəˌɹaɪz/
+shema | phonetic | /ʃəˈmɑ/
+assuage | phonetic | /əˈsweɪdʒ/
+hadad | phonetic | /ˈheɪdæd/
+hamor | phonetic | /ˈheɪmɔɹ/
+zadok | phonetic | /ˈzeɪdɑk/
+asa | phonetic | /ˈeɪsə/
+gaal | phonetic | /ɡeɪl/
+rm | phonetic | /ɹum/
+sol | phonetic | /soʊl/
+adah | phonetic | /ˈɑdə/
+yeah | phonetic | /jɛ/
+eh | phonetic | /ɛ/
+era | phonetic | /ˈɪɹə/
+egg | nuance.pronunciation.ipa | /ɛɡ/
+egg | nuance.pronunciation.respelling | EG
+egg | nuance.pronunciation.tip | Say the short e of 'bed' and 'leg', then a hard g. Many Americans let the vowel drift toward 'ay' before the g, but the standard sound is the 'e' of 'leg', which egg rhymes with.
+sore | nuance.pronunciation.ipa | /sɔɹ/
+sore | nuance.pronunciation.respelling | SOR
+sore | nuance.pronunciation.tip | One syllable that rhymes with 'more' and 'store', with a clear r at the end. It sounds exactly like 'soar' (to fly high), so context tells them apart.
+boy | phonetic | /bɔɪ/
+enrollment | phonetic | /ɪnˈɹoʊlmənt/
+ruminate | phonetic | /ˈɹuməˌneɪt/
+hurricane | nuance.pronunciation.ipa | /ˈhɝəˌkeɪn/
+hurricane | nuance.pronunciation.respelling | HUR-uh-kayn
+hurricane | nuance.pronunciation.tip | Stress the first syllable. Americans say the last syllable fully, rhyming with 'cane'; the middle one is a quick 'uh'.
+rank | nuance.pronunciation.ipa | /ɹæŋk/
+rank | nuance.pronunciation.respelling | RANGK
+rank | nuance.pronunciation.tip | One syllable with the short a of 'cat', which before ng sounds close to 'ay' for many Americans. End with ng plus a clear k, with no vowel after it.
+sandaled | phonetic | /ˈsændəld/
+sandaled | nuance.pronunciation.ipa | /ˈsændəld/
+sandaled | nuance.pronunciation.respelling | SAN-duld
+sandaled | nuance.pronunciation.tip | Two syllables, stress on the first: SAN-duld. The -ed adds only a d sound, as in 'handled'; do not say it as a third syllable.
+vaccine | phonetic | /vækˈsin/
+vaccine | nuance.pronunciation.ipa | /vækˈsin/
+vaccine | nuance.pronunciation.respelling | vak-SEEN
+vaccine | nuance.pronunciation.tip | Stress the second syllable, SEEN, with the long ee of 'see'. The first syllable is 'vak', with the short a of 'cat' and a k sound before the s.
+boy | nuance.pronunciation.tip | One syllable with the 'oy' diphthong of 'toy': start at 'aw' and glide toward 'ee'. Do not flatten it into a long 'o'.
+castellate | nuance.pronunciation.tip | Stress the first syllable, KAS, with the short a of 'cat'. The final -late is a clear long a, not a reduced vowel.
+yesterday | phonetic | /ˈjɛstɚˌdeɪ/
+lazily | phonetic | /ˈleɪzəli/
+b | phonetic | /bi/
+door | phonetic | /dɔɹ/
+mush | phonetic | /mʌʃ/
+il | phonetic | /ˌaɪ ˈɛl/
+ni | phonetic | /ˌɛn ˈaɪ/
+spatula | phonetic | /ˈspætʃələ/
+wheeze | phonetic | /wiz/
+facet | phonetic | /ˈfæsɪt/
+sta | phonetic | /ˈsteɪʃən/
+a*-search | phonetic | /ˈeɪ ˌstɑɹ ˈsɝtʃ/
+angst | phonetic | /ɑŋst/
+exuviate | phonetic | /ɪɡˈzuviˌeɪt/
+nun | phonetic | /nun/
+cush | phonetic | /kʊʃ/
+shur | phonetic | /ʃʊɹ/
+maimer | nuance.pronunciation.ipa | /ˈmeɪmɚ/
+maimer | nuance.pronunciation.respelling | MAY-mer
+maimer | nuance.pronunciation.tip | Stress the first syllable, MAY, as in maim, and end with a light r-colored 'mer'.
+slang | nuance.pronunciation.ipa | /slæŋ/
+slang | nuance.pronunciation.respelling | SLANG
+slang | nuance.pronunciation.tip | One syllable with the short a of 'cat', which before ng sounds close to 'ay' for many Americans. End with ng, without a hard g after it.

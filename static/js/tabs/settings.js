@@ -29,13 +29,19 @@ function settingsPanel() {
     refreshDueCount();
     toast(`Daily review, Today and the practice tabs now study: ${focus.selectedOptions[0].textContent}`);
   });
-  const save = h("button.btn.btn-primary", { type: "button", on: { click: async () => {
+  // Every setting saves as soon as it changes, like Study focus and Word
+  // levels (numbers when you leave the box, so typing "12" doesn't save "1").
+  const saveOne = async (field, value, input) => {
+    if (input && !input.checkValidity()) { input.reportValidity(); return; }
     try {
-      await saveSettings({ session_minutes: Number(minutes.value), new_per_day: Number(perDay.value), speech_rate: Number(rate.value) });
+      await saveSettings({ [field]: value });
       await loadSettings();
-      toast("Settings saved");
+      toast("Saved");
     } catch (e) { showError(e); }
-  } } }, "Save settings");
+  };
+  minutes.addEventListener("change", () => saveOne("session_minutes", Number(minutes.value), minutes));
+  perDay.addEventListener("change", () => saveOne("new_per_day", Number(perDay.value), perDay));
+  rate.addEventListener("change", () => saveOne("speech_rate", Number(rate.value)));
   return h("section.panel", h("h2", "Study"),
     h("div.setup-row",
       h("div.field", h("label", { for: "set-focus" }, "Study focus"), focus),
@@ -45,8 +51,7 @@ function settingsPanel() {
       h("div.field", h("span.label", "Word levels"), levelPicker())),
     h("p.muted", "Study focus is the group of words you study in Daily review and on Today. Practice pages start with " +
       "the same words, and each page can pick other words."),
-    h("p.muted", "Study focus and Word levels save right away. For the other settings, press Save settings."),
-    h("div", save));
+    h("p.muted", "Changes save right away."));
 }
 
 async function exportProgress() {
@@ -158,7 +163,10 @@ function dataPanel() {
 // On the website, progress stays in this browser; offer offline use and credits.
 function sitePanel() {
   const btn = h("button.btn", { type: "button" }, icon("download"), "Download for offline use");
+  const size = h("span.muted");
+  api.get("/api/offline").then(r => { if (r && r.mb) size.textContent = `About ${r.mb} MB, best on Wi-Fi.`; }).catch(() => {});
   btn.addEventListener("click", async () => {
+    if (size.textContent && !confirm(`Download all of LexiMaster for offline use? ${size.textContent}`)) return;
     btn.disabled = true;
     btn.lastChild.textContent = "Downloading…";
     try {
@@ -200,6 +208,7 @@ function sitePanel() {
     h("p.muted", "Your progress is saved in this browser on this device only. Use Export and Import to move it between devices."),
     storageNote,
     h("div.toolbar", btn, progressNote, h("a.btn", { href: "credits.html" }, "Sources & credits")),
+    size,
     h("details.fold", h("summary", "Trouble with saved progress?"),
       h("div.fold-body", h("p.muted", "If LexiMaster can't read what this browser saved, download it exactly as stored and keep it safe."),
         h("button.btn", { type: "button", on: { click: downloadRaw } }, icon("download"), "Download raw saved data"))));

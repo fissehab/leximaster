@@ -160,8 +160,32 @@ def _read(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
 
 
+IDS = ROOT / "seeds" / "word_ids.json"
+
+
+def word_ids(words: list[dict], path: Path = IDS) -> dict[str, int]:
+    """Each word's id on the site, the same from build to build.
+
+    seeds/word_ids.json (committed) keeps every id ever given out: a word
+    keeps its id for good, a new word gets the next unused one, and a removed
+    word's id is never handed to another. Saved review sessions, the word of
+    the day and #browse/<id> links hold ids, so they must not move when a
+    word is added or removed (positions did: one new word moved 20,000)."""
+    ledger = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"next": 1, "ids": {}}
+    ids, nxt = ledger["ids"], ledger["next"]
+    for w in words:
+        if w["key"] not in ids:
+            ids[w["key"]], nxt = nxt, nxt + 1
+    if nxt >= 10_000_000:
+        sys.exit("word ids reached 10,000,000, where the ids of words learners add start")
+    if nxt != ledger["next"]:
+        path.write_text(json.dumps({"next": nxt, "ids": ids}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    return {w["key"]: ids[w["key"]] for w in words}
+
+
 def build_data(words: list[dict], media: dict[str, tuple[str, Path]]) -> tuple[int, int]:
     index, shards = [], {i: {} for i in range(SHARDS)}
+    ids = word_ids(words)
     for w in words:
         data = slim({k: w.get(k) for k in DETAIL_FIELDS if w.get(k) not in (None, "", [])})
         if data.get("prons"):
@@ -171,12 +195,19 @@ def build_data(words: list[dict], media: dict[str, tuple[str, Path]]) -> tuple[i
                               "human": bool(p.get("audio"))} for i, p in enumerate(data["prons"])]
         pos, definition = core_definition({"meanings": w.get("meanings") or [], "nuance": w.get("nuance")})
         s = shard_of(w["key"])
-        entry = {"k": w["key"], "w": w["word"], "f": w.get("freq_rank"), "z": w.get("zipf"),
+        entry = {"i": ids[w["key"]], "k": w["key"], "w": w["word"], "f": w.get("freq_rank"), "z": w.get("zipf"),
                  "d": w.get("domains") or [], "p": w.get("phonetic") or "",
                  "ps": [m["pos"] for m in w.get("meanings") or [] if m.get("pos")],
                  "cp": pos, "df": definition, "s": s}
         if w["key"] in media:
             entry["a" if w.get("has_audio") and w.get("audio") else "t"] = media[w["key"]][0]
+        if data.get("prons"):
+            # The recordings of each way it's said, so the service worker
+            # keeps them cached across deploys (pruneMedia).
+            extra = sorted({p["file"] for p in data["prons"] if p["file"]} - {entry.get("a"), entry.get("t")})
+            if extra:
+                entry["x"] = extra
+            entry["xp"] = [p["ipa"] for p in data["prons"][1:]]   # its other sounds (Listen, Type It)
         if w.get("nuance"):
             entry["e"] = 1
         if w.get("conversation"):
@@ -189,10 +220,15 @@ def build_data(words: list[dict], media: dict[str, tuple[str, Path]]) -> tuple[i
             entry["sy"] = syn
         index.append(entry)
         shards[s][w["key"]] = data
-    size = write_json(DOCS / "data" / "index.json", {"version": 1, "words": index})
     total = 0
     for i, shard in shards.items():
         total += write_json(DOCS / "data" / "detail" / f"{i:02d}.json", shard)
+    # What Settings → "Download for offline use" fetches: every detail file,
+    # the glossary and mentions (written before this, see main()).
+    extra = sum(f.stat().st_size for f in [*(DOCS / "data" / "gloss").glob("*.json"), DOCS / "data" / "mentions.json"]
+                if f.exists())
+    size = write_json(DOCS / "data" / "index.json",
+                      {"version": 1, "offline_mb": round((total + extra) / 1e6), "words": index})
     return size, total
 
 
@@ -396,6 +432,7 @@ async function pruneMedia() {{
   for (const w of (await index.json()).words) {{
     if (w.a) used.add(w.a);
     if (w.t) used.add(w.t);
+    for (const f of w.x || []) used.add(f);   // each way a word is said (record: REK-erd, rih-KAWRD)
   }}
   const media = await caches.open(MEDIA);
   for (const req of await media.keys()) {{
@@ -489,7 +526,10 @@ self.addEventListener("fetch", e => {{
   if (path.includes("/media/")) {{ e.respondWith(media(e.request).catch(() => fetch(e.request))); return; }}
   if (path.includes("/static/mouth/")) {{ e.respondWith(media(e.request, MOUTH).catch(() => fetch(e.request))); return; }}
   if (path.includes("/data/detail/") || path.includes("/data/gloss/") || /\\/data\\/(index|mentions)\\.json$/.test(path)) {{ e.respondWith(cacheFirst(e.request, DATA)); return; }}
-  if (e.request.mode === "navigate" && /\\/(index\\.html)?$/.test(path)) {{
+  // Only the app's own page: other pages under the site (guide/, licenses/)
+  // come from the network, not the app shell.
+  const root = new URL("./", self.registration.scope).pathname;
+  if (e.request.mode === "navigate" && (path === root || path === root + "index.html")) {{
     // The app's page comes from the same version's cache as its scripts.
     e.respondWith(caches.open(SHELL).then(c => c.match("index.html")).then(hit => hit || fetch(e.request)));
     return;
@@ -686,9 +726,9 @@ def main() -> None:
     version = time.strftime("%Y%m%d%H%M%S")
     media = media_files(words)
     PRONS.update(pron_media(words))
-    index_size, detail_size = build_data(words, media)
     gloss_size = build_glossary()
     mentions_size = build_mentions(words)
+    index_size, detail_size = build_data(words, media)   # after those: its offline size counts them
     audio_rows = copy_audio(words, media)
     build_index_html(version)
     build_icons()

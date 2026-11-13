@@ -58,6 +58,10 @@ async function load(extra = 0) {
   if (!live()) return;
   queue = res.queue;
   levelShort = !!res.level_short;
+  if (res.offline_skipped) {
+    toast(`${res.offline_skipped} card${res.offline_skipped === 1 ? "" : "s"} left out: not saved on this device yet. ` +
+          "They come back when you're online.");
+  }
   pos = 0;
   total = queue.length;
   sessionStart = Date.now();

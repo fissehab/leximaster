@@ -373,7 +373,7 @@ async def import_progress(file: UploadFile = File(...)):
         raise HTTPException(413, f"That file is too large (over {MAX_IMPORT_BYTES // (1024 * 1024)} MB).")
     try:
         data = json.loads(raw_bytes)
-    except (json.JSONDecodeError, UnicodeDecodeError):
+    except (json.JSONDecodeError, UnicodeDecodeError, RecursionError):
         raise HTTPException(400, "That file isn't valid JSON.")
     if not isinstance(data, dict) or data.get("app") != "LexiMaster":
         raise HTTPException(400, "That file isn't a LexiMaster progress export.")

@@ -63,7 +63,7 @@ async function open(id) {
     h("div.page-head", { style: { marginBottom: "14px" } },
       h("div", h("h2", { style: { font: "600 22px/1.2 var(--font-word)" } }, data.name), h("p.sub", `${data.words.length} word${data.words.length === 1 ? "" : "s"}`)),
       h("div.toolbar",
-        data.words.length ? practiceMenu(id) : null,
+        data.words.length ? practiceMenu(id, data.words.length) : null,
         h("button.btn", { type: "button", on: { click: () => rename(data) } }, "Rename"),
         h("button.btn.btn-quiet", { type: "button", on: { click: () => remove(data) } }, icon("trash"), "Delete list"))),
     adder(id),
@@ -79,12 +79,18 @@ function practice(id, tab) {
     location.hash = `#${tab}`;
   });
 }
-function practiceMenu(id) {
+// The fewest words each game can be played with (a quiz question has four
+// choices; Matching and Listen need as many words).
+const NEEDS = { flashcards: 1, quiz: 4, matching: 4, listen: 4 };
+function practiceMenu(id, count) {
   return h("details.menu-btn",
     h("summary.btn.btn-primary", "Practice this list"),
     h("div.menu-pop", { role: "group", "aria-label": "Practice this list with" },
       [["flashcards", "Flashcards"], ["quiz", "Quiz"], ["matching", "Matching"], ["listen", "Listen"]].map(([tab, label]) =>
-        h("button.menu-item", { type: "button", on: { click: () => practice(id, tab) } }, label))));
+        count >= NEEDS[tab]
+          ? h("button.menu-item", { type: "button", on: { click: () => practice(id, tab) } }, label)
+          : h("button.menu-item", { type: "button", disabled: true, title: `Needs at least ${NEEDS[tab]} words` },
+            label, h("span.muted", ` · needs ${NEEDS[tab]} words`)))));
 }
 
 async function rename(data) {

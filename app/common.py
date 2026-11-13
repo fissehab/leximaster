@@ -309,7 +309,10 @@ def mentions(words, heads: set[str]) -> list[list]:
     for word, data in words:
         n = data.get("nuance") or {}
         ms = data.get("meanings") or []
-        groups = (("s", [*(data.get("synonyms") or []), *(t for m in ms for t in m.get("synonyms") or [])]),
+        forms = [f.strip() for _, rows in (data.get("forms") or {}).get("inflections") or []
+                 for _, v in rows for f in v.split(",")]
+        groups = (("i", forms),   # went: a form of go
+                  ("s", [*(data.get("synonyms") or []), *(t for m in ms for t in m.get("synonyms") or [])]),
                   ("a", [*(n.get("antonyms") or []), *(data.get("antonyms") or []),
                          *(t for m in ms for t in m.get("antonyms") or [])]),
                   ("c", [(d or {}).get("vs", "") for d in n.get("distinctions") or []]),
@@ -338,7 +341,7 @@ def bump_activity(c: sqlite3.Connection, seconds: int = 0, reviews: int = 0, new
 
 
 # Everyday American English domains (see build_dataset.EVERYDAY_DOMAINS).
-EVERYDAY_DOMAINS = ("dining", "food", "shopping", "outdoors", "small_talk", "phrasal_verbs", "idioms",
+EVERYDAY_DOMAINS = ("basics", "dining", "food", "shopping", "outdoors", "small_talk", "phrasal_verbs", "idioms",
                     "common_phrases", "feelings", "home_health", "getting_around", "sports_culture", "meetings",
                     "phone_calls")
 _EVERYDAY_SQL = ("EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value IN ("

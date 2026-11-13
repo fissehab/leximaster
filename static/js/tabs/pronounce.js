@@ -27,11 +27,13 @@ async function loadWords() {
     b.dataset.id = w.id;
     return b;
   }));
-  if (words.length) choose(words[0].id);
+  if (words.length) choose(words[0].id, { first: true });
   else els.stage.replaceChildren(h("div.panel.empty", h("h2", "No words match"), h("p", "Widen the filters to choose words to practice.")));
 }
 
-async function choose(id) {
+/** `first`: the page's first word, which stays where it is (scrolling to it
+ * would hide the heading and the instructions on a phone). */
+async function choose(id, { first = false } = {}) {
   if (box) box.stop();
   const token = ++chooseToken;
   let w;
@@ -41,7 +43,16 @@ async function choose(id) {
   els.picker.querySelectorAll("button").forEach(b => b.setAttribute("aria-current", String(Number(b.dataset.id) === id)));
   paint();
   // On a phone the list sits below the stage: bring the chosen word into view.
-  if (matchMedia("(max-width: 900px)").matches) els.stage.scrollIntoView({ block: "start" });
+  if (!first && matchMedia("(max-width: 900px)").matches) els.stage.scrollIntoView({ block: "start" });
+}
+
+/** Previous and next word, beside the word: on a phone the list is below. */
+function stepButtons() {
+  const i = words.findIndex(x => x.id === current.id);
+  const go = k => () => { if (words[k]) choose(words[k].id); };
+  return h("span.toolbar.step-btns", { style: { marginLeft: "auto" } },
+    h("button.btn", { type: "button", disabled: i <= 0, "aria-label": "Previous word", on: { click: go(i - 1) } }, "‹ Previous"),
+    h("button.btn", { type: "button", disabled: i < 0 || i >= words.length - 1, "aria-label": "Next word", on: { click: go(i + 1) } }, "Next ›"));
 }
 
 function paint() {
@@ -52,7 +63,7 @@ function paint() {
   box.querySelector(".rec-btn").setAttribute("aria-keyshortcuts", "R");
   els.stage.replaceChildren(
     h("div.panel", { style: { padding: "22px", display: "flex", flexDirection: "column", gap: "14px" } },
-      h("div.entry-top", h("h2.headword", w.word)),
+      h("div.entry-top", h("h2.headword", w.word), stepButtons()),
       h("div.entry-pron", w.phonetic ? h("span.ipa", { lang: "en-fonipa" }, w.phonetic) : null,
         n.pronunciation && n.pronunciation.respelling ? h("span.respell", n.pronunciation.respelling) : null),
       n.pronunciation && n.pronunciation.tip ? h("p", { style: { fontFamily: "var(--font-body)", maxWidth: "65ch" } }, n.pronunciation.tip) : null),

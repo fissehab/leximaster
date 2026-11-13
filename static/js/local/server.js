@@ -104,6 +104,8 @@ async function fetchJson(url) {
   return res.json();
 }
 
+let OFFLINE_MB = null;   // the size of "Download for offline use" (build_site)
+
 async function boot() {
   await loadScript("static/vendor/sql-wasm.js");
   const SQL = await window.initSqlJs({ locateFile: f => `static/vendor/${f}` });
@@ -111,11 +113,12 @@ async function boot() {
   db.exec(SCHEMA);
   for (const [k, v] of Object.entries(DEFAULT_SETTINGS)) run("INSERT INTO settings(key, value) VALUES (?, ?)", [k, v]);
   const index = await fetchJson("data/index.json");
+  OFFLINE_MB = index.offline_mb || null;
   db.exec("BEGIN");
   const stmt = db.prepare("INSERT INTO words(id, key, word, freq_rank, zipf, domains, has_audio, enriched, has_conv, level) " +
                           "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
   index.words.forEach((w, i) => {
-    const id = i + 1;
+    const id = w.i ?? i + 1;   // build_site's lasting id (older builds: the position)
     INDEX.set(id, w);
     stmt.run([id, w.k, w.w, w.f ?? null, w.z ?? null, JSON.stringify(w.d || []), w.a ? 1 : 0, w.e ? 1 : 0, w.c ? 1 : 0,
               w.l ?? 5]);   // the index leaves out level 5
@@ -724,6 +727,14 @@ function setState(id, body) {
   return { stars: r.stars, known: !!r.known, notes: r.notes };
 }
 
+// Words a learner adds get ids from 10,000,001, clear of the dictionary's
+// (build_site hands those out in order and stops before 10,000,000), so a
+// later version adding words can't take an id a learner's word holds.
+const CUSTOM_IDS = 10_000_000;
+function nextCustomId() {
+  return Math.max(CUSTOM_IDS, get("SELECT COALESCE(MAX(id), 0) AS n FROM words").n) + 1;
+}
+
 async function addCustomWord(body) {
   const word = String(body.word || "").trim();
   const definition = String(body.definition || "").trim();
@@ -740,7 +751,8 @@ async function addCustomWord(body) {
   if (body.list_id && !get("SELECT 1 AS x FROM lists WHERE id=?", [body.list_id])) {
     throw new HttpError(404, "That list no longer exists.");
   }
-  const { lastId } = run(`INSERT INTO words(key, word, domains, has_audio, enriched, is_custom) VALUES (?, ?, '["custom"]', 0, 0, 1)`, [key, word]);
+  const { lastId } = run(`INSERT INTO words(id, key, word, domains, has_audio, enriched, is_custom) VALUES (?, ?, ?, '["custom"]', 0, 0, 1)`,
+                         [nextCustomId(), key, word]);
   CUSTOM.set(lastId, data);
   if (body.notes) run("INSERT INTO user_word(word_id, notes) VALUES (?, ?)", [lastId, String(body.notes)]);
   if (body.list_id) run("INSERT OR IGNORE INTO list_words(list_id, word_id) VALUES (?, ?)", [body.list_id, lastId]);
@@ -932,9 +944,13 @@ async function reviewQueue(q) {
              est_seconds: rows.length ? Math.round(used + nNewCards * NEW_CARD_SECONDS) : 0,
              done_today: { reviews: act ? act.reviews : 0, new: act ? act.new_words : 0, seconds: act ? act.seconds : 0 } };
   }
-  const queue = await Promise.all(rows.map(async ([r, isNew]) => ({ ...(await full(r)), is_new: isNew })));
+  // Offline, a card whose details aren't saved on this device is left out
+  // rather than failing the whole review.
+  const got = await Promise.allSettled(rows.map(async ([r, isNew]) => ({ ...(await full(r)), is_new: isNew })));
+  const queue = got.filter(g => g.status === "fulfilled").map(g => g.value);
+  if (!queue.length && got.length) throw got[0].reason;
   return {
-    queue, level_short: levelShort, due_total: due.length,
+    queue, level_short: levelShort, offline_skipped: got.length - queue.length, due_total: due.length,
     done_today: { reviews: act ? act.reviews : 0, new: act ? act.new_words : 0, seconds: act ? act.seconds : 0 },
     target_seconds: budget,
     est_seconds: queue.length ? Math.round(used + queue.filter(c => c.is_new).length * NEW_CARD_SECONDS) : 0,
@@ -1110,14 +1126,15 @@ async function makeQuiz(q) {
       // Other words of the chosen scope ("Statistics", "Bible · Vocabulary"), else any word.
       : shuffle((q.domain && pool.length >= 30 ? pool : allIds).filter(i => i !== wid)).slice(0, 30);
     const nWords = word.split(/\s+/).length;
-    // A definition that names its own word would read "the …eans" once masked.
-    const others = [...defsById(distractIds).values()]
-      .filter(v => v[0].toLowerCase() !== word.toLowerCase() && !new RegExp(`\\b${escapeRe(v[0])}\\b`, "i").test(v[2]))
-      .sort((a, b) => ((a[0].split(/\s+/).length !== nWords) - (b[0].split(/\s+/).length !== nWords)) ||
-                      ((a[1] !== pos) - (b[1] !== pos)));
     // The word, its synonyms and the words its notes compare it with.
     const near = new Set([...rightsFor(data || {}, "synonym"), word,
                           ...(((data || {}).nuance || {}).distinctions || []).map(d => d.vs || "")].map(s => s.toLowerCase()));
+    // A definition that names its own word would read "the …eans" once
+    // masked; a word the entry names as near in meaning would be right too.
+    const others = [...defsById(distractIds).values()]
+      .filter(v => !near.has(v[0].toLowerCase()) && !new RegExp(`\\b${escapeRe(v[0])}\\b`, "i").test(v[2]))
+      .sort((a, b) => ((a[0].split(/\s+/).length !== nWords) - (b[0].split(/\s+/).length !== nWords)) ||
+                      ((a[1] !== pos) - (b[1] !== pos)));
     const build = qtype => {
       if (qtype === "pattern") return patternQuestion(word, ((data && data.nuance) || {}).patterns || [], pos);
       if (qtype === "name_kind") {
@@ -1236,6 +1253,24 @@ function soundDistance(a, b) {
   return prev[b.length] / Math.max(a.length, b.length);
 }
 
+// Sound key -> the single words said that way, every way each is said
+// (index "p" and "xp"), built the first time Listen or Type It needs it.
+let SAME_SOUND = null;
+function sameSound() {
+  if (SAME_SOUND) return SAME_SOUND;
+  SAME_SOUND = new Map();
+  for (const w of INDEX.values()) {
+    if (/[ -]/.test(w.w)) continue;
+    for (const ipa of [w.p, ...(w.xp || [])]) {
+      const k = ipa && soundKey(ipa);
+      if (!k) continue;
+      if (!SAME_SOUND.has(k)) SAME_SOUND.set(k, new Set());
+      SAME_SOUND.get(k).add(w.w);
+    }
+  }
+  return SAME_SOUND;
+}
+
 async function listen(q) {
   const n = Math.min(50, Math.max(1, Number(q.n) || 10));
   const filters = parseFilters(q);
@@ -1251,6 +1286,12 @@ async function listen(q) {
     const spaces = (w.match(/ /g) || []).length;
     // Sound-alikes first (never a homophone), then look-alikes (practice.py).
     const me = soundKey(item.phonetic || "");
+    // Every word said like one of this word's sounds: never a choice, and a
+    // right answer when typed (Type It: "brake" for "break").
+    const mine = [item.phonetic, ...(item.prons || []).map(p => p.ipa)].filter(Boolean).map(soundKey);
+    const alike = new Set(mine.flatMap(k => [...(sameSound().get(k) || [])]));
+    alike.delete(w);
+    item.same_sound = [...alike].sort();
     const cands = all("SELECT id, word FROM words WHERE length(word) - length(replace(word, ' ', '')) = ? " +
                       "AND lower(word) != lower(?) ORDER BY random() LIMIT 400", [spaces, w]);
     if (cands.length < 3) cands.push(...all("SELECT id, word FROM words WHERE lower(word) != lower(?) ORDER BY random() LIMIT 200", [w]));
@@ -1258,7 +1299,7 @@ async function listen(q) {
     for (const c of cands) {
       const ph = (INDEX.get(c.id) || {}).p || "";
       const d = me && ph ? soundDistance(me, soundKey(ph)) : 1;
-      if (d === 0) continue;
+      if (d === 0 || alike.has(c.word)) continue;
       scored.push([d, c.word[0].toLowerCase() !== w[0].toLowerCase() ? 1 : 0, Math.abs(c.word.length - w.length), c.word]);
     }
     scored.sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || (a[3] < b[3] ? -1 : 1));
@@ -1492,7 +1533,7 @@ function importProgress(data, { restore = false } = {}) {
       const keepId = restore && Number.isInteger(raw.id) && !get("SELECT 1 AS x FROM words WHERE id=?", [raw.id]);
       const { lastId } = keepId
         ? run("INSERT INTO words(id, key, word, domains, is_custom) VALUES (?, ?, ?, ?, 1)", [raw.id, cw.key, cw.word, cw.domains])
-        : run("INSERT INTO words(key, word, domains, is_custom) VALUES (?, ?, ?, 1)", [cw.key, cw.word, cw.domains]);
+        : run("INSERT INTO words(id, key, word, domains, is_custom) VALUES (?, ?, ?, ?, 1)", [nextCustomId(), cw.key, cw.word, cw.domains]);
       CUSTOM.set(keepId ? raw.id : lastId, cw.data);
       added++;
     }
@@ -1659,7 +1700,11 @@ async function downloadForOffline() {
   // Today's review words' recordings too, so the daily session sounds right offline.
   try {
     const q = await reviewQueue({});
-    for (const w of q.queue.slice(0, 80)) { const u = w.audio_url || w.tts_url; if (u) urls.push(u); }
+    for (const w of q.queue.slice(0, 80)) {
+      const u = w.audio_url || w.tts_url;
+      if (u) urls.push(u);
+      for (const p of w.prons || []) if (p.url) urls.push(p.url);   // each way it's said
+    }
   } catch (e) { /* recordings are a bonus */ }
   let done = 0;
   const report = () => dispatchEvent(new CustomEvent("lexi-offline-progress", { detail: { done, total: urls.length } }));
@@ -1746,6 +1791,7 @@ const ROUTES = [
   }],
   ["POST", /^\/api\/import$/, (m, q, b) => importFile(b)],
   ["POST", /^\/api\/offline$/, () => downloadForOffline()],
+  ["GET", /^\/api\/offline$/, () => ({ mb: OFFLINE_MB })],
 ];
 const READ_ONLY = new Set(["/api/health", "/api/words", "/api/gloss", "/api/mentions", "/api/lists", "/api/stats", "/api/settings", "/api/export",
                            "/api/quiz", "/api/matching", "/api/listen", "/api/flashcards", "/api/practice/words",
@@ -1776,7 +1822,16 @@ export async function handle(method, url, body) {
       if (newerFormat) {
         throw new HttpError(409, "A newer version of LexiMaster saved your progress in another tab. Reload this page to update; nothing was changed.");
       }
-      const result = await fn(m, query, body);
+      let result;
+      try {
+        result = await fn(m, query, body);
+      } catch (e) {
+        // A change that failed partway may have changed memory already: reload
+        // what is saved before the next request, so it is never saved later.
+        localRev = -1;
+        dirty = true;
+        throw e;
+      }
       try {
         await persist();
       } catch (e) {

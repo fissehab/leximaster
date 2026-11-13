@@ -147,6 +147,11 @@ def attach(words: list[dict], data_dir: Path, tts: dict) -> int:
                 k = which(spec, m.get("pos", ""), s.get("definition", ""))
                 if k is not None:
                     s["pron"] = k
+        core = (w.get("nuance") or {}).get("core") or {}
+        if core.get("definition"):
+            k = which(spec, core.get("pos", ""), core["definition"])
+            if k is not None:
+                core["pron"] = k   # the sound of the study notes' meaning
         w["prons"] = prons
         w["phonetic"] = prons[0]["ipa"]
         first = prons[0]

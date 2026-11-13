@@ -1,0 +1,314 @@
+# Basic everyday words (level 1): days, months, numbers, family, home,
+# clothes, the body, food, town, time and the like. The lexicon began as
+# advanced vocabulary and left the most common words out; a beginner looking
+# up "daughter" or "Monday" found nothing. Added after the review of 2026-11-12.
+# Days and months
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+Sunday
+January | the first month of the year, after December and before February
+February | the second month of the year, after January and before March
+April | the fourth month of the year, after March and before May
+June | the sixth month of the year, after May and before July
+July | the seventh month of the year, after June and before August
+September | the ninth month of the year, after August and before October
+October | the tenth month of the year, after September and before November
+November | the eleventh month of the year, after October and before December
+December | the twelfth month of the year, after November and before January
+weekday
+weekend
+# Numbers
+zero
+one
+two
+three
+four
+five
+six
+seven
+eight
+nine
+ten
+eleven
+twelve
+thirteen
+fourteen
+fifteen
+sixteen
+seventeen
+eighteen
+nineteen
+twenty
+thirty
+forty
+fifty
+sixty
+seventy
+eighty
+ninety
+hundred
+thousand
+million
+billion
+first
+second
+third
+half
+dozen
+# Family and people
+mother
+father
+parent
+daughter
+son
+brother
+sister
+husband
+wife
+grandmother
+grandfather
+grandparent
+grandchild
+aunt
+uncle
+cousin
+niece
+nephew
+baby
+child
+kid
+boy
+girl
+man
+woman
+family
+neighbor
+# Home
+house
+home
+kitchen
+bedroom
+bathroom
+living room
+dining room
+door
+window
+floor
+wall
+roof
+stairs
+table
+chair
+bed
+sofa
+couch
+lamp
+refrigerator
+fridge
+stove
+oven
+microwave
+sink
+shower
+toilet
+towel
+blanket
+pillow
+closet
+garage
+yard
+key
+# Clothes
+shirt
+T-shirt
+pants
+jeans
+skirt
+dress
+jacket
+coat
+sweater
+shoe
+sock
+hat
+cap
+scarf
+glove
+belt
+pocket
+button
+pajamas
+# The body
+head
+face
+eye
+ear
+nose
+mouth
+tooth
+tongue
+lip
+neck
+shoulder
+arm
+elbow
+hand
+finger
+thumb
+leg
+knee
+foot
+toe
+chest
+stomach
+hair
+skin
+# Food and drink
+apple
+banana
+orange
+grape
+lemon
+potato
+tomato
+onion
+carrot
+rice
+bread
+butter
+cheese
+egg
+milk
+coffee
+tea
+juice
+water
+beer
+wine
+chicken
+beef
+pork
+fish
+soup
+salad
+sandwich
+pizza
+chocolate
+sugar
+salt
+pepper
+breakfast
+lunch
+dinner
+# Town and getting about
+police
+hospital
+school
+bank
+store
+museum
+library
+church
+park
+street
+road
+car
+bus
+train
+taxi
+airport
+station
+office
+restaurant
+hotel
+city
+town
+village
+country
+# Technology and media
+internet
+website
+email
+laptop
+computer
+phone
+cell phone
+television
+TV
+radio
+newspaper
+magazine
+camera
+# Time
+today
+yesterday
+tomorrow
+tonight
+morning
+afternoon
+evening
+night
+week
+month
+year
+hour
+minute
+second
+decade
+century
+birthday
+holiday
+vacation
+# Animals
+dog
+cat
+mouse
+horse
+cow
+pig
+sheep
+bird
+rabbit
+duck
+# Colors
+red
+blue
+green
+yellow
+purple
+pink
+brown
+gray
+white
+black
+# Weather and nature
+weather
+rain
+snow
+cloud
+sky
+sun
+moon
+star
+planet
+tree
+flower
+river
+mountain
+sea
+ocean
+beach
+# Everyday talk
+hi
+hello
+goodbye
+bye
+okay
+please
+thanks
+sorry
+yes

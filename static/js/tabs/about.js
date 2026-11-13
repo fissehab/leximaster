@@ -3,6 +3,7 @@
 import { h, pageHead } from "../ui.js";
 
 const REPO = "https://github.com/fissehab/leximaster";
+const GUIDE = "guide/LexiMaster-Install-Guide.pdf";   // docs/guide/, kept across site builds
 
 export async function render(root) {
   root.append(h("div.about-page",
@@ -37,6 +38,11 @@ export async function render(root) {
           "(CC BY 4.0).")),
       card("Use it freely",
         h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser.")),
+      window.LEXI_STATIC ? card("Install it",
+        h("p", "LexiMaster installs like an app on a phone, tablet or computer, with no app store and no sign-up, " +
+          "and then works offline. The illustrated guide shows each step for iPhone, Android, Mac and Windows."),
+        h("p", h("a.btn", { href: GUIDE, target: "_blank", rel: "noopener" },
+          "Install guide (PDF)", h("span.sr-only", " (opens in a new tab)")))) : null,
       card("The code",
         h("p", "All of LexiMaster's code is open on GitHub. You can read it, and see how each part works."),
         h("p", h("a.btn", { href: REPO, target: "_blank", rel: "noopener noreferrer" },
