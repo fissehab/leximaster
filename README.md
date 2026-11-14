@@ -108,7 +108,8 @@ kept unless the word data changed.
    New words are answered Show again, Got it or Know it; words you've seen before Again, Hard, Good or
    Easy. From a word's third review on, some cards show the meaning (and a sentence with a blank)
    and ask for the word itself: type it or say it, then reveal. Choose a scope at the top
-   (Everything, Everyday English, Advanced & subjects, or a Bible scope). "Undo last grade" (or Z)
+   (Everything, Everyday English, Advanced & subjects, a Bible scope, or My words: new words only from
+   your lists and the words you rated, plus your reviews as usual). "Undo last grade" (or Z)
    takes back a slip, and leaving the tab keeps your place for the day.
 3. **Practice** when you have more time: Flashcards, Matching, Quiz, Listen (including a spelling
    test) and Pronounce. Misses go back into today's review.

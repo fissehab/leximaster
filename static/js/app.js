@@ -327,7 +327,9 @@ setInterval(() => {
 // ---------------------------------------------------------------- boot
 
 buildNav();
-addEventListener("hashchange", route);
+// The badge follows what changed elsewhere (a word rated or put in a list, the
+// scope chosen) when you move to another screen.
+addEventListener("hashchange", () => { route(); refreshDueCount(); });
 // Just opened with an update already waiting: apply it before any study starts.
 addEventListener("lexi-sw", () => applyWaitingUpdate(parseHash().tab));
 loadSettings().catch(showError).finally(() => { route(); refreshDueCount(); });

@@ -848,7 +848,8 @@ export function levelPicker({ onChange } = {}) {
 /** Shared filter bar: stars, list, domain. Calls onChange(filter) with query params. */
 /** Study scopes, the same everywhere (Review, practice tabs): a track or one domain. */
 export const SCOPES = [["", "Everything"], ["everyday", "Everyday English"], ["core", "Advanced & subjects"],
-  ["bible_vocab", "Bible · Vocabulary"], ["bible_names", "Bible · Names"], ["bible", "Bible · Both"]];
+  ["bible_vocab", "Bible · Vocabulary"], ["bible_names", "Bible · Names"], ["bible", "Bible · Both"],
+  ["mine", "My words (lists, ratings)"]];
 
 export function scopeSelect(id, domains = []) {
   const tracks = SCOPES.map(([v]) => v);

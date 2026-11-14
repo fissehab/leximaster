@@ -297,7 +297,10 @@ async function done() {
     heading,
     h("p.muted", words
       ? `You studied ${words} word${words === 1 ? "" : "s"} in ${fmtDuration(mins)}. Each comes back when you're about to forget it.`
-      : "Nothing is due right now. Come back tomorrow, or learn a few new words now."),
+      : track === "mine"
+        ? "Nothing to study from your words right now. Add words to a list, or rate them with stars, " +
+          "and they come up here. Or choose another scope above."
+        : "Nothing is due right now. Come back tomorrow, or learn a few new words now."),
     els.more = h("p.muted"),
     levelShort ? addLevelNote() : null,
     h("div.toolbar",
@@ -347,11 +350,13 @@ export async function render(root, { param, live: isLive } = {}) {
     track = trackSel.value;
     setStudyFocus(track);
     clearSession();
+    refreshDueCount();
     load().catch(showError);
   });
-  // Word levels apply to new words in the broad tracks, not to a Bible track.
+  // Word levels apply to new words in the broad tracks, not to a Bible track
+  // or your own words.
   const levels = levelPicker({ onChange: () => { refreshDueCount(); if (pos === 0 || pos >= queue.length) load().catch(showError); } });
-  const showLevels = () => { levels.hidden = track.startsWith("bible"); };
+  const showLevels = () => { levels.hidden = track.startsWith("bible") || track === "mine"; };
   trackSel.addEventListener("change", showLevels);
   showLevels();
   root.append(

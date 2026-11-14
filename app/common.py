@@ -390,19 +390,28 @@ def level_clause(value: str | None) -> str:
 def levels_setting(c: sqlite3.Connection) -> str:
     row = c.execute("SELECT value FROM settings WHERE key = 'word_levels'").fetchone()
     return row["value"] if row else DEFAULT_LEVELS
-SCOPES = ("everyday", "core", *BIBLE_TRACKS)  # study tracks, usable wherever a domain filter is
+# "My words": the words you chose or studied: in a list of yours, rated (any
+# stars), or already in your reviews. As the Daily review scope, new words come
+# only from your lists and ratings.
+MINE_SQL = ("(EXISTS (SELECT 1 FROM list_words lm WHERE lm.word_id = w.id) "
+            "OR EXISTS (SELECT 1 FROM user_word um WHERE um.word_id = w.id AND um.stars > 0) "
+            "OR EXISTS (SELECT 1 FROM srs sm WHERE sm.word_id = w.id))")
+SCOPES = ("everyday", "core", *BIBLE_TRACKS, "mine")  # study tracks, usable wherever a domain filter is
 
 
 def track_clause(track: str | None) -> str:
     """SQL condition on `w` for a study track: everyday English, the core
     (advanced and subject) vocabulary, the Bible (vocabulary, names or both),
-    or everything. Bible names come up only on a Bible track."""
+    "My words" (MINE_SQL), or everything. Bible names come up only on a Bible
+    track."""
     if track == "everyday":
         return _EVERYDAY_SQL
     if track == "core":
         return f"NOT {_EVERYDAY_SQL} AND NOT {NAMES_ONLY_SQL}"
     if track in BIBLE_TRACKS:
         return f"EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = '{track}')"
+    if track == "mine":
+        return MINE_SQL
     return "1=1"
 
 

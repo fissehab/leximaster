@@ -505,7 +505,11 @@ const REFERENCE_SQL = "EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_eac
 const LINKED_SQL = "EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'linked')";
 const CHOSEN_SQL = `(NOT ${REFERENCE_SQL} OR COALESCE(u.stars, 0) > 0 ` +
   "OR EXISTS (SELECT 1 FROM list_words lw2 WHERE lw2.word_id = w.id))";
-const SCOPES = ["everyday", "core", ...BIBLE_TRACKS];
+// "My words": in a list of yours, rated, or in your reviews (app/common.py MINE_SQL).
+const MINE_SQL = "(EXISTS (SELECT 1 FROM list_words lm WHERE lm.word_id = w.id) " +
+  "OR EXISTS (SELECT 1 FROM user_word um WHERE um.word_id = w.id AND um.stars > 0) " +
+  "OR EXISTS (SELECT 1 FROM srs sm WHERE sm.word_id = w.id))";
+const SCOPES = ["everyday", "core", ...BIBLE_TRACKS, "mine"];
 // Word levels (app/common.py LEVELED, parse_levels, level_clause): the
 // levels new words come from, setting "word_levels" = "1,2,3".
 const LEVELED = ["", "everyday", "core"];
@@ -523,6 +527,7 @@ function trackClause(track) {
   if (track === "everyday") return EVERYDAY_SQL;
   if (track === "core") return `NOT ${EVERYDAY_SQL} AND NOT ${NAMES_ONLY_SQL}`;
   if (BIBLE_TRACKS.includes(track)) return `EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = '${track}')`;
+  if (track === "mine") return MINE_SQL;
   return "1=1";
 }
 
