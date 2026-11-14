@@ -1,0 +1,215 @@
+// Settings: how you study (session length, new words, word levels,
+// pronunciation speed), the theme, and your data (export, import, offline use).
+
+import { api, invalidateWords } from "../api.js";
+import { savedTheme, setTheme, shortcutsList, THEMES } from "../app.js";
+import { playbackSpeed } from "../audio.js";
+import { refreshDueCount } from "../app.js";
+import { loadSettings, saveSettings, setStudyFocus, settings, studyFocus } from "../state.js";
+import { h, icon, levelPicker, pageHead, SCOPES, showError, toast } from "../ui.js";
+
+export async function render(root) {
+  root.append(pageHead("Settings", "How you study, how LexiMaster looks, and your saved progress."),
+    h("div.settings-grid", settingsPanel(), themePanel(),
+      h("section.panel.kbd-panel", h("h2", "Keyboard shortcuts"),
+        h("p.muted", "On a computer. Press ? anywhere to see this list."), shortcutsList()),
+      dataPanel()));
+}
+
+function settingsPanel() {
+  const minutes = h("input.input#set-minutes", { type: "number", min: 5, max: 60, value: settings.session_minutes });
+  const perDay = h("input.input#set-new", { type: "number", min: 0, max: 100, value: settings.new_per_day });
+  const rate = h("select.input#set-rate", [["1", "Normal (1×)"], ["0.75", "Slower (0.75×)"], ["0.5", "Slowest (0.5×)"]]
+    .map(([v, l]) => h("option", { value: v }, l)));
+  rate.value = String(playbackSpeed());
+  const focus = h("select.input#set-focus", SCOPES.map(([v, l]) => h("option", { value: v }, l)));
+  focus.value = studyFocus();
+  focus.addEventListener("change", () => {
+    setStudyFocus(focus.value);
+    refreshDueCount();
+    toast(`Daily review, Today and the practice tabs now study: ${focus.selectedOptions[0].textContent}`);
+  });
+  // Every setting saves as soon as it changes, like Study focus and Word
+  // levels (numbers when you leave the box, so typing "12" doesn't save "1").
+  const saveOne = async (field, value, input) => {
+    if (input && !input.checkValidity()) { input.reportValidity(); return; }
+    try {
+      await saveSettings({ [field]: value });
+      await loadSettings();
+      toast("Saved");
+    } catch (e) { showError(e); }
+  };
+  minutes.addEventListener("change", () => saveOne("session_minutes", Number(minutes.value), minutes));
+  perDay.addEventListener("change", () => saveOne("new_per_day", Number(perDay.value), perDay));
+  rate.addEventListener("change", () => saveOne("speech_rate", Number(rate.value)));
+  return h("section.panel", h("h2", "Study"),
+    h("div.setup-row",
+      h("div.field", h("label", { for: "set-focus" }, "Study focus"), focus),
+      h("div.field", h("label", { for: "set-minutes" }, "Session minutes"), minutes),
+      h("div.field", h("label", { for: "set-new" }, "New words per day"), perDay),
+      h("div.field", h("label", { for: "set-rate" }, "Pronunciation speed"), rate),
+      h("div.field", h("span.label", "Word levels"), levelPicker())),
+    h("p.muted", "Study focus is the group of words you study in Daily review and on Today. Practice pages start with " +
+      "the same words, and each page can pick other words."),
+    h("p.muted", "Changes save right away."));
+}
+
+async function exportProgress() {
+  try {
+    const withRecordings = document.getElementById("export-recordings");
+    const data = await api.get("/api/export", withRecordings && withRecordings.checked ? { recordings: 1 } : {});
+    const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 1)], { type: "application/json" }));
+    const a = h("a", { href: url, download: `leximaster-progress-${data.exported_at}.json` });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+    try { localStorage.setItem("lexi-last-export", String(Date.now())); } catch (e) { /* unavailable */ }
+    const last = document.getElementById("last-backup");
+    if (last) last.textContent = backupText();
+  } catch (e) { showError(e); }
+}
+
+/** "Last backup: today" / "3 days ago" / "never". */
+export function lastExportDays() {
+  try {
+    const t = Number(localStorage.getItem("lexi-last-export"));
+    return t ? Math.floor((Date.now() - t) / 86400000) : null;
+  } catch (e) { return null; }
+}
+function backupText() {
+  const d = lastExportDays();
+  return `Last export from this browser: ${d === null ? "never" : d === 0 ? "today" : d === 1 ? "yesterday" : `${d} days ago`}.`;
+}
+
+// Everything this browser saved, as it is stored, for when the app itself
+// can't read it (a damaged save): nothing is interpreted or changed.
+async function downloadRaw() {
+  try {
+    const { idbEntries } = await import("../local/idb.js");
+    const entries = await idbEntries("state", "");
+    const url = URL.createObjectURL(new Blob([JSON.stringify({ app: "LexiMaster raw save", saved_at: new Date().toISOString(),
+      entries: Object.fromEntries(entries) })], { type: "application/json" }));
+    const a = h("a", { href: url, download: `leximaster-raw-save-${new Date().toISOString().slice(0, 10)}.json` });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+  } catch (e) { showError(e); }
+}
+
+// What an import brought in, in plain words: the counts from /api/import
+// (both servers), each as [one, many]; settings come in with any import.
+const IMPORTED = {
+  "word states": ["word you rated or marked", "words you rated or marked"],
+  "review cards": ["word in your review", "words in your review"],
+  answers: ["answer", "answers"],
+  "list entries": ["word in your lists", "words in your lists"],
+  "own words": ["word you added", "words you added"],
+  recordings: ["recording", "recordings"],
+};
+const SKIPPED = { "damaged custom words skipped": ["damaged added word", "damaged added words"], skipped: ["damaged line", "damaged lines"] };
+export function importSummary(counts) {
+  const say = (n, [one, many]) => `${n.toLocaleString()} ${n === 1 ? one : many}`;
+  const parts = Object.entries(IMPORTED).filter(([k]) => counts[k] > 0).map(([k, w]) => say(counts[k], w));
+  const skipped = Object.entries(SKIPPED).filter(([k]) => counts[k] > 0).map(([k, w]) => say(counts[k], w));
+  const left = skipped.length ? ` Left out ${skipped.join(" and ")}.` : "";
+  if (!parts.length) return { changed: false, text: `Nothing new: everything in that file is already here.${left}` };
+  const list = parts.length > 1 ? `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}` : parts[0];
+  return { changed: true, text: `Imported ${list}.${left}` };
+}
+
+// The four themes (app.js); the choice is kept in this browser.
+function themePanel() {
+  const current = savedTheme();
+  return h("section.panel", h("h2", "Theme"),
+    h("div.theme-choices", { role: "radiogroup", "aria-label": "Theme" }, THEMES.map(t => h("label.theme-choice",
+      h("input", { type: "radio", name: "theme", value: t.id, checked: t.id === current,
+        on: { change: () => setTheme(t.id) } }),
+      h("span.theme-swatch", { "aria-hidden": "true" }, t.swatch.map(c => h("i", { style: { background: c } }))),
+      h("span", t.name)))),
+    h("p.muted", "Match system follows your device's light or dark setting."));
+}
+
+function dataPanel() {
+  const file = h("input#import-file", { type: "file", accept: "application/json,.json", hidden: true });
+  file.addEventListener("change", async () => {
+    if (!file.files[0]) return;
+    const fd = new FormData();
+    fd.append("file", file.files[0]);
+    try {
+      const res = await api.post("/api/import", fd);
+      const { text, changed } = importSummary(res.imported);
+      if (!changed) { await loadSettings(); toast(text, { ms: 4500 }); file.value = ""; return; }
+      invalidateWords();
+      toast(`${text} Reloading…`, { ms: 3500 });
+      setTimeout(() => location.reload(), 3000);
+    } catch (e) { showError(e); }
+    file.value = "";
+  });
+  return h("section.panel", h("h2", "Your data"),
+    h("p.muted", "Export saves your ratings, review schedule, answers, lists, notes and the words you added in one file. " +
+      "Import adds a saved file back in; where both have the same word, the newer copy is kept."),
+    h("label.check-row", h("input#export-recordings", { type: "checkbox" }),
+      " Include my pronunciation recordings (a larger file)"),
+    window.LEXI_STATIC ? h("p#last-backup", backupText()) : null,
+    h("div.toolbar",
+      h("button.btn", { type: "button", on: { click: exportProgress } }, icon("download"), "Export progress"),
+      h("button.btn", { type: "button", on: { click: () => file.click() } }, icon("upload"), "Import progress"),
+      file),
+    window.LEXI_STATIC ? sitePanel() : null);
+}
+
+// On the website, progress stays in this browser; offer offline use and credits.
+function sitePanel() {
+  const btn = h("button.btn", { type: "button" }, icon("download"), "Download for offline use");
+  const size = h("span.muted");
+  api.get("/api/offline").then(r => { if (r && r.mb) size.textContent = `About ${r.mb} MB, best on Wi-Fi.`; }).catch(() => {});
+  btn.addEventListener("click", async () => {
+    if (size.textContent && !confirm(`Download all of LexiMaster for offline use? ${size.textContent}`)) return;
+    btn.disabled = true;
+    btn.lastChild.textContent = "Downloading…";
+    try {
+      await api.post("/api/offline");
+      toast("Every entry is saved on this device. LexiMaster now works offline; recordings play offline once heard.");
+      btn.lastChild.textContent = "Available offline";
+    } catch (e) {
+      showError(e);
+      btn.disabled = false;
+      btn.lastChild.textContent = "Download for offline use";
+    }
+  });
+  // Already downloaded: the data cache holds every detail file.
+  if (window.caches) {
+    caches.keys().then(async keys => {
+      const data = keys.find(k => /^(lexi-)?data-/.test(k));
+      if (!data) return;
+      const files = (await (await caches.open(data)).keys()).filter(r => r.url.includes("/data/detail/"));
+      if (files.length >= 64) { btn.disabled = true; btn.lastChild.textContent = "Available offline"; }
+    }).catch(() => {});
+  }
+  const progressNote = h("span.muted.tnum", { "aria-live": "polite" });
+  const onProgress = e => {
+    if (!btn.isConnected) return removeEventListener("lexi-offline-progress", onProgress);
+    progressNote.textContent = `${e.detail.done} of ${e.detail.total} files`;
+  };
+  addEventListener("lexi-offline-progress", onProgress);
+  // Whether the browser has agreed not to clear this site's data on its own.
+  const storageNote = h("p.muted");
+  if (navigator.storage && navigator.storage.persisted) {
+    navigator.storage.persisted().then(yes => {
+      const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      storageNote.textContent = yes ? "This browser keeps your progress until you clear it."
+        : ios && !navigator.standalone ? "Safari clears a site's data after 7 days unused. Add LexiMaster to your Home Screen (Share → Add to Home Screen) to keep it, and export now and then."
+        : "This browser may clear site data when space runs low: export now and then.";
+    }).catch(() => {});
+  }
+  return h("div", { style: { marginTop: "14px" } },
+    h("p.muted", "Your progress is saved in this browser on this device only. Use Export and Import to move it between devices."),
+    storageNote,
+    h("div.toolbar", btn, progressNote, h("a.btn", { href: "credits.html" }, "Sources & credits")),
+    size,
+    h("details.fold", h("summary", "Trouble with saved progress?"),
+      h("div.fold-body", h("p.muted", "If LexiMaster can't read what this browser saved, download it exactly as stored and keep it safe."),
+        h("button.btn", { type: "button", on: { click: downloadRaw } }, icon("download"), "Download raw saved data"))));
+}
