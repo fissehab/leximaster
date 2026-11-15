@@ -109,7 +109,7 @@ function startCard() {
     h("ol.shoot-steps", h("li", clues === "hear" ? "Listen to the word." : "Read the clue."),
       h("li", clues === "hear" ? "Tap the word you hear before it lands." : "Tap the word that fits before it lands."),
       h("li", length === "endless" ? "You have 3 hearts. Play until they are gone." : "You have 3 hearts.")),
-    h("p.muted", "Need more time? Choose Calm."),
+    h("p.muted", "Need more time? Choose Calm in the speed menu: no clock, the words stay still."),
     go,
     best > 0 ? h("p.shoot-best.tnum", `Best: ${num(best)}`) : null),
   scoreBoard(bestKey(), boardLabel(), { limit: 5 }));

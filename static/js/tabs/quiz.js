@@ -134,7 +134,7 @@ function retryMisses() {
 
 export async function render(root) {
   const src = await filterSources();
-  const typeChips = h("div.toolbar", TYPES.map(([id, label]) => {
+  const typeChips = h("div.toolbar", { role: "group", "aria-labelledby": "quiz-types-label" }, TYPES.map(([id, label]) => {
     const b = h("button.chip", { type: "button", "aria-pressed": String(enabled.has(id)) }, label);
     b.addEventListener("click", () => {
       if (enabled.has(id) && enabled.size === 1) return;
@@ -144,7 +144,7 @@ export async function render(root) {
     });
     return b;
   }));
-  const len = h("select.input#quiz-length", { "aria-label": "Questions" }, [10, 20, 30].map(n => h("option", { value: n }, `${n} questions`)));
+  const len = h("select.input#quiz-length", [10, 20, 30].map(n => h("option", { value: n }, `${n} questions`)));
   len.value = String(length);
   len.addEventListener("change", () => { length = Number(len.value); changed(); });
   els.stage = h("div.q-wrap");
@@ -152,7 +152,7 @@ export async function render(root) {
     pageHead("Quiz", "Choose the meaning, the missing word, or a word that means the same. Words you get wrong come back sooner to refresh."),
     await filterBar(f => { filter = f; changed(); }, src, { tab: "quiz", extra: [
       h("div.field", h("label", { for: "quiz-length" }, "Length"), len),
-      h("div.field.field-wide", h("label", "Question types"), typeChips)] }),
+      h("div.field.field-wide", h("span.label#quiz-types-label", "Question types"), typeChips)] }),
     els.stage);
   filter = loadFilter("quiz");
   // Back from "Open entry →" or a missed word returns to the same quiz.

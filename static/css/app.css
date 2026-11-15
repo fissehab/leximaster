@@ -1311,7 +1311,7 @@ details.say > summary:hover { background: var(--surface-2); border-radius: var(-
 /* "Practice this list": the list chosen, removable (ui.js filterBar). */
 .list-chip { margin: 0 0 10px; }
 .chip-x { border: 0; background: none; color: inherit; font: inherit; cursor: pointer; padding: 0 2px; margin-left: 2px; }
-.chip-x:hover { color: var(--accent); }
+.chip-x:hover { color: var(--lapis); }
 .did-you-mean { margin: 0; font-size: 14px; }
 .did-you-mean[hidden] { display: none; }
 
@@ -1336,3 +1336,19 @@ details.say > summary:hover { background: var(--surface-2); border-radius: var(-
   .hub-tile { display: grid; grid-template-columns: 26px minmax(0, 1fr); column-gap: 12px; row-gap: 2px; min-height: 0; padding: 12px 14px; align-items: center; }
   .hub-tile svg { grid-row: span 2; }
 }
+
+/* A select sizes itself to its longest option (a long topic name): never
+   wider than its column, on any screen. */
+select.input { max-width: 100%; min-width: 0; }
+.setup-row .field, .list-filters > * { min-width: 0; max-width: 100%; }
+/* A small button (Flashcards' "Add to my words"). */
+.btn-sm { padding: 5px 10px; font-size: 13px; min-height: 32px; }
+.btn-sm svg { width: 15px; height: 15px; }
+/* "In my words": the bookmark filled. */
+.save-toggle[aria-pressed="true"] svg { fill: currentColor; }
+/* Hard sounds: inside a sound's card the mouth drawing sits above its text
+   (side by side left the text a narrow column), and cards in a row start
+   their content at the same height. */
+.sound-card { align-content: start; }
+.sound-card .say-main { grid-template-columns: minmax(0, 1fr); }
+.sound-card .say-fig { justify-self: center; }

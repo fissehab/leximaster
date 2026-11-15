@@ -71,7 +71,7 @@ async function open(id) {
       : h("div.panel.empty", { style: { marginTop: "14px" } }, h("p", "This list is empty. Search above to add words from the lexicon, or add a word of your own.")));
 }
 
-/** Practise just this list in any activity: its "Words from" is set to the list. */
+/** Practice just this list in any activity: its "Words from" is set to the list. */
 function practice(id, tab) {
   import("../state.js").then(({ loadFilter, saveFilter }) => {
     saveFilter(tab, { ...loadFilter(tab), list_id: String(id), stars: "", domain: "" });

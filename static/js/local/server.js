@@ -506,7 +506,7 @@ const CHOSEN_SQL = `(NOT ${REFERENCE_SQL} OR COALESCE(u.stars, 0) > 0 ` +
 // "My words": in a list of yours, or saved (app/common.py MINE_SQL).
 const MINE_SQL = "(EXISTS (SELECT 1 FROM list_words lm WHERE lm.word_id = w.id) " +
   "OR EXISTS (SELECT 1 FROM user_word um WHERE um.word_id = w.id AND um.stars > 0))";
-// "Words to refresh": practised words due to come back today (app/common.py REFRESH_SQL).
+// "Words to refresh": practiced words due to come back today (app/common.py REFRESH_SQL).
 const REFRESH_SQL = "EXISTS (SELECT 1 FROM srs sr WHERE sr.word_id = w.id AND sr.due_date <= date('now', 'localtime'))";
 const SCOPES = ["everyday", "core", ...BIBLE_TRACKS, "mine", "refresh"];
 // Word levels (app/common.py LEVELED, parse_levels, level_clause): the
@@ -546,7 +546,7 @@ function poolIds({ stars = null, list_id = null, domain = null, need_audio = fal
   if (SCOPES.includes(domain)) where.push(trackClause(domain));
   else if (domain) { where.push("EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = ?)"); args.push(domain); }
   else if (!list_id) where.push(`NOT ${NAMES_ONLY_SQL}`);  // Bible names only when chosen (or in your own list)
-  // A reference word you practised still comes back to refresh.
+  // A reference word you practiced still comes back to refresh.
   if (!["reference", "refresh"].includes(domain) && !list_id) where.push(CHOSEN_SQL);
   if (LEVELED.includes(domain || "") && !list_id) where.push(levelClause(levelsSetting()));
   if (need_audio) where.push("w.has_audio = 1");
@@ -792,7 +792,7 @@ function addToList(id, body) {
 
 // ------------------------------------------------------------ practice routes
 
-// How many practised words are due to come back today (app/api/practice.py refresh).
+// How many practiced words are due to come back today (app/api/practice.py refresh).
 function refreshCount() {
   return { count: poolIds({ domain: "refresh", exclude_known: true }).length };
 }
@@ -1089,7 +1089,7 @@ async function listen(q) {
   const audioOnly = q.audio_only === "true";
   let pool = poolIds({ ...filters, need_audio: audioOnly });
   let fallback = false;
-  // The choices come from all words, so even one word can be practised.
+  // The choices come from all words, so even one word can be practiced.
   if (audioOnly && !pool.length) { pool = poolIds(filters); fallback = true; }
   if (!pool.length) throw new HttpError(400, "Not enough words here. Choose other words under \"Words from\".");
   const items = [];
@@ -1511,7 +1511,7 @@ async function downloadForOffline() {
   const urls = shards.map(s => `data/detail/${String(s).padStart(2, "0")}.json`);
   for (let s = 0; s < GLOSS_SHARDS; s++) urls.push(glossUrl(s));
   urls.push("data/mentions.json");
-  // The recordings of words to refresh too, so practising them sounds right offline.
+  // The recordings of words to refresh too, so practicing them sounds right offline.
   try {
     const ids = poolIds({ domain: "refresh", exclude_known: true }).slice(0, 80);
     for (const w of await Promise.all(ids.map(i => full(fetchWord(i))))) {

@@ -71,7 +71,7 @@ function show() {
       s.value = studyFocus();
       if (s.value !== studyFocus() || s.value === "refresh") s.value = "everyday";
       s.dispatchEvent(new Event("change"));
-    } } }, "Practise other words") : null;
+    } } }, "Practice other words") : null;
     els.stage.replaceChildren(emptyState(noWordsTitle(filter), noWordsNote(filter), ...(back ? [back] : [])));
     return;
   }

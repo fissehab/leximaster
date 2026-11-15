@@ -19,7 +19,7 @@ export async function render(root) {
   const s = await api.get("/api/stats");
   const w = s.words;
   const acc = s.accuracy;
-  // Retention: words practised again when they came back, remembered.
+  // Retention: words practiced again when they came back, remembered.
   const spans = s.retention || {};
   const ret = Object.values(spans).reduce((a, x) => ({ n: a.n + x.n, ok: a.ok + x.ok }), { n: 0, ok: 0 });
   const tile = (label, value, note) => h("div.panel.stat", h("p.label", label), h("div.big-num.tnum", value), note ? h("small", note) : null);
@@ -35,7 +35,7 @@ export async function render(root) {
     ? h("div.forecast", s.forecast.map(f => h("div", { title: `${f.date}: ${f.n} coming back` },
         h("span.tnum", f.n), h("i", { style: { height: `${(f.n / fmax) * 60}px` } }),
         new Date(f.date + "T12:00").toLocaleDateString(undefined, { weekday: "short" }))))
-    : h("p.muted", "Words you practise come back over the next days and weeks; they show here.");
+    : h("p.muted", "Words you practice come back over the next days and weeks; they show here.");
 
   root.append(
     ...(s.notice ? [h("p.build-banner", { role: "alert" }, s.notice)] : []),
@@ -58,7 +58,7 @@ export async function render(root) {
         h("p.muted.bar-note", "Share of words you remembered when they came back, last 30 days. Around 85–90% means the timing suits you.")) : null,
       h("section.panel", h("h2", "Accuracy by topic"),
         s.by_domain.length ? h("div.bars", s.by_domain.map(d => bar(domainLabel(d.domain), d.correct, d.attempts, `${pct(d.correct, d.attempts)}% · ${d.attempts}`)))
-          : h("p.muted", "Practise a few words to see this.")),
+          : h("p.muted", "Practice a few words to see this.")),
       h("section.panel", h("h2", "Weakest words"),
         s.weakest.length ? h("div.table-wrap", h("table.data",
           h("thead", h("tr", h("th", "Word"), h("th", "Accuracy"), h("th", "Misses"), h("th", "Attempts"))),

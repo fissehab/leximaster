@@ -1,4 +1,4 @@
-// Settings (the gear): how you practise (the words practice starts with, word
+// Settings (the gear): how you practice (the words practice starts with, word
 // levels, pronunciation speed), the theme, and your data (export, import,
 // offline use).
 
@@ -10,7 +10,7 @@ import { filterSources, h, icon, levelPicker, pageHead, scopeSelect, showError, 
 
 export async function render(root) {
   const { domains } = await filterSources();
-  root.append(pageHead("Settings", "How you practise, how LexiMaster looks, and your saved progress."),
+  root.append(pageHead("Settings", "How you practice, how LexiMaster looks, and your saved progress."),
     h("div.settings-grid", settingsPanel(domains), themePanel(),
       h("section.panel.kbd-panel", h("h2", "Keyboard shortcuts"),
         h("p.muted", "On a computer. Press ? anywhere to see this list."), shortcutsList()),
@@ -43,7 +43,7 @@ function settingsPanel(domains) {
       h("div.field", h("label", { for: "set-rate" }, "Pronunciation speed"), rate),
       h("div.field", h("span.label", "Word difficulty"), levelPicker())),
     h("p.muted", "Every practice screen starts with these words, and each can pick others from its \u201cWords from\u201d menu. " +
-      "Word difficulty narrows Everything, Everyday English and Advanced to how common the words are " +
+      "Word difficulty narrows Everything, Everyday English and Advanced & subjects to how common the words are " +
       "(1 is the most common); words in your lists and My words always count."),
     h("p.muted", "Changes save right away."));
 }

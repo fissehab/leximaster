@@ -394,7 +394,7 @@ def levels_setting(c: sqlite3.Connection) -> str:
 # words", stored as stars > 0; ratings given before 2026-11 count as saved).
 MINE_SQL = ("(EXISTS (SELECT 1 FROM list_words lm WHERE lm.word_id = w.id) "
             "OR EXISTS (SELECT 1 FROM user_word um WHERE um.word_id = w.id AND um.stars > 0))")
-# "Words to refresh": words you've practised that are due to come back today.
+# "Words to refresh": words you've practiced that are due to come back today.
 REFRESH_SQL = "EXISTS (SELECT 1 FROM srs sr WHERE sr.word_id = w.id AND sr.due_date <= date('now', 'localtime'))"
 SCOPES = ("everyday", "core", *BIBLE_TRACKS, "mine", "refresh")  # study scopes, usable wherever a domain filter is
 
@@ -436,7 +436,7 @@ def pool_ids(c: sqlite3.Connection, *, stars: list[int] | None = None, list_id: 
         args.append(domain)
     elif not list_id:
         where.append(f"NOT {NAMES_ONLY_SQL}")  # Bible names only when chosen (or in your own list)
-    if domain not in ("reference", "refresh") and not list_id:   # a reference word you practised still comes back
+    if domain not in ("reference", "refresh") and not list_id:   # a reference word you practiced still comes back
         where.append(CHOSEN_SQL)
     if (domain or "") in LEVELED and not list_id:
         where.append(level_clause(levels_setting(c)))

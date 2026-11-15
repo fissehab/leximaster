@@ -29,7 +29,7 @@ def parse_filters(stars: str | None, list_id: int | None, domain: str | None) ->
 
 @router.get("/refresh")
 def refresh():
-    """How many practised words are due to come back today (Today, the nav
+    """How many practiced words are due to come back today (Today, the nav
     badge): the "Words to refresh" choice in every practice screen."""
     with db.tx() as c:
         return {"count": len(pool_ids(c, domain="refresh", exclude_known=True))}
@@ -422,7 +422,7 @@ def listen(n: int = Query(10, ge=1, le=50), stars: str | None = None,
             # No recordings for these words: include synthesized voice.
             pool = pool_ids(c, **parse_filters(stars, list_id, domain))
             fallback = True
-        if not pool:   # the choices come from all words, so even one word can be practised
+        if not pool:   # the choices come from all words, so even one word can be practiced
             raise HTTPException(400, 'Not enough words here. Choose other words under "Words from".')
         chosen = weighted_sample(c, list(pool), n)
         same = same_sound(c)

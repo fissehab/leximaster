@@ -28,7 +28,7 @@ export async function render(root) {
       card("For every level",
         h("p", "I also included words of every difficulty, from the most common everyday words to rare ones, so " +
           "that others can use it too, whatever their level of English. Words are grouped into five levels, from " +
-          "1 (most common) to 5 (rare). Choose the levels you want to practise under ", h("b", "Word difficulty"),
+          "1 (most common) to 5 (rare). Choose the levels you want to practice under ", h("b", "Word difficulty"),
           " in Settings. Tick one level or several, and change them " +
           "any time; every word still opens from links and search.")),
       card("How to say it",

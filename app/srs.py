@@ -106,7 +106,7 @@ def practice_grade(card: dict | None, correct: bool, today_grade: int | None, da
     """What a practice answer does to a word's schedule: the grade to apply,
     or None to only log it.
 
-    - Right, for a word not due yet (practised early): nothing. Otherwise
+    - Right, for a word not due yet (practiced early): nothing. Otherwise
       drilling a list every day would push it years out.
     - Already scheduled today: nothing more, except a miss after a right
       answer, which turns that day's Good into Again (it comes back

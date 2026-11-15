@@ -1,5 +1,5 @@
 // Today (the home screen, #home): the word of the day, the words to refresh
-// (practised words due to come back, only when there are some; a nudge into
+// (practiced words due to come back, only when there are some; a nudge into
 // Practice, never required), how you're doing and, until installed, how to
 // install.
 
@@ -79,14 +79,14 @@ export async function render(root) {
   const refreshPanel = n ? h("section.panel.refresh-card", { "aria-label": "Words to refresh" },
     h("span.eyebrow", "Words to refresh"),
     h("p.today-left", h("span.big-num.tnum", n), n === 1 ? " word to refresh" : " words to refresh"),
-    h("p.muted", "Words you've practised, due to come back today so they stick."),
+    h("p.muted", "Words you've practiced, due to come back today so they stick."),
     h("div.toolbar", h("button.btn.btn-primary", { type: "button", on: { click: refreshThem } }, "Refresh them"),
-      h("a.btn", { href: "#practice" }, "Practise something else")))
+      h("a.btn", { href: "#practice" }, "Practice something else")))
     : h("section.panel.refresh-card.start-card", { "aria-label": "Practice" },
         h("span.eyebrow", "Practice"),
         h("p", "Learn words with flashcards, quizzes, listening and games: any list, topic or level. " +
-          "The words you practise come back here when it's time to see them again."),
-        h("div.toolbar", h("a.btn.btn-primary", { href: "#practice" }, "Start practising")));
+          "The words you practice come back here when it's time to see them again."),
+        h("div.toolbar", h("a.btn.btn-primary", { href: "#practice" }, "Start practicing")));
 
   const w = stats.words;
   const today = stats.days[stats.days.length - 1] || {};

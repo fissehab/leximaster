@@ -60,6 +60,7 @@ const ICONS = {
   search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
   shuffle: '<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
+  bookmark: '<path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/>',
   check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
   arrowL: '<path d="M15 5l-7 7 7 7"/>',
   arrowR: '<path d="M9 5l7 7-7 7"/>',
@@ -144,8 +145,8 @@ export const DOMAIN_LABELS = {
   christian_anthropology: "Christian anthropology", philosophy: "Philosophy", logic: "Logic",
   mathematics: "Mathematics", statistics: "Statistics & probability", data_science: "Data science",
   artificial_intelligence: "Artificial intelligence", software_engineering: "Software engineering",
-  advanced: "Advanced", academic: "Academic", literary: "Literary", professional: "Professional",
-  linked: "Related words", reference: "Look-up only (linked, very rare or very common)", custom: "My words",
+  advanced: "Advanced vocabulary", academic: "Academic", literary: "Literary", professional: "Professional",
+  linked: "More words (linked from entries)", reference: "Rare & very common (look-up only)", custom: "Words I added",
 };
 const NAME_KIND_LABELS = { person: "Person", place: "Place", people: "People" };
 export const domainLabel = d => DOMAIN_LABELS[d] || d.replace(/_/g, " ");
@@ -194,10 +195,9 @@ export function saveToggle(word, { small = false, onChange } = {}) {
       paint();
       onChange && onChange();
     } },
-  }, icon("plus"), label);
+  }, icon("bookmark"), label);
   const paint = () => {
     btn.setAttribute("aria-pressed", String(isSaved(word)));
-    btn.firstChild.replaceWith(icon(isSaved(word) ? "check" : "plus"));
     label.textContent = isSaved(word) ? "In my words" : "Add to my words";
   };
   paint();
@@ -284,7 +284,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
 
   // Header: word, sound, pronunciation once, one row of labels.
   const pos = core ? core.pos : (groups[0] && groups[0].pos) || "";
-  const domains = (w.domains || []).filter(d => !["custom", "bible_vocab", "bible_names"].includes(d) && !(isName && d === "bible"));
+  const domains = (w.domains || []).filter(d => !["custom", "bible_vocab", "bible_names", "linked", "reference"].includes(d) && !(isName && d === "bible"));
   const knownBtn = h("button.btn.known-toggle", {
     type: "button", "aria-pressed": String(!!w.known), title: "Know it: stop studying this word (press again to study it) · M",
     on: { click: async () => {
@@ -807,7 +807,8 @@ export function levelsText(levels = chosenLevels()) {
  * runs after a save.
  */
 export function levelPicker({ onChange } = {}) {
-  const summary = h("summary.input.level-summary", { "aria-label": "Word difficulty" }, levelsText());
+  // Named with its current value ("Word difficulty: Levels 2–4").
+  const summary = h("summary.input.level-summary", { "aria-label": `Word difficulty: ${levelsText()}` }, levelsText());
   const boxes = LEVELS.map(([n, label, eg]) => {
     const box = h("input", { type: "checkbox", value: n, checked: chosenLevels().includes(n) });
     return [box, h("label.level-option", box, h("span", h("b", `${n} · ${label}`), h("span.muted", eg)))];
@@ -822,12 +823,13 @@ export function levelPicker({ onChange } = {}) {
     sync();
     try { await saveSettings({ word_levels: levels.join(",") }); } catch (e) { return showError(e); }
     summary.textContent = levelsText(levels);
+    summary.setAttribute("aria-label", `Word difficulty: ${levelsText(levels)}`);
     toast(`Practice words: ${levelsText(levels).toLowerCase()}`);
     onChange && onChange(levels);
   }));
   sync();
   const menu = h("details.level-picker", summary,
-    h("fieldset.level-menu", h("legend", "Practise words from"), boxes.map(([, l]) => l),
+    h("fieldset.level-menu", h("legend", "Practice words from"), boxes.map(([, l]) => l),
       h("p.muted.level-note", "Every word still opens from links and search.")));
   // Closes like a menu: Escape, or a click elsewhere.
   menu.addEventListener("keydown", e => { if (e.key === "Escape" && menu.open) { menu.open = false; summary.focus(); } });
@@ -868,8 +870,9 @@ export function sourceOptions({ lists = null, domains = [], refresh = true } = {
   ].filter(Boolean);
 }
 
+/** The "Words from" choices without lists (Settings), named by its <label for>. */
 export function scopeSelect(id, domains = []) {
-  return h(`select.input#${id}`, { "aria-label": "Words from" }, sourceOptions({ domains, refresh: false }));
+  return h(`select.input#${id}`, sourceOptions({ domains, refresh: false }));
 }
 
 /**
@@ -906,7 +909,7 @@ export async function filterBar(onChange, { lists = [], domains = [] } = {}, { t
 
 /** Why a practice screen has no words, for its "Words from" choice. */
 export function noWordsNote(filter = {}) {
-  if (filter.domain === "refresh") return "Nothing to refresh right now. Words you practise come back here when it's time " +
+  if (filter.domain === "refresh") return "Nothing to refresh right now. Words you practice come back here when it's time " +
     "to see them again. Choose other words under \u201cWords from\u201d.";
   if (filter.domain === "mine") return "My words has too few words for this. Add words with \u201cAdd to my words\u201d in the " +
     "Dictionary, or make a list. Or choose other words under \u201cWords from\u201d.";
@@ -926,7 +929,7 @@ export function cantStart(title, e, filter = {}) {
   const pairs = /kind of content/.test(msg);
   return h("div.panel.empty",
     h("h2", pairs ? "Too few words for Matching" : few ? noWordsTitle(filter) : title),
-    h("p", pairs ? "Matching needs at least 3 words with meanings. Practise these in Flashcards or Quiz, " +
+    h("p", pairs ? "Matching needs at least 3 words with meanings. Practice these in Flashcards or Quiz, " +
       "or choose other words under \u201cWords from\u201d." : few ? noWordsNote(filter) : msg),
     few ? h("div.toolbar", h("button.btn", { type: "button", on: { click: () => {
       const s = document.getElementById("f-source");

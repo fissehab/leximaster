@@ -68,7 +68,7 @@ export function schedule(card, grade, day, rand = Math.random) {
 /**
  * What a practice answer does to a word's schedule (app/srs.py
  * practice_grade): the grade to apply, or null to only log it.
- * - Right, for a word not due yet (practised early): nothing, or drilling a
+ * - Right, for a word not due yet (practiced early): nothing, or drilling a
  *   list every day would push it years out.
  * - Already scheduled today: nothing more, except a miss after a right
  *   answer, which turns the day's Good into Again. Answers never compound.

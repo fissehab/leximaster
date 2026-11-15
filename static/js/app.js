@@ -43,7 +43,8 @@ function buildNav() {
   const link = t => h(`a.nav-link${t.hub ? ".hub" : ""}${t.under ? ".under" : ""}${t.sep ? ".sep" : ""}`,
     { href: `#${t.id}`, "data-tab": t.id, title: t.label },
     icon(t.icon), h("span.nav-text", t.short ? [h("span.long", t.label), h("span.short", t.short)] : t.label),
-    t.id === "home" ? h("span.count#due-count", { hidden: true, title: "Words to refresh" }) : null);
+    t.id === "home" ? h("span.count#due-count", { hidden: true, title: "Words to refresh" }) : null,
+    t.id === "home" ? h("span.sr-only#due-label", { hidden: true }, " words to refresh") : null);
   const items = [];
   for (const t of TABS.filter(t => !t.hidden)) {
     const last = items[items.length - 1];
@@ -77,7 +78,7 @@ function foldButton(name) {
     name, h("span.fold-mark", { "aria-hidden": "true" }));
 }
 
-/** Words to refresh (practised words due to come back today), on Today's
+/** Words to refresh (practiced words due to come back today), on Today's
  * menu link: the same number Today shows. */
 export async function refreshDueCount() {
   try { showDueCount((await api.get("/api/refresh")).count); } catch (e) { /* non-critical */ }
@@ -88,6 +89,8 @@ export function showDueCount(count) {
   if (!el) return;
   el.textContent = count;
   el.hidden = !count;
+  const label = document.getElementById("due-label");
+  if (label) label.hidden = !count;
 }
 
 function parseHash() {
@@ -284,9 +287,11 @@ function keysOn() {
 export function shortcutsList() {
   const rows = [
     ["Space", "Play pronunciation"], ["← →", "Previous / next word"], ["↑ ↓", "Previous / next word (Dictionary, Pronounce)"],
-    ["S", "Add to my words, or take it out (Dictionary, Flashcards)"], ["/", "Search (Dictionary)"],
-    ["Enter", "Flip card / reveal answer"], ["1–4", "Choose an answer (Quiz, Listen)"],
-    ["1–4", "Shoot a word (Word Shooter)"], ["Y N", "Yes / no (Word Rush)"], ["P Esc", "Pause (games; Esc while typing)"],
+    ["S", "Add to my words, or take it out (Dictionary, Flashcards)"], ["M", "Know it (Dictionary, Flashcards)"],
+    ["L", "Add to a list (Dictionary)"], ["/", "Search (Dictionary)"],
+    ["Enter", "Flip card / reveal answer"], ["K X", "Knew it / Missed it (Flashcards, after the flip)"],
+    ["1–4", "Choose an answer (Quiz, Listen)"],
+    ["1–4", "Shoot a word (Word Shooter)"], ["Y N → ←", "Yes / no (Word Rush)"], ["P Esc", "Pause (games; Esc while typing)"],
     ["R", "Record yourself (Pronounce)"], ["?", "Show this help"],
   ];
   // Single-key shortcuts can be switched off (speech-input users trigger them by accident).
