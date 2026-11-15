@@ -1,12 +1,12 @@
 // Today (the home screen, #home): the word of the day, the words to refresh
 // (practised words due to come back; a nudge into Practice, never required),
-// how you're doing, a search box and, until installed, how to install.
+// how you're doing and, until installed, how to install.
 
-import { api, allWords } from "../api.js";
+import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { installPrompt, refreshDueCount } from "../app.js";
 import { saveFilter, loadFilter } from "../state.js";
-import { fmtDuration, h, icon, renderEntry } from "../ui.js";
+import { fmtDuration, h, renderEntry } from "../ui.js";
 
 const stored = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const store = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* unavailable */ } };
@@ -46,24 +46,6 @@ function installCard() {
 }
 
 let wotd = null;
-
-/** Search from Today: an exact word opens its entry, anything else the
- *  Dictionary's results for it. */
-function searchBox() {
-  const input = h("input.input#today-search", { type: "search", placeholder: "Look up a word", autocomplete: "off",
-    spellcheck: false, "aria-label": "Look up a word" });
-  const form = h("form.today-search", { role: "search", on: { submit: async e => {
-    e.preventDefault();
-    const q = input.value.trim();
-    if (!q) return input.focus();
-    const exact = (await allWords()).find(w => w.word.toLowerCase() === q.toLowerCase());
-    if (exact) { location.hash = `#browse/${exact.id}`; return; }
-    const { searchFor } = await import("./browse.js");
-    searchFor(q);
-    location.hash = "#browse";
-  } } }, icon("search"), input, h("button.btn", { type: "submit" }, "Search"));
-  return form;
-}
 
 /** "Refresh them": Flashcards with the words to refresh. */
 function refreshThem() {
@@ -121,7 +103,6 @@ export async function render(root) {
     h("div.page-head", h("div", h("h1", greet), h("p.sub", "A word to discover, and the words you're learning."))),
     banner ? h("div", { style: { marginBottom: "16px" } }, banner) : null,
     installCard(),
-    searchBox(),
     h("div.home", wotdPanel, h("div.home-side", refreshPanel, progressPanel)),
   ].filter(Boolean));
 }

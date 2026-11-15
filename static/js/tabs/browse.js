@@ -6,12 +6,6 @@ import { LEVELS, byDomainOrder, chosenLevels, defineTerm, domainLabel, levelsTex
 
 const ROW_H = 54;
 const state = { q: "", domain: "", saved: "", known: "", level: "", selectedId: null };
-
-/** Today's search box: open the Dictionary on these results. */
-export function searchFor(q) {
-  state.q = q;
-  state.selectedId = null;
-}
 let words = [];
 let shown = [];
 let els = {};

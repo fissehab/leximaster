@@ -103,8 +103,7 @@ kept unless the word data changed.
 ## Using it day to day
 
 1. **Today** (the home screen): the word of the day (its name opens the full entry), the words you've
-   practised that are due to come back (**Refresh them** opens them in Flashcards), your streak, and a
-   search box.
+   practised that are due to come back (**Refresh them** opens them in Flashcards), and your streak.
 2. **Practice**: nine activities in three groups. **Sound**: Listen (including a spelling test),
    Pronounce, Hard sounds. **Meaning**: Flashcards, Quiz, Matching. **Games**: Word Shooter, Word Rush,
    Type It. Each one has a **Words from** menu with every choice there is: Words to refresh, My words,
@@ -282,7 +281,7 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 
 | Tab | What it's for |
 |---|---|
-| Today | The home screen: the word of the day (its name opens the full entry), the words to refresh (practised words due today; the same number as the badge on Today) with a button that opens them in Flashcards, your streak, words learning, time today, and a search box (an exact word opens its entry). |
+| Today | The home screen: the word of the day (its name opens the full entry), the words to refresh (practised words due today; the same number as the badge on Today) with a button that opens them in Flashcards, your streak, words learning and time today. |
 | Practice | Nine activities in three groups: Sound, Meaning and Games. Each has one **Words from** menu: Words to refresh, My words, Everything, your lists, the general tracks and every topic. |
 | Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings, then "Missed it" or "Knew it" (it sets when the word comes back). Swipe on a phone. You can shuffle, play audio on flip, add the word to My words or mark it known, and choose the words from any list, topic or track. The deck ends with a summary. |
 | Matching | Timed rounds that pair words with meanings or with example sentences, with a score. |
