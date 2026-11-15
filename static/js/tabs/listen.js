@@ -6,7 +6,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import { loadFilter } from "../state.js";
-import { diffView, filterBar, filterSources, fmtDuration, h, markOption, pageHead, reveal, showError, toast } from "../ui.js";
+import { cantStart, diffView, filterBar, filterSources, fmtDuration, h, markOption, pageHead, reveal, showError, toast } from "../ui.js";
 
 let mode = "choose";       // choose | type | stress
 let items = [];
@@ -66,7 +66,7 @@ async function start() {
       toast("Not enough words with recordings here yet, so synthesized voice is included.");
     }
   } catch (e) {
-    els.stage.replaceChildren(h("div.panel.empty", h("h2", "Can't start"), h("p", e.message)));
+    els.stage.replaceChildren(cantStart("Can't start", e, filter));
     return;
   }
   i = 0; score = 0; missed = []; started = Date.now();

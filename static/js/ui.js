@@ -913,6 +913,27 @@ export function noWordsNote(filter = {}) {
   return "Not enough words here. Choose other words under \u201cWords from\u201d.";
 }
 
+/** The heading for a practice screen with no words: "All refreshed" when
+ *  the words to refresh are done. */
+export const noWordsTitle = (filter = {}) => (filter.domain === "refresh" ? "All refreshed for now" : "Not enough words here");
+
+/** A practice screen that couldn't start: why, for its "Words from" choice,
+ *  with a way to pick other words; any other error as it is. */
+export function cantStart(title, e, filter = {}) {
+  const msg = (e && e.message) || "";
+  const few = /^Not enough words/.test(msg);
+  // Matching needs three words with meanings: there may be words, just too few.
+  const pairs = /kind of content/.test(msg);
+  return h("div.panel.empty",
+    h("h2", pairs ? "Too few words for Matching" : few ? noWordsTitle(filter) : title),
+    h("p", pairs ? "Matching needs at least 3 words with meanings. Practise these in Flashcards or Quiz, " +
+      "or choose other words under \u201cWords from\u201d." : few ? noWordsNote(filter) : msg),
+    few ? h("div.toolbar", h("button.btn", { type: "button", on: { click: () => {
+      const s = document.getElementById("f-source");
+      if (s) { s.scrollIntoView({ block: "center" }); s.focus(); }
+    } } }, "Choose other words")) : null);
+}
+
 export async function filterSources() {
   const [{ lists }, words] = await Promise.all([api.get("/api/lists"), allWords()]);
   const domains = [...new Set(words.flatMap(w => w.domains))].sort(byDomainOrder);

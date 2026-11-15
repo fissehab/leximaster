@@ -38,11 +38,19 @@ def test_rush_cards_show_a_word_and_four_meanings(client):
         assert len(set(q["options"])) == 4
 
 
+def test_one_word_makes_a_quiz(client):
+    """Wrong options come from all words: a list (or the words to refresh)
+    of one word can still be practised in Quiz and Listen."""
+    wid = next(w["id"] for w in client.get("/api/words").json()["words"] if w.get("has_audio"))
+    lid = client.post("/api/lists", json={"name": "One word"}).json()["id"]
+    client.post(f"/api/lists/{lid}/words", json={"word_id": wid})
+    q = client.get("/api/quiz", params={"types": "word_meaning,meaning_word", "n": 5, "list_id": lid})
+    assert q.status_code == 200 and {x["word_id"] for x in q.json()["questions"]} == {wid}
+    assert client.get("/api/listen", params={"n": 5, "list_id": lid}).status_code == 200
+
+
 def test_too_few_words_says_choose_other_words(client):
-    ids = [w["id"] for w in client.get("/api/words").json()["words"][:2]]
-    lid = client.post("/api/lists", json={"name": "Two words"}).json()["id"]
-    for wid in ids:
-        client.post(f"/api/lists/{lid}/words", json={"word_id": wid})
+    lid = client.post("/api/lists", json={"name": "Empty"}).json()["id"]
     res = client.get("/api/quiz", params={"types": "meaning_word", "n": 15, "list_id": lid})
     assert res.status_code == 400
     assert "Choose other words under \"Words from\"" in res.json()["detail"]

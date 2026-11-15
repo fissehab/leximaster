@@ -2,7 +2,7 @@
 
 import { api } from "../api.js";
 import { loadFilter } from "../state.js";
-import { filterBar, filterSources, fmtDuration, h, pageHead, shuffle } from "../ui.js";
+import { cantStart, filterBar, filterSources, fmtDuration, h, pageHead, shuffle } from "../ui.js";
 
 let kind = "meaning";
 let size = matchMedia("(max-width: 600px)").matches ? 4 : 6;  // 4 pairs fit a phone screen
@@ -39,7 +39,7 @@ async function start() {
   try {
     data = await api.get("/api/matching", { ...filter, kind, n: size });
   } catch (e) {
-    if (token === roundToken && alive) els.stage.replaceChildren(h("div.panel.empty", h("h2", "Can't start a round"), h("p", e.message)));
+    if (token === roundToken && alive) els.stage.replaceChildren(cantStart("Can't start a round", e, filter));
     return;
   }
   if (token !== roundToken || !alive) return;  // a newer round started, or the tab was left

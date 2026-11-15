@@ -10,7 +10,7 @@ import {
 } from "../games.js";
 import { scoreBoard, scoreResult } from "../gameui.js";
 import { loadFilter } from "../state.js";
-import { filterBar, filterSources, h, noWordsNote, pageHead, playButton, smart } from "../ui.js";
+import { filterBar, filterSources, h, noWordsNote, noWordsTitle, pageHead, playButton, smart } from "../ui.js";
 
 const TIMES = [["60", "1 minute"], ["120", "2 minutes"], ["calm", "No clock (20 cards)"]];
 const CALM_CARDS = 20;
@@ -87,7 +87,7 @@ async function start() {
   }
   if (mine !== token || !alive) return;
   if (questions.length < 4) {
-    els.stage.replaceChildren(h("div.panel.empty", h("h2", "Can't start a game"),
+    els.stage.replaceChildren(h("div.panel.empty", h("h2", noWordsTitle(filter)),
       h("p", noWordsNote(filter))));
     return;
   }

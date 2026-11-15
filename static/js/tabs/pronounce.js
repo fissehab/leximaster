@@ -4,7 +4,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { recordCompare } from "../recorder.js";
 import { loadFilter } from "../state.js";
-import { filterBar, filterSources, h, noWordsNote, pageHead, showError } from "../ui.js";
+import { filterBar, filterSources, h, noWordsNote, noWordsTitle, pageHead, showError } from "../ui.js";
 
 let words = [];
 let current = null;
@@ -28,7 +28,7 @@ async function loadWords() {
     return b;
   }));
   if (words.length) choose(words[0].id, { first: true });
-  else els.stage.replaceChildren(h("div.panel.empty", h("h2", "No words here"), h("p", noWordsNote(filter))));
+  else els.stage.replaceChildren(h("div.panel.empty", h("h2", noWordsTitle(filter)), h("p", noWordsNote(filter))));
 }
 
 /** `first`: the page's first word, which stays where it is (scrolling to it

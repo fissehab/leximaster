@@ -909,7 +909,8 @@ async function makeQuiz(q) {
     filters.domain = "bible_names";   // only names can be asked "who or what?"
   }
   const pool = poolIds(filters);
-  if (pool.length < 4) throw new HttpError(400, "Not enough words here. Choose other words under \"Words from\".");
+  // Wrong options come from all words, so even one word makes a quiz.
+  if (!pool.length) throw new HttpError(400, "Not enough words here. Choose other words under \"Words from\".");
   let allIds = all(`SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT ${NAMES_ONLY_SQL} ` +
                    `AND NOT ${REFERENCE_SQL}`).map(r => r.id);
   if (allIds.length < 50) allIds = all("SELECT id FROM words").map(r => r.id);
@@ -1088,8 +1089,9 @@ async function listen(q) {
   const audioOnly = q.audio_only === "true";
   let pool = poolIds({ ...filters, need_audio: audioOnly });
   let fallback = false;
-  if (audioOnly && pool.length < 4) { pool = poolIds(filters); fallback = true; }
-  if (pool.length < 4) throw new HttpError(400, "Not enough words here. Choose other words under \"Words from\".");
+  // The choices come from all words, so even one word can be practised.
+  if (audioOnly && !pool.length) { pool = poolIds(filters); fallback = true; }
+  if (!pool.length) throw new HttpError(400, "Not enough words here. Choose other words under \"Words from\".");
   const items = [];
   for (const wid of weightedSample(pool, n)) {
     const item = await full(fetchWord(wid));

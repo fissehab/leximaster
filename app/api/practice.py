@@ -204,7 +204,7 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
         if wanted == ["name_kind"] and not list_id and domain not in BIBLE_TRACKS:
             filters["domain"] = "bible_names"   # only names can be asked "who or what?"
         pool = pool_ids(c, **filters)
-        if len(pool) < 4:
+        if not pool:   # wrong options come from all words, so even one word makes a quiz
             raise HTTPException(400, 'Not enough words here. Choose other words under "Words from".')
         all_ids = [r["id"] for r in c.execute(
             f"SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT {NAMES_ONLY_SQL} "
@@ -418,11 +418,11 @@ def listen(n: int = Query(10, ge=1, le=50), stars: str | None = None,
     with db.tx() as c:
         pool = pool_ids(c, need_audio=audio_only, **parse_filters(stars, list_id, domain))
         fallback = False
-        if audio_only and len(pool) < 4:
-            # Too few recordings for these filters: include synthesized voice.
+        if audio_only and not pool:
+            # No recordings for these words: include synthesized voice.
             pool = pool_ids(c, **parse_filters(stars, list_id, domain))
             fallback = True
-        if len(pool) < 4:
+        if not pool:   # the choices come from all words, so even one word can be practised
             raise HTTPException(400, 'Not enough words here. Choose other words under "Words from".')
         chosen = weighted_sample(c, list(pool), n)
         same = same_sound(c)

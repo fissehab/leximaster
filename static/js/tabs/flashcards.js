@@ -6,7 +6,7 @@
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { settings } from "../state.js";
-import { emptyState, filterBar, noWordsNote, filterSources, h, icon, pageHead, renderEntry, saveToggle, setKnown, showError, toast } from "../ui.js";
+import { emptyState, filterBar, noWordsNote, noWordsTitle, filterSources, h, icon, pageHead, renderEntry, saveToggle, setKnown, showError, toast } from "../ui.js";
 
 let cards = [];
 let idx = 0;
@@ -61,9 +61,18 @@ async function load({ resume = false } = {}) {
 function show() {
   flipped = false;
   els.answer.hidden = true;
+  els.next.hidden = false;
   if (!cards.length) {
     els.nav.hidden = true;
-    els.stage.replaceChildren(emptyState("No cards here", noWordsNote(filter)));
+    // Done refreshing: one tap back to the words practice starts with.
+    const back = filter.domain === "refresh" ? h("button.btn.btn-primary", { type: "button", on: { click: async () => {
+      const { studyFocus } = await import("../state.js");
+      const s = document.getElementById("f-source");
+      s.value = studyFocus();
+      if (s.value !== studyFocus() || s.value === "refresh") s.value = "everyday";
+      s.dispatchEvent(new Event("change"));
+    } } }, "Practise other words") : null;
+    els.stage.replaceChildren(emptyState(noWordsTitle(filter), noWordsNote(filter), ...(back ? [back] : [])));
     return;
   }
   els.nav.hidden = false;
@@ -100,6 +109,9 @@ function toggle() {
   const back = els.flip.querySelector(".back");
   back.inert = !flipped;
   els.answer.hidden = !flipped;
+  // A turned card is answered (Knew it / Missed it) before moving on, so
+  // going through a deck always records how each word went.
+  els.next.hidden = flipped;
   const w = cards[idx];
   if (flipped) {
     const head = back.querySelector(".headword");
@@ -151,11 +163,15 @@ function finished() {
   els.nav.hidden = true;
   try { sessionStorage.removeItem(SAVE_KEY); } catch (e) { /* unavailable */ }
   const heading = h("h2", { tabindex: "-1" }, "Deck done");
+  const skipped = Math.max(0, tally.seen.size - tally.knew - tally.missed - tally.known);
   els.stage.replaceChildren(h("div.panel.done-state",
     heading,
     h("p.muted", `${tally.seen.size} card${tally.seen.size === 1 ? "" : "s"} seen` +
-      (tally.knew || tally.missed ? ` · ${tally.knew} knew · ${tally.missed} missed (they come back tomorrow to refresh)` : "") +
+      (tally.knew ? ` · ${tally.knew} knew` : "") +
+      (tally.missed ? ` · ${tally.missed} missed (they come back tomorrow)` : "") +
       (tally.known ? ` · ${tally.known} marked known` : "") + "."),
+    skipped && filter.domain === "refresh"
+      ? h("p.muted", `${skipped} card${skipped === 1 ? "" : "s"} not answered: still in Words to refresh.`) : null,
     h("div.toolbar",
       h("button.btn.btn-primary", { type: "button", on: { click: () => load() } }, "New deck"),
       h("button.btn", { type: "button", on: { click: () => { idx = 0; show(); } } }, "Go through again"))));
@@ -170,7 +186,7 @@ function swipe(el) {
     if (x0 === null) return;
     const dx = e.clientX - x0, dy = e.clientY - y0;
     x0 = null;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > 1.5 * Math.abs(dy)) go(dx < 0 ? 1 : -1);
+    if (Math.abs(dx) > 60 && Math.abs(dx) > 1.5 * Math.abs(dy) && !(dx < 0 && flipped)) go(dx < 0 ? 1 : -1);
   });
   el.addEventListener("pointercancel", () => { x0 = null; });
 }
@@ -207,10 +223,10 @@ export async function render(root, { live: isLive } = {}) {
     h("div.fc-nav",
       h("button.btn", { type: "button", "aria-label": "Previous card", on: { click: e => { unfocus(e); go(-1); } } }, icon("arrowL"), h("span.lbl", "Previous")),
       h("button.btn.btn-primary", { type: "button", on: { click: e => { unfocus(e); toggle(); } } }, "Flip ", h("kbd", { "aria-hidden": "true" }, "Enter")),
-      h("button.btn", { type: "button", "aria-label": "Next card", on: { click: e => { unfocus(e); go(1); } } }, h("span.lbl", "Next"), icon("arrowR")),
+      els.next = h("button.btn", { type: "button", "aria-label": "Next card", on: { click: e => { unfocus(e); go(1); } } }, h("span.lbl", "Next"), icon("arrowR")),
       els.counter),
     h("div.fc-nav", els.stars,
-      h("button.btn.btn-quiet", { type: "button", on: { click: e => { unfocus(e); knowIt(); } } }, "Know it & next ", h("kbd", { "aria-hidden": "true" }, "M"))));
+      h("button.btn", { type: "button", on: { click: e => { unfocus(e); knowIt(); } } }, "Know it & next ", h("kbd", { "aria-hidden": "true" }, "M"))));
   root.append(
     pageHead("Flashcards", "Think of the meaning, then turn the card. Words you miss come back sooner to refresh."),
     await filterBar(f => { filter = f; load(); }, src, { tab: "flashcards", extra: [autoplay, shuffleBtn] }),
@@ -227,7 +243,7 @@ export async function onKey(e) {
   const k = e.key.toLowerCase();
   if (e.key === "Enter") { e.preventDefault(); toggle(); }
   else if (e.key === " ") { e.preventDefault(); playWord(w, els.flip.querySelector(flipped ? ".back .play" : ".play")); }
-  else if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
+  else if (e.key === "ArrowRight") { e.preventDefault(); if (!flipped) go(1); }
   else if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
   else if (k === "s") { e.preventDefault(); els.stars.querySelector(".save-toggle").click(); }
   else if (k === "m") { e.preventDefault(); knowIt(); }

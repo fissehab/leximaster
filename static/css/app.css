@@ -514,8 +514,14 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
   width: 100%; font: inherit; color: inherit; cursor: pointer; }
 .flip-face.front .headword { display: block; }
 .flip-face.front .flip-hint { display: block; }
-.front-stars { color: var(--gilt); }
 .flip-face.back { transform: rotateY(180deg); }
+/* Before the flip, a card of fixed height with the word centered in view
+   (not the height of the longer back); after it, the back's full height. The
+   buttons stay in view at the bottom on every screen. */
+.flip:not(.flipped) { height: min(440px, 52dvh); min-height: 0; }
+.flip:not(.flipped) .flip-face { overflow: hidden; }
+.fc-dock { position: sticky; bottom: 0; z-index: 4; background: var(--bg); padding: 8px 0;
+  box-shadow: 0 -10px 16px -8px var(--bg); }
 .flip-hint { font-size: 13px; color: var(--muted); }
 .fc-nav { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
 .fc-dock { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; max-width: 760px; }
@@ -760,12 +766,6 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .in-session .page-head { margin-bottom: 10px; }
   /* The keyboard is up: give the screen to what's being typed. */
   .shell:has(input[type="text"]:focus, input[type="search"]:focus, textarea:focus) .rail { display: none; }
-  /* Before the flip, a card of fixed height with the word centered in view
-     (not the height of the longer back); after it, the back's full height. */
-  .flip:not(.flipped) { height: min(440px, 56dvh); min-height: 0; }
-  .flip:not(.flipped) .flip-face { overflow: hidden; }
-  .fc-dock { position: sticky; bottom: 0; z-index: 4; background: var(--bg); padding: 8px 0;
-    box-shadow: 0 -10px 16px -8px var(--bg); }
   .fc-nav .lbl { display: none; }
   .grade small, .grade kbd { display: none; }
   .grade.for-good small { display: block; }   /* "Know it" is for good: say so even here */
