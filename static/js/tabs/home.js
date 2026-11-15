@@ -1,6 +1,7 @@
 // Today (the home screen, #home): the word of the day, the words to refresh
-// (practised words due to come back; a nudge into Practice, never required),
-// how you're doing and, until installed, how to install.
+// (practised words due to come back, only when there are some; a nudge into
+// Practice, never required), how you're doing and, until installed, how to
+// install.
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
@@ -73,17 +74,13 @@ export async function render(root) {
         h("p", "No words yet. Build the dataset with build_dataset.py, then reload."));
 
   const n = refresh.count;
-  const refreshPanel = h("section.panel.refresh-card", { "aria-label": "Words to refresh" },
+  // Shown only when some practised words are due: nothing to say otherwise.
+  const refreshPanel = n ? h("section.panel.refresh-card", { "aria-label": "Words to refresh" },
     h("span.eyebrow", "Words to refresh"),
-    n
-      ? [h("p.today-left", h("span.big-num.tnum", n), n === 1 ? " word to refresh" : " words to refresh"),
-         h("p.muted", "Words you've practised, due to come back today so they stick."),
-         h("div.toolbar", h("button.btn.btn-primary", { type: "button", on: { click: refreshThem } }, "Refresh them"),
-           h("a.btn", { href: "#practice" }, "Practise something else"))]
-      : [h("p.muted", stats.words.learning + stats.words.mastered
-          ? "Nothing to refresh right now. Words you practise come back here when it's time to see them again."
-          : "Practise any words you like: they come back here when it's time to see them again, so they stick."),
-         h("a.btn.btn-primary", { href: "#practice" }, "Go to Practice")]);
+    h("p.today-left", h("span.big-num.tnum", n), n === 1 ? " word to refresh" : " words to refresh"),
+    h("p.muted", "Words you've practised, due to come back today so they stick."),
+    h("div.toolbar", h("button.btn.btn-primary", { type: "button", on: { click: refreshThem } }, "Refresh them"),
+      h("a.btn", { href: "#practice" }, "Practise something else"))) : null;
 
   const w = stats.words;
   const today = stats.days[stats.days.length - 1] || {};
