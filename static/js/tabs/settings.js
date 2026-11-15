@@ -1,6 +1,6 @@
 // Settings (the gear): how you practise (the words practice starts with, word
-// levels, pronunciation speed), the theme, your data (export, import, offline
-// use), and About LexiMaster.
+// levels, pronunciation speed), the theme, and your data (export, import,
+// offline use).
 
 import { api, invalidateWords } from "../api.js";
 import { savedTheme, setTheme, shortcutsList, THEMES } from "../app.js";
@@ -14,15 +14,7 @@ export async function render(root) {
     h("div.settings-grid", settingsPanel(domains), themePanel(),
       h("section.panel.kbd-panel", h("h2", "Keyboard shortcuts"),
         h("p.muted", "On a computer. Press ? anywhere to see this list."), shortcutsList()),
-      dataPanel(), aboutPanel()));
-}
-
-function aboutPanel() {
-  return h("section.panel", h("h2", "About LexiMaster"),
-    h("p.muted", "Who made it and why, how to install it on your phone, and where the words and recordings come from."),
-    h("div.toolbar",
-      h("a.btn", { href: "#about" }, icon("info"), "About LexiMaster"),
-      window.LEXI_STATIC ? h("a.btn", { href: "guide/LexiMaster-Install-Guide.pdf" }, "Install guide") : null));
+      dataPanel()));
 }
 
 function settingsPanel(domains) {

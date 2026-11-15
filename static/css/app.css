@@ -731,7 +731,7 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
     grid-row: 2; flex-direction: row; padding: 6px max(8px, env(safe-area-inset-left, 0px)) calc(6px + env(safe-area-inset-bottom, 0px));
     border-right: 0; border-top: 1px solid var(--rule); gap: 4px;
   }
-  /* Five tabs that always fit: Today, Practice, Words, Progress, Settings. */
+  /* Six tabs that always fit: Today, Words, Practice, Progress, Settings, About. */
   .nav-links { flex: 1; min-width: 0; justify-content: space-around; }
   .nav-link.under { display: none; }
   .nav-link.in-section { background: var(--lapis-soft); color: var(--lapis); }   /* My lists: Words is lit */

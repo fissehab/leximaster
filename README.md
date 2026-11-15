@@ -121,7 +121,7 @@ kept unless the word data changed.
 - **Know it** takes a word you already know out of your study (press it again to bring it back).
 - **Settings:** Practice starts with (the Words from choice for activities you haven't used yet, and for
   all of them when you change it), word difficulty, pronunciation speed, the theme, your data (export,
-  import, offline use), and About LexiMaster.
+  import, offline use).
 - **Word difficulty:** Everything, Everyday English and Advanced draw from levels 1 (most common) to 5
   (rare); a new learner starts on 2–4. Your lists and My words always count.
 - **Pronunciation speed:** the button beside each play button switches between 1×, .75× and .5×
@@ -292,13 +292,13 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Dictionary | The full lexicon. It runs A–Z with a letter strip to jump, instant search across words and meanings (best matches first: the word itself, a form of it — "went" opens go — then words starting with it), "Did you mean…" for a misspelling, a short WordNet definition for a word without an entry, and filters by topic, level, My words and known words. The list keeps to your word levels (Settings) unless you pick "All levels" or one level; a search looks through every word, and also finds the synonyms, antonyms and related words listed under an entry that have no entry of their own ("jubilant: Synonym of joyful"), opening the entry that lists them with the word highlighted. On a phone, tapping a word brings its page into view (List goes back). |
 | My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen; every activity can also pick a list from its Words from menu. |
 | Progress | Words mastered (and marked known), words learning, retention (the share of words you remembered when they came back, by gap), accuracy of all answers, streak, activity heatmap, accuracy by topic, weakest words, test history and words coming back in the next 14 days. |
-| Settings | Practice starts with, word difficulty, pronunciation speed, the theme, keyboard shortcuts, progress export/import, on the website "Download for offline use" and the sources, and About LexiMaster. |
+| Settings | Practice starts with, word difficulty, pronunciation speed, the theme, keyboard shortcuts, progress export/import, and on the website "Download for offline use" and the sources. |
 
 The sidebar lists Today; Words (Dictionary, My lists); Sound (Listen, Pronounce, Hard sounds); Practice
 (Flashcards, Quiz, Matching, Word Shooter, Word Rush, Type It); then Progress, Settings and About. Words,
 Sound and Practice fold with a click on their heading (remembered; a folded group still shows the screen
-you're on). On a phone the bottom bar has five buttons: Today, Words, Practice, Progress and Settings
-(About opens from Settings); in the installed app, Back and Forward sit at its left end. Each practice
+you're on). On a phone the bottom bar has six buttons: Today, Words, Practice, Progress, Settings and
+About; in the installed app, Back and Forward sit at its left end. Each practice
 activity remembers its own Words from choice.
 
 ### The word page

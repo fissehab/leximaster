@@ -5,12 +5,11 @@ import { stopAudio } from "./audio.js";
 import { loadSettings } from "./state.js";
 import { formDialog, h, icon, showError } from "./ui.js";
 
-// The rail lists every tab. On a phone the bottom bar has five: Today, Words
-// (the dictionary), Practice, Progress and Settings. Practice is a page of
-// links (`hub`) to the activities under it (`under`), in three groups: Sound
+// The rail lists every tab. On a phone the bottom bar has six: Today, Words
+// (the dictionary), Practice, Progress, Settings and About. Practice is a page
+// of links (`hub`) to the activities under it (`under`), in three groups: Sound
 // (what makes LexiMaster different), Meaning and Games. My lists sits under
-// Words and About under Settings (in the sidebar; on a phone they're reached
-// from those pages). One order for the sidebar and the phone bar, so keyboard
+// Words (in the sidebar; on a phone it's reached from the Dictionary). One order for the sidebar and the phone bar, so keyboard
 // and screen-reader order match what is on screen. `group` makes a labeled
 // group in the sidebar (`rail` overrides it there: Meaning and Games are one
 // Practice group in the sidebar, kept apart on the Practice page); `sep` draws
@@ -32,7 +31,7 @@ export const TABS = [
   { id: "typeit", label: "Type It", icon: "keys", under: "practice", group: "Games", note: "Type the word before time runs out", rail: "Practice" },
   { id: "stats", label: "Progress", icon: "stats", sep: true, note: "See how you are doing" },
   { id: "settings", label: "Settings", icon: "gear", note: "How you study, colors, save your work" },
-  { id: "about", label: "About", icon: "info", under: "settings", note: "Who made LexiMaster and why" },
+  { id: "about", label: "About", icon: "info", note: "Who made LexiMaster and why" },
 ];
 
 const view = document.getElementById("view");
