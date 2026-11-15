@@ -184,6 +184,16 @@ def _rights(data: dict, kind: str) -> list[str]:
     return [r for r in dict.fromkeys(out) if r and not (kind == "synonym" and r.lower() in contrasted)]
 
 
+def shares_word(a: str, b: str) -> bool:
+    """Whether two phrases share a word of four letters or more, one inside
+    the other ("judgment" / "misjudgment", "cart" / "shopping cart",
+    "interception" / "reception"): such a synonym or antonym gives the answer
+    away or isn't one. static/js/local/server.js sharesWord is the same."""
+    al, bl = a.lower(), b.lower()
+    return (any(t in bl for t in re.findall(r"[a-z]+", al) if len(t) >= 4)
+            or any(t in al for t in re.findall(r"[a-z]+", bl) if len(t) >= 4))
+
+
 @router.get("/quiz")
 def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym,name_kind,pattern",
               n: int = Query(10, ge=1, le=50), stars: str | None = None,
@@ -222,7 +232,7 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                 # with phrasal verbs, restaurant phrases with restaurant phrases.
                 distract_ids = [r["id"] for r in c.execute(
                     "SELECT id FROM words w WHERE id != ? AND EXISTS (SELECT 1 FROM json_each(w.domains) "
-                    f"WHERE json_each.value IN ({','.join('?' * len(everyday))})) ORDER BY random() LIMIT 30",
+                    f"WHERE json_each.value IN ({','.join('?' * len(everyday))})) AND NOT {REFERENCE_SQL} ORDER BY random() LIMIT 30",
                     (wid, *everyday))]
             else:
                 # Other words of the chosen scope ("Statistics", "Bible · Vocabulary"), else any word.
@@ -273,7 +283,7 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                                 "answer": word, "options": [o[0] for o in fits[:3]] + [word],
                                 "explain": {o[0]: f"“{o[0]}” means: {o[2]}" for o in fits[:3]}}
                 if qtype in ("synonym", "antonym"):
-                    rights = [r for r in _rights(data, qtype) if r.lower() != word.lower()]
+                    rights = [r for r in _rights(data, qtype) if not shares_word(r, word)]
                     if not rights:
                         return None
                     right = random.choice(rights)
@@ -283,12 +293,15 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                     # (determination: "tenacity"), and for antonyms never
                     # from its own subject ("glad": sorry, disappointed…).
                     own = near | {x.lower() for x in _rights(data, "antonym")}
+                    lookup_only = {r["w"] for r in c.execute(f"SELECT lower(word) AS w FROM words w WHERE {REFERENCE_SQL}")}
                     src = random.sample(all_ids, k=min(80, len(all_ids)))
                     wrongs = []
                     for r in c.execute(f"SELECT id, domains, data FROM words WHERE id IN ({','.join('?' * len(src))})", src):
                         if qtype == "antonym" and set(json.loads(r["domains"] or "[]")) & set(domains):
                             continue
-                        wrongs += [s for s in quiz_synonyms(json.loads(r["data"])) if s.lower() not in own]
+                        # Never a look-up-only word, or one that gives the right answer away.
+                        wrongs += [s for s in quiz_synonyms(json.loads(r["data"]))
+                                   if s.lower() not in own and s.lower() not in lookup_only and not shares_word(s, right)]
                     wrongs = list(dict.fromkeys(wrongs))
                     random.shuffle(wrongs)
                     wrongs.sort(key=lambda s: len(s.split()) != len(right.split()))
@@ -413,7 +426,7 @@ def listen(n: int = Query(10, ge=1, le=50), stars: str | None = None,
             raise HTTPException(400, 'Not enough words here. Choose other words under "Words from".')
         chosen = weighted_sample(c, list(pool), n)
         same = same_sound(c)
-        all_ids = [r["id"] for r in c.execute("SELECT id FROM words")]
+        all_ids = [r["id"] for r in c.execute(f"SELECT id FROM words w WHERE NOT {REFERENCE_SQL}")]
         items = []
         for wid in chosen:
             item = full(fetch_word(c, wid))
@@ -428,10 +441,11 @@ def listen(n: int = Query(10, ge=1, le=50), stars: str | None = None,
             alike = {x for k in mine for x in same.get(k, ())} - {w}
             item["same_sound"] = sorted(alike)
             # Same number of words: a sentence among single words is a giveaway.
+            # Never a look-up-only word (vulgar, slurs, very rare) as a choice.
             cands = [(r["word"], r["ph"] or "") for r in c.execute(
-                "SELECT word, json_extract(data, '$.phonetic') AS ph FROM words "
+                "SELECT word, json_extract(data, '$.phonetic') AS ph FROM words w "
                 "WHERE length(word) - length(replace(word, ' ', '')) = ? "
-                "AND lower(word) != lower(?) ORDER BY random() LIMIT 400", (w.count(" "), w))]
+                f"AND lower(word) != lower(?) AND NOT {REFERENCE_SQL} ORDER BY random() LIMIT 400", (w.count(" "), w))]
             if len(cands) < 3:
                 sample = random.sample(all_ids, k=min(200, len(all_ids)))
                 cands += [(r["word"], "") for r in c.execute(

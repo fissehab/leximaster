@@ -1,9 +1,11 @@
 # The main sense a dictionary entry lacks or buries: Wiktionary's numeral
 # section isn't always fetched, so "two" began with a radio code and
 # "forty" with a bottle of beer. One per line:
-#   key | first|last | part of speech | definition
+#   key | first|last|promote | part of speech | definition
 # "first" puts it before the dictionary's meanings, "last" after them
-# (the month May after the verb may). Read by build_dataset.add_main_senses.
+# (the month May after the verb may); "promote" moves the dictionary's own
+# sense that starts with the definition to the front ("library": the place
+# with books before software). Read by build_dataset.add_main_senses.
 
 zero | first | numeral | The number 0.
 one | first | numeral | The number 1.
@@ -35,3 +37,7 @@ march | last | proper noun | March: the third month of the year, after February 
 planet | first | noun | A large round body in space that travels around a star; Earth is a planet that travels around the sun.
 a | first | article | Used before a singular noun that begins with a consonant sound, to mean one or any: a dog, a university.
 an | first | article | The form of “a” used before a vowel sound: an apple, an hour.
+
+# Everyday meaning first (audit 2026-11-15).
+library | promote | noun | An institution which holds books
+server | promote | noun | A waitress or waiter.

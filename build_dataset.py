@@ -359,7 +359,7 @@ def load_seed_file(path: Path) -> list[tuple[str, str]]:
 
 
 # Files in seeds/ that are not word lists: the collect stage skips them.
-NOT_SEED_LISTS = {"heteronyms", "ipa_variants", "lowercase_first"}
+NOT_SEED_LISTS = {"heteronyms", "ipa_variants", "lowercase_first", "lookup_only"}
 
 
 def seed_lists() -> list[Path]:
@@ -3552,9 +3552,20 @@ def add_main_senses(words: list[dict]) -> None:
             if not line:
                 continue
             parts = [x.strip() for x in line.split("|")]
-            if len(parts) != 4 or parts[1] not in ("first", "last") or parts[0] not in by_key:
-                sys.exit(f"{path.name}:{n}: expected 'key | first|last | pos | definition' for a known key")
+            if len(parts) != 4 or parts[1] not in ("first", "last", "promote") or parts[0] not in by_key:
+                sys.exit(f"{path.name}:{n}: expected 'key | first|last|promote | pos | definition' for a known key")
             k, where, pos, definition = parts
+            if where == "promote":   # the dictionary's own sense, moved to the front
+                ms = by_key[k]["meanings"]
+                hit = next(((m, sn) for m in ms if m["pos"] == pos for sn in m["senses"]
+                            if sn["definition"].startswith(definition)), None)
+                if not hit:
+                    sys.exit(f"{path.name}:{n}: no {pos} sense of {k!r} starts with {definition!r}")
+                m, sn = hit
+                m["senses"] = [sn, *[x for x in m["senses"] if x is not sn]]
+                by_key[k]["meanings"] = [m, *[x for x in ms if x is not m]]
+                normalize_display(by_key[k])
+                continue
             group = {"pos": pos, "senses": [{"definition": definition, "example": "", "synonyms": [], "antonyms": []}],
                      "synonyms": [], "antonyms": []}
             ms = by_key[k]["meanings"]
@@ -3643,6 +3654,18 @@ def add_forms(words: list[dict]) -> None:
         if not w.get("name_kind") and (f := forms_for(w["word"], [p for p in poses if p],
                                                          n.get("word_family") or [], shares_stem)):
             w["forms"] = f
+
+
+LOOKUP_ONLY = SEEDS / "lookup_only.txt"
+
+
+def lookup_only_keys() -> set[str]:
+    """seeds/lookup_only.txt: words kept in the Dictionary but out of practice
+    (vulgar words, slurs, nonstandard expressions)."""
+    if not LOOKUP_ONLY.exists():
+        return set()
+    return {ln.strip() for ln in LOOKUP_ONLY.read_text(encoding="utf-8").splitlines()
+            if ln.strip() and not ln.startswith("#")}
 
 
 def assemble(quiet: bool = False, write: bool = True) -> dict:
@@ -3939,6 +3962,11 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     for w in words:
         if REFERENCE in w["domains"] and LINKED_ZIPF[0] <= w["zipf"] <= LINKED_ZIPF[1]:
             w["domains"] = sorted({*w["domains"], LINKED} - {REFERENCE})
+    # Vulgar words, slurs and nonstandard expressions: look-up only.
+    lookup_only = lookup_only_keys()
+    for w in words:
+        if w["key"] in lookup_only:
+            w["domains"] = sorted({*w["domains"], REFERENCE} - {LINKED})
     # Frequency rank within the dataset (1 = most common), the order new
     # words are studied in; related words only after all the others.
     def order(w):

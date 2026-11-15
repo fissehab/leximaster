@@ -873,6 +873,22 @@ function rightsFor(data, kind) {
   return [...new Set(out)].filter(r => r && !(kind === "synonym" && contrasted.has(r.toLowerCase())));
 }
 
+// Words that are look-up only (vulgar, slurs, very rare): never a wrong option.
+let LOOKUP_ONLY = null;
+function lookupOnlyWords() {
+  if (!LOOKUP_ONLY) LOOKUP_ONLY = new Set([...INDEX.values()].filter(e => (e.d || []).includes("reference")).map(e => e.w.toLowerCase()));
+  return LOOKUP_ONLY;
+}
+
+// Two phrases share a word of four letters or more, one inside the other
+// ("judgment" / "misjudgment", "cart" / "shopping cart"): such a synonym or
+// antonym gives the answer away (app/api/practice.py shares_word).
+function sharesWord(a, b) {
+  const al = a.toLowerCase(), bl = b.toLowerCase();
+  const words = s => (s.match(/[a-z]+/g) || []).filter(t => t.length >= 4);
+  return words(al).some(t => bl.includes(t)) || words(bl).some(t => al.includes(t));
+}
+
 function defsById(ids) {
   const out = new Map();
   if (!ids.length) return out;
@@ -913,7 +929,7 @@ async function makeQuiz(q) {
     const everyday = nameKind ? ["bible_names"] : domains.filter(d => EVERYDAY_DOMAINS.includes(d));
     const distractIds = everyday.length
       ? all("SELECT id FROM words w WHERE id != ? AND EXISTS (SELECT 1 FROM json_each(w.domains) " +
-            `WHERE json_each.value IN (${everyday.map(() => "?").join(",")})) ORDER BY random() LIMIT 30`,
+            `WHERE json_each.value IN (${everyday.map(() => "?").join(",")})) AND NOT ${REFERENCE_SQL} ORDER BY random() LIMIT 30`,
             [wid, ...everyday]).map(r => r.id)
       // Other words of the chosen scope ("Statistics", "Bible · Vocabulary"), else any word.
       : shuffle((q.domain && pool.length >= 30 ? pool : allIds).filter(i => i !== wid)).slice(0, 30);
@@ -960,18 +976,21 @@ async function makeQuiz(q) {
         }
       }
       if (qtype === "synonym" || qtype === "antonym") {
-        const rights = rightsFor(data, qtype).filter(r => r.toLowerCase() !== word.toLowerCase());
+        const rights = rightsFor(data, qtype).filter(r => !sharesWord(r, word));
         if (!rights.length) return null;
         const right = choice(rights);
         // Wrong options: other words' synonyms; never this word's own
         // synonyms, antonyms or compared-with words, and for antonyms never
         // from its own subject.
         const own = new Set([...near, ...rightsFor(data, "antonym").map(s => s.toLowerCase())]);
+        const lookupOnly = lookupOnlyWords();
         let wrongs = [];
         for (const id of shuffle([...allIds]).slice(0, 80)) {
           const e = INDEX.get(id);
           if (!e || (qtype === "antonym" && (e.d || []).some(d => domains.includes(d)))) continue;
-          wrongs = wrongs.concat((e.sy || []).filter(s => !own.has(s.toLowerCase())));
+          // Never a look-up-only word, or one that gives the right answer away.
+          wrongs = wrongs.concat((e.sy || []).filter(s => !own.has(s.toLowerCase()) && !lookupOnly.has(s.toLowerCase())
+                                                         && !sharesWord(s, right)));
         }
         wrongs = shuffle([...new Set(wrongs)]);
         const size = right.split(/\s+/).length;
@@ -1084,9 +1103,10 @@ async function listen(q) {
     const alike = new Set(mine.flatMap(k => [...(sameSound().get(k) || [])]));
     alike.delete(w);
     item.same_sound = [...alike].sort();
-    const cands = all("SELECT id, word FROM words WHERE length(word) - length(replace(word, ' ', '')) = ? " +
-                      "AND lower(word) != lower(?) ORDER BY random() LIMIT 400", [spaces, w]);
-    if (cands.length < 3) cands.push(...all("SELECT id, word FROM words WHERE lower(word) != lower(?) ORDER BY random() LIMIT 200", [w]));
+    // Never a look-up-only word (vulgar, slurs, very rare) as a choice.
+    const cands = all("SELECT id, word FROM words w WHERE length(word) - length(replace(word, ' ', '')) = ? " +
+                      `AND lower(word) != lower(?) AND NOT ${REFERENCE_SQL} ORDER BY random() LIMIT 400`, [spaces, w]);
+    if (cands.length < 3) cands.push(...all(`SELECT id, word FROM words w WHERE lower(word) != lower(?) AND NOT ${REFERENCE_SQL} ORDER BY random() LIMIT 200`, [w]));
     const scored = [];
     for (const c of cands) {
       const ph = (INDEX.get(c.id) || {}).p || "";

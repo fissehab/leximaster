@@ -1,0 +1,16 @@
+# The second five-reviewer audit (2026-11-15): basic words whose main meaning
+# was the computer one ("library" in Basic words, "server" in Dining out).
+# The everyday meaning comes first (seeds/main_senses/main.txt "promote"),
+# and the study notes lead with it.
+library | nuance.core.definition | A building or room with books, magazines and other media that people can read there or borrow; also, a collection of books.
+library | nuance.examples.everyday | I borrowed three novels from the public library last week.
+library | nuance.usage_note | Americans use library first of all for the place with books: the public library, the school library, a library card. In software it also means reusable code that a program calls, as in 'a Python library'; in an engineering meeting 'the library' usually means code.
+server | nuance.core.definition | A person who brings food and drinks to customers in a restaurant; a waiter or waitress.
+server | nuance.examples.everyday | Our server brought us water and took our order right away.
+server | nuance.usage_note | In a restaurant, Americans say server for the person who takes your order, as in 'Our server was great.' In tech talk, a server is a computer or program that provides data to others; say 'the web server' or 'the database server' to be clear.
+# Quiz answers that weren't right: "reception" isn't the opposite of an
+# interception (a completion is); "trimming" is a side dish only as
+# "trimmings"; a misjudgment is a kind of judgment, not its opposite.
+interception | nuance.antonyms | ["completion"]
+fixing | synonyms | ["topping", "side dish"]
+judgment | nuance.antonyms | ["indecision"]
