@@ -1,0 +1,156 @@
+# Pronunciation fixes from the later round of the 2026-11-15 audit:
+# British /ɔ/ in o-words Americans say with /ɑ/; phrases with no main
+# stress; two main stresses in one word; phrase words that disagreed with
+# their own entries (neural network, Poisson process, algorithmic …).
+elliptic-paraboloid | phonetic | /ɪˈlɪptɪk pəˈɹæbəˌlɔɪd/
+elliptic-paraboloid | nuance.pronunciation.ipa | /ɪˈlɪptɪk pəˈɹæbəˌlɔɪd/
+elliptic-paraboloid | nuance.pronunciation.respelling | ih-LIP-tik puh-RAB-uh-loid
+cosmological-argument | phonetic | /ˌkɑzməˈlɑdʒɪkəl ˈɑɹɡjəmənt/
+cosmological-argument | nuance.pronunciation.ipa | /ˌkɑzməˈlɑdʒɪkəl ˈɑɹɡjəmənt/
+cosmological-argument | nuance.pronunciation.respelling | kahz-muh-LAH-jih-kul AR-gyuh-munt
+davidic-covenant | phonetic | /dəˈvɪdɪk ˈkʌvənənt/
+davidic-covenant | nuance.pronunciation.ipa | /dəˈvɪdɪk ˈkʌvənənt/
+davidic-covenant | nuance.pronunciation.respelling | duh-VID-ik KUV-uh-nunt
+deuterocanonical-books | phonetic | /ˌdutəɹoʊkəˈnɑnɪkəl ˈbʊks/
+deuterocanonical-books | nuance.pronunciation.ipa | /ˌdutəɹoʊkəˈnɑnɪkəl ˈbʊks/
+epistemological-dualism | phonetic | /ɪˌpɪstəməˈlɑdʒɪkəl ˈduəˌlɪzəm/
+epistemological-dualism | nuance.pronunciation.ipa | /ɪˌpɪstəməˈlɑdʒɪkəl ˈduəˌlɪzəm/
+algorithmic-accountability | phonetic | /ˌælɡəˈɹɪðmɪk əˌkaʊntəˈbɪləti/
+algorithmic-accountability | nuance.pronunciation.ipa | /ˌælɡəˈɹɪðmɪk əˌkaʊntəˈbɪləti/
+algorithmic-bias | phonetic | /ˌælɡəˈɹɪðmɪk ˈbaɪəs/
+algorithmic-bias | nuance.pronunciation.ipa | /ˌælɡəˈɹɪðmɪk ˈbaɪəs/
+algorithmic-fairness | phonetic | /ˌælɡəˈɹɪðmɪk ˈfɛɹnəs/
+algorithmic-fairness | nuance.pronunciation.ipa | /ˌælɡəˈɹɪðmɪk ˈfɛɹnəs/
+empirical-data | phonetic | /ɪmˈpɪɹɪkəl ˈdeɪtə/
+empirical-data | nuance.pronunciation.ipa | /ɪmˈpɪɹɪkəl ˈdeɪtə/
+imaginary-number | phonetic | /ɪˈmædʒəˌnɛɹi ˈnʌmbɚ/
+imaginary-number | nuance.pronunciation.ipa | /ɪˈmædʒəˌnɛɹi ˈnʌmbɚ/
+imaginary-unit | phonetic | /ɪˈmædʒəˌnɛɹi ˈjunɪt/
+imaginary-unit | nuance.pronunciation.ipa | /ɪˈmædʒəˌnɛɹi ˈjunɪt/
+imaginary-unit | nuance.pronunciation.respelling | ih-MAJ-uh-ner-ee YOO-nit
+investigative-journalist | phonetic | /ɪnˈvɛstɪˌɡeɪtɪv ˈdʒɝnəlɪst/
+investigative-journalist | nuance.pronunciation.ipa | /ɪnˈvɛstɪˌɡeɪtɪv ˈdʒɝnəlɪst/
+neural-network | phonetic | /ˈnʊɹəl ˈnɛtˌwɝk/
+neural-network | nuance.pronunciation.ipa | /ˈnʊɹəl ˈnɛtˌwɝk/
+poisson-process | phonetic | /pwɑˈsoʊn ˈpɹɑˌsɛs/
+poisson-process | nuance.pronunciation.ipa | /pwɑˈsoʊn ˈpɹɑˌsɛs/
+poisson-process | nuance.pronunciation.respelling | pwah-SOHN PRAH-ses
+small-metania | phonetic | /ˈsmɔl məˈtɑniə/
+small-metania | nuance.pronunciation.ipa | /ˈsmɔl məˈtɑniə/
+small-metania | nuance.pronunciation.respelling | SMAWL muh-TAH-nee-uh
+halcyon | phonetic | /ˈhælsiən/
+halcyon | nuance.pronunciation.ipa | /ˈhælsiən/
+sanitation-engineer | phonetic | /ˌsænɪˈteɪʃən ˌɛndʒəˈnɪɹ/
+sanitation-engineer | nuance.pronunciation.ipa | /ˌsænɪˈteɪʃən ˌɛndʒəˈnɪɹ/
+mechanical-engineer | phonetic | /məˈkænɪkəl ˌɛndʒəˈnɪɹ/
+mechanical-engineer | nuance.pronunciation.ipa | /məˈkænɪkəl ˌɛndʒəˈnɪɹ/
+prompt-engineer | phonetic | /ˈpɹɑmpt ˌɛndʒəˈnɪɹ/
+prompt-engineer | nuance.pronunciation.ipa | /ˈpɹɑmpt ˌɛndʒəˈnɪɹ/
+prompt-engineering | phonetic | /ˈpɹɑmpt ˌɛndʒəˈnɪɹɪŋ/
+prompt-engineering | nuance.pronunciation.ipa | /ˈpɹɑmpt ˌɛndʒəˈnɪɹɪŋ/
+cold-blooded | phonetic | /ˈkoʊldˌblʌdɪd/
+cold-blooded | nuance.pronunciation.ipa | /ˈkoʊldˌblʌdɪd/
+good-looking | phonetic | /ˈɡʊdˌlʊkɪŋ/
+good-looking | nuance.pronunciation.ipa | /ˈɡʊdˌlʊkɪŋ/
+headfirst | phonetic | /ˌhɛdˈfɝst/
+headfirst | nuance.pronunciation.ipa | /ˌhɛdˈfɝst/
+headfirst | nuance.pronunciation.respelling | hed-FURST
+two-faced | phonetic | /ˈtuˌfeɪst/
+two-faced | nuance.pronunciation.ipa | /ˈtuˌfeɪst/
+contraposition | phonetic | /ˌkɑntɹəpəˈzɪʃən/
+contraposition | nuance.pronunciation.ipa | /ˌkɑntɹəpəˈzɪʃən/
+contraposition | nuance.pronunciation.respelling | kahn-truh-puh-ZISH-un
+eschatology | phonetic | /ˌɛskəˈtɑlədʒi/
+eschatology | nuance.pronunciation.ipa | /ˌɛskəˈtɑlədʒi/
+necrology | phonetic | /nəˈkɹɑlədʒi/
+necrology | nuance.pronunciation.ipa | /nəˈkɹɑlədʒi/
+anthologist | phonetic | /ænˈθɑlədʒɪst/
+anthologist | nuance.pronunciation.ipa | /ænˈθɑlədʒɪst/
+allotment | phonetic | /əˈlɑtmənt/
+allotment | nuance.pronunciation.ipa | /əˈlɑtmənt/
+cognition | phonetic | /kɑɡˈnɪʃən/
+cognition | nuance.pronunciation.ipa | /kɑɡˈnɪʃən/
+colony | phonetic | /ˈkɑləni/
+colony | nuance.pronunciation.ipa | /ˈkɑləni/
+confidential | phonetic | /ˌkɑnfɪˈdɛnʃəl/
+confidential | nuance.pronunciation.ipa | /ˌkɑnfɪˈdɛnʃəl/
+confidential | nuance.pronunciation.respelling | kahn-fih-DEN-shul
+conic | phonetic | /ˈkɑnɪk/
+conic | nuance.pronunciation.ipa | /ˈkɑnɪk/
+hyperbolic | phonetic | /ˌhaɪpɚˈbɑlɪk/
+hyperbolic | nuance.pronunciation.ipa | /ˌhaɪpɚˈbɑlɪk/
+hyperbolic | nuance.pronunciation.respelling | hy-per-BAH-lik
+onset | phonetic | /ˈɑnˌsɛt/
+onset | nuance.pronunciation.ipa | /ˈɑnˌsɛt/
+onset | nuance.pronunciation.respelling | AHN-set
+platonic | phonetic | /pləˈtɑnɪk/
+platonic | nuance.pronunciation.ipa | /pləˈtɑnɪk/
+solubility | phonetic | /ˌsɑljəˈbɪləti/
+solubility | nuance.pronunciation.ipa | /ˌsɑljəˈbɪləti/
+solvent | phonetic | /ˈsɑlvənt/
+solvent | nuance.pronunciation.ipa | /ˈsɑlvənt/
+unstoppable | phonetic | /ʌnˈstɑpəbəl/
+unstoppable | nuance.pronunciation.ipa | /ʌnˈstɑpəbəl/
+volcanic | phonetic | /vɑlˈkænɪk/
+volcanic | nuance.pronunciation.ipa | /vɑlˈkænɪk/
+shock | phonetic | /ʃɑk/
+shock | nuance.pronunciation.ipa | /ʃɑk/
+shock | nuance.pronunciation.respelling | shahk
+disqualify | phonetic | /dɪsˈkwɑləˌfaɪ/
+disqualify | nuance.pronunciation.ipa | /dɪsˈkwɑləˌfaɪ/
+ophthalmologist | phonetic | /ˌɑfθəlˈmɑlədʒɪst/
+ophthalmologist | nuance.pronunciation.ipa | /ˌɑfθəlˈmɑlədʒɪst/
+watchful | phonetic | /ˈwɑtʃfəl/
+watchful | nuance.pronunciation.ipa | /ˈwɑtʃfəl/
+squash | phonetic | /skwɑʃ/
+squash | nuance.pronunciation.ipa | /skwɑʃ/
+sorrowful | phonetic | /ˈsɑɹoʊfəl/
+sorrowful | nuance.pronunciation.ipa | /ˈsɑɹoʊfəl/
+sorrowful | nuance.pronunciation.respelling | SAHR-oh-fuhl
+gourmand | phonetic | /ˈɡʊɹˌmɑnd/
+gourmand | nuance.pronunciation.ipa | /ˈɡʊɹˌmɑnd/
+gourmand | nuance.pronunciation.respelling | GOOR-mahnd
+bad-luck | phonetic | /ˌbæd ˈlʌk/
+bad-luck | nuance.pronunciation.ipa | /ˌbæd ˈlʌk/
+belly-whopper | phonetic | /ˈbɛli ˈwɑpɚ/
+belly-whopper | nuance.pronunciation.ipa | /ˈbɛli ˈwɑpɚ/
+black-in | phonetic | /ˌblæk ˈɪn/
+black-in | nuance.pronunciation.ipa | /ˌblæk ˈɪn/
+black-in | nuance.pronunciation.respelling | blak IN
+break-in | phonetic | /ˌbɹeɪk ˈɪn/
+break-in | nuance.pronunciation.ipa | /ˌbɹeɪk ˈɪn/
+bulletproof-vest | phonetic | /ˈbʊlɪtˌpɹuf ˈvɛst/
+bulletproof-vest | nuance.pronunciation.ipa | /ˈbʊlɪtˌpɹuf ˈvɛst/
+can-i-jump-in | phonetic | /kæn aɪ ˌdʒʌmp ˈɪn/
+can-i-jump-in | nuance.pronunciation.ipa | /kæn aɪ ˌdʒʌmp ˈɪn/
+can-i-jump-in | nuance.pronunciation.respelling | kan eye jump IN
+covalent-bond | phonetic | /koʊˈveɪlənt ˈbɑnd/
+covalent-bond | nuance.pronunciation.ipa | /koʊˈveɪlənt ˈbɑnd/
+cut-in | phonetic | /ˌkʌt ˈɪn/
+cut-in | nuance.pronunciation.ipa | /ˌkʌt ˈɪn/
+cut-in | nuance.pronunciation.respelling | kut IN
+give-in | phonetic | /ˌɡɪv ˈɪn/
+give-in | nuance.pronunciation.ipa | /ˌɡɪv ˈɪn/
+go-in | phonetic | /ˌɡoʊ ˈɪn/
+go-in | nuance.pronunciation.ipa | /ˌɡoʊ ˈɪn/
+i-can't-lie | phonetic | /aɪ ˌkænt ˈlaɪ/
+i-can't-lie | nuance.pronunciation.ipa | /aɪ ˌkænt ˈlaɪ/
+i-can't-lie | nuance.pronunciation.respelling | eye kant LYE
+if-i-may | phonetic | /ɪf aɪ ˈmeɪ/
+if-i-may | nuance.pronunciation.ipa | /ɪf aɪ ˈmeɪ/
+once-in-a-blue-moon | phonetic | /ˈwʌns ɪn ə ˌblu ˈmun/
+once-in-a-blue-moon | nuance.pronunciation.ipa | /ˈwʌns ɪn ə ˌblu ˈmun/
+once-in-a-blue-moon | nuance.pronunciation.respelling | wuns in uh bloo MOON
+push-in | phonetic | /ˌpʊʃ ˈɪn/
+push-in | nuance.pronunciation.ipa | /ˌpʊʃ ˈɪn/
+up-and-at-'em | phonetic | /ˌʌp ənd ˈæt əm/
+up-and-at-'em | nuance.pronunciation.ipa | /ˌʌp ənd ˈæt əm/
+you-know | phonetic | /ju ˈnoʊ/
+you-know | nuance.pronunciation.ipa | /ju ˈnoʊ/
+adversarial-attack | phonetic | /ˌædvɚˈsɛɹiəl əˈtæk/
+adversarial-attack | nuance.pronunciation.ipa | /ˌædvɚˈsɛɹiəl əˈtæk/
+adversarial-example | phonetic | /ˌædvɚˈsɛɹiəl ɪɡˈzæmpəl/
+adversarial-example | nuance.pronunciation.ipa | /ˌædvɚˈsɛɹiəl ɪɡˈzæmpəl/
+adversarial-robustness | phonetic | /ˌædvɚˈsɛɹiəl ɹoʊˈbʌstnəs/
+adversarial-robustness | nuance.pronunciation.ipa | /ˌædvɚˈsɛɹiəl ɹoʊˈbʌstnəs/
+believer's-baptism | phonetic | /bɪˌlivɚz ˈbæptɪzəm/

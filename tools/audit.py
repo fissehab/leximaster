@@ -105,6 +105,11 @@ def display_problems(w: dict) -> list[str]:
         out.append("pipeline talk in the pronunciation tip")
     if re.search(r"\u0361|\u035c|\([ɹr]\)|,", w.get("phonetic", "")):
         out.append("tie bar, optional r or variants in the IPA")
+    ipa = w.get("phonetic", "")
+    if ipa and " " in w["word"].strip() and "ˈ" not in ipa:
+        out.append("phrase IPA without a main stress")
+    if any(tok.count("ˈ") > 1 for tok in re.split(r"[\s/]+", ipa)):
+        out.append("two main stresses in one word of the IPA")
     conv = [e["text"] for e in w.get("conversation") or []]
     if any(_similar(a, b) for i, a in enumerate(conv) for b in conv[i + 1:]):
         out.append("near-duplicate conversation lines")

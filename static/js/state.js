@@ -27,16 +27,18 @@ export function studyFocus() {
 }
 export function setStudyFocus(value) {
   try { localStorage.setItem(FOCUS_KEY, value); } catch (e) { return; }
-  for (const tab of PRACTICE_TABS) saveFilter(tab, { ...loadFilter(tab), domain: value, list_id: "", stars: "" });
+  for (const tab of PRACTICE_TABS) saveFilter(tab, { ...loadFilter(tab), domain: value, list_id: "" });
 }
 
 // Practice filters ("Words from": a list or a scope), remembered separately
 // for each tab; a tab not used yet starts from the study focus.
-const NO_FILTER = { stars: "", list_id: "", domain: "" };
+const NO_FILTER = { list_id: "", domain: "" };
 export function loadFilter(tab) {
   try {
     const saved = localStorage.getItem(`lexi-filter-${tab}`);
-    return { ...NO_FILTER, domain: studyFocus(), ...JSON.parse(saved || "{}") };
+    // A filter saved before 2026-11 may carry a star rating: gone with the stars.
+    const { stars, ...kept } = JSON.parse(saved || "{}");
+    return { ...NO_FILTER, domain: studyFocus(), ...kept };
   } catch (e) { return { ...NO_FILTER }; }
 }
 export function saveFilter(tab, filter) {

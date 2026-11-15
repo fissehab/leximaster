@@ -333,12 +333,12 @@ def today_iso() -> str:
     return date.today().isoformat()
 
 
-def bump_activity(c: sqlite3.Connection, seconds: int = 0, reviews: int = 0, new_words: int = 0) -> None:
+def bump_activity(c: sqlite3.Connection, seconds: int = 0, reviews: int = 0) -> None:
     c.execute(
         """INSERT INTO daily_activity(date, seconds, reviews, new_words) VALUES (?, ?, ?, ?)
            ON CONFLICT(date) DO UPDATE SET seconds=seconds+excluded.seconds,
              reviews=reviews+excluded.reviews, new_words=new_words+excluded.new_words""",
-        (today_iso(), seconds, reviews, new_words))
+        (today_iso(), seconds, reviews, 0))
 
 
 # Everyday American English domains (see build_dataset.EVERYDAY_DOMAINS).
@@ -357,7 +357,6 @@ NAMES_ONLY_SQL = ("(EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.v
 # "linked" and studied after the rest): there to look up, so they're studied
 # only when you choose them: in a list of yours, starred, or with that filter.
 REFERENCE_SQL = "EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'reference')"
-LINKED_SQL = "EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'linked')"
 CHOSEN_SQL = (f"(NOT {REFERENCE_SQL} OR COALESCE(u.stars, 0) > 0 "
               "OR EXISTS (SELECT 1 FROM list_words lw2 WHERE lw2.word_id = w.id))")   # needs `u` (user_word)
 BIBLE_TRACKS = ("bible", "bible_vocab", "bible_names")
@@ -418,15 +417,12 @@ def track_clause(track: str | None) -> str:
     return "1=1"
 
 
-def pool_ids(c: sqlite3.Connection, *, stars: list[int] | None = None, list_id: int | None = None,
+def pool_ids(c: sqlite3.Connection, *, list_id: int | None = None,
              domain: str | None = None, need_audio: bool = False, need_enriched: bool = False,
              exclude_known: bool = False) -> list[int]:
     """Word ids matching the practice filters shared by every game."""
     where, args = ["1=1"], []
     joins = "LEFT JOIN user_word u ON u.word_id = w.id"
-    if stars:
-        where.append(f"COALESCE(u.stars, 0) IN ({','.join('?' * len(stars))})")
-        args += stars
     if list_id:
         joins += " JOIN list_words lw ON lw.word_id = w.id AND lw.list_id = ?"
         args.insert(0, list_id)

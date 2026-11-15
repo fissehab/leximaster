@@ -18,10 +18,10 @@ from ..common import (BIBLE_TRACKS, EVERYDAY_DOMAINS, NAMES_ONLY_SQL, REFERENCE_
 
 router = APIRouter(prefix="/api")
 
-def parse_filters(stars: str | None, list_id: int | None, domain: str | None) -> dict:
+
+def parse_filters(list_id: int | None, domain: str | None) -> dict:
     """Practice filters shared by every game. Words marked known are left out."""
-    star_list = [int(s) for s in stars.split(",") if s.strip().isdigit()] if stars else None
-    return {"stars": star_list, "list_id": list_id or None, "domain": domain or None,
+    return {"list_id": list_id or None, "domain": domain or None,
             "exclude_known": True}
 
 
@@ -88,12 +88,12 @@ def add_activity(body: ActivityIn):
 # ------------------------------------------------------------------- flashcards
 
 @router.get("/flashcards")
-def flashcards(stars: str | None = None, list_id: int | None = None, domain: str | None = None,
+def flashcards(list_id: int | None = None, domain: str | None = None,
                n: int = Query(30, ge=1, le=500), shuffle: bool = True, brief: bool = False):
     """A deck. brief: only what the front of a card needs (the back is
     loaded per card from /api/words/{id}), so the first card shows at once."""
     with db.tx() as c:
-        ids = pool_ids(c, **parse_filters(stars, list_id, domain))
+        ids = pool_ids(c, **parse_filters(list_id, domain))
         pool = len(ids)
         ids = weighted_sample(c, ids, n) if shuffle else ids[:n]
         card = compact if brief else full
@@ -217,11 +217,10 @@ def shares_word(a: str, b: str) -> bool:
 
 @router.get("/quiz")
 def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym,name_kind,pattern",
-              n: int = Query(10, ge=1, le=50), stars: str | None = None,
-              list_id: int | None = None, domain: str | None = None):
+              n: int = Query(10, ge=1, le=50), list_id: int | None = None, domain: str | None = None):
     wanted = [t for t in types.split(",") if t in QUIZ_TYPES] or list(QUIZ_TYPES)
     with db.tx() as c:
-        filters = parse_filters(stars, list_id, domain)
+        filters = parse_filters(list_id, domain)
         if wanted == ["name_kind"] and not list_id and domain not in BIBLE_TRACKS:
             filters["domain"] = "bible_names"   # only names can be asked "who or what?"
         pool = pool_ids(c, **filters)
@@ -372,10 +371,9 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
 # --------------------------------------------------------------------- matching
 
 @router.get("/matching")
-def matching(kind: str = "meaning", n: int = Query(6, ge=3, le=10), stars: str | None = None,
-             list_id: int | None = None, domain: str | None = None):
+def matching(kind: str = "meaning", n: int = Query(6, ge=3, le=10), list_id: int | None = None, domain: str | None = None):
     with db.tx() as c:
-        pool = pool_ids(c, **parse_filters(stars, list_id, domain))
+        pool = pool_ids(c, **parse_filters(list_id, domain))
         pairs = []
         for wid in weighted_sample(c, list(pool), min(len(pool), n * 5)):
             if len(pairs) >= n:
@@ -444,14 +442,13 @@ def sound_distance(a: str, b: str) -> float:
 
 
 @router.get("/listen")
-def listen(n: int = Query(10, ge=1, le=50), stars: str | None = None,
-           list_id: int | None = None, domain: str | None = None, audio_only: bool = False):
+def listen(n: int = Query(10, ge=1, le=50), list_id: int | None = None, domain: str | None = None, audio_only: bool = False):
     with db.tx() as c:
-        pool = pool_ids(c, need_audio=audio_only, **parse_filters(stars, list_id, domain))
+        pool = pool_ids(c, need_audio=audio_only, **parse_filters(list_id, domain))
         fallback = False
         if audio_only and not pool:
             # No recordings for these words: include synthesized voice.
-            pool = pool_ids(c, **parse_filters(stars, list_id, domain))
+            pool = pool_ids(c, **parse_filters(list_id, domain))
             fallback = True
         if not pool:   # the choices come from all words, so even one word can be practiced
             raise HTTPException(400, 'Not enough words here. Choose other words under "Words from".')
@@ -532,9 +529,9 @@ def get_recording(word_id: int):
 
 
 @router.get("/practice/words")
-def practice_words(stars: str | None = None, list_id: int | None = None, domain: str | None = None,
+def practice_words(list_id: int | None = None, domain: str | None = None,
                    n: int = Query(40, ge=1, le=500)):
     """Word picker for pronunciation practice: weakest first."""
     with db.tx() as c:
-        ids = weighted_sample(c, pool_ids(c, **parse_filters(stars, list_id, domain)), n)
+        ids = weighted_sample(c, pool_ids(c, **parse_filters(list_id, domain)), n)
         return {"words": [compact(fetch_word(c, i)) for i in ids]}

@@ -70,8 +70,6 @@ def stats():
         # Due: the words to refresh, the same number Today shows.
         due = len(pool_ids(c, domain="refresh", exclude_known=True))
         known = c.execute("SELECT COUNT(*) AS n FROM user_word WHERE known=1").fetchone()["n"]
-        stars = {r["stars"]: r["n"] for r in c.execute(
-            "SELECT stars, COUNT(*) AS n FROM user_word WHERE stars > 0 GROUP BY stars")}
         # Practice accuracy (quizzes and games) apart from review retention:
         # a self-graded review and a four-option guess aren't the same signal.
         overall = c.execute("SELECT COUNT(*) AS n, COALESCE(SUM(correct),0) AS ok FROM review_log "
@@ -114,7 +112,7 @@ def stats():
         return {
             "words": {"total": total, "enriched": enriched, "with_audio": with_audio,
                       "mastered": mastered, "learning": learning, "seen": seen, "due": due, "overdue": overdue,
-                      "known": known, "stars": stars},
+                      "known": known},
             "accuracy": {"attempts": overall["n"], "correct": overall["ok"]},
             "retention": retention,
             "streak": streak(c),
@@ -129,8 +127,6 @@ def stats():
 # ---------------------------------------------------------------------- settings
 
 class SettingsIn(BaseModel):
-    session_minutes: int | None = None
-    new_per_day: int | None = None
     autoplay: bool | None = None
     speech_rate: float | None = None
     word_levels: str | None = None     # "1,2,3": common.parse_levels
@@ -145,10 +141,6 @@ def get_settings():
 @router.patch("/settings")
 def update_settings(body: SettingsIn):
     values = body.model_dump(exclude_none=True)
-    if "session_minutes" in values and not 5 <= values["session_minutes"] <= 60:
-        raise HTTPException(400, "Session length must be between 5 and 60 minutes.")
-    if "new_per_day" in values and not 0 <= values["new_per_day"] <= 100:
-        raise HTTPException(400, "New words per day must be between 0 and 100.")
     if "speech_rate" in values and not 0.5 <= values["speech_rate"] <= 2:
         raise HTTPException(400, "Voice speed must be between 0.5 and 2.")
     if "word_levels" in values:
@@ -524,10 +516,6 @@ async def import_progress(file: UploadFile = File(...)):
 
             st = data.get("settings") if isinstance(data.get("settings"), dict) else {}
             clean = {}
-            if "session_minutes" in st:
-                clean["session_minutes"] = _clamp(st["session_minutes"], 5, 60, 15)
-            if "new_per_day" in st:
-                clean["new_per_day"] = _clamp(st["new_per_day"], 0, 100, 12)
             if "speech_rate" in st:
                 clean["speech_rate"] = _clamp(st["speech_rate"], 0.5, 2.0, 0.9)
             if "autoplay" in st:

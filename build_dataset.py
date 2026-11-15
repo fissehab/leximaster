@@ -2343,7 +2343,7 @@ def cmu_ipa(key: str, known: dict[str, str], word: str = "", legacy: bool = Fals
         if not ipa:
             return ""
         out.append(ipa)
-    return "/" + " ".join(phrase_stress(parts, out)) + "/"
+    return "/" + " ".join(phrase_stress(parts, out, legacy=legacy)) + "/"
 
 
 # Words that are normally unstressed inside a phrase.
@@ -2353,10 +2353,12 @@ must have has had i me my you your he him his she her it its we us our they them
 not no just""".split())
 
 
-def phrase_stress(words: list[str], ipas: list[str]) -> list[str]:
+def phrase_stress(words: list[str], ipas: list[str], legacy: bool = False) -> list[str]:
     """Phrase stress in American English: the main stress on the last
     content word ("split the CHECK", "pick UP"), secondary stress on the
-    other content words, none on function words."""
+    other content words, none on function words. A word's own secondary
+    stress goes when its main stress becomes secondary (one mark per word),
+    except for `legacy`, the old output kept to recognize notes that copied it."""
     if len(ipas) < 2:
         return ipas
     content = [i for i, w in enumerate(words) if w not in FUNCTION_WORDS]
@@ -2368,8 +2370,8 @@ def phrase_stress(words: list[str], ipas: list[str]) -> list[str]:
     for i, ipa in enumerate(ipas):
         if i == last:
             out.append(ipa if "ˈ" in ipa else ipa.replace("ˌ", "ˈ", 1))
-        elif i in content:
-            out.append(ipa.replace("ˈ", "ˌ"))
+        elif i in content:   # the word's main stress becomes secondary; its own secondary goes
+            out.append(ipa.replace("ˈ", "ˌ") if legacy else ipa.replace("ˌ", "").replace("ˈ", "ˌ"))
         else:
             out.append(ipa.replace("ˈ", "").replace("ˌ", ""))
     return out
@@ -2851,6 +2853,12 @@ def prune_senses(meanings: list[dict], label_map: dict) -> list[dict]:
 
 
 PHRASE_FREQ = CACHE / "phrase_freq.json"   # tools/phrase_freq.py (Google Books Ngram)
+# A phrase's book frequency counts one form only ("hang out", not "hanging
+# out", "hung out") and books under-use spoken phrases, so it is raised by this
+# much (Zipf): calibrated so "figure out", "pick up" and "take care" come out
+# very common, "hang out" common, "break the ice" and "be that as it may"
+# uncommon, "see off" rare.
+PHRASE_BOOST = 0.8
 
 
 @functools.lru_cache(maxsize=1)
@@ -2870,7 +2878,7 @@ def rank_zipf(w: dict) -> float:
         return w["zipf"]
     f = phrase_freqs().get(w["word"].lower()) if " " in w["word"] else None
     if f:
-        return math.log10(f * 1e9)
+        return math.log10(f * 1e9) + PHRASE_BOOST
     return min(zipf_frequency(x, "en") for x in tokens) - 1.0
 
 
@@ -3669,6 +3677,38 @@ def add_forms(words: list[dict]) -> None:
             w["forms"] = f
 
 
+PATTERN_PREPS = CACHE / "pattern_preps.json"   # tools/pattern_preps.py (Google Books Ngram)
+QUIZ_PREPS = ("on", "in", "at", "of", "to", "for", "with", "about", "from", "by")   # the quiz's COMMON_PREPS
+ALSO_PREP_SHARE = 0.1     # as common as a tenth of the pattern's own preposition…
+ALSO_PREP_MIN = 1e-8      # …and at least this often in books (Zipf 1): good English
+
+
+def add_also_preps(words: list[dict]) -> None:
+    """nuance.also_preps: prepositions that are good English after a grammar
+    quiz word without being in its patterns ("impatient of", "angry about"),
+    from their frequency in American books (tools/pattern_preps.py); a quiz
+    never offers them as wrong answers."""
+    freq = json.loads(PATTERN_PREPS.read_text(encoding="utf-8")) if PATTERN_PREPS.exists() else {}
+    if not freq:
+        return
+    for w in words:
+        n = w.get("nuance")
+        if not n or " " in w["word"]:
+            continue
+        word = w["word"].lower()
+        if f"{word} on" not in freq:
+            continue
+        pats = " ".join(n.get("patterns") or []).lower()
+        listed = {p for p in QUIZ_PREPS if re.search(rf"\b{p}\b", pats)}
+        right = max((freq.get(f"{word} {p}", 0.0) for p in listed), default=0.0)
+        floor = max(ALSO_PREP_MIN, ALSO_PREP_SHARE * right)
+        also = [p for p in QUIZ_PREPS if p not in listed and freq.get(f"{word} {p}", 0.0) >= floor]
+        if also:
+            n["also_preps"] = also
+        else:
+            n.pop("also_preps", None)
+
+
 LOOKUP_ONLY = SEEDS / "lookup_only.txt"
 
 
@@ -3975,6 +4015,7 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     for w in words:
         if REFERENCE in w["domains"] and LINKED_ZIPF[0] <= w["zipf"] <= LINKED_ZIPF[1]:
             w["domains"] = sorted({*w["domains"], LINKED} - {REFERENCE})
+    add_also_preps(words)
     # Vulgar words, slurs and nonstandard expressions: look-up only.
     lookup_only = lookup_only_keys()
     for w in words:

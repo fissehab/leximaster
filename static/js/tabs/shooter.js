@@ -79,7 +79,6 @@ const bestKey = () => `shooter:${length === "endless" ? "endless:" : ""}${speed 
 const boardLabel = () => `${length === "endless" ? "Endless" : "15 words"}, ${speed === "calm" ? "Calm" : "with a clock"}`;
 const plural = (n, one, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
 const num = n => n.toLocaleString("en-US");
-const inRound = () => ["ready", "falling", "hit", "miss"].includes(phase);
 
 function stopLoop() {
   cancelAnimationFrame(raf);

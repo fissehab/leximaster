@@ -283,14 +283,14 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Tab | What it's for |
 |---|---|
 | Today | The home screen: the word of the day (its name opens the full entry), the words to refresh (practiced words due today; the same number as the badge on Today) with a button that opens them in Flashcards, your streak, words learning and time today. |
-| Practice | Nine activities in three groups: Sound, Meaning and Games. Each has one **Words from** menu: Words to refresh, My words, Everything, your lists, the general tracks and every topic. |
+| Practice | Nine activities in three groups: Sound, Meaning and Games. Each has one **Words from** menu (Words to refresh, My words, Everything, your lists, the general tracks and every topic), then an **Options** fold with its own labelled settings (Mode, Speed, Length, Pairs…). |
 | Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings, then "Missed it" or "Knew it" (it sets when the word comes back). Swipe on a phone. You can shuffle, play audio on flip, add the word to My words or mark it known, and choose the words from any list, topic or track. The deck ends with a summary. |
 | Matching | Timed rounds that pair words with meanings or with example sentences, with a score. |
 | Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, grammar (the preposition a pattern takes: "insist ___ sth"), and for Bible names "who or what is it?" or "person, place or people?". Only the question types you pick are asked. A wrong answer says what the option you chose actually means. A changed setting applies to the next quiz; opening an entry and coming back keeps your place. "Retry the misses" at the end; misses come back sooner to refresh. |
 | Listen | Hear a word, then pick it or type it; the wrong choices sound like the word (affect, effect), never exact homophones. Also has a spelling test that compares your spelling letter by letter, and "Where's the stress?", which asks which syllable is strong. "Can't listen now?" shows the pronunciation instead (the answer then isn't scored as heard). |
 | Pronounce | Play the reference recording, record yourself, and play both back. The two waveforms are trimmed of silence and drawn on one time scale, so length and stress line up. |
 | Hard sounds | The 16 sounds learners of English find hardest (th, r and l, v and w, short i and ee, …): the mouth drawing, a plain tip, words to try and compare (all recorded by people), a "Which word did you hear?" game with word pairs (right/light, ship/sheep), and the MRI clips. |
-| Dictionary | The full lexicon. It runs A–Z with a letter strip to jump, instant search across words and meanings (best matches first: the word itself, a form of it — "went" opens go — then words starting with it), "Did you mean…" for a misspelling, a short WordNet definition for a word without an entry, and filters by topic, level, My words and known words. The list keeps to your word levels (Settings) unless you pick "All levels" or one level; a search looks through every word, and also finds the synonyms, antonyms and related words listed under an entry that have no entry of their own ("jubilant: Synonym of joyful"), opening the entry that lists them with the word highlighted. On a phone, tapping a word brings its page into view (List goes back). |
+| Dictionary | The full lexicon. It runs A–Z with a letter strip to jump (on a touch screen one slider: touch and slide to a letter), instant search across words and meanings (best matches first: the word itself, a form of it — "went" opens go — then words starting with it), "Did you mean…" for a misspelling, a short WordNet definition for a word without an entry, and filters by topic, level, My words and known words. The list keeps to your word levels (Settings) unless you pick "All levels" or one level; a search looks through every word, and also finds the synonyms, antonyms and related words listed under an entry that have no entry of their own ("jubilant: Synonym of joyful"), opening the entry that lists them with the word highlighted. On a phone, tapping a word brings its page into view (List goes back). |
 | My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen; every activity can also pick a list from its Words from menu. |
 | Progress | Words mastered (and marked known), words learning, retention (the share of words you remembered when they came back, by gap), accuracy of all answers, streak, activity heatmap, accuracy by topic, weakest words, test history and words coming back in the next 14 days. |
 | Settings | Practice starts with, word difficulty, pronunciation speed, the theme, keyboard shortcuts, progress export/import, and on the website "Download for offline use" and the sources. |
@@ -362,7 +362,8 @@ Listed in Settings → Keyboard shortcuts on a computer (a touch screen hides th
 | ← → (↑ ↓ in Browse) | Previous / next word |
 | S | Add to my words, or take it out (Browse, Flashcards) |
 | M | Know it: stop studying the word (Browse, Flashcards; Undo in the message) |
-| K / X | Knew it / Missed it (Flashcards, after the flip) |
+| K / X | Knew it / Missed it (Flashcards, after the flip; Next waits for one of them) |
+| Ctrl+Z / ⌘Z | Undo (the action in the last message: a removed list word, a word marked known) |
 | L | Add to list (Browse) |
 | / | Search (Browse) |
 | Enter | Flip card / reveal / next |
@@ -373,12 +374,18 @@ Listed in Settings → Keyboard shortcuts on a computer (a touch screen hides th
 ### How scheduling works
 
 There is no separate review session: Practice decides when each word comes back, with SM-2 spaced
-repetition (`app/srs.py`, `static/js/local/server.js`).
+repetition (`app/srs.py`, `static/js/local/srs.js`; `tests/fixtures/srs_vectors.json` checks both).
 
-- **Answers:** the first answer for a word each day sets its schedule: right is "Good", wrong is "Again".
-  Later answers that day are logged but don't change it, so a few misclicks in one round don't compound.
+- **Answers:** a right answer is "Good", a wrong one "Again", once per word per day. A right answer for a
+  word that isn't due yet is only logged (drilling a list daily doesn't push it years out). A miss after
+  a right answer the same day replaces it: the word is graded Again from how it was that morning (kept
+  in `srs.prev`). Other answers that day are logged but don't change it, so misclicks don't compound.
   A word met for the first time and answered right comes back tomorrow, then after about 6 days, then
-  further apart; a wrong answer brings it back tomorrow.
+  further apart; a wrong answer brings it back tomorrow. Word Rush records only cards that showed the
+  word's own meaning (or a miss), and Matching not the last pair, matched by elimination.
+- **Which words a round uses:** words due to refresh first, most overdue first (up to half the round, or
+  all of it on "Words to refresh"); then new words, easiest first (drawn from the 50 most common words
+  not yet practiced); then words practiced before, favouring recent misses.
 - **Again** lowers the word's ease by 0.2 (SM-2's own formula takes 0.54, which soon pins a word at the
   minimum) and keeps a fifth of its interval, so the word grows back from there rather than from zero.
   "Good" moves ease a little back toward 2.5, so it recovers after hard days. A word recalled late gets
@@ -386,8 +393,11 @@ repetition (`app/srs.py`, `static/js/local/server.js`).
   together spread out.
 - **Words to refresh:** words whose day has come (due today or earlier), not marked known. They show on
   Today and are a choice in every Words from menu.
-- **Mastered:** a word counts as mastered once you've answered it right three or more weeks after the
-  time before, and it is still scheduled weeks apart. Words marked known are counted separately.
+- **Progress:** *Mastered*: answered right three or more weeks after the time before, and still
+  scheduled weeks apart. *Learning*: remembered on a later day, not yet mastered. *Seen once*:
+  practiced, not yet remembered on a later day. *Overdue*: due before today. Words marked known are
+  counted separately. The retention figure counts only words that came back, so its "timing suits you"
+  guidance shows only when few words are overdue.
 
 ### Your data
 
@@ -419,7 +429,10 @@ LEXIMASTER_DB=/tmp/test.db PORT=8766 ./run.sh
 needed for audio builds. `requirements.txt` pins what the app needs and `requirements-tools.txt` what
 the build tools need. `make test` runs the tests on a temporary database built from
 `tests/fixtures/words_sample.json`, never your `data/`; GitHub Actions runs them on every push.
-`make parity` checks that the website and the local app give the same answers.
+`tests/js/` tests the browser code in Node, including the website's engine (`server.test.mjs`, on a small
+site built from the same sample by `tests/js/fixture_site.py`), and `tests/test_backends_agree.py` runs
+one scenario on both the website's engine and the local app and requires the same answers.
+`make parity` checks the full word data of the website against the local app.
 
 ## Project layout
 
@@ -438,6 +451,8 @@ tools/             build_site.py (the website), audit.py (content checks), parit
                    "In the Bible" notes: verse references, Hebrew and Greek words),
                    audio_credits.py (each recording's author and license, for the credits page),
                    tts.py (natural synthesized recordings for words without a human one),
+                   phrase_freq.py and pattern_preps.py (phrase and "word + preposition"
+                   frequencies from Google Books Ngram: word levels, fair grammar questions),
                    audio_norm.py (even loudness and a lead-in for the human recordings),
                    glossary.py (short WordNet definitions for related words without an entry),
                    forms.py (each entry's tenses, plural, comparative and related forms),

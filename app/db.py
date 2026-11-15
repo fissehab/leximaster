@@ -127,8 +127,6 @@ CREATE TABLE IF NOT EXISTS settings (
 """ + "".join(f"{t};\n" for t in WORDS_COMPACT)
 
 DEFAULT_SETTINGS = {
-    "session_minutes": "15",
-    "new_per_day": "12",
     "accent": "us",
     "autoplay": "1",
     "speech_rate": "0.9",

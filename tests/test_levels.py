@@ -16,10 +16,18 @@ def test_word_level_from_commonness():
     assert word_level(w("avid", 3.0)) == 4
     assert word_level(w("loquacity", 1.2)) == 5
     assert word_level(w("abnegate", 0)) == 5
-    # A phrase ranks a step below its rarest word, and no further: "figure
-    # out" and "pick up" are common, not Uncommon.
-    assert word_level(w("go back on", 6.0, ["phrasal_verbs"])) <= 2
-    assert word_level(w("figure out", 4.9, ["phrasal_verbs"])) <= 3
+
+def test_a_phrase_ranks_by_its_frequency_in_books(monkeypatch):
+    """A phrase found in American books (tools/phrase_freq.py) ranks by that,
+    raised a little (PHRASE_BOOST); any other a step below its rarest word,
+    with no extra level for idioms ("figure out" isn't Uncommon)."""
+    import build_dataset as b
+    w = lambda word, domains=(): {"word": word, "zipf": 0, "domains": list(domains)}
+    monkeypatch.setattr(b, "phrase_freqs", lambda: {"figure out": 1.7e-5, "be that as it may": 6e-7})
+    assert word_level(w("figure out", ["phrasal_verbs"])) == 1          # 4.2 + 0.8
+    assert word_level(w("be that as it may", ["idioms"])) == 4          # 2.8 + 0.8
+    monkeypatch.setattr(b, "phrase_freqs", lambda: {})
+    assert word_level(w("go back on", ["phrasal_verbs"])) <= 2           # its words, a step lower
 
 
 def test_parse_levels_and_clause():

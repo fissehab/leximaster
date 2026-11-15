@@ -16,13 +16,15 @@ jobs:
           cache-dependency-path: requirements*.txt
       - name: Install
         run: pip install -r requirements-test.txt
+      # Before the Python tests: tests/test_backends_agree.py runs the
+      # website's engine in Node (22.15+ for module.registerHooks).
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - name: Tests
         # data/ is not in git: the tests build their database from
         # tests/fixtures/words_sample.json.
         run: python -m pytest
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
       - name: Check JavaScript syntax
         run: for f in $(find static/js -name '*.js'); do node --check "$f"; done
       - name: JavaScript tests

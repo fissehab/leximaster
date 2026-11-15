@@ -31,7 +31,7 @@ function entry(w) {
 }
 
 const SAVE_KEY = "lexi-flashcards";
-const deckKey = () => JSON.stringify([filter.stars, filter.list_id, filter.domain, doShuffle]);
+const deckKey = () => JSON.stringify([filter.list_id, filter.domain, doShuffle]);
 function saveDeck() {
   try { sessionStorage.setItem(SAVE_KEY, JSON.stringify({ key: deckKey(), cards, idx })); } catch (e) { /* unavailable */ }
 }
@@ -91,7 +91,7 @@ function show() {
   els.flip = flip;
   els.stage.replaceChildren(h("div.flip-wrap", flip));
   els.counter.textContent = `${idx + 1} / ${cards.length}`;
-  els.stars.replaceChildren(saveToggle(w, { small: true }));
+  els.save.replaceChildren(saveToggle(w, { small: true }));
   const shown = idx;
   entry(w).then(full => {
     if (idx !== shown || els.flip !== flip) return;   // moved on meanwhile
@@ -214,7 +214,7 @@ export async function render(root, { live: isLive } = {}) {
   els.stage = h("div");
   swipe(els.stage);
   els.counter = h("span.tnum.muted");
-  els.stars = h("span.fc-stars");
+  els.save = h("span.fc-save");
   els.answer = h("div.fc-answer", { hidden: true },
     h("button.btn.miss", { type: "button", on: { click: e => { unfocus(e); answer(false); } } }, "Missed it ", h("kbd", { "aria-hidden": "true" }, "X")),
     h("button.btn.knew", { type: "button", on: { click: e => { unfocus(e); answer(true); } } }, "Knew it ", h("kbd", { "aria-hidden": "true" }, "K")));
@@ -225,7 +225,7 @@ export async function render(root, { live: isLive } = {}) {
       h("button.btn.btn-primary", { type: "button", on: { click: e => { unfocus(e); toggle(); } } }, "Flip ", h("kbd", { "aria-hidden": "true" }, "Enter")),
       els.next = h("button.btn", { type: "button", "aria-label": "Next card", on: { click: e => { unfocus(e); go(1); } } }, h("span.lbl", "Next"), icon("arrowR")),
       els.counter),
-    h("div.fc-nav", els.stars,
+    h("div.fc-nav", els.save,
       h("button.btn", { type: "button", on: { click: e => { unfocus(e); knowIt(); } } }, "Know it & next ", h("kbd", { "aria-hidden": "true" }, "M"))));
   root.append(
     pageHead("Flashcards", "Think of the meaning, then turn the card. Words you miss come back sooner to refresh."),
@@ -245,7 +245,7 @@ export async function onKey(e) {
   else if (e.key === " ") { e.preventDefault(); playWord(w, els.flip.querySelector(flipped ? ".back .play" : ".play")); }
   else if (e.key === "ArrowRight") { e.preventDefault(); if (!flipped) go(1); }
   else if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
-  else if (k === "s") { e.preventDefault(); els.stars.querySelector(".save-toggle").click(); }
+  else if (k === "s") { e.preventDefault(); els.save.querySelector(".save-toggle").click(); }
   else if (k === "m") { e.preventDefault(); knowIt(); }
   else if (k === "k" && flipped) { e.preventDefault(); answer(true); }
   else if (k === "x" && flipped) { e.preventDefault(); answer(false); }

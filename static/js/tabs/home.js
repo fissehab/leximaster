@@ -50,7 +50,7 @@ let wotd = null;
 
 /** "Refresh them": Flashcards with the words to refresh. */
 function refreshThem() {
-  saveFilter("flashcards", { ...loadFilter("flashcards"), domain: "refresh", list_id: "", stars: "" });
+  saveFilter("flashcards", { ...loadFilter("flashcards"), domain: "refresh", list_id: "" });
   location.hash = "#flashcards";
 }
 

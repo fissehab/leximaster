@@ -16,8 +16,9 @@ import { practiceGrade, schedule } from "./srs.js";
 const EVERYDAY_SQL = `EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value IN (${
   EVERYDAY_DOMAINS.map(d => `'${d}'`).join(",")}))`;
 const MASTERED_INTERVAL = 21;
-const DEFAULT_SETTINGS = { session_minutes: "15", new_per_day: "12", accent: "us", autoplay: "1", speech_rate: "0.9",
-                           word_levels: "2,3,4" };
+// The daily review's session_minutes and new_per_day went with it (2026-11);
+// an old export's values are ignored on import.
+const DEFAULT_SETTINGS = { accent: "us", autoplay: "1", speech_rate: "0.9", word_levels: "2,3,4" };
 
 const SCHEMA = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
@@ -238,8 +239,6 @@ let dirty = false;
 let persistedLogId = 0;           // review_log rows up to this id are saved
 let orphans = noOrphans();
 let askedPersist = false;
-const logKeys = new Map();        // review_log id -> its saved key (this tab's saves)
-let pendingLogDeletes = [];       // saved answers taken back, removed at the next save
 const channel = typeof BroadcastChannel === "function" ? new BroadcastChannel("leximaster") : null;
 if (channel) channel.onmessage = e => { if (!e.data || e.data.rev !== localRev) dirty = true; };
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") dirty = true; });
@@ -343,14 +342,11 @@ async function persist() {
     s.put({ format: FORMAT, progress, meta }, "progress");
     for (const { id, ...row } of newLog) {
       const k = newLogKey(row.ts);
-      logKeys.set(id, k);
       s.put(row, k);
     }
-    for (const k of pendingLogDeletes) s.delete(k);
     s.put(rev, "rev");
   });
   if (newLog.length) persistedLogId = newLog[newLog.length - 1].id;
-  pendingLogDeletes = [];
   localRev = rev;
   if (channel) channel.postMessage({ rev });
   if (!askedPersist && navigator.storage && navigator.storage.persist) {
@@ -490,10 +486,10 @@ function addDays(days) {
   return isoDate(d);
 }
 
-function bumpActivity({ seconds = 0, reviews = 0, newWords = 0 } = {}) {
+function bumpActivity({ seconds = 0, reviews = 0 } = {}) {
   run(`INSERT INTO daily_activity(date, seconds, reviews, new_words) VALUES (?, ?, ?, ?)
        ON CONFLICT(date) DO UPDATE SET seconds=seconds+excluded.seconds, reviews=reviews+excluded.reviews,
-       new_words=new_words+excluded.new_words`, [todayIso(), seconds, reviews, newWords]);
+       new_words=new_words+excluded.new_words`, [todayIso(), seconds, reviews, 0]);
 }
 
 // Bible names that aren't also vocabulary: studied only when chosen.
@@ -534,16 +530,14 @@ function trackClause(track) {
 }
 
 function parseFilters(q) {
-  const stars = q.stars ? q.stars.split(",").map(s => s.trim()).filter(s => /^\d+$/.test(s)).map(Number) : null;
-  return { stars: stars && stars.length ? stars : null, list_id: Number(q.list_id) || null, domain: q.domain || null,
+  return { list_id: Number(q.list_id) || null, domain: q.domain || null,
            exclude_known: true };
 }
 
-function poolIds({ stars = null, list_id = null, domain = null, need_audio = false, need_enriched = false,
+function poolIds({ list_id = null, domain = null, need_audio = false, need_enriched = false,
                    exclude_known = false } = {}) {
   const where = ["1=1"], args = [];
   let joins = "LEFT JOIN user_word u ON u.word_id = w.id";
-  if (stars) { where.push(`COALESCE(u.stars, 0) IN (${stars.map(() => "?").join(",")})`); args.push(...stars); }
   if (list_id) { joins += " JOIN list_words lw ON lw.word_id = w.id AND lw.list_id = ?"; args.unshift(list_id); }
   if (SCOPES.includes(domain)) where.push(trackClause(domain));
   else if (domain) { where.push("EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = ?)"); args.push(domain); }
@@ -674,8 +668,8 @@ function setState(id, body) {
   needWord(id);
   run("INSERT OR IGNORE INTO user_word(word_id) VALUES (?)", [id]);
   if (body.stars != null) {
-    const stars = Number(body.stars);
-    if (!(stars >= 0 && stars <= 5)) throw new HttpError(422, "Stars must be between 0 and 5.");
+    const stars = body.stars;
+    if (!Number.isInteger(stars) || stars < 0 || stars > 5) throw new HttpError(422, "Stars must be a whole number from 0 to 5.");
     run("UPDATE user_word SET stars=?, updated_at=datetime('now') WHERE word_id=?", [stars, id]);
   }
   if (body.known != null) run("UPDATE user_word SET known=?, updated_at=datetime('now') WHERE word_id=?", [body.known ? 1 : 0, id]);
@@ -1265,7 +1259,6 @@ function stats() {
       overdue: get(`SELECT COUNT(*) AS n ${STUDIED} AND s.due_date < ?`, [todayIso()]).n,
       due: refreshCount().count,   // the words to refresh, the same number Today shows
       known: get("SELECT COUNT(*) AS n FROM user_word WHERE known=1").n,
-      stars: Object.fromEntries(all("SELECT stars, COUNT(*) AS n FROM user_word WHERE stars > 0 GROUP BY stars").map(r => [r.stars, r.n])),
     },
     accuracy: { attempts: overall.n, correct: overall.ok },
     retention,
@@ -1293,18 +1286,11 @@ function saveSettings(values) {
 
 function updateSettings(body) {
   const values = {};
-  for (const k of ["session_minutes", "new_per_day", "autoplay", "speech_rate", "word_levels"]) if (body[k] != null) values[k] = body[k];
+  for (const k of ["autoplay", "speech_rate", "word_levels"]) if (body[k] != null) values[k] = body[k];
   const num = k => Number(values[k]);
-  if ("session_minutes" in values && !(num("session_minutes") >= 5 && num("session_minutes") <= 60)) {
-    throw new HttpError(400, "Session length must be between 5 and 60 minutes.");
-  }
-  if ("new_per_day" in values && !(num("new_per_day") >= 0 && num("new_per_day") <= 100)) {
-    throw new HttpError(400, "New words per day must be between 0 and 100.");
-  }
   if ("speech_rate" in values && !(num("speech_rate") >= 0.5 && num("speech_rate") <= 2)) {
     throw new HttpError(400, "Voice speed must be between 0.5 and 2.");
   }
-  for (const k of ["session_minutes", "new_per_day"]) if (k in values) values[k] = Math.trunc(num(k));
   if ("speech_rate" in values) values.speech_rate = num("speech_rate");
   if ("autoplay" in values) values.autoplay = !!values.autoplay && values.autoplay !== "0";
   if ("word_levels" in values) {
@@ -1514,8 +1500,6 @@ function importProgress(data, { restore = false } = {}) {
     }
     const st = data.settings && typeof data.settings === "object" ? data.settings : {};
     const clean = {};
-    if ("session_minutes" in st) clean.session_minutes = clamp(st.session_minutes, 5, 60, 15);
-    if ("new_per_day" in st) clean.new_per_day = clamp(st.new_per_day, 0, 100, 12);
     if ("speech_rate" in st) clean.speech_rate = clamp(st.speech_rate, 0.5, 2, 0.9, false);
     if ("autoplay" in st) clean.autoplay = ["1", "True", "true"].includes(String(st.autoplay));
     if (/^[1-5](,[1-5])*$/.test(String(st.word_levels ?? ""))) clean.word_levels = parseLevels(String(st.word_levels)).join(",");

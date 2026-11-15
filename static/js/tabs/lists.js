@@ -81,7 +81,7 @@ async function open(id) {
 /** Practice just this list in any activity: its "Words from" is set to the list. */
 function practice(id, tab) {
   import("../state.js").then(({ loadFilter, saveFilter }) => {
-    saveFilter(tab, { ...loadFilter(tab), list_id: String(id), stars: "", domain: "" });
+    saveFilter(tab, { ...loadFilter(tab), list_id: String(id), domain: "" });
     location.hash = `#${tab}`;
   });
 }
