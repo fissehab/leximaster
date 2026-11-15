@@ -390,13 +390,13 @@ def level_clause(value: str | None) -> str:
 def levels_setting(c: sqlite3.Connection) -> str:
     row = c.execute("SELECT value FROM settings WHERE key = 'word_levels'").fetchone()
     return row["value"] if row else DEFAULT_LEVELS
-# "My words": the words you chose or studied: in a list of yours, rated (any
-# stars), or already in your reviews. As the Daily review scope, new words come
-# only from your lists and ratings.
+# "My words": the words you chose: in a list of yours, or saved ("Add to my
+# words", stored as stars > 0; ratings given before 2026-11 count as saved).
 MINE_SQL = ("(EXISTS (SELECT 1 FROM list_words lm WHERE lm.word_id = w.id) "
-            "OR EXISTS (SELECT 1 FROM user_word um WHERE um.word_id = w.id AND um.stars > 0) "
-            "OR EXISTS (SELECT 1 FROM srs sm WHERE sm.word_id = w.id))")
-SCOPES = ("everyday", "core", *BIBLE_TRACKS, "mine")  # study tracks, usable wherever a domain filter is
+            "OR EXISTS (SELECT 1 FROM user_word um WHERE um.word_id = w.id AND um.stars > 0))")
+# "Words to refresh": words you've practised that are due to come back today.
+REFRESH_SQL = "EXISTS (SELECT 1 FROM srs sr WHERE sr.word_id = w.id AND sr.due_date <= date('now', 'localtime'))"
+SCOPES = ("everyday", "core", *BIBLE_TRACKS, "mine", "refresh")  # study scopes, usable wherever a domain filter is
 
 
 def track_clause(track: str | None) -> str:
@@ -412,6 +412,8 @@ def track_clause(track: str | None) -> str:
         return f"EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = '{track}')"
     if track == "mine":
         return MINE_SQL
+    if track == "refresh":
+        return REFRESH_SQL
     return "1=1"
 
 
@@ -434,7 +436,7 @@ def pool_ids(c: sqlite3.Connection, *, stars: list[int] | None = None, list_id: 
         args.append(domain)
     elif not list_id:
         where.append(f"NOT {NAMES_ONLY_SQL}")  # Bible names only when chosen (or in your own list)
-    if domain != "reference" and not list_id:
+    if domain not in ("reference", "refresh") and not list_id:   # a reference word you practised still comes back
         where.append(CHOSEN_SQL)
     if (domain or "") in LEVELED and not list_id:
         where.append(level_clause(levels_setting(c)))

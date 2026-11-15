@@ -349,7 +349,7 @@ def build_manifest() -> None:
                   {"src": "static/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
                   {"src": "static/icons/icon-512.png", "sizes": "512x512", "type": "image/png",
                    "purpose": "maskable"}],
-        "shortcuts": [{"name": "Daily review", "short_name": "Review", "url": "./#review",
+        "shortcuts": [{"name": "Practice", "short_name": "Practice", "url": "./#practice",
                        "icons": [{"src": "static/icons/icon-192.png", "sizes": "192x192", "type": "image/png"}]},
                       {"name": "Dictionary", "short_name": "Words", "url": "./#browse",
                        "icons": [{"src": "static/icons/icon-192.png", "sizes": "192x192", "type": "image/png"}]}],

@@ -62,7 +62,7 @@ idioms and common phrases) have hand-written conversation examples labeled by me
   English expressions from the Bible, the books of the Bible) and the distinctive words of the
   biblical text.
 - **Bible · Names** (952): every person and place named five or more times from Genesis to
-  Revelation, each labeled Person, Place or People. Names come up in review only on a Bible scope.
+  Revelation, each labeled Person, Place or People. Names come up in practice only when you choose a Bible scope.
   Names that became everyday English words (Goliath, Judas, good Samaritan, raise Cain) are in both
   parts, with the everyday meaning first. The labels live in `seeds/names/bible.txt`
   (`name | kind | everyday meaning`), written by `tools/classify_names.py` and checked by hand.
@@ -97,36 +97,34 @@ make deploy                            # publishes docs/ to GitHub Pages (the gh
 ```
 
 After you publish, the site updates itself the next time you open Today, Dictionary, Lists, Progress or Settings, in
-every open tab. It never reloads in the middle of a review or quiz, and your downloaded offline data is
+every open tab. It never reloads in the middle of a quiz or game, and your downloaded offline data is
 kept unless the word data changed.
 
 ## Using it day to day
 
-1. **Today** (the home screen) shows how many cards are left today and the word of the day. Press
-   **Start today's review**.
-2. **Daily review** (10–20 minutes): say the word's meaning aloud, reveal, and grade yourself honestly.
-   New words are answered Show again, Got it or Know it; words you've seen before Again, Hard, Good or
-   Easy. From a word's third review on, some cards show the meaning (and a sentence with a blank)
-   and ask for the word itself: type it or say it, then reveal. Choose a scope at the top
-   (Everything, Everyday English, Advanced & subjects, a Bible scope, or My words: new words only from
-   your lists and the words you rated, plus your reviews as usual). "Undo last grade" (or Z)
-   takes back a slip, and leaving the tab keeps your place for the day.
-3. **Practice** when you have more time: Flashcards, Matching, Quiz, Listen (including a spelling
-   test) and Pronounce. Misses go back into today's review.
-4. **Dictionary** to look up any word, and **My lists** to collect words with your own notes.
+1. **Today** (the home screen): the word of the day (its name opens the full entry), the words you've
+   practised that are due to come back (**Refresh them** opens them in Flashcards), your streak, and a
+   search box.
+2. **Practice**: nine activities in three groups. **Sound**: Listen (including a spelling test),
+   Pronounce, Hard sounds. **Meaning**: Flashcards, Quiz, Matching. **Games**: Word Shooter, Word Rush,
+   Type It. Each one has a **Words from** menu with every choice there is: Words to refresh, My words,
+   Everything, any of your lists, Everyday English, Advanced & subjects, the Bible, and every topic
+   (Artificial intelligence, Statistics, Theology, Food, Small talk, …). Each activity remembers its
+   choice; a new user starts on Everyday English.
+3. **Words**: the Dictionary to look up any word, and My lists to collect words with your own notes
+   (on a phone, a Dictionary | My lists switch at the top).
+4. **Progress** and **Settings** (the gear).
 
-- **Stars** (1–5, on any word page or flashcard) say how familiar a word is: 1–2★ words come back
-  more often.
+- **Every answer counts:** each answer in Practice sets when that word comes back (see "How
+  scheduling works"). Words due today are the **Words to refresh**, on Today and in every Words from menu.
+- **Add to my words** (any word page or flashcard, or S) puts a word in **My words**: your saved words
+  plus every word in your lists. (Words rated with the stars of earlier versions count as saved.)
 - **Know it** takes a word you already know out of your study (press it again to bring it back).
-- **Settings** (sidebar; under More on a phone): study focus, session length, new words per day, word
-  levels, pronunciation speed, the theme, and your data (export, import, offline use).
-- **Study focus** (Settings, or the scope menu in Daily review): Everything, Everyday English, Advanced &
-  subjects, or the Bible. Daily review, Today's count and word of the day follow it, and every practice
-  tab is set to it when it changes (a tab can still pick its own).
-- **Word levels** (Settings, or the menu in Daily review): new words come from levels 1 (most common)
-  to 5 (rare). A new learner starts on 2–4. Until you've studied 50 words, Today lists a few of the day's
-  new words with **Too hard? Easier words**, one step easier per tap (2–4, 1–3, 1–2, 1), with Undo;
-  it goes away once you pick levels yourself (and never shows while rare words are on).
+- **Settings:** Practice starts with (the Words from choice for activities you haven't used yet, and for
+  all of them when you change it), word difficulty, pronunciation speed, the theme, your data (export,
+  import, offline use), and About LexiMaster.
+- **Word difficulty:** Everything, Everyday English and Advanced draw from levels 1 (most common) to 5
+  (rare); a new learner starts on 2–4. Your lists and My words always count.
 - **Pronunciation speed:** the button beside each play button switches between 1×, .75× and .5×
   (pitch stays natural) for every recording and voice; the choice is remembered.
   Flashcards has its own "Play audio on flip" switch.
@@ -284,26 +282,24 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 
 | Tab | What it's for |
 |---|---|
-| Today | The home screen. Today's review first: how many cards are left (the same number as the badge) and a button to start, then the day so far (streak, reviews, time, words mastered) and the word of the day. |
-| Daily review | SM-2 spaced repetition, sized to your session length (default 15 minutes). Choose a scope: Everything, Everyday English, Advanced & subjects, or Bible vocabulary, names or both. A new word is answered Show again, Got it or Know it (known words leave the review), and gets a second look a few cards later, asked the other way round (meaning → word); a word you've seen before is graded Again, Hard, Good or Easy, and is asked meaning → word every other time from its third review. The answer shows a short card with one "vs" contrast and one common mistake; "Full entry" opens the whole page. The last grade can be undone. |
-| Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings, then "Missed it" or "Knew it" (a miss brings the word into today's review). Swipe on a phone. You can shuffle, play audio on flip, rate the word (1–5) or mark it known, and choose a scope, rating or list. The deck ends with a summary. |
+| Today | The home screen: the word of the day (its name opens the full entry), the words to refresh (practised words due today; the same number as the badge on Today) with a button that opens them in Flashcards, your streak, words learning, time today, and a search box (an exact word opens its entry). |
+| Practice | Nine activities in three groups: Sound, Meaning and Games. Each has one **Words from** menu: Words to refresh, My words, Everything, your lists, the general tracks and every topic. |
+| Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings, then "Missed it" or "Knew it" (it sets when the word comes back). Swipe on a phone. You can shuffle, play audio on flip, add the word to My words or mark it known, and choose the words from any list, topic or track. The deck ends with a summary. |
 | Matching | Timed rounds that pair words with meanings or with example sentences, with a score. |
-| Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, grammar (the preposition a pattern takes: "insist ___ sth"), and for Bible names "who or what is it?" or "person, place or people?". Only the question types you pick are asked. A wrong answer says what the option you chose actually means. A changed setting applies to the next quiz; opening an entry and coming back keeps your place. "Retry the misses" at the end; misses go back into today's review. |
+| Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, grammar (the preposition a pattern takes: "insist ___ sth"), and for Bible names "who or what is it?" or "person, place or people?". Only the question types you pick are asked. A wrong answer says what the option you chose actually means. A changed setting applies to the next quiz; opening an entry and coming back keeps your place. "Retry the misses" at the end; misses come back sooner to refresh. |
 | Listen | Hear a word, then pick it or type it; the wrong choices sound like the word (affect, effect), never exact homophones. Also has a spelling test that compares your spelling letter by letter, and "Where's the stress?", which asks which syllable is strong. "Can't listen now?" shows the pronunciation instead (the answer then isn't scored as heard). |
 | Pronounce | Play the reference recording, record yourself, and play both back. The two waveforms are trimmed of silence and drawn on one time scale, so length and stress line up. |
 | Hard sounds | The 16 sounds learners of English find hardest (th, r and l, v and w, short i and ee, …): the mouth drawing, a plain tip, words to try and compare (all recorded by people), a "Which word did you hear?" game with word pairs (right/light, ship/sheep), and the MRI clips. |
-| Dictionary | The full lexicon. It runs A–Z with a letter strip to jump, instant search across words and meanings (best matches first: the word itself, a form of it — "went" opens go — then words starting with it), "Did you mean…" for a misspelling, a short WordNet definition for a word without an entry, and filters by domain, level, rating and known words. The list keeps to your word levels (Settings) unless you pick "All levels" or one level; a search looks through every word, and also finds the synonyms, antonyms and related words listed under an entry that have no entry of their own ("jubilant: Synonym of joyful"), opening the entry that lists them with the word highlighted. On a phone, tapping a word brings its page into view (List goes back). |
-| My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen. Words in your lists come first among new review words. |
-| Games | Word Shooter (shoot the word that fits the meaning), Word Rush (yes or no against the clock) and Type It (type the word from its meaning, or from hearing it, where a word that sounds the same, brake for break, counts). Misses go back into today's review. |
-| Progress | Words mastered (and marked known), retention (the share of reviews you recalled, by gap), practice accuracy, streak, activity heatmap, accuracy by domain, weakest words, test history and reviews due. |
-| Settings | Study settings (study focus, session length, new words per day, word levels, pronunciation speed), the theme, progress export/import, and on the website "Download for offline use" and the sources. |
+| Dictionary | The full lexicon. It runs A–Z with a letter strip to jump, instant search across words and meanings (best matches first: the word itself, a form of it — "went" opens go — then words starting with it), "Did you mean…" for a misspelling, a short WordNet definition for a word without an entry, and filters by topic, level, My words and known words. The list keeps to your word levels (Settings) unless you pick "All levels" or one level; a search looks through every word, and also finds the synonyms, antonyms and related words listed under an entry that have no entry of their own ("jubilant: Synonym of joyful"), opening the entry that lists them with the word highlighted. On a phone, tapping a word brings its page into view (List goes back). |
+| My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen; every activity can also pick a list from its Words from menu. |
+| Progress | Words mastered (and marked known), words learning, retention (the share of words you remembered when they came back, by gap), accuracy of all answers, streak, activity heatmap, accuracy by topic, weakest words, test history and words coming back in the next 14 days. |
+| Settings | Practice starts with, word difficulty, pronunciation speed, the theme, keyboard shortcuts, progress export/import, on the website "Download for offline use" and the sources, and About LexiMaster. |
 
-The sidebar runs in the order of a study day: Today, Daily review, the Practice group (easiest to
-hardest: Flashcards, Matching, Quiz, Listen, Pronounce, Hard sounds; folded until you click its heading, and a
-folded group still shows the practice you're on), the Games group (Word Shooter, Word Rush, Type It), the Words
-group (Dictionary, My lists), then Progress, Settings and About. On a phone the bottom bar has six buttons:
-Today, Review, Practice, Games, Words and More (My lists, Progress, Settings, About); in the installed app,
-Back and Forward sit at its left end. Each practice tab remembers its own settings.
+The sidebar lists Today; the Practice activities under three headings, Sound (Listen, Pronounce, Hard
+sounds), Meaning (Flashcards, Quiz, Matching) and Games (Word Shooter, Word Rush, Type It); Words
+(Dictionary, My lists); then Progress and Settings. About opens from Settings. On a phone the bottom bar has
+five buttons: Today, Practice, Words, Progress and Settings; in the installed app, Back and Forward sit at
+its left end. Each practice activity remembers its own Words from choice.
 
 ### The word page
 
@@ -349,7 +345,7 @@ seeds/reference.txt and the build gives each a full entry. The ones of ordinary 
 studied like the rest, but only after every other word, so the topic lists keep their place. The
 very rare and very common ones ("to", "steatopygic") are **look-up only**: they open from any link
 but stay out of new-word study, practice, quizzes and the word of the day until you choose one:
-star it, add it to a list, or filter by that domain.
+save it to My words, add it to a list, or filter by that topic.
 
 Dictionary senses that only restate the meaning in step 2 are marked when the data is built
 (`build_dataset.normalize_display`) and listed only under "Dictionary wording" in step 7.
@@ -363,41 +359,34 @@ Listed in Settings → Keyboard shortcuts on a computer (a touch screen hides th
 |---|---|
 | Space | Play pronunciation (in Quiz, only after you answer) |
 | ← → (↑ ↓ in Browse) | Previous / next word |
-| 1–5 | Set star rating (Browse, Flashcards) |
-| M | Know it: stop studying the word (in Daily review, after the answer; Undo in the message) |
-| Z | Undo the last grade (Daily review) |
+| S | Add to my words, or take it out (Browse, Flashcards) |
+| M | Know it: stop studying the word (Browse, Flashcards; Undo in the message) |
 | K / X | Knew it / Missed it (Flashcards, after the flip) |
 | L | Add to list (Browse) |
 | / | Search (Browse) |
 | Enter | Flip card / reveal / next |
-| 1–4 | Answer in Daily review (the buttons are numbered); choose an answer in Quiz and Listen |
+| 1–4 | Choose an answer in Quiz and Listen |
 | R | Record (Pronounce) |
 | ? | Show all shortcuts (single-key shortcuts can be switched off there) |
 
 ### How scheduling works
 
-- **Grades:** Again, Hard, Good and Easy map to SM-2 quality scores 1, 3, 4 and 5. "Again" brings the
-  card back five cards later in today's session, lowers the word's ease by 0.2 (SM-2's own formula
-  takes 0.54, which soon pins a word at the minimum), and keeps a fifth of its interval: the word comes
-  back tomorrow, then grows from there rather than from zero. "Good" moves ease a little back toward
-  2.5, so it recovers after hard days. A word recalled late gets credit for the extra days it lasted,
-  and intervals over three days vary by ±5% so words learned together spread out.
-- **First sight:** Show again brings the word back later in the session and tomorrow, without counting as a
-  lapse; Got it is a Good; Know it marks the word known (Undo in the message).
-- **Stars:** 1★ and 2★ words never go more than 4 or 7 days between reviews. A word's star rating also
-  sets its starting ease (1★ = 2.2 … 5★ = 2.8).
-- **Practice misses:** a wrong answer in Quiz, Matching, Listen, Flashcards or the spelling test makes the
-  word due today, keeping its interval, so a good review picks up where it was. Only a quiz miss (a
-  wrong meaning) also halves the interval and lowers ease, once per word per day. A word you missed
-  before studying it counts as one of the day's new words.
-- **New words:** each day introduces up to "New words per day" new words (default 12; set in Settings).
-  Words in your own lists come first, then 1–2★ words, then unrated words, most frequent first (a
-  phrase counts as common as its rarest word). With the Everything scope, everyday and advanced words
-  alternate. New words are spread through the session, one after every three reviews. Words marked
-  known are skipped.
-- **Mastered:** a word counts as mastered once you've recalled it (Good or Easy) at a review three or
-  more weeks after the one before, and it is still scheduled weeks apart. Words marked known are
-  counted separately in Stats.
+There is no separate review session: Practice decides when each word comes back, with SM-2 spaced
+repetition (`app/srs.py`, `static/js/local/server.js`).
+
+- **Answers:** the first answer for a word each day sets its schedule: right is "Good", wrong is "Again".
+  Later answers that day are logged but don't change it, so a few misclicks in one round don't compound.
+  A word met for the first time and answered right comes back tomorrow, then after about 6 days, then
+  further apart; a wrong answer brings it back tomorrow.
+- **Again** lowers the word's ease by 0.2 (SM-2's own formula takes 0.54, which soon pins a word at the
+  minimum) and keeps a fifth of its interval, so the word grows back from there rather than from zero.
+  "Good" moves ease a little back toward 2.5, so it recovers after hard days. A word recalled late gets
+  credit for the extra days it lasted, and intervals over three days vary by ±5% so words learned
+  together spread out.
+- **Words to refresh:** words whose day has come (due today or earlier), not marked known. They show on
+  Today and are a choice in every Words from menu.
+- **Mastered:** a word counts as mastered once you've answered it right three or more weeks after the
+  time before, and it is still scheduled weeks apart. Words marked known are counted separately.
 
 ### Your data
 

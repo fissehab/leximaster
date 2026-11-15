@@ -21,15 +21,15 @@ export async function render(root) {
           "conversation. Knowing a word when I read it isn't enough. I want the words and ideas I care about in " +
           "my ", h("em", "active"), " memory, ready when I speak or write.")),
       card("What's inside",
-        h("p", "So I built LexiMaster: a few minutes a day of spaced review, with American pronunciation, careful " +
+        h("p", "So I built LexiMaster: a few minutes a day of practice that brings each word back just before you'd forget it, with American pronunciation, careful " +
           "definitions, real examples, and notes on how each word is actually used. It covers advanced and " +
           "professional vocabulary, data science and AI, mathematics, philosophy and theology, the Bible (with " +
           "Orthodox, Catholic and Protestant perspectives), and everyday American English.")),
       card("For every level",
         h("p", "I also included words of every difficulty, from the most common everyday words to rare ones, so " +
           "that others can use it too, whatever their level of English. Words are grouped into five levels, from " +
-          "1 (most common) to 5 (rare). Choose the levels you want to study from the ", h("b", "Word levels"),
-          " dropdown in Review (it's also in Settings). Tick one level or several, and change them " +
+          "1 (most common) to 5 (rare). Choose the levels you want to practise under ", h("b", "Word difficulty"),
+          " in Settings. Tick one level or several, and change them " +
           "any time; every word still opens from links and search.")),
       card("How to say it",
         h("p", "To help with the sounds of English, each word page has ", h("b", "How to say it"), ": a drawing of the " +

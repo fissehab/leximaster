@@ -5,36 +5,32 @@ import { stopAudio } from "./audio.js";
 import { loadSettings } from "./state.js";
 import { formDialog, h, icon, showError } from "./ui.js";
 
-// The rail lists every tab. On a phone the bottom bar has six: Today,
-// Review, Practice, Games, Words (the dictionary) and More; Practice, Games and More are
-// pages of links (`hub`), and the tabs they hold are reached from there
-// (`under`). One order for the sidebar and the phone bar: today's review
-// first, then calm practice (see it, recall it, hear it, say it), then the
-// timed games, then the words themselves, then progress. The phone shows
-// only Today, Review, the three hubs and Words, in this same page order, so
-// keyboard and screen-reader order match what is on screen. `group` makes a
-// labeled group in the sidebar; `sep` draws a line above a link; `short` is
-// the label on the phone bar when the full one is too long.
+// The rail lists every tab. On a phone the bottom bar has five: Today,
+// Practice, Words (the dictionary), Progress and Settings. Practice is a page
+// of links (`hub`) to the activities under it (`under`), in three groups:
+// Sound (what makes LexiMaster different), Meaning and Games. My lists sits
+// under Words and About under Settings (`hidden`: not in the rail, reached
+// from Settings). One order for the sidebar and the phone bar, so keyboard and
+// screen-reader order match what is on screen. `group` makes a labeled group
+// in the sidebar; `sep` draws a line above a link; `short` is the label on the
+// phone bar when the full one is too long.
 export const TABS = [
   { id: "home", label: "Today", icon: "home" },
-  { id: "review", label: "Daily review", short: "Review", icon: "review" },
   { id: "practice", label: "Practice", icon: "cards", hub: true },
-  { id: "flashcards", label: "Flashcards", icon: "cards", under: "practice", group: "Practice", note: "Flip cards to learn words" },
-  { id: "quiz", label: "Quiz", icon: "quiz", under: "practice", group: "Practice", note: "Choose the right word" },
-  { id: "listen", label: "Listen", icon: "listen", under: "practice", group: "Practice", note: "Hear a word. Pick it or type it." },
-  { id: "pronounce", label: "Pronounce", icon: "mic", under: "practice", group: "Practice", note: "Say a word. Hear yourself." },
-  { id: "sounds", label: "Hard sounds", icon: "mouth", under: "practice", group: "Practice", note: "Ship or sheep? Hear the difference." },
-  { id: "games", label: "Games", icon: "game", hub: true },
-  { id: "shooter", label: "Word Shooter", icon: "target", under: "games", group: "Games", note: "Shoot the word that fits" },
-  { id: "rush", label: "Word Rush", icon: "bolt", under: "games", group: "Games", note: "Yes or no, as fast as you can" },
-  { id: "typeit", label: "Type It", icon: "keys", under: "games", group: "Games", note: "Type the word before time runs out" },
-  { id: "matching", label: "Matching", icon: "match", under: "games", group: "Games", note: "Match words to meanings" },
+  { id: "listen", label: "Listen", icon: "listen", under: "practice", group: "Sound", note: "Hear a word. Pick it or type it." },
+  { id: "pronounce", label: "Pronounce", icon: "mic", under: "practice", group: "Sound", note: "Say a word. Hear yourself." },
+  { id: "sounds", label: "Hard sounds", icon: "mouth", under: "practice", group: "Sound", note: "Ship or sheep? Hear the difference." },
+  { id: "flashcards", label: "Flashcards", icon: "cards", under: "practice", group: "Meaning", note: "Flip cards to learn words" },
+  { id: "quiz", label: "Quiz", icon: "quiz", under: "practice", group: "Meaning", note: "Choose the right word" },
+  { id: "matching", label: "Matching", icon: "match", under: "practice", group: "Meaning", note: "Match words to meanings" },
+  { id: "shooter", label: "Word Shooter", icon: "target", under: "practice", group: "Games", note: "Shoot the word that fits" },
+  { id: "rush", label: "Word Rush", icon: "bolt", under: "practice", group: "Games", note: "Yes or no, as fast as you can" },
+  { id: "typeit", label: "Type It", icon: "keys", under: "practice", group: "Games", note: "Type the word before time runs out" },
   { id: "browse", label: "Dictionary", short: "Words", icon: "book", group: "Words", note: "Find any word" },
-  { id: "lists", label: "My lists", icon: "list", under: "more", group: "Words", note: "Your own word lists" },
-  { id: "more", label: "More", icon: "more", hub: true },
-  { id: "stats", label: "Progress", icon: "stats", under: "more", sep: true, note: "See how you are doing" },
-  { id: "settings", label: "Settings", icon: "gear", under: "more", note: "How you study, colors, save your work" },
-  { id: "about", label: "About", icon: "info", under: "more", note: "Who made LexiMaster and why" },
+  { id: "lists", label: "My lists", icon: "list", under: "browse", group: "Words", note: "Your own word lists" },
+  { id: "stats", label: "Progress", icon: "stats", sep: true, note: "See how you are doing" },
+  { id: "settings", label: "Settings", icon: "gear", note: "How you study, colors, save your work" },
+  { id: "about", label: "About", icon: "info", under: "settings", hidden: true, note: "Who made LexiMaster and why" },
 ];
 
 const view = document.getElementById("view");
@@ -46,53 +42,26 @@ function buildNav() {
   const link = t => h(`a.nav-link${t.hub ? ".hub" : ""}${t.under ? ".under" : ""}${t.sep ? ".sep" : ""}`,
     { href: `#${t.id}`, "data-tab": t.id, title: t.label },
     icon(t.icon), h("span.nav-text", t.short ? [h("span.long", t.label), h("span.short", t.short)] : t.label),
-    t.id === "review" ? h("span.count#due-count", { hidden: true }) : null);
+    t.id === "home" ? h("span.count#due-count", { hidden: true, title: "Words to refresh" }) : null);
   const items = [];
-  for (const t of TABS) {
+  for (const t of TABS.filter(t => !t.hidden)) {
     const last = items[items.length - 1];
     if (!t.group) items.push(link(t));
     else if (last && last.dataset.group === t.group) last.append(link(t));
     else items.push(h("div.nav-group", { role: "group", "aria-label": t.group, "data-group": t.group },
-      FOLDING.includes(t.group) ? foldButton(t.group) : h("span.nav-heading", { "aria-hidden": "true" }, t.group), link(t)));
+      h("span.nav-heading", { "aria-hidden": "true" }, t.group), link(t)));
   }
   wrap.replaceChildren(...items);
-  for (const name of FOLDING) {
-    const group = wrap.querySelector(`[data-group="${name}"]`);
-    const was = stored(foldKey(name));
-    if (group) setFolded(group, was ? was !== "open" : !OPEN_AT_FIRST.includes(name));
-  }
 }
 
-// The Practice and Games groups fold on a wide screen (a click on the
-// heading). Practice starts open, so a first visit sees the ways to study;
-// Games starts folded. A folded group still shows the tab you're on. Each
-// is remembered.
-const FOLDING = ["Practice", "Games"];
-const OPEN_AT_FIRST = ["Practice"];
-const foldKey = group => `lexi-nav-${group.toLowerCase()}`;
-function stored(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
-function setFolded(group, folded) {
-  group.classList.toggle("folded", folded);
-  group.querySelector(".nav-fold").setAttribute("aria-expanded", String(!folded));
-  try { localStorage.setItem(foldKey(group.dataset.group), folded ? "closed" : "open"); } catch (e) { /* storage unavailable */ }
-}
-function foldButton(name) {
-  return h("button.nav-heading.nav-fold", { type: "button", "aria-expanded": "true", title: `Show or hide the ${name.toLowerCase()} tabs`,
-    on: { click: e => { const g = e.currentTarget.closest(".nav-group"); setFolded(g, !g.classList.contains("folded")); } } },
-    name, h("span.fold-mark", { "aria-hidden": "true" }));
-}
-
-/** Cards left in today's review (the Review track you chose): the same
- * number Today shows. */
-export function reviewTrack() {
-  try { return localStorage.getItem("lexi-review-track") || ""; } catch (e) { return ""; }
-}
+/** Words to refresh (practised words due to come back today), on Today's
+ * menu link: the same number Today shows. */
 export async function refreshDueCount() {
   try {
-    const s = await api.get("/api/review/queue", { count: 1, track: reviewTrack() });
+    const { count } = await api.get("/api/refresh");
     const el = document.getElementById("due-count");
-    el.textContent = s.total;
-    el.hidden = !s.total;
+    el.textContent = count;
+    el.hidden = !count;
   } catch (e) { /* non-critical */ }
 }
 
@@ -115,7 +84,7 @@ addEventListener("beforeinstallprompt", e => {
 });
 addEventListener("appinstalled", () => { installPrompt = null; });
 
-const CALM_TABS = ["home", "browse", "lists", "stats", "settings", "more", "practice", "games", "about"];
+const CALM_TABS = ["home", "browse", "lists", "stats", "settings", "practice", "about"];
 let updating = false;
 let reloadPending = false;
 if ("serviceWorker" in navigator) {
@@ -162,9 +131,16 @@ async function route() {
   if (current && current.cleanup) { try { current.cleanup(); } catch (e) { console.error(e); } }
   current = null;
   const under = (TABS.find(t => t.id === tab) || {}).under;
+  // The section a screen belongs to (Practice for Quiz, Words for My lists,
+  // Settings for About) is marked too: always for a hub or a screen not in
+  // the rail, and on a phone (where the screen's own link isn't shown) by class.
+  const parent = TABS.find(t => t.id === under);
+  const hiddenHere = (TABS.find(t => t.id === tab) || {}).hidden;
   document.querySelectorAll(".nav-link").forEach(a => {
-    if (a.dataset.tab === tab || a.dataset.tab === under) a.setAttribute("aria-current", "page");
+    const isParent = a.dataset.tab === under;
+    if (a.dataset.tab === tab || (isParent && (parent.hub || hiddenHere))) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
+    a.classList.toggle("in-section", isParent);
   });
   // On the Practice or Games page itself (a phone page, or a link on a wide
   // screen) the group's heading shows where you are.
@@ -283,9 +259,8 @@ function keysOn() {
 export function shortcutsList() {
   const rows = [
     ["Space", "Play pronunciation"], ["← →", "Previous / next word"], ["↑ ↓", "Previous / next word (Dictionary, Pronounce)"],
-    ["1–5", "Set star rating"], ["M", "Know it (after the answer in Daily review)"], ["/", "Search (Dictionary)"],
-    ["Enter", "Flip card / reveal answer"], ["1–4", "Grade recall in Daily review; choose an answer in Quiz"],
-    ["Z", "Undo the last grade (Daily review)"],
+    ["S", "Add to my words, or take it out (Dictionary, Flashcards)"], ["/", "Search (Dictionary)"],
+    ["Enter", "Flip card / reveal answer"], ["1–4", "Choose an answer (Quiz, Listen)"],
     ["1–4", "Shoot a word (Word Shooter)"], ["Y N", "Yes / no (Word Rush)"], ["P Esc", "Pause (games; Esc while typing)"],
     ["R", "Record yourself (Pronounce)"], ["?", "Show this help"],
   ];

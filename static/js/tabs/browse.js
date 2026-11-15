@@ -2,11 +2,16 @@
 
 import { allWords, api } from "../api.js";
 import { playWord } from "../audio.js";
-import { refreshDueCount } from "../app.js";
-import { LEVELS, byDomainOrder, chosenLevels, defineTerm, domainLabel, levelsText, domainOptions, formDialog, isEveryday, h, icon, renderEntry, scrollBehavior, setKnown, setStars, showError, toast } from "../ui.js";
+import { LEVELS, byDomainOrder, chosenLevels, defineTerm, domainLabel, levelsText, domainOptions, formDialog, isEveryday, isSaved, h, icon, renderEntry, scrollBehavior, setKnown, setSaved, showError, toast } from "../ui.js";
 
 const ROW_H = 54;
-const state = { q: "", domain: "", stars: "", known: "", level: "", selectedId: null };
+const state = { q: "", domain: "", saved: "", known: "", level: "", selectedId: null };
+
+/** Today's search box: open the Dictionary on these results. */
+export function searchFor(q) {
+  state.q = q;
+  state.selectedId = null;
+}
 let words = [];
 let shown = [];
 let els = {};
@@ -74,7 +79,7 @@ function applyFilters() {
   let out = words;
   if (state.domain === "everyday") out = out.filter(isEveryday);
   else if (state.domain) out = out.filter(w => w.domains.includes(state.domain));
-  if (state.stars !== "") out = out.filter(w => state.stars.split(",").map(Number).includes(w.stars));
+  if (state.saved) out = out.filter(w => isSaved(w) === (state.saved === "saved"));
   // The list keeps to your study levels (a new learner's skip the most common
   // words, "a", "the"); a search looks through every word, so any word you
   // meet can be found. An explicit level always applies.
@@ -165,7 +170,7 @@ function renderRows() {
       h("span.row-word", w.word),
       h("span.row-side",
         w.known ? h("span.known-dot", { title: "Known" }) : null,
-        w.stars ? h("span", { style: { color: "var(--gilt)", fontSize: "12px" } }, "★".repeat(w.stars)) : null,
+        isSaved(w) ? h("span.saved-mark", { title: "In my words" }, "✓") : null,
         w.core_pos ? h("span", { style: { fontSize: "11px", color: "var(--muted)" } }, abbrevPos(w.core_pos)) : null),
       h("span.row-def", w.def || "—"));
     frag.append(row);
@@ -392,10 +397,10 @@ export async function render(root, { param, view, live: isLive }) {
     domainOptions(domains));
   dom.value = state.domain;
   dom.addEventListener("change", () => { state.domain = dom.value; refreshList(); });
-  const stars = h("select.input#browse-stars", { "aria-label": "Rating" },
-    [["", "Any rating"], ["0", "Unrated"], ["1", "★1"], ["2", "★2"], ["3", "★3"], ["4", "★4"], ["5", "★5"]].map(([v, l]) => h("option", { value: v }, l)));
-  stars.value = state.stars;
-  stars.addEventListener("change", () => { state.stars = stars.value; refreshList(); });
+  const saved = h("select.input#browse-saved", { "aria-label": "My words" },
+    [["", "Saved & not saved"], ["saved", "In my words"], ["unsaved", "Not in my words"]].map(([v, l]) => h("option", { value: v }, l)));
+  saved.value = state.saved;
+  saved.addEventListener("change", () => { state.saved = saved.value; refreshList(); });
   const known = h("select.input#browse-known", { "aria-label": "Known" },
     [["", "Known & unknown"], ["unknown", "Not yet known"], ["known", "Known"]].map(([v, l]) => h("option", { value: v }, l)));
   known.value = state.known;
@@ -441,18 +446,20 @@ export async function render(root, { param, view, live: isLive }) {
     h("div.list-col#browse-list",
       h("div.search-row", h("div.search", icon("search"), els.search), hideBtn),
       // On a phone the filters fold away, so the results come first.
-      h("details.filters-fold", { open: !narrow() }, h("summary", "Filter"), h("div.list-filters", dom, level, stars, known)),
+      h("details.filters-fold", { open: !narrow() }, h("summary", "Filter"), h("div.list-filters", dom, level, saved, known)),
       els.meta,
       els.dym,
       els.vlist),
     h("div.detail-wrap", showBtn, els.detail));
-  root.append(h("h1.sr-only", "Dictionary"), browse);   // the page heading, for screen readers (the entry is h2)
+  root.append(h("h1.sr-only", "Dictionary"), wordsSwitch("browse"), browse);   // the page heading, for screen readers (the entry is h2)
   try { setList(localStorage.getItem("lexi-browse-list") === "collapsed"); } catch (e) { setList(false); }
 
   if (!words.length) {
     els.detail.append(h("div.panel.empty", h("h2", "No words yet"), h("p", "Run build_dataset.py to build the dictionary, then reload this page.")));
   }
   refreshList({ keepScroll: true });
+  // On a computer, ready to type (a phone would open its keyboard over the list).
+  if (!narrow() && !param && words.length) els.search.focus({ preventScroll: true });
   // On a phone (list above, entry below) nothing is opened until you pick a word.
   const want = Number(param) || state.selectedId || (!narrow() && shown[0] && shown[0].id);
   if (want) {
@@ -470,16 +477,15 @@ export async function onKey(e) {
   if (e.key === "/") { e.preventDefault(); els.search.focus(); els.search.select(); return; }
   if (!detail || detail.id !== state.selectedId) return;
   if (e.key === " ") { e.preventDefault(); playWord(detail, els.detail.querySelector(".play")); }
-  else if (e.key === "l" || e.key === "L") { e.preventDefault(); els.detail.querySelector(".entry-actions .btn:not(.known-toggle)")?.click(); }
+  else if (e.key === "l" || e.key === "L") { e.preventDefault(); els.detail.querySelector(".entry-actions .btn:not(.known-toggle):not(.save-toggle)")?.click(); }
   else if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); move(1); }
   else if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); move(-1); }
-  else if (/^[1-5]$/.test(e.key)) {
-    const v = Number(e.key) === detail.stars ? 0 : Number(e.key);
-    try { await setStars(detail, v); } catch (err) { return showError(err); }
+  else if (e.key === "s" || e.key === "S") {
+    e.preventDefault();
+    try { await setSaved(detail, !isSaved(detail)); } catch (err) { return showError(err); }
     syncCached(detail);
-    els.detail.querySelector(".stars").repaint();
+    els.detail.querySelector(".save-toggle").repaint();
     renderRows();
-    refreshDueCount();
   } else if (e.key === "m" || e.key === "M") {
     try { await setKnown(detail, !detail.known); } catch (err) { return showError(err); }
     syncCached(detail);
@@ -488,4 +494,11 @@ export async function onKey(e) {
     b.lastChild.textContent = detail.known ? "Known" : "Know it";
     renderRows();
   }
+}
+
+/** On a phone, Words holds the Dictionary and My lists: a switch at the top
+ *  of each (on a wide screen both are in the sidebar). */
+export function wordsSwitch(current) {
+  const link = (id, label) => h("a.seg", { href: `#${id}`, "aria-current": id === current ? "page" : null }, label);
+  return h("nav.words-switch", { "aria-label": "Words" }, link("browse", "Dictionary"), link("lists", "My lists"));
 }

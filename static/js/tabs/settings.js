@@ -1,36 +1,41 @@
-// Settings: how you study (session length, new words, word levels,
-// pronunciation speed), the theme, and your data (export, import, offline use).
+// Settings (the gear): how you practise (the words practice starts with, word
+// levels, pronunciation speed), the theme, your data (export, import, offline
+// use), and About LexiMaster.
 
 import { api, invalidateWords } from "../api.js";
 import { savedTheme, setTheme, shortcutsList, THEMES } from "../app.js";
 import { playbackSpeed } from "../audio.js";
-import { refreshDueCount } from "../app.js";
-import { loadSettings, saveSettings, setStudyFocus, settings, studyFocus } from "../state.js";
-import { h, icon, levelPicker, pageHead, SCOPES, showError, toast } from "../ui.js";
+import { loadSettings, saveSettings, setStudyFocus, studyFocus } from "../state.js";
+import { filterSources, h, icon, levelPicker, pageHead, scopeSelect, showError, toast } from "../ui.js";
 
 export async function render(root) {
-  root.append(pageHead("Settings", "How you study, how LexiMaster looks, and your saved progress."),
-    h("div.settings-grid", settingsPanel(), themePanel(),
+  const { domains } = await filterSources();
+  root.append(pageHead("Settings", "How you practise, how LexiMaster looks, and your saved progress."),
+    h("div.settings-grid", settingsPanel(domains), themePanel(),
       h("section.panel.kbd-panel", h("h2", "Keyboard shortcuts"),
         h("p.muted", "On a computer. Press ? anywhere to see this list."), shortcutsList()),
-      dataPanel()));
+      dataPanel(), aboutPanel()));
 }
 
-function settingsPanel() {
-  const minutes = h("input.input#set-minutes", { type: "number", min: 5, max: 60, value: settings.session_minutes });
-  const perDay = h("input.input#set-new", { type: "number", min: 0, max: 100, value: settings.new_per_day });
+function aboutPanel() {
+  return h("section.panel", h("h2", "About LexiMaster"),
+    h("p.muted", "Who made it and why, how to install it on your phone, and where the words and recordings come from."),
+    h("div.toolbar",
+      h("a.btn", { href: "#about" }, icon("info"), "About LexiMaster"),
+      window.LEXI_STATIC ? h("a.btn", { href: "guide/LexiMaster-Install-Guide.pdf" }, "Install guide") : null));
+}
+
+function settingsPanel(domains) {
   const rate = h("select.input#set-rate", [["1", "Normal (1×)"], ["0.75", "Slower (0.75×)"], ["0.5", "Slowest (0.5×)"]]
     .map(([v, l]) => h("option", { value: v }, l)));
   rate.value = String(playbackSpeed());
-  const focus = h("select.input#set-focus", SCOPES.map(([v, l]) => h("option", { value: v }, l)));
+  const focus = scopeSelect("set-focus", domains);
   focus.value = studyFocus();
   focus.addEventListener("change", () => {
     setStudyFocus(focus.value);
-    refreshDueCount();
-    toast(`Daily review, Today and the practice tabs now study: ${focus.selectedOptions[0].textContent}`);
+    toast(`Every practice screen now starts with: ${focus.selectedOptions[0].textContent}`);
   });
-  // Every setting saves as soon as it changes, like Study focus and Word
-  // levels (numbers when you leave the box, so typing "12" doesn't save "1").
+  // Every setting saves as soon as it changes.
   const saveOne = async (field, value, input) => {
     if (input && !input.checkValidity()) { input.reportValidity(); return; }
     try {
@@ -39,18 +44,15 @@ function settingsPanel() {
       toast("Saved");
     } catch (e) { showError(e); }
   };
-  minutes.addEventListener("change", () => saveOne("session_minutes", Number(minutes.value), minutes));
-  perDay.addEventListener("change", () => saveOne("new_per_day", Number(perDay.value), perDay));
   rate.addEventListener("change", () => saveOne("speech_rate", Number(rate.value)));
   return h("section.panel", h("h2", "Study"),
     h("div.setup-row",
-      h("div.field", h("label", { for: "set-focus" }, "Study focus"), focus),
-      h("div.field", h("label", { for: "set-minutes" }, "Session minutes"), minutes),
-      h("div.field", h("label", { for: "set-new" }, "New words per day"), perDay),
+      h("div.field", h("label", { for: "set-focus" }, "Practice starts with"), focus),
       h("div.field", h("label", { for: "set-rate" }, "Pronunciation speed"), rate),
-      h("div.field", h("span.label", "Word levels"), levelPicker())),
-    h("p.muted", "Study focus is the group of words you study in Daily review and on Today. Practice pages start with " +
-      "the same words, and each page can pick other words."),
+      h("div.field", h("span.label", "Word difficulty"), levelPicker())),
+    h("p.muted", "Every practice screen starts with these words, and each can pick others from its \u201cWords from\u201d menu. " +
+      "Word difficulty narrows Everything, Everyday English and Advanced to how common the words are " +
+      "(1 is the most common); words in your lists and My words always count."),
     h("p.muted", "Changes save right away."));
 }
 
@@ -101,8 +103,8 @@ async function downloadRaw() {
 // What an import brought in, in plain words: the counts from /api/import
 // (both servers), each as [one, many]; settings come in with any import.
 const IMPORTED = {
-  "word states": ["word you rated or marked", "words you rated or marked"],
-  "review cards": ["word in your review", "words in your review"],
+  "word states": ["word you saved or marked", "words you saved or marked"],
+  "review cards": ["word scheduled to refresh", "words scheduled to refresh"],
   answers: ["answer", "answers"],
   "list entries": ["word in your lists", "words in your lists"],
   "own words": ["word you added", "words you added"],
@@ -148,7 +150,7 @@ function dataPanel() {
     file.value = "";
   });
   return h("section.panel", h("h2", "Your data"),
-    h("p.muted", "Export saves your ratings, review schedule, answers, lists, notes and the words you added in one file. " +
+    h("p.muted", "Export saves My words, when each word comes back to refresh, your answers, lists, notes and the words you added in one file. " +
       "Import adds a saved file back in; where both have the same word, the newer copy is kept."),
     h("label.check-row", h("input#export-recordings", { type: "checkbox" }),
       " Include my pronunciation recordings (a larger file)"),

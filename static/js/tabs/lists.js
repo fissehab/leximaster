@@ -43,7 +43,7 @@ async function open(id) {
         w.phonetic ? h("span.ipa", { style: { fontSize: "14px" } }, w.phonetic) : null),
       h("div.toolbar",
         w.is_custom ? h("button.btn.btn-quiet", { type: "button", title: "Delete this word you added", on: { click: async () => {
-          if (!(await confirmDialog(`Delete “${w.word}”?`, "This removes the word you added, its notes, ratings and review history."))) return;
+          if (!(await confirmDialog(`Delete “${w.word}”?`, "This removes the word you added, its notes and its practice history."))) return;
           try { await api.del(`/api/words/${w.id}`); invalidateWords(); open(id); } catch (e) { showError(e); }
         } } }, "Delete word") : null,
         h("button.btn.btn-quiet", { type: "button", title: "Remove from list", "aria-label": `Remove ${w.word} from this list`, on: { click: async () => {
@@ -71,8 +71,7 @@ async function open(id) {
       : h("div.panel.empty", { style: { marginTop: "14px" } }, h("p", "This list is empty. Search above to add words from the lexicon, or add a word of your own.")));
 }
 
-/** Practise just this list in any game: the game's scope and rating are
- * cleared so the whole list is in play. */
+/** Practise just this list in any activity: its "Words from" is set to the list. */
 function practice(id, tab) {
   import("../state.js").then(({ loadFilter, saveFilter }) => {
     saveFilter(tab, { ...loadFilter(tab), list_id: String(id), stars: "", domain: "" });
@@ -175,7 +174,9 @@ async function addOwnWord(listId) {
 export async function render(root, { param }) {
   els.index = h("nav.panel.list-index", { "aria-label": "Your lists" });
   els.detail = h("div");
+  const { wordsSwitch } = await import("./browse.js");
   root.append(
+    wordsSwitch("lists"),
     pageHead("My lists", "Group words your way, keep notes on each, and add words of your own.",
       h("button.btn.btn-primary", { type: "button", on: { click: createList } }, icon("plus"), "New list")),
     h("div.lists-layout", els.index, els.detail));
@@ -183,6 +184,6 @@ export async function render(root, { param }) {
   const want = Number(param) || (lists[0] && lists[0].id);
   if (want) await open(want);
   else els.detail.replaceChildren(emptyState("No lists yet",
-    "Create lists such as “Theology”, “Statistics” or “Words I confuse”, then add words from Browse or here.",
+    "Create lists such as “Theology”, “Statistics” or “Words I confuse”, then add words from the Dictionary or here. Every practice screen can use a list from its “Words from” menu.",
     h("button.btn.btn-primary", { type: "button", on: { click: createList } }, "Create your first list")));
 }

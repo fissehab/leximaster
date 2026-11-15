@@ -16,10 +16,10 @@ from ..common import parse_levels, today_iso
 router = APIRouter(prefix="/api")
 
 MASTERED_INTERVAL = 21  # days
-MASTERED_SQL = ("SELECT COUNT(*) AS n {studied} AND s.interval_days >= ? AND s.word_id IN (SELECT word_id FROM (SELECT word_id, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE mode = 'review') WHERE grade >= 2 AND gap >= ?)")
+MASTERED_SQL = ("SELECT COUNT(*) AS n {studied} AND s.interval_days >= ? AND s.word_id IN (SELECT word_id FROM (SELECT word_id, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE grade IS NOT NULL AND mode != 'repeat') WHERE grade >= 2 AND gap >= ?)")
 # Reviews of words seen before (last 30 days): the share recalled, by the gap
 # since the word's previous review. About 85-90% means the schedule is right.
-RETENTION_SQL = ("SELECT CASE WHEN gap < 8 THEN 'days' WHEN gap <= 30 THEN 'weeks' ELSE 'months' END AS span, COUNT(*) AS n, SUM(CASE WHEN grade >= 1 THEN 1 ELSE 0 END) AS ok FROM (SELECT ts, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE mode = 'review') WHERE gap IS NOT NULL AND julianday('now') - julianday(ts) <= 30 GROUP BY span")
+RETENTION_SQL = ("SELECT CASE WHEN gap < 8 THEN 'days' WHEN gap <= 30 THEN 'weeks' ELSE 'months' END AS span, COUNT(*) AS n, SUM(CASE WHEN grade >= 1 THEN 1 ELSE 0 END) AS ok FROM (SELECT ts, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE grade IS NOT NULL AND mode != 'repeat') WHERE gap IS NOT NULL AND julianday('now') - julianday(ts) <= 30 GROUP BY span")
 
 
 def streak(c) -> dict:

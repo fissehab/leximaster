@@ -14,7 +14,7 @@ import {
 } from "../games.js";
 import { scoreBoard, scoreResult } from "../gameui.js";
 import { loadFilter, settings } from "../state.js";
-import { diffView, filterBar, filterSources, fmtDuration, h, pageHead, playButton, scrollBehavior, shuffle, smart, toast } from "../ui.js";
+import { diffView, filterBar, filterSources, fmtDuration, noWordsNote, h, pageHead, playButton, scrollBehavior, shuffle, smart, toast } from "../ui.js";
 
 const CLUES = [["meaning", "Meanings"], ["hear", "Hear it"]];
 const SPEEDS = [["calm", "Calm"], ["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]];
@@ -128,7 +128,7 @@ async function start(replay = null) {
       return;
     }
     if (mine !== token || !alive) return;
-    if (list.length < 4) return empty("Not enough words here. Choose a wider set of words above.");
+    if (list.length < 4) return empty(noWordsNote(filter));
     if (list.length < WORDS && length !== "endless") toast(`Only ${list.length} words match these settings.`);
   }
   qs = list;
@@ -458,7 +458,7 @@ function finish() {
     top.el,
     h("p.muted", `${hits} of ${played} words · best run ${bestRun} · ${fmtDuration(secs)}`),
     h("p.muted", "100 a word, more for fast answers, ×2 ×3 ×4 for words in a row. A second try scores 50, a hint 0."),
-    missed.length ? h("div.missed", h("p.label", "Added back to today's review"),
+    missed.length ? h("div.missed", h("p.label", "Coming back tomorrow to refresh"),
       h("ul", missed.map(q => h("li", playButton(q, { small: true }), " ",
         h("a", { href: `#browse/${q.word_id}` }, q.word), " — ", smart(q.definition))))) : h("p", "No misses. Well done."),
     h("div.toolbar", again, retry)));

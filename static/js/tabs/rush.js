@@ -10,7 +10,7 @@ import {
 } from "../games.js";
 import { scoreBoard, scoreResult } from "../gameui.js";
 import { loadFilter } from "../state.js";
-import { filterBar, filterSources, h, pageHead, playButton, smart } from "../ui.js";
+import { filterBar, filterSources, h, noWordsNote, pageHead, playButton, smart } from "../ui.js";
 
 const TIMES = [["60", "1 minute"], ["120", "2 minutes"], ["calm", "No clock (20 cards)"]];
 const CALM_CARDS = 20;
@@ -88,7 +88,7 @@ async function start() {
   if (mine !== token || !alive) return;
   if (questions.length < 4) {
     els.stage.replaceChildren(h("div.panel.empty", h("h2", "Can't start a game"),
-      h("p", "Not enough words here. Choose a wider set of words above.")));
+      h("p", noWordsNote(filter))));
     return;
   }
   deck = rushDeck(timed() ? questions : questions.slice(0, CALM_CARDS));
@@ -324,7 +324,7 @@ function finish(allDone) {
     isNew ? h("p.shoot-best", "New best!") : best > 0 ? h("p.muted.tnum", `Best: ${num(best)}`) : null,
     h("p.muted", `${right} right · ${wrong} wrong`),
     top.el,
-    missed.length ? h("div.missed", h("p.label", "Added back to today's review"),
+    missed.length ? h("div.missed", h("p.label", "Coming back tomorrow to refresh"),
       h("ul", missed.map(q => h("li", playButton(q, { small: true }), " ",
         h("a", { href: `#browse/${q.word_id}` }, q.word), " — ", smart(q.definition))))) : null,
     h("div.toolbar", again)),

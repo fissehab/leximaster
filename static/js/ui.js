@@ -1,4 +1,4 @@
-// Shared UI: DOM helper, icons, the dictionary entry, stars, toasts, dialogs.
+// Shared UI: DOM helper, icons, the dictionary entry, toasts, dialogs.
 
 import { api, allWords, cachedWords, invalidateWords, patchCachedWord } from "./api.js";
 import { playSound, playWord, speedButton } from "./audio.js";
@@ -77,7 +77,6 @@ export function icon(name) {
   return span.firstChild;
 }
 const PLAY_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>';
-const STAR_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.83 5.74 6.33.92-4.58 4.47 1.08 6.3L12 17.25l-5.66 2.98 1.08-6.3L2.84 9.46l6.33-.92z"/></svg>';
 
 export function playButton(word, { small = false } = {}) {
   const synth = !word.audio_url;
@@ -181,37 +180,36 @@ export function posBadge(pos) {
   return h("span.pos", { "data-pos": p }, p || "word");
 }
 
-/** Interactive 1–5 star rating; clicking the current value clears it. */
-export function starsEl(word, { small = false, readonly = false, onChange } = {}) {
-  const wrap = h(`span.stars${small ? ".small" : ""}${readonly ? ".readonly" : ""}`, {
-    role: readonly ? null : "radiogroup", "aria-label": "Familiarity rating",
-  });
-  const paint = v => [...wrap.children].forEach((b, i) => {
-    b.classList.toggle("on", i < v);
-    b.setAttribute("aria-checked", String(i + 1 === v));
-  });
-  for (let i = 1; i <= 5; i++) {
-    const b = h("button", { type: "button", role: "radio", title: `${i} star${i > 1 ? "s" : ""} · key ${i}`, "aria-label": `${i} star${i > 1 ? "s" : ""}`, html: STAR_SVG });
-    b.addEventListener("click", async e => {
+/** "Add to my words": puts the word in My words (a "Words from" choice in
+ * every practice screen), or takes it out. Saved is stored as stars > 0, so
+ * words rated with the old 1-5 stars count as saved. */
+export const isSaved = w => (w.stars || 0) > 0;
+export function saveToggle(word, { small = false, onChange } = {}) {
+  const label = h("span");
+  const btn = h(`button.btn.save-toggle${small ? ".btn-sm" : ""}`, {
+    type: "button", title: "Add to my words, or take it out · S",
+    on: { click: async e => {
       e.stopPropagation();
-      const v = word.stars === i ? 0 : i;
-      try {
-        await setStars(word, v);
-      } catch (err) { return showError(err); }
-      paint(v);
-      onChange && onChange(v);
-    });
-    wrap.append(b);
-  }
-  paint(word.stars || 0);
-  wrap.repaint = () => paint(word.stars || 0);
-  return wrap;
+      try { await setSaved(word, !isSaved(word)); } catch (err) { return showError(err); }
+      paint();
+      onChange && onChange();
+    } },
+  }, icon("plus"), label);
+  const paint = () => {
+    btn.setAttribute("aria-pressed", String(isSaved(word)));
+    btn.firstChild.replaceWith(icon(isSaved(word) ? "check" : "plus"));
+    label.textContent = isSaved(word) ? "In my words" : "Add to my words";
+  };
+  paint();
+  btn.repaint = paint;
+  return btn;
 }
 
-export async function setStars(word, v) {
-  const res = await api.patch(`/api/words/${word.id}/state`, { stars: v });
+export async function setSaved(word, saved) {
+  const res = await api.patch(`/api/words/${word.id}/state`, { stars: saved ? 3 : 0 });
   word.stars = res.stars;
   patchCachedWord(word.id, { stars: res.stars });
+  toast(saved ? `“${word.word}” added to My words` : `“${word.word}” taken out of My words`);
   return res;
 }
 
@@ -270,7 +268,7 @@ export function highlight(sentence, word) {
  *             back, review reveal)
  * What is shown was decided when the data was built (build_dataset.
  * normalize_display): senses that only restate the definition carry `dup`.
- * Options: onChange, called after stars/known change; open, a link to the full entry.
+ * Options: onChange, called after saved/known change; open, a link to the full entry.
  */
 export function renderEntry(w, { mode = "full", compact = false, onChange, open = null } = {}) {
   if (compact) mode = "card";
@@ -311,7 +309,7 @@ export function renderEntry(w, { mode = "full", compact = false, onChange, open 
       isName ? h("span.chip.name-kind", `Bible name · ${NAME_KIND_LABELS[w.name_kind] || w.name_kind}`) : null,
       domains.slice(0, 2).map(d => h("span.chip", domainLabel(d))),
       domains.length > 2 ? h("span.chip", { title: domains.slice(2).map(domainLabel).join(", ") }, `+${domains.length - 2}`) : null),
-    full ? h("div.entry-actions", starsEl(w, { onChange: () => onChange && onChange() }), knownBtn, w.list_actions || null) : null,
+    full ? h("div.entry-actions", saveToggle(w, { onChange: () => onChange && onChange() }), knownBtn, w.list_actions || null) : null,
   )];
   if (w.also && w.also.length) parts.push(h("p.also.muted", "Also spelled ", w.also.map((a, i) => [i ? ", " : "", h("em", a)])));
   if (w.variant_of) parts.push(h("p.muted", "Variant of ", h("em", w.variant_of), "; definitions below are for the main form."));
@@ -804,12 +802,12 @@ export function levelsText(levels = chosenLevels()) {
 }
 
 /**
- * The word-level dropdown: tick the levels new words come from. Saved at
+ * The word-level dropdown: tick the levels practice draws from. Saved at
  * once (an app-wide setting); at least one stays ticked. onChange(levels)
  * runs after a save.
  */
 export function levelPicker({ onChange } = {}) {
-  const summary = h("summary.input.level-summary", { "aria-label": "Word levels to study" }, levelsText());
+  const summary = h("summary.input.level-summary", { "aria-label": "Word difficulty" }, levelsText());
   const boxes = LEVELS.map(([n, label, eg]) => {
     const box = h("input", { type: "checkbox", value: n, checked: chosenLevels().includes(n) });
     return [box, h("label.level-option", box, h("span", h("b", `${n} · ${label}`), h("span.muted", eg)))];
@@ -823,15 +821,13 @@ export function levelPicker({ onChange } = {}) {
     const levels = boxes.filter(([b]) => b.checked).map(([b]) => Number(b.value));
     sync();
     try { await saveSettings({ word_levels: levels.join(",") }); } catch (e) { return showError(e); }
-    try { localStorage.setItem("lexi-levels-set", "1"); } catch (e) { /* unavailable */ }   // Today stops offering easier words
     summary.textContent = levelsText(levels);
-    toast(`New words: ${levelsText(levels).toLowerCase()}`);
-    try { sessionStorage.removeItem("lexi-review-session"); } catch (e) { /* unavailable */ }
+    toast(`Practice words: ${levelsText(levels).toLowerCase()}`);
     onChange && onChange(levels);
   }));
   sync();
   const menu = h("details.level-picker", summary,
-    h("fieldset.level-menu", h("legend", "Study new words from"), boxes.map(([, l]) => l),
+    h("fieldset.level-menu", h("legend", "Practise words from"), boxes.map(([, l]) => l),
       h("p.muted.level-note", "Every word still opens from links and search.")));
   // Closes like a menu: Escape, or a click elsewhere.
   menu.addEventListener("keydown", e => { if (e.key === "Escape" && menu.open) { menu.open = false; summary.focus(); } });
@@ -845,69 +841,76 @@ export function levelPicker({ onChange } = {}) {
 
 // ---------------------------------------------------------------- practice filters
 
-/** Shared filter bar: stars, list, domain. Calls onChange(filter) with query params. */
-/** Study scopes, the same everywhere (Review, practice tabs): a track or one domain. */
-export const SCOPES = [["", "Everything"], ["everyday", "Everyday English"], ["core", "Advanced & subjects"],
-  ["bible_vocab", "Bible · Vocabulary"], ["bible_names", "Bible · Names"], ["bible", "Bible · Both"],
-  ["mine", "My words (lists, ratings)"]];
+/** Study scopes, the same everywhere (practice screens, Settings): a track,
+ * your own words, or the words due to refresh. */
+export const SCOPES = [["refresh", "Words to refresh"], ["mine", "My words (lists and saved)"], ["", "Everything"],
+  ["everyday", "Everyday English"], ["core", "Advanced & subjects"],
+  ["bible_vocab", "Bible · Vocabulary"], ["bible_names", "Bible · Names"], ["bible", "Bible · Both"]];
+const SUGGESTED = ["refresh", "mine", ""];
+
+/**
+ * The "Words from" <option>s: suggested choices, your lists (value
+ * "list:<id>"), the general tracks, then every topic. `lists` null leaves
+ * lists out (Settings), `refresh` false leaves "Words to refresh" out.
+ */
+export function sourceOptions({ lists = null, domains = [], refresh = true } = {}) {
+  const scopes = SCOPES.filter(([v]) => refresh || v !== "refresh");
+  const tracks = SCOPES.map(([v]) => v);
+  const topics = domainOptions(domains.filter(d => !tracks.includes(d)));
+  topics.forEach(g => g.querySelectorAll("option").forEach(o => { if (tracks.includes(o.value)) o.remove(); }));
+  const opt = ([v, l]) => h("option", { value: v }, l);
+  return [
+    h("optgroup", { label: "Suggested" }, scopes.filter(([v]) => SUGGESTED.includes(v)).map(opt)),
+    lists && lists.length ? h("optgroup", { label: "Your lists" },
+      lists.map(l => h("option", { value: `list:${l.id}` }, `${l.name} (${l.count})`))) : null,
+    h("optgroup", { label: "General" }, scopes.filter(([v]) => !SUGGESTED.includes(v)).map(opt)),
+    ...topics.map(g => { g.label = `Topics · ${g.label === "General" ? "Study & work" : g.label}`; return g; }),
+  ].filter(Boolean);
+}
 
 export function scopeSelect(id, domains = []) {
-  const tracks = SCOPES.map(([v]) => v);
-  const rest = domainOptions(domains.filter(d => !tracks.includes(d)));
-  rest.forEach(g => g.querySelectorAll("option").forEach(o => { if (tracks.includes(o.value)) o.remove(); }));
-  return h(`select.input#${id}`, { "aria-label": "Scope" },
-    h("optgroup", { label: "Study tracks" }, SCOPES.map(([v, l]) => h("option", { value: v }, l))), rest);
+  return h(`select.input#${id}`, { "aria-label": "Words from" }, sourceOptions({ domains, refresh: false }));
 }
 
 /**
- * Practice settings: scope, rating and list (plus a tab's own controls in
- * `extra`), remembered per tab. Folded on phones. Any change calls onChange.
+ * Practice settings: one "Words from" menu (any list, topic or track,
+ * remembered per tab), plus a tab's own controls in `extra`, folded on
+ * phones. Any change calls onChange with the query params.
  */
 export async function filterBar(onChange, { lists = [], domains = [] } = {}, { tab, extra = [] } = {}) {
   const practiceFilter = loadFilter(tab);
-  const starSel = h("select.input#f-stars",
-    h("option", { value: "" }, "Any rating"),
-    h("option", { value: "0" }, "Unrated"),
-    h("option", { value: "1,2" }, "★1–2 · unfamiliar"),
-    h("option", { value: "3" }, "★3 · getting there"),
-    h("option", { value: "4,5" }, "★4–5 · familiar"));
-  const listSel = h("select.input#f-list", h("option", { value: "" }, "All words"),
-    lists.map(l => h("option", { value: l.id }, `${l.name} (${l.count})`)));
-  const domSel = scopeSelect("f-domain", domains);
-  starSel.value = practiceFilter.stars;
-  listSel.value = practiceFilter.list_id;
-  domSel.value = practiceFilter.domain;
-  // A remembered value that's no longer offered (deleted list, gone domain) resets.
-  if (listSel.value !== String(practiceFilter.list_id)) practiceFilter.list_id = "";
-  if (domSel.value !== practiceFilter.domain) practiceFilter.domain = "";
+  const source = h("select.input#f-source", sourceOptions({ lists, domains }));
+  const current = practiceFilter.list_id ? `list:${practiceFilter.list_id}` : practiceFilter.domain;
+  source.value = current;
+  // A remembered value that's no longer offered (deleted list, gone topic) resets.
+  if (source.value !== current) source.value = "";
+  const read = () => {
+    const v = source.value;
+    practiceFilter.list_id = v.startsWith("list:") ? v.slice(5) : "";
+    practiceFilter.domain = v.startsWith("list:") ? "" : v;
+    practiceFilter.stars = "";   // star ratings are gone: "My words" replaces them
+  };
+  read();
   saveFilter(tab, practiceFilter);   // the tab reads it back after this
-  const fire = () => {
-    practiceFilter.stars = starSel.value;
-    practiceFilter.list_id = listSel.value;
-    practiceFilter.domain = domSel.value;
+  source.addEventListener("change", () => {
+    read();
     saveFilter(tab, practiceFilter);
     onChange({ ...practiceFilter });
-  };
-  [starSel, listSel, domSel].forEach(s => s.addEventListener("change", fire));
-  const set = [practiceFilter.domain, practiceFilter.stars, practiceFilter.list_id].filter(Boolean).length;
+  });
+  const words = h("div.field.words-from", h("label", { for: "f-source" }, "Words from"), source);
+  if (!extra.length) return h("div.filters-bar", words);
   const fold = h("details.settings-fold", { open: !matchMedia("(max-width: 760px)").matches },
-    h("summary", set ? `Settings (${set})` : "Settings"),
-    h("div.filters-bar",
-      h("div.field", h("label", { for: "f-domain" }, "Scope"), domSel),
-      h("div.field", h("label", { for: "f-stars" }, "Rating"), starSel),
-      h("div.field", h("label", { for: "f-list" }, "Word list"), listSel),
-      extra));
-  // A list chosen ("Practice this list") stays in view with a way out, even
-  // with Settings folded: weeks later it shouldn't quietly limit the words.
-  const list = practiceFilter.list_id && lists.find(l => String(l.id) === String(practiceFilter.list_id));
-  if (!list) return fold;
-  const chip = h("p.list-chip", h("span.chip", `List: ${list.name} `,
-    h("button.chip-x", { type: "button", "aria-label": `Stop practicing only “${list.name}”`, on: { click: () => {
-      listSel.value = "";
-      fire();
-      chip.remove();
-    } } }, "✕")));
-  return h("div", chip, fold);
+    h("summary", "Options"), h("div.filters-bar", extra));
+  return h("div.practice-filters", h("div.filters-bar", words), fold);
+}
+
+/** Why a practice screen has no words, for its "Words from" choice. */
+export function noWordsNote(filter = {}) {
+  if (filter.domain === "refresh") return "Nothing to refresh right now. Words you practise come back here when it's time " +
+    "to see them again. Choose other words under \u201cWords from\u201d.";
+  if (filter.domain === "mine") return "My words has too few words for this. Add words with \u201cAdd to my words\u201d in the " +
+    "Dictionary, or make a list. Or choose other words under \u201cWords from\u201d.";
+  return "Not enough words here. Choose other words under \u201cWords from\u201d.";
 }
 
 export async function filterSources() {

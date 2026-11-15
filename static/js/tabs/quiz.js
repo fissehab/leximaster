@@ -1,7 +1,7 @@
 // Quiz: word→meaning, meaning→word, fill-in-the-blank, synonym/antonym, and
 // for Bible names "Who or what is it?". A changed setting applies to the next
 // quiz (or restarts at once, before the first answer).
-// Wrong answers are logged and pushed back into today's review queue.
+// Every answer is logged and sets when the word comes back to refresh.
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
@@ -115,7 +115,7 @@ function results(secs = (Date.now() - started) / 1000) {
     h("span.eyebrow", "Quiz complete"),
     h("div.big-num.tnum", `${score}/${qs.length}`),
     h("p.muted", `${Math.round((100 * score) / qs.length)}% in ${fmtDuration(secs)}`),
-    missed.length ? h("div.missed", h("p.label", "Added back to today's review"),
+    missed.length ? h("div.missed", h("p.label", "Coming back tomorrow to refresh"),
       h("ul", missed.map(q => h("li", h("a", { href: `#browse/${q.word_id}` }, q.word), " — ", smart(q.definition))))) : h("p", "No misses. Well done."),
     h("div.toolbar",
       h("button.btn.btn-primary.btn-lg", { type: "button", on: { click: start } }, "Play again"),
@@ -149,7 +149,7 @@ export async function render(root) {
   len.addEventListener("change", () => { length = Number(len.value); changed(); });
   els.stage = h("div.q-wrap");
   root.append(
-    pageHead("Quiz", "Choose the meaning, the missing word, or a word that means the same. Words you get wrong come back in your review."),
+    pageHead("Quiz", "Choose the meaning, the missing word, or a word that means the same. Words you get wrong come back sooner to refresh."),
     await filterBar(f => { filter = f; changed(); }, src, { tab: "quiz", extra: [
       h("div.field", h("label", { for: "quiz-length" }, "Length"), len),
       h("div.field.field-wide", h("label", "Question types"), typeChips)] }),

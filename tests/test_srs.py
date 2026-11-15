@@ -1,5 +1,5 @@
-"""The scheduler (app/srs.py) and the review routes built on it: lapses,
-ease recovery, overdue credit, practice misses, repeat passes and undo."""
+"""The scheduler (app/srs.py) and the practice answers built on it: lapses,
+ease recovery, overdue credit, and words coming back to refresh."""
 from __future__ import annotations
 
 from datetime import date, timedelta
@@ -68,49 +68,37 @@ def _word_id(client):
     return client.get("/api/words").json()["words"][0]["id"]
 
 
-def test_practice_miss_keeps_the_interval(client):
+def test_practice_answers_schedule_the_word_once_a_day(client):
+    """With no daily review, practice decides when a word comes back: right is
+    Good, wrong is Again, once per word per day (srs.practice_answer)."""
     from app import db
-    wid = _word_id(client)
+    words = client.get("/api/words").json()["words"]
+    right, wrong, known = words[0]["id"], words[1]["id"], words[2]["id"]
+    today = date.today()
+    client.post("/api/answer", json={"word_id": right, "mode": "quiz", "correct": True})
+    client.post("/api/answer", json={"word_id": right, "mode": "quiz", "correct": False})   # same day: no change
+    with db.tx() as c:
+        card = dict(c.execute("SELECT * FROM srs WHERE word_id=?", (right,)).fetchone())
+        logs = [dict(r) for r in c.execute("SELECT grade, correct FROM review_log WHERE word_id=? ORDER BY id", (right,))]
+    assert card["reps"] == 1 and card["due_date"] == (today + timedelta(days=1)).isoformat()
+    assert logs == [{"grade": 2, "correct": 1}, {"grade": None, "correct": 0}]
+    # A word you've learned well and then miss comes back tomorrow, keeping part of its interval.
     with db.tx() as c:
         c.execute("INSERT INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed) "
-                  "VALUES (?, 2.5, 40, 4, 0, '2030-01-01', '2026-01-01')", (wid,))
-    assert client.post("/api/answer", json={"word_id": wid, "mode": "match", "correct": False}).status_code == 200
+                  "VALUES (?, 2.5, 40, 4, 0, '2030-01-01', '2026-01-01')", (wrong,))
+    client.post("/api/answer", json={"word_id": wrong, "mode": "match", "correct": False})
     with db.tx() as c:
-        row = dict(c.execute("SELECT * FROM srs WHERE word_id=?", (wid,)).fetchone())
-    assert row["interval_days"] == 40 and row["ease"] == 2.5 and row["due_date"] == date.today().isoformat()
-    # A quiz miss (the first miss of the day for that word) halves the interval.
-    other = client.get("/api/words").json()["words"][1]["id"]
+        card = dict(c.execute("SELECT * FROM srs WHERE word_id=?", (wrong,)).fetchone())
+    assert card["lapses"] == 1 and card["due_date"] == (today + timedelta(days=1)).isoformat() and 1 < card["interval_days"] < 40
+    # Words to refresh: practised words due today, not words marked known.
     with db.tx() as c:
-        c.execute("INSERT INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed) "
-                  "VALUES (?, 2.5, 40, 4, 0, '2030-01-01', '2026-01-01')", (other,))
-    client.post("/api/answer", json={"word_id": other, "mode": "quiz", "correct": False})
-    with db.tx() as c:
-        row = dict(c.execute("SELECT * FROM srs WHERE word_id=?", (other,)).fetchone())
-    assert row["interval_days"] == 20 and row["ease"] == 2.3
-
-
-def test_repeat_pass_is_logged_apart_and_undo_restores(client):
-    from app import db
-    wid = _word_id(client)
-    first = client.post(f"/api/review/{wid}", json={"grade": 2, "is_new": True}).json()
-    assert first["previous"] is None and first["reps"] == 1
-    client.post(f"/api/review/{wid}", json={"grade": 0, "repeat": True})
-    with db.tx() as c:
-        modes = [r["mode"] for r in c.execute("SELECT mode FROM review_log WHERE word_id=? ORDER BY id", (wid,))]
-    assert modes == ["review", "repeat"]
-    # Undo the repeat, then the first grade: the word is unseen again.
-    assert client.post(f"/api/review/{wid}/undo", json={"repeat": True}).status_code == 200
-    assert client.post(f"/api/review/{wid}/undo", json={"previous": None, "is_new": True}).status_code == 200
-    with db.tx() as c:
-        assert c.execute("SELECT COUNT(*) AS n FROM review_log WHERE word_id=?", (wid,)).fetchone()["n"] == 0
-        assert c.execute("SELECT 1 FROM srs WHERE word_id=?", (wid,)).fetchone() is None
-    assert client.post(f"/api/review/{wid}/undo", json={}).status_code == 409
-
-
-def test_queue_spreads_new_words_through_reviews():
-    from app.api.practice import interleave
-    q = [("d1", False), ("d2", False), ("d3", False), ("d4", False), ("n1", True), ("n2", True)]
-    assert [x for x, _ in interleave(q)] == ["d1", "d2", "d3", "n1", "d4", "n2"]
+        c.execute("INSERT INTO srs(word_id, due_date, reps, last_reviewed) VALUES (?, date('now', 'localtime', '-1 day'), 2, '2026-01-01')", (known,))
+        c.execute("UPDATE srs SET due_date = date('now', 'localtime') WHERE word_id = ?", (right,))
+    assert client.get("/api/refresh").json()["count"] == 2
+    client.patch(f"/api/words/{known}/state", json={"known": True})
+    assert client.get("/api/refresh").json()["count"] == 1
+    cards = client.get("/api/flashcards", params={"domain": "refresh"}).json()["cards"]
+    assert [w["id"] for w in cards] == [right]
 
 
 def test_stats_mastered_needs_a_survived_gap(client):

@@ -116,20 +116,18 @@ def review(c: sqlite3.Connection, word_id: int, grade: int) -> dict:
     return new
 
 
-def penalise_miss(c: sqlite3.Connection, word_id: int, first_miss_today: bool, mode: str = "quiz") -> None:
-    """A wrong answer in a quiz or game: the word is due today. A quiz miss (a
-    wrong meaning) also halves the interval and lowers ease, once per word per
-    day, so several misclicks in one round don't compound. A miss in
-    listening, matching or flashcards is about hearing or speed: the word comes
-    up today, and a good review picks its interval up again. A word never
-    studied before gets a fresh card and arrives as a new word."""
-    card = ensure_card(c, word_id)
-    interval, ease = card["interval_days"], card["ease"]
-    if first_miss_today and card["reps"] and mode == "quiz":
-        ease = max(MIN_EASE, ease - 0.2)
-        interval = max(1, interval // 2)
-    c.execute("UPDATE srs SET due_date=?, ease=?, interval_days=? WHERE word_id=?",
-              (iso(today()), ease, interval, word_id))
+def practice_answer(c: sqlite3.Connection, word_id: int, correct: bool) -> int | None:
+    """An answer in Practice or a game schedules the word, once per word per
+    day: right counts as "Good" (it comes back later), wrong as "Again" (it
+    comes back tomorrow). A word met for the first time gets its card here.
+    Returns the grade used, or None when the word was already scheduled
+    today (several answers in one round don't compound)."""
+    card = get_card(c, word_id)
+    if card and card["last_reviewed"] == iso(today()):
+        return None
+    grade = 2 if correct else 0
+    review(c, word_id, grade)
+    return grade
 
 
 def on_stars_changed(c: sqlite3.Connection, word_id: int, stars: int) -> None:

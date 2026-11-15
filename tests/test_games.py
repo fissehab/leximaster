@@ -38,14 +38,14 @@ def test_rush_cards_show_a_word_and_four_meanings(client):
         assert len(set(q["options"])) == 4
 
 
-def test_too_few_words_says_choose_a_wider_set(client):
+def test_too_few_words_says_choose_other_words(client):
     ids = [w["id"] for w in client.get("/api/words").json()["words"][:2]]
     lid = client.post("/api/lists", json={"name": "Two words"}).json()["id"]
     for wid in ids:
         client.post(f"/api/lists/{lid}/words", json={"word_id": wid})
     res = client.get("/api/quiz", params={"types": "meaning_word", "n": 15, "list_id": lid})
     assert res.status_code == 400
-    assert "Choose a wider set" in res.json()["detail"]
+    assert "Choose other words under \"Words from\"" in res.json()["detail"]
 
 
 def test_game_sessions_show_in_test_history(client):

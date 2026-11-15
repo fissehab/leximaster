@@ -14,8 +14,6 @@ import { BIBLE_TRACKS, EVERYDAY_DOMAINS, FORM_OF } from "../shared.gen.js";
 
 const EVERYDAY_SQL = `EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value IN (${
   EVERYDAY_DOMAINS.map(d => `'${d}'`).join(",")}))`;
-const NEW_CARD_SECONDS = 35;
-const DEFAULT_REVIEW_SECONDS = 14;
 const MASTERED_INTERVAL = 21;
 const DEFAULT_SETTINGS = { session_minutes: "15", new_per_day: "12", accent: "us", autoplay: "1", speech_rate: "0.9",
                            word_levels: "2,3,4" };
@@ -502,14 +500,14 @@ const NAMES_ONLY_SQL = "(EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_e
 // (domain "reference"; the others are "linked" and studied after the rest):
 // studied only when chosen (a list of yours, starred, or that filter); app/common.py.
 const REFERENCE_SQL = "EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'reference')";
-const LINKED_SQL = "EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'linked')";
 const CHOSEN_SQL = `(NOT ${REFERENCE_SQL} OR COALESCE(u.stars, 0) > 0 ` +
   "OR EXISTS (SELECT 1 FROM list_words lw2 WHERE lw2.word_id = w.id))";
-// "My words": in a list of yours, rated, or in your reviews (app/common.py MINE_SQL).
+// "My words": in a list of yours, or saved (app/common.py MINE_SQL).
 const MINE_SQL = "(EXISTS (SELECT 1 FROM list_words lm WHERE lm.word_id = w.id) " +
-  "OR EXISTS (SELECT 1 FROM user_word um WHERE um.word_id = w.id AND um.stars > 0) " +
-  "OR EXISTS (SELECT 1 FROM srs sm WHERE sm.word_id = w.id))";
-const SCOPES = ["everyday", "core", ...BIBLE_TRACKS, "mine"];
+  "OR EXISTS (SELECT 1 FROM user_word um WHERE um.word_id = w.id AND um.stars > 0))";
+// "Words to refresh": practised words due to come back today (app/common.py REFRESH_SQL).
+const REFRESH_SQL = "EXISTS (SELECT 1 FROM srs sr WHERE sr.word_id = w.id AND sr.due_date <= date('now', 'localtime'))";
+const SCOPES = ["everyday", "core", ...BIBLE_TRACKS, "mine", "refresh"];
 // Word levels (app/common.py LEVELED, parse_levels, level_clause): the
 // levels new words come from, setting "word_levels" = "1,2,3".
 const LEVELED = ["", "everyday", "core"];
@@ -528,6 +526,7 @@ function trackClause(track) {
   if (track === "core") return `NOT ${EVERYDAY_SQL} AND NOT ${NAMES_ONLY_SQL}`;
   if (BIBLE_TRACKS.includes(track)) return `EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = '${track}')`;
   if (track === "mine") return MINE_SQL;
+  if (track === "refresh") return REFRESH_SQL;
   return "1=1";
 }
 
@@ -546,7 +545,8 @@ function poolIds({ stars = null, list_id = null, domain = null, need_audio = fal
   if (SCOPES.includes(domain)) where.push(trackClause(domain));
   else if (domain) { where.push("EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = ?)"); args.push(domain); }
   else if (!list_id) where.push(`NOT ${NAMES_ONLY_SQL}`);  // Bible names only when chosen (or in your own list)
-  if (domain !== "reference" && !list_id) where.push(CHOSEN_SQL);
+  // A reference word you practised still comes back to refresh.
+  if (!["reference", "refresh"].includes(domain) && !list_id) where.push(CHOSEN_SQL);
   if (LEVELED.includes(domain || "") && !list_id) where.push(levelClause(levelsSetting()));
   if (need_audio) where.push("w.has_audio = 1");
   if (need_enriched) where.push("w.enriched = 1");
@@ -668,16 +668,14 @@ function review(id, grade) {
   return next;
 }
 
-// A quiz miss halves the interval and lowers ease; any miss makes the word
-// due today (app/srs.py penalise_miss).
-function penaliseMiss(id, firstMissToday, mode = "quiz") {
-  const card = ensureCard(id);
-  let { ease, interval_days: interval } = card;
-  if (firstMissToday && card.reps && mode === "quiz") {
-    ease = Math.max(MIN_EASE, ease - 0.2);
-    interval = Math.max(1, Math.floor(interval / 2));
-  }
-  run("UPDATE srs SET due_date=?, ease=?, interval_days=? WHERE word_id=?", [todayIso(), ease, interval, id]);
+// An answer in Practice or a game schedules the word once per word per day:
+// right is "Good", wrong is "Again" (app/srs.py practice_answer).
+function practiceAnswer(id, correct) {
+  const card = getCard(id);
+  if (card && card.last_reviewed === todayIso()) return null;
+  const grade = correct ? 2 : 0;
+  review(id, grade);
+  return grade;
 }
 
 function onStarsChanged(id, stars) {
@@ -862,162 +860,19 @@ function addToList(id, body) {
 
 // ------------------------------------------------------------ practice routes
 
-function avgReviewSeconds() {
-  const row = get("SELECT AVG(ms_taken) AS ms FROM (SELECT ms_taken FROM review_log WHERE mode='review' " +
-                  "AND ms_taken BETWEEN 1000 AND 120000 ORDER BY id DESC LIMIT 200)");
-  return row && row.ms ? row.ms / 1000 + 3 : DEFAULT_REVIEW_SECONDS;
-}
-
-function newWords(clause, n, { shuffle = false, level = "1=1" } = {}) {
-  if (n <= 0) return [];
-  const then = shuffle ? "(w.id * 7919) % 10007" : "w.freq_rank";
-  const order = "ORDER BY EXISTS (SELECT 1 FROM list_words lw WHERE lw.word_id = w.id) DESC, " +
-                "CASE WHEN COALESCE(u.stars,0) BETWEEN 1 AND 2 THEN 0 " +
-                `WHEN COALESCE(u.stars,0) = 0 THEN 1 ELSE 2 END, ${LINKED_SQL}, ${then} ASC LIMIT ?`;   // linked words last (practice.py)
-  const base = `SELECT ${WORD_COLUMNS} ${WORD_FROM} WHERE s.word_id IS NULL AND COALESCE(u.known, 0) = 0 ` +
-               `AND ${CHOSEN_SQL} AND ${clause} AND ${level} `;
-  let rows = all(base + "AND (w.enriched = 1 OR w.is_custom = 1 OR w.has_conv = 1) " + order, [n]);
-  if (!rows.length) rows = all(base + order, [n]);
-  return rows;
-}
-
-// New words spread through the reviews, one after every three (practice.py).
-function interleave(rows) {
-  let old = rows.filter(([, isNew]) => !isNew);
-  const fresh = rows.filter(([, isNew]) => isNew);
-  const out = [];
-  while (old.length || fresh.length) {
-    out.push(...old.slice(0, 3));
-    old = old.slice(3);
-    if (fresh.length) out.push(fresh.shift());
-  }
-  return out;
-}
-
-async function reviewQueue(q) {
-  const extra = Math.max(0, Number(q.extra) || 0);
-  const track = q.track || "";
-  const tr = trackClause(track);
-  const st = settingsMap();
-  const level = LEVELED.includes(track) ? levelClause(st.word_levels) : "1=1";
-  const budget = Number(st.session_minutes) * 60;
-  const perReview = avgReviewSeconds();
-  const act = get("SELECT reviews, new_words, seconds FROM daily_activity WHERE date=?", [todayIso()]);
-  const due = all(`SELECT ${WORD_COLUMNS} ${WORD_FROM} WHERE s.due_date <= ? AND COALESCE(u.known, 0) = 0 AND ${tr} ` +
-                  "ORDER BY s.due_date ASC, COALESCE(u.stars, 0) ASC, s.ease ASC", [todayIso()]);
-  let used = 0;
-  const rows = [];
-  // A card made by a practice miss but never reviewed is still a new word:
-  // it takes one of the day's new-word places (app/api/practice.py).
-  const isUnseen = r => r.reps === 0 && r.last_reviewed == null;
-  for (const r of due.filter(r => !isUnseen(r))) {
-    if (used + perReview > budget && rows.length) break;
-    rows.push([r, false]);
-    used += perReview;
-  }
-  const remaining = Math.max(0, budget - used);
-  const newCap = Math.max(0, Number(st.new_per_day) - (act ? act.new_words : 0)) + extra;
-  let nNew = Math.min(newCap, Math.floor(remaining / NEW_CARD_SECONDS) + extra);
-  const unseen = due.filter(isUnseen).slice(0, Math.max(0, nNew));
-  for (const r of unseen) rows.push([r, true]);
-  nNew -= unseen.length;
-  let levelShort = false;
-  if (nNew > 0) {
-    let fresh;
-    if (track) fresh = newWords(tr, nNew, { shuffle: track === "everyday", level });
-    else {
-      const a = newWords(trackClause("everyday"), Math.ceil(nNew / 2), { shuffle: true, level });
-      const b = newWords(trackClause("core"), nNew, { level });
-      fresh = [];
-      for (let i = 0; i < Math.max(a.length, b.length); i++) {
-        if (i < a.length) fresh.push(a[i]);
-        if (i < b.length) fresh.push(b[i]);
-      }
-      fresh = fresh.slice(0, nNew);
-    }
-    // Fewer new words than asked for, because of the chosen levels.
-    levelShort = level !== "1=1" && fresh.length < nNew;
-    for (const r of fresh) rows.push([r, true]);
-  }
-  rows.splice(0, rows.length, ...interleave(rows));
-  if (q.count) {
-    // Only the numbers (Home, the nav badge): same selection, no card details.
-    const nNewCards = rows.filter(([, isNew]) => isNew).length;
-    return { total: rows.length, due: rows.length - nNewCards, new: nNewCards, level_short: levelShort,
-             samples: rows.filter(([, isNew]) => isNew).slice(0, 3).map(([r]) => r.word),
-             due_total: due.length,
-             est_seconds: rows.length ? Math.round(used + nNewCards * NEW_CARD_SECONDS) : 0,
-             done_today: { reviews: act ? act.reviews : 0, new: act ? act.new_words : 0, seconds: act ? act.seconds : 0 } };
-  }
-  // Offline, a card whose details aren't saved on this device is left out
-  // rather than failing the whole review.
-  const got = await Promise.allSettled(rows.map(async ([r, isNew]) => ({ ...(await full(r)), is_new: isNew })));
-  const queue = got.filter(g => g.status === "fulfilled").map(g => g.value);
-  if (!queue.length && got.length) throw got[0].reason;
-  return {
-    queue, level_short: levelShort, offline_skipped: got.length - queue.length, due_total: due.length,
-    done_today: { reviews: act ? act.reviews : 0, new: act ? act.new_words : 0, seconds: act ? act.seconds : 0 },
-    target_seconds: budget,
-    est_seconds: queue.length ? Math.round(used + queue.filter(c => c.is_new).length * NEW_CARD_SECONDS) : 0,
-  };
-}
-
-function submitReview(id, body) {
-  needWord(id);
-  const grade = Number(body.grade);
-  if (![0, 1, 2, 3].includes(grade)) throw new HttpError(422, "Grade must be 0-3.");
-  const before = getCard(id) || null;
-  const result = body.repeat ? (before || {}) : review(id, grade);
-  run("INSERT INTO review_log(word_id, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?)",
-      [id, body.repeat ? "repeat" : "review", grade, grade >= 1 ? 1 : 0, Number(body.ms) || 0]);
-  bumpActivity({ reviews: 1, newWords: body.is_new && !body.repeat ? 1 : 0 });
-  // The card as it was, so the grade can be undone.
-  const previous = before && { ease: before.ease, interval_days: before.interval_days, reps: before.reps,
-    lapses: before.lapses, due_date: before.due_date, last_reviewed: before.last_reviewed };
-  return { ...result, previous };
-}
-
-// Take back the last grade given to this word today (app/api/practice.py undo_review).
-async function undoReview(id, body) {
-  needWord(id);
-  const last = get(`SELECT r.id, w.key, r.ts, r.mode, r.grade, r.correct, r.ms_taken FROM review_log r
-                    JOIN words w ON w.id = r.word_id WHERE r.word_id=? AND r.mode IN ('review', 'repeat')
-                    AND date(r.ts) = date('now', 'localtime') ORDER BY r.id DESC LIMIT 1`, [id]);
-  if (!last) throw new HttpError(409, "There's no grade from today to undo.");
-  if (last.id <= persistedLogId) {
-    let key = logKeys.get(last.id);
-    if (!key) {   // saved by another tab: find it by its contents
-      const sig = logSig(last);
-      const hit = (await idbEntries("state", "log:")).reverse().find(([, r]) => logSig(r) === sig);
-      key = hit && hit[0];
-    }
-    if (key) pendingLogDeletes.push(key);
-  }
-  run("DELETE FROM review_log WHERE id=?", [last.id]);
-  if (!body.repeat) {
-    const p = body.previous;
-    const isDate = v => typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v);
-    if (p && isDate(p.due_date)) {
-      run("UPDATE srs SET ease=?, interval_days=?, reps=?, lapses=?, due_date=?, last_reviewed=? WHERE word_id=?",
-          [clamp(p.ease, 1.3, 5, 2.5, false), clamp(p.interval_days, 0, 36500, 0), clamp(p.reps, 0, 10000, 0),
-           clamp(p.lapses, 0, 10000, 0), p.due_date, isDate(p.last_reviewed) ? p.last_reviewed : null, id]);
-    } else run("DELETE FROM srs WHERE word_id=?", [id]);
-  }
-  bumpActivity({ reviews: -1, newWords: body.is_new && !body.repeat ? -1 : 0 });
-  return { ok: true };
+// How many practised words are due to come back today (app/api/practice.py refresh).
+function refreshCount() {
+  return { count: poolIds({ domain: "refresh", exclude_known: true }).length };
 }
 
 function recordAnswer(body) {
   const id = Number(body.word_id);
   if (!/^(quiz|match|listen|spell|flash)$/.test(body.mode || "")) throw new HttpError(422, "Unknown mode.");
   needWord(id);
-  run("INSERT INTO review_log(word_id, mode, correct, ms_taken) VALUES (?, ?, ?, ?)",
-      [id, body.mode, body.correct ? 1 : 0, Number(body.ms) || 0]);
-  if (!body.correct) {
-    const n = get("SELECT COUNT(*) AS n FROM review_log WHERE word_id=? AND correct=0 AND mode NOT IN ('review', 'repeat') " +
-                  "AND date(ts) = date('now', 'localtime')", [id]).n;
-    penaliseMiss(id, n <= 1, body.mode);
-  }
+  const grade = practiceAnswer(id, !!body.correct);
+  run("INSERT INTO review_log(word_id, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?)",
+      [id, body.mode, grade, body.correct ? 1 : 0, Number(body.ms) || 0]);
+  bumpActivity({ reviews: 1 });   // the day's answers (Progress, the streak)
   return { ok: true };
 }
 
@@ -1106,7 +961,7 @@ async function makeQuiz(q) {
     filters.domain = "bible_names";   // only names can be asked "who or what?"
   }
   const pool = poolIds(filters);
-  if (pool.length < 4) throw new HttpError(400, "Not enough words match these filters. Choose a wider set.");
+  if (pool.length < 4) throw new HttpError(400, "Not enough words here. Choose other words under \"Words from\".");
   let allIds = all(`SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT ${NAMES_ONLY_SQL} ` +
                    `AND NOT ${REFERENCE_SQL}`).map(r => r.id);
   if (allIds.length < 50) allIds = all("SELECT id FROM words").map(r => r.id);
@@ -1242,7 +1097,7 @@ async function matching(q) {
     }
     pairs.push({ word_id: wid, word: row.word, match: right });
   }
-  if (pairs.length < 3) throw new HttpError(400, "Not enough words with this kind of content. Try another filter.");
+  if (pairs.length < 3) throw new HttpError(400, "Not enough words with this kind of content here. Choose other words under \"Words from\".");
   return { pairs };
 }
 
@@ -1283,7 +1138,7 @@ async function listen(q) {
   let pool = poolIds({ ...filters, need_audio: audioOnly });
   let fallback = false;
   if (audioOnly && pool.length < 4) { pool = poolIds(filters); fallback = true; }
-  if (pool.length < 4) throw new HttpError(400, "Not enough words match these filters.");
+  if (pool.length < 4) throw new HttpError(400, "Not enough words here. Choose other words under \"Words from\".");
   const items = [];
   for (const wid of weightedSample(pool, n)) {
     const item = await full(fetchWord(wid));
@@ -1364,8 +1219,8 @@ function streak() {
 
 const STUDIED = "FROM srs s LEFT JOIN user_word u ON u.word_id=s.word_id WHERE COALESCE(u.known,0)=0";
 // Mastered and retention, as in app/api/stats.py.
-const MASTERED_SQL = "SELECT COUNT(*) AS n {studied} AND s.interval_days >= ? AND s.word_id IN (SELECT word_id FROM (SELECT word_id, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE mode = 'review') WHERE grade >= 2 AND gap >= ?)";
-const RETENTION_SQL = "SELECT CASE WHEN gap < 8 THEN 'days' WHEN gap <= 30 THEN 'weeks' ELSE 'months' END AS span, COUNT(*) AS n, SUM(CASE WHEN grade >= 1 THEN 1 ELSE 0 END) AS ok FROM (SELECT ts, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE mode = 'review') WHERE gap IS NOT NULL AND julianday('now') - julianday(ts) <= 30 GROUP BY span";
+const MASTERED_SQL = "SELECT COUNT(*) AS n {studied} AND s.interval_days >= ? AND s.word_id IN (SELECT word_id FROM (SELECT word_id, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE grade IS NOT NULL AND mode != 'repeat') WHERE grade >= 2 AND gap >= ?)";
+const RETENTION_SQL = "SELECT CASE WHEN gap < 8 THEN 'days' WHEN gap <= 30 THEN 'weeks' ELSE 'months' END AS span, COUNT(*) AS n, SUM(CASE WHEN grade >= 1 THEN 1 ELSE 0 END) AS ok FROM (SELECT ts, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE grade IS NOT NULL AND mode != 'repeat') WHERE gap IS NOT NULL AND julianday('now') - julianday(ts) <= 30 GROUP BY span";
 
 function stats() {
   const one = sql => get(sql).n;
@@ -1702,10 +1557,10 @@ async function downloadForOffline() {
   const urls = shards.map(s => `data/detail/${String(s).padStart(2, "0")}.json`);
   for (let s = 0; s < GLOSS_SHARDS; s++) urls.push(glossUrl(s));
   urls.push("data/mentions.json");
-  // Today's review words' recordings too, so the daily session sounds right offline.
+  // The recordings of words to refresh too, so practising them sounds right offline.
   try {
-    const q = await reviewQueue({});
-    for (const w of q.queue.slice(0, 80)) {
+    const ids = poolIds({ domain: "refresh", exclude_known: true }).slice(0, 80);
+    for (const w of await Promise.all(ids.map(i => full(fetchWord(i))))) {
       const u = w.audio_url || w.tts_url;
       if (u) urls.push(u);
       for (const p of w.prons || []) if (p.url) urls.push(p.url);   // each way it's said
@@ -1765,9 +1620,7 @@ const ROUTES = [
     run("DELETE FROM list_words WHERE list_id=? AND word_id=?", [+m[1], +m[2]]);
     return { ok: true };
   }],
-  ["GET", /^\/api\/review\/queue$/, (m, q) => reviewQueue(q)],
-  ["POST", /^\/api\/review\/(\d+)$/, (m, q, b) => submitReview(+m[1], b)],
-  ["POST", /^\/api\/review\/(\d+)\/undo$/, (m, q, b) => undoReview(+m[1], b)],
+  ["GET", /^\/api\/refresh$/, () => refreshCount()],
   ["POST", /^\/api\/answer$/, (m, q, b) => recordAnswer(b)],
   ["POST", /^\/api\/sessions$/, (m, q, b) => {
     run("INSERT INTO test_session(kind, score, total, duration_s) VALUES (?, ?, ?, ?)",
@@ -1800,7 +1653,7 @@ const ROUTES = [
 ];
 const READ_ONLY = new Set(["/api/health", "/api/words", "/api/gloss", "/api/mentions", "/api/lists", "/api/stats", "/api/settings", "/api/export",
                            "/api/quiz", "/api/matching", "/api/listen", "/api/flashcards", "/api/practice/words",
-                           "/api/review/queue", "/api/offline"]);
+                           "/api/refresh", "/api/offline"]);
 
 export async function handle(method, url, body) {
   if (!ready) ready = boot();

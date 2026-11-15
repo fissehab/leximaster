@@ -1,12 +1,12 @@
 // Flashcards: word on the front; flip for pronunciation, meaning, examples.
-// After the flip, "Missed" or "Knew it" records the answer (a miss brings the
-// word up in today's review) and moves on; swipe left or right on a phone.
+// After the flip, "Missed" or "Knew it" records the answer (it sets when the
+// word comes back to refresh) and moves on; swipe left or right on a phone.
 // The deck ends with a summary; the deck and place are kept for the visit.
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { settings } from "../state.js";
-import { emptyState, filterBar, filterSources, h, icon, pageHead, renderEntry, setKnown, showError, starsEl, toast } from "../ui.js";
+import { emptyState, filterBar, noWordsNote, filterSources, h, icon, pageHead, renderEntry, saveToggle, setKnown, showError, toast } from "../ui.js";
 
 let cards = [];
 let idx = 0;
@@ -63,7 +63,7 @@ function show() {
   els.answer.hidden = true;
   if (!cards.length) {
     els.nav.hidden = true;
-    els.stage.replaceChildren(emptyState("No cards match", "Widen the settings above to include more words."));
+    els.stage.replaceChildren(emptyState("No cards here", noWordsNote(filter)));
     return;
   }
   els.nav.hidden = false;
@@ -74,7 +74,6 @@ function show() {
   // The front is a real button that names the word, so a screen reader hears
   // "headache, show the meaning" rather than only "flip card".
   const front = h("button.flip-face.front.panel", { type: "button", "aria-label": `${w.word}: show the meaning` },
-    w.stars ? h("span.front-stars", { "aria-hidden": "true" }, "★".repeat(w.stars)) : null,
     h("span.headword", w.word),
     h("span.flip-hint", touch ? "Say it aloud, recall the meaning, then tap" : "Say it aloud, recall the meaning, then flip · Enter"));
   front.addEventListener("click", toggle);
@@ -83,7 +82,7 @@ function show() {
   els.flip = flip;
   els.stage.replaceChildren(h("div.flip-wrap", flip));
   els.counter.textContent = `${idx + 1} / ${cards.length}`;
-  els.stars.replaceChildren(h("span.muted.stars-label", "Familiarity"), starsEl(w, { small: true }));
+  els.stars.replaceChildren(saveToggle(w, { small: true }));
   const shown = idx;
   entry(w).then(full => {
     if (idx !== shown || els.flip !== flip) return;   // moved on meanwhile
@@ -152,20 +151,14 @@ function finished() {
   els.nav.hidden = true;
   try { sessionStorage.removeItem(SAVE_KEY); } catch (e) { /* unavailable */ }
   const heading = h("h2", { tabindex: "-1" }, "Deck done");
-  const weak = cards.filter(c => c.stars && c.stars <= 2).length;
   els.stage.replaceChildren(h("div.panel.done-state",
     heading,
     h("p.muted", `${tally.seen.size} card${tally.seen.size === 1 ? "" : "s"} seen` +
-      (tally.knew || tally.missed ? ` · ${tally.knew} knew · ${tally.missed} missed (they come up in today's review)` : "") +
+      (tally.knew || tally.missed ? ` · ${tally.knew} knew · ${tally.missed} missed (they come back tomorrow to refresh)` : "") +
       (tally.known ? ` · ${tally.known} marked known` : "") + "."),
     h("div.toolbar",
       h("button.btn.btn-primary", { type: "button", on: { click: () => load() } }, "New deck"),
-      h("button.btn", { type: "button", on: { click: () => { idx = 0; show(); } } }, "Go through again"),
-      weak ? h("button.btn", { type: "button", on: { click: () => {
-        cards = cards.filter(c => c.stars && c.stars <= 2);
-        idx = 0;
-        show();
-      } } }, `Just the ★1–2 words (${weak})`) : null)));
+      h("button.btn", { type: "button", on: { click: () => { idx = 0; show(); } } }, "Go through again"))));
   heading.focus({ preventScroll: true });
 }
 
@@ -219,8 +212,8 @@ export async function render(root, { live: isLive } = {}) {
     h("div.fc-nav", els.stars,
       h("button.btn.btn-quiet", { type: "button", on: { click: e => { unfocus(e); knowIt(); } } }, "Know it & next ", h("kbd", { "aria-hidden": "true" }, "M"))));
   root.append(
-    pageHead("Flashcards", "Think of the meaning, then turn the card. Words you find hard come back more often.", autoplay, shuffleBtn),
-    await filterBar(f => { filter = f; load(); }, src, { tab: "flashcards" }),
+    pageHead("Flashcards", "Think of the meaning, then turn the card. Words you miss come back sooner to refresh."),
+    await filterBar(f => { filter = f; load(); }, src, { tab: "flashcards", extra: [autoplay, shuffleBtn] }),
     els.stage,
     els.nav,
   );
@@ -236,11 +229,7 @@ export async function onKey(e) {
   else if (e.key === " ") { e.preventDefault(); playWord(w, els.flip.querySelector(flipped ? ".back .play" : ".play")); }
   else if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
   else if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
-  else if (/^[1-5]$/.test(e.key)) {
-    const { setStars } = await import("../ui.js");
-    await setStars(w, Number(e.key));
-    els.stars.querySelector(".stars").repaint();
-  }
+  else if (k === "s") { e.preventDefault(); els.stars.querySelector(".save-toggle").click(); }
   else if (k === "m") { e.preventDefault(); knowIt(); }
   else if (k === "k" && flipped) { e.preventDefault(); answer(true); }
   else if (k === "x" && flipped) { e.preventDefault(); answer(false); }

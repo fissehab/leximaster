@@ -1,4 +1,5 @@
-"""Daily review queue, quizzes, matching, listening, flashcards and recordings."""
+"""Practice: answers (which set when a word comes back), quizzes, matching,
+listening, flashcards and recordings."""
 from __future__ import annotations
 
 import json
@@ -11,15 +12,11 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from .. import db, srs
-from ..common import (BIBLE_TRACKS, CHOSEN_SQL, EVERYDAY_DOMAINS, LEVELED, LINKED_SQL, NAMES_ONLY_SQL, REFERENCE_SQL, WORD_COLUMNS, WORD_FROM, blank_sentence, hints_word, mask_word,
+from ..common import (BIBLE_TRACKS, EVERYDAY_DOMAINS, NAMES_ONLY_SQL, REFERENCE_SQL, blank_sentence, hints_word, mask_word,
                       bump_activity, compact, core_definition, examples_for, fetch_word, full, is_base_form, pool_ids, quiz_examples, quiz_synonyms,
-                      level_clause, today_iso, track_clause, weighted_sample)
+                      weighted_sample)
 
 router = APIRouter(prefix="/api")
-
-NEW_CARD_SECONDS = 35      # first look at a word: read, listen, rate
-DEFAULT_REVIEW_SECONDS = 14
-
 
 def parse_filters(stars: str | None, list_id: int | None, domain: str | None) -> dict:
     """Practice filters shared by every game. Words marked known are left out."""
@@ -28,188 +25,14 @@ def parse_filters(stars: str | None, list_id: int | None, domain: str | None) ->
             "exclude_known": True}
 
 
-# ------------------------------------------------------------------ daily review
+# ------------------------------------------------------------------ to refresh
 
-def avg_review_seconds(c) -> float:
-    row = c.execute("SELECT AVG(ms_taken) AS ms FROM (SELECT ms_taken FROM review_log "
-                    "WHERE mode='review' AND ms_taken BETWEEN 1000 AND 120000 "
-                    "ORDER BY id DESC LIMIT 200)").fetchone()
-    return (row["ms"] / 1000.0 + 3) if row and row["ms"] else DEFAULT_REVIEW_SECONDS
-
-
-def new_words(c, clause: str, n: int, *, shuffle: bool = False, level: str = "1=1") -> list:
-    """Unseen words for today's session: words you put in a list of your own
-    first, then low-star words (you flagged them as unfamiliar), then unrated
-    words, most frequent first (everyday entries in a fixed mixed order).
-    Words with notes or examples to study come before bare dictionary words.
-    `shuffle`: everyday entries; `level`: common.level_clause."""
-    if n <= 0:
-        return []
-    # Everyday entries are all common, so frequency would serve "is this"
-    # and "like" first; a fixed shuffle mixes the situations instead.
-    then = "(w.id * 7919) % 10007" if shuffle else "w.freq_rank"
-    # Linked words (related words other entries link to) come after the rest
-    # in every track, whatever its order.
-    order = ("ORDER BY EXISTS (SELECT 1 FROM list_words lw WHERE lw.word_id = w.id) DESC, "
-             "CASE WHEN COALESCE(u.stars,0) BETWEEN 1 AND 2 THEN 0 "
-             f"WHEN COALESCE(u.stars,0) = 0 THEN 1 ELSE 2 END, {LINKED_SQL}, {then} ASC LIMIT ?")
-    base = (f"SELECT {WORD_COLUMNS} {WORD_FROM} WHERE s.word_id IS NULL AND COALESCE(u.known, 0) = 0 "
-            f"AND {CHOSEN_SQL} AND {clause} AND {level} ")
-    rows = c.execute(base + "AND (w.enriched = 1 OR w.is_custom = 1 "
-                     "OR json_array_length(json_extract(w.data, '$.conversation')) > 0) " + order,
-                     (n,)).fetchall()
-    if not rows:  # nothing enriched yet: any word
-        rows = c.execute(base + order, (n,)).fetchall()
-    return rows
-
-
-def interleave(queue: list) -> list:
-    """New words spread through the reviews (one after every three) rather
-    than all at the end, so a long session doesn't end on a block of them."""
-    old = [q for q in queue if not q[1]]
-    new = [q for q in queue if q[1]]
-    out = []
-    while old or new:
-        out += old[:3]
-        old = old[3:]
-        if new:
-            out.append(new.pop(0))
-    return out
-
-
-@router.get("/review/queue")
-def review_queue(extra: int = 0, track: str = "", count: int = 0):
-    """Today's session: due cards (most overdue, lowest stars first) plus new
-    words, sized to the target session length. `extra` adds more new words
-    after the day's queue is done. `track` limits the session to everyday
-    English ("everyday") or the advanced and subject words ("core").
-    `count=1` returns only the numbers (Home, the nav badge), from the same
-    selection, without loading every card."""
-    tr = track_clause(track)
+@router.get("/refresh")
+def refresh():
+    """How many practised words are due to come back today (Today, the nav
+    badge): the "Words to refresh" choice in every practice screen."""
     with db.tx() as c:
-        st = db.settings(c)
-        level = level_clause(st.get("word_levels")) if track in LEVELED else "1=1"
-        budget = int(st["session_minutes"]) * 60
-        per_review = avg_review_seconds(c)
-        act = c.execute("SELECT reviews, new_words, seconds FROM daily_activity WHERE date=?",
-                        (today_iso(),)).fetchone()
-        done_reviews = act["reviews"] if act else 0
-        done_new = act["new_words"] if act else 0
-        due = c.execute(
-            f"SELECT {WORD_COLUMNS} {WORD_FROM} WHERE s.due_date <= ? AND COALESCE(u.known, 0) = 0 AND {tr} "
-            "ORDER BY s.due_date ASC, COALESCE(u.stars, 0) ASC, s.ease ASC", (today_iso(),)).fetchall()
-        used = 0.0
-        queue = []
-        # A card made by a practice miss but never reviewed is still a new
-        # word: it takes one of the day's new-word places (ahead of words not
-        # seen at all) and waits for a later day when they are used up.
-        unseen = [r for r in due if r["reps"] == 0 and r["last_reviewed"] is None]
-        for r in (r for r in due if not (r["reps"] == 0 and r["last_reviewed"] is None)):
-            if used + per_review > budget and queue:
-                break
-            queue.append((r, False))
-            used += per_review
-        remaining = max(0.0, budget - used)
-        new_cap = max(0, int(st["new_per_day"]) - done_new) + max(0, extra)
-        n_new = min(new_cap, int(remaining // NEW_CARD_SECONDS) + max(0, extra))
-        queue += [(r, True) for r in unseen[:max(0, n_new)]]
-        n_new -= min(len(unseen), max(0, n_new))
-        level_short = False
-        if n_new > 0:
-            if track:
-                new_rows = new_words(c, tr, n_new, shuffle=track == "everyday", level=level)
-            else:
-                # Both tracks: alternate, or the far more frequent everyday
-                # words would crowd out the advanced ones.
-                a = new_words(c, track_clause("everyday"), (n_new + 1) // 2, shuffle=True, level=level)
-                b = new_words(c, track_clause("core"), n_new, level=level)
-                new_rows = [r for pair in zip(a, b) for r in pair] + a[len(b):] + b[len(a):]
-                new_rows = new_rows[:n_new]
-            # Fewer new words than asked for, because of the chosen levels.
-            level_short = level != "1=1" and len(new_rows) < n_new
-            queue += [(r, True) for r in new_rows]
-        queue = interleave(queue)
-        if count:
-            n_new_cards = sum(1 for _, is_new in queue if is_new)
-            return {"total": len(queue), "due": len(queue) - n_new_cards, "new": n_new_cards,
-                    "level_short": level_short,
-                    # A few of today's new words, as the session will show them (Home).
-                    "samples": [r["word"] for r, is_new in queue if is_new][:3],
-                    "due_total": len(due), "est_seconds": round(used + n_new_cards * NEW_CARD_SECONDS) if queue else 0,
-                    "done_today": {"reviews": done_reviews, "new": done_new,
-                                   "seconds": act["seconds"] if act else 0}}
-        return {
-            "queue": [{**full(r), "is_new": is_new} for r, is_new in queue],
-            "level_short": level_short,
-            "due_total": len(due),
-            "done_today": {"reviews": done_reviews, "new": done_new,
-                           "seconds": act["seconds"] if act else 0},
-            "target_seconds": budget,
-            "est_seconds": round(used + sum(1 for _, is_new in queue if is_new) * NEW_CARD_SECONDS) if queue else 0,
-        }
-
-
-class ReviewIn(BaseModel):
-    grade: int = Field(ge=0, le=3)
-    ms: int = 0
-    is_new: bool = False
-    repeat: bool = False   # a second pass after "Again" in the same session
-
-
-@router.post("/review/{word_id}")
-def submit_review(word_id: int, body: ReviewIn):
-    with db.tx() as c:
-        if not c.execute("SELECT 1 FROM words WHERE id=?", (word_id,)).fetchone():
-            raise HTTPException(404, "Word not found")
-        before = srs.get_card(c, word_id)
-        if body.repeat:
-            # The card was already rescheduled by its first grade today; a
-            # re-pass is practice, so it's logged without touching the schedule.
-            new = before or {}
-        else:
-            new = srs.review(c, word_id, body.grade)
-        # A re-pass is logged as "repeat", so it counts once in the stats.
-        c.execute("INSERT INTO review_log(word_id, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?)",
-                  (word_id, "repeat" if body.repeat else "review", body.grade, int(body.grade >= 1), body.ms))
-        bump_activity(c, reviews=1, new_words=int(body.is_new and not body.repeat))
-    # The card as it was, so the grade can be undone.
-    return {**new, "previous": before}
-
-
-class CardIn(BaseModel):
-    ease: float = Field(ge=1.3, le=5)
-    interval_days: int = Field(ge=0, le=36500)
-    reps: int = Field(ge=0, le=10000)
-    lapses: int = Field(ge=0, le=10000)
-    due_date: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
-    last_reviewed: str | None = Field(default=None, pattern=r"^\d{4}-\d{2}-\d{2}$")
-
-
-class UndoIn(BaseModel):
-    previous: CardIn | None = None   # the card before the grade; none: it had no card
-    is_new: bool = False
-    repeat: bool = False
-
-
-@router.post("/review/{word_id}/undo")
-def undo_review(word_id: int, body: UndoIn):
-    """Take back the last grade given to this word today: its log entry goes,
-    and the card returns to what it was."""
-    with db.tx() as c:
-        last = c.execute("SELECT id FROM review_log WHERE word_id=? AND mode IN ('review', 'repeat') "
-                         "AND date(ts) = date('now', 'localtime') ORDER BY id DESC LIMIT 1", (word_id,)).fetchone()
-        if not last:
-            raise HTTPException(409, "There's no grade from today to undo.")
-        c.execute("DELETE FROM review_log WHERE id=?", (last["id"],))
-        if not body.repeat:
-            if body.previous:
-                p = body.previous
-                c.execute("UPDATE srs SET ease=?, interval_days=?, reps=?, lapses=?, due_date=?, last_reviewed=? "
-                          "WHERE word_id=?", (p.ease, p.interval_days, p.reps, p.lapses, p.due_date, p.last_reviewed, word_id))
-            else:
-                c.execute("DELETE FROM srs WHERE word_id=?", (word_id,))
-        bump_activity(c, reviews=-1, new_words=-int(body.is_new and not body.repeat))
-    return {"ok": True}
+        return {"count": len(pool_ids(c, domain="refresh", exclude_known=True))}
 
 
 # ----------------------------------------------------------------- answers & log
@@ -223,17 +46,16 @@ class AnswerIn(BaseModel):
 
 @router.post("/answer")
 def record_answer(body: AnswerIn):
-    """Every practice answer is logged; misses go back into the review queue."""
+    """Every practice answer is logged, and schedules when the word comes back
+    (srs.practice_answer: once per word per day). The log row that scheduled
+    it carries the grade, which Progress reads (mastered, retention)."""
     with db.tx() as c:
         if not c.execute("SELECT 1 FROM words WHERE id=?", (body.word_id,)).fetchone():
             raise HTTPException(404, "Word not found")
-        c.execute("INSERT INTO review_log(word_id, mode, correct, ms_taken) VALUES (?, ?, ?, ?)",
-                  (body.word_id, body.mode, int(body.correct), body.ms))
-        if not body.correct:
-            misses_today = c.execute(
-                "SELECT COUNT(*) AS n FROM review_log WHERE word_id=? AND correct=0 AND mode NOT IN ('review', 'repeat') "
-                "AND date(ts) = date('now', 'localtime')", (body.word_id,)).fetchone()["n"]
-            srs.penalise_miss(c, body.word_id, first_miss_today=misses_today <= 1, mode=body.mode)
+        grade = srs.practice_answer(c, body.word_id, body.correct)
+        c.execute("INSERT INTO review_log(word_id, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?)",
+                  (body.word_id, body.mode, grade, int(body.correct), body.ms))
+        bump_activity(c, reviews=1)   # the day's answers (Progress, the streak)
     return {"ok": True}
 
 
@@ -373,7 +195,7 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
             filters["domain"] = "bible_names"   # only names can be asked "who or what?"
         pool = pool_ids(c, **filters)
         if len(pool) < 4:
-            raise HTTPException(400, "Not enough words match these filters. Choose a wider set.")
+            raise HTTPException(400, 'Not enough words here. Choose other words under "Words from".')
         all_ids = [r["id"] for r in c.execute(
             f"SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT {NAMES_ONLY_SQL} "
             f"AND NOT {REFERENCE_SQL}")]
@@ -529,7 +351,7 @@ def matching(kind: str = "meaning", n: int = Query(6, ge=3, le=10), stars: str |
                 right = _mask(row["word"], right)
             pairs.append({"word_id": wid, "word": row["word"], "match": right})
         if len(pairs) < 3:
-            raise HTTPException(400, "Not enough words with this kind of content. Try another filter.")
+            raise HTTPException(400, 'Not enough words with this kind of content here. Choose other words under "Words from".')
         return {"pairs": pairs}
 
 
@@ -588,7 +410,7 @@ def listen(n: int = Query(10, ge=1, le=50), stars: str | None = None,
             pool = pool_ids(c, **parse_filters(stars, list_id, domain))
             fallback = True
         if len(pool) < 4:
-            raise HTTPException(400, "Not enough words match these filters.")
+            raise HTTPException(400, 'Not enough words here. Choose other words under "Words from".')
         chosen = weighted_sample(c, list(pool), n)
         same = same_sound(c)
         all_ids = [r["id"] for r in c.execute("SELECT id FROM words")]

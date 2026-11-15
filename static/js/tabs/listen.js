@@ -173,7 +173,7 @@ function next() {
     h("span.eyebrow", spell() ? "Spelling test complete" : mode === "stress" ? "Stress round complete" : "Listening round complete"),
     h("div.big-num.tnum", `${score}/${items.length}`),
     h("p.muted", fmtDuration(secs)),
-    missed.length ? h("div.missed", h("p.label", "Added back to today's review"),
+    missed.length ? h("div.missed", h("p.label", "Coming back tomorrow to refresh"),
       h("ul", missed.map(w => h("li", h("a", { href: `#browse/${w.id}` }, w.word), w.phonetic ? h("span.ipa", "  ", w.phonetic) : null)))) : null,
     h("button.btn.btn-primary.btn-lg", { type: "button", on: { click: start } }, "Another round")));
 }
