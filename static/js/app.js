@@ -98,9 +98,11 @@ export function showDueCount(count) {
  *  is, for the eye and for screen readers. On the Practice page the sidebar's
  *  Sound and Practice headings, the groups it holds, are marked. */
 function markNav(tab) {
-  const under = (TABS.find(t => t.id === tab) || {}).under;
-  const own = document.querySelector(`.nav-link[data-tab="${tab}"]`);
-  const ownShown = !!own && own.offsetParent !== null;
+  const here = TABS.find(t => t.id === tab) || {};
+  const under = here.under;
+  // Whether the screen's own link is in the menu: by the screen's width, not
+  // the layout, which isn't styled yet when a page opens straight on it.
+  const ownShown = !here.hidden && !(here.under && PHONE.matches);
   document.querySelectorAll(".nav-link").forEach(a => {
     const isParent = a.dataset.tab === under;
     if (a.dataset.tab === tab || (isParent && !ownShown)) a.setAttribute("aria-current", "page");
@@ -114,7 +116,8 @@ function markNav(tab) {
     if (fold) fold.setAttribute("aria-description", here ? "Current page" : "");
   });
 }
-matchMedia("(max-width: 760px)").addEventListener("change", () => markNav(parseHash().tab));
+const PHONE = matchMedia("(max-width: 760px)");   // the bottom bar (app.css), where `under` links are hidden
+PHONE.addEventListener("change", () => markNav(parseHash().tab));
 
 function parseHash() {
   const [tab, ...rest] = (location.hash.slice(1) || "home").split("/");
