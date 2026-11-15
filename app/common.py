@@ -451,28 +451,34 @@ def pool_ids(c: sqlite3.Connection, *, stars: list[int] | None = None, list_id: 
 
 
 def weighted_sample(c: sqlite3.Connection, ids: list[int], n: int) -> list[int]:
-    """Prefer weaker words: low stars and recent misses are drawn more often.
-    A miss counts fully for a month, then fades; re-passes in a review don't
-    count again."""
+    """A round's words. Words due to refresh come first, most overdue first,
+    up to half the round (all of it when every word is due) and at the front
+    of it, so practice
+    keeps the refresh pile down. The rest favour words missed lately: a miss
+    counts fully for a month, then fades. static/js/local/server.js does the same."""
     if len(ids) <= n:
         random.shuffle(ids)
         return ids
-    weights = {}
+    marks = ",".join("?" * len(ids))
+    due = [r["word_id"] for r in c.execute(
+        f"SELECT word_id FROM srs WHERE word_id IN ({marks}) AND due_date <= date('now', 'localtime') "
+        "ORDER BY due_date, word_id", ids)] if len(ids) <= 30000 else []
+    first = due[:n if len(due) == len(ids) else (n + 1) // 2]
+    random.shuffle(first)
+    chosen = list(first)
+    taken = set(chosen)
+    rest = [i for i in ids if i not in taken]
     rows = c.execute(
-        f"""SELECT w.id, COALESCE(u.stars, 0) AS stars,
+        f"""SELECT w.id,
                    (SELECT COALESCE(SUM(CASE WHEN julianday('now') - julianday(r.ts) <= 30 THEN 1.0
                                              WHEN julianday('now') - julianday(r.ts) <= 90 THEN 0.4 ELSE 0.1 END), 0)
                     FROM review_log r WHERE r.word_id = w.id AND r.correct = 0 AND r.mode != 'repeat') AS misses
-            FROM words w LEFT JOIN user_word u ON u.word_id = w.id
-            WHERE w.id IN ({','.join('?' * len(ids))})""", ids).fetchall() if len(ids) <= 30000 else []
-    for r in rows:
-        star_w = {0: 1.0, 1: 2.5, 2: 2.0, 3: 1.2, 4: 0.7, 5: 0.4}.get(r["stars"], 1.0)
-        weights[r["id"]] = star_w * (1 + min(r["misses"], 5) * 0.5)
-    chosen: list[int] = []
-    pool = list(ids)
-    w = [weights.get(i, 1.0) for i in pool]
-    while pool and len(chosen) < n:
-        i = random.choices(range(len(pool)), weights=w, k=1)[0]
-        chosen.append(pool.pop(i))
+            FROM words w WHERE w.id IN ({marks})""", ids).fetchall() if len(ids) <= 30000 else []
+    weights = {r["id"]: 1 + min(r["misses"], 5) * 0.5 for r in rows}
+    w = [weights.get(i, 1.0) for i in rest]
+    while rest and len(chosen) < n:
+        i = random.choices(range(len(rest)), weights=w, k=1)[0]
+        chosen.append(rest.pop(i))
         w.pop(i)
+    # Due words lead (a quiz builds its questions from the front), in any order.
     return chosen

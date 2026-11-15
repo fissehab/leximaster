@@ -11,6 +11,7 @@
 
 import { idbDelete, idbEntries, idbGet, idbKeys, idbPut, idbTx } from "./idb.js";
 import { BIBLE_TRACKS, EVERYDAY_DOMAINS, FORM_OF } from "../shared.gen.js";
+import { practiceGrade, schedule } from "./srs.js";
 
 const EVERYDAY_SQL = `EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value IN (${
   EVERYDAY_DOMAINS.map(d => `'${d}'`).join(",")}))`;
@@ -563,22 +564,24 @@ function shuffle(a) {
 }
 const choice = a => a[Math.floor(Math.random() * a.length)];
 
-// Prefer weaker words: low stars and recent misses (fading after a month) are drawn more often.
+// A round's words (app/common.py weighted_sample): words due to refresh come
+// first, most overdue first, up to half the round (all of it when every word
+// is due), so practice keeps the refresh pile down. The rest favour words
+// missed lately (a miss counts fully for a month, then fades).
 function weightedSample(ids, n) {
   if (ids.length <= n) return shuffle([...ids]);
-  const info = new Map(all(
-    `SELECT w.id, COALESCE(u.stars, 0) AS stars,
-            (SELECT COALESCE(SUM(CASE WHEN julianday('now') - julianday(r.ts) <= 30 THEN 1.0
-                                      WHEN julianday('now') - julianday(r.ts) <= 90 THEN 0.4 ELSE 0.1 END), 0)
-             FROM review_log r WHERE r.word_id = w.id AND r.correct = 0 AND r.mode != 'repeat') AS misses
-     FROM words w LEFT JOIN user_word u ON u.word_id = w.id`).map(r => [r.id, r]));
-  const starW = { 0: 1.0, 1: 2.5, 2: 2.0, 3: 1.2, 4: 0.7, 5: 0.4 };
-  const pool = [...ids];
-  const weights = pool.map(i => {
-    const r = info.get(i);
-    return r ? (starW[r.stars] ?? 1.0) * (1 + Math.min(r.misses, 5) * 0.5) : 1.0;
-  });
-  const chosen = [];
+  const inPool = new Set(ids);
+  const due = all("SELECT word_id FROM srs WHERE due_date <= date('now', 'localtime') ORDER BY due_date, word_id")
+    .map(r => r.word_id).filter(i => inPool.has(i));
+  // Due words lead (a quiz builds its questions from the front), in any order.
+  const chosen = shuffle(due.slice(0, due.length === ids.length ? n : Math.ceil(n / 2)));
+  const taken = new Set(chosen);
+  const misses = new Map(all(
+    `SELECT word_id, SUM(CASE WHEN julianday('now') - julianday(ts) <= 30 THEN 1.0
+                              WHEN julianday('now') - julianday(ts) <= 90 THEN 0.4 ELSE 0.1 END) AS m
+     FROM review_log WHERE correct = 0 AND mode != 'repeat' GROUP BY word_id`).map(r => [r.word_id, r.m]));
+  const pool = ids.filter(i => !taken.has(i));
+  const weights = pool.map(i => 1 + Math.min(misses.get(i) || 0, 5) * 0.5);
   while (pool.length && chosen.length < n) {
     let x = Math.random() * weights.reduce((a, b) => a + b, 0), i = 0;
     while (i < weights.length - 1 && x >= weights[i]) { x -= weights[i]; i++; }
@@ -592,100 +595,30 @@ const settingsMap = () => Object.fromEntries(all("SELECT key, value FROM setting
 
 // -------------------------------------------------------------- SM-2 (app/srs.py)
 
-const QUALITY = { 0: 1, 1: 3, 2: 4, 3: 5 };
-const MIN_EASE = 1.3;
-const STAR_INTERVAL_CAP = { 1: 4, 2: 7 };
-const STAR_START_EASE = { 0: 2.5, 1: 2.2, 2: 2.35, 3: 2.5, 4: 2.65, 5: 2.8 };
-
-const LAPSE_EASE = 0.2;
-const LAPSE_KEEP = 0.2;
-const GOOD_PULL = 0.05;
-// Python's round(): halves go to the even number, so both apps schedule alike.
-function roundHalfEven(x) {
-  const f = Math.floor(x);
-  if (x - f === 0.5) return f % 2 === 0 ? f : f + 1;   // same doubles as Python, so an exact test matches
-  return Math.round(x);
-}
-
 const getCard = id => get("SELECT * FROM srs WHERE word_id=?", [id]);
-const starsOf = id => (get("SELECT stars FROM user_word WHERE word_id=?", [id]) || { stars: 0 }).stars;
 
 function ensureCard(id) {
   const card = getCard(id);
   if (card) return card;
-  run("INSERT INTO srs(word_id, ease, interval_days, reps, lapses, due_date) VALUES (?, ?, 0, 0, 0, ?)",
-      [id, STAR_START_EASE[starsOf(id)] ?? 2.5, todayIso()]);
+  run("INSERT INTO srs(word_id, ease, interval_days, reps, lapses, due_date) VALUES (?, 2.5, 0, 0, 0, ?)", [id, todayIso()]);
   return getCard(id);
 }
 
-// ±5% on intervals over 3 days, so words learned together don't stay due together.
-function fuzz(interval) {
-  if (interval <= 3) return interval;
-  const spread = Math.max(1, roundHalfEven(interval * 0.05));
-  return interval - spread + Math.floor(Math.random() * (2 * spread + 1));
-}
-
-// A lapse keeps a fifth of the interval; "Good" eases ease back toward 2.5;
-// a late recall gets credit for the extra days; ±5% fuzz (app/srs.py).
-function schedule(card, grade, stars) {
-  const q = QUALITY[grade];
-  let { ease, interval_days: interval, reps, lapses } = card;
-  if (q < 3 && reps === 0 && lapses === 0 && !card.last_reviewed) {
-    // A new word missed the first time it is seen isn't a lapse: it comes
-    // back tomorrow without lowering its ease.
-    return { ease, interval_days: 1, reps: 0, lapses: 0, due_date: addDays(1), last_reviewed: todayIso() };
-  }
-  const cap = STAR_INTERVAL_CAP[stars];
-  if (q < 3) {
-    lapses += 1;
-    ease = Math.max(MIN_EASE, ease - LAPSE_EASE);   // SM-2's own formula takes 0.54
-    if (reps >= 2) { interval = Math.max(1, roundHalfEven(interval * LAPSE_KEEP)); reps = 2; }
-    else { interval = 1; reps = 0; }
-    if (cap) interval = Math.min(interval, cap);
-    return { ease: Math.round(ease * 1000) / 1000, interval_days: interval, reps, lapses,
-             due_date: addDays(1), last_reviewed: todayIso() };
-  }
-  if (reps === 0) interval = grade === 1 ? 1 : (grade === 3 ? 4 : 1);
-  else if (reps === 1) interval = grade === 1 ? 3 : (grade === 2 ? 6 : 8);
-  else {
-    const overdue = card.due_date ? Math.max(0, Math.round((new Date(todayIso()) - new Date(card.due_date)) / 86400000)) : 0;
-    const base = interval + { 1: 0, 2: overdue / 2, 3: overdue }[grade];
-    const factor = { 1: 1.2, 2: ease, 3: ease * 1.3 }[grade];
-    interval = fuzz(Math.max(interval + 1, roundHalfEven(base * factor)));
-  }
-  reps += 1;
-  ease = Math.max(MIN_EASE, ease + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
-  if (grade === 2) ease += GOOD_PULL * (2.5 - ease);
-  if (cap) interval = Math.min(interval, cap);
-  return { ease: Math.round(ease * 1000) / 1000, interval_days: interval, reps, lapses,
-           due_date: addDays(Math.trunc(interval)), last_reviewed: todayIso() };
-}
-
 function review(id, grade) {
-  const next = schedule(ensureCard(id), grade, starsOf(id));
+  const next = schedule(ensureCard(id), grade, todayIso());
   run("UPDATE srs SET ease=?, interval_days=?, reps=?, lapses=?, due_date=?, last_reviewed=? WHERE word_id=?",
       [next.ease, next.interval_days, next.reps, next.lapses, next.due_date, next.last_reviewed, id]);
   return next;
 }
 
-// An answer in Practice or a game schedules the word once per word per day:
-// right is "Good", wrong is "Again" (app/srs.py practice_answer).
+// An answer in Practice schedules the word (srs.js practiceGrade; app/srs.py
+// practice_answer). Returns the grade applied, or null when only logged.
 function practiceAnswer(id, correct) {
-  const card = getCard(id);
-  if (card && card.last_reviewed === todayIso()) return null;
-  const grade = correct ? 2 : 0;
-  review(id, grade);
+  const row = get("SELECT grade FROM review_log WHERE word_id=? AND grade IS NOT NULL " +
+                  "AND date(ts) = date('now', 'localtime') ORDER BY id DESC LIMIT 1", [id]);
+  const grade = practiceGrade(getCard(id), correct, row ? row.grade : null, todayIso());
+  if (grade !== null) review(id, grade);
   return grade;
-}
-
-function onStarsChanged(id, stars) {
-  const card = getCard(id);
-  const cap = STAR_INTERVAL_CAP[stars];
-  if (!card || !cap) return;
-  const latest = addDays(cap);
-  if (card.due_date > latest) {
-    run("UPDATE srs SET due_date=?, interval_days=? WHERE word_id=?", [latest, Math.min(card.interval_days, cap), id]);
-  }
 }
 
 // ------------------------------------------------------------- words routes
@@ -722,7 +655,6 @@ function setState(id, body) {
     const stars = Number(body.stars);
     if (!(stars >= 0 && stars <= 5)) throw new HttpError(422, "Stars must be between 0 and 5.");
     run("UPDATE user_word SET stars=?, updated_at=datetime('now') WHERE word_id=?", [stars, id]);
-    onStarsChanged(id, stars);
   }
   if (body.known != null) run("UPDATE user_word SET known=?, updated_at=datetime('now') WHERE word_id=?", [body.known ? 1 : 0, id]);
   if (body.notes != null) run("UPDATE user_word SET notes=?, updated_at=datetime('now') WHERE word_id=?", [String(body.notes), id]);
@@ -1250,7 +1182,7 @@ function stats() {
       // Words marked known are counted apart (app/api/stats.py).
       mastered,
       learning: get(`SELECT COUNT(*) AS n ${STUDIED}`).n - mastered,
-      due: get(`SELECT COUNT(*) AS n ${STUDIED} AND s.due_date <= ? AND NOT (s.reps = 0 AND s.last_reviewed IS NULL)`, [todayIso()]).n,
+      due: refreshCount().count,   // the words to refresh, the same number Today shows
       known: get("SELECT COUNT(*) AS n FROM user_word WHERE known=1").n,
       stars: Object.fromEntries(all("SELECT stars, COUNT(*) AS n FROM user_word WHERE stars > 0 GROUP BY stars").map(r => [r.stars, r.n])),
     },

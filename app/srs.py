@@ -1,9 +1,9 @@
-"""SM-2 spaced repetition, adjusted by star ratings and quiz misses.
+"""SM-2 spaced repetition, driven by practice answers (practice_answer).
 
-Grades come from the review buttons: 0 Again, 1 Hard, 2 Good, 3 Easy, mapped to
-SM-2 quality scores 1, 3, 4, 5. Star ratings (familiarity, 1-5) shape the
-schedule: low-star words have their interval capped so they come back often,
-and the starting ease reflects how well the word is already known.
+Grades 0 Again, 1 Hard, 2 Good, 3 Easy map to SM-2 quality scores 1, 3, 4, 5;
+practice gives Good for a right answer and Again for a wrong one.
+static/js/local/srs.js is the same for the website; tests/fixtures/srs_vectors.json
+checks both.
 """
 from __future__ import annotations
 
@@ -16,8 +16,6 @@ MIN_EASE = 1.3
 LAPSE_EASE = 0.2                           # ease lost when a learned word is forgotten
 LAPSE_KEEP = 0.2                           # share of the interval a forgotten word keeps
 GOOD_PULL = 0.05                           # "Good" moves ease this share of the way back to 2.5
-STAR_INTERVAL_CAP = {1: 4, 2: 7}          # days
-STAR_START_EASE = {0: 2.5, 1: 2.2, 2: 2.35, 3: 2.5, 4: 2.65, 5: 2.8}
 
 
 def today() -> date:
@@ -33,18 +31,12 @@ def get_card(c: sqlite3.Connection, word_id: int) -> dict | None:
     return dict(row) if row else None
 
 
-def stars_of(c: sqlite3.Connection, word_id: int) -> int:
-    row = c.execute("SELECT stars FROM user_word WHERE word_id=?", (word_id,)).fetchone()
-    return row["stars"] if row else 0
-
-
 def ensure_card(c: sqlite3.Connection, word_id: int) -> dict:
     card = get_card(c, word_id)
     if card:
         return card
-    ease = STAR_START_EASE.get(stars_of(c, word_id), 2.5)
     c.execute("INSERT INTO srs(word_id, ease, interval_days, reps, lapses, due_date) "
-              "VALUES (?, ?, 0, 0, 0, ?)", (word_id, ease, iso(today())))
+              "VALUES (?, 2.5, 0, 0, 0, ?)", (word_id, iso(today())))
     return get_card(c, word_id)
 
 
@@ -56,7 +48,7 @@ def fuzz(interval: int) -> int:
     return interval + random.randint(-spread, spread)
 
 
-def schedule(card: dict, grade: int, stars: int) -> dict:
+def schedule(card: dict, grade: int) -> dict:
     """SM-2 step; returns the updated card fields.
 
     Adjustments to plain SM-2: a lapse keeps a fifth of the old interval (the
@@ -78,9 +70,6 @@ def schedule(card: dict, grade: int, stars: int) -> dict:
             interval, reps = max(1, round(interval * LAPSE_KEEP)), 2
         else:
             interval, reps = 1, 0
-        cap = STAR_INTERVAL_CAP.get(stars)
-        if cap:
-            interval = min(interval, cap)
         # Back tomorrow whatever the kept interval: the next good review grows from it.
         return {"ease": round(ease, 3), "interval_days": interval, "reps": reps, "lapses": lapses,
                 "due_date": iso(today() + timedelta(days=1)), "last_reviewed": iso(today())}
@@ -99,9 +88,6 @@ def schedule(card: dict, grade: int, stars: int) -> dict:
     ease = max(MIN_EASE, ease + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))
     if grade == 2:
         ease += GOOD_PULL * (2.5 - ease)
-    cap = STAR_INTERVAL_CAP.get(stars)
-    if cap:
-        interval = min(interval, cap)
     due = today() + timedelta(days=int(interval))
     return {"ease": round(ease, 3), "interval_days": interval, "reps": reps,
             "lapses": lapses, "due_date": iso(due), "last_reviewed": iso(today())}
@@ -109,34 +95,38 @@ def schedule(card: dict, grade: int, stars: int) -> dict:
 
 def review(c: sqlite3.Connection, word_id: int, grade: int) -> dict:
     card = ensure_card(c, word_id)
-    new = schedule(card, grade, stars_of(c, word_id))
+    new = schedule(card, grade)
     c.execute("UPDATE srs SET ease=:ease, interval_days=:interval_days, reps=:reps, "
               "lapses=:lapses, due_date=:due_date, last_reviewed=:last_reviewed "
               "WHERE word_id=:word_id", {**new, "word_id": word_id})
     return new
 
 
-def practice_answer(c: sqlite3.Connection, word_id: int, correct: bool) -> int | None:
-    """An answer in Practice or a game schedules the word, once per word per
-    day: right counts as "Good" (it comes back later), wrong as "Again" (it
-    comes back tomorrow). A word met for the first time gets its card here.
-    Returns the grade used, or None when the word was already scheduled
-    today (several answers in one round don't compound)."""
-    card = get_card(c, word_id)
-    if card and card["last_reviewed"] == iso(today()):
+def practice_grade(card: dict | None, correct: bool, today_grade: int | None, day: str) -> int | None:
+    """What a practice answer does to a word's schedule: the grade to apply,
+    or None to only log it.
+
+    - Right, for a word not due yet (practised early): nothing. Otherwise
+      drilling a list every day would push it years out.
+    - Already scheduled today: nothing more, except a miss after a right
+      answer, which turns that day's Good into Again (it comes back
+      tomorrow). Several answers in one round never compound.
+    - Otherwise right is Good, wrong is Again.
+    `today_grade` is the grade already applied today, `day` today's date."""
+    if card and card.get("last_reviewed") == day:
+        return 0 if not correct and today_grade == 2 else None
+    if correct and card and card.get("last_reviewed") and card["due_date"] > day:
         return None
-    grade = 2 if correct else 0
-    review(c, word_id, grade)
-    return grade
+    return 2 if correct else 0
 
 
-def on_stars_changed(c: sqlite3.Connection, word_id: int, stars: int) -> None:
-    """Pull a scheduled card forward if its new star rating caps the interval."""
+def practice_answer(c: sqlite3.Connection, word_id: int, correct: bool) -> int | None:
+    """Schedule a word after an answer in Practice (practice_grade). Returns
+    the grade applied, or None when the answer is only logged."""
     card = get_card(c, word_id)
-    cap = STAR_INTERVAL_CAP.get(stars)
-    if not card or not cap:
-        return
-    latest = today() + timedelta(days=cap)
-    if card["due_date"] > iso(latest):
-        c.execute("UPDATE srs SET due_date=?, interval_days=? WHERE word_id=?",
-                  (iso(latest), min(card["interval_days"], cap), word_id))
+    row = c.execute("SELECT grade FROM review_log WHERE word_id=? AND grade IS NOT NULL "
+                    "AND date(ts) = date('now', 'localtime') ORDER BY id DESC LIMIT 1", (word_id,)).fetchone()
+    grade = practice_grade(card, correct, row["grade"] if row else None, iso(today()))
+    if grade is not None:
+        review(c, word_id, grade)
+    return grade

@@ -11,7 +11,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 from .. import db
-from ..common import parse_levels, today_iso
+from ..common import parse_levels, pool_ids, today_iso
 
 router = APIRouter(prefix="/api")
 
@@ -57,9 +57,8 @@ def stats():
         mastered = c.execute(MASTERED_SQL.format(studied=studied),
                              (MASTERED_INTERVAL, MASTERED_INTERVAL)).fetchone()["n"]
         learning = c.execute(f"SELECT COUNT(*) AS n {studied}").fetchone()["n"] - mastered
-        # Due: reviewed before and due today (the review queue's "due").
-        due = c.execute(f"SELECT COUNT(*) AS n {studied} AND s.due_date <= ? AND NOT (s.reps = 0 AND s.last_reviewed IS NULL)",
-                        (today_iso(),)).fetchone()["n"]
+        # Due: the words to refresh, the same number Today shows.
+        due = len(pool_ids(c, domain="refresh", exclude_known=True))
         known = c.execute("SELECT COUNT(*) AS n FROM user_word WHERE known=1").fetchone()["n"]
         stars = {r["stars"]: r["n"] for r in c.execute(
             "SELECT stars, COUNT(*) AS n FROM user_word WHERE stars > 0 GROUP BY stars")}

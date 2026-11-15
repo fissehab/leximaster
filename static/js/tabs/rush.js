@@ -213,7 +213,9 @@ function answer(yes) {
   const card = deck[c];
   const q = card.q;
   const ok = yes === card.truth;
-  log(q, ok);
+  // Only a card that showed the word's own meaning, or a wrong answer, says
+  // something about the word: a right "No" to someone else's meaning doesn't.
+  if (card.truth || !ok) log(q, ok);
   els.no.parentNode.classList.add("wait");
   if (ok) {
     phase = "right";

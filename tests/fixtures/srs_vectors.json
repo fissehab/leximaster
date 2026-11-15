@@ -1,0 +1,287 @@
+{
+ "day": "2026-11-20",
+ "practice": [
+  {
+   "name": "a new word, right",
+   "card": null,
+   "correct": true,
+   "today_grade": null,
+   "expect": 2
+  },
+  {
+   "name": "a new word, wrong",
+   "card": null,
+   "correct": false,
+   "today_grade": null,
+   "expect": 0
+  },
+  {
+   "name": "not due yet, right: only logged",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 6,
+    "reps": 2,
+    "lapses": 0,
+    "due_date": "2026-11-25",
+    "last_reviewed": "2026-11-19"
+   },
+   "correct": true,
+   "today_grade": null,
+   "expect": null
+  },
+  {
+   "name": "not due yet, wrong: Again",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 6,
+    "reps": 2,
+    "lapses": 0,
+    "due_date": "2026-11-25",
+    "last_reviewed": "2026-11-19"
+   },
+   "correct": false,
+   "today_grade": null,
+   "expect": 0
+  },
+  {
+   "name": "due today, right",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 6,
+    "reps": 2,
+    "lapses": 0,
+    "due_date": "2026-11-20",
+    "last_reviewed": "2026-11-14"
+   },
+   "correct": true,
+   "today_grade": null,
+   "expect": 2
+  },
+  {
+   "name": "overdue, right",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 6,
+    "reps": 2,
+    "lapses": 0,
+    "due_date": "2026-11-10",
+    "last_reviewed": "2026-11-04"
+   },
+   "correct": true,
+   "today_grade": null,
+   "expect": 2
+  },
+  {
+   "name": "already Good today, right again: nothing",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 1,
+    "reps": 1,
+    "lapses": 0,
+    "due_date": "2026-11-21",
+    "last_reviewed": "2026-11-20"
+   },
+   "correct": true,
+   "today_grade": 2,
+   "expect": null
+  },
+  {
+   "name": "already Good today, then wrong: Again",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 1,
+    "reps": 1,
+    "lapses": 0,
+    "due_date": "2026-11-21",
+    "last_reviewed": "2026-11-20"
+   },
+   "correct": false,
+   "today_grade": 2,
+   "expect": 0
+  },
+  {
+   "name": "already Again today, wrong again: nothing",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 1,
+    "reps": 0,
+    "lapses": 1,
+    "due_date": "2026-11-21",
+    "last_reviewed": "2026-11-20"
+   },
+   "correct": false,
+   "today_grade": 0,
+   "expect": null
+  },
+  {
+   "name": "already Again today, then right: nothing",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 1,
+    "reps": 0,
+    "lapses": 1,
+    "due_date": "2026-11-21",
+    "last_reviewed": "2026-11-20"
+   },
+   "correct": true,
+   "today_grade": 0,
+   "expect": null
+  },
+  {
+   "name": "a card never reviewed (old miss), right",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 0,
+    "reps": 0,
+    "lapses": 0,
+    "due_date": "2026-11-01",
+    "last_reviewed": null
+   },
+   "correct": true,
+   "today_grade": null,
+   "expect": 2
+  }
+ ],
+ "schedule": [
+  {
+   "name": "new word, Good",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 0,
+    "reps": 0,
+    "lapses": 0,
+    "due_date": "2026-11-20",
+    "last_reviewed": null
+   },
+   "grade": 2,
+   "expect": {
+    "ease": 2.5,
+    "interval_days": 1,
+    "reps": 1,
+    "lapses": 0,
+    "due_date": "2026-11-21",
+    "last_reviewed": "2026-11-20"
+   }
+  },
+  {
+   "name": "new word, Again: not a lapse",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 0,
+    "reps": 0,
+    "lapses": 0,
+    "due_date": "2026-11-20",
+    "last_reviewed": null
+   },
+   "grade": 0,
+   "expect": {
+    "ease": 2.5,
+    "interval_days": 1,
+    "reps": 0,
+    "lapses": 0,
+    "due_date": "2026-11-21",
+    "last_reviewed": "2026-11-20"
+   }
+  },
+  {
+   "name": "second Good",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 1,
+    "reps": 1,
+    "lapses": 0,
+    "due_date": "2026-11-20",
+    "last_reviewed": "2026-11-19"
+   },
+   "grade": 2,
+   "expect": {
+    "ease": 2.5,
+    "interval_days": 6,
+    "reps": 2,
+    "lapses": 0,
+    "due_date": "2026-11-26",
+    "last_reviewed": "2026-11-20"
+   }
+  },
+  {
+   "name": "third Good grows by ease",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 6,
+    "reps": 2,
+    "lapses": 0,
+    "due_date": "2026-11-20",
+    "last_reviewed": "2026-11-14"
+   },
+   "grade": 2,
+   "expect": {
+    "ease": 2.5,
+    "interval_days": 15,
+    "reps": 3,
+    "lapses": 0,
+    "due_date": "2026-12-05",
+    "last_reviewed": "2026-11-20"
+   }
+  },
+  {
+   "name": "Good 10 days late gets credit",
+   "card": {
+    "ease": 2.5,
+    "interval_days": 20,
+    "reps": 4,
+    "lapses": 0,
+    "due_date": "2026-11-10",
+    "last_reviewed": "2026-10-21"
+   },
+   "grade": 2,
+   "expect": {
+    "ease": 2.5,
+    "interval_days": 62,
+    "reps": 5,
+    "lapses": 0,
+    "due_date": "2027-01-21",
+    "last_reviewed": "2026-11-20"
+   }
+  },
+  {
+   "name": "lapse keeps a fifth, back tomorrow",
+   "card": {
+    "ease": 2.3,
+    "interval_days": 60,
+    "reps": 5,
+    "lapses": 0,
+    "due_date": "2026-11-20",
+    "last_reviewed": "2026-09-21"
+   },
+   "grade": 0,
+   "expect": {
+    "ease": 2.1,
+    "interval_days": 12,
+    "reps": 2,
+    "lapses": 1,
+    "due_date": "2026-11-21",
+    "last_reviewed": "2026-11-20"
+   }
+  },
+  {
+   "name": "ease never below 1.3",
+   "card": {
+    "ease": 1.3,
+    "interval_days": 10,
+    "reps": 3,
+    "lapses": 0,
+    "due_date": "2026-11-20",
+    "last_reviewed": "2026-11-10"
+   },
+   "grade": 0,
+   "expect": {
+    "ease": 1.3,
+    "interval_days": 2,
+    "reps": 2,
+    "lapses": 1,
+    "due_date": "2026-11-21",
+    "last_reviewed": "2026-11-20"
+   }
+  }
+ ]
+}

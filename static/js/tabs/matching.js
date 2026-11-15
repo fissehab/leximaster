@@ -69,7 +69,10 @@ function pick(side, el, p) {
   picked.el.setAttribute("aria-pressed", "false");
   const ok = picked.id === p.word_id;
   const wordId = side === "word" ? p.word_id : picked.id;
-  if (ok || !missedIds.has(wordId)) {
+  // The last pair left matches by elimination: it says nothing, so only a
+  // miss on it is recorded.
+  const lastPair = ok && matched === pairs.length - 1;
+  if ((ok && !lastPair) || (!ok && !missedIds.has(wordId))) {
     if (!ok) missedIds.add(wordId);
     api.post("/api/answer", { word_id: wordId, mode: "match", correct: ok }).catch(() => {});
   }

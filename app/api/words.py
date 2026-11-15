@@ -10,7 +10,7 @@ from pathlib import Path
 from fastapi import APIRouter, HTTPException, Request, Response
 from pydantic import BaseModel, Field
 
-from .. import db, srs
+from .. import db
 from ..common import BIBLE_TRACKS, NAMES_ONLY_SQL, REFERENCE_SQL, levels_setting, parse_levels, compact_heads, compact_json, fetch_word, full, gloss_key, mentions, track_clause
 
 router = APIRouter(prefix="/api")
@@ -134,7 +134,6 @@ def set_state(word_id: int, body: StateIn):
         if body.stars is not None:
             c.execute("UPDATE user_word SET stars=?, updated_at=datetime('now') WHERE word_id=?",
                       (body.stars, word_id))
-            srs.on_stars_changed(c, word_id, body.stars)
         if body.known is not None:
             c.execute("UPDATE user_word SET known=?, updated_at=datetime('now') WHERE word_id=?",
                       (int(body.known), word_id))
