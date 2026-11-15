@@ -14,3 +14,6 @@ server | nuance.usage_note | In a restaurant, Americans say server for the perso
 interception | nuance.antonyms | ["completion"]
 fixing | synonyms | ["topping", "side dish"]
 judgment | nuance.antonyms | ["indecision"]
+# "devastated about sth" is good English but rare in books, so the grammar
+# quiz could offer "about" as wrong (tools/pattern_preps.py doesn't reach it).
+devastated | nuance.patterns | ["devastated (not before a noun)", "devastated by sth", "devastated about sth", "devastated to do sth"]

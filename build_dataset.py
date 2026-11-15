@@ -3679,8 +3679,8 @@ def add_forms(words: list[dict]) -> None:
 
 PATTERN_PREPS = CACHE / "pattern_preps.json"   # tools/pattern_preps.py (Google Books Ngram)
 QUIZ_PREPS = ("on", "in", "at", "of", "to", "for", "with", "about", "from", "by")   # the quiz's COMMON_PREPS
-ALSO_PREP_SHARE = 0.1     # as common as a tenth of the pattern's own preposition…
-ALSO_PREP_MIN = 1e-8      # …and at least this often in books (Zipf 1): good English
+ALSO_PREP_SHARE = 0.05    # as common as a twentieth of the pattern's own preposition…
+ALSO_PREP_MIN = 3e-9      # …and at least this often in books (Zipf 0.5): good English
 
 
 def add_also_preps(words: list[dict]) -> None:

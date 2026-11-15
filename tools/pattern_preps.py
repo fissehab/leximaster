@@ -32,7 +32,9 @@ BATCH = 20
 
 def pattern_words(words: list[dict]) -> list[str]:
     """Verbs and adjectives whose patterns use a preposition (the words a
-    grammar question can be built on), single words only."""
+    grammar question can be built on: app/api/practice.py PREPOSITIONS, which
+    includes "into", "against" …), single words only."""
+    from app.api.practice import PREPOSITIONS
     out = set()
     for w in words:
         n = w.get("nuance") or {}
@@ -40,7 +42,7 @@ def pattern_words(words: list[dict]) -> list[str]:
         if pos not in ("verb", "adjective") or " " in w["word"]:
             continue
         pats = " ".join(n.get("patterns") or []).lower()
-        if any(re.search(rf"\b{p}\b", pats) for p in PREPS):
+        if any(re.search(rf"\b{p}\b", pats) for p in PREPOSITIONS):
             out.add(w["word"].lower())
     return sorted(out)
 
