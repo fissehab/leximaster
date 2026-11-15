@@ -1,0 +1,61 @@
+# Grammar check of the example sentences (tools/grammar_check.py, 2026-11-15):
+# 739 LanguageTool findings in about 150,000 sentences, each read by hand;
+# the real errors are fixed here, the rest were false alarms (headword
+# spellings, casual dialogue, technical usage).
+
+# was: Aristotle would not reduce the happy person to a mere enjoyer of pleasures, since eudaimonia depends on活动 of virtue.  (stray Chinese characters "活动" in place of "the activity")
+enjoyer | nuance.examples.analytical | Aristotle would not reduce the happy person to a mere enjoyer of pleasures, since eudaimonia depends on the activity of virtue.
+# was: Everyone at the startup is nervous about who the acquirer will be after the rumors started.  (tense clash: present "is nervous" + "after ... started"; "since")
+acquirer | nuance.examples.everyday | Everyone at the startup has been nervous about who the acquirer will be since the rumors started.
+# was: To chip in in a shared project is to convert private resources into public good, and the phrase captures that small but collective act.  ("chip in in" is unidiomatic; "chip in on")
+chip-in | nuance.examples.analytical | To chip in on a shared project is to convert private resources into public good, and the phrase captures that small but collective act.
+# was: The moral question is whether a person can be guilty for acts they cannot control, a problem that legal and theological traditions have answered very differently.  (standard collocation is "guilty of")
+guilty | nuance.examples.analytical | The moral question is whether a person can be guilty of acts they cannot control, a problem that legal and theological traditions have answered very differently.
+# was: The internationality of our customer base means we have to support support hours from Tokyo to Denver.  (doubled word "support support")
+internationality | nuance.examples.professional | The internationality of our customer base means we have to offer support hours from Tokyo to Denver.
+# was: A finite set of vectors is linearly independent exactly when the only scalars satisfying a1 v1 plus through an vn equal to zero are all zero.  (broken sum "plus through"; "satisfying ... equal to" ungrammatical)
+linearly-independent | nuance.examples.analytical | A finite set of vectors is linearly independent exactly when the only way to combine them into the zero vector is with every coefficient equal to zero.
+# was: We need to look past the machinations in the vendor's proposal, because the cheap price hides hidden fees.  (redundant "hides hidden")
+machination | nuance.examples.professional | We need to look past the machinations in the vendor's proposal, because the cheap price hides extra fees.
+# was: When the deadline slipped, she persons up in the meeting and takes ownership of the delay.  (tense mismatch: past "slipped" with present verbs)
+person-up | nuance.examples.professional | When the deadline slipped, she personed up in the meeting and took ownership of the delay.
+# was: I regret my rashness in buying that car without test driving it.  (verb test-drive is hyphenated)
+rashness | nuance.examples.everyday | I regret my rashness in buying that car without test-driving it.
+# was: At the retreat, the speaker urged us to slow down and notice everything we could sensate: the cool air, the birdsong, the smell of rain.  (sensate is an adjective, not a verb)
+sensate | nuance.examples.everyday | At the retreat, the speaker urged us to slow down and notice the sensate world around us: the cool air, the birdsong, the smell of rain.
+# was: This scarf is real silk, so you should hand wash it in cold water.  (verb hand-wash is hyphenated)
+silk | nuance.examples.everyday | This scarf is real silk, so you should hand-wash it in cold water.
+# was: Get your dog off my jeans, he left slobber all over them.  (comma splice)
+slobber | nuance.examples.everyday | Get your dog off my jeans; he left slobber all over them.
+# was: A sentence may be syntactical well formed while still failing to express any coherent proposition.  (adjective used where adverb needed; keep headword)
+syntactical | nuance.examples.analytical | A sentence may have a sound syntactical structure while still failing to express any coherent proposition.
+# was: Her thanks was sincere, but she was quick to say she thought nothing of it, which showed her humility.  (thanks takes a plural verb)
+think-nothing-of-it | nuance.examples.analytical | Her thanks were sincere, but she was quick to say she thought nothing of it, which showed her humility.
+# was: Our new menu includes a ume dressing, made from pickled plums, for the grilled vegetables.  (ume begins with a vowel sound)
+ume | nuance.examples.professional | Our new menu includes an ume dressing, made from pickled plums, for the grilled vegetables.
+# Problems the reviewers noticed beside the flags: "sensate" is an adjective;
+# "prefigure" is normally a verb ("a prefigure" is rare); a Lisbon office
+# lead can't emigrate to Portugal.
+sensate | nuance.examples.professional | In the design review, the UX lead argued that the prototype must be tested in person, because haptic feedback is a sensate experience that screenshots can't capture.
+prefigure | nuance.core | {"pos": "verb", "definition": "To be an early sign of something that will happen or exist later; to suggest it in advance."}
+prefigure | nuance.examples.everyday | The first warm day in March prefigured the spring we had been waiting for.
+prefigure | nuance.examples.professional | The beta release prefigured the full product, showing the team what users would ask for.
+prefigure | nuance.examples.analytical | For the author, the sacrifice in the story prefigures a greater redemption that the book only hints at.
+emigrate | nuance.examples.professional | Our Boston office lead is emigrating to Portugal permanently, so we need to reassign her accounts this month.
+# Stray letters from other alphabets in English text (Chinese words, Russian
+# look-alike letters) left by the generation step.
+bellicosity | nuance.collocations | ["open bellicosity", "a spirit of bellicosity", "national bellicosity", "growing bellicosity", "bellicosity toward neighbors"]
+flatter | nuance.collocations | ["flatter someone shamelessly", "flatter the boss", "flatter yourself", "flatter a client", "flatter one's vanity"]
+peace-dove | nuance.collocations | ["a well-known peace dove", "a leading peace dove", "the party's peace doves", "peace doves in Congress", "a peace dove on foreign policy", "dismiss the peace doves"]
+eight-stringed | nuance.pronunciation.respelling | AYT-stringd
+haste | nuance.pronunciation.tip | Say one syllable with a long A and a crisp final st; don't add a vowel before the s. Many learners say 'hays' and drop the t, or add an extra schwa at the end.
+in-the-same-boat | nuance.pronunciation.tip | Stress falls on BOAT, and 'same' has a clear long a sound. Americans often link 'the same' into 'thuh-saym,' so practice the smooth connection between words.
+loadout | nuance.usage_note | Americans use loadout mainly in military, hunting, outdoor and gaming talk. In ordinary conversation people usually say gear, kit or stuff. Formal writing prefers equipment, or a phrase such as 'equipment list'.
+scrumptious | nuance.usage_note | Americans say scrumptious to praise a meal, dessert or home-cooked dish in a friendly, slightly playful way. It is more common in family conversation, with friends, and in cooking talk than in business. For a more neutral praise, say delicious; for a restaurant, very good or really good is more typical.
+cortege | nuance.usage_note | Americans use cortege mainly in news reports or formal writing about funerals, state occasions or royal events. In everyday speech they say funeral procession or motorcade for vehicles. The word sounds formal, so it is best reserved for careful writing or descriptions of ceremonies.
+zest | nuance.distinctions.0.note | Zeal is intense devotion to a cause or belief, while zest is a lighter, more enjoyable enthusiasm for activities and for life.
+elaborate | meanings.1.senses.0.definition | To develop in detail or complexity.
+rotation | meanings.0.senses.4.definition | The movement of investments between different sectors of an economy, or styles of investing, based on anticipated changes in the economic or market cycle.
+ultramontane | nuance.pronunciation.ipa | /ˌʌltɹəˈmɑnteɪn/
+billow | nuance.etymology | From Old English bylge or related Germanic forms meaning 'wave', linked to Old Norse bylgja.
+manna | nuance.etymology | From Hebrew man, meaning what is it?, the question the Israelites asked on first seeing it (Exodus 16:15); Greek manna.

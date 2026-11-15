@@ -44,15 +44,17 @@ def inline_script_hashes(page: str) -> list[str]:
             for m in _INLINE_SCRIPT.findall(page)]
 
 
-def content_security_policy(script_hashes: list[str], *, header: bool = True, wasm: bool = False) -> str:
+def content_security_policy(script_hashes: list[str], *, header: bool = True, wasm: bool = False,
+                            images: tuple[str, ...] = ()) -> str:
     """The policy for a page whose inline scripts have these hashes. A <meta>
     policy (header=False) leaves out frame-ancestors, which browsers ignore
-    there with a console warning. wasm allows compiling WebAssembly (sql.js)."""
+    there with a console warning. wasm allows compiling WebAssembly (sql.js);
+    images adds origins images may load from (the visit counter)."""
     directives = [
         "default-src 'self'",
         " ".join(["script-src 'self'", *(["'wasm-unsafe-eval'"] if wasm else []), *script_hashes]),
         "style-src 'self' 'unsafe-inline'",
-        "img-src 'self' data:",
+        " ".join(["img-src 'self' data:", *images]),
         "media-src 'self' blob: data:",
         "connect-src 'self' blob:",
         "font-src 'self'",

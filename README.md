@@ -458,7 +458,9 @@ tools/             build_site.py (the website), audit.py (content checks), parit
                    forms.py (each entry's tenses, plural, comparative and related forms),
                    build_mouth.py (the MRI clips for How to say it, from the USC 75-Speaker
                    Speech MRI Database), pron_audit.py (shown IPA vs the CMU Pronouncing Dictionary;
-                   reviewed corrections go in seeds/fixes/pronunciation.txt)
+                   reviewed corrections go in seeds/fixes/pronunciation.txt),
+                   grammar_check.py (LanguageTool over the example sentences, run locally;
+                   findings are candidates, real errors are fixed by hand in seeds/fixes/)
 app/               FastAPI backend: db.py (schema, migrations, daily backups), srs.py (SM-2), api/ (routes)
 tests/             pytest suite (a 200-word fixture; never touches data/)
 static/            single-page app, with no build step: index.html, css/, js/, fonts/
