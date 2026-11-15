@@ -46,10 +46,17 @@ async function open(id) {
           if (!(await confirmDialog(`Delete “${w.word}”?`, "This removes the word you added, its notes and its practice history."))) return;
           try { await api.del(`/api/words/${w.id}`); invalidateWords(); open(id); } catch (e) { showError(e); }
         } } }, "Delete word") : null,
-        h("button.btn.btn-quiet", { type: "button", title: "Remove from list", "aria-label": `Remove ${w.word} from this list`, on: { click: async () => {
+        h("button.btn.btn-quiet", { type: "button", title: "Remove from list", "aria-label": `Remove ${w.word} from this list`, on: { click: async e => {
+          const at = [...els.detail.querySelectorAll(".lw-row")].indexOf(e.currentTarget.closest(".lw-row"));
           try {
             await api.del(`/api/lists/${id}/words/${w.id}`);
-            open(id);
+            await open(id);
+            // Keep the keyboard's place: the next row's Remove button (the
+            // row that moved up), else the list's heading.
+            const rows = [...els.detail.querySelectorAll(".lw-row")];
+            const next = rows[Math.min(at, rows.length - 1)];
+            const target = next ? next.querySelector("button[aria-label^='Remove ']") : els.detail.querySelector("h2");
+            if (target) { if (target.tagName === "H2") target.tabIndex = -1; target.focus({ preventScroll: true }); }
             toast(`Removed “${w.word}”`, { action: ["Undo", async () => {
               await api.post(`/api/lists/${id}/words`, { word_id: w.id, note: note.value });
               if (activeId === id) open(id);

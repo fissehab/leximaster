@@ -74,7 +74,8 @@ CREATE TABLE IF NOT EXISTS srs (
     reps          INTEGER NOT NULL DEFAULT 0,
     lapses        INTEGER NOT NULL DEFAULT 0,
     due_date      TEXT NOT NULL,             -- YYYY-MM-DD (local date)
-    last_reviewed TEXT
+    last_reviewed TEXT,
+    prev          TEXT                       -- the card before last_reviewed's answer (JSON): a later miss that day starts from it
 );
 CREATE INDEX IF NOT EXISTS srs_due ON srs(due_date);
 CREATE TABLE IF NOT EXISTS review_log (
@@ -169,7 +170,7 @@ def tx():
 # step that turns version N-1 into N, e.g.
 #     2: ["ALTER TABLE srs ADD COLUMN stability REAL"],
 # Steps run inside the startup transaction, so a failed step changes nothing.
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 5
 MIGRATIONS: dict[int, list] = {   # SQL strings, or functions of the connection
     1: [],  # the baseline: the schema as first released (created by SCHEMA)
     2: WORDS_COMPACT,  # filled by init() and on demand (common.compact_heads)
@@ -182,6 +183,10 @@ MIGRATIONS: dict[int, list] = {   # SQL strings, or functions of the connection
     # Until 2026-10-29 every level was the default, and the default was stored
     # as if chosen; it moves to the new default (2-4). A later choice stays.
     4: ["UPDATE settings SET value = '2,3,4' WHERE key = 'word_levels' AND value = '1,2,3,4,5'"],
+    # The card as it was before the day's first answer, so a miss later that
+    # day replaces a right answer instead of stacking on it (srs.review).
+    5: [lambda c: "prev" in {r[1] for r in c.execute("PRAGMA table_info(srs)")}
+        or c.execute("ALTER TABLE srs ADD COLUMN prev TEXT")],   # a new database has it
 }
 
 

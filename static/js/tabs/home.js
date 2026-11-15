@@ -94,7 +94,7 @@ export async function render(root) {
   const progressPanel = h("section.panel.today-progress", { "aria-label": "Your progress" },
     h("dl.today-stats",
       stat("Streak", `${stats.streak.current} day${stats.streak.current === 1 ? "" : "s"}`),
-      stat("Words studied", (w.learning + w.mastered).toLocaleString()),
+      stat("Words studied", (w.learning + w.mastered + (w.seen || 0)).toLocaleString()),
       stat("Time today", fmtDuration(today.seconds || 0))),
     h("a.today-more", { href: "#stats" }, "See all your progress →"));
 

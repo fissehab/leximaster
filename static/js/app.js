@@ -19,7 +19,7 @@ export const TABS = [
   { id: "home", label: "Today", icon: "home" },
   { id: "browse", label: "Dictionary", short: "Words", icon: "book", group: "Words", note: "Find any word" },
   { id: "lists", label: "My lists", icon: "list", under: "browse", group: "Words", note: "Your own word lists" },
-  { id: "practice", label: "Practice", icon: "cards", hub: true },
+  { id: "practice", label: "Practice", icon: "practice", hub: true },
   { id: "listen", label: "Listen", icon: "listen", under: "practice", group: "Sound", note: "Hear a word. Pick it or type it." },
   { id: "pronounce", label: "Pronounce", icon: "mic", under: "practice", group: "Sound", note: "Say a word. Hear yourself." },
   { id: "sounds", label: "Hard sounds", icon: "mouth", under: "practice", group: "Sound", note: "Ship or sheep? Hear the difference." },
@@ -93,6 +93,29 @@ export function showDueCount(count) {
   if (label) label.hidden = !count;
 }
 
+/** The menu shows where you are. The screen's own link is current; when it
+ *  isn't shown (a phone shows Words, not My lists) the section it belongs to
+ *  is, for the eye and for screen readers. On the Practice page the sidebar's
+ *  Sound and Practice headings, the groups it holds, are marked. */
+function markNav(tab) {
+  const under = (TABS.find(t => t.id === tab) || {}).under;
+  const own = document.querySelector(`.nav-link[data-tab="${tab}"]`);
+  const ownShown = !!own && own.offsetParent !== null;
+  document.querySelectorAll(".nav-link").forEach(a => {
+    const isParent = a.dataset.tab === under;
+    if (a.dataset.tab === tab || (isParent && !ownShown)) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
+    a.classList.toggle("in-section", isParent);
+  });
+  document.querySelectorAll(".nav-group").forEach(g => {
+    const here = tab === "practice" && ["Sound", "Practice"].includes(g.dataset.group);
+    g.classList.toggle("current-hub", here);
+    const fold = g.querySelector(".nav-fold");
+    if (fold) fold.setAttribute("aria-description", here ? "Current page" : "");
+  });
+}
+matchMedia("(max-width: 760px)").addEventListener("change", () => markNav(parseHash().tab));
+
 function parseHash() {
   const [tab, ...rest] = (location.hash.slice(1) || "home").split("/");
   return { tab: TABS.some(t => t.id === tab) ? tab : "home", param: rest.join("/") };
@@ -158,21 +181,7 @@ async function route() {
   stopAudio();
   if (current && current.cleanup) { try { current.cleanup(); } catch (e) { console.error(e); } }
   current = null;
-  const under = (TABS.find(t => t.id === tab) || {}).under;
-  // The section a screen belongs to (Practice for Quiz, Words for My lists,
-  // Settings for About) is marked too: always for a hub or a screen not in
-  // the rail, and on a phone (where the screen's own link isn't shown) by class.
-  const parent = TABS.find(t => t.id === under);
-  const hiddenHere = (TABS.find(t => t.id === tab) || {}).hidden;
-  document.querySelectorAll(".nav-link").forEach(a => {
-    const isParent = a.dataset.tab === under;
-    if (a.dataset.tab === tab || (isParent && (parent.hub || hiddenHere))) a.setAttribute("aria-current", "page");
-    else a.removeAttribute("aria-current");
-    a.classList.toggle("in-section", isParent);
-  });
-  // On the Practice or Games page itself (a phone page, or a link on a wide
-  // screen) the group's heading shows where you are.
-  document.querySelectorAll(".nav-group").forEach(g => g.classList.toggle("current-hub", g.dataset.group.toLowerCase() === tab));
+  markNav(tab);
   // A slow screen (the word list on first visit) says so instead of staying blank.
   const slow = setTimeout(() => { if (token === navToken) view.classList.add("is-loading"); }, 250);
   // `live()` lets a screen that finishes loading after you've left it stay quiet.

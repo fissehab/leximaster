@@ -6,7 +6,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import { loadFilter } from "../state.js";
-import { cantStart, diffView, filterBar, filterSources, fmtDuration, h, markOption, pageHead, reveal, showError, toast } from "../ui.js";
+import { cantStart, diffView, filterBar, optField, filterSources, fmtDuration, h, markOption, pageHead, reveal, showError, toast } from "../ui.js";
 
 let mode = "choose";       // choose | type | stress
 let items = [];
@@ -23,7 +23,7 @@ let playTimer = null;
 let startToken = 0;
 let hinted = false;   // the pronunciation was shown instead of heard
 
-const MODES = [["choose", "Pick the word"], ["type", "Type the word"], ["stress", "Where's the stress?"]];
+const MODES = [["choose", "Pick the word", "Pick it"], ["type", "Type the word", "Type it"], ["stress", "Where's the stress?", "Stress"]];
 const STRICT_KEY = "lexi-listen-strict";
 let strict = (() => { try { return localStorage.getItem(STRICT_KEY) === "1"; } catch (e) { return false; } })();
 /** Typing with exact spelling: a spelling test. */
@@ -180,8 +180,10 @@ function next() {
 
 export async function render(root) {
   const src = await filterSources();
-  const seg = h("div.seg", { role: "group", "aria-label": "Mode" }, MODES.map(([v, l]) => {
-    const b = h("button", { type: "button", "aria-pressed": String(mode === v) }, l);
+  // Short labels on a phone, so the three fit on one line.
+  const seg = h("div.seg", { role: "group", "aria-label": "Mode" }, MODES.map(([v, l, short]) => {
+    const b = h("button", { type: "button", "aria-pressed": String(mode === v), "aria-label": l },
+      h("span.long", l), h("span.short", short));
     b.addEventListener("click", () => {
       mode = v;
       seg.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
@@ -205,8 +207,8 @@ export async function render(root) {
     "US recordings only");
   els.stage = h("div.q-wrap");
   root.append(
-    pageHead("Listen", "You hear a word. Pick it or type it. Turn on Exact spelling for a spelling test.", seg, exact, rec),
-    await filterBar(f => { filter = f; start(); }, src, { tab: "listen" }),
+    pageHead("Listen", "You hear a word. Pick it or type it. Turn on Exact spelling for a spelling test."),
+    await filterBar(f => { filter = f; start(); }, src, { tab: "listen", extra: [optField("Mode", seg), exact, rec] }),
     els.stage);
   filter = loadFilter("listen");
   await start();

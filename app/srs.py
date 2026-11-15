@@ -7,6 +7,7 @@ checks both.
 """
 from __future__ import annotations
 
+import json
 import random
 import sqlite3
 from datetime import date, timedelta
@@ -93,12 +94,21 @@ def schedule(card: dict, grade: int) -> dict:
             "lapses": lapses, "due_date": iso(due), "last_reviewed": iso(today())}
 
 
-def review(c: sqlite3.Connection, word_id: int, grade: int) -> dict:
+CARD_FIELDS = ("ease", "interval_days", "reps", "lapses", "due_date", "last_reviewed")
+
+
+def review(c: sqlite3.Connection, word_id: int, grade: int, *, redo: bool = False) -> dict:
+    """Apply a grade. The card as it was before the day's first answer is kept
+    (`prev`); `redo` grades from that instead of the current card, so a miss
+    after a right answer the same day replaces the right answer."""
     card = ensure_card(c, word_id)
-    new = schedule(card, grade)
+    day = iso(today())
+    before = (json.loads(card["prev"]) if card.get("last_reviewed") == day and card.get("prev")
+              else {k: card[k] for k in CARD_FIELDS})
+    new = schedule(before if redo else card, grade)
     c.execute("UPDATE srs SET ease=:ease, interval_days=:interval_days, reps=:reps, "
-              "lapses=:lapses, due_date=:due_date, last_reviewed=:last_reviewed "
-              "WHERE word_id=:word_id", {**new, "word_id": word_id})
+              "lapses=:lapses, due_date=:due_date, last_reviewed=:last_reviewed, prev=:prev "
+              "WHERE word_id=:word_id", {**new, "prev": json.dumps(before), "word_id": word_id})
     return new
 
 
@@ -126,7 +136,8 @@ def practice_answer(c: sqlite3.Connection, word_id: int, correct: bool) -> int |
     card = get_card(c, word_id)
     row = c.execute("SELECT grade FROM review_log WHERE word_id=? AND grade IS NOT NULL "
                     "AND date(ts) = date('now', 'localtime') ORDER BY id DESC LIMIT 1", (word_id,)).fetchone()
-    grade = practice_grade(card, correct, row["grade"] if row else None, iso(today()))
+    day = iso(today())
+    grade = practice_grade(card, correct, row["grade"] if row else None, day)
     if grade is not None:
-        review(c, word_id, grade)
+        review(c, word_id, grade, redo=bool(card) and card.get("last_reviewed") == day)
     return grade

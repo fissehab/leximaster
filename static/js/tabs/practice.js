@@ -13,13 +13,13 @@ const GROUPS = [
 ];
 
 export function hubTiles(parent) {
-  const tile = t => h("a.hub-tile", { href: `#${t.id}` }, icon(t.icon), h("strong", t.label), h("span", t.note));
+  const tile = t => h("li", h("a.hub-tile", { href: `#${t.id}` }, icon(t.icon), h("strong", t.label), h("span", t.note)));
+  // Headings and lists, not landmarks: the page is one list of activities.
   return h("div.hub-groups", GROUPS.map(([group, note]) => {
     const tabs = TABS.filter(t => t.under === parent && t.group === group);
-    const id = `hub-${group.toLowerCase()}`;
-    return h("section.hub-group", { "aria-labelledby": id },
-      h("h2.hub-heading", { id }, group, h("span.muted", ` · ${note}`)),
-      h("nav.hub-tiles", { "aria-label": group }, tabs.map(tile)));
+    return h("div.hub-group",
+      h("h2.hub-heading", group, h("span.muted", ` · ${note}`)),
+      h("ul.hub-tiles", tabs.map(tile)));
   }));
 }
 

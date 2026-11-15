@@ -19,6 +19,11 @@ MASTERED_INTERVAL = 21  # days
 MASTERED_SQL = ("SELECT COUNT(*) AS n {studied} AND s.interval_days >= ? AND s.word_id IN (SELECT word_id FROM (SELECT word_id, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE grade IS NOT NULL AND mode != 'repeat') WHERE grade >= 2 AND gap >= ?)")
 # Reviews of words seen before (last 30 days): the share recalled, by the gap
 # since the word's previous review. About 85-90% means the schedule is right.
+# Words remembered on a later day: a right answer (or a review graded Hard or
+# better) on a day after the word was first practiced. Until then a word is
+# only "seen". server.js RECALLED_SQL is the same.
+RECALLED_SQL = ("SELECT COUNT(*) AS n {studied} AND EXISTS (SELECT 1 FROM review_log r WHERE r.word_id = s.word_id "
+                "AND r.grade >= 1 AND date(r.ts) > (SELECT MIN(date(r0.ts)) FROM review_log r0 WHERE r0.word_id = s.word_id))")
 RETENTION_SQL = ("SELECT CASE WHEN gap < 8 THEN 'days' WHEN gap <= 30 THEN 'weeks' ELSE 'months' END AS span, COUNT(*) AS n, SUM(CASE WHEN grade >= 1 THEN 1 ELSE 0 END) AS ok FROM (SELECT ts, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE grade IS NOT NULL AND mode != 'repeat') WHERE gap IS NOT NULL AND julianday('now') - julianday(ts) <= 30 GROUP BY span")
 
 
@@ -56,7 +61,12 @@ def stats():
         # interval alone is only a plan, not proof.
         mastered = c.execute(MASTERED_SQL.format(studied=studied),
                              (MASTERED_INTERVAL, MASTERED_INTERVAL)).fetchone()["n"]
-        learning = c.execute(f"SELECT COUNT(*) AS n {studied}").fetchone()["n"] - mastered
+        # Learning: remembered on a later day, not yet mastered. Seen: practiced,
+        # not yet remembered on a later day. Overdue: due before today.
+        studied_n = c.execute(f"SELECT COUNT(*) AS n {studied}").fetchone()["n"]
+        recalled = c.execute(RECALLED_SQL.format(studied=studied)).fetchone()["n"]
+        learning, seen = recalled - mastered, studied_n - recalled
+        overdue = c.execute(f"SELECT COUNT(*) AS n {studied} AND s.due_date < ?", (today_iso(),)).fetchone()["n"]
         # Due: the words to refresh, the same number Today shows.
         due = len(pool_ids(c, domain="refresh", exclude_known=True))
         known = c.execute("SELECT COUNT(*) AS n FROM user_word WHERE known=1").fetchone()["n"]
@@ -103,7 +113,8 @@ def stats():
             (today_iso(), (date.today() + timedelta(days=14)).isoformat()))]
         return {
             "words": {"total": total, "enriched": enriched, "with_audio": with_audio,
-                      "mastered": mastered, "learning": learning, "due": due, "known": known, "stars": stars},
+                      "mastered": mastered, "learning": learning, "seen": seen, "due": due, "overdue": overdue,
+                      "known": known, "stars": stars},
             "accuracy": {"attempts": overall["n"], "correct": overall["ok"]},
             "retention": retention,
             "streak": streak(c),
@@ -162,7 +173,7 @@ from datetime import datetime as _dt, timezone as _tz  # noqa: E402
 
 PROGRESS_TABLES = {
     "user_word": "SELECT w.key, u.stars, u.known, u.notes, u.updated_at FROM user_word u JOIN words w ON w.id=u.word_id",
-    "srs": "SELECT w.key, s.ease, s.interval_days, s.reps, s.lapses, s.due_date, s.last_reviewed "
+    "srs": "SELECT w.key, s.ease, s.interval_days, s.reps, s.lapses, s.due_date, s.last_reviewed, s.prev "
            "FROM srs s JOIN words w ON w.id=s.word_id",
     "review_log": "SELECT w.key, r.ts, r.mode, r.grade, r.correct, r.ms_taken FROM review_log r JOIN words w ON w.id=r.word_id",
     "list_words": "SELECT l.name AS list, w.key, lw.note, lw.added_at FROM list_words lw "
@@ -325,6 +336,22 @@ def _valid_user_word(u: dict) -> tuple | None:
     return stars, known, notes[:MAX_NOTE_CHARS], updated
 
 
+def _clean_prev(v) -> str | None:
+    """A card's state before the day's first answer (srs.prev): kept only
+    when it is a well-formed card (server.js cleanPrev)."""
+    if not isinstance(v, str) or len(v) > 400:
+        return None
+    try:
+        p = json.loads(v)
+    except ValueError:
+        return None
+    ok = (isinstance(p, dict) and all(isinstance(p.get(k), (int, float)) and not isinstance(p.get(k), bool)
+                                      for k in ("ease", "interval_days", "reps", "lapses"))
+          and _iso_date(p.get("due_date")) is not None
+          and (p.get("last_reviewed") is None or _iso_date(p.get("last_reviewed")) is not None))
+    return v if ok else None
+
+
 def _valid_srs(s: dict) -> tuple | None:
     ease = s.get("ease", 2.5)
     if isinstance(ease, bool) or not isinstance(ease, (int, float)) or ease != ease:
@@ -339,7 +366,7 @@ def _valid_srs(s: dict) -> tuple | None:
     if None in (interval, reps, lapses, due) or not last_ok:
         return None
     return (min(5.0, max(1.3, float(ease))), float(min(interval, 36500)), min(reps, 10000),
-            min(lapses, 10000), due, _iso_date(last) if last is not None else None)
+            min(lapses, 10000), due, _iso_date(last) if last is not None else None, _clean_prev(s.get("prev")))
 
 
 def _valid_review(r: dict) -> tuple | None:
@@ -431,8 +458,8 @@ async def import_progress(file: UploadFile = File(...)):
                 rank = (v[5] or "", v[2])
                 if wid in have and have[wid] >= rank:
                     continue
-                c.execute("INSERT OR REPLACE INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed) "
-                          "VALUES (?, ?, ?, ?, ?, ?, ?)", (wid, *v))
+                c.execute("INSERT OR REPLACE INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed, prev) "
+                          "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (wid, *v))
                 have[wid] = rank
                 n += 1
             counts["review cards"] = n

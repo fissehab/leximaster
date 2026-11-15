@@ -14,7 +14,7 @@ import {
 } from "../games.js";
 import { scoreBoard, scoreResult } from "../gameui.js";
 import { loadFilter, settings } from "../state.js";
-import { diffView, filterBar, filterSources, fmtDuration, noWordsNote, h, pageHead, playButton, scrollBehavior, shuffle, smart, toast } from "../ui.js";
+import { diffView, filterBar, filterSources, fmtDuration, noWordsNote, optField, h, pageHead, playButton, scrollBehavior, shuffle, smart, toast } from "../ui.js";
 
 const CLUES = [["meaning", "Meanings"], ["hear", "Hear it"]];
 const SPEEDS = [["calm", "Calm"], ["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]];
@@ -481,17 +481,18 @@ export async function render(root) {
     });
     return b;
   }));
-  const speedSel = h("select.input", { "aria-label": "Speed" }, SPEEDS.map(([v, l]) => h("option", { value: v }, l)));
+  const speedSel = h("select.input", SPEEDS.map(([v, l]) => h("option", { value: v }, l)));
   speedSel.value = speed;
   speedSel.addEventListener("change", () => { speed = speedSel.value; setPref("lexi-typeit-speed", speed); startCard(); });
-  const lengthSel = h("select.input", { "aria-label": "Length" }, LENGTHS.map(([v, l]) => h("option", { value: v }, l)));
+  const lengthSel = h("select.input", LENGTHS.map(([v, l]) => h("option", { value: v }, l)));
   lengthSel.value = length;
   lengthSel.addEventListener("change", () => { length = lengthSel.value; setPref("lexi-typeit-length", length); startCard(); });
   els.root = root;
   els.stage = h("div.shoot-wrap");
   root.append(
-    pageHead("Type It", "Read the meaning, or hear the word. Type it before the time runs out.", seg, speedSel, lengthSel),
-    await filterBar(f => { filter = f; startCard(); }, src, { tab: "typeit" }),
+    pageHead("Type It", "Read the meaning, or hear the word. Type it before the time runs out."),
+    await filterBar(f => { filter = f; startCard(); }, src,
+      { tab: "typeit", extra: [optField("Clues", seg), optField("Speed", speedSel), optField("Length", lengthSel)] }),
     els.stage);
   filter = loadFilter("typeit");
   alive = true;

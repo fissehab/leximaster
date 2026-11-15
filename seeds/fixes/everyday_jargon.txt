@@ -1,0 +1,14 @@
+# Work and computing terms filed under Everyday English (audit 2026-11-15):
+# a new learner's everyday words shouldn't include them. They move to the
+# subject they belong to, and stay in the Dictionary and that topic.
+comment-out | domains | ["software_engineering"]
+software-developer | domains | ["software_engineering"]
+chief-operating-officer | domains | ["professional"]
+initial-public-offering | domains | ["professional"]
+public-offering | domains | ["professional"]
+controlling-interest | domains | ["professional"]
+stock-option | domains | ["professional"]
+strike-price | domains | ["professional"]
+publicly-held | domains | ["professional"]
+royalty-free | domains | ["professional"]
+subsidiary | domains | ["professional"]

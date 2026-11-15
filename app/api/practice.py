@@ -108,10 +108,15 @@ PREPOSITIONS = ("on", "in", "at", "of", "to", "for", "with", "about", "from", "b
 COMMON_PREPS = ("on", "in", "at", "of", "to", "for", "with", "about", "from", "by")
 
 
-def pattern_question(word: str, patterns: list[str], pos: str = "verb") -> dict | None:
+def pattern_question(word: str, patterns: list[str], pos: str = "verb", also: list[str] | tuple = (),
+                     examples: list[str] | tuple = ()) -> dict | None:
     """"insist ___ doing sth" → on: a preposition from one of the word's
     grammar patterns. Alternatives in the pattern ("with/at/about") all
-    count, so none of them is offered as a wrong answer."""
+    count, so none of them is offered as a wrong answer; nor is one that is
+    also good English with the word: common in American books (`also`,
+    nuance.also_preps from tools/pattern_preps.py) or used after the word in
+    its own examples. Two wrong choices, not three: fewer chances of one
+    that is right after all ("impatient of")."""
     if pos.lower() not in ("verb", "adjective"):
         return None   # nouns often take several prepositions ("intuition about/for"): too easy to be unfair
     stem = word.lower()[:4]
@@ -134,11 +139,17 @@ def pattern_question(word: str, patterns: list[str], pos: str = "verb") -> dict 
                     break
     if not usable:
         return None
+    listed |= set(also)
+    after = re.compile(rf"\b{re.escape(word.lower())}\w*\s+({'|'.join(COMMON_PREPS)})\b")
+    for ex in examples:
+        listed |= set(after.findall(ex.lower()))
     tokens, i, alts = random.choice(usable)
-    # Wrong choices: never a preposition any of the word's patterns uses.
+    # Wrong choices: never a preposition any of the word's patterns uses
     # (and not "by" after a past participle: "disappointed by" is fine English).
-    wrong = random.sample([x for x in COMMON_PREPS if x not in listed
-                           and not (x == "by" and word.lower().endswith("ed"))], 3)
+    fit = [x for x in COMMON_PREPS if x not in listed and not (x == "by" and word.lower().endswith("ed"))]
+    if len(fit) < 2:
+        return None
+    wrong = random.sample(fit, 2)
     frame = " ".join(tokens[:i] + ["/".join(alts)] + tokens[i + 1:])
     return {"prompt": " ".join(tokens[:i] + ["___"] + tokens[i + 1:]), "ask": "Which word completes the pattern?",
             "answer": alts[0], "options": wrong + [alts[0]],
@@ -182,6 +193,16 @@ def _rights(data: dict, kind: str) -> list[str]:
         out += m.get("synonyms" if kind == "synonym" else "antonyms") or []
     contrasted = {(d.get("vs") or "").lower() for d in nuance.get("distinctions") or []}
     return [r for r in dict.fromkeys(out) if r and not (kind == "synonym" and r.lower() in contrasted)]
+
+
+def broad_pos(p: str) -> str:
+    """A part of speech, broadly: a phrasal verb is a verb, a proper noun a
+    noun (server.js broadPos)."""
+    p = (p or "").lower()
+    for broad in ("adverb", "verb", "adjective", "noun"):
+        if broad in p:
+            return broad
+    return p or "other"
 
 
 def shares_word(a: str, b: str) -> bool:
@@ -232,15 +253,16 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                 # with phrasal verbs, restaurant phrases with restaurant phrases.
                 distract_ids = [r["id"] for r in c.execute(
                     "SELECT id FROM words w WHERE id != ? AND EXISTS (SELECT 1 FROM json_each(w.domains) "
-                    f"WHERE json_each.value IN ({','.join('?' * len(everyday))})) AND NOT {REFERENCE_SQL} ORDER BY random() LIMIT 30",
+                    f"WHERE json_each.value IN ({','.join('?' * len(everyday))})) AND NOT {REFERENCE_SQL} ORDER BY random() LIMIT 200",
                     (wid, *everyday))]
             else:
                 # Other words of the chosen scope ("Statistics", "Bible · Vocabulary"), else any word.
                 source = pool if domain and len(pool) >= 30 else all_ids
-                distract_ids = random.sample([i for i in source if i != wid], k=min(30, len(source) - 1))
+                distract_ids = random.sample([i for i in source if i != wid], k=min(200, len(source) - 1))
             dmap = _defs_by_id(c, distract_ids)
-            # Same shape first (number of words, then part of speech): a
-            # sentence among single words would give the answer away.
+            # Same kind first: the same broad part of speech (a noun among
+            # verbs gives the answer away), then the same number of words (a
+            # sentence among single words would), then the exact part of speech.
             n_words = len(word.split())
             # The word, its synonyms and the words its notes compare it with.
             near = ({x.lower() for x in _rights(data, "synonym")} | {word.lower()}
@@ -249,12 +271,13 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
             # masked; a word the entry names as near in meaning would be right too.
             others = sorted((v for v in dmap.values() if v[0].lower() not in near
                              and not re.search(rf"\b{re.escape(v[0])}\b", v[2], re.I)),
-                            key=lambda v: (len(v[0].split()) != n_words, v[1] != pos))
+                            key=lambda v: (broad_pos(v[1]) != broad_pos(pos), len(v[0].split()) != n_words, v[1] != pos))
 
 
             def build(qtype):
                 if qtype == "pattern":
-                    return pattern_question(word, nuance.get("patterns") or [], pos)
+                    return pattern_question(word, nuance.get("patterns") or [], pos,
+                                            nuance.get("also_preps") or [], quiz_examples(data))
                 if qtype == "name_kind":
                     return {"prompt": word, "ask": f"Who or what is {word}?", "answer": NAME_KINDS[name_kind],
                             "options": list(NAME_KINDS.values())}
@@ -299,12 +322,20 @@ def make_quiz(types: str = "word_meaning,meaning_word,fill_blank,synonym,antonym
                     for r in c.execute(f"SELECT id, domains, data FROM words WHERE id IN ({','.join('?' * len(src))})", src):
                         if qtype == "antonym" and set(json.loads(r["domains"] or "[]")) & set(domains):
                             continue
-                        # Never a look-up-only word, or one that gives the right answer away.
-                        wrongs += [s for s in quiz_synonyms(json.loads(r["data"]))
-                                   if s.lower() not in own and s.lower() not in lookup_only and not shares_word(s, right)]
+                        # Never a look-up-only word, or one that gives the right answer
+                        # away; one per word, so two options aren't synonyms of each other.
+                        fit = [s for s in quiz_synonyms(json.loads(r["data"]))
+                               if s.lower() not in own and s.lower() not in lookup_only and not shares_word(s, right)]
+                        if fit:
+                            wrongs.append(random.choice(fit))
                     wrongs = list(dict.fromkeys(wrongs))
                     random.shuffle(wrongs)
                     wrongs.sort(key=lambda s: len(s.split()) != len(right.split()))
+                    kept: list[str] = []
+                    for s in wrongs:
+                        if not any(shares_word(k, s) for k in kept):
+                            kept.append(s)
+                    wrongs = kept
                     if len(wrongs) >= 3:
                         return {"prompt": word,
                                 "ask": "Which is closest in meaning?" if qtype == "synonym" else "Which is opposite in meaning?",

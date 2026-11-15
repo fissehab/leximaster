@@ -81,3 +81,69 @@ def test_due_words_come_first_in_a_round_and_progress_counts_them(client):
         refresh = pool_ids(c, domain="refresh", exclude_known=True)
         assert sorted(weighted_sample(c, list(refresh), 2)) == sorted(ids[1:3])     # all due: most overdue
     assert client.get("/api/stats").json()["words"]["due"] == client.get("/api/refresh").json()["count"] == 3
+
+
+def test_a_miss_after_a_right_answer_replaces_it(client):
+    """Right then wrong the same day is the same as wrong alone: the miss is
+    graded from the card as it was that morning (srs.prev), not on top of the
+    right answer."""
+    words = client.get("/api/words").json()["words"]
+    mature, fresh, alone = words[0]["id"], words[1]["id"], words[2]["id"]
+    with db.tx() as c:
+        for wid in (mature, alone):
+            c.execute("INSERT INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed) "
+                      "VALUES (?, 2.5, 30, 5, 0, date('now', 'localtime'), '2026-01-01')", (wid,))
+    for wid, answers in ((mature, (True, False)), (alone, (False,)), (fresh, (True, False))):
+        for ok in answers:
+            client.post("/api/answer", json={"word_id": wid, "mode": "quiz", "correct": ok})
+    with db.tx() as c:
+        a, b, f = _card(c, mature), _card(c, alone), _card(c, fresh)
+    keys = ("ease", "interval_days", "reps", "lapses", "due_date")
+    assert {k: a[k] for k in keys} == {k: b[k] for k in keys} and a["interval_days"] == 6
+    assert (f["ease"], f["lapses"], f["reps"]) == (2.5, 0, 0)            # a new word missed: not a lapse
+
+
+def test_the_morning_card_survives_export_and_import(client):
+    wid = client.get("/api/words").json()["words"][0]["id"]
+    client.post("/api/answer", json={"word_id": wid, "mode": "quiz", "correct": True})
+    data = client.get("/api/export").json()
+    row = next(s for s in data["srs"] if s["prev"])
+    assert json.loads(row["prev"])["reps"] == 0
+    with db.tx() as c:
+        c.execute("DELETE FROM srs")
+    client.post("/api/import", files={"file": ("p.json", json.dumps(data), "application/json")})
+    client.post("/api/answer", json={"word_id": wid, "mode": "quiz", "correct": False})
+    with db.tx() as c:
+        assert _card(c, wid)["lapses"] == 0                                # replaced, from the imported morning card
+
+
+def test_new_words_come_easiest_first(client):
+    """New words are drawn from the most common words not yet practiced."""
+    with db.tx() as c:
+        rows = [(r["id"], r["freq_rank"]) for r in c.execute(
+            "SELECT id, freq_rank FROM words WHERE freq_rank IS NOT NULL ORDER BY freq_rank")]
+        ids = [i for i, _ in rows]
+        if len(ids) < 120:
+            return
+        easiest = set(ids[:50])
+        for _ in range(10):
+            assert set(weighted_sample(c, list(reversed(ids)), 5)) <= easiest
+        c.execute("INSERT INTO srs(word_id, due_date, reps, last_reviewed) "
+                  "SELECT id, date('now', 'localtime', '+5 day'), 2, '2026-01-01' FROM words WHERE id IN (%s)"
+                  % ",".join(map(str, ids[:50])))
+        picked = weighted_sample(c, list(ids), 5)
+        assert any(i in set(ids[50:100]) for i in picked)        # practiced words step aside for the next easiest
+
+
+def test_progress_counts_learning_seen_and_overdue(client):
+    """Learning: remembered on a later day; seen: practiced but not yet; overdue: due before today."""
+    words = client.get("/api/words").json()["words"]
+    once, twice, late = words[0]["id"], words[1]["id"], words[2]["id"]
+    with db.tx() as c:
+        for wid in (once, twice, late):
+            c.execute("INSERT INTO srs(word_id, due_date, reps, last_reviewed) VALUES (?, date('now', 'localtime', '+3 day'), 1, date('now', 'localtime'))", (wid,))
+            c.execute("INSERT INTO review_log(word_id, ts, mode, grade, correct) VALUES (?, datetime('now', 'localtime', '-2 day'), 'quiz', 2, 1)", (wid,))
+        c.execute("INSERT INTO review_log(word_id, mode, grade, correct) VALUES (?, 'quiz', 2, 1)", (twice,))
+        c.execute("UPDATE srs SET due_date = date('now', 'localtime', '-2 day') WHERE word_id = ?", (late,))
+    w = client.get("/api/stats").json()["words"]
+    assert (w["learning"], w["seen"], w["overdue"]) == (1, 2, 1)

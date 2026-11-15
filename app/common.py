@@ -217,14 +217,15 @@ FULL_SENTENCE = re.compile(r"^[\"“'(]?[A-Z0-9].*[.!?][\"”')]*$")
 
 def quiz_examples(data: dict) -> list[str]:
     """Sentences a quiz may blank: those for the meaning the learner studies
-    (conversation and study-note examples, then the first dictionary sense's),
-    and only whole sentences, not a rare sense's fragment ("the cynic, or
-    Sothic, year; cynic cycle")."""
+    (conversation and study-note examples), and only whole sentences. The
+    first dictionary sense's example only when there are none of those: it
+    is often another meaning ("tense": "Dyirbal verbs are not inflected for
+    ___", the grammar sense, for a word studied as "nervous")."""
     out = [e["text"] for e in data.get("conversation") or []]
     ex = (data.get("nuance") or {}).get("examples") or {}
     out += [ex[k] for k in ("everyday", "professional", "analytical") if ex.get(k)]
     first = next((s for m in data.get("meanings") or [] for s in m.get("senses") or []), None)
-    if first and first.get("example"):
+    if not out and first and first.get("example"):
         out.append(first["example"])
     return [e for e in out if FULL_SENTENCE.match(e.strip()) and len(e.split()) >= 5]
 
@@ -450,35 +451,44 @@ def pool_ids(c: sqlite3.Connection, *, stars: list[int] | None = None, list_id: 
     return [r["id"] for r in c.execute(sql, args)]
 
 
+EASIEST_WINDOW = 50   # new words come from the 50 most common unseen ones (or 3 per word asked, if more)
+
+
 def weighted_sample(c: sqlite3.Connection, ids: list[int], n: int) -> list[int]:
-    """A round's words. Words due to refresh come first, most overdue first,
-    up to half the round (all of it when every word is due) and at the front
-    of it, so practice
-    keeps the refresh pile down. The rest favour words missed lately: a miss
-    counts fully for a month, then fades. static/js/local/server.js does the same."""
+    """A round's words (static/js/local/server.js weightedSample is the same):
+    1. words due to refresh, most overdue first: up to half the round, or all
+       of it when every word is due;
+    2. new words, easiest first: drawn from the most common words not yet
+       practiced (EASIEST_WINDOW, at least 3 per word asked), so a learner
+       meets common words before rare ones;
+    3. words practiced before and not due, at half weight, favouring words
+       missed lately (a miss counts fully for a month, then fades).
+    Due words lead the list (a quiz builds its questions from the front)."""
     if len(ids) <= n:
         random.shuffle(ids)
         return ids
-    marks = ",".join("?" * len(ids))
+    pool = set(ids)
     due = [r["word_id"] for r in c.execute(
-        f"SELECT word_id FROM srs WHERE word_id IN ({marks}) AND due_date <= date('now', 'localtime') "
-        "ORDER BY due_date, word_id", ids)] if len(ids) <= 30000 else []
+        "SELECT word_id FROM srs WHERE due_date <= date('now', 'localtime') ORDER BY due_date, word_id")
+        if r["word_id"] in pool]
     first = due[:n if len(due) == len(ids) else (n + 1) // 2]
     random.shuffle(first)
     chosen = list(first)
     taken = set(chosen)
-    rest = [i for i in ids if i not in taken]
-    rows = c.execute(
-        f"""SELECT w.id,
-                   (SELECT COALESCE(SUM(CASE WHEN julianday('now') - julianday(r.ts) <= 30 THEN 1.0
-                                             WHEN julianday('now') - julianday(r.ts) <= 90 THEN 0.4 ELSE 0.1 END), 0)
-                    FROM review_log r WHERE r.word_id = w.id AND r.correct = 0 AND r.mode != 'repeat') AS misses
-            FROM words w WHERE w.id IN ({marks})""", ids).fetchall() if len(ids) <= 30000 else []
-    weights = {r["id"]: 1 + min(r["misses"], 5) * 0.5 for r in rows}
-    w = [weights.get(i, 1.0) for i in rest]
+    seen = {r["word_id"] for r in c.execute("SELECT word_id FROM srs")}
+    rank = {r["id"]: r["freq_rank"] if r["freq_rank"] is not None else 10**9
+            for r in c.execute("SELECT id, freq_rank FROM words")}
+    unseen = sorted((i for i in ids if i not in seen and i not in taken), key=lambda i: (rank.get(i, 10**9), i))
+    window = unseen[:max(EASIEST_WINDOW, 3 * n)]
+    misses = {r["word_id"]: r["m"] for r in c.execute(
+        """SELECT word_id, SUM(CASE WHEN julianday('now') - julianday(ts) <= 30 THEN 1.0
+                                    WHEN julianday('now') - julianday(ts) <= 90 THEN 0.4 ELSE 0.1 END) AS m
+           FROM review_log WHERE correct = 0 AND mode != 'repeat' GROUP BY word_id""")}
+    again = [i for i in ids if i in seen and i not in taken]
+    rest = window + again
+    w = [1.0] * len(window) + [0.5 * (1 + min(misses.get(i, 0), 5) * 0.5) for i in again]
     while rest and len(chosen) < n:
         i = random.choices(range(len(rest)), weights=w, k=1)[0]
         chosen.append(rest.pop(i))
         w.pop(i)
-    # Due words lead (a quiz builds its questions from the front), in any order.
     return chosen

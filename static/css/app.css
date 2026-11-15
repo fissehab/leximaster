@@ -95,7 +95,7 @@ a { color: var(--lapis); }
 /* Practice and More pages (phone): large links */
 .hub-groups { display: grid; gap: 22px; }
 .hub-group { display: grid; gap: 10px; }
-.hub-heading { font: 600 13px/1.3 var(--font-ui); letter-spacing: .05em; text-transform: uppercase; color: var(--ink-2); margin: 0; }
+.hub-heading { font: 600 13px/1.3 var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin: 0; }
 .hub-heading .muted { text-transform: none; letter-spacing: 0; font-weight: 400; }
 .hub-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
 .hub-tile {
@@ -170,9 +170,7 @@ kbd {
 .btn kbd { margin-left: 2px; }
 
 .field { display: flex; flex-direction: column; gap: 5px; }
-.field label, .label {
-  font: 600 11px/1.2 var(--font-ui); text-transform: uppercase; letter-spacing: .08em; color: var(--muted);
-}
+.field label, .label { color: var(--muted); }
 .input, select.input, textarea.input {
   min-height: 36px; padding: 7px 11px;
   border: 1px solid var(--control); border-radius: 8px;
@@ -348,8 +346,7 @@ button.chip[aria-pressed="true"] { background: var(--lapis-soft); color: var(--l
 }
 .fold > summary {
   cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px;
-  font: 600 11px/1.2 var(--font-ui); letter-spacing: .09em; text-transform: uppercase; color: var(--lapis);
-  min-height: 28px;
+  color: var(--lapis); min-height: 28px;
 }
 .fold > summary::-webkit-details-marker { display: none; }
 .fold > summary::before { content: "▸"; font-size: 12px; transition: transform .15s; }
@@ -429,23 +426,26 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .home { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 18px; max-width: 1080px; align-items: start; }
 .home-side { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
 .refresh-card, .today-progress { padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
-.refresh-card { border-left: 4px solid var(--verdigris); }
+/* The accent rule is drawn inside the card, so its text lines up with the others'. */
+.refresh-card { box-shadow: inset 3px 0 0 var(--verdigris); }
+.refresh-card .eyebrow { color: var(--verdigris); }
 .refresh-card p { margin: 0; }
 .today-progress .today-stats { padding-top: 0; border-top: 0; }
 /* On a narrow screen, one column: the words to refresh (or the way into
    practice) first, then the word of the day, then progress. */
 @media (max-width: 900px) {
-  .home { display: flex; flex-direction: column; }
+  .home { display: flex; flex-direction: column; align-items: stretch; }
+  .wotd { padding: 20px 22px; }
   .home-side { display: contents; }
   .home .refresh-card { order: -1; }
 }
 .wotd { padding: 26px 28px; display: flex; flex-direction: column; gap: 16px; }
-.eyebrow { font: 600 11px/1.2 var(--font-ui); letter-spacing: .1em; text-transform: uppercase; color: var(--gilt); }
+.eyebrow { color: var(--gilt); }
 .today-left { font: 500 18px/1.2 var(--font-ui); color: var(--ink-2); }
 .today-left .big-num { color: var(--ink); margin-right: 2px; }
 .today-stats { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px 32px; margin: 0; padding-top: 12px; border-top: 1px solid var(--rule); }
 .today-stats div { display: flex; flex-direction: column; gap: 2px; }
-.today-stats dt { font-size: 12px; color: var(--muted); }
+.today-stats dt { color: var(--muted); }
 .today-stats dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
 .today-more { grid-column: 1 / -1; justify-self: start; font-size: 14px; }
 .big-num { font: 600 40px/1 var(--font-word); font-variant-numeric: tabular-nums; }
@@ -605,8 +605,8 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .pron-box h3 { font: 600 11px/1.2 var(--font-ui); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
 .wave { width: 100%; height: 72px; display: block; }
 .rec-btn {
-  display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 0 18px;
-  border-radius: 99px; border: 0; cursor: pointer; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 9px; min-height: 36px; padding: 0 16px;
+  border-radius: var(--radius-sm); border: 0; cursor: pointer; font-weight: 600;
   background: var(--danger-fill); color: var(--on-fill);
 }
 .rec-btn .dot { width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
@@ -682,7 +682,7 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .bar-row .v { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); }
 .table-wrap { overflow-x: auto; }
 table.data { width: 100%; border-collapse: collapse; font-size: 13px; }
-table.data th { text-align: left; font: 600 11px/1.2 var(--font-ui); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--rule); }
+table.data th { text-align: left; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--rule); }
 table.data td { padding: 7px 8px; border-bottom: 1px solid var(--rule); font-variant-numeric: tabular-nums; }
 table.data td.w { font: 600 15px/1.3 var(--font-word); }
 table.data td.w button { all: unset; cursor: pointer; color: var(--lapis); }
@@ -768,7 +768,7 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .grade { min-height: 56px; padding: 6px 4px; }
   /* The dock is just the buttons: the bottom bar already clears the home indicator. */
   .grade-dock { bottom: 0; margin-bottom: 0; padding-bottom: 12px; }
-  .in-session .page-head .sub, .in-session .page-head .toolbar { display: none; }
+  .in-session .page-head .sub, .in-session .page-head .toolbar, .in-session .practice-filters .settings-fold { display: none; }
   .in-session .page-head { margin-bottom: 10px; }
   /* The keyboard is up: give the screen to what's being typed. */
   .shell:has(input[type="text"]:focus, input[type="search"]:focus, textarea:focus) .rail { display: none; }
@@ -938,10 +938,13 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
 }
 .play.needs-tap { outline: 2px dashed var(--verdigris); outline-offset: 2px; }
 
-/* One small-caps label style everywhere (one size, one tracking); color
-   says what kind: gold for dates and example contexts, plum for review
-   notes, muted otherwise. */
-.eyebrow, .q-ask, .pron-box h3, .related-label,
+/* One small-caps label style everywhere (one size, one tracking): labels of
+   fields and figures, folds, table headings, eyebrows. Color says what kind:
+   gold for dates and example contexts, lapis for a fold, muted otherwise.
+   Section headings (.hub-heading, .sound-group-title) are the one larger
+   tier, 13px. Part-of-speech badges keep their own size inside the badge. */
+.eyebrow, .q-ask, .pron-box h3, .related-label, .field label, .label, .grammar-label, table.data th,
+.level-menu legend, .fold > summary, .today-stats dt,
 .card-note-label, .chose .label, .npanel h3, .all-meanings > h3, .senses-label, .ex-ctx, .new-badge, .traditions dt {
   font-family: var(--font-ui); font-weight: 600; font-size: 12px; line-height: 1.25; letter-spacing: .05em;
   text-transform: uppercase; font-style: normal;
@@ -955,7 +958,7 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
 
 /* Grammar patterns */
 .grammar { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
-.grammar-label { font: 600 11px/1.2 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); min-width: 72px; }
+.grammar-label { color: var(--muted); min-width: 72px; }
 .patterns { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; }
 .patterns li { font: 500 15px/1.5 var(--font-body); color: var(--ink); }
 .patterns .slot { font-family: var(--font-ui); font-size: 13px; font-style: italic; color: var(--muted); }
@@ -976,8 +979,7 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
   margin: 0; padding: 10px 12px 8px; display: flex; flex-direction: column; gap: 2px;
   background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius); box-shadow: var(--shadow);
 }
-.level-menu legend { float: left; width: 100%; margin-bottom: 4px; font: 600 11px/1.2 var(--font-ui);
-  text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.level-menu legend { float: left; width: 100%; margin-bottom: 4px; color: var(--muted); }
 .level-option { display: flex; align-items: flex-start; gap: 10px; min-height: 44px; padding: 6px 4px; border-radius: var(--radius-sm); cursor: pointer; }
 .level-option:hover { background: var(--surface-2); }
 .level-option input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--lapis); flex: none; }
@@ -1111,7 +1113,7 @@ details.say > summary:hover { background: var(--surface-2); border-radius: var(-
 .sound-game-stage > .btn { justify-self: start; }
 .sounds-head { margin-bottom: 10px; }
 .sounds-head h2 { margin: 0; font: 600 24px/1.2 var(--font-word); letter-spacing: -.01em; }
-.sound-group-title { margin: 8px 0 0; font: 600 13px/1.2 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.sound-group-title { margin: 8px 0 0; font: 600 13px/1.3 var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .drill { display: grid; gap: 12px; padding: 14px; border-radius: var(--radius); background: var(--surface-2); }
 .drill-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .drill-choice { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 56px; padding: 0 10px 0 14px;
@@ -1325,9 +1327,10 @@ details.say > summary:hover { background: var(--surface-2); border-radius: var(-
 /* Words on a phone: Dictionary | My lists (both are in the sidebar on a wide screen). */
 .words-switch { display: none; }
 @media (max-width: 760px) {
-  .words-switch { display: flex; gap: 4px; padding: 4px; margin: 0 0 12px; background: var(--surface-2); border-radius: 999px; width: fit-content; }
-  .words-switch .seg { padding: 6px 16px; border-radius: 999px; color: var(--ink-2); font-weight: 600; font-size: 14px; text-decoration: none; }
-  .words-switch .seg[aria-current="page"] { background: var(--surface); color: var(--lapis); box-shadow: var(--shadow); }
+  .words-switch { display: flex; gap: 4px; padding: 4px; margin: 0 0 12px; background: var(--surface-2); border-radius: 999px; }
+  .words-tab { flex: 1; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 999px; color: var(--ink-2); font-weight: 600; font-size: 15px; text-decoration: none; }
+  .words-tab[aria-current="page"] { background: var(--surface); color: var(--lapis); box-shadow: 0 1px 2px rgba(0, 0, 0, .1); }
 }
 /* Practice on a phone: each group as a short list (three tiles in two
    columns would leave one alone on a row). */
@@ -1352,3 +1355,24 @@ select.input { max-width: 100%; min-width: 0; }
 .sound-card { align-content: start; }
 .sound-card .say-main { grid-template-columns: minmax(0, 1fr); }
 .sound-card .say-fig { justify-self: center; }
+
+/* Practice page: each group a plain list of tiles. */
+ul.hub-tiles { list-style: none; margin: 0; padding: 0; }
+ul.hub-tiles > li { display: flex; min-width: 0; }
+ul.hub-tiles > li > .hub-tile { flex: 1; }
+@media (pointer: coarse) { .rec-btn { min-height: 44px; } }
+/* The level picker is as tall as the selects beside it. */
+.level-picker > summary.input { line-height: 20px; }
+/* Listen's modes: short labels on a phone (one line each). */
+.seg .short { display: none; }
+@media (max-width: 760px) { .seg .long { display: none; } .seg .short { display: inline; } .seg button { white-space: nowrap; } }
+
+/* The A–Z rail on a touch screen: one slider (browse.js azRail). */
+.az-scrub { position: relative; touch-action: none; user-select: none; -webkit-user-select: none; cursor: pointer; }
+.az-scrub > span[data-l] { flex: 1 1 0; display: flex; align-items: center; justify-content: center;
+  font: 600 12px/1 var(--font-ui); color: var(--lapis); }
+.az-scrub > span.off { color: var(--muted); opacity: .45; }
+.az-scrub:focus-visible { outline: 2px solid var(--lapis); outline-offset: 2px; border-radius: 6px; }
+.az-bubble { position: absolute; right: calc(100% + 10px); transform: translateY(-50%); width: 52px; height: 52px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none;
+  background: var(--accent-fill); color: var(--on-fill); font: 700 26px/1 var(--font-word); box-shadow: var(--shadow); z-index: 5; }

@@ -21,6 +21,8 @@ export async function render(root) {
   const acc = s.accuracy;
   // Retention: words practiced again when they came back, remembered.
   const spans = s.retention || {};
+  // A big overdue pile: the retention figure only counts words that came back.
+  const backlog = (w.overdue || 0) > Math.max(20, 0.1 * (w.learning + w.mastered + (w.seen || 0)));
   const ret = Object.values(spans).reduce((a, x) => ({ n: a.n + x.n, ok: a.ok + x.ok }), { n: 0, ok: 0 });
   const tile = (label, value, note) => h("div.panel.stat", h("p.label", label), h("div.big-num.tnum", value), note ? h("small", note) : null);
 
@@ -44,7 +46,8 @@ export async function render(root) {
       w.enriched ? `${w.enriched.toLocaleString()} with notes on how to use them` : null].filter(Boolean).join(" · ")),
     h("div.stat-row",
       tile("Words mastered", w.mastered.toLocaleString(), `recalled after a 3+ week gap · ${(w.known || 0).toLocaleString()} more marked known`),
-      tile("Learning", w.learning.toLocaleString(), `${w.due} to refresh now`),
+      tile("Learning", w.learning.toLocaleString(),
+        `remembered on a later day · ${(w.seen || 0).toLocaleString()} more seen once · ${w.due} to refresh now`),
       tile("Daily streak", `${s.streak.current}`, `best ${s.streak.best} day${s.streak.best === 1 ? "" : "s"}${s.streak.today_done ? " · today done" : ""}`),
       tile("Retention", ret.n ? `${pct(ret.ok, ret.n)}%` : "—",
         ret.n ? `remembered when words came back, last 30 days · all answers ${acc.attempts ? `${pct(acc.correct, acc.attempts)}%` : "—"}`
@@ -55,7 +58,9 @@ export async function render(root) {
       ret.n ? h("section.panel", h("h2", "Retention by gap"),
         h("div.bars", [["days", "After days"], ["weeks", "After weeks"], ["months", "After a month+"]]
           .filter(([k]) => spans[k]).map(([k, label]) => bar(label, spans[k].ok, spans[k].n, `${pct(spans[k].ok, spans[k].n)}% · ${spans[k].n}`))),
-        h("p.muted.bar-note", "Share of words you remembered when they came back, last 30 days. Around 85–90% means the timing suits you.")) : null,
+        h("p.muted.bar-note", "Share of words you remembered when they came back, last 30 days. " +
+          (backlog ? `${w.overdue.toLocaleString()} words are overdue and not counted here: refresh them to see how well the timing suits you.`
+            : "Around 85–90% means the timing suits you."))) : null,
       h("section.panel", h("h2", "Accuracy by topic"),
         s.by_domain.length ? h("div.bars", s.by_domain.map(d => bar(domainLabel(d.domain), d.correct, d.attempts, `${pct(d.correct, d.attempts)}% · ${d.attempts}`)))
           : h("p.muted", "Practice a few words to see this.")),

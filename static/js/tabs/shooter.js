@@ -15,7 +15,7 @@ import {
 import { scoreBoard, scoreResult } from "../gameui.js";
 import { loadFilter, settings } from "../state.js";
 import {
-  filterBar, filterSources, fmtDuration, h, highlight, noWordsNote, pageHead, playButton, scrollBehavior, shuffle, smart, toast,
+  filterBar, filterSources, fmtDuration, h, highlight, noWordsNote, optField, pageHead, playButton, scrollBehavior, shuffle, smart, toast,
 } from "../ui.js";
 
 const CLUES = [["meaning", "Meanings", "meaning_word"], ["sentence", "Sentences", "fill_blank"],
@@ -516,17 +516,18 @@ export async function render(root) {
     });
     return b;
   }));
-  const speedSel = h("select.input", { "aria-label": "Speed" }, SPEEDS.map(([v, l]) => h("option", { value: v }, l)));
+  const speedSel = h("select.input", SPEEDS.map(([v, l]) => h("option", { value: v }, l)));
   speedSel.value = speed;
   speedSel.addEventListener("change", () => { speed = speedSel.value; setPref("lexi-shooter-speed", speed); startCard(); });
-  const lengthSel = h("select.input", { "aria-label": "Length" }, LENGTHS.map(([v, l]) => h("option", { value: v }, l)));
+  const lengthSel = h("select.input", LENGTHS.map(([v, l]) => h("option", { value: v }, l)));
   lengthSel.value = length;
   lengthSel.addEventListener("change", () => { length = lengthSel.value; setPref("lexi-shooter-length", length); startCard(); });
   els.root = root;
   els.stage = h("div.shoot-wrap");
   root.append(
-    pageHead("Word Shooter", "Read the clue, or hear the word. Tap the word that fits before it falls.", seg, speedSel, lengthSel),
-    await filterBar(f => { filter = f; startCard(); }, src, { tab: "shooter" }),
+    pageHead("Word Shooter", "Read the clue, or hear the word. Tap the word that fits before it falls."),
+    await filterBar(f => { filter = f; startCard(); }, src,
+      { tab: "shooter", extra: [optField("Clues", seg), optField("Speed", speedSel), optField("Length", lengthSel)] }),
     els.stage);
   filter = loadFilter("shooter");
   alive = true;

@@ -10,7 +10,7 @@ import {
 } from "../games.js";
 import { scoreBoard, scoreResult } from "../gameui.js";
 import { loadFilter } from "../state.js";
-import { filterBar, filterSources, h, noWordsNote, noWordsTitle, pageHead, playButton, smart } from "../ui.js";
+import { filterBar, filterSources, h, noWordsNote, noWordsTitle, optField, pageHead, playButton, smart } from "../ui.js";
 
 const TIMES = [["60", "1 minute"], ["120", "2 minutes"], ["calm", "No clock (20 cards)"]];
 const CALM_CARDS = 20;
@@ -338,14 +338,14 @@ function finish(allDone) {
 
 export async function render(root) {
   const src = await filterSources();
-  const timeSel = h("select.input", { "aria-label": "Time" }, TIMES.map(([v, l]) => h("option", { value: v }, l)));
+  const timeSel = h("select.input", TIMES.map(([v, l]) => h("option", { value: v }, l)));
   timeSel.value = time;
   timeSel.addEventListener("change", () => { time = timeSel.value; setPref("lexi-rush-time", time); startCard(); });
   els.root = root;
   els.stage = h("div.rush-wrap");
   root.append(
-    pageHead("Word Rush", "Does the word have this meaning? Answer yes or no, fast.", timeSel),
-    await filterBar(f => { filter = f; startCard(); }, src, { tab: "rush" }),
+    pageHead("Word Rush", "Does the word have this meaning? Answer yes or no, fast."),
+    await filterBar(f => { filter = f; startCard(); }, src, { tab: "rush", extra: [optField("Time", timeSel)] }),
     els.stage);
   filter = loadFilter("rush");
   alive = true;

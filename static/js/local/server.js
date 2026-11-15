@@ -29,7 +29,7 @@ CREATE TABLE words (
 CREATE TABLE user_word (word_id INTEGER PRIMARY KEY, stars INTEGER NOT NULL DEFAULT 0,
   known INTEGER NOT NULL DEFAULT 0, notes TEXT NOT NULL DEFAULT '', updated_at TEXT NOT NULL DEFAULT (datetime('now')));
 CREATE TABLE srs (word_id INTEGER PRIMARY KEY, ease REAL NOT NULL DEFAULT 2.5, interval_days REAL NOT NULL DEFAULT 0,
-  reps INTEGER NOT NULL DEFAULT 0, lapses INTEGER NOT NULL DEFAULT 0, due_date TEXT NOT NULL, last_reviewed TEXT);
+  reps INTEGER NOT NULL DEFAULT 0, lapses INTEGER NOT NULL DEFAULT 0, due_date TEXT NOT NULL, last_reviewed TEXT, prev TEXT);
 CREATE INDEX srs_due ON srs(due_date);
 CREATE TABLE review_log (id INTEGER PRIMARY KEY, word_id INTEGER NOT NULL,
   ts TEXT NOT NULL DEFAULT (datetime('now', 'localtime')), mode TEXT NOT NULL, grade INTEGER,
@@ -433,8 +433,10 @@ function quizExamples(data) {
   const out = (data.conversation || []).map(e => e.text);
   const ex = (data.nuance || {}).examples || {};
   for (const k of ["everyday", "professional", "analytical"]) if (ex[k]) out.push(ex[k]);
+  // The first dictionary sense's example only when there are none of those:
+  // it is often another meaning (app/common.py quiz_examples).
   const first = (data.meanings || []).flatMap(m => m.senses || [])[0];
-  if (first && first.example) out.push(first.example);
+  if (!out.length && first && first.example) out.push(first.example);
   return out.filter(e => FULL_SENTENCE.test(e.trim()) && e.split(/\s+/).length >= 5);
 }
 
@@ -564,24 +566,33 @@ function shuffle(a) {
 }
 const choice = a => a[Math.floor(Math.random() * a.length)];
 
-// A round's words (app/common.py weighted_sample): words due to refresh come
-// first, most overdue first, up to half the round (all of it when every word
-// is due), so practice keeps the refresh pile down. The rest favour words
-// missed lately (a miss counts fully for a month, then fades).
+// A round's words (app/common.py weighted_sample is the same):
+// 1. words due to refresh, most overdue first: up to half the round, or all
+//    of it when every word is due;
+// 2. new words, easiest first: drawn from the most common words not yet
+//    practiced (EASIEST_WINDOW, at least 3 per word asked);
+// 3. words practiced before and not due, at half weight, favouring words
+//    missed lately (a miss counts fully for a month, then fades).
+// Due words lead the list (a quiz builds its questions from the front).
+const EASIEST_WINDOW = 50;
 function weightedSample(ids, n) {
   if (ids.length <= n) return shuffle([...ids]);
   const inPool = new Set(ids);
   const due = all("SELECT word_id FROM srs WHERE due_date <= date('now', 'localtime') ORDER BY due_date, word_id")
     .map(r => r.word_id).filter(i => inPool.has(i));
-  // Due words lead (a quiz builds its questions from the front), in any order.
   const chosen = shuffle(due.slice(0, due.length === ids.length ? n : Math.ceil(n / 2)));
   const taken = new Set(chosen);
+  const seen = new Set(all("SELECT word_id FROM srs").map(r => r.word_id));
+  const rank = i => { const e = INDEX.get(i); return e && e.f != null ? e.f : 1e9; };
+  const unseen = ids.filter(i => !seen.has(i) && !taken.has(i)).sort((a, b) => rank(a) - rank(b) || a - b);
+  const window = unseen.slice(0, Math.max(EASIEST_WINDOW, 3 * n));
   const misses = new Map(all(
     `SELECT word_id, SUM(CASE WHEN julianday('now') - julianday(ts) <= 30 THEN 1.0
                               WHEN julianday('now') - julianday(ts) <= 90 THEN 0.4 ELSE 0.1 END) AS m
      FROM review_log WHERE correct = 0 AND mode != 'repeat' GROUP BY word_id`).map(r => [r.word_id, r.m]));
-  const pool = ids.filter(i => !taken.has(i));
-  const weights = pool.map(i => 1 + Math.min(misses.get(i) || 0, 5) * 0.5);
+  const again = ids.filter(i => seen.has(i) && !taken.has(i));
+  const pool = [...window, ...again];
+  const weights = [...window.map(() => 1), ...again.map(i => 0.5 * (1 + Math.min(misses.get(i) || 0, 5) * 0.5))];
   while (pool.length && chosen.length < n) {
     let x = Math.random() * weights.reduce((a, b) => a + b, 0), i = 0;
     while (i < weights.length - 1 && x >= weights[i]) { x -= weights[i]; i++; }
@@ -604,10 +615,20 @@ function ensureCard(id) {
   return getCard(id);
 }
 
-function review(id, grade) {
-  const next = schedule(ensureCard(id), grade, todayIso());
-  run("UPDATE srs SET ease=?, interval_days=?, reps=?, lapses=?, due_date=?, last_reviewed=? WHERE word_id=?",
-      [next.ease, next.interval_days, next.reps, next.lapses, next.due_date, next.last_reviewed, id]);
+const CARD_FIELDS = ["ease", "interval_days", "reps", "lapses", "due_date", "last_reviewed"];
+
+// Apply a grade (app/srs.py review). The card as it was before the day's
+// first answer is kept (prev); `redo` grades from that, so a miss after a
+// right answer the same day replaces the right answer.
+function review(id, grade, { redo = false } = {}) {
+  const card = ensureCard(id);
+  const day = todayIso();
+  let before = null;
+  if (card.last_reviewed === day && card.prev) { try { before = JSON.parse(card.prev); } catch (e) { before = null; } }
+  if (!before) before = Object.fromEntries(CARD_FIELDS.map(k => [k, card[k]]));
+  const next = schedule(redo ? before : card, grade, day);
+  run("UPDATE srs SET ease=?, interval_days=?, reps=?, lapses=?, due_date=?, last_reviewed=?, prev=? WHERE word_id=?",
+      [next.ease, next.interval_days, next.reps, next.lapses, next.due_date, next.last_reviewed, JSON.stringify(before), id]);
   return next;
 }
 
@@ -616,8 +637,9 @@ function review(id, grade) {
 function practiceAnswer(id, correct) {
   const row = get("SELECT grade FROM review_log WHERE word_id=? AND grade IS NOT NULL " +
                   "AND date(ts) = date('now', 'localtime') ORDER BY id DESC LIMIT 1", [id]);
-  const grade = practiceGrade(getCard(id), correct, row ? row.grade : null, todayIso());
-  if (grade !== null) review(id, grade);
+  const card = getCard(id);
+  const grade = practiceGrade(card, correct, row ? row.grade : null, todayIso());
+  if (grade !== null) review(id, grade, { redo: !!card && card.last_reviewed === todayIso() });
   return grade;
 }
 
@@ -823,7 +845,10 @@ const PREPOSITIONS = ["on", "in", "at", "of", "to", "for", "with", "about", "fro
                       "over", "toward", "onto", "upon", "after", "among", "between", "through", "under"];
 const COMMON_PREPS = ["on", "in", "at", "of", "to", "for", "with", "about", "from", "by"];
 // "insist ___ doing sth" → on (practice.py pattern_question).
-function patternQuestion(word, patterns, pos = "verb") {
+// "insist ___ doing sth" → on (app/api/practice.py pattern_question): never a
+// wrong choice that is good English with the word (its patterns, `also`
+// from American books, or its own examples); two wrong choices.
+function patternQuestion(word, patterns, pos = "verb", also = [], examples = []) {
   if (!["verb", "adjective"].includes(String(pos).toLowerCase())) return null;   // nouns: several prepositions often fit
   const stem = word.toLowerCase().slice(0, 4);
   const usable = [], listed = new Set();
@@ -847,10 +872,15 @@ function patternQuestion(word, patterns, pos = "verb") {
     }
   }
   if (!usable.length) return null;
+  for (const a of also) listed.add(a);
+  const after = new RegExp(`\\b${escapeRe(word.toLowerCase())}\\w*\\s+(${COMMON_PREPS.join("|")})\\b`, "g");
+  for (const ex of examples) for (const m of ex.toLowerCase().matchAll(after)) listed.add(m[1]);
   const [tokens, i, alts] = choice(usable);
-  // Wrong choices: never a preposition any of the word's patterns uses.
+  // Wrong choices: never a preposition any of the word's patterns uses
   // (and not "by" after a past participle: "disappointed by" is fine English).
-  const wrong = shuffle(COMMON_PREPS.filter(x => !listed.has(x) && !(x === "by" && /ed$/i.test(word)))).slice(0, 3);
+  const fit = COMMON_PREPS.filter(x => !listed.has(x) && !(x === "by" && /ed$/i.test(word)));
+  if (fit.length < 2) return null;
+  const wrong = shuffle(fit).slice(0, 2);
   const frame = [...tokens.slice(0, i), alts.join("/"), ...tokens.slice(i + 1)].join(" ");
   return { prompt: [...tokens.slice(0, i), "___", ...tokens.slice(i + 1)].join(" "), ask: "Which word completes the pattern?",
            answer: alts[0], options: [...wrong, alts[0]],
@@ -887,6 +917,17 @@ function sharesWord(a, b) {
   const al = a.toLowerCase(), bl = b.toLowerCase();
   const words = s => (s.match(/[a-z]+/g) || []).filter(t => t.length >= 4);
   return words(al).some(t => bl.includes(t)) || words(bl).some(t => al.includes(t));
+}
+
+// A part of speech, broadly: a phrasal verb is a verb, a proper noun a noun
+// (app/api/practice.py broad_pos).
+function broadPos(p) {
+  p = (p || "").toLowerCase();
+  if (/adverb/.test(p)) return "adverb";
+  if (/verb/.test(p)) return "verb";
+  if (/adjective/.test(p)) return "adjective";
+  if (/noun/.test(p)) return "noun";
+  return p || "other";
 }
 
 function defsById(ids) {
@@ -930,10 +971,10 @@ async function makeQuiz(q) {
     const everyday = nameKind ? ["bible_names"] : domains.filter(d => EVERYDAY_DOMAINS.includes(d));
     const distractIds = everyday.length
       ? all("SELECT id FROM words w WHERE id != ? AND EXISTS (SELECT 1 FROM json_each(w.domains) " +
-            `WHERE json_each.value IN (${everyday.map(() => "?").join(",")})) AND NOT ${REFERENCE_SQL} ORDER BY random() LIMIT 30`,
+            `WHERE json_each.value IN (${everyday.map(() => "?").join(",")})) AND NOT ${REFERENCE_SQL} ORDER BY random() LIMIT 200`,
             [wid, ...everyday]).map(r => r.id)
       // Other words of the chosen scope ("Statistics", "Bible · Vocabulary"), else any word.
-      : shuffle((q.domain && pool.length >= 30 ? pool : allIds).filter(i => i !== wid)).slice(0, 30);
+      : shuffle((q.domain && pool.length >= 30 ? pool : allIds).filter(i => i !== wid)).slice(0, 200);
     const nWords = word.split(/\s+/).length;
     // The word, its synonyms and the words its notes compare it with.
     const near = new Set([...rightsFor(data || {}, "synonym"), word,
@@ -942,10 +983,17 @@ async function makeQuiz(q) {
     // masked; a word the entry names as near in meaning would be right too.
     const others = [...defsById(distractIds).values()]
       .filter(v => !near.has(v[0].toLowerCase()) && !new RegExp(`\\b${escapeRe(v[0])}\\b`, "i").test(v[2]))
-      .sort((a, b) => ((a[0].split(/\s+/).length !== nWords) - (b[0].split(/\s+/).length !== nWords)) ||
+      // Same kind first: the same broad part of speech (a noun among verbs
+      // gives the answer away), then the same number of words, then the same
+      // exact part of speech (app/api/practice.py).
+      .sort((a, b) => ((broadPos(a[1]) !== broadPos(pos)) - (broadPos(b[1]) !== broadPos(pos))) ||
+                      ((a[0].split(/\s+/).length !== nWords) - (b[0].split(/\s+/).length !== nWords)) ||
                       ((a[1] !== pos) - (b[1] !== pos)));
     const build = qtype => {
-      if (qtype === "pattern") return patternQuestion(word, ((data && data.nuance) || {}).patterns || [], pos);
+      if (qtype === "pattern") {
+        const nu = (data && data.nuance) || {};
+        return patternQuestion(word, nu.patterns || [], pos, nu.also_preps || [], quizExamples(data || {}));
+      }
       if (qtype === "name_kind") {
         return { prompt: word, ask: `Who or what is ${word}?`, answer: NAME_KINDS[nameKind], options: Object.values(NAME_KINDS) };
       }
@@ -989,13 +1037,16 @@ async function makeQuiz(q) {
         for (const id of shuffle([...allIds]).slice(0, 80)) {
           const e = INDEX.get(id);
           if (!e || (qtype === "antonym" && (e.d || []).some(d => domains.includes(d)))) continue;
-          // Never a look-up-only word, or one that gives the right answer away.
-          wrongs = wrongs.concat((e.sy || []).filter(s => !own.has(s.toLowerCase()) && !lookupOnly.has(s.toLowerCase())
-                                                         && !sharesWord(s, right)));
+          // Never a look-up-only word, or one that gives the right answer
+          // away; one per word, so two options aren't synonyms of each other.
+          const s = shuffle((e.sy || []).filter(s => !own.has(s.toLowerCase()) && !lookupOnly.has(s.toLowerCase())
+                                                     && !sharesWord(s, right)))[0];
+          if (s) wrongs.push(s);
         }
         wrongs = shuffle([...new Set(wrongs)]);
         const size = right.split(/\s+/).length;
         wrongs.sort((a, b) => (a.split(/\s+/).length !== size) - (b.split(/\s+/).length !== size));
+        wrongs = wrongs.reduce((kept, s) => (kept.some(k => sharesWord(k, s)) ? kept : [...kept, s]), []);
         if (wrongs.length >= 3) {
           return { prompt: word, ask: qtype === "synonym" ? "Which is closest in meaning?" : "Which is opposite in meaning?",
                    answer: right, options: [...wrongs.slice(0, 3), right] };
@@ -1174,6 +1225,9 @@ function streak() {
 const STUDIED = "FROM srs s LEFT JOIN user_word u ON u.word_id=s.word_id WHERE COALESCE(u.known,0)=0";
 // Mastered and retention, as in app/api/stats.py.
 const MASTERED_SQL = "SELECT COUNT(*) AS n {studied} AND s.interval_days >= ? AND s.word_id IN (SELECT word_id FROM (SELECT word_id, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE grade IS NOT NULL AND mode != 'repeat') WHERE grade >= 2 AND gap >= ?)";
+// Words remembered on a later day (app/api/stats.py RECALLED_SQL).
+const RECALLED_SQL = "SELECT COUNT(*) AS n {studied} AND EXISTS (SELECT 1 FROM review_log r WHERE r.word_id = s.word_id " +
+  "AND r.grade >= 1 AND date(r.ts) > (SELECT MIN(date(r0.ts)) FROM review_log r0 WHERE r0.word_id = s.word_id))";
 const RETENTION_SQL = "SELECT CASE WHEN gap < 8 THEN 'days' WHEN gap <= 30 THEN 'weeks' ELSE 'months' END AS span, COUNT(*) AS n, SUM(CASE WHEN grade >= 1 THEN 1 ELSE 0 END) AS ok FROM (SELECT ts, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE grade IS NOT NULL AND mode != 'repeat') WHERE gap IS NOT NULL AND julianday('now') - julianday(ts) <= 30 GROUP BY span";
 
 function stats() {
@@ -1195,6 +1249,8 @@ function stats() {
   }
   const overall = get("SELECT COUNT(*) AS n, COALESCE(SUM(correct),0) AS ok FROM review_log WHERE mode NOT IN ('review', 'repeat')");
   const mastered = get(MASTERED_SQL.replace("{studied}", STUDIED), [MASTERED_INTERVAL, MASTERED_INTERVAL]).n;
+  const studiedN = get(`SELECT COUNT(*) AS n ${STUDIED}`).n;
+  const recalled = get(RECALLED_SQL.replace("{studied}", STUDIED)).n;
   const retention = Object.fromEntries(all(RETENTION_SQL).map(r => [r.span, { n: r.n, ok: r.ok }]));
   return {
     words: {
@@ -1203,7 +1259,10 @@ function stats() {
       with_audio: one("SELECT COUNT(*) AS n FROM words WHERE has_audio=1"),
       // Words marked known are counted apart (app/api/stats.py).
       mastered,
-      learning: get(`SELECT COUNT(*) AS n ${STUDIED}`).n - mastered,
+      // Learning: remembered on a later day, not mastered; seen: not yet; overdue: due before today.
+      learning: recalled - mastered,
+      seen: studiedN - recalled,
+      overdue: get(`SELECT COUNT(*) AS n ${STUDIED} AND s.due_date < ?`, [todayIso()]).n,
       due: refreshCount().count,   // the words to refresh, the same number Today shows
       known: get("SELECT COUNT(*) AS n FROM user_word WHERE known=1").n,
       stars: Object.fromEntries(all("SELECT stars, COUNT(*) AS n FROM user_word WHERE stars > 0 GROUP BY stars").map(r => [r.stars, r.n])),
@@ -1266,7 +1325,7 @@ function exportProgress({ snapshot = false } = {}) {
   const out = {
     app: "LexiMaster", version: 1, exported_at: todayIso(),
     user_word: withOrphans("user_word", all("SELECT w.key, u.stars, u.known, u.notes, u.updated_at FROM user_word u JOIN words w ON w.id=u.word_id")),
-    srs: withOrphans("srs", all("SELECT w.key, s.ease, s.interval_days, s.reps, s.lapses, s.due_date, s.last_reviewed FROM srs s JOIN words w ON w.id=s.word_id")),
+    srs: withOrphans("srs", all("SELECT w.key, s.ease, s.interval_days, s.reps, s.lapses, s.due_date, s.last_reviewed, s.prev FROM srs s JOIN words w ON w.id=s.word_id")),
     list_words: withOrphans("list_words", all("SELECT l.name AS list, w.key, lw.note, lw.added_at FROM list_words lw JOIN lists l ON l.id=lw.list_id " +
                     "JOIN words w ON w.id=lw.word_id")),
     lists: all(`SELECT ${snapshot ? "id, " : ""}name, created_at FROM lists`),
@@ -1328,6 +1387,18 @@ function cleanDatetime(v, utc) {
 const isInt = v => typeof v === "number" && Number.isInteger(v);
 const isFlag = v => v === 0 || v === 1 || v === true || v === false;
 
+// A card's state before the day's first answer (srs.prev): kept only when it
+// is a well-formed card, else dropped (app/api/stats.py _clean_prev).
+function cleanPrev(v) {
+  if (typeof v !== "string" || v.length > 400) return null;
+  try {
+    const p = JSON.parse(v);
+    const ok = p && typeof p === "object" && ["ease", "interval_days", "reps", "lapses"].every(k => typeof p[k] === "number")
+      && /^\d{4}-\d{2}-\d{2}$/.test(p.due_date || "") && (p.last_reviewed == null || /^\d{4}-\d{2}-\d{2}$/.test(p.last_reviewed));
+    return ok ? v : null;
+  } catch (e) { return null; }
+}
+
 function importProgress(data, { restore = false } = {}) {
   if (!data || typeof data !== "object" || Array.isArray(data) || data.app !== "LexiMaster") {
     throw new HttpError(400, "That file isn't a LexiMaster progress export.");
@@ -1385,9 +1456,9 @@ function importProgress(data, { restore = false } = {}) {
         const mine = [have.last_reviewed || "", have.reps], theirs = [s.last_reviewed || "", s.reps ?? 0];
         if (!(theirs[0] > mine[0] || (theirs[0] === mine[0] && theirs[1] > mine[1]))) continue;
       }
-      run("INSERT OR REPLACE INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      run("INSERT OR REPLACE INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed, prev) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
           [ids.get(s.key), clamp(s.ease, 1.3, 5.0, 2.5, false), clamp(s.interval_days, 0, 36500, 0, false),
-           clamp(s.reps, 0, 10000, 0), clamp(s.lapses, 0, 10000, 0), s.due_date, s.last_reviewed ?? null]);
+           clamp(s.reps, 0, 10000, 0), clamp(s.lapses, 0, 10000, 0), s.due_date, s.last_reviewed ?? null, cleanPrev(s.prev)]);
       n++;
     }
     counts["review cards"] = n;

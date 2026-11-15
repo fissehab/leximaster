@@ -12,7 +12,17 @@ def test_blank_is_the_preposition_and_alternatives_are_never_wrong_choices():
         q = pattern_question("disappointed", ["disappointed in sb", "disappointed with/at/about sth"], "adjective")
         assert q["prompt"] in ("disappointed ___ sb", "disappointed ___ sth")
         wrong = set(q["options"]) - {q["answer"]}
-        assert len(wrong) == 3 and not wrong & {"in", "with", "at", "about", "by"}
+        assert len(wrong) == 2 and not wrong & {"in", "with", "at", "about", "by"}
+
+
+def test_never_a_wrong_choice_that_is_good_english():
+    """A preposition common with the word in American books (also_preps), or
+    used after it in its own examples, isn't offered as wrong."""
+    random.seed(2)
+    for _ in range(30):
+        q = pattern_question("impatient", ["impatient with sb"], "adjective", also=["of", "for"],
+                             examples=["She grew impatient at the delay."])
+        assert not (set(q["options"]) - {q["answer"]}) & {"of", "for", "at"}
 
 
 def test_one_frame_at_a_time_and_no_giveaway():

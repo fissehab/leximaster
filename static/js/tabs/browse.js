@@ -209,7 +209,56 @@ function refreshList({ keepScroll = false } = {}) {
 
 function paintAz() {
   const letters = new Set(shown.map(w => nw(w)[0]));
-  els.az.querySelectorAll("button").forEach(b => (b.disabled = !letters.has(b.dataset.l)));
+  els.az.querySelectorAll("[data-l]").forEach(b => {
+    if (b.tagName === "BUTTON") b.disabled = !letters.has(b.dataset.l);
+    else b.classList.toggle("off", !letters.has(b.dataset.l));
+  });
+}
+
+const LETTERS = "abcdefghijklmnopqrstuvwxyz".split("");
+
+/** The A–Z rail. With a mouse, 26 buttons. On a touch screen one slider the
+ *  height of the list (26 small letters can't each be a big enough target):
+ *  touch it and slide to a letter, as in a phone's contacts; a bubble shows
+ *  the letter under your finger. Keys: arrows, Home, End, or a letter. */
+function azRail() {
+  if (!matchMedia("(pointer: coarse)").matches) {
+    return h("nav.az", { "aria-label": "Jump to letter" },
+      LETTERS.map(l => h("button", { type: "button", "data-l": l, on: { click: () => jumpTo(l) } }, l.toUpperCase())));
+  }
+  const bubble = h("span.az-bubble", { "aria-hidden": "true", hidden: true });
+  const rail = h("div.az.az-scrub", { role: "slider", tabindex: "0", "aria-label": "Jump to letter", "aria-orientation": "vertical",
+    "aria-valuemin": "0", "aria-valuemax": "25", "aria-valuenow": "0", "aria-valuetext": "A" },
+    LETTERS.map(l => h("span", { "aria-hidden": "true", "data-l": l }, l.toUpperCase())), bubble);
+  let last = -1;
+  const go = (i, { show = false } = {}) => {
+    i = Math.max(0, Math.min(25, i));
+    rail.setAttribute("aria-valuenow", String(i));
+    rail.setAttribute("aria-valuetext", LETTERS[i].toUpperCase());
+    if (show) {
+      bubble.textContent = LETTERS[i].toUpperCase();
+      bubble.style.top = `${((i + 0.5) / 26) * 100}%`;
+      bubble.hidden = false;
+    }
+    if (i !== last) { last = i; jumpTo(LETTERS[i]); }
+  };
+  const at = y => { const r = rail.getBoundingClientRect(); return Math.floor(((y - r.top) / r.height) * 26); };
+  rail.addEventListener("pointerdown", e => { rail.setPointerCapture(e.pointerId); last = -1; go(at(e.clientY), { show: true }); });
+  rail.addEventListener("pointermove", e => { if (rail.hasPointerCapture(e.pointerId)) go(at(e.clientY), { show: true }); });
+  const end = () => { bubble.hidden = true; };
+  rail.addEventListener("pointerup", end);
+  rail.addEventListener("pointercancel", end);
+  rail.addEventListener("keydown", e => {
+    const now = Number(rail.getAttribute("aria-valuenow"));
+    const k = e.key.toLowerCase();
+    const to = { arrowdown: now + 1, arrowright: now + 1, arrowup: now - 1, arrowleft: now - 1, home: 0, end: 25 }[k]
+      ?? (LETTERS.includes(k) ? LETTERS.indexOf(k) : null);
+    if (to === null) return;
+    e.preventDefault();
+    last = -1;
+    go(to);
+  });
+  return rail;
 }
 
 function jumpTo(letter) {
@@ -409,8 +458,7 @@ export async function render(root, { param, view, live: isLive }) {
   level.value = state.level;
   level.addEventListener("change", () => { state.level = level.value; refreshList(); });
 
-  els.az = h("nav.az", { "aria-label": "Jump to letter" },
-    "abcdefghijklmnopqrstuvwxyz".split("").map(l => h("button", { type: "button", "data-l": l, on: { click: () => jumpTo(l) } }, l.toUpperCase())));
+  els.az = azRail();
   els.inner = h("div.vlist-inner");
   els.vlist = h("div.vlist", { role: "listbox", "aria-label": "Words (use the arrow keys to move through them)", tabindex: "0" }, els.inner);
   let frame = 0;
@@ -493,6 +541,6 @@ export async function onKey(e) {
 /** On a phone, Words holds the Dictionary and My lists: a switch at the top
  *  of each (on a wide screen both are in the sidebar). */
 export function wordsSwitch(current) {
-  const link = (id, label) => h("a.seg", { href: `#${id}`, "aria-current": id === current ? "page" : null }, label);
+  const link = (id, label) => h("a.words-tab", { href: `#${id}`, "aria-current": id === current ? "page" : null }, label);
   return h("nav.words-switch", { "aria-label": "Words" }, link("browse", "Dictionary"), link("lists", "My lists"));
 }

@@ -10,8 +10,17 @@ def test_rare_senses_and_fragments_are_not_quizzed():
                                                      "example": "My brother is such a cynic that he expects the worst."}]},
                          {"pos": "adjective", "senses": [{"definition": "Relating to the Dog Star.",
                                                           "example": "the cynic, or Sothic, year; cynic cycle"}]}]}
-    assert quiz_examples(data) == ["My neighbor is a cynic about politics.", "The cynic doubts every motive he sees.",
-                                   "My brother is such a cynic that he expects the worst."]
+    assert quiz_examples(data) == ["My neighbor is a cynic about politics.", "The cynic doubts every motive he sees."]
+
+
+def test_the_dictionary_example_only_without_study_examples():
+    """The first dictionary sense's example is often another meaning ("tense":
+    the grammar sense): used only when the entry has no study examples."""
+    sense = {"pos": "noun", "senses": [{"definition": "A scornfully negative person.",
+                                         "example": "My brother is such a cynic that he expects the worst."}]}
+    assert quiz_examples({"meanings": [sense]}) == ["My brother is such a cynic that he expects the worst."]
+    assert quiz_examples({"nuance": {"examples": {"everyday": "My neighbor is a cynic about politics."}},
+                          "meanings": [sense]}) == ["My neighbor is a cynic about politics."]
 
 
 def test_a_second_senses_example_is_not_quizzed():

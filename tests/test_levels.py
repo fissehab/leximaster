@@ -16,8 +16,10 @@ def test_word_level_from_commonness():
     assert word_level(w("avid", 3.0)) == 4
     assert word_level(w("loquacity", 1.2)) == 5
     assert word_level(w("abnegate", 0)) == 5
-    # A phrase ranks by its rarest word; an idiom one level harder than its words.
-    assert word_level(w("go back on", 6.0, ["phrasal_verbs"])) >= 2
+    # A phrase ranks a step below its rarest word, and no further: "figure
+    # out" and "pick up" are common, not Uncommon.
+    assert word_level(w("go back on", 6.0, ["phrasal_verbs"])) <= 2
+    assert word_level(w("figure out", 4.9, ["phrasal_verbs"])) <= 3
 
 
 def test_parse_levels_and_clause():

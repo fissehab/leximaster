@@ -69,7 +69,8 @@ const ICONS = {
   trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
   info: '<circle cx="12" cy="12" r="9.5"/><path d="M12 11v6"/><path d="M12 7.5v.3"/>',
   gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
-  mouth: '<path d="M3.5 12.5c2.5-4.5 14.5-4.5 17 0-2.5 5-14.5 5-17 0z"/><path d="M7.5 12.8c3 1.4 6 1.4 9 0"/>',
+  mouth: '<path d="M3 12c2.5-3 5-4.5 6.5-4.5 1 0 1.8.6 2.5 1.3.7-.7 1.5-1.3 2.5-1.3 1.5 0 4 1.5 6.5 4.5-2.5 3.5-5.5 5-9 5s-6.5-1.5-9-5z"/><path d="M3 12h18"/>',
+  practice: '<path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/>',
 };
 export function icon(name) {
   const span = document.createElement("span");
@@ -682,13 +683,18 @@ function notesEditor(w) {
 // ---------------------------------------------------------------- toasts & dialogs
 
 /** A short message; action: [label, fn] adds a button (e.g. Undo) and keeps it up longer. */
+const MAC = /Mac|iPhone|iPad/.test(navigator.platform || "");
+const UNDO_KEY = MAC ? "⌘Z" : "Ctrl+Z";
 export function toast(msg, { error = false, ms = 2600, action = null } = {}) {
   const t = h(`div.toast${error ? ".err" : ""}`, msg);
   if (action) {
-    t.append(" ", h("button.toast-action", { type: "button", on: { click: () => {
-      t.remove();
-      Promise.resolve(action[1]()).catch(showError);
-    } } }, action[0]));
+    // Ctrl+Z (⌘Z) runs the newest action ("Undo") from anywhere but a text box.
+    const hint = action[0] === "Undo" && matchMedia("(pointer: fine)").matches ? ` (${UNDO_KEY})` : "";
+    t.append(" ", h("button.toast-action", { type: "button", "aria-keyshortcuts": hint ? (MAC ? "Meta+Z" : "Control+Z") : null,
+      on: { click: () => {
+        t.remove();
+        Promise.resolve(action[1]()).catch(showError);
+      } } }, action[0] + hint));
   }
   document.getElementById("toasts").append(t);
   // A toast with an action stays while the pointer or focus is on it.
@@ -706,6 +712,14 @@ export function toast(msg, { error = false, ms = 2600, action = null } = {}) {
 }
 
 export function showError(e) { toast(e.message || String(e), { error: true, ms: 4500 }); }
+
+addEventListener("keydown", e => {
+  if (!(e.key === "z" || e.key === "Z") || !(MAC ? e.metaKey : e.ctrlKey) || e.shiftKey || e.altKey) return;
+  const el = document.activeElement;
+  if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return;   // the box's own undo
+  const undo = [...document.querySelectorAll("#toasts .toast-action")].filter(b => b.textContent.startsWith("Undo")).pop();
+  if (undo) { e.preventDefault(); undo.click(); }
+});
 
 /**
  * Modal form. fields: [{id, label, type, value, options, placeholder, required, maxlength}].
@@ -935,6 +949,21 @@ export function cantStart(title, e, filter = {}) {
       const s = document.getElementById("f-source");
       if (s) { s.scrollIntoView({ block: "center" }); s.focus(); }
     } } }, "Choose other words")) : null);
+}
+
+/** A practice screen's setting with a visible label ("Speed", "Pairs"),
+ *  for filterBar's Options: a select gets <label for>, a group of buttons
+ *  (a .seg) is named by its label. */
+let optCount = 0;
+export function optField(label, control) {
+  const id = control.id || `opt-${++optCount}`;
+  control.removeAttribute("aria-label");
+  if (/^(SELECT|INPUT)$/.test(control.tagName)) {
+    control.id = id;
+    return h("div.field", h("label", { for: id }, label), control);
+  }
+  control.setAttribute("aria-labelledby", `${id}-label`);
+  return h("div.field", h("span.label", { id: `${id}-label` }, label), control);
 }
 
 export async function filterSources() {

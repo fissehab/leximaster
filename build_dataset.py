@@ -32,8 +32,10 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import functools
 import html
 import json
+import math
 import os
 import re
 import shutil
@@ -2848,30 +2850,41 @@ def prune_senses(meanings: list[dict], label_map: dict) -> list[dict]:
     return out
 
 
+PHRASE_FREQ = CACHE / "phrase_freq.json"   # tools/phrase_freq.py (Google Books Ngram)
+
+
+@functools.lru_cache(maxsize=1)
+def phrase_freqs() -> dict[str, float]:
+    return json.loads(PHRASE_FREQ.read_text(encoding="utf-8")) if PHRASE_FREQ.exists() else {}
+
+
 def rank_zipf(w: dict) -> float:
-    """Frequency for the study order. wordfreq scores a phrase by its common
-    words ("one-to-one" almost as high as "one"), which put hundreds of easy
-    phrases first; a phrase ranks by its rarest word, a step lower. Used only
-    for the order, never to choose which words are in the dataset."""
+    """Frequency for the study order and the word levels. wordfreq scores a
+    phrase by its common words ("one-to-one" almost as high as "one", "be
+    that as it may" as high as "may"). A phrase found in American books
+    (tools/phrase_freq.py) ranks by its own frequency there, as a Zipf value;
+    any other ranks by its rarest word, a step lower. Used only for the
+    order and levels, never to choose which words are in the dataset."""
     tokens = [x for x in re.split(r"[\s-]+", w["word"]) if x]
     if len(tokens) < 2:
         return w["zipf"]
+    f = phrase_freqs().get(w["word"].lower()) if " " in w["word"] else None
+    if f:
+        return math.log10(f * 1e9)
     return min(zipf_frequency(x, "en") for x in tokens) - 1.0
 
 
 # Word levels (1 most common .. 5 rare), what a learner chooses to study:
-# rank_zipf at or above each cut is one level easier. Multi-word idioms and
-# phrasal verbs are one level harder than their common words suggest
-# ("go back on").
+# rank_zipf at or above each cut is one level easier. A phrase is already
+# ranked a step below its rarest word (rank_zipf); until 2026-11 idioms and
+# phrasal verbs were also put a level higher, which made "figure out" and
+# "pick up" Uncommon and dropped 1,466 phrases out of the default levels.
 LEVEL_CUTS = (5.0, 4.3, 3.6, 2.8)
 
 
 def word_level(w: dict) -> int:
     z = rank_zipf(w)
-    level = 1 + sum(z < cut for cut in LEVEL_CUTS)
-    if " " in w["word"] and {"idioms", "phrasal_verbs"} & set(w["domains"]):
-        level = min(5, level + 1)
-    return level
+    return 1 + sum(z < cut for cut in LEVEL_CUTS)
 
 
 # ------------------------------------------------------------ display polish

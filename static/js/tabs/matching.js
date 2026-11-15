@@ -2,7 +2,7 @@
 
 import { api } from "../api.js";
 import { loadFilter } from "../state.js";
-import { cantStart, filterBar, filterSources, fmtDuration, h, pageHead, shuffle } from "../ui.js";
+import { cantStart, filterBar, filterSources, optField, fmtDuration, h, pageHead, shuffle } from "../ui.js";
 
 let kind = "meaning";
 let size = matchMedia("(max-width: 600px)").matches ? 4 : 6;  // 4 pairs fit a phone screen
@@ -120,7 +120,7 @@ export async function render(root) {
       b.addEventListener("click", () => { kind = v; seg.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); start(); });
       return b;
     }));
-  const sizeSel = h("select.input#match-size", { "aria-label": "Pairs" }, [4, 6, 8, 10].map(n => h("option", { value: n }, `${n} pairs`)));
+  const sizeSel = h("select.input#match-size", [4, 6, 8, 10].map(n => h("option", { value: n }, `${n} pairs`)));
   sizeSel.value = String(size);
   sizeSel.addEventListener("change", () => { size = Number(sizeSel.value); start(); });
   els.timer = h("span.timer", "0s");
@@ -128,10 +128,11 @@ export async function render(root) {
   els.stage = h("div");
   els.status = h("p.sr-only", { role: "status" });
   root.append(
-    pageHead("Matching", "Match each word to its meaning, or to a sentence it fits. Be fast and make few mistakes for more points.", seg, sizeSel,
-      h("button.btn.btn-primary", { type: "button", on: { click: start } }, "New round")),
-    await filterBar(f => { filter = f; start(); }, src, { tab: "matching" }),
-    h("div.score-line", { style: { marginBottom: "14px", justifyContent: "center" } }, els.timer, els.score),
+    pageHead("Matching", "Match each word to its meaning, or to a sentence it fits. Be fast and make few mistakes for more points."),
+    await filterBar(f => { filter = f; start(); }, src, { tab: "matching", extra: [optField("Match words with", seg), optField("Pairs", sizeSel)] }),
+    // The round's own action sits with its clock and score.
+    h("div.score-line", { style: { marginBottom: "14px", justifyContent: "center" } }, els.timer, els.score,
+      h("button.btn", { type: "button", on: { click: start } }, "New round")),
     els.status,
     els.stage);
   filter = loadFilter("matching");
