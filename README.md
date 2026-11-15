@@ -113,7 +113,7 @@ kept unless the word data changed.
    choice; a new user starts on Everyday English.
 3. **Words**: the Dictionary to look up any word, and My lists to collect words with your own notes
    (on a phone, a Dictionary | My lists switch at the top).
-4. **Progress** and **Settings** (the gear).
+4. **Progress**, **Settings** (the gear) and **About**.
 
 - **Every answer counts:** each answer in Practice sets when that word comes back (see "How
   scheduling works"). Words due today are the **Words to refresh**, on Today and in every Words from menu.
@@ -295,11 +295,12 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Progress | Words mastered (and marked known), words learning, retention (the share of words you remembered when they came back, by gap), accuracy of all answers, streak, activity heatmap, accuracy by topic, weakest words, test history and words coming back in the next 14 days. |
 | Settings | Practice starts with, word difficulty, pronunciation speed, the theme, keyboard shortcuts, progress export/import, on the website "Download for offline use" and the sources, and About LexiMaster. |
 
-The sidebar lists Today; the Practice activities under three headings, Sound (Listen, Pronounce, Hard
-sounds), Meaning (Flashcards, Quiz, Matching) and Games (Word Shooter, Word Rush, Type It); Words
-(Dictionary, My lists); then Progress and Settings. About opens from Settings. On a phone the bottom bar has
-five buttons: Today, Practice, Words, Progress and Settings; in the installed app, Back and Forward sit at
-its left end. Each practice activity remembers its own Words from choice.
+The sidebar lists Today; Words (Dictionary, My lists); Sound (Listen, Pronounce, Hard sounds); Practice
+(Flashcards, Quiz, Matching, Word Shooter, Word Rush, Type It); then Progress, Settings and About. Words,
+Sound and Practice fold with a click on their heading (remembered; a folded group still shows the screen
+you're on). On a phone the bottom bar has five buttons: Today, Words, Practice, Progress and Settings
+(About opens from Settings); in the installed app, Back and Forward sit at its left end. Each practice
+activity remembers its own Words from choice.
 
 ### The word page
 

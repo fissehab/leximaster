@@ -739,6 +739,7 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .nav-link.under { display: none; }
   .nav-link.in-section { background: var(--lapis-soft); color: var(--lapis); }   /* My lists: Words is lit */
   .nav-link.sep { margin-top: 0; }
+  .nav-group.folded .nav-link:not(.under) { display: flex; }   /* folding is for the sidebar */
   .nav-link.sep::before { display: none; }
   .nav-link.hub { display: flex; }
   .nav-link .long { display: none; }
