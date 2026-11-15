@@ -80,12 +80,14 @@ function foldButton(name) {
 /** Words to refresh (practised words due to come back today), on Today's
  * menu link: the same number Today shows. */
 export async function refreshDueCount() {
-  try {
-    const { count } = await api.get("/api/refresh");
-    const el = document.getElementById("due-count");
-    el.textContent = count;
-    el.hidden = !count;
-  } catch (e) { /* non-critical */ }
+  try { showDueCount((await api.get("/api/refresh")).count); } catch (e) { /* non-critical */ }
+}
+/** The badge from a count a screen already has (Today). */
+export function showDueCount(count) {
+  const el = document.getElementById("due-count");
+  if (!el) return;
+  el.textContent = count;
+  el.hidden = !count;
 }
 
 function parseHash() {
@@ -327,7 +329,7 @@ setInterval(() => {
 buildNav();
 // The badge follows what changed elsewhere (a word rated or put in a list, the
 // scope chosen) when you move to another screen.
-addEventListener("hashchange", () => { route(); refreshDueCount(); });
+addEventListener("hashchange", () => { route(); if (parseHash().tab !== "home") refreshDueCount(); });   // Today sets it itself
 // Just opened with an update already waiting: apply it before any study starts.
 addEventListener("lexi-sw", () => applyWaitingUpdate(parseHash().tab));
-loadSettings().catch(showError).finally(() => { route(); refreshDueCount(); });
+loadSettings().catch(showError).finally(() => { route(); if (parseHash().tab !== "home") refreshDueCount(); });

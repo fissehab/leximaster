@@ -86,7 +86,7 @@ a { color: var(--lapis); }
 .nav-fold:hover { color: var(--ink); background: var(--surface-2); }
 .nav-fold .fold-mark::after { content: "▾"; font-size: 13px; letter-spacing: 0; }
 .nav-group.folded .fold-mark::after { content: "▸"; }
-.nav-group.current-hub .nav-fold { color: var(--lapis); }
+.nav-group.current-hub .nav-fold { color: var(--lapis); background: var(--lapis-soft); }
 .nav-group.folded .nav-link:not([aria-current]) { display: none; }
 /* The line above Progress: drawn apart from the link, so its highlight keeps its shape. */
 .nav-link.sep { position: relative; margin-top: 17px; }
@@ -432,7 +432,13 @@ main.flush > .view-enter { height: 100%; } /* gives .browse a height to fill, so
 .refresh-card { border-left: 4px solid var(--verdigris); }
 .refresh-card p { margin: 0; }
 .today-progress .today-stats { padding-top: 0; border-top: 0; }
-@media (max-width: 900px) { .home { grid-template-columns: minmax(0, 1fr); } }
+/* On a narrow screen, one column: the words to refresh (or the way into
+   practice) first, then the word of the day, then progress. */
+@media (max-width: 900px) {
+  .home { display: flex; flex-direction: column; }
+  .home-side { display: contents; }
+  .home .refresh-card { order: -1; }
+}
 .wotd { padding: 26px 28px; display: flex; flex-direction: column; gap: 16px; }
 .eyebrow { font: 600 11px/1.2 var(--font-ui); letter-spacing: .1em; text-transform: uppercase; color: var(--gilt); }
 .today-left { font: 500 18px/1.2 var(--font-ui); color: var(--ink-2); }
@@ -779,8 +785,10 @@ table.data td.w button:focus-visible { box-shadow: var(--focus); border-radius: 
   .rail-collapsed .rail { padding-inline: 10px; }
   .rail-collapsed .brand { padding-inline: 6px; }
   .rail-collapsed .brand-name, .rail-collapsed .nav-link .nav-text { display: none; }
-  .rail-collapsed .nav-heading { font-size: 0; height: 1px; min-height: 0; padding: 0; margin: 0 8px 4px; background: var(--rule); pointer-events: none; }
-  .rail-collapsed .nav-heading .fold-mark { display: none; }
+  /* Collapsed, a group's heading (a fold button) leaves the tab order: a line
+     marks the group instead, and every link shows. */
+  .rail-collapsed .nav-heading { display: none; }
+  .rail-collapsed .nav-group { border-top: 1px solid var(--rule); margin: 4px 8px 0; padding-top: 4px; }
   .rail-collapsed .nav-group.folded .nav-link { display: flex; }
   .rail-collapsed .nav-link { justify-content: center; position: relative; padding-inline: 0; }
   .rail-collapsed .nav-link .count { position: absolute; top: 3px; right: 6px; min-width: 10px; height: 10px;

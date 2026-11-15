@@ -102,8 +102,9 @@ kept unless the word data changed.
 
 ## Using it day to day
 
-1. **Today** (the home screen): the word of the day (its name opens the full entry), the words you've
-   practised that are due to come back (**Refresh them** opens them in Flashcards), and your streak.
+1. **Today** (the home screen): the words you've practised that are due to come back (**Refresh them**
+   opens them in Flashcards; with none due, **Start practising** opens Practice), the word of the day
+   (its name opens the full entry), and your streak.
 2. **Practice**: nine activities in three groups. **Sound**: Listen (including a spelling test),
    Pronounce, Hard sounds. **Meaning**: Flashcards, Quiz, Matching. **Games**: Word Shooter, Word Rush,
    Type It. Each one has a **Words from** menu with every choice there is: Words to refresh, My words,

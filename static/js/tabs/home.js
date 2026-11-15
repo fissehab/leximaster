@@ -5,7 +5,7 @@
 
 import { api } from "../api.js";
 import { playWord } from "../audio.js";
-import { installPrompt, refreshDueCount } from "../app.js";
+import { installPrompt, showDueCount } from "../app.js";
 import { saveFilter, loadFilter } from "../state.js";
 import { fmtDuration, h, renderEntry } from "../ui.js";
 
@@ -61,7 +61,7 @@ export async function render(root) {
     api.get("/api/wotd").catch(() => null),
   ]);
   wotd = word;
-  refreshDueCount();
+  showDueCount(refresh.count);
   const hour = new Date().getHours();
   const greet = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
 
@@ -74,13 +74,19 @@ export async function render(root) {
         h("p", "No words yet. Build the dataset with build_dataset.py, then reload."));
 
   const n = refresh.count;
-  // Shown only when some practised words are due: nothing to say otherwise.
+  // Words due: refresh them. Nothing due: a way into practice (a new learner
+  // otherwise has nothing to do here).
   const refreshPanel = n ? h("section.panel.refresh-card", { "aria-label": "Words to refresh" },
     h("span.eyebrow", "Words to refresh"),
     h("p.today-left", h("span.big-num.tnum", n), n === 1 ? " word to refresh" : " words to refresh"),
     h("p.muted", "Words you've practised, due to come back today so they stick."),
     h("div.toolbar", h("button.btn.btn-primary", { type: "button", on: { click: refreshThem } }, "Refresh them"),
-      h("a.btn", { href: "#practice" }, "Practise something else"))) : null;
+      h("a.btn", { href: "#practice" }, "Practise something else")))
+    : h("section.panel.refresh-card.start-card", { "aria-label": "Practice" },
+        h("span.eyebrow", "Practice"),
+        h("p", "Learn words with flashcards, quizzes, listening and games: any list, topic or level. " +
+          "The words you practise come back here when it's time to see them again."),
+        h("div.toolbar", h("a.btn.btn-primary", { href: "#practice" }, "Start practising")));
 
   const w = stats.words;
   const today = stats.days[stats.days.length - 1] || {};
@@ -88,7 +94,7 @@ export async function render(root) {
   const progressPanel = h("section.panel.today-progress", { "aria-label": "Your progress" },
     h("dl.today-stats",
       stat("Streak", `${stats.streak.current} day${stats.streak.current === 1 ? "" : "s"}`),
-      stat("Words learning", (w.learning + w.mastered).toLocaleString()),
+      stat("Words studied", (w.learning + w.mastered).toLocaleString()),
       stat("Time today", fmtDuration(today.seconds || 0))),
     h("a.today-more", { href: "#stats" }, "See all your progress →"));
 
