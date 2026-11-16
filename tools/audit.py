@@ -22,18 +22,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from tools.check_examples import uses_entry  # noqa: E402
+from tools.foreign_text import strip_foreign  # noqa: E402
 from tools.ipa_compare import differ as ipa_differs  # noqa: E402
 from build_dataset import (ENRICH_CACHE, FORM_OF_RE, TIP_META, WORDS_JSON, _flat, _similar,  # noqa: E402
                            append_jsonl, respelling_matches_ipa, sense_dup, us_spelling_deep)
 
 VARIANTS = ROOT / "seeds" / "ipa_variants.txt"
-# Letters of other alphabets in the English study notes ("depends on活动 of
-# virtue", "a известный peace dove", a Russian "Т" in "Тo"): Cyrillic or
-# East Asian script outside parentheses (where a note may quote the original,
-# "(юродивый)"), or Cyrillic inside a Latin word anywhere but etymologies.
-FOREIGN = re.compile(r"[\u0400-\u04FF\u0590-\u06FF\u0E00-\u0FFF\u1100-\u11FF\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF\uF900-\uFAFF]")
-MIXED = re.compile(r"[A-Za-z][\u0400-\u04FF]|[\u0400-\u04FF][A-Za-z]")
-QUOTE_OK = ("etymology", "biblical_note", "traditions")
+
 TRADITIONS = {"Eastern Orthodox", "Roman Catholic", "Protestant"}
 
 
@@ -118,7 +113,7 @@ def display_problems(w: dict) -> list[str]:
     if any(tok.count("ˈ") > 1 for tok in re.split(r"[\s/]+", ipa)):
         out.append("two main stresses in one word of the IPA")
     if foreign_letters(w):
-        out.append("letters from another alphabet in English text")
+        out.append("a word in another alphabet (English only)")
     conv = [e["text"] for e in w.get("conversation") or []]
     if any(_similar(a, b) for i, a in enumerate(conv) for b in conv[i + 1:]):
         out.append("near-duplicate conversation lines")
@@ -137,14 +132,15 @@ def _strings(node, path=""):
 
 
 def foreign_letters(w: dict) -> list[str]:
-    """Fields with letters of another alphabet where only English belongs."""
+    """Fields with a word in another alphabet (English only: see
+    tools/foreign_text.py and build_dataset.strip_foreign_words)."""
     out = []
-    for path, text in _strings({"nuance": w.get("nuance") or {}, "conversation": w.get("conversation") or [],
-                                "meanings": w["meanings"]}):
-        if "etymology" in path:
+    for path, text in _strings({"etymology": w.get("etymology", ""), "nuance": w.get("nuance") or {},
+                                "conversation": w.get("conversation") or [], "meanings": w["meanings"]}):
+        if path.endswith("ipa"):
             continue
-        if MIXED.search(text) or (not path.startswith("meanings") and not any(q in path for q in QUOTE_OK)
-                                  and FOREIGN.search(re.sub(r"\([^()]*\)", "", text))):
+        greek_words = any(k in path for k in ("etymology", "biblical_note", "traditions"))
+        if strip_foreign(text, greek_words)[0] != text:
             out.append(path)
     return out
 

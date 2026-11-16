@@ -3650,6 +3650,57 @@ def clean_examples(words: list[dict]) -> int:
     return n
 
 
+def strip_foreign_words(words: list[dict]) -> None:
+    """English only: words in other alphabets come out of the learner-facing
+    text (tools/foreign_text.py), keeping their Latin spelling. A dictionary
+    sense that needs the foreign word ("The letter ن in the Arabic script")
+    is left out; a dictionary example that needs it is dropped. Everything
+    Greek goes in word histories and Bible notes; elsewhere single Greek
+    letters stay as math symbols (π, σ)."""
+    from tools.foreign_text import strip_foreign
+
+    def walk(node, greek_words: bool):
+        if isinstance(node, str):
+            return strip_foreign(node, greek_words)[0]
+        if isinstance(node, list):
+            return [walk(x, greek_words) for x in node]
+        if isinstance(node, dict):
+            return {k: (v if k == "ipa" else walk(v, greek_words or k in ("etymology", "biblical_note", "traditions")))
+                    for k, v in node.items()}
+        return node
+
+    for w in words:
+        if w.get("etymology"):
+            w["etymology"] = strip_foreign(w["etymology"], True)[0]
+        if w.get("nuance"):
+            w["nuance"] = walk(w["nuance"], False)
+        for line in w.get("conversation") or []:
+            line["text"] = strip_foreign(line["text"])[0]
+        changed = False
+        for m in w["meanings"]:
+            kept = []
+            for sn in m["senses"]:
+                d, needs = strip_foreign(sn["definition"])
+                if needs or not d:
+                    changed = True
+                    continue
+                if d != sn["definition"]:
+                    sn["definition"], changed = d, True
+                if sn.get("example"):
+                    e, needs = strip_foreign(sn["example"])
+                    sn["example"] = "" if needs else e
+                for f in ("synonyms", "antonyms"):
+                    if sn.get(f):
+                        sn[f] = [x for x in sn[f] if strip_foreign(x)[0] == x]
+                kept.append(sn)
+            m["senses"] = kept
+        if changed:
+            meanings = [m for m in w["meanings"] if m["senses"]]
+            if meanings or (w.get("nuance") or {}).get("core"):
+                w["meanings"] = meanings
+            normalize_display(w)
+
+
 def drop_editor_notes(words: list[dict]) -> None:
     for w in words:
         if not any(EDITOR_NOTE_RE.search(sn["definition"]) for m in w["meanings"] for sn in m["senses"]):
@@ -4005,6 +4056,7 @@ def assemble(quiet: bool = False, write: bool = True) -> dict:
     attach_prons(words, DATA, read_json(CACHE / "tts.json", {}))
     drop_editor_notes(words)
     clean_examples(words)
+    strip_foreign_words(words)
     tidy_phonetic(words)
     for w in words:  # a hand-fixed "(archaic) …" definition gets its label too
         for m in w["meanings"]:
