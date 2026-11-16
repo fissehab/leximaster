@@ -180,16 +180,3 @@ def test_migration_adds_word_levels(fresh_db):
         assert "level" in {r[1] for r in c.execute("PRAGMA table_info(words)")}
         trigger = c.execute("SELECT sql FROM sqlite_master WHERE name='words_compact_upd'").fetchone()[0]
         assert "OLD.level" in trigger
-
-
-def test_visit_counter_is_off_by_default_and_checked():
-    from tools import build_site
-    assert build_site.visit_counter("") == ("", "")
-    script, origin = build_site.visit_counter("lexi-test")
-    assert origin == "https://lexi-test.goatcounter.com" and f'"{origin}/count?"' in script
-    assert "navigator.webdriver" in script   # automated test browsers are not counted
-    csp = content_security_policy([], header=False, images=(origin,))
-    assert f"img-src 'self' data: {origin};" in csp and origin not in csp.split("img-src")[0]
-    import pytest
-    with pytest.raises(ValueError):
-        build_site.visit_counter('x" onerror="y')

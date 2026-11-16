@@ -37,8 +37,7 @@ export async function render(root) {
           "words to try and a listening game. The real-mouth clips come from the USC 75-Speaker Speech MRI Database " +
           "(CC BY 4.0).")),
       card("Use it freely",
-        h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser." +
-          (window.LEXI_COUNT ? " The site counts visits, with no cookies and nothing that identifies you." : ""))),
+        h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser.")),
       window.LEXI_STATIC ? card("Install it",
         h("p", "LexiMaster installs like an app on a phone, tablet or computer, with no app store and no sign-up, " +
           "and then works offline. The illustrated guide shows each step for iPhone, Android, Mac and Windows."),

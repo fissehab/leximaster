@@ -42,30 +42,6 @@ DETAIL_FIELDS = ("phonetic", "meanings", "nuance", "source", "synonyms", "antony
                  "variant_of", "conversation", "also", "forms", "prons")
 SITE_URL = "https://fissehab.github.io/leximaster/"
 
-# Visit counting with GoatCounter (free, no cookies): the site code from
-# https://<code>.goatcounter.com, or "" for none. The published page asks for
-# one tiny image per visit; no GoatCounter script runs. Not counted: the local
-# app, automated browsers (the e2e tests) and pages opened from a file.
-GOATCOUNTER = ""
-
-
-def visit_counter(code: str = GOATCOUNTER) -> tuple[str, str]:
-    """The inline script that counts a visit, and the origin it reports to."""
-    if not code:
-        return "", ""
-    if not re.fullmatch(r"[a-z0-9-]+", code):
-        raise ValueError(f"not a GoatCounter site code: {code!r}")
-    origin = f"https://{code}.goatcounter.com"
-    script = f"""  <script>
-    window.LEXI_COUNT = true;
-    if (location.protocol === "https:" && !navigator.webdriver) {{
-      const q = new URLSearchParams({{ p: location.pathname, t: "LexiMaster", r: document.referrer, s: String(screen.width), rnd: String(Math.random()).slice(2) }});
-      new Image().src = "{origin}/count?" + q;
-    }}
-  </script>
-"""
-    return script, origin
-
 # The sql.js release vendored in static/vendor/ (from
 # https://cdnjs.cloudflare.com/ajax/libs/sql.js/<version>/), checked before
 # every build so a changed or corrupted file is never published. To update
@@ -334,13 +310,11 @@ def build_index_html(version: str) -> None:
     }
   </script>
 """
-    counter, counter_origin = visit_counter()
-    out = out.replace("</body>", sw + counter + "</body>", 1)
+    out = out.replace("</body>", sw + "</body>", 1)
     assert "/static/" not in out, "absolute /static/ path left in index.html"
     # Content-Security-Policy, first in <head> so it covers everything after it.
     # The inline scripts are allowed by hash; sql.js needs WebAssembly.
-    csp = content_security_policy(inline_script_hashes(out), header=False, wasm=True,
-                                  images=(counter_origin,) if counter_origin else ())
+    csp = content_security_policy(inline_script_hashes(out), header=False, wasm=True)
     charset = '<meta charset="utf-8">'
     assert out.count(charset) == 1, "index.html needs one <meta charset> to put the CSP after"
     out = out.replace(charset, f'{charset}\n  <meta http-equiv="Content-Security-Policy" content="{csp}">', 1)
