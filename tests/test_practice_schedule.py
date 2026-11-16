@@ -147,3 +147,18 @@ def test_progress_counts_learning_seen_and_overdue(client):
         c.execute("UPDATE srs SET due_date = date('now', 'localtime', '-2 day') WHERE word_id = ?", (late,))
     w = client.get("/api/stats").json()["words"]
     assert (w["learning"], w["seen"], w["overdue"]) == (1, 2, 1)
+
+
+def test_todays_word_is_the_first_new_word(client):
+    """Once the Today page has shown it, practice takes the word of the day as
+    its first new word (even a rare one), until it has been practiced."""
+    wid = client.get("/api/wotd").json()["id"]
+    with db.tx() as c:
+        ids = [r["id"] for r in c.execute("SELECT id FROM words WHERE freq_rank IS NOT NULL ORDER BY freq_rank")]
+        assert wid in ids and len(ids) >= 120
+        pool = ids[:60] + [wid] if wid not in ids[:60] else ids[:61]
+        for _ in range(5):
+            assert weighted_sample(c, list(pool), 5)[0] == wid
+    client.post("/api/answer", json={"word_id": wid, "mode": "quiz", "correct": True})
+    with db.tx() as c:   # practiced: an ordinary word again, not always first
+        assert sum(weighted_sample(c, list(pool), 5)[0] == wid for _ in range(20)) < 20

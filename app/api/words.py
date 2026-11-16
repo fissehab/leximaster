@@ -11,7 +11,7 @@ from fastapi import APIRouter, HTTPException, Request, Response
 from pydantic import BaseModel, Field
 
 from .. import db
-from ..common import BIBLE_TRACKS, NAMES_ONLY_SQL, REFERENCE_SQL, levels_setting, parse_levels, compact_heads, compact_json, fetch_word, full, gloss_key, mentions, track_clause
+from ..common import BIBLE_TRACKS, NAMES_ONLY_SQL, REFERENCE_SQL, levels_setting, parse_levels, compact_heads, compact_json, fetch_word, full, gloss_key, mentions, track_clause, wotd_key
 
 router = APIRouter(prefix="/api")
 
@@ -210,8 +210,7 @@ def word_of_the_day(track: str = ""):
         track = ""   # everything and advanced & subjects share one
     with db.tx() as c:
         levels = parse_levels(levels_setting(c)) if track in ("", "everyday") else [1, 2, 3, 4, 5]
-        today_key = (f"wotd:{date.today().isoformat()}" + ("" if len(levels) == 5 else ":" + ",".join(map(str, levels)))
-                     + (f":{track}" if track else ""))
+        today_key = wotd_key(c, track)
         scope = track_clause(track or "core")
         saved = c.execute("SELECT value FROM meta WHERE key=?", (today_key,)).fetchone()
         if saved and c.execute("SELECT 1 FROM words WHERE id=?", (int(saved["value"]),)).fetchone():

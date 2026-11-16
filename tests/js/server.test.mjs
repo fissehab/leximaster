@@ -92,3 +92,21 @@ test("settings: no daily-review settings", async () => {
   const s = await handle("GET", "/api/settings");
   assert.ok(!("session_minutes" in s) && !("new_per_day" in s));
 });
+
+test("today's word is the first new word until it is practiced", async () => {
+  const wid = (await handle("GET", "/api/wotd")).id;
+  assert.equal(await card(wid), null);
+  for (let i = 0; i < 5; i++) {
+    const deck = (await handle("GET", "/api/flashcards?n=5&brief=true")).cards.map(c => c.id);
+    const fresh = [];
+    for (const id of deck) if (!(await card(id))) fresh.push(id);
+    assert.equal(fresh[0], wid, `deck ${deck}`);
+  }
+  await answer(wid, true);
+  let first = 0;
+  for (let i = 0; i < 20; i++) {
+    const deck = (await handle("GET", "/api/flashcards?n=5&brief=true")).cards.map(c => c.id);
+    if (deck[0] === wid) first++;
+  }
+  assert.ok(first < 20);
+});

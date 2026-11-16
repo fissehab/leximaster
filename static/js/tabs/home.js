@@ -1,4 +1,4 @@
-// Today (the home screen, #home): the word of the day, the words to refresh
+// Today (the home screen, #home): the word of the day (practice's first new word), the words to refresh
 // (practiced words due to come back, only when there are some; a nudge into
 // Practice, never required), how you're doing and, until installed, how to
 // install.
@@ -7,6 +7,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { installPrompt, showDueCount } from "../app.js";
 import { saveFilter, loadFilter } from "../state.js";
+import { EVERYDAY_DOMAINS } from "../shared.gen.js";
 import { fmtDuration, h, renderEntry } from "../ui.js";
 
 const stored = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
@@ -48,6 +49,20 @@ function installCard() {
 
 let wotd = null;
 
+/** Whether practice will bring the word of the day up as its first new word:
+ * it is new and among the words practice draws from (its "Words from" choice;
+ * app/common.py weighted_sample). */
+function practicedFirst(word) {
+  if (word.srs || word.known) return false;
+  const { domain, list_id: listId } = loadFilter("flashcards");
+  if (listId) return false;
+  const everyday = word.domains.some(d => EVERYDAY_DOMAINS.includes(d));
+  if (domain === "") return true;
+  if (domain === "everyday") return everyday;
+  if (domain === "core") return !everyday;
+  return word.domains.includes(domain);
+}
+
 /** "Refresh them": Flashcards with the words to refresh. */
 function refreshThem() {
   saveFilter("flashcards", { ...loadFilter("flashcards"), domain: "refresh", list_id: "" });
@@ -69,7 +84,8 @@ export async function render(root) {
   const wotdPanel = word
     ? h("section.panel.wotd", { "aria-label": "Word of the day" },
         h("span.eyebrow", `Word of the day · ${new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}`),
-        renderEntry(word, { mode: "summary", open: `#browse/${word.id}` }))
+        renderEntry(word, { mode: "summary", open: `#browse/${word.id}` }),
+        practicedFirst(word) ? h("p.muted.wotd-next", "It comes up first when you practice new words today.") : null)
     : h("section.panel.wotd", h("span.eyebrow", "Word of the day"),
         h("p", "No words yet. Build the dataset with build_dataset.py, then reload."));
 

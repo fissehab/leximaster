@@ -569,6 +569,18 @@ const choice = a => a[Math.floor(Math.random() * a.length)];
 //    missed lately (a miss counts fully for a month, then fades).
 // Due words lead the list (a quiz builds its questions from the front).
 const EASIEST_WINDOW = 50;
+// The meta key today's word of the day is saved under (app/common.py wotd_key).
+function wotdKey(track = "") {
+  const levels = track === "" || track === "everyday" ? parseLevels(levelsSetting()) : [1, 2, 3, 4, 5];
+  return `wotd:${todayIso()}` + (levels.length === 5 ? "" : ":" + levels.join(",")) + (track ? `:${track}` : "");
+}
+
+// The word of the day the Today page shows, once it has been shown.
+function todaysWord() {
+  const row = get("SELECT value FROM meta WHERE key=?", [wotdKey()]);
+  return row ? Number(row.value) : null;
+}
+
 function weightedSample(ids, n) {
   if (ids.length <= n) return shuffle([...ids]);
   const inPool = new Set(ids);
@@ -577,6 +589,12 @@ function weightedSample(ids, n) {
   const chosen = shuffle(due.slice(0, due.length === ids.length ? n : Math.ceil(n / 2)));
   const taken = new Set(chosen);
   const seen = new Set(all("SELECT word_id FROM srs").map(r => r.word_id));
+  // Today's word of the day is the first new word (app/common.py weighted_sample).
+  const wotd = todaysWord();
+  if (wotd != null && inPool.has(wotd) && !seen.has(wotd) && !taken.has(wotd) && chosen.length < n) {
+    chosen.push(wotd);
+    taken.add(wotd);
+  }
   const rank = i => { const e = INDEX.get(i); return e && e.f != null ? e.f : 1e9; };
   const unseen = ids.filter(i => !seen.has(i) && !taken.has(i)).sort((a, b) => rank(a) - rank(b) || a - b);
   const window = unseen.slice(0, Math.max(EASIEST_WINDOW, 3 * n));
@@ -728,7 +746,7 @@ async function wordOfTheDay(q = {}) {
   const today = todayIso();
   const track = ["everyday", ...BIBLE_TRACKS].includes(q.track) ? q.track : "";   // see app/api/words.py
   const levels = track === "" || track === "everyday" ? parseLevels(levelsSetting()) : [1, 2, 3, 4, 5];
-  const todayKey = `wotd:${today}` + (levels.length === 5 ? "" : ":" + levels.join(",")) + (track ? `:${track}` : "");
+  const todayKey = wotdKey(track);
   const scope = trackClause(track || "core");
   const saved = get("SELECT value FROM meta WHERE key=?", [todayKey]);
   if (saved && get("SELECT 1 AS x FROM words WHERE id=?", [Number(saved.value)])) return full(fetchWord(Number(saved.value)));

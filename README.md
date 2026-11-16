@@ -104,7 +104,7 @@ kept unless the word data changed.
 
 1. **Today** (the home screen): the words you've practiced that are due to come back (**Refresh them**
    opens them in Flashcards; with none due, **Start practicing** opens Practice), the word of the day
-   (its name opens the full entry), and your streak.
+   (its name opens the full entry; practice takes it as the first new word that day), and your streak.
 2. **Practice**: nine activities in three groups. **Sound**: Listen (including a spelling test),
    Pronounce, Hard sounds. **Meaning**: Flashcards, Quiz, Matching. **Games**: Word Shooter, Word Rush,
    Type It. Each one has a **Words from** menu with every choice there is: Words to refresh, My words,
@@ -385,7 +385,8 @@ repetition (`app/srs.py`, `static/js/local/srs.js`; `tests/fixtures/srs_vectors.
   word's own meaning (or a miss), and Matching not the last pair, matched by elimination.
 - **Which words a round uses:** words due to refresh first, most overdue first (up to half the round, or
   all of it on "Words to refresh"); then new words, easiest first (drawn from the 50 most common words
-  not yet practiced); then words practiced before, favouring recent misses.
+  not yet practiced), led by today's word of the day once Today has shown it and while it is new;
+  then words practiced before, favouring recent misses.
 - **Again** lowers the word's ease by 0.2 (SM-2's own formula takes 0.54, which soon pins a word at the
   minimum) and keeps a fifth of its interval, so the word grows back from there rather than from zero.
   "Good" moves ease a little back toward 2.5, so it recovers after hard days. A word recalled late gets

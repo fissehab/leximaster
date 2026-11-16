@@ -450,6 +450,20 @@ def pool_ids(c: sqlite3.Connection, *, list_id: int | None = None,
 EASIEST_WINDOW = 50   # new words come from the 50 most common unseen ones (or 3 per word asked, if more)
 
 
+def wotd_key(c: sqlite3.Connection, track: str = "") -> str:
+    """The meta key today's word of the day is saved under (per word levels
+    and study focus; static/js/local/server.js wotdKey is the same)."""
+    levels = parse_levels(levels_setting(c)) if track in ("", "everyday") else [1, 2, 3, 4, 5]
+    return (f"wotd:{date.today().isoformat()}" + ("" if len(levels) == 5 else ":" + ",".join(map(str, levels)))
+            + (f":{track}" if track else ""))
+
+
+def todays_word(c: sqlite3.Connection) -> int | None:
+    """The word of the day the Today page shows, once it has been shown."""
+    row = c.execute("SELECT value FROM meta WHERE key=?", (wotd_key(c),)).fetchone()
+    return int(row["value"]) if row else None
+
+
 def weighted_sample(c: sqlite3.Connection, ids: list[int], n: int) -> list[int]:
     """A round's words (static/js/local/server.js weightedSample is the same):
     1. words due to refresh, most overdue first: up to half the round, or all
@@ -459,6 +473,8 @@ def weighted_sample(c: sqlite3.Connection, ids: list[int], n: int) -> list[int]:
        meets common words before rare ones;
     3. words practiced before and not due, at half weight, favouring words
        missed lately (a miss counts fully for a month, then fades).
+    Today's word of the day, when it is in the pool and not practiced yet,
+    is the first new word: practice picks it up, and it comes back to refresh.
     Due words lead the list (a quiz builds its questions from the front)."""
     if len(ids) <= n:
         random.shuffle(ids)
@@ -472,6 +488,10 @@ def weighted_sample(c: sqlite3.Connection, ids: list[int], n: int) -> list[int]:
     chosen = list(first)
     taken = set(chosen)
     seen = {r["word_id"] for r in c.execute("SELECT word_id FROM srs")}
+    wotd = todays_word(c)
+    if wotd in pool and wotd not in seen and wotd not in taken and len(chosen) < n:
+        chosen.append(wotd)
+        taken.add(wotd)
     rank = {r["id"]: r["freq_rank"] if r["freq_rank"] is not None else 10**9
             for r in c.execute("SELECT id, freq_rank FROM words")}
     unseen = sorted((i for i in ids if i not in seen and i not in taken), key=lambda i: (rank.get(i, 10**9), i))
