@@ -1,5 +1,6 @@
 // Dictionary (the browse tab): A–Z rail, instant search, filtered A–Z virtual list, full entry.
 
+import { phrasePattern } from "../phrase-match.js";
 import { allWords, api } from "../api.js";
 import { playWord } from "../audio.js";
 import { LEVELS, byDomainOrder, chosenLevels, defineTerm, domainLabel, levelsText, domainOptions, formDialog, isEveryday, isSaved, h, icon, renderEntry, scrollBehavior, setKnown, setSaved, showError, toast } from "../ui.js";
@@ -21,6 +22,9 @@ const nd = w => w._nd || (w._nd = norm(w.def || ""));
 // "nondiscretionary" and "buyin" finds "buy-in".
 const squash = s => s.replace(/[-\s]+/g, "");
 const ns = w => w._ns ?? (w._ns = squash(nw(w)));
+// An idiom with a person slot ("have someone's back"), as a pattern for
+// what people search ("got your back"); null for other words.
+const np = w => w._np !== undefined ? w._np : (w._np = phrasePattern(w.word));
 
 // Synonyms, antonyms and other related words that have no entry of their
 // own: a search finds them and opens an entry that lists them. Loaded on the
@@ -93,6 +97,7 @@ function applyFilters() {
       if (n === q || (qs && ns(w) === qs)) exact.push(w);
       else if (n.startsWith(q) || (qs && ns(w).startsWith(qs))) prefix.push(w);
       else if (wordStart.test(n)) atWord.push(w);           // "go went": a word of it
+      else if (q.includes(" ") && np(w)?.test(q.replace(/[\u2018\u2019]/g, "'"))) atWord.push(w);   // "got your back"
       else if (n.includes(q) || (qs && ns(w).includes(qs))) inner.push(w);   // "twenty" for "went"
       else if (q.length >= 3 && nd(w).includes(q)) inDef.push(w);
     }

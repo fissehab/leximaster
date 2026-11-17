@@ -1,0 +1,3556 @@
+[
+ {
+  "word": "burn the candle at both ends",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌbɝn ðə ˌkændəl æt ˌboʊθ ˈɛndz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To exhaust oneself by working or being busy from early morning until late at night, without enough rest."
+    ]
+   }
+  ],
+  "etymology": "An old image of a candle lit at both ends, which burns out quickly; French has the same expression.",
+  "conversation": [
+   {
+    "sense": "overwork",
+    "text": "You're up at five for work and out till midnight with the band? You're burning the candle at both ends."
+   },
+   {
+    "sense": "warning",
+    "text": "I burned the candle at both ends all semester, and I got sick right before finals."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To wear yourself out by doing too much, especially by starting early and staying up late, day after day."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbɝn ðə ˌkændəl æt ˌboʊθ ˈɛndz/",
+    "respelling": "burn thuh kan-duhl at bohth ENDZ",
+    "tip": "Stress ENDS most: burn the candle at both ENDS. \"Candle\" is KAN-duhl, with a soft second syllable."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly negative: it describes an unhealthy pace, often said as a friendly warning.",
+   "usage_note": "Usually in the progressive: \"You're burning the candle at both ends.\" It covers work plus social life, or a job plus school, not just long hours at one task. A natural reply is \"I know, I need to slow down.\"",
+   "word_family": [
+    "burned / burnt the candle at both ends (past)",
+    "burning the candle at both ends (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "burn the midnight oil",
+     "note": "\"Burn the midnight oil\" is staying up late to work on something, often for one night or one deadline. \"Burn the candle at both ends\" is a whole exhausting lifestyle: early mornings and late nights."
+    },
+    {
+     "vs": "spread oneself too thin",
+     "note": "\"Spread oneself too thin\" is about having too many commitments to do any of them well; \"burn the candle at both ends\" is about running out of energy and sleep."
+    }
+   ],
+   "antonyms": [
+    "take it easy",
+    "pace oneself"
+   ],
+   "collocations": [
+    "burning the candle at both ends",
+    "can't keep burning the candle at both ends",
+    "been burning the candle at both ends",
+    "stop burning the candle at both ends"
+   ],
+   "examples": {
+    "everyday": "Between the new baby and the night classes, she's been burning the candle at both ends.",
+    "professional": "Several of the team leads are burning the candle at both ends, and we need to rebalance the workload before people burn out.",
+    "analytical": "Students who burn the candle at both ends during exam weeks often score lower, because lost sleep undermines memory consolidation."
+   },
+   "analogy": "Like a candle lit at the top and the bottom: it gives twice the light for a while, then it's gone twice as fast.",
+   "etymology": "An old image of a candle lit at both ends, which burns out quickly; French has the same expression.",
+   "common_mistakes": [
+    "Saying \"burn the candle on both ends\"; the preposition is \"at\": at both ends.",
+    "Using it for one late night; for that, say \"I burned the midnight oil\" or \"I pulled an all-nighter\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "cry over spilled milk",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˌkɹaɪ ˌoʊvɚ ˌspɪld ˈmɪlk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To be upset or complain about something bad that has already happened and cannot be changed (usually in the negative: \"don't cry over spilled milk\", \"no use crying over spilled milk\")."
+    ]
+   }
+  ],
+  "etymology": "The proverb \"no use crying over spilt milk\" has been recorded in English since the 1600s; American English prefers \"spilled.\"",
+  "conversation": [
+   {
+    "sense": "comforting",
+    "text": "You missed the deadline, but there's no use crying over spilled milk. Let's figure out the next one."
+   },
+   {
+    "sense": "self-talk",
+    "text": "I sold the stock too early. Oh well, no point crying over spilled milk."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To waste time feeling bad about a past mistake or loss that cannot be undone."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkɹaɪ ˌoʊvɚ ˌspɪld ˈmɪlk/",
+    "respelling": "krahy oh-ver spild MILK",
+    "tip": "Stress MILK. \"Spilled\" is one syllable, spild; Americans say \"spilled,\" while British speakers often say \"spilt.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral to gently encouraging: it tells someone to stop regretting and move on.",
+   "usage_note": "Almost always negative or advice-giving: \"Don't cry over spilled milk,\" \"There's no use crying over spilled milk,\" \"It's no use crying over spilled milk.\" It suits small or medium setbacks; for a serious loss it can sound dismissive.",
+   "word_family": [
+    "crying over spilled milk (-ing)",
+    "spilled milk (noun phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "water under the bridge",
+     "note": "\"Water under the bridge\" says a past problem no longer matters, often about a past conflict between people; \"don't cry over spilled milk\" tells someone to stop being upset about a mistake."
+    },
+    {
+     "vs": "what's done is done",
+     "note": "\"What's done is done\" is a plainer, slightly more serious way to say the same thing."
+    }
+   ],
+   "antonyms": [
+    "dwell on the past"
+   ],
+   "collocations": [
+    "no use crying over spilled milk",
+    "don't cry over spilled milk",
+    "no point crying over spilled milk",
+    "it's no use crying over spilled milk"
+   ],
+   "examples": {
+    "everyday": "The cake fell on the floor, but there's no use crying over spilled milk; let's go buy one.",
+    "professional": "The bid didn't go our way. No use crying over spilled milk; let's focus on what we learned for the next proposal.",
+    "analytical": "The advice not to cry over spilled milk matches the economist's rule that sunk costs should not drive future decisions."
+   },
+   "analogy": "Like milk on the kitchen floor: you can wipe it up, but you can't put it back in the glass.",
+   "etymology": "The proverb \"no use crying over spilt milk\" has been recorded in English since the 1600s; American English prefers \"spilled.\"",
+   "common_mistakes": [
+    "Using it about a problem that can still be fixed; it is only for things that are already done.",
+    "Dropping \"use\" or \"point\": say \"There's no use crying over spilled milk,\" not \"There's no crying over spilled milk.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "pay through the nose",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌpeɪ θɹu ðə ˈnoʊz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To pay far too much for something."
+    ]
+   }
+  ],
+  "etymology": "Origin uncertain; the phrase has been in English since the 1600s, and the stories that explain it are not reliable.",
+  "conversation": [
+   {
+    "sense": "prices",
+    "text": "We waited too long to book, so we paid through the nose for the flights."
+   },
+   {
+    "sense": "advice",
+    "text": "Don't buy your charger at the airport; you'll pay through the nose."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To pay a lot more money for something than it should cost, usually because you had no choice."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpeɪ θɹu ðə ˈnoʊz/",
+    "respelling": "pay throo thuh NOHZ",
+    "tip": "Stress NOSE. \"Through\" is throo; put your tongue between your teeth for the th."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative: it complains about an unfair or painful price.",
+   "usage_note": "Often with \"for\": \"We paid through the nose for parking.\" It suggests the buyer was stuck (last minute, no alternatives, a monopoly). Common with tickets, rent, repairs and tourist prices.",
+   "word_family": [
+    "paid through the nose (past)",
+    "paying through the nose (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "cost an arm and a leg",
+     "note": "\"Cost an arm and a leg\" makes the thing the subject (The repair cost an arm and a leg); \"pay through the nose\" makes the buyer the subject (We paid through the nose for it)."
+    },
+    {
+     "vs": "rip-off",
+     "note": "A \"rip-off\" is the overpriced thing or deal itself; \"pay through the nose\" is what you do."
+    }
+   ],
+   "antonyms": [
+    "get a bargain",
+    "get a steal"
+   ],
+   "collocations": [
+    "pay through the nose for",
+    "end up paying through the nose",
+    "paying through the nose for rent",
+    "had to pay through the nose"
+   ],
+   "examples": {
+    "everyday": "If you rent a car at the last minute in summer, you'll pay through the nose.",
+    "professional": "We paid through the nose for the rush order, so next quarter let's plan the print run earlier.",
+    "analytical": "When supply is fixed and demand spikes, consumers who buy late pay through the nose, which is the logic behind surge pricing."
+   },
+   "analogy": "Like being squeezed until it hurts: the price takes more out of you than it should.",
+   "etymology": "Origin uncertain; the phrase has been in English since the 1600s, and the stories that explain it are not reliable.",
+   "common_mistakes": [
+    "Saying \"pay from the nose\" or \"pay by the nose\"; the preposition is \"through\".",
+    "Using it for a fair but high price; it implies the price was unreasonable."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "on the tip of one's tongue",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ɑn ðə ˌtɪp əv wʌnz ˈtʌŋ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "(of a word, name or fact) Almost but not quite remembered; you feel you are about to say it.",
+     "About to be said, but held back at the last moment."
+    ]
+   }
+  ],
+  "etymology": "The image is of a word that has reached the end of the tongue but not yet been spoken.",
+  "conversation": [
+   {
+    "sense": "forgetting",
+    "text": "What's that actor's name? It's on the tip of my tongue."
+   },
+   {
+    "sense": "holding back",
+    "text": "It was on the tip of my tongue to tell him what I really thought, but I stopped myself."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective phrase",
+    "definition": "Almost remembered: you know the word or name and feel close to it, but you can't quite bring it to mind."
+   },
+   "pronunciation": {
+    "ipa": "/ɑn ðə ˌtɪp əv wʌnz ˈtʌŋ/",
+    "respelling": "ahn thuh tip uhv wuhnz TUHNG",
+    "tip": "\"Tongue\" rhymes with \"young\": TUHNG, with no g sound after the ng and no \"-ue\" sound. Stress TONGUE."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; a shared, slightly frustrating experience.",
+   "usage_note": "Usually \"It's on the tip of my tongue\" with the person's own possessive (my, his, her). The second sense uses \"It was on the tip of my tongue to say...\" for something you nearly said.",
+   "word_family": [
+    "tip-of-the-tongue (adjective, as in \"a tip-of-the-tongue moment\")"
+   ],
+   "distinctions": [
+    {
+     "vs": "slip of the tongue",
+     "note": "A \"slip of the tongue\" is something said by mistake; \"on the tip of my tongue\" is something you can't quite say yet."
+    },
+    {
+     "vs": "draw a blank",
+     "note": "\"Draw a blank\" means your memory gives you nothing at all; \"on the tip of my tongue\" means you feel very close."
+    }
+   ],
+   "antonyms": [
+    "draw a blank"
+   ],
+   "collocations": [
+    "it's on the tip of my tongue",
+    "the name is on the tip of my tongue",
+    "right on the tip of my tongue",
+    "it was on the tip of my tongue to say"
+   ],
+   "examples": {
+    "everyday": "The restaurant we went to last year... the name is right on the tip of my tongue.",
+    "professional": "The term for that is on the tip of my tongue; let me look it up and send it after the meeting.",
+    "analytical": "Psychologists study tip-of-the-tongue states because they show that meaning can be retrieved while the sound of a word is not."
+   },
+   "analogy": "Like a word standing just behind a door: you can hear it, but it won't come out.",
+   "etymology": "The image is of a word that has reached the end of the tongue but not yet been spoken.",
+   "common_mistakes": [
+    "Saying \"on the end of my tongue\"; Americans say \"tip\".",
+    "Leaving out the possessive: say \"on the tip of my tongue\", not \"on the tip of the tongue\" when talking about yourself."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "on a shoestring",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ɑn ə ˈʃuˌstɹɪŋ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "With very little money; on a very small budget."
+    ]
+   }
+  ],
+  "etymology": "American, from shoestring meaning a shoelace, something cheap; the sense of a very small amount of money dates from the late 1800s.",
+  "conversation": [
+   {
+    "sense": "budget travel",
+    "text": "We traveled through Europe on a shoestring: hostels, trains and a lot of sandwiches."
+   },
+   {
+    "sense": "startup",
+    "text": "They started the company on a shoestring in his parents' garage."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb phrase",
+    "definition": "Using very little money, so you have to be careful and creative with every expense."
+   },
+   "pronunciation": {
+    "ipa": "/ɑn ə ˈʃuˌstɹɪŋ/",
+    "respelling": "ahn uh SHOO-string",
+    "tip": "Stress SHOE: SHOO-string, said as one word. The \"a\" is a quick uh."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral to admiring: it often praises people for doing a lot with little.",
+   "usage_note": "Common with \"run,\" \"live,\" \"travel,\" \"start,\" \"make a film\": \"The festival runs on a shoestring.\" Also \"a shoestring budget\" as an adjective. It works in news and business writing as well as conversation.",
+   "word_family": [
+    "shoestring (adjective: a shoestring budget)",
+    "shoestring (noun: shoelace)"
+   ],
+   "distinctions": [
+    {
+     "vs": "on a budget",
+     "note": "\"On a budget\" just means with limited money; \"on a shoestring\" is stronger: very little money."
+    },
+    {
+     "vs": "make ends meet",
+     "note": "\"Make ends meet\" is about barely paying for basic living costs; \"on a shoestring\" is about doing a project or trip cheaply."
+    }
+   ],
+   "antonyms": [
+    "money is no object",
+    "with deep pockets"
+   ],
+   "collocations": [
+    "on a shoestring budget",
+    "run on a shoestring",
+    "live on a shoestring",
+    "travel on a shoestring",
+    "start a business on a shoestring"
+   ],
+   "examples": {
+    "everyday": "We furnished our first apartment on a shoestring, mostly from yard sales.",
+    "professional": "The nonprofit operates on a shoestring, so every donation goes a long way.",
+    "analytical": "Studies of early-stage firms show that companies launched on a shoestring often adopt lean processes that persist after funding arrives."
+   },
+   "analogy": "Like tying a project together with a single shoelace: it holds, but only because you're careful.",
+   "etymology": "American, from shoestring meaning a shoelace, something cheap; the sense of a very small amount of money dates from the late 1800s.",
+   "common_mistakes": [
+    "Saying \"with a shoestring\" or \"on shoestrings\"; the fixed phrase is \"on a shoestring\".",
+    "Writing \"shoe string\" as two words; it is one word."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "tighten one's belt",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌtaɪtən wʌnz ˈbɛlt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To spend less money because you have less than before."
+    ]
+   }
+  ],
+  "etymology": "The image is of hungry people tightening their belts as they lose weight, or to ease hunger.",
+  "conversation": [
+   {
+    "sense": "household",
+    "text": "With the rent going up, we're going to have to tighten our belts for a while."
+   },
+   {
+    "sense": "government",
+    "text": "The city tightened its belt and closed two libraries."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To cut back on spending, usually because money has become tighter."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtaɪtən wʌnz ˈbɛlt/",
+    "respelling": "tahy-tn wuhnz BELT",
+    "tip": "\"Tighten\" is TIGHT-n: the t before n is often a quick stop in American speech. Stress BELT."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral to slightly grim: it implies hard times and sacrifice.",
+   "usage_note": "Used for households, companies and governments: \"Everyone has to tighten their belts.\" The noun \"belt-tightening\" is common in news: \"a round of belt-tightening.\"",
+   "word_family": [
+    "tightened one's belt (past)",
+    "belt-tightening (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "pinch pennies",
+     "note": "\"Pinch pennies\" means being stingy about small amounts as a habit; \"tighten one's belt\" is a change in response to harder times."
+    },
+    {
+     "vs": "cut back",
+     "note": "\"Cut back (on)\" is the plain phrasal verb; \"tighten one's belt\" is the idiom for the same idea, with a sense of shared sacrifice."
+    }
+   ],
+   "antonyms": [
+    "splurge",
+    "loosen the purse strings"
+   ],
+   "collocations": [
+    "tighten our belts",
+    "have to tighten our belts",
+    "tighten their belts",
+    "belt-tightening measures",
+    "a period of belt-tightening"
+   ],
+   "examples": {
+    "everyday": "After I lost the second job, we tightened our belts: no takeout, no trips.",
+    "professional": "With revenue down, every department is being asked to tighten its belt this year.",
+    "analytical": "When households tighten their belts at the same time, total demand falls, which can deepen a recession."
+   },
+   "analogy": "Like pulling your belt in a notch when you've been eating less: you adjust to having less.",
+   "etymology": "The image is of hungry people tightening their belts as they lose weight, or to ease hunger.",
+   "common_mistakes": [
+    "Saying \"tight one's belt\"; the verb is \"tighten\".",
+    "Using it for physical belts only; when people say it, they almost always mean money."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "make up one's mind",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌmeɪk ˌʌp wʌnz ˈmaɪnd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To decide; to reach a firm decision after thinking."
+    ]
+   }
+  ],
+  "etymology": "From make up in the sense of completing or putting together; to make up one's mind is to bring it to a settled state.",
+  "conversation": [
+   {
+    "sense": "choosing",
+    "text": "Make up your mind: pizza or Thai? I'm starving."
+   },
+   {
+    "sense": "decided",
+    "text": "I've made up my mind. I'm taking the job in Denver."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To decide, especially after hesitating or thinking for a while."
+   },
+   "pronunciation": {
+    "ipa": "/ˌmeɪk ˌʌp wʌnz ˈmaɪnd/",
+    "respelling": "mayk uhp wuhnz MAHYND",
+    "tip": "Link \"make up\" smoothly: may-kup. Stress MIND."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; said impatiently (\"Make up your mind!\") it can show frustration.",
+   "usage_note": "Very common: \"I can't make up my mind,\" \"Have you made up your mind?\" Add \"about\" or \"to\": \"She made up her mind to quit.\" The order \"make one's mind up\" is also natural: \"Make your mind up!\"",
+   "word_family": [
+    "made up one's mind (past)",
+    "make one's mind up (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "change one's mind",
+     "note": "\"Change one's mind\" is to decide something different from before; \"make up one's mind\" is to decide in the first place."
+    },
+    {
+     "vs": "on the fence",
+     "note": "\"On the fence\" is the state of not having made up your mind yet."
+    }
+   ],
+   "antonyms": [
+    "be on the fence",
+    "waver"
+   ],
+   "collocations": [
+    "can't make up my mind",
+    "make up your mind",
+    "have you made up your mind",
+    "made up her mind to",
+    "make up one's mind about"
+   ],
+   "examples": {
+    "everyday": "I can't make up my mind between the blue one and the gray one.",
+    "professional": "We need the client to make up their mind on the scope before we can give a firm quote.",
+    "analytical": "Voters who make up their minds late in a campaign are especially sensitive to last-minute news."
+   },
+   "analogy": "Like putting the last piece in a puzzle: the picture is finally settled.",
+   "etymology": "From make up in the sense of completing or putting together; to make up one's mind is to bring it to a settled state.",
+   "common_mistakes": [
+    "Saying \"do up my mind\" or \"make my decision up\"; the fixed phrase is \"make up my mind\".",
+    "Forgetting the possessive: say \"make up your mind\", not \"make up the mind\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "get one's feet wet",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɡɛt wʌnz ˌfit ˈwɛt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To try something new for the first time in a small or easy way; to begin getting experience."
+    ]
+   }
+  ],
+  "etymology": "The image is of wading into water: your feet get wet before you swim.",
+  "conversation": [
+   {
+    "sense": "new job",
+    "text": "Start with the smaller accounts to get your feet wet, and then we'll give you more."
+   },
+   {
+    "sense": "trying a hobby",
+    "text": "I took one pottery class just to get my feet wet."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To start doing something new in a small, low-risk way so that you can get used to it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɛt wʌnz ˌfit ˈwɛt/",
+    "respelling": "get wuhnz feet WET",
+    "tip": "Stress WET. \"Feet\" has a long ee. \"Get\" before a vowel or w often sounds like \"ged\" in fast speech."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Positive or neutral: it frames beginning as a gentle, sensible first step.",
+   "usage_note": "Common in work and hobbies: \"This project is a good way to get your feet wet.\" It suggests a gradual start, not full commitment.",
+   "word_family": [
+    "got one's feet wet (past)",
+    "getting one's feet wet (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "jump in with both feet",
+     "note": "\"Jump in with both feet\" means committing completely right away; \"get your feet wet\" is the cautious start."
+    },
+    {
+     "vs": "learn the ropes",
+     "note": "\"Learn the ropes\" is learning how things work in a new job; \"get your feet wet\" is the first small experience."
+    },
+    {
+     "vs": "take the plunge",
+     "note": "\"Take the plunge\" is making a big, bold decision; \"get your feet wet\" is the small first try."
+    }
+   ],
+   "antonyms": [
+    "dive in headfirst",
+    "take the plunge"
+   ],
+   "collocations": [
+    "get your feet wet",
+    "a good way to get your feet wet",
+    "just getting my feet wet",
+    "get their feet wet with"
+   ],
+   "examples": {
+    "everyday": "I'm just getting my feet wet with cooking, so nothing fancy yet.",
+    "professional": "New hires get their feet wet on internal tools before they work on customer-facing code.",
+    "analytical": "Pilot programs let institutions get their feet wet with a policy before committing to it at scale."
+   },
+   "analogy": "Like walking into a lake one step at a time instead of diving in.",
+   "etymology": "The image is of wading into water: your feet get wet before you swim.",
+   "common_mistakes": [
+    "Saying \"wet my feet\" alone in this sense; the idiom is \"get my feet wet\".",
+    "Using it for someone who has already done something many times; it is about beginning."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "bent out of shape",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˌbɛnt ˌaʊt əv ˈʃeɪp/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Very upset, annoyed or offended, often more than the situation deserves."
+    ]
+   }
+  ],
+  "etymology": "American slang from the mid-1900s; the image is of something bent so it no longer has its proper shape.",
+  "conversation": [
+   {
+    "sense": "calm down",
+    "text": "Don't get bent out of shape. It's just a scratch on the bumper."
+   },
+   {
+    "sense": "overreaction",
+    "text": "He got all bent out of shape because nobody liked his post."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective phrase",
+    "definition": "Angry or upset about something, usually something minor."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbɛnt ˌaʊt əv ˈʃeɪp/",
+    "respelling": "bent owt uhv SHAYP",
+    "tip": "Link \"out of\" into \"outta\": bent OW-duh SHAYP. Stress SHAPE."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative and a little dismissive: it suggests the person is overreacting.",
+   "usage_note": "Usually with \"get\": \"Don't get bent out of shape about it.\" Often in advice or criticism. Too casual for formal writing; in conversation it is common and not rude.",
+   "word_family": [
+    "get bent out of shape (verb phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "upset",
+     "note": "\"Upset\" is neutral; \"bent out of shape\" adds that the reaction is excessive."
+    },
+    {
+     "vs": "fly off the handle",
+     "note": "\"Fly off the handle\" is a sudden burst of anger; \"bent out of shape\" can be quieter, like sulking or being offended."
+    }
+   ],
+   "antonyms": [
+    "keep one's cool",
+    "take it in stride"
+   ],
+   "collocations": [
+    "get bent out of shape",
+    "don't get bent out of shape",
+    "all bent out of shape",
+    "bent out of shape over",
+    "bent out of shape about"
+   ],
+   "examples": {
+    "everyday": "My dad gets bent out of shape whenever someone parks in front of our house.",
+    "professional": "Let's not get bent out of shape over one negative review; let's see if there's a pattern.",
+    "analytical": "Online, people tend to get bent out of shape over small slights that they would ignore face to face."
+   },
+   "analogy": "Like a coat hanger twisted out of its normal form: the person is no longer their usual self.",
+   "etymology": "American slang from the mid-1900s; the image is of something bent so it no longer has its proper shape.",
+   "common_mistakes": [
+    "Saying \"bended out of shape\"; the form is \"bent\".",
+    "Using it for serious grief or anger; it implies the reaction is too big."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "jump out of one's skin",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˌdʒʌmp ˌaʊt əv wʌnz ˈskɪn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To be suddenly and very badly startled."
+    ]
+   }
+  ],
+  "etymology": "An exaggerated image of a body leaping so suddenly that it leaves its skin; in English since at least the 1800s.",
+  "conversation": [
+   {
+    "sense": "startled",
+    "text": "You scared me! I nearly jumped out of my skin."
+   },
+   {
+    "sense": "loud noise",
+    "text": "When the fire alarm went off, everyone jumped out of their skin."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To be extremely startled by something sudden, like a noise or someone appearing."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdʒʌmp ˌaʊt əv wʌnz ˈskɪn/",
+    "respelling": "juhmp owt uhv wuhnz SKIN",
+    "tip": "Stress SKIN. \"Out of\" links into \"outta\" in casual speech."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral and often humorous: it exaggerates a moment of fright.",
+   "usage_note": "Usually with \"nearly\" or \"almost\": \"I almost jumped out of my skin.\" It is about a quick physical reaction, not long-lasting fear.",
+   "word_family": [
+    "jumped out of one's skin (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "scared to death",
+     "note": "\"Scared to death\" is very frightened for a while; \"jump out of one's skin\" is a sudden startle."
+    },
+    {
+     "vs": "on edge",
+     "note": "\"On edge\" is nervous and tense; someone on edge is more likely to jump out of their skin."
+    }
+   ],
+   "antonyms": [
+    "calm as a cucumber"
+   ],
+   "collocations": [
+    "nearly jumped out of my skin",
+    "almost jumped out of my skin",
+    "made me jump out of my skin"
+   ],
+   "examples": {
+    "everyday": "The cat knocked a glass off the counter and I nearly jumped out of my skin.",
+    "professional": "The alarm test was so loud that half the office jumped out of their skin.",
+    "analytical": "Horror films rely on jump scares, sudden sounds or images designed to make viewers jump out of their skin."
+   },
+   "analogy": "Like being startled so hard you leave your body behind for a second.",
+   "etymology": "An exaggerated image of a body leaping so suddenly that it leaves its skin; in English since at least the 1800s.",
+   "common_mistakes": [
+    "Using \"jump out from my skin\"; the preposition is \"out of\".",
+    "Using it for excitement; it is about being startled."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "no picnic",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌnoʊ ˈpɪkˌnɪk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Difficult or unpleasant; not easy at all."
+    ]
+   }
+  ],
+  "etymology": "From picnic in the sense of an easy, pleasant time, a use that dates from the late 1800s.",
+  "conversation": [
+   {
+    "sense": "hard work",
+    "text": "Moving three kids across the country was no picnic."
+   },
+   {
+    "sense": "warning",
+    "text": "Training for a marathon is no picnic, but you'll love race day."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "Something difficult, tiring or unpleasant, often harder than people expect."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnoʊ ˈpɪkˌnɪk/",
+    "respelling": "noh PIK-nik",
+    "tip": "Stress PIC: PIK-nik. The c is a k sound."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative but understated: it says something was hard without complaining too much.",
+   "usage_note": "Almost always after \"be\": \"It's no picnic,\" \"Raising a teenager is no picnic.\" It is a mild understatement; Americans use it to admit difficulty.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "walk in the park",
+     "note": "\"A walk in the park\" is the opposite: very easy."
+    },
+    {
+     "vs": "uphill battle",
+     "note": "\"An uphill battle\" is a long struggle against strong resistance; \"no picnic\" is simply hard or unpleasant."
+    }
+   ],
+   "antonyms": [
+    "a piece of cake",
+    "a walk in the park"
+   ],
+   "collocations": [
+    "it's no picnic",
+    "was no picnic",
+    "no picnic either",
+    "definitely no picnic"
+   ],
+   "examples": {
+    "everyday": "Working the night shift is no picnic.",
+    "professional": "Migrating the old database was no picnic, but it's done and the system is faster.",
+    "analytical": "Recovery from knee surgery is no picnic; physical therapy can take months."
+   },
+   "analogy": "Like a day that was supposed to be a relaxed outdoor lunch, but turned into hard labor.",
+   "etymology": "From picnic in the sense of an easy, pleasant time, a use that dates from the late 1800s.",
+   "common_mistakes": [
+    "Saying \"not a picnic\" in the same fixed way; it is understood, but \"no picnic\" is the idiom.",
+    "Using it for things that are only slightly inconvenient; it means really hard."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "talk shop",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌtɔk ˈʃɑp/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To talk about one's work or profession, especially in a social setting where others may be bored by it."
+    ]
+   }
+  ],
+  "etymology": "From shop in the sense of one's trade or business; the phrase dates from the 1800s.",
+  "conversation": [
+   {
+    "sense": "at a party",
+    "text": "Okay, you two, no talking shop tonight. This is a party."
+   },
+   {
+    "sense": "colleagues",
+    "text": "We ran into some other nurses at dinner and ended up talking shop all night."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To talk about your job or field, usually with people in the same line of work, in a non-work setting."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtɔk ˈʃɑp/",
+    "respelling": "tawk SHAHP",
+    "tip": "\"Talk\" has a silent l: tawk. \"Shop\" has the open ah of \"hot\". Stress SHOP."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral; it can be mildly critical when it leaves others out.",
+   "usage_note": "Often in the negative or as a rule: \"No talking shop!\" \"Let's not talk shop.\" It refers to conversation, not to doing work.",
+   "word_family": [
+    "talked shop (past)",
+    "talking shop (-ing)",
+    "shop talk (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "talk business",
+     "note": "\"Talk business\" means discussing a deal or practical matter seriously; \"talk shop\" is chatting about your work, often casually."
+    },
+    {
+     "vs": "small talk",
+     "note": "\"Small talk\" is light chat about weather and weekends; talking shop is the opposite of small talk at a party."
+    }
+   ],
+   "antonyms": [
+    "make small talk"
+   ],
+   "collocations": [
+    "talk shop",
+    "no talking shop",
+    "start talking shop",
+    "ended up talking shop",
+    "let's not talk shop"
+   ],
+   "examples": {
+    "everyday": "Every time my sister and her husband get together with other teachers, they talk shop.",
+    "professional": "The conference dinner is a good chance to talk shop with people from other firms.",
+    "analytical": "Sociologists note that talking shop helps professionals build informal networks and share knowledge outside official channels."
+   },
+   "analogy": "Like bringing your workplace with you in your pocket to a party.",
+   "etymology": "From shop in the sense of one's trade or business; the phrase dates from the 1800s.",
+   "common_mistakes": [
+    "Saying \"talk the shop\" or \"talk about shop\"; the fixed phrase is \"talk shop\".",
+    "Using it to mean discussing shopping; it is about work."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "keep someone posted",
+  "domains": [
+   "idioms",
+   "meetings",
+   "phone_calls"
+  ],
+  "phonetic": "/ˌkip ˌsʌmwʌn ˈpoʊstɪd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To keep someone informed about how something develops, with regular updates."
+    ]
+   }
+  ],
+  "etymology": "From post in the sense of giving someone information, related to posting a notice.",
+  "conversation": [
+   {
+    "sense": "friend",
+    "text": "Good luck with the interview! Keep me posted."
+   },
+   {
+    "sense": "work",
+    "text": "I'll keep you posted as soon as I hear back from the vendor."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To give someone updates as news comes in."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkip ˌsʌmwʌn ˈpoʊstɪd/",
+    "respelling": "keep suhm-wuhn POH-stid",
+    "tip": "Stress POST: POH-stid. In fast speech \"keep me posted\" sounds like keep-mee-POH-stid."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Friendly and cooperative.",
+   "usage_note": "Extremely common at work and with friends: \"Keep me posted,\" \"I'll keep you posted,\" \"Please keep us posted.\" It is a polite way to ask for updates without sounding pushy.",
+   "word_family": [
+    "kept someone posted (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "keep someone in the loop",
+     "note": "\"Keep someone in the loop\" means including them in ongoing communication, often in email; \"keep someone posted\" focuses on news as it happens. Both are common at work."
+    },
+    {
+     "vs": "touch base",
+     "note": "\"Touch base\" is a brief check-in conversation; \"keep me posted\" asks for updates over time."
+    }
+   ],
+   "antonyms": [
+    "keep someone in the dark"
+   ],
+   "collocations": [
+    "keep me posted",
+    "I'll keep you posted",
+    "keep us posted",
+    "please keep me posted",
+    "keep everyone posted"
+   ],
+   "examples": {
+    "everyday": "Let me know how your mom's surgery goes. Keep me posted.",
+    "professional": "The release date may move, but I'll keep everyone posted as we learn more.",
+    "analytical": "Research on remote teams finds that keeping stakeholders posted with brief, regular updates reduces uncertainty and conflict."
+   },
+   "analogy": "Like a bulletin board you update each time there's news.",
+   "etymology": "From post in the sense of giving someone information, related to posting a notice.",
+   "common_mistakes": [
+    "Saying \"keep me post\" or \"keep me posting\"; the form is \"posted\".",
+    "Using it formally (\"I will keep you posted regarding the litigation\") is fine in email, but in formal letters \"I will keep you informed\" sounds better."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "knock it out of the park",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌnɑk ɪt ˌaʊt əv ðə ˈpɑɹk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To do something extremely well; to have a great success."
+    ]
+   }
+  ],
+  "etymology": "From baseball: a ball hit out of the park is a home run.",
+  "conversation": [
+   {
+    "sense": "praise",
+    "text": "Your presentation was amazing. You knocked it out of the park."
+   },
+   {
+    "sense": "encouragement",
+    "text": "You've practiced for weeks. Go knock it out of the park!"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To do an excellent job, far better than expected."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnɑk ɪt ˌaʊt əv ðə ˈpɑɹk/",
+    "respelling": "nahk it owt uhv thuh PAHRK",
+    "tip": "Link it all: NAH-kit OW-duh thuh PARK. Stress PARK."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Very positive: enthusiastic praise or encouragement.",
+   "usage_note": "Common in American offices, sports talk and everyday praise: \"You knocked it out of the park.\" Also \"hit it out of the park.\" Based on baseball, so it sounds very American.",
+   "word_family": [
+    "knocked it out of the park (past)",
+    "hit it out of the park (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "nail it",
+     "note": "\"Nail it\" means getting something exactly right; \"knock it out of the park\" is bigger, an impressive success."
+    },
+    {
+     "vs": "hit the nail on the head",
+     "note": "\"Hit the nail on the head\" means describing something exactly right; it is about accuracy, not performance."
+    }
+   ],
+   "antonyms": [
+    "drop the ball",
+    "fall flat"
+   ],
+   "collocations": [
+    "knocked it out of the park",
+    "really knocked it out of the park",
+    "go knock it out of the park",
+    "hit it out of the park"
+   ],
+   "examples": {
+    "everyday": "The kids' school play knocked it out of the park this year.",
+    "professional": "The design team knocked it out of the park with the new onboarding flow; sign-ups are up 30 percent.",
+    "analytical": "The second album knocked it out of the park commercially, though critics were more reserved."
+   },
+   "analogy": "Like a home run that flies over the fence and out of the stadium.",
+   "etymology": "From baseball: a ball hit out of the park is a home run.",
+   "common_mistakes": [
+    "Saying \"knock it off the park\"; the phrase is \"out of the park\".",
+    "Confusing it with \"knock it off\" (stop it), which has a completely different meaning."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "keep one's nose to the grindstone",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌkip wʌnz ˌnoʊz tə ðə ˈɡɹaɪndˌstoʊn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To work hard and steadily for a long time without stopping or getting distracted."
+    ]
+   }
+  ],
+  "etymology": "The image is of someone leaning close over a grindstone while sharpening tools; the phrase is several centuries old.",
+  "conversation": [
+   {
+    "sense": "advice",
+    "text": "Keep your nose to the grindstone this semester and you'll be fine."
+   },
+   {
+    "sense": "busy",
+    "text": "I've had my nose to the grindstone all month trying to finish the book."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To keep working hard and consistently, especially at something tiring or dull."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkip wʌnz ˌnoʊz tə ðə ˈɡɹaɪndˌstoʊn/",
+    "respelling": "keep wuhnz nohz tuh thuh GRAHYND-stohn",
+    "tip": "Stress GRIND: GRAHYND-stohn. \"To the\" is quick: tuh-thuh."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mostly positive (diligence), with a hint of drudgery.",
+   "usage_note": "Often as advice or to describe a busy period: \"I've just been keeping my nose to the grindstone.\" Also \"put one's nose to the grindstone\" for starting.",
+   "word_family": [
+    "nose to the grindstone (phrase)",
+    "put one's nose to the grindstone (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "burn the midnight oil",
+     "note": "\"Burn the midnight oil\" is working late at night; \"nose to the grindstone\" is steady hard work over time."
+    },
+    {
+     "vs": "roll up one's sleeves",
+     "note": "\"Roll up one's sleeves\" is getting ready to start hard work; \"nose to the grindstone\" is continuing it."
+    }
+   ],
+   "antonyms": [
+    "slack off",
+    "goof off"
+   ],
+   "collocations": [
+    "keep your nose to the grindstone",
+    "had my nose to the grindstone",
+    "put her nose to the grindstone",
+    "nose to the grindstone"
+   ],
+   "examples": {
+    "everyday": "He kept his nose to the grindstone and paid off his loans in three years.",
+    "professional": "The team has kept its nose to the grindstone all quarter, and it shows in the numbers.",
+    "analytical": "Biographies of successful founders often emphasize years of keeping their noses to the grindstone rather than a single breakthrough."
+   },
+   "analogy": "Like a worker bent over a sharpening wheel, hour after hour.",
+   "etymology": "The image is of someone leaning close over a grindstone while sharpening tools; the phrase is several centuries old.",
+   "common_mistakes": [
+    "Saying \"nose on the grindstone\"; the preposition is \"to\".",
+    "Using the plural wrongly: \"keep their noses to the grindstone\" for a group."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "roll up one's sleeves",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɹoʊl ˌʌp wʌnz ˈslivz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To get ready to work hard; to start a difficult or practical task with determination."
+    ]
+   }
+  ],
+  "etymology": "From the literal act of rolling up shirt sleeves before manual work.",
+  "conversation": [
+   {
+    "sense": "starting work",
+    "text": "There's a lot to clean up after the party, so let's roll up our sleeves."
+   },
+   {
+    "sense": "character",
+    "text": "She's the kind of manager who rolls up her sleeves and helps when things get busy."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To prepare to do hard, practical work yourself, especially a job others might avoid."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɹoʊl ˌʌp wʌnz ˈslivz/",
+    "respelling": "rohl uhp wuhnz SLEEVZ",
+    "tip": "\"Roll up\" links: roh-luhp. Stress SLEEVES, ending in a buzzing z."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive: it suggests willingness, energy and hands-on effort.",
+   "usage_note": "Common in speeches and at work: \"It's time to roll up our sleeves.\" Praising a leader as someone who \"rolls up their sleeves\" means they do real work, not just give orders. It is also used literally.",
+   "word_family": [
+    "rolled up one's sleeves (past)",
+    "sleeves-rolled-up (adjective, informal)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get down to business",
+     "note": "\"Get down to business\" means starting the serious part of a meeting or task; \"roll up one's sleeves\" stresses physical or hands-on effort."
+    },
+    {
+     "vs": "keep one's nose to the grindstone",
+     "note": "\"Keep one's nose to the grindstone\" is continuing to work hard; \"roll up one's sleeves\" is starting."
+    }
+   ],
+   "antonyms": [
+    "sit back",
+    "stand on the sidelines"
+   ],
+   "collocations": [
+    "roll up our sleeves",
+    "time to roll up our sleeves",
+    "rolled up his sleeves and",
+    "roll up your sleeves and get to work"
+   ],
+   "examples": {
+    "everyday": "The whole neighborhood rolled up their sleeves to clean up after the storm.",
+    "professional": "The new director rolled up her sleeves and spent her first week on the warehouse floor.",
+    "analytical": "Local volunteers who rolled up their sleeves after the flood were as crucial to recovery as federal aid."
+   },
+   "analogy": "Like pushing your sleeves back before you put your hands into the dirt.",
+   "etymology": "From the literal act of rolling up shirt sleeves before manual work.",
+   "common_mistakes": [
+    "Saying \"roll on my sleeves\" or \"roll my sleeves\"; the phrase needs \"up\".",
+    "Forgetting the plural: \"sleeves\", not \"sleeve\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "twiddle one's thumbs",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌtwɪdəl wʌnz ˈθʌmz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To wait with nothing to do; to be idle, often while waiting for someone else."
+    ]
+   }
+  ],
+  "etymology": "From the literal gesture of turning one's thumbs around each other, a sign of boredom.",
+  "conversation": [
+   {
+    "sense": "waiting",
+    "text": "The IT guy never showed up, so I sat there twiddling my thumbs for an hour."
+   },
+   {
+    "sense": "idle",
+    "text": "We can't just twiddle our thumbs while the competition moves ahead."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To sit around doing nothing useful, usually because you are waiting."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtwɪdəl wʌnz ˈθʌmz/",
+    "respelling": "twid-l wuhnz THUHMZ",
+    "tip": "\"Twiddle\" is TWID-l, with a flap d. \"Thumbs\" has a silent b: thuhmz. Stress THUMBS."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly negative: it suggests wasted time or frustrating inactivity.",
+   "usage_note": "Usually in the -ing form: \"I was just twiddling my thumbs.\" Literally, it is turning your thumbs around each other, a sign of boredom.",
+   "word_family": [
+    "twiddling one's thumbs (-ing)",
+    "twiddle (verb)"
+   ],
+   "distinctions": [
+    {
+     "vs": "kill time",
+     "note": "\"Kill time\" is doing something to pass time while waiting; \"twiddle one's thumbs\" is doing nothing at all."
+    },
+    {
+     "vs": "sit on one's hands",
+     "note": "\"Sit on one's hands\" means deliberately failing to act when you should; \"twiddle one's thumbs\" is just being idle."
+    }
+   ],
+   "antonyms": [
+    "keep busy"
+   ],
+   "collocations": [
+    "sit around twiddling my thumbs",
+    "twiddling our thumbs",
+    "left twiddling our thumbs",
+    "just twiddling my thumbs"
+   ],
+   "examples": {
+    "everyday": "The flight was delayed, so we twiddled our thumbs at the gate for three hours.",
+    "professional": "The developers were twiddling their thumbs until legal approved the contract.",
+    "analytical": "Bottlenecks in one stage of production leave workers downstream twiddling their thumbs."
+   },
+   "analogy": "Like turning your thumbs in circles: lots of motion, no progress.",
+   "etymology": "From the literal gesture of turning one's thumbs around each other, a sign of boredom.",
+   "common_mistakes": [
+    "Pronouncing the b in \"thumbs\"; it is silent.",
+    "Saying \"twirl my thumbs\"; the verb is \"twiddle\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in over one's head",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ɪn ˌoʊvɚ wʌnz ˈhɛd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "In a situation that is too difficult for one to handle; involved in more than one can manage."
+    ]
+   }
+  ],
+  "etymology": "From swimming: water deeper than your height is \"over your head.\"",
+  "conversation": [
+   {
+    "sense": "new job",
+    "text": "Three weeks into the job, I realized I was in over my head."
+   },
+   {
+    "sense": "debt",
+    "text": "They bought a house they couldn't afford and got in over their heads."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective phrase",
+    "definition": "Involved in something that is beyond your ability, knowledge or resources."
+   },
+   "pronunciation": {
+    "ipa": "/ɪn ˌoʊvɚ wʌnz ˈhɛd/",
+    "respelling": "in oh-ver wuhnz HED",
+    "tip": "Stress HEAD. \"Over\" is OH-ver with an American r."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative: it describes struggling and being overwhelmed.",
+   "usage_note": "Usually with \"be\" or \"get\": \"I'm in over my head,\" \"Don't get in over your head.\" Often about debt, jobs, projects or relationships. \"Over my head\" alone means \"too hard for me to understand.\"",
+   "word_family": [
+    "get in over one's head (verb phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "over one's head",
+     "note": "\"Over my head\" (without \"in\") means too difficult to understand: \"The lecture went over my head.\" \"In over my head\" means overwhelmed by a situation."
+    },
+    {
+     "vs": "bite off more than one can chew",
+     "note": "\"Bite off more than one can chew\" is taking on too much; \"in over one's head\" is the result: you're overwhelmed."
+    }
+   ],
+   "antonyms": [
+    "in one's element",
+    "on top of things"
+   ],
+   "collocations": [
+    "in over my head",
+    "get in over your head",
+    "a little in over his head",
+    "way in over our heads"
+   ],
+   "examples": {
+    "everyday": "I offered to plan the wedding, but honestly I'm in over my head.",
+    "professional": "If you feel in over your head on the project, tell me early and we'll get you support.",
+    "analytical": "Many first-time borrowers get in over their heads because they underestimate interest costs."
+   },
+   "analogy": "Like wading into a lake until the water is above your head.",
+   "etymology": "From swimming: water deeper than your height is \"over your head.\"",
+   "common_mistakes": [
+    "Dropping \"in\": \"I am over my head\" means something else (I don't understand).",
+    "Saying \"in over the head\"; use the possessive (my, your, his)."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "cut one's losses",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌkʌt wʌnz ˈlɔsɪz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To stop doing something that is failing, to avoid losing even more money, time or effort."
+    ]
+   }
+  ],
+  "etymology": "From trading and gambling: stopping before losses get bigger.",
+  "conversation": [
+   {
+    "sense": "investment",
+    "text": "The stock kept dropping, so I sold and cut my losses."
+   },
+   {
+    "sense": "bad plan",
+    "text": "This movie is terrible. Let's cut our losses and leave."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To quit a losing situation now so it doesn't cost you even more."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkʌt wʌnz ˈlɔsɪz/",
+    "respelling": "kuht wuhnz LAW-siz",
+    "tip": "\"Losses\" is two syllables: LAW-siz. Stress LOSS."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral and practical: it suggests a sensible, if disappointing, decision.",
+   "usage_note": "Common with \"decide to,\" \"time to,\" \"just\": \"It's time to cut our losses.\" Used for investments, businesses, projects, relationships and everyday plans.",
+   "word_family": [
+    "cut one's losses (past is the same: cut)",
+    "cutting one's losses (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "throw in the towel",
+     "note": "\"Throw in the towel\" is giving up, often after a struggle; \"cut one's losses\" stresses limiting damage."
+    },
+    {
+     "vs": "sunk cost",
+     "note": "A \"sunk cost\" is money already spent that can't be recovered; cutting your losses means ignoring sunk costs."
+    }
+   ],
+   "antonyms": [
+    "throw good money after bad",
+    "double down"
+   ],
+   "collocations": [
+    "cut our losses",
+    "time to cut your losses",
+    "decided to cut their losses",
+    "cut his losses and sell"
+   ],
+   "examples": {
+    "everyday": "The restaurant never got busy, so the owners cut their losses after a year.",
+    "professional": "If the pilot doesn't show results by June, we should cut our losses and redirect the budget.",
+    "analytical": "Behavioral economists observe that investors are slow to cut their losses, holding falling stocks too long."
+   },
+   "analogy": "Like stopping a leak before the whole tank drains.",
+   "etymology": "From trading and gambling: stopping before losses get bigger.",
+   "common_mistakes": [
+    "Writing \"cut one's loses\"; the noun is \"losses\" (from loss), not \"loses\".",
+    "Using it for small decisions with no real loss; it implies something was already going badly."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "put one's foot in one's mouth",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌpʊt wʌnz ˈfʊt ɪn wʌnz ˈmaʊθ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To say something tactless, embarrassing or offensive by accident."
+    ]
+   }
+  ],
+  "etymology": "The image is of clumsiness in speech; \"foot-in-mouth\" became common in the 20th century.",
+  "conversation": [
+   {
+    "sense": "embarrassing",
+    "text": "I asked when the baby was due, and she wasn't pregnant. I really put my foot in my mouth."
+   },
+   {
+    "sense": "warning",
+    "text": "Think before you speak at dinner; Uncle Joe always puts his foot in his mouth."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To say something awkward or hurtful without meaning to, and immediately regret it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpʊt wʌnz ˈfʊt ɪn wʌnz ˈmaʊθ/",
+    "respelling": "poot wuhnz foot in wuhnz MOUTH",
+    "tip": "Stress MOUTH most. \"Foot\" has the short u of \"book\": foot. \"Put\" rhymes with foot."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative but often humorous; usually about yourself.",
+   "usage_note": "Very common: \"I really put my foot in my mouth.\" The noun \"foot-in-mouth\" describes a habit: \"He has a bad case of foot-in-mouth.\" Usually about a social mistake, not a lie.",
+   "word_family": [
+    "foot-in-mouth (adjective, noun)",
+    "put one's foot in it (British variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "slip of the tongue",
+     "note": "A \"slip of the tongue\" is saying the wrong word by accident; \"put your foot in your mouth\" is saying something socially embarrassing."
+    },
+    {
+     "vs": "stick one's nose in",
+     "note": "\"Stick one's nose in\" is interfering in someone else's business; it is not about speaking awkwardly."
+    }
+   ],
+   "antonyms": [
+    "choose one's words carefully",
+    "be tactful"
+   ],
+   "collocations": [
+    "put my foot in my mouth",
+    "really put his foot in his mouth",
+    "foot-in-mouth moment",
+    "put her foot in her mouth again"
+   ],
+   "examples": {
+    "everyday": "I put my foot in my mouth by complaining about the boss to someone who turned out to be his wife.",
+    "professional": "The CEO put his foot in his mouth in the interview, and PR spent a week cleaning it up.",
+    "analytical": "Politicians who put their foot in their mouth on camera can lose support, because the clip circulates far beyond the original audience."
+   },
+   "analogy": "Like tripping over your own words so badly that your foot ends up where your words came out.",
+   "etymology": "The image is of clumsiness in speech; \"foot-in-mouth\" became common in the 20th century.",
+   "common_mistakes": [
+    "Mixing the possessives: \"put my foot in your mouth\" means something else; keep both the same person.",
+    "Saying \"put my leg in my mouth\"; it is \"foot\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "when pigs fly",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/wɛn ˈpɪɡz ˌflaɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Never; used sarcastically to say something will never happen."
+    ]
+   }
+  ],
+  "etymology": "From an old proverb of impossibility (\"pigs might fly\"), used in English for centuries.",
+  "conversation": [
+   {
+    "sense": "sarcasm",
+    "text": "\"Will your brother pay you back?\" \"Sure, when pigs fly.\""
+   },
+   {
+    "sense": "doubt",
+    "text": "He says he'll clean his room without being asked. Yeah, when pigs fly."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb phrase",
+    "definition": "Never: said in a joking or sarcastic way about something very unlikely."
+   },
+   "pronunciation": {
+    "ipa": "/wɛn ˈpɪɡz ˌflaɪ/",
+    "respelling": "wen PIGZ flahy",
+    "tip": "Stress PIGS, often with a sarcastic tone: when PIGS fly."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Sarcastic and humorous; can sound dismissive.",
+   "usage_note": "Used as a reply or at the end of a sentence: \"I'll believe it when pigs fly.\" Only in casual speech; avoid it in formal writing or with someone you might offend.",
+   "word_family": [
+    "pigs might fly (British variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "once in a blue moon",
+     "note": "\"Once in a blue moon\" means very rarely, but it does happen; \"when pigs fly\" means never."
+    },
+    {
+     "vs": "fat chance",
+     "note": "\"Fat chance\" is a similar sarcastic \"no way,\" said about a chance or hope."
+    }
+   ],
+   "antonyms": [
+    "for sure",
+    "without a doubt"
+   ],
+   "collocations": [
+    "yeah, when pigs fly",
+    "sure, when pigs fly",
+    "I'll believe it when pigs fly",
+    "that'll happen when pigs fly"
+   ],
+   "examples": {
+    "everyday": "\"Do you think the cable company will lower our bill?\" \"When pigs fly.\"",
+    "professional": "Getting every department to agree on one budget by Friday? That'll happen when pigs fly, so let's plan for Monday.",
+    "analytical": "Critics said the treaty would be ratified when pigs fly, yet it passed within two years."
+   },
+   "analogy": "Like promising to do it on the day a pig grows wings.",
+   "etymology": "From an old proverb of impossibility (\"pigs might fly\"), used in English for centuries.",
+   "common_mistakes": [
+    "Saying \"when pig flies\" or \"if pigs fly\" in the fixed sarcastic reply; the usual form is \"when pigs fly\".",
+    "Using it sincerely; it is always sarcastic."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "time is money",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌtaɪm ɪz ˈmʌni/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Time is valuable, so wasting it costs money; a proverb urging people to work efficiently."
+    ]
+   }
+  ],
+  "etymology": "Popularized by Benjamin Franklin in \"Advice to a Young Tradesman\" (1748).",
+  "conversation": [
+   {
+    "sense": "hurry",
+    "text": "Let's skip the small talk. Time is money."
+   },
+   {
+    "sense": "paying for speed",
+    "text": "I'll pay extra for the direct flight. Time is money."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "proverb",
+    "definition": "Your time has real value, so wasting it is like wasting money."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtaɪm ɪz ˈmʌni/",
+    "respelling": "tahym iz MUHN-ee",
+    "tip": "Stress MON: MUHN-ee. \"Time is\" links: tahy-miz."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; it can sound brisk, businesslike or pushy.",
+   "usage_note": "Used to justify speed or paying for convenience: \"Time is money, so let's get started.\" In a meeting it can sound impatient; say it lightly.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "time is of the essence",
+     "note": "\"Time is of the essence\" means timing is critical, often in contracts or urgent situations; \"time is money\" says time has economic value."
+    }
+   ],
+   "antonyms": [
+    "take your time"
+   ],
+   "collocations": [
+    "time is money, after all",
+    "remember, time is money",
+    "because time is money"
+   ],
+   "examples": {
+    "everyday": "I hired someone to do my taxes. Time is money.",
+    "professional": "Time is money, so let's keep the stand-up to fifteen minutes.",
+    "analytical": "The idea that time is money underlies opportunity-cost reasoning: an hour spent on one task is an hour not spent on another."
+   },
+   "analogy": "Like a meter running in a taxi: every minute you wait, you pay.",
+   "etymology": "Popularized by Benjamin Franklin in \"Advice to a Young Tradesman\" (1748).",
+   "common_mistakes": [
+    "Saying \"the time is money\"; the proverb has no article.",
+    "Using it to mean \"you should charge for your time\" only; it is broader: don't waste time."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "better late than never",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌbɛtɚ ˌleɪt ðən ˈnɛvɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "It is better to do something late than not to do it at all."
+    ]
+   }
+  ],
+  "etymology": "A very old proverb; a Latin version appears in the Roman historian Livy, and it has been in English since the Middle Ages.",
+  "conversation": [
+   {
+    "sense": "arriving late",
+    "text": "Sorry I missed the first half! \"Better late than never.\""
+   },
+   {
+    "sense": "late start",
+    "text": "I finally started learning to swim at forty. Better late than never."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "proverb",
+    "definition": "Doing something late is still better than not doing it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbɛtɚ ˌleɪt ðən ˈnɛvɚ/",
+    "respelling": "bet-er layt thuhn NEV-er",
+    "tip": "\"Better\" has a flap t: BED-er. Stress NEVER."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive or forgiving; sometimes teasing when someone is late.",
+   "usage_note": "Said by the late person (\"Better late than never, right?\") or to welcome them. Also used about life goals started late. Can be gently sarcastic: \"Oh, you're here. Better late than never.\"",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "in the nick of time",
+     "note": "\"In the nick of time\" means just barely on time; \"better late than never\" is for actually being late."
+    },
+    {
+     "vs": "now or never",
+     "note": "\"Now or never\" means this is the last chance; it is about urgency, not lateness."
+    }
+   ],
+   "antonyms": [
+    "now or never"
+   ],
+   "collocations": [
+    "better late than never, right",
+    "well, better late than never",
+    "as they say, better late than never"
+   ],
+   "examples": {
+    "everyday": "My brother sent my birthday card a week late. Better late than never.",
+    "professional": "The update ships two weeks after the original date; better late than never, and it's more stable.",
+    "analytical": "Studies of adult education suggest that for many skills it is indeed better late than never."
+   },
+   "analogy": "Like a guest who arrives at dessert: they missed dinner, but you're still glad they came.",
+   "etymology": "A very old proverb; a Latin version appears in the Roman historian Livy, and it has been in English since the Middle Ages.",
+   "common_mistakes": [
+    "Saying \"better later than never\"; the proverb uses \"late\".",
+    "Using it to excuse very serious delays, which can sound flippant."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "the early bird catches the worm",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ði ˈɝli ˌbɝd ˌkætʃɪz ðə ˈwɝm/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "People who start early or act first get the best chances; often shortened to \"the early bird gets the worm\"."
+    ]
+   }
+  ],
+  "etymology": "An English proverb recorded in proverb collections from the 1600s.",
+  "conversation": [
+   {
+    "sense": "morning",
+    "text": "Up at five? Well, the early bird catches the worm."
+   },
+   {
+    "sense": "sales",
+    "text": "Get to the store when it opens. The early bird gets the worm."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "proverb",
+    "definition": "If you arrive or act early, you have the best chance of success."
+   },
+   "pronunciation": {
+    "ipa": "/ði ˈɝli ˌbɝd ˌkætʃɪz ðə ˈwɝm/",
+    "respelling": "thee UR-lee burd kach-iz thuh WURM",
+    "tip": "Stress EARLY and WORM. \"Worm\" rhymes with \"term\": wurm, not \"warm\". The vowel in early, bird and worm is the same r-colored sound."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive; often used to encourage or praise early risers.",
+   "usage_note": "Americans often say \"the early bird gets the worm.\" Also \"early bird\" alone for an early person (\"I'm an early bird\") and in \"early-bird discount.\" A common joke: \"but the second mouse gets the cheese.\"",
+   "word_family": [
+    "early bird (noun)",
+    "early-bird (adjective: early-bird special)"
+   ],
+   "distinctions": [
+    {
+     "vs": "first come, first served",
+     "note": "\"First come, first served\" is a rule for giving things out in order; \"the early bird catches the worm\" is advice to be early."
+    },
+    {
+     "vs": "get the jump on",
+     "note": "\"Get the jump on\" is getting ahead of others by starting first."
+    }
+   ],
+   "antonyms": [
+    "the second mouse gets the cheese"
+   ],
+   "collocations": [
+    "the early bird gets the worm",
+    "as they say, the early bird catches the worm",
+    "early bird"
+   ],
+   "examples": {
+    "everyday": "I always shop at the farmers market at seven. The early bird catches the worm.",
+    "professional": "Apply for the grant as soon as it opens; the early bird catches the worm.",
+    "analytical": "First-mover advantage is the business version of \"the early bird catches the worm,\" though later entrants often learn from early mistakes."
+   },
+   "analogy": "Like the bird that's up at dawn when the worms are still near the surface.",
+   "etymology": "An English proverb recorded in proverb collections from the 1600s.",
+   "common_mistakes": [
+    "Pronouncing \"worm\" like \"warm\"; it rhymes with \"term\".",
+    "Dropping \"the\": \"early bird catches worm\" sounds unnatural; keep the articles."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "crunch time",
+  "domains": [
+   "idioms",
+   "sports_culture"
+  ],
+  "phonetic": "/ˈkɹʌntʃ ˌtaɪm/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "The critical period just before a deadline or at the end of a game, when pressure is highest and performance matters most."
+    ]
+   }
+  ],
+  "etymology": "From crunch meaning a critical moment or a squeeze; American, 20th century.",
+  "conversation": [
+   {
+    "sense": "deadline",
+    "text": "It's crunch time. The proposal is due Friday and we're only halfway done."
+   },
+   {
+    "sense": "sports",
+    "text": "He's a great player, but he disappears at crunch time."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "The stressful, decisive period when there is little time left and everything depends on what you do."
+   },
+   "pronunciation": {
+    "ipa": "/ˈkɹʌntʃ ˌtaɪm/",
+    "respelling": "KRUHNCH tahym",
+    "tip": "Stress CRUNCH, like a compound noun: CRUNCH time."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral; it suggests pressure, urgency and high stakes.",
+   "usage_note": "Often \"It's crunch time\" or \"at crunch time.\" Common in sports, school (finals), work deadlines and video game development (\"crunch\").",
+   "word_family": [
+    "crunch (noun: the critical point)",
+    "crunch (noun: extreme overtime, in game development)"
+   ],
+   "distinctions": [
+    {
+     "vs": "down to the wire",
+     "note": "\"Down to the wire\" means a contest stays close until the very end; \"crunch time\" is the pressured period itself."
+    },
+    {
+     "vs": "the eleventh hour",
+     "note": "\"The eleventh hour\" is the last possible moment; \"crunch time\" is a stretch of intense effort before it."
+    }
+   ],
+   "antonyms": [
+    "downtime",
+    "slow season"
+   ],
+   "collocations": [
+    "it's crunch time",
+    "at crunch time",
+    "during crunch time",
+    "crunch time for",
+    "come crunch time"
+   ],
+   "examples": {
+    "everyday": "It's crunch time for my brother: finals start Monday.",
+    "professional": "During crunch time before launch, we'll pause all non-critical meetings.",
+    "analytical": "Teams that rely on crunch time instead of steady progress tend to see more defects and burnout."
+   },
+   "analogy": "Like the last two minutes of a tied game: everything you do suddenly counts double.",
+   "etymology": "From crunch meaning a critical moment or a squeeze; American, 20th century.",
+   "common_mistakes": [
+    "Saying \"the crunch time is\"; it is usually \"it's crunch time\" with no article.",
+    "Using it for any busy day; it means the decisive final push."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "pick someone's brain",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌpɪk ˌsʌmwʌnz ˈbɹeɪn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To ask someone who knows a lot about a subject for information or advice."
+    ]
+   }
+  ],
+  "etymology": "The image is of picking ideas out of someone's head, as one picks fruit.",
+  "conversation": [
+   {
+    "sense": "asking advice",
+    "text": "You've bought a house before. Can I pick your brain about mortgages?"
+   },
+   {
+    "sense": "networking",
+    "text": "I'd love to grab coffee and pick your brain about the industry."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To ask an expert or experienced person questions to learn from what they know."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpɪk ˌsʌmwʌnz ˈbɹeɪn/",
+    "respelling": "pik suhm-wuhnz BRAYN",
+    "tip": "Stress BRAIN. \"Pick your brain\" often sounds like pick-yer-BRAYN."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Friendly and flattering: it treats the other person as knowledgeable.",
+   "usage_note": "Very common as a request: \"Can I pick your brain?\" \"I'd love to pick your brain about...\" Professionals sometimes find it overused for asking free consulting, so be specific and brief.",
+   "word_family": [
+    "picked someone's brain (past)",
+    "brain-picking (noun, informal)"
+   ],
+   "distinctions": [
+    {
+     "vs": "pick someone's pocket",
+     "note": "\"Pick someone's pocket\" is stealing from them; \"pick someone's brain\" is friendly."
+    },
+    {
+     "vs": "bounce ideas off someone",
+     "note": "\"Bounce ideas off someone\" means sharing your ideas to get reactions; \"pick someone's brain\" means getting their knowledge."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "can I pick your brain",
+    "pick your brain about",
+    "I'd love to pick your brain",
+    "picked her brain on"
+   ],
+   "examples": {
+    "everyday": "My uncle's a mechanic, so I picked his brain before buying the car.",
+    "professional": "Do you have fifteen minutes this week? I'd like to pick your brain about the pricing model.",
+    "analytical": "Informal brain-picking among colleagues spreads tacit knowledge that never appears in manuals."
+   },
+   "analogy": "Like browsing a library, except the library is a person.",
+   "etymology": "The image is of picking ideas out of someone's head, as one picks fruit.",
+   "common_mistakes": [
+    "Saying \"pick your brains\" is also common, but \"pick your brain\" is more usual in American English.",
+    "Saying \"pick your mind\"; the noun is \"brain\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "rack one's brain",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɹæk wʌnz ˈbɹeɪn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To think very hard, trying to remember something or solve a problem."
+    ]
+   }
+  ],
+  "etymology": "From rack, an instrument of torture that stretched the body; to rack one's brain is to strain it.",
+  "conversation": [
+   {
+    "sense": "remembering",
+    "text": "I've been racking my brain, but I can't remember where I parked."
+   },
+   {
+    "sense": "ideas",
+    "text": "We racked our brains for a gift idea and finally just got a gift card."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To think very hard, usually with difficulty, to remember something or find an answer."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɹæk wʌnz ˈbɹeɪn/",
+    "respelling": "rak wuhnz BRAYN",
+    "tip": "\"Rack\" has the short a of \"cat\". Stress BRAIN."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; it suggests effort and some frustration.",
+   "usage_note": "Often in the progressive: \"I've been racking my brain.\" Also \"rack my brains.\" The spelling \"wrack\" is common but \"rack\" is standard.",
+   "word_family": [
+    "racked one's brain (past)",
+    "nerve-racking (related adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "pick someone's brain",
+     "note": "\"Pick someone's brain\" is asking another person; \"rack your brain\" is thinking hard yourself."
+    },
+    {
+     "vs": "on the tip of one's tongue",
+     "note": "\"On the tip of my tongue\" is the feeling of almost remembering; \"racking my brain\" is the effort."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "racking my brain",
+    "rack your brain",
+    "racked our brains for",
+    "I've been racking my brain"
+   ],
+   "examples": {
+    "everyday": "I racked my brain all day trying to remember her last name.",
+    "professional": "We've been racking our brains for a product name that isn't taken.",
+    "analytical": "Students who rack their brains to retrieve an answer remember it better later than those who simply reread the material."
+   },
+   "analogy": "Like stretching your mind as far as it will go to reach an answer.",
+   "etymology": "From rack, an instrument of torture that stretched the body; to rack one's brain is to strain it.",
+   "common_mistakes": [
+    "Spelling it \"wreck my brain\"; the word is \"rack\" (or \"wrack\").",
+    "Using it for easy thinking; it means hard mental effort."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "a slap on the wrist",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ə ˌslæp ɑn ðə ˈɹɪst/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A very light punishment, much milder than the offense deserves."
+    ]
+   }
+  ],
+  "etymology": "From the literal light slap on a child's hand as a mild punishment.",
+  "conversation": [
+   {
+    "sense": "unfair",
+    "text": "He got caught cheating and only got a slap on the wrist."
+   },
+   {
+    "sense": "company",
+    "text": "The fine was a slap on the wrist for a company that size."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "A punishment so small it is barely a punishment at all."
+   },
+   "pronunciation": {
+    "ipa": "/ə ˌslæp ɑn ðə ˈɹɪst/",
+    "respelling": "uh slap ahn thuh RIST",
+    "tip": "The w in \"wrist\" is silent: rist. Stress WRIST."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Critical: it usually implies the punishment should have been harsher.",
+   "usage_note": "Often with \"get,\" \"only,\" \"just,\" \"little more than\": \"They got off with a slap on the wrist.\" Common in news about fines and court sentences. Also \"slap someone on the wrist\" as a verb phrase.",
+   "word_family": [
+    "slap on the wrist (verb phrase: slap someone on the wrist)"
+   ],
+   "distinctions": [
+    {
+     "vs": "let off the hook",
+     "note": "\"Let off the hook\" means no punishment at all; \"a slap on the wrist\" is a tiny one."
+    },
+    {
+     "vs": "throw the book at someone",
+     "note": "\"Throw the book at someone\" means punishing them as harshly as possible, the opposite."
+    }
+   ],
+   "antonyms": [
+    "throw the book at"
+   ],
+   "collocations": [
+    "get a slap on the wrist",
+    "get off with a slap on the wrist",
+    "nothing more than a slap on the wrist",
+    "just a slap on the wrist"
+   ],
+   "examples": {
+    "everyday": "My brother broke curfew and got a slap on the wrist; I'd have been grounded for a month.",
+    "professional": "Regulators fined the bank, but critics called it a slap on the wrist.",
+    "analytical": "Deterrence theory predicts that if penalties are only a slap on the wrist, violations will continue."
+   },
+   "analogy": "Like tapping a misbehaving child's hand when the mess they made needed a lot more than that.",
+   "etymology": "From the literal light slap on a child's hand as a mild punishment.",
+   "common_mistakes": [
+    "Pronouncing the w in \"wrist\"; it is silent.",
+    "Using it for a fair, light punishment; it usually implies it was too light."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "between a rock and a hard place",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/bɪˌtwin ə ˈɹɑk ən ə ˌhɑɹd ˈpleɪs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "In a situation where you must choose between two options that are both bad."
+    ]
+   }
+  ],
+  "etymology": "American, recorded from the early 1900s; the image is of being trapped between two hard surfaces.",
+  "conversation": [
+   {
+    "sense": "dilemma",
+    "text": "If I take the job, I move away from family. If I don't, we can't pay the bills. I'm between a rock and a hard place."
+   },
+   {
+    "sense": "sympathy",
+    "text": "I know you're between a rock and a hard place, but you have to decide by Monday."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective phrase",
+    "definition": "Facing a choice where every option is unpleasant or harmful."
+   },
+   "pronunciation": {
+    "ipa": "/bɪˌtwin ə ˈɹɑk ən ə ˌhɑɹd ˈpleɪs/",
+    "respelling": "bih-tween uh rahk uhn uh hahrd PLAYS",
+    "tip": "Stress ROCK and PLACE. \"And a\" blends into \"uhn-uh\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative and sympathetic: it describes a real dilemma.",
+   "usage_note": "Usually \"be caught/stuck between a rock and a hard place.\" Used for personal and political dilemmas. It means both choices are bad, not just that things are hard.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "catch-22",
+     "note": "A \"catch-22\" is a situation where a rule blocks every way out (you need experience to get a job, and a job to get experience); \"between a rock and a hard place\" is a choice between two bad options."
+    },
+    {
+     "vs": "on the fence",
+     "note": "\"On the fence\" means undecided, possibly between two good options; \"between a rock and a hard place\" means both options are bad."
+    }
+   ],
+   "antonyms": [
+    "have the best of both worlds"
+   ],
+   "collocations": [
+    "caught between a rock and a hard place",
+    "stuck between a rock and a hard place",
+    "put someone between a rock and a hard place"
+   ],
+   "examples": {
+    "everyday": "The landlord has me between a rock and a hard place: pay more or move out in a month.",
+    "professional": "The new tariff puts suppliers between a rock and a hard place: absorb the cost or lose customers.",
+    "analytical": "Central banks facing inflation and recession at once are between a rock and a hard place, since raising rates helps one and hurts the other."
+   },
+   "analogy": "Like being squeezed in a narrow gap with stone on both sides.",
+   "etymology": "American, recorded from the early 1900s; the image is of being trapped between two hard surfaces.",
+   "common_mistakes": [
+    "Saying \"between a rock and the hard place\" or \"between the rock and a hard place\"; it is \"a rock and a hard place\".",
+    "Using it for any difficulty; it is about two bad choices."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "beat someone to the punch",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌbit ˌsʌmwʌn tə ðə ˈpʌntʃ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To do something before someone else does, especially something they were planning to do."
+    ]
+   }
+  ],
+  "etymology": "From boxing: landing a punch before your opponent does.",
+  "conversation": [
+   {
+    "sense": "got there first",
+    "text": "I was going to call you, but you beat me to the punch."
+   },
+   {
+    "sense": "competition",
+    "text": "Our rival beat us to the punch and launched a similar app last week."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To act first, so someone else loses the chance to do it before you."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbit ˌsʌmwʌn tə ðə ˈpʌntʃ/",
+    "respelling": "beet suhm-wuhn tuh thuh PUHNCH",
+    "tip": "Stress PUNCH. \"Beat you to\" often blends into BEE-chuh-tuh."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral; can be playful or competitive.",
+   "usage_note": "Common in friendly conversation (\"You beat me to the punch!\") and in business news about competitors. The person who was beaten is the object.",
+   "word_family": [
+    "beat someone to it (shorter variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get the jump on",
+     "note": "\"Get the jump on\" means getting an early advantage; \"beat someone to the punch\" means doing the specific thing before them."
+    },
+    {
+     "vs": "jump the gun",
+     "note": "\"Jump the gun\" means acting too early, before the right time; \"beat someone to the punch\" means acting before someone else, usually successfully."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "beat me to the punch",
+    "beat us to the punch",
+    "beat them to the punch",
+    "beat you to it"
+   ],
+   "examples": {
+    "everyday": "I was about to pay for dinner, but Dad beat me to the punch.",
+    "professional": "If we wait for the next funding round, a competitor may beat us to the punch.",
+    "analytical": "In science, priority disputes arise when one lab beats another to the punch by publishing first."
+   },
+   "analogy": "Like a boxer who throws a punch before the other fighter can.",
+   "etymology": "From boxing: landing a punch before your opponent does.",
+   "common_mistakes": [
+    "Saying \"beat someone at the punch\"; the preposition is \"to\".",
+    "Using it for winning a contest in general; it is about doing something first."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in the heat of the moment",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ɪn ðə ˈhit əv ðə ˌmoʊmənt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "While feeling strong emotion, such as anger or excitement, and without thinking carefully."
+    ]
+   }
+  ],
+  "etymology": "From heat in the sense of intense emotion or the most intense point of an action.",
+  "conversation": [
+   {
+    "sense": "apology",
+    "text": "I'm sorry for what I said. It was in the heat of the moment."
+   },
+   {
+    "sense": "decision",
+    "text": "Don't decide anything in the heat of the moment. Sleep on it."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb phrase",
+    "definition": "During a moment of strong emotion, when you act or speak without thinking."
+   },
+   "pronunciation": {
+    "ipa": "/ɪn ðə ˈhit əv ðə ˌmoʊmənt/",
+    "respelling": "in thuh HEET uhv thuh moh-muhnt",
+    "tip": "Stress HEAT most. \"Of the\" is quick: uhv-thuh."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; it often serves as an explanation or partial excuse.",
+   "usage_note": "Very common in apologies (\"I said it in the heat of the moment\") and advice. It explains behavior but does not fully excuse it.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "on the spur of the moment",
+     "note": "\"On the spur of the moment\" means spontaneously, without planning, often for happy decisions; \"in the heat of the moment\" means under strong emotion, often for regretted ones."
+    },
+    {
+     "vs": "lose one's cool",
+     "note": "\"Lose one's cool\" is the loss of control; \"in the heat of the moment\" is when it happens."
+    }
+   ],
+   "antonyms": [
+    "after careful thought",
+    "in hindsight"
+   ],
+   "collocations": [
+    "in the heat of the moment",
+    "said it in the heat of the moment",
+    "caught up in the heat of the moment"
+   ],
+   "examples": {
+    "everyday": "In the heat of the moment, I told my sister I'd never speak to her again.",
+    "professional": "Please don't reply to that email in the heat of the moment; wait until tomorrow.",
+    "analytical": "Courts sometimes treat crimes committed in the heat of the moment differently from premeditated ones."
+   },
+   "analogy": "Like a pot boiling over: things spill out before you can turn down the flame.",
+   "etymology": "From heat in the sense of intense emotion or the most intense point of an action.",
+   "common_mistakes": [
+    "Saying \"at the heat of the moment\"; the preposition is \"in\".",
+    "Confusing it with \"on the spur of the moment\", which is about spontaneity, not emotion."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "hear it through the grapevine",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌhɪɹ ɪt θɹu ðə ˈɡɹeɪpˌvaɪn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To learn news or gossip informally, from people passing it along, rather than from an official source."
+    ]
+   }
+  ],
+  "etymology": "American, from the Civil War era \"grapevine telegraph,\" an informal way news and rumors spread.",
+  "conversation": [
+   {
+    "sense": "gossip",
+    "text": "I heard through the grapevine that you're getting married. Congratulations!"
+   },
+   {
+    "sense": "office news",
+    "text": "We heard it through the grapevine before the official announcement."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To learn something unofficially because people have been talking about it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌhɪɹ ɪt θɹu ðə ˈɡɹeɪpˌvaɪn/",
+    "respelling": "heer it throo thuh GRAYP-vahyn",
+    "tip": "Stress GRAPE: GRAYP-vahyn. \"Hear it\" links into hee-rit."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral; it hints the information might be unconfirmed.",
+   "usage_note": "Often \"I heard (it) through the grapevine that...\" Also just \"through the grapevine.\" Made famous by the 1960s Motown song \"I Heard It Through the Grapevine.\"",
+   "word_family": [
+    "the grapevine (noun: informal communication network)"
+   ],
+   "distinctions": [
+    {
+     "vs": "straight from the horse's mouth",
+     "note": "\"Straight from the horse's mouth\" means from the most reliable direct source; \"through the grapevine\" means secondhand."
+    },
+    {
+     "vs": "word of mouth",
+     "note": "\"Word of mouth\" is people telling each other, usually about recommendations; \"the grapevine\" is more about gossip and news."
+    }
+   ],
+   "antonyms": [
+    "straight from the horse's mouth"
+   ],
+   "collocations": [
+    "heard it through the grapevine",
+    "I heard through the grapevine that",
+    "news travels through the grapevine",
+    "the office grapevine"
+   ],
+   "examples": {
+    "everyday": "I heard through the grapevine that the bakery on Main is closing.",
+    "professional": "Several employees heard about the reorganization through the grapevine, so leadership moved up the announcement.",
+    "analytical": "In organizations with poor official communication, the grapevine becomes the main source of information, accurate or not."
+   },
+   "analogy": "Like news running along a twisting vine, from one cluster to the next.",
+   "etymology": "American, from the Civil War era \"grapevine telegraph,\" an informal way news and rumors spread.",
+   "common_mistakes": [
+    "Saying \"from the grapevine\"; the usual preposition is \"through\".",
+    "Using it for official news; it suggests informal, secondhand news."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "straight from the horse's mouth",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌstɹeɪt fɹəm ðə ˈhɔɹsɪz ˌmaʊθ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "(of information) From the person directly involved or the most reliable source."
+    ]
+   }
+  ],
+  "etymology": "Probably from horse trading, where a horse's age is judged by looking at its teeth rather than trusting the seller.",
+  "conversation": [
+   {
+    "sense": "confirming",
+    "text": "It's true, she's quitting. I heard it straight from the horse's mouth."
+   },
+   {
+    "sense": "reliable",
+    "text": "Don't trust the rumors; let's get it straight from the horse's mouth and ask the manager."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb phrase",
+    "definition": "Directly from the person who knows best, not secondhand."
+   },
+   "pronunciation": {
+    "ipa": "/ˌstɹeɪt fɹəm ðə ˈhɔɹsɪz ˌmaʊθ/",
+    "respelling": "strayt fruhm thuh HAWR-siz mouth",
+    "tip": "Stress HORSE: HAWR-siz. \"From the\" is quick: fruhm-thuh."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral; it emphasizes that the information is reliable.",
+   "usage_note": "Usually with \"hear,\" \"get,\" \"come\": \"I got it straight from the horse's mouth.\" Can be said humorously about yourself: \"You heard it from the horse's mouth.\"",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "through the grapevine",
+     "note": "\"Through the grapevine\" is secondhand gossip, the opposite source."
+    },
+    {
+     "vs": "firsthand",
+     "note": "\"Firsthand\" means directly experienced; \"from the horse's mouth\" means told by the person directly involved."
+    }
+   ],
+   "antonyms": [
+    "through the grapevine",
+    "secondhand"
+   ],
+   "collocations": [
+    "straight from the horse's mouth",
+    "heard it straight from the horse's mouth",
+    "get it from the horse's mouth"
+   ],
+   "examples": {
+    "everyday": "The coach told me himself, so this is straight from the horse's mouth: practice is canceled.",
+    "professional": "This comes straight from the horse's mouth: the client approved the budget this morning.",
+    "analytical": "Historians value letters and diaries because they offer information straight from the horse's mouth."
+   },
+   "analogy": "Like checking a horse's teeth yourself instead of trusting the seller.",
+   "etymology": "Probably from horse trading, where a horse's age is judged by looking at its teeth rather than trusting the seller.",
+   "common_mistakes": [
+    "Saying \"from the horse mouth\"; it is the possessive \"horse's\".",
+    "Using it for any information; it means a direct, authoritative source."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "lose sleep over",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˌluz ˈslip ˌoʊvɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To worry about something a lot (usually in the negative: \"don't lose sleep over it\")."
+    ]
+   }
+  ],
+  "etymology": "Literal in origin: worrying so much one cannot sleep.",
+  "conversation": [
+   {
+    "sense": "reassurance",
+    "text": "It was one bad test. Don't lose sleep over it."
+   },
+   {
+    "sense": "not worried",
+    "text": "He's mad I didn't come, but I'm not losing any sleep over it."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To worry so much about something that it keeps you awake; usually used to say something isn't worth worrying about."
+   },
+   "pronunciation": {
+    "ipa": "/ˌluz ˈslip ˌoʊvɚ/",
+    "respelling": "looz SLEEP oh-ver",
+    "tip": "\"Lose\" is looz, with a z sound; don't confuse it with \"loose.\" Stress SLEEP."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral; in the negative it is reassuring or dismissive.",
+   "usage_note": "Usually negative: \"Don't lose sleep over it,\" \"I won't lose any sleep over it.\" The second can sound cold (\"I don't care\").",
+   "word_family": [
+    "lost sleep over (past)",
+    "losing sleep over (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "sleep on it",
+     "note": "\"Sleep on it\" means waiting until tomorrow to decide; \"lose sleep over\" means worrying."
+    },
+    {
+     "vs": "beat oneself up",
+     "note": "\"Beat oneself up\" is blaming yourself; \"lose sleep over\" is worrying."
+    }
+   ],
+   "antonyms": [
+    "not give it a second thought"
+   ],
+   "collocations": [
+    "don't lose sleep over it",
+    "not losing any sleep over it",
+    "lose sleep over something",
+    "lost sleep over"
+   ],
+   "examples": {
+    "everyday": "I wouldn't lose sleep over a parking ticket.",
+    "professional": "The audit found a few minor issues, nothing to lose sleep over.",
+    "analytical": "Surveys show that many Americans lose sleep over money, more than over health or work."
+   },
+   "analogy": "Like taking a problem to bed with you and letting it keep you up.",
+   "etymology": "Literal in origin: worrying so much one cannot sleep.",
+   "common_mistakes": [
+    "Saying \"loose sleep\"; \"loose\" means not tight. The verb is \"lose\".",
+    "Saying \"lose sleep about\"; \"over\" is the usual preposition."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "a chip on one's shoulder",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ə ˌtʃɪp ɑn wʌnz ˈʃoʊldɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A lasting feeling of resentment or grievance, often about being treated unfairly or looked down on, that makes someone touchy or combative."
+    ]
+   }
+  ],
+  "etymology": "From a 19th-century American custom of placing a wood chip on one's shoulder and daring others to knock it off, as a challenge to fight.",
+  "conversation": [
+   {
+    "sense": "resentment",
+    "text": "He's had a chip on his shoulder ever since they passed him over for promotion."
+   },
+   {
+    "sense": "motivation",
+    "text": "She plays with a chip on her shoulder because nobody recruited her out of high school."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "A long-held feeling of being wronged or underestimated that makes someone easily offended or eager to prove themselves."
+   },
+   "pronunciation": {
+    "ipa": "/ə ˌtʃɪp ɑn wʌnz ˈʃoʊldɚ/",
+    "respelling": "uh chip ahn wuhnz SHOHL-der",
+    "tip": "Stress SHOUL: SHOHL-der. \"Chip on\" links: chi-pahn."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Usually negative (touchy, defensive); in sports it can be positive (driven to prove doubters wrong).",
+   "usage_note": "Almost always \"have a chip on one's shoulder (about something).\" Common about class, education, or being underestimated. In sports talk, \"playing with a chip on his shoulder\" is a compliment.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "hold a grudge",
+     "note": "\"Hold a grudge\" is resentment against a specific person for a specific wrong; \"a chip on one's shoulder\" is a general sense of grievance."
+    },
+    {
+     "vs": "bent out of shape",
+     "note": "\"Bent out of shape\" is a temporary overreaction; \"a chip on one's shoulder\" is a lasting attitude."
+    }
+   ],
+   "antonyms": [
+    "easygoing",
+    "secure"
+   ],
+   "collocations": [
+    "have a chip on his shoulder",
+    "a chip on her shoulder about",
+    "play with a chip on one's shoulder",
+    "a big chip on his shoulder"
+   ],
+   "examples": {
+    "everyday": "My cousin has a chip on his shoulder about not going to college.",
+    "professional": "The new hire seems to have a chip on his shoulder; he takes every piece of feedback as an attack.",
+    "analytical": "Underdog teams often play with a chip on their shoulder, which can fuel effort but also costly penalties."
+   },
+   "analogy": "Like walking around daring someone to knock something off your shoulder so you can fight them.",
+   "etymology": "From a 19th-century American custom of placing a wood chip on one's shoulder and daring others to knock it off, as a challenge to fight.",
+   "common_mistakes": [
+    "Saying \"a chip in my shoulder\"; the preposition is \"on\".",
+    "Assuming it is about a physical injury; it is about resentment."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "get one's hopes up",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˌɡɛt wʌnz ˈhoʊps ˌʌp/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To become hopeful or expect something good, often when it may not happen."
+    ]
+   }
+  ],
+  "etymology": "Literal: hopes raised up.",
+  "conversation": [
+   {
+    "sense": "warning",
+    "text": "They might call you back, but don't get your hopes up."
+   },
+   {
+    "sense": "disappointed",
+    "text": "I got my hopes up about the apartment, and then someone else signed first."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To let yourself expect a good outcome, which can lead to disappointment."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɛt wʌnz ˈhoʊps ˌʌp/",
+    "respelling": "get wuhnz HOHPS uhp",
+    "tip": "Stress HOPES. \"Hopes up\" links: hohp-suhp."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral; often a gentle warning against disappointment.",
+   "usage_note": "Usually negative: \"Don't get your hopes up,\" \"I don't want to get my hopes up.\" Also \"get someone's hopes up\" (to make them hopeful): \"I don't want to get the kids' hopes up.\"",
+   "word_family": [
+    "got one's hopes up (past)",
+    "get someone's hopes up (causative)"
+   ],
+   "distinctions": [
+    {
+     "vs": "high hopes",
+     "note": "\"High hopes\" means strong hopes or expectations; \"get one's hopes up\" is the act of becoming hopeful, often unwisely."
+    },
+    {
+     "vs": "hope against hope",
+     "note": "\"Hope against hope\" means continuing to hope when it is nearly impossible."
+    }
+   ],
+   "antonyms": [
+    "expect the worst"
+   ],
+   "collocations": [
+    "don't get your hopes up",
+    "I don't want to get my hopes up",
+    "got my hopes up",
+    "get the kids' hopes up"
+   ],
+   "examples": {
+    "everyday": "There might be tickets left, but don't get your hopes up.",
+    "professional": "Let's not get the client's hopes up until engineering confirms the timeline.",
+    "analytical": "Researchers find that people who get their hopes up about a single outcome report sharper disappointment when it fails."
+   },
+   "analogy": "Like climbing higher before a fall: the higher your hopes, the bigger the drop.",
+   "etymology": "Literal: hopes raised up.",
+   "common_mistakes": [
+    "Saying \"get my hope up\"; it is plural: \"hopes\".",
+    "Saying \"get up my hopes\"; the usual order is \"get my hopes up\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "have one's hands full",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌhæv wʌnz ˈhændz ˌfʊl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To be very busy, with as much as one can handle."
+    ]
+   }
+  ],
+  "etymology": "From the literal image of holding so much that one cannot pick up anything else.",
+  "conversation": [
+   {
+    "sense": "busy",
+    "text": "I'd love to help, but I have my hands full with the kids today."
+   },
+   {
+    "sense": "difficult person",
+    "text": "Their new puppy chews everything. They've got their hands full."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To be so busy or occupied that you can't take on anything else."
+   },
+   "pronunciation": {
+    "ipa": "/ˌhæv wʌnz ˈhændz ˌfʊl/",
+    "respelling": "hav wuhnz HANDZ fool",
+    "tip": "Stress HANDS. \"Full\" has the short u of \"book\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral; often sympathetic.",
+   "usage_note": "Common forms: \"I have my hands full,\" \"You've got your hands full.\" Often about caring for children, a difficult person or a big task. Also used literally (carrying things).",
+   "word_family": [
+    "have got one's hands full (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "have a lot on one's plate",
+     "note": "\"A lot on one's plate\" is many different responsibilities; \"hands full\" can be one demanding thing, like twins."
+    },
+    {
+     "vs": "tied up",
+     "note": "\"Tied up\" means busy right now and unavailable; \"hands full\" is a longer period of being stretched."
+    }
+   ],
+   "antonyms": [
+    "have time on one's hands",
+    "be free"
+   ],
+   "collocations": [
+    "have my hands full",
+    "you've got your hands full",
+    "have their hands full with",
+    "hands full at the moment"
+   ],
+   "examples": {
+    "everyday": "With twins and a full-time job, she has her hands full.",
+    "professional": "Support has its hands full with the outage, so please hold non-urgent tickets until tomorrow.",
+    "analytical": "Hospitals had their hands full during the flu season, which strained staffing models."
+   },
+   "analogy": "Like carrying so many bags that you can't open the door.",
+   "etymology": "From the literal image of holding so much that one cannot pick up anything else.",
+   "common_mistakes": [
+    "Saying \"my hands are full of\" with work; the idiom is \"have my hands full\".",
+    "Saying \"have my hand full\"; use the plural: \"hands\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "spread oneself too thin",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌspɹɛd wʌnˈsɛlf ˌtu ˈθɪn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To try to do too many things at once, so that one does none of them well."
+    ]
+   }
+  ],
+  "etymology": "The image is of spreading butter or paint so thin that it no longer covers well.",
+  "conversation": [
+   {
+    "sense": "overcommitted",
+    "text": "Between coaching, the PTA and work, I'm spreading myself too thin."
+   },
+   {
+    "sense": "advice",
+    "text": "Don't spread yourself too thin your first semester."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To take on so many commitments that you can't give enough time or energy to any of them."
+   },
+   "pronunciation": {
+    "ipa": "/ˌspɹɛd wʌnˈsɛlf ˌtu ˈθɪn/",
+    "respelling": "spred wuhn-self too THIN",
+    "tip": "Stress THIN. \"Thin\" starts with the soft th of \"think\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Negative: overcommitment and lowered quality.",
+   "usage_note": "Often \"be spread too thin\" for people, teams or resources: \"Our support team is spread too thin.\" Common in performance reviews and advice.",
+   "word_family": [
+    "spread too thin (adjective phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "burn the candle at both ends",
+     "note": "\"Burn the candle at both ends\" stresses exhaustion from long days; \"spread oneself too thin\" stresses having too many commitments."
+    },
+    {
+     "vs": "bite off more than one can chew",
+     "note": "\"Bite off more than one can chew\" is taking on one thing that is too big; \"spread oneself too thin\" is taking on too many things."
+    }
+   ],
+   "antonyms": [
+    "focus",
+    "prioritize"
+   ],
+   "collocations": [
+    "spread myself too thin",
+    "spreading herself too thin",
+    "spread too thin",
+    "stretched too thin"
+   ],
+   "examples": {
+    "everyday": "He joined four clubs and spread himself too thin.",
+    "professional": "The team is spread too thin across five projects; let's pause two of them.",
+    "analytical": "Firms that diversify too quickly risk spreading themselves too thin, losing the advantage of their core business."
+   },
+   "analogy": "Like butter on too much bread: it covers everything, but barely.",
+   "etymology": "The image is of spreading butter or paint so thin that it no longer covers well.",
+   "common_mistakes": [
+    "Saying \"spread myself too thinly\"; the idiom uses \"thin\".",
+    "Saying \"spread me too thin\"; use the reflexive: myself, yourself."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "dodge a bullet",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌdɑdʒ ə ˈbʊlɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To narrowly avoid a bad situation or outcome, often realized only afterward."
+    ]
+   }
+  ],
+  "etymology": "The image is of escaping a gunshot; the figurative use became common in the 20th century.",
+  "conversation": [
+   {
+    "sense": "relief",
+    "text": "That company went bankrupt a month after I turned down their offer. I really dodged a bullet."
+   },
+   {
+    "sense": "relationship",
+    "text": "Turns out he was married. You dodged a bullet there."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To escape something bad, often by luck or by a decision that turned out to be right."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdɑdʒ ə ˈbʊlɪt/",
+    "respelling": "dahj uh BOOL-it",
+    "tip": "\"Bullet\" is BOOL-it, with the vowel of \"book\". Stress BULL."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Relieved, sometimes humorous.",
+   "usage_note": "Usually past tense: \"I dodged a bullet,\" \"We dodged a bullet.\" Very common in conversation about narrowly avoided problems, bad jobs, bad dates, storms.",
+   "word_family": [
+    "dodged a bullet (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "close call",
+     "note": "A \"close call\" is a narrow escape from danger, noticed at the time; \"dodge a bullet\" often means realizing later that you avoided a bad outcome."
+    },
+    {
+     "vs": "bite the bullet",
+     "note": "\"Bite the bullet\" means facing something unpleasant bravely; it is unrelated to escaping."
+    }
+   ],
+   "antonyms": [
+    "take a hit"
+   ],
+   "collocations": [
+    "dodged a bullet",
+    "really dodged a bullet",
+    "we dodged a bullet there",
+    "dodged a big bullet"
+   ],
+   "examples": {
+    "everyday": "The storm turned north at the last minute, so our town dodged a bullet.",
+    "professional": "We dodged a bullet by not signing with that vendor; they lost two major clients last week.",
+    "analytical": "The economy dodged a bullet when the expected recession failed to materialize."
+   },
+   "analogy": "Like stepping aside just in time as something rushes past.",
+   "etymology": "The image is of escaping a gunshot; the figurative use became common in the 20th century.",
+   "common_mistakes": [
+    "Confusing it with \"bite the bullet\"; they mean very different things.",
+    "Using it for something you were sure to avoid; it implies a narrow escape."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "make a mountain out of a molehill",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌmeɪk ə ˈmaʊntən ˌaʊt əv ə ˈmoʊlˌhɪl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To treat a small problem as if it were a big one; to overreact."
+    ]
+   }
+  ],
+  "etymology": "In English since the 1500s; a molehill is the small mound of earth a mole pushes up.",
+  "conversation": [
+   {
+    "sense": "calm down",
+    "text": "It's one typo. Don't make a mountain out of a molehill."
+   },
+   {
+    "sense": "criticism",
+    "text": "My mom makes a mountain out of a molehill whenever I'm five minutes late."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To make a minor problem seem much more serious than it is."
+   },
+   "pronunciation": {
+    "ipa": "/ˌmeɪk ə ˈmaʊntən ˌaʊt əv ə ˈmoʊlˌhɪl/",
+    "respelling": "mayk uh MOUN-tn out uhv uh MOHL-hil",
+    "tip": "Stress MOUNTAIN and MOLE. \"Mountain\" is MOUN-tn in American speech, with a stopped t."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Critical: it accuses someone of overreacting.",
+   "usage_note": "Usually as advice or criticism: \"You're making a mountain out of a molehill.\" Can sound dismissive if the person thinks the problem is real.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "blow out of proportion",
+     "note": "\"Blow something out of proportion\" means exaggerating its importance, often in discussion or media; very close in meaning but less colorful."
+    },
+    {
+     "vs": "bent out of shape",
+     "note": "\"Bent out of shape\" describes the person's upset feeling; \"make a mountain out of a molehill\" describes exaggerating the problem."
+    }
+   ],
+   "antonyms": [
+    "play down",
+    "downplay"
+   ],
+   "collocations": [
+    "making a mountain out of a molehill",
+    "don't make a mountain out of a molehill",
+    "made a mountain out of a molehill"
+   ],
+   "examples": {
+    "everyday": "He's making a mountain out of a molehill over a scratch on the car.",
+    "professional": "Let's not make a mountain out of a molehill; one late shipment isn't a trend.",
+    "analytical": "Media coverage can make a mountain out of a molehill, turning a minor statistical blip into a crisis."
+   },
+   "analogy": "Like describing a tiny dirt pile in the yard as if it were a mountain.",
+   "etymology": "In English since the 1500s; a molehill is the small mound of earth a mole pushes up.",
+   "common_mistakes": [
+    "Saying \"make a molehill out of a mountain\"; the order is mountain out of molehill.",
+    "Using it for problems that really are serious."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "spin one's wheels",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌspɪn wʌnz ˈwilz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To work hard or keep trying without making any progress."
+    ]
+   }
+  ],
+  "etymology": "From a car or truck stuck in mud or snow, its wheels turning without moving it.",
+  "conversation": [
+   {
+    "sense": "stuck",
+    "text": "I've been spinning my wheels on this report all morning."
+   },
+   {
+    "sense": "career",
+    "text": "She felt like she was spinning her wheels in that job, so she went back to school."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To spend time and effort without getting anywhere."
+   },
+   "pronunciation": {
+    "ipa": "/ˌspɪn wʌnz ˈwilz/",
+    "respelling": "spin wuhnz WEELZ",
+    "tip": "Stress WHEELS. Most Americans say \"wheels\" with a plain w: weelz."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative: frustration and wasted effort.",
+   "usage_note": "Usually in the progressive: \"We're just spinning our wheels.\" Common at work, in careers and in sports commentary.",
+   "word_family": [
+    "spinning one's wheels (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "twiddle one's thumbs",
+     "note": "\"Twiddle one's thumbs\" is doing nothing; \"spin one's wheels\" is doing a lot but getting nowhere."
+    },
+    {
+     "vs": "go around in circles",
+     "note": "\"Go around in circles\" is discussing or doing the same thing again and again; \"spin one's wheels\" is effort without progress."
+    }
+   ],
+   "antonyms": [
+    "make headway",
+    "make progress"
+   ],
+   "collocations": [
+    "spinning my wheels",
+    "just spinning our wheels",
+    "stop spinning your wheels",
+    "feel like I'm spinning my wheels"
+   ],
+   "examples": {
+    "everyday": "I'm spinning my wheels with this puzzle. I need a break.",
+    "professional": "We're spinning our wheels without a decision from legal; let's escalate.",
+    "analytical": "Organizations that keep restructuring often spin their wheels, spending energy on reorganization rather than results."
+   },
+   "analogy": "Like a car stuck in snow: the engine roars and the tires spin, but you don't move.",
+   "etymology": "From a car or truck stuck in mud or snow, its wheels turning without moving it.",
+   "common_mistakes": [
+    "Saying \"turn my wheels\"; the verb is \"spin\".",
+    "Using it for being lazy; it means effort without results."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "put one's money where one's mouth is",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌpʊt wʌnz ˈmʌni ˌwɛɹ wʌnz ˈmaʊθ ɪz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To back up one's words with action, especially by spending or risking money."
+    ]
+   }
+  ],
+  "etymology": "American, 20th century, probably from betting: placing a real bet on the claim one makes.",
+  "conversation": [
+   {
+    "sense": "challenge",
+    "text": "You say the team will win? Put your money where your mouth is and bet me twenty bucks."
+   },
+   {
+    "sense": "action",
+    "text": "The company says it cares about the environment, and it put its money where its mouth is with solar panels."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To prove you mean what you say by acting on it, especially by paying or risking something."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpʊt wʌnz ˈmʌni ˌwɛɹ wʌnz ˈmaʊθ ɪz/",
+    "respelling": "poot wuhnz MUHN-ee wair wuhnz MOUTH iz",
+    "tip": "Stress MONEY and MOUTH. \"Where\" usually has no h sound: wair."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Challenging or approving: it tests sincerity.",
+   "usage_note": "Often a challenge: \"Put your money where your mouth is.\" Also used approvingly when an organization funds what it promises.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "walk the walk",
+     "note": "\"Walk the walk\" (after \"talk the talk\") means acting on your words generally; \"put your money where your mouth is\" focuses on spending or betting."
+    },
+    {
+     "vs": "put up or shut up",
+     "note": "\"Put up or shut up\" is a ruder way of challenging someone to act or stop talking."
+    }
+   ],
+   "antonyms": [
+    "all talk"
+   ],
+   "collocations": [
+    "put your money where your mouth is",
+    "put its money where its mouth is",
+    "time to put our money where our mouth is"
+   ],
+   "examples": {
+    "everyday": "He kept saying he'd run the marathon, so we told him to put his money where his mouth is and sign up.",
+    "professional": "If we believe in training, we need to put our money where our mouth is and fund it.",
+    "analytical": "Investors who put their money where their mouth is by buying their own company's stock send a credible signal to the market."
+   },
+   "analogy": "Like backing a bet with real cash instead of just talk.",
+   "etymology": "American, 20th century, probably from betting: placing a real bet on the claim one makes.",
+   "common_mistakes": [
+    "Mixing pronouns: keep them the same person: \"put your money where your mouth is\".",
+    "Using it when no action or cost is involved."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "money doesn't grow on trees",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈmʌni ˌdʌzənt ˌɡɹoʊ ɑn ˈtɹiz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Money is limited and has to be earned, so it should not be wasted."
+    ]
+   }
+  ],
+  "etymology": "A common English saying; the image is of money as something you can't simply pick.",
+  "conversation": [
+   {
+    "sense": "parent to child",
+    "text": "No, you can't have another video game. Money doesn't grow on trees."
+   },
+   {
+    "sense": "budget",
+    "text": "We need to cut back. Money doesn't grow on trees, you know."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "proverb",
+    "definition": "Money is hard to get, so don't spend it carelessly."
+   },
+   "pronunciation": {
+    "ipa": "/ˈmʌni ˌdʌzənt ˌɡɹoʊ ɑn ˈtɹiz/",
+    "respelling": "MUHN-ee duhz-nt groh ahn TREEZ",
+    "tip": "\"Doesn't\" is DUZ-nt, two syllables. Stress MONEY and TREES."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly scolding, often parent to child.",
+   "usage_note": "Classic parental line. Among adults, it sounds teasing or slightly preachy. Often followed by \"you know.\"",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "time is money",
+     "note": "\"Time is money\" is about not wasting time; \"money doesn't grow on trees\" is about not wasting money."
+    },
+    {
+     "vs": "tighten one's belt",
+     "note": "\"Tighten one's belt\" is the action of spending less; \"money doesn't grow on trees\" is the reason given."
+    }
+   ],
+   "antonyms": [
+    "have money to burn"
+   ],
+   "collocations": [
+    "money doesn't grow on trees, you know",
+    "as my mom used to say, money doesn't grow on trees"
+   ],
+   "examples": {
+    "everyday": "Turn off the lights when you leave. Money doesn't grow on trees.",
+    "professional": "Before we approve another software license, remember that money doesn't grow on trees.",
+    "analytical": "The saying \"money doesn't grow on trees\" captures the basic economic idea of scarcity."
+   },
+   "analogy": "Like reminding someone that the backyard has no money tree to pick from.",
+   "etymology": "A common English saying; the image is of money as something you can't simply pick.",
+   "common_mistakes": [
+    "Saying \"money don't grow on trees\" in careful speech; the standard form is \"doesn't\".",
+    "Using it as a compliment; it is a gentle scolding."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "beat oneself up",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˌbit wʌnˈsɛlf ˈʌp/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To blame or criticize oneself harshly, especially about a mistake."
+    ]
+   }
+  ],
+  "etymology": "Figurative use of beat up (to hurt badly), turned on oneself; American, 20th century.",
+  "conversation": [
+   {
+    "sense": "comfort",
+    "text": "Everyone forgets things. Don't beat yourself up about it."
+   },
+   {
+    "sense": "regret",
+    "text": "I've been beating myself up all week over what I said."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To be very hard on yourself, feeling guilty or blaming yourself too much."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbit wʌnˈsɛlf ˈʌp/",
+    "respelling": "beet wuhn-self UHP",
+    "tip": "Stress UP. \"Beat yourself up\" often sounds like beet-cher-self-UP."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Sympathetic: it is usually said to stop someone from doing it.",
+   "usage_note": "Very common in comfort: \"Don't beat yourself up (about/over it).\" Uses a reflexive pronoun: myself, yourself, herself.",
+   "word_family": [
+    "beat oneself up (past is the same: beat)",
+    "beating oneself up (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "kick oneself",
+     "note": "\"Kick oneself\" is a quick feeling of regret (\"I could kick myself!\"); \"beat oneself up\" is longer, harsher self-criticism."
+    },
+    {
+     "vs": "lose sleep over",
+     "note": "\"Lose sleep over\" is worrying; \"beat oneself up\" is blaming yourself."
+    }
+   ],
+   "antonyms": [
+    "go easy on oneself",
+    "cut oneself some slack"
+   ],
+   "collocations": [
+    "don't beat yourself up",
+    "beating myself up over",
+    "stop beating yourself up",
+    "beat herself up about"
+   ],
+   "examples": {
+    "everyday": "He missed the free throw and has been beating himself up ever since.",
+    "professional": "Mistakes happen in the first month; don't beat yourself up, just learn the process.",
+    "analytical": "Therapists note that people who beat themselves up after setbacks often recover more slowly than those who practice self-compassion."
+   },
+   "analogy": "Like being both the bully and the victim in your own head.",
+   "etymology": "Figurative use of beat up (to hurt badly), turned on oneself; American, 20th century.",
+   "common_mistakes": [
+    "Forgetting the reflexive: \"Don't beat you up\" is wrong; say \"yourself\".",
+    "Taking it literally; it is about blaming yourself, not physical harm."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "hit the books",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌhɪt ðə ˈbʊks/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To study, especially hard and seriously."
+    ]
+   }
+  ],
+  "etymology": "American college slang from the 20th century; hit in the sense of going to or starting on something.",
+  "conversation": [
+   {
+    "sense": "student",
+    "text": "I can't go out tonight. I have to hit the books."
+   },
+   {
+    "sense": "finals",
+    "text": "Finals are next week, so it's time to hit the books."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To start studying hard, usually for a test."
+   },
+   "pronunciation": {
+    "ipa": "/ˌhɪt ðə ˈbʊks/",
+    "respelling": "hit thuh BOOKS",
+    "tip": "\"Books\" has the short u of \"foot\". Stress BOOKS."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral to positive; common among students.",
+   "usage_note": "Common among students: \"I need to hit the books.\" American, casual. Adults use it for studying for a license, certification or exam.",
+   "word_family": [
+    "hit the books (past is the same: hit)"
+   ],
+   "distinctions": [
+    {
+     "vs": "hit the hay",
+     "note": "\"Hit the hay\" means going to bed; same pattern, different meaning."
+    },
+    {
+     "vs": "cram",
+     "note": "\"Cram\" means studying a lot at the last minute; \"hit the books\" is studying hard in general."
+    }
+   ],
+   "antonyms": [
+    "slack off",
+    "goof off"
+   ],
+   "collocations": [
+    "hit the books",
+    "time to hit the books",
+    "better hit the books",
+    "hitting the books for finals"
+   ],
+   "examples": {
+    "everyday": "My roommate is hitting the books for the MCAT every night.",
+    "professional": "I'm hitting the books for my CPA exam, so I'll be offline weekends this month.",
+    "analytical": "Students who hit the books in steady sessions retain more than those who cram the night before."
+   },
+   "analogy": "Like going at your textbooks the way a boxer goes at a punching bag.",
+   "etymology": "American college slang from the 20th century; hit in the sense of going to or starting on something.",
+   "common_mistakes": [
+    "Saying \"hit the book\"; it is plural: \"books\".",
+    "Using it for reading for fun; it means studying."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ }
+]

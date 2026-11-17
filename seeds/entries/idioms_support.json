@@ -1,0 +1,3407 @@
+[
+ {
+  "word": "have someone's back",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/hæv ˈsʌmwʌnz ˈbæk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To be ready to support, defend or help someone, especially if they get into trouble or are criticized.",
+     "To protect someone from danger or from being taken advantage of, as a friend or teammate would."
+    ]
+   }
+  ],
+  "etymology": "From the image of guarding a comrade's back in a fight, the side a person cannot see or defend; a modern American colloquialism.",
+  "conversation": [
+   {
+    "sense": "promise of support",
+    "text": "Go ahead and tell the boss what happened. I've got your back."
+   },
+   {
+    "sense": "mutual loyalty",
+    "text": "We've had each other's backs since high school."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To be loyal to someone and ready to defend or help them if things go wrong."
+   },
+   "pronunciation": {
+    "ipa": "/hæv ˈsʌmwʌnz ˈbæk/",
+    "respelling": "hav SUM-wuhnz BAK",
+    "tip": "Stress BACK most. In 'I've got your back', the words run together: ive-GOT-cher-BAK."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Warm and loyal; it sounds like a promise between friends, teammates or coworkers.",
+   "usage_note": "Most often heard as 'I've got your back' or 'I got your back' (casual), said to reassure someone before a risky moment: a hard conversation, a game, a new job. 'Don't worry, I have your back' is the same thing, a little less casual. 'We have each other's backs' describes a close, two-way loyalty. In questions it can test loyalty: 'Do you have my back on this or not?' It suits friends and coworkers but is too casual for formal writing.",
+   "word_family": [
+    "have each other's backs (reciprocal)",
+    "back (verb: to support)",
+    "backup (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "watch someone's back",
+     "note": "Watch someone's back is about looking out for danger on their behalf; have someone's back is broader loyalty, including standing up for them."
+    },
+    {
+     "vs": "back someone up",
+     "note": "Back someone up is the action (supporting what they say or do, often right then); having their back is the ongoing readiness to do it."
+    },
+    {
+     "vs": "stick up for",
+     "note": "Stick up for is defending someone in a specific moment, often when they are criticized; I've got your back is a promise made in advance."
+    },
+    {
+     "vs": "stab in the back",
+     "note": "The opposite: to betray someone who trusted you."
+    }
+   ],
+   "antonyms": [
+    "stab in the back",
+    "throw someone under the bus",
+    "hang someone out to dry"
+   ],
+   "collocations": [
+    "I've got your back",
+    "I got your back",
+    "have each other's backs",
+    "always have your back",
+    "know someone has your back",
+    "Do you have my back?"
+   ],
+   "examples": {
+    "everyday": "Don't be nervous about asking for a raise. You know I've got your back.",
+    "professional": "If the client pushes back on the timeline, I'll have your back in the meeting.",
+    "analytical": "Employees who believe their manager has their back are more willing to report mistakes early."
+   },
+   "analogy": "Like a teammate standing behind you so no one can hit you from the side you can't see.",
+   "etymology": "From the image of guarding a comrade's back in a fight, the side a person cannot see or defend; a modern American colloquialism.",
+   "common_mistakes": [
+    "Saying 'I have your backs' to one person; it is 'your back' for one person and 'each other's backs' for two or more.",
+    "Confusing it with 'get someone's back up', which means to make someone annoyed or defensive."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "watch someone's back",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈwɑtʃ ˌsʌmwʌnz ˈbæk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To look out for someone and protect them from danger or from people who might harm them.",
+     "watch your back: a warning to be careful, because someone may try to hurt or cheat you."
+    ]
+   }
+  ],
+  "etymology": "From the image of guarding the side of a person they cannot see; compare 'have someone's back'.",
+  "conversation": [
+   {
+    "sense": "protecting a friend",
+    "text": "Stay close to me at the concert and I'll watch your back."
+   },
+   {
+    "sense": "warning",
+    "text": "Watch your back with that guy. He takes credit for everyone's work."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To keep an eye out for danger on someone's behalf; as 'watch your back', a warning to be careful."
+   },
+   "pronunciation": {
+    "ipa": "/ˈwɑtʃ ˌsʌmwʌnz ˈbæk/",
+    "respelling": "WAHCH sum-wuhnz BAK",
+    "tip": "Stress WATCH and BACK. 'Watch your back' is often said as one quick warning: WAHCH-yer-BAK."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Protective when you watch someone else's back; wary or even threatening in 'You'd better watch your back.'",
+   "usage_note": "Two uses. 'I'll watch your back' is a friendly offer of protection, close to 'I've got your back'. 'Watch your back' (to the listener) is a warning that someone may betray or attack them; said with a hard tone, 'You'd better watch your back' sounds like a threat. 'Watch out for' is the general, neutral way to say be careful of.",
+   "word_family": [
+    "watch out (phrasal verb)",
+    "watch out for (phrasal verb)",
+    "have someone's back (related idiom)"
+   ],
+   "distinctions": [
+    {
+     "vs": "have someone's back",
+     "note": "Have someone's back is loyalty in general, including defending them in an argument; watch someone's back leans toward physical or practical danger."
+    },
+    {
+     "vs": "watch out for",
+     "note": "Watch out for is neutral and literal (watch out for ice); watch your back suggests danger from people."
+    },
+    {
+     "vs": "keep an eye out",
+     "note": "Keep an eye out is looking for something or someone; it does not suggest protection."
+    }
+   ],
+   "antonyms": [
+    "stab in the back"
+   ],
+   "collocations": [
+    "watch your back",
+    "watch each other's backs",
+    "I'll watch your back",
+    "you'd better watch your back",
+    "have to watch my back"
+   ],
+   "examples": {
+    "everyday": "New city, new job; I just feel like I have to watch my back until I know who to trust.",
+    "professional": "In a reorganization like this one, a lot of people are watching their backs instead of doing their jobs.",
+    "analytical": "Workplaces with low trust push employees to spend effort watching their backs rather than collaborating."
+   },
+   "analogy": "Like a second pair of eyes behind your head.",
+   "etymology": "From the image of guarding the side of a person they cannot see; compare 'have someone's back'.",
+   "common_mistakes": [
+    "Using 'watch your back' as a friendly 'take care'; it implies a real threat from someone.",
+    "Saying 'watch on your back'; there is no 'on'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "behind someone's back",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/bɪˈhaɪnd ˌsʌmwʌnz ˈbæk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Secretly, without the knowledge of the person concerned, usually in a way that is unfair or disloyal to them."
+    ]
+   }
+  ],
+  "etymology": "From the literal image of doing something where a person cannot see it.",
+  "conversation": [
+   {
+    "sense": "gossip",
+    "text": "I can't believe she was talking about me behind my back."
+   },
+   {
+    "sense": "secret action",
+    "text": "He went behind his partner's back and sold the shares."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Secretly and without someone's knowledge, especially in a disloyal or unfair way."
+   },
+   "pronunciation": {
+    "ipa": "/bɪˈhaɪnd ˌsʌmwʌnz ˈbæk/",
+    "respelling": "bih-HYND sum-wuhnz BAK",
+    "tip": "Stress -HIND and BACK: bih-HYND my BAK. 'Behind' has the long i of 'kind'."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Negative; it implies sneakiness, gossip or betrayal.",
+   "usage_note": "Very common with 'talk about someone', 'go', 'say things' and 'laugh at someone': 'Don't talk about people behind their backs.' 'Go behind someone's back' means to act secretly around them, often by going to their boss or doing what they said not to do. Use 'their backs' for more than one person. The contrast 'to my face' is common: 'If you have a problem, say it to my face, not behind my back.'",
+   "word_family": [
+    "back (noun)",
+    "backstabbing (noun, adjective)",
+    "backstabber (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "stab in the back",
+     "note": "Stab in the back is a serious betrayal; doing something behind someone's back can be as small as gossip."
+    },
+    {
+     "vs": "behind the scenes",
+     "note": "Behind the scenes means out of public view, usually neutrally (the work behind the scenes); behind someone's back is secret and disloyal."
+    },
+    {
+     "vs": "go over someone's head",
+     "note": "Going over someone's head is taking an issue to their boss openly; going behind their back is doing it secretly."
+    }
+   ],
+   "antonyms": [
+    "to someone's face",
+    "openly"
+   ],
+   "collocations": [
+    "talk behind someone's back",
+    "go behind someone's back",
+    "behind my back",
+    "laugh behind someone's back",
+    "say something behind someone's back",
+    "not to my face"
+   ],
+   "examples": {
+    "everyday": "If you're upset with Jen, tell her. Don't complain about her behind her back.",
+    "professional": "Going behind your manager's back to the VP rarely ends well, even if you're right.",
+    "analytical": "Gossip behind colleagues' backs erodes trust faster than open disagreement does."
+   },
+   "analogy": "Like making faces at someone who has turned around: they can't see it, which is the whole problem.",
+   "etymology": "From the literal image of doing something where a person cannot see it.",
+   "common_mistakes": [
+    "Saying 'in my back' or 'on my back'; it is 'behind my back'.",
+    "Using it for harmless surprises like a party; it usually suggests disloyalty, so say 'without telling her' or 'secretly' for good surprises."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "throw someone under the bus",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˈθɹoʊ ˌsʌmwʌn ˌʌndɚ ðə ˈbʌs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To blame or sacrifice someone, often a friend or colleague, to protect yourself or gain an advantage.",
+     "To abandon someone who trusted you when they become inconvenient."
+    ]
+   }
+  ],
+  "etymology": "Origin uncertain; the image is of pushing someone into the path of a bus. It spread widely in American political talk in the 2000s.",
+  "conversation": [
+   {
+    "sense": "blaming a colleague",
+    "text": "When the project failed, my boss threw me under the bus in front of the whole team."
+   },
+   {
+    "sense": "self-protection",
+    "text": "I'm not going to throw you under the bus, but I can't lie for you either."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To blame or sacrifice a friend or colleague to protect yourself."
+   },
+   "pronunciation": {
+    "ipa": "/ˈθɹoʊ ˌsʌmwʌn ˌʌndɚ ðə ˈbʌs/",
+    "respelling": "THROH sum-wuhn UHN-der thuh BUHS",
+    "tip": "Stress THROW and BUS. 'Under the' is quick and light: UHN-der-thuh BUHS."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Strongly negative; it is an accusation of selfish betrayal.",
+   "usage_note": "Extremely common at work and in politics: someone is 'thrown under the bus' when their boss, team or party blames them publicly so that others escape criticism. The passive is frequent: 'I got thrown under the bus.' It is informal but widely used in meetings and news commentary. 'Under the bus' alone also appears: 'She put the whole team under the bus.'",
+   "word_family": [
+    "thrown under the bus (passive)",
+    "throwing under the bus (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "stab someone in the back",
+     "note": "Stab in the back is betrayal in general, often secret; throwing someone under the bus is specifically blaming them, usually in public, to save yourself."
+    },
+    {
+     "vs": "hang someone out to dry",
+     "note": "Hang out to dry is leaving someone alone to face the consequences; under the bus means actively pushing the blame onto them."
+    },
+    {
+     "vs": "fall guy",
+     "note": "The fall guy is the person who ends up blamed; throwing someone under the bus is how they get there."
+    },
+    {
+     "vs": "take the fall",
+     "note": "Take the fall is accepting blame yourself, the opposite move."
+    }
+   ],
+   "antonyms": [
+    "have someone's back",
+    "take the fall",
+    "go to bat for"
+   ],
+   "collocations": [
+    "throw someone under the bus",
+    "get thrown under the bus",
+    "throw a colleague under the bus",
+    "not going to throw anyone under the bus",
+    "throw the whole team under the bus"
+   ],
+   "examples": {
+    "everyday": "My brother totally threw me under the bus when Mom asked who broke the vase.",
+    "professional": "Owning the mistake as a team is better than throwing the vendor under the bus on the client call.",
+    "analytical": "Leaders who throw subordinates under the bus may protect themselves in the short term but lose their team's trust."
+   },
+   "analogy": "Like shoving your friend into traffic so the bus hits them instead of you.",
+   "etymology": "Origin uncertain; the image is of pushing someone into the path of a bus. It spread widely in American political talk in the 2000s.",
+   "common_mistakes": [
+    "Saying 'throw someone in front of the bus' or 'under a bus'; the fixed form is 'under the bus'.",
+    "Using it for honest criticism; it implies unfair blame for one's own benefit."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in someone's corner",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ɪn ˌsʌmwʌnz ˈkɔɹnɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Supporting and encouraging someone, especially during a difficult struggle."
+    ]
+   }
+  ],
+  "etymology": "From boxing: each fighter has a corner of the ring where their trainer and helpers wait to support them between rounds.",
+  "conversation": [
+   {
+    "sense": "support in a struggle",
+    "text": "Whatever happens with the surgery, remember we're all in your corner."
+   },
+   {
+    "sense": "ally",
+    "text": "It helps to have someone in your corner when you're negotiating a contract."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "On someone's side, supporting and encouraging them through a hard time."
+   },
+   "pronunciation": {
+    "ipa": "/ɪn ˌsʌmwʌnz ˈkɔɹnɚ/",
+    "respelling": "in sum-wuhnz KOR-ner",
+    "tip": "Stress COR-: in your KOR-ner. Americans pronounce the r in both syllables."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Warm and encouraging; it suggests a fight that the person is not facing alone.",
+   "usage_note": "Common with 'have', 'be' and 'someone in your corner': 'I'm in your corner', 'She's got her family in her corner.' It fits health problems, lawsuits, job searches and competitions. 'Who's in your corner?' asks who supports you. Slightly more formal-friendly than 'I've got your back', so it also works in speeches and cards.",
+   "word_family": [
+    "corner (noun)",
+    "cornerman (noun: boxing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "have someone's back",
+     "note": "Have someone's back stresses defense and loyalty in a crisis; in someone's corner stresses encouragement through a long struggle."
+    },
+    {
+     "vs": "on someone's side",
+     "note": "On someone's side is the plain, neutral version; in someone's corner adds the image of a coach backing a fighter."
+    },
+    {
+     "vs": "in a corner",
+     "note": "In a corner (or backed into a corner) means trapped with no good options, a different idiom."
+    }
+   ],
+   "antonyms": [
+    "against someone"
+   ],
+   "collocations": [
+    "in your corner",
+    "have someone in your corner",
+    "be in someone's corner",
+    "Who's in your corner?",
+    "always in your corner"
+   ],
+   "examples": {
+    "everyday": "No matter what you decide about college, Dad and I are in your corner.",
+    "professional": "Having a mentor in your corner can make a huge difference in your first year as a manager.",
+    "analytical": "Patients who have an advocate in their corner tend to understand their treatment options better."
+   },
+   "analogy": "Like a boxer's trainer, who can't fight for you but is right there between rounds with water and advice.",
+   "etymology": "From boxing: each fighter has a corner of the ring where their trainer and helpers wait to support them between rounds.",
+   "common_mistakes": [
+    "Saying 'in someone's side'; it is 'on someone's side' or 'in someone's corner'.",
+    "Confusing it with 'in a corner', which means trapped."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "pull one's weight",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˈpʊl wʌnz ˈweɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To do one's fair share of the work in a shared task, as much as others are doing."
+    ]
+   }
+  ],
+  "etymology": "Probably from rowing, where each rower must pull hard enough to move their own weight in the boat.",
+  "conversation": [
+   {
+    "sense": "fair share",
+    "text": "Everyone on the trip has to pull their weight. That means cooking and cleaning too."
+   },
+   {
+    "sense": "complaint",
+    "text": "He's a nice guy, but he's not pulling his weight on this project."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To do your fair share of the work so others don't have to carry you."
+   },
+   "pronunciation": {
+    "ipa": "/ˈpʊl wʌnz ˈweɪt/",
+    "respelling": "PUUL wuhnz WAYT",
+    "tip": "Stress PULL and WEIGHT. 'Pull' has the short vowel of 'put', not 'pool'."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral when positive; critical in the common negative 'not pulling his weight'.",
+   "usage_note": "Often negative: 'She isn't pulling her weight.' Change the possessive to fit the subject: I pull my weight, they pull their weight. 'Pull your own weight' adds emphasis. Common at work, in group projects, roommates and families. 'Carry one's weight' is also heard, but 'pull' is standard.",
+   "word_family": [
+    "pull (verb)",
+    "weight (noun)",
+    "pull your own weight (emphatic)"
+   ],
+   "distinctions": [
+    {
+     "vs": "pick up the slack",
+     "note": "Picking up the slack is doing extra because someone else did not pull their weight."
+    },
+    {
+     "vs": "team player",
+     "note": "A team player cooperates and puts the group first; pulling your weight is specifically doing your share of the work."
+    },
+    {
+     "vs": "dead weight",
+     "note": "Dead weight is a person who contributes nothing; such a person is not pulling their weight."
+    }
+   ],
+   "antonyms": [
+    "slack off",
+    "freeload",
+    "dead weight"
+   ],
+   "collocations": [
+    "pull your weight",
+    "not pulling his weight",
+    "pull your own weight",
+    "everyone pulls their weight",
+    "expect everyone to pull their weight"
+   ],
+   "examples": {
+    "everyday": "If you want to live here, you need to pull your weight with the chores.",
+    "professional": "In peer reviews, the team said two members weren't pulling their weight on the launch.",
+    "analytical": "Group grades can backfire when strong students resent classmates who don't pull their weight."
+   },
+   "analogy": "Like rowing a boat with friends: if one person just sits there, everyone else has to row harder.",
+   "etymology": "Probably from rowing, where each rower must pull hard enough to move their own weight in the boat.",
+   "common_mistakes": [
+    "Saying 'pull my weights' or 'pull the weight'; it is 'pull my weight'.",
+    "Using it for physical strength or losing weight; it only means doing your share."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "hold down the fort",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈhoʊld ˌdaʊn ðə ˈfɔɹt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To take care of a place or keep things running while the person usually in charge is away."
+    ]
+   }
+  ],
+  "etymology": "From 'hold the fort', a military order to defend a position. The Civil War message 'Hold the fort, I am coming', associated with General Sherman (1864), and a popular gospel song built on it spread the phrase; 'hold down the fort' is the later American form.",
+  "conversation": [
+   {
+    "sense": "covering at work",
+    "text": "Can you hold down the fort while I run to the bank?"
+   },
+   {
+    "sense": "at home",
+    "text": "Grandma held down the fort with the kids while we were at the hospital."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To keep things running at home or at work while others are away."
+   },
+   "pronunciation": {
+    "ipa": "/ˈhoʊld ˌdaʊn ðə ˈfɔɹt/",
+    "respelling": "HOHLD down thuh FORT",
+    "tip": "Stress HOLD and FORT. 'Down the' is quick: HOHLD-down-thuh FORT."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Friendly and light; it often thanks or asks someone for help.",
+   "usage_note": "The usual American form; 'hold the fort' is also heard and is the older, more British form. Common with offices, stores, households and children: 'Thanks for holding down the fort.' It suggests a temporary job and is often humorous, since a kitchen or front desk is hardly a fort under attack.",
+   "word_family": [
+    "hold the fort (variant)",
+    "held down the fort (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "cover for",
+     "note": "Cover for someone is doing their specific job or making excuses for them; holding down the fort is keeping the whole place running."
+    },
+    {
+     "vs": "hold down",
+     "note": "Hold down alone means to keep something (or a job) under control: hold down a job."
+    },
+    {
+     "vs": "mind the store",
+     "note": "Mind the store is similar and also American, but 'hold down the fort' is more common."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "hold down the fort",
+    "thanks for holding down the fort",
+    "hold down the fort while I'm gone",
+    "hold the fort",
+    "left to hold down the fort"
+   ],
+   "examples": {
+    "everyday": "My parents are away for the weekend, so I'm holding down the fort and feeding the dog.",
+    "professional": "Priya will hold down the fort while I'm at the conference; send urgent questions to her.",
+    "analytical": "Small businesses often depend on one trusted employee to hold down the fort when the owner is away."
+   },
+   "analogy": "Like the soldiers left behind to guard the camp while the army is out.",
+   "etymology": "From 'hold the fort', a military order to defend a position. The Civil War message 'Hold the fort, I am coming', associated with General Sherman (1864), and a popular gospel song built on it spread the phrase; 'hold down the fort' is the later American form.",
+   "common_mistakes": [
+    "Saying 'hold up the fort' or 'keep the fort'; it is 'hold down the fort' or 'hold the fort'.",
+    "Using it for permanent responsibility; it suggests filling in while someone is away."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "have someone's best interests at heart",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/hæv ˌsʌmwʌnz ˈbɛst ˈɪntɹəsts æt ˈhɑɹt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To truly want what is good for someone and to act with their welfare in mind."
+    ]
+   }
+  ],
+  "etymology": "From 'interest' in the sense of welfare or advantage, and 'at heart' meaning in one's real feelings.",
+  "conversation": [
+   {
+    "sense": "reassurance",
+    "text": "I know you're angry, but your coach has your best interests at heart."
+   },
+   {
+    "sense": "doubt",
+    "text": "I'm not sure the salesman has our best interests at heart."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To sincerely want what is best for someone and act with their good in mind."
+   },
+   "pronunciation": {
+    "ipa": "/hæv ˌsʌmwʌnz ˈbɛst ˈɪntɹəsts æt ˈhɑɹt/",
+    "respelling": "hav sum-wuhnz BEST IN-truhsts at HAHRT",
+    "tip": "Stress BEST, IN- and HEART. 'Interests' is usually said in three syllables: IN-truh-sts."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Positive and sincere, though it is often used in doubt: 'Does he really have my best interests at heart?'",
+   "usage_note": "Used about parents, doctors, advisors, managers and friends, often when their advice is unwelcome: 'She has your best interests at heart.' It also appears in questions and denials to express distrust. Neutral enough for professional writing. The singular 'best interest' is also heard, but 'interests' is more common in this phrase.",
+   "word_family": [
+    "in someone's best interest (related phrase)",
+    "interest (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "in someone's best interest",
+     "note": "In someone's best interest describes what is good for them (it's in your best interest to save); having their best interests at heart describes a person's motives."
+    },
+    {
+     "vs": "mean well",
+     "note": "Mean well is having good intentions, often with poor results; having someone's best interests at heart says whose good you care about."
+    },
+    {
+     "vs": "have someone's back",
+     "note": "Have someone's back is loyal defense; best interests at heart is caring about their long-term good, even against their wishes."
+    }
+   ],
+   "antonyms": [
+    "have an ulterior motive",
+    "look out for number one"
+   ],
+   "collocations": [
+    "have your best interests at heart",
+    "truly have someone's best interests at heart",
+    "don't have our best interests at heart",
+    "with your best interests at heart"
+   ],
+   "examples": {
+    "everyday": "Your grandmother nags, but she has your best interests at heart.",
+    "professional": "Clients need to trust that their financial advisor has their best interests at heart, not just the commission.",
+    "analytical": "Fiduciary rules exist because we cannot simply assume that advisers have their clients' best interests at heart."
+   },
+   "analogy": "Like a good doctor who prescribes the bitter medicine because it will make you well.",
+   "etymology": "From 'interest' in the sense of welfare or advantage, and 'at heart' meaning in one's real feelings.",
+   "common_mistakes": [
+    "Saying 'have someone's best interest in heart'; it is 'at heart'.",
+    "Leaving out the possessive: 'He has best interests at heart'; say 'He has your best interests at heart.'"
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "pick up the slack",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˈpɪk ˌʌp ðə ˈslæk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To do work or provide something that someone else is failing to do, or that is missing, so that things keep going."
+    ]
+   }
+  ],
+  "etymology": "From the image of pulling in the loose, slack part of a rope to make it tight and useful again.",
+  "conversation": [
+   {
+    "sense": "covering for others",
+    "text": "With Marco out sick, the rest of us had to pick up the slack."
+   },
+   {
+    "sense": "filling a gap",
+    "text": "When local spending fell, exports picked up the slack."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To do extra work to make up for what someone else isn't doing."
+   },
+   "pronunciation": {
+    "ipa": "/ˈpɪk ˌʌp ðə ˈslæk/",
+    "respelling": "PIK uhp thuh SLAK",
+    "tip": "Stress PICK and SLACK; 'up the' is light and linked: PI-kup-thuh SLAK."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral to mildly complaining; it often implies that someone else let the team down.",
+   "usage_note": "Used at work, at home and in economics. People pick up the slack for coworkers on leave, for a partner who is busy, or for a missing player. 'Take up the slack' is also used. The person who isn't working may be named with 'for': 'I'm tired of picking up the slack for him.'",
+   "word_family": [
+    "slack (noun: looseness, unused capacity)",
+    "slack off (phrasal verb)",
+    "take up the slack (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "pull one's weight",
+     "note": "Pulling your weight is doing your own share; picking up the slack is doing someone else's."
+    },
+    {
+     "vs": "cut someone some slack",
+     "note": "Cutting someone some slack means being less strict with them, not doing their work."
+    },
+    {
+     "vs": "step up",
+     "note": "Step up is taking on more responsibility in general; pick up the slack is filling a specific gap."
+    }
+   ],
+   "antonyms": [
+    "slack off"
+   ],
+   "collocations": [
+    "pick up the slack",
+    "pick up the slack for someone",
+    "have to pick up the slack",
+    "take up the slack",
+    "help pick up the slack"
+   ],
+   "examples": {
+    "everyday": "My sister picks up the slack with Mom's appointments when I'm traveling.",
+    "professional": "We'll need contractors to pick up the slack while two engineers are on parental leave.",
+    "analytical": "When manufacturing employment declined, the service sector picked up much of the slack."
+   },
+   "analogy": "Like grabbing the loose part of a rope so the load doesn't drop.",
+   "etymology": "From the image of pulling in the loose, slack part of a rope to make it tight and useful again.",
+   "common_mistakes": [
+    "Saying 'pick the slack up'; it is almost always 'pick up the slack'.",
+    "Confusing it with 'cut someone some slack' (be lenient) or 'slack off' (work less)."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "hang someone out to dry",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈhæŋ ˌsʌmwʌn ˈaʊt tə ˈdɹaɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To abandon someone, leaving them alone to face trouble, blame or punishment, when you should have supported them."
+    ]
+   }
+  ],
+  "etymology": "From the image of hanging wet laundry on a line, where it is left out in the open.",
+  "conversation": [
+   {
+    "sense": "abandonment at work",
+    "text": "Management hung the night shift out to dry after the inspection."
+   },
+   {
+    "sense": "being left alone",
+    "text": "I agreed to present together, and then he called in sick and left me hung out to dry."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To leave someone alone to face trouble or blame instead of supporting them."
+   },
+   "pronunciation": {
+    "ipa": "/ˈhæŋ ˌsʌmwʌn ˈaʊt tə ˈdɹaɪ/",
+    "respelling": "HANG sum-wuhn OWT tuh DRY",
+    "tip": "Stress HANG, OUT and DRY. 'To' is reduced to 'tuh'."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative; it describes betrayal by people who should have helped.",
+   "usage_note": "Common in work, politics and sports. The person is left exposed, like laundry on a line. Passive and 'left' forms are frequent: 'I was hung out to dry', 'They left her hanging out to dry.' The past is 'hung', not 'hanged'.",
+   "word_family": [
+    "hung out to dry (past, passive)",
+    "hang (verb)"
+   ],
+   "distinctions": [
+    {
+     "vs": "throw someone under the bus",
+     "note": "Throwing someone under the bus is actively blaming them; hanging them out to dry is failing to defend them and letting them take the consequences."
+    },
+    {
+     "vs": "leave someone in the lurch",
+     "note": "Leave in the lurch is abandoning someone in a difficult situation, often practical; hang out to dry usually involves blame or punishment."
+    },
+    {
+     "vs": "leave someone hanging",
+     "note": "Leave someone hanging is a lighter idiom: not answering or not finishing something."
+    }
+   ],
+   "antonyms": [
+    "have someone's back",
+    "stand by",
+    "go to bat for"
+   ],
+   "collocations": [
+    "hang someone out to dry",
+    "hung out to dry",
+    "left hung out to dry",
+    "leave someone hanging out to dry"
+   ],
+   "examples": {
+    "everyday": "You said you'd back me up with Dad, and then you hung me out to dry.",
+    "professional": "If the regulators come asking, we can't hang the vendor out to dry; we approved their process.",
+    "analytical": "Whistleblowers often report being hung out to dry by the institutions that encouraged them to speak up."
+   },
+   "analogy": "Like wet laundry pinned to a line: stuck there, exposed to wind and rain, with nowhere to go.",
+   "etymology": "From the image of hanging wet laundry on a line, where it is left out in the open.",
+   "common_mistakes": [
+    "Using 'hanged' as the past; for this idiom it is 'hung out to dry'.",
+    "Using it for literally drying something; as an idiom it is always about people."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "leave someone hanging",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˈliv ˌsʌmwʌn ˈhæŋɪŋ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To keep someone waiting for an answer, decision or result, or to not finish something they were expecting.",
+     "To not respond to someone's gesture, such as leaving a high five unanswered."
+    ]
+   }
+  ],
+  "etymology": "From the image of something left suspended in the air, unresolved.",
+  "conversation": [
+   {
+    "sense": "no reply",
+    "text": "Don't leave me hanging. Are you coming to the wedding or not?"
+   },
+   {
+    "sense": "high five",
+    "text": "He put his hand up for a high five and she totally left him hanging."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To keep someone waiting without an answer or fail to follow through, leaving them unsure."
+   },
+   "pronunciation": {
+    "ipa": "/ˈliv ˌsʌmwʌn ˈhæŋɪŋ/",
+    "respelling": "LEEV sum-wuhn HANG-ing",
+    "tip": "Stress LEAVE and HANG-. The ng in 'hanging' is one sound; don't add a hard g."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly negative and often playful; it can describe real neglect or just an awkward moment.",
+   "usage_note": "Used for unanswered texts and emails, delayed decisions, unfinished stories and ignored high fives: 'Don't leave me hanging!' is a casual way to ask for a reply. A story or show that ends without resolution 'leaves you hanging' (compare 'cliffhanger'). Lighter than abandonment idioms like 'hang someone out to dry'.",
+   "word_family": [
+    "cliffhanger (noun)",
+    "hang (verb)"
+   ],
+   "distinctions": [
+    {
+     "vs": "hang someone out to dry",
+     "note": "Hang out to dry is serious: abandoning someone to blame. Leave someone hanging is mostly about waiting or not following through."
+    },
+    {
+     "vs": "ghost",
+     "note": "To ghost someone is to cut off all contact with no explanation; leaving someone hanging can be one unanswered question."
+    },
+    {
+     "vs": "leave someone in the lurch",
+     "note": "Leave in the lurch means abandoning someone when they need help; it is more serious."
+    }
+   ],
+   "antonyms": [
+    "follow through",
+    "get back to"
+   ],
+   "collocations": [
+    "don't leave me hanging",
+    "leave someone hanging",
+    "left me hanging",
+    "leave a high five hanging",
+    "leave the reader hanging"
+   ],
+   "examples": {
+    "everyday": "You can't tell half the story and leave me hanging like that!",
+    "professional": "Please don't leave the candidates hanging; let them know either way by Friday.",
+    "analytical": "Applicants who are left hanging after interviews tend to think worse of the employer than those who get a prompt rejection."
+   },
+   "analogy": "Like a hand raised for a high five with no hand coming to meet it.",
+   "etymology": "From the image of something left suspended in the air, unresolved.",
+   "common_mistakes": [
+    "Saying 'leave someone hang'; it is 'hanging'.",
+    "Using it for physical abandonment in danger; that is 'leave someone stranded' or 'in the lurch'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "fair-weather friend",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˈfɛɹˌwɛðɚ ˈfɹɛnd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A friend who is around when things are going well but disappears when you are in trouble or need help."
+    ]
+   }
+  ],
+  "etymology": "From 'fair weather' (pleasant, sunny weather): the friend is there only when the skies are clear.",
+  "conversation": [
+   {
+    "sense": "disloyal friend",
+    "text": "When I lost my job, I found out who my fair-weather friends were."
+   },
+   {
+    "sense": "self-check",
+    "text": "I don't want to be a fair-weather friend. Call me if you need anything."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Someone who is your friend only when things are going well."
+   },
+   "pronunciation": {
+    "ipa": "/ˈfɛɹˌwɛðɚ ˈfɹɛnd/",
+    "respelling": "FAIR-weth-er FREND",
+    "tip": "Stress FAIR and FRIEND. 'Weather' has the th of 'this'."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Negative; it is a criticism of shallow, convenient loyalty.",
+   "usage_note": "Common in conversation and advice columns. Often in the plural ('fair-weather friends') and with 'find out who your real friends are'. 'Fair-weather' also describes fans who only support a team when it wins ('fair-weather fan').",
+   "word_family": [
+    "fair-weather (adjective)",
+    "fair-weather fan (related)"
+   ],
+   "distinctions": [
+    {
+     "vs": "fair-weather fan",
+     "note": "A fair-weather fan supports a team only when it wins; a fair-weather friend is the same idea in friendship."
+    },
+    {
+     "vs": "frenemy",
+     "note": "A frenemy is a friend who is also a rival; a fair-weather friend simply isn't there when needed."
+    },
+    {
+     "vs": "a friend in need is a friend indeed",
+     "note": "The proverb praises the opposite: the friend who helps in hard times."
+    }
+   ],
+   "antonyms": [
+    "true friend",
+    "ride or die"
+   ],
+   "collocations": [
+    "fair-weather friend",
+    "fair-weather friends",
+    "just a fair-weather friend",
+    "find out who your fair-weather friends are"
+   ],
+   "examples": {
+    "everyday": "He was fun at parties, but he turned out to be a fair-weather friend.",
+    "professional": "Some investors are fair-weather friends: they disappear the moment growth slows.",
+    "analytical": "Research on social support distinguishes ties that persist through crises from fair-weather friendships that fade under strain."
+   },
+   "analogy": "Like an umbrella that only works when it isn't raining.",
+   "etymology": "From 'fair weather' (pleasant, sunny weather): the friend is there only when the skies are clear.",
+   "common_mistakes": [
+    "Writing it without the hyphen; the standard spelling is 'fair-weather friend'.",
+    "Writing 'fare-weather'; the word is 'fair', as in good weather."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "snake in the grass",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈsneɪk ɪn ðə ˈɡɹæs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A person who pretends to be a friend but secretly works against you; a hidden traitor."
+    ]
+   }
+  ],
+  "etymology": "From Virgil's Eclogues, 'latet anguis in herba' ('a snake lurks in the grass'), a warning against hidden danger.",
+  "conversation": [
+   {
+    "sense": "hidden traitor",
+    "text": "Turns out the snake in the grass was the guy who sat next to me."
+   },
+   {
+    "sense": "warning",
+    "text": "Be careful with him. He's friendly to your face, but he's a snake in the grass."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "A false friend who secretly betrays or works against you."
+   },
+   "pronunciation": {
+    "ipa": "/ˈsneɪk ɪn ðə ˈɡɹæs/",
+    "respelling": "SNAYK in thuh GRAS",
+    "tip": "Stress SNAKE and GRASS; 'in the' is quick. Americans say 'grass' with the vowel of 'cat'."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Strongly negative; it calls someone sneaky and treacherous.",
+   "usage_note": "Used for coworkers, friends, relatives or politicians who seem harmless but betray people. In casual speech Americans often just say 'He's a snake.' The full idiom stresses the hidden, unexpected danger.",
+   "word_family": [
+    "snake (noun; informal: a treacherous person)",
+    "snaky (adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "backstabber",
+     "note": "A backstabber betrays people who trust them; snake in the grass stresses that the danger is hidden."
+    },
+    {
+     "vs": "wolf in sheep's clothing",
+     "note": "A wolf in sheep's clothing disguises evil intentions as innocence; a snake in the grass is more about lying low and striking unexpectedly."
+    },
+    {
+     "vs": "two-faced",
+     "note": "Two-faced describes someone who says one thing to you and another behind your back."
+    }
+   ],
+   "antonyms": [
+    "true friend",
+    "straight shooter"
+   ],
+   "collocations": [
+    "a snake in the grass",
+    "turned out to be a snake in the grass",
+    "real snake in the grass"
+   ],
+   "examples": {
+    "everyday": "I trusted her with my secret, and she told everyone. What a snake in the grass.",
+    "professional": "The leak came from inside the deal team, and nobody suspected that snake in the grass until the audit.",
+    "analytical": "Political memoirs often cast a former ally as the snake in the grass to explain a lost campaign."
+   },
+   "analogy": "Like a snake hidden in tall grass: you don't see it until it bites.",
+   "etymology": "From Virgil's Eclogues, 'latet anguis in herba' ('a snake lurks in the grass'), a warning against hidden danger.",
+   "common_mistakes": [
+    "Saying 'snake on the grass'; it is 'in the grass'.",
+    "Using it for an open enemy; it means someone who looks harmless or friendly."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "bite the hand that feeds you",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈbaɪt ðə ˈhænd ðət ˈfidz ju/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To harm or be ungrateful to someone who helps or supports you, such as an employer, parent or benefactor."
+    ]
+   }
+  ],
+  "etymology": "From the image of an ungrateful animal biting the person who feeds it; an old English expression.",
+  "conversation": [
+   {
+    "sense": "ingratitude",
+    "text": "Complaining about the company on social media? Don't bite the hand that feeds you."
+   },
+   {
+    "sense": "criticism of a sponsor",
+    "text": "The journalist bit the hand that fed him and wrote a story exposing the paper's owner."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To hurt or turn against the person who supports or helps you."
+   },
+   "pronunciation": {
+    "ipa": "/ˈbaɪt ðə ˈhænd ðət ˈfidz ju/",
+    "respelling": "BYT thuh HAND thuht FEEDZ yoo",
+    "tip": "Stress BITE, HAND and FEEDS. 'That' is reduced to 'thuht'."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Disapproving; it calls an action ungrateful and unwise, though sometimes the person is admired for it.",
+   "usage_note": "Often a warning: 'Don't bite the hand that feeds you.' The pronoun changes with the subject: 'bite the hand that feeds him/them'. Used for employees criticizing an employer, artists criticizing patrons, or kids rebelling against parents who pay their bills.",
+   "word_family": [
+    "biting the hand that feeds (-ing)",
+    "bit the hand that fed (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "stab someone in the back",
+     "note": "Stab in the back is betraying someone who trusted you; biting the hand that feeds you is turning against someone who provides for you."
+    },
+    {
+     "vs": "ungrateful",
+     "note": "Ungrateful describes an attitude; biting the hand that feeds you is an action that harms your supporter."
+    },
+    {
+     "vs": "look a gift horse in the mouth",
+     "note": "That idiom means being critical of a gift; it is ungrateful but less harmful."
+    }
+   ],
+   "antonyms": [
+    "return the favor"
+   ],
+   "collocations": [
+    "bite the hand that feeds you",
+    "don't bite the hand that feeds you",
+    "biting the hand that feeds them"
+   ],
+   "examples": {
+    "everyday": "Telling your dad his cooking is terrible while he's paying for college? That's biting the hand that feeds you.",
+    "professional": "Some staff felt that publicly criticizing our biggest client was biting the hand that feeds us.",
+    "analytical": "Critics noted the irony of a funded think tank biting the hand that fed it by attacking its donor's industry."
+   },
+   "analogy": "Like a pet dog snapping at the person holding out its dinner.",
+   "etymology": "From the image of an ungrateful animal biting the person who feeds it; an old English expression.",
+   "common_mistakes": [
+    "Saying 'bite the hand who feeds you'; it is 'that feeds you'.",
+    "Forgetting to change the pronoun: 'He bit the hand that feeds you'; say 'the hand that fed him'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "stick one's neck out",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈstɪk wʌnz ˈnɛk ˈaʊt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To take a risk, especially by saying or doing something that could get you criticized, in order to help someone or support an idea."
+    ]
+   }
+  ],
+  "etymology": "American, 20th century; the image is of exposing one's neck to danger, like a bird stretching its neck toward the chopping block.",
+  "conversation": [
+   {
+    "sense": "risk for someone",
+    "text": "I stuck my neck out for you with the hiring manager, so please show up on time."
+   },
+   {
+    "sense": "risky opinion",
+    "text": "I'll stick my neck out and say they'll win the championship."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To take a personal risk, often to support or defend someone."
+   },
+   "pronunciation": {
+    "ipa": "/ˈstɪk wʌnz ˈnɛk ˈaʊt/",
+    "respelling": "STIK wuhnz NEK OWT",
+    "tip": "Stress STICK, NECK and OUT; 'neck out' links: NEK-OWT."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Positive or neutral; it suggests courage, though sometimes foolish risk.",
+   "usage_note": "Two common uses: taking a risk to help someone ('She stuck her neck out for me') and making a bold prediction or claim ('I'm going to stick my neck out here'). Change the possessive to fit the subject. The noun 'neck' also appears in 'risk one's neck' and 'save one's neck'.",
+   "word_family": [
+    "stuck one's neck out (past)",
+    "neck (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "go to bat for",
+     "note": "Go to bat for is actively arguing on someone's behalf; sticking your neck out stresses the risk to you."
+    },
+    {
+     "vs": "go out on a limb",
+     "note": "Go out on a limb is very close; it is used a little more for bold opinions, and stick one's neck out a little more for helping people."
+    },
+    {
+     "vs": "put in a good word",
+     "note": "Putting in a good word is a small, low-risk recommendation."
+    }
+   ],
+   "antonyms": [
+    "play it safe",
+    "cover oneself"
+   ],
+   "collocations": [
+    "stick my neck out for you",
+    "stuck her neck out",
+    "stick your neck out",
+    "not going to stick my neck out",
+    "stick one's neck out for someone"
+   ],
+   "examples": {
+    "everyday": "My cousin stuck her neck out to get me this interview, so I'm really prepared.",
+    "professional": "I'll stick my neck out and recommend we launch in the fall instead of waiting.",
+    "analytical": "Organizations that punish failure discourage employees from sticking their necks out for new ideas."
+   },
+   "analogy": "Like a turtle poking its head out of its shell: brave, but exposed.",
+   "etymology": "American, 20th century; the image is of exposing one's neck to danger, like a bird stretching its neck toward the chopping block.",
+   "common_mistakes": [
+    "Saying 'stick out my neck' in every case; 'stick my neck out' is much more natural.",
+    "Using it to mean being nosy; that is 'stick one's nose in'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "scratch someone's back",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈskɹætʃ ˌsʌmwʌnz ˈbæk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To do someone a favor in the expectation that they will do one for you in return.",
+     "you scratch my back, I'll scratch yours: a saying for a deal of mutual favors."
+    ]
+   }
+  ],
+  "etymology": "From the literal image of scratching a spot on someone's back they can't reach, expecting the same in return.",
+  "conversation": [
+   {
+    "sense": "trading favors",
+    "text": "You scratch my back, I'll scratch yours: I'll help you move if you watch my dog."
+   },
+   {
+    "sense": "insider favors",
+    "text": "Those two companies have been scratching each other's backs for years."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To do someone a favor expecting one in return."
+   },
+   "pronunciation": {
+    "ipa": "/ˈskɹætʃ ˌsʌmwʌnz ˈbæk/",
+    "respelling": "SKRACH sum-wuhnz BAK",
+    "tip": "Stress SCRATCH and BACK. In the proverb: you SCRATCH my BACK, I'll SCRATCH YOURS."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral to cynical; friendly between neighbors, suspicious when it describes politics or business.",
+   "usage_note": "Almost always heard in the saying 'You scratch my back, (and) I'll scratch yours' or as 'scratch each other's backs'. Among friends it is a joking way to propose a trade. About officials or companies it suggests cozy deals, favoritism or corruption.",
+   "word_family": [
+    "back-scratching (noun: trading favors)",
+    "scratch (verb)"
+   ],
+   "distinctions": [
+    {
+     "vs": "quid pro quo",
+     "note": "Quid pro quo is the formal or legal term for a this-for-that exchange; back-scratching is informal and often mutual over time."
+    },
+    {
+     "vs": "return the favor",
+     "note": "Return the favor is paying back a past favor; scratching someone's back is often done to get one later."
+    },
+    {
+     "vs": "owe someone one",
+     "note": "I owe you one acknowledges a debt of a favor; scratching someone's back creates one."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "you scratch my back, I'll scratch yours",
+    "scratch each other's backs",
+    "back-scratching",
+    "political back-scratching"
+   ],
+   "examples": {
+    "everyday": "I'll edit your resume if you help me with my car. You scratch my back, I'll scratch yours.",
+    "professional": "Cross-promotion with their newsletter is a classic scratch-my-back arrangement.",
+    "analytical": "Critics described the lobbying system as institutionalized back-scratching between legislators and donors."
+   },
+   "analogy": "Like two people who can't reach the itch between their shoulder blades, so they help each other.",
+   "etymology": "From the literal image of scratching a spot on someone's back they can't reach, expecting the same in return.",
+   "common_mistakes": [
+    "Using it as a literal request in formal writing; as an idiom it always means trading favors.",
+    "Saying 'scratch my back and I scratch yours'; use 'I'll scratch yours'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "owe someone one",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˈoʊ ˌsʌmwʌn ˈwʌn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To be in someone's debt for a favor they did, and be willing to do one for them in return."
+    ]
+   }
+  ],
+  "etymology": "From 'owe' plus 'one' standing for 'one favor'.",
+  "conversation": [
+   {
+    "sense": "thanks",
+    "text": "Thanks for covering my shift. I owe you one."
+   },
+   {
+    "sense": "calling in a favor",
+    "text": "Remember when I helped you move? You owe me one."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To owe someone a favor in return for one they did for you."
+   },
+   "pronunciation": {
+    "ipa": "/ˈoʊ ˌsʌmwʌn ˈwʌn/",
+    "respelling": "OH sum-wuhn WUHN",
+    "tip": "In 'I owe you one', stress OWE and ONE: eye-OH-yuh WUHN."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Warm and grateful; 'You owe me one' can be teasing or a reminder.",
+   "usage_note": "Mainly heard as 'I owe you one' (a casual thank-you) and 'You owe me one' (a reminder that a favor is due). 'I owe you big' or 'I owe you big time' is stronger. 'One' means one favor; it is not about money.",
+   "word_family": [
+    "owe (verb)",
+    "I owe you big time (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "return the favor",
+     "note": "Return the favor is doing the favor back; owing someone one is the debt before you repay it."
+    },
+    {
+     "vs": "do someone a solid",
+     "note": "Do someone a solid is doing the favor in the first place."
+    },
+    {
+     "vs": "IOU",
+     "note": "An IOU is a written promise to pay money; 'I owe you one' is about favors."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "I owe you one",
+    "you owe me one",
+    "I owe you big time",
+    "now I owe you one"
+   ],
+   "examples": {
+    "everyday": "You picked up the kids for me? I owe you one.",
+    "professional": "Thanks for getting me those numbers so fast; I owe you one.",
+    "analytical": "Informal exchanges of favors, the 'I owe you one' economy of offices, build durable networks of trust."
+   },
+   "analogy": "Like an invisible coupon for one favor, to be redeemed later.",
+   "etymology": "From 'owe' plus 'one' standing for 'one favor'.",
+   "common_mistakes": [
+    "Saying 'I owe you' alone, which can sound like money; add 'one' for a favor.",
+    "Saying 'I owe one to you'; the natural order is 'I owe you one'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "do someone a solid",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˈdu ˌsʌmwʌn ə ˈsɑlɪd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To do someone a favor."
+    ]
+   }
+  ],
+  "etymology": "American slang; origin uncertain, probably from 'solid' in its slang sense of excellent or dependable.",
+  "conversation": [
+   {
+    "sense": "asking a favor",
+    "text": "Can you do me a solid and grab my mail while I'm away?"
+   },
+   {
+    "sense": "thanking",
+    "text": "My neighbor did me a real solid and shoveled my driveway."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To do someone a favor (slang)."
+   },
+   "pronunciation": {
+    "ipa": "/ˈdu ˌsʌmwʌn ə ˈsɑlɪd/",
+    "respelling": "DOO sum-wuhn uh SAH-lid",
+    "tip": "Stress DO and SOL-: do me a SAH-lid. The a is a quick 'uh'."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Friendly and casual; slightly slangy.",
+   "usage_note": "Slangy American English, used among friends: 'Do me a solid.' Same meaning as 'do me a favor', but more playful. Avoid it in formal emails. 'A real solid' or 'a huge solid' adds emphasis.",
+   "word_family": [
+    "solid (noun, slang: a favor)",
+    "solid (adjective: reliable)"
+   ],
+   "distinctions": [
+    {
+     "vs": "do me a favor",
+     "note": "Do me a favor is neutral and can also be sarcastic ('do me a favor and leave'); do me a solid is always a sincere, casual request."
+    },
+    {
+     "vs": "owe someone one",
+     "note": "After someone does you a solid, you owe them one."
+    },
+    {
+     "vs": "cut someone some slack",
+     "note": "That is being lenient, not doing a favor."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "do me a solid",
+    "do someone a solid",
+    "a real solid",
+    "did me a huge solid"
+   ],
+   "examples": {
+    "everyday": "Do me a solid and save me a seat, okay?",
+    "professional": "Could you do me a solid and send the slides before tomorrow's call?",
+    "analytical": "Slang phrases like 'do me a solid' show how adjectives of reliability are reused as nouns for favors."
+   },
+   "analogy": "Like handing a friend a sturdy plank to stand on: something reliable when they need it.",
+   "etymology": "American slang; origin uncertain, probably from 'solid' in its slang sense of excellent or dependable.",
+   "common_mistakes": [
+    "Saying 'do me solid' without 'a'.",
+    "Using it in formal writing, where 'do me a favor' or 'could you please' fits better."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "a friend in need is a friend indeed",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ə ˈfɹɛnd ɪn ˈnid ɪz ə ˈfɹɛnd ɪnˈdid/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A proverb: a friend who helps you when you are in trouble is a true friend."
+    ]
+   }
+  ],
+  "etymology": "An old English proverb with a Latin ancestor, Ennius's line quoted by Cicero: 'a sure friend is seen in an unsure situation'.",
+  "conversation": [
+   {
+    "sense": "thanks",
+    "text": "You drove two hours to help me fix the leak. A friend in need is a friend indeed."
+   },
+   {
+    "sense": "lesson",
+    "text": "When the business failed, I learned that a friend in need is a friend indeed."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "A true friend is one who helps you when you are in trouble."
+   },
+   "pronunciation": {
+    "ipa": "/ə ˈfɹɛnd ɪn ˈnid ɪz ə ˈfɹɛnd ɪnˈdid/",
+    "respelling": "uh FREND in NEED iz uh FREND in-DEED",
+    "tip": "Stress FRIEND, NEED, FRIEND and -DEED; 'need' and 'indeed' rhyme, which makes the proverb memorable."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Warm and a bit old-fashioned; often said with gratitude.",
+   "usage_note": "A traditional proverb, often quoted whole or half-quoted ('a friend in need...'). People sometimes joke on it ('a friend in need is a pest'). It is about the friend who helps the person in need, not the friend who is needy.",
+   "word_family": [
+    "friend (noun)",
+    "friendship (noun)",
+    "indeed (adverb)"
+   ],
+   "distinctions": [
+    {
+     "vs": "fair-weather friend",
+     "note": "The opposite: a friend who vanishes in hard times."
+    },
+    {
+     "vs": "be there for someone",
+     "note": "Being there for someone is what the friend in the proverb does."
+    },
+    {
+     "vs": "through thick and thin",
+     "note": "Through thick and thin describes loyalty in good times and bad, not only in need."
+    }
+   ],
+   "antonyms": [
+    "fair-weather friend"
+   ],
+   "collocations": [
+    "a friend in need is a friend indeed",
+    "a friend in need",
+    "as the saying goes, a friend in need"
+   ],
+   "examples": {
+    "everyday": "You lent me your car when mine broke down. A friend in need is a friend indeed.",
+    "professional": "Our partners stuck with us through the recall; a friend in need is a friend indeed, and we won't forget it.",
+    "analytical": "The proverb 'a friend in need is a friend indeed' captures what researchers call costly signaling: help given at a cost proves loyalty."
+   },
+   "analogy": "Like an umbrella that actually opens in the storm.",
+   "etymology": "An old English proverb with a Latin ancestor, Ennius's line quoted by Cicero: 'a sure friend is seen in an unsure situation'.",
+   "common_mistakes": [
+    "Thinking it means a friend who is in need; it means the friend who helps you when you are in need.",
+    "Saying 'a friend in need is a friend in deed'; it is one word, 'indeed'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "go way back",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌɡoʊ ˈweɪ ˈbæk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "(of two or more people) To have known each other for a long time."
+    ]
+   }
+  ],
+  "etymology": "From 'go back' (to date from an earlier time) intensified by informal 'way', meaning far.",
+  "conversation": [
+   {
+    "sense": "old friends",
+    "text": "Mike and I go way back. We played Little League together."
+   },
+   {
+    "sense": "long connection",
+    "text": "Our families go way back, to before my parents were married."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To have known each other for a long time."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡoʊ ˈweɪ ˈbæk/",
+    "respelling": "goh WAY BAK",
+    "tip": "Stress WAY and BACK: we go WAY BACK. 'Way' gets extra emphasis for a long friendship."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Warm and familiar; it signals a long, trusted relationship.",
+   "usage_note": "Used with a plural subject or 'with': 'We go way back', 'I go way back with Sam.' Often explains why people are close or loyal: 'He'll help; we go way back.' 'Go back' alone also works ('We go back twenty years'). 'Way back when' is a different idiom meaning long ago.",
+   "word_family": [
+    "go back (to know someone since)",
+    "way back when (related phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "way back when",
+     "note": "Way back when means long ago; go way back means a long friendship."
+    },
+    {
+     "vs": "old friends",
+     "note": "Old friends is a noun phrase; go way back is how you say it in a sentence."
+    },
+    {
+     "vs": "go back",
+     "note": "Go back alone usually means return; 'go way back' is clearly about long relationships."
+    }
+   ],
+   "antonyms": [
+    "just met"
+   ],
+   "collocations": [
+    "we go way back",
+    "go way back with someone",
+    "go way back to college",
+    "our families go way back"
+   ],
+   "examples": {
+    "everyday": "Don't worry about introductions. Jenna and I go way back.",
+    "professional": "The CEO and the board chair go way back, which explains the quick approval.",
+    "analytical": "Many business partnerships are built on founders who go way back, which brings trust but also blind spots."
+   },
+   "analogy": "Like an old pair of shoes: worn in, familiar and comfortable.",
+   "etymology": "From 'go back' (to date from an earlier time) intensified by informal 'way', meaning far.",
+   "common_mistakes": [
+    "Saying 'we go way back each other'; say 'we go way back' or 'I go way back with her'.",
+    "Using it with a singular subject and no 'with': 'I go way back'; add who: 'I go way back with Tom.'"
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "two peas in a pod",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˈtu ˈpiz ɪn ə ˈpɑd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Two people who are very alike or very close, often in appearance, personality or interests."
+    ]
+   }
+  ],
+  "etymology": "From the image of peas growing together in one pod, nearly identical.",
+  "conversation": [
+   {
+    "sense": "alike",
+    "text": "Those two are like two peas in a pod. They even finish each other's sentences."
+   },
+   {
+    "sense": "close friends",
+    "text": "My grandma and her sister were two peas in a pod their whole lives."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Two people who are very similar or very close."
+   },
+   "pronunciation": {
+    "ipa": "/ˈtu ˈpiz ɪn ə ˈpɑd/",
+    "respelling": "TOO PEEZ in uh PAHD",
+    "tip": "Stress TWO, PEAS and POD. 'Pod' has the vowel of 'father' in American English."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Affectionate; usually a compliment about closeness.",
+   "usage_note": "Usually with 'like': 'They're like two peas in a pod.' Common for siblings, best friends, couples and coworkers who get along very well. It can describe looks, habits or personality.",
+   "word_family": [
+    "peas (plural of pea)",
+    "pod (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "birds of a feather",
+     "note": "Birds of a feather is about similar people grouping together, often with a mild negative tone; two peas in a pod is affectionate."
+    },
+    {
+     "vs": "joined at the hip",
+     "note": "Joined at the hip means always together; two peas in a pod means alike."
+    },
+    {
+     "vs": "thick as thieves",
+     "note": "Thick as thieves is about a very close, sometimes secretive friendship."
+    }
+   ],
+   "antonyms": [
+    "night and day",
+    "polar opposites"
+   ],
+   "collocations": [
+    "like two peas in a pod",
+    "two peas in a pod",
+    "are two peas in a pod"
+   ],
+   "examples": {
+    "everyday": "The twins are two peas in a pod: same laugh, same terrible jokes.",
+    "professional": "Our two lead designers are two peas in a pod, so we pair them on the hardest projects.",
+    "analytical": "Friendship research suggests that pairs who are two peas in a pod in their values tend to stay friends longer."
+   },
+   "analogy": "Like the peas inside one pod: same size, same color, side by side.",
+   "etymology": "From the image of peas growing together in one pod, nearly identical.",
+   "common_mistakes": [
+    "Saying 'two peas of a pod'; it is 'in a pod'.",
+    "Saying 'like a pea in a pod' about two people; the idiom needs two."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in this together",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ɪn ˈðɪs təˈɡɛðɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Sharing the same situation or problem, and so committed to facing it and helping each other."
+    ]
+   }
+  ],
+  "etymology": "From 'in' (involved in a situation) plus 'together'.",
+  "conversation": [
+   {
+    "sense": "solidarity",
+    "text": "Don't apologize. We're in this together."
+   },
+   {
+    "sense": "team spirit",
+    "text": "We're all in this together, so let's split the work evenly."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Facing a situation or problem as a group, with shared responsibility and support."
+   },
+   "pronunciation": {
+    "ipa": "/ɪn ˈðɪs təˈɡɛðɚ/",
+    "respelling": "in THIS tuh-GETH-er",
+    "tip": "Stress THIS and -GETH-: we're in THIS to-GETH-er. Americans often stress 'all' too: we're ALL in this together."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Warm and unifying; it can sound hollow if leaders say it while others carry the burden.",
+   "usage_note": "Usually 'We're (all) in this together.' Used by friends, families, teams and leaders during hard times. 'In it together' is a common variant. It stresses shared commitment more than shared bad luck.",
+   "word_family": [
+    "together (adverb)",
+    "togetherness (noun)",
+    "in it together (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "in the same boat",
+     "note": "In the same boat says people share the same problem; in this together adds commitment to face it as a team."
+    },
+    {
+     "vs": "on the same team",
+     "note": "On the same team stresses shared goals, often against an opponent; in this together stresses shared hardship."
+    },
+    {
+     "vs": "have each other's backs",
+     "note": "Having each other's backs is loyalty in a crisis; in this together is the shared situation itself."
+    }
+   ],
+   "antonyms": [
+    "every man for himself",
+    "on your own"
+   ],
+   "collocations": [
+    "we're in this together",
+    "we're all in this together",
+    "in it together",
+    "remember, we're in this together"
+   ],
+   "examples": {
+    "everyday": "Moving across the country is scary, but we're in this together.",
+    "professional": "The budget cuts affect every department, and we're in this together.",
+    "analytical": "Crisis messages built on 'we're all in this together' work best when sacrifices appear to be shared fairly."
+   },
+   "analogy": "Like a three-legged race: you only move forward if both of you do.",
+   "etymology": "From 'in' (involved in a situation) plus 'together'.",
+   "common_mistakes": [
+    "Saying 'we are in this all together' in place of 'we're all in this together'.",
+    "Using it when only one side bears the cost; listeners may hear it as insincere."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "on the same team",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ɑn ðə ˌseɪm ˈtim/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Working toward the same goals as someone, as allies rather than rivals, even if you disagree on details."
+    ]
+   }
+  ],
+  "etymology": "From sports: players on one team share the same goal.",
+  "conversation": [
+   {
+    "sense": "calming a conflict",
+    "text": "Hey, we're on the same team here. I just want the launch to go well."
+   },
+   {
+    "sense": "alliance",
+    "text": "Once the parents and teachers saw they were on the same team, things got easier."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Working toward the same goal as someone rather than against them."
+   },
+   "pronunciation": {
+    "ipa": "/ɑn ðə ˌseɪm ˈtim/",
+    "respelling": "ahn thuh saym TEEM",
+    "tip": "Stress TEAM most; 'same' gets a lighter stress."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive and reconciling; often used to calm tension.",
+   "usage_note": "Often said during disagreements to remind others of a shared goal: 'Remember, we're on the same team.' Works at work, at home and in politics. The literal sports sense ('They play on the same team') is also common.",
+   "word_family": [
+    "team (noun)",
+    "teammate (noun)",
+    "team up (phrasal verb)"
+   ],
+   "distinctions": [
+    {
+     "vs": "on the same page",
+     "note": "On the same page means agreeing or understanding things the same way; on the same team means sharing goals even when you disagree."
+    },
+    {
+     "vs": "team player",
+     "note": "A team player is a person who cooperates; on the same team describes a relationship."
+    },
+    {
+     "vs": "in this together",
+     "note": "In this together stresses shared hardship; on the same team stresses shared goals."
+    }
+   ],
+   "antonyms": [
+    "at odds",
+    "on opposite sides"
+   ],
+   "collocations": [
+    "we're on the same team",
+    "on the same team here",
+    "remember we're on the same team",
+    "play on the same team"
+   ],
+   "examples": {
+    "everyday": "Honey, we're on the same team. Let's figure out the budget together.",
+    "professional": "Legal and product are on the same team; we both want the feature to ship safely.",
+    "analytical": "Negotiation research suggests that framing parties as on the same team increases creative solutions."
+   },
+   "analogy": "Like two players wearing the same jersey: even if they argue on the bench, they want the same score.",
+   "etymology": "From sports: players on one team share the same goal.",
+   "common_mistakes": [
+    "Saying 'in the same team'; American English uses 'on the same team'.",
+    "Confusing it with 'on the same page', which is about agreement, not shared goals."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "take someone's side",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈteɪk ˌsʌmwʌnz ˈsaɪd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To support someone in an argument or disagreement against another person."
+    ]
+   }
+  ],
+  "etymology": "From 'side', meaning one of two opposing groups in a dispute or game.",
+  "conversation": [
+   {
+    "sense": "family argument",
+    "text": "Why do you always take your sister's side?"
+   },
+   {
+    "sense": "fair support",
+    "text": "I'm not taking anyone's side. I just want you two to talk."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To support one person in an argument or conflict."
+   },
+   "pronunciation": {
+    "ipa": "/ˈteɪk ˌsʌmwʌnz ˈsaɪd/",
+    "respelling": "TAYK sum-wuhnz SYD",
+    "tip": "Stress TAKE and SIDE: TAYK my SYD."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; it can suggest unfairness if someone always takes the same side.",
+   "usage_note": "Common in family, friend and workplace disputes: 'Whose side are you on?' 'Don't take his side!' The plain idea is also 'side with someone'; 'take sides' (no person) means to support one party. 'Be on someone's side' describes the state of supporting them.",
+   "word_family": [
+    "side with (phrasal verb)",
+    "take sides (related idiom)",
+    "on someone's side (related phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "take sides",
+     "note": "Take sides is choosing one party in general ('I don't want to take sides'); take someone's side names who you support."
+    },
+    {
+     "vs": "side with",
+     "note": "Side with is close in meaning but more formal and common in news: 'The court sided with the city.'"
+    },
+    {
+     "vs": "stick up for",
+     "note": "Stick up for is defending someone who is being criticized; taking their side can be quieter agreement."
+    }
+   ],
+   "antonyms": [
+    "side against",
+    "stay neutral"
+   ],
+   "collocations": [
+    "take someone's side",
+    "always take his side",
+    "not taking anyone's side",
+    "take my side for once",
+    "whose side are you on"
+   ],
+   "examples": {
+    "everyday": "Every time Dad and I argue, Mom takes his side.",
+    "professional": "As the mediator, I can't take either team's side, but I can clarify the options.",
+    "analytical": "Bystanders often take the side of the person they know better, regardless of the facts."
+   },
+   "analogy": "Like stepping across the line to stand with one person in a tug-of-war.",
+   "etymology": "From 'side', meaning one of two opposing groups in a dispute or game.",
+   "common_mistakes": [
+    "Saying 'take side of someone'; it is 'take someone's side' or 'side with someone'.",
+    "Confusing 'take sides' (choose one party) with 'take someone's side' (support that person)."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "meet someone halfway",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˈmit ˌsʌmwʌn ˌhæfˈweɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To compromise with someone by each giving up part of what you want.",
+     "Literally, to travel to a point between two places so each person travels part of the way."
+    ]
+   }
+  ],
+  "etymology": "From the literal sense of traveling to a meeting point halfway between two people.",
+  "conversation": [
+   {
+    "sense": "compromise",
+    "text": "I can't do $500, but I'll meet you halfway at $400."
+   },
+   {
+    "sense": "relationship",
+    "text": "If you want this to work, you have to meet me halfway."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To compromise, each person giving up part of what they want."
+   },
+   "pronunciation": {
+    "ipa": "/ˈmit ˌsʌmwʌn ˌhæfˈweɪ/",
+    "respelling": "MEET sum-wuhn haf-WAY",
+    "tip": "Stress MEET and -WAY. 'Halfway' has a silent l: haf-WAY."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive and fair-minded; it suggests good faith on both sides.",
+   "usage_note": "Used in negotiations, relationships and family disagreements. 'Meet in the middle' is a close variant. It is often a request: 'Can you meet me halfway?' or a complaint: 'He's not willing to meet us halfway.'",
+   "word_family": [
+    "halfway (adverb, adjective)",
+    "meet in the middle (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "split the difference",
+     "note": "Split the difference is a specific compromise on a number exactly in the middle; meeting halfway can be any fair compromise."
+    },
+    {
+     "vs": "give and take",
+     "note": "Give-and-take is the general habit of compromise in a relationship; meeting halfway is a single compromise."
+    },
+    {
+     "vs": "two-way street",
+     "note": "A two-way street is a relationship where effort must come from both sides; meeting halfway is what each side does."
+    }
+   ],
+   "antonyms": [
+    "dig in one's heels",
+    "stand one's ground"
+   ],
+   "collocations": [
+    "meet someone halfway",
+    "meet me halfway",
+    "willing to meet us halfway",
+    "meet in the middle"
+   ],
+   "examples": {
+    "everyday": "I'll clean the kitchen if you meet me halfway and do the bathroom.",
+    "professional": "The supplier met us halfway on price in exchange for a two-year contract.",
+    "analytical": "Coalition governments survive when parties are willing to meet each other halfway on core issues."
+   },
+   "analogy": "Like two friends from different towns driving to a diner in between.",
+   "etymology": "From the literal sense of traveling to a meeting point halfway between two people.",
+   "common_mistakes": [
+    "Saying 'meet halfway with someone'; the person goes directly after meet: 'meet him halfway'.",
+    "Writing 'half way' as two words; the usual spelling is 'halfway'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "two-way street",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌtuˌweɪ ˈstɹit/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A relationship or situation in which both sides must contribute, cooperate or benefit."
+    ]
+   }
+  ],
+  "etymology": "From the literal two-way street, where traffic moves in both directions.",
+  "conversation": [
+   {
+    "sense": "mutual respect",
+    "text": "Respect is a two-way street. If you want it, you have to give it."
+   },
+   {
+    "sense": "communication",
+    "text": "Communication is a two-way street, so tell me when something's wrong."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "A relationship that requires effort and give from both sides."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtuˌweɪ ˈstɹit/",
+    "respelling": "too-way STREET",
+    "tip": "Stress STREET most; 'two-way' is a light compound before it."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral to mildly scolding; often used to remind someone that they have to give too.",
+   "usage_note": "Almost always in the pattern 'X is a two-way street', with respect, trust, loyalty, communication or friendship as X. It usually points out that the listener has not been holding up their end. Also literal: a street with traffic in both directions.",
+   "word_family": [
+    "two-way (adjective)",
+    "one-way street (opposite, literal and figurative)"
+   ],
+   "distinctions": [
+    {
+     "vs": "give and take",
+     "note": "Give-and-take is mutual compromise; two-way street says each side has obligations."
+    },
+    {
+     "vs": "meet someone halfway",
+     "note": "Meeting someone halfway is one act of compromise; a two-way street describes the whole relationship."
+    },
+    {
+     "vs": "scratch someone's back",
+     "note": "Back-scratching is trading favors, often for advantage; two-way street is about fairness."
+    }
+   ],
+   "antonyms": [
+    "one-way street"
+   ],
+   "collocations": [
+    "respect is a two-way street",
+    "trust is a two-way street",
+    "loyalty is a two-way street",
+    "communication is a two-way street"
+   ],
+   "examples": {
+    "everyday": "Friendship is a two-way street. I always call you; you never call me.",
+    "professional": "Feedback is a two-way street: managers should ask for it as well as give it.",
+    "analytical": "The study treats trust between police and communities as a two-way street, built or lost by both sides."
+   },
+   "analogy": "Like a road where cars must be able to drive both ways, or traffic stops.",
+   "etymology": "From the literal two-way street, where traffic moves in both directions.",
+   "common_mistakes": [
+    "Writing 'two way street' without the hyphen; 'two-way' is hyphenated before a noun.",
+    "Saying 'a two-ways street'; it is 'two-way'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "there's no I in team",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ðɛɹz ˈnoʊ ˈaɪ ɪn ˈtim/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A saying meaning that members of a team should put the group ahead of their own interests or glory."
+    ]
+   }
+  ],
+  "etymology": "A slogan from American sports coaching; the joke depends on the spelling of 'team'.",
+  "conversation": [
+   {
+    "sense": "coach's advice",
+    "text": "Pass the ball, Jake. There's no I in team."
+   },
+   {
+    "sense": "joking reply",
+    "text": "There's no I in team, but there's a 'me' if you rearrange it."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "A saying that team members should put the group ahead of themselves."
+   },
+   "pronunciation": {
+    "ipa": "/ðɛɹz ˈnoʊ ˈaɪ ɪn ˈtim/",
+    "respelling": "thairz NOH EYE in TEEM",
+    "tip": "Stress NO, I and TEAM. The I is the letter name, said like 'eye'."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Encouraging but often seen as a cliche; it can sound preachy or be used ironically.",
+   "usage_note": "A slogan from coaches and managers. Because it is so familiar, people often joke about it ('but there is an I in win'). Use it with a light touch; in a serious meeting it can sound corny. It works as a pun on spelling: T-E-A-M has no letter I.",
+   "word_family": [
+    "team (noun)",
+    "team player (related)",
+    "teamwork (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "team player",
+     "note": "A team player is someone who lives by this saying."
+    },
+    {
+     "vs": "take one for the team",
+     "note": "Take one for the team is a specific sacrifice for the group; there's no I in team is the general principle."
+    },
+    {
+     "vs": "many hands make light work",
+     "note": "That proverb is about sharing the work; no I in team is about putting ego aside."
+    }
+   ],
+   "antonyms": [
+    "every man for himself",
+    "look out for number one"
+   ],
+   "collocations": [
+    "there's no I in team",
+    "remember, there's no I in team",
+    "no I in team"
+   ],
+   "examples": {
+    "everyday": "You can't eat all the pizza yourself. There's no I in team!",
+    "professional": "The manager reminded the sales reps that there's no I in team when they argued over commissions.",
+    "analytical": "Slogans like 'there's no I in team' emphasize collective goals but can obscure the need to recognize individual contributions."
+   },
+   "analogy": "Like a rowing crew: no one rows faster than the boat.",
+   "etymology": "A slogan from American sports coaching; the joke depends on the spelling of 'team'.",
+   "common_mistakes": [
+    "Writing 'there's no eye in team'; it is the letter I.",
+    "Using it in formal writing, where it sounds like a cliche."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "many hands make light work",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈmɛni ˈhændz meɪk ˈlaɪt ˈwɝk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A proverb: when many people share a job, it gets done quickly and easily."
+    ]
+   }
+  ],
+  "etymology": "An old English proverb, recorded since the Middle Ages; 'light' means easy.",
+  "conversation": [
+   {
+    "sense": "asking for help",
+    "text": "Grab a box, everyone. Many hands make light work!"
+   },
+   {
+    "sense": "volunteering",
+    "text": "We cleaned up the whole park in an hour. Many hands make light work."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "A proverb meaning that a job is easier when many people help."
+   },
+   "pronunciation": {
+    "ipa": "/ˈmɛni ˈhændz meɪk ˈlaɪt ˈwɝk/",
+    "respelling": "MEN-ee HANDZ mayk LYT WURK",
+    "tip": "Stress MAN-, HANDS, LIGHT and WORK; 'make' is lighter."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Cheerful and encouraging; often used to recruit helpers.",
+   "usage_note": "Said when inviting people to help with cleanup, moving, cooking or volunteering. 'Light' here means easy, not bright. A joking counter-proverb is 'too many cooks spoil the broth'.",
+   "word_family": [
+    "light (adjective: easy)",
+    "lighten the load (related phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "too many cooks spoil the broth",
+     "note": "The opposite warning: too many people involved can ruin a job."
+    },
+    {
+     "vs": "two heads are better than one",
+     "note": "Two heads are better than one is about thinking and solving problems together; many hands is about physical work."
+    },
+    {
+     "vs": "pitch in",
+     "note": "Pitch in is the action of helping; this proverb is the reason to do it."
+    }
+   ],
+   "antonyms": [
+    "too many cooks spoil the broth"
+   ],
+   "collocations": [
+    "many hands make light work",
+    "as they say, many hands make light work"
+   ],
+   "examples": {
+    "everyday": "If everyone takes one dish, many hands make light work.",
+    "professional": "We split the data cleanup across six analysts; many hands make light work.",
+    "analytical": "Social loafing research complicates the proverb that many hands make light work: individuals often exert less effort in larger groups."
+   },
+   "analogy": "Like a barn raising, where a whole community lifts a wall that one person never could.",
+   "etymology": "An old English proverb, recorded since the Middle Ages; 'light' means easy.",
+   "common_mistakes": [
+    "Reading 'light' as brightness; it means easy or not heavy.",
+    "Saying 'many hands make work light'; the fixed order is 'make light work'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "two heads are better than one",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˈtu ˈhɛdz ɚ ˈbɛtɚ ðən ˈwʌn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A proverb: two people working together can solve a problem or make a decision better than one person alone."
+    ]
+   }
+  ],
+  "etymology": "An old English proverb, found in John Heywood's 1546 collection; compare Ecclesiastes 4:9, 'Two are better than one'.",
+  "conversation": [
+   {
+    "sense": "asking for help",
+    "text": "Can you look at this puzzle with me? Two heads are better than one."
+   },
+   {
+    "sense": "collaboration",
+    "text": "Two heads are better than one, so let's brainstorm together."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "A proverb meaning that two people thinking together do better than one alone."
+   },
+   "pronunciation": {
+    "ipa": "/ˈtu ˈhɛdz ɚ ˈbɛtɚ ðən ˈwʌn/",
+    "respelling": "TOO HEDZ er BET-er thuhn WUHN",
+    "tip": "Stress TWO, HEADS, BETTER and ONE. 'Are' and 'than' are reduced: er, thuhn."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Friendly and collaborative.",
+   "usage_note": "Used to invite help with problems, decisions and puzzles. 'Heads' means minds. Common at home, at school and at work, and light enough for a casual email.",
+   "word_family": [
+    "head (noun: mind)",
+    "put our heads together (related phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "put our heads together",
+     "note": "Put our heads together is the action; two heads are better than one is the reason."
+    },
+    {
+     "vs": "many hands make light work",
+     "note": "That proverb is about physical work; this one is about thinking."
+    },
+    {
+     "vs": "too many cooks spoil the broth",
+     "note": "The opposite warning: too many people can make a mess of a task."
+    }
+   ],
+   "antonyms": [
+    "too many cooks spoil the broth"
+   ],
+   "collocations": [
+    "two heads are better than one",
+    "after all, two heads are better than one",
+    "put our heads together"
+   ],
+   "examples": {
+    "everyday": "I can't figure out this form. Want to help? Two heads are better than one.",
+    "professional": "Two heads are better than one; let's review the contract together before we sign.",
+    "analytical": "Experiments on joint decisions suggest that two heads are better than one mainly when partners communicate their confidence."
+   },
+   "analogy": "Like two flashlights in a dark room: each lights up what the other misses.",
+   "etymology": "An old English proverb, found in John Heywood's 1546 collection; compare Ecclesiastes 4:9, 'Two are better than one'.",
+   "common_mistakes": [
+    "Saying 'two heads is better than one'; 'heads' is plural, so 'are'.",
+    "Taking 'heads' literally; it means minds or people."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "hold someone's hand",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈhoʊld ˌsʌmwʌnz ˈhænd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To give someone close support and guidance through a difficult or unfamiliar process.",
+     "(often negative) To guide someone step by step when they should be able to work alone."
+    ]
+   }
+  ],
+  "etymology": "From the literal act of holding a child's hand to guide and reassure them.",
+  "conversation": [
+   {
+    "sense": "support",
+    "text": "I'll hold your hand through the whole loan process. It's easier than it looks."
+   },
+   {
+    "sense": "too much guidance",
+    "text": "I can't hold your hand on every project; you need to figure some of this out."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To guide and support someone closely through something hard or new."
+   },
+   "pronunciation": {
+    "ipa": "/ˈhoʊld ˌsʌmwʌnz ˈhænd/",
+    "respelling": "HOHLD sum-wuhnz HAND",
+    "tip": "Stress HOLD and HAND."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Supportive when offered kindly; critical when it means someone needs too much help.",
+   "usage_note": "Beyond the literal meaning, Americans use it for guiding someone: 'We'll hold your hand through setup.' In workplaces, 'I can't hold your hand' or 'hand-holding' criticizes someone who needs too much supervision. 'Hand-holding' (noun) is common in business.",
+   "word_family": [
+    "hand-holding (noun)",
+    "hold hands (literal, two people)"
+   ],
+   "distinctions": [
+    {
+     "vs": "hold hands",
+     "note": "Hold hands is the literal act of two people holding each other's hands, often romantically."
+    },
+    {
+     "vs": "walk someone through",
+     "note": "Walk someone through is explaining a process step by step; hold someone's hand adds emotional support or excessive help."
+    },
+    {
+     "vs": "take someone under one's wing",
+     "note": "Taking someone under your wing is longer-term mentoring."
+    }
+   ],
+   "antonyms": [
+    "leave someone to their own devices"
+   ],
+   "collocations": [
+    "hold your hand through",
+    "I can't hold your hand",
+    "need someone to hold their hand",
+    "a lot of hand-holding"
+   ],
+   "examples": {
+    "everyday": "First time doing your taxes? I'll hold your hand through it.",
+    "professional": "New clients need some hand-holding during onboarding.",
+    "analytical": "Effective training reduces hand-holding over time, as learners become independent."
+   },
+   "analogy": "Like holding a child's hand to cross the street until they can do it alone.",
+   "etymology": "From the literal act of holding a child's hand to guide and reassure them.",
+   "common_mistakes": [
+    "Using it only literally; Americans often mean guidance.",
+    "Using 'hand-holding' as praise in professional contexts; it usually hints at too much help."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "save someone's skin",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈseɪv ˌsʌmwʌnz ˈskɪn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To rescue someone from trouble, danger, punishment or embarrassment."
+    ]
+   }
+  ],
+  "etymology": "From 'skin' standing for the body or life; to save one's skin was to escape harm.",
+  "conversation": [
+   {
+    "sense": "rescue",
+    "text": "Thanks for reminding me about the deadline. You saved my skin."
+   },
+   {
+    "sense": "self-protection",
+    "text": "He lied to save his own skin."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To rescue someone from trouble or punishment."
+   },
+   "pronunciation": {
+    "ipa": "/ˈseɪv ˌsʌmwʌnz ˈskɪn/",
+    "respelling": "SAYV sum-wuhnz SKIN",
+    "tip": "Stress SAVE and SKIN."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Grateful when about others; negative in 'save one's own skin', which implies selfishness.",
+   "usage_note": "Common in thanks: 'You saved my skin.' 'Save one's own skin' criticizes someone who protects themselves at others' expense. Close variants: 'save someone's neck', 'save someone's bacon', 'save someone's butt' (more casual).",
+   "word_family": [
+    "save someone's neck (variant)",
+    "save someone's bacon (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "save the day",
+     "note": "Save the day is rescuing a whole situation; saving someone's skin is rescuing that person."
+    },
+    {
+     "vs": "cover for",
+     "note": "Covering for someone is hiding their absence or mistake; it may save their skin."
+    },
+    {
+     "vs": "have someone's back",
+     "note": "Having someone's back is the readiness to help; saving their skin is the rescue itself."
+    }
+   ],
+   "antonyms": [
+    "throw someone under the bus"
+   ],
+   "collocations": [
+    "save my skin",
+    "you saved my skin",
+    "save his own skin",
+    "to save their own skin"
+   ],
+   "examples": {
+    "everyday": "You brought my charger? You just saved my skin.",
+    "professional": "Your quick fix on the invoice saved my skin with the client.",
+    "analytical": "Witnesses often change their stories to save their own skin when facing charges."
+   },
+   "analogy": "Like pulling someone back from the edge just before they fall.",
+   "etymology": "From 'skin' standing for the body or life; to save one's skin was to escape harm.",
+   "common_mistakes": [
+    "Saying 'saved my skins'; it is singular.",
+    "Using 'save his own skin' as praise; it implies selfishness."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "be there for someone",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/bi ˈðɛɹ fɚ ˌsʌmwʌn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To be available to support, comfort and help someone, especially in hard times."
+    ]
+   }
+  ],
+  "etymology": "From 'there' meaning present and available.",
+  "conversation": [
+   {
+    "sense": "comfort",
+    "text": "I'm so sorry about your dad. I'm here for you, whatever you need."
+   },
+   {
+    "sense": "loyalty",
+    "text": "She was always there for me when I was going through the divorce."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To be available to support and comfort someone, especially when things are hard."
+   },
+   "pronunciation": {
+    "ipa": "/bi ˈðɛɹ fɚ ˌsʌmwʌn/",
+    "respelling": "bee THAIR fer sum-wuhn",
+    "tip": "Stress THERE: I'll be THAIR for you. 'For' is reduced to 'fer'."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Warm and caring.",
+   "usage_note": "Very common in comfort and gratitude: 'I'm here for you', 'I'll always be there for you', 'Thanks for being there for me.' 'Here' replaces 'there' when the speaker is offering support now. It is emotional support more than practical help, though it can include both.",
+   "word_family": [
+    "be here for someone (variant)",
+    "presence (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "have someone's back",
+     "note": "Have someone's back is loyalty in a fight or risk; being there for someone is emotional presence and comfort."
+    },
+    {
+     "vs": "stand by",
+     "note": "Stand by someone means stay loyal, often through scandal or trouble; being there is more about comfort."
+    },
+    {
+     "vs": "a shoulder to cry on",
+     "note": "A shoulder to cry on is a person who listens and comforts; being there for someone is what they do."
+    }
+   ],
+   "antonyms": [
+    "abandon",
+    "leave someone in the lurch"
+   ],
+   "collocations": [
+    "I'm here for you",
+    "I'll always be there for you",
+    "thanks for being there for me",
+    "was there for me",
+    "be there for each other"
+   ],
+   "examples": {
+    "everyday": "Thank you for being there for me after the breakup.",
+    "professional": "Good managers are there for their teams during personal crises, not just at deadlines.",
+    "analytical": "Perceived availability, the sense that someone will be there for you, predicts well-being better than actual support received."
+   },
+   "analogy": "Like a porch light left on: you know you can come over anytime.",
+   "etymology": "From 'there' meaning present and available.",
+   "common_mistakes": [
+    "Saying 'I'm there for you' when you are with the person now; 'I'm here for you' is natural.",
+    "Adding 'to': 'be there to me'; it is 'for me'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "take someone under one's wing",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈteɪk ˌsʌmwʌn ˌʌndɚ wʌnz ˈwɪŋ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To take care of and guide someone who is new or less experienced, as a mentor or protector."
+    ]
+   }
+  ],
+  "etymology": "From the image of a bird sheltering its young under its wing; compare Matthew 23:37, the hen gathering her chicks.",
+  "conversation": [
+   {
+    "sense": "mentoring",
+    "text": "When I started at the firm, Linda took me under her wing."
+   },
+   {
+    "sense": "protecting",
+    "text": "The older kids took the new boy under their wing."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To protect and guide someone less experienced, like a mentor."
+   },
+   "pronunciation": {
+    "ipa": "/ˈteɪk ˌsʌmwʌn ˌʌndɚ wʌnz ˈwɪŋ/",
+    "respelling": "TAYK sum-wuhn UHN-der wuhnz WING",
+    "tip": "Stress TAKE and WING. 'Under her' is often linked: UHN-der-er WING."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Warm and generous.",
+   "usage_note": "Common for mentors, older students, senior colleagues and coaches. The possessive matches the helper: 'He took me under his wing.' Works in casual speech and in professional writing like recommendation letters.",
+   "word_family": [
+    "wing (noun)",
+    "mentor (noun, verb)"
+   ],
+   "distinctions": [
+    {
+     "vs": "mentor",
+     "note": "Mentor is the formal word; taking someone under your wing adds warmth and protection."
+    },
+    {
+     "vs": "show someone the ropes",
+     "note": "Showing someone the ropes is teaching them how things work; taking them under your wing is a longer, caring relationship."
+    },
+    {
+     "vs": "hold someone's hand",
+     "note": "Holding someone's hand is close guidance through one process."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "took me under her wing",
+    "take someone under your wing",
+    "took the new hires under his wing"
+   ],
+   "examples": {
+    "everyday": "My aunt took me under her wing when I moved to New York.",
+    "professional": "Our senior engineer takes every new intern under her wing for the first month.",
+    "analytical": "Informal mentoring, when a senior employee takes a newcomer under their wing, is linked to higher retention."
+   },
+   "analogy": "Like a mother hen tucking her chicks under her wings for safety.",
+   "etymology": "From the image of a bird sheltering its young under its wing; compare Matthew 23:37, the hen gathering her chicks.",
+   "common_mistakes": [
+    "Saying 'under one's wings' (plural); the idiom uses 'wing'.",
+    "Saying 'take someone in one's wing'; it is 'under'."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "play favorites",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˈpleɪ ˈfeɪvəɹɪts/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To treat one or some people better than others in a way that is unfair."
+    ]
+   }
+  ],
+  "etymology": "From 'favorite' in the sense of a person preferred above others; American.",
+  "conversation": [
+   {
+    "sense": "parents",
+    "text": "Mom says she doesn't play favorites, but my brother never does dishes."
+   },
+   {
+    "sense": "work",
+    "text": "A good manager doesn't play favorites when assigning projects."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To unfairly treat some people better than others."
+   },
+   "pronunciation": {
+    "ipa": "/ˈpleɪ ˈfeɪvəɹɪts/",
+    "respelling": "PLAY FAY-vuh-rits",
+    "tip": "Stress PLAY and FAV-: PLAY FAY-vuh-rits. 'Favorites' often has three syllables: FAYV-rits."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Negative; it is an accusation of unfairness.",
+   "usage_note": "Usually negative or denied: 'I don't play favorites.' Used for parents, teachers, coaches and bosses. American spelling is 'favorites'; British is 'favourites'.",
+   "word_family": [
+    "favorite (noun, adjective)",
+    "favoritism (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "favoritism",
+     "note": "Favoritism is the noun for the practice; play favorites is the verb phrase."
+    },
+    {
+     "vs": "teacher's pet",
+     "note": "The teacher's pet is the person who benefits from favoritism."
+    },
+    {
+     "vs": "take someone's side",
+     "note": "Taking someone's side happens in one dispute; playing favorites is a pattern of unfair treatment."
+    }
+   ],
+   "antonyms": [
+    "treat everyone equally",
+    "be fair"
+   ],
+   "collocations": [
+    "play favorites",
+    "doesn't play favorites",
+    "accused of playing favorites",
+    "playing favorites with"
+   ],
+   "examples": {
+    "everyday": "Grandpa definitely plays favorites. He always gives my cousin the biggest slice.",
+    "professional": "To avoid playing favorites, the team rotates who presents to the client.",
+    "analytical": "When employees believe a supervisor plays favorites, engagement tends to drop across the whole team, not only among those left out."
+   },
+   "analogy": "Like a referee who only calls fouls on one team.",
+   "etymology": "From 'favorite' in the sense of a person preferred above others; American.",
+   "common_mistakes": [
+    "Spelling it 'play favourites' in American writing.",
+    "Saying 'play favorite' (singular); the idiom is plural."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "get on someone's good side",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈɡɛt ɑn ˌsʌmwʌnz ˈɡʊd ˌsaɪd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To win someone's approval or friendship, often by being pleasant or helpful to them."
+    ]
+   }
+  ],
+  "etymology": "From 'side' in the sense of one aspect of a person's mood or attitude.",
+  "conversation": [
+   {
+    "sense": "winning favor",
+    "text": "Bring donuts on your first day; it's the fastest way to get on everyone's good side."
+   },
+   {
+    "sense": "advice",
+    "text": "Stay on the landlord's good side and he'll fix things faster."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To win someone's favor or approval."
+   },
+   "pronunciation": {
+    "ipa": "/ˈɡɛt ɑn ˌsʌmwʌnz ˈɡʊd ˌsaɪd/",
+    "respelling": "GET ahn sum-wuhnz GUUD syd",
+    "tip": "Stress GOOD most. 'Get on' links: GEH-dahn."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral to playful; it can suggest strategic flattery.",
+   "usage_note": "'Get on' is about winning favor; 'stay on' or 'be on' someone's good side is keeping it. The opposite is 'get on someone's bad side' (make them dislike or distrust you): 'You don't want to get on her bad side.'",
+   "word_family": [
+    "good side (noun phrase)",
+    "bad side (opposite)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get on someone's nerves",
+     "note": "Get on someone's nerves means annoy them, the opposite effect."
+    },
+    {
+     "vs": "kiss up",
+     "note": "Kissing up is flattering someone to win favor, a more insulting description."
+    },
+    {
+     "vs": "curry favor",
+     "note": "Curry favor is more formal and suggests insincere flattery."
+    }
+   ],
+   "antonyms": [
+    "get on someone's bad side",
+    "rub someone the wrong way"
+   ],
+   "collocations": [
+    "get on someone's good side",
+    "stay on her good side",
+    "on his good side",
+    "get on someone's bad side",
+    "don't get on her bad side"
+   ],
+   "examples": {
+    "everyday": "If you want to borrow the car, you'd better get on Dad's good side first.",
+    "professional": "Getting on the office manager's good side will make your first month a lot easier.",
+    "analytical": "New employees often invest early effort in getting on their supervisor's good side, which shapes later evaluations."
+   },
+   "analogy": "Like finding the sunny side of a house: once you're there, everything feels warmer.",
+   "etymology": "From 'side' in the sense of one aspect of a person's mood or attitude.",
+   "common_mistakes": [
+    "Saying 'get in someone's good side'; it is 'on'.",
+    "Confusing 'on someone's good side' (favor) with 'on someone's side' (support)."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "keep someone at arm's length",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈkip ˌsʌmwʌn æt ˈɑɹmz ˌlɛŋθ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To avoid becoming close or friendly with someone; to keep a distance from them."
+    ]
+   }
+  ],
+  "etymology": "From the literal distance of an outstretched arm.",
+  "conversation": [
+   {
+    "sense": "emotional distance",
+    "text": "She's friendly, but she keeps people at arm's length."
+   },
+   {
+    "sense": "caution",
+    "text": "I'd keep that recruiter at arm's length until you check his references."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To avoid getting close to someone, keeping them at a distance."
+   },
+   "pronunciation": {
+    "ipa": "/ˈkip ˌsʌmwʌn æt ˈɑɹmz ˌlɛŋθ/",
+    "respelling": "KEEP sum-wuhn at AHRMZ lengkth",
+    "tip": "Stress KEEP and ARM'S; 'length' is lighter and often sounds like 'lengkth'."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral to cool; it suggests caution, distrust or reserve.",
+   "usage_note": "Used for emotional distance, caution with someone you don't trust, and organizations avoiding close ties. 'At arm's length' alone appears in business and law ('an arm's-length transaction'), meaning between independent parties with no special relationship.",
+   "word_family": [
+    "arm's-length (adjective)",
+    "arm's-length transaction (business)"
+   ],
+   "distinctions": [
+    {
+     "vs": "give someone the cold shoulder",
+     "note": "Giving the cold shoulder is deliberately ignoring someone; keeping them at arm's length is quieter, ongoing distance."
+    },
+    {
+     "vs": "keep one's distance",
+     "note": "Keep one's distance is close in meaning and can be physical too."
+    },
+    {
+     "vs": "arm's-length transaction",
+     "note": "In business, arm's-length means between independent parties, not about friendship."
+    }
+   ],
+   "antonyms": [
+    "take someone under one's wing",
+    "let someone in"
+   ],
+   "collocations": [
+    "keep someone at arm's length",
+    "keep people at arm's length",
+    "held at arm's length",
+    "an arm's-length relationship"
+   ],
+   "examples": {
+    "everyday": "After the breakup, he kept everyone at arm's length for a while.",
+    "professional": "Legal advised us to keep the vendor at arm's length while the dispute is pending.",
+    "analytical": "Agencies keep lobbyists at arm's length to avoid the appearance of regulatory capture."
+   },
+   "analogy": "Like holding someone off with your arm straight: they can't get any closer.",
+   "etymology": "From the literal distance of an outstretched arm.",
+   "common_mistakes": [
+    "Saying 'at arms length' without the apostrophe; write 'arm's length'.",
+    "Saying 'at an arm's length'; the idiom has no article."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "on speaking terms",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ɑn ˈspikɪŋ ˌtɝmz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Friendly enough to talk to each other, usually after or despite a disagreement.",
+     "not on speaking terms: so angry with each other that you refuse to talk."
+    ]
+   }
+  ],
+  "etymology": "From 'terms' in the sense of the relations between people.",
+  "conversation": [
+   {
+    "sense": "quarrel",
+    "text": "My aunt and my mom aren't on speaking terms after the wedding."
+   },
+   {
+    "sense": "partial repair",
+    "text": "We're back on speaking terms, but we're not close again yet."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Friendly enough to talk to each other; often negative: no longer talking after a quarrel."
+   },
+   "pronunciation": {
+    "ipa": "/ɑn ˈspikɪŋ ˌtɝmz/",
+    "respelling": "ahn SPEE-king turmz",
+    "tip": "Stress SPEAK-: on SPEE-king terms."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Usually describes a damaged relationship; 'back on speaking terms' is cautiously hopeful.",
+   "usage_note": "Most often negative: 'They're not on speaking terms.' The positive form usually means a relationship is barely repaired: 'At least we're on speaking terms now.' Used for family feuds, ex-partners, neighbors and colleagues.",
+   "word_family": [
+    "terms (noun: relationship)",
+    "on good terms (related)"
+   ],
+   "distinctions": [
+    {
+     "vs": "on good terms",
+     "note": "On good terms means having a friendly relationship; on speaking terms means only that you talk, often a low bar."
+    },
+    {
+     "vs": "falling-out",
+     "note": "A falling-out is the quarrel that often leaves people not on speaking terms."
+    },
+    {
+     "vs": "give someone the silent treatment",
+     "note": "The silent treatment is refusing to talk as a punishment, often briefly; not on speaking terms is a longer state."
+    }
+   ],
+   "antonyms": [
+    "not on speaking terms",
+    "at odds"
+   ],
+   "collocations": [
+    "not on speaking terms",
+    "back on speaking terms",
+    "barely on speaking terms",
+    "on speaking terms again"
+   ],
+   "examples": {
+    "everyday": "My brothers weren't on speaking terms for two years over the family business.",
+    "professional": "The two departments are barely on speaking terms after the budget fight.",
+    "analytical": "Diplomats sometimes describe nations without embassies as not on speaking terms, though back channels often exist."
+   },
+   "analogy": "Like a phone line between two houses that has been cut, or just reconnected.",
+   "etymology": "From 'terms' in the sense of the relations between people.",
+   "common_mistakes": [
+    "Saying 'in speaking terms'; it is 'on'.",
+    "Assuming 'on speaking terms' means close; it often means just barely civil."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "make nice",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌmeɪk ˈnaɪs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To act friendly or polite toward someone, especially after a disagreement or for practical reasons, often without real warmth."
+    ]
+   }
+  ],
+  "etymology": "Origin uncertain; a colloquial American expression.",
+  "conversation": [
+   {
+    "sense": "after a fight",
+    "text": "You two need to make nice before the family dinner."
+   },
+   {
+    "sense": "for show",
+    "text": "The rivals made nice for the cameras."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To act friendly toward someone, often after a conflict or for show."
+   },
+   "pronunciation": {
+    "ipa": "/ˌmeɪk ˈnaɪs/",
+    "respelling": "mayk NYSS",
+    "tip": "Stress NICE: mayk NYSS."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Light and slightly ironic; it often suggests the friendliness is forced.",
+   "usage_note": "American and informal. 'Make nice with someone' is common: 'He's trying to make nice with his ex.' It often hints that the politeness is strategic or temporary, as with politicians or rival companies.",
+   "word_family": [
+    "nice (adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "make up",
+     "note": "Making up is truly resolving a quarrel; making nice may just be acting friendly."
+    },
+    {
+     "vs": "bury the hatchet",
+     "note": "Bury the hatchet means ending a long conflict for real."
+    },
+    {
+     "vs": "kiss up",
+     "note": "Kissing up is flattering someone more powerful; making nice is just being friendly."
+    }
+   ],
+   "antonyms": [
+    "pick a fight",
+    "give someone the cold shoulder"
+   ],
+   "collocations": [
+    "make nice with",
+    "make nice for the cameras",
+    "time to make nice",
+    "trying to make nice"
+   ],
+   "examples": {
+    "everyday": "I don't love my sister's boyfriend, but I'll make nice at Thanksgiving.",
+    "professional": "After the lawsuit, the two companies made nice and signed a licensing deal.",
+    "analytical": "Leaders make nice at summits even when their countries' interests remain sharply opposed."
+   },
+   "analogy": "Like a smile put on for a photo: real enough to see, maybe not to feel.",
+   "etymology": "Origin uncertain; a colloquial American expression.",
+   "common_mistakes": [
+    "Saying 'make nicely'; the idiom uses the adjective: 'make nice'.",
+    "Using it for sincere, deep reconciliation; it usually suggests surface friendliness."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "rub someone the wrong way",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˈɹʌb ˌsʌmwʌn ðə ˈɹɔŋ ˌweɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To annoy or irritate someone, often without meaning to and without a clear reason."
+    ]
+   }
+  ],
+  "etymology": "From stroking an animal's fur, especially a cat's, against the direction it grows.",
+  "conversation": [
+   {
+    "sense": "vague dislike",
+    "text": "I don't know why, but the new guy rubs me the wrong way."
+   },
+   {
+    "sense": "bad first impression",
+    "text": "His tone in the meeting rubbed a lot of people the wrong way."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To irritate someone, often without clear reason."
+   },
+   "pronunciation": {
+    "ipa": "/ˈɹʌb ˌsʌmwʌn ðə ˈɹɔŋ ˌweɪ/",
+    "respelling": "RUHB sum-wuhn thuh RAWNG way",
+    "tip": "Stress RUB and WRONG. 'Wrong' starts with an r sound; the w is silent."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly negative; it describes irritation rather than anger.",
+   "usage_note": "The subject is the annoying person or thing: 'He rubs me the wrong way', 'That comment rubbed her the wrong way.' Americans say 'the wrong way'; British English often says 'rub someone up the wrong way'.",
+   "word_family": [
+    "rub (verb)",
+    "rubbed someone the wrong way (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get on someone's nerves",
+     "note": "Getting on someone's nerves is repeated annoyance; rubbing them the wrong way often describes a general bad impression."
+    },
+    {
+     "vs": "take something the wrong way",
+     "note": "Take something the wrong way means misunderstanding a remark and being offended by it."
+    },
+    {
+     "vs": "get on someone's good side",
+     "note": "The opposite: winning someone's approval."
+    }
+   ],
+   "antonyms": [
+    "get on someone's good side",
+    "hit it off"
+   ],
+   "collocations": [
+    "rubs me the wrong way",
+    "rubbed people the wrong way",
+    "something about him rubs me the wrong way"
+   ],
+   "examples": {
+    "everyday": "Something about the way she talks to waiters rubs me the wrong way.",
+    "professional": "His blunt emails sometimes rub clients the wrong way, so I review them first.",
+    "analytical": "Small interpersonal frictions, people who rub each other the wrong way, account for many workplace conflicts."
+   },
+   "analogy": "Like stroking a cat's fur backward: it bristles, even if you meant well.",
+   "etymology": "From stroking an animal's fur, especially a cat's, against the direction it grows.",
+   "common_mistakes": [
+    "Saying 'rub someone in the wrong way'; there is no 'in'.",
+    "Using the British 'rub someone up the wrong way' in American English, where it sounds foreign."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "go out of one's way",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈɡoʊ ˈaʊt əv wʌnz ˈweɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To make a special effort to do something, especially to help someone, when it is not required or convenient."
+    ]
+   }
+  ],
+  "etymology": "From the literal sense of leaving one's usual route to do something.",
+  "conversation": [
+   {
+    "sense": "extra effort",
+    "text": "Our neighbor went out of her way to welcome us to the street."
+   },
+   {
+    "sense": "deliberate",
+    "text": "He went out of his way to avoid me at the party."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To make a special effort to help or do something, beyond what's expected."
+   },
+   "pronunciation": {
+    "ipa": "/ˈɡoʊ ˈaʊt əv wʌnz ˈweɪ/",
+    "respelling": "GOH OWT uhv wuhnz WAY",
+    "tip": "Stress OUT and WAY; 'of' is reduced to 'uhv'."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Usually positive (kindness); can be negative when the effort is to avoid or hurt someone.",
+   "usage_note": "Common in thanks and praise: 'Thanks for going out of your way.' Also used in 'go out of one's way to avoid/ignore someone'. 'Don't go out of your way' politely tells someone not to trouble themselves. Change the possessive to fit the subject.",
+   "word_family": [
+    "go out of your way (common form)",
+    "way (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "go the extra mile",
+     "note": "Go the extra mile is doing more than expected, usually in work or service; go out of one's way stresses inconvenience to yourself."
+    },
+    {
+     "vs": "bend over backwards",
+     "note": "Bending over backwards is trying very hard to please, often more than is reasonable."
+    },
+    {
+     "vs": "lift a finger",
+     "note": "Not lift a finger is making no effort at all, the opposite."
+    }
+   ],
+   "antonyms": [
+    "not lift a finger"
+   ],
+   "collocations": [
+    "go out of your way to help",
+    "went out of her way",
+    "don't go out of your way",
+    "go out of one's way to avoid",
+    "thanks for going out of your way"
+   ],
+   "examples": {
+    "everyday": "You didn't have to go out of your way to pick me up, but thank you.",
+    "professional": "The hotel staff went out of their way to accommodate our late check-in.",
+    "analytical": "Prosocial behavior studies measure how often people go out of their way to help strangers."
+   },
+   "analogy": "Like driving a detour to drop a friend at their door.",
+   "etymology": "From the literal sense of leaving one's usual route to do something.",
+   "common_mistakes": [
+    "Saying 'go out of the way'; use the possessive: 'out of my way'.",
+    "Confusing it with 'get out of my way', which means move."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ }
+]
