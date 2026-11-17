@@ -1,0 +1,3908 @@
+[
+ {
+  "word": "better safe than sorry",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌbɛtɚ ˌseɪf ðən ˈsɑɹi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "It is wiser to be careful now than to take a risk and regret it later."
+    ]
+   }
+  ],
+  "etymology": "An old English proverb; versions such as \"better be sure than sorry\" go back to the 1800s.",
+  "conversation": [
+   {
+    "sense": "packing",
+    "text": "Bring a jacket. It probably won't rain, but better safe than sorry."
+   },
+   {
+    "sense": "checking",
+    "text": "I called the bank to confirm the transfer. Better safe than sorry."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Take the careful choice, even if it seems unnecessary, because the cost of a mistake would be worse."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbɛtɚ ˌseɪf ðən ˈsɑɹi/",
+    "respelling": "bet-er sayf thuhn SAH-ree",
+    "tip": "Stress SORRY most and SAFE a little: better SAFE than SORry. \"Than\" is reduced to thuhn."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive and practical; it explains or justifies a small precaution.",
+   "usage_note": "Usually said on its own, as a short sentence, right after you mention a precaution: \"I backed up my files. Better safe than sorry.\" It can also follow \"It's\": \"It's better to be safe than sorry.\" It fits small, everyday precautions best.",
+   "word_family": [
+    "better to be safe than sorry (full form)",
+    "play it safe (related phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "err on the side of caution",
+     "note": "\"Err on the side of caution\" describes choosing the careful option and sounds more formal; \"better safe than sorry\" is the quick spoken reason for it."
+    },
+    {
+     "vs": "an ounce of prevention is worth a pound of cure",
+     "note": "Both praise caution, but \"an ounce of prevention\" is about preventing a bigger problem, often health or maintenance; \"better safe than sorry\" is about avoiding regret."
+    }
+   ],
+   "antonyms": [
+    "throw caution to the wind",
+    "nothing ventured, nothing gained"
+   ],
+   "collocations": [
+    "better safe than sorry",
+    "it's better to be safe than sorry",
+    "just being safe",
+    "better safe than sorry, right?"
+   ],
+   "examples": {
+    "everyday": "I put sunscreen on the kids even though it's cloudy. Better safe than sorry.",
+    "professional": "We added a second reviewer for the payroll changes; better safe than sorry with people's paychecks.",
+    "analytical": "The precautionary principle in policy is essentially \"better safe than sorry\": act to prevent serious harm even before the evidence is complete."
+   },
+   "analogy": "Like wearing a seatbelt on a short drive: it costs almost nothing, and you'll be glad if something happens.",
+   "etymology": "An old English proverb; versions such as \"better be sure than sorry\" go back to the 1800s.",
+   "common_mistakes": [
+    "Saying \"better sorry than safe\"; the safe choice comes first.",
+    "Using it for a big, bold decision; it is only for being careful."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "when it rains, it pours",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/wɛn ɪt ˌɹeɪnz ɪt ˈpɔɹz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "When one bad thing happens, other bad things often follow at the same time.",
+     "More generally, things tend to happen all at once: several problems, or sometimes several pieces of good news, arrive together."
+    ]
+   }
+  ],
+  "etymology": "From the British proverb \"it never rains but it pours\" (1700s). The American form became familiar through Morton Salt's slogan of 1914, which advertised that its salt still poured in wet weather.",
+  "conversation": [
+   {
+    "sense": "bad week",
+    "text": "First the car broke down, then the dishwasher, and now the dog is sick. When it rains, it pours."
+   },
+   {
+    "sense": "busy",
+    "text": "No job offers for months, and now I have three in one week. When it rains, it pours!"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Troubles (or events in general) seem to come all together instead of one at a time."
+   },
+   "pronunciation": {
+    "ipa": "/wɛn ɪt ˌɹeɪnz ɪt ˈpɔɹz/",
+    "respelling": "wen it raynz it PORZ",
+    "tip": "Stress POURS. \"Pours\" rhymes with \"doors.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Rueful and sympathetic; often said with a sigh or a laugh.",
+   "usage_note": "Usually a comment on a run of bad luck, said by the person it's happening to or by a sympathetic friend. It is also used humorously for good things arriving at once. Americans may know it from the Morton Salt slogan.",
+   "word_family": [
+    "it never rains but it pours (older, more British form)"
+   ],
+   "distinctions": [
+    {
+     "vs": "the last straw",
+     "note": "\"The last straw\" is the final problem that makes you lose patience; \"when it rains, it pours\" is about many problems arriving close together."
+    },
+    {
+     "vs": "bad luck comes in threes",
+     "note": "A superstition with a similar idea; \"when it rains, it pours\" doesn't count the problems."
+    }
+   ],
+   "antonyms": [
+    "a stroke of luck",
+    "smooth sailing"
+   ],
+   "collocations": [
+    "when it rains, it pours",
+    "well, when it rains, it pours",
+    "you know what they say: when it rains, it pours"
+   ],
+   "examples": {
+    "everyday": "The basement flooded the same day I lost my phone. When it rains, it pours.",
+    "professional": "Two people resigned and our biggest client called with a complaint the same morning; when it rains, it pours.",
+    "analytical": "The saying \"when it rains, it pours\" reflects a real pattern: one setback, like a job loss, often causes others, like debt and stress."
+   },
+   "analogy": "Like weather: one drop and suddenly you're in a downpour.",
+   "etymology": "From the British proverb \"it never rains but it pours\" (1700s). The American form became familiar through Morton Salt's slogan of 1914, which advertised that its salt still poured in wet weather.",
+   "common_mistakes": [
+    "Saying \"when it rains, it rains\"; the second verb is \"pours.\"",
+    "Using it for a single problem; it is about many things happening at once."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "the grass is always greener on the other side",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ðə ˈɡɹæs ɪz ˌɔlweɪz ˈɡɹinɚ ɑn ðə ˌʌðɚ ˈsaɪd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "People tend to think that other people's situations (jobs, homes, relationships, lives) are better than their own, even when they are not."
+    ]
+   }
+  ],
+  "etymology": "An old proverb with roots in Latin writers; the English wording became popular in the 20th century, helped by a 1920s popular song and a 1960 film titled \"The Grass Is Greener.\"",
+  "conversation": [
+   {
+    "sense": "job envy",
+    "text": "You think his job is perfect, but he works sixty hours a week. The grass is always greener on the other side."
+   },
+   {
+    "sense": "moving",
+    "text": "I wanted to live in the city, and now I miss the quiet. I guess the grass is always greener."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "What other people have always looks better than what you have, but it often isn't really better."
+   },
+   "pronunciation": {
+    "ipa": "/ðə ˈɡɹæs ɪz ˌɔlweɪz ˈɡɹinɚ ɑn ðə ˌʌðɚ ˈsaɪd/",
+    "respelling": "thuh gras iz awl-wayz gree-ner on thee uh-ther SYDE",
+    "tip": "The two strongest beats are GRASS and GREENER, then SIDE at the end. People often shorten it to \"the grass is always greener.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Gently cautionary: it warns against envy and restlessness.",
+   "usage_note": "Often shortened to \"the grass is always greener.\" It is used to talk someone out of a change, or to explain disappointment after a change. A common variant is \"the grass isn't always greener.\"",
+   "word_family": [
+    "the grass is always greener (short form)",
+    "the grass isn't always greener (variant)",
+    "grass-is-greener (adjective, e.g. grass-is-greener thinking)"
+   ],
+   "distinctions": [
+    {
+     "vs": "greener pastures",
+     "note": "\"Greener pastures\" is a better place or job you move on to, said positively; \"the grass is always greener\" warns that the better place may be an illusion."
+    },
+    {
+     "vs": "keeping up with the Joneses",
+     "note": "\"Keeping up with the Joneses\" is competing with neighbors in what you own; \"the grass is always greener\" is imagining their life is better."
+    }
+   ],
+   "antonyms": [
+    "count one's blessings"
+   ],
+   "collocations": [
+    "the grass is always greener on the other side",
+    "the grass isn't always greener",
+    "grass-is-greener syndrome",
+    "classic grass-is-greener thinking"
+   ],
+   "examples": {
+    "everyday": "She left her small town for New York and found out the grass isn't always greener.",
+    "professional": "Before you take the competing offer, remember the grass is always greener; ask about their hours and turnover.",
+    "analytical": "Social media can intensify grass-is-greener thinking, because people compare their ordinary days with others' highlights."
+   },
+   "analogy": "Like your neighbor's lawn seen from your window: from far away you can't see the weeds.",
+   "etymology": "An old proverb with roots in Latin writers; the English wording became popular in the 20th century, helped by a 1920s popular song and a 1960 film titled \"The Grass Is Greener.\"",
+   "common_mistakes": [
+    "Saying \"the grass is greener in the other side\"; it is \"on the other side.\"",
+    "Using it to praise a real improvement; the saying suggests the improvement may be imaginary."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "old habits die hard",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌoʊld ˈhæbɪts ˌdaɪ ˈhɑɹd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "It is very difficult to stop doing something you have done for a long time."
+    ]
+   }
+  ],
+  "etymology": "Recorded in English since the 1700s; \"die hard\" means to resist dying for a long time.",
+  "conversation": [
+   {
+    "sense": "routine",
+    "text": "I'm retired, but I still wake up at 5:30. Old habits die hard."
+   },
+   {
+    "sense": "teasing",
+    "text": "You still check the fridge every time you walk by? Old habits die hard."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Long-standing habits are hard to break, even when you want to change."
+   },
+   "pronunciation": {
+    "ipa": "/ˌoʊld ˈhæbɪts ˌdaɪ ˈhɑɹd/",
+    "respelling": "ohld HAB-its dye HAHRD",
+    "tip": "Stress HARD most, with a second beat on HABITS. The \"h\" in \"habits\" and \"hard\" is pronounced."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral to affectionate; often a self-aware, slightly amused comment.",
+   "usage_note": "Usually said as a short comment after someone does something out of habit. It is gentle; it explains a habit rather than criticizing it.",
+   "word_family": [
+    "old habits (noun phrase)",
+    "die hard (verb phrase; also die-hard, adjective: a die-hard fan)"
+   ],
+   "distinctions": [
+    {
+     "vs": "you can't teach an old dog new tricks",
+     "note": "\"You can't teach an old dog new tricks\" says older people can't learn new things; \"old habits die hard\" is about anyone's habits being hard to break."
+    },
+    {
+     "vs": "force of habit",
+     "note": "\"Force of habit\" explains one action (\"I locked it out of force of habit\"); \"old habits die hard\" comments on how lasting habits are."
+    }
+   ],
+   "antonyms": [
+    "turn over a new leaf"
+   ],
+   "collocations": [
+    "old habits die hard",
+    "I guess old habits die hard",
+    "old habits really do die hard"
+   ],
+   "examples": {
+    "everyday": "Even after moving to Texas, my mom still keeps a snow shovel by the door. Old habits die hard.",
+    "professional": "The team switched to the new tracking system, but old habits die hard, and some updates still come by email.",
+    "analytical": "Behavioral research supports the idea that old habits die hard: habits run on automatic cues, so changing them takes repetition, not just willpower."
+   },
+   "analogy": "Like a path worn into a lawn: people keep walking on it even after you put in a sidewalk.",
+   "etymology": "Recorded in English since the 1700s; \"die hard\" means to resist dying for a long time.",
+   "common_mistakes": [
+    "Saying \"old habits die slowly\" or \"old habits never die\"; the fixed form is \"die hard.\"",
+    "Thinking \"die hard\" means the habit dies easily; it means the opposite."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "you can't teach an old dog new tricks",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ju ˌkænt ˌtitʃ ən ˌoʊld ˌdɔɡ ˌnu ˈtɹɪks/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "It is hard or impossible for older or experienced people to learn new skills or change their ways."
+    ]
+   }
+  ],
+  "etymology": "An English proverb recorded since the 1500s, originally in farming books about training dogs.",
+  "conversation": [
+   {
+    "sense": "technology",
+    "text": "My grandfather refuses to use a smartphone. You can't teach an old dog new tricks."
+   },
+   {
+    "sense": "proving it wrong",
+    "text": "I learned to swim at sixty. Who says you can't teach an old dog new tricks?"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "People who have done things one way for a long time find it hard to change or learn something new."
+   },
+   "pronunciation": {
+    "ipa": "/ju ˌkænt ˌtitʃ ən ˌoʊld ˌdɔɡ ˌnu ˈtɹɪks/",
+    "respelling": "yoo kant teech uhn ohld dawg noo TRIKS",
+    "tip": "Stress TRICKS most, with beats on OLD DOG and NEW. American \"can't\" is kant, with the vowel of \"cat.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly teasing; often used jokingly about oneself, or turned around to say it isn't true.",
+   "usage_note": "Often used humorously about yourself (\"I'm an old dog\") or turned around: \"Who says you can't teach an old dog new tricks?\" Said about another person, especially an older coworker, it can sound dismissive or ageist.",
+   "word_family": [
+    "an old dog (person set in their ways)",
+    "teach an old dog new tricks (verb phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "old habits die hard",
+     "note": "\"Old habits die hard\" is about breaking habits at any age; \"you can't teach an old dog new tricks\" is about older people not learning new things."
+    },
+    {
+     "vs": "set in one's ways",
+     "note": "\"Set in one's ways\" describes the person directly and plainly: \"He's set in his ways.\""
+    }
+   ],
+   "antonyms": [
+    "never too late to learn",
+    "lifelong learner"
+   ],
+   "collocations": [
+    "you can't teach an old dog new tricks",
+    "who says you can't teach an old dog new tricks",
+    "an old dog learning new tricks",
+    "proof you can teach an old dog new tricks"
+   ],
+   "examples": {
+    "everyday": "My dad finally learned to text with emojis, so you can teach an old dog new tricks.",
+    "professional": "Don't assume senior staff can't learn the new software; the idea that you can't teach an old dog new tricks is usually wrong.",
+    "analytical": "Research on adult learning challenges the belief that you can't teach an old dog new tricks; older adults learn well with practice and motivation."
+   },
+   "analogy": "Like asking a river to change course: it can happen, but it takes a lot of time and pressure.",
+   "etymology": "An English proverb recorded since the 1500s, originally in farming books about training dogs.",
+   "common_mistakes": [
+    "Saying \"you can't teach old dogs new tricks\" is fine, but \"you can't learn an old dog new tricks\" is wrong; the verb is \"teach.\"",
+    "Using it directly about an older person (\"You're an old dog\"); it can offend. It is safest about yourself."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "if it ain't broke, don't fix it",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ɪf ɪt ˌeɪnt ˈbɹoʊk ˌdoʊnt ˈfɪks ɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "If something is working well, don't change it; changing it could make it worse."
+    ]
+   }
+  ],
+  "etymology": "American; popularized in 1977 by Bert Lance, a U.S. government official, though the idea is older.",
+  "conversation": [
+   {
+    "sense": "software",
+    "text": "Why update the old system? It does the job. If it ain't broke, don't fix it."
+   },
+   {
+    "sense": "recipe",
+    "text": "Don't add anything to Grandma's chili. If it ain't broke, don't fix it."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Leave a working system, method or thing alone instead of changing it just for the sake of change."
+   },
+   "pronunciation": {
+    "ipa": "/ɪf ɪt ˌeɪnt ˈbɹoʊk ˌdoʊnt ˈfɪks ɪt/",
+    "respelling": "if it aynt BROHK dohnt FIKS it",
+    "tip": "Two stresses: BROKE and FIX. \"Ain't\" rhymes with \"paint.\" The grammar is deliberately casual; it's part of the saying."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Practical and folksy; it can also sound resistant to change.",
+   "usage_note": "The nonstandard \"ain't broke\" is fixed in the saying, and educated speakers use it this way on purpose; \"if it isn't broken, don't fix it\" sounds stiff. It is common in business and tech talk too. People who want change sometimes answer, \"It is broke, though.\"",
+   "word_family": [
+    "if it isn't broken, don't fix it (standard-grammar variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "let sleeping dogs lie",
+     "note": "\"Let sleeping dogs lie\" means don't stir up an old problem; \"if it ain't broke, don't fix it\" means don't change something that works."
+    },
+    {
+     "vs": "leave well enough alone",
+     "note": "\"Leave well enough alone\" is similar but says \"good enough\" rather than \"working well.\""
+    }
+   ],
+   "antonyms": [
+    "reinvent the wheel",
+    "shake things up"
+   ],
+   "collocations": [
+    "if it ain't broke, don't fix it",
+    "the if-it-ain't-broke approach",
+    "if it ain't broke, why fix it?"
+   ],
+   "examples": {
+    "everyday": "I've had the same barber for twenty years. If it ain't broke, don't fix it.",
+    "professional": "The checkout flow converts well, so let's not redesign it this quarter; if it ain't broke, don't fix it.",
+    "analytical": "An if-it-ain't-broke attitude protects working systems, but it can also hide slow decline until something finally fails."
+   },
+   "analogy": "Like a car that starts every morning: you don't take the engine apart just to see if you can make it better.",
+   "etymology": "American; popularized in 1977 by Bert Lance, a U.S. government official, though the idea is older.",
+   "common_mistakes": [
+    "\"Correcting\" it to \"if it ain't broken\"; the saying uses \"broke.\"",
+    "Writing \"ain't\" in formal writing outside the saying; it is acceptable only inside this fixed phrase."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "Rome wasn't built in a day",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈɹoʊm ˌwʌzənt ˌbɪlt ɪn ə ˈdeɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Important things take a long time to achieve, so be patient."
+    ]
+   }
+  ],
+  "etymology": "A medieval proverb, found in French in the 1100s and in English by the 1500s.",
+  "conversation": [
+   {
+    "sense": "learning",
+    "text": "You've only played guitar for two weeks. Rome wasn't built in a day."
+   },
+   {
+    "sense": "project",
+    "text": "The garden doesn't look like much yet, but Rome wasn't built in a day."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Great or difficult work cannot be finished quickly; it needs time and steady effort."
+   },
+   "pronunciation": {
+    "ipa": "/ˈɹoʊm ˌwʌzənt ˌbɪlt ɪn ə ˈdeɪ/",
+    "respelling": "ROHM wuz-uhnt bilt in uh DAY",
+    "tip": "Stress ROME and DAY. \"Rome\" rhymes with \"home\"; \"wasn't\" is WUZ-uhnt."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Encouraging; it asks for patience, with oneself or with others.",
+   "usage_note": "Used to encourage someone who is frustrated with slow progress, or to defend slow progress: \"Give it time. Rome wasn't built in a day.\" Capitalize \"Rome.\"",
+   "word_family": [
+    "wasn't built in a day (often adapted: my business wasn't built in a day)"
+   ],
+   "distinctions": [
+    {
+     "vs": "good things come to those who wait",
+     "note": "\"Good things come to those who wait\" is about waiting patiently for a reward; \"Rome wasn't built in a day\" is about patient work."
+    },
+    {
+     "vs": "slow and steady wins the race",
+     "note": "\"Slow and steady wins the race\" says the patient approach beats the fast one; \"Rome wasn't built in a day\" says big things take time."
+    }
+   ],
+   "antonyms": [
+    "overnight success"
+   ],
+   "collocations": [
+    "Rome wasn't built in a day",
+    "remember, Rome wasn't built in a day",
+    "Rome wasn't built in a day, you know"
+   ],
+   "examples": {
+    "everyday": "I'm saving a little each month. Rome wasn't built in a day.",
+    "professional": "The new sales team won't hit full speed this quarter; Rome wasn't built in a day.",
+    "analytical": "Lasting institutions, like Rome itself, are built through many small decisions over decades, not by a single plan."
+   },
+   "analogy": "Like a brick wall: it goes up one brick at a time, no matter how big the plan is.",
+   "etymology": "A medieval proverb, found in French in the 1100s and in English by the 1500s.",
+   "common_mistakes": [
+    "Writing \"rome\" with a small r; it is the city, so capitalize it.",
+    "Saying \"Rome wasn't built in one day\" is understandable, but the fixed form is \"in a day.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "where there's a will, there's a way",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌwɛɹ ðɛɹz ə ˈwɪl ðɛɹz ə ˈweɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "If someone is determined enough to do something, they will find a way to do it."
+    ]
+   }
+  ],
+  "etymology": "An English proverb recorded since the 1600s in forms like \"where the will is ready, the feet are light\"; the modern wording dates from the 1800s.",
+  "conversation": [
+   {
+    "sense": "encouragement",
+    "text": "You can finish the degree while working. Where there's a will, there's a way."
+   },
+   {
+    "sense": "amazed",
+    "text": "He climbed in through the window to get his phone? Well, where there's a will, there's a way."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Strong determination finds a solution, even when the obstacles look serious."
+   },
+   "pronunciation": {
+    "ipa": "/ˌwɛɹ ðɛɹz ə ˈwɪl ðɛɹz ə ˈweɪ/",
+    "respelling": "wair thairz uh WIL thairz uh WAY",
+    "tip": "Stress WILL and WAY. \"There's\" is one syllable: thairz."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive and motivating; also used wryly about someone's stubborn persistence.",
+   "usage_note": "Mostly encouraging. It is also used with a smile about someone who did something odd to get what they wanted. \"Will\" here means determination, not the future tense or a legal will.",
+   "word_family": [
+    "where there's a will (short form)",
+    "will (noun: determination)"
+   ],
+   "distinctions": [
+    {
+     "vs": "nothing ventured, nothing gained",
+     "note": "\"Nothing ventured, nothing gained\" is about taking a risk; \"where there's a will, there's a way\" is about determination."
+    },
+    {
+     "vs": "if there's a will",
+     "note": "A common way to start the saying and leave it unfinished: \"Well, where there's a will...\""
+    }
+   ],
+   "antonyms": [
+    "give up"
+   ],
+   "collocations": [
+    "where there's a will, there's a way",
+    "where there's a will...",
+    "proof that where there's a will, there's a way"
+   ],
+   "examples": {
+    "everyday": "She couldn't afford a car, so she biked ten miles to work. Where there's a will, there's a way.",
+    "professional": "The budget is tight, but where there's a will, there's a way; let's find savings elsewhere.",
+    "analytical": "The saying where there's a will, there's a way overstates the case: determination helps, but resources and circumstances also matter."
+   },
+   "analogy": "Like water finding a path downhill: if the push is strong enough, it gets around the rocks.",
+   "etymology": "An English proverb recorded since the 1600s in forms like \"where the will is ready, the feet are light\"; the modern wording dates from the 1800s.",
+   "common_mistakes": [
+    "Using \"will\" to mean a legal document; here it means determination.",
+    "Saying \"where is a will, is a way\"; both halves need \"there's.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "two wrongs don't make a right",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌtu ˈɹɔŋz ˌdoʊnt ˌmeɪk ə ˈɹaɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Doing something bad to someone because they did something bad to you is not justified."
+    ]
+   }
+  ],
+  "etymology": "An English proverb recorded in the 1700s.",
+  "conversation": [
+   {
+    "sense": "parenting",
+    "text": "I know he hit you first, but two wrongs don't make a right."
+   },
+   {
+    "sense": "revenge",
+    "text": "You want to key his car because he dented yours? Two wrongs don't make a right."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Answering a wrong with another wrong doesn't fix anything or make it acceptable."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtu ˈɹɔŋz ˌdoʊnt ˌmeɪk ə ˈɹaɪt/",
+    "respelling": "too RAWNGZ dohnt mayk uh RYTE",
+    "tip": "Stress WRONGS and RIGHT; the \"w\" in \"wrongs\" is silent."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Moralizing but gentle; common with children and in arguments.",
+   "usage_note": "Said to stop revenge or to answer \"But they did it first!\" Parents and teachers use it often. It is also used in debates against \"whataboutism.\"",
+   "word_family": [
+    "two wrongs (noun phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "an eye for an eye",
+     "note": "\"An eye for an eye\" supports equal punishment; \"two wrongs don't make a right\" rejects revenge."
+    },
+    {
+     "vs": "a taste of one's own medicine",
+     "note": "\"A taste of one's own medicine\" is getting treated the way you treat others, often enjoyed by others; \"two wrongs don't make a right\" warns against doing that on purpose."
+    }
+   ],
+   "antonyms": [
+    "an eye for an eye",
+    "tit for tat"
+   ],
+   "collocations": [
+    "two wrongs don't make a right",
+    "but two wrongs don't make a right",
+    "I know, two wrongs don't make a right"
+   ],
+   "examples": {
+    "everyday": "She lied to me, but two wrongs don't make a right, so I'm not lying back.",
+    "professional": "Their team broke the agreement, but two wrongs don't make a right; we'll keep our side and raise it formally.",
+    "analytical": "Pointing to the other side's misconduct does not excuse one's own: two wrongs don't make a right."
+   },
+   "analogy": "Like answering a spilled drink by spilling another one: now there are two messes.",
+   "etymology": "An English proverb recorded in the 1700s.",
+   "common_mistakes": [
+    "Saying \"two wrongs don't make it right\"; the fixed form is \"make a right.\"",
+    "Spelling \"wrongs\" without the silent w, or pronouncing the w."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "curiosity killed the cat",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌkjʊɹiˈɑsəti ˌkɪld ðə ˈkæt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Being too curious, especially about things that are none of your business, can get you into trouble (often a playful way to tell someone to stop asking)."
+    ]
+   }
+  ],
+  "etymology": "The older English proverb was \"care killed the cat\" (care meaning worry), from the 1500s; the \"curiosity\" form appears in the late 1800s.",
+  "conversation": [
+   {
+    "sense": "secret",
+    "text": "\"What's in the box?\" \"Curiosity killed the cat.\""
+   },
+   {
+    "sense": "warning",
+    "text": "Don't open strange email attachments. Curiosity killed the cat."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Asking or looking into too much can be dangerous or get you in trouble."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkjʊɹiˈɑsəti ˌkɪld ðə ˈkæt/",
+    "respelling": "kyoor-ee-AH-suh-tee kild thuh KAT",
+    "tip": "Two stresses: AH in curiOSity and CAT. \"Curiosity\" has five syllables: kyoor-ee-AH-suh-tee."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Usually playful; it can be a gentle brush-off or a real warning.",
+   "usage_note": "Very often used to avoid answering a nosy question. A common reply is \"...but satisfaction brought it back,\" which defends curiosity.",
+   "word_family": [
+    "curiosity killed the cat, but satisfaction brought it back (humorous longer form)",
+    "curious (adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "mind your own business",
+     "note": "\"Mind your own business\" is a direct and rude way to say the same thing; \"curiosity killed the cat\" is softer and playful."
+    },
+    {
+     "vs": "let sleeping dogs lie",
+     "note": "\"Let sleeping dogs lie\" means don't stir up an old problem; \"curiosity killed the cat\" warns against snooping."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "curiosity killed the cat",
+    "you know what they say about curiosity",
+    "but satisfaction brought it back"
+   ],
+   "examples": {
+    "everyday": "He pushed the big red button just to see what it did. Curiosity killed the cat.",
+    "professional": "I'd avoid digging into the old dispute with that vendor; curiosity killed the cat, and it's settled.",
+    "analytical": "The proverb curiosity killed the cat reflects an old suspicion of curiosity that modern education largely rejects."
+   },
+   "analogy": "Like a cat poking its head into every box and drawer until one day the drawer closes.",
+   "etymology": "The older English proverb was \"care killed the cat\" (care meaning worry), from the 1500s; the \"curiosity\" form appears in the late 1800s.",
+   "common_mistakes": [
+    "Changing the animal (\"curiosity killed the dog\"); it is always the cat.",
+    "Using it as a serious accusation; it is light and playful."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "third time's the charm",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌθɝd ˌtaɪmz ðə ˈtʃɑɹm/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "After failing twice, the third attempt will succeed (said to encourage someone, or after a third try works)."
+    ]
+   }
+  ],
+  "etymology": "Origin uncertain; it reflects old beliefs that three is a lucky or magical number. \"Charm\" here means a magic spell or lucky object.",
+  "conversation": [
+   {
+    "sense": "trying again",
+    "text": "I failed the driving test twice, but third time's the charm!"
+   },
+   {
+    "sense": "success",
+    "text": "\"Did the printer work?\" \"Yes, finally. Third time's the charm.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "The third try is the lucky one."
+   },
+   "pronunciation": {
+    "ipa": "/ˌθɝd ˌtaɪmz ðə ˈtʃɑɹm/",
+    "respelling": "thurd tymez thuh CHAHRM",
+    "tip": "Stress CHARM. \"Third\" starts with a soft th (tongue between the teeth)."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Hopeful and light.",
+   "usage_note": "American form. Said before a third try (\"Third time's the charm!\") or after one works. Sometimes \"the third time's the charm.\" British speakers more often say \"third time lucky.\"",
+   "word_family": [
+    "the third time's the charm (variant)",
+    "third time lucky (British variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "like a charm",
+     "note": "\"Like a charm\" means something worked perfectly; \"third time's the charm\" is about succeeding on the third try."
+    },
+    {
+     "vs": "try, try again",
+     "note": "\"If at first you don't succeed, try, try again\" encourages trying any number of times; \"third time's the charm\" points to the third."
+    }
+   ],
+   "antonyms": [
+    "three strikes and you're out"
+   ],
+   "collocations": [
+    "third time's the charm",
+    "hopefully third time's the charm",
+    "here's hoping third time's the charm",
+    "third time was the charm"
+   ],
+   "examples": {
+    "everyday": "The cake fell twice, but third time's the charm; it came out perfect.",
+    "professional": "We're resubmitting the grant application; third time's the charm.",
+    "analytical": "\"Third time's the charm\" reflects a common superstition about the number three found in many cultures."
+   },
+   "analogy": "Like a key that finally turns on the third jiggle.",
+   "etymology": "Origin uncertain; it reflects old beliefs that three is a lucky or magical number. \"Charm\" here means a magic spell or lucky object.",
+   "common_mistakes": [
+    "Writing \"third times the charm\" without the apostrophe; \"time's\" is short for \"time is.\"",
+    "Using it for a first or second try; it refers to the third."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "beggars can't be choosers",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌbɛɡɚz ˌkænt bi ˈtʃuzɚz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "When you are given something for free or have no other options, you should accept what you get without complaining."
+    ]
+   }
+  ],
+  "etymology": "English proverb recorded since the 1500s, as \"beggars should be no choosers.\"",
+  "conversation": [
+   {
+    "sense": "ride",
+    "text": "It's a minivan, not a sports car, but beggars can't be choosers. Thanks for the ride!"
+   },
+   {
+    "sense": "free stuff",
+    "text": "\"The free couch is orange.\" \"Beggars can't be choosers.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "If you are in need or getting a favor, you can't be picky."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbɛɡɚz ˌkænt bi ˈtʃuzɚz/",
+    "respelling": "beg-erz kant bee CHOO-zerz",
+    "tip": "Stress CHOOSERS. \"Beggars\" is BEG-erz, and \"choosers\" is CHOO-zerz with a z sound."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Wry and self-deprecating when said about yourself; can sound harsh when said to someone in real need.",
+   "usage_note": "Most often said about yourself, humorously, when accepting a favor: \"Beggars can't be choosers.\" Said to someone else, it can sound unkind, so use it with friends. It is not about real beggars.",
+   "word_family": [
+    "beggar (noun)",
+    "chooser (noun, rare outside this saying)"
+   ],
+   "distinctions": [
+    {
+     "vs": "don't look a gift horse in the mouth",
+     "note": "\"Don't look a gift horse in the mouth\" says not to criticize a gift; \"beggars can't be choosers\" says you can't be picky when you're in need."
+    },
+    {
+     "vs": "take it or leave it",
+     "note": "\"Take it or leave it\" is said by the person offering; \"beggars can't be choosers\" is said by or about the person receiving."
+    }
+   ],
+   "antonyms": [
+    "picky"
+   ],
+   "collocations": [
+    "beggars can't be choosers",
+    "well, beggars can't be choosers",
+    "hey, beggars can't be choosers"
+   ],
+   "examples": {
+    "everyday": "The only hotel room left had no view, but beggars can't be choosers.",
+    "professional": "We'd prefer a later time slot for the presentation, but beggars can't be choosers; we'll take the 8 a.m.",
+    "analytical": "The proverb beggars can't be choosers captures how scarcity removes bargaining power."
+   },
+   "analogy": "Like being handed a free umbrella in a storm: you don't complain about the color.",
+   "etymology": "English proverb recorded since the 1500s, as \"beggars should be no choosers.\"",
+   "common_mistakes": [
+    "Saying \"beggars can't choose\"; the fixed form is \"can't be choosers.\"",
+    "Using it to describe a homeless person; it is about anyone accepting what they are offered."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "look before you leap",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌlʊk bɪˌfɔɹ ju ˈlip/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Think carefully about the possible results before you do something risky or important."
+    ]
+   }
+  ],
+  "etymology": "An English proverb from the 1300s, popular through Aesop's fable of the fox and the goat in the well.",
+  "conversation": [
+   {
+    "sense": "decision",
+    "text": "Moving abroad sounds great, but look before you leap. Visit first."
+   },
+   {
+    "sense": "money",
+    "text": "Before you put your savings into that, look before you leap."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Consider the risks and facts before acting."
+   },
+   "pronunciation": {
+    "ipa": "/ˌlʊk bɪˌfɔɹ ju ˈlip/",
+    "respelling": "luk bih-for yoo LEEP",
+    "tip": "Stress LEAP. \"Look\" has the short vowel of \"book\"; \"leap\" rhymes with \"keep.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Cautionary and sensible; a bit old-fashioned, like most proverbs.",
+   "usage_note": "Used as advice before a big decision. It pairs naturally with \"do your homework.\" \"Leap\" here is a decision or action, not a real jump.",
+   "word_family": [
+    "leap (verb/noun)",
+    "take a leap (verb phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "leap of faith",
+     "note": "\"A leap of faith\" is acting without proof, often praised; \"look before you leap\" warns you to check first."
+    },
+    {
+     "vs": "better safe than sorry",
+     "note": "\"Better safe than sorry\" justifies a precaution; \"look before you leap\" warns before a decision."
+    }
+   ],
+   "antonyms": [
+    "throw caution to the wind",
+    "jump in with both feet",
+    "take the plunge"
+   ],
+   "collocations": [
+    "look before you leap",
+    "always look before you leap",
+    "a look-before-you-leap approach"
+   ],
+   "examples": {
+    "everyday": "Read the lease carefully before you sign; look before you leap.",
+    "professional": "Before we commit to the new vendor, let's look before we leap and run a pilot.",
+    "analytical": "The proverb look before you leap anticipates the formal idea of risk assessment before an irreversible decision."
+   },
+   "analogy": "Like checking the depth of the water before you dive.",
+   "etymology": "An English proverb from the 1300s, popular through Aesop's fable of the fox and the goat in the well.",
+   "common_mistakes": [
+    "Saying \"look before you jump\"; the fixed form is \"leap.\"",
+    "Changing the pronoun freely is fine: \"look before we leap.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "an ounce of prevention is worth a pound of cure",
+  "domains": [
+   "idioms",
+   "home_health"
+  ],
+  "phonetic": "/ən ˈaʊns əv pɹɪˈvɛnʃən ɪz ˌwɝθ ə ˈpaʊnd əv ˈkjʊɹ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "It is easier and cheaper to prevent a problem than to fix it once it happens."
+    ]
+   }
+  ],
+  "etymology": "Popularized by Benjamin Franklin, who wrote it in 1736 about fire safety in Philadelphia.",
+  "conversation": [
+   {
+    "sense": "health",
+    "text": "Get the flu shot. An ounce of prevention is worth a pound of cure."
+   },
+   {
+    "sense": "house",
+    "text": "Clean the gutters now; an ounce of prevention is worth a pound of cure."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "A small effort to prevent trouble saves a lot of effort, money or pain later."
+   },
+   "pronunciation": {
+    "ipa": "/ən ˈaʊns əv pɹɪˈvɛnʃən ɪz ˌwɝθ ə ˈpaʊnd əv ˈkjʊɹ/",
+    "respelling": "uhn OWNS uhv prih-VEN-shuhn iz wurth uh POWND uhv KYOOR",
+    "tip": "Beats on OUNCE, PREVENTION, POUND and CURE. \"Ounce\" rhymes with \"bounce\"; \"cure\" is KYOOR."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Positive and practical.",
+   "usage_note": "Common in health, safety and maintenance. Often shortened: \"an ounce of prevention.\" The units (ounce, pound) are American customary units, which suit American speech.",
+   "word_family": [
+    "an ounce of prevention (short form)",
+    "prevention (noun)",
+    "preventive / preventative (adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "better safe than sorry",
+     "note": "\"Better safe than sorry\" is quick and casual; \"an ounce of prevention\" emphasizes the cost savings of preventing problems."
+    },
+    {
+     "vs": "a stitch in time saves nine",
+     "note": "\"A stitch in time saves nine\" has the same meaning; it is older and less common in American speech."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "an ounce of prevention is worth a pound of cure",
+    "an ounce of prevention",
+    "the ounce-of-prevention principle"
+   ],
+   "examples": {
+    "everyday": "I check my tire pressure every month; an ounce of prevention is worth a pound of cure.",
+    "professional": "Spending on security training now is an ounce of prevention compared with recovering from a data breach.",
+    "analytical": "Public health economics often confirms that an ounce of prevention is worth a pound of cure: vaccines and screenings cost far less than treatment."
+   },
+   "analogy": "Like brushing your teeth for two minutes instead of paying for a root canal.",
+   "etymology": "Popularized by Benjamin Franklin, who wrote it in 1736 about fire safety in Philadelphia.",
+   "common_mistakes": [
+    "Mixing up the units (\"a pound of prevention is worth an ounce of cure\"); the small amount is prevention.",
+    "Saying \"an ounce of prevention is better than a pound of cure\"; the standard verb is \"is worth.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "an apple a day keeps the doctor away",
+  "domains": [
+   "idioms",
+   "home_health",
+   "food"
+  ],
+  "phonetic": "/ən ˈæpəl ə ˈdeɪ ˌkips ðə ˈdɑktɚ əˈweɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Eating healthy food, such as fruit, every day helps keep you healthy."
+    ]
+   }
+  ],
+  "etymology": "A Welsh saying from the 1860s ran \"Eat an apple on going to bed, and you'll keep the doctor from earning his bread\"; the modern rhyme appears in the early 1900s.",
+  "conversation": [
+   {
+    "sense": "snack",
+    "text": "Here, take an apple for the road. An apple a day keeps the doctor away!"
+   },
+   {
+    "sense": "joking",
+    "text": "I had apple pie for lunch. An apple a day keeps the doctor away, right?"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Healthy daily habits like eating fruit prevent illness."
+   },
+   "pronunciation": {
+    "ipa": "/ən ˈæpəl ə ˈdeɪ ˌkips ðə ˈdɑktɚ əˈweɪ/",
+    "respelling": "uhn AP-uhl uh DAY keeps thuh DAHK-ter uh-WAY",
+    "tip": "Beats on APPLE, DAY, DOCTOR and AWAY; it has a rhythm like a nursery rhyme. \"Day\" and \"away\" rhyme."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Cheerful and folksy; often used jokingly.",
+   "usage_note": "Said mostly in fun, especially to children, or as a joke (with apple pie, apple juice). People also adapt it: \"a walk a day keeps the doctor away.\"",
+   "word_family": [
+    "an apple a day (short form)"
+   ],
+   "distinctions": [
+    {
+     "vs": "an ounce of prevention is worth a pound of cure",
+     "note": "Both are about prevention, but \"an ounce of prevention\" applies to anything; \"an apple a day\" is about healthy eating."
+    },
+    {
+     "vs": "you are what you eat",
+     "note": "\"You are what you eat\" says diet shapes your health; \"an apple a day\" recommends a simple daily habit."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "an apple a day keeps the doctor away",
+    "an apple a day",
+    "a ___ a day keeps the doctor away"
+   ],
+   "examples": {
+    "everyday": "My grandmother always put an apple in my lunchbox: \"An apple a day keeps the doctor away.\"",
+    "professional": "Our wellness program's motto is basically an apple a day keeps the doctor away: small habits, every day.",
+    "analytical": "One study tested whether an apple a day keeps the doctor away: daily apple eaters were not much less likely to visit doctors, though they used slightly fewer prescription drugs."
+   },
+   "analogy": "Like a daily vitamin, but crunchier.",
+   "etymology": "A Welsh saying from the 1860s ran \"Eat an apple on going to bed, and you'll keep the doctor from earning his bread\"; the modern rhyme appears in the early 1900s.",
+   "common_mistakes": [
+    "Saying \"an apple per day\"; the rhyme needs \"a day.\"",
+    "Taking it as medical advice; it is a folk saying."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "no news is good news",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌnoʊ ˈnuz ɪz ˌɡʊd ˈnuz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "If you have not heard anything, things are probably fine, because bad news usually arrives quickly."
+    ]
+   }
+  ],
+  "etymology": "An English proverb recorded in the 1600s; King James I wrote \"no newis is better than evill newis.\"",
+  "conversation": [
+   {
+    "sense": "waiting",
+    "text": "\"The hospital hasn't called.\" \"Well, no news is good news.\""
+   },
+   {
+    "sense": "work",
+    "text": "I haven't heard from the client since we sent the draft. I'm taking no news as good news."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "A lack of information suggests that nothing bad has happened."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnoʊ ˈnuz ɪz ˌɡʊd ˈnuz/",
+    "respelling": "noh NOOZ iz gud NOOZ",
+    "tip": "Stress both NEWS, with GOOD a little weaker. American \"news\" is NOOZ, not NYOOZ."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Reassuring; sometimes half-hearted, when the speaker is still worried.",
+   "usage_note": "Used to reassure someone (or yourself) while waiting. Common variation: \"I'm taking no news as good news.\" It can sound unconvincing if the person is very anxious.",
+   "word_family": [
+    "no news (noun phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "hope for the best",
+     "note": "\"Hope for the best\" admits you don't know how it will turn out; \"no news is good news\" argues things are probably fine."
+    },
+    {
+     "vs": "silence is golden",
+     "note": "\"Silence is golden\" praises quiet; \"no news is good news\" interprets silence as a good sign."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "no news is good news",
+    "taking no news as good news",
+    "I guess no news is good news"
+   ],
+   "examples": {
+    "everyday": "My son hasn't texted from camp yet, but no news is good news.",
+    "professional": "IT hasn't reported any issues since the update; no news is good news.",
+    "analytical": "No news is good news is a reasonable rule only when bad news would reliably be reported quickly."
+   },
+   "analogy": "Like a smoke alarm that stays quiet: the silence means there's probably no fire.",
+   "etymology": "An English proverb recorded in the 1600s; King James I wrote \"no newis is better than evill newis.\"",
+   "common_mistakes": [
+    "Saying \"no news are good news\"; \"news\" is singular in English: \"no news is.\"",
+    "Using it for a situation where silence is clearly bad."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "good things come to those who wait",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɡʊd ˈθɪŋz ˌkʌm tə ˌðoʊz hu ˈweɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Being patient often brings a good result."
+    ]
+   }
+  ],
+  "etymology": "The idea is old; the modern wording became familiar in the 1800s and later through advertising.",
+  "conversation": [
+   {
+    "sense": "delay",
+    "text": "The table took an hour, but the food was amazing. Good things come to those who wait."
+   },
+   {
+    "sense": "encouragement",
+    "text": "Your promotion will come. Good things come to those who wait."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Patience pays off."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡʊd ˈθɪŋz ˌkʌm tə ˌðoʊz hu ˈweɪt/",
+    "respelling": "gud THINGZ kum tuh thohz hoo WAYT",
+    "tip": "Stress THINGS and WAIT. \"To\" is reduced to tuh in fast speech."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Encouraging and hopeful.",
+   "usage_note": "Said to someone impatient, or happily when a long wait was worth it. People sometimes add a joke: \"...but only what's left by those who hustle.\"",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "Rome wasn't built in a day",
+     "note": "\"Rome wasn't built in a day\" is about patient work on something big; \"good things come to those who wait\" is about patient waiting."
+    },
+    {
+     "vs": "patience is a virtue",
+     "note": "\"Patience is a virtue\" praises patience in general; \"good things come to those who wait\" promises a reward."
+    }
+   ],
+   "antonyms": [
+    "strike while the iron is hot",
+    "the early bird catches the worm"
+   ],
+   "collocations": [
+    "good things come to those who wait",
+    "good things come to those who wait, right?",
+    "proof that good things come to those who wait"
+   ],
+   "examples": {
+    "everyday": "We waited three years to adopt, and good things come to those who wait.",
+    "professional": "The supplier finally lowered prices after we held off; good things come to those who wait.",
+    "analytical": "Experiments on delayed gratification support the idea that good things come to those who wait, at least when the waiting is reasonable."
+   },
+   "analogy": "Like bread rising: rush it, and it falls flat.",
+   "etymology": "The idea is old; the modern wording became familiar in the 1800s and later through advertising.",
+   "common_mistakes": [
+    "Saying \"good things come for those who wait\"; the preposition is \"to.\"",
+    "Using it to excuse doing nothing when action is needed."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "easy come, easy go",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌizi ˈkʌm ˌizi ˈɡoʊ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Something that was gained easily (especially money) can be lost just as easily, so there's no point being upset about it."
+    ]
+   }
+  ],
+  "etymology": "Recorded in English in the 1800s; earlier forms include \"lightly come, lightly go.\"",
+  "conversation": [
+   {
+    "sense": "lost winnings",
+    "text": "I won fifty bucks on a scratch-off and lost it at the casino. Easy come, easy go."
+   },
+   {
+    "sense": "attitude",
+    "text": "He doesn't worry about money. Easy come, easy go."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "What you got without effort, you can lose without much regret."
+   },
+   "pronunciation": {
+    "ipa": "/ˌizi ˈkʌm ˌizi ˈɡoʊ/",
+    "respelling": "ee-zee KUM ee-zee GOH",
+    "tip": "Two beats: COME and GO, with a little pause at the comma."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Light and carefree; can describe a relaxed (or careless) attitude.",
+   "usage_note": "Said with a shrug after losing something you didn't work hard for. Also used as an adjective for a carefree person: \"an easy-come, easy-go kind of guy.\"",
+   "word_family": [
+    "easy-come, easy-go (adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "cry over spilled milk",
+     "note": "\"Don't cry over spilled milk\" is advice to stop regretting a loss; \"easy come, easy go\" explains why the loss doesn't hurt."
+    },
+    {
+     "vs": "win some, lose some",
+     "note": "\"Win some, lose some\" accepts that you can't always succeed; \"easy come, easy go\" is about losing what was easily gained."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "easy come, easy go",
+    "oh well, easy come, easy go",
+    "an easy-come, easy-go attitude"
+   ],
+   "examples": {
+    "everyday": "I found twenty dollars on the street and spent it on pizza the same day. Easy come, easy go.",
+    "professional": "The sign-on bonus was gone after the move; easy come, easy go.",
+    "analytical": "Studies of lottery winners echo easy come, easy go: windfall money tends to be spent faster than earned money."
+   },
+   "analogy": "Like sand in your hand: it pours in easily, and it slips out just as easily.",
+   "etymology": "Recorded in English in the 1800s; earlier forms include \"lightly come, lightly go.\"",
+   "common_mistakes": [
+    "Saying \"easy go, easy come\"; coming is first.",
+    "Using it for something you worked hard for; it is for easy gains."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "you can't win them all",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ju ˌkænt ˈwɪn ðəm ˈɔl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Nobody succeeds every time, so a loss or failure is not a big deal (said to accept or comfort someone after a setback)."
+    ]
+   }
+  ],
+  "etymology": "A 20th-century American expression from sports and gambling.",
+  "conversation": [
+   {
+    "sense": "game",
+    "text": "We lost by two points. Oh well, you can't win 'em all."
+   },
+   {
+    "sense": "comfort",
+    "text": "Don't be too hard on yourself about the interview. You can't win them all."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Failures are a normal part of life; accept them and move on."
+   },
+   "pronunciation": {
+    "ipa": "/ju ˌkænt ˈwɪn ðəm ˈɔl/",
+    "respelling": "yoo kant WIN thuhm AWL",
+    "tip": "Stress WIN and ALL. In casual speech \"them\" becomes 'em: \"you can't win 'em all.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Philosophical and comforting.",
+   "usage_note": "Very common as \"you can't win 'em all.\" It suits small and medium losses: a game, a bid, an interview. \"Win some, lose some\" is a close variant.",
+   "word_family": [
+    "you can't win 'em all (casual spelling)",
+    "win some, lose some (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "win some, lose some",
+     "note": "Very close; \"win some, lose some\" focuses on the balance of wins and losses."
+    },
+    {
+     "vs": "better luck next time",
+     "note": "\"Better luck next time\" looks ahead to the next try; \"you can't win them all\" accepts this loss."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "you can't win 'em all",
+    "hey, you can't win them all",
+    "well, you can't win 'em all"
+   ],
+   "examples": {
+    "everyday": "My soufflé collapsed. You can't win 'em all.",
+    "professional": "We didn't get the contract, but you can't win them all; we'll learn from their feedback.",
+    "analytical": "Investors who accept that you can't win them all diversify, so a single loss doesn't sink the portfolio."
+   },
+   "analogy": "Like a baseball hitter: even the best strike out most of the time.",
+   "etymology": "A 20th-century American expression from sports and gambling.",
+   "common_mistakes": [
+    "Saying \"you can't win all them\"; the order is \"win them all.\"",
+    "Using it for a serious tragedy; it is for everyday losses."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "live and learn",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌlɪv ən ˈlɝn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said when you learn something from a mistake or a surprising experience."
+    ]
+   }
+  ],
+  "etymology": "Recorded in English since the 1500s.",
+  "conversation": [
+   {
+    "sense": "mistake",
+    "text": "I forgot to save the file before closing it. Live and learn."
+   },
+   {
+    "sense": "surprise",
+    "text": "I didn't know you could freeze milk. Live and learn!"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Experience, especially a mistake, teaches you something."
+   },
+   "pronunciation": {
+    "ipa": "/ˌlɪv ən ˈlɝn/",
+    "respelling": "liv uhn LURN",
+    "tip": "Stress LEARN. \"Live\" is the verb, liv (short i), not the adjective lyve. \"And\" shrinks to uhn."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Rueful and accepting; sometimes simply amused.",
+   "usage_note": "Said right after a small mistake or a discovery, often by the person who made it. It accepts the mistake without dwelling on it.",
+   "word_family": [
+    "you live and you learn (longer form)"
+   ],
+   "distinctions": [
+    {
+     "vs": "learn the hard way",
+     "note": "\"Learn the hard way\" means learning through a painful experience; \"live and learn\" is the shrug you say afterwards."
+    },
+    {
+     "vs": "cry over spilled milk",
+     "note": "\"Don't cry over spilled milk\" says not to regret; \"live and learn\" says take the lesson."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "live and learn",
+    "well, live and learn",
+    "you live and you learn"
+   ],
+   "examples": {
+    "everyday": "I paid full price, and the next day it was half off. Live and learn.",
+    "professional": "We underestimated the shipping time on the first order; live and learn, and we've adjusted the schedule.",
+    "analytical": "The proverb live and learn compresses the idea of learning from experience that psychologists describe as feedback-based learning."
+   },
+   "analogy": "Like a toddler touching a hot stove: it only takes once.",
+   "etymology": "Recorded in English since the 1500s.",
+   "common_mistakes": [
+    "Pronouncing \"live\" as lyve; here it is the verb, liv.",
+    "Saying \"live and learned\"; both verbs stay in the base form."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "you only live once",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ju ˌoʊnli ˈlɪv ˈwʌns/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Life is short, so you should enjoy it and take chances (often used to justify a fun, risky or indulgent choice)."
+    ]
+   }
+  ],
+  "etymology": "The phrase appears in the 1800s; the acronym YOLO spread in 2011 through a song by the rapper Drake.",
+  "conversation": [
+   {
+    "sense": "treat",
+    "text": "Should I get the chocolate cake and the ice cream? Eh, you only live once."
+   },
+   {
+    "sense": "adventure",
+    "text": "I'm going skydiving for my birthday. You only live once!"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Because life is short, enjoy it and try things."
+   },
+   "pronunciation": {
+    "ipa": "/ju ˌoʊnli ˈlɪv ˈwʌns/",
+    "respelling": "yoo ohn-lee LIV WUNS",
+    "tip": "Stress LIVE and ONCE. \"Once\" is WUNS. Often shortened to the acronym YOLO, said YOH-loh."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Upbeat; sometimes ironic, as a joking excuse for something unwise.",
+   "usage_note": "Used to justify a treat, a splurge or an adventure. The acronym YOLO became internet slang around 2011 and is now often used ironically. For serious life choices, people prefer \"life is short.\"",
+   "word_family": [
+    "YOLO (acronym)"
+   ],
+   "distinctions": [
+    {
+     "vs": "seize the day",
+     "note": "\"Seize the day\" means act now and make the most of your time; \"you only live once\" justifies enjoying yourself or taking a risk."
+    },
+    {
+     "vs": "throw caution to the wind",
+     "note": "\"Throw caution to the wind\" describes acting recklessly; \"you only live once\" is the reason people give for it."
+    }
+   ],
+   "antonyms": [
+    "better safe than sorry"
+   ],
+   "collocations": [
+    "you only live once",
+    "hey, you only live once",
+    "YOLO"
+   ],
+   "examples": {
+    "everyday": "We booked the trip to Iceland on a whim. You only live once.",
+    "professional": "He joked \"you only live once\" when he ordered the most expensive item on the company dinner menu, so I'd skip that line with clients.",
+    "analytical": "The you-only-live-once mindset can encourage meaningful experiences, but it is also used to rationalize impulsive spending."
+   },
+   "analogy": "Like a ticket to a show that plays one night only.",
+   "etymology": "The phrase appears in the 1800s; the acronym YOLO spread in 2011 through a song by the rapper Drake.",
+   "common_mistakes": [
+    "Writing \"you only life once\"; the verb is \"live.\"",
+    "Using YOLO in formal writing; it is slang."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "you reap what you sow",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ju ˈɹip ˌwʌt ju ˈsoʊ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Your actions have consequences: if you do bad things, bad things will happen to you; if you do good, good will come back."
+    ]
+   }
+  ],
+  "etymology": "From the Bible, Galatians 6:7: \"whatsoever a man soweth, that shall he also reap.\"",
+  "conversation": [
+   {
+    "sense": "consequences",
+    "text": "He cheated his partners, and now nobody will work with him. You reap what you sow."
+   },
+   {
+    "sense": "positive",
+    "text": "She helped so many people, and now they're all helping her. You reap what you sow."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "What you get in the future is the result of what you do now."
+   },
+   "pronunciation": {
+    "ipa": "/ju ˈɹip ˌwʌt ju ˈsoʊ/",
+    "respelling": "yoo REEP wut yoo SOH",
+    "tip": "Stress REAP and SOW. \"Sow\" rhymes with \"go.\" (A different word, sow meaning a female pig, rhymes with \"cow.\")"
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Often said with grim satisfaction about someone else's punishment; can also be positive.",
+   "usage_note": "Often a judgment about someone who is now suffering the results of their behavior, so be careful saying it about people you're sympathetic to. It can be positive, too, about hard work paying off.",
+   "word_family": [
+    "reap (verb: to harvest)",
+    "sow (verb: to plant seeds)",
+    "as you sow, so shall you reap (formal biblical form)"
+   ],
+   "distinctions": [
+    {
+     "vs": "what goes around comes around",
+     "note": "\"What goes around comes around\" is casual and often about bad behavior coming back; \"you reap what you sow\" is a bit more serious and can be positive."
+    },
+    {
+     "vs": "a taste of one's own medicine",
+     "note": "\"A taste of one's own medicine\" is the same treatment you gave others; \"you reap what you sow\" is about consequences in general."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "you reap what you sow",
+    "reap what they sow",
+    "as you sow, so shall you reap"
+   ],
+   "examples": {
+    "everyday": "If you never study, don't be surprised by your grades. You reap what you sow.",
+    "professional": "The team invested in training for years, and now they're reaping what they sowed.",
+    "analytical": "Economists describe a version of you reap what you sow in compounding: small, early investments or debts grow over time."
+   },
+   "analogy": "Like a farmer's field: plant weeds, and you'll harvest weeds.",
+   "etymology": "From the Bible, Galatians 6:7: \"whatsoever a man soweth, that shall he also reap.\"",
+   "common_mistakes": [
+    "Confusing \"sow\" (to plant, rhymes with go) with \"sew\" (to stitch) or with \"sow\" (a female pig, rhymes with cow).",
+    "Writing \"you reap what you sew\"; the verb is \"sow.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "strike while the iron is hot",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌstɹaɪk ˌwaɪl ði ˈaɪɚn ɪz ˈhɑt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Act quickly while you have a good opportunity, before it passes."
+    ]
+   }
+  ],
+  "etymology": "From blacksmithing; the proverb appears in English in the 1300s, in Chaucer.",
+  "conversation": [
+   {
+    "sense": "chance",
+    "text": "The boss is in a good mood. Strike while the iron is hot and ask for the raise."
+   },
+   {
+    "sense": "sale",
+    "text": "Prices are low right now, so strike while the iron is hot."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Take advantage of a favorable moment immediately."
+   },
+   "pronunciation": {
+    "ipa": "/ˌstɹaɪk ˌwaɪl ði ˈaɪɚn ɪz ˈhɑt/",
+    "respelling": "stryke wyle thee EYE-ern iz HAHT",
+    "tip": "Stress IRON and HOT. American \"iron\" is two syllables, EYE-ern, with the r before the n."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Encouraging and practical.",
+   "usage_note": "Used to push someone to act now. Common in business and dating advice. The image is a blacksmith shaping metal while it is hot.",
+   "word_family": [
+    "strike (verb)"
+   ],
+   "distinctions": [
+    {
+     "vs": "make hay while the sun shines",
+     "note": "Very similar; \"make hay\" emphasizes using good times well while they last."
+    },
+    {
+     "vs": "seize the day",
+     "note": "\"Seize the day\" is about living fully now; \"strike while the iron is hot\" is about a specific opportunity."
+    }
+   ],
+   "antonyms": [
+    "miss the boat",
+    "good things come to those who wait"
+   ],
+   "collocations": [
+    "strike while the iron is hot",
+    "you have to strike while the iron is hot",
+    "time to strike while the iron is hot"
+   ],
+   "examples": {
+    "everyday": "The recipe went viral, so she started a cooking channel the next week. Strike while the iron is hot.",
+    "professional": "The client loved the demo; let's strike while the iron is hot and send the proposal today.",
+    "analytical": "Marketers strike while the iron is hot when they follow up within hours, since interest falls quickly after first contact."
+   },
+   "analogy": "Like a blacksmith with glowing metal: hit it now, because in a few minutes it'll be too hard to shape.",
+   "etymology": "From blacksmithing; the proverb appears in English in the 1300s, in Chaucer.",
+   "common_mistakes": [
+    "Saying \"strike when the iron is hot\" is understood, but the fixed form uses \"while.\"",
+    "Pronouncing \"iron\" as EYE-ron; Americans say EYE-ern."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "what doesn't kill you makes you stronger",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˌwʌt ˌdʌzənt ˈkɪl ju ˌmeɪks ju ˈstɹɔŋɡɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Surviving hard experiences makes you a stronger, more capable person."
+    ]
+   }
+  ],
+  "etymology": "From the German philosopher Friedrich Nietzsche (1888), \"What does not kill me makes me stronger\"; widely quoted in English since.",
+  "conversation": [
+   {
+    "sense": "encouragement",
+    "text": "I know this year has been brutal. What doesn't kill you makes you stronger."
+   },
+   {
+    "sense": "joking",
+    "text": "Three hours of soccer practice in this heat? Well, what doesn't kill you makes you stronger."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Hardship builds strength and resilience."
+   },
+   "pronunciation": {
+    "ipa": "/ˌwʌt ˌdʌzənt ˈkɪl ju ˌmeɪks ju ˈstɹɔŋɡɚ/",
+    "respelling": "wut duz-uhnt KIL yoo mayks yoo STRAWNG-ger",
+    "tip": "Stress KILL and STRONGER. \"Stronger\" has a hard g: STRAWNG-ger."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Encouraging, sometimes wry or joking about a small hardship.",
+   "usage_note": "Said to someone going through a hard time, or jokingly about something unpleasant but harmless. Be careful with serious trauma: it can sound dismissive.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "no pain, no gain",
+     "note": "\"No pain, no gain\" says effort is needed for results, often in exercise; \"what doesn't kill you makes you stronger\" is about surviving hardship."
+    },
+    {
+     "vs": "roll with the punches",
+     "note": "\"Roll with the punches\" is adapting to problems; \"what doesn't kill you makes you stronger\" says the problems improve you."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "what doesn't kill you makes you stronger",
+    "hey, what doesn't kill you makes you stronger",
+    "what doesn't kill us makes us stronger"
+   ],
+   "examples": {
+    "everyday": "Moving to a new country alone was hard, but what doesn't kill you makes you stronger.",
+    "professional": "That rough launch taught the team a lot; what doesn't kill you makes you stronger.",
+    "analytical": "Psychologists find some truth in what doesn't kill you makes you stronger: moderate adversity is linked to greater resilience, though severe trauma often is not."
+   },
+   "analogy": "Like a muscle that tears a little during exercise and grows back stronger.",
+   "etymology": "From the German philosopher Friedrich Nietzsche (1888), \"What does not kill me makes me stronger\"; widely quoted in English since.",
+   "common_mistakes": [
+    "Saying \"what doesn't kill you make you stronger\"; the verb is \"makes.\"",
+    "Saying it to someone grieving a serious loss; it can sound cold."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "nothing ventured, nothing gained",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌnʌθɪŋ ˈvɛntʃɚd ˌnʌθɪŋ ˈɡeɪnd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "You can't achieve anything if you never take a risk."
+    ]
+   }
+  ],
+  "etymology": "Recorded in English since the 1500s as \"nought venture, nought have\"; the modern wording is from the 1600s.",
+  "conversation": [
+   {
+    "sense": "trying",
+    "text": "The job's a long shot, but I'm applying anyway. Nothing ventured, nothing gained."
+   },
+   {
+    "sense": "asking",
+    "text": "Ask her out. Nothing ventured, nothing gained!"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "If you never try or take a chance, you will never get anything."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnʌθɪŋ ˈvɛntʃɚd ˌnʌθɪŋ ˈɡeɪnd/",
+    "respelling": "nuth-ing VEN-cherd nuth-ing GAYND",
+    "tip": "Two beats: VENTURED and GAINED, with a pause at the comma. \"Ventured\" is VEN-cherd."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Encouraging; it justifies trying something uncertain.",
+   "usage_note": "Usually said just before or after taking a small risk: applying, asking, trying something. It fits risks where the downside is small.",
+   "word_family": [
+    "venture (verb: to risk; noun: a risky project)"
+   ],
+   "distinctions": [
+    {
+     "vs": "you miss 100% of the shots you don't take",
+     "note": "A modern sports quote with the same idea, popular in motivational talk."
+    },
+    {
+     "vs": "fortune favors the bold",
+     "note": "\"Fortune favors the bold\" is grander and says bold people get lucky; \"nothing ventured, nothing gained\" is plainer."
+    }
+   ],
+   "antonyms": [
+    "better safe than sorry",
+    "look before you leap"
+   ],
+   "collocations": [
+    "nothing ventured, nothing gained",
+    "well, nothing ventured, nothing gained",
+    "nothing ventured, nothing gained, right?"
+   ],
+   "examples": {
+    "everyday": "I entered the baking contest on a whim. Nothing ventured, nothing gained.",
+    "professional": "We pitched the idea to the CEO directly; nothing ventured, nothing gained.",
+    "analytical": "Nothing ventured, nothing gained expresses the basic trade-off in risk: no risk usually means no return."
+   },
+   "analogy": "Like fishing: if you never put your line in the water, you'll never catch anything.",
+   "etymology": "Recorded in English since the 1500s as \"nought venture, nought have\"; the modern wording is from the 1600s.",
+   "common_mistakes": [
+    "Saying \"nothing risked, nothing gained\"; the fixed verb is \"ventured.\"",
+    "Using it for a reckless risk with a big downside; it suits small, sensible risks."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "push one's luck",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌpʊʃ wʌnz ˈlʌk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To keep taking risks or asking for more after already having good luck or getting what you wanted, so that you may lose it all."
+    ]
+   }
+  ],
+  "etymology": "A 20th-century expression, probably from gambling; \"push\" in the sense of pressing for more.",
+  "conversation": [
+   {
+    "sense": "warning",
+    "text": "I said you could stay out till eleven. Don't push your luck."
+   },
+   {
+    "sense": "quitting while ahead",
+    "text": "We won two hundred dollars. Let's leave before we push our luck."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To risk losing a good situation by trying to get even more out of it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpʊʃ wʌnz ˈlʌk/",
+    "respelling": "push wunz LUK",
+    "tip": "Stress LUCK. \"Push\" has the short vowel of \"put.\" In use, \"one's\" becomes my, your, his, her: \"Don't push your luck.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Usually a warning, sometimes a playful one; mildly negative about the person pushing.",
+   "usage_note": "Most common as a warning: \"Don't push your luck.\" Also \"I don't want to push my luck,\" said when deciding not to ask for more. Use a possessive: my, your, his, her, our, their.",
+   "word_family": [
+    "pushing one's luck (-ing)",
+    "pushed one's luck (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "tempt fate",
+     "note": "\"Tempt fate\" is doing something that seems to invite bad luck, like bragging; \"push one's luck\" is asking for more after good luck."
+    },
+    {
+     "vs": "quit while you're ahead",
+     "note": "\"Quit while you're ahead\" is the advice not to push your luck."
+    }
+   ],
+   "antonyms": [
+    "quit while you're ahead",
+    "play it safe"
+   ],
+   "collocations": [
+    "don't push your luck",
+    "I don't want to push my luck",
+    "pushing his luck",
+    "push it"
+   ],
+   "examples": {
+    "everyday": "You got a free upgrade; don't push your luck by asking for free breakfast too.",
+    "professional": "The client agreed to the timeline; let's not push our luck by reopening the price.",
+    "analytical": "Gamblers who push their luck after a winning streak are showing the \"house money\" effect, taking bigger risks with recent winnings."
+   },
+   "analogy": "Like a gambler who keeps rolling after winning big, until the dice turn.",
+   "etymology": "A 20th-century expression, probably from gambling; \"push\" in the sense of pressing for more.",
+   "common_mistakes": [
+    "Leaving out the possessive: \"Don't push luck\" is wrong; say \"Don't push your luck.\"",
+    "Using it to mean \"try your best\"; it means risking too much."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "a taste of one's own medicine",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ə ˈteɪst əv wʌnz ˌoʊn ˈmɛdəsən/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "The same unpleasant treatment that a person has been giving to others, now given back to them."
+    ]
+   }
+  ],
+  "etymology": "From the idea of a doctor or quack being made to take the medicine he gives others; the phrase appears in the 1800s and draws on one of Aesop's fables about a cobbler who posed as a doctor.",
+  "conversation": [
+   {
+    "sense": "revenge",
+    "text": "He's always late for our meetings, so I made him wait for once. He got a taste of his own medicine."
+   },
+   {
+    "sense": "pranks",
+    "text": "After all her pranks, her brothers finally gave her a taste of her own medicine."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "Bad treatment returned to the person who usually does it to others."
+   },
+   "pronunciation": {
+    "ipa": "/ə ˈteɪst əv wʌnz ˌoʊn ˈmɛdəsən/",
+    "respelling": "uh tayst uhv wunz ohn MED-uh-suhn",
+    "tip": "Stress MEDICINE: MED-uh-suhn, three syllables. In use, \"one's\" becomes his, her, your, their."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Usually satisfying to the speaker; the person who gets it deserves it.",
+   "usage_note": "Used with \"give someone\" or \"get\": \"give him a taste of his own medicine,\" \"she got a taste of her own medicine.\" Often said with some satisfaction. A common variant is \"a dose of one's own medicine.\"",
+   "word_family": [
+    "a dose of one's own medicine (variant)",
+    "medicine (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "what goes around comes around",
+     "note": "\"What goes around comes around\" says bad behavior eventually returns through fate; \"a taste of one's own medicine\" is the same treatment, often given on purpose."
+    },
+    {
+     "vs": "tit for tat",
+     "note": "\"Tit for tat\" is an exchange of equal retaliation; \"a taste of one's own medicine\" focuses on the person who started it."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "give someone a taste of their own medicine",
+    "get a taste of one's own medicine",
+    "a dose of his own medicine"
+   ],
+   "examples": {
+    "everyday": "The kid who always splashed everyone got splashed by the big wave: a taste of his own medicine.",
+    "professional": "The vendor that kept missing deadlines got a taste of its own medicine when its supplier was late.",
+    "analytical": "Game theory's tit-for-tat strategy is essentially giving the other player a taste of their own medicine, then returning to cooperation."
+   },
+   "analogy": "Like a doctor who prescribes a bitter pill and then gets sick and has to swallow it himself.",
+   "etymology": "From the idea of a doctor or quack being made to take the medicine he gives others; the phrase appears in the 1800s and draws on one of Aesop's fables about a cobbler who posed as a doctor.",
+   "common_mistakes": [
+    "Leaving out \"own\": \"a taste of his medicine\" loses the meaning.",
+    "Using it for real medicine; it is figurative."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "beginner's luck",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/bɪˌɡɪnɚz ˈlʌk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Unexpected success that a person has the first time they try something, which seems to come from luck rather than skill."
+    ]
+   }
+  ],
+  "etymology": "Recorded in the late 1800s, especially in gambling.",
+  "conversation": [
+   {
+    "sense": "bowling",
+    "text": "I've never bowled before and I got a strike. Beginner's luck!"
+   },
+   {
+    "sense": "modesty",
+    "text": "\"You won your first poker game!\" \"Just beginner's luck.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "Good luck that a newcomer seems to have the first time."
+   },
+   "pronunciation": {
+    "ipa": "/bɪˌɡɪnɚz ˈlʌk/",
+    "respelling": "bih-gin-erz LUK",
+    "tip": "Stress LUCK, with a beat on GIN in \"beginner's.\" The apostrophe is silent."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Light and modest; used to downplay a newcomer's success, or teasingly.",
+   "usage_note": "Often said by the beginner to sound modest, or by others teasingly: \"That's just beginner's luck.\" Usually about games, sports and hobbies.",
+   "word_family": [
+    "beginner (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "fluke",
+     "note": "\"A fluke\" is any lucky accident; \"beginner's luck\" is specifically luck on a first attempt."
+    },
+    {
+     "vs": "luck of the draw",
+     "note": "\"Luck of the draw\" is any result decided by chance; \"beginner's luck\" is a newcomer's surprising success."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "beginner's luck",
+    "just beginner's luck",
+    "must be beginner's luck"
+   ],
+   "examples": {
+    "everyday": "She caught the biggest fish on her first trip. Total beginner's luck.",
+    "professional": "The first campaign did great, but it may have been beginner's luck; let's see if the second performs.",
+    "analytical": "Beginner's luck is partly a memory effect: people remember beginners' surprising wins but forget their ordinary first-day losses."
+   },
+   "analogy": "Like the new player at the card table who doesn't know the rules and still wins the first hand.",
+   "etymology": "Recorded in the late 1800s, especially in gambling.",
+   "common_mistakes": [
+    "Writing \"beginners luck\" or \"beginners' luck\"; the usual form is \"beginner's luck.\"",
+    "Using it for a skilled newcomer whose success is clearly earned."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "roll with the punches",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˌɹoʊl wɪð ðə ˈpʌntʃɪz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To adapt to difficulties or bad surprises and keep going, instead of being knocked down by them."
+    ]
+   }
+  ],
+  "etymology": "From boxing, where a fighter moves backward or sideways with a punch to soften it; figurative use since the mid-1900s.",
+  "conversation": [
+   {
+    "sense": "parenting",
+    "text": "With three kids, plans change every hour. You learn to roll with the punches."
+   },
+   {
+    "sense": "advice",
+    "text": "The first year of a startup is chaos. You just have to roll with the punches."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To handle problems calmly and flexibly as they come."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɹoʊl wɪð ðə ˈpʌntʃɪz/",
+    "respelling": "rohl with thuh PUN-chiz",
+    "tip": "Stress PUNCHES: PUN-chiz."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Positive; it praises flexibility and resilience.",
+   "usage_note": "Often with \"learn to,\" \"have to\" or \"know how to.\" It describes a calm, adaptable person: \"She really rolls with the punches.\"",
+   "word_family": [
+    "rolling with the punches (-ing)",
+    "rolled with the punches (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "go with the flow",
+     "note": "\"Go with the flow\" is relaxing and accepting things as they come, not necessarily problems; \"roll with the punches\" is about handling setbacks."
+    },
+    {
+     "vs": "bounce back",
+     "note": "\"Bounce back\" is recovering after a setback; \"roll with the punches\" is adapting while the setbacks are happening."
+    }
+   ],
+   "antonyms": [
+    "fall apart"
+   ],
+   "collocations": [
+    "roll with the punches",
+    "learn to roll with the punches",
+    "good at rolling with the punches"
+   ],
+   "examples": {
+    "everyday": "Our flight was canceled, but the kids rolled with the punches and made a game of it.",
+    "professional": "We need someone in this role who can roll with the punches when client priorities shift.",
+    "analytical": "Resilience researchers describe people who roll with the punches as using flexible coping rather than rigid plans."
+   },
+   "analogy": "Like a boxer who moves with the blow instead of standing still and taking its full force.",
+   "etymology": "From boxing, where a fighter moves backward or sideways with a punch to soften it; figurative use since the mid-1900s.",
+   "common_mistakes": [
+    "Saying \"roll with the punch\"; it is plural.",
+    "Using it to mean \"fight back\"; it means adapting."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "back on one's feet",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌbæk ɑn wʌnz ˈfit/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Recovered after an illness, injury or a hard time (especially financial), and able to live normally again (often with \"get\" or \"be\")."
+    ]
+   }
+  ],
+  "etymology": "From the image of standing up again after a fall or illness; long-standing English usage.",
+  "conversation": [
+   {
+    "sense": "illness",
+    "text": "She was in the hospital for a week, but she's back on her feet now."
+   },
+   {
+    "sense": "money",
+    "text": "My brother's staying with us until he gets back on his feet."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "prepositional phrase",
+    "definition": "Healthy, stable or independent again after a setback."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbæk ɑn wʌnz ˈfit/",
+    "respelling": "bak on wunz FEET",
+    "tip": "Stress FEET. In use, \"one's\" becomes my, your, his, her."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive and supportive.",
+   "usage_note": "Used with \"be,\" \"get\" and \"help someone get\": \"We helped him get back on his feet.\" It covers both health and finances, often after a job loss or divorce.",
+   "word_family": [
+    "get back on one's feet (verb phrase)",
+    "help someone (get) back on their feet"
+   ],
+   "distinctions": [
+    {
+     "vs": "on the mend",
+     "note": "\"On the mend\" means getting better, still recovering; \"back on one's feet\" means fully recovered."
+    },
+    {
+     "vs": "bounce back",
+     "note": "\"Bounce back\" stresses quick recovery; \"back on one's feet\" is the result."
+    }
+   ],
+   "antonyms": [
+    "down on one's luck",
+    "flat on one's back"
+   ],
+   "collocations": [
+    "get back on one's feet",
+    "back on her feet",
+    "help them get back on their feet",
+    "until he's back on his feet"
+   ],
+   "examples": {
+    "everyday": "After the flu, it took me two weeks to get back on my feet.",
+    "professional": "The program helps laid-off workers get back on their feet with training and job placement.",
+    "analytical": "Microloans aim to help families get back on their feet after a crisis without turning to predatory lenders."
+   },
+   "analogy": "Like a boxer who goes down and then stands up again before the count.",
+   "etymology": "From the image of standing up again after a fall or illness; long-standing English usage.",
+   "common_mistakes": [
+    "Saying \"back to one's feet\"; the preposition is \"on.\"",
+    "Leaving out the possessive: say \"back on her feet,\" not \"back on feet.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "down on one's luck",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌdaʊn ɑn wʌnz ˈlʌk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Going through a period of bad luck, especially being short of money."
+    ]
+   }
+  ],
+  "etymology": "Recorded since the 1800s; \"down\" in the sense of low or depressed.",
+  "conversation": [
+   {
+    "sense": "sympathy",
+    "text": "Give him a break. He's been down on his luck since the factory closed."
+   },
+   {
+    "sense": "help",
+    "text": "The shelter helps people who are down on their luck."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "prepositional phrase",
+    "definition": "In a bad period, usually poor or out of work."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdaʊn ɑn wʌnz ˈlʌk/",
+    "respelling": "down on wunz LUK",
+    "tip": "Stress LUCK. In use, \"one's\" becomes his, her, their: \"down on his luck.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Sympathetic; it suggests the bad situation is temporary and not the person's fault.",
+   "usage_note": "Used with \"be\": \"She's been down on her luck lately.\" It is a kind way to describe someone struggling financially. \"Down-on-his-luck\" can also come before a noun: \"a down-on-his-luck musician.\"",
+   "word_family": [
+    "down-on-one's-luck (adjective: a down-on-his-luck actor)"
+   ],
+   "distinctions": [
+    {
+     "vs": "out of luck",
+     "note": "\"Out of luck\" means unable to get something in one situation (\"The store's closed; you're out of luck\"); \"down on one's luck\" is a longer bad period in life."
+    },
+    {
+     "vs": "hit rock bottom",
+     "note": "\"Hit rock bottom\" is the worst point; \"down on one's luck\" is a hard period, not necessarily the worst."
+    }
+   ],
+   "antonyms": [
+    "back on one's feet",
+    "on a roll",
+    "sitting pretty"
+   ],
+   "collocations": [
+    "down on his luck",
+    "a down-on-her-luck singer",
+    "people who are down on their luck",
+    "been down on my luck"
+   ],
+   "examples": {
+    "everyday": "The movie is about a down-on-his-luck boxer who gets one last chance.",
+    "professional": "We hire through a program for veterans who are down on their luck.",
+    "analytical": "Charitable giving tends to rise when donors see recipients as temporarily down on their luck rather than responsible for their situation."
+   },
+   "analogy": "Like a gambler on a long losing streak, waiting for the cards to turn.",
+   "etymology": "Recorded since the 1800s; \"down\" in the sense of low or depressed.",
+   "common_mistakes": [
+    "Saying \"down in one's luck\"; the preposition is \"on.\"",
+    "Using it for one small bad event; it describes a period of hardship."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "take a turn for the worse",
+  "domains": [
+   "idioms",
+   "home_health"
+  ],
+  "phonetic": "/ˌteɪk ə ˈtɝn fɚ ðə ˈwɝs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To suddenly become worse, especially of someone's health or of a situation."
+    ]
+   }
+  ],
+  "etymology": "Recorded since the 1700s, from \"turn\" meaning a change of direction or condition.",
+  "conversation": [
+   {
+    "sense": "health",
+    "text": "Grandpa was recovering, but last night he took a turn for the worse."
+   },
+   {
+    "sense": "situation",
+    "text": "The negotiations took a turn for the worse when the union walked out."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To get worse, often suddenly, after being stable or improving."
+   },
+   "pronunciation": {
+    "ipa": "/ˌteɪk ə ˈtɝn fɚ ðə ˈwɝs/",
+    "respelling": "tayk uh TURN fer thuh WURS",
+    "tip": "Stress TURN and WORSE; they share the same vowel, ur."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Negative and serious; often used gently when giving bad news.",
+   "usage_note": "Common in health news and medical updates. The opposite, \"take a turn for the better,\" is also used. Use \"took\" for the past.",
+   "word_family": [
+    "take a turn for the better (opposite)",
+    "a turn for the worse (noun phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "go downhill",
+     "note": "\"Go downhill\" is a gradual decline; \"take a turn for the worse\" is a sudden change."
+    },
+    {
+     "vs": "go south",
+     "note": "\"Go south\" is casual, for plans and deals; \"take a turn for the worse\" is used for health and serious situations."
+    }
+   ],
+   "antonyms": [
+    "take a turn for the better",
+    "on the mend"
+   ],
+   "collocations": [
+    "took a turn for the worse",
+    "things took a turn for the worse",
+    "her condition took a turn for the worse",
+    "take a turn for the better"
+   ],
+   "examples": {
+    "everyday": "The weather took a turn for the worse halfway up the mountain, so we turned back.",
+    "professional": "The project took a turn for the worse when the lead engineer left.",
+    "analytical": "Patients whose condition takes a turn for the worse after surgery are often identified earlier with continuous monitoring."
+   },
+   "analogy": "Like a road that suddenly turns from smooth pavement to gravel.",
+   "etymology": "Recorded since the 1700s, from \"turn\" meaning a change of direction or condition.",
+   "common_mistakes": [
+    "Saying \"take a turn to the worse\"; the preposition is \"for.\"",
+    "Saying \"turn for worse\" without \"the.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "clean bill of health",
+  "domains": [
+   "idioms",
+   "home_health"
+  ],
+  "phonetic": "/ˌklin ˌbɪl əv ˈhɛlθ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A report from a doctor that a person is healthy.",
+     "An official statement that something or someone is in good condition or has no problems."
+    ]
+   }
+  ],
+  "etymology": "From the \"bill of health,\" a certificate ships once carried showing there was no infectious disease on board or at the port they left.",
+  "conversation": [
+   {
+    "sense": "checkup",
+    "text": "I had my physical yesterday, and the doctor gave me a clean bill of health."
+   },
+   {
+    "sense": "inspection",
+    "text": "The inspector gave the old house a clean bill of health."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "Confirmation, from a doctor or inspector, that there is nothing wrong."
+   },
+   "pronunciation": {
+    "ipa": "/ˌklin ˌbɪl əv ˈhɛlθ/",
+    "respelling": "kleen bil uhv HELTH",
+    "tip": "Stress HEALTH. Usually said with \"a\": a clean bill of health."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Positive and reassuring.",
+   "usage_note": "Usually with \"give someone\" or \"get\": \"The vet gave the dog a clean bill of health.\" Also used figuratively for audits, inspections and investigations.",
+   "word_family": [
+    "bill of health (noun phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "fit as a fiddle",
+     "note": "\"Fit as a fiddle\" describes being healthy; \"a clean bill of health\" is official confirmation of it."
+    },
+    {
+     "vs": "all clear",
+     "note": "\"The all clear\" is a signal that danger is over; \"a clean bill of health\" confirms good condition."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "a clean bill of health",
+    "gave him a clean bill of health",
+    "got a clean bill of health",
+    "received a clean bill of health"
+   ],
+   "examples": {
+    "everyday": "After the surgery, she went for a scan and got a clean bill of health.",
+    "professional": "The auditors gave our accounts a clean bill of health.",
+    "analytical": "A clean bill of health from one test does not rule out problems that the test was not designed to detect."
+   },
+   "analogy": "Like a car passing its inspection with no repairs needed.",
+   "etymology": "From the \"bill of health,\" a certificate ships once carried showing there was no infectious disease on board or at the port they left.",
+   "common_mistakes": [
+    "Leaving out \"clean\": \"a bill of health\" alone is the old document, not the idiom.",
+    "Saying \"a clear bill of health\"; the usual word is \"clean.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "on one's last legs",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ɑn wʌnz ˌlæst ˈlɛɡz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Very old, worn out or weak, and about to stop working or fail."
+    ]
+   }
+  ],
+  "etymology": "Recorded since the 1500s, from the image of an animal or person too weak to stand much longer.",
+  "conversation": [
+   {
+    "sense": "car",
+    "text": "My car is on its last legs. I need a new one before winter."
+   },
+   {
+    "sense": "tired",
+    "text": "After the double shift, I'm on my last legs."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "prepositional phrase",
+    "definition": "Close to breaking down, dying or giving out."
+   },
+   "pronunciation": {
+    "ipa": "/ɑn wʌnz ˌlæst ˈlɛɡz/",
+    "respelling": "on wunz last LEGZ",
+    "tip": "Stress LEGS. In use, \"one's\" becomes its, his, her: \"on its last legs.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative but often humorous, especially about machines.",
+   "usage_note": "Very common about old machines and appliances: \"The washer is on its last legs.\" Also used about businesses near failure and, more carefully, about people who are exhausted or very ill.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "on the fritz",
+     "note": "\"On the fritz\" means not working properly right now; \"on its last legs\" means about to stop working for good."
+    },
+    {
+     "vs": "over the hill",
+     "note": "\"Over the hill\" means past one's best years, about people; \"on one's last legs\" is close to the end."
+    }
+   ],
+   "antonyms": [
+    "brand-new",
+    "going strong"
+   ],
+   "collocations": [
+    "on its last legs",
+    "the laptop's on its last legs",
+    "a business on its last legs"
+   ],
+   "examples": {
+    "everyday": "This old phone is on its last legs; the battery dies by noon.",
+    "professional": "The legacy server is on its last legs, so we've scheduled the migration for next month.",
+    "analytical": "Retailers on their last legs often cut prices sharply, which can hurt healthier competitors as well."
+   },
+   "analogy": "Like an old horse that can barely stand at the end of a long journey.",
+   "etymology": "Recorded since the 1500s, from the image of an animal or person too weak to stand much longer.",
+   "common_mistakes": [
+    "Saying \"on the last legs\"; it needs a possessive: its, his, my.",
+    "Saying \"on one's last leg\"; it is plural."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "second wind",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌsɛkənd ˈwɪnd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "New energy that lets you continue after you thought you were too tired to go on (often \"get a second wind\")."
+    ]
+   }
+  ],
+  "etymology": "From running and athletics in the 1800s: the point when a tired runner begins breathing easily again.",
+  "conversation": [
+   {
+    "sense": "running",
+    "text": "I was ready to quit at mile eight, but then I got a second wind."
+   },
+   {
+    "sense": "late night",
+    "text": "It's midnight and I've caught a second wind. Let's finish the puzzle."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "A sudden return of energy or strength during a long effort."
+   },
+   "pronunciation": {
+    "ipa": "/ˌsɛkənd ˈwɪnd/",
+    "respelling": "sek-uhnd WIND",
+    "tip": "Stress WIND, which here rhymes with \"pinned\" (moving air), not with \"find.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive.",
+   "usage_note": "Usually \"get\" or \"catch a second wind.\" Also used for a person, team or business finding new energy later in life or in a project: \"Her career got a second wind in her fifties.\"",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "recharge one's batteries",
+     "note": "\"Recharge one's batteries\" is resting to get energy back; \"a second wind\" is energy that returns while you keep going."
+    },
+    {
+     "vs": "a new lease on life",
+     "note": "\"A new lease on life\" is a fresh start or renewed health; \"a second wind\" is renewed energy during an effort."
+    }
+   ],
+   "antonyms": [
+    "run out of steam",
+    "running on empty"
+   ],
+   "collocations": [
+    "get a second wind",
+    "caught a second wind",
+    "found a second wind",
+    "gave the company a second wind"
+   ],
+   "examples": {
+    "everyday": "The kids got a second wind right at bedtime.",
+    "professional": "The team got a second wind after the client approved the new direction.",
+    "analytical": "Athletes describe a second wind when their breathing settles after the first stage of hard exercise; physiologists are still debating the exact cause."
+   },
+   "analogy": "Like a sailboat that stops in the calm and then catches a new breeze.",
+   "etymology": "From running and athletics in the 1800s: the point when a tired runner begins breathing easily again.",
+   "common_mistakes": [
+    "Pronouncing \"wind\" like \"wind up a clock\"; here it rhymes with \"pinned.\"",
+    "Saying \"a second breath\"; the idiom is \"second wind.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "recharge one's batteries",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ɹiˌtʃɑɹdʒ wʌnz ˈbætəɹiz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To rest or take a break so that you regain your energy."
+    ]
+   }
+  ],
+  "etymology": "A 20th-century figurative use of recharging electrical batteries.",
+  "conversation": [
+   {
+    "sense": "vacation",
+    "text": "I'm taking a long weekend at the lake to recharge my batteries."
+   },
+   {
+    "sense": "introvert",
+    "text": "After parties, I need a quiet day to recharge my batteries."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To rest and get your energy back."
+   },
+   "pronunciation": {
+    "ipa": "/ɹiˌtʃɑɹdʒ wʌnz ˈbætəɹiz/",
+    "respelling": "ree-chahrj wunz BAT-uh-reez",
+    "tip": "Stress BATTERIES: BAT-uh-reez (often BAT-reez in fast speech)."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Positive; it presents rest as useful and healthy.",
+   "usage_note": "Use a possessive: my, your, our. Also simply \"recharge\": \"I need to recharge.\" Common in talk about vacations, weekends and burnout.",
+   "word_family": [
+    "recharge (verb)",
+    "recharging (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "take a breather",
+     "note": "\"Take a breather\" is a short break; \"recharge one's batteries\" is a longer rest to restore energy."
+    },
+    {
+     "vs": "second wind",
+     "note": "\"A second wind\" is energy returning during effort; \"recharging one's batteries\" happens through rest."
+    }
+   ],
+   "antonyms": [
+    "burn out",
+    "run oneself ragged"
+   ],
+   "collocations": [
+    "recharge my batteries",
+    "a chance to recharge your batteries",
+    "time to recharge",
+    "need to recharge"
+   ],
+   "examples": {
+    "everyday": "We spent a week at the beach just to recharge our batteries.",
+    "professional": "The company gives a sabbatical every five years so people can recharge their batteries.",
+    "analytical": "Research on recovery suggests that people recharge their batteries best by fully detaching from work, not just by reducing it."
+   },
+   "analogy": "Like plugging in your phone overnight so it's ready for tomorrow.",
+   "etymology": "A 20th-century figurative use of recharging electrical batteries.",
+   "common_mistakes": [
+    "Saying \"reload my batteries\"; the verb is \"recharge.\"",
+    "Leaving out the possessive: say \"recharge my batteries,\" or just \"recharge.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "sleep like a baby",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌslip ˌlaɪk ə ˈbeɪbi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To sleep very well and deeply."
+    ]
+   }
+  ],
+  "etymology": "A common comparison in English since at least the 1800s.",
+  "conversation": [
+   {
+    "sense": "hotel",
+    "text": "That mattress was amazing. I slept like a baby."
+   },
+   {
+    "sense": "worry",
+    "text": "\"Were you nervous about the exam?\" \"No, I slept like a baby.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To sleep peacefully and soundly all night."
+   },
+   "pronunciation": {
+    "ipa": "/ˌslip ˌlaɪk ə ˈbeɪbi/",
+    "respelling": "sleep lyke uh BAY-bee",
+    "tip": "Stress BABY. \"Sleep\" has a long ee."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Positive.",
+   "usage_note": "Usually in the past tense: \"I slept like a baby.\" Parents sometimes joke that babies wake up every two hours, so \"slept like a baby\" should mean badly. \"Sleep like a log\" is a close variant.",
+   "word_family": [
+    "slept like a baby (past)",
+    "sleep like a log (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "sleep like a log",
+     "note": "Same meaning; \"like a log\" stresses not moving or waking at all."
+    },
+    {
+     "vs": "toss and turn",
+     "note": "\"Toss and turn\" is the opposite: moving around in bed and sleeping badly."
+    }
+   ],
+   "antonyms": [
+    "toss and turn",
+    "lie awake"
+   ],
+   "collocations": [
+    "slept like a baby",
+    "sleep like a baby",
+    "sleeping like a baby"
+   ],
+   "examples": {
+    "everyday": "After hiking all day, we slept like babies.",
+    "professional": "Once the release went out without problems, I finally slept like a baby.",
+    "analytical": "People who exercise regularly report that they sleep like a baby more often, and sleep studies partly confirm better sleep quality."
+   },
+   "analogy": "Like a baby after a bottle, quiet and still until morning.",
+   "etymology": "A common comparison in English since at least the 1800s.",
+   "common_mistakes": [
+    "Saying \"sleep as a baby\"; the word is \"like.\"",
+    "Using \"sleeped\"; the past is \"slept.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "toss and turn",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌtɔs ən ˈtɝn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To keep moving around in bed because you cannot sleep."
+    ]
+   }
+  ],
+  "etymology": "An English pairing of two verbs for movement in bed, common since the 1800s.",
+  "conversation": [
+   {
+    "sense": "worried",
+    "text": "I tossed and turned all night thinking about the interview."
+   },
+   {
+    "sense": "heat",
+    "text": "It was so hot that I tossed and turned until three."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To move restlessly in bed, unable to fall asleep or stay asleep."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtɔs ən ˈtɝn/",
+    "respelling": "taws uhn TURN",
+    "tip": "Stress TURN. \"And\" shrinks to uhn: toss-uhn-TURN."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Negative; it suggests worry, discomfort or stress.",
+   "usage_note": "Very often in the past tense with \"all night\": \"I tossed and turned all night.\" It is a natural way to say you slept badly, and it hints that something was bothering you.",
+   "word_family": [
+    "tossed and turned (past)",
+    "tossing and turning (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "lie awake",
+     "note": "\"Lie awake\" is staying still but unable to sleep; \"toss and turn\" is moving around restlessly."
+    },
+    {
+     "vs": "sleep like a baby",
+     "note": "The opposite: sleeping deeply and peacefully."
+    }
+   ],
+   "antonyms": [
+    "sleep like a baby",
+    "sleep like a log"
+   ],
+   "collocations": [
+    "tossed and turned all night",
+    "tossing and turning",
+    "spent the night tossing and turning"
+   ],
+   "examples": {
+    "everyday": "The new baby next door cried, and I tossed and turned until morning.",
+    "professional": "I was tossing and turning before the board presentation, so I'm running on coffee.",
+    "analytical": "Patients who toss and turn for more than thirty minutes are often advised to get up and do something calm rather than stay in bed."
+   },
+   "analogy": "Like a fish flipping around on the deck of a boat.",
+   "etymology": "An English pairing of two verbs for movement in bed, common since the 1800s.",
+   "common_mistakes": [
+    "Saying \"turn and toss\"; the order is \"toss and turn.\"",
+    "Using it for physical exercise; it is only about restless sleep."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "eat like a horse",
+  "domains": [
+   "idioms",
+   "food"
+  ],
+  "phonetic": "/ˌit ˌlaɪk ə ˈhɔɹs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To eat a lot of food, usually regularly."
+    ]
+   }
+  ],
+  "etymology": "From the large amount of food horses eat; recorded since the 1700s. A related phrase is \"I could eat a horse\" (I'm very hungry).",
+  "conversation": [
+   {
+    "sense": "teenager",
+    "text": "My son is fifteen and he eats like a horse."
+   },
+   {
+    "sense": "surprise",
+    "text": "She's so small, but she eats like a horse."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To have a big appetite and eat large amounts."
+   },
+   "pronunciation": {
+    "ipa": "/ˌit ˌlaɪk ə ˈhɔɹs/",
+    "respelling": "eet lyke uh HORS",
+    "tip": "Stress HORSE. \"Horse\" is one syllable with an American r: hors."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Usually neutral or affectionate; not an insult, though it can be teasing.",
+   "usage_note": "Mostly about active people, teenagers and athletes. The opposite is \"eat like a bird\" (eat very little). Be careful saying it to adults who might be sensitive about weight.",
+   "word_family": [
+    "eats like a horse (present)",
+    "eat like a bird (opposite)"
+   ],
+   "distinctions": [
+    {
+     "vs": "eat like a bird",
+     "note": "The opposite: to eat very little."
+    },
+    {
+     "vs": "pig out",
+     "note": "\"Pig out\" is eating a lot on one occasion, often junk food; \"eat like a horse\" describes a regular big appetite."
+    }
+   ],
+   "antonyms": [
+    "eat like a bird"
+   ],
+   "collocations": [
+    "eats like a horse",
+    "eat like a horse",
+    "could eat a horse (I'm very hungry)"
+   ],
+   "examples": {
+    "everyday": "After swim practice, the kids eat like horses.",
+    "professional": "The construction crew eats like a horse, so we order double for the job-site lunch.",
+    "analytical": "Teenagers who eat like a horse during growth spurts may need far more calories than adults."
+   },
+   "analogy": "Like a horse at its feed bucket: it just keeps eating.",
+   "etymology": "From the large amount of food horses eat; recorded since the 1700s. A related phrase is \"I could eat a horse\" (I'm very hungry).",
+   "common_mistakes": [
+    "Confusing it with \"I could eat a horse,\" which means I'm very hungry right now.",
+    "Saying \"eat as a horse\"; the word is \"like.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "put the cart before the horse",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌpʊt ðə ˈkɑɹt bɪˌfɔɹ ðə ˈhɔɹs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To do things in the wrong order, especially something that should come later before something that should come first."
+    ]
+   }
+  ],
+  "etymology": "One of the oldest English proverbs, recorded since the 1500s, with versions in ancient Greek and Latin.",
+  "conversation": [
+   {
+    "sense": "wedding",
+    "text": "You're buying wedding rings before you've even proposed? You're putting the cart before the horse."
+   },
+   {
+    "sense": "business",
+    "text": "Let's not put the cart before the horse. We need customers before we hire a sales team."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To reverse the natural or logical order of things."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpʊt ðə ˈkɑɹt bɪˌfɔɹ ðə ˈhɔɹs/",
+    "respelling": "put thuh KAHRT bih-for thuh HORS",
+    "tip": "Stress CART and HORSE. Both have a clear American r."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Mildly critical; used as a friendly warning.",
+   "usage_note": "Common in planning and business: \"Let's not put the cart before the horse.\" The noun form \"a cart-before-the-horse problem\" is also used.",
+   "word_family": [
+    "the cart before the horse (noun phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "jump the gun",
+     "note": "\"Jump the gun\" is starting too early; \"put the cart before the horse\" is doing steps in the wrong order."
+    },
+    {
+     "vs": "count one's chickens before they hatch",
+     "note": "\"Count your chickens\" is expecting success too early; \"put the cart before the horse\" is about order."
+    }
+   ],
+   "antonyms": [
+    "first things first",
+    "one step at a time"
+   ],
+   "collocations": [
+    "put the cart before the horse",
+    "let's not put the cart before the horse",
+    "putting the cart before the horse"
+   ],
+   "examples": {
+    "everyday": "Buying a crib before the adoption is approved might be putting the cart before the horse.",
+    "professional": "Designing the logo before we've named the product is putting the cart before the horse.",
+    "analytical": "Researchers who choose a method before defining the question are putting the cart before the horse."
+   },
+   "analogy": "Like a horse trying to push a cart instead of pulling it.",
+   "etymology": "One of the oldest English proverbs, recorded since the 1500s, with versions in ancient Greek and Latin.",
+   "common_mistakes": [
+    "Reversing it: \"put the horse before the cart\" is the correct order, so it isn't the idiom.",
+    "Saying \"the carriage before the horse\"; the fixed word is \"cart.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "take the bull by the horns",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌteɪk ðə ˈbʊl baɪ ðə ˈhɔɹnz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To face a difficult situation directly and with courage, instead of avoiding it."
+    ]
+   }
+  ],
+  "etymology": "Recorded since the 1700s; the image may come from bullfighting or farm work, where controlling a bull means grabbing its horns.",
+  "conversation": [
+   {
+    "sense": "problem",
+    "text": "I hated the leak, but I took the bull by the horns and called a plumber."
+   },
+   {
+    "sense": "conflict",
+    "text": "You need to take the bull by the horns and talk to your landlord."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To deal with a problem boldly and decisively."
+   },
+   "pronunciation": {
+    "ipa": "/ˌteɪk ðə ˈbʊl baɪ ðə ˈhɔɹnz/",
+    "respelling": "tayk thuh BUL bye thuh HORNZ",
+    "tip": "Stress BULL and HORNS. \"Bull\" has the vowel of \"full,\" not \"dull.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive; it praises courage and initiative.",
+   "usage_note": "Used as encouragement or praise. Often before a decision or a hard conversation. The opposite is avoiding or postponing a problem.",
+   "word_family": [
+    "took the bull by the horns (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "bite the bullet",
+     "note": "\"Bite the bullet\" is accepting something unpleasant; \"take the bull by the horns\" is taking active control of a problem."
+    },
+    {
+     "vs": "face the music",
+     "note": "\"Face the music\" is accepting the consequences of your actions; \"take the bull by the horns\" is tackling a problem."
+    }
+   ],
+   "antonyms": [
+    "bury one's head in the sand",
+    "beat around the bush"
+   ],
+   "collocations": [
+    "take the bull by the horns",
+    "decided to take the bull by the horns",
+    "time to take the bull by the horns"
+   ],
+   "examples": {
+    "everyday": "She took the bull by the horns and signed up for the class she'd been afraid of.",
+    "professional": "Instead of waiting for HR, the manager took the bull by the horns and fixed the schedule herself.",
+    "analytical": "Governments that take the bull by the horns early in a financial crisis usually recover faster than those that delay."
+   },
+   "analogy": "Like a rancher grabbing a charging bull by its horns instead of running away.",
+   "etymology": "Recorded since the 1700s; the image may come from bullfighting or farm work, where controlling a bull means grabbing its horns.",
+   "common_mistakes": [
+    "Saying \"take the bull by its horns\"; the usual form is \"by the horns.\"",
+    "Saying \"grab the bull by the horns\" is a common variant and fine."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "needle in a haystack",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈnidəl ɪn ə ˈheɪstæk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Something that is almost impossible to find because it is hidden among so many other things."
+    ]
+   }
+  ],
+  "etymology": "An English expression since the 1500s, earlier as \"a needle in a bottle of hay\" (a bundle of hay).",
+  "conversation": [
+   {
+    "sense": "lost earring",
+    "text": "Finding that earring in the sand would be like looking for a needle in a haystack."
+   },
+   {
+    "sense": "search",
+    "text": "Trying to find his old classmate without a last name is a needle in a haystack."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "Something very hard to find among many other things."
+   },
+   "pronunciation": {
+    "ipa": "/ˈnidəl ɪn ə ˈheɪstæk/",
+    "respelling": "NEE-duhl in uh HAY-stak",
+    "tip": "Two stresses: NEEDLE and HAY. Usually said with \"a\": like looking for a needle in a haystack."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; it stresses how hopeless a search is.",
+   "usage_note": "Most often in \"like looking for (or finding) a needle in a haystack.\" Also used in tech and research for rare items in huge data sets.",
+   "word_family": [
+    "haystack (noun)",
+    "needle-in-a-haystack (adjective: a needle-in-a-haystack search)"
+   ],
+   "distinctions": [
+    {
+     "vs": "wild-goose chase",
+     "note": "\"A wild-goose chase\" is a pointless search for something that may not exist; \"a needle in a haystack\" exists but is very hard to find."
+    },
+    {
+     "vs": "a long shot",
+     "note": "\"A long shot\" is something unlikely to succeed in general; \"a needle in a haystack\" is specifically a hard search."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "like looking for a needle in a haystack",
+    "a needle in a haystack",
+    "a needle-in-a-haystack problem"
+   ],
+   "examples": {
+    "everyday": "Finding a parking spot downtown on a Saturday is like finding a needle in a haystack.",
+    "professional": "Without a ticket number, finding your order in the system is a needle in a haystack.",
+    "analytical": "Fraud detection is a needle-in-a-haystack problem: a handful of bad transactions hidden among millions of normal ones."
+   },
+   "analogy": "Like searching for one grain of salt in a sugar bowl.",
+   "etymology": "An English expression since the 1500s, earlier as \"a needle in a bottle of hay\" (a bundle of hay).",
+   "common_mistakes": [
+    "Saying \"a needle in a hay\"; the word is \"haystack.\"",
+    "Using it for something easy to find once you look; it implies a nearly hopeless search."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "can't see the forest for the trees",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌkænt ˌsi ðə ˈfɔɹɪst fɚ ðə ˈtɹiz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To be so focused on details that you fail to understand the bigger situation or what is important."
+    ]
+   }
+  ],
+  "etymology": "From the 1500s in English as \"cannot see the wood for trees\"; the American form uses \"forest.\"",
+  "conversation": [
+   {
+    "sense": "editing",
+    "text": "You've spent an hour on commas, but the essay has no conclusion. You can't see the forest for the trees."
+   },
+   {
+    "sense": "advice",
+    "text": "Step back from the spreadsheet. I think we can't see the forest for the trees."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To miss the overall picture because of attention to small details."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkænt ˌsi ðə ˈfɔɹɪst fɚ ðə ˈtɹiz/",
+    "respelling": "kant see thuh FOR-ist fer thuh TREEZ",
+    "tip": "Stress FOREST and TREES. \"For\" is weak (fer); \"forest\" is FOR-ist."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Mildly critical; often said about oneself or one's team.",
+   "usage_note": "American form (\"forest\"); British English usually says \"can't see the wood for the trees.\" Often with \"can't,\" \"couldn't,\" or \"miss the forest for the trees.\"",
+   "word_family": [
+    "miss the forest for the trees (variant)",
+    "can't see the wood for the trees (British)"
+   ],
+   "distinctions": [
+    {
+     "vs": "the bigger picture",
+     "note": "\"The bigger picture\" is the overall situation; people who \"can't see the forest for the trees\" are missing it."
+    },
+    {
+     "vs": "miss the point",
+     "note": "\"Miss the point\" is failing to understand the main idea; \"can't see the forest for the trees\" says details are the cause."
+    }
+   ],
+   "antonyms": [
+    "see the big picture"
+   ],
+   "collocations": [
+    "can't see the forest for the trees",
+    "missing the forest for the trees",
+    "couldn't see the forest for the trees"
+   ],
+   "examples": {
+    "everyday": "He knows every rule of the game but can't see the forest for the trees: he doesn't enjoy playing.",
+    "professional": "We're debating button colors while the sign-up flow is broken; we can't see the forest for the trees.",
+    "analytical": "Analysts who chase every small fluctuation in the data can miss the forest for the trees: the long-term trend."
+   },
+   "analogy": "Like standing so close to a painting that you only see brushstrokes, not the picture.",
+   "etymology": "From the 1500s in English as \"cannot see the wood for trees\"; the American form uses \"forest.\"",
+   "common_mistakes": [
+    "Saying \"can't see the trees for the forest\"; the details (trees) block the big picture (forest).",
+    "Mixing forms: \"can't see the woods for the forest.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "light at the end of the tunnel",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˈlaɪt æt ði ˌɛnd əv ðə ˈtʌnəl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A sign that a long, difficult period is ending or will end soon."
+    ]
+   }
+  ],
+  "etymology": "Recorded since the early 1900s; widely used in American politics during the Vietnam War era.",
+  "conversation": [
+   {
+    "sense": "finals",
+    "text": "One more exam and then summer. I can see the light at the end of the tunnel."
+   },
+   {
+    "sense": "recovery",
+    "text": "Physical therapy is slow, but there's finally light at the end of the tunnel."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "The first sign that a hard time is almost over."
+   },
+   "pronunciation": {
+    "ipa": "/ˈlaɪt æt ði ˌɛnd əv ðə ˈtʌnəl/",
+    "respelling": "LYTE at thee end uhv thuh TUN-uhl",
+    "tip": "Stress LIGHT and TUNNEL. \"The\" before \"end\" is thee."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Hopeful.",
+   "usage_note": "Usually with \"see\" or \"there's\": \"I can finally see the light at the end of the tunnel.\" A popular joke: \"The light at the end of the tunnel is an oncoming train,\" meaning things will get worse.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "silver lining",
+     "note": "\"A silver lining\" is something good inside a bad situation; \"light at the end of the tunnel\" is the sign that the bad situation will end."
+    },
+    {
+     "vs": "out of the woods",
+     "note": "\"Out of the woods\" is already safe; \"the light at the end of the tunnel\" means safety is in sight."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "see the light at the end of the tunnel",
+    "there's light at the end of the tunnel",
+    "no light at the end of the tunnel"
+   ],
+   "examples": {
+    "everyday": "After two years of construction on our street, there's finally light at the end of the tunnel.",
+    "professional": "With the last integration done, there's light at the end of the tunnel for the migration project.",
+    "analytical": "Economists saw light at the end of the tunnel when inflation began to fall for several months in a row."
+   },
+   "analogy": "Like driving through a long tunnel and seeing daylight ahead.",
+   "etymology": "Recorded since the early 1900s; widely used in American politics during the Vietnam War era.",
+   "common_mistakes": [
+    "Saying \"light in the end of the tunnel\"; the preposition is \"at.\"",
+    "Using it for a sudden good surprise; it is about a hard period coming to an end."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "that ship has sailed",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌðæt ˈʃɪp hæz ˈseɪld/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "The opportunity has passed, and it is too late to do it now."
+    ]
+   }
+  ],
+  "etymology": "Late 20th-century American; from the image of arriving at the dock after your ship has left.",
+  "conversation": [
+   {
+    "sense": "regret",
+    "text": "\"You should have bought that house in 2010.\" \"I know, but that ship has sailed.\""
+   },
+   {
+    "sense": "relationship",
+    "text": "Get back together with him? No, that ship has sailed."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "It's too late; the chance is gone."
+   },
+   "pronunciation": {
+    "ipa": "/ˌðæt ˈʃɪp hæz ˈseɪld/",
+    "respelling": "that SHIP haz SAYLD",
+    "tip": "Stress SHIP and SAILED. \"Sailed\" is one syllable: sayld."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Resigned, sometimes firm; it closes a topic.",
+   "usage_note": "A very common modern American expression. It ends a discussion about a lost chance: \"That ship has sailed.\" \"The ship has sailed\" is also heard.",
+   "word_family": [
+    "the ship has sailed (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "miss the boat",
+     "note": "\"Miss the boat\" says someone lost a chance; \"that ship has sailed\" says the chance is gone, often to end a discussion."
+    },
+    {
+     "vs": "too little, too late",
+     "note": "\"Too little, too late\" says an effort came too late to help; \"that ship has sailed\" just says it's too late."
+    }
+   ],
+   "antonyms": [
+    "strike while the iron is hot"
+   ],
+   "collocations": [
+    "that ship has sailed",
+    "I think that ship has sailed",
+    "that ship sailed a long time ago"
+   ],
+   "examples": {
+    "everyday": "I wanted to be an astronaut, but that ship has sailed.",
+    "professional": "Changing the launch date now? That ship has sailed; the press release is out.",
+    "analytical": "Once a market leader is established, competitors often find that the ship has sailed on building a direct rival."
+   },
+   "analogy": "Like running to the dock and watching your ship get smaller on the horizon.",
+   "etymology": "Late 20th-century American; from the image of arriving at the dock after your ship has left.",
+   "common_mistakes": [
+    "Saying \"that ship is sailed\"; use \"has sailed.\"",
+    "Using it for something still possible; it means the chance is over."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "catch-22",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌkætʃ ˌtwɛnti ˈtu/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A frustrating situation in which you can't get what you need because of a rule or condition that requires you to already have it."
+    ]
+   }
+  ],
+  "etymology": "From Joseph Heller's 1961 novel \"Catch-22,\" in which a military rule lets pilots avoid combat if they are insane, but asking to avoid combat proves they are sane.",
+  "conversation": [
+   {
+    "sense": "job",
+    "text": "You need experience to get a job, and you need a job to get experience. It's a catch-22."
+   },
+   {
+    "sense": "bank",
+    "text": "The bank won't give me a credit card without a credit history. Classic catch-22."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "A no-win situation created by contradictory rules or conditions."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkætʃ ˌtwɛnti ˈtu/",
+    "respelling": "katch twen-tee-TOO",
+    "tip": "Stress TWO at the end. American \"twenty\" often sounds like TWEN-ee in fast speech."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Frustrated; it criticizes illogical systems.",
+   "usage_note": "Usually \"a catch-22\" or \"a catch-22 situation.\" It is a precise term: the two conditions depend on each other. Capitalized as \"Catch-22\" when referring to the novel.",
+   "word_family": [
+    "catch-22 situation (noun phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "between a rock and a hard place",
+     "note": "\"Between a rock and a hard place\" is choosing between two bad options; \"a catch-22\" is when rules make the goal impossible."
+    },
+    {
+     "vs": "a vicious circle",
+     "note": "\"A vicious circle\" is a cycle where problems make each other worse; \"a catch-22\" is a trap made by rules."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "a catch-22",
+    "a catch-22 situation",
+    "classic catch-22",
+    "it's a real catch-22"
+   ],
+   "examples": {
+    "everyday": "I can't rent an apartment without a local address, and I can't get a local address without an apartment: catch-22.",
+    "professional": "New vendors can't bid without a past contract with us, which is a catch-22 we should fix.",
+    "analytical": "Economists describe the poverty trap as a catch-22: people need savings to invest in education, and education to earn savings."
+   },
+   "analogy": "Like a door that only opens if you're already inside.",
+   "etymology": "From Joseph Heller's 1961 novel \"Catch-22,\" in which a military rule lets pilots avoid combat if they are insane, but asking to avoid combat proves they are sane.",
+   "common_mistakes": [
+    "Using it for any difficult situation; it is specifically a situation where the conditions contradict each other.",
+    "Writing \"catch 22\" without a hyphen; the standard form is \"catch-22.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "bitter pill to swallow",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˈbɪtɚ ˌpɪl tə ˈswɑloʊ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Something unpleasant, such as a disappointment or hard truth, that you have to accept."
+    ]
+   }
+  ],
+  "etymology": "From the old practice of coating bitter medicines with sugar; \"bitter pill\" as a figure of speech dates back to the 1500s.",
+  "conversation": [
+   {
+    "sense": "rejection",
+    "text": "Not getting into my first-choice school was a bitter pill to swallow."
+   },
+   {
+    "sense": "sports",
+    "text": "Losing in the last second was a bitter pill to swallow."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "A painful fact or outcome that is hard to accept."
+   },
+   "pronunciation": {
+    "ipa": "/ˈbɪtɚ ˌpɪl tə ˈswɑloʊ/",
+    "respelling": "BIT-er pil tuh SWAH-loh",
+    "tip": "Stress BITTER and SWALLOW. American \"bitter\" has a flap: BID-er."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Sad and serious.",
+   "usage_note": "Usually \"a bitter pill to swallow\" or \"a hard pill to swallow.\" It is used about defeats, rejections, criticism and bad news.",
+   "word_family": [
+    "a hard pill to swallow (variant)",
+    "a tough pill to swallow (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "bite the bullet",
+     "note": "\"Bite the bullet\" is forcing yourself to do something unpleasant; \"a bitter pill to swallow\" is something unpleasant to accept."
+    },
+    {
+     "vs": "the last straw",
+     "note": "\"The last straw\" is a final problem that makes you lose patience; \"a bitter pill to swallow\" is a painful thing to accept."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "a bitter pill to swallow",
+    "a hard pill to swallow",
+    "a tough pill to swallow"
+   ],
+   "examples": {
+    "everyday": "Admitting I was wrong in front of everyone was a bitter pill to swallow.",
+    "professional": "The layoffs were a bitter pill to swallow for a company that had never cut jobs before.",
+    "analytical": "Austerity measures are often a bitter pill to swallow politically, even when economists agree they are needed."
+   },
+   "analogy": "Like medicine that tastes awful but has to go down anyway.",
+   "etymology": "From the old practice of coating bitter medicines with sugar; \"bitter pill\" as a figure of speech dates back to the 1500s.",
+   "common_mistakes": [
+    "Saying \"a bitter pill to eat\"; the verb is \"swallow.\"",
+    "Using it for something physical; it is about accepting bad news."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "have one's cake and eat it too",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌhæv wʌnz ˈkeɪk ən ˈit ɪt ˌtu/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To want or try to get two good things that cannot both be had, because getting one means losing the other."
+    ]
+   }
+  ],
+  "etymology": "An English proverb since the 1500s, originally \"wolde you bothe eate your cake, and have your cake?\"; the American form often ends with \"too.\"",
+  "conversation": [
+   {
+    "sense": "choices",
+    "text": "You want to save money and buy a new car? You can't have your cake and eat it too."
+   },
+   {
+    "sense": "criticism",
+    "text": "He wants a raise but less responsibility. He wants to have his cake and eat it too."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To enjoy two benefits that are not compatible."
+   },
+   "pronunciation": {
+    "ipa": "/ˌhæv wʌnz ˈkeɪk ən ˈit ɪt ˌtu/",
+    "respelling": "hav wunz KAYK uhn EET it too",
+    "tip": "Stress CAKE and EAT. In use, \"one's\" becomes your, his, her."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Critical, often of someone who wants everything without sacrifice.",
+   "usage_note": "Usually negative: \"You can't have your cake and eat it too,\" or \"She wants to have her cake and eat it too.\" The logic: once you eat the cake, you no longer have it.",
+   "word_family": [
+    "have it both ways (similar)"
+   ],
+   "distinctions": [
+    {
+     "vs": "have it both ways",
+     "note": "\"Have it both ways\" means the same and is a bit plainer."
+    },
+    {
+     "vs": "the best of both worlds",
+     "note": "\"The best of both worlds\" is positive: really getting two benefits; \"have one's cake and eat it too\" says you can't."
+    }
+   ],
+   "antonyms": [
+    "make a trade-off"
+   ],
+   "collocations": [
+    "you can't have your cake and eat it too",
+    "wants to have his cake and eat it too",
+    "have their cake and eat it"
+   ],
+   "examples": {
+    "everyday": "You can't stay up all night and feel rested in the morning. You can't have your cake and eat it too.",
+    "professional": "Leadership wants faster releases with no extra QA staff; they want to have their cake and eat it too.",
+    "analytical": "Trade-off analysis is the formal version of \"you can't have your cake and eat it too\": every choice has a cost."
+   },
+   "analogy": "Like wanting to keep your money and spend it at the same time.",
+   "etymology": "An English proverb since the 1500s, originally \"wolde you bothe eate your cake, and have your cake?\"; the American form often ends with \"too.\"",
+   "common_mistakes": [
+    "Thinking it is about eating dessert; it is about incompatible choices.",
+    "Saying \"eat your cake and have it\" is the older order; Americans normally say \"have your cake and eat it too.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "the proof is in the pudding",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ðə ˈpɹuf ɪz ɪn ðə ˈpʊdɪŋ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "The real value or quality of something can only be judged by trying or using it, not by what people say about it."
+    ]
+   }
+  ],
+  "etymology": "From \"the proof of the pudding is in the eating,\" recorded in the 1600s; \"proof\" here means test.",
+  "conversation": [
+   {
+    "sense": "product",
+    "text": "The ads say it cleans everything. Well, the proof is in the pudding."
+   },
+   {
+    "sense": "plan",
+    "text": "Your diet plan sounds great, but the proof is in the pudding. Let's see in a month."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "saying",
+    "definition": "Judge something by its results."
+   },
+   "pronunciation": {
+    "ipa": "/ðə ˈpɹuf ɪz ɪn ðə ˈpʊdɪŋ/",
+    "respelling": "thuh PROOF iz in thuh PUD-ing",
+    "tip": "Stress PROOF and PUDDING. \"Pudding\" has the vowel of \"put\": PUD-ing."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Skeptical but fair.",
+   "usage_note": "The original and fuller form is \"the proof of the pudding is in the eating.\" In American English the short \"the proof is in the pudding\" is the usual form, even though it makes less literal sense.",
+   "word_family": [
+    "the proof of the pudding is in the eating (original form)"
+   ],
+   "distinctions": [
+    {
+     "vs": "actions speak louder than words",
+     "note": "\"Actions speak louder than words\" is about judging people by what they do; \"the proof is in the pudding\" is about judging anything by results."
+    },
+    {
+     "vs": "seeing is believing",
+     "note": "\"Seeing is believing\" means you will believe it when you see it; \"the proof is in the pudding\" means results will show the truth."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "the proof is in the pudding",
+    "the proof of the pudding is in the eating",
+    "as they say, the proof is in the pudding"
+   ],
+   "examples": {
+    "everyday": "The new coach talks a big game, but the proof is in the pudding: let's see how the team plays.",
+    "professional": "The software looks good in the demo, but the proof is in the pudding; let's run a pilot.",
+    "analytical": "The proof is in the pudding: an educational program should be judged by student outcomes, not by its design."
+   },
+   "analogy": "Like judging a recipe by tasting the dish, not by reading the cookbook.",
+   "etymology": "From \"the proof of the pudding is in the eating,\" recorded in the 1600s; \"proof\" here means test.",
+   "common_mistakes": [
+    "Thinking \"proof\" means evidence that pudding exists; it means \"test,\" as in \"proving\" something works.",
+    "Using it for a situation where results are already known; it suggests waiting for results."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "if worst comes to worst",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ɪf ˈwɝst ˌkʌmz tə ˈwɝst/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "If the worst possible situation happens (used to describe a backup plan)."
+    ]
+   }
+  ],
+  "etymology": "Recorded since the 1500s as \"if the worst come to the worst\"; the \"worse\" form is an American variant from the 1700s.",
+  "conversation": [
+   {
+    "sense": "backup plan",
+    "text": "If worst comes to worst, we can sleep in the car."
+   },
+   {
+    "sense": "travel",
+    "text": "If worse comes to worst and we miss the flight, there's another at six."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "conjunction phrase",
+    "definition": "In the worst case; if everything goes wrong."
+   },
+   "pronunciation": {
+    "ipa": "/ɪf ˈwɝst ˌkʌmz tə ˈwɝst/",
+    "respelling": "if WURST kumz tuh WURST",
+    "tip": "Stress both WORST. Many Americans say \"if worse comes to worst,\" which sounds almost the same."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Reassuring; it introduces a fallback plan.",
+   "usage_note": "Usually followed by a backup plan: \"If worst comes to worst, I'll call my parents.\" Both \"if worst comes to worst\" and \"if worse comes to worst\" are common in American English. \"Worst-case scenario\" is a close noun phrase.",
+   "word_family": [
+    "if worse comes to worst (common variant)",
+    "worst-case scenario (noun phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "when push comes to shove",
+     "note": "\"When push comes to shove\" means when a situation becomes urgent and action is needed; \"if worst comes to worst\" introduces a backup plan."
+    },
+    {
+     "vs": "at worst",
+     "note": "\"At worst\" states the worst outcome briefly (\"At worst, we lose a day\"); \"if worst comes to worst\" introduces what you would do."
+    }
+   ],
+   "antonyms": [
+    "best-case scenario"
+   ],
+   "collocations": [
+    "if worst comes to worst",
+    "if worse comes to worst",
+    "worst comes to worst, we'll..."
+   ],
+   "examples": {
+    "everyday": "If worst comes to worst, I'll order pizza.",
+    "professional": "If worst comes to worst and the vendor is late, we'll ship the older version.",
+    "analytical": "Contingency planning asks what to do if worst comes to worst, so teams can act quickly instead of improvising."
+   },
+   "analogy": "Like packing an umbrella just in case: if it pours, you're ready.",
+   "etymology": "Recorded since the 1500s as \"if the worst come to the worst\"; the \"worse\" form is an American variant from the 1700s.",
+   "common_mistakes": [
+    "Saying \"if the worse comes to the worst\" in American English; Americans drop \"the.\"",
+    "Using it for a good outcome; it is only for a bad one."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ }
+]
