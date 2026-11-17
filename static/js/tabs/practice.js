@@ -7,10 +7,10 @@ import { TABS } from "../app.js";
 import { h, icon, pageHead } from "../ui.js";
 
 const GROUPS = [
-  ["Course", "Learn grammar step by step"],
   ["Sound", "Hear and say words"],
   ["Meaning", "Learn what words mean"],
   ["Games", "Play against the clock"],
+  ["Course", "Learn grammar step by step"],
 ];
 
 export function hubTiles(parent) {

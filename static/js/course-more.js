@@ -205,7 +205,7 @@ export const MORE = {
   },
 
   "simple-continuous": {
-    fact: "McDonald's slogan *I'm lovin' it* (2003) uses *love* with *-ing*, which textbooks say is unusual. The surprise is part of what makes it memorable.",
+    fact: "*Love* is a state verb, so textbooks say it rarely takes *-ing*, yet *I'm loving it* is everyday American English, and a famous fast-food slogan from 2003 made it even more familiar. When a state verb takes *-ing*, it usually means “right now, for a while.”",
     intro: "English has two present forms where many languages have one. The present simple says what is usually true; the present continuous says what is happening around now. Choosing well makes you sound much more natural.",
     learn: ["Choose between *I work* and *I'm working*", "Know the state verbs that rarely take -ing", "Use time words as clues"],
     tip: "Time words are clues. *Usually, every day, often*: present simple. *Now, right now, at the moment, this week*: present continuous.",
@@ -285,7 +285,7 @@ export const MORE = {
       { q: "They ___ a baby last year.", choices: ["have", "had", "haved"], answer: 1, why: "*Have* is irregular: *had*." },
       { q: "What did you ___ for lunch?", choices: ["eat", "ate"], answer: 0, why: "After *did*, the plain verb." },
       { q: "I ___ a jacket at the mall.", choices: ["buyed", "bought"], answer: 1, why: "*Buy* is irregular: *bought*." },
-      { q: "I ___ like the movie. It was boring.", choices: ["didn't", "don't", "wasn't"], answer: 0, why: "A past negative: *didn't* + the plain verb." },
+      { q: "We watched a movie last night. I ___ like it. It was boring.", choices: ["didn't", "don't", "wasn't"], answer: 0, why: "A past negative: *didn't* + the plain verb." },
       { q: "Listen. How does the ending of “cooked” sound?", say: "I cooked dinner last night.", choices: ["t", "d", "id (extra syllable)"], answer: 0, why: "After a k sound, -ed sounds like *t*." },
     ],
   },
@@ -320,7 +320,7 @@ export const MORE = {
 
   "time-prepositions": {
     fact: "*O'clock* is short for *of the clock*: *ten o'clock* once meant “ten of the clock”.",
-    intro: "*At, on* and *in* are tiny words, but they are in almost every sentence about time. Think of a pyramid: *in* for big periods at the bottom, *on* for days in the middle, and *at* for exact times at the top.",
+    intro: "*At, on* and *in* are tiny words, but they are in almost every sentence about time. Think of a funnel: *in* for big periods at the wide top, *on* for days in the middle, and *at* for exact times at the narrow bottom.",
     learn: ["Use *at* for clock times", "Use *on* for days and dates", "Use *in* for months, years and parts of the day"],
     tip: "Go from big to small: *in* 2024, *in* July, *on* July 4th, *at* 9:00.",
     examples: [
@@ -370,7 +370,7 @@ export const MORE = {
       { who: "B", name: "Paul", t: "Yes, right **in front of** it." },
     ],
     checks: [
-      { q: "The bathroom is ___ the kitchen and the bedroom.", choices: ["between", "next to"], answer: 0, why: "*Between*: one thing on each side." },
+      { q: "The bathroom is ___ the kitchen and the bedroom.", choices: ["between", "on"], answer: 0, why: "*Between*: one thing on each side." },
       { q: "She lives ___ Chicago.", choices: ["in", "on", "at"], answer: 0, why: "A city: *in*." },
       { q: "She ran ___ the house because it was raining.", choices: ["into", "at"], answer: 0, why: "Moving inside: *into*." },
       { q: "Cross the street. The bank is ___ the hotel.", choices: ["across from", "between"], answer: 0, why: "On the other side of the street: *across from*." },

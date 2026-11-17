@@ -3,7 +3,7 @@ export const ADDED = [
   {
     id: "linking", level: "advanced", unit: "Style and flow",
     title: "Linking ideas: but, however, although",
-    key: "*But* joins two clauses in one sentence; *however* starts a new sentence or follows a semicolon; *although* makes one clause depend on the other. *Despite* and *in spite of* take a noun or an *-ing* form, not a clause.",
+    key: "*But* joins two clauses in one sentence; between two clauses, *however* needs a period or a semicolon before it; *although* makes one clause depend on the other. *Despite* and *in spite of* take a noun or an *-ing* form, not a clause.",
     intro: "Contrast is at the heart of argument: *it's cheap, but it's slow*. These words look alike in meaning, but each belongs to a different grammar class, and that decides the punctuation and what comes after it. The most common slips are *however* with only a comma and a full clause after *despite*.",
     learn: ["Choose between *but*, *however* and *although*", "Punctuate *however* correctly", "Use *despite* and *in spite of* with a noun or an *-ing* form", "Compare two facts with *whereas* and *while*"],
     rule: [
@@ -17,7 +17,7 @@ export const ADDED = [
       head: ["Word", "Kind", "What follows", "Example"],
       rows: [
         ["but", "conjunction", "a clause, in the same sentence", "It was cold, **but** we swam."],
-        ["however", "linking adverb", "starts a new sentence, or comes after a semicolon", "It was cold. **However**, we swam."],
+        ["however", "linking adverb", "a new sentence or a semicolon before it; can also move inside its clause", "It was cold. **However**, we swam."],
         ["although, even though", "subordinator", "a clause; can come first", "**Although** it was cold, we swam."],
         ["despite, in spite of", "preposition", "a noun or an -ing form", "**Despite** the cold, we swam."],
         ["whereas, while", "subordinator", "a clause that compares", "Ana loves the beach, **whereas** her brother hates it."],

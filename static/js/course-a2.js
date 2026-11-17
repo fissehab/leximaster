@@ -89,7 +89,7 @@ export const ADDED = [
   {
     id: "indirect-questions", level: "advanced", unit: "Passive and reporting",
     title: "Indirect questions",
-    key: "Inside a polite or reported question, use statement word order and no *do*: *Could you tell me where the station **is**?* For a yes/no question, add *if* or *whether*.",
+    key: "Inside a polite or reported question, use statement word order and no *do*: Could you tell me where the station **is**? For a yes/no question, add *if* or *whether*.",
     intro: "Indirect questions sound polite and professional: *Do you know when the store opens?* is softer than *When does the store open?* The hard part is word order. Learners keep the question form inside and say *where is the station*. This lesson trains you to switch to statement order every time.",
     learn: ["Turn a direct question into a polite indirect one", "Use statement word order and drop *do, does, did*", "Use *if* or *whether* for yes/no questions", "Report questions with *asked* and *wanted to know*"],
     rule: [
@@ -230,7 +230,7 @@ export const ADDED = [
       { who: "B", name: "Ravi", t: "Then you'd love it. My cousin works on a farm near **Lake Titicaca**." },
       { who: "A", name: "Elena", t: "Send me photos, and don't end up **in the hospital** from the altitude!" },
     ],
-    tip: "Water that flows or spreads out, like rivers, seas and oceans, takes *the*; water that sits still, like a lake, doesn't. And groups take *the*: mountain ranges, island groups, plural names.",
+    tip: "Water that flows or spreads out, like rivers, seas and oceans, takes *the*; a lake named *Lake* + name (*Lake Tahoe*) doesn't. And groups take *the*: mountain ranges, island groups, plural names.",
     note: "American English says *in the hospital* and *go to college*; British English says *in hospital* and *go to university*. Both say *go to school, go to bed* and *be at work*.",
     myth: "“Never use *the* with country names.” Most countries take no article, but plural names and names with a common noun like *states, kingdom* or *republic* do: *the United States, the Netherlands, the United Kingdom, the Dominican Republic*.",
     fact: "*The Bronx* is the only one of New York City's five boroughs with *the* in its name. It comes from *the Bronx River*, named after Jonas Bronck, a settler of the 1600s, and rivers take *the*.",
@@ -263,15 +263,15 @@ export const ADDED = [
   {
     id: "agreement", level: "advanced", unit: "Precision",
     title: "Agreement: tricky subjects",
-    key: "The verb agrees with the real subject, not the nearest noun: *The list of names **is** long.* *Each, every* and *everyone* take a singular verb; *a number of* takes a plural, *the number of* a singular.",
+    key: "The verb agrees with the real subject, not the nearest noun: The list of names **is** long. *Each, every* and *everyone* take a singular verb; *a number of* takes a plural, *the number of* a singular.",
     intro: "Agreement seems easy until the subject gets tricky: a long phrase, a group, a word like *news* that looks plural. Even fluent speakers slip here, and in writing these slips stand out. This lesson gives you the patterns careful writers follow.",
     learn: ["Find the real subject in a long phrase", "Use singular verbs with *each, every, everyone* and *the number of*", "Treat group nouns as singular in American English", "Use singular *they* naturally"],
     rule: [
-      "**Find the real subject**: a phrase with *of* doesn't change it: *The quality of the photos **is** excellent. One of my friends **lives** in Rome.*",
-      "**Each, every, everyone, everybody, someone, nobody** take a singular verb: *Every room **has** a view. Each of the kids **gets** a turn.* With *neither of* and *either of*, the singular is the formal choice (*Neither of them **is** ready*); the plural is common in speech.",
-      "**A number of** means “several,” so it's plural: *A number of guests **are** late.* **The number of** means “the amount,” so it's singular: *The number of guests **is** small.*",
-      "**Group nouns** (*team, family, company, staff*) usually take a singular verb in American English: *The team **is** winning.* *Police* is always plural: *The police **are** here.* Words that look plural but name one thing take a singular verb: *The news **is** good. Physics **is** hard. Ten dollars **is** enough.*",
-      "**Or, nor and there**: with *either… or* and *neither… nor*, the verb agrees with the nearer noun: *Neither the manager nor the workers **were** told.* After *there*, the verb usually agrees with the first noun: *There **is** a desk and two chairs.* **Singular they** takes a plural verb and is standard: *Someone left **their** phone.*",
+      "**Find the real subject**: a phrase with *of* doesn't change it: The quality of the photos **is** excellent. One of my friends **lives** in Rome.",
+      "**Each, every, everyone, everybody, someone, nobody** take a singular verb: Every room **has** a view. Each of the kids **gets** a turn. With *neither of* and *either of*, the singular is the formal choice (Neither of them **is** ready); the plural is common in speech.",
+      "**A number of** means “several,” so it's plural: A number of guests **are** late. **The number of** means “the amount,” so it's singular: The number of guests **is** small.",
+      "**Group nouns** (*team, family, company, staff*) usually take a singular verb in American English: The team **is** winning. *Police* is always plural: The police **are** here. Words that look plural but name one thing take a singular verb: The news **is** good. Physics **is** hard. Ten dollars **is** enough.",
+      "**Or, nor and there**: with *either… or* and *neither… nor*, the verb agrees with the nearer noun: Neither the manager nor the workers **were** told. After *there*, the verb usually agrees with the first noun: There **is** a desk and two chairs. **Singular they** takes a plural verb and is standard: Someone left **their** phone.",
     ],
     compare: {
       head: ["Subject", "Verb", "Example"],
@@ -380,7 +380,7 @@ export const ADDED = [
       { t: "Our neighbor, **whose dog barks all night**, is moving.", note: "whose: possession" },
       { t: "My brother **who lives in Denver** is a pilot.", note: "I have more than one brother", group: "Commas change the meaning" },
       { t: "My brother, **who lives in Denver**, is a pilot.", note: "I have one brother", group: "Commas change the meaning" },
-      { t: "The passengers, **who had tickets**, boarded first.", note: "all of them had tickets", group: "Commas change the meaning" },
+      { t: "The passengers, **who all had tickets**, boarded quickly.", note: "all of them had tickets", group: "Commas change the meaning" },
       { t: "The train was late, **which** meant we missed the show.", note: "which = the train being late", group: "Which for a whole idea" },
       { t: "He apologized, **which** was nice of him.", group: "Which for a whole idea" },
       { t: "Lena Park, **a nurse from Boston**, won the race.", group: "Appositives" },
@@ -472,7 +472,7 @@ export const ADDED = [
     mistakes: [
       { bad: "Walking into the room, the lights went out.", good: "As I walked into the room, the lights went out.", note: "The lights weren't walking. Use a full clause, or make the walker the subject." },
       { bad: "Having finished my homework, the TV was turned on.", good: "Having finished my homework, I turned on the TV.", note: "The subject must be the person who finished." },
-      { bad: "Covered in mud, I washed the dog.", good: "I washed the dog, which was covered in mud.", note: "As written, *you* are covered in mud. Keep the description next to what it describes." },
+      { bad: "Covered in mud, I washed the dog.", good: "I washed the dog, which was covered in mud.", note: "As written, *I* (the speaker) am covered in mud, not the dog. Keep the description next to what it describes." },
       { bad: "Having lived in Japan, so she speaks some Japanese.", good: "Having lived in Japan, she speaks some Japanese.", note: "The participle clause replaces the linking word; don't add *so* too." },
       { bad: "Knowing not the answer, he guessed.", good: "Not knowing the answer, he guessed.", note: "*Not* goes before the participle." },
     ],

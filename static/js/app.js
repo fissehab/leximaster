@@ -32,7 +32,7 @@ export const TABS = [
   { id: "rush", label: "Word Rush", icon: "bolt", under: "practice", group: "Games", note: "Yes or no, as fast as you can", rail: "Practice" },
   { id: "typeit", label: "Type It", icon: "keys", under: "practice", group: "Games", note: "Type the word before time runs out", rail: "Practice" },
   { id: "course", label: "English course", short: "Course", icon: "course", under: "practice", group: "Course", rail: false, sep: true,
-    note: "Grammar step by step, with audio" },
+    note: "Grammar, writing and more, step by step" },
   { id: "stats", label: "Progress", icon: "stats", sep: true, note: "See how you are doing" },
   { id: "settings", label: "Settings", icon: "gear", note: "How you study, colors, save your work" },
   { id: "about", label: "About", icon: "info", note: "Who made LexiMaster and why" },

@@ -20,18 +20,26 @@
 // These are the first 15 lessons. static/js/course-more.js adds to each an
 // introduction, what you will learn, grouped examples, a conversation, a tip,
 // a fun fact and more questions, and course-extra.js more questions. The other
-// 38 lessons are written whole in course-b2.js (beginner), course-i2/i3/i4.js
-// (intermediate) and course-a1/a2/a3.js (advanced). LESSONS is all of them,
+// lessons are written whole in course-b2/b3.js (beginner), course-i2…i8.js
+// (intermediate) and course-a1…a6.js (advanced). LESSONS is all of them,
 // in the order of ORDER below.
 
 import { ADDED as A1 } from "./course-a1.js";
 import { ADDED as A2 } from "./course-a2.js";
 import { ADDED as A3 } from "./course-a3.js";
+import { ADDED as A4 } from "./course-a4.js";
+import { ADDED as A5 } from "./course-a5.js";
+import { ADDED as A6 } from "./course-a6.js";
 import { ADDED as B2 } from "./course-b2.js";
+import { ADDED as B3 } from "./course-b3.js";
 import { EXTRA } from "./course-extra.js";
 import { ADDED as I2 } from "./course-i2.js";
 import { ADDED as I3 } from "./course-i3.js";
 import { ADDED as I4 } from "./course-i4.js";
+import { ADDED as I5 } from "./course-i5.js";
+import { ADDED as I6 } from "./course-i6.js";
+import { ADDED as I7 } from "./course-i7.js";
+import { ADDED as I8 } from "./course-i8.js";
 import { MORE } from "./course-more.js";
 
 export const LEVELS = [
@@ -53,12 +61,13 @@ const BASE = [
       "**Verbs** say what happens or what something is: *run, eat, be, have, seem*. A verb changes for time: *walk, walked*.",
       "**Adjectives** describe nouns: *a red car*, *The car is red*. **Adverbs** describe verbs, adjectives and whole sentences: *drive slowly*, *very tall*, *Luckily, …*",
       "Some words can be more than one part of speech. In *a fast car*, *fast* is an adjective; in *She drives fast*, it is an adverb.",
+      "**Interjections** show a feeling and stand apart from the rest of the sentence: *Wow! Oh, I see. Ouch, that hurts.* Put a comma or an exclamation point after them.",
     ],
     compare: {
       head: ["Part of speech", "What it does", "Quick test (usually works)", "Example"],
       rows: [
         ["Noun", "names a person, thing, place or idea", "Does it fit *the ___ is…*?", "the **book**, an **idea**"],
-        ["Verb", "says what happens or what is", "Can it take *-ed* or *-s*?", "She **works**. It **rained**."],
+        ["Verb", "says what happens or what is", "Can it change for the past (*-ed*, *went*) or follow *will*?", "She **works**. It **rained**."],
         ["Adjective", "describes a noun", "Does it fit *It is very ___*?", "a **cold** day"],
         ["Adverb", "describes a verb, an adjective or a sentence", "Does it answer *how, when, where* or *how much*?", "She speaks **slowly**."],
       ],
@@ -81,6 +90,7 @@ const BASE = [
       { q: "In “I have an idea,” what is *idea*?", choices: ["noun", "verb", "adjective", "adverb"], answer: 0, why: "It follows *an* and names a thing." },
       { q: "In “The soup smells good,” what is *smells*?", choices: ["noun", "verb", "adjective", "adverb"], answer: 1, why: "It says what the soup does, and it can change to *smelled*." },
       { q: "Which word is an adjective? “The old man walked home.”", choices: ["old", "man", "walked", "home"], answer: 0, why: "*Old* describes the man." },
+      { q: "In “Wow, that's a big dog!” what is *wow*?", choices: ["a noun", "an interjection", "an adverb"], answer: 1, why: "*Wow* shows a feeling and stands apart from the sentence: an interjection." },
     ],
     words: ["noun", "verb", "adjective", "adverb"],
   },
@@ -382,7 +392,7 @@ const BASE = [
       "With **be**, put *am, is* or *are* before the subject: *She is ready. Is she ready?* For a negative, add *not*: *She isn't ready.*",
       "With other verbs, use **do** or **does**: *Do you work here? Does he drive? I don't know.* In the past, use *did* (see “Past simple”).",
       "With **can, will** and **should**, put that word first: *Can you swim? I can't swim.* A question word goes at the start: *Where do you live?*",
-      "In American speech, *can* in a sentence is short and quiet, like “kn”. *Can't* is longer and louder, like “kant”, and its t is often hard to hear. Listen for the vowel, not the t.",
+      "In American speech, *can* before a verb is short and quiet, like “kn”: *I can swim*. *Can't* is longer and louder and rhymes with *ant*; its t is often hard to hear. Listen for the vowel, not the t. (At the end, *can* is full: *Yes, I can.*)",
     ],
     compare: {
       head: ["Statement", "Question", "Negative"],
@@ -681,21 +691,26 @@ const BASE = [
 // -a1, -a2, -a3) are written whole; course-extra.js adds questions to these.
 const ORDER = [
   // beginner
-  "parts-of-speech", "subject-verb", "pronouns", "adjectives-adverbs",
-  "plural-nouns", "count-noncount", "articles", "possessives-demonstratives", "there-is-it-is",
-  "present-simple", "simple-continuous", "questions-negatives", "imperatives", "past-simple", "future",
+  "parts-of-speech", "subject-verb", "pronouns", "reflexive-indefinite", "adjectives-adverbs",
+  "plural-nouns", "count-noncount", "articles", "possessives-demonstratives", "there-is-it-is", "numbers-dates-time",
+  "present-simple", "simple-continuous", "questions-negatives", "question-words", "imperatives", "past-simple", "future",
   "time-prepositions", "place-prepositions", "comparatives",
+  "conjunctions-basic", "capitals-punctuation", "spelling-endings",
   // intermediate
-  "present-perfect", "perfect-continuous", "past-continuous", "used-to",
-  "word-jobs", "word-order", "ed-ing-adjectives", "quantifiers",
-  "modals-ability", "must-have-to", "deduction",
-  "set-prepositions", "gerund-infinitive", "phrasal-verbs", "make-do",
-  "subject-questions", "relative-clauses", "conditionals",
+  "present-perfect", "perfect-continuous", "past-continuous", "used-to", "tenses-overview",
+  "word-jobs", "word-order", "ed-ing-adjectives", "quantifiers", "all-each-other",
+  "modals-ability", "must-have-to", "deduction", "preferences",
+  "set-prepositions", "gerund-infinitive", "verb-object-infinitive", "phrasal-verbs", "make-do",
+  "subject-questions", "question-tags", "relative-clauses", "conditionals", "time-clauses", "purpose-result", "sentence-types",
+  "word-building", "roots", "homophones", "sounds", "stress-intonation",
+  "fragments-run-ons", "commas", "paragraphs",
   // advanced
-  "past-conditionals", "modal-perfect", "past-perfect", "future-perfect",
-  "passive", "causative", "reported-speech", "indirect-questions",
-  "articles-2", "agreement", "nonrestrictive", "participle-clauses",
-  "linking", "parallel", "hedging", "emphasis", "formal-informal",
+  "past-conditionals", "modal-perfect", "past-perfect", "future-perfect", "narrative-tenses",
+  "passive", "causative", "reported-speech", "indirect-questions", "noun-clauses",
+  "articles-2", "agreement", "clear-reference", "nonrestrictive", "participle-clauses", "subjunctive", "ellipsis-substitution",
+  "linking", "parallel", "hedging", "emphasis", "formal-informal", "concise-writing",
+  "word-choice", "figurative-language",
+  "punctuation-2", "essays-arguments", "summarizing",
 ];
 
 const ALL = [
@@ -704,7 +719,7 @@ const ALL = [
     return { ...l, ...m, examples: [...l.examples, ...(m.examples || [])],
       checks: [...l.checks, ...(m.checks || []), ...(EXTRA[l.id] || [])] };
   }),
-  ...B2, ...I2, ...I3, ...I4, ...A1, ...A2, ...A3,
+  ...B2, ...B3, ...I2, ...I3, ...I4, ...I5, ...I6, ...I7, ...I8, ...A1, ...A2, ...A3, ...A4, ...A5, ...A6,
 ];
 const byId = new Map(ALL.map(l => [l.id, l]));
 if (byId.size !== ORDER.length || ORDER.some(id => !byId.has(id))) throw new Error("course-lessons.js: ORDER and the lessons differ");

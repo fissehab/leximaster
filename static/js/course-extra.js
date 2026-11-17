@@ -152,7 +152,7 @@ export const EXTRA = {
     { q: "We have a family dinner ___ Sundays.", choices: ["in", "on", "at"], answer: 1, why: "Days: *on*." },
     { q: "The flowers bloom ___ the spring.", choices: ["in", "on", "at"], answer: 0, why: "A season: *in*." },
     { q: "I'll be ready ___ five minutes.", choices: ["after", "in", "on"], answer: 1, why: "*In* + an amount of time: that much time from now." },
-    { q: "She goes swimming ___ Saturday mornings.", choices: ["in", "on", "at"], answer: 1, why: "A particular day's morning: *on*." },
+    { q: "She goes swimming ___ Saturday mornings.", choices: ["in", "on", "at"], answer: 1, why: "A day, or a day's morning: *on* (*on Saturday mornings*)." },
     { q: "I visit my grandparents ___ every summer.", choices: ["in", "on", "(nothing)"], answer: 2, why: "No preposition before *every*." },
     { q: "Listen. Which word comes before “midnight”?", say: "My flight leaves at midnight.", choices: ["in", "on", "at"], answer: 2, why: "An exact time: *at midnight*." },
     { q: "Listen. Which word do you hear before the date?", say: "Our vacation starts on the first of August.", choices: ["in", "on", "at"], answer: 1, why: "A date: *on*." },

@@ -310,7 +310,7 @@ export const ADDED = [
     tip: "To see if you can leave out the pronoun, look at the next word. If a subject follows (*I, you, she, my sister*), you can drop it: *the car she drives*. If a verb follows, keep it: *the car that broke down*.",
     note: "American English usually uses *that*, not *which*, in clauses without commas: *the book that I read*. Many American editors keep *which* for clauses with commas. *Whom* (*the man whom I met*) is formal; in everyday speech, people say *who* or leave the pronoun out.",
     myth: "Myth: *whose* is only for people. Truth: *whose* works for things too: *a house whose roof leaks, a company whose products sell well*. It's standard English, and there's no simple alternative.",
-    fact: "The editors' rule of *that* without commas and *which* with commas goes back to H. W. Fowler's 1926 *Dictionary of Modern English Usage*. Fowler proposed the distinction, but he admitted that neither most writers nor the best writers followed it.",
+    fact: "The editors' rule of *that* without commas and *which* with commas goes back to H. W. Fowler, who proposed it with his brother in *The King's English* (1906) and repeated it in his 1926 *Dictionary of Modern English Usage*. Even there, he admitted that neither most writers nor the best writers followed it.",
     checks: [
       { q: "The woman ___ cut my hair is from Brazil.", choices: ["which", "who", "whose"], answer: 1, why: "A person, and the subject of *cut*: *who*." },
       { q: "Where's the charger ___ was on my desk?", choices: ["that", "who", "where"], answer: 0, why: "A thing: *that* (or *which*)." },

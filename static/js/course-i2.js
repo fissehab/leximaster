@@ -341,7 +341,7 @@ export const ADDED = [
   {
     id: "word-order", level: "intermediate", unit: "Words in the right place",
     title: "Word order: adverbs and adjectives",
-    key: "Don't put anything between a verb and its object: *She speaks English well.* Frequency words go before the main verb but after *be*: *I often walk. I'm often late.*",
+    key: "Don't put an adverb between a verb and its object: *She speaks English well.* Frequency words go before the main verb but after *be*: *I often walk. I'm often late.*",
     intro: "In many languages, words can move around freely. In English, position carries meaning, so an adverb in the wrong place sounds foreign even when every word is right. A few patterns cover most sentences.",
     learn: ["Put *always, often* and *never* in the right place", "Keep a verb and its object together", "Order manner, place and time", "Put several adjectives in a natural order"],
     rule: [

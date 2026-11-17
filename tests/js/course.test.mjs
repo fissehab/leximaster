@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 
 import { AUDIO } from "../../static/js/course-audio.js";
+import { VISUAL_KINDS, VISUALS } from "../../static/js/course-visuals.js";
 import { COMING, LESSONS, LEVELS } from "../../static/js/course-lessons.js";
 import { lessonSentences, plain, segments, spoken } from "../../static/js/course-text.js";
 
@@ -104,4 +105,36 @@ test("the whole course: three levels in order, over 1,000 questions, every quest
 test("lessons still to come are not ones already written", () => {
   const titles = new Set(LESSONS.map(l => l.title.toLowerCase()));
   for (const list of Object.values(COMING)) for (const t of list) assert.ok(!titles.has(t.toLowerCase()), t);
+});
+
+test("pictures: every lesson has one, each well formed and in English", () => {
+  const ok = /^[\x20-\x7E–—…“”‘’→✓✗ɪʊəɛæɑɔʌθðʃʒŋː]*$/;
+  const ids = new Set(LESSONS.map(l => l.id));
+  for (const id of Object.keys(VISUALS)) assert.ok(ids.has(id), `a picture for an unknown lesson: ${id}`);
+  for (const l of LESSONS) {
+    const pics = l.visuals || VISUALS[l.id];
+    assert.ok(pics?.length >= 1 && pics.length <= 3, `${l.id}: 1–3 pictures`);
+    for (const v of pics) {
+      const where = `${l.id}: ${v.title}`;
+      assert.ok(VISUAL_KINDS.includes(v.kind) && v.title, where);
+      const need = { timeline: ["rows"], flow: ["steps", "else"], bars: ["items"], scale: ["items", "from", "to"], formula: ["lines"],
+        strip: ["slots"], tiles: ["items"], funnel: ["levels"], table: ["head", "rows"] }[v.kind];
+      for (const f of need) assert.ok(v[f]?.length, `${where}: ${f}`);
+      if (v.kind === "timeline") for (const r of v.rows) {
+        assert.ok(r.t && (r.span || r.points?.length), `${where}: a row needs a sentence and a span or points`);
+        for (const x of [...(r.span || []), ...(r.points || []).map(p => p.at)]) assert.ok(x >= -3 && x <= 3, `${where}: time ${x}`);
+      }
+      if (v.kind === "bars" || v.kind === "scale") for (const it of v.items) {
+        const x = v.kind === "bars" ? it.value : it.at;
+        assert.ok(it.label && x >= 0 && x <= 100, `${where}: ${it.label}`);
+      }
+      if (v.kind === "table") for (const r of v.rows) assert.equal(r.length, v.head.length, `${where}: row width`);
+      if (v.kind === "strip") for (const sent of v.sentences || []) for (const [t, k] of sent) assert.ok(t && (k == null || k < v.slots.length), `${where}: ${t}`);
+      const text = JSON.stringify(v).match(/"(?:[^"\\]|\\.)*"/g).map(x => JSON.parse(x));
+      for (const t of text) {
+        assert.ok(ok.test(t), `${where}: unexpected character in ${t}`);
+        assert.ok(!plain(t).includes("*"), `${where}: unbalanced * in ${t}`);
+      }
+    }
+  }
 });

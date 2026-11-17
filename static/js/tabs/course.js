@@ -1,7 +1,7 @@
 // English course: grammar lessons for American English (static/js/
 // course-lessons.js), by level. #course lists them; #course/<id> opens one:
 // a banner (what it's about, what you'll learn, the key idea), then numbered
-// parts: the rule, a table, examples and a conversation to hear, mistakes,
+// parts: the rule, pictures of it (timelines, flowcharts, graphs…), a table, examples and a conversation to hear, mistakes,
 // a tip and a fun fact, and questions to check yourself (some by ear). On a
 // wide screen a guide beside the lesson jumps to each part. Progress and the
 // chosen level stay in this browser.
@@ -9,6 +9,8 @@
 import { playSound, stopAudio } from "../audio.js";
 import { AUDIO } from "../course-audio.js";
 import { COMING, LESSONS, LEVELS as COURSE_LEVELS } from "../course-lessons.js";
+import { visual } from "../course-visual.js";
+import { VISUALS } from "../course-visuals.js";
 import { DONE_KEY, lessonSentences, LEVEL_KEY, plain, segments, spoken } from "../course-text.js";
 import { h, PLAY_SVG, termLink } from "../ui.js";
 
@@ -77,7 +79,8 @@ export async function render(root, { param } = {}) {
 
 function listView(root) {
   const done = doneSet();
-  const pick = read(LEVEL_KEY, "");
+  // Intermediate until the learner picks a level ("" = all levels).
+  const pick = read(LEVEL_KEY, "intermediate");
   const select = h("select.input#course-level", { on: { change: e => {
     write(LEVEL_KEY, e.target.value);
     root.replaceChildren(...listView(root));
@@ -88,13 +91,14 @@ function listView(root) {
   select.value = COURSE_LEVELS.some(l => l.id === pick) ? pick : "";
   const levels = COURSE_LEVELS.filter(l => !select.value || l.id === select.value);
   const n = LESSONS.filter(l => done.has(l.id)).length;
-  const next = LESSONS.find(l => !done.has(l.id));
+  // Start or continue within the chosen level.
+  const next = LESSONS.find(l => !done.has(l.id) && levels.some(v => v.id === l.level));
   return [
     h("header.course-banner",
       h("div.course-banner-text",
         h("p.course-kicker", "LexiMaster"),
         h("h1", "English course"),
-        h("p.course-banner-sub", "Grammar for American English, one short lesson at a time. Hear every example, listen to everyday conversations, and check yourself as you go."),
+        h("p.course-banner-sub", "A complete course in American English: grammar, punctuation, vocabulary, pronunciation and writing, one short lesson at a time. See each idea in a picture, hear every example, and check yourself as you go."),
         h("ul.course-stats", { "aria-label": "In the course" },
           h("li", h("strong", String(LESSONS.length)), " lessons"),
           h("li", h("strong", QUESTIONS.toLocaleString("en-US")), " questions"),
@@ -168,6 +172,11 @@ function lessonView(lesson) {
   const parts = [];
 
   parts.push(section("rule", ++n, "The rule", null, null, h("div.cs-rule-body", lesson.rule.map(p => h("p", rich(p))))));
+
+  // Pictures of the idea: a timeline, a flowchart, a graph… (course-visuals.js).
+  const pics = lesson.visuals || VISUALS[lesson.id] || [];
+  if (pics.length) parts.push(section("visual", ++n, "See it", pics.length > 1 ? "The idea in pictures." : "The idea in a picture.", null,
+    h("div.vz-list", pics.map(v => visual(v, rich)))));
 
   if (lesson.compare) parts.push(section("compare", ++n, "Compare", "Read across each row.", null,
     h("div.cs-table-wrap", h("table.cs-table",
