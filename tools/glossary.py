@@ -181,6 +181,8 @@ def main() -> None:
             counts["none"] += 1
             if PHRASE.fullmatch(term) and len(term.split()) <= 4:
                 seed.setdefault(term, terms[term])
+    from gloss_pron import attach          # the terms' IPA, respelling and recording
+    attach(out)
     OUT.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":"), sort_keys=True), encoding="utf-8")
     print(f"{OUT.relative_to(ROOT)}: {len(out):,} terms ({OUT.stat().st_size / 1e6:.1f} MB) · "
           f"{counts['entry']:,} have entries · {counts['see']:,} point to an entry · "

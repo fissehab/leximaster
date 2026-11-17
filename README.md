@@ -91,6 +91,8 @@ To rebuild the site after changing the dataset:
 
 ```bash
 .venv/bin/python tools/glossary.py     # short definitions for related words without an entry (Open English WordNet)
+.venv/bin/python tools/gloss_pron.py fetch && .venv/bin/python tools/gloss_pron.py build && .venv/bin/python tools/gloss_pron.py audio
+                                       # their IPA, respelling and a checked synthesized recording
 .venv/bin/python tools/build_site.py   # checks the display rules, then writes docs/
 .venv/bin/python tools/parity.py       # the website and the local app give the same answers
 make deploy                            # publishes docs/ to GitHub Pages (the gh-pages branch)
@@ -213,9 +215,17 @@ Words, meanings, spelling and pronunciation are all American English:
 - **Synthesized recordings:** words without a human American recording have one made with Kokoro, an
   open neural voice (`tools/tts.py`; the model goes in `data/models/`, see the tool's header). Rare
   words and names are spoken from the entry's reviewed American IPA, so they come out as the entry
-  says; common words and phrases are read by the model. `tools/tts.py verify` has Whisper transcribe
-  every recording to catch bad ones. File names carry a content hash, so a corrected recording
-  reaches devices that saved the old one.
+  says; common words and phrases are read by the model. Commas get a short pause, and words ending
+  in a v or f sound use a second voice (the first adds a hiss heard as an s: "love" as "loves").
+  `tools/tts.py verify` has Whisper base.en transcribe every recording; one that sounds wrong (an
+  added s, syllables missing or extra, far from the word) is heard again by small.en, and a fault
+  both hear fails it. `tools/tts.py retry` speaks the failed ones again in other voices, or from
+  the reviewed IPA, and keeps the first take that passes. File names carry a content hash, so a
+  corrected recording reaches devices that saved the old one.
+- **Human recordings left out:** `seeds/audio_reject/` lists Commons files that say another word or
+  phrase, hold several takes, or are too noisy, clipped or quiet; files named for a regional accent
+  (New England, Inland North, Canadian, British) or a special way of saying a word are skipped by
+  name (`build_dataset.NOT_GENERAL`). The word takes its next recording, else a synthesized one.
 - **Even volume:** `tools/audio_norm.py` evens out the human recordings for the website (about −20
   LUFS, peaks limited, clipped ones repaired where possible) and adds a short lead-in so phones don't
   swallow the first sound.
@@ -283,14 +293,15 @@ a changed `data/words.json` on the next page load, and your progress stays attac
 | Tab | What it's for |
 |---|---|
 | Today | The home screen: the word of the day (its name opens the full entry), the words to refresh (practiced words due today; the same number as the badge on Today) with a button that opens them in Flashcards, your streak, words learning and time today. |
-| Practice | Nine activities in three groups: Sound, Meaning and Games. Each has one **Words from** menu (Words to refresh, My words, Everything, your lists, the general tracks and every topic), then an **Options** fold with its own labelled settings (Mode, Speed, Length, Pairs…). |
+| English course | Grammar for American English in three levels (Beginner A1–A2, Intermediate B1, Advanced B2–C1), from a syllabus written by a high-school ESL teacher, a professor of English grammar and a professor of applied linguistics. 15 lessons so far (parts of speech, pronouns, adjectives and adverbs, count and non-count nouns, articles, the present, past and future, *in/on/at* for time and place, present perfect, words with a set preposition). Each lesson: the key idea, the rule, a table to compare, examples and ✗/✓ mistakes with recordings, and questions to check yourself, some by ear. A **Course level** menu filters the list; finished lessons are ticked (kept in this browser). In the sidebar, and from the Practice page on a phone. Lessons: `static/js/course-lessons.js`; recordings: `tools/course_audio.py`. |
+| Practice | The English course, then nine activities in three groups: Sound, Meaning and Games. Each has one **Words from** menu (Words to refresh, My words, Everything, your lists, the general tracks and every topic), then an **Options** fold with its own labelled settings (Mode, Speed, Length, Pairs…). |
 | Flashcards | Word on the front; flip for pronunciation, meaning, one example and common pairings, then "Missed it" or "Knew it" (it sets when the word comes back). Swipe on a phone. You can shuffle, play audio on flip, add the word to My words or mark it known, and choose the words from any list, topic or track. The deck ends with a summary. |
 | Matching | Timed rounds that pair words with meanings or with example sentences, with a score. |
 | Quiz | Word to meaning, meaning to word, fill in the blank, synonyms, antonyms, grammar (the preposition a pattern takes: "insist ___ sth"), and for Bible names "who or what is it?" or "person, place or people?". Only the question types you pick are asked. A wrong answer says what the option you chose actually means. A changed setting applies to the next quiz; opening an entry and coming back keeps your place. "Retry the misses" at the end; misses come back sooner to refresh. |
 | Listen | Hear a word, then pick it or type it; the wrong choices sound like the word (affect, effect), never exact homophones. Also has a spelling test that compares your spelling letter by letter, and "Where's the stress?", which asks which syllable is strong. "Can't listen now?" shows the pronunciation instead (the answer then isn't scored as heard). |
 | Pronounce | Play the reference recording, record yourself, and play both back. The two waveforms are trimmed of silence and drawn on one time scale, so length and stress line up. |
 | Hard sounds | The 16 sounds learners of English find hardest (th, r and l, v and w, short i and ee, …): the mouth drawing, a plain tip, words to try and compare (all recorded by people), a "Which word did you hear?" game with word pairs (right/light, ship/sheep), and the MRI clips. |
-| Dictionary | The full lexicon. It runs A–Z with a letter strip to jump (on a touch screen one slider: touch and slide to a letter), instant search across words and meanings (best matches first: the word itself, a form of it — "went" opens go — then words starting with it), "Did you mean…" for a misspelling, a short WordNet definition for a word without an entry, and filters by topic, level, My words and known words. The list keeps to your word levels (Settings) unless you pick "All levels" or one level; a search looks through every word, and also finds the synonyms, antonyms and related words listed under an entry that have no entry of their own ("jubilant: Synonym of joyful"), opening the entry that lists them with the word highlighted. On a phone, tapping a word brings its page into view (List goes back). |
+| Dictionary | The full lexicon. It runs A–Z with a letter strip to jump (on a touch screen one slider: touch and slide to a letter), instant search across words and meanings (best matches first: the word itself, a form of it — "went" opens go — then words starting with it), "Did you mean…" for a misspelling, a short WordNet definition for a word without an entry (with its IPA, a respelling and a synthesized recording), and filters by topic, level, My words and known words. The list keeps to your word levels (Settings) unless you pick "All levels" or one level; a search looks through every word, and also finds the synonyms, antonyms and related words listed under an entry that have no entry of their own ("jubilant: Synonym of joyful"), opening the entry that lists them with the word highlighted. On a phone, tapping a word brings its page into view (List goes back). |
 | My lists | Named lists with a note on each word, plus your own custom words. "Practice this list" opens it in Flashcards, Quiz, Matching or Listen; every activity can also pick a list from its Words from menu. |
 | Progress | Words mastered (and marked known), words learning, retention (the share of words you remembered when they came back, by gap), accuracy of all answers, streak, activity heatmap, accuracy by topic, weakest words, test history and words coming back in the next 14 days. |
 | Settings | Practice starts with, word difficulty, pronunciation speed, the theme, keyboard shortcuts, progress export/import, and on the website "Download for offline use" and the sources. |
@@ -452,10 +463,14 @@ tools/             build_site.py (the website), audit.py (content checks), parit
                    "In the Bible" notes: verse references, Hebrew and Greek words),
                    audio_credits.py (each recording's author and license, for the credits page),
                    tts.py (natural synthesized recordings for words without a human one),
+                   course_audio.py (the English course's recordings, checked by ear like tts.py's),
                    phrase_freq.py and pattern_preps.py (phrase and "word + preposition"
                    frequencies from Google Books Ngram: word levels, fair grammar questions),
                    audio_norm.py (even loudness and a lead-in for the human recordings),
                    glossary.py (short WordNet definitions for related words without an entry),
+                   gloss_pron.py and respell.py (their IPA: Wiktionary's American, else the CMU
+                   dictionary's, else espeak's; a respelling in the study notes' style; a Kokoro
+                   recording checked as tts.py checks the entries'),
                    forms.py (each entry's tenses, plural, comparative and related forms),
                    build_mouth.py (the MRI clips for How to say it, from the USC 75-Speaker
                    Speech MRI Database), pron_audit.py (shown IPA vs the CMU Pronouncing Dictionary;

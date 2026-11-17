@@ -4,7 +4,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { recordCompare } from "../recorder.js";
 import { loadFilter } from "../state.js";
-import { filterBar, filterSources, h, noWordsNote, noWordsTitle, pageHead, showError } from "../ui.js";
+import { filterBar, filterSources, h, noWordsNote, noWordsTitle, pageHead, respellOf, showError } from "../ui.js";
 
 let words = [];
 let current = null;
@@ -65,7 +65,7 @@ function paint() {
     h("div.panel", { style: { padding: "22px", display: "flex", flexDirection: "column", gap: "14px" } },
       h("div.entry-top", h("h2.headword", w.word), stepButtons()),
       h("div.entry-pron", w.phonetic ? h("span.ipa", { lang: "en-fonipa" }, w.phonetic) : null,
-        n.pronunciation && n.pronunciation.respelling ? h("span.respell", n.pronunciation.respelling) : null),
+        respellOf(w) ? h("span.respell", respellOf(w)) : null),
       n.pronunciation && n.pronunciation.tip ? h("p", { style: { fontFamily: "var(--font-body)", maxWidth: "65ch" } }, n.pronunciation.tip) : null),
     box);
 }

@@ -353,6 +353,8 @@ legitimate | adjective; noun | /lɪˈdʒɪtəmət/ | lih-JIT-uh-mit | legal; rea
 legitimate | verb | /lɪˈdʒɪtəˌmeɪt/ | lih-JIT-uh-mayt | to make legal
 moderate | adjective; noun | /ˈmɑdəɹət/ | MAH-duh-rit | not extreme | moderate-adj
 moderate | verb | /ˈmɑdəˌɹeɪt/ | MAH-duh-rayt | to make less extreme; to lead a discussion | moderate-verb
+foliate | adjective; noun | /ˈfoʊliət/ | FOH-lee-it | of leaves; a leaf-shaped curve
+foliate | verb | /ˈfoʊliˌeɪt/ | FOH-lee-ayt | to number the leaves of a book; to split into layers
 postulate | noun | /ˈpɑstʃələt/ | PAHS-chuh-lit | something assumed true | postulate-noun
 postulate | verb | /ˈpɑstʃəˌleɪt/ | PAHS-chuh-layt | to assume as true | postulate-verb
 precipitate | verb | /pɹɪˈsɪpɪˌteɪt/ | prih-SIP-ih-tayt | to cause suddenly; to fall as rain | precipitate-verb

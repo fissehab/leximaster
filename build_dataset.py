@@ -942,9 +942,19 @@ def rejected_recordings() -> dict[str, set[str] | None]:
     return out
 
 
+# A file named for a regional accent (New England "en-us-ne-", Inland North,
+# Canadian, British...) or a special way of saying the word ("unstressed",
+# "enunciated", a merger "contrastive" or "unmerged"): not the General
+# American a learner should copy, although the dictionary lists it as US.
+# Northern California ("en-us-ncalif-") and Indiana ("en-us-in-") are
+# General American. Audio audit, 2026-11-16.
+NOT_GENERAL = re.compile(r"\ben[-_ ](?:us[-_ ](?:ne|inlandnorth)|ca|uk|gb|au|ga|ie|nz)[-_ ]"
+                         r"|\b(?:unstressed|enunciated|contrastive|constrastive|unmerged)\b", re.I)
+
+
 def is_rejected(rejected: dict[str, set[str] | None], url: str, key: str) -> bool:
     f = commons_file(url)
-    return f in rejected and (rejected[f] is None or key in rejected[f])
+    return bool(NOT_GENERAL.search(f)) or (f in rejected and (rejected[f] is None or key in rejected[f]))
 
 
 def lingua_libre_speaker(url: str) -> str:

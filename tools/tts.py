@@ -60,12 +60,27 @@ def clean_ipa(ipa: str) -> str:
 STRESSABLE = VOWELS | {"ː"}
 
 
-def to_phonemes(ipa: str, vocab: dict, words: list[str] | None = None, flap: bool = True) -> str:
+def promote(tok: str, reading: str = "") -> str:
+    """Make one secondary stress of a word primary: the one on the syllable
+    Kokoro's own reading of the word stresses ("transcendental" is
+    tɹˌænsɛndˈɛntəl, not TRANS-cendental), else the first (sigmoid, necktie)."""
+    if "ˈ" in reading:
+        at = syllables(reading[:reading.index("ˈ")].replace("ɐ", "ə"))
+        for m in re.finditer("ˌ", tok):
+            if syllables(tok[:m.start()].replace("ɐ", "ə")) == at:
+                return tok[:m.start()] + "ˈ" + tok[m.start() + 1:]
+    return tok.replace("ˌ", "ˈ", 1)
+
+
+def to_phonemes(ipa: str, vocab: dict, words: list[str] | None = None, flap: bool = True,
+                reading: str = "") -> str:
     """The entry's General American IPA in the notation Kokoro was trained on:
     stress marks just before the stressed vowel (not at the syllable start),
     ɹ for r, ɜɹ for ɝ, no syllable dots, brackets or diacritics, the American
     flap for t between vowels before an unstressed one, and a final "." so the
-    word ends as a statement. flap=False keeps every t (NO_FLAP)."""
+    word ends as a statement. flap=False keeps every t (NO_FLAP). `reading`:
+    Kokoro's own reading of the text, which picks the primary stress of a
+    word the IPA gives only secondary stresses ("ˌtɹænsɛnˌdɛntəl")."""
     s = clean_ipa(ipa)
     s = re.sub(r"k\(?ə\)?lli\b", "kli", s)          # "-ically" written /ɪkəlli/ is "-ick-lee", not "-ick-uh-lee"
     s = re.sub(r"\(([^)]*)\)", r"\1", s)             # "(ɹ)": the American r is said
@@ -74,6 +89,7 @@ def to_phonemes(ipa: str, vocab: dict, words: list[str] | None = None, flap: boo
         s = s.replace(a, b)
     s = unicodedata.normalize("NFD", s)
     s = "".join(c for c in s if not unicodedata.combining(c)).replace(".", "")
+    s = s.replace("ɚɚ", "ɚɹɚ")   # "devourer" dɪvˈaʊɚɚ: Kokoro says ɚɚ as one ɚ ("devour")
     s = s.replace("ɛəɹ", "ɛɹ").replace("ɛɚ", "ɛɹ").replace("oɹ", "ɔɹ").replace("oɪ", "ɔɪ")  # "tear" (rip) ɛɹ; "sport" oɹ, "loin" oɪ: Kokoro's ɔːɹ, ɔɪ
     # Syllables written apart ("ˈbɪb li əˌfaɪl") are one word when the
     # headword is: join them, or Kokoro says each as a word.
@@ -103,8 +119,10 @@ def to_phonemes(ipa: str, vocab: dict, words: list[str] | None = None, flap: boo
     # phrase. A stressed schwa is the full vowel ʌ ("affront", əfɹˈʌnt).
     toks = "".join(c for c in s if c in vocab).split()
     names = [x.lower() for x in words] if words and len(words) == len(toks) else [""] * len(toks)
+    said = [t for t in re.sub(r"[.,!?;:]", " ", reading).split()]
+    said = said if len(said) == len(toks) else [""] * len(toks)
     out_words = []
-    for tok, name in zip(toks, names):
+    for tok, name, own in zip(toks, names, said):
         if name in UNSTRESSED and "ˈ" not in tok:
             # A little word stays weak unless the IPA stresses it, as in a
             # phrasal verb ("put on" /ˌpʊt ˈɑn/).
@@ -115,7 +133,7 @@ def to_phonemes(ipa: str, vocab: dict, words: list[str] | None = None, flap: boo
         tok = tok.replace("ˈə", "ˈʌ").replace("ˌə", "ˌʌ")
         if "ˈ" not in tok:
             if "ˌ" in tok:
-                tok = tok.replace("ˌ", "ˈ", 1)
+                tok = promote(tok, own)
             else:
                 m = re.search(f"[{''.join(VOWELS)}]", tok)
                 tok = tok[:m.start()] + "ˈ" + tok[m.start():] if m else tok
@@ -158,6 +176,16 @@ NO_FLAP = {
 }
 
 
+# Words and phrases Kokoro misreads from the spelling although they are
+# common: spoken from the entry's IPA. Each was chosen by `retry`, whose
+# IPA take passed the check where the text take failed, then checked by hand
+# (2026-11-16: their phonemes against the IPA and the respelling).
+FROM_IPA: set[str] = {
+    "community garden", "e-ticket", "home away from home", "how-to", "on-off",
+    "reel off", "so that", "sous-chef", "such-and-such", "writing on the wall",
+}
+
+
 # Pronunciations written by hand, checked against the entry's meaning and its
 # respelling, where neither Kokoro's reading nor the entry's IPA is right: IPA
 # that leaves part of the entry out ("F1 score" /ˌɛf ˈskɔɹ/), names written as
@@ -171,6 +199,9 @@ SAY = {
     "A* search": "ˈeɪ stˈɑːɹ sˈɜːtʃ.", "acetylate": "əsˈɛtəlˌeɪt.", "Achish": "ˈeɪkɪʃ.",
     "adamance": "ˈædəməns.", "apodeictic": "ˌæpədˈaɪktɪk.", "apodeictically": "ˌæpədˈaɪktɪkli.",
     "archiepiscopal": "ˌɑːɹkiːɪpˈɪskəpəl.", "arete": "ˌæɹətˈeɪ.", "avant-garde": "ˌɑːvɑːntɡˈɑːɹd.",
+    "counterfactual conditional": "kˌaʊntɚfˈæktʃuːəl kəndˈɪʃənəl.", "deontic logic": "diːˈɑːntɪk lˈɑːdʒɪk.",
+    "infinitesimal calculus": "ˌɪnfɪnɪtˈɛsɪməl kˈælkjələs.", "intercession of the saints": "ˌɪntɚsˈɛʃən əv ðə sˈeɪnts.",
+    "paraconsistent logic": "pˌɛɹəkənsˈɪstənt lˈɑːdʒɪk.",
     "Ca": "sˌiːˈeɪ.", "camo": "kˈæmoʊ.", "catechetic": "kˌætəkˈɛtɪk.", "chemic": "kˈɛmɪk.", "cussed": "kˈʌsɪd.",
     "dequeue": "dˌiːkjˈuː.", "Diophantine": "dˌaɪəfˈæntaɪn.", "DWI": "dˌiːdˌʌbəljuːˈaɪ.", "effaceable": "ɪfˈeɪsəbəl.",
     "F1 score": "ˌɛf wˈʌn skˈɔːɹ.", "feuilletonist": "fɔɪtˈɑːnɪst.", "gemütlich": "ɡəmˈuːtlɪk.",
@@ -184,6 +215,8 @@ SAY = {
     "rubicundity": "ɹˌuːbɪkˈʌndɪti.", "seba": "sˈiːbə.", "seer": "sˈɪɹ.", "Sethite": "sˈɛθaɪt.",
     "Sirach": "sˈaɪɹæk.", "to the nth degree": "tə ðɪ ˈɛnθ dɪɡɹˈiː.", "uncoated": "ʌnkˈoʊtɪd.",
     "vasodilator": "vˌeɪzoʊdaɪlˈeɪtɚ.",
+    "be-all and end-all": "bˈiː ˈɔːl ən ˈɛnd ˈɔːl.",   # Kokoro's own: "and" in full, "end alls"
+    "It sold out in minutes.": "ˈɪt sˈoʊld ˈaʊt ɪn mˈɪnəts.",   # Kokoro's own reading was heard "sold-out"
 }
 
 
@@ -269,11 +302,11 @@ def plan(w: dict, tokenizer) -> tuple[str, str]:
     rare = rare or bool(w.get("name_kind")) or w["word"][:1].isupper()   # names: "Ira" isn't the IRA
     sentence = bool(re.search(r"[?!.,]", w["word"]))
     flap = w["word"] not in NO_FLAP
-    ipa_ph = to_phonemes(ipa, tokenizer.vocab, tokens, flap) if ipa and not sentence and len(tokens) <= 4 else ""
-    if ipa_ph and rare:
-        return ipa_ph, "ipa"
     text = " ".join(NUMERALS.get(x, x) for x in w["word"].split())
     ph = tokenizer.phonemize(text)
+    ipa_ph = to_phonemes(ipa, tokenizer.vocab, tokens, flap, ph) if ipa and not sentence and len(tokens) <= 4 else ""
+    if ipa_ph and (rare or w["word"] in FROM_IPA):
+        return ipa_ph, "ipa"
     # Only when the IPA is clearly the same words (one IPA word per word, and
     # no numeral read differently): "feel up to" /ˈʌp tə/ is just a part.
     whole = len(tokens) == 1 or len(clean_ipa(ipa).replace("‿", " ").replace("-", " ").split()) == len(tokens)
@@ -295,6 +328,35 @@ def doubtful(w: dict, ph: str, source: str, tokenizer) -> bool:
         return False
     tokens = [x for x in re.split(r"[\s-]+", re.sub(r"[?!.,;:]", "", w["word"])) if x]
     return differs(tokenizer.phonemize(w["word"]), ph, tokens)
+
+
+# af_heart ends a final /v/ or /f/ with a hiss Whisper (and a learner)
+# hears as an added s: "love" as "loves", "behoove" as "behooves". af_bella
+# says them cleanly (audio audit 2026-11-16).
+END_VF = re.compile(r"[vf][.!?]?$")
+VF_VOICE = "af_bella"
+PAUSE = 0.2   # seconds of silence at a comma ("faith, hope, and love")
+
+
+def voice_for(ph: str) -> str:
+    return VF_VOICE if END_VF.search(ph) else VOICE
+
+
+def synth(kokoro, ph: str, voice: str, speed: float):
+    """Kokoro's audio for these phonemes. Kokoro makes no pause at a comma
+    in phoneme input, so each part is spoken alone and the parts are joined
+    with a short silence."""
+    import numpy as np
+    parts = [p.strip() for p in re.split(r"(?<=,)\s+", ph) if p.strip()]
+    if len(parts) == 1:
+        return kokoro.create(ph, voice=voice, speed=speed, is_phonemes=True)
+    out, sr = [], 24000
+    for i, p in enumerate(parts):
+        audio, sr = kokoro.create(p, voice=voice, speed=speed, is_phonemes=True)
+        if i:
+            out.append(np.zeros(int(sr * PAUSE), dtype=audio.dtype))
+        out.append(audio)
+    return np.concatenate(out), sr
 
 
 def encode(audio, sr: int, dst: Path) -> None:
@@ -353,7 +415,8 @@ def generate(only: set[str] | None = None, force: bool = False) -> int:
         ph, source = plan(w, kokoro.tokenizer)
         done = m.get(w["key"])
         if (force or not done or done.get("phonemes") != ph or not (DATA / done["file"]).exists()
-                or not re.search(r"\.[0-9a-f]{8}\.m4a$", done["file"])):     # from before names had hashes
+                or not re.search(r"\.[0-9a-f]{8}\.m4a$", done["file"])     # from before names had hashes
+                or (not done.get("retried") and done.get("voice", VOICE) != voice_for(ph))):
             todo.append((w, ph, source))
     print(f"{len(todo):,} to generate", flush=True)
     doubt = [w["word"] for w, ph, source in todo if doubtful(w, ph, source, kokoro.tokenizer)]
@@ -364,14 +427,15 @@ def generate(only: set[str] | None = None, force: bool = False) -> int:
     for n, (w, ph, source) in enumerate(todo, start=1):
         # A voice an earlier retry chose (it says this word's sounds most clearly) is kept.
         old = m.get(w["key"]) or {}
-        voice, speed = (old.get("voice", VOICE), old.get("speed", SPEED)) if old.get("retried") else (VOICE, SPEED)
-        audio, sr = kokoro.create(ph, voice=voice, speed=speed, is_phonemes=True)
+        voice, speed = (old.get("voice", VOICE), old.get("speed", SPEED)) if old.get("retried") \
+            else (voice_for(ph), SPEED)
+        audio, sr = synth(kokoro, ph, voice, speed)
         dst = write_hashed(audio, sr, slug(w["key"]))
         if old and old.get("file") != f"tts/{dst.name}":
             (DATA / old["file"]).unlink(missing_ok=True)      # the replaced recording
         m[w["key"]] = {"file": f"tts/{dst.name}", "phonemes": ph, "source": source, "voice": voice,
                        "seconds": round(len(audio) / sr, 2)}
-        if voice != VOICE or speed != SPEED:
+        if speed != SPEED:
             m[w["key"]]["speed"] = speed
         if old.get("retried"):
             m[w["key"]]["retried"] = True
@@ -475,81 +539,213 @@ def split_headword(word: str, heard: str) -> bool:
     return False
 
 
-def verify(only: set[str] | None = None) -> int:
-    """Transcribe every recording. A low match on a common word means the
-    recording is wrong (or garbled); rare words and names are often heard as
-    something else even when right, so they are reported, not failed."""
+def is_rare(w: dict) -> bool:
+    """A rare word or a name: Whisper often writes it as something else even
+    when the recording is right, so only a clear fault fails it."""
+    from wordfreq import zipf_frequency
+    tokens = [x for x in re.split(r"[\s-]+", re.sub(r"[?!.,;:]", "", w["word"])) if x]
+    return (min((zipf_frequency(x, "en") for x in tokens), default=0) < COMMON
+            or bool(w.get("name_kind")) or w["word"][:1].isupper())
+
+
+DIPHTHONGS = (("aɪ", "A"), ("eɪ", "E"), ("oʊ", "O"), ("aʊ", "W"), ("ɔɪ", "Y"))
+
+
+def _flat(ph: str) -> str:
+    """Phonemes for comparing what was heard: strip_stress, each diphthong
+    one letter (so it stays one syllable), no spaces or punctuation."""
+    for a, b in DIPHTHONGS:
+        ph = ph.replace(a, b)
+    return re.sub(r"[\W_]", "", strip_stress(ph))
+
+
+def _syl(flat: str) -> int:
+    return len(re.findall(r"[aeiouæɑɒɔəɛɜɚɪʊʌᵻᵊAEOWY]", flat))
+
+
+def flags(word: str, ph: str, heard: str, tokenizer) -> dict:
+    """What a transcript says is wrong with a recording of `word` spoken as
+    `ph`: "plural", a word heard with an s it doesn't have ("love" as
+    "loves", the hiss of a final v); "syllables", how many more (or fewer)
+    syllables were heard; "distance", how far the heard words sound from the
+    word. The heard words are compared with both the entry's phonemes and
+    Kokoro's reading of the word, so a word written differently but heard as
+    itself ("Back pressure") is no fault."""
+    if similar(heard, word) == 1.0:
+        return {}
+    # Whisper puts an article before a lone word ("A bland."): not said.
+    if not re.match(r"(?:a|an|the)\b", word, re.I):
+        heard = re.sub(r"^\s*(?:a|an|the)\b\s*", "", heard, flags=re.I)
+        if not heard or similar(heard, word) == 1.0:
+            return {}
+    out = {}
+    said = re.findall(r"[a-z']+", spell_numbers(heard).lower())
+    own = re.findall(r"[a-z']+", word.lower())
+    for h in said:
+        for i, o in enumerate(own):
+            if h not in own and h in (o + "s", o + "es", o + "'s"):
+                if i == len(own) - 1 and re.search(r"[sz][.!?]?$", ph.strip()):
+                    continue       # the word itself ends in s or z
+                out["plural"] = h
+    heard_ph = _flat(tokenizer.phonemize(spell_numbers(heard)))
+    mine, read = _flat(ph), _flat(tokenizer.phonemize(word))
+    n = _syl(heard_ph)
+    if n != _syl(mine) and n != _syl(read):
+        out["syllables"] = n - _syl(mine)
+    d = min(distance(mine, heard_ph), distance(read, heard_ph))
+    if d > 0.35:
+        out["distance"] = round(d, 2)
+    return out
+
+
+def failures(base: dict, small: dict, rare: bool, small_match: float) -> list[str]:
+    """A fault counts only when a second, larger model (small.en) hears the
+    same one: the same added s, syllables missing or added the same way, or
+    (for a common word) a word far from it. A rare word or a name never fails
+    on distance alone."""
+    out = []
+    if base.get("plural") and small.get("plural"):
+        out.append("plural")
+    if base.get("syllables") and small.get("syllables") and (base["syllables"] > 0) == (small["syllables"] > 0):
+        out.append("syllables")
+    if not rare and base.get("distance") and small.get("distance") and small_match < 0.8:
+        out.append("distance")
+    return out
+
+
+def _whisper(name: str):
     from faster_whisper import WhisperModel
-    model = WhisperModel("base.en", device="cpu", compute_type="int8")
+    return WhisperModel(name, device="cpu", compute_type="int8")
+
+
+def hear(model, audio16, beam: int = 1) -> str:
+    segs, _ = model.transcribe(audio16, language="en", beam_size=beam, temperature=0)
+    return " ".join(s.text for s in segs).strip()
+
+
+def judge(w: dict, ph: str, audio16, base_model, small_model, tokenizer, heard: str | None = None) -> dict:
+    """The check of one recording: base.en's transcript, its flags, and,
+    when flagged, small.en's transcript and the faults both agree on."""
+    heard = heard if heard is not None else hear(base_model, audio16)
+    out = {"heard": heard, "match": round(similar(heard, w["word"]), 2)}
+    f = flags(w["word"], ph, heard, tokenizer)
+    if f:
+        out["flags"] = f
+        small = hear(small_model, audio16, beam=5)
+        out["heard_small"] = small
+        fail = failures(f, flags(w["word"], ph, small, tokenizer), is_rare(w), similar(small, w["word"]))
+        if fail:
+            out["fail"] = fail
+    return out
+
+
+def verify(only: set[str] | None = None) -> int:
+    """Check every recording (only the ones not checked yet): Whisper base.en
+    transcribes it; when that sounds wrong (flags()), small.en listens too,
+    and a fault both hear fails the recording (failures()). `retry` then
+    speaks the failed ones again."""
+    from kokoro_onnx.tokenizer import Tokenizer
+    tokenizer = Tokenizer()
+    base, small = _whisper("base.en"), None
     m = load_manifest()
     words = {w["key"]: w for w in targets(only)}
-    keys = [k for k in m if k in words and "heard" not in m[k]]
+    keys = [k for k in m if k in words and "checked" not in m[k]]
     print(f"{len(keys):,} to check", flush=True)
     t0 = time.time()
     for n, k in enumerate(keys, start=1):
-        # No initial prompt: it nudged Whisper toward hearing a word even when
-        # the audio said something else.
-        segs, _ = model.transcribe(audio16k(DATA / m[k]["file"]), language="en", beam_size=1)
-        heard = " ".join(s.text for s in segs).strip()
-        m[k]["heard"] = heard
-        m[k]["match"] = round(similar(heard, words[k]["word"]), 2)
-        if split_headword(words[k]["word"], heard):
-            m[k]["split"] = True
+        e = m[k]
+        heard = e.get("heard")
+        audio = None
+        if heard is None:
+            audio = audio16k(DATA / e["file"])
+            heard = hear(base, audio)
+        if flags(words[k]["word"], e["phonemes"], heard, tokenizer):
+            small = small or _whisper("small.en")
+            audio = audio if audio is not None else audio16k(DATA / e["file"])
+            res = judge(words[k], e["phonemes"], audio, base, small, tokenizer, heard)
         else:
-            m[k].pop("split", None)
+            res = {"heard": heard, "match": round(similar(heard, words[k]["word"]), 2)}
+        for f in ("flags", "heard_small", "fail", "split"):
+            e.pop(f, None)
+        e.update(res)
+        if split_headword(words[k]["word"], heard):
+            e["split"] = True
+        e["checked"] = 2
         if n % 200 == 0 or n == len(keys):
             save_manifest(m)
             rate = n / (time.time() - t0)
             print(f"  {n:,}/{len(keys):,} · {rate:.1f}/s", flush=True)
     save_manifest(m)
-    split = sorted(k for k in keys if m[k].get("split"))
-    if split:
-        print(f"{len(split):,} heard as more words than the headword (check the IPA): "
-              + ", ".join(f"{words[k]['word']} → {m[k]['heard']}" for k in split[:30]), flush=True)
+    done = [k for k in m if k in words and m[k].get("checked")]
+    flagged = [k for k in done if m[k].get("flags")]
+    failed = sorted(k for k in done if m[k].get("fail"))
+    print(f"{len(done):,} checked: {len(flagged):,} flagged by base.en, {len(failed):,} failed "
+          f"({len(failed) / max(len(done), 1):.1%})", flush=True)
+    for k in failed[:60]:
+        print(f"  {words[k]['word']} → {m[k]['heard']} / {m[k]['heard_small']}  {m[k]['fail']}", flush=True)
     return 0
 
 
-# Tried in turn when Whisper can't make out a recording: Kokoro's next
+# Tried in turn for a recording that failed the check: Kokoro's next
 # best-rated American voices, and the first voice a little slower.
 RETRY = [("af_bella", SPEED), ("am_michael", SPEED), (VOICE, 0.8)]
+TRUSTED = ("reviewed", "manual")   # IPA a reviewer gave or checked
 
 
-def retry(only: set[str]) -> int:
-    """Speak each word again in other voices, check each with Whisper, and
-    keep the take it hears best (the current one unless another does
-    better). For recordings the check flagged: the phonemes are right but
-    the voice blurred a sound."""
-    from faster_whisper import WhisperModel
+def retry(only: set[str] | None = None) -> int:
+    """Speak each failed recording (or each of `only`) again: other voices,
+    and, for one read from the text, the entry's reviewed IPA. The first take
+    that passes the check replaces it; a word none passes is listed for a
+    look by ear. Takes from the IPA are listed for FROM_IPA, which plan()
+    reads, so a later `generate` keeps them."""
     from kokoro_onnx import Kokoro
     kokoro = Kokoro(str(MODEL), str(VOICES))
-    model = WhisperModel("base.en", device="cpu", compute_type="int8")
+    tok = kokoro.tokenizer
+    base, small = _whisper("base.en"), _whisper("small.en")
     m = load_manifest()
     words = {w["key"]: w for w in targets(only)}
-    keys = [k for k in m if k in words and "match" in m[k] and "retried" not in m[k]]
+    keys = [k for k in m if k in words and (only or m[k].get("fail"))]
     print(f"{len(keys):,} to retry", flush=True)
-    t0, better = time.time(), 0
+    fixed, from_ipa, stuck = 0, [], []
     for n, k in enumerate(keys, start=1):
-        best = m[k]
-        for voice, speed in RETRY:
-            audio, sr = kokoro.create(best["phonemes"], voice=voice, speed=speed, is_phonemes=True)
-            segs, _ = model.transcribe(resample16k(audio, sr), language="en", beam_size=1)
-            heard = " ".join(s.text for s in segs).strip()
-            match = round(similar(heard, words[k]["word"]), 2)
-            if match > best["match"]:
-                best = {**best, "voice": voice, "speed": speed, "heard": heard, "match": match, "audio": (audio, sr)}
-        if "audio" in best:
-            better += 1
-            audio, sr = best.pop("audio")
+        w, e = words[k], m[k]
+        takes = [(voice, speed, e["phonemes"], e["source"]) for voice, speed in RETRY
+                 if (voice, speed) != (e.get("voice", VOICE), e.get("speed", SPEED))]
+        tokens = [x for x in re.split(r"[\s-]+", re.sub(r"[?!.,;:]", "", w["word"])) if x]
+        # Only where plan() can keep it (FROM_IPA): not for a sentence or a long phrase.
+        if e["source"] == "text" and w.get("phonetic") and w.get("phonetic_source") in TRUSTED \
+                and not bad_ipa(w["word"], w["phonetic"]) and not re.search(r"[?!.,]", w["word"]) \
+                and len(tokens) <= 4:
+            ipa_ph = to_phonemes(w["phonetic"], tok.vocab, tokens, w["word"] not in NO_FLAP, tok.phonemize(w["word"]))
+            if ipa_ph and ipa_ph != e["phonemes"]:
+                takes.insert(0, (voice_for(ipa_ph), SPEED, ipa_ph, "ipa"))
+        for voice, speed, ph, source in takes:
+            audio, sr = synth(kokoro, ph, voice, speed)
+            res = judge(w, ph, resample16k(audio, sr), base, small, tok)
+            if res.get("fail"):
+                continue
             dst = write_hashed(audio, sr, slug(k))
-            if m[k]["file"] != f"tts/{dst.name}":
-                (DATA / m[k]["file"]).unlink(missing_ok=True)
-            best["file"], best["seconds"] = f"tts/{dst.name}", round(len(audio) / sr, 2)
-        m[k] = {**best, "retried": True}
-        if n % 50 == 0 or n == len(keys):
+            if e["file"] != f"tts/{dst.name}":
+                (DATA / e["file"]).unlink(missing_ok=True)
+            m[k] = {"file": f"tts/{dst.name}", "phonemes": ph, "source": source, "voice": voice,
+                    "speed": speed, "seconds": round(len(audio) / sr, 2), **res, "checked": 2, "retried": True}
+            fixed += 1
+            if source != e["source"]:
+                from_ipa.append(w["word"])
+            break
+        else:
+            m[k]["retried"] = True
+            stuck.append(k)
+        if n % 25 == 0 or n == len(keys):
             save_manifest(m)
-            rate = n / (time.time() - t0)
-            print(f"  {n:,}/{len(keys):,} · {better:,} improved · {rate:.2f}/s", flush=True)
+            print(f"  {n:,}/{len(keys):,} · {fixed:,} fixed", flush=True)
     save_manifest(m)
+    if from_ipa:
+        print(f"{len(from_ipa):,} now spoken from the IPA (hear them, then add to FROM_IPA): "
+              + json.dumps(sorted(from_ipa), ensure_ascii=False), flush=True)
+    if stuck:
+        print(f"{len(stuck):,} no take passed (check by ear): "
+              + ", ".join(f"{words[k]['word']} → {m[k].get('heard_small') or m[k].get('heard')}" for k in stuck), flush=True)
     return 0
 
 
@@ -560,7 +756,7 @@ def main() -> int:
         return generate(only, force="--force" in sys.argv)
     if cmd == "verify":
         return verify(only)
-    if cmd == "retry" and only:
+    if cmd == "retry":
         return retry(only)
     sys.exit(__doc__)
 

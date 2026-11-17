@@ -33,10 +33,15 @@ def test_gloss_endpoint(client, tmp_path, monkeypatch):
     (tmp_path / "glossary.json").write_text(json.dumps({
         "normal": {"w": "normal", "senses": [["adjective", "conforming with a norm", ""]], "syn": []},
         "kings": {"see": "king"},
+        "stepladder": {"w": "stepladder", "senses": [["noun", "a folding portable ladder", ""]], "syn": [],
+                       "ipa": "/ˈstɛpˌlædɚ/", "re": "STEP-lad-er", "a": "tts/gloss/stepladder.0a1b2c3d.m4a"},
     }))
     assert client.get("/api/gloss", params={"w": "Normal"}).json()["senses"][0][0] == "adjective"
     assert client.get("/api/gloss", params={"w": "kings (noun)"}).json() == {"see": "king"}
     assert client.get("/api/gloss", params={"w": "zzz"}).json() == {"w": "zzz", "senses": [], "syn": []}
+    # A term's recording (tools/gloss_pron.py) is served under /media.
+    g = client.get("/api/gloss", params={"w": "stepladder"}).json()
+    assert (g["re"], g["url"]) == ("STEP-lad-er", "/media/tts/gloss/stepladder.0a1b2c3d.m4a")
 
 
 def test_mentions_lists_related_words_without_an_entry(client):

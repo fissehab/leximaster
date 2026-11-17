@@ -233,14 +233,43 @@ def build_data(words: list[dict], media: dict[str, tuple[str, Path]]) -> tuple[i
 
 
 def build_glossary() -> int:
-    """data/glossary.json (tools/glossary.py) in shards, by app.common.gloss_shard."""
+    """data/glossary.json (tools/glossary.py) in shards, by app.common.gloss_shard,
+    and the terms' recordings (tools/gloss_pron.py) under media/."""
     path = DATA / "glossary.json"
     if not path.exists():
         sys.exit("Not building the site: data/glossary.json is missing (run tools/glossary.py).")
     shards = {i: {} for i in range(GLOSS_SHARDS)}
     for key, rec in json.loads(path.read_text(encoding="utf-8")).items():
+        if rec.get("a"):                                 # its recording (tools/gloss_pron.py)
+            if (DATA / rec["a"]).exists():
+                dst = DOCS / "media" / rec["a"]
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(DATA / rec["a"], dst)
+            else:
+                rec = {k: v for k, v in rec.items() if k != "a"}
         shards[gloss_shard(key)][key] = rec
     return sum(write_json(DOCS / "data" / "gloss" / f"{i:02d}.json", shard) for i, shard in shards.items())
+
+
+def copy_course_audio() -> int:
+    """The English course's recordings (static/js/course-audio.js, made by
+    tools/course_audio.py) under media/, as the lesson page plays them."""
+    src = STATIC / "js" / "course-audio.js"
+    text = src.read_text(encoding="utf-8") if src.exists() else ""
+    body = text[text.find("{"):text.rfind("}") + 1] if "{" in text else "{}"
+    size = 0
+    for rel in json.loads(body).values():
+        if not (DATA / rel).exists():
+            sys.exit(f"Not building the site: the course recording {rel} is missing (run tools/course_audio.py).")
+        dst = DOCS / "media" / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(DATA / rel, dst)
+        size += dst.stat().st_size
+    return size
+
+
+# GitHub Pages publishes a site of at most 1 GB; stop well before it.
+SITE_LIMIT = 980_000_000
 
 
 def build_mentions(words: list[dict]) -> int:
@@ -724,6 +753,7 @@ def main() -> None:
     mentions_size = build_mentions(words)
     index_size, detail_size = build_data(words, media)   # after those: its offline size counts them
     audio_rows = copy_audio(words, media)
+    course_size = copy_course_audio()
     build_index_html(version)
     build_icons()
     build_manifest()
@@ -745,8 +775,11 @@ def main() -> None:
     print(f"docs/: {len(files):,} files, {total / 1e6:.1f} MB · index.json {index_size / 1e6:.1f} MB · "
           f"details {detail_size / 1e6:.1f} MB in {SHARDS} files · glossary {gloss_size / 1e6:.1f} MB · "
           f"related words {mentions_size / 1e6:.1f} MB · "
-          f"{len(audio_rows):,} recordings · "
+          f"{len(audio_rows):,} recordings · course audio {course_size / 1e6:.1f} MB · "
           f"largest file {biggest.relative_to(DOCS)} {biggest.stat().st_size / 1e6:.1f} MB")
+    if total > SITE_LIMIT:
+        sys.exit(f"docs/ is {total / 1e6:.0f} MB, over the {SITE_LIMIT / 1e6:.0f} MB this site keeps under "
+                 "GitHub Pages' 1 GB limit: don't deploy it.")
 
 
 if __name__ == "__main__":

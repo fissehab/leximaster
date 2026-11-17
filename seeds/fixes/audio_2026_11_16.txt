@@ -1,0 +1,6 @@
+# Respellings that put no stress (or the wrong one) on the word, found in the
+# 2026-11-16 audio audit: the Listen stress quiz reads the capitals.
+hubristic | nuance.pronunciation.respelling | huh-BRIS-tik
+infinitesimal-calculus | nuance.pronunciation.respelling | in-fin-ih-TES-ih-mul KAL-kyuh-lus
+deontic-logic | nuance.pronunciation.respelling | dee-AHN-tik LAH-jik
+paraconsistent-logic | nuance.pronunciation.respelling | pair-uh-kun-SIS-tunt LAH-jik

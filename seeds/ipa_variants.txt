@@ -4,6 +4,8 @@
 # the rest agree with the CMU dictionary or are recorded from the spelling.
 # tools/audit.py --check fails on any new one not listed here: fix the shown
 # IPA (seeds/fixes) or, if both are right, add the key.
+# 2026-11-16: borrowing, decapitate, entertainment, missionary, moses (their human recordings were
+# rejected in the audio audit; both IPA are American, or differ only in a weak vowel).
 a*-search
 abecedarius
 abecedary
@@ -22,6 +24,7 @@ advancement
 advisory
 aerialist
 aerially
+agape
 agilely
 ahasuerus
 almsgiver
@@ -66,6 +69,7 @@ biogenesis
 bipartisan
 blessed
 blotchy
+borrowing
 bowman
 brink
 ca
@@ -116,7 +120,9 @@ counterproductive
 covariance
 cryptomnesia
 cussed
+decapitate
 decay
+decode
 definiens
 deforest
 delegate
@@ -146,6 +152,7 @@ dishon
 dispensationalism
 distributive
 divagate
+document
 doltish
 dourly
 dourness
@@ -193,6 +200,7 @@ enlistment
 enliven
 enrapture
 enrollment
+entertainment
 enthusiast
 entrancement
 entrenchment
@@ -215,6 +223,7 @@ evermore
 evict
 evocation
 exceedance
+excerpt
 exclaim
 exclamatory
 excrete
@@ -364,6 +373,7 @@ logician
 loin
 lorenz-curve
 maccabean
+maculate
 magisterially
 maimer
 marionette
@@ -377,14 +387,17 @@ milieu
 mina
 mindset
 miniature
+minutely
 miracle
 miscarry
 misoneism
+missionary
 moderator
 molecular
 molestation
 monetization
 morphologically
+moses
 mulatto
 multilateralism
 multilaterally
@@ -454,7 +467,9 @@ premiership
 prestigious
 presumptive
 preternaturally
+process
 prodigally
+produce
 prohibitionist
 prolongation
 pronate
@@ -495,6 +510,7 @@ religiosity
 reperfusion
 representationalism
 repressive
+reprobate
 resentfully
 resolving
 resourceful
@@ -613,12 +629,3 @@ windswept
 zadok
 zerahites
 zorah
-produce
-agape
-decode
-document
-excerpt
-maculate
-minutely
-process
-reprobate

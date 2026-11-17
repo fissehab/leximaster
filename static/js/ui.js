@@ -64,6 +64,7 @@ const ICONS = {
   info: '<circle cx="12" cy="12" r="9.5"/><path d="M12 11v6"/><path d="M12 7.5v.3"/>',
   gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
   mouth: '<path d="M3 12c2.5-3 5-4.5 6.5-4.5 1 0 1.8.6 2.5 1.3.7-.7 1.5-1.3 2.5-1.3 1.5 0 4 1.5 6.5 4.5-2.5 3.5-5.5 5-9 5s-6.5-1.5-9-5z"/><path d="M3 12h18"/>',
+  course: '<path d="M2 8.5 12 4l10 4.5-10 4.5z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/><path d="M22 8.5V14"/>',
   practice: '<path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/>',
 };
 export function icon(name) {
@@ -72,7 +73,7 @@ export function icon(name) {
   span.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[name] || ""}</svg>`;
   return span.firstChild;
 }
-const PLAY_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>';
+export const PLAY_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>';
 
 export function playButton(word, { small = false } = {}) {
   const synth = !word.audio_url;
@@ -122,6 +123,15 @@ function soundChip(w, i) {
     h("span", { html: PLAY_SVG, "aria-hidden": "true" }), p.respell);
   chip.addEventListener("click", e => { e.stopPropagation(); playSound(p.url, chip, w.word); });
   return chip;
+}
+
+/** The respelling of the sound the word's recording and IPA give: for a
+ * word said more than one way ("address"), its first sound's, not the study
+ * note's, which may describe another. */
+export function respellOf(w) {
+  if ((w.prons || []).length > 1 && w.prons[0].respell) return w.prons[0].respell;
+  const n = w.nuance || {};
+  return (n.pronunciation && n.pronunciation.respelling) || "";
 }
 
 export const EVERYDAY = EVERYDAY_DOMAINS;
@@ -607,7 +617,13 @@ export async function defineTerm(text) {
   }
   const wiktionary = `https://en.wiktionary.org/wiki/${encodeURIComponent(shown.replace(/ /g, "_"))}`;
   const first = (g.senses || [])[0];
+  // How it's said (tools/gloss_pron.py): the respelling, the IPA and a synthesized recording.
+  const say = g.ipa ? h("div.gloss-say.sound-line",
+    soundButton({ word: term }, { url: g.url, respell: g.re, human: false }, g.re),
+    h("span.respell", g.re),
+    h("span.ipa", { lang: "en-fonipa", title: "IPA" }, h("span.sr-only", "IPA: "), g.ipa)) : null;
   const body = h("div.gloss",
+    say,
     g.base ? h("p.muted.gloss-base", "Defined under ", h("em", g.base)) : null,
     g.see ? h("p", "A form of ", h("em", g.see), ".") : byPos.length ? byPos.map(x => h("div.gloss-group", posBadge(x.pos),
       h("ol", x.senses.map(([d, ex]) => h("li", smart(d), ex ? h("span.gloss-example", " · ", h("em", smart(ex))) : null)))))

@@ -1,0 +1,102 @@
+# Recordings the November 2026 audio audit found wrong for these words
+# (three researchers, adjudicated): another word or a longer phrase, two
+# takes in one file, or a recording too noisy, clipped or quiet to learn
+# from. Regional accents (New England, Canadian, British...) are rejected
+# by build_dataset.NOT_GENERAL from the file name. Format: see AUDIO_REJECT.
+#
+# Another word or phrase:
+LL-Q1860 (eng)-Flame, not lame-baldy.wav | says "baldy" | baldly
+en-us-stag.ogg | says "stag" | tag
+En-us-ncalif-prairiedogging.ogg | says "prairie-dogging" | prairie-dog
+En-us-ncalif-theclap.ogg | says "the clap" (the disease) | clap
+LL-Q1860 (eng)-Gt59514-effectivity.wav | says "effectivity" | effectively
+LL-Q1860 (eng)-Persent101-be supposed to.wav | says "be supposed to" | supposed-to
+LL-Q1860 (eng)-Persent101-going to.wav | says "going to" without "be" | be-going-to
+LL-Q1860 (eng)-Naomi Persephone Amethyst (NaomiAmethyst)-get down to brass tacks.wav | says "get down to brass tacks" | brass-tacks
+LL-Q1860 (eng)-Flame, not lame-have an axe to grind.wav | says "have an axe to grind" | ax-to-grind
+En-us-sticks and stones will break my bones, but words will never hurt me.oga | the whole proverb | sticks-and-stones
+Lyre-Liar-us-eng.wav | two words: "lyre" and "liar" | lyre
+en-us-elusive-illusive.ogg | two words in one file | elusive, illusive
+En-us-canorous.ogg | three takes in one file | canorous
+En-us-dextrous.ogg | says "dextrous" (two syllables) | dexterous
+en-us-vial.ogg | says "vial" (two syllables) | vile
+Eng-midwest-pancake-carter.ogg | a recording of the pancake merger, not plain "carter" | carter
+En-us-route.ogg | "route": many Americans say ROOT | rout
+en-us-make sense.ogg | heard as "makes sense" by both checks | make-sense
+en-us-reaffirm.ogg | heard as "reaffirmed" by both checks | reaffirm
+en-us-for crying out loud.ogg | says "Oh, for crying out loud" | for-crying-out-loud
+en-us-slow.ogg | says "slow"; the entry is the letters S-L-O | slo
+#
+# Sound quality (noise, clipping, a very quiet source, loudness):
+En-us-ncalif-adventitious.ogg | noisy: speech only 13 dB above the noise | adventitious
+en-us-aggressive.ogg | clipped (11 clipped peaks) | aggressive
+En-us-ncalif-anachronism.ogg | clipped (31 clipped peaks) | anachronism
+En-us-ncalif-antiqueshop.ogg | noisy: speech only 14 dB above the noise | antique-shop
+en-us-arguably.ogg | noisy: speech only 13 dB above the noise | arguably
+En-us-ne-arid.ogg | clipped (14 clipped peaks) | arid
+En-us-as well as.ogg | noisy: speech only 12 dB above the noise | as-well-as
+en-us-bigoted.ogg | noisy: speech only 14 dB above the noise | bigoted
+en-us-bizarre.ogg | noisy: speech only 8 dB above the noise | bizarre
+en-us-boor.ogg | noisy: speech only 9 dB above the noise | boor
+en-us-borrowing.ogg | noisy: speech only 13 dB above the noise | borrowing
+en-us-broadly.ogg | noisy: speech only 11 dB above the noise | broadly
+En-us-buckle.ogg | clipped (22 clipped peaks) | buckle
+en-us-budget.ogg | noisy: speech only 15 dB above the noise | budget
+en-us-collide.ogg | noisy: speech only 6 dB above the noise | collide
+en-us-colonialism.ogg | noisy: speech only 14 dB above the noise | colonialism
+en-us-demonize.ogg | noisy: speech only 6 dB above the noise | demonize
+En-us-eleven.ogg | noisy: speech only 14 dB above the noise | eleven
+En-us-emulator.ogg | noisy: speech only 14 dB above the noise | emulator
+en-us-entertainment.ogg | noisy: speech only 11 dB above the noise; very quiet source (-48 LUFS), boosted hiss | entertainment
+en-us-entrepreneur.ogg | loudness off (-23 LUFS after normalizing) | entrepreneur
+en-us-etymology.ogg | noisy: speech only 13 dB above the noise | etymology
+en-us-even though.ogg | noisy: speech only 13 dB above the noise | even-though
+en-us-eventually.ogg | noisy: speech only 14 dB above the noise | eventually
+En-us-excess.ogg | 2.6 s with 3 separate bursts for one word | excess
+En-us-galore.ogg | noisy: speech only 13 dB above the noise | galore
+ENUS-hodgepodge.ogg | noisy: speech only 10 dB above the noise; clipped (13 clipped peaks) | hodgepodge
+en-us-idolization.ogg | noisy: speech only 15 dB above the noise | idolization
+en-us-in general.ogg | noisy: speech only 12 dB above the noise | in-general
+en-us-in other words.ogg | noisy: speech only 13 dB above the noise | in-other-words
+en-us-in reality.ogg | noisy: speech only 14 dB above the noise | in-reality
+en-us-in the name of.ogg | noisy: speech only 12 dB above the noise | in-the-name-of
+en-us-indebted.ogg | 2.7 s with 2 separate bursts for one word | indebted
+en-us-insurmountable.ogg | noisy: speech only 15 dB above the noise | insurmountable
+En-us-ne-kiln.ogg | clipped (25 clipped peaks) | kiln
+en-us-latter-day.ogg | noisy: speech only 13 dB above the noise | latter-day
+en-us-lazy.ogg | noisy: speech only 11 dB above the noise | lazy
+En-us-linear.ogg | noisy: speech only 14 dB above the noise | linear
+en-us-make a living.ogg | noisy: speech only 15 dB above the noise | make-a-living
+en-us-merge.ogg | noisy: speech only 8 dB above the noise | merge
+en-us-missionary.ogg | noisy: speech only 9 dB above the noise | missionary
+Monetary US.ogg | noisy: speech only 15 dB above the noise | monetary
+En-us-Moses.ogg | noisy: speech only 13 dB above the noise | moses
+en-us-negation.ogg | noisy: speech only 14 dB above the noise | negation
+en-us-nine.ogg | noisy: speech only 13 dB above the noise | nine
+en-us-ninety-nine.ogg | noisy: speech only 13 dB above the noise | ninety-nine
+En-us-nonbeliever.ogg | noisy: speech only 15 dB above the noise | nonbeliever
+en-us-oneness.ogg | noisy: speech only 14 dB above the noise | oneness
+en-us-paw.ogg | clipped (14 clipped peaks) | paw
+En-us-reinventthewheel.wav | very quiet source (-49 LUFS), boosted hiss | reinvent-the-wheel
+en-us-sincerely.ogg | noisy: speech only 13 dB above the noise | sincerely
+En-us-Son of Man.ogg | noisy: speech only 13 dB above the noise | son-of-man
+sophrosyne EN US.ogg | 3.3 s with 2 separate bursts for one word | sophrosyne
+en-us-story.ogg | noisy: speech only 2 dB above the noise; loudness off (-33 LUFS after normalizing) | story
+En-us-tape measure.ogg | noisy: speech only 12 dB above the noise | tape-measure
+en-us-thirsty.ogg | noisy: speech only 12 dB above the noise | thirsty
+En-us-ncalif-torrential.ogg | noisy: speech only 12 dB above the noise | torrential
+en-us-universally.ogg | 2.8 s with 2 separate bursts for one word | universally
+en-us-unrelated.ogg | noisy: speech only 13 dB above the noise | unrelated
+En-us-unwavering.ogg | noisy: speech only 10 dB above the noise | unwavering
+en-us-Virgin Mary.ogg | noisy: speech only 14 dB above the noise | virgin-mary
+en-us-wrapper.ogg | noisy: speech only 2 dB above the noise; very quiet source (-43 LUFS), boosted hiss | wrapper
+EN-y'all.ogg | noisy: speech only 4 dB above the noise; very quiet source (-47 LUFS), boosted hiss | y'all
+En-us-yuck.oga | noisy: speech only 10 dB above the noise | yuck
+en-us-zoo.ogg | noisy: speech only 8 dB above the noise | zoo
+en-us-entertainment1.ogg | noisy: speech only 10 dB above the noise (the next recording after the first was rejected) | entertainment
+#
+# Not General American, from the file's Commons description:
+En-us-frying pan.ogg | Commons: "New England pronunciation" | frying-pan
+En-us-high school.ogg | Commons: shows Canadian raising | high-school
+En-us-paragon.ogg | Commons: without the Mary-marry-merry merger most Americans have | paragon
+En-us-worrisome.ogg | Commons: without the hurry-furry merger most Americans have | worrisome

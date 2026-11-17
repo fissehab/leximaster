@@ -16,6 +16,11 @@ Writes static/js/say-pairs.js: PAIRS_FOUND = {contrast: [[a, b], ...]},
 the word with the card's sound first, most common pairs first.
 
     .venv/bin/python tools/minimal_pairs.py --failed hprompt.json
+    .venv/bin/python tools/minimal_pairs.py --prune   # drop pairs whose words no longer qualify
+
+--prune keeps the pairs already in say-pairs.js whose two words still
+qualify (a person's recording, one pronunciation): for when recordings are
+taken away, without the listening-check files the pairs were chosen with.
 """
 import argparse
 import json
@@ -102,6 +107,7 @@ def main():
     ap.add_argument("--heard", nargs="*", default=[])
     ap.add_argument("--failed")
     ap.add_argument("--out", default=str(ROOT / "static/js/say-pairs.js"))
+    ap.add_argument("--prune", action="store_true")
     args = ap.parse_args()
     ok = heard_ok(args.heard) if args.heard else None
     failed = {k for k, v in json.loads(Path(args.failed).read_text()).items() if v.get("pm", 0) < 1} if args.failed else set()
@@ -109,7 +115,8 @@ def main():
     words = {}
     for w in json.loads((ROOT / "data/words.json").read_text())["words"]:
         word, key = w.get("word", ""), w.get("key", "")
-        if not w.get("has_audio") or not re.fullmatch(r"[a-z]{2,}", word) or word in HETERONYMS or word in RUDE:
+        if not w.get("has_audio") or not re.fullmatch(r"[a-z]{2,}", word) or word in HETERONYMS or word in RUDE \
+                or len(w.get("prons") or []) > 1:   # said two ways (seeds/heteronyms.txt)
             continue
         if float(w.get("zipf") or 0) < args.min_zipf or (ok is not None and key not in ok) or key in failed or word in ODD:
             continue
@@ -145,6 +152,11 @@ def main():
                     if sb in seconds and wa != wb:
                         found[name][(wa, wb)] = min(words[wa][1], words[wb][1])
     out = {}
+    if args.prune:
+        text = (ROOT / "static/js/say-pairs.js").read_text()
+        old = json.loads(re.sub(r",\s*}", "}", text[text.index("{"):text.rindex("}") + 1]))
+        found = {}
+        out = {name: [p for p in pairs if p[0] in words and p[1] in words] for name, pairs in old.items()}
     for name, pairs in found.items():
         # A word in at most three pairs of a contrast, so one word doesn't fill a round.
         uses, keep = {}, []

@@ -6,7 +6,7 @@ import { api } from "../api.js";
 import { playWord } from "../audio.js";
 import { refreshDueCount } from "../app.js";
 import { loadFilter } from "../state.js";
-import { cantStart, diffView, filterBar, optField, filterSources, fmtDuration, h, markOption, pageHead, reveal, showError, toast } from "../ui.js";
+import { cantStart, diffView, filterBar, optField, filterSources, fmtDuration, h, markOption, pageHead, respellOf, reveal, showError, toast } from "../ui.js";
 
 let mode = "choose";       // choose | type | stress
 let items = [];
@@ -33,8 +33,7 @@ const spell = () => mode === "type" && strict;
  * turn (in-EF-uh-bul, IN-ef-uh-bul…), at most four, the right one included.
  * Null for words without a clear single stressed syllable. */
 function stressChoices(w) {
-  const n = w.nuance || {};
-  const r = n.pronunciation && n.pronunciation.respelling;
+  const r = respellOf(w);
   if (!r || /\s/.test(w.word) || /\s/.test(r)) return null;
   const syl = r.split("-");
   const stressed = syl.map((x, i) => (/[A-Z]/.test(x) && x === x.toUpperCase() ? i : -1)).filter(i => i >= 0);
@@ -109,8 +108,7 @@ function show() {
     // Can't play sound right now (a quiet room, no headphones): see how it's
     // said instead. It counts as a hint, so the answer isn't scored as heard.
     mode === "stress" ? h("p.muted", "Which syllable is the strongest?") : h("button.btn.btn-quiet.cant-listen", { type: "button", on: { click: e => {
-      const n = w.nuance || {};
-      const respell = n.pronunciation && n.pronunciation.respelling;
+      const respell = respellOf(w);
       e.currentTarget.replaceWith(h("p.listen-hint", w.phonetic ? h("span.ipa", { lang: "en-fonipa" }, w.phonetic) : null,
         respell ? [" ", h("span.respell", respell)] : null));
       hinted = true;

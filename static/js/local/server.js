@@ -212,7 +212,8 @@ async function gloss(term) {
   const key = glossKey(term || "").slice(0, 200);
   const s = glossShard(key);
   if (!GLOSS.has(s)) GLOSS.set(s, fetchJson(glossUrl(s)).catch(e => { GLOSS.delete(s); throw e; }));
-  return (await GLOSS.get(s))[key] || { w: key, senses: [], syn: [] };
+  const rec = (await GLOSS.get(s))[key] || { w: key, senses: [], syn: [] };
+  return rec.a ? { ...rec, url: audioUrl(rec.a) } : rec;
 }
 
 // Related words without an entry and the entries that list them

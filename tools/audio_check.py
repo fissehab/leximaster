@@ -1,0 +1,111 @@
+"""Listening check of the human recordings (data/audio/, from Commons): find
+the ones that say another form of the word or another phrase.
+
+    .venv/bin/python tools/audio_check.py           # transcribe what's new (resumable), then report
+    .venv/bin/python tools/audio_check.py --report
+
+Whisper base.en transcribes every recording (kept in
+data/cache/audio_check.json by source file). Where the transcript is the
+word with an ending added or dropped ("reaffirm" heard as "reaffirmed",
+"make sense" as "makes sense") or with a whole word more or less ("brass
+tacks" as "get down to brass tacks"), small.en listens too. Only when both
+hear the same thing is the recording listed as wrong, in
+seeds/audio_reject/heard.txt, for build_dataset's audio stage to replace.
+Anything else Whisper hears differently is not a fault: it often mishears
+rare words that are said right. Free; about an hour for every recording.
+"""
+from __future__ import annotations
+
+import json
+import re
+import sys
+import time
+from pathlib import Path
+from urllib.parse import unquote
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "tools"))
+from build_dataset import DATA, WORDS_JSON  # noqa: E402
+from tts import _whisper, audio16k, hear, spell_numbers  # noqa: E402
+
+CACHE = DATA / "cache" / "audio_check.json"
+OUT = ROOT / "seeds" / "audio_reject" / "heard.txt"
+FILLER = {"a", "an", "the", "oh", "um", "uh", "so", "and", "o", "o'"}   # o': cat-o'-nine-tails
+ENDINGS = ("s", "es", "'s", "ed", "d", "ing", "er", "ly")
+
+
+def words_of(text: str) -> list[str]:
+    return [w for w in re.findall(r"[a-z']+", spell_numbers(text).lower().replace("-", " ")) if w]
+
+
+def fault(word: str, heard: str) -> str:
+    """What is wrong when `heard` is another form or another phrase of
+    `word`, else "". Spelling differences are not faults."""
+    if re.search(r"\d", heard) and not re.search(r"\d", word):
+        return ""          # Whisper's numerals: "a hundred" written "100"
+    own, said = words_of(word), [w for w in words_of(heard) if w not in FILLER]
+    own_core = [w for w in own if w not in FILLER]
+    if said == own_core or not said:
+        return ""
+    from build_dataset import cmu_lookup
+    if len(said) == len(own_core) and all(a == b or (cmu_lookup(a) and cmu_lookup(a) == cmu_lookup(b))
+                                          for a, b in zip(own_core, said)):
+        return ""          # a word that sounds the same ("canvas" for "canvass")
+    if len(said) == len(own_core):
+        diff = [(a, b) for a, b in zip(own_core, said) if a != b]
+        if len(diff) == 1:
+            a, b = diff[0]
+            for e in ENDINGS:
+                if b == a + e or a == b + e or (a.endswith("e") and b == a[:-1] + e):
+                    return f"heard as \"{' '.join(said)}\" (another form)"
+        return ""
+    if len(said) > len(own_core) and all(w in said for w in own_core):
+        return f"heard as \"{' '.join(said)}\" (more words)"
+    if len(said) < len(own_core) and all(w in own_core for w in said) and len(own_core) - len(said) >= 1:
+        return f"heard as \"{' '.join(said)}\" (words missing)"
+    return ""
+
+
+def main() -> int:
+    cache = json.loads(CACHE.read_text()) if CACHE.exists() else {}
+    words = [w for w in json.loads(WORDS_JSON.read_text(encoding="utf-8"))["words"] if w.get("audio")]
+    if "--report" not in sys.argv:
+        base, small = _whisper("base.en"), None
+        todo = [w for w in words if w["audio"]["source_url"] not in cache]
+        print(f"{len(todo):,} recordings to check", flush=True)
+        t0 = time.time()
+        for n, w in enumerate(todo, 1):
+            src = w["audio"]["source_url"]
+            audio = audio16k(DATA / w["audio"]["file"])
+            e = {"heard": hear(base, audio)}
+            if fault(w["word"], e["heard"]):
+                small = small or _whisper("small.en")
+                e["heard_small"] = hear(small, audio, beam=5)
+            cache[src] = e
+            if n % 500 == 0 or n == len(todo):
+                CACHE.write_text(json.dumps(cache, ensure_ascii=False))
+                print(f"  {n:,}/{len(todo):,} · {n / (time.time() - t0):.1f}/s", flush=True)
+        CACHE.write_text(json.dumps(cache, ensure_ascii=False))
+    lines, listen = [], []
+    for w in words:
+        e = cache.get(w["audio"]["source_url"])
+        if not e or not fault(w["word"], e["heard"]):
+            continue
+        a, b = fault(w["word"], e["heard"]), fault(w["word"], e.get("heard_small", ""))
+        name = unquote(w["audio"]["source_url"]).rsplit("/", 1)[-1].replace("_", " ")
+        if b and words_of(e["heard"]) == words_of(e["heard_small"]):
+            lines.append(f"{name} | {b}, by two listening checks | {w['key']}")
+        else:
+            listen.append(f"{w['word']}: {e['heard']!r} / {e.get('heard_small')!r}")
+    OUT.write_text("# Generated by tools/audio_check.py: recordings two Whisper models (base.en,\n"
+                   "# small.en) both heard as another form of the word or another phrase.\n"
+                   "# Format: see build_dataset.py AUDIO_REJECT.\n" + "\n".join(sorted(lines)) + "\n")
+    print(f"{len(lines):,} listed in {OUT.relative_to(ROOT)}; {len(listen):,} heard differently by one model only:")
+    for x in listen[:80]:
+        print("  " + x)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

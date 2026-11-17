@@ -93,7 +93,8 @@ def gloss(w: str):
     if _glossary is None or _glossary[0] != mtime:
         _glossary = (mtime, json.loads(path.read_text(encoding="utf-8")) if mtime else {})
     key = gloss_key(w)[:200]
-    return _glossary[1].get(key) or {"w": key, "senses": [], "syn": []}
+    rec = _glossary[1].get(key) or {"w": key, "senses": [], "syn": []}
+    return {**rec, "url": f"/media/{rec['a']}"} if rec.get("a") else rec
 
 # The related terms without an entry, kept while the words are unchanged.
 _mentions: tuple[tuple, bytes] | None = None
