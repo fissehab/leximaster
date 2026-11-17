@@ -30,7 +30,7 @@ const FIRST = {
       items: [
         { big: "/s/", head: "after p, t, k, f", words: ["cups", "hats", "books", "cliffs"] },
         { big: "/z/", head: "after vowels and other voiced sounds", words: ["days", "dogs", "phones", "trees"] },
-        { big: "/ɪz/", head: "after s, z, sh, ch, j sounds", words: ["buses", "boxes", "dishes", "pages"] },
+        { big: "/iz/", head: "after s, z, sh, ch, j sounds", words: ["buses", "boxes", "dishes", "pages"] },
       ] },
   ],
 
@@ -55,6 +55,7 @@ const FIRST = {
   "articles": [
     { kind: "flow", title: "*a*, *an*, *the* or nothing?", caption: "Ask the questions in order and stop at the first *yes*.",
       steps: [
+        { q: "Is it a name, like *Maria* or *Texas*?", yes: "usually no article", ex: "**Maria** lives in **Texas**." },
         { q: "Does the listener know which one you mean?", yes: "*the*", ex: "Close **the** door, please." },
         { q: "Is it one countable thing?", yes: "*a* or *an*", ex: "I need **a** pen. She's **an** engineer." },
       ],

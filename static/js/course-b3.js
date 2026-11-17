@@ -91,6 +91,7 @@ export const ADDED = [
         ] },
       { kind: "flow", title: "*some-*, *any-* or *no-*?", caption: "Ask the questions in order and stop at the first *yes*.",
         steps: [
+          { q: "Does it mean “it doesn't matter which”?", yes: "*any-*", ex: "**Anyone** can learn to cook. Sit **anywhere** you like." },
           { q: "Is it an offer or a request?", yes: "*some-*", ex: "Would you like **something** to drink?" },
           { q: "Is the verb negative, or is it a question?", yes: "*any-*", ex: "I didn't buy **anything**. Is **anyone** home?" },
         ],
@@ -375,7 +376,7 @@ export const ADDED = [
       { q: "We couldn't play outside ___ the storm.", choices: ["because of", "because"], answer: 0, why: "*The storm* is a noun: *because of*." },
       { q: "The flight was delayed ___ the fog was thick.", choices: ["because of", "because"], answer: 1, why: "A subject and a verb follow (*the fog was*): *because*." },
       { q: "I love my job, ___ the hours are long.", choices: ["but", "so"], answer: 0, why: "Long hours are a contrast with loving the job: *but*." },
-      { q: "The museum was free, ___ there were a lot of visitors.", choices: ["but", "or", "so"], answer: 2, why: "Lots of visitors is the result: *so*." },
+      { q: "The museum was free on Sunday, ___ we took the kids.", choices: ["but", "or", "so"], answer: 2, why: "Taking the kids is the result: *so*." },
       { q: "“Leave now, or you'll be late.” What does *or* mean here?", choices: ["if you don't", "and then", "because"], answer: 0, why: "*Or* after a command means “if you don't.”" },
       { q: "Which sentence joins two full sentences, so it usually takes a comma before *and*?", choices: ["I bought eggs and milk.", "She smiled and waved.", "He studied all night and he passed the test."], answer: 2, why: "*He studied* and *he passed* each have a subject and a verb." },
       { q: "Where should the comma go in this sentence about a busy day?", choices: ["I wanted, to go but I was busy.", "I wanted to go, but I was busy.", "I wanted to go but, I was busy."], answer: 1, why: "The comma goes before *but*, between the two full sentences." },
@@ -593,7 +594,7 @@ export const ADDED = [
     visuals: [
       { kind: "flow", title: "Which spelling rule do I use?", caption: "For *-ing, -ed* and *-er*: ask the questions in order and stop at the first *yes*.",
         steps: [
-          { q: "Does the word end in a silent *e*?", yes: "drop the *e* (*-ie* + *-ing* → *-ying*)", ex: "make → mak**ing**, hope → hop**ed**, lie → l**ying**" },
+          { q: "Does the word end in a silent *e* (not *ee*)?", yes: "drop the *e* (*-ie* + *-ing* → *-ying*)", ex: "make → mak**ing**, hope → hop**ed**, lie → l**ying**" },
           { q: "Does it end in a consonant + *y*?", yes: "*y* → *i* (keep *y* before *-ing*)", ex: "study → stud**ied**, study**ing**" },
           { q: "Does it end in one vowel + one consonant (not *w, x, y*), with the stress there?", yes: "double the last letter", ex: "stop → sto**pp**ing, beGIN → begi**nn**ing" },
         ],

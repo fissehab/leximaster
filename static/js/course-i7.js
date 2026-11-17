@@ -112,7 +112,7 @@ export const ADDED = [
       "**all / every / each**: *all* + plural or non-count noun (*all students, all the money*); *every* and *each* + singular noun and singular verb (Every student **has** a laptop). *Each* looks at the members one by one and works for two (*a ring on each hand*); *every* needs three or more and sees the group as a whole (*every day of the week*).",
       "**with of**: before *the, my, these* or a pronoun, use *all of, each of, both of*: *each of the rooms, all of us*. *All* and *both* can drop *of* before a noun (*all the rooms, both my sisters*) but not before a pronoun (*all of them*). *Every* never takes *of*: say *every one of* (two words) or *each of*.",
       "**both / either / neither** are for two: *both* = the two together (plural verb); *either* = one or the other, it doesn't matter which; *neither* = not one and not the other. For *neither… nor* and verb agreement, see the advanced lesson on agreement.",
-      "**another / other**: *another* (*an* + *other*, one word) + singular noun means one more or a different one: *another coffee*. It also goes before a number: *another two weeks*. *Other* + plural or non-count noun: *other ideas, other information*; or + singular after a word like *my, any, no*: *my other phone*. **The other(s)** = the rest of a set: *the other shoe, the other students*. As a pronoun, it takes *-s*: Some agree; **others** don't. Never *others* before a noun.",
+      "**another / other**: *another* (*an* + *other*, one word) + singular noun means one more or a different one: *another coffee*. It also goes before a number: *another two weeks*. *Other* + plural or non-count noun: *other ideas, other information*; or + singular after a word like *my, any, no*: *my other phone*. **The other(s)** = the rest of a set: *the other shoe, the other students*. As a plural pronoun, it takes *-s*: Some agree; **others** don't. As a singular pronoun, it stays *the other*: *One is mine; the other is yours.* Never *others* before a noun.",
       "**each other** means each one does it to the other: *They help each other* = she helps him, and he helps her. *One another* means the same and sounds a little more formal.",
     ],
     compare: {
@@ -200,8 +200,8 @@ export const ADDED = [
       { kind: "flow", title: "*another*, *other*, *the other* or *others*?", caption: "Stop at the first *yes*.",
         steps: [
           { q: "Is it the one or ones left in a set you know?", yes: "*the other* or *the others*", ex: "One twin is tall; **the other** is short." },
+          { q: "Does a noun come after it: plural, non-count, or singular after *my, any, no*?", yes: "*other* + noun", ex: "**Other** stores are cheaper. Is there any **other** way?" },
           { q: "Is it one more, or a different one (singular)?", yes: "*another*", ex: "Try **another** size." },
-          { q: "Does a plural or non-count noun come after it?", yes: "*other* + noun", ex: "**Other** stores are cheaper." },
         ],
         else: "*others* (no noun after it)", elseEx: "Some stores open early; **others** don't." },
     ],

@@ -293,7 +293,7 @@ export const MORE = {
   future: {
     fact: "English verbs have no future ending, unlike Spanish or French. *Will* first meant “want”, and you can still see that old meaning in *willing* and *free will*.",
     intro: "English has no single future form. You choose by meaning: a plan, a decision you make right now, a prediction, or something already arranged. Native speakers mix these all the time, and you will hear all of them every day.",
-    learn: ["Use *going to* for plans", "Use *will* for decisions, offers and predictions", "Use *-ing* for arrangements"],
+    learn: ["Use *going to* for plans", "Use *will* for decisions, offers and predictions", "Use *-ing* for arrangements", "Use the present simple for timetables"],
     tip: "Decided before you spoke? *Going to*. Deciding right now? *Will*. Already in your calendar? *-ing*.",
     examples: [
       { t: "**I'll** carry that for you.", note: "an offer", group: "Offers and promises with will" },
@@ -381,14 +381,17 @@ export const MORE = {
   "present-perfect": {
     fact: "*Gotten* is American: *She's gotten much better.* British English uses *got* (*She's got much better*), and Americans still say *I've got* to mean *I have*: *I've got two kids.*",
     intro: "The present perfect connects the past to now. Learners often use it too much or too little. The key question is simple: is there a finished time? If there is, use the past simple.",
-    learn: ["Choose between *I saw* and *I've seen*", "Use *for* and *since*", "Use *ever, never* and *already*"],
+    learn: ["Choose between *I saw* and *I've seen*", "Use *for* and *since*", "Use *ever, never, already, just* and *yet*", "Tell *been to* from *gone to*"],
     tip: "Do you see a finished time, like *yesterday, last year, in 2019* or *two days ago*? Use the past simple.",
     examples: [
       { t: "**I've been** to Canada three times.", group: "Life experience" },
       { t: "**Has** she ever **worked** abroad?", group: "Life experience" },
       { t: "**He's worked** here **since** January.", group: "From the past until now" },
       { t: "**They've been** married **for** twenty years.", group: "From the past until now" },
-      { t: "**I've already eaten**, thanks.", group: "Already" },
+      { t: "**I've already eaten**, thanks.", group: "Already, just, yet" },
+      { t: "The bus **has just left**.", note: "a moment ago", group: "Already, just, yet" },
+      { t: "**Have** you **paid** the rent **yet**?", group: "Already, just, yet" },
+      { t: "Dad **has gone** to the store. He'll be back soon.", note: "he is still there", group: "Been to or gone to" },
     ],
     dialogue: [
       { who: "A", name: "Rosa", t: "**Have** you ever **been** to New York?" },

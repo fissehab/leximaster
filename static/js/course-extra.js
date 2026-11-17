@@ -183,6 +183,8 @@ export const EXTRA = {
     { q: "Listen. What is the speaker asking about?", say: "Have you ever visited Alaska?", choices: ["a trip at a certain time", "life experience", "a plan for the future"], answer: 1, why: "*Have you ever …?*: life experience." },
     { q: "Find the incorrect sentence.", choices: ["I've seen that show.", "I saw that show last night.", "I've seen that show last night."], answer: 2, why: "*Last night* is a finished time: *I saw*." },
     { q: "How long ___ each other?", choices: ["have you known", "do you know"], answer: 0, why: "From the past until now: present perfect." },
+    { q: "Ana isn't here right now. She's ___ to the bank, but she'll be back at noon.", choices: ["been", "gone"], answer: 1, why: "She is still there: *gone to*. *Been to* means she went and came back." },
+    { q: "I haven't replied to his email ___.", choices: ["already", "yet", "just"], answer: 1, why: "In a negative, at the end of the sentence: *yet*." },
   ],
 
   "set-prepositions": [

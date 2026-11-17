@@ -52,7 +52,7 @@ export const VISUALS_I = {
         { q: "Is there *a*, *the*, *my* or *your* just before it?", yes: "a noun", ex: "Give me **a call**. She set **a record**." },
         { q: "Is there *will*, *can*, a subject or *to* (as in *want to*) just before it?", yes: "a verb", ex: "I'll **call** you. They **record** at night." },
       ],
-      else: "look at the whole sentence", elseEx: "Prices **increase** every year. (an action: a verb)" },
+      else: "look at the whole sentence", elseEx: "We often **text** at night. (an action: a verb)" },
   ],
 
   "ed-ing-adjectives": [

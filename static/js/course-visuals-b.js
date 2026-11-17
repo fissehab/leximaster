@@ -141,7 +141,7 @@ export const VISUALS_B = {
   "questions-negatives": [
     { kind: "flow", title: "How do I make a question?", caption: "The same helper makes the negative: *isn't, can't, doesn't*.",
       steps: [
-        { q: "Is there *can, will* or *should*?", yes: "put that word first", ex: "**Can** you swim? **Will** she be ready?" },
+        { q: "Is there a helper like *can, could, will, would* or *should*?", yes: "put that word first", ex: "**Can** you swim? **Could** you help me? **Will** she be ready?" },
         { q: "Is the verb *am, is, are, was* or *were*?", yes: "put it first", ex: "**Is** she ready?" },
       ],
       else: "add *do*, *does* or *did*", elseEx: "**Do** you work here? **Did** he call?" },
@@ -180,7 +180,7 @@ export const VISUALS_B = {
       items: [
         { big: "/t/", head: "after p, k, f, s, sh, ch, x", words: ["worked", "laughed", "fixed", "stopped"] },
         { big: "/d/", head: "after other sounds", words: ["played", "called", "lived", "opened"] },
-        { big: "/ɪd/", head: "after t and d: an extra syllable", words: ["wanted", "needed", "started"] },
+        { big: "/id/", head: "after t and d: an extra syllable", words: ["wanted", "needed", "started"] },
       ] },
     { kind: "formula", title: "*did* does the past work", caption: "After *did*, use the plain verb: *Did you go?*, not *Did you went?*",
       lines: [
@@ -218,7 +218,7 @@ export const VISUALS_B = {
     { kind: "flow", title: "*-er* or *more*?", caption: "Ask the questions in order and stop at the first *yes*.",
       steps: [
         { q: "Is it *good, bad* or *far*?", yes: "irregular", ex: "**better**, **worse**, **farther**" },
-        { q: "Is it one syllable?", yes: "add *-er*", ex: "cheap**er**, big**ger**, nice**r**" },
+        { q: "Is it one syllable (not an *-ed* word like *tired* or *bored*)?", yes: "add *-er*", ex: "cheap**er**, big**ger**, nice**r**" },
         { q: "Does it have two syllables and end in *y*?", yes: "change *y* to *-ier*", ex: "eas**ier**, happ**ier**" },
       ],
       else: "use *more*", elseEx: "**more** expensive, **more** interesting" },

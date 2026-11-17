@@ -510,7 +510,7 @@ export const ADDED = [
       { who: "B", name: "Diego", t: "He is, but I **had** a painter **give** me a cheap quote first." },
     ],
     tip: "Watch the word order. *I had my car washed* = someone washed it for me. *I had washed my car* = I washed it myself, earlier. In the causative, the object sits between *have* and the participle.",
-    note: "*Have someone do something* is more common in American than in British English, especially at work and in services: *I'll have someone look at it. I'll have her call you back.* *It is said that…* sounds formal and belongs in news and reports; in conversation, Americans say *People say…* or *Apparently…*.",
+    note: "*Have someone do something* is more common in American than in British English, especially at work and in services: *I'll have someone look at it. I'll have her call you back.* *It is said that…* sounds formal and mostly belongs in news and reports; *He's said to be…* is a little lighter and can be heard in conversation, but Americans more often say *People say…*, *Apparently…* or *He's supposed to be…*.",
     myth: "Myth: *get something done* is slang and wrong in writing. Truth: it's standard English, just a little less formal than *have something done*. *We got the contract signed on time* is fine in most business emails.",
     fact: "English also builds the idea of “make or cause to be” into single words. The endings *-en*, *-ify* and *-ize* often do this job: *widen* (make wide), *shorten* (make short), *simplify* (make simple), *modernize* (make modern).",
     checks: [

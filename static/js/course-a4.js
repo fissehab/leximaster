@@ -176,7 +176,7 @@ export const ADDED = [
     fact: "*Whoever* clauses trip up even careful writers. In *Give the prize to whoever finishes first*, the right form is *whoever*, not *whomever*, because it is the subject of its own verb, *finishes*. The clause's own grammar decides the form, not the *to* before it.",
     checks: [
       { q: "A fact after an adjective: “I'm glad ___ you could make it.”", choices: ["that", "what", "whether"], answer: 0, why: "A whole statement after *glad*: *that* (or nothing)." },
-      { q: "The thing that: “___ you told me last night was a surprise.”", choices: ["That", "What", "Whether"], answer: 1, why: "*What* = *the thing that*; here it's the subject." },
+      { q: "The thing that: “___ you cooked last night was delicious.”", choices: ["That", "What", "Whether"], answer: 1, why: "*What* = *the thing that*; here it's the subject." },
       { q: "Statement order inside the clause: “I wonder how old ___.”", choices: ["is the building", "the building is", "does the building be"], answer: 1, why: "Inside a noun clause: subject, then verb." },
       { q: "Only one word works before *to*: “I can't decide ___ to rent or buy.”", choices: ["if", "that", "whether"], answer: 2, why: "Before *to*, use *whether*, not *if*." },
       { q: "At the start of the sentence: “___ we go out tonight depends on the babysitter.”", choices: ["Whether", "If", "That"], answer: 0, why: "A yes-or-no clause as the subject takes *whether*." },
@@ -276,7 +276,7 @@ export const ADDED = [
     tip: "Two quick tests. For *I* or *me*, cover the other person: *Send it to (Kim and) me.* For *only* or *almost*, ask “only what?” or “almost what?” and put the word right before the answer.",
     note: "In casual American speech, *Me and Sara went…* and *only* before the verb (*I only have ten dollars*) are everyday English, and nobody is confused. At work, on tests and in writing, use *Sara and I went*, and move *only* next to the word it limits when the meaning could be unclear.",
     myth: "Myth: *I* is always more correct or more polite than *me*. Truth: *me* is right after a verb or a preposition: *between you and me, for Sara and me, She invited Ali and me.* Using *I* there is a hypercorrection: trying so hard to be correct that you end up wrong.",
-    fact: "One of the most famous jokes in American film is a misplaced modifier. In *Animal Crackers* (1930), Groucho Marx says, “One morning I shot an elephant in my pajamas. How he got into my pajamas I'll never know.” The phrase *in my pajamas* could describe the hunter or the elephant.",
+    fact: "One of the most famous jokes in American film is a misplaced modifier. In *Animal Crackers* (1930), Groucho Marx says, “One morning I shot an elephant in my pajamas. How he got in my pajamas, I don't know.” The phrase *in my pajamas* could describe the hunter or the elephant.",
     checks: [
       { q: "In careful English, cover the other person: “Kim and ___ are going to the game.”", choices: ["me", "I", "myself"], answer: 1, why: "A subject: *I am going*, so *Kim and I*." },
       { q: "After a preposition: “Could you send the photos to Ali and ___?”", choices: ["I", "me"], answer: 1, why: "*Send them to me*, so *to Ali and me*." },

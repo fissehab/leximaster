@@ -3,9 +3,9 @@ export const ADDED = [
   {
     id: "homophones", level: "intermediate", unit: "Words and sounds",
     title: "Sound-alikes: their, there, they're and more", tag: "A2–B1",
-    key: "Sound-alikes are spelled by meaning, not by sound. An apostrophe means letters are missing: *they're* = *they are*, *it's* = *it is*. Possessives never take one: *their, its, your, whose*.",
+    key: "Sound-alikes are spelled by meaning, not by sound. An apostrophe means letters are missing: *they're* = *they are*, *it's* = *it is*. Possessive words like *their, its, your* and *whose* never take one (nouns still do: *Maria's*).",
     intro: "Words like *their, there* and *they're* sound the same, so speaking is easy; writing is where the trouble starts. Even native speakers mix them up in quick emails and texts, and readers notice. A few simple tests fix almost every case.",
-    learn: ["Choose between *their*, *there* and *they're*", "Use an apostrophe only in contractions: *it's, you're, who's*", "Tell *to, too, two* and *then, than* apart", "Keep *affect/effect*, *accept/except*, *lose/loose* and *weather/whether* straight"],
+    learn: ["Choose between *their*, *there* and *they're*", "Use an apostrophe in contractions (*it's, you're, who's*) but not in *its, your, whose*", "Tell *to, too, two* and *then, than* apart", "Keep *affect/effect*, *accept/except*, *lose/loose* and *weather/whether* straight"],
     rule: [
       "**Apostrophe = missing letters.** *They're, you're, it's* and *who's* are contractions: *they are, you are, it is* (or *it has*), *who is* (or *who has*). The possessives *their, your, its* and *whose* never take an apostrophe, just like *his, hers* and *ours*. *There* is a place (*over there*) or starts *there is / there are*.",
       "**to, too, two.** *To* shows direction or comes before a verb: *go to work, want to eat*. *Too* means *also* or *more than enough*: *me too, too hot*. *Two* is the number.",
@@ -89,14 +89,14 @@ export const ADDED = [
       { q: "Which sentence uses *then* and *than* correctly?", choices: ["Winters were colder then than they are now.", "Winters were colder than then they are now.", "Winters were colder then then they are now."], answer: 0, why: "*Then* = at that time; *than* compares." },
       { q: "Listen. How do the shoes fit?", say: "My new shoes feel a little loose.", choices: ["They're missing.", "They're a bit too tight.", "They're a bit too big."], answer: 2, why: "*Loose*, with an *s* sound, means not tight. *Lose*, with a *z* sound, would mean missing." },
       { q: "Listen. What does the speaker want to know?", say: "I wonder whether the store is open late tonight.", choices: ["what the weather is like", "if the store is open late", "where the store is"], answer: 1, why: "*Whether* means *if*." },
-      { q: "Listen. What does the speaker prefer?", say: "I'd rather walk than take the bus.", choices: ["walking first, then the bus", "walking", "taking the bus"], answer: 1, why: "*Rather* … *than* compares two choices: walking wins." },
+      { q: "Listen. What does the speaker prefer?", say: "I'd rather walk than take the bus.", choices: ["walking", "taking the bus"], answer: 0, why: "*Rather* … *than* compares two choices: walking wins." },
       { q: "Listen. What happened to the game?", say: "The cold weather didn't affect the game at all.", choices: ["It went on as usual.", "It was canceled.", "It started late."], answer: 0, why: "*Didn't affect* = didn't change it." },
     ],
     words: ["homophone", "contraction", "possessive", "affect", "whether"],
     visuals: [
       { kind: "flow", title: "Apostrophe or not?", caption: "Try saying the long form. If it fits, use the apostrophe.",
         steps: [
-          { q: "Can you say *they are, you are, it is* or *who is* instead?", yes: "*they're, you're, it's, who's*", ex: "**It's** raining. (It is raining.)" },
+          { q: "Can you say *they are, you are, it is / it has* or *who is / who has* instead?", yes: "*they're, you're, it's, who's*", ex: "**It's** raining. (It is raining.)" },
           { q: "Is it a place, or the start of *there is / there are*?", yes: "*there*", ex: "Sit over **there**." },
         ],
         else: "the possessive: *their, your, its, whose*", elseEx: "**Their** dog chased **its** tail." },
@@ -113,7 +113,7 @@ export const ADDED = [
     id: "sentence-types", level: "intermediate", unit: "Building sentences",
     title: "Simple, compound and complex sentences",
     key: "A *clause* has a subject and a verb. A *simple* sentence has one independent clause; a *compound* sentence joins two with *and, but, so*; a *complex* sentence adds a dependent clause with a word like *because, when, if* or *although*.",
-    intro: "Good writers mix short and long sentences. To do that, you need to know how clauses fit together: which ones can stand alone and which ones can't. This is also the key to the next lessons, on fragments, run-ons and commas.",
+    intro: "Good writers mix short and long sentences. To do that, you need to know how clauses fit together: which ones can stand alone and which ones can't. This is also the key to the lessons on fragments, run-ons and commas.",
     learn: ["Tell a clause from a phrase", "Recognize independent and dependent clauses", "Build simple, compound and complex sentences", "Vary sentence types to make writing clear and lively"],
     rule: [
       "**Clause or phrase.** A clause has a subject and a verb: *she smiled, because it rained*. A phrase is a group of words without that pair: *in the morning, my old friend, after lunch*.",
@@ -127,7 +127,7 @@ export const ADDED = [
       rows: [
         ["Simple", "one independent", "The train was late."],
         ["Compound", "two independent + *and, but, so…*", "The train was late, **so** I took a taxi."],
-        ["Complex", "one independent + one dependent", "I took a taxi **because** the train was late."],
+        ["Complex", "one independent + one or more dependent", "I took a taxi **because** the train was late."],
         ["Compound-complex", "two independent + one or more dependent", "**When** the train was late, I took a taxi, **but** Ana waited."],
       ],
     },
@@ -149,7 +149,7 @@ export const ADDED = [
       { t: "**In the morning**, the park is quiet.", note: "a phrase at the start", group: "Phrase or clause?" },
     ],
     mistakes: [
-      { bad: "I was hungry, I made a sandwich.", good: "I was hungry, so I made a sandwich.", note: "A comma alone can't join two independent clauses. Add *and, but* or *so* (more in the next lesson)." },
+      { bad: "I was hungry, I made a sandwich.", good: "I was hungry, so I made a sandwich.", note: "A comma alone can't join two independent clauses. Add *and, but* or *so* (more in the lesson on fragments, run-ons and comma splices)." },
       { bad: "Because I missed the bus.", good: "I was late because I missed the bus.", note: "A dependent clause can't stand alone. It needs an independent clause." },
       { bad: "Although it was cold, but we went swimming.", good: "Although it was cold, we went swimming.", note: "*Although* and *but* both show contrast. Use one, not both." },
       { bad: "She likes tea but, he likes coffee.", good: "She likes tea, but he likes coffee.", note: "The comma goes before the coordinator, not after it." },

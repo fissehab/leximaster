@@ -25,7 +25,7 @@ export const ADDED = [
     },
     examples: [
       { t: "The author **argues that** cities should close their downtown streets to cars.", note: "*argues*: the author takes a position" },
-      { t: "Dr. Okafor **notes that** the study was quite small.", note: "*notes*: points out a fact, neutral" },
+      { t: "Professor Okafor **notes that** the study was quite small.", note: "*notes*: points out a fact, neutral" },
       { t: "The report **suggests that** shorter meetings save time.", note: "*suggests*: a careful, tentative point" },
       { t: "The company **claims that** its new battery lasts a week.", note: "*claims*: the writer may doubt it" },
       { t: "Our principal likes to say, **“Reading is a superpower.”**", note: "a quotation: the exact words in quotation marks" },

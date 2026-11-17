@@ -357,7 +357,7 @@ export const ADDED = [
     intro: "We compare all the time: prices, places, people and plans. Learners often say ✗ *more cheap* or ✗ *more better*, or put *enough* in the wrong place. A few patterns and a short list of irregular words cover almost everything.",
     learn: ["Make comparatives with *-er* and *more*", "Make superlatives with *-est* and *most*", "Compare with *than* and *as … as*", "Compare actions: *faster, more carefully, better*", "Put *too* and *enough* in the right place"],
     rule: [
-      "**One syllable**: usually add **-er** and **-est**: *cheap, cheaper, the cheapest; tall, taller, the tallest*. Spelling: *big, bigger* (one vowel + one consonant: double it); *nice, nicer* (ends in *e*: just add *-r*).",
+      "**One syllable**: usually add **-er** and **-est**: *cheap, cheaper, the cheapest; tall, taller, the tallest*. Spelling: *big, bigger* (one vowel + one consonant: double it); *nice, nicer* (ends in *e*: just add *-r*). One-syllable words that end in *-ed* take *more*: *more tired, more bored*.",
       "**Two syllables ending in -y**: **-ier** and **-iest**: *easy, easier, the easiest; happy, happier*. **Most other longer words**: **more** and **most**: *more expensive, the most interesting*. A few two-syllable words can take either: *quieter* or *more quiet*.",
       "**Irregular**: *good, better, the best; bad, worse, the worst; far, farther, the farthest*.",
       "Use **than** after a comparative: *My brother is taller than me.* Use **as … as** when two things are the same: *She's as tall as her mother.* **Not as … as** means less: *This phone isn't as fast as that one.*",

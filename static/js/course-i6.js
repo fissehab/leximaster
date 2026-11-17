@@ -330,7 +330,7 @@ export const ADDED = [
       "**make and let + object + base verb**, with no *to*. *Make* = force or cause: *My mom made me clean my room. The movie made me cry.* *Let* = allow: *They let the kids stay up late. Let me help.*",
       "**help + object + (to) verb**: both are correct: *She helped me move* = *She helped me to move*. Americans usually leave out *to*.",
       "**Two objects**: *give, send, show, lend, buy* and *make* can take a person and a thing: *She gave me the keys* = *She gave the keys to me*; *He bought us lunch* = *He bought lunch for us*. When the thing is *it* or *them*, Americans usually put it first: *Give it to me.* *Explain, describe, say* and *suggest* always need *to* before the person: *Can you explain the rule to me?*, not ✗ *explain me the rule*.",
-      "**In the passive**, *make* takes *to*: *We were made to wait.* *Let* is almost never passive here (except *be let go*, meaning fired); use *be allowed to*: *We weren't allowed to leave.* Many other verbs work the same way: *I was told to sit down. Guests are asked to arrive early.*",
+      "**In the passive**, *make* takes *to*: *We were made to wait.* *Let* is almost never passive here (except *be let go*, meaning fired); use *be allowed to*: *We weren't allowed to leave.* Many other verbs work the same way: *I was told to sit down. Guests are asked to arrive early.* (The passive itself, *be* + past participle, is covered in the advanced lesson “Passive voice: when and why.”)",
     ],
     compare: {
       head: ["Verb", "Pattern", "Example"],
@@ -525,10 +525,10 @@ export const ADDED = [
           { name: "For someone else", parts: ["would rather", "+", "person", "+", "past form"], ex: "I'd rather you didn't." },
         ] },
       { kind: "flow", title: "*'d*: would or had?",
-        caption: "The word after *'d* tells you which one it is.",
+        caption: "The verb after *'d* tells you which one it is. *Come, put* and *run* look the same in both, so check the meaning: *I'd come if I could* = would.",
         steps: [
           { q: "Is the next word *better*?", yes: "*had*: strong advice", ex: "You**'d better** go." },
-          { q: "Is the next word a past participle (*gone, left, seen*)?", yes: "*had*: past perfect", ex: "She**'d** already **left**." },
+          { q: "Is the next verb a past participle (*gone, left, seen*)?", yes: "*had*: past perfect", ex: "She**'d** already **left**." },
         ],
         else: "*would*: *rather, like, prefer* or a base verb", elseEx: "I**'d rather** stay. I**'d like** some tea." },
     ],

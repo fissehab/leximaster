@@ -267,6 +267,7 @@ const BASE = [
       "Use **the** when the listener can tell which one you mean: you mentioned it before (*The dog was huge*), there is only one (*the sun*), or the situation shows it (*Close the door*).",
       "Use **no article** for plural and non-count nouns in general: *Dogs are loyal. Water is important.*",
       "Choose *a* or *an* by the first **sound**, not the first letter: *an hour* (the h is silent), *a university* (it starts with a y sound).",
+      "**Names** of people, cities, states and most countries take no article: *Maria lives in Chicago.* (A few place names take *the*; see “Articles II”.)",
     ],
     compare: {
       head: ["", "One (count)", "More than one", "Non-count"],
@@ -283,6 +284,7 @@ const BASE = [
       { t: "**The** moon is bright tonight.", note: "there is only one" },
       { t: "I love **music**.", note: "in general: no article" },
       { t: "It takes **an** hour.", note: "hour starts with a vowel sound" },
+      { t: "**Kenji** works in **Seattle**.", note: "names: no article" },
     ],
     mistakes: [
       { bad: "I am teacher.", good: "I am a teacher.", note: "After *be*, a job usually takes *a* or *an*." },
@@ -295,6 +297,7 @@ const BASE = [
       { q: "That's ___ honest answer.", choices: ["a", "an"], answer: 1, why: "*Honest* starts with a vowel sound: the h is silent." },
       { q: "I like ___ coffee, but not tea.", choices: ["the", "a", "(nothing)"], answer: 2, why: "Coffee in general: no article." },
       { q: "Listen. What comes before “hour”?", say: "I'll be there in an hour.", choices: ["a", "an", "the"], answer: 1, why: "*An hour*: a vowel sound follows." },
+      { q: "My cousin Omar moved to ___ Denver last year.", choices: ["the", "a", "(nothing)"], answer: 2, why: "The name of a city: no article." },
     ],
     words: ["article", "the"],
   },
@@ -387,7 +390,7 @@ const BASE = [
   {
     id: "questions-negatives", level: "beginner", unit: "Verbs: now, then, next",
     title: "Questions and negatives: be or do, can / can't",
-    key: "With *be, can* and *will*, put that word first: *Is she…? Can you…?* With other verbs, add *do* or *does*: *Do you…?*",
+    key: "With *be* and helpers like *can, will* and *should*, put that word first: *Is she…? Can you…?* With other verbs, add *do* or *does*: *Do you…?*",
     rule: [
       "With **be**, put *am, is* or *are* before the subject: *She is ready. Is she ready?* For a negative, add *not*: *She isn't ready.*",
       "With other verbs, use **do** or **does**: *Do you work here? Does he drive? I don't know.* In the past, use *did* (see “Past simple”).",
@@ -471,11 +474,12 @@ const BASE = [
   {
     id: "future", level: "beginner", unit: "Verbs: now, then, next",
     title: "Talking about the future",
-    key: "English has several ways to talk about the future: *going to* for plans, *will* for decisions and predictions, and *-ing* for arrangements.",
+    key: "English has several ways to talk about the future: *going to* for plans, *will* for decisions and predictions, *-ing* for arrangements, and the present simple for timetables.",
     rule: [
       "**be going to** + verb: a plan you already have, or a prediction from what you can see: *I'm going to visit my aunt. Look at those clouds. It's going to rain.*",
       "**will** + verb: a decision you make as you speak, an offer or a promise, or a prediction: *I'll get the door. I'll help you. I think she'll like it.*",
       "**am, is, are** + verb-*ing*: an arrangement, usually with a time and other people: *I'm meeting Sam at six.*",
+      "**Present simple** for timetables and schedules: *The train leaves at 6:15. The movie starts at eight.*",
       "In fast American speech, *going to* often sounds like *gonna*. Write *going to*.",
     ],
     compare: {
@@ -484,6 +488,7 @@ const BASE = [
         ["going to", "a plan; a prediction from what you see", "We're **going to** buy a house."],
         ["will", "a decision now; an offer or promise; a prediction", "I**'ll** have the soup, please."],
         ["am / is / are + -ing", "an arrangement", "She's **flying** to Miami on Friday."],
+        ["present simple", "a timetable or schedule", "Our flight **leaves** at noon tomorrow."],
       ],
     },
     examples: [
@@ -492,6 +497,7 @@ const BASE = [
       { t: "**We're having** a party on Saturday.", note: "an arrangement" },
       { t: "**It's going to** be hot tomorrow.", note: "a prediction" },
       { t: "**I won't** tell anyone.", note: "won't = will not: a promise" },
+      { t: "The game **starts** at eight tonight.", note: "a schedule" },
     ],
     mistakes: [
       { bad: "I will to call you.", good: "I'll call you.", note: "After *will*, the plain verb, no *to*." },
@@ -503,6 +509,7 @@ const BASE = [
       { q: "Which sentence is about a plan you already made?", choices: ["We're going to visit Japan in May. We booked the flights.", "It's raining? I'll drive you."], answer: 0, why: "A plan you already made: *going to*. *I'll drive you* is a decision made as you speak." },
       { q: "Which sentence is a prediction from what you can see?", choices: ["Look at that ladder! It's going to fall.", "I'll have a coffee, please."], answer: 0, why: "You can see it is about to happen: *going to*." },
       { q: "Listen. Is this an arrangement or a decision made now?", say: "I'm meeting my boss on Friday.", choices: ["an arrangement", "a decision made now"], answer: 0, why: "*I'm meeting* + a day: it is already arranged." },
+      { q: "Hurry up! The concert ___ in ten minutes.", choices: ["start", "starts", "will to start"], answer: 1, why: "A schedule: the present simple, with *-s* after *the concert*." },
     ],
     words: ["future", "will"],
   },
@@ -604,6 +611,8 @@ const BASE = [
       "Use the **present perfect** (*have* or *has* + past participle) for: (1) life experience: *I've seen that movie*; (2) a past action with a result now: *She's lost her keys*; (3) something that started in the past and is still true: *We've lived here for ten years.*",
       "Irregular verbs have a third form, the past participle: *see, saw, seen; go, went, gone; eat, ate, eaten; write, wrote, written*.",
       "Use **for** with a length of time (*for ten years*) and **since** with a starting point (*since 2015*).",
+      "**already, just, yet**: *already* (sooner than expected) and *just* (a short time ago) usually go before the past participle: *I've already eaten. She's just left.* *Yet* goes at the end of questions and negatives: *Have you finished yet? I haven't called him yet.*",
+      "**been to** or **gone to**? *Been to* = went and came back: *She's been to Japan twice.* *Gone to* = went and is still there: *She's gone to Japan; she's back in May.*",
     ],
     compare: {
       head: ["Past simple", "Present perfect"],
@@ -633,7 +642,7 @@ const BASE = [
       { q: "She ___ in this office since March.", choices: ["worked", "has worked"], answer: 1, why: "*Since*: from the past until now." },
       { q: "She has worked here ___ 2020.", choices: ["for", "since"], answer: 1, why: "A starting point: *since*." },
       { q: "They ___ married for 25 years, and they're still very happy.", choices: ["were", "have been"], answer: 1, why: "From the past until now." },
-      { q: "Listen. What do you hear?", say: "I've finished my homework.", choices: ["I finished my homework.", "I've finished my homework."], answer: 1, why: "You hear a short *'ve* before *finished*." },
+      { q: "Listen. What do you hear?", say: "She has finished her homework.", choices: ["She finished her homework.", "She has finished her homework."], answer: 1, why: "You hear *has* before *finished*: the present perfect." },
     ],
     words: ["experience", "since"],
   },
