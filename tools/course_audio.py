@@ -47,14 +47,57 @@ def sentences() -> list[dict]:
     return rows
 
 
+# Words spelled one way and said two ways that the phonemizer gets wrong in
+# these sentences (found by checking every course sentence with such a word).
+# Everywhere: "used to" and "supposed to" are said with /st/ (YOOS-tuh,
+# suh-POHS-tuh), "use to" with /s/, and "excuse me" with /z/.
+RULES = [
+    (r"jˈuːzd(\s+t(?:ə|uː|ʊ))", r"jˈuːst\1"),          # used to
+    (r"jˈuːz(\s+t(?:ə|uː|ʊ))", r"jˈuːs\1"),            # (didn't) use to
+    (r"səpˈoʊzd(\s+t(?:ə|uː|ʊ))", r"səpˈoʊst\1"),      # supposed to
+    (r"ɛkskjˈuːs(\s+)mˌiː", r"ɛkskjˈuːz\1mˌiː"),  # excuse me
+]
+# One sentence at a time: the sound its meaning needs.
+FIXES = {
+    "Close the door, please.": [("klˈoʊs", "klˈoʊz")],
+    "All my friends live nearby.": [("lˈaɪv", "lˈɪv")],
+    "That's the house where my grandparents live.": [("lˈaɪv", "lˈɪv")],
+    "My brother lives in Texas, and my sister lives in Ohio.": [("lˈaɪvz", "lˈɪvz")],
+    "My brother lives in Texas.": [("lˈaɪvz", "lˈɪvz")],
+    "My cousin lives in Kenya.": [("lˈaɪvz", "lˈɪvz")],
+    "My grandmother lives by herself.": [("lˈaɪvz", "lˈɪvz")],
+    "My sister lives in Miami she's a nurse.": [("lˈaɪvz", "lˈɪvz")],
+    "My sister lives in Miami.": [("lˈaɪvz", "lˈɪvz")],
+    "Seattle, where my cousin lives, gets a lot of rain.": [("lˈaɪvz", "lˈɪvz")],
+    "Feeling nervous, she read her notes again.": [("ɹˈiːd", "ɹˈɛd")],
+    "I read an article about bees.": [("ɹˈiːd", "ɹˈɛd")],
+    "Probably use more exclamation points!": [("jˈuːs", "jˈuːz")],
+}
+
+
+def phonemes(kokoro, part: str) -> str:
+    """What the voice says for one sentence: the phonemizer's reading with
+    the RULES and the sentence's FIXES applied."""
+    ph = kokoro.tokenizer.phonemize(part)
+    for pat, rep in RULES:
+        ph = re.sub(pat, rep, ph)
+    for wrong, right in FIXES.get(part.strip(), []):
+        ph = ph.replace(wrong, right)
+    return ph
+
+
+def parts_of(text: str) -> list[str]:
+    return [p for p in re.split(r"(?<=[.!?])\s+", text.strip()) if p]
+
+
 def say(kokoro, text: str, voice: str):
     """Kokoro's reading of the text, a short silence between sentences and
     at commas (tts.synth)."""
     import numpy as np
-    parts = [p for p in re.split(r"(?<=[.!?])\s+", text.strip()) if p]
+    parts = parts_of(text)
     out, sr = [], 24000
     for i, p in enumerate(parts):
-        audio, sr = tts.synth(kokoro, kokoro.tokenizer.phonemize(p), voice, tts.SPEED)
+        audio, sr = tts.synth(kokoro, phonemes(kokoro, p), voice, tts.SPEED)
         if i:
             out.append(np.zeros(int(sr * SENTENCE_PAUSE), dtype=audio.dtype))
         out.append(audio)
@@ -74,10 +117,26 @@ def main() -> int:
     rows = sentences()
     m = json.loads(MANIFEST.read_text(encoding="utf-8")) if MANIFEST.exists() else {}
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    todo = [r for r in rows if r["key"] not in m or not (tts.DATA / m[r["key"]]["file"]).exists()]
+    kokoro = Kokoro(str(tts.MODEL), str(tts.VOICES))
+
+    def said(text: str) -> str:
+        return " | ".join(phonemes(kokoro, p) for p in parts_of(text))
+
+    def plain_said(text: str) -> str:
+        return " | ".join(kokoro.tokenizer.phonemize(p) for p in parts_of(text))
+
+    # New sentences, missing files, and ones whose sounds were corrected since
+    # they were recorded (a recording made before RULES/FIXES has no "ph").
+    def stale(r) -> bool:
+        k = r["key"]
+        if k not in m or not (tts.DATA / m[k]["file"]).exists():
+            return True
+        ph = said(k)
+        return m[k].get("ph", plain_said(k)) != ph
+
+    todo = [r for r in rows if stale(r)]
     print(f"{len(rows)} sentences, {len(todo)} to record", flush=True)
     if todo:
-        kokoro = Kokoro(str(tts.MODEL), str(tts.VOICES))
         base = tts._whisper("base.en")
         t0, stuck = time.time(), []
         for n, r in enumerate(todo, 1):
@@ -104,7 +163,7 @@ def main() -> int:
             old = m.get(text, {}).get("file")
             if old and old != f"tts/course/{dst.name}":
                 (tts.DATA / old).unlink(missing_ok=True)
-            m[text] = {"file": f"tts/course/{dst.name}", "voice": voice, "heard": heard, "match": round(score, 2),
+            m[text] = {"file": f"tts/course/{dst.name}", "voice": voice, "heard": heard, "match": round(score, 2), "ph": said(text),
                        "seconds": round(len(audio) / sr, 2)}
             if n % 20 == 0 or n == len(todo):
                 MANIFEST.write_text(json.dumps(m, ensure_ascii=False, indent=0, sort_keys=True), encoding="utf-8")
