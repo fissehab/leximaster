@@ -35,6 +35,8 @@ export function lessonSentences(lesson) {
     out.push({ key: spoken(m.good, m.sayGood), where: "mistake" });
   }
   for (const c of lesson.checks || []) if (c.say) out.push({ key: spoken(c.say), where: "check" });
+  // A conversation: A is said by a woman's voice, B by a man's.
+  for (const d of lesson.dialogue || []) out.push({ key: spoken(d.t), where: "dialogue", voice: d.who === "B" ? "male" : "female" });
   return out;
 }
 

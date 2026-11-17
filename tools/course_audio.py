@@ -26,6 +26,8 @@ import tts  # noqa: E402
 MANIFEST = tts.CACHE / "course_tts.json"
 OUT_DIR = tts.OUT_DIR / "course"
 MAP = ROOT / "static" / "js" / "course-audio.js"
+FEMALE = [tts.VOICE, "af_bella"]   # Kokoro's best-rated American voices
+MALE = ["am_michael", "am_adam"]
 PASS = 0.85          # how close Whisper's transcript must be to the sentence (letters, 0–1)
 SENTENCE_PAUSE = 0.35  # seconds between sentences ("Look! It's snowing.")
 
@@ -80,9 +82,13 @@ def main() -> int:
         t0, stuck = time.time(), []
         for n, r in enumerate(todo, 1):
             text = r["key"]
-            first = tts.voice_for(kokoro.tokenizer.phonemize(text))
+            if r.get("voice") == "male":   # the man in a conversation
+                voices = MALE
+            else:
+                first = tts.voice_for(kokoro.tokenizer.phonemize(text))
+                voices = [first] + [v for v in FEMALE if v != first]
             best = None
-            for voice in [first] + [v for v, _ in tts.RETRY if v != first]:
+            for voice in voices:
                 audio, sr = say(kokoro, text, voice)
                 heard = tts.hear(base, tts.resample16k(audio, sr), beam=5)
                 score = tts.similar(heard, text)

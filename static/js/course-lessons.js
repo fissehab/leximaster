@@ -16,6 +16,12 @@
 //
 // Rules say "usually" where a rule has exceptions and give one; nothing that
 // educated Americans say or write is marked wrong.
+//
+// static/js/course-more.js adds to each lesson an introduction, what you
+// will learn, grouped examples, a conversation, a tip, a fun fact and more
+// questions; LESSONS is both together.
+
+import { MORE } from "./course-more.js";
 
 export const LEVELS = [
   { id: "beginner", name: "Beginner", cefr: "A1–A2",
@@ -26,7 +32,7 @@ export const LEVELS = [
     goal: "Express nuance, report and soften what you say, and choose the right style for work and study." },
 ];
 
-export const LESSONS = [
+const BASE = [
   {
     id: "parts-of-speech", level: "beginner", unit: "Words and their jobs",
     title: "Parts of speech",
@@ -659,6 +665,11 @@ export const LESSONS = [
     words: ["preposition", "depend"],
   },
 ];
+
+export const LESSONS = BASE.map(l => {
+  const m = MORE[l.id] || {};
+  return { ...l, ...m, examples: [...l.examples, ...(m.examples || [])], checks: [...l.checks, ...(m.checks || [])] };
+});
 
 /** Lessons the syllabus has next, shown as "coming later" by level. */
 export const COMING = {
