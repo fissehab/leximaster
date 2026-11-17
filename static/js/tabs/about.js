@@ -1,6 +1,9 @@
 // About: who made LexiMaster and why.
 
+import { LESSONS } from "../course-lessons.js";
 import { h, pageHead } from "../ui.js";
+
+const QUESTIONS = LESSONS.reduce((n, l) => n + l.checks.length, 0);
 
 const REPO = "https://github.com/fissehab/leximaster";
 const GUIDE = "guide/LexiMaster-Install-Guide.pdf";   // docs/guide/, kept across site builds
@@ -36,8 +39,18 @@ export async function render(root) {
           "mouth for each sound in the word, with a short tip. Practice → ", h("b", "Hard sounds"), " has the hardest sounds, " +
           "words to try and a listening game. The real-mouth clips come from the USC 75-Speaker Speech MRI Database " +
           "(CC BY 4.0).")),
-      card("Use it freely",
-        h("p", "If it's useful to you too, you're welcome to use it. Your progress stays in your own browser.")),
+      card("Free for everyone",
+        h("p", "A large vocabulary is only part of knowing a language, so I added a complete ", h("b", "English course"),
+          " for anyone who wants to learn English or strengthen it, wherever they are starting from. It has " +
+          `${LESSONS.length} short lessons in three levels, from beginner to advanced, covering grammar, punctuation, ` +
+          "spelling, vocabulary, pronunciation and writing, from the parts of speech to paragraphs and essays."),
+        h("p", "Each lesson explains one idea in plain language and shows it in a picture. You can hear every example " +
+          "and conversation, then check yourself with questions, more than " +
+          `${(Math.floor(QUESTIONS / 100) * 100).toLocaleString("en-US")} across the course. Together with the ` +
+          "dictionary and the practice activities, LexiMaster brings the words, the grammar and the sounds of " +
+          "English into one place."),
+        h("p", "You're welcome to use all of it. Your progress stays in your own browser."),
+        h("p", h("a.btn", { href: "#course" }, "Start the course"))),
       window.LEXI_STATIC ? card("Install it",
         h("p", "LexiMaster installs like an app on a phone, tablet or computer, with no app store and no sign-up, " +
           "and then works offline. The illustrated guide shows each step for iPhone, Android, Mac and Windows."),
