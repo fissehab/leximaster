@@ -1,0 +1,3575 @@
+[
+ {
+  "word": "get the wrong idea",
+  "domains": [
+   "idioms",
+   "common_phrases"
+  ],
+  "phonetic": "/ˌɡɛt ðə ˌɹɔŋ aɪˈdiə/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To misunderstand something, especially to believe wrongly that someone means or intends something they do not."
+    ]
+   }
+  ],
+  "etymology": "A plain combination of wrong and idea, used as a set phrase in modern English.",
+  "conversation": [
+   {
+    "sense": "clarifying",
+    "text": "Don't get the wrong idea. I'm not mad at you; I'm just tired."
+   },
+   {
+    "sense": "misunderstanding",
+    "text": "She saw us at lunch together and got the wrong idea. We're just coworkers."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To understand a situation or someone's intentions incorrectly, usually in a way that could cause trouble or hurt feelings."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɛt ðə ˌɹɔŋ aɪˈdiə/",
+    "respelling": "get thuh rawng ahy-DEE-uh",
+    "tip": "Stress the middle of \"idea\": get the wrong i-DE-a. \"Wrong\" has no g sound at the end: rawng."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; often used to head off a misunderstanding before it starts.",
+   "usage_note": "Very common as a warning before explaining yourself: \"Don't get the wrong idea, but...\" or \"I don't want you to get the wrong idea.\" In romance it often means thinking someone is interested when they are not. \"Give someone the wrong idea\" is what the other person does to cause it.",
+   "word_family": [
+    "got the wrong idea (past)",
+    "give someone the wrong idea (cause it)",
+    "the wrong idea (noun phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get the wrong end of the stick",
+     "note": "\"Get the wrong end of the stick\" means the same but is mainly British; Americans say \"get the wrong idea.\""
+    },
+    {
+     "vs": "take something the wrong way",
+     "note": "\"Take something the wrong way\" is being offended by a remark that was not meant badly; \"get the wrong idea\" is any mistaken understanding."
+    }
+   ],
+   "antonyms": [
+    "get the picture",
+    "get the message"
+   ],
+   "collocations": [
+    "don't get the wrong idea",
+    "got the wrong idea",
+    "give someone the wrong idea",
+    "I don't want you to get the wrong idea"
+   ],
+   "examples": {
+    "everyday": "I hugged him goodbye and I hope he didn't get the wrong idea.",
+    "professional": "Let me explain the new policy clearly so nobody gets the wrong idea about layoffs.",
+    "analytical": "Survey questions worded vaguely can give respondents the wrong idea about what is being measured."
+   },
+   "analogy": "Like taking the wrong exit: you are confidently headed somewhere the speaker never pointed.",
+   "etymology": "A plain combination of wrong and idea, used as a set phrase in modern English.",
+   "common_mistakes": [
+    "Saying \"take the wrong idea\"; the verb is \"get\" (or \"have\"): \"get the wrong idea\".",
+    "Using \"a wrong idea\" in this sense; the fixed phrase uses \"the\": \"the wrong idea\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "talk one's way out of",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌtɔk wʌnz ˈweɪ ˌaʊt əv/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To escape trouble, a punishment or an obligation by talking cleverly or persuasively."
+    ]
+   }
+  ],
+  "etymology": "Built on the pattern \"verb + one's way + direction\" (\"fight one's way out,\" \"work one's way up\"), here with talk.",
+  "conversation": [
+   {
+    "sense": "trouble",
+    "text": "He got pulled over for speeding but somehow talked his way out of a ticket."
+   },
+   {
+    "sense": "doubt",
+    "text": "You're not going to talk your way out of this one. I saw the receipt."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To get yourself out of a difficult situation by explaining, persuading or charming people."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtɔk wʌnz ˈweɪ ˌaʊt əv/",
+    "respelling": "tawk wuhnz WAY owt uhv",
+    "tip": "Stress WAY: talk your WAY out of it. \"Talk\" has a silent l: tawk."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mixed: admiring of someone's quick tongue, but often with a hint that they did not really deserve to get away with it.",
+   "usage_note": "Used with the right possessive: \"talk my / your / his / her / their way out of.\" The object is usually trouble: \"a ticket,\" \"a fine,\" \"a mess,\" \"this one.\" The opposite pattern, \"talk one's way into,\" means getting into a place or job by talking: \"She talked her way into the VIP section.\"",
+   "word_family": [
+    "talked one's way out of (past)",
+    "talk one's way into (opposite direction)"
+   ],
+   "distinctions": [
+    {
+     "vs": "talk someone out of",
+     "note": "\"Talk someone out of something\" means persuading another person not to do something; \"talk one's way out of\" is getting yourself out of trouble."
+    },
+    {
+     "vs": "weasel out",
+     "note": "\"Weasel out\" is avoiding a duty in a sneaky way; \"talk one's way out of\" stresses the talking and is less negative."
+    }
+   ],
+   "antonyms": [
+    "face the music",
+    "own up"
+   ],
+   "collocations": [
+    "talk your way out of this",
+    "talked his way out of a ticket",
+    "can't talk your way out of",
+    "try to talk her way out of it"
+   ],
+   "examples": {
+    "everyday": "My brother can talk his way out of anything, even a missed curfew.",
+    "professional": "A good story won't talk you out of a missed deadline; tell the client early and offer a new date.",
+    "analytical": "Studies of police stops suggest that drivers who are polite and calm are more likely to talk their way out of a citation."
+   },
+   "analogy": "Like a magician escaping from chains, except the tool is words instead of a hidden key.",
+   "etymology": "Built on the pattern \"verb + one's way + direction\" (\"fight one's way out,\" \"work one's way up\"), here with talk.",
+   "common_mistakes": [
+    "Leaving out the possessive: \"He talked way out of it\" is wrong; say \"talked his way out of it\".",
+    "Confusing it with \"talk someone out of,\" which is persuading someone else."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "dish the dirt",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌdɪʃ ðə ˈdɝt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To share gossip, especially private or scandalous information about other people."
+    ]
+   }
+  ],
+  "etymology": "Twentieth-century American slang: dish (to serve up, to gossip) plus dirt (scandalous information).",
+  "conversation": [
+   {
+    "sense": "gossip",
+    "text": "Come on, dish the dirt. What happened at the party after I left?"
+   },
+   {
+    "sense": "tell-all",
+    "text": "Her former assistant wrote a book dishing the dirt on the whole family."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To tell juicy or damaging gossip about someone."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdɪʃ ðə ˈdɝt/",
+    "respelling": "dish thuh DURT",
+    "tip": "\"Dirt\" is one syllable with an r-colored vowel: durt. Stress DIRT."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Playful among friends; negative when it means spreading damaging stories about someone.",
+   "usage_note": "Often \"dish the dirt on someone.\" Friends say it eagerly (\"Dish!\" alone also works, very casually). Used in media for tell-all books and interviews. Younger speakers also say \"spill the tea\" for the same thing.",
+   "word_family": [
+    "dished the dirt (past)",
+    "dishing the dirt (-ing)",
+    "dish (short form, slang)",
+    "the dirt (noun: the gossip)"
+   ],
+   "distinctions": [
+    {
+     "vs": "spill the tea",
+     "note": "\"Spill the tea\" is newer, younger slang for sharing gossip; \"dish the dirt\" is older and more widely understood across ages."
+    },
+    {
+     "vs": "spill the beans",
+     "note": "\"Spill the beans\" is revealing a secret, often by accident; \"dish the dirt\" is gossiping on purpose, usually about scandal."
+    }
+   ],
+   "antonyms": [
+    "keep it to yourself",
+    "mum's the word"
+   ],
+   "collocations": [
+    "dish the dirt on",
+    "dishing the dirt",
+    "ready to dish the dirt",
+    "dished the dirt about"
+   ],
+   "examples": {
+    "everyday": "Every Thanksgiving my aunt dishes the dirt on the whole neighborhood.",
+    "professional": "Please don't dish the dirt about clients in the break room; it gets back to people.",
+    "analytical": "Celebrity memoirs that dish the dirt tend to sell far more copies than ones that stay polite."
+   },
+   "analogy": "Like serving gossip on a plate: everyone leans in to get a taste.",
+   "etymology": "Twentieth-century American slang: dish (to serve up, to gossip) plus dirt (scandalous information).",
+   "common_mistakes": [
+    "Saying \"dish out the dirt\" in the gossip sense; the idiom is \"dish the dirt.\"",
+    "Using it for harmless news; \"the dirt\" means private or scandalous details."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "the long and short of it",
+  "domains": [
+   "idioms",
+   "common_phrases"
+  ],
+  "phonetic": "/ðə ˌlɔŋ ən ˈʃɔɹt əv ɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "The basic facts or main point of a situation, stated briefly."
+    ]
+   }
+  ],
+  "etymology": "In English since at least the 1500s; Shakespeare uses \"the short and the long of it\" in The Merry Wives of Windsor.",
+  "conversation": [
+   {
+    "sense": "summing up",
+    "text": "The long and short of it is that we can't afford a new car this year."
+   },
+   {
+    "sense": "storytelling",
+    "text": "There was a mix-up with the tickets, a lot of yelling... the long and short of it is, we missed the show."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "The essential point, after skipping the details."
+   },
+   "pronunciation": {
+    "ipa": "/ðə ˌlɔŋ ən ˈʃɔɹt əv ɪt/",
+    "respelling": "thuh lawng uhn SHORT uhv it",
+    "tip": "Stress SHORT. \"And\" shrinks to \"n\": the long n SHORT of it."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; signals that you are summing up.",
+   "usage_note": "Almost always \"The long and short of it is (that)...\" at the start of a summary. It often follows a messy story. It is less common in American speech than \"long story short\" or \"the bottom line is,\" but still widely understood.",
+   "word_family": [
+    "the long and the short of it (fuller form)"
+   ],
+   "distinctions": [
+    {
+     "vs": "long story short",
+     "note": "\"Long story short\" is the more common casual American way to skip to the ending of a story; \"the long and short of it\" sums up the overall situation."
+    },
+    {
+     "vs": "the bottom line",
+     "note": "\"The bottom line\" is the most important fact or result, often in business; \"the long and short of it\" is a summary of a whole story."
+    }
+   ],
+   "antonyms": [
+    "in detail",
+    "at length"
+   ],
+   "collocations": [
+    "the long and short of it is",
+    "that's the long and short of it",
+    "the long and the short of it"
+   ],
+   "examples": {
+    "everyday": "We talked for hours, but the long and short of it is that she's moving to Denver.",
+    "professional": "The long and short of it is that the vendor can't deliver before March, so we need a backup.",
+    "analytical": "The long and short of it is that the effect disappears once income is controlled for."
+   },
+   "analogy": "Like reading only the last page of a long report: you skip the journey and get the result.",
+   "etymology": "In English since at least the 1500s; Shakespeare uses \"the short and the long of it\" in The Merry Wives of Windsor.",
+   "common_mistakes": [
+    "Saying \"the short and long of it\"; the modern order is \"the long and short of it.\"",
+    "Using it before a long explanation; it introduces the short summary, not the details."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "loose lips sink ships",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌlus ˈlɪps ˌsɪŋk ˈʃɪps/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Careless talk can reveal secrets and cause serious harm; a warning to keep private information private."
+    ]
+   }
+  ],
+  "etymology": "An American World War II propaganda slogan warning that idle talk could help enemy spies locate ships.",
+  "conversation": [
+   {
+    "sense": "warning",
+    "text": "Don't tell anyone about the surprise party. Loose lips sink ships."
+   },
+   {
+    "sense": "after a leak",
+    "text": "Someone told the press about the merger early. Loose lips sink ships."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "proverb",
+    "definition": "A reminder that talking carelessly about secrets can ruin plans or hurt people."
+   },
+   "pronunciation": {
+    "ipa": "/ˌlus ˈlɪps ˌsɪŋk ˈʃɪps/",
+    "respelling": "loos LIPS sink SHIPS",
+    "tip": "\"Loose\" ends in an s sound (loos), not a z. Stress LIPS and SHIPS evenly, like a slogan."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Half-joking today; a friendly warning to keep quiet.",
+   "usage_note": "Used as a complete sentence, often with a wink, about surprise parties, business secrets or gossip. It is a saying, so the words do not change. Older Americans may recognize it from World War II posters.",
+   "word_family": [
+    "loose-lipped (adjective)",
+    "loose lips (noun phrase: careless talk)"
+   ],
+   "distinctions": [
+    {
+     "vs": "mum's the word",
+     "note": "\"Mum's the word\" promises that you will keep a secret; \"loose lips sink ships\" warns others not to talk."
+    },
+    {
+     "vs": "let the cat out of the bag",
+     "note": "\"Let the cat out of the bag\" describes revealing a secret; \"loose lips sink ships\" warns against doing it."
+    }
+   ],
+   "antonyms": [
+    "my lips are sealed"
+   ],
+   "collocations": [
+    "remember, loose lips sink ships",
+    "loose lips",
+    "loose-lipped"
+   ],
+   "examples": {
+    "everyday": "Keep the engagement quiet until she tells her parents; loose lips sink ships.",
+    "professional": "The product launch is still confidential, so remember: loose lips sink ships.",
+    "analytical": "The slogan \"Loose lips sink ships\" is a classic example of wartime propaganda aimed at everyday conversation."
+   },
+   "analogy": "Like a small hole below the waterline: one careless word can bring down something big.",
+   "etymology": "An American World War II propaganda slogan warning that idle talk could help enemy spies locate ships.",
+   "common_mistakes": [
+    "Saying \"loose lips sink the ship\"; the slogan is \"loose lips sink ships.\"",
+    "Spelling \"loose\" as \"lose\"; loose means not tight."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "my lips are sealed",
+  "domains": [
+   "idioms",
+   "common_phrases"
+  ],
+  "phonetic": "/maɪ ˌlɪps ɚ ˈsild/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A promise that one will keep a secret and tell no one."
+    ]
+   }
+  ],
+  "etymology": "A plain image of lips closed like a sealed letter; widespread in English for well over a century.",
+  "conversation": [
+   {
+    "sense": "promise",
+    "text": "Don't worry, I won't tell your mom. My lips are sealed."
+   },
+   {
+    "sense": "refusing",
+    "text": "I'm not saying who the new manager is. My lips are sealed."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I promise not to tell anyone (or I refuse to say)."
+   },
+   "pronunciation": {
+    "ipa": "/maɪ ˌlɪps ɚ ˈsild/",
+    "respelling": "mahy lips er SEELD",
+    "tip": "\"Are\" is reduced to \"er\": my lips er SEALED. \"Sealed\" is one syllable."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Friendly and reassuring; sometimes teasing when refusing to share.",
+   "usage_note": "A full sentence, usually a reply to \"Don't tell anyone.\" It can also refuse to reveal something: \"Who's the gift from? My lips are sealed.\" Often with a gesture of zipping the lips.",
+   "word_family": [
+    "sealed lips (noun phrase)",
+    "zip it / zip one's lips (related gesture and phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "mum's the word",
+     "note": "\"Mum's the word\" is similar but more old-fashioned and can be said to others (\"Mum's the word, okay?\"); \"my lips are sealed\" is about yourself."
+    },
+    {
+     "vs": "cross my heart",
+     "note": "\"Cross my heart\" promises that something is true or that you will do it; \"my lips are sealed\" promises silence."
+    }
+   ],
+   "antonyms": [
+    "spill the beans",
+    "let the cat out of the bag"
+   ],
+   "collocations": [
+    "my lips are sealed",
+    "don't worry, my lips are sealed",
+    "her lips are sealed"
+   ],
+   "examples": {
+    "everyday": "You can trust me with the surprise. My lips are sealed.",
+    "professional": "Until the announcement is public, my lips are sealed, even with my own team.",
+    "analytical": "In everyday speech, \"my lips are sealed\" works as a social contract: saying it publicly commits the speaker to secrecy."
+   },
+   "analogy": "Like an envelope sealed shut: nothing gets out until the right time.",
+   "etymology": "A plain image of lips closed like a sealed letter; widespread in English for well over a century.",
+   "common_mistakes": [
+    "Saying \"my mouth is sealed\"; the set phrase uses \"lips\".",
+    "Using it to mean you cannot speak for medical reasons; it is only about keeping secrets."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "the talk of the town",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ðə ˌtɔk əv ðə ˈtaʊn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A person or thing that everyone in a place is talking about."
+    ]
+   }
+  ],
+  "etymology": "An old phrase, recorded since at least the 1600s, from the idea of a whole town gossiping about one subject.",
+  "conversation": [
+   {
+    "sense": "news",
+    "text": "The new taco place is the talk of the town. You can't get a table on Fridays."
+   },
+   {
+    "sense": "scandal",
+    "text": "After the mayor's speech, he was the talk of the town for weeks."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "Someone or something that everyone is discussing, because it is exciting, new or scandalous."
+   },
+   "pronunciation": {
+    "ipa": "/ðə ˌtɔk əv ðə ˈtaʊn/",
+    "respelling": "thuh tawk uhv thuh TOWN",
+    "tip": "Stress TOWN. \"Talk\" has a silent l: tawk."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; can be positive (a hit) or negative (a scandal).",
+   "usage_note": "Usually \"be the talk of the town.\" The \"town\" can be any community: a school, an office, a whole city. It is common in news headlines and reviews.",
+   "word_family": [
+    "become the talk of the town"
+   ],
+   "distinctions": [
+    {
+     "vs": "word gets around",
+     "note": "\"Word gets around\" describes news spreading; \"the talk of the town\" is the thing everyone is talking about."
+    },
+    {
+     "vs": "the buzz",
+     "note": "\"The buzz\" is the excitement around something new; \"the talk of the town\" names the thing itself."
+    }
+   ],
+   "antonyms": [
+    "old news",
+    "yesterday's news"
+   ],
+   "collocations": [
+    "the talk of the town",
+    "became the talk of the town",
+    "still the talk of the town",
+    "the talk of the office"
+   ],
+   "examples": {
+    "everyday": "After her wedding dress showed up online, she was the talk of the town.",
+    "professional": "The new product was the talk of the trade show, and our booth was packed all weekend.",
+    "analytical": "Local newspapers often reflect what is the talk of the town, which makes them useful sources for social historians."
+   },
+   "analogy": "Like a campfire everyone gathers around: wherever you go, people are talking about it.",
+   "etymology": "An old phrase, recorded since at least the 1600s, from the idea of a whole town gossiping about one subject.",
+   "common_mistakes": [
+    "Saying \"the talk of a town\"; it is \"the talk of the town.\"",
+    "Using it for something private; it means everyone is talking about it publicly."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "rumor has it",
+  "domains": [
+   "idioms",
+   "small_talk",
+   "common_phrases"
+  ],
+  "phonetic": "/ˈɹumɚ ˌhæz ɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "People are saying (used to introduce information that may or may not be true)."
+    ]
+   }
+  ],
+  "etymology": "A set phrase in English for centuries, from rumor (Latin rumor, noise, talk).",
+  "conversation": [
+   {
+    "sense": "gossip",
+    "text": "Rumor has it they're getting married this summer."
+   },
+   {
+    "sense": "office",
+    "text": "Rumor has it the company's moving us to a new building."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "People say that; I've heard that (but it isn't confirmed)."
+   },
+   "pronunciation": {
+    "ipa": "/ˈɹumɚ ˌhæz ɪt/",
+    "respelling": "ROO-mer haz it",
+    "tip": "Stress the first syllable of \"rumor\": ROO-mer has it."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral to playful; signals unconfirmed news.",
+   "usage_note": "Used at the start of a sentence: \"Rumor has it (that)...\" It lets you share something without claiming it is definitely true. American spelling is \"rumor\"; British is \"rumour.\"",
+   "word_family": [
+    "rumor (noun)",
+    "rumored (adjective: \"the rumored merger\")",
+    "the rumor mill (the network of gossip)"
+   ],
+   "distinctions": [
+    {
+     "vs": "word on the street",
+     "note": "\"Word on the street\" is similar but slangier; \"rumor has it\" is more common in all settings."
+    },
+    {
+     "vs": "a little bird told me",
+     "note": "\"A little bird told me\" hides who told you; \"rumor has it\" suggests many people are saying it."
+    }
+   ],
+   "antonyms": [
+    "it's official",
+    "confirmed"
+   ],
+   "collocations": [
+    "rumor has it that",
+    "rumor has it you're",
+    "or so rumor has it"
+   ],
+   "examples": {
+    "everyday": "Rumor has it you make the best lasagna in the family.",
+    "professional": "Rumor has it the budget will be cut, but let's wait for official numbers before planning.",
+    "analytical": "Rumor has it that the theory was rejected by three journals before it became famous, though the records are incomplete."
+   },
+   "analogy": "Like news passed hand to hand at a party: it travels, but nobody is sure who started it.",
+   "etymology": "A set phrase in English for centuries, from rumor (Latin rumor, noise, talk).",
+   "common_mistakes": [
+    "Saying \"the rumor has it\"; there is no \"the\": \"Rumor has it.\"",
+    "Using it for confirmed facts; it signals the information is unverified."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "word gets around",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌwɝd ˌɡɛts əˈɹaʊnd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "News or information spreads quickly from person to person."
+    ]
+   }
+  ],
+  "etymology": "Word here has its older sense of news or a message, as in \"send word.\"",
+  "conversation": [
+   {
+    "sense": "small town",
+    "text": "Be careful what you say here. Word gets around fast."
+   },
+   {
+    "sense": "reputation",
+    "text": "Word got around that she fixes computers, and now everyone calls her."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "News spreads as people tell each other."
+   },
+   "pronunciation": {
+    "ipa": "/ˌwɝd ˌɡɛts əˈɹaʊnd/",
+    "respelling": "wurd gets uh-ROWND",
+    "tip": "Stress the second syllable of \"around\": word gets a-ROUND."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; can be a warning (gossip) or positive (good reputation).",
+   "usage_note": "Common in the past too: \"Word got around.\" Often with \"fast\" or \"quickly.\" It can describe gossip or a business's reputation through recommendations.",
+   "word_family": [
+    "word got around (past)",
+    "word spread (similar)",
+    "word of mouth (noun: spread by people talking)"
+   ],
+   "distinctions": [
+    {
+     "vs": "word of mouth",
+     "note": "\"Word of mouth\" is the method (people telling people), especially for advertising; \"word gets around\" describes the spreading itself."
+    },
+    {
+     "vs": "spread like wildfire",
+     "note": "\"Spread like wildfire\" stresses very fast spreading; \"word gets around\" is calmer."
+    }
+   ],
+   "antonyms": [
+    "keep it quiet",
+    "under wraps"
+   ],
+   "collocations": [
+    "word gets around fast",
+    "word got around",
+    "once word gets around",
+    "word gets around quickly"
+   ],
+   "examples": {
+    "everyday": "Word gets around in a small school, so everyone knew about the breakup by lunch.",
+    "professional": "Do good work for one client and word gets around; that's how most of our business comes in.",
+    "analytical": "In communities without formal media, word gets around through dense social networks remarkably quickly."
+   },
+   "analogy": "Like ripples in a pond: one splash and the news reaches every edge.",
+   "etymology": "Word here has its older sense of news or a message, as in \"send word.\"",
+   "common_mistakes": [
+    "Saying \"the word gets around\" in general statements; usually no \"the\": \"Word gets around.\"",
+    "Saying \"words get around\"; it is singular: \"word\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "get one's wires crossed",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɡɛt wʌnz ˈwaɪɚz ˌkɹɔst/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "(Of two or more people) to misunderstand each other, especially about plans or arrangements."
+    ]
+   }
+  ],
+  "etymology": "From early telephone and telegraph lines, where crossed wires connected the wrong callers or garbled messages.",
+  "conversation": [
+   {
+    "sense": "mix-up",
+    "text": "I thought we were meeting at noon. I guess we got our wires crossed."
+   },
+   {
+    "sense": "apology",
+    "text": "Sorry, we must have gotten our wires crossed. I sent the file to the wrong address."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To have a misunderstanding in which two people believe different things about the same plan or message."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɛt wʌnz ˈwaɪɚz ˌkɹɔst/",
+    "respelling": "get wuhnz WAHY-erz krawst",
+    "tip": "Stress WIRES. \"Crossed\" is one syllable: krawst."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mild and blame-free: it treats a mix-up as nobody's fault.",
+   "usage_note": "Usually with \"we\" or \"our\": \"We got our wires crossed.\" The American past participle is often \"gotten\" (\"must have gotten our wires crossed\"). It is a polite way to admit a mix-up without blaming anyone.",
+   "word_family": [
+    "got / gotten one's wires crossed (past)",
+    "crossed wires (noun phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get the wrong idea",
+     "note": "\"Get the wrong idea\" is one person misunderstanding; \"get one's wires crossed\" is a two-way mix-up, often about logistics."
+    },
+    {
+     "vs": "miscommunication",
+     "note": "\"Miscommunication\" is the neutral, formal word; \"get one's wires crossed\" is the casual idiom."
+    }
+   ],
+   "antonyms": [
+    "be on the same page",
+    "see eye to eye"
+   ],
+   "collocations": [
+    "got our wires crossed",
+    "must have gotten our wires crossed",
+    "some crossed wires",
+    "get your wires crossed"
+   ],
+   "examples": {
+    "everyday": "My wife and I got our wires crossed, and we both picked up the kids.",
+    "professional": "It looks like our teams got their wires crossed about who owns the client call; let's clarify roles.",
+    "analytical": "Many coordination failures in hospitals come down to staff getting their wires crossed during shift handoffs."
+   },
+   "analogy": "Like two phone lines tangled together: each person hears something other than what was said.",
+   "etymology": "From early telephone and telegraph lines, where crossed wires connected the wrong callers or garbled messages.",
+   "common_mistakes": [
+    "Saying \"cross our wires\" for the accident; the usual form is \"get our wires crossed\".",
+    "Using it for a deep disagreement; it is a mix-up, not a conflict of opinions."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "it's all Greek to me",
+  "domains": [
+   "idioms",
+   "common_phrases"
+  ],
+  "phonetic": "/ɪts ˌɔl ˈɡɹik tə ˌmi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "I don't understand this at all; it is too complicated or unfamiliar."
+    ]
+   }
+  ],
+  "etymology": "Made famous by Shakespeare's Julius Caesar (1599), where Casca says \"it was Greek to me\" after hearing a speech in Greek; a similar Latin saying existed earlier.",
+  "conversation": [
+   {
+    "sense": "tech",
+    "text": "My son tried to explain cryptocurrency, but it's all Greek to me."
+   },
+   {
+    "sense": "forms",
+    "text": "Can you read this insurance letter? It's all Greek to me."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "This is completely impossible for me to understand."
+   },
+   "pronunciation": {
+    "ipa": "/ɪts ˌɔl ˈɡɹik tə ˌmi/",
+    "respelling": "its awl GREEK tuh mee",
+    "tip": "Stress GREEK. \"To\" is reduced to \"tuh\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Light and self-deprecating; you admit you're lost.",
+   "usage_note": "Said about yourself: \"It's Greek to me\" also works. Often about jargon, technical topics, legal forms or math. It is not offensive to Greek speakers; it simply uses Greek as an example of a hard foreign language.",
+   "word_family": [
+    "it's Greek to me (shorter form)",
+    "Greek to someone"
+   ],
+   "distinctions": [
+    {
+     "vs": "over one's head",
+     "note": "\"Over one's head\" means too advanced to understand; \"it's all Greek to me\" is the same idea, more playful."
+    },
+    {
+     "vs": "can't make head or tail of",
+     "note": "\"Can't make head or tail of\" is being confused by something messy or unclear; \"it's all Greek to me\" stresses unfamiliar language or jargon."
+    }
+   ],
+   "antonyms": [
+    "crystal clear",
+    "makes perfect sense"
+   ],
+   "collocations": [
+    "it's all Greek to me",
+    "it was all Greek to me",
+    "it might as well be Greek"
+   ],
+   "examples": {
+    "everyday": "The mechanic explained what was wrong with the transmission, but it was all Greek to me.",
+    "professional": "Could someone from engineering translate this spec? It's all Greek to the sales team.",
+    "analytical": "Patients often say medical consent forms are all Greek to them, which raises questions about informed consent."
+   },
+   "analogy": "Like reading a sign in an alphabet you've never studied: you see the letters but get nothing.",
+   "etymology": "Made famous by Shakespeare's Julius Caesar (1599), where Casca says \"it was Greek to me\" after hearing a speech in Greek; a similar Latin saying existed earlier.",
+   "common_mistakes": [
+    "Writing \"greek\" with a small g; it is a proper adjective: Greek.",
+    "Using it about other people (\"It's all Greek to you\"); it is almost always about yourself."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "until one is blue in the face",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ənˌtɪl wʌn ɪz ˈblu ɪn ðə ˈfeɪs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "For a very long time and with no result (used about talking, arguing or explaining)."
+    ]
+   }
+  ],
+  "etymology": "From the image of someone talking so long and so hard that they run out of breath and turn blue.",
+  "conversation": [
+   {
+    "sense": "frustration",
+    "text": "I can tell him to pick up his socks until I'm blue in the face. He never does."
+   },
+   {
+    "sense": "arguing",
+    "text": "You can argue until you're blue in the face, but I'm not changing my mind."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb phrase",
+    "definition": "Again and again, for as long as you like, and it still won't work."
+   },
+   "pronunciation": {
+    "ipa": "/ənˌtɪl wʌn ɪz ˈblu ɪn ðə ˈfeɪs/",
+    "respelling": "uhn-til wuhn iz BLOO in thuh FAYS",
+    "tip": "Stress BLUE and FACE. Americans usually say \"till\": till I'm BLUE in the FACE."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Frustrated or defiant: the effort is pointless.",
+   "usage_note": "Used with verbs of talking: \"explain / argue / tell / complain until I'm blue in the face.\" Often \"till.\" \"You can... until you're blue in the face\" is a defiant way to say nothing will change.",
+   "word_family": [
+    "till one is blue in the face (common variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "talk to a brick wall",
+     "note": "\"Like talking to a brick wall\" says the listener ignores you; \"until I'm blue in the face\" stresses how long and hard you've tried."
+    },
+    {
+     "vs": "beat a dead horse",
+     "note": "\"Beat a dead horse\" is continuing to argue about something already settled; \"until one is blue in the face\" is effort that changes nothing."
+    }
+   ],
+   "antonyms": [
+    "get through to someone"
+   ],
+   "collocations": [
+    "until I'm blue in the face",
+    "till you're blue in the face",
+    "argue until you're blue in the face",
+    "explain it till I'm blue in the face"
+   ],
+   "examples": {
+    "everyday": "I've reminded the kids about screen time until I'm blue in the face.",
+    "professional": "We can debate the logo until we're blue in the face; the client has already approved it.",
+    "analytical": "Public health officials can repeat warnings until they are blue in the face, but behavior changes mostly when habits and incentives change."
+   },
+   "analogy": "Like blowing up a balloon that has a hole in it: you can keep blowing, but it won't fill.",
+   "etymology": "From the image of someone talking so long and so hard that they run out of breath and turn blue.",
+   "common_mistakes": [
+    "Saying \"until I'm red in the face\"; that suggests anger or embarrassment, not pointless talking.",
+    "Using it as a compliment; it always means wasted effort."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "spin a yarn",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌspɪn ə ˈjɑɹn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To tell a long story, often an entertaining or exaggerated one, and sometimes an untrue one used as an excuse."
+    ]
+   }
+  ],
+  "etymology": "Sailors' slang from the 1800s: sailors spun rope yarn on long voyages and told stories while they worked.",
+  "conversation": [
+   {
+    "sense": "storytelling",
+    "text": "My grandfather could spin a yarn for hours about his years on the railroad."
+   },
+   {
+    "sense": "excuse",
+    "text": "He spun some yarn about a flat tire, but nobody believed him."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To tell a colorful story, which may be partly or wholly made up."
+   },
+   "pronunciation": {
+    "ipa": "/ˌspɪn ə ˈjɑɹn/",
+    "respelling": "spin uh YAHRN",
+    "tip": "\"Yarn\" is one syllable: yahrn. Stress YARN."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Warm when it means storytelling; doubtful when it means a made-up excuse.",
+   "usage_note": "\"Spin a good yarn\" praises a storyteller. \"Spin someone a yarn\" can mean telling a lie. A \"yarn\" alone means a long, entertaining story. It sounds a bit old-fashioned and folksy.",
+   "word_family": [
+    "spun a yarn (past)",
+    "yarn (noun: a long story)",
+    "yarn-spinner (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "tall tale",
+     "note": "\"Tall tale\" is the story itself, clearly exaggerated; \"spin a yarn\" is the act of telling a long, lively story."
+    },
+    {
+     "vs": "fish story",
+     "note": "\"Fish story\" is an exaggerated boast; \"spin a yarn\" is broader and can be pure entertainment."
+    }
+   ],
+   "antonyms": [
+    "stick to the facts",
+    "cut to the chase"
+   ],
+   "collocations": [
+    "spin a good yarn",
+    "spun us a yarn",
+    "spinning yarns",
+    "spin a yarn about"
+   ],
+   "examples": {
+    "everyday": "Around the campfire, Uncle Ray spun a yarn about a bear that stole his boots.",
+    "professional": "The best speakers can spin a yarn that keeps the audience listening and still makes a clear point.",
+    "analytical": "Folklorists study how communities spin yarns that pass values and history from one generation to the next."
+   },
+   "analogy": "Like turning loose wool into a long thread: a few facts become a long, winding story.",
+   "etymology": "Sailors' slang from the 1800s: sailors spun rope yarn on long voyages and told stories while they worked.",
+   "common_mistakes": [
+    "Saying \"make a yarn\"; the verb is \"spin\".",
+    "Thinking it is about knitting; in this idiom yarn means story."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "you had to be there",
+  "domains": [
+   "idioms",
+   "small_talk",
+   "common_phrases"
+  ],
+  "phonetic": "/ju ˌhæd tə bi ˈðɛɹ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said when a story or joke does not seem funny or impressive when retold, because it depended on being present."
+    ]
+   }
+  ],
+  "etymology": "A modern conversational set phrase, common in American English since the mid-20th century.",
+  "conversation": [
+   {
+    "sense": "failed joke",
+    "text": "And then he sneezed right on the cake... okay, you had to be there."
+   },
+   {
+    "sense": "amazing moment",
+    "text": "The crowd went silent, and then everyone started singing. You had to be there."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "It loses something when told; you'd only understand if you'd seen it."
+   },
+   "pronunciation": {
+    "ipa": "/ju ˌhæd tə bi ˈðɛɹ/",
+    "respelling": "yoo had tuh bee THAIR",
+    "tip": "Stress THERE. \"Had to\" blends: \"hafta\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Self-mocking or nostalgic; it admits a story fell flat or can't be captured.",
+   "usage_note": "Usually said by the storyteller after a story gets little reaction, often with a laugh. It can also stress that an experience was too special to describe.",
+   "word_family": [
+    "I guess you had to be there (common form)"
+   ],
+   "distinctions": [
+    {
+     "vs": "inside joke",
+     "note": "\"Inside joke\" is humor only a group understands; \"you had to be there\" admits a story only works for people who saw it."
+    },
+    {
+     "vs": "words can't describe",
+     "note": "\"Words can't describe\" praises an experience as too great for words; \"you had to be there\" also covers jokes that fall flat."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "I guess you had to be there",
+    "you kind of had to be there",
+    "you really had to be there"
+   ],
+   "examples": {
+    "everyday": "The dog stole the turkey right off the table. I guess you had to be there.",
+    "professional": "The demo was more impressive live; you had to be there to see how fast it ran.",
+    "analytical": "Humor research suggests that much of what is funny is context-dependent, which is why retold jokes often end with \"you had to be there.\""
+   },
+   "analogy": "Like describing a sunset over the phone: the facts arrive, the magic doesn't.",
+   "etymology": "A modern conversational set phrase, common in American English since the mid-20th century.",
+   "common_mistakes": [
+    "Saying \"you must be there\"; it is past: \"you had to be there\".",
+    "Using it to exclude someone rudely; usually it is a light comment about the story."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "read someone like a book",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɹid ˈsʌmwʌn laɪk ə ˈbʊk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To understand easily what someone is thinking or feeling, often from their face or behavior."
+    ]
+   }
+  ],
+  "etymology": "A long-standing comparison in English; a face that can be read like a book appears in literature of the 1800s.",
+  "conversation": [
+   {
+    "sense": "teasing",
+    "text": "Don't lie to me. I can read you like a book."
+   },
+   {
+    "sense": "relationship",
+    "text": "After thirty years of marriage, she reads him like a book."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To know exactly what someone thinks or feels without being told."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɹid ˈsʌmwʌn laɪk ə ˈbʊk/",
+    "respelling": "reed SUHM-wuhn lahyk uh BOOK",
+    "tip": "\"Read\" here rhymes with \"need\" in the present and with \"red\" in the past. Stress BOOK."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral to affectionate; can be teasing or a warning that you can't hide anything.",
+   "usage_note": "Very often \"I can read you like a book.\" The object is a person: \"read her like a book.\" It suits family, close friends and opponents in games or negotiations.",
+   "word_family": [
+    "read someone like an open book",
+    "be an open book (be easy to understand)"
+   ],
+   "distinctions": [
+    {
+     "vs": "an open book",
+     "note": "\"Be an open book\" describes a person who hides nothing; \"read someone like a book\" is the skill of the observer."
+    },
+    {
+     "vs": "read between the lines",
+     "note": "\"Read between the lines\" is finding a hidden meaning in words; \"read someone like a book\" is understanding a person."
+    }
+   ],
+   "antonyms": [
+    "poker face"
+   ],
+   "collocations": [
+    "I can read you like a book",
+    "read him like a book",
+    "reads people like a book"
+   ],
+   "examples": {
+    "everyday": "My mom took one look at me and knew I'd failed the test. She reads me like a book.",
+    "professional": "Experienced negotiators can read the other side like a book, so keep your expressions neutral.",
+    "analytical": "People who claim to read others like a book often overestimate their accuracy at detecting lies."
+   },
+   "analogy": "Like a book with large print: every feeling is right there on the page.",
+   "etymology": "A long-standing comparison in English; a face that can be read like a book appears in literature of the 1800s.",
+   "common_mistakes": [
+    "Saying \"read someone as a book\"; it is \"like a book\".",
+    "Using it for reading literally; it is about understanding people."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "twist someone's words",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌtwɪst ˌsʌmwʌnz ˈwɝdz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To repeat or interpret what someone said in a way that changes its meaning, usually unfairly."
+    ]
+   }
+  ],
+  "etymology": "Twist in the sense of distorting meaning has been used in English since the 1600s.",
+  "conversation": [
+   {
+    "sense": "argument",
+    "text": "That's not what I said. Stop twisting my words."
+   },
+   {
+    "sense": "media",
+    "text": "The senator says the reporter twisted his words to make him look bad."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To change the meaning of what someone said when repeating or responding to it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtwɪst ˌsʌmwʌnz ˈwɝdz/",
+    "respelling": "twist suhm-wuhnz WURDZ",
+    "tip": "\"Words\" is one syllable, wurdz. Stress WORDS."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Negative: it accuses someone of unfair or dishonest arguing.",
+   "usage_note": "Most common as a complaint: \"You're twisting my words\" or \"Don't twist my words.\" Also \"twist someone's words around.\"",
+   "word_family": [
+    "twisted someone's words (past)",
+    "twist someone's words around"
+   ],
+   "distinctions": [
+    {
+     "vs": "put words in someone's mouth",
+     "note": "\"Put words in someone's mouth\" is claiming they said something they didn't; \"twist someone's words\" is changing the meaning of what they did say."
+    },
+    {
+     "vs": "take out of context",
+     "note": "\"Take out of context\" is quoting part of something so it misleads; \"twist someone's words\" is broader distortion."
+    }
+   ],
+   "antonyms": [
+    "quote accurately",
+    "take someone at their word"
+   ],
+   "collocations": [
+    "stop twisting my words",
+    "you're twisting my words",
+    "twisted her words around",
+    "don't twist my words"
+   ],
+   "examples": {
+    "everyday": "I said I was tired, not that I didn't want to go. Don't twist my words.",
+    "professional": "Please quote the client exactly in the report so no one can say we twisted their words.",
+    "analytical": "Political ads often twist an opponent's words by clipping a sentence until it means the opposite."
+   },
+   "analogy": "Like bending a key slightly: it looks almost the same but no longer opens the right lock.",
+   "etymology": "Twist in the sense of distorting meaning has been used in English since the 1600s.",
+   "common_mistakes": [
+    "Saying \"turn my words\" for this; the idiom uses \"twist\".",
+    "Using it for honest misunderstanding; it suggests the change was deliberate or unfair."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "all kidding aside",
+  "domains": [
+   "idioms",
+   "common_phrases"
+  ],
+  "phonetic": "/ˌɔl ˈkɪdɪŋ əˌsaɪd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Used to show that one is going to speak seriously after joking."
+    ]
+   }
+  ],
+  "etymology": "Kid (to tease, joke) is 19th-century American slang; aside here means set apart.",
+  "conversation": [
+   {
+    "sense": "turning serious",
+    "text": "All kidding aside, you did a great job on that speech."
+   },
+   {
+    "sense": "concern",
+    "text": "Okay, all kidding aside, are you feeling all right? You look pale."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Seriously now; I'm not joking anymore."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɔl ˈkɪdɪŋ əˌsaɪd/",
+    "respelling": "awl KID-ing uh-sahyd",
+    "tip": "Stress KIDDING: all KID-ding aside. The t-like d in \"kidding\" is soft."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Warm; it signals sincerity after humor.",
+   "usage_note": "Comes at the start of a sentence, after some joking. \"Joking aside\" and \"all joking aside\" mean the same and are also common; \"kidding aside\" is a bit more American.",
+   "word_family": [
+    "all joking aside (same meaning)",
+    "kidding aside (shorter)"
+   ],
+   "distinctions": [
+    {
+     "vs": "just kidding",
+     "note": "\"Just kidding\" takes back what you said as a joke; \"all kidding aside\" introduces something you mean seriously."
+    },
+    {
+     "vs": "to be honest",
+     "note": "\"To be honest\" signals frankness; \"all kidding aside\" specifically marks a switch from joking to seriousness."
+    }
+   ],
+   "antonyms": [
+    "just kidding",
+    "only joking"
+   ],
+   "collocations": [
+    "all kidding aside",
+    "but all kidding aside",
+    "okay, all kidding aside"
+   ],
+   "examples": {
+    "everyday": "We tease Dad about his cooking, but all kidding aside, his chili is amazing.",
+    "professional": "All kidding aside, this was our best quarter in five years, and that's thanks to all of you.",
+    "analytical": "In speeches, a line like \"all kidding aside\" helps the speaker shift the audience from laughter to attention."
+   },
+   "analogy": "Like a comedian setting down the microphone stand and stepping closer to the audience.",
+   "etymology": "Kid (to tease, joke) is 19th-century American slang; aside here means set apart.",
+   "common_mistakes": [
+    "Saying \"all kidding apart\"; that is British. American English says \"aside\".",
+    "Using it when you were not joking before; it marks a change from jokes to seriousness."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "don't get me wrong",
+  "domains": [
+   "idioms",
+   "common_phrases"
+  ],
+  "phonetic": "/ˌdoʊnt ˌɡɛt mi ˈɹɔŋ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Used before or after a statement to prevent someone from misunderstanding what one means, especially before a criticism or contrast."
+    ]
+   }
+  ],
+  "etymology": "Get in the sense of understanding (\"I get you\"), negated as a request; in common use since the 20th century.",
+  "conversation": [
+   {
+    "sense": "softening",
+    "text": "Don't get me wrong, I love my job, but the commute is killing me."
+   },
+   {
+    "sense": "clarifying",
+    "text": "I'm not saying you're lazy. Don't get me wrong."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Please don't misunderstand me (what I'm about to say isn't what you might think)."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdoʊnt ˌɡɛt mi ˈɹɔŋ/",
+    "respelling": "dohnt get mee RAWNG",
+    "tip": "Stress WRONG. \"Don't\" often loses its t: \"don get me wrong\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Polite and softening; it protects a relationship while you add a 'but'.",
+   "usage_note": "Usually followed by a positive statement and then \"but\": \"Don't get me wrong, it's a nice car, but it's too expensive.\" It can also come after a remark that might sound harsh.",
+   "word_family": [
+    "get someone wrong (misunderstand them)"
+   ],
+   "distinctions": [
+    {
+     "vs": "no offense",
+     "note": "\"No offense\" softens something that might be rude; \"don't get me wrong\" prevents a misunderstanding about your overall opinion."
+    },
+    {
+     "vs": "get the wrong idea",
+     "note": "\"Don't get the wrong idea\" is similar but often about intentions (romance, motives); \"don't get me wrong\" is about your opinion."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "don't get me wrong, I love",
+    "don't get me wrong, but",
+    "now don't get me wrong"
+   ],
+   "examples": {
+    "everyday": "Don't get me wrong, the party was fun, but I'm too old for 2 a.m. nights.",
+    "professional": "Don't get me wrong, the proposal is strong; I just think the timeline is unrealistic.",
+    "analytical": "Hedges like \"don't get me wrong\" let speakers criticize while signaling goodwill, a common politeness strategy."
+   },
+   "analogy": "Like a cushion placed before a hard object: it softens the bump that's coming.",
+   "etymology": "Get in the sense of understanding (\"I get you\"), negated as a request; in common use since the 20th century.",
+   "common_mistakes": [
+    "Saying \"don't take me wrong\"; the usual idiom is \"don't get me wrong\" (though \"don't take this the wrong way\" also exists).",
+    "Forgetting the contrast; it usually sets up a \"but\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "I kid you not",
+  "domains": [
+   "idioms",
+   "common_phrases"
+  ],
+  "phonetic": "/aɪ ˈkɪd ju ˌnɑt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "I am telling the truth; I am not joking (used to stress that something surprising is really true)."
+    ]
+   }
+  ],
+  "etymology": "Kid (to joke) is 19th-century slang; the phrase became a well-known catchphrase on American television in the late 1950s.",
+  "conversation": [
+   {
+    "sense": "surprise",
+    "text": "The line for the restroom was two hours long. I kid you not."
+   },
+   {
+    "sense": "story",
+    "text": "I kid you not, a deer walked right into the grocery store."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Seriously, this is true, even though it sounds unbelievable."
+   },
+   "pronunciation": {
+    "ipa": "/aɪ ˈkɪd ju ˌnɑt/",
+    "respelling": "ahy KID yoo naht",
+    "tip": "Stress KID. Say it slowly and seriously for effect."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Playful and emphatic; the old-fashioned word order adds humor.",
+   "usage_note": "It can go before or after the surprising fact. The unusual word order (instead of \"I'm not kidding you\") makes it sound mock-formal and funny. \"No kidding\" and \"I'm not kidding\" are plainer.",
+   "word_family": [
+    "I'm not kidding (plain form)",
+    "no kidding (reply: really?)"
+   ],
+   "distinctions": [
+    {
+     "vs": "no kidding",
+     "note": "\"No kidding?\" asks if something is true, or answers sarcastically (\"No kidding!\" = obviously); \"I kid you not\" insists that what you said is true."
+    },
+    {
+     "vs": "believe it or not",
+     "note": "\"Believe it or not\" introduces something surprising; \"I kid you not\" insists on its truth, often after it."
+    }
+   ],
+   "antonyms": [
+    "just kidding"
+   ],
+   "collocations": [
+    "I kid you not",
+    "and, I kid you not,"
+   ],
+   "examples": {
+    "everyday": "He ate twelve hot dogs in ten minutes. I kid you not.",
+    "professional": "I kid you not, the client approved the design on the first try.",
+    "analytical": "Writers use \"I kid you not\" for comic emphasis because its archaic word order signals mock seriousness."
+   },
+   "analogy": "Like a witness raising a hand to swear: the fact sounds wild, but it's on the record.",
+   "etymology": "Kid (to joke) is 19th-century slang; the phrase became a well-known catchphrase on American television in the late 1950s.",
+   "common_mistakes": [
+    "Saying \"I don't kid you not\"; that adds a second negative.",
+    "Using it for ordinary facts; it is for surprising things."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "go in one ear and out the other",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɡoʊ ɪn ˈwʌn ˈɪɹ ən ˌaʊt ði ˈʌðɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "(Of information or advice) to be heard but immediately forgotten or ignored."
+    ]
+   }
+  ],
+  "etymology": "A very old image in English, recorded since the 1300s (Chaucer has a similar line).",
+  "conversation": [
+   {
+    "sense": "parenting",
+    "text": "I tell him to wear a jacket every day, but it goes in one ear and out the other."
+   },
+   {
+    "sense": "lecture",
+    "text": "I was so tired that the whole lecture went in one ear and out the other."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To be heard without being remembered or acted on."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡoʊ ɪn ˈwʌn ˈɪɹ ən ˌaʊt ði ˈʌðɚ/",
+    "respelling": "goh in WUHN EER uhn owt thee UHTH-er",
+    "tip": "Stress ONE, EAR and OTHER. \"The\" before \"other\" is \"thee\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly frustrated or self-mocking.",
+   "usage_note": "The subject is the information: \"Everything I say goes in one ear and out the other.\" It is common with parents, teachers and spouses. It can describe not paying attention or simply forgetting.",
+   "word_family": [
+    "went in one ear and out the other (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "fall on deaf ears",
+     "note": "\"Fall on deaf ears\" means people refuse to listen to a request or warning; \"go in one ear and out the other\" means they hear but forget or ignore it."
+    },
+    {
+     "vs": "tune out",
+     "note": "\"Tune out\" is choosing to stop listening; \"go in one ear and out the other\" is the result: nothing sticks."
+    }
+   ],
+   "antonyms": [
+    "sink in",
+    "take to heart"
+   ],
+   "collocations": [
+    "goes in one ear and out the other",
+    "went in one ear and out the other",
+    "in one ear and out the other"
+   ],
+   "examples": {
+    "everyday": "My advice about saving money goes in one ear and out the other with my roommate.",
+    "professional": "If safety training goes in one ear and out the other, make it hands-on instead of slides.",
+    "analytical": "Information presented passively often goes in one ear and out the other, which is why active recall improves retention."
+   },
+   "analogy": "Like water poured through a pipe with both ends open: it passes through and nothing stays.",
+   "etymology": "A very old image in English, recorded since the 1300s (Chaucer has a similar line).",
+   "common_mistakes": [
+    "Saying \"in one ear and out the next\"; it is \"out the other\".",
+    "Making the person the subject (\"He goes in one ear...\"); the subject is what was said."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "speak volumes",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌspik ˈvɑljumz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To show something clearly without words; to be very revealing."
+    ]
+   }
+  ],
+  "etymology": "Volume here means a book; to speak volumes is to say as much as several books.",
+  "conversation": [
+   {
+    "sense": "behavior",
+    "text": "She didn't say anything, but the look on her face spoke volumes."
+   },
+   {
+    "sense": "absence",
+    "text": "The fact that he didn't call on your birthday speaks volumes."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To reveal a lot about a person or situation, without anything being said directly."
+   },
+   "pronunciation": {
+    "ipa": "/ˌspik ˈvɑljumz/",
+    "respelling": "speek VAHL-yoomz",
+    "tip": "Stress the first syllable of \"volumes\": VOL-yoomz."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; often used to imply a negative truth that is obvious.",
+   "usage_note": "The subject is usually an action, silence, look or fact: \"Her silence spoke volumes.\" Often \"speaks volumes about\" someone or something. Used in both speech and writing.",
+   "word_family": [
+    "spoke volumes (past)",
+    "speaks volumes about"
+   ],
+   "distinctions": [
+    {
+     "vs": "actions speak louder than words",
+     "note": "\"Actions speak louder than words\" is a proverb that judges people by deeds; \"speak volumes\" says one thing reveals a lot."
+    },
+    {
+     "vs": "say it all",
+     "note": "\"Say it all\" means one thing sums up everything; \"speak volumes\" stresses how much is revealed."
+    }
+   ],
+   "antonyms": [
+    "say nothing",
+    "tell us little"
+   ],
+   "collocations": [
+    "speaks volumes about",
+    "spoke volumes",
+    "his silence speaks volumes",
+    "that speaks volumes"
+   ],
+   "examples": {
+    "everyday": "The way he treats waiters speaks volumes about his character.",
+    "professional": "The fact that most of the team stayed through the reorganization speaks volumes about her leadership.",
+    "analytical": "The low response rate speaks volumes about how little trust residents have in the survey."
+   },
+   "analogy": "Like a single photo that would take a whole book to describe.",
+   "etymology": "Volume here means a book; to speak volumes is to say as much as several books.",
+   "common_mistakes": [
+    "Saying \"speaks a volume\"; it is plural: \"volumes\".",
+    "Using it for a person who talks a lot; it means revealing much without words."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "actions speak louder than words",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈækʃənz ˌspik ˈlaʊdɚ ðən ˈwɝdz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "What people do shows their true feelings or intentions better than what they say."
+    ]
+   }
+  ],
+  "etymology": "A proverb in English use since at least the 1700s; the idea itself is much older.",
+  "conversation": [
+   {
+    "sense": "relationship",
+    "text": "He says he's sorry, but actions speak louder than words."
+   },
+   {
+    "sense": "advice",
+    "text": "Don't just promise to help more around the house. Actions speak louder than words."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "proverb",
+    "definition": "Judge people by what they do, not by what they promise."
+   },
+   "pronunciation": {
+    "ipa": "/ˈækʃənz ˌspik ˈlaʊdɚ ðən ˈwɝdz/",
+    "respelling": "AK-shuhnz speek LOW-der thuhn WURDZ",
+    "tip": "Stress ACTIONS, LOUDER and WORDS. \"Than\" reduces to \"thun\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; often a gentle challenge or criticism.",
+   "usage_note": "Used as a complete sentence, often as advice or a reply to promises. The words do not change, though people play with it (\"Their actions are speaking louder than their words\").",
+   "word_family": [
+    "actions speak louder (shortened)"
+   ],
+   "distinctions": [
+    {
+     "vs": "talk is cheap",
+     "note": "\"Talk is cheap\" focuses on how easy it is to make promises; \"actions speak louder than words\" focuses on deeds as the true test."
+    },
+    {
+     "vs": "walk the talk",
+     "note": "\"Walk the talk\" is doing what you say; \"actions speak louder than words\" is the general principle."
+    }
+   ],
+   "antonyms": [
+    "all talk and no action"
+   ],
+   "collocations": [
+    "actions speak louder than words",
+    "as they say, actions speak louder than words"
+   ],
+   "examples": {
+    "everyday": "My neighbor never says much, but he shovels my driveway every winter. Actions speak louder than words.",
+    "professional": "We can publish a values statement, but actions speak louder than words; employees watch what leaders do.",
+    "analytical": "Behavioral economists echo the proverb that actions speak louder than words by studying revealed preferences rather than stated ones."
+   },
+   "analogy": "Like a fire alarm and a whisper: the deed is the alarm, and it drowns out the talk.",
+   "etymology": "A proverb in English use since at least the 1700s; the idea itself is much older.",
+   "common_mistakes": [
+    "Saying \"acts speak louder than words\"; it is \"actions\".",
+    "Saying \"louder as words\"; it is \"louder than\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "talk is cheap",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌtɔk ɪz ˈtʃip/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "It is easy to say you will do something; doing it is what matters."
+    ]
+   }
+  ],
+  "etymology": "An American proverb, common since the 1800s.",
+  "conversation": [
+   {
+    "sense": "doubt",
+    "text": "He says he'll pay me back next week. Talk is cheap."
+   },
+   {
+    "sense": "challenge",
+    "text": "Talk is cheap. Show me the results."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "proverb",
+    "definition": "Words and promises cost nothing, so they prove nothing."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtɔk ɪz ˈtʃip/",
+    "respelling": "tawk iz CHEEP",
+    "tip": "Stress CHEAP. \"Talk\" has a silent l: tawk."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Skeptical; it questions someone's promises or claims.",
+   "usage_note": "Usually a short reply to a promise or boast, often followed by a challenge: \"Talk is cheap. Prove it.\" Common in sports, politics and business.",
+   "word_family": [
+    "cheap talk (noun phrase, also an economics term)"
+   ],
+   "distinctions": [
+    {
+     "vs": "actions speak louder than words",
+     "note": "\"Actions speak louder than words\" praises deeds; \"talk is cheap\" dismisses words."
+    },
+    {
+     "vs": "all talk",
+     "note": "\"All talk\" describes a person who only talks and never acts; \"talk is cheap\" is the general saying."
+    }
+   ],
+   "antonyms": [
+    "put one's money where one's mouth is",
+    "walk the talk"
+   ],
+   "collocations": [
+    "talk is cheap",
+    "but talk is cheap",
+    "talk is cheap; show me"
+   ],
+   "examples": {
+    "everyday": "Everyone says they'll help me move. Talk is cheap; we'll see who shows up.",
+    "professional": "Talk is cheap, so let's put the commitments in the contract with dates.",
+    "analytical": "Game theorists use the term \"cheap talk\" for communication that costs nothing and therefore may not be credible."
+   },
+   "analogy": "Like a check with no money in the account: it looks good until you try to cash it.",
+   "etymology": "An American proverb, common since the 1800s.",
+   "common_mistakes": [
+    "Saying \"talking is cheap\"; the saying is \"talk is cheap\".",
+    "Using it to mean conversation is inexpensive; it means promises are easy to make."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "pour one's heart out",
+  "domains": [
+   "idioms",
+   "feelings"
+  ],
+  "phonetic": "/ˌpɔɹ wʌnz ˈhɑɹt ˌaʊt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To tell someone all of one's private feelings and troubles, often emotionally."
+    ]
+   }
+  ],
+  "etymology": "A figurative use of pour; similar phrases occur in the King James Bible (\"pour out your heart before him,\" Psalm 62:8).",
+  "conversation": [
+   {
+    "sense": "comfort",
+    "text": "She poured her heart out to me about her divorce, and I just listened."
+   },
+   {
+    "sense": "letter",
+    "text": "He poured his heart out in a long letter to his father."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To share all your deepest feelings openly with someone."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpɔɹ wʌnz ˈhɑɹt ˌaʊt/",
+    "respelling": "por wuhnz HAHRT owt",
+    "tip": "Stress HEART. \"Pour\" rhymes with \"door\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Sympathetic; suggests emotional honesty and trust.",
+   "usage_note": "Often \"pour one's heart out to someone.\" It suits conversations, letters, songs and journals. The person listening is a friend, partner or therapist.",
+   "word_family": [
+    "poured one's heart out (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get something off one's chest",
+     "note": "\"Get something off one's chest\" is telling one worrying thing to feel relief; \"pour one's heart out\" is sharing many deep feelings at length."
+    },
+    {
+     "vs": "open up",
+     "note": "\"Open up\" is starting to share personal feelings; \"pour one's heart out\" is sharing everything, often with emotion."
+    }
+   ],
+   "antonyms": [
+    "bottle up",
+    "keep to oneself"
+   ],
+   "collocations": [
+    "pour my heart out to",
+    "poured her heart out",
+    "pouring his heart out in a song"
+   ],
+   "examples": {
+    "everyday": "After the funeral, my brother poured his heart out to me in the car.",
+    "professional": "In the exit interview, one employee poured her heart out about burnout on the night shift.",
+    "analytical": "Expressive writing studies ask participants to pour their hearts out about stressful events, which can improve well-being."
+   },
+   "analogy": "Like tipping over a full pitcher: everything you've been holding comes out at once.",
+   "etymology": "A figurative use of pour; similar phrases occur in the King James Bible (\"pour out your heart before him,\" Psalm 62:8).",
+   "common_mistakes": [
+    "Saying \"pour out my heart to\" is also fine, but \"pour my heart to\" without \"out\" is wrong.",
+    "Using it for small complaints; it means deep, emotional sharing."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "the heart of the matter",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ðə ˈhɑɹt əv ðə ˈmætɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "The most central and important part of a problem or issue."
+    ]
+   }
+  ],
+  "etymology": "Heart in the sense of the center or core of something; the phrase was common by the 1800s.",
+  "conversation": [
+   {
+    "sense": "discussion",
+    "text": "Let's skip the details and get to the heart of the matter: can we afford it?"
+   },
+   {
+    "sense": "insight",
+    "text": "You've hit on the heart of the matter. He doesn't trust us."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "The most basic and important point of an issue."
+   },
+   "pronunciation": {
+    "ipa": "/ðə ˈhɑɹt əv ðə ˈmætɚ/",
+    "respelling": "thuh HAHRT uhv thuh MAD-er",
+    "tip": "Stress HEART and MATTER. In American speech, the t in \"matter\" sounds like a quick d: MAD-er."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; serious and focused.",
+   "usage_note": "Usually \"get to the heart of the matter\" or \"the heart of the matter is...\" It suits conversations, journalism and essays.",
+   "word_family": [
+    "get to the heart of the matter"
+   ],
+   "distinctions": [
+    {
+     "vs": "the bottom line",
+     "note": "\"The bottom line\" is the final result or deciding fact; \"the heart of the matter\" is the central issue or cause."
+    },
+    {
+     "vs": "the crux",
+     "note": "\"The crux\" is a more formal one-word equivalent; \"the heart of the matter\" is more conversational."
+    }
+   ],
+   "antonyms": [
+    "beside the point",
+    "a side issue"
+   ],
+   "collocations": [
+    "get to the heart of the matter",
+    "the heart of the matter is",
+    "at the heart of the matter"
+   ],
+   "examples": {
+    "everyday": "The heart of the matter is that she feels her parents never listen to her.",
+    "professional": "The audit got to the heart of the matter: the billing system double-charged customers.",
+    "analytical": "The heart of the matter in this debate is whether moral claims can be objectively true."
+   },
+   "analogy": "Like the core of an apple: peel away the outside and this is what's left in the center.",
+   "etymology": "Heart in the sense of the center or core of something; the phrase was common by the 1800s.",
+   "common_mistakes": [
+    "Saying \"the heart of the problem matter\"; the phrase is fixed: \"the heart of the matter\".",
+    "Using it for a small detail; it is the most central point."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "someone's side of the story",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌsʌmwʌnz ˈsaɪd əv ðə ˈstɔɹi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A particular person's account of events, especially in a dispute where others tell it differently."
+    ]
+   }
+  ],
+  "etymology": "A plain combination of side (one party in a dispute) and story (an account of events).",
+  "conversation": [
+   {
+    "sense": "fairness",
+    "text": "Before you punish him, at least hear his side of the story."
+   },
+   {
+    "sense": "dispute",
+    "text": "That's her side of the story. I'd like to hear what really happened."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "How one person tells what happened, which may differ from other people's versions."
+   },
+   "pronunciation": {
+    "ipa": "/ˌsʌmwʌnz ˈsaɪd əv ðə ˈstɔɹi/",
+    "respelling": "suhm-wuhnz SAHYD uhv thuh STOR-ee",
+    "tip": "Stress SIDE and STORY."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; implies fairness or doubt about one version.",
+   "usage_note": "Common with \"hear,\" \"tell,\" \"get\": \"I want to hear your side of the story.\" \"There are two sides to every story\" is a related saying.",
+   "word_family": [
+    "both sides of the story",
+    "there are two sides to every story (saying)"
+   ],
+   "distinctions": [
+    {
+     "vs": "point of view",
+     "note": "\"Point of view\" is an opinion or perspective; \"someone's side of the story\" is their account of events."
+    },
+    {
+     "vs": "set the record straight",
+     "note": "\"Set the record straight\" is correcting a false account; telling \"your side of the story\" is giving your version."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "hear his side of the story",
+    "tell your side of the story",
+    "get both sides of the story",
+    "her side of the story"
+   ],
+   "examples": {
+    "everyday": "The kids both blamed each other, so I listened to each side of the story.",
+    "professional": "HR will interview both employees to get each side of the story before deciding anything.",
+    "analytical": "Historians compare letters from both armies to reconstruct each side of the story."
+   },
+   "analogy": "Like two windows into the same room: each shows a different view of what happened inside.",
+   "etymology": "A plain combination of side (one party in a dispute) and story (an account of events).",
+   "common_mistakes": [
+    "Saying \"his part of the story\" in this sense; the idiom uses \"side\".",
+    "Saying \"his side of story\"; keep \"the\": \"his side of the story\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "blow smoke",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌbloʊ ˈsmoʊk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To say things that are exaggerated, flattering or misleading, especially to impress or reassure someone."
+    ]
+   }
+  ],
+  "etymology": "American slang from the 20th century; smoke as a symbol of something that hides the truth.",
+  "conversation": [
+   {
+    "sense": "doubt",
+    "text": "Is the deal really that good, or is he just blowing smoke?"
+   },
+   {
+    "sense": "compliment",
+    "text": "I'm not blowing smoke. Your presentation was the best one today."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To talk in a way that sounds impressive but isn't true or sincere."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbloʊ ˈsmoʊk/",
+    "respelling": "bloh SMOHK",
+    "tip": "\"Smoke\" is one syllable with a long o. Stress SMOKE."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative: it suggests empty talk, boasting or flattery.",
+   "usage_note": "Most common in the progressive: \"He's just blowing smoke.\" \"I'm not blowing smoke\" assures someone a compliment is sincere. A cruder longer version exists, so use the short form.",
+   "word_family": [
+    "blew smoke (past)",
+    "blowing smoke (-ing)",
+    "smoke and mirrors (related: deception)"
+   ],
+   "distinctions": [
+    {
+     "vs": "hot air",
+     "note": "\"Hot air\" is empty, boastful talk as a noun; \"blow smoke\" is the act of misleading or flattering."
+    },
+    {
+     "vs": "smoke and mirrors",
+     "note": "\"Smoke and mirrors\" is a deliberate illusion, often in business or politics; \"blow smoke\" is talk that exaggerates or flatters."
+    }
+   ],
+   "antonyms": [
+    "tell it like it is",
+    "give a straight answer"
+   ],
+   "collocations": [
+    "just blowing smoke",
+    "I'm not blowing smoke",
+    "stop blowing smoke"
+   ],
+   "examples": {
+    "everyday": "When the coach says we'll win the championship, he's just blowing smoke.",
+    "professional": "I'm not blowing smoke: these numbers are the strongest we've had, and here's the data.",
+    "analytical": "Analysts suspected the company was blowing smoke, since its growth claims were not supported by its filings."
+   },
+   "analogy": "Like a magician's smoke: it fills the air so you can't see what's really there.",
+   "etymology": "American slang from the 20th century; smoke as a symbol of something that hides the truth.",
+   "common_mistakes": [
+    "Saying \"blow the smoke\"; there is no \"the\".",
+    "Using it for literal smoking; in this idiom it means misleading talk."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "hot take",
+  "domains": [
+   "idioms",
+   "common_phrases"
+  ],
+  "phonetic": "/ˌhɑt ˈteɪk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A deliberately provocative or controversial opinion, often given quickly without much thought."
+    ]
+   }
+  ],
+  "etymology": "Sports journalism slang that spread in the 2010s; take (an opinion) plus hot (provocative).",
+  "conversation": [
+   {
+    "sense": "debate",
+    "text": "Hot take: pineapple belongs on pizza."
+   },
+   {
+    "sense": "media",
+    "text": "Every sports show had a hot take about the trade within ten minutes."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "A bold, attention-getting opinion meant to provoke a reaction."
+   },
+   "pronunciation": {
+    "ipa": "/ˌhɑt ˈteɪk/",
+    "respelling": "haht TAYK",
+    "tip": "Stress TAKE. The t in \"hot\" is barely released."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Playful when people label their own opinions; critical when describing shallow commentary.",
+   "usage_note": "Often used to introduce an opinion: \"Hot take:...\" or \"Here's my hot take.\" Popular on social media and sports talk. \"Take\" alone means an opinion: \"What's your take?\"",
+   "word_family": [
+    "take (noun: opinion)",
+    "hottest take",
+    "lukewarm take / cold take (jokey opposites)"
+   ],
+   "distinctions": [
+    {
+     "vs": "unpopular opinion",
+     "note": "\"Unpopular opinion\" says few people agree; \"hot take\" says the opinion is bold or provocative, popular or not."
+    },
+    {
+     "vs": "two cents",
+     "note": "\"My two cents\" is a modest opinion; a \"hot take\" is a deliberately strong one."
+    }
+   ],
+   "antonyms": [
+    "measured opinion"
+   ],
+   "collocations": [
+    "hot take:",
+    "my hot take",
+    "hot takes on social media",
+    "a hot take on"
+   ],
+   "examples": {
+    "everyday": "My hot take: the sequel is better than the original.",
+    "professional": "Instead of a hot take on the quarterly numbers, let's wait for the full analysis.",
+    "analytical": "Media scholars argue that the economics of online attention reward hot takes over careful reporting."
+   },
+   "analogy": "Like food straight out of the oven: served fast, and it might burn you.",
+   "etymology": "Sports journalism slang that spread in the 2010s; take (an opinion) plus hot (provocative).",
+   "common_mistakes": [
+    "Using it for a careful, researched opinion; a hot take is quick and provocative.",
+    "Saying \"a hot opinion\"; the idiom uses \"take\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "to put it bluntly",
+  "domains": [
+   "idioms",
+   "common_phrases"
+  ],
+  "phonetic": "/tə ˌpʊt ɪt ˈblʌntli/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Used to say that one is about to speak very directly, even if it sounds harsh."
+    ]
+   }
+  ],
+  "etymology": "Blunt (not sharp, hence plain and direct) with put in the sense of express.",
+  "conversation": [
+   {
+    "sense": "frankness",
+    "text": "To put it bluntly, the house needs a new roof, and we can't afford one."
+   },
+   {
+    "sense": "feedback",
+    "text": "To put it bluntly, your essay doesn't answer the question."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To say it directly, without softening it."
+   },
+   "pronunciation": {
+    "ipa": "/tə ˌpʊt ɪt ˈblʌntli/",
+    "respelling": "tuh poot it BLUHNT-lee",
+    "tip": "Stress BLUNT. \"Put it\" links: \"puddit\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Frank; it warns the listener that what follows may sting.",
+   "usage_note": "Usually at the start: \"To put it bluntly,...\" \"Put bluntly\" and \"to be blunt\" are similar. It works in speech and writing, at home and at work.",
+   "word_family": [
+    "to be blunt",
+    "put bluntly",
+    "bluntly (adverb)",
+    "blunt (adjective: very direct)"
+   ],
+   "distinctions": [
+    {
+     "vs": "to put it mildly",
+     "note": "\"To put it mildly\" means the truth is even stronger than what you said; \"to put it bluntly\" means you are saying it plainly."
+    },
+    {
+     "vs": "to be honest",
+     "note": "\"To be honest\" signals sincerity; \"to put it bluntly\" signals harsh directness."
+    }
+   ],
+   "antonyms": [
+    "to put it mildly",
+    "to put it gently"
+   ],
+   "collocations": [
+    "to put it bluntly",
+    "put bluntly",
+    "to be blunt"
+   ],
+   "examples": {
+    "everyday": "To put it bluntly, he's not ready to drive on the highway.",
+    "professional": "To put it bluntly, if we miss this deadline, we lose the account.",
+    "analytical": "To put it bluntly, the study's sample is too small to support its conclusions."
+   },
+   "analogy": "Like a dull knife that doesn't slice neatly; it just hits hard.",
+   "etymology": "Blunt (not sharp, hence plain and direct) with put in the sense of express.",
+   "common_mistakes": [
+    "Saying \"to say it bluntly\" is understandable but less idiomatic; use \"put\".",
+    "Using it before a gentle remark; it signals something harsh."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "not to put too fine a point on it",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌnɑt tə ˌpʊt ˌtu ˌfaɪn ə ˈpɔɪnt ɑn ɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Used to say that one is about to speak plainly or bluntly."
+    ]
+   }
+  ],
+  "etymology": "From the image of sharpening something to a fine point (making it precise or delicate); Dickens gave the form \"not to put too fine a point upon it\" to Mr. Snagsby in Bleak House (1853).",
+  "conversation": [
+   {
+    "sense": "frankness",
+    "text": "Not to put too fine a point on it, but you're late every single day."
+   },
+   {
+    "sense": "criticism",
+    "text": "The plan was, not to put too fine a point on it, a disaster."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "To say it plainly (even if it sounds harsh)."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnɑt tə ˌpʊt ˌtu ˌfaɪn ə ˈpɔɪnt ɑn ɪt/",
+    "respelling": "naht tuh poot too fahyn uh POINT ahn it",
+    "tip": "Stress POINT. Say it as one smooth phrase."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Slightly formal and wry; often signals a blunt or critical remark.",
+   "usage_note": "Placed before or inside a sentence as a softener before a blunt statement. It is a little more formal and humorous than \"to put it bluntly.\" It is often followed by \"but.\"",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "to put it bluntly",
+     "note": "\"To put it bluntly\" is plainer and more common; \"not to put too fine a point on it\" is wordier and a bit ironic."
+    },
+    {
+     "vs": "in so many words",
+     "note": "\"In so many words\" means said exactly or directly; \"not to put too fine a point on it\" introduces a direct statement."
+    }
+   ],
+   "antonyms": [
+    "to put it mildly",
+    "beat around the bush"
+   ],
+   "collocations": [
+    "not to put too fine a point on it, but",
+    "not to put too fine a point on it,"
+   ],
+   "examples": {
+    "everyday": "Not to put too fine a point on it, but the kitchen is a mess.",
+    "professional": "Not to put too fine a point on it, this vendor has missed every deadline this year.",
+    "analytical": "The argument is, not to put too fine a point on it, circular."
+   },
+   "analogy": "Like using a thick marker instead of a fine pen: the message comes out bold and plain.",
+   "etymology": "From the image of sharpening something to a fine point (making it precise or delicate); Dickens gave the form \"not to put too fine a point upon it\" to Mr. Snagsby in Bleak House (1853).",
+   "common_mistakes": [
+    "Saying \"not to put a fine point on it\" works, but the usual form has \"too\".",
+    "Using it to mean being precise; it means being blunt."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "get the gist",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɡɛt ðə ˈdʒɪst/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To understand the general meaning of something without understanding every detail."
+    ]
+   }
+  ],
+  "etymology": "Gist comes from an Old French legal phrase about where an action \"lies\"; it came to mean the main point.",
+  "conversation": [
+   {
+    "sense": "language",
+    "text": "My Spanish isn't great, but I got the gist of what she said."
+   },
+   {
+    "sense": "summary",
+    "text": "I skimmed the article, so I got the gist."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To understand the main idea."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɛt ðə ˈdʒɪst/",
+    "respelling": "get thuh JIST",
+    "tip": "\"Gist\" starts with a j sound: jist, not a hard g."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral.",
+   "usage_note": "Often \"get the gist of something.\" \"The gist\" alone is a noun: \"The gist is that...\" \"You get the gist\" ends a summary.",
+   "word_family": [
+    "the gist (noun: the main idea)",
+    "you get the gist"
+   ],
+   "distinctions": [
+    {
+     "vs": "get the drift",
+     "note": "\"Get the drift\" means the same and is a bit more casual; it is often a question: \"Get my drift?\""
+    },
+    {
+     "vs": "get the picture",
+     "note": "\"Get the picture\" is understanding a situation, often an unpleasant one; \"get the gist\" is understanding the main idea of what was said or written."
+    }
+   ],
+   "antonyms": [
+    "miss the point"
+   ],
+   "collocations": [
+    "get the gist of",
+    "got the gist",
+    "you get the gist",
+    "the gist of it"
+   ],
+   "examples": {
+    "everyday": "I didn't catch every word of the movie, but I got the gist.",
+    "professional": "Here's the gist of the client's feedback: they want it simpler and cheaper.",
+    "analytical": "Readers can often get the gist of a text even when many words are unknown, by using context."
+   },
+   "analogy": "Like seeing a city from an airplane: you can't read the street signs, but you know its shape.",
+   "etymology": "Gist comes from an Old French legal phrase about where an action \"lies\"; it came to mean the main point.",
+   "common_mistakes": [
+    "Pronouncing it with a hard g as in \"gift\"; it is jist.",
+    "Saying \"get the gist from\"; the usual preposition is \"of\": \"the gist of the story\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "bend someone's ear",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌbɛnd ˌsʌmwʌnz ˈɪɹ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To talk to someone at length, often about one's problems or opinions; also, to ask someone for a quick talk."
+    ]
+   }
+  ],
+  "etymology": "Origin uncertain; the image is of talking so much that the listener's ear is bent toward the speaker. Common in American English since the 20th century.",
+  "conversation": [
+   {
+    "sense": "long talk",
+    "text": "My neighbor bent my ear for an hour about the new parking rules."
+   },
+   {
+    "sense": "asking",
+    "text": "Can I bend your ear for a minute? I need some advice."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To talk to someone for a long time, or to ask for some of their attention."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbɛnd ˌsʌmwʌnz ˈɪɹ/",
+    "respelling": "bend suhm-wuhnz EER",
+    "tip": "Stress EAR."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mixed: complaining about a talker, or politely asking to talk.",
+   "usage_note": "Two uses. Complaining: \"He bent my ear about politics all night.\" Polite request: \"Can I bend your ear?\" It differs from \"talk someone's ear off,\" which is always negative.",
+   "word_family": [
+    "bent someone's ear (past)",
+    "ear-bending (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "talk someone's ear off",
+     "note": "\"Talk someone's ear off\" is always too much talk; \"bend someone's ear\" can be a polite request."
+    },
+    {
+     "vs": "lend an ear",
+     "note": "\"Lend an ear\" is listening to someone; \"bend someone's ear\" is talking to them."
+    }
+   ],
+   "antonyms": [
+    "lend an ear"
+   ],
+   "collocations": [
+    "bend your ear",
+    "can I bend your ear",
+    "bent my ear about",
+    "bending her ear"
+   ],
+   "examples": {
+    "everyday": "My aunt bent my ear about her knee surgery for most of the drive.",
+    "professional": "Could I bend your ear about the budget before the meeting?",
+    "analytical": "Lobbyists spend much of their time trying to bend lawmakers' ears on specific bills."
+   },
+   "analogy": "Like leaning so close and talking so long that the listener's ear tilts toward you.",
+   "etymology": "Origin uncertain; the image is of talking so much that the listener's ear is bent toward the speaker. Common in American English since the 20th century.",
+   "common_mistakes": [
+    "Saying \"bend someone's ears\"; it is singular: \"ear\".",
+    "Using it to mean listening; the subject is the talker."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "give someone an earful",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɡɪv ˌsʌmwʌn ən ˈɪɹfʊl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To scold someone angrily or tell them one's complaints at length."
+    ]
+   }
+  ],
+  "etymology": "An earful, \"as much as the ear can hold,\" was used for a lot of talk or news from the early 20th century.",
+  "conversation": [
+   {
+    "sense": "scolding",
+    "text": "When I got home at 3 a.m., my mom gave me an earful."
+   },
+   {
+    "sense": "complaint",
+    "text": "The customer gave the manager an earful about the wait."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To tell someone off, or complain to them, loudly and at length."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɪv ˌsʌmwʌn ən ˈɪɹfʊl/",
+    "respelling": "giv suhm-wuhn uhn EER-fool",
+    "tip": "Stress the first syllable of \"earful\": EER-ful."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative for the person receiving it; often humorous when told later.",
+   "usage_note": "Also \"get an earful\" from the receiver's side: \"I got an earful from my boss.\" It covers angry scolding and long complaints.",
+   "word_family": [
+    "get an earful (receive it)",
+    "earful (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "tell off",
+     "note": "\"Tell someone off\" is scolding; \"give someone an earful\" stresses that it is long and loud."
+    },
+    {
+     "vs": "read someone the riot act",
+     "note": "\"Read someone the riot act\" is a stern official warning; \"give someone an earful\" is more casual angry talk."
+    }
+   ],
+   "antonyms": [
+    "praise",
+    "pat on the back"
+   ],
+   "collocations": [
+    "gave me an earful",
+    "got an earful",
+    "give him an earful about",
+    "an earful from"
+   ],
+   "examples": {
+    "everyday": "I forgot our anniversary, and I got an earful.",
+    "professional": "If the shipment is late again, the client will give us an earful, and rightly so.",
+    "analytical": "Town hall meetings let residents give officials an earful, which can shape local policy."
+   },
+   "analogy": "Like a cup filled to the top, except it's your ear and it's filled with complaints.",
+   "etymology": "An earful, \"as much as the ear can hold,\" was used for a lot of talk or news from the early 20th century.",
+   "common_mistakes": [
+    "Saying \"an ear full\"; it is one word: \"earful\".",
+    "Using it for good news; it is almost always scolding or complaining."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "put a spin on",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌpʊt ə ˈspɪn ɑn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To present information in a particular way, especially to make it seem better (or different) than it is."
+    ]
+   }
+  ],
+  "etymology": "From the spin a player puts on a ball to make it curve; \"spin\" in politics and media became common in the US in the 1980s.",
+  "conversation": [
+   {
+    "sense": "positive",
+    "text": "She put a positive spin on getting laid off: more time with her kids."
+   },
+   {
+    "sense": "politics",
+    "text": "Both campaigns put their own spin on the poll numbers."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To frame facts in a way that favors a certain view."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpʊt ə ˈspɪn ɑn/",
+    "respelling": "poot uh SPIN ahn",
+    "tip": "Stress SPIN."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral when creative or upbeat; negative when it suggests manipulation.",
+   "usage_note": "Usually with an adjective: \"put a positive spin on,\" \"a new spin on,\" \"their own spin on.\" \"A new spin on\" can also mean a fresh version of something (\"a new spin on mac and cheese\").",
+   "word_family": [
+    "spin (noun: biased framing)",
+    "spin doctor (person who does it)",
+    "a new spin on (a fresh version)"
+   ],
+   "distinctions": [
+    {
+     "vs": "sugarcoat",
+     "note": "\"Sugarcoat\" is making bad news sound less bad; \"put a spin on\" is framing to favor a view, which may also mislead."
+    },
+    {
+     "vs": "look on the bright side",
+     "note": "\"Look on the bright side\" is finding the good in a situation for yourself; \"put a positive spin on\" is presenting it to others."
+    }
+   ],
+   "antonyms": [
+    "tell it like it is",
+    "the plain facts"
+   ],
+   "collocations": [
+    "put a positive spin on",
+    "put their own spin on",
+    "a new spin on",
+    "put a different spin on it"
+   ],
+   "examples": {
+    "everyday": "My brother puts a funny spin on every family disaster.",
+    "professional": "Let's not put a spin on the delay; tell the client exactly what went wrong and what we're doing about it.",
+    "analytical": "Researchers compared press releases with the studies themselves and found that many put an optimistic spin on the results."
+   },
+   "analogy": "Like a pitcher putting spin on a ball: same ball, but it curves where they want it to go.",
+   "etymology": "From the spin a player puts on a ball to make it curve; \"spin\" in politics and media became common in the US in the 1980s.",
+   "common_mistakes": [
+    "Saying \"put a spin to\"; the preposition is \"on\".",
+    "Assuming \"spin\" always means lying; it can be simply a fresh or positive angle."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "fish story",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˈfɪʃ ˌstɔɹi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "An exaggerated or unbelievable story, especially one told to make oneself look good."
+    ]
+   }
+  ],
+  "etymology": "From the old joke that anglers always exaggerate the size of the fish that got away; American, 1800s.",
+  "conversation": [
+   {
+    "sense": "doubt",
+    "text": "He says he ran a marathon in under three hours? Sounds like a fish story."
+   },
+   {
+    "sense": "teasing",
+    "text": "Every year Dad's fish story gets bigger. Last time the bass was two feet long."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "A boastful story that is probably exaggerated."
+   },
+   "pronunciation": {
+    "ipa": "/ˈfɪʃ ˌstɔɹi/",
+    "respelling": "FISH stor-ee",
+    "tip": "Stress FISH, as in most compound nouns."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Humorous and skeptical.",
+   "usage_note": "Used to doubt someone's claim, usually with friendly teasing. \"Fish tale\" is also used. It applies to any boasting, not just fishing.",
+   "word_family": [
+    "fish tale (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "tall tale",
+     "note": "\"Tall tale\" is an exaggerated story, often for entertainment or folklore; \"fish story\" is a boastful personal claim."
+    },
+    {
+     "vs": "stretch the truth",
+     "note": "\"Stretch the truth\" is exaggerating; \"fish story\" is the exaggerated story itself."
+    }
+   ],
+   "antonyms": [
+    "the honest truth"
+   ],
+   "collocations": [
+    "sounds like a fish story",
+    "another one of his fish stories",
+    "a real fish story"
+   ],
+   "examples": {
+    "everyday": "His story about meeting the president on a plane sounded like a fish story to me.",
+    "professional": "Treat the competitor's sales figures as a fish story until we see audited numbers.",
+    "analytical": "Self-reported data can include fish stories, so researchers cross-check them with records when possible."
+   },
+   "analogy": "Like the fish that gets a little longer each time the angler spreads his arms to show it.",
+   "etymology": "From the old joke that anglers always exaggerate the size of the fish that got away; American, 1800s.",
+   "common_mistakes": [
+    "Using it for any story about fish; it means an exaggerated story.",
+    "Writing \"fishy story\"; \"fishy\" means suspicious, a related but different word."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "talk out of both sides of one's mouth",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌtɔk ˌaʊt əv ˈboʊθ ˈsaɪdz əv wʌnz ˈmaʊθ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To say contradictory things to different people, or to support both sides of an issue, in order to please everyone."
+    ]
+   }
+  ],
+  "etymology": "An American expression from the 20th century; the image is of a person whose mouth speaks two messages at once.",
+  "conversation": [
+   {
+    "sense": "politics",
+    "text": "The senator is talking out of both sides of his mouth: he tells farmers one thing and the city another."
+   },
+   {
+    "sense": "criticism",
+    "text": "You can't talk out of both sides of your mouth. Either you support the plan or you don't."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To be inconsistent or two-faced in what you say."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtɔk ˌaʊt əv ˈboʊθ ˈsaɪdz əv wʌnz ˈmaʊθ/",
+    "respelling": "tawk owt uhv BOHTH SAHYDZ uhv wuhnz MOWTH",
+    "tip": "Stress BOTH, SIDES and MOUTH."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative: it accuses someone of hypocrisy.",
+   "usage_note": "Usually about politicians, managers or companies. \"Speak out of both sides of one's mouth\" is a variant. The progressive is common: \"He's talking out of both sides of his mouth.\"",
+   "word_family": [
+    "speak out of both sides of one's mouth (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "double-talk",
+     "note": "\"Double-talk\" is confusing or deceptive language; \"talk out of both sides of one's mouth\" is saying contradictory things."
+    },
+    {
+     "vs": "sit on the fence",
+     "note": "\"Sit on the fence\" is refusing to choose a side; \"talk out of both sides of one's mouth\" pretends to support both."
+    }
+   ],
+   "antonyms": [
+    "take a stand",
+    "say what one means"
+   ],
+   "collocations": [
+    "talking out of both sides of his mouth",
+    "speak out of both sides of their mouth",
+    "can't talk out of both sides of your mouth"
+   ],
+   "examples": {
+    "everyday": "My roommate agrees with whoever he's talking to. He talks out of both sides of his mouth.",
+    "professional": "Leadership can't talk out of both sides of its mouth, praising work-life balance while rewarding weekend emails.",
+    "analytical": "Critics argued that the company talked out of both sides of its mouth, promoting climate goals while lobbying against regulation."
+   },
+   "analogy": "Like a coin with two heads: whichever way it lands, it says what you want to hear.",
+   "etymology": "An American expression from the 20th century; the image is of a person whose mouth speaks two messages at once.",
+   "common_mistakes": [
+    "Saying \"talk from both sides of the mouth\"; it is \"out of both sides of one's mouth\".",
+    "Using it for someone who speaks two languages; it means being inconsistent."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "straight answer",
+  "domains": [
+   "idioms",
+   "common_phrases"
+  ],
+  "phonetic": "/ˌstɹeɪt ˈænsɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A direct, honest reply that does not avoid the question."
+    ]
+   }
+  ],
+  "etymology": "Straight in the sense of direct and honest, as in \"straight talk\" and \"straight shooter.\"",
+  "conversation": [
+   {
+    "sense": "frustration",
+    "text": "I asked three times when the car would be ready and never got a straight answer."
+   },
+   {
+    "sense": "demand",
+    "text": "Just give me a straight answer: are you coming or not?"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "A clear, honest reply, with no dodging."
+   },
+   "pronunciation": {
+    "ipa": "/ˌstɹeɪt ˈænsɚ/",
+    "respelling": "strayt AN-ser",
+    "tip": "Stress AN-swer. The w in \"answer\" is silent."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive; often used when someone is avoiding one.",
+   "usage_note": "Common with \"give,\" \"get\" and negatives: \"I can't get a straight answer out of him.\" Often about officials, companies or evasive friends.",
+   "word_family": [
+    "give someone a straight answer",
+    "get a straight answer out of someone",
+    "straight (adjective: honest, direct)"
+   ],
+   "distinctions": [
+    {
+     "vs": "a yes-or-no answer",
+     "note": "\"A yes-or-no answer\" is limited to yes or no; \"a straight answer\" is any honest, direct reply."
+    },
+    {
+     "vs": "straight talk",
+     "note": "\"Straight talk\" is honest speech in general; \"a straight answer\" is a reply to a specific question."
+    }
+   ],
+   "antonyms": [
+    "runaround",
+    "evasive answer"
+   ],
+   "collocations": [
+    "give me a straight answer",
+    "can't get a straight answer",
+    "a straight answer out of",
+    "never got a straight answer"
+   ],
+   "examples": {
+    "everyday": "I just want a straight answer: did you eat my leftovers?",
+    "professional": "Customers deserve a straight answer about when the outage will be fixed.",
+    "analytical": "Interview studies show that politicians often avoid giving a straight answer to yes-or-no questions."
+   },
+   "analogy": "Like a straight road instead of a winding one: it takes you right where you asked to go.",
+   "etymology": "Straight in the sense of direct and honest, as in \"straight talk\" and \"straight shooter.\"",
+   "common_mistakes": [
+    "Saying \"a direct straight answer\"; that repeats the idea.",
+    "Using \"straight answer\" for a fast answer; it means honest and direct, not quick."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "lie through one's teeth",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌlaɪ θɹu wʌnz ˈtiθ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To lie openly and shamelessly, knowing that what one says is completely false."
+    ]
+   }
+  ],
+  "etymology": "Origin uncertain; the image is of a lie spoken through a forced smile or clenched teeth. In use since the early 20th century.",
+  "conversation": [
+   {
+    "sense": "accusation",
+    "text": "He said he was home all night, but he was lying through his teeth."
+   },
+   {
+    "sense": "politeness",
+    "text": "I told her I loved the sweater. I was lying through my teeth."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To tell a bold, obvious lie."
+   },
+   "pronunciation": {
+    "ipa": "/ˌlaɪ θɹu wʌnz ˈtiθ/",
+    "respelling": "lahy throo wuhnz TEETH",
+    "tip": "Stress TEETH. Both \"through\" and \"teeth\" have th: put your tongue between your teeth."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Strongly negative when accusing; humorous when admitting a polite lie.",
+   "usage_note": "Usually in the progressive: \"She's lying through her teeth.\" The possessive matches the subject: \"my / your / his / her / their teeth.\" Joking about yourself softens it.",
+   "word_family": [
+    "lied through one's teeth (past)",
+    "lying through one's teeth (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "white lie",
+     "note": "\"A white lie\" is a small, kind lie; \"lie through one's teeth\" is a bold lie (though people use it jokingly for polite ones too)."
+    },
+    {
+     "vs": "stretch the truth",
+     "note": "\"Stretch the truth\" is exaggerating; \"lie through one's teeth\" is a complete lie."
+    }
+   ],
+   "antonyms": [
+    "tell the truth",
+    "come clean"
+   ],
+   "collocations": [
+    "lying through his teeth",
+    "lied through her teeth",
+    "was lying through my teeth"
+   ],
+   "examples": {
+    "everyday": "The kid had chocolate on his face and was still lying through his teeth.",
+    "professional": "The investigation found that the contractor had been lying through his teeth about the inspections.",
+    "analytical": "Studies of deception show that people who lie through their teeth often give fewer details, not more."
+   },
+   "analogy": "Like smiling widely while saying it: the lie comes out right past your clenched teeth.",
+   "etymology": "Origin uncertain; the image is of a lie spoken through a forced smile or clenched teeth. In use since the early 20th century.",
+   "common_mistakes": [
+    "Saying \"lie through the teeth\"; use the possessive: \"lie through his teeth\".",
+    "Using it for honest mistakes; it means knowingly lying."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "sworn to secrecy",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌswɔɹn tə ˈsikɹəsi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Having promised not to tell anyone a secret."
+    ]
+   }
+  ],
+  "etymology": "Swear (to bind by an oath) plus secrecy; long in use for oaths of confidentiality.",
+  "conversation": [
+   {
+    "sense": "refusing",
+    "text": "I'd love to tell you who's pregnant, but I'm sworn to secrecy."
+   },
+   {
+    "sense": "asking",
+    "text": "Okay, I'll tell you, but you're sworn to secrecy."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective phrase",
+    "definition": "Bound by a promise to keep something secret."
+   },
+   "pronunciation": {
+    "ipa": "/ˌswɔɹn tə ˈsikɹəsi/",
+    "respelling": "sworn tuh SEE-kruh-see",
+    "tip": "Stress the first syllable of \"secrecy\": SEE-kruh-see."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Often playful; can be serious in business or legal contexts.",
+   "usage_note": "Usually \"be sworn to secrecy.\" The active form is \"swear someone to secrecy\": \"She swore me to secrecy.\" No real oath is needed; a promise is enough.",
+   "word_family": [
+    "swear someone to secrecy (active)",
+    "swore someone to secrecy (past)",
+    "secrecy (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "my lips are sealed",
+     "note": "\"My lips are sealed\" is the promise itself; \"I'm sworn to secrecy\" explains that you have promised someone else."
+    },
+    {
+     "vs": "under wraps",
+     "note": "\"Under wraps\" describes a thing kept secret; \"sworn to secrecy\" describes a person who promised."
+    }
+   ],
+   "antonyms": [
+    "spill the beans"
+   ],
+   "collocations": [
+    "I'm sworn to secrecy",
+    "swore me to secrecy",
+    "sworn to secrecy about"
+   ],
+   "examples": {
+    "everyday": "My daughter swore me to secrecy about her new boyfriend.",
+    "professional": "The design team is sworn to secrecy until the product launch.",
+    "analytical": "Members of early scientific societies were sometimes sworn to secrecy to protect discoveries."
+   },
+   "analogy": "Like a locked box with a key you've promised never to use.",
+   "etymology": "Swear (to bind by an oath) plus secrecy; long in use for oaths of confidentiality.",
+   "common_mistakes": [
+    "Saying \"sworn to secret\"; the noun is \"secrecy\".",
+    "Saying \"swore to secrecy\" for the person who made others promise; say \"swore me to secrecy\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "drop a hint",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌdɹɑp ə ˈhɪnt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To suggest something indirectly, without saying it openly."
+    ]
+   }
+  ],
+  "etymology": "Drop in the sense of saying something casually, as in \"drop a name\" or \"drop a line.\"",
+  "conversation": [
+   {
+    "sense": "gift",
+    "text": "I've been dropping hints about the necklace for weeks."
+   },
+   {
+    "sense": "leaving",
+    "text": "She kept looking at the clock, dropping hints that it was time for us to go."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To give a small, indirect clue about what you want or think."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdɹɑp ə ˈhɪnt/",
+    "respelling": "drahp uh HINT",
+    "tip": "Stress HINT."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral to playful.",
+   "usage_note": "Often plural: \"drop hints.\" Common add-ons: \"drop a not-so-subtle hint,\" \"a big hint.\" The listener can \"take the hint\" (understand and act).",
+   "word_family": [
+    "dropped a hint (past)",
+    "take the hint (understand it)",
+    "hint (verb and noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "take the hint",
+     "note": "\"Take the hint\" is the listener understanding; \"drop a hint\" is the speaker giving one."
+    },
+    {
+     "vs": "beat around the bush",
+     "note": "\"Beat around the bush\" is avoiding a point in general; \"drop a hint\" is a deliberate indirect clue."
+    }
+   ],
+   "antonyms": [
+    "spell it out",
+    "say it outright"
+   ],
+   "collocations": [
+    "drop a hint",
+    "dropping hints",
+    "drop a not-so-subtle hint",
+    "dropped a few hints"
+   ],
+   "examples": {
+    "everyday": "He dropped a hint that he'd like to be invited, so we invited him.",
+    "professional": "The CEO dropped a hint at the town hall that bonuses might be bigger this year.",
+    "analytical": "Experiments on indirect speech show that people often drop hints to avoid the social risk of a direct request."
+   },
+   "analogy": "Like leaving breadcrumbs: you hope the other person follows them to the right place.",
+   "etymology": "Drop in the sense of saying something casually, as in \"drop a name\" or \"drop a line.\"",
+   "common_mistakes": [
+    "Saying \"give a hint drop\"; the verb is \"drop\".",
+    "Using it for saying something directly; a hint is indirect."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "Freudian slip",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌfɹɔɪdiən ˈslɪp/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A mistake in speech that seems to reveal what the speaker really thinks or feels."
+    ]
+   }
+  ],
+  "etymology": "Named after Sigmund Freud, who wrote about revealing errors of speech in The Psychopathology of Everyday Life (1901).",
+  "conversation": [
+   {
+    "sense": "joking",
+    "text": "I called my new boss \"Mom.\" Freudian slip?"
+   },
+   {
+    "sense": "revealing",
+    "text": "He said he was \"sad\" to see his ex leave, then corrected it to \"glad.\" Total Freudian slip."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "A slip of the tongue that seems to show a hidden thought or wish."
+   },
+   "pronunciation": {
+    "ipa": "/ˌfɹɔɪdiən ˈslɪp/",
+    "respelling": "froy-dee-uhn SLIP",
+    "tip": "\"Freudian\" is FROY-dee-un. In the phrase, SLIP gets the strongest stress."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Usually humorous; embarrassing for the speaker.",
+   "usage_note": "Often pointed out jokingly by listeners. Some people use it for any slip of the tongue, but it suggests a hidden meaning. Capitalize \"Freudian.\"",
+   "word_family": [
+    "Freudian (adjective)",
+    "slip of the tongue (general term)"
+   ],
+   "distinctions": [
+    {
+     "vs": "slip of the tongue",
+     "note": "\"A slip of the tongue\" is any accidental speaking mistake; \"a Freudian slip\" hints that the mistake revealed a hidden thought."
+    },
+    {
+     "vs": "put one's foot in one's mouth",
+     "note": "\"Put one's foot in one's mouth\" is saying something tactless; \"a Freudian slip\" is a word mix-up."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "a Freudian slip",
+    "was that a Freudian slip?",
+    "total Freudian slip"
+   ],
+   "examples": {
+    "everyday": "She introduced her boyfriend as her \"ex\" by accident. Freudian slip?",
+    "professional": "The spokesperson called the merger a \"takeover,\" which many reporters saw as a Freudian slip.",
+    "analytical": "Psychologists today doubt that most Freudian slips reveal hidden wishes; many are ordinary errors in planning speech."
+   },
+   "analogy": "Like a curtain that slips for a second and shows what's backstage.",
+   "etymology": "Named after Sigmund Freud, who wrote about revealing errors of speech in The Psychopathology of Everyday Life (1901).",
+   "common_mistakes": [
+    "Writing \"freudian\" with a small f; it comes from a name: Freudian.",
+    "Using it for any typo; it is for slips that seem to reveal real feelings."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "get on one's soapbox",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɡɛt ɑn wʌnz ˈsoʊpˌbɑks/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To start giving one's strong opinions on a subject, at length and as if making a speech."
+    ]
+   }
+  ],
+  "etymology": "From the wooden crates once used to pack soap, which street speakers stood on to address crowds, around 1900.",
+  "conversation": [
+   {
+    "sense": "self-aware",
+    "text": "Sorry, I'll get off my soapbox now. I just care a lot about recycling."
+   },
+   {
+    "sense": "annoyed",
+    "text": "Don't get Grandpa started on taxes. He'll get on his soapbox for an hour."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To lecture people about something you feel strongly about."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɛt ɑn wʌnz ˈsoʊpˌbɑks/",
+    "respelling": "get ahn wuhnz SOHP-bahks",
+    "tip": "Stress SOAP in \"soapbox\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly negative or self-mocking.",
+   "usage_note": "Common forms: \"get on my soapbox,\" \"get off my soapbox\" (stop lecturing), \"on his soapbox.\" People often say it about themselves to apologize for preaching.",
+   "word_family": [
+    "get off one's soapbox (stop)",
+    "on one's soapbox",
+    "soapbox (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "preach to the choir",
+     "note": "\"Preach to the choir\" is arguing to people who already agree; \"get on one's soapbox\" is lecturing anyone about your views."
+    },
+    {
+     "vs": "rant",
+     "note": "\"Rant\" is angry, wild talk; \"get on one's soapbox\" is preachy and opinionated, not always angry."
+    }
+   ],
+   "antonyms": [
+    "get off one's soapbox"
+   ],
+   "collocations": [
+    "get on my soapbox",
+    "get off my soapbox",
+    "climb on her soapbox",
+    "on his soapbox again"
+   ],
+   "examples": {
+    "everyday": "Every time someone mentions fast food, my brother gets on his soapbox about nutrition.",
+    "professional": "I'll get on my soapbox for a second: documentation saves us hours every week.",
+    "analytical": "Opinion columns give writers a soapbox, but the best ones still support their claims with evidence."
+   },
+   "analogy": "Like climbing on a box in the park and starting a speech to whoever walks by.",
+   "etymology": "From the wooden crates once used to pack soap, which street speakers stood on to address crowds, around 1900.",
+   "common_mistakes": [
+    "Saying \"get on one's soap box\" with a space is accepted but less common; \"soapbox\" is standard.",
+    "Using it for a short opinion; it suggests a long lecture."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "preach to the choir",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌpɹitʃ tə ðə ˈkwaɪɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To try to convince people who already agree with you."
+    ]
+   }
+  ],
+  "etymology": "From the image of a preacher trying to convert the choir, the most faithful people in church; American, 20th century.",
+  "conversation": [
+   {
+    "sense": "agreement",
+    "text": "You don't have to tell me traffic is terrible. You're preaching to the choir."
+   },
+   {
+    "sense": "campaign",
+    "text": "The ad only reaches their supporters, so they're just preaching to the choir."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To argue for something to people who already believe it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpɹitʃ tə ðə ˈkwaɪɚ/",
+    "respelling": "preech tuh thuh KWAHY-er",
+    "tip": "\"Choir\" sounds like \"quire\": KWAHY-er. Stress CHOIR."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Light; often used as a friendly reply meaning \"I already agree.\"",
+   "usage_note": "Most common as the reply \"You're preaching to the choir.\" It also criticizes messages that never reach people who disagree. \"Preaching to the converted\" is the British-leaning form.",
+   "word_family": [
+    "preaching to the choir (-ing, most common)",
+    "preach to the converted (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get on one's soapbox",
+     "note": "\"Get on one's soapbox\" is lecturing anyone; \"preach to the choir\" is persuading people who already agree."
+    },
+    {
+     "vs": "you can say that again",
+     "note": "\"You can say that again\" agrees strongly; \"you're preaching to the choir\" agrees and says you didn't need to argue."
+    }
+   ],
+   "antonyms": [
+    "play devil's advocate"
+   ],
+   "collocations": [
+    "you're preaching to the choir",
+    "preaching to the choir",
+    "just preaching to the choir"
+   ],
+   "examples": {
+    "everyday": "I hate early meetings too. You're preaching to the choir.",
+    "professional": "If the training only reaches managers who already support it, we're preaching to the choir.",
+    "analytical": "Studies of social media show that most political posts preach to the choir, reaching people who already agree."
+   },
+   "analogy": "Like a pastor urging the choir to come to church: they're already sitting right there.",
+   "etymology": "From the image of a preacher trying to convert the choir, the most faithful people in church; American, 20th century.",
+   "common_mistakes": [
+    "Saying \"preach to the quire\" with British spelling; American spelling is \"choir\".",
+    "Using it as an insult; usually it is friendly agreement."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "the plot thickens",
+  "domains": [
+   "idioms",
+   "common_phrases"
+  ],
+  "phonetic": "/ðə ˌplɑt ˈθɪkənz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Things are getting more complicated, mysterious or interesting (often said humorously)."
+    ]
+   }
+  ],
+  "etymology": "From 17th-century theater; George Villiers' play The Rehearsal (1671) has the line \"now the plot thickens very much upon us.\"",
+  "conversation": [
+   {
+    "sense": "mystery",
+    "text": "Wait, she was at the party too? The plot thickens."
+   },
+   {
+    "sense": "office",
+    "text": "First the manager quit, and now the director is out sick. The plot thickens."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "The situation is becoming more complicated or intriguing."
+   },
+   "pronunciation": {
+    "ipa": "/ðə ˌplɑt ˈθɪkənz/",
+    "respelling": "thuh plaht THIK-uhnz",
+    "tip": "Stress THICK in \"thickens\". Start with th, tongue between teeth."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Playful; treats real life like a mystery novel.",
+   "usage_note": "Said as a complete sentence, usually with mock drama, about gossip, mysteries or confusing situations.",
+   "word_family": [],
+   "distinctions": [
+    {
+     "vs": "plot twist",
+     "note": "\"Plot twist\" announces a sudden surprise; \"the plot thickens\" says things are getting more complicated."
+    },
+    {
+     "vs": "a can of worms",
+     "note": "\"A can of worms\" is a problem that creates more problems; \"the plot thickens\" is lighter and more about intrigue."
+    }
+   ],
+   "antonyms": [
+    "mystery solved"
+   ],
+   "collocations": [
+    "the plot thickens",
+    "ooh, the plot thickens"
+   ],
+   "examples": {
+    "everyday": "The cookies are gone and the dog has crumbs on his nose. The plot thickens.",
+    "professional": "So the vendor and the competitor share an owner? The plot thickens.",
+    "analytical": "The plot thickens when new archival documents contradict the official account of the treaty."
+   },
+   "analogy": "Like a sauce on the stove that gets thicker the longer it cooks.",
+   "etymology": "From 17th-century theater; George Villiers' play The Rehearsal (1671) has the line \"now the plot thickens very much upon us.\"",
+   "common_mistakes": [
+    "Saying \"the plot is thickening\" is fine but less idiomatic; the set phrase is \"the plot thickens.\"",
+    "Using it for a real tragedy; it is light and playful."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "speak the same language",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌspik ðə ˌseɪm ˈlæŋɡwɪdʒ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To understand each other well because of shared attitudes, interests or knowledge."
+    ]
+   }
+  ],
+  "etymology": "A figurative use of language as a way of thinking or set of values; common in 20th-century English.",
+  "conversation": [
+   {
+    "sense": "rapport",
+    "text": "We'd only just met, but we spoke the same language. It was like we'd been friends for years."
+   },
+   {
+    "sense": "mismatch",
+    "text": "The engineers and the marketing team just don't speak the same language."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To share the same ideas, values or way of thinking, so communication is easy."
+   },
+   "pronunciation": {
+    "ipa": "/ˌspik ðə ˌseɪm ˈlæŋɡwɪdʒ/",
+    "respelling": "speek thuh saym LANG-gwij",
+    "tip": "\"Language\" is LANG-gwij, two syllables. Stress LANG."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive when present; frustrated when absent (\"don't speak the same language\").",
+   "usage_note": "Often with \"we\" or \"they\": \"We speak the same language.\" The negative is common for groups that misunderstand each other. It has nothing to do with literal languages.",
+   "word_family": [
+    "spoke the same language (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "on the same wavelength",
+     "note": "\"On the same wavelength\" is thinking alike at a particular moment; \"speak the same language\" is a deeper shared outlook or vocabulary."
+    },
+    {
+     "vs": "on the same page",
+     "note": "\"On the same page\" is agreeing about a plan; \"speak the same language\" is understanding each other easily in general."
+    }
+   ],
+   "antonyms": [
+    "talk past each other",
+    "get one's wires crossed"
+   ],
+   "collocations": [
+    "speak the same language",
+    "don't speak the same language",
+    "we spoke the same language"
+   ],
+   "examples": {
+    "everyday": "As soon as we started talking about old movies, we knew we spoke the same language.",
+    "professional": "We hired a project manager who speaks the same language as both the designers and the developers.",
+    "analytical": "Interdisciplinary teams often fail because statisticians and biologists do not speak the same language."
+   },
+   "analogy": "Like two radios tuned to the same station: the message comes through clearly.",
+   "etymology": "A figurative use of language as a way of thinking or set of values; common in 20th-century English.",
+   "common_mistakes": [
+    "Saying \"speak a same language\"; it is \"the same language\".",
+    "Taking it literally; two people can speak English and still not \"speak the same language\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ }
+]

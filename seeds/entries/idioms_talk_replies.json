@@ -1,0 +1,4063 @@
+[
+ {
+  "word": "suit yourself",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌsut jɚˈsɛlf/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said when someone turns down your offer or advice: do whatever you want (often with mild annoyance or indifference)."
+    ]
+   }
+  ],
+  "etymology": "From \"suit\" in the sense \"to please or satisfy\": suit yourself = please yourself. In use since at least the 1800s.",
+  "conversation": [
+   {
+    "sense": "declined offer",
+    "text": "\"I don't want any pizza.\" \"Suit yourself. More for me.\""
+   },
+   {
+    "sense": "ignored advice",
+    "text": "\"I'm not bringing a jacket.\" \"Suit yourself, but it's supposed to get cold tonight.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Do what you like; I've offered, and it's your choice now."
+   },
+   "pronunciation": {
+    "ipa": "/ˌsut jɚˈsɛlf/",
+    "respelling": "soot yer-SELF",
+    "tip": "Stress SELF. \"Suit\" rhymes with \"boot\"; don't say \"sweet.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral to slightly cool: it can be easygoing, but often hints that you think the other person is making a mistake.",
+   "usage_note": "A reply, not a request: it comes right after someone refuses something or insists on their own way. Said with a shrug it is friendly (\"Suit yourself, more for me\"); said flatly it can sound a little offended. Avoid it with a boss or a customer.",
+   "word_family": [
+    "suit (verb: to be convenient for)",
+    "suits me (fine) (it is fine with me)"
+   ],
+   "distinctions": [
+    {
+     "vs": "have it your way",
+     "note": "\"Have it your way\" usually comes at the end of an argument and sounds more annoyed; \"suit yourself\" is lighter and often follows a simple \"no thanks.\""
+    },
+    {
+     "vs": "knock yourself out",
+     "note": "\"Knock yourself out\" encourages someone to go ahead and do something (often something you don't want to do); \"suit yourself\" accepts that they have refused."
+    },
+    {
+     "vs": "suits me",
+     "note": "\"Suits me\" means \"that is fine with me\" and is about your own preference, not theirs."
+    }
+   ],
+   "antonyms": [
+    "are you sure?",
+    "come on, just try it"
+   ],
+   "collocations": [
+    "Suit yourself.",
+    "Okay, suit yourself.",
+    "Suit yourself, more for me.",
+    "Fine, suit yourself."
+   ],
+   "examples": {
+    "everyday": "\"I'll walk; I don't need a ride.\" \"Suit yourself. It's two miles.\"",
+    "professional": "If the vendor won't accept the revised terms, suit yourself is not the answer; we should ask what would work for them.",
+    "analytical": "\"Suit yourself\" ends a negotiation politely on the surface while signaling that the speaker has stopped trying to persuade."
+   },
+   "analogy": "Like a tailor handing you the fabric and saying, \"Cut it however you want.\"",
+   "etymology": "From \"suit\" in the sense \"to please or satisfy\": suit yourself = please yourself. In use since at least the 1800s.",
+   "common_mistakes": [
+    "Using it to mean \"help yourself\" when offering food; \"suit yourself\" comes after a refusal, not with the offer.",
+    "Saying it to someone in authority; it can sound dismissive."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "knock yourself out",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌnɑk jɚˌsɛlf ˈaʊt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Go ahead and do it as much as you like (a casual way to give permission, often for something the speaker has no interest in).",
+     "To work extremely hard at something; to exhaust yourself trying (as a regular verb phrase: \"She knocked herself out planning the party\")."
+    ]
+   }
+  ],
+  "etymology": "The \"try very hard\" sense (to exhaust oneself as if knocked unconscious) is older, from early 20th-century American slang; the permission reply grew out of it, roughly \"go ahead and wear yourself out.\"",
+  "conversation": [
+   {
+    "sense": "permission",
+    "text": "\"Can I finish the leftovers?\" \"Knock yourself out.\""
+   },
+   {
+    "sense": "indifference",
+    "text": "\"I'm going to reorganize the whole garage this weekend.\" \"Knock yourself out. I'll be at the beach.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Go right ahead, enjoy yourself; or, as a verb, to make an enormous effort."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnɑk jɚˌsɛlf ˈaʊt/",
+    "respelling": "nok yer-self OWT",
+    "tip": "Stress OUT. The words run together: NOCK-yer-self-OUT."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Friendly and relaxed; sometimes a little ironic, suggesting the speaker would never want to do the thing.",
+   "usage_note": "As a reply it gives permission: \"Knock yourself out.\" Tone matters: warm when someone asks to borrow or use something, ironic when they announce a chore you find boring. As a verb (\"He knocked himself out to get the report done\") it means trying very hard, and it is praise.",
+   "word_family": [
+    "knocked herself/himself out (past)",
+    "knock oneself out (to try very hard)"
+   ],
+   "distinctions": [
+    {
+     "vs": "be my guest",
+     "note": "\"Be my guest\" is a slightly more polite way to give permission; \"knock yourself out\" is more casual and can be ironic."
+    },
+    {
+     "vs": "suit yourself",
+     "note": "\"Suit yourself\" accepts someone's refusal; \"knock yourself out\" encourages them to go ahead."
+    },
+    {
+     "vs": "knock out",
+     "note": "\"Knock someone out\" literally means to make them unconscious; in the reply, nobody gets hurt."
+    }
+   ],
+   "antonyms": [
+    "don't you dare",
+    "hands off"
+   ],
+   "collocations": [
+    "Knock yourself out.",
+    "Sure, knock yourself out.",
+    "knocked herself out planning",
+    "really knocked themselves out"
+   ],
+   "examples": {
+    "everyday": "\"Mind if I try your new guitar?\" \"Knock yourself out.\"",
+    "professional": "The events team knocked themselves out on the conference, and the feedback shows it.",
+    "analytical": "\"Knock yourself out\" shows how an idiom can reverse its literal meaning: a phrase about violence became one of easy permission."
+   },
+   "analogy": "Like waving someone toward a buffet: take as much as you want, it's all yours.",
+   "etymology": "The \"try very hard\" sense (to exhaust oneself as if knocked unconscious) is older, from early 20th-century American slang; the permission reply grew out of it, roughly \"go ahead and wear yourself out.\"",
+   "common_mistakes": [
+    "Taking it as a threat; it is friendly.",
+    "Changing the pronoun wrongly: it is \"knock yourself out\" to one person, \"knock yourselves out\" to a group."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "I'll pass",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/aɪl ˈpæs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "No, thank you; I don't want to take part or have any (a casual, polite refusal)."
+    ]
+   }
+  ],
+  "etymology": "From \"pass\" in card games, meaning to decline to bid or play on one's turn.",
+  "conversation": [
+   {
+    "sense": "food",
+    "text": "\"Want some more cake?\" \"I'll pass, thanks. I'm stuffed.\""
+   },
+   {
+    "sense": "activity",
+    "text": "\"We're going bungee jumping Saturday.\" \"I think I'll pass.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "A short, easy way to say no to an offer or invitation."
+   },
+   "pronunciation": {
+    "ipa": "/aɪl ˈpæs/",
+    "respelling": "ahyl PAS",
+    "tip": "Stress PASS. \"I'll\" is one syllable, ahyl."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Polite and relaxed; softer than a flat \"no.\"",
+   "usage_note": "Often softened: \"I think I'll pass,\" \"I'll pass, thanks,\" \"I'll pass this time.\" It works for food, drinks, invitations and turns in games. With an added \"this time\" it sounds open to the next invitation.",
+   "word_family": [
+    "pass (verb: to decline a turn or offer)",
+    "pass on something (to decline it)",
+    "take a pass (on something)"
+   ],
+   "distinctions": [
+    {
+     "vs": "pass on something",
+     "note": "\"Pass on something\" names what you are refusing (\"I'll pass on dessert\"); \"I'll pass\" stands alone."
+    },
+    {
+     "vs": "take a rain check",
+     "note": "\"Take a rain check\" refuses now but promises later; \"I'll pass\" just refuses."
+    },
+    {
+     "vs": "pass up",
+     "note": "\"Pass up\" means to miss or refuse an opportunity (\"Don't pass up this chance\"), usually one you should have taken."
+    }
+   ],
+   "antonyms": [
+    "count me in",
+    "I'm game",
+    "I'm down"
+   ],
+   "collocations": [
+    "I'll pass.",
+    "I think I'll pass.",
+    "I'll pass, thanks.",
+    "I'll pass this time."
+   ],
+   "examples": {
+    "everyday": "\"Anybody want to watch the horror movie?\" \"I'll pass. I want to sleep tonight.\"",
+    "professional": "Thanks for thinking of me for the committee, but I'll pass this year; my plate is full.",
+    "analytical": "Refusals like \"I'll pass\" borrow game language, where passing your turn is normal, which makes saying no feel less personal."
+   },
+   "analogy": "Like passing your turn in a card game: no hard feelings, you just don't play this round.",
+   "etymology": "From \"pass\" in card games, meaning to decline to bid or play on one's turn.",
+   "common_mistakes": [
+    "Saying \"I pass\" in conversation; that sounds like a card game. Use \"I'll pass.\"",
+    "Confusing it with \"pass out\" (faint) or \"pass away\" (die)."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "I'm with you",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/aɪm ˈwɪθ ju/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "I agree with you or support you.",
+     "I understand what you're saying; I'm following your explanation (often \"I'm with you so far\")."
+    ]
+   }
+  ],
+  "etymology": "From \"with\" in the sense \"on the side of\" or \"keeping up with\"; long established in spoken English.",
+  "conversation": [
+   {
+    "sense": "agreement",
+    "text": "\"I think we should leave now and beat the traffic.\" \"I'm with you.\""
+   },
+   {
+    "sense": "following",
+    "text": "\"So you take the second exit, then turn left at the gas station. You with me?\" \"I'm with you.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I agree, or I follow what you're saying."
+   },
+   "pronunciation": {
+    "ipa": "/aɪm ˈwɪθ ju/",
+    "respelling": "ahym WITH yoo",
+    "tip": "Stress WITH. \"You\" is light: ahym-WITH-yuh."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Warm and cooperative.",
+   "usage_note": "Two uses. Agreement: \"I'm with you on that.\" Understanding: \"I'm with you so far,\" often after the question \"(Are) you with me?\" \"I'm not with you\" means \"I don't follow\" or \"I don't agree,\" depending on context.",
+   "word_family": [
+    "be with someone (to agree with or support them)",
+    "are you with me? (do you understand?)"
+   ],
+   "distinctions": [
+    {
+     "vs": "I hear you",
+     "note": "\"I hear you\" shows you understand someone's feelings or point, without necessarily agreeing; \"I'm with you\" usually means you agree."
+    },
+    {
+     "vs": "same here",
+     "note": "\"Same here\" means the same is true for me; \"I'm with you\" means I support your opinion or plan."
+    },
+    {
+     "vs": "be right with you",
+     "note": "\"I'll be right with you\" means \"I'll come help you in a moment\" and has nothing to do with agreeing."
+    }
+   ],
+   "antonyms": [
+    "I'm not with you",
+    "I beg to differ"
+   ],
+   "collocations": [
+    "I'm with you on that.",
+    "I'm with you so far.",
+    "I'm with you 100 percent.",
+    "You with me?"
+   ],
+   "examples": {
+    "everyday": "\"This line is ridiculous. Let's get tacos instead.\" \"I'm with you.\"",
+    "professional": "I'm with you on the timeline, but I'd like to revisit the budget numbers.",
+    "analytical": "\"I'm with you so far\" lets a listener confirm comprehension step by step, which helps in long explanations."
+   },
+   "analogy": "Like walking side by side with someone: you're going the same direction.",
+   "etymology": "From \"with\" in the sense \"on the side of\" or \"keeping up with\"; long established in spoken English.",
+   "common_mistakes": [
+    "Answering \"I'm with you\" when you mean \"I'm coming with you\"; context usually makes it clear, but \"I'll come with you\" is clearer.",
+    "Writing \"Im with you\"; it needs the apostrophe: I'm."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "go figure",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌɡoʊ ˈfɪɡjɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said about something surprising, ironic or hard to explain: who would have guessed? It makes no sense, but there it is."
+    ]
+   }
+  ],
+  "etymology": "American, mid-20th century; widely said to come from New York speech influenced by Yiddish phrasing (\"geh veys,\" roughly \"go know\"), though the exact path is uncertain.",
+  "conversation": [
+   {
+    "sense": "irony",
+    "text": "The one day I leave my umbrella at home, it pours. Go figure."
+   },
+   {
+    "sense": "surprise",
+    "text": "He failed the practice test and aced the real one. Go figure."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "A shrugging comment that something is odd, ironic or impossible to explain."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡoʊ ˈfɪɡjɚ/",
+    "respelling": "goh FIG-yer",
+    "tip": "Stress FIG. \"Figure\" is FIG-yer in American English, never FIG-er."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Wry and amused; sometimes mildly frustrated.",
+   "usage_note": "Usually at the end of a sentence, after describing something unexpected. It does not ask the listener to actually figure anything out. Close to \"Who knew?\" or \"Isn't that funny?\"",
+   "word_family": [
+    "figure (verb: to understand, work out)",
+    "that figures (that makes sense; I expected that)"
+   ],
+   "distinctions": [
+    {
+     "vs": "that figures",
+     "note": "Opposites in spirit: \"that figures\" means \"that is exactly what I expected\"; \"go figure\" means \"that is surprising and strange.\""
+    },
+    {
+     "vs": "go fig",
+     "note": "\"Go fig\" is an informal clipping used in texting."
+    },
+    {
+     "vs": "who knew",
+     "note": "\"Who knew?\" stresses pleasant surprise; \"go figure\" adds a shrug about the oddness."
+    }
+   ],
+   "antonyms": [
+    "that figures",
+    "makes sense"
+   ],
+   "collocations": [
+    "Go figure.",
+    "..., go figure.",
+    "Well, go figure."
+   ],
+   "examples": {
+    "everyday": "The cheapest restaurant in town has the best food. Go figure.",
+    "professional": "Our simplest email got the highest open rate of the quarter. Go figure, but we should test it again.",
+    "analytical": "\"Go figure\" marks a result as counterintuitive while declining to explain it, a hedge common in casual commentary."
+   },
+   "analogy": "Like shrugging your shoulders and holding up your hands: I can't explain it either.",
+   "etymology": "American, mid-20th century; widely said to come from New York speech influenced by Yiddish phrasing (\"geh veys,\" roughly \"go know\"), though the exact path is uncertain.",
+   "common_mistakes": [
+    "Using it as a real instruction (\"Go figure out the answer\"); the idiom is a comment, not a command.",
+    "Confusing it with \"that figures,\" which means the opposite."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "whatever floats your boat",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/wʌˌtɛvɚ ˌfloʊts jɚ ˈboʊt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Do whatever makes you happy; it's your choice (often implying the speaker wouldn't choose the same)."
+    ]
+   }
+  ],
+  "etymology": "American slang from the late 20th century; \"float one's boat\" means to please or excite someone.",
+  "conversation": [
+   {
+    "sense": "tastes",
+    "text": "\"I put ketchup on my eggs.\" \"Hey, whatever floats your boat.\""
+   },
+   {
+    "sense": "choice",
+    "text": "\"I'm thinking of spending my vacation at a silent retreat.\" \"Whatever floats your boat.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Whatever you enjoy is fine; to each their own."
+   },
+   "pronunciation": {
+    "ipa": "/wʌˌtɛvɚ ˌfloʊts jɚ ˈboʊt/",
+    "respelling": "wuht-ev-er flohts yer BOHT",
+    "tip": "Stress BOAT. \"Floats your\" blends: FLOHTS-yer."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Playful and tolerant, with a hint of \"not for me.\"",
+   "usage_note": "A light, joking reply to someone's unusual taste or plan. Usually not unkind, but the tone can suggest mild amusement or disapproval. Variants: \"if it floats your boat,\" \"whatever rocks your boat\" (less common).",
+   "word_family": [
+    "float one's boat (to please or excite someone)"
+   ],
+   "distinctions": [
+    {
+     "vs": "to each their own",
+     "note": "\"To each their own\" is a calmer general statement about tastes; \"whatever floats your boat\" is jokier and said directly to the person."
+    },
+    {
+     "vs": "suit yourself",
+     "note": "\"Suit yourself\" comes after someone refuses your offer; \"whatever floats your boat\" responds to their preferences."
+    },
+    {
+     "vs": "not my cup of tea",
+     "note": "\"Not my cup of tea\" talks about your own dislike; \"whatever floats your boat\" accepts someone else's liking."
+    }
+   ],
+   "antonyms": [
+    "that's not okay",
+    "you can't be serious"
+   ],
+   "collocations": [
+    "Whatever floats your boat.",
+    "Hey, whatever floats your boat.",
+    "if that floats your boat",
+    "doesn't float my boat"
+   ],
+   "examples": {
+    "everyday": "\"I'm going to learn to play the bagpipes.\" \"Whatever floats your boat, just not in the apartment.\"",
+    "professional": "Some managers want daily updates, some want weekly; whatever floats their boat, as long as it's agreed upfront.",
+    "analytical": "Phrases like \"whatever floats your boat\" express tolerance of other people's preferences while marking distance from them."
+   },
+   "analogy": "Like a toy boat in a bathtub: if it floats and makes you happy, fine.",
+   "etymology": "American slang from the late 20th century; \"float one's boat\" means to please or excite someone.",
+   "common_mistakes": [
+    "Saying \"whatever floats your ship\"; it is always \"boat.\"",
+    "Using it in serious situations; it can sound flippant."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "that's life",
+  "domains": [
+   "idioms",
+   "small_talk",
+   "feelings"
+  ],
+  "phonetic": "/ˌðæts ˈlaɪf/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to accept a disappointment calmly: bad things happen, and there's nothing to be done."
+    ]
+   }
+  ],
+  "etymology": "An everyday expression; the shrugging use goes back at least to the 1800s, and the 1966 Frank Sinatra song \"That's Life\" made it even more familiar.",
+  "conversation": [
+   {
+    "sense": "acceptance",
+    "text": "\"We didn't get the house.\" \"Ah, that's life. Something better will come along.\""
+   },
+   {
+    "sense": "shrug",
+    "text": "I studied all week and still got a B. That's life."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Disappointments happen; accept it and move on."
+   },
+   "pronunciation": {
+    "ipa": "/ˌðæts ˈlaɪf/",
+    "respelling": "thats LAHYF",
+    "tip": "Stress LIFE. Short and falling: thats-LAHYF."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Resigned but calm; can be comforting or simply realistic.",
+   "usage_note": "Used after a small or medium setback to accept it. It can comfort someone, but for real grief it can sound too casual. Close variants: \"such is life\" (a bit more formal or literary), \"c'est la vie\" (borrowed French).",
+   "word_family": [
+    "such is life (variant)",
+    "c'est la vie (French equivalent)"
+   ],
+   "distinctions": [
+    {
+     "vs": "it is what it is",
+     "note": "\"It is what it is\" accepts a fixed situation; \"that's life\" accepts that disappointments are part of living in general."
+    },
+    {
+     "vs": "such is life",
+     "note": "\"Such is life\" means the same with a slightly more thoughtful or old-fashioned tone."
+    },
+    {
+     "vs": "oh well",
+     "note": "\"Oh well\" is a shorter, lighter shrug."
+    }
+   ],
+   "antonyms": [
+    "that's not fair",
+    "I won't accept that"
+   ],
+   "collocations": [
+    "That's life.",
+    "Oh well, that's life.",
+    "Hey, that's life.",
+    "That's life, I guess."
+   ],
+   "examples": {
+    "everyday": "The flight got canceled and we lost a day of the trip. That's life.",
+    "professional": "We lost the client after two good years. That's life in this business; let's look at what we learned.",
+    "analytical": "Phrases like \"that's life\" help speakers frame a loss as normal rather than personal, which can reduce frustration."
+   },
+   "analogy": "Like rain on a picnic day: you didn't cause it and you can't stop it.",
+   "etymology": "An everyday expression; the shrugging use goes back at least to the 1800s, and the 1966 Frank Sinatra song \"That's Life\" made it even more familiar.",
+   "common_mistakes": [
+    "Using it to comfort someone after a death or serious tragedy; it can sound cold.",
+    "Saying \"it's the life\"; the idiom is \"that's life.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "now you're talking",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌnaʊ jɚ ˈtɔkɪŋ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said with enthusiasm when someone finally suggests something you like: that's a great idea."
+    ]
+   }
+  ],
+  "etymology": "An American colloquialism; \"talking\" here means finally saying something worth hearing.",
+  "conversation": [
+   {
+    "sense": "better idea",
+    "text": "\"Should we just order pizza instead of cooking?\" \"Now you're talking!\""
+   },
+   {
+    "sense": "approval",
+    "text": "\"What if we take Friday off and make it a long weekend?\" \"Now you're talking.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "That's a much better suggestion; I'm happy with that."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnaʊ jɚ ˈtɔkɪŋ/",
+    "respelling": "now yer TAW-king",
+    "tip": "Stress NOW and TALK; TALK is strongest. \"You're\" shrinks to yer."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Enthusiastic and positive.",
+   "usage_note": "Usually comes after a less appealing suggestion, so \"now\" contrasts with what came before. A close variant is \"Now we're talking.\" It can be used for small things (food, plans) or deals (\"Fifty percent off? Now you're talking.\").",
+   "word_family": [
+    "now we're talking (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "that's what I'm talking about",
+     "note": "\"That's what I'm talking about\" celebrates something that has happened or matches what you wanted; \"now you're talking\" welcomes a suggestion."
+    },
+    {
+     "vs": "sounds good",
+     "note": "\"Sounds good\" is neutral agreement; \"now you're talking\" is excited agreement."
+    }
+   ],
+   "antonyms": [
+    "no way",
+    "I'll pass"
+   ],
+   "collocations": [
+    "Now you're talking!",
+    "Now we're talking.",
+    "Ooh, now you're talking."
+   ],
+   "examples": {
+    "everyday": "\"How about a beach day instead of cleaning the garage?\" \"Now you're talking.\"",
+    "professional": "\"We can offer free shipping on orders over fifty dollars.\" \"Now you're talking; that'll move the needle.\"",
+    "analytical": "\"Now you're talking\" implicitly ranks a new proposal above the earlier ones, signaling preference without directly rejecting anything."
+   },
+   "analogy": "Like a radio finally landing on your favorite station after a lot of static.",
+   "etymology": "An American colloquialism; \"talking\" here means finally saying something worth hearing.",
+   "common_mistakes": [
+    "Taking \"talking\" literally, as if the other person was silent before.",
+    "Using it in a flat tone; it needs enthusiasm."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "that makes two of us",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ðæt ˌmeɪks ˈtu əv ˌʌs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to agree that you feel or are in the same situation as the other person (often about a complaint or confusion)."
+    ]
+   }
+  ],
+  "etymology": "A literal count used idiomatically: by saying it, you add yourself to the one person who has spoken.",
+  "conversation": [
+   {
+    "sense": "shared feeling",
+    "text": "\"I'm exhausted.\" \"That makes two of us.\""
+   },
+   {
+    "sense": "shared confusion",
+    "text": "\"I have no idea what the professor was talking about.\" \"That makes two of us.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "The same is true for me."
+   },
+   "pronunciation": {
+    "ipa": "/ðæt ˌmeɪks ˈtu əv ˌʌs/",
+    "respelling": "that mayks TOO uhv uhs",
+    "tip": "Stress TWO. \"Of us\" blends: TOO-uh-vuhs."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Friendly and wry; it builds a sense of being in the same boat.",
+   "usage_note": "Most often about something negative or awkward: tiredness, confusion, nerves, hunger. With three people you might joke \"That makes three of us.\" It replies to a statement about the speaker, not to an opinion about something else.",
+   "word_family": [
+    "that makes three of us (and so on)"
+   ],
+   "distinctions": [
+    {
+     "vs": "same here",
+     "note": "\"Same here\" is shorter and more neutral."
+    },
+    {
+     "vs": "you and me both",
+     "note": "\"You and me both\" is about equal in meaning, a little more emphatic and casual."
+    },
+    {
+     "vs": "me too",
+     "note": "\"Me too\" is the plain version; \"that makes two of us\" adds a touch of humor."
+    }
+   ],
+   "antonyms": [
+    "not me",
+    "speak for yourself"
+   ],
+   "collocations": [
+    "That makes two of us.",
+    "Well, that makes two of us.",
+    "That makes three of us."
+   ],
+   "examples": {
+    "everyday": "\"I'm so nervous about this interview.\" \"That makes two of us; mine's tomorrow.\"",
+    "professional": "\"I'm not sure the new system is saving us time.\" \"That makes two of us.\"",
+    "analytical": "\"That makes two of us\" expresses solidarity by counting the speaker into the same group as the listener."
+   },
+   "analogy": "Like raising your hand when someone asks, \"Anyone else?\"",
+   "etymology": "A literal count used idiomatically: by saying it, you add yourself to the one person who has spoken.",
+   "common_mistakes": [
+    "Using it to agree with an opinion about something else (\"This movie is great.\" \"That makes two of us\"); it fits better with feelings and situations: \"I love this movie.\"",
+    "Saying \"that makes us two\"; the order is \"two of us.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "great minds think alike",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌɡɹeɪt ˌmaɪndz ˌθɪŋk əˈlaɪk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said jokingly when two people have the same idea or say the same thing at the same time."
+    ]
+   }
+  ],
+  "etymology": "An old proverb in English, recorded in early forms in the 1600s; the joking reply \"and fools seldom differ\" is also old.",
+  "conversation": [
+   {
+    "sense": "same idea",
+    "text": "\"I was just about to suggest Thai food.\" \"Great minds think alike!\""
+   },
+   {
+    "sense": "same outfit",
+    "text": "We showed up in the same blue sweater. Great minds think alike."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "A playful compliment to both of you for having the same idea."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɹeɪt ˌmaɪndz ˌθɪŋk əˈlaɪk/",
+    "respelling": "grayt mahyndz think uh-LAHYK",
+    "tip": "Stress LIKE in alike. Said quickly: grayt-MAHYNDZ-think-uh-LAHYK."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Playful and friendly; mock-boastful.",
+   "usage_note": "Said with a smile; nobody is seriously claiming to be a genius. A teasing reply is \"...and fools seldom differ,\" the less flattering second half of the old saying. Common with friends and coworkers.",
+   "word_family": [
+    "great minds (shortened: \"Great minds!\")"
+   ],
+   "distinctions": [
+    {
+     "vs": "you read my mind",
+     "note": "\"You read my mind\" means the other person guessed what you were thinking or wanting; \"great minds think alike\" means you both thought the same thing."
+    },
+    {
+     "vs": "jinx",
+     "note": "\"Jinx!\" is what children (and playful adults) say when two people say the same word at the same moment."
+    }
+   ],
+   "antonyms": [
+    "agree to disagree"
+   ],
+   "collocations": [
+    "Great minds think alike!",
+    "Great minds!",
+    "Ha, great minds think alike."
+   ],
+   "examples": {
+    "everyday": "\"I brought chips and salsa.\" \"So did I! Great minds think alike.\"",
+    "professional": "We both flagged the same error in the report. Great minds think alike.",
+    "analytical": "The saying flatters both speakers equally, which makes it a socially safe way to point out a coincidence."
+   },
+   "analogy": "Like two people reaching for the same last cookie at the same moment.",
+   "etymology": "An old proverb in English, recorded in early forms in the 1600s; the joking reply \"and fools seldom differ\" is also old.",
+   "common_mistakes": [
+    "Saying \"great minds think the same\"; the fixed form is \"alike.\"",
+    "Using it seriously to praise someone's thinking; it is a joke about coincidence."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "you read my mind",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ju ˌɹɛd maɪ ˈmaɪnd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said when someone does or offers exactly what you were thinking or wanting, before you said it."
+    ]
+   }
+  ],
+  "etymology": "From \"read someone's mind,\" to know what they are thinking, as a mind reader claims to do.",
+  "conversation": [
+   {
+    "sense": "offer",
+    "text": "\"Want a coffee?\" \"You read my mind.\""
+   },
+   {
+    "sense": "same idea",
+    "text": "\"Let's skip the movie and get dinner.\" \"You read my mind!\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "You guessed exactly what I wanted."
+   },
+   "pronunciation": {
+    "ipa": "/ju ˌɹɛd maɪ ˈmaɪnd/",
+    "respelling": "yoo red my MAHYND",
+    "tip": "Stress MIND. \"Read\" is past tense here, pronounced red."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Warm and pleased.",
+   "usage_note": "Usually a delighted reply to an offer or suggestion. It is past tense: \"you read (red) my mind.\" \"You must have read my mind\" is a fuller variant.",
+   "word_family": [
+    "read someone's mind (verb phrase)",
+    "mind reader (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "great minds think alike",
+     "note": "\"Great minds think alike\" stresses that you both had the same idea; \"you read my mind\" stresses that the other person guessed what you wanted."
+    },
+    {
+     "vs": "took the words right out of my mouth",
+     "note": "\"You took the words right out of my mouth\" is about saying what you were about to say."
+    }
+   ],
+   "antonyms": [
+    "you have no idea",
+    "that's not what I meant"
+   ],
+   "collocations": [
+    "You read my mind.",
+    "You must have read my mind.",
+    "How did you know? You read my mind."
+   ],
+   "examples": {
+    "everyday": "You brought donuts? You read my mind.",
+    "professional": "\"I already scheduled the follow-up call.\" \"You read my mind; thanks.\"",
+    "analytical": "\"You read my mind\" acknowledges that someone anticipated a need, which people tend to value highly in close relationships and teams."
+   },
+   "analogy": "Like a waiter bringing your usual before you order.",
+   "etymology": "From \"read someone's mind,\" to know what they are thinking, as a mind reader claims to do.",
+   "common_mistakes": [
+    "Pronouncing \"read\" as reed; here it is past tense, red.",
+    "Saying \"you read my thoughts\"; the idiom is \"my mind.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "better you than me",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌbɛɾɚ ˌju ðən ˈmi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said when someone has to do something unpleasant or difficult: I'm glad it's you and not me."
+    ]
+   }
+  ],
+  "etymology": "A plain comparative phrase (\"it is better that you do it than that I do\") that became a fixed reply.",
+  "conversation": [
+   {
+    "sense": "chore",
+    "text": "\"I have to clean out the fridge at work.\" \"Better you than me.\""
+   },
+   {
+    "sense": "challenge",
+    "text": "\"I'm running a marathon in July in Arizona.\" \"Wow. Better you than me.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I'm glad I don't have to do that."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbɛɾɚ ˌju ðən ˈmi/",
+    "respelling": "bet-er yoo thuhn MEE",
+    "tip": "Stress YOU and ME, ME a bit stronger. \"Better\" has the American flap: BED-er."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Teasing and sympathetic at the same time; light-hearted.",
+   "usage_note": "A friendly joke, not cruel, said about tasks the speaker would hate: a long drive, a dentist visit, a hard workout. It can sound unkind if the situation is truly serious (illness, loss). British English often says \"rather you than me.\"",
+   "word_family": [
+    "rather you than me (British variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "rather you than me",
+     "note": "\"Rather you than me\" is the same idea, more common in British English."
+    },
+    {
+     "vs": "you're on your own",
+     "note": "\"You're on your own\" means I won't help you; \"better you than me\" just jokes that you got the hard job."
+    }
+   ],
+   "antonyms": [
+    "I'll go with you",
+    "I've got your back"
+   ],
+   "collocations": [
+    "Better you than me.",
+    "Ha, better you than me.",
+    "Good luck. Better you than me."
+   ],
+   "examples": {
+    "everyday": "\"I'm driving my in-laws to the airport at 4 a.m.\" \"Better you than me.\"",
+    "professional": "\"I'm presenting the budget cuts to the board.\" \"Better you than me, but you'll do great.\"",
+    "analytical": "\"Better you than me\" combines mild sympathy with relief, a common pairing in casual talk about unpleasant tasks."
+   },
+   "analogy": "Like watching someone else take the polar plunge from a warm car.",
+   "etymology": "A plain comparative phrase (\"it is better that you do it than that I do\") that became a fixed reply.",
+   "common_mistakes": [
+    "Using it when someone is truly suffering; it can sound uncaring.",
+    "Saying \"better me than you\" by mistake; that means you would rather do it yourself."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "none taken",
+  "domains": [
+   "idioms",
+   "small_talk",
+   "common_phrases"
+  ],
+  "phonetic": "/ˌnʌn ˈteɪkən/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "The usual reply to \"no offense\": I'm not offended."
+    ]
+   }
+  ],
+  "etymology": "A clipped reply to \"no offense (meant)\": \"none (was) taken,\" from \"take offense,\" to be offended.",
+  "conversation": [
+   {
+    "sense": "reply",
+    "text": "\"No offense, but your car is kind of a mess.\" \"None taken. It's a disaster.\""
+   },
+   {
+    "sense": "ironic",
+    "text": "\"No offense, but your cooking is terrible.\" \"Wow. None taken, I guess.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I'm not offended (by what you just said)."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnʌn ˈteɪkən/",
+    "respelling": "nuhn TAY-kuhn",
+    "tip": "Stress TAKE. \"None\" rhymes with \"fun.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Usually easygoing; sometimes ironic when the speaker actually is offended.",
+   "usage_note": "It only works as an answer to \"no offense.\" Said lightly, it reassures; said slowly or with \"I guess,\" it signals that the comment did sting.",
+   "word_family": [
+    "no offense (the line it answers)",
+    "take offense (to be offended)"
+   ],
+   "distinctions": [
+    {
+     "vs": "no offense",
+     "note": "\"No offense\" is what the first speaker says before or after a possibly rude comment; \"none taken\" is the reply."
+    },
+    {
+     "vs": "no hard feelings",
+     "note": "\"No hard feelings\" says you are not angry after a conflict or competition; \"none taken\" answers a specific comment."
+    }
+   ],
+   "antonyms": [
+    "I'm offended",
+    "how dare you"
+   ],
+   "collocations": [
+    "None taken.",
+    "No offense? None taken.",
+    "None taken, I guess."
+   ],
+   "examples": {
+    "everyday": "\"No offense, but I like your old haircut better.\" \"None taken.\"",
+    "professional": "\"No offense, but I think the first draft was stronger.\" \"None taken; let's look at both.\"",
+    "analytical": "\"No offense\"/\"none taken\" is a ritual pair: the reply completes the exchange and confirms the relationship is fine."
+   },
+   "analogy": "Like returning a handshake: someone offered \"no offense\" and you accept it.",
+   "etymology": "A clipped reply to \"no offense (meant)\": \"none (was) taken,\" from \"take offense,\" to be offended.",
+   "common_mistakes": [
+    "Saying \"no taken\" or \"none taking\"; the form is \"none taken.\"",
+    "Using it without anyone saying \"no offense\" first."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "that's on me",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌðæts ɑn ˈmi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "That's my fault; I take responsibility for it."
+    ]
+   }
+  ],
+  "etymology": "From \"on\" in the sense of \"the responsibility of\" (\"The blame is on me\"); popular in American speech since the late 20th century.",
+  "conversation": [
+   {
+    "sense": "owning a mistake",
+    "text": "\"Why didn't anyone tell the caterer about the date change?\" \"That's on me. I'll call them now.\""
+   },
+   {
+    "sense": "apology",
+    "text": "Sorry I was late picking you up. That's on me."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I'm responsible for that mistake."
+   },
+   "pronunciation": {
+    "ipa": "/ˌðæts ɑn ˈmi/",
+    "respelling": "thats on MEE",
+    "tip": "Stress ME. \"On\" is short: thats-ahn-MEE."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Honest and accountable; it earns respect.",
+   "usage_note": "A common way to take the blame without making a big apology, especially at work and in sports. Careful: \"It's on me\" or \"Dinner's on me\" usually means \"I'll pay.\" Context tells which: a mistake or a bill. \"That one's on me\" is a common variant for a single error.",
+   "word_family": [
+    "be on someone (to be someone's responsibility)",
+    "that's on you (that's your fault)"
+   ],
+   "distinctions": [
+    {
+     "vs": "my bad",
+     "note": "\"My bad\" is a lighter, more casual admission for small slips; \"that's on me\" sounds more responsible and fits work."
+    },
+    {
+     "vs": "it's on me",
+     "note": "\"It's on me\" usually means \"I'll pay\"; \"that's on me\" usually means \"that's my fault.\""
+    },
+    {
+     "vs": "my mistake",
+     "note": "\"My mistake\" is plainer and a bit more formal."
+    }
+   ],
+   "antonyms": [
+    "that's on you",
+    "not my fault"
+   ],
+   "collocations": [
+    "That's on me.",
+    "That one's on me.",
+    "That's totally on me.",
+    "That's on me, not the team."
+   ],
+   "examples": {
+    "everyday": "I forgot to buy milk. That's on me; I'll grab some tonight.",
+    "professional": "The report went out with the wrong numbers, and that's on me. Here's how I'm fixing it.",
+    "analytical": "Leaders who say \"that's on me\" model accountability, which research links to more open error reporting in teams."
+   },
+   "analogy": "Like raising your hand when the teacher asks who left the door open.",
+   "etymology": "From \"on\" in the sense of \"the responsibility of\" (\"The blame is on me\"); popular in American speech since the late 20th century.",
+   "common_mistakes": [
+    "Confusing it with \"it's on me\" (I'll pay).",
+    "Saying \"that's on myself\"; it is \"on me.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "no can do",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌnoʊ ˌkæn ˈdu/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Sorry, I can't do that (a casual, firm refusal)."
+    ]
+   }
+  ],
+  "etymology": "Formed on pidgin-English patterns (often linked to Chinese Pidgin English of the 1800s), like \"long time no see.\" Some people now consider such phrases a bit dated or insensitive, but \"no can do\" remains very common.",
+  "conversation": [
+   {
+    "sense": "refusal",
+    "text": "\"Can you cover my shift Saturday?\" \"No can do. I'm out of town.\""
+   },
+   {
+    "sense": "limit",
+    "text": "\"Can you knock another fifty bucks off?\" \"Sorry, no can do.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "A short, informal way to say \"I can't (do that).\""
+   },
+   "pronunciation": {
+    "ipa": "/ˌnoʊ ˌkæn ˈdu/",
+    "respelling": "noh kan DOO",
+    "tip": "Stress DO. Said quickly and light: noh-kan-DOO."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Light and friendly in tone, but the refusal is firm.",
+   "usage_note": "Fine with friends and coworkers; too casual for a formal email or a customer complaint. It is often followed by a reason (\"No can do, I'm working\"). The opposite reply is \"Can do!\"",
+   "word_family": [
+    "can do (yes, I can)",
+    "can-do (adjective: a can-do attitude)"
+   ],
+   "distinctions": [
+    {
+     "vs": "I'll pass",
+     "note": "\"I'll pass\" refuses an offer or invitation; \"no can do\" refuses a request because you can't or won't."
+    },
+    {
+     "vs": "can do",
+     "note": "\"Can do\" is the cheerful \"yes\"; \"can-do attitude\" describes someone who is positive and willing."
+    }
+   ],
+   "antonyms": [
+    "can do",
+    "you got it",
+    "will do"
+   ],
+   "collocations": [
+    "No can do.",
+    "Sorry, no can do.",
+    "No can do, I'm afraid."
+   ],
+   "examples": {
+    "everyday": "\"Can you drive me to the airport at 5 a.m.?\" \"No can do. I'll get you an Uber, though.\"",
+    "professional": "\"Can we move the launch up a week?\" \"No can do; QA needs the full two weeks.\"",
+    "analytical": "\"No can do\" keeps a refusal short and friendly, softening it with humor rather than explanation."
+   },
+   "analogy": "Like a vending machine flashing SOLD OUT: polite, but you're not getting it.",
+   "etymology": "Formed on pidgin-English patterns (often linked to Chinese Pidgin English of the 1800s), like \"long time no see.\" Some people now consider such phrases a bit dated or insensitive, but \"no can do\" remains very common.",
+   "common_mistakes": [
+    "Saying \"no I can do\" or \"not can do\"; the fixed form is \"no can do.\"",
+    "Using it in formal writing; say \"I'm afraid I can't\" instead."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "could be worse",
+  "domains": [
+   "idioms",
+   "small_talk",
+   "feelings"
+  ],
+  "phonetic": "/ˌkʊd bi ˈwɝs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to look on the bright side: the situation is bad, but not as bad as it might be.",
+     "A modest answer to \"How are you?\": I'm okay, not great."
+    ]
+   }
+  ],
+  "etymology": "A plain phrase that has become a fixed reply; recorded in this consoling sense for centuries.",
+  "conversation": [
+   {
+    "sense": "bright side",
+    "text": "\"I got a flat tire on the way to work.\" \"Could be worse. At least you weren't on the highway.\""
+   },
+   {
+    "sense": "greeting",
+    "text": "\"How's it going?\" \"Could be worse.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Things aren't great, but they're not terrible either."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkʊd bi ˈwɝs/",
+    "respelling": "kood bee WURS",
+    "tip": "Stress WORSE. \"Could be\" blends: KOOD-bee."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly upbeat; a resigned kind of optimism.",
+   "usage_note": "Often begins a \"bright side\" comment: \"Could be worse: at least ...\" As a reply to \"How are you?\" it is low-key and a little humorous; the other person may ask \"What's wrong?\" Also \"It could be worse\" and \"Things could be worse.\" The opposite joke is \"Could be better.\"",
+   "word_family": [
+    "could be better (I'm not doing great)",
+    "it could have been worse (about a past event)"
+   ],
+   "distinctions": [
+    {
+     "vs": "can't complain",
+     "note": "\"Can't complain\" means \"I'm fine\"; \"could be worse\" suggests something is a little wrong."
+    },
+    {
+     "vs": "look on the bright side",
+     "note": "\"Look on the bright side\" tells someone to see the good; \"could be worse\" does it in three words."
+    }
+   ],
+   "antonyms": [
+    "could be better",
+    "couldn't be better"
+   ],
+   "collocations": [
+    "Could be worse.",
+    "It could be worse.",
+    "Things could be worse.",
+    "Could've been worse."
+   ],
+   "examples": {
+    "everyday": "We missed the train, but there's another in twenty minutes. Could be worse.",
+    "professional": "Sales dipped two percent this quarter. Could be worse, given the market.",
+    "analytical": "Downward comparisons like \"it could be worse\" are a well-documented coping strategy: comparing with a worse outcome makes the actual one easier to accept."
+   },
+   "analogy": "Like a dent in your car door instead of a crash: annoying, but you're glad it's only that.",
+   "etymology": "A plain phrase that has become a fixed reply; recorded in this consoling sense for centuries.",
+   "common_mistakes": [
+    "Saying it right after someone shares terrible news; it can sound like you are minimizing their pain.",
+    "Saying \"could be worst\"; it is \"worse.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "better luck next time",
+  "domains": [
+   "idioms",
+   "small_talk",
+   "feelings"
+  ],
+  "phonetic": "/ˌbɛɾɚ ˈlʌk nɛkst ˌtaɪm/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to someone who has just failed or lost: I hope you do better next time."
+    ]
+   }
+  ],
+  "etymology": "A plain wish that has become a fixed formula of consolation; common since at least the 1800s.",
+  "conversation": [
+   {
+    "sense": "consolation",
+    "text": "\"I didn't get the part in the play.\" \"Aw, better luck next time.\""
+   },
+   {
+    "sense": "teasing",
+    "text": "\"Ha! I win again. Better luck next time.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I'm sorry it didn't work out; I hope it goes your way next time."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbɛɾɚ ˈlʌk nɛkst ˌtaɪm/",
+    "respelling": "bet-er LUHK nekst tahym",
+    "tip": "Stress LUCK. \"Better\" has the American flap: BED-er."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Sympathetic, or teasing when said by the winner.",
+   "usage_note": "Sincere from a friend after a loss or rejection; teasing (sometimes smug) from someone who just beat you. For big disappointments it can sound too light; \"I'm so sorry, that's rough\" is warmer.",
+   "word_family": [
+    "next time (adverbial phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "you can't win them all",
+     "note": "\"You can't win them all\" says losing is normal; \"better luck next time\" looks ahead to the next try."
+    },
+    {
+     "vs": "tough luck",
+     "note": "\"Tough luck\" is less sympathetic and can sound like \"too bad for you.\""
+    }
+   ],
+   "antonyms": [
+    "congratulations",
+    "way to go"
+   ],
+   "collocations": [
+    "Better luck next time.",
+    "Oh well, better luck next time.",
+    "Better luck next time, buddy."
+   ],
+   "examples": {
+    "everyday": "\"My fantasy team lost by one point.\" \"Ouch. Better luck next time.\"",
+    "professional": "We didn't win the contract, but the client liked our team. Better luck next time; let's stay in touch with them.",
+    "analytical": "\"Better luck next time\" frames failure as a matter of luck rather than ability, which protects the loser's self-esteem."
+   },
+   "analogy": "Like a carnival worker handing you a small prize after you miss every throw.",
+   "etymology": "A plain wish that has become a fixed formula of consolation; common since at least the 1800s.",
+   "common_mistakes": [
+    "Saying \"good luck next time\" as a consolation; the idiom is \"better luck.\"",
+    "Using it about something that was not a matter of chance, like a serious mistake; it can sound dismissive."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "I'm down",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/aɪm ˈdaʊn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Yes, I'm willing to do that; count me in (slang reply to an invitation or suggestion)."
+    ]
+   }
+  ],
+  "etymology": "American slang, probably from African American Vernacular English, where \"down\" (\"down with\" someone) meant loyal or supportive; \"down for\" an activity spread widely from the 1990s and 2000s.",
+  "conversation": [
+   {
+    "sense": "invitation",
+    "text": "\"Want to grab tacos after class?\" \"I'm down.\""
+   },
+   {
+    "sense": "with for",
+    "text": "\"Anyone down for a hike Saturday?\" \"I'm totally down.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I'm in; I'd like to do that."
+   },
+   "pronunciation": {
+    "ipa": "/aɪm ˈdaʊn/",
+    "respelling": "ahym DOUN",
+    "tip": "Stress DOWN. Often followed by \"for\": ahym-DOUN-fer."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Casual, friendly and enthusiastic; youthful in tone.",
+   "usage_note": "Very common among younger Americans and in texting: \"I'm down,\" \"I'm down for that,\" \"Are you down?\" \"Down to\" + verb also works: \"I'm down to help.\" Not for formal settings. Careful: \"I'm feeling down\" means \"I'm sad,\" a completely different meaning.",
+   "word_family": [
+    "be down for something",
+    "be down to do something",
+    "are you down?"
+   ],
+   "distinctions": [
+    {
+     "vs": "count me in",
+     "note": "\"Count me in\" means the same, is less slangy, and fits all ages."
+    },
+    {
+     "vs": "I'm game",
+     "note": "\"I'm game\" means willing, often for something a bit adventurous."
+    },
+    {
+     "vs": "feeling down",
+     "note": "\"Feeling down\" means sad or depressed; \"I'm down\" (for something) means willing."
+    }
+   ],
+   "antonyms": [
+    "I'll pass",
+    "count me out"
+   ],
+   "collocations": [
+    "I'm down.",
+    "I'm down for that.",
+    "I'm down to help.",
+    "Are you down?",
+    "totally down"
+   ],
+   "examples": {
+    "everyday": "\"Movie night at my place?\" \"I'm down. What time?\"",
+    "professional": "\"Anyone down to grab lunch with the new hire?\" \"I'm down.\"",
+    "analytical": "Slang like \"I'm down\" signals informal group membership; its use varies strongly by age."
+   },
+   "analogy": "Like putting your name down on a sign-up sheet: you're on the list.",
+   "etymology": "American slang, probably from African American Vernacular English, where \"down\" (\"down with\" someone) meant loyal or supportive; \"down for\" an activity spread widely from the 1990s and 2000s.",
+   "common_mistakes": [
+    "Saying \"I'm down\" to mean \"I'm sad\"; for that, say \"I'm feeling down.\"",
+    "Using it in a formal reply (\"I'm down to attend the board meeting\")."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "sign me up",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌsaɪn mi ˈʌp/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said enthusiastically: I want to join in or have that."
+    ]
+   }
+  ],
+  "etymology": "From the phrasal verb \"sign up,\" to enlist or register, originally for military service.",
+  "conversation": [
+   {
+    "sense": "eager yes",
+    "text": "\"We're thinking of a weekend trip to the lake.\" \"Sign me up!\""
+   },
+   {
+    "sense": "food",
+    "text": "\"Free donuts in the break room.\" \"Sign me up.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I definitely want in."
+   },
+   "pronunciation": {
+    "ipa": "/ˌsaɪn mi ˈʌp/",
+    "respelling": "sahyn mee UHP",
+    "tip": "Stress UP. \"Sign\" is sahyn; the g is silent."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Enthusiastic and cheerful.",
+   "usage_note": "An informal, eager yes, often to something fun. It also works ironically with \"Where do I sign up?\" Literally it can also mean registering for something (\"Can you sign me up for the class?\").",
+   "word_family": [
+    "sign up (to register)",
+    "sign-up (noun: sign-up sheet)",
+    "where do I sign up?"
+   ],
+   "distinctions": [
+    {
+     "vs": "count me in",
+     "note": "\"Count me in\" is calmer; \"sign me up\" sounds more excited."
+    },
+    {
+     "vs": "I'm down",
+     "note": "\"I'm down\" is slangier and more relaxed."
+    },
+    {
+     "vs": "sign up for",
+     "note": "The literal phrasal verb \"sign up for\" means to register for a class, newsletter, etc."
+    }
+   ],
+   "antonyms": [
+    "count me out",
+    "I'll pass"
+   ],
+   "collocations": [
+    "Sign me up!",
+    "Where do I sign up?",
+    "Sign me up for that."
+   ],
+   "examples": {
+    "everyday": "\"Brunch with bottomless pancakes?\" \"Sign me up.\"",
+    "professional": "\"We need volunteers for the community clean-up.\" \"Sign me up.\"",
+    "analytical": "\"Sign me up\" turns a bureaucratic act, registering, into a casual expression of enthusiasm."
+   },
+   "analogy": "Like jumping to the front of a line before it even forms.",
+   "etymology": "From the phrasal verb \"sign up,\" to enlist or register, originally for military service.",
+   "common_mistakes": [
+    "Spelling it \"sing me up.\"",
+    "Using it to agree with an opinion; it is for joining activities."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "my thoughts exactly",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/maɪ ˌθɔts ɪɡˈzæktli/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "I completely agree; that's exactly what I was thinking."
+    ]
+   }
+  ],
+  "etymology": "A shortened form of \"those are exactly my thoughts\"; standard idiomatic English.",
+  "conversation": [
+   {
+    "sense": "agreement",
+    "text": "\"This meeting could have been an email.\" \"My thoughts exactly.\""
+   },
+   {
+    "sense": "same idea",
+    "text": "\"We should leave before it starts snowing.\" \"My thoughts exactly.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "That is just what I think too."
+   },
+   "pronunciation": {
+    "ipa": "/maɪ ˌθɔts ɪɡˈzæktli/",
+    "respelling": "my thawts ig-ZAKT-lee",
+    "tip": "Stress ZACT in exactly. \"Thoughts\" starts with the th of \"think.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Approving and friendly; can be dry or wry.",
+   "usage_note": "A short reply of complete agreement with an opinion or plan. It is slightly more polished than \"Same\" and fine at work. Often said dryly about a shared complaint.",
+   "word_family": [
+    "exactly (one-word agreement)"
+   ],
+   "distinctions": [
+    {
+     "vs": "you can say that again",
+     "note": "\"You can say that again\" is more emphatic and usually about a complaint; \"my thoughts exactly\" is calmer."
+    },
+    {
+     "vs": "great minds think alike",
+     "note": "\"Great minds think alike\" jokes about the coincidence; \"my thoughts exactly\" simply agrees."
+    },
+    {
+     "vs": "you read my mind",
+     "note": "\"You read my mind\" is about an offer or action; \"my thoughts exactly\" is about an opinion."
+    }
+   ],
+   "antonyms": [
+    "I beg to differ",
+    "I'm not so sure"
+   ],
+   "collocations": [
+    "My thoughts exactly.",
+    "Those were my thoughts exactly.",
+    "Exactly my thoughts."
+   ],
+   "examples": {
+    "everyday": "\"This pizza needs more cheese.\" \"My thoughts exactly.\"",
+    "professional": "\"We should get legal to review this before we sign.\" \"My thoughts exactly.\"",
+    "analytical": "\"My thoughts exactly\" claims prior agreement, presenting the speaker as having reached the same view independently."
+   },
+   "analogy": "Like finding someone has already written the sentence you were about to type.",
+   "etymology": "A shortened form of \"those are exactly my thoughts\"; standard idiomatic English.",
+   "common_mistakes": [
+    "Saying \"my thinking exactly\" in casual talk; it works but is less idiomatic.",
+    "Using it as a question; it is a statement of agreement."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "amen to that",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/eɪˈmɛn tə ˌðæt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to agree strongly with what someone has just said."
+    ]
+   }
+  ],
+  "etymology": "From \"amen,\" Hebrew via Greek and Latin, meaning \"truly\" or \"so be it,\" said to confirm a prayer.",
+  "conversation": [
+   {
+    "sense": "agreement",
+    "text": "\"I can't wait for this week to be over.\" \"Amen to that.\""
+   },
+   {
+    "sense": "approval",
+    "text": "\"Free coffee for everyone on Fridays.\" \"Amen to that!\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I couldn't agree more."
+   },
+   "pronunciation": {
+    "ipa": "/eɪˈmɛn tə ˌðæt/",
+    "respelling": "ay-MEN tuh that",
+    "tip": "Stress MEN in amen. Americans say AY-men or ah-MEN; in this phrase ay-MEN is most common."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Warm, emphatic and often humorous.",
+   "usage_note": "Everyday and mostly non-religious, borrowed from \"amen\" at the end of a prayer (meaning \"so be it\"). Very common for shared relief or complaints. Simply \"Amen!\" works too. Some religious listeners may find it flippant, but most people don't.",
+   "word_family": [
+    "amen (interjection)"
+   ],
+   "distinctions": [
+    {
+     "vs": "I'll drink to that",
+     "note": "\"I'll drink to that\" is a similar joking agreement, especially about something good or hoped for."
+    },
+    {
+     "vs": "you can say that again",
+     "note": "\"You can say that again\" usually agrees with a complaint or an obvious truth."
+    }
+   ],
+   "antonyms": [
+    "I beg to differ",
+    "not so fast"
+   ],
+   "collocations": [
+    "Amen to that.",
+    "Amen!",
+    "Oh, amen to that."
+   ],
+   "examples": {
+    "everyday": "\"Nobody should have to work on their birthday.\" \"Amen to that.\"",
+    "professional": "\"Let's keep this meeting under thirty minutes.\" \"Amen to that.\"",
+    "analytical": "\"Amen to that\" shows how religious formulas move into secular speech while keeping their sense of solemn agreement."
+   },
+   "analogy": "Like a congregation saying \"amen\" after a prayer: everyone agrees.",
+   "etymology": "From \"amen,\" Hebrew via Greek and Latin, meaning \"truly\" or \"so be it,\" said to confirm a prayer.",
+   "common_mistakes": [
+    "Saying \"amen for that\"; the preposition is \"to.\"",
+    "Using it in a serious religious setting as a joke."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "I'll drink to that",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/aɪl ˈdɹɪŋk tə ˌðæt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to agree enthusiastically, especially with a hope or a happy statement (no drink required)."
+    ]
+   }
+  ],
+  "etymology": "From the custom of drinking a toast to a person or a wish; the same words then came to be used as joking agreement with any welcome remark.",
+  "conversation": [
+   {
+    "sense": "agreement",
+    "text": "\"Here's to a long weekend.\" \"I'll drink to that.\""
+   },
+   {
+    "sense": "hope",
+    "text": "\"Next year has to be better than this one.\" \"I'll drink to that!\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Yes, I heartily agree with that."
+   },
+   "pronunciation": {
+    "ipa": "/aɪl ˈdɹɪŋk tə ˌðæt/",
+    "respelling": "ahyl DRINGK tuh that",
+    "tip": "Stress DRINK. \"To that\" is light: tuh-that."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Cheerful and humorous.",
+   "usage_note": "Often said with a glass raised, but also used anywhere as playful agreement. Best for hopes, celebrations and small shared complaints. In a work setting it is fine among colleagues, less so with clients.",
+   "word_family": [
+    "drink to something (to toast it)",
+    "here's to (a toast)"
+   ],
+   "distinctions": [
+    {
+     "vs": "amen to that",
+     "note": "\"Amen to that\" is very similar; \"I'll drink to that\" sounds more festive."
+    },
+    {
+     "vs": "cheers",
+     "note": "\"Cheers\" is what you say while toasting; \"I'll drink to that\" agrees with the toast."
+    }
+   ],
+   "antonyms": [
+    "I beg to differ"
+   ],
+   "collocations": [
+    "I'll drink to that.",
+    "Now that, I'll drink to.",
+    "I'll drink to that!"
+   ],
+   "examples": {
+    "everyday": "\"To a great summer!\" \"I'll drink to that.\"",
+    "professional": "\"Here's to finally closing the deal.\" \"I'll drink to that.\"",
+    "analytical": "\"I'll drink to that\" carries the social ritual of the toast into ordinary agreement."
+   },
+   "analogy": "Like clinking glasses even when you're holding a cup of coffee.",
+   "etymology": "From the custom of drinking a toast to a person or a wish; the same words then came to be used as joking agreement with any welcome remark.",
+   "common_mistakes": [
+    "Saying \"I'll drink for that\"; the preposition is \"to.\"",
+    "Taking it literally; the speaker doesn't need to be drinking."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "you and me both",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌju ən ˌmi ˈboʊθ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to agree that you feel the same way or are in the same situation (usually something difficult)."
+    ]
+   }
+  ],
+  "etymology": "A clipped form of \"(that's true of) you and me both\"; colloquial since at least the early 20th century.",
+  "conversation": [
+   {
+    "sense": "shared feeling",
+    "text": "\"I need a vacation.\" \"You and me both.\""
+   },
+   {
+    "sense": "shared problem",
+    "text": "\"I'm never going to pay off these student loans.\" \"You and me both.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Me too; I feel exactly the same."
+   },
+   "pronunciation": {
+    "ipa": "/ˌju ən ˌmi ˈboʊθ/",
+    "respelling": "yoo uhn mee BOHTH",
+    "tip": "Stress BOTH. \"And\" shrinks to uhn: yoo-un-mee-BOHTH."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Sympathetic and wry.",
+   "usage_note": "Like \"that makes two of us,\" it usually answers a complaint or wish about the speaker's own life. Grammar purists might say \"you and I both,\" but \"you and me both\" is the fixed idiom.",
+   "word_family": [
+    "you and I both (less common variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "that makes two of us",
+     "note": "\"That makes two of us\" is equivalent and a little more playful."
+    },
+    {
+     "vs": "same here",
+     "note": "\"Same here\" is shorter and neutral."
+    },
+    {
+     "vs": "tell me about it",
+     "note": "\"Tell me about it\" agrees with a complaint and suggests you know it even better."
+    }
+   ],
+   "antonyms": [
+    "not me",
+    "speak for yourself"
+   ],
+   "collocations": [
+    "You and me both.",
+    "Oh, you and me both.",
+    "You and me both, brother."
+   ],
+   "examples": {
+    "everyday": "\"I could sleep for a week.\" \"You and me both.\"",
+    "professional": "\"I'll be glad when this audit is over.\" \"You and me both.\"",
+    "analytical": "\"You and me both\" builds rapport by pairing the speakers in one shared condition."
+   },
+   "analogy": "Like two people in the same rowboat, both rowing against the current.",
+   "etymology": "A clipped form of \"(that's true of) you and me both\"; colloquial since at least the early 20th century.",
+   "common_mistakes": [
+    "Correcting it to \"you and I both\" in casual speech; \"you and me both\" is the normal idiom.",
+    "Using it to agree with an opinion about something else; it fits shared feelings or situations."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "nice try",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌnaɪs ˈtɹaɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said when you see through someone's trick or excuse: that won't work on me.",
+     "Said sincerely to praise a good effort that didn't succeed."
+    ]
+   }
+  ],
+  "etymology": "Plain English praise (\"that was a nice attempt\") that developed a common sarcastic use in the 20th century.",
+  "conversation": [
+   {
+    "sense": "seeing through a trick",
+    "text": "\"Mom, Dad said I could have ice cream for dinner.\" \"Nice try.\""
+   },
+   {
+    "sense": "sincere",
+    "text": "That was a tough shot. Nice try!"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Good effort, but no."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnaɪs ˈtɹaɪ/",
+    "respelling": "nahys TRAHY",
+    "tip": "Stress TRY. Sarcastic use often drags it out: nahys TRAAHY."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Playful or sarcastic in the first sense; encouraging in the second.",
+   "usage_note": "Tone decides the meaning. Sarcastic: someone tries to get away with something (\"Nice try, but I know you ate the last cookie\"). Sincere: in sports or games after a near miss. \"Nice try\" alone after a failure can sound a little condescending to adults; add more warmth if you mean it kindly.",
+   "word_family": [
+    "good try (sincere variant)",
+    "worth a try"
+   ],
+   "distinctions": [
+    {
+     "vs": "A for effort",
+     "note": "\"A for effort\" praises trying while admitting the result was poor; \"nice try\" can mean that or be sarcastic."
+    },
+    {
+     "vs": "better luck next time",
+     "note": "\"Better luck next time\" looks to the future; \"nice try\" comments on this attempt."
+    }
+   ],
+   "antonyms": [
+    "you got me",
+    "nailed it"
+   ],
+   "collocations": [
+    "Nice try.",
+    "Nice try, but no.",
+    "Ha, nice try.",
+    "Nice try, buddy."
+   ],
+   "examples": {
+    "everyday": "\"Can I stay up late? It's a holiday in Canada.\" \"Nice try. Bed.\"",
+    "professional": "\"Can we push the deadline since it's Friday the 13th?\" \"Nice try.\"",
+    "analytical": "\"Nice try\" illustrates how sarcasm flips praise into refusal through intonation alone."
+   },
+   "analogy": "Like a goalkeeper catching a sneaky shot and grinning at the shooter.",
+   "etymology": "Plain English praise (\"that was a nice attempt\") that developed a common sarcastic use in the 20th century.",
+   "common_mistakes": [
+    "Using the sarcastic tone when you mean to encourage; say \"Good effort!\" or \"So close!\"",
+    "Saying \"nice trying\"; the noun is \"try.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "good call",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌɡʊd ˈkɔl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "That was a smart decision; you chose well."
+    ]
+   }
+  ],
+  "etymology": "From \"call\" meaning a decision, especially a referee's or coach's decision in sports; American usage.",
+  "conversation": [
+   {
+    "sense": "decision",
+    "text": "\"I brought an umbrella.\" \"Good call. It's pouring.\""
+   },
+   {
+    "sense": "suggestion",
+    "text": "\"Let's book the restaurant now before it fills up.\" \"Good call.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "You made the right decision."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡʊd ˈkɔl/",
+    "respelling": "good KAWL",
+    "tip": "Stress CALL. \"Good\" has the vowel of \"foot.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive and approving.",
+   "usage_note": "Very common praise for a choice or suggestion, used with friends and at work. Past choices (\"Leaving early was a good call\") and suggestions (\"Good call, let's do that\") both work. The opposite is \"bad call.\"",
+   "word_family": [
+    "bad call (a wrong decision)",
+    "call (noun: decision)",
+    "make the call (to decide)",
+    "judgment call"
+   ],
+   "distinctions": [
+    {
+     "vs": "good point",
+     "note": "\"Good point\" praises an argument or idea in discussion; \"good call\" praises a decision or choice."
+    },
+    {
+     "vs": "good idea",
+     "note": "\"Good idea\" is neutral; \"good call\" is more casual and often refers to a decision already made."
+    },
+    {
+     "vs": "close call",
+     "note": "\"Close call\" means a narrow escape from danger, not a decision."
+    }
+   ],
+   "antonyms": [
+    "bad call",
+    "big mistake"
+   ],
+   "collocations": [
+    "Good call.",
+    "That was a good call.",
+    "Good call on the umbrella.",
+    "Leaving early was a good call."
+   ],
+   "examples": {
+    "everyday": "Good call on getting tickets early; they sold out in an hour.",
+    "professional": "Delaying the launch was a good call; the extra testing caught two serious bugs.",
+    "analytical": "\"Good call\" borrows sports language, where a referee or coach \"makes a call,\" to evaluate everyday decisions."
+   },
+   "analogy": "Like a coach calling the perfect play at the end of the game.",
+   "etymology": "From \"call\" meaning a decision, especially a referee's or coach's decision in sports; American usage.",
+   "common_mistakes": [
+    "Confusing it with a phone call that went well.",
+    "Using \"good call\" for an opinion or fact; use \"good point.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "don't sweat it",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌdoʊnt ˈswɛt ɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Don't worry about it; it's not a problem (said to reassure someone, often after an apology or thanks)."
+    ]
+   }
+  ],
+  "etymology": "American slang from the mid-20th century; \"sweat\" in the sense of being anxious, as people sweat when nervous.",
+  "conversation": [
+   {
+    "sense": "after apology",
+    "text": "\"Sorry I'm late.\" \"Don't sweat it. We just started.\""
+   },
+   {
+    "sense": "reassurance",
+    "text": "\"I'm nervous about the quiz.\" \"Don't sweat it. You know this stuff.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "It's fine; don't worry."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdoʊnt ˈswɛt ɪt/",
+    "respelling": "dohnt SWET it",
+    "tip": "Stress SWEAT. \"Sweat it\" blends: SWEH-dit, with the American flap."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Relaxed and reassuring.",
+   "usage_note": "Used as a reply to an apology, to thanks, or to worry. It is casual; to a stranger or a customer, \"No problem\" or \"Not at all\" may be better. \"Don't sweat the small stuff\" is a related saying about not worrying over minor things.",
+   "word_family": [
+    "sweat (verb, informal: to worry)",
+    "sweat it out (to wait anxiously)",
+    "no sweat"
+   ],
+   "distinctions": [
+    {
+     "vs": "no sweat",
+     "note": "\"No sweat\" usually means \"that's easy\" or \"you're welcome\"; \"don't sweat it\" tells someone not to worry."
+    },
+    {
+     "vs": "no worries",
+     "note": "\"No worries\" is a very close equivalent, slightly more popular with younger speakers."
+    },
+    {
+     "vs": "don't mention it",
+     "note": "\"Don't mention it\" answers thanks only; \"don't sweat it\" answers thanks, apologies and worry."
+    }
+   ],
+   "antonyms": [
+    "freak out",
+    "panic"
+   ],
+   "collocations": [
+    "Don't sweat it.",
+    "Hey, don't sweat it.",
+    "Don't sweat it, I got it.",
+    "don't sweat the small stuff"
+   ],
+   "examples": {
+    "everyday": "\"I spilled a little coffee on your couch.\" \"Don't sweat it. It's an old couch.\"",
+    "professional": "\"I'm sorry the draft is a day late.\" \"Don't sweat it; the client isn't expecting it until Friday.\"",
+    "analytical": "\"Don't sweat it\" uses a physical sign of stress, sweating, to stand for worry itself."
+   },
+   "analogy": "Like telling someone the oven isn't on: you can relax, nothing's burning.",
+   "etymology": "American slang from the mid-20th century; \"sweat\" in the sense of being anxious, as people sweat when nervous.",
+   "common_mistakes": [
+    "Saying \"don't sweat\" with no \"it\"; that literally means not to perspire.",
+    "Using it to reply to a formal apology from a client or senior person; it can sound too casual."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "give it a rest",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌɡɪv ɪt ə ˈɹɛst/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Stop talking about that (or doing that); you're annoying me by repeating it."
+    ]
+   }
+  ],
+  "etymology": "From \"rest\" in its ordinary sense: to give something a rest is to stop using it for a while.",
+  "conversation": [
+   {
+    "sense": "nagging",
+    "text": "\"Did you call the plumber yet? Did you call the plumber?\" \"Give it a rest! I'll do it after lunch.\""
+   },
+   {
+    "sense": "complaining",
+    "text": "He's been complaining about the referee for an hour. I wish he'd give it a rest."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Please stop going on about it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɪv ɪt ə ˈɹɛst/",
+    "respelling": "giv it uh REST",
+    "tip": "Stress REST. \"Give it a\" runs together: GIV-ih-duh-REST."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Irritated; fairly blunt, though usually not hostile.",
+   "usage_note": "Used when someone keeps repeating a complaint, request, joke or argument. Said directly (\"Give it a rest!\") it is a firm, impatient request, so it suits friends and family more than work. \"Give me a break\" is similar.",
+   "word_family": [
+    "give something a rest (to stop doing it for a while, also literal: give your knee a rest)"
+   ],
+   "distinctions": [
+    {
+     "vs": "knock it off",
+     "note": "\"Knock it off\" tells someone to stop any annoying behavior; \"give it a rest\" is mainly about repeated talk."
+    },
+    {
+     "vs": "give me a break",
+     "note": "\"Give me a break\" expresses disbelief or annoyance at what someone said; \"give it a rest\" asks them to stop saying it."
+    },
+    {
+     "vs": "drop it",
+     "note": "\"Drop it\" means stop discussing a topic, often a sensitive one."
+    }
+   ],
+   "antonyms": [
+    "keep at it",
+    "go on"
+   ],
+   "collocations": [
+    "Give it a rest!",
+    "Oh, give it a rest.",
+    "Would you give it a rest?",
+    "Just give it a rest already."
+   ],
+   "examples": {
+    "everyday": "You've told that joke five times today. Give it a rest.",
+    "professional": "Let's give the pricing debate a rest until we have the survey data.",
+    "analytical": "\"Give it a rest\" frames repetition as a kind of tiring effort, as if the topic itself needed rest."
+   },
+   "analogy": "Like a song stuck on repeat: at some point someone has to turn it off.",
+   "etymology": "From \"rest\" in its ordinary sense: to give something a rest is to stop using it for a while.",
+   "common_mistakes": [
+    "Saying it politely to a boss; it is blunt.",
+    "Saying \"give it rest\" without \"a.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "yeah, right",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌjɛə ˈɹaɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said sarcastically to show you don't believe what someone has said."
+    ]
+   }
+  ],
+  "etymology": "A combination of two words of agreement used ironically; the sarcastic reading comes entirely from the tone of voice.",
+  "conversation": [
+   {
+    "sense": "disbelief",
+    "text": "\"I'm going to start going to the gym every morning at five.\" \"Yeah, right.\""
+   },
+   {
+    "sense": "doubt",
+    "text": "\"The cable guy said he'll be here between eight and nine.\" \"Yeah, right.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I don't believe that for a second."
+   },
+   "pronunciation": {
+    "ipa": "/ˌjɛə ˈɹaɪt/",
+    "respelling": "yeh RAHYT",
+    "tip": "Stress RIGHT, often drawn out with a falling, doubtful tone: yeh... RAHYT. The tone is what makes it sarcastic."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Sarcastic and skeptical; can sound dismissive.",
+   "usage_note": "Two positive words that together mean \"no way.\" Tone is everything: a quick, rising \"Yeah, right\" can be sincere agreement (\"Yeah, right, I forgot\"), while a slow, flat or falling one is sarcastic disbelief. It can be teasing among friends but rude to someone who is serious.",
+   "word_family": [
+    "right (sarcastic: \"Right.\")",
+    "sure (sarcastic: \"Sure you will.\")"
+   ],
+   "distinctions": [
+    {
+     "vs": "as if",
+     "note": "\"As if!\" rejects a suggestion as ridiculous, often about something someone would never do; \"yeah, right\" doubts that something is true or will happen."
+    },
+    {
+     "vs": "dream on",
+     "note": "\"Dream on\" tells someone their hope is unrealistic."
+    },
+    {
+     "vs": "I'll take your word for it",
+     "note": "\"I'll take your word for it\" accepts something without checking; \"yeah, right\" refuses to believe it."
+    }
+   ],
+   "antonyms": [
+    "I believe you",
+    "no doubt"
+   ],
+   "collocations": [
+    "Yeah, right.",
+    "Oh, yeah, right.",
+    "Yeah, right, like that's going to happen."
+   ],
+   "examples": {
+    "everyday": "\"I'll only have one chip.\" \"Yeah, right.\"",
+    "professional": "\"The vendor says the fix will be ready Monday.\" \"Yeah, right. They said that last month.\"",
+    "analytical": "\"Yeah, right\" is often cited as an example of two positives making a negative, since its meaning comes from sarcastic intonation."
+   },
+   "analogy": "Like a friend raising one eyebrow at your story.",
+   "etymology": "A combination of two words of agreement used ironically; the sarcastic reading comes entirely from the tone of voice.",
+   "common_mistakes": [
+    "Using a sarcastic tone when you mean to agree; say \"Yes, that's right\" instead.",
+    "Spelling it \"yea, right\"; \"yea\" is an old word for yes in voting. Use \"yeah.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "the feeling is mutual",
+  "domains": [
+   "idioms",
+   "small_talk",
+   "feelings"
+  ],
+  "phonetic": "/ðə ˌfilɪŋ ɪz ˈmjutʃuəl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "I feel the same way about you (said in reply to someone expressing a feeling about you, positive or negative)."
+    ]
+   }
+  ],
+  "etymology": "From \"mutual\" (Latin mutuus, exchanged); long used as a fixed reply.",
+  "conversation": [
+   {
+    "sense": "warm",
+    "text": "\"I really enjoyed working with you.\" \"The feeling is mutual.\""
+   },
+   {
+    "sense": "cold",
+    "text": "\"I can't stand him.\" \"Well, I'm sure the feeling is mutual.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "You feel that way about me, and I feel the same about you."
+   },
+   "pronunciation": {
+    "ipa": "/ðə ˌfilɪŋ ɪz ˈmjutʃuəl/",
+    "respelling": "thuh fee-ling iz MYOO-choo-uhl",
+    "tip": "Stress MYOO in mutual. \"Mutual\" has three syllables: MYOO-choo-uhl."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Warm or cutting depending on the feeling being returned.",
+   "usage_note": "Works for affection (\"I've missed you.\" \"The feeling is mutual\") and for dislike, where it is often witty (\"He doesn't like me.\" \"The feeling is mutual\"). It is polite enough for work. It answers a feeling, not a fact.",
+   "word_family": [
+    "mutual (adjective)",
+    "mutually (adverb)"
+   ],
+   "distinctions": [
+    {
+     "vs": "likewise",
+     "note": "\"Likewise\" is shorter and often answers greetings (\"Nice to meet you.\" \"Likewise\"); \"the feeling is mutual\" sounds more personal."
+    },
+    {
+     "vs": "same to you",
+     "note": "\"Same to you\" returns a wish (\"Have a good weekend\"); \"the feeling is mutual\" returns a feeling."
+    },
+    {
+     "vs": "back at you",
+     "note": "\"Back at you\" is a casual way to return a compliment or wish."
+    }
+   ],
+   "antonyms": [
+    "it's one-sided"
+   ],
+   "collocations": [
+    "The feeling is mutual.",
+    "Believe me, the feeling is mutual.",
+    "I'm sure the feeling is mutual."
+   ],
+   "examples": {
+    "everyday": "\"I'm so glad we became friends.\" \"The feeling is mutual.\"",
+    "professional": "\"We've really valued our partnership with your team.\" \"The feeling is mutual.\"",
+    "analytical": "\"The feeling is mutual\" confirms reciprocity in a relationship, whether of liking or of dislike."
+   },
+   "analogy": "Like a mirror: whatever you feel toward me, you get back.",
+   "etymology": "From \"mutual\" (Latin mutuus, exchanged); long used as a fixed reply.",
+   "common_mistakes": [
+    "Saying \"the feeling is common\"; the word is \"mutual.\"",
+    "Using it to agree with an opinion (\"I think it will rain.\" \"The feeling is mutual\"); it answers feelings about each other."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "now you tell me",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˈnaʊ ju ˌtɛl mi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said with mild annoyance when someone gives you useful information too late to help."
+    ]
+   }
+  ],
+  "etymology": "Plain words given an ironic sense by the stress on \"now\"; colloquial American and British English.",
+  "conversation": [
+   {
+    "sense": "too late",
+    "text": "\"Oh, that shirt was on sale for half price yesterday.\" \"Now you tell me!\""
+   },
+   {
+    "sense": "warning too late",
+    "text": "\"Watch out, that step is loose.\" \"Now you tell me. I already tripped on it.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Why didn't you tell me earlier?"
+   },
+   "pronunciation": {
+    "ipa": "/ˈnaʊ ju ˌtɛl mi/",
+    "respelling": "NOW yoo tel mee",
+    "tip": "Stress NOW strongly; the rest is lighter. The emphasis on NOW carries the complaint."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly exasperated, usually good-humored.",
+   "usage_note": "A light complaint, often joking. The information came after a decision or accident. Compare \"you tell me\" (without \"now\"), which means \"I don't know, you decide\" or \"you're the expert.\"",
+   "word_family": [
+    "you tell me (a different idiom: I don't know)"
+   ],
+   "distinctions": [
+    {
+     "vs": "you tell me",
+     "note": "\"You tell me\" turns a question back to the asker; \"now you tell me\" complains about late information."
+    },
+    {
+     "vs": "I wish I'd known",
+     "note": "\"I wish I'd known\" says the same more neutrally."
+    }
+   ],
+   "antonyms": [
+    "thanks for the heads-up"
+   ],
+   "collocations": [
+    "Now you tell me!",
+    "Now you tell me?",
+    "Great, now you tell me."
+   ],
+   "examples": {
+    "everyday": "\"There's a shortcut through the park.\" \"Now you tell me. I just walked the long way.\"",
+    "professional": "\"The client wanted it in PowerPoint, not PDF.\" \"Now you tell me; I already sent it.\"",
+    "analytical": "\"Now you tell me\" signals frustration about timing, not content: the information is welcome but late."
+   },
+   "analogy": "Like getting the umbrella handed to you after you're already soaked.",
+   "etymology": "Plain words given an ironic sense by the stress on \"now\"; colloquial American and British English.",
+   "common_mistakes": [
+    "Dropping \"now\"; \"you tell me\" means something else.",
+    "Saying it angrily to a boss; it's best kept light."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "you shouldn't have",
+  "domains": [
+   "idioms",
+   "small_talk",
+   "common_phrases"
+  ],
+  "phonetic": "/ju ˈʃʊdənt ˌhæv/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A polite, grateful reply when someone gives you a gift or does something kind: thank you, it was more than you needed to do."
+    ]
+   }
+  ],
+  "etymology": "Short for \"you shouldn't have (gone to so much trouble)\"; a long-standing politeness formula.",
+  "conversation": [
+   {
+    "sense": "gift",
+    "text": "\"I got you a little something for your birthday.\" \"Oh, you shouldn't have! Thank you.\""
+   },
+   {
+    "sense": "sarcastic",
+    "text": "\"I ate the rest of your leftovers.\" \"Oh, you shouldn't have.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Thank you, that's very generous (of you)."
+   },
+   "pronunciation": {
+    "ipa": "/ju ˈʃʊdənt ˌhæv/",
+    "respelling": "yoo SHOOD-nt hav",
+    "tip": "Stress SHOULD. The t in \"shouldn't\" is barely heard: SHOOD-n(t)."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Warm and grateful; sarcastic when the \"gift\" is unwelcome.",
+   "usage_note": "A traditional, modest way to thank someone, not a criticism. Usually followed by \"Thank you\" or \"That's so sweet.\" Said with a flat tone about something bad, it becomes a joke meaning \"you really shouldn't have done that.\"",
+   "word_family": [
+    "you didn't have to (do that) (similar)"
+   ],
+   "distinctions": [
+    {
+     "vs": "you didn't have to",
+     "note": "\"You didn't have to\" is almost the same, a little more casual and common among younger people."
+    },
+    {
+     "vs": "don't mention it",
+     "note": "\"Don't mention it\" is what the gift giver says back; \"you shouldn't have\" is what the receiver says."
+    }
+   ],
+   "antonyms": [
+    "how could you"
+   ],
+   "collocations": [
+    "Oh, you shouldn't have!",
+    "You really shouldn't have.",
+    "You shouldn't have, thank you."
+   ],
+   "examples": {
+    "everyday": "\"Flowers? You shouldn't have!\"",
+    "professional": "\"The team chipped in for a gift card for you.\" \"You all shouldn't have. Thank you so much.\"",
+    "analytical": "\"You shouldn't have\" expresses thanks through mock protest, a modesty formula common in many cultures."
+   },
+   "analogy": "Like protesting \"Oh, no, no\" while happily accepting the slice of cake.",
+   "etymology": "Short for \"you shouldn't have (gone to so much trouble)\"; a long-standing politeness formula.",
+   "common_mistakes": [
+    "Taking it as a complaint; when said warmly it is thanks.",
+    "Forgetting to also say \"thank you\"; it sounds incomplete alone in some situations."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "I owe you one",
+  "domains": [
+   "idioms",
+   "small_talk",
+   "common_phrases"
+  ],
+  "phonetic": "/aɪ ˈoʊ ju ˌwʌn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Thank you; I'm grateful and will do a favor for you in return."
+    ]
+   }
+  ],
+  "etymology": "From the idea of a debt of gratitude; \"one\" stands for one favor.",
+  "conversation": [
+   {
+    "sense": "thanks",
+    "text": "\"I covered your shift.\" \"Thanks, I owe you one.\""
+   },
+   {
+    "sense": "favor",
+    "text": "You picked up my kids? You're a lifesaver. I owe you one."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Thanks; I'll return the favor."
+   },
+   "pronunciation": {
+    "ipa": "/aɪ ˈoʊ ju ˌwʌn/",
+    "respelling": "ahy OH yoo wuhn",
+    "tip": "Stress OWE (oh). \"One\" is light: ahy-OH-yuh-wuhn."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Grateful and friendly.",
+   "usage_note": "A warm thank-you for a favor. \"One\" means one favor. Bigger favors get \"I owe you big (time)\" or \"I owe you big.\" The playful reply is \"You sure do,\" or \"Don't mention it.\"",
+   "word_family": [
+    "I owe you big (time) (stronger)",
+    "return the favor"
+   ],
+   "distinctions": [
+    {
+     "vs": "thanks a million",
+     "note": "\"Thanks a million\" is pure enthusiastic thanks; \"I owe you one\" promises a favor back."
+    },
+    {
+     "vs": "it's on me",
+     "note": "\"It's on me\" offers to pay; \"I owe you one\" is about a future favor."
+    }
+   ],
+   "antonyms": [
+    "we're even",
+    "call it even"
+   ],
+   "collocations": [
+    "I owe you one.",
+    "Thanks, I owe you one.",
+    "I owe you big time.",
+    "I owe you big."
+   ],
+   "examples": {
+    "everyday": "Thanks for the ride to the airport. I owe you one.",
+    "professional": "Thanks for covering the client call while I was out. I owe you one.",
+    "analytical": "\"I owe you one\" reflects the social norm of reciprocity: a favor creates an expectation of a return."
+   },
+   "analogy": "Like an IOU note: a promise to pay you back later, in favors.",
+   "etymology": "From the idea of a debt of gratitude; \"one\" stands for one favor.",
+   "common_mistakes": [
+    "Saying \"I owe you once\"; it is \"one.\"",
+    "Using it for a formal service you paid for; it is for personal favors."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "thanks a million",
+  "domains": [
+   "idioms",
+   "small_talk",
+   "common_phrases"
+  ],
+  "phonetic": "/ˌθæŋks ə ˈmɪljən/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Thank you very much (an enthusiastic thank-you).",
+     "Said sarcastically when someone has made things worse."
+    ]
+   }
+  ],
+  "etymology": "Exaggerated \"thanks\" with a large number; a familiar colloquial pattern (compare \"thanks a bunch\").",
+  "conversation": [
+   {
+    "sense": "grateful",
+    "text": "You fixed my bike? Thanks a million!"
+   },
+   {
+    "sense": "sarcastic",
+    "text": "\"I told Mom you broke the vase.\" \"Thanks a million.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Thank you so much."
+   },
+   "pronunciation": {
+    "ipa": "/ˌθæŋks ə ˈmɪljən/",
+    "respelling": "thangks uh MIL-yuhn",
+    "tip": "Stress MIL. \"Million\" has two syllables: MIL-yuhn."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Warm and enthusiastic; occasionally sarcastic.",
+   "usage_note": "Friendly thanks for a favor or help. Like \"thanks a lot,\" it can be sarcastic in a flat tone, but \"thanks a million\" is more often sincere. Fine in casual emails and texts.",
+   "word_family": [
+    "thanks a bunch (similar)",
+    "thanks a lot",
+    "thanks so much"
+   ],
+   "distinctions": [
+    {
+     "vs": "thanks a lot",
+     "note": "\"Thanks a lot\" is very often sarcastic in American speech; \"thanks a million\" is usually sincere."
+    },
+    {
+     "vs": "I owe you one",
+     "note": "\"I owe you one\" adds a promise of a returned favor."
+    }
+   ],
+   "antonyms": [
+    "no thanks to you"
+   ],
+   "collocations": [
+    "Thanks a million!",
+    "Thanks a million for your help.",
+    "Hey, thanks a million."
+   ],
+   "examples": {
+    "everyday": "Thanks a million for watching the dog this weekend.",
+    "professional": "Thanks a million for turning that around so quickly.",
+    "analytical": "Exaggerated thanks like \"thanks a million\" use hyperbole to signal strong gratitude."
+   },
+   "analogy": "Like paying someone back in imaginary dollars, a million of them.",
+   "etymology": "Exaggerated \"thanks\" with a large number; a familiar colloquial pattern (compare \"thanks a bunch\").",
+   "common_mistakes": [
+    "Saying \"thanks a millions\"; it is singular: \"a million.\"",
+    "Using it in a very formal letter; \"Thank you very much\" is better there."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "lucky you",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌlʌki ˈju/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said when someone tells you about their good fortune: how nice for you (often with a little envy)."
+    ]
+   }
+  ],
+  "etymology": "A short exclamation from \"(how) lucky you are.\"",
+  "conversation": [
+   {
+    "sense": "envy",
+    "text": "\"I'm off work all next week.\" \"Lucky you!\""
+   },
+   {
+    "sense": "teasing",
+    "text": "\"I get to sleep in tomorrow.\" \"Lucky you. I have a 7 a.m. meeting.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "That's great for you (and I'm a bit jealous)."
+   },
+   "pronunciation": {
+    "ipa": "/ˌlʌki ˈju/",
+    "respelling": "luhk-ee YOO",
+    "tip": "Stress YOU. \"Lucky\" is LUHK-ee."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Friendly, with a touch of playful envy; occasionally sarcastic about something bad.",
+   "usage_note": "Usually friendly congratulations mixed with envy. Said sarcastically, it comments on bad luck (\"You have jury duty? Lucky you.\"). Also \"Lucky him,\" \"Lucky her,\" \"Lucky them.\"",
+   "word_family": [
+    "lucky (adjective)",
+    "luck out (to be lucky)",
+    "lucky him/her/them"
+   ],
+   "distinctions": [
+    {
+     "vs": "good for you",
+     "note": "\"Good for you\" praises an achievement; \"lucky you\" comments on good fortune that came by chance."
+    },
+    {
+     "vs": "you lucky dog",
+     "note": "\"You lucky dog\" is a jokier, more emphatic way to say the same thing."
+    }
+   ],
+   "antonyms": [
+    "poor you",
+    "tough luck"
+   ],
+   "collocations": [
+    "Lucky you!",
+    "Oh, lucky you.",
+    "Lucky you, I have to work.",
+    "Lucky them."
+   ],
+   "examples": {
+    "everyday": "\"My flight got upgraded to first class.\" \"Lucky you!\"",
+    "professional": "\"I get to work from home on Fridays now.\" \"Lucky you.\"",
+    "analytical": "\"Lucky you\" frames the other person's situation as chance rather than merit, which can soften envy."
+   },
+   "analogy": "Like watching someone find a twenty on the sidewalk you just walked past.",
+   "etymology": "A short exclamation from \"(how) lucky you are.\"",
+   "common_mistakes": [
+    "Saying \"you lucky\" alone; the idiom is \"lucky you.\"",
+    "Using it about something the person worked hard for; \"good for you\" or \"congratulations\" is better."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "good luck with that",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌɡʊd ˈlʌk wɪð ˌðæt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said sarcastically: I think what you're planning will fail.",
+     "Said sincerely: I hope it goes well."
+    ]
+   }
+  ],
+  "etymology": "A standard good-luck wish that, from the late 20th century, became widely used as sarcasm in American English.",
+  "conversation": [
+   {
+    "sense": "sarcastic",
+    "text": "\"I'm going to get my cat to walk on a leash.\" \"Good luck with that.\""
+   },
+   {
+    "sense": "sincere",
+    "text": "\"I have my driving test tomorrow.\" \"Good luck with that! You'll do great.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "That's going to be hard; I doubt it will work (or, sincerely, I hope it goes well)."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡʊd ˈlʌk wɪð ˌðæt/",
+    "respelling": "good LUHK with that",
+    "tip": "Stress LUCK, and the sarcastic version often also leans on THAT: good LUCK with THAT."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Usually sarcastic and skeptical in American speech; can be sincere.",
+   "usage_note": "In American conversation, a flat \"Good luck with that\" after someone describes a plan almost always means \"That won't work.\" To be clearly sincere, add warmth: \"Good luck with the interview!\" or \"Good luck, you'll do great.\"",
+   "word_family": [
+    "good luck (sincere wish)",
+    "best of luck"
+   ],
+   "distinctions": [
+    {
+     "vs": "good luck",
+     "note": "\"Good luck!\" alone is almost always sincere; \"good luck with that\" is often sarcastic."
+    },
+    {
+     "vs": "yeah, right",
+     "note": "\"Yeah, right\" doubts that something is true; \"good luck with that\" doubts that a plan will succeed."
+    },
+    {
+     "vs": "knock yourself out",
+     "note": "\"Knock yourself out\" says go ahead; \"good luck with that\" says go ahead, but it will fail."
+    }
+   ],
+   "antonyms": [
+    "break a leg",
+    "you got this"
+   ],
+   "collocations": [
+    "Good luck with that.",
+    "Yeah, good luck with that.",
+    "Good luck with that one."
+   ],
+   "examples": {
+    "everyday": "\"I'm going to finish this 1,000-piece puzzle tonight.\" \"Good luck with that.\"",
+    "professional": "\"Marketing wants the redesign done in a week.\" \"Good luck with that.\"",
+    "analytical": "\"Good luck with that\" shows how sarcasm can turn a conventional good wish into a prediction of failure."
+   },
+   "analogy": "Like waving at someone setting off to climb a mountain in flip-flops.",
+   "etymology": "A standard good-luck wish that, from the late 20th century, became widely used as sarcasm in American English.",
+   "common_mistakes": [
+    "Using it flatly to wish someone well before a real challenge (a surgery, an exam); it can sound sarcastic. Say \"Good luck! You'll do great.\"",
+    "Missing the sarcasm when a friend says it about your plan."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "that's the spirit",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌðæts ðə ˈspɪɹɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to encourage someone who is showing a good, positive or brave attitude."
+    ]
+   }
+  ],
+  "etymology": "From \"spirit\" in the sense of attitude or mood, as in \"team spirit.\"",
+  "conversation": [
+   {
+    "sense": "encouragement",
+    "text": "\"I failed the test, but I'm going to study harder and retake it.\" \"That's the spirit!\""
+   },
+   {
+    "sense": "team",
+    "text": "\"Come on, guys, we can still win this!\" \"That's the spirit!\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Yes, that's the right attitude."
+   },
+   "pronunciation": {
+    "ipa": "/ˌðæts ðə ˈspɪɹɪt/",
+    "respelling": "thats thuh SPEER-it",
+    "tip": "Stress SPIR. \"Spirit\" is SPEER-it or SPIR-it."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Encouraging and upbeat.",
+   "usage_note": "Praises an attitude, not a result. Common from parents, coaches and friends. It can be sarcastic when someone says something gloomy (\"We're all doomed.\" \"That's the spirit\").",
+   "word_family": [
+    "team spirit",
+    "in good spirits",
+    "spirited (adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "way to go",
+     "note": "\"Way to go\" praises an action or achievement; \"that's the spirit\" praises an attitude."
+    },
+    {
+     "vs": "atta boy / atta girl",
+     "note": "\"Atta boy\" and \"atta girl\" are casual praise for doing something well."
+    }
+   ],
+   "antonyms": [
+    "give up",
+    "throw in the towel"
+   ],
+   "collocations": [
+    "That's the spirit!",
+    "Now that's the spirit.",
+    "That's the spirit, keep it up."
+   ],
+   "examples": {
+    "everyday": "\"It's raining, but let's go hiking anyway.\" \"That's the spirit!\"",
+    "professional": "\"We lost the bid, but we'll be ready for the next one.\" \"That's the spirit.\"",
+    "analytical": "\"That's the spirit\" reinforces a desired mindset, a common move in coaching and motivation."
+   },
+   "analogy": "Like a coach clapping when a player gets up after a fall.",
+   "etymology": "From \"spirit\" in the sense of attitude or mood, as in \"team spirit.\"",
+   "common_mistakes": [
+    "Saying \"that's the spirits\"; it is singular.",
+    "Using it to praise a result alone; it is about attitude."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "hats off to someone",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌhæts ˈɔf tə ˌsʌmwʌn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to express admiration and praise for someone's achievement or effort."
+    ]
+   }
+  ],
+  "etymology": "From the old custom of removing one's hat as a sign of respect or admiration.",
+  "conversation": [
+   {
+    "sense": "praise",
+    "text": "Hats off to the cooks. That was an amazing meal."
+   },
+   {
+    "sense": "effort",
+    "text": "Hats off to you for finishing that marathon."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Well done; I admire and respect what you did."
+   },
+   "pronunciation": {
+    "ipa": "/ˌhæts ˈɔf tə ˌsʌmwʌn/",
+    "respelling": "hats AWF tuh suhm-wuhn",
+    "tip": "Stress OFF. \"Hats off\" is said almost as one word: hats-AWF."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Admiring and generous.",
+   "usage_note": "Used with \"to\": \"Hats off to the team,\" \"Hats off to you.\" Common in speeches, emails and social media to praise people publicly. \"Hat's off\" and \"my hat's off to you\" are also used.",
+   "word_family": [
+    "take one's hat off to someone",
+    "my hat's off to you",
+    "hat tip (h/t, online credit)"
+   ],
+   "distinctions": [
+    {
+     "vs": "kudos",
+     "note": "\"Kudos to\" means nearly the same and is a little more casual or written."
+    },
+    {
+     "vs": "props",
+     "note": "\"Props to\" is slang for respect or credit, used mostly by younger speakers."
+    },
+    {
+     "vs": "hat in hand",
+     "note": "\"Hat in hand\" means humbly asking for help, not praise."
+    }
+   ],
+   "antonyms": [
+    "shame on someone"
+   ],
+   "collocations": [
+    "Hats off to you.",
+    "Hats off to the team.",
+    "Hats off to everyone who helped.",
+    "My hat's off to you."
+   ],
+   "examples": {
+    "everyday": "Hats off to my sister. She raised three kids and finished her degree.",
+    "professional": "Hats off to the support team for handling a record number of calls this week.",
+    "analytical": "\"Hats off to\" preserves an old gesture of respect, removing one's hat, in a purely verbal form."
+   },
+   "analogy": "Like lifting your hat to someone as they walk past, in honor of what they did.",
+   "etymology": "From the old custom of removing one's hat as a sign of respect or admiration.",
+   "common_mistakes": [
+    "Saying \"hats off for you\"; the preposition is \"to.\"",
+    "Saying \"hat off to you\"; the fixed form is plural, \"hats off,\" or \"my hat's off.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "what's the catch",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌwʌts ðə ˈkætʃ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "What is the hidden problem or condition? (said when an offer sounds too good to be true)"
+    ]
+   }
+  ],
+  "etymology": "From \"catch\" in the sense of a trick or snag that traps someone; recorded since the 1800s.",
+  "conversation": [
+   {
+    "sense": "offer",
+    "text": "\"Free cruise, all you have to do is attend a presentation.\" \"What's the catch?\""
+   },
+   {
+    "sense": "suspicion",
+    "text": "\"The apartment is huge and the rent is cheap.\" \"So what's the catch?\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "What's the hidden downside?"
+   },
+   "pronunciation": {
+    "ipa": "/ˌwʌts ðə ˈkætʃ/",
+    "respelling": "wuhts thuh KACH",
+    "tip": "Stress CATCH. \"What's the\" blends: WUHTS-thuh."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Skeptical and cautious.",
+   "usage_note": "Asked when something seems too good. The answer often begins \"The catch is...\" Related: \"There's always a catch\" and \"No catch\" (a seller's reassurance).",
+   "word_family": [
+    "catch (noun: hidden problem)",
+    "there's a catch",
+    "no catch"
+   ],
+   "distinctions": [
+    {
+     "vs": "too good to be true",
+     "note": "\"Too good to be true\" describes the offer; \"what's the catch?\" asks for the hidden problem."
+    },
+    {
+     "vs": "strings attached",
+     "note": "\"No strings attached\" means there are no hidden conditions; \"what's the catch?\" asks whether there are."
+    },
+    {
+     "vs": "catch-22",
+     "note": "A \"catch-22\" is a situation with no way out because of contradictory rules, a different idea."
+    }
+   ],
+   "antonyms": [
+    "no strings attached",
+    "free and clear"
+   ],
+   "collocations": [
+    "What's the catch?",
+    "So what's the catch?",
+    "There's always a catch.",
+    "The catch is..."
+   ],
+   "examples": {
+    "everyday": "\"Buy one pair of shoes, get two free.\" \"What's the catch?\"",
+    "professional": "\"They'll waive the setup fee if we sign a three-year contract.\" \"So that's the catch.\"",
+    "analytical": "Asking \"what's the catch?\" reflects a reasonable heuristic: offers that seem costless often hide a cost."
+   },
+   "analogy": "Like a hook hidden inside a juicy worm: the bait looks great until you bite.",
+   "etymology": "From \"catch\" in the sense of a trick or snag that traps someone; recorded since the 1800s.",
+   "common_mistakes": [
+    "Saying \"where's the catch?\" is acceptable but less common; \"what's the catch?\" is standard.",
+    "Confusing it with \"catch\" meaning to catch a ball or a bus."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "I take it back",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/aɪ ˌteɪk ɪt ˈbæk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "I withdraw what I just said; I was wrong or didn't mean it."
+    ]
+   }
+  ],
+  "etymology": "From \"take back\" in the sense of retracting; long-standing in English.",
+  "conversation": [
+   {
+    "sense": "apology",
+    "text": "I'm sorry I called you lazy. I take it back."
+   },
+   {
+    "sense": "correction",
+    "text": "\"This movie is boring.\" ... \"Okay, I take it back. That ending was amazing.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I didn't mean that; forget I said it."
+   },
+   "pronunciation": {
+    "ipa": "/aɪ ˌteɪk ɪt ˈbæk/",
+    "respelling": "ahy tayk it BAK",
+    "tip": "Stress BACK. \"Take it\" blends: TAY-kit."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Apologetic or good-humored.",
+   "usage_note": "Used to withdraw an insult or a hasty judgment. With an object: \"I take back what I said.\" \"Take that back!\" demands someone withdraw an insult. You can't take back an action, only words, so \"I take it back\" is about something said.",
+   "word_family": [
+    "take back (phrasal verb: to withdraw words; also to return an item)",
+    "take that back!"
+   ],
+   "distinctions": [
+    {
+     "vs": "I stand corrected",
+     "note": "\"I stand corrected\" admits a factual error after being corrected; \"I take it back\" withdraws something you said, often an insult or judgment."
+    },
+    {
+     "vs": "I didn't mean it",
+     "note": "\"I didn't mean it\" says your words weren't sincere; \"I take it back\" formally withdraws them."
+    }
+   ],
+   "antonyms": [
+    "I stand by it",
+    "I meant every word"
+   ],
+   "collocations": [
+    "I take it back.",
+    "Okay, I take it back.",
+    "I take back what I said.",
+    "Take that back!"
+   ],
+   "examples": {
+    "everyday": "I said you'd never finish the puzzle. I take it back!",
+    "professional": "I said the proposal was too long, but I take it back; the detail in section three is useful.",
+    "analytical": "\"I take it back\" treats words as objects that can be withdrawn, though their effect often remains."
+   },
+   "analogy": "Like taking back a chess move before your opponent responds, if they let you.",
+   "etymology": "From \"take back\" in the sense of retracting; long-standing in English.",
+   "common_mistakes": [
+    "Saying \"I take it off\"; the phrasal verb is \"take back.\"",
+    "Using it about actions; for actions, say \"I'm sorry I did that.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "enough said",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/əˌnʌf ˈsɛd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "I understand completely; there's no need to say more."
+    ]
+   }
+  ],
+  "etymology": "Short for \"enough has been said\"; long established in English.",
+  "conversation": [
+   {
+    "sense": "understanding",
+    "text": "\"I had to sit next to my ex at the wedding.\" \"Enough said.\""
+   },
+   {
+    "sense": "conclusive",
+    "text": "\"The restaurant has a C rating from the health department.\" \"Enough said. Let's go somewhere else.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I get it; no need to explain further."
+   },
+   "pronunciation": {
+    "ipa": "/əˌnʌf ˈsɛd/",
+    "respelling": "uh-nuhf SED",
+    "tip": "Stress SAID. Often written \"nuff said\" in very informal texts."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Knowing and sympathetic, or decisive.",
+   "usage_note": "Said after hearing a key detail that makes everything clear. It can show sympathy (\"Enough said, I'm sorry\") or end a discussion (\"It's twice the price. Enough said.\"). Different from \"say no more,\" which agrees to a request without needing details.",
+   "word_family": [
+    "'nuff said (slang spelling)"
+   ],
+   "distinctions": [
+    {
+     "vs": "say no more",
+     "note": "\"Say no more\" means I understand and will do what you want; \"enough said\" means the point is clear."
+    },
+    {
+     "vs": "end of discussion",
+     "note": "\"End of discussion\" firmly closes a topic, often by authority; \"enough said\" closes it because it's obvious."
+    }
+   ],
+   "antonyms": [
+    "go on",
+    "tell me more"
+   ],
+   "collocations": [
+    "Enough said.",
+    "Say no more, enough said.",
+    "'Nuff said."
+   ],
+   "examples": {
+    "everyday": "\"He brought his guitar to the party.\" \"Enough said.\"",
+    "professional": "\"The new tool cut processing time in half.\" \"Enough said; let's roll it out.\"",
+    "analytical": "\"Enough said\" relies on shared knowledge: the listener fills in the rest without explanation."
+   },
+   "analogy": "Like a single picture that makes a whole story clear.",
+   "etymology": "Short for \"enough has been said\"; long established in English.",
+   "common_mistakes": [
+    "Saying \"enough say\"; it is \"said.\"",
+    "Using it to rudely stop someone talking; \"enough!\" alone is the harsh version."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "it's your call",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ɪts ˈjɔɹ ˌkɔl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "It's your decision to make; you decide."
+    ]
+   }
+  ],
+  "etymology": "From \"call\" meaning a decision, as a referee or umpire makes calls in sports; American usage.",
+  "conversation": [
+   {
+    "sense": "deciding",
+    "text": "\"Should we get Chinese or Italian?\" \"It's your call.\""
+   },
+   {
+    "sense": "responsibility",
+    "text": "\"Do you think I should take the job?\" \"I can't decide for you. It's your call.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "You get to (or have to) decide."
+   },
+   "pronunciation": {
+    "ipa": "/ɪts ˈjɔɹ ˌkɔl/",
+    "respelling": "its YOR kawl",
+    "tip": "Stress YOUR: it's YOUR call, contrasting you with me."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; respectful of the other person's choice, sometimes a little noncommittal.",
+   "usage_note": "Hands the decision to someone else, either generously (\"Your call!\") or because it really is their responsibility. Often shortened to \"Your call.\" Fine at work: \"It's your call as project lead.\"",
+   "word_family": [
+    "call (noun: decision)",
+    "make the call",
+    "judgment call",
+    "up to you (similar)"
+   ],
+   "distinctions": [
+    {
+     "vs": "it's up to you",
+     "note": "\"It's up to you\" is nearly identical and a little more neutral."
+    },
+    {
+     "vs": "call the shots",
+     "note": "\"Call the shots\" means to be in charge and make the decisions generally; \"it's your call\" is about one decision."
+    },
+    {
+     "vs": "good call",
+     "note": "\"Good call\" praises a decision after it's made."
+    }
+   ],
+   "antonyms": [
+    "it's my call",
+    "I'll decide"
+   ],
+   "collocations": [
+    "It's your call.",
+    "Your call.",
+    "Totally your call.",
+    "It's your call, but I'd go with..."
+   ],
+   "examples": {
+    "everyday": "\"Movie or bowling?\" \"Your call, it's your birthday.\"",
+    "professional": "I can give you the pros and cons, but it's your call as the budget owner.",
+    "analytical": "\"It's your call\" assigns decision rights explicitly, which can clarify accountability."
+   },
+   "analogy": "Like handing someone the TV remote.",
+   "etymology": "From \"call\" meaning a decision, as a referee or umpire makes calls in sports; American usage.",
+   "common_mistakes": [
+    "Saying \"it's your calling\"; \"calling\" means a vocation or life purpose.",
+    "Confusing it with a phone call (\"It's your call\" can also mean \"the phone is for you,\" so context matters)."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "it's your funeral",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ɪts jɚ ˈfjunəɹəl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said when someone ignores your warning: it's your problem if it goes badly; you'll suffer the consequences."
+    ]
+   }
+  ],
+  "etymology": "An American colloquialism from the 1800s; \"funeral\" here is a humorous exaggeration for trouble or failure.",
+  "conversation": [
+   {
+    "sense": "warning",
+    "text": "\"I'm going to tell the boss his idea is stupid.\" \"Okay, it's your funeral.\""
+   },
+   {
+    "sense": "ignored advice",
+    "text": "\"I'm not studying for the final.\" \"Your funeral.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Go ahead, but the bad results will be yours, not mine."
+   },
+   "pronunciation": {
+    "ipa": "/ɪts jɚ ˈfjunəɹəl/",
+    "respelling": "its yer FYOO-ner-uhl",
+    "tip": "Stress FYOO in funeral. \"Your\" is weak: yer."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Darkly humorous; mildly disapproving.",
+   "usage_note": "Said after you have warned someone and they insist. It is a joke, not about death. Often shortened to \"Your funeral.\" Can sound harsh, so use it with people who share your humor.",
+   "word_family": [
+    "your funeral (short form)"
+   ],
+   "distinctions": [
+    {
+     "vs": "suit yourself",
+     "note": "\"Suit yourself\" accepts someone's choice neutrally; \"it's your funeral\" predicts it will go badly for them."
+    },
+    {
+     "vs": "on your head be it",
+     "note": "\"On your head be it\" is a more formal, old-fashioned version, more common in British English."
+    },
+    {
+     "vs": "your loss",
+     "note": "\"Your loss\" means you are the one missing out on something good."
+    }
+   ],
+   "antonyms": [
+    "good call",
+    "smart move"
+   ],
+   "collocations": [
+    "It's your funeral.",
+    "Your funeral.",
+    "Fine, it's your funeral."
+   ],
+   "examples": {
+    "everyday": "\"I'm going to eat the gas-station sushi.\" \"It's your funeral.\"",
+    "professional": "\"I'm going to skip the safety training.\" \"Your funeral, but HR will notice.\"",
+    "analytical": "\"It's your funeral\" uses comic exaggeration to place responsibility for a risky choice on the chooser."
+   },
+   "analogy": "Like waving goodbye to someone walking onto thin ice after you told them not to.",
+   "etymology": "An American colloquialism from the 1800s; \"funeral\" here is a humorous exaggeration for trouble or failure.",
+   "common_mistakes": [
+    "Saying it after a real death or serious danger; it is only for minor risks.",
+    "Saying \"it's your burial\"; the idiom is \"funeral.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "your loss",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˈjɔɹ ˌlɔs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said when someone refuses something good: you're the one who misses out (often teasing or defensive)."
+    ]
+   }
+  ],
+  "etymology": "From \"loss\" in its ordinary sense; a fixed short reply in modern English.",
+  "conversation": [
+   {
+    "sense": "refusal",
+    "text": "\"I don't like chocolate cake.\" \"Your loss. More for me.\""
+   },
+   {
+    "sense": "rejection",
+    "text": "If they don't want to hire someone with your experience, that's their loss."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "You're missing out, not me."
+   },
+   "pronunciation": {
+    "ipa": "/ˈjɔɹ ˌlɔs/",
+    "respelling": "YOR laws",
+    "tip": "Stress YOUR. \"Loss\" rhymes with \"boss.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Teasing, or proudly defensive after a rejection.",
+   "usage_note": "Two common patterns: teasing someone who refuses food or fun (\"Your loss!\"), and comforting someone who was rejected (\"It's their loss\"). The second is one of the most common ways to support a friend after a breakup or a failed interview.",
+   "word_family": [
+    "it's their loss",
+    "his/her loss"
+   ],
+   "distinctions": [
+    {
+     "vs": "it's your funeral",
+     "note": "\"It's your funeral\" predicts that a choice will hurt someone; \"your loss\" says they are missing something good."
+    },
+    {
+     "vs": "suit yourself",
+     "note": "\"Suit yourself\" accepts a refusal; \"your loss\" adds a playful jab."
+    }
+   ],
+   "antonyms": [
+    "your gain",
+    "lucky you"
+   ],
+   "collocations": [
+    "Your loss.",
+    "It's your loss.",
+    "That's their loss.",
+    "Their loss, not yours."
+   ],
+   "examples": {
+    "everyday": "\"I'm skipping the concert.\" \"Your loss. It's going to be great.\"",
+    "professional": "If the client walks away from this deal, it's their loss; our offer is the strongest on the table.",
+    "analytical": "\"It's their loss\" reframes a rejection as the other side's mistake, protecting the rejected person's self-esteem."
+   },
+   "analogy": "Like turning down a free ticket: the show goes on without you.",
+   "etymology": "From \"loss\" in its ordinary sense; a fixed short reply in modern English.",
+   "common_mistakes": [
+    "Saying it to someone who is suffering a real loss, such as a death.",
+    "Saying \"you lose\" when you mean this; \"you lose\" sounds like a game."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "don't knock it till you've tried it",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌdoʊnt ˌnɑk ɪt tɪl juv ˈtɹaɪd ɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Don't criticize something until you have actually tried it yourself."
+    ]
+   }
+  ],
+  "etymology": "From \"knock,\" American slang for criticize (since the late 1800s); the full saying is 20th-century American.",
+  "conversation": [
+   {
+    "sense": "food",
+    "text": "\"Pineapple on pizza? Gross.\" \"Don't knock it till you've tried it.\""
+   },
+   {
+    "sense": "activity",
+    "text": "\"Yoga is just stretching.\" \"Don't knock it till you've tried it.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Try it before you judge it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdoʊnt ˌnɑk ɪt tɪl juv ˈtɹaɪd ɪt/",
+    "respelling": "dohnt nok it til yoov TRAHYD it",
+    "tip": "Stress TRIED, with a secondary stress on KNOCK: dohnt NOK-it til yoov TRAHYD-it."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Friendly and persuasive; mildly challenging.",
+   "usage_note": "A playful reply to someone dismissing a food, hobby or idea. Often shortened to \"Don't knock it.\" \"Till\" is normal in speech; in writing, \"until\" is also fine: \"Don't knock it until you've tried it.\"",
+   "word_family": [
+    "knock (verb, informal: to criticize)",
+    "don't knock it (short form)"
+   ],
+   "distinctions": [
+    {
+     "vs": "whatever floats your boat",
+     "note": "\"Whatever floats your boat\" accepts someone else's strange taste; \"don't knock it till you've tried it\" defends your own."
+    },
+    {
+     "vs": "knock it off",
+     "note": "\"Knock it off\" means stop doing that; a different idiom."
+    }
+   ],
+   "antonyms": [
+    "give it a shot"
+   ],
+   "collocations": [
+    "Don't knock it till you've tried it.",
+    "Hey, don't knock it.",
+    "Don't knock it until you try it."
+   ],
+   "examples": {
+    "everyday": "\"You put peanut butter on your burger?\" \"Don't knock it till you've tried it.\"",
+    "professional": "The team was skeptical about pair programming, but don't knock it till you've tried it; our bug rate dropped.",
+    "analytical": "\"Don't knock it till you've tried it\" appeals to direct experience over prejudgment."
+   },
+   "analogy": "Like refusing a dish at a restaurant because of its name, without tasting it.",
+   "etymology": "From \"knock,\" American slang for criticize (since the late 1800s); the full saying is 20th-century American.",
+   "common_mistakes": [
+    "Saying \"don't knock it before you tried it\"; it is \"till you've tried it\" or \"till you try it.\"",
+    "Confusing \"knock\" here with knocking on a door."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "that's what I'm talking about",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌðæts ˌwʌt aɪm ˈtɔkɪŋ əˌbaʊt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said with excitement when something good happens or someone does exactly the right thing: yes, that's it!"
+    ]
+   }
+  ],
+  "etymology": "A modern American colloquialism; plain words (\"this is what I meant\") turned into a cheer, heard especially in sports.",
+  "conversation": [
+   {
+    "sense": "celebration",
+    "text": "He hit a home run. \"That's what I'm talking about!\""
+   },
+   {
+    "sense": "approval",
+    "text": "\"I got us front-row seats.\" \"Yes! That's what I'm talking about.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Yes! That's exactly what I wanted."
+   },
+   "pronunciation": {
+    "ipa": "/ˌðæts ˌwʌt aɪm ˈtɔkɪŋ əˌbaʊt/",
+    "respelling": "thats wuht ahym TAW-king uh-bout",
+    "tip": "Stress TALK, often with THAT'S stretched too: THAT'S what I'm TALKing about! Fast speech: thats-whuh-dahym-TAW-kin-uh-bout."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Excited and celebratory.",
+   "usage_note": "A cheer, very common in sports, at parties and among friends. Said loudly, often with a fist pump or high five. Also used literally (\"That's what I'm talking about\" = that is my topic), so tone and context matter.",
+   "word_family": [
+    "now you're talking (similar)",
+    "that's more like it"
+   ],
+   "distinctions": [
+    {
+     "vs": "now you're talking",
+     "note": "\"Now you're talking\" welcomes a better suggestion; \"that's what I'm talking about\" celebrates something that has happened."
+    },
+    {
+     "vs": "that's more like it",
+     "note": "\"That's more like it\" means this is better than before, with less excitement."
+    },
+    {
+     "vs": "way to go",
+     "note": "\"Way to go\" praises someone's achievement directly."
+    }
+   ],
+   "antonyms": [
+    "that's not what I meant",
+    "what a letdown"
+   ],
+   "collocations": [
+    "That's what I'm talking about!",
+    "Yes! That's what I'm talking about.",
+    "Now that's what I'm talking about."
+   ],
+   "examples": {
+    "everyday": "\"Grandma made her famous mac and cheese.\" \"That's what I'm talking about!\"",
+    "professional": "\"We closed the quarter twenty percent over target.\" \"That's what I'm talking about!\"",
+    "analytical": "\"That's what I'm talking about\" signals that a result matches the speaker's hopes, functioning as a cheer rather than a statement."
+   },
+   "analogy": "Like a crowd jumping to its feet when the ball goes in.",
+   "etymology": "A modern American colloquialism; plain words (\"this is what I meant\") turned into a cheer, heard especially in sports.",
+   "common_mistakes": [
+    "Using a flat tone; it needs excitement.",
+    "Saying \"that's what I talk about\"; it is progressive: \"I'm talking.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "tell me something I don't know",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌtɛl mi ˌsʌmθɪŋ aɪ ˌdoʊnt ˈnoʊ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said when someone tells you something obvious or something you already know well (often wearily)."
+    ]
+   }
+  ],
+  "etymology": "Plain words used as an ironic reply: the speaker pretends to ask for news because what was said is old news.",
+  "conversation": [
+   {
+    "sense": "obvious",
+    "text": "\"Traffic's bad on Fridays.\" \"Tell me something I don't know.\""
+   },
+   {
+    "sense": "weary",
+    "text": "\"Your brother can be really stubborn.\" \"Tell me something I don't know.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "I already know that very well."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtɛl mi ˌsʌmθɪŋ aɪ ˌdoʊnt ˈnoʊ/",
+    "respelling": "tel mee suhm-thing ahy dohnt NOH",
+    "tip": "Stress KNOW, with DON'T also strong: tel-mee-SUHM-thing-ahy-DOHNT-NOH."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Wry, weary or slightly impatient.",
+   "usage_note": "A reply to a statement of the obvious, often a complaint you share. Said dryly, it is friendly; said sharply, it can sound rude. Often heard about a person you both know.",
+   "word_family": [
+    "tell me about it (similar)"
+   ],
+   "distinctions": [
+    {
+     "vs": "tell me about it",
+     "note": "\"Tell me about it\" agrees with a complaint from experience; \"tell me something I don't know\" says the comment is obvious."
+    },
+    {
+     "vs": "no kidding",
+     "note": "\"No kidding\" can express surprise or, sarcastically, that something is obvious."
+    },
+    {
+     "vs": "you're telling me",
+     "note": "\"You're telling me\" means I know that better than you do."
+    }
+   ],
+   "antonyms": [
+    "I had no idea",
+    "you don't say"
+   ],
+   "collocations": [
+    "Tell me something I don't know.",
+    "Ha, tell me something I don't know."
+   ],
+   "examples": {
+    "everyday": "\"Teenagers sleep a lot.\" \"Tell me something I don't know. Mine got up at two today.\"",
+    "professional": "\"The legacy system is slow.\" \"Tell me something I don't know.\"",
+    "analytical": "\"Tell me something I don't know\" signals that information is redundant, a quick way to mark shared knowledge."
+   },
+   "analogy": "Like being handed a map of your own neighborhood.",
+   "etymology": "Plain words used as an ironic reply: the speaker pretends to ask for news because what was said is old news.",
+   "common_mistakes": [
+    "Taking it as a sincere request for new information.",
+    "Saying \"tell me something I didn't know\"; the usual form is \"don't know.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "easy does it",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌizi ˈdʌz ɪt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Go slowly and carefully (said when someone is moving, lifting or handling something).",
+     "Calm down; don't get too excited or angry."
+    ]
+   }
+  ],
+  "etymology": "A colloquial saying meaning that a gentle approach gets the job done; origin uncertain.",
+  "conversation": [
+   {
+    "sense": "careful",
+    "text": "Easy does it. Lift with your legs, not your back."
+   },
+   {
+    "sense": "calm",
+    "text": "Easy does it, guys. It's just a board game."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Slowly and carefully; take it easy."
+   },
+   "pronunciation": {
+    "ipa": "/ˌizi ˈdʌz ɪt/",
+    "respelling": "ee-zee DUHZ it",
+    "tip": "Stress DOES. \"Does it\" blends: DUH-zit."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Calm, gentle and caring.",
+   "usage_note": "Often said while helping: carrying furniture, backing up a car, helping someone stand up. In the second sense it calms someone down. Also a slogan in recovery groups, meaning don't rush.",
+   "word_family": [
+    "easy (adverb: carefully, as in \"go easy\")",
+    "take it easy"
+   ],
+   "distinctions": [
+    {
+     "vs": "take it easy",
+     "note": "\"Take it easy\" means relax or goodbye; \"easy does it\" means slow down and be careful in what you're doing right now."
+    },
+    {
+     "vs": "go easy on",
+     "note": "\"Go easy on someone\" means don't be too harsh with them."
+    },
+    {
+     "vs": "hold your horses",
+     "note": "\"Hold your horses\" means wait, don't rush ahead."
+    }
+   ],
+   "antonyms": [
+    "full speed ahead",
+    "hurry up"
+   ],
+   "collocations": [
+    "Easy does it.",
+    "Okay, easy does it.",
+    "Easy does it on the stairs."
+   ],
+   "examples": {
+    "everyday": "Easy does it with that box; it's full of dishes.",
+    "professional": "Easy does it on the rollout; let's start with one region before going national.",
+    "analytical": "\"Easy does it\" captures the principle that slow, controlled actions reduce errors and accidents."
+   },
+   "analogy": "Like lowering a sleeping baby into a crib.",
+   "etymology": "A colloquial saying meaning that a gentle approach gets the job done; origin uncertain.",
+   "common_mistakes": [
+    "Saying \"easy do it\"; it is \"does.\"",
+    "Using it to mean \"it's easy\"; it means \"be careful.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "no wonder",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌnoʊ ˈwʌndɚ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "It's not surprising; that explains it (said when you learn the reason for something)."
+    ]
+   }
+  ],
+  "etymology": "From \"wonder\" in the sense of surprise or amazement: there is no cause for surprise.",
+  "conversation": [
+   {
+    "sense": "explanation",
+    "text": "\"I didn't sleep last night.\" \"No wonder you're so tired.\""
+   },
+   {
+    "sense": "realization",
+    "text": "Oh, the oven was off the whole time? No wonder the cake didn't rise."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "That explains it; of course."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnoʊ ˈwʌndɚ/",
+    "respelling": "noh WUHN-der",
+    "tip": "Stress WON. \"Wonder\" sounds like WUHN-der, not like \"wander.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; can be sympathetic or a little teasing.",
+   "usage_note": "Used as a reply (\"No wonder!\") or at the start of a sentence (\"No wonder he's upset\"). It reacts to a newly learned cause. \"It's no wonder (that)...\" and \"Small wonder...\" are a bit more formal.",
+   "word_family": [
+    "it's no wonder (that)",
+    "small wonder (more formal)",
+    "wonder (noun: surprise)"
+   ],
+   "distinctions": [
+    {
+     "vs": "that figures",
+     "note": "\"That figures\" means \"that is what I expected,\" often about something disappointing; \"no wonder\" means \"now I understand why.\""
+    },
+    {
+     "vs": "go figure",
+     "note": "\"Go figure\" means \"strange, I can't explain it,\" the opposite of \"no wonder.\""
+    },
+    {
+     "vs": "small wonder",
+     "note": "\"Small wonder\" means the same and sounds more formal or written."
+    }
+   ],
+   "antonyms": [
+    "go figure",
+    "who knew"
+   ],
+   "collocations": [
+    "No wonder!",
+    "No wonder you're tired.",
+    "It's no wonder...",
+    "No wonder it didn't work."
+   ],
+   "examples": {
+    "everyday": "\"The battery was in backward.\" \"No wonder the remote wasn't working.\"",
+    "professional": "It's no wonder the team is burned out after three months of weekend work.",
+    "analytical": "\"No wonder\" marks the moment an observed effect is linked to its cause."
+   },
+   "analogy": "Like finding the light switch was off after wondering why the lamp was broken.",
+   "etymology": "From \"wonder\" in the sense of surprise or amazement: there is no cause for surprise.",
+   "common_mistakes": [
+    "Writing \"no wander\"; \"wander\" means to walk around.",
+    "Saying \"no wonder\" before the cause; it follows hearing the cause: \"Oh, it was unplugged? No wonder.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "don't get me started",
+  "domains": [
+   "idioms",
+   "small_talk"
+  ],
+  "phonetic": "/ˌdoʊnt ˌɡɛt mi ˈstɑɹtɪd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said when a topic annoys you so much that you could complain about it for a long time (often followed by a complaint anyway)."
+    ]
+   }
+  ],
+  "etymology": "From \"get someone started\" (on a subject), to set them talking about a favorite complaint.",
+  "conversation": [
+   {
+    "sense": "annoyance",
+    "text": "\"How's your new landlord?\" \"Ugh, don't get me started.\""
+   },
+   {
+    "sense": "rant",
+    "text": "Airline fees? Don't get me started. Last week they charged me forty bucks for a carry-on."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "That topic really bothers me, and I could go on about it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdoʊnt ˌɡɛt mi ˈstɑɹtɪd/",
+    "respelling": "dohnt get mee STAHR-tid",
+    "tip": "Stress START. The t in \"started\" is often a flap: STAHR-did."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Exasperated, usually humorous.",
+   "usage_note": "A warning that a topic is a sore point. Often ironic, because the speaker starts complaining right after. \"Don't even get me started\" is a more emphatic variant. It is a natural way to show strong feelings without a long rant.",
+   "word_family": [
+    "don't even get me started (emphatic)",
+    "get someone started (on something)"
+   ],
+   "distinctions": [
+    {
+     "vs": "tell me about it",
+     "note": "\"Tell me about it\" agrees with someone else's complaint; \"don't get me started\" announces your own."
+    },
+    {
+     "vs": "don't go there",
+     "note": "\"Don't go there\" asks someone not to raise a topic; \"don't get me started\" says the topic annoys you."
+    }
+   ],
+   "antonyms": [
+    "I have no complaints"
+   ],
+   "collocations": [
+    "Don't get me started.",
+    "Don't even get me started.",
+    "Don't get me started on..."
+   ],
+   "examples": {
+    "everyday": "\"Have you tried parking downtown lately?\" \"Don't get me started.\"",
+    "professional": "\"How's the new expense system?\" \"Don't get me started; it took me an hour to file one receipt.\"",
+    "analytical": "\"Don't get me started\" both signals a strong grievance and invites the listener to ask for more."
+   },
+   "analogy": "Like a soda bottle that's been shaken: open it and it all comes out.",
+   "etymology": "From \"get someone started\" (on a subject), to set them talking about a favorite complaint.",
+   "common_mistakes": [
+    "Saying \"don't make me start\"; the idiom is \"don't get me started.\"",
+    "Using it about something you like; it is about things that annoy you."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ }
+]

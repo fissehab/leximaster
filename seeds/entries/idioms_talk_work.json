@@ -1,0 +1,3343 @@
+[
+ {
+  "word": "drop someone a line",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌdɹɑp ˌsʌmwʌn ə ˈlaɪn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To write someone a short letter, email or message, especially to say hello or stay in touch."
+    ]
+   }
+  ],
+  "etymology": "From line in the sense of a few written lines, a short letter; \"drop\" means to send casually, as in \"drop a note.\"",
+  "conversation": [
+   {
+    "sense": "staying in touch",
+    "text": "It was great running into you. Drop me a line next time you're in Denver."
+   },
+   {
+    "sense": "email sign-off",
+    "text": "If you have any questions about the schedule, just drop me a line."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To send someone a short, friendly message."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdɹɑp ˌsʌmwʌn ə ˈlaɪn/",
+    "respelling": "drop suhm-wuhn uh LAHYN",
+    "tip": "Stress LINE. \"Drop\" has the open a of \"father\": drahp. \"Someone a\" runs together: SUHM-wuhn-uh."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Warm and friendly; it invites contact without making it sound like a big task.",
+   "usage_note": "Most often an invitation: \"Drop me a line,\" \"Feel free to drop us a line.\" It suggests a short, casual note, usually email or text today. It can also mean a quick call, but most people picture writing. In formal emails, \"feel free to reach out\" or \"please contact me\" is more usual.",
+   "word_family": [
+    "dropped someone a line (past)",
+    "drop us a line (common in invitations)"
+   ],
+   "distinctions": [
+    {
+     "vs": "reach out",
+     "note": "\"Reach out\" is the standard workplace phrase for contacting someone; \"drop someone a line\" is warmer and more casual."
+    },
+    {
+     "vs": "touch base",
+     "note": "\"Touch base\" is a brief check-in about work in progress; \"drop someone a line\" is any short note, often just to stay in touch."
+    }
+   ],
+   "antonyms": [
+    "lose touch",
+    "go quiet"
+   ],
+   "collocations": [
+    "drop me a line",
+    "drop us a line",
+    "feel free to drop me a line",
+    "drop her a line",
+    "drop me a line sometime"
+   ],
+   "examples": {
+    "everyday": "My cousin always drops me a line on my birthday, even though we haven't seen each other in years.",
+    "professional": "If anything comes up before Friday, drop me a line and I'll adjust the plan.",
+    "analytical": "Small businesses often find that dropping customers a line a few weeks after a sale brings in more repeat business than a generic newsletter."
+   },
+   "analogy": "Like tossing a fishing line to someone across the water: a light, quick way to connect.",
+   "etymology": "From line in the sense of a few written lines, a short letter; \"drop\" means to send casually, as in \"drop a note.\"",
+   "common_mistakes": [
+    "Saying \"drop me a lane\" or \"drop me line\"; keep the article: \"drop me a line.\"",
+    "Using it for a long, formal document; it means a short, casual message."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "pick up where one left off",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌpɪk ˈʌp ˌwɛɹ wʌn ˌlɛft ˈɔf/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To start again at the point where one stopped earlier, such as in a meeting, conversation, task or relationship.",
+     "(of a relationship or friendship) To return to the same closeness as before after time apart."
+    ]
+   }
+  ],
+  "etymology": "From the phrasal verbs pick up (resume) and leave off (stop).",
+  "conversation": [
+   {
+    "sense": "meeting",
+    "text": "We ran out of time yesterday, so let's pick up where we left off: item four, the budget."
+   },
+   {
+    "sense": "old friends",
+    "text": "We hadn't talked in five years, but we picked up right where we left off."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To continue from the place where you stopped before."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpɪk ˈʌp ˌwɛɹ wʌn ˌlɛft ˈɔf/",
+    "respelling": "pik up wair wuhn left AWF",
+    "tip": "Stress OFF most: pick up where we left OFF. \"Left off\" links: LEF-tawf. Many Americans say \"off\" as /ɑf/, \"ahf\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; in the friendship sense it is warm and positive.",
+   "usage_note": "In practice the person slot is filled with \"we,\" \"you\" or \"I\": \"Let's pick up where we left off.\" A common opener at the start of a follow-up meeting or class. \"Right where we left off\" stresses that nothing was lost.",
+   "word_family": [
+    "picked up where we left off (past)",
+    "where we left off (clause)",
+    "leave off (phrasal verb)"
+   ],
+   "distinctions": [
+    {
+     "vs": "circle back",
+     "note": "\"Circle back\" means returning to a topic later; \"pick up where we left off\" is the moment you actually restart from that point."
+    },
+    {
+     "vs": "start over",
+     "note": "\"Start over\" means going back to the beginning; \"pick up where we left off\" means not repeating anything."
+    }
+   ],
+   "antonyms": [
+    "start over",
+    "start from scratch"
+   ],
+   "collocations": [
+    "let's pick up where we left off",
+    "pick up right where we left off",
+    "picked up where we left off",
+    "pick up where you left off"
+   ],
+   "examples": {
+    "everyday": "After the commercial, the show picked up right where it left off.",
+    "professional": "Welcome back, everyone. Let's pick up where we left off last week, with the vendor shortlist.",
+    "analytical": "Software that lets users pick up where they left off on another device tends to improve retention."
+   },
+   "analogy": "Like putting a bookmark in a book: next time, you open to that page instead of chapter one.",
+   "etymology": "From the phrasal verbs pick up (resume) and leave off (stop).",
+   "common_mistakes": [
+    "Saying \"pick up where we stopped off\"; the phrase is \"left off.\"",
+    "Saying \"pick up from where we leave off\" about the past; use the past tense: \"where we left off.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "take it from here",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌteɪk ɪt fɹəm ˈhɪɹ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To take over responsibility for a task, conversation or presentation from this point on (often said when someone hands work over: \"I'll take it from here\")."
+    ]
+   }
+  ],
+  "etymology": "A plain combination of take (handle) and from here (from this point); it grew common in the 20th century.",
+  "conversation": [
+   {
+    "sense": "handoff",
+    "text": "Thanks for setting up the meeting with the client. I'll take it from here."
+   },
+   {
+    "sense": "presentation",
+    "text": "That's the background. Now I'll let Maria take it from here with the numbers."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To take over and handle something from now on."
+   },
+   "pronunciation": {
+    "ipa": "/ˌteɪk ɪt fɹəm ˈhɪɹ/",
+    "respelling": "tayk it fruhm HEER",
+    "tip": "Stress HERE. \"From\" is weak: fruhm. \"Take it\" links: TAY-kit."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral to confident; it can be a polite thank-you or, in a sharp tone, a way of telling someone to step aside.",
+   "usage_note": "Typical forms: \"I'll take it from here\" (I'm taking over), \"Can you take it from here?\" (asking someone to take over), \"Let me hand it to Sam to take it from here.\" Tone matters: said warmly, it thanks the person; said curtly, it can mean \"you're done.\"",
+   "word_family": [
+    "took it from there (past)",
+    "take it from there (later point)"
+   ],
+   "distinctions": [
+    {
+     "vs": "over to you",
+     "note": "\"Over to you\" hands the turn to someone else; \"I'll take it from here\" is said by the person taking it."
+    },
+    {
+     "vs": "run with it",
+     "note": "\"Run with it\" tells someone to take an idea and develop it freely; \"take it from here\" is simply taking over the next steps."
+    }
+   ],
+   "antonyms": [
+    "hand off",
+    "pass the baton"
+   ],
+   "collocations": [
+    "I'll take it from here",
+    "can you take it from here",
+    "let me take it from here",
+    "you can take it from here"
+   ],
+   "examples": {
+    "everyday": "Thanks for getting the grill started, Dad. I'll take it from here.",
+    "professional": "Legal has reviewed the contract, so procurement will take it from here.",
+    "analytical": "Clear handoffs, where one team explicitly says it will take it from here, reduce the number of tasks that fall through the cracks."
+   },
+   "analogy": "Like a relay runner grabbing the baton: from this point, the next leg is theirs.",
+   "etymology": "A plain combination of take (handle) and from here (from this point); it grew common in the 20th century.",
+   "common_mistakes": [
+    "Saying \"take it from now\"; the phrase uses \"here\" for the point in time.",
+    "Saying it to your boss without care: \"I'll take it from here\" can sound like you are dismissing them."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "on someone's end",
+  "domains": [
+   "idioms",
+   "meetings",
+   "phone_calls"
+  ],
+  "phonetic": "/ɑn ˌsʌmwʌnz ˈɛnd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "On someone's side of a call, connection, process or shared task; as far as that person or group is concerned (\"Everything looks fine on my end\")."
+    ]
+   }
+  ],
+  "etymology": "From end in the sense of one side of a connection, as in the two ends of a telephone line.",
+  "conversation": [
+   {
+    "sense": "video call",
+    "text": "The audio sounds fine on my end. Maybe try reconnecting?"
+   },
+   {
+    "sense": "status",
+    "text": "I've sent the invoice, so nothing else is needed on our end."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "prepositional phrase",
+    "definition": "In someone's part of the work, or on their side of a phone or video call."
+   },
+   "pronunciation": {
+    "ipa": "/ɑn ˌsʌmwʌnz ˈɛnd/",
+    "respelling": "ahn suhm-wuhnz END",
+    "tip": "Stress END. \"On my end\" is ahn-mahy-END. Say end with a short e, like \"bend\"."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; a practical way to separate your part of a problem from someone else's.",
+   "usage_note": "In practice: \"on my end,\" \"on your end,\" \"on our end,\" \"on their end.\" Very common in calls (\"Can you hear me OK on your end?\") and status updates (\"We're all set on our end\"). It politely suggests a problem may be on the other side without blaming anyone.",
+   "word_family": [
+    "on your end",
+    "on our end",
+    "on their end",
+    "on my side (similar)"
+   ],
+   "distinctions": [
+    {
+     "vs": "on my side",
+     "note": "\"On my side\" can mean supporting someone; \"on my end\" is only about which part of the task or connection is yours."
+    },
+    {
+     "vs": "from my perspective",
+     "note": "\"From my perspective\" is about opinions; \"on my end\" is about facts in your part of the work."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "on my end",
+    "everything's fine on my end",
+    "anything needed on your end",
+    "all set on our end",
+    "can you hear me on your end"
+   ],
+   "examples": {
+    "everyday": "The package shows delivered on my end. Did it arrive?",
+    "professional": "We've finished testing on our end; let us know when your team is ready to sign off.",
+    "analytical": "Splitting an outage into what happened on the vendor's end and what happened on ours makes the root cause easier to find."
+   },
+   "analogy": "Like two people holding the ends of a rope: each can only check their own end.",
+   "etymology": "From end in the sense of one side of a connection, as in the two ends of a telephone line.",
+   "common_mistakes": [
+    "Saying \"in my end\"; it is \"on my end.\"",
+    "Writing \"on my hand\"; the expression is \"on my end\" (compare \"on the other hand,\" a different phrase)."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "give someone the go-ahead",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌɡɪv ˌsʌmwʌn ðə ˈɡoʊ əˌhɛd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To give someone permission to start or continue something.",
+     "(get the go-ahead) To receive that permission."
+    ]
+   }
+  ],
+  "etymology": "A noun formed from the verb phrase \"go ahead,\" recorded from the early 20th century.",
+  "conversation": [
+   {
+    "sense": "project",
+    "text": "The client gave us the go-ahead, so we start building on Monday."
+   },
+   {
+    "sense": "waiting",
+    "text": "We're just waiting for the go-ahead from legal before we publish."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To say yes, officially, so that someone can start."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɪv ˌsʌmwʌn ðə ˈɡoʊ əˌhɛd/",
+    "respelling": "giv suhm-wuhn thuh GOH-uh-hed",
+    "tip": "Stress GO in \"go-ahead\": GOH-uh-hed. The noun is stressed on the first part, while the verb phrase \"go ahead\" is stressed on \"ahead.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive; it marks the moment a plan is approved.",
+   "usage_note": "Common forms: \"give someone the go-ahead,\" \"get the go-ahead,\" \"wait for the go-ahead,\" \"the go-ahead to do something\" or \"the go-ahead for something.\" Used in offices, construction, medicine and news: \"The city gave the go-ahead for the new stadium.\"",
+   "word_family": [
+    "the go-ahead (noun)",
+    "go ahead (phrasal verb)",
+    "go-ahead (adjective, as in a go-ahead decision)"
+   ],
+   "distinctions": [
+    {
+     "vs": "green light",
+     "note": "\"Give something the green light\" means the same; \"the go-ahead\" is slightly more everyday, \"the green light\" a little more vivid."
+    },
+    {
+     "vs": "sign off on",
+     "note": "\"Sign off on\" is the formal act of approving a document or decision; \"give the go-ahead\" is the permission to begin."
+    }
+   ],
+   "antonyms": [
+    "put on hold",
+    "veto"
+   ],
+   "collocations": [
+    "give someone the go-ahead",
+    "get the go-ahead",
+    "wait for the go-ahead",
+    "the go-ahead to start",
+    "got the go-ahead from"
+   ],
+   "examples": {
+    "everyday": "My doctor gave me the go-ahead to start running again.",
+    "professional": "Once finance gives us the go-ahead, we can send the offer letter.",
+    "analytical": "Projects that get the go-ahead before requirements are settled tend to see more costly changes later."
+   },
+   "analogy": "Like a coach tapping a player on the shoulder: now you can go in.",
+   "etymology": "A noun formed from the verb phrase \"go ahead,\" recorded from the early 20th century.",
+   "common_mistakes": [
+    "Saying \"give someone the go ahead\" without the hyphen is common, but the noun is usually written \"go-ahead.\"",
+    "Saying \"get go-ahead\"; keep \"the\": \"get the go-ahead.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "leave money on the table",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌliv ˌmʌni ɑn ðə ˈteɪbəl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To fail to get all the money, value or advantage that was available, especially in a negotiation or deal."
+    ]
+   }
+  ],
+  "etymology": "A business expression from the late 20th century, picturing money still lying on a negotiating or card table after one side has left.",
+  "conversation": [
+   {
+    "sense": "salary",
+    "text": "She took the first offer without negotiating, and later found out she'd left money on the table."
+   },
+   {
+    "sense": "pricing",
+    "text": "We're charging too little for the premium plan. We're leaving money on the table."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To accept less than you could have gotten."
+   },
+   "pronunciation": {
+    "ipa": "/ˌliv ˌmʌni ɑn ðə ˈteɪbəl/",
+    "respelling": "leev muhn-ee ahn thuh TAY-buhl",
+    "tip": "Stress TABLE: TAY-buhl, with a soft second syllable. \"Money\" is MUHN-ee."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Negative; it describes a missed opportunity, often with regret.",
+   "usage_note": "Common in business, sales and negotiation: \"Don't leave money on the table,\" \"We're leaving money on the table.\" Used about salaries, prices, deals and unused benefits (an employer 401(k) match, for example). Often used as advice or a warning.",
+   "word_family": [
+    "leaving money on the table (-ing)",
+    "left money on the table (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "sell oneself short",
+     "note": "\"Sell oneself short\" is undervaluing your own abilities; \"leave money on the table\" is specifically about missing available money or value."
+    },
+    {
+     "vs": "drive a hard bargain",
+     "note": "\"Drive a hard bargain\" is negotiating firmly; doing it well is how you avoid leaving money on the table."
+    }
+   ],
+   "antonyms": [
+    "drive a hard bargain"
+   ],
+   "collocations": [
+    "leave money on the table",
+    "leaving money on the table",
+    "don't leave money on the table",
+    "left a lot of money on the table"
+   ],
+   "examples": {
+    "everyday": "If your job offers a retirement match and you don't use it, you're leaving money on the table.",
+    "professional": "Before we sign, let's make sure we're not leaving money on the table on the renewal terms.",
+    "analytical": "Studies of first offers show that candidates who never counteroffer often leave money on the table, especially in their first job."
+   },
+   "analogy": "Like getting up from a poker game and forgetting your chips: the money was yours, and you walked away from it.",
+   "etymology": "A business expression from the late 20th century, picturing money still lying on a negotiating or card table after one side has left.",
+   "common_mistakes": [
+    "Saying \"leave the money on the table\" in this sense; the idiom usually has no \"the\" before money.",
+    "Using it for a tip left for a waiter; that is literal, not the idiom."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "play hardball",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌpleɪ ˈhɑɹdbɔl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To act or negotiate in a tough, aggressive and uncompromising way to get what one wants."
+    ]
+   }
+  ],
+  "etymology": "From American baseball, where hardball (the regulation ball) contrasts with softball; the figurative sense dates from the 1970s.",
+  "conversation": [
+   {
+    "sense": "negotiation",
+    "text": "If they won't lower the price, we may have to play hardball and walk away."
+   },
+   {
+    "sense": "warning",
+    "text": "Be careful with that landlord. He plays hardball about late rent."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To be tough and unwilling to compromise."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpleɪ ˈhɑɹdbɔl/",
+    "respelling": "play HAHRD-bawl",
+    "tip": "Stress HARD: HAHRD-bawl. Many Americans say \"ball\" as bahl."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mixed: it can be admiring (strong, effective) or critical (ruthless).",
+   "usage_note": "American, from baseball. Used about negotiations, business, politics and law: \"The union is playing hardball.\" \"Hardball\" also works as a noun (\"political hardball\") and adjective (\"hardball tactics\").",
+   "word_family": [
+    "hardball (noun)",
+    "hardball tactics (noun phrase)",
+    "playing hardball (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "drive a hard bargain",
+     "note": "\"Drive a hard bargain\" is negotiating firmly for a good price; \"play hardball\" is broader and more aggressive, even ruthless."
+    },
+    {
+     "vs": "take a hard line",
+     "note": "\"Take a hard line\" is holding a strict position; \"play hardball\" adds pressure tactics to win."
+    }
+   ],
+   "antonyms": [
+    "meet someone halfway",
+    "play nice"
+   ],
+   "collocations": [
+    "play hardball",
+    "playing hardball",
+    "hardball tactics",
+    "political hardball",
+    "ready to play hardball"
+   ],
+   "examples": {
+    "everyday": "My sister played hardball with the car dealer and got free floor mats and a lower price.",
+    "professional": "If the supplier keeps missing deadlines, we'll play hardball at renewal and ask for penalties.",
+    "analytical": "Game theory suggests that playing hardball pays off in a one-time deal but can damage long-term relationships."
+   },
+   "analogy": "Like a baseball game where the pitcher throws real fastballs instead of soft lobs.",
+   "etymology": "From American baseball, where hardball (the regulation ball) contrasts with softball; the figurative sense dates from the 1970s.",
+   "common_mistakes": [
+    "Writing \"play hard ball\" as two words; it is usually one word.",
+    "Using it for simply working hard; it means being tough with an opponent."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "keep the ball rolling",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌkip ðə ˈbɔl ˌɹoʊlɪŋ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To keep an activity, process or conversation going so that it does not slow down or stop."
+    ]
+   }
+  ],
+  "etymology": "From ball games, where keeping the ball in play keeps the game going.",
+  "conversation": [
+   {
+    "sense": "project",
+    "text": "We had a great kickoff. Let's keep the ball rolling with a check-in next week."
+   },
+   {
+    "sense": "conversation",
+    "text": "Dinner was awkward, so I kept the ball rolling by asking everyone about their trips."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To keep something moving once it has started."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkip ðə ˈbɔl ˌɹoʊlɪŋ/",
+    "respelling": "keep thuh BAWL roh-ling",
+    "tip": "Stress BALL. Many Americans say bahl. \"Rolling\" is ROH-ling."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Positive; it suggests energy and momentum.",
+   "usage_note": "Pairs naturally with \"get the ball rolling\" (start something): first you get the ball rolling, then you keep it rolling. Common in meetings, sales, fundraising and conversation.",
+   "word_family": [
+    "keep the ball rolling",
+    "kept the ball rolling (past)",
+    "get the ball rolling (related idiom)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get the ball rolling",
+     "note": "\"Get the ball rolling\" is starting something; \"keep the ball rolling\" is not letting it stop."
+    },
+    {
+     "vs": "keep up the momentum",
+     "note": "\"Keep up the momentum\" means the same in a slightly more formal tone."
+    }
+   ],
+   "antonyms": [
+    "drop the ball",
+    "lose steam"
+   ],
+   "collocations": [
+    "keep the ball rolling",
+    "to keep the ball rolling",
+    "let's keep the ball rolling",
+    "help keep the ball rolling"
+   ],
+   "examples": {
+    "everyday": "The kids kept the ball rolling all afternoon, so the party never got boring.",
+    "professional": "To keep the ball rolling, I'll send a summary and next steps today.",
+    "analytical": "Campaigns that keep the ball rolling with frequent small updates often see more sustained engagement than those with one big launch."
+   },
+   "analogy": "Like pushing a ball across a lawn: getting it going takes a shove, but small taps keep it moving.",
+   "etymology": "From ball games, where keeping the ball in play keeps the game going.",
+   "common_mistakes": [
+    "Saying \"keep the ball running\"; the verb is \"rolling.\"",
+    "Mixing it up with \"get the ball rolling\": \"keep\" is for something already underway."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "run something up the flagpole",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌɹʌn ˌsʌmθɪŋ ˌʌp ðə ˈflæɡpoʊl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To present an idea or proposal to others in order to test their reaction (often in the longer form \"run it up the flagpole and see who salutes\")."
+    ]
+   }
+  ],
+  "etymology": "American advertising and business slang of the 1950s, from the image of raising a flag and seeing who salutes it.",
+  "conversation": [
+   {
+    "sense": "idea",
+    "text": "I'm not sure the team will like it, but let's run it up the flagpole."
+   },
+   {
+    "sense": "joking",
+    "text": "Let's run it up the flagpole and see who salutes."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To share an idea and see how people react to it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɹʌn ˌsʌmθɪŋ ˌʌp ðə ˈflæɡpoʊl/",
+    "respelling": "ruhn suhm-thing up thuh FLAG-pohl",
+    "tip": "Stress FLAG: FLAG-pohl. Full phrase: \"run it up the FLAGpole (and see who salutes).\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Light and somewhat humorous; it now sounds a bit like classic office jargon.",
+   "usage_note": "Often used with \"it\" or \"this\": \"Let's run this up the flagpole.\" The full version \"...and see who salutes\" is usually said jokingly. Some people use it with a slight ironic smile because it is famous corporate jargon.",
+   "word_family": [
+    "ran it up the flagpole (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "run something by someone",
+     "note": "\"Run something by someone\" is asking one person for their opinion; \"run it up the flagpole\" is testing an idea on a wider group."
+    },
+    {
+     "vs": "float an idea",
+     "note": "\"Float an idea\" means the same and sounds more neutral; \"run it up the flagpole\" is more playful."
+    }
+   ],
+   "antonyms": [
+    "shoot down"
+   ],
+   "collocations": [
+    "run it up the flagpole",
+    "run this up the flagpole",
+    "see who salutes",
+    "run it up the flagpole and see who salutes"
+   ],
+   "examples": {
+    "everyday": "Mom liked my idea for a camping trip, so I ran it up the flagpole at dinner with everyone else.",
+    "professional": "Before we commit budget, let's run the concept up the flagpole with a few key customers.",
+    "analytical": "Running an idea up the flagpole works like a cheap pilot test: early reactions reveal objections before resources are spent."
+   },
+   "analogy": "Like raising a new flag and watching who stands to salute it: you see who supports it before you commit.",
+   "etymology": "American advertising and business slang of the 1950s, from the image of raising a flag and seeing who salutes it.",
+   "common_mistakes": [
+    "Saying \"run it up the flag\" or \"up the pole\"; the full word is \"flagpole.\"",
+    "Using it for a final decision; it is only for testing an idea."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "throw something out there",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌθɹoʊ ˌsʌmθɪŋ ˌaʊt ˈðɛɹ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To suggest an idea, question or option casually, without strongly insisting on it, so that others can consider it."
+    ]
+   }
+  ],
+  "etymology": "A modern informal phrase from throw out (offer a suggestion) and out there (into the open).",
+  "conversation": [
+   {
+    "sense": "suggestion",
+    "text": "Just throwing this out there, but what if we moved the party to Saturday?"
+   },
+   {
+    "sense": "brainstorm",
+    "text": "I'll throw out there one more option: we could hire a contractor."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To offer an idea lightly, just for people to think about."
+   },
+   "pronunciation": {
+    "ipa": "/ˌθɹoʊ ˌsʌmθɪŋ ˌaʊt ˈðɛɹ/",
+    "respelling": "throh suhm-thing out THAIR",
+    "tip": "Stress THERE: throw it out THERE. \"Throw it\" links: THROH-it."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Soft and tentative; it lowers the pressure of a suggestion.",
+   "usage_note": "Most common as a softener: \"Just throwing it out there,\" \"I'm just throwing this out there.\" It signals \"this is only an idea; feel free to disagree.\" Frequent in meetings and brainstorming.",
+   "word_family": [
+    "throwing it out there (-ing)",
+    "threw it out there (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "float an idea",
+     "note": "\"Float an idea\" is the same act in a slightly more formal tone; \"throw it out there\" is casual and often apologetic."
+    },
+    {
+     "vs": "put forward",
+     "note": "\"Put forward\" a proposal is more formal and more committed."
+    }
+   ],
+   "antonyms": [
+    "insist on"
+   ],
+   "collocations": [
+    "just throwing it out there",
+    "throw an idea out there",
+    "I'll throw this out there",
+    "throwing it out there"
+   ],
+   "examples": {
+    "everyday": "Just throwing it out there: pizza sounds better than tacos tonight.",
+    "professional": "I'll throw this out there for discussion: should we pause hiring until the second quarter?",
+    "analytical": "In brainstorming, people who feel free to throw ideas out there without being judged produce a wider range of options."
+   },
+   "analogy": "Like tossing a ball into the middle of a group: anyone can pick it up, or no one.",
+   "etymology": "A modern informal phrase from throw out (offer a suggestion) and out there (into the open).",
+   "common_mistakes": [
+    "Saying \"throw it out\" alone; that can mean put it in the trash. Keep \"there.\"",
+    "Using it for a firm decision; it signals an unconfirmed idea."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "float an idea",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌfloʊt ən aɪˈdiə/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To suggest an idea or plan tentatively, to see how people react before making a decision."
+    ]
+   }
+  ],
+  "etymology": "From float in the sense of putting something into circulation, related to \"trial balloon,\" a balloon sent up to test the wind.",
+  "conversation": [
+   {
+    "sense": "meeting",
+    "text": "The manager floated the idea of a four-day week, but nothing's decided."
+   },
+   {
+    "sense": "family",
+    "text": "I floated the idea of getting a dog, and the kids went wild."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To mention an idea to test how people feel about it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌfloʊt ən aɪˈdiə/",
+    "respelling": "floht uhn ahy-DEE-uh",
+    "tip": "Stress the DE of idea: ahy-DEE-uh. \"Float\" rhymes with \"boat.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; it suggests caution and openness.",
+   "usage_note": "Common in news and workplace English: \"float an idea,\" \"float a proposal,\" \"float a plan,\" \"float the possibility of...\" Often in the past tense in reporting: \"The governor floated the idea of a tax cut.\" Nothing is decided when an idea is only floated.",
+   "word_family": [
+    "floated the idea (past)",
+    "float a proposal",
+    "float the possibility"
+   ],
+   "distinctions": [
+    {
+     "vs": "propose",
+     "note": "\"Propose\" sounds more formal and more committed; \"float\" signals that you are only testing the waters."
+    },
+    {
+     "vs": "throw something out there",
+     "note": "\"Throw something out there\" is more casual and conversational; \"float an idea\" is common in news and business writing too."
+    }
+   ],
+   "antonyms": [
+    "shoot down",
+    "rule out"
+   ],
+   "collocations": [
+    "float the idea of",
+    "floated the idea",
+    "float a proposal",
+    "float the possibility of",
+    "float a trial balloon"
+   ],
+   "examples": {
+    "everyday": "My brother floated the idea of a family trip to Mexico next summer.",
+    "professional": "Several board members floated the idea of a merger, but no formal proposal has been made.",
+    "analytical": "Politicians often float an idea through unnamed sources to measure public reaction before committing to it."
+   },
+   "analogy": "Like putting a paper boat on a pond: you watch whether it floats or sinks before building a real one.",
+   "etymology": "From float in the sense of putting something into circulation, related to \"trial balloon,\" a balloon sent up to test the wind.",
+   "common_mistakes": [
+    "Saying \"float an idea to do\"; use \"float the idea of doing\" or \"float the idea that...\"",
+    "Treating a floated idea as a decision; it is only a suggestion."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "put out feelers",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌpʊt ˌaʊt ˈfilɚz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To make quiet, informal inquiries in order to find out about opportunities or what other people think, without committing to anything."
+    ]
+   }
+  ],
+  "etymology": "From feelers, the antennae of insects, used to sense the surroundings.",
+  "conversation": [
+   {
+    "sense": "job search",
+    "text": "I'm happy where I am, but I've put out a few feelers with other companies."
+   },
+   {
+    "sense": "deal",
+    "text": "They put out feelers to see if anyone would buy the division."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To ask around quietly to find out what's possible."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpʊt ˌaʊt ˈfilɚz/",
+    "respelling": "puht out FEE-lerz",
+    "tip": "Stress FEEL: FEE-lerz. \"Put out\" links: puh-TOWT."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; it suggests caution and discretion.",
+   "usage_note": "Common in job searching, business deals, politics and dating. Typical forms: \"put out feelers,\" \"put out some feelers,\" \"put feelers out to someone.\" It implies the inquiry is informal and not yet public.",
+   "word_family": [
+    "feelers (plural noun)",
+    "put feelers out (variant word order)"
+   ],
+   "distinctions": [
+    {
+     "vs": "test the waters",
+     "note": "\"Test the waters\" is trying something carefully to see how it goes; \"put out feelers\" is specifically asking or contacting people informally."
+    },
+    {
+     "vs": "network",
+     "note": "\"Network\" is building professional contacts in general; \"put out feelers\" is a targeted quiet inquiry."
+    }
+   ],
+   "antonyms": [
+    "go public",
+    "make an announcement"
+   ],
+   "collocations": [
+    "put out feelers",
+    "put out a few feelers",
+    "put feelers out",
+    "has feelers out",
+    "putting out feelers"
+   ],
+   "examples": {
+    "everyday": "She put out some feelers to see if any friends knew a good dentist in town.",
+    "professional": "Our CEO has put out feelers to two possible partners, but nothing is official.",
+    "analytical": "Firms that put out feelers before an acquisition can gauge interest without moving the share price."
+   },
+   "analogy": "Like an insect touching the air with its antennae to sense what's around it before it moves.",
+   "etymology": "From feelers, the antennae of insects, used to sense the surroundings.",
+   "common_mistakes": [
+    "Saying \"put out feelings\"; the word is \"feelers.\"",
+    "Using it for a public announcement; it means a quiet, informal inquiry."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "read the room",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌɹid ðə ˈɹum/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To sense the mood, feelings or attitudes of a group of people and adjust what one says or does to fit."
+    ]
+   }
+  ],
+  "etymology": "From performers, especially comedians, who judge an audience's mood; it became widespread in everyday speech in the 2010s.",
+  "conversation": [
+   {
+    "sense": "criticism",
+    "text": "Telling jokes right after the layoffs? He really didn't read the room."
+   },
+   {
+    "sense": "adjusting",
+    "text": "I read the room and decided to cut my presentation short."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To notice how people are feeling and act accordingly."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɹid ðə ˈɹum/",
+    "respelling": "reed thuh ROOM",
+    "tip": "Stress ROOM. \"Read\" here is present tense: reed."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral; often used critically in the negative (\"read the room!\").",
+   "usage_note": "Very common in modern American English. Often as criticism: \"Read the room!\" or \"He didn't read the room.\" Positive use: \"She's great at reading the room.\" It applies to meetings, parties, presentations, and even online posts.",
+   "word_family": [
+    "reading the room (-ing)",
+    "read the room (past is the same, pronounced red)"
+   ],
+   "distinctions": [
+    {
+     "vs": "read between the lines",
+     "note": "\"Read between the lines\" is finding a hidden meaning in words; \"read the room\" is sensing a group's mood."
+    },
+    {
+     "vs": "know one's audience",
+     "note": "\"Know your audience\" is about preparing for listeners in advance; \"read the room\" is noticing their mood in the moment."
+    }
+   ],
+   "antonyms": [
+    "tone-deaf",
+    "put one's foot in one's mouth"
+   ],
+   "collocations": [
+    "read the room",
+    "didn't read the room",
+    "great at reading the room",
+    "failed to read the room",
+    "you need to read the room"
+   ],
+   "examples": {
+    "everyday": "I was going to ask for a raise, but I read the room and waited until next week.",
+    "professional": "Good facilitators read the room and move on when a topic is draining the group.",
+    "analytical": "Speakers who read the room adjust their pace and content to audience cues, which research links to better retention."
+   },
+   "analogy": "Like a weather forecaster for people: you check the clouds before you decide to bring up a picnic.",
+   "etymology": "From performers, especially comedians, who judge an audience's mood; it became widespread in everyday speech in the 2010s.",
+   "common_mistakes": [
+    "Saying \"read the people\"; the idiom is \"read the room.\"",
+    "Pronouncing the past tense like the present: \"He didn't read (reed) the room\" but \"I read (red) the room yesterday.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "the floor is yours",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ðə ˈflɔɹ ɪz ˈjʊɹz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to invite someone to speak, present or ask questions, especially in a meeting or on a panel: it is now your turn to talk."
+    ]
+   }
+  ],
+  "etymology": "From the floor of a legislature or meeting hall, where the speaker recognized by the chair is said to have the floor.",
+  "conversation": [
+   {
+    "sense": "meeting",
+    "text": "Thanks for that introduction, Lisa. Ahmed, the floor is yours."
+   },
+   {
+    "sense": "Q&A",
+    "text": "We have ten minutes left. If anyone has questions, the floor is yours."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "It's your turn to speak now."
+   },
+   "pronunciation": {
+    "ipa": "/ðə ˈflɔɹ ɪz ˈjʊɹz/",
+    "respelling": "thuh flawr iz YOORZ",
+    "tip": "Stress YOURS, with a beat on FLOOR. \"Yours\" is yoorz or yawrz."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "formal"
+   ],
+   "connotation": "Polite and welcoming.",
+   "usage_note": "A standard handoff line for chairs, hosts and moderators. Related: \"you have the floor\" (you may speak), \"take the floor\" (start speaking), \"open the floor to questions.\" It sounds slightly formal but is normal in meetings and webinars.",
+   "word_family": [
+    "have the floor (related idiom)",
+    "take the floor (related idiom)",
+    "open the floor (related phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "over to you",
+     "note": "\"Over to you\" is more casual and common on calls; \"the floor is yours\" sounds a bit more formal, as in a meeting or event."
+    },
+    {
+     "vs": "have the floor",
+     "note": "\"Have the floor\" describes someone who is currently speaking; \"the floor is yours\" is said to give them that right."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "the floor is yours",
+    "the floor is all yours",
+    "Sam, the floor is yours",
+    "the floor is now yours"
+   ],
+   "examples": {
+    "everyday": "Okay, it's your toast, Uncle Joe. The floor is yours.",
+    "professional": "Before we close, the floor is yours for any questions about the new policy.",
+    "analytical": "In structured debates, the moderator's 'the floor is yours' marks a strict start to each speaker's timed turn."
+   },
+   "analogy": "Like handing someone the microphone at a party.",
+   "etymology": "From the floor of a legislature or meeting hall, where the speaker recognized by the chair is said to have the floor.",
+   "common_mistakes": [
+    "Saying \"the floor is to you\"; it is \"the floor is yours.\"",
+    "Saying it to interrupt someone who is already speaking; it is for handing over a turn."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "over to you",
+  "domains": [
+   "idioms",
+   "meetings",
+   "phone_calls"
+  ],
+  "phonetic": "/ˌoʊvɚ tə ˈju/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to hand the turn, a task or a decision to someone else, especially in meetings, calls and broadcasts: now it is your turn."
+    ]
+   }
+  ],
+  "etymology": "From radio and television broadcasting, where a presenter hands to another speaker; related to radio \"over,\" meaning \"your turn.\"",
+  "conversation": [
+   {
+    "sense": "meeting",
+    "text": "That's it for my update. Over to you, Jen."
+   },
+   {
+    "sense": "decision",
+    "text": "I've done all I can with the draft. It's over to you now."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Now it's your turn to speak or act."
+   },
+   "pronunciation": {
+    "ipa": "/ˌoʊvɚ tə ˈju/",
+    "respelling": "oh-ver tuh YOO",
+    "tip": "Stress YOU. \"Over\" is OH-ver; \"to\" is weak: tuh."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral and efficient.",
+   "usage_note": "A quick handoff on calls and in meetings: \"Over to you, Mark.\" Also \"I'll hand it over to...\" and \"It's over to you now\" (the decision is yours). It comes from broadcasting and radio.",
+   "word_family": [
+    "hand it over to someone (related phrase)",
+    "over to you (handoff)"
+   ],
+   "distinctions": [
+    {
+     "vs": "the floor is yours",
+     "note": "\"The floor is yours\" is a bit more formal and is used for a speech or Q&A; \"over to you\" is quick and everyday."
+    },
+    {
+     "vs": "your call",
+     "note": "\"Your call\" means the decision is yours; \"over to you\" can mean speaking or deciding."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "over to you",
+    "over to you, Sarah",
+    "and now over to you",
+    "it's over to you now",
+    "I'll hand it over to"
+   ],
+   "examples": {
+    "everyday": "I've picked the restaurant; over to you for the movie.",
+    "professional": "That covers the timeline. Over to you, Priya, for the budget.",
+    "analytical": "On live news broadcasts, 'over to you' marks a clean transfer of airtime from the studio to a reporter."
+   },
+   "analogy": "Like passing a microphone along a row of speakers.",
+   "etymology": "From radio and television broadcasting, where a presenter hands to another speaker; related to radio \"over,\" meaning \"your turn.\"",
+   "common_mistakes": [
+    "Saying \"over for you\"; it is \"over to you.\"",
+    "Confusing it with radio \"over and out,\" which ends a conversation."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "make the call",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌmeɪk ðə ˈkɔl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To make a decision, especially a difficult or final one, on behalf of a group."
+    ]
+   }
+  ],
+  "etymology": "From call in the sense of a decision, as by a referee or umpire in sports.",
+  "conversation": [
+   {
+    "sense": "decision",
+    "text": "We can't agree, so the manager will make the call."
+   },
+   {
+    "sense": "weather",
+    "text": "If it's still raining at noon, I'll make the call to cancel the game."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To be the one who decides."
+   },
+   "pronunciation": {
+    "ipa": "/ˌmeɪk ðə ˈkɔl/",
+    "respelling": "mayk thuh KAWL",
+    "tip": "Stress CALL. Many Americans say kahl."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; often implies responsibility for the result.",
+   "usage_note": "Common forms: \"make the call,\" \"make the call to do something,\" \"make a tough call,\" \"it's your call.\" It suggests authority: someone has to decide. Also used in sports, from referees making calls.",
+   "word_family": [
+    "your call (noun phrase)",
+    "a tough call",
+    "a judgment call",
+    "make the right call"
+   ],
+   "distinctions": [
+    {
+     "vs": "call the shots",
+     "note": "\"Call the shots\" is being in charge in general; \"make the call\" is making one particular decision."
+    },
+    {
+     "vs": "judgment call",
+     "note": "\"A judgment call\" is a decision that depends on personal judgment; \"make the call\" is the act of deciding."
+    }
+   ],
+   "antonyms": [
+    "sit on the fence",
+    "pass the buck"
+   ],
+   "collocations": [
+    "make the call",
+    "made the call to",
+    "a tough call to make",
+    "it's your call",
+    "the right call"
+   ],
+   "examples": {
+    "everyday": "Mom made the call to leave early to beat the traffic.",
+    "professional": "We'll present both options, and the VP will make the call on Thursday.",
+    "analytical": "Organizations that make clear who will make the call on each decision avoid long delays from shared ownership."
+   },
+   "analogy": "Like a referee blowing the whistle: one person decides, and the game moves on.",
+   "etymology": "From call in the sense of a decision, as by a referee or umpire in sports.",
+   "common_mistakes": [
+    "Confusing it with literally phoning; context shows the meaning: \"Who makes the call?\"",
+    "Saying \"do the call\"; use \"make.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "per my last email",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/pɚ ˌmaɪ ˌlæst ˈimeɪl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A phrase used in work emails to point the reader to information already sent, often implying, politely but pointedly, that they should have read it already."
+    ]
+   }
+  ],
+  "etymology": "From the Latin-derived preposition \"per\" (according to), long used in business correspondence; the ironic reading spread in the 2010s.",
+  "conversation": [
+   {
+    "sense": "passive-aggressive",
+    "text": "Per my last email, the deadline is Friday."
+   },
+   {
+    "sense": "joke",
+    "text": "He started his reply with \"per my last email,\" so you know he's annoyed."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "As I said in the email I already sent you."
+   },
+   "pronunciation": {
+    "ipa": "/pɚ ˌmaɪ ˌlæst ˈimeɪl/",
+    "respelling": "per mahy last EE-mayl",
+    "tip": "Stress EMAIL on the first syllable: EE-mayl. \"Per\" is weak: per."
+   },
+   "us_usage": "common",
+   "register": [
+    "formal"
+   ],
+   "connotation": "Formally neutral but widely read as passive-aggressive; Americans often joke about it.",
+   "usage_note": "Literally just a reference: \"per\" means \"according to.\" But in practice it often signals irritation: \"You didn't read what I sent.\" To sound friendlier, say \"As I mentioned in my last email\" or \"Just resurfacing this.\" It is a well-known office joke.",
+   "word_family": [
+    "per our conversation (related)",
+    "as per my last email (common variant)",
+    "per your request (related)"
+   ],
+   "distinctions": [
+    {
+     "vs": "as mentioned",
+     "note": "\"As mentioned\" or \"as I mentioned\" is neutral; \"per my last email\" is often heard as a pointed reminder."
+    },
+    {
+     "vs": "just following up",
+     "note": "\"Just following up\" is a soft reminder about an unanswered email; \"per my last email\" points to information already given."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "per my last email",
+    "as per my last email",
+    "per my previous email",
+    "per our conversation"
+   ],
+   "examples": {
+    "everyday": "My roommate sent \"per my last text\" when I forgot to buy milk again.",
+    "professional": "Per my last email, please submit your expense reports by the 15th.",
+    "analytical": "Workplace surveys regularly list 'per my last email' among the phrases readers find most passive-aggressive."
+   },
+   "analogy": "Like tapping on a sign that someone walked past without reading.",
+   "etymology": "From the Latin-derived preposition \"per\" (according to), long used in business correspondence; the ironic reading spread in the 2010s.",
+   "common_mistakes": [
+    "Not knowing the tone: in many offices it sounds irritated, so avoid it with clients or your boss.",
+    "Writing \"pre my last email\"; the word is \"per.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "take something under advisement",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌteɪk ˌsʌmθɪŋ ˌʌndɚ ədˈvaɪzmənt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To consider a suggestion, request or complaint carefully before deciding, often without promising anything."
+    ]
+   }
+  ],
+  "etymology": "From legal usage; advisement, an older word for careful consideration, survives mainly in this phrase.",
+  "conversation": [
+   {
+    "sense": "meeting",
+    "text": "Thanks for the suggestion. We'll take it under advisement."
+   },
+   {
+    "sense": "court",
+    "text": "The judge took the motion under advisement and will rule next week."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To promise to think about something before deciding."
+   },
+   "pronunciation": {
+    "ipa": "/ˌteɪk ˌsʌmθɪŋ ˌʌndɚ ədˈvaɪzmənt/",
+    "respelling": "tayk suhm-thing uhn-der uhd-VAHYZ-muhnt",
+    "tip": "Stress VISE: uhd-VAHYZ-muhnt. \"Under\" is UHN-der."
+   },
+   "us_usage": "common",
+   "register": [
+    "formal"
+   ],
+   "connotation": "Polite and neutral; sometimes heard as a soft brush-off.",
+   "usage_note": "Formal; common in law (a judge takes a matter under advisement), government and business. In everyday use, \"We'll take that under advisement\" can politely mean \"noted, but don't expect changes,\" and people sometimes say it jokingly.",
+   "word_family": [
+    "under advisement (prepositional phrase)",
+    "advisement (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "sleep on it",
+     "note": "\"Sleep on it\" is a casual way to delay a decision overnight; \"take it under advisement\" is formal and doesn't say when."
+    },
+    {
+     "vs": "take something on board",
+     "note": "\"Take something on board\" means accepting and acting on a suggestion; \"take it under advisement\" only promises to consider it."
+    }
+   ],
+   "antonyms": [
+    "dismiss",
+    "brush off"
+   ],
+   "collocations": [
+    "take it under advisement",
+    "took the matter under advisement",
+    "I'll take that under advisement",
+    "the case is under advisement"
+   ],
+   "examples": {
+    "everyday": "I'll take your movie suggestion under advisement, but I'm still leaning toward the comedy.",
+    "professional": "The committee will take the request under advisement and respond by the end of the month.",
+    "analytical": "In appellate courts, cases taken under advisement may wait months before a written opinion is issued."
+   },
+   "analogy": "Like putting a letter in the 'to consider' tray: it's been received, but not answered.",
+   "etymology": "From legal usage; advisement, an older word for careful consideration, survives mainly in this phrase.",
+   "common_mistakes": [
+    "Saying \"under advice\"; the phrase uses \"advisement.\"",
+    "Taking it as a yes; it only promises consideration."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "talking points",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˈtɔkɪŋ ˌpɔɪnts/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A short list of key points or arguments prepared in advance for someone to use when speaking about a topic, as in a meeting, interview or debate.",
+     "(often critical) Rehearsed lines repeated by a group, especially in politics, instead of real answers."
+    ]
+   }
+  ],
+  "etymology": "American political and business usage from the mid-20th century.",
+  "conversation": [
+   {
+    "sense": "prep",
+    "text": "Can you send me a few talking points before my call with the client?"
+   },
+   {
+    "sense": "politics",
+    "text": "Every senator on the show repeated the same talking points."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "The main points you plan to say about something."
+   },
+   "pronunciation": {
+    "ipa": "/ˈtɔkɪŋ ˌpɔɪnts/",
+    "respelling": "TAW-king poynts",
+    "tip": "Stress TALK: TAW-king points. Many Americans say TAH-king."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral at work; negative when it suggests scripted, insincere answers.",
+   "usage_note": "At work it is a practical tool: \"I drafted some talking points for the all-hands.\" In politics and news it can be critical: \"That's just a talking point.\" Usually plural; \"a talking point\" is one argument.",
+   "word_family": [
+    "talking point (singular)",
+    "stick to the talking points (collocation)"
+   ],
+   "distinctions": [
+    {
+     "vs": "agenda",
+     "note": "\"Agenda\" is the list of topics for a meeting; \"talking points\" are what one person plans to say."
+    },
+    {
+     "vs": "script",
+     "note": "\"Script\" is word-for-word; \"talking points\" are short notes the speaker expands on."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "a few talking points",
+    "draft talking points",
+    "stick to the talking points",
+    "key talking points",
+    "just a talking point"
+   ],
+   "examples": {
+    "everyday": "Before calling the insurance company, I wrote down my talking points so I wouldn't forget anything.",
+    "professional": "Communications will share talking points so managers can explain the reorganization consistently.",
+    "analytical": "Content analysis shows that campaign talking points often spread word for word across allied media outlets."
+   },
+   "analogy": "Like a shopping list for a conversation: you don't read it aloud, but it keeps you from forgetting the important items.",
+   "etymology": "American political and business usage from the mid-20th century.",
+   "common_mistakes": [
+    "Saying \"talk points\"; it is \"talking points.\"",
+    "Using it for a full speech; talking points are short notes."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "hear back",
+  "domains": [
+   "idioms",
+   "phone_calls"
+  ],
+  "phonetic": "/ˌhɪɹ ˈbæk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To receive a reply or a response from someone, especially after applying, asking or sending a message (\"hear back from someone\")."
+    ]
+   }
+  ],
+  "etymology": "From hear plus back (in return), a 20th-century American usage.",
+  "conversation": [
+   {
+    "sense": "job",
+    "text": "I interviewed two weeks ago, but I haven't heard back yet."
+   },
+   {
+    "sense": "email",
+    "text": "Let me know if you don't hear back from the landlord by Friday."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrasal verb",
+    "definition": "To get an answer from someone you contacted."
+   },
+   "pronunciation": {
+    "ipa": "/ˌhɪɹ ˈbæk/",
+    "respelling": "heer BAK",
+    "tip": "Stress BACK, with the short a of \"cat.\" \"Hear\" sounds like \"here.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; often used with waiting and mild worry.",
+   "usage_note": "Usually with \"from\": \"hear back from the school.\" Very common in the negative and the present perfect: \"I haven't heard back.\" \"As soon as I hear back, I'll let you know\" is a standard line at work.",
+   "word_family": [
+    "heard back (past)",
+    "hearing back (-ing)",
+    "get back to someone (the other side of it)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get back to someone",
+     "note": "\"Get back to someone\" is what the responder does; \"hear back from someone\" is what the person waiting experiences."
+    },
+    {
+     "vs": "hear from",
+     "note": "\"Hear from\" is any contact; \"hear back\" means a reply to something you sent."
+    }
+   ],
+   "antonyms": [
+    "radio silence",
+    "get ghosted"
+   ],
+   "collocations": [
+    "haven't heard back",
+    "hear back from",
+    "as soon as I hear back",
+    "never heard back",
+    "waiting to hear back"
+   ],
+   "examples": {
+    "everyday": "I applied to three colleges and I'm still waiting to hear back.",
+    "professional": "I've reached out to the vendor; I'll update the team as soon as I hear back.",
+    "analytical": "Applicants who never hear back from employers report lower trust in the hiring process."
+   },
+   "analogy": "Like waiting for an echo after you shout: you listen for the answer to come back.",
+   "etymology": "From hear plus back (in return), a 20th-century American usage.",
+   "common_mistakes": [
+    "Saying \"I didn't hear back of him\"; use \"from\": \"hear back from him.\"",
+    "Saying \"listen back\" in this sense; the verb is \"hear.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "get sidetracked",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌɡɛt ˈsaɪdˌtɹækt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To become distracted from the main task, topic or goal by something less important."
+    ]
+   }
+  ],
+  "etymology": "From American railroads, where a train is moved onto a siding, or sidetrack, off the main line.",
+  "conversation": [
+   {
+    "sense": "homework",
+    "text": "I sat down to study, but I got sidetracked by my phone."
+   },
+   {
+    "sense": "meeting",
+    "text": "We got sidetracked talking about parking and never got to the main agenda."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To get distracted and stop focusing on what you meant to do."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɛt ˈsaɪdˌtɹækt/",
+    "respelling": "get SAHYD-trakt",
+    "tip": "Stress SIDE: SAHYD-trakt. The -ed is a t sound: trakt."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly negative but very common and forgiving.",
+   "usage_note": "Common in apologies: \"Sorry, I got sidetracked.\" \"Sidetrack\" also works as an active verb: \"Don't let them sidetrack the discussion.\" Used for tasks, conversations, plans and careers.",
+   "word_family": [
+    "sidetrack (verb)",
+    "sidetracked (adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "go off on a tangent",
+     "note": "\"Go off on a tangent\" is about wandering in talk or thought; \"get sidetracked\" covers any distraction from a task."
+    },
+    {
+     "vs": "procrastinate",
+     "note": "\"Procrastinate\" is delaying on purpose; getting sidetracked is usually accidental."
+    }
+   ],
+   "antonyms": [
+    "stay on track",
+    "stay focused"
+   ],
+   "collocations": [
+    "got sidetracked",
+    "get sidetracked by",
+    "sorry, I got sidetracked",
+    "easily sidetracked",
+    "don't let it sidetrack"
+   ],
+   "examples": {
+    "everyday": "I went to the store for milk, got sidetracked by the sale aisle, and came home without it.",
+    "professional": "Let's not get sidetracked by the logo debate; the launch date is the priority.",
+    "analytical": "Teams that write the decision needed at the top of the agenda are less likely to get sidetracked."
+   },
+   "analogy": "Like a train switched onto a side track: it's still moving, just not toward the station.",
+   "etymology": "From American railroads, where a train is moved onto a siding, or sidetrack, off the main line.",
+   "common_mistakes": [
+    "Saying \"get side-tracked from\" a person; you get sidetracked from a task or by a distraction.",
+    "Writing \"sidetrack\" when you mean the past: \"I got sidetracked.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "level-set",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˈlɛvəl ˌsɛt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "(business jargon) To make sure everyone in a group has the same basic information and expectations before going further."
+    ]
+   }
+  ],
+  "etymology": "Corporate jargon from the late 20th century, from setting a common level or baseline, as with tools and measurements.",
+  "conversation": [
+   {
+    "sense": "meeting",
+    "text": "Before we dive in, let's level-set on where the project stands."
+   },
+   {
+    "sense": "noun",
+    "text": "Can we do a quick level-set on the timeline?"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb",
+    "definition": "To get everyone on the same page before starting."
+   },
+   "pronunciation": {
+    "ipa": "/ˈlɛvəl ˌsɛt/",
+    "respelling": "LEV-uhl set",
+    "tip": "Stress LEV: LEV-uhl set."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "technical"
+   ],
+   "connotation": "Neutral corporate jargon; some people find it buzzwordy.",
+   "usage_note": "Mostly American corporate jargon: \"Let's level-set,\" \"a quick level-set.\" It is common in tech and consulting. In plainer English, say \"Let's get on the same page\" or \"Let me give everyone some context.\"",
+   "word_family": [
+    "level-set (noun)",
+    "level-setting (-ing)",
+    "level set (spelling variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get on the same page",
+     "note": "\"Get on the same page\" is the everyday way to say the same thing; \"level-set\" is office jargon."
+    },
+    {
+     "vs": "bring someone up to speed",
+     "note": "\"Bring someone up to speed\" updates one person; \"level-set\" aligns a whole group."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "let's level-set",
+    "a quick level-set",
+    "level-set expectations",
+    "level-set on the goals"
+   ],
+   "examples": {
+    "everyday": "Before the family meeting, Dad level-set everyone on the vacation budget.",
+    "professional": "Let me level-set expectations: this release fixes bugs; new features come next quarter.",
+    "analytical": "Projects that begin with a level-set on scope tend to see fewer misunderstandings about deliverables later."
+   },
+   "analogy": "Like calibrating all the scales in a lab before anyone weighs anything.",
+   "etymology": "Corporate jargon from the late 20th century, from setting a common level or baseline, as with tools and measurements.",
+   "common_mistakes": [
+    "Using it in casual talk with friends; it sounds like office language.",
+    "Writing \"level-sit\"; the word is \"set.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "boil the ocean",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌbɔɪl ði ˈoʊʃən/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "(business jargon) To attempt an impossibly large task, or to take on far too much at once instead of focusing on what matters (usually in the negative: \"Let's not boil the ocean\")."
+    ]
+   }
+  ],
+  "etymology": "Business jargon from the late 20th century; a similar quip about boiling the ocean is often attributed to Will Rogers, though the attribution is uncertain.",
+  "conversation": [
+   {
+    "sense": "scope",
+    "text": "Let's not boil the ocean. We'll start with the top three customers."
+   },
+   {
+    "sense": "criticism",
+    "text": "His plan tries to boil the ocean; nobody could deliver all of that."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To try to do everything at once, which can't be done."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbɔɪl ði ˈoʊʃən/",
+    "respelling": "boyl thee OH-shuhn",
+    "tip": "Stress O: OH-shuhn. \"The\" is thee before a vowel."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative; a warning against overly ambitious plans.",
+   "usage_note": "Common in consulting and tech, almost always in the negative: \"We're not trying to boil the ocean.\" It recommends narrowing the scope.",
+   "word_family": [
+    "boiling the ocean (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "bite off more than one can chew",
+     "note": "\"Bite off more than you can chew\" is taking on too much; \"boil the ocean\" is specifically a plan whose scope is impossibly large."
+    },
+    {
+     "vs": "spread oneself too thin",
+     "note": "\"Spread oneself too thin\" is having too many separate commitments; \"boil the ocean\" is one task made impossibly big."
+    }
+   ],
+   "antonyms": [
+    "start small",
+    "low-hanging fruit"
+   ],
+   "collocations": [
+    "not trying to boil the ocean",
+    "let's not boil the ocean",
+    "boil the ocean",
+    "trying to boil the ocean"
+   ],
+   "examples": {
+    "everyday": "I wanted to clean the whole house in one afternoon, but my wife said, 'Don't boil the ocean. Start with the kitchen.'",
+    "professional": "For the pilot, we're not going to boil the ocean; we'll test in one region first.",
+    "analytical": "Analysts warn that data projects which try to boil the ocean often fail before producing any usable result."
+   },
+   "analogy": "Like trying to heat the whole sea to cook one fish.",
+   "etymology": "Business jargon from the late 20th century; a similar quip about boiling the ocean is often attributed to Will Rogers, though the attribution is uncertain.",
+   "common_mistakes": [
+    "Saying \"boil the sea\"; the jargon is \"boil the ocean.\"",
+    "Using it as praise; it describes an unrealistic plan."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "give credit where credit is due",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɡɪv ˈkɹɛdɪt ˌwɛɹ ˌkɹɛdɪt ɪz ˈdu/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To openly acknowledge someone who deserves praise for something, even if one does not usually like them or agree with them."
+    ]
+   }
+  ],
+  "etymology": "A long-standing English saying; the idea goes back to Romans 13:7, \"render therefore to all their dues.\"",
+  "conversation": [
+   {
+    "sense": "teamwork",
+    "text": "Credit where credit is due: Maria found the bug that saved the launch."
+   },
+   {
+    "sense": "grudging praise",
+    "text": "I don't like the guy, but I have to give credit where credit is due. He ran a great campaign."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To fairly praise the person who earned it."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɪv ˈkɹɛdɪt ˌwɛɹ ˌkɹɛdɪt ɪz ˈdu/",
+    "respelling": "giv KRED-it wair kred-it iz DOO",
+    "tip": "Stress DUE most, with a beat on the first CRED: give CREDit where credit is DUE. \"Due\" is doo."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive; fair-minded, sometimes grudging.",
+   "usage_note": "Often shortened to \"credit where credit's due\" or \"credit where it's due.\" Commonly said in meetings and feedback to name who did the work. It can also introduce grudging praise of a rival.",
+   "word_family": [
+    "credit where credit's due (short form)",
+    "credit where it's due (variant)",
+    "give someone credit (related phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "take credit",
+     "note": "\"Take credit\" is claiming praise, sometimes unfairly; \"give credit where credit is due\" is assigning it fairly."
+    },
+    {
+     "vs": "give the devil his due",
+     "note": "\"Give the devil his due\" is praising someone you dislike; \"give credit where credit is due\" works for anyone, liked or not."
+    }
+   ],
+   "antonyms": [
+    "take credit for someone else's work",
+    "steal someone's thunder"
+   ],
+   "collocations": [
+    "give credit where credit is due",
+    "credit where credit's due",
+    "credit where it's due",
+    "to give credit where credit is due"
+   ],
+   "examples": {
+    "everyday": "Credit where credit's due: my brother made an amazing Thanksgiving turkey.",
+    "professional": "I want to give credit where credit is due: the support team handled the outage beautifully.",
+    "analytical": "Studies of team motivation show that leaders who give credit where credit is due improve retention more than bonuses alone do."
+   },
+   "analogy": "Like a ledger: the praise goes in the column of the person who actually earned it.",
+   "etymology": "A long-standing English saying; the idea goes back to Romans 13:7, \"render therefore to all their dues.\"",
+   "common_mistakes": [
+    "Saying \"give credit where credit is deserved\"; the fixed word is \"due.\"",
+    "Saying \"credit when credit is due\"; the standard form uses \"where.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "room for improvement",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɹum fɚ ɪmˈpɹuvmənt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "The possibility of becoming better; a polite way of saying that something is not yet as good as it could be."
+    ]
+   }
+  ],
+  "etymology": "A plain phrase built from room in the sense of space or opportunity.",
+  "conversation": [
+   {
+    "sense": "feedback",
+    "text": "Your presentation was solid, but there's some room for improvement on timing."
+   },
+   {
+    "sense": "self-assessment",
+    "text": "My cooking has come a long way, but there's still plenty of room for improvement."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "A chance or need to do better."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɹum fɚ ɪmˈpɹuvmənt/",
+    "respelling": "room fer im-PROOV-muhnt",
+    "tip": "Stress PROVE: im-PROOV-muhnt. \"For\" is weak: fer."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Gently critical; softer than naming a problem directly.",
+   "usage_note": "Common in feedback and reviews: \"There's room for improvement,\" \"lots of room for improvement,\" \"some room for improvement in X.\" It is diplomatic; Americans also say it with irony: \"There's a little room for improvement\" (it was bad).",
+   "word_family": [
+    "improvement (noun)",
+    "improve (verb)",
+    "areas for improvement (related phrase)"
+   ],
+   "distinctions": [
+    {
+     "vs": "areas for improvement",
+     "note": "\"Areas for improvement\" names specific weak points in a review; \"room for improvement\" is a general comment."
+    },
+    {
+     "vs": "needs work",
+     "note": "\"Needs work\" is blunter; \"room for improvement\" is the polite version."
+    }
+   ],
+   "antonyms": [
+    "top-notch",
+    "second to none"
+   ],
+   "collocations": [
+    "room for improvement",
+    "there's room for improvement",
+    "plenty of room for improvement",
+    "some room for improvement",
+    "always room for improvement"
+   ],
+   "examples": {
+    "everyday": "Our team won, but the coach said there's still room for improvement on defense.",
+    "professional": "Customer satisfaction is up, but there's room for improvement in response times.",
+    "analytical": "A survey score of 70 out of 100 leaves considerable room for improvement relative to industry benchmarks."
+   },
+   "analogy": "Like an empty space on a bookshelf: there's still room to add more.",
+   "etymology": "A plain phrase built from room in the sense of space or opportunity.",
+   "common_mistakes": [
+    "Saying \"place for improvement\" or \"space for improvement\"; the usual word is \"room.\"",
+    "Saying \"room to improvement\"; use \"for\": \"room for improvement,\" or \"room to improve.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "sanity check",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˈsænɪti ˌtʃɛk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A quick check by another person, or a simple test, to make sure that work, numbers or reasoning are basically reasonable and free of obvious mistakes."
+    ]
+   }
+  ],
+  "etymology": "From computing and engineering jargon of the late 20th century, a test of whether results are sane, that is, reasonable.",
+  "conversation": [
+   {
+    "sense": "review",
+    "text": "Can you give this email a quick sanity check before I send it to the client?"
+   },
+   {
+    "sense": "numbers",
+    "text": "As a sanity check, the totals should add up to 100 percent."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "A fast check that something makes sense."
+   },
+   "pronunciation": {
+    "ipa": "/ˈsænɪti ˌtʃɛk/",
+    "respelling": "SAN-ih-tee chek",
+    "tip": "Stress SAN: SAN-ih-tee check. The t in sanity is often a quick flap, like a soft d."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "technical"
+   ],
+   "connotation": "Neutral; it implies trust in the work but a wish to catch obvious errors.",
+   "usage_note": "Very common at work: \"Can I get a sanity check on this?\" \"Just sanity-checking.\" Also a verb: \"sanity-check the numbers.\" It asks for a quick look, not a full review. A few organizations prefer \"quick check\" to avoid any reference to mental health.",
+   "word_family": [
+    "sanity-check (verb)",
+    "sanity test (variant)"
+   ],
+   "distinctions": [
+    {
+     "vs": "second pair of eyes",
+     "note": "\"A second pair of eyes\" is another person reviewing; a sanity check can be a person or a simple automated test."
+    },
+    {
+     "vs": "audit",
+     "note": "\"Audit\" is a thorough official review; a sanity check is fast and rough."
+    }
+   ],
+   "antonyms": [
+    "deep dive"
+   ],
+   "collocations": [
+    "a quick sanity check",
+    "sanity-check the numbers",
+    "as a sanity check",
+    "can I get a sanity check",
+    "do a sanity check"
+   ],
+   "examples": {
+    "everyday": "I did a sanity check on the recipe before doubling it; four cups of salt didn't seem right.",
+    "professional": "Could you sanity-check my slides before the board meeting?",
+    "analytical": "A basic sanity check, such as confirming that probabilities sum to one, catches many errors in statistical code."
+   },
+   "analogy": "Like a quick glance in the mirror before you leave: you're not redoing your outfit, just making sure nothing is obviously wrong.",
+   "etymology": "From computing and engineering jargon of the late 20th century, a test of whether results are sane, that is, reasonable.",
+   "common_mistakes": [
+    "Writing \"sanity check\" when you mean a full review; it is quick and basic.",
+    "Saying \"sanitary check\"; the word is \"sanity.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in someone's wheelhouse",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ɪn ˌsʌmwʌnz ˈwilˌhaʊs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Within someone's area of skill, knowledge or interest; something they are especially good at or comfortable with."
+    ]
+   }
+  ],
+  "etymology": "From baseball slang for a batter's power zone, the pitch height a hitter likes best; earlier, a wheelhouse is a ship's steering cabin.",
+  "conversation": [
+   {
+    "sense": "skills",
+    "text": "Spreadsheets aren't really in my wheelhouse. Can you help?"
+   },
+   {
+    "sense": "praise",
+    "text": "Event planning is right in her wheelhouse."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "prepositional phrase",
+    "definition": "In the area where someone is strongest."
+   },
+   "pronunciation": {
+    "ipa": "/ɪn ˌsʌmwʌnz ˈwilˌhaʊs/",
+    "respelling": "in suhm-wuhnz WEEL-hous",
+    "tip": "Stress WHEEL: WEEL-house. Most Americans say wheel as weel, without an h sound."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Positive or neutral; often used modestly in the negative.",
+   "usage_note": "American, from baseball. Common forms: \"right in my wheelhouse,\" \"not really in my wheelhouse,\" \"outside my wheelhouse.\" Used at work to talk about who should do a task.",
+   "word_family": [
+    "right in one's wheelhouse",
+    "outside one's wheelhouse",
+    "wheelhouse (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "comfort zone",
+     "note": "\"Comfort zone\" is where you feel safe and unchallenged; \"wheelhouse\" is where you are skilled."
+    },
+    {
+     "vs": "up someone's alley",
+     "note": "\"Up someone's alley\" means suited to their tastes or skills; \"in their wheelhouse\" focuses more on skill."
+    }
+   ],
+   "antonyms": [
+    "out of one's depth",
+    "out of one's element"
+   ],
+   "collocations": [
+    "right in my wheelhouse",
+    "not really in my wheelhouse",
+    "outside my wheelhouse",
+    "in her wheelhouse"
+   ],
+   "examples": {
+    "everyday": "Fixing bikes is right in my dad's wheelhouse.",
+    "professional": "Contract negotiations aren't in my wheelhouse, so I'll loop in legal.",
+    "analytical": "Assigning tasks that fall in each person's wheelhouse can raise output, but too much specialization reduces flexibility."
+   },
+   "analogy": "Like the sweet spot on a bat: the place where everything you swing at goes far.",
+   "etymology": "From baseball slang for a batter's power zone, the pitch height a hitter likes best; earlier, a wheelhouse is a ship's steering cabin.",
+   "common_mistakes": [
+    "Saying \"in my wheel house\" as two words; it is one word.",
+    "Using it to mean someone's office or territory; it means their skill area."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "take the floor",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌteɪk ðə ˈflɔɹ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To begin speaking to a meeting, audience or formal group, especially after being invited.",
+     "To get up and start dancing on a dance floor."
+    ]
+   }
+  ],
+  "etymology": "From floor in the sense of the space in an assembly where members speak; recorded in parliamentary use.",
+  "conversation": [
+   {
+    "sense": "meeting",
+    "text": "After the introductions, the CEO took the floor to explain the merger."
+   },
+   {
+    "sense": "dance",
+    "text": "When the band started, the bride and groom took the floor."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To stand up and begin speaking to a group."
+   },
+   "pronunciation": {
+    "ipa": "/ˌteɪk ðə ˈflɔɹ/",
+    "respelling": "tayk thuh FLAWR",
+    "tip": "Stress FLOOR: flawr."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "formal"
+   ],
+   "connotation": "Neutral; it suggests a formal moment.",
+   "usage_note": "Used for speeches, debates, legislatures, meetings and conferences: \"The senator took the floor.\" Related phrases: \"have the floor\" (be the current speaker), \"the floor is yours\" (invitation), \"give someone the floor.\"",
+   "word_family": [
+    "have the floor (related idiom)",
+    "give someone the floor",
+    "the floor is yours"
+   ],
+   "distinctions": [
+    {
+     "vs": "have the floor",
+     "note": "\"Have the floor\" is the state of being the speaker; \"take the floor\" is the moment you start."
+    },
+    {
+     "vs": "chime in",
+     "note": "\"Chime in\" is adding a comment to a conversation; \"take the floor\" is beginning a formal turn to address the group."
+    }
+   ],
+   "antonyms": [
+    "yield the floor",
+    "step down"
+   ],
+   "collocations": [
+    "take the floor",
+    "took the floor to",
+    "invited to take the floor",
+    "take the floor next"
+   ],
+   "examples": {
+    "everyday": "At the reunion, my uncle took the floor and told stories for twenty minutes.",
+    "professional": "The chair invited the treasurer to take the floor for the financial report.",
+    "analytical": "Transcripts show that women took the floor less often than men in the committee's early sessions."
+   },
+   "analogy": "Like stepping into the spotlight on a stage.",
+   "etymology": "From floor in the sense of the space in an assembly where members speak; recorded in parliamentary use.",
+   "common_mistakes": [
+    "Saying \"take a floor\"; use \"the.\"",
+    "Using it for speaking briefly in a casual chat; it suggests a formal turn."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "put something to a vote",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌpʊt ˌsʌmθɪŋ tu ə ˈvoʊt/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To decide a question by having the members of a group vote on it."
+    ]
+   }
+  ],
+  "etymology": "From put in the sense of submitting a question to a group for decision.",
+  "conversation": [
+   {
+    "sense": "meeting",
+    "text": "We've discussed it enough. Let's put it to a vote."
+   },
+   {
+    "sense": "family",
+    "text": "We couldn't agree on pizza or Thai, so we put it to a vote."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To let everyone vote to decide."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpʊt ˌsʌmθɪŋ tu ə ˈvoʊt/",
+    "respelling": "puht suhm-thing too uh VOHT",
+    "tip": "Stress VOTE. \"Put it to a vote\" links: PUH-tit-tuh-uh-VOHT."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; signals fairness and closure.",
+   "usage_note": "Common forms: \"put it to a vote,\" \"put the proposal to a vote,\" \"be put to a vote.\" Used in boards, clubs, classrooms, families and legislatures. The informal version is \"let's vote on it.\"",
+   "word_family": [
+    "be put to a vote (passive)",
+    "put to a vote of the members"
+   ],
+   "distinctions": [
+    {
+     "vs": "table",
+     "note": "\"Table\" a topic (in American usage) means postponing it; \"put it to a vote\" means deciding now."
+    },
+    {
+     "vs": "second the motion",
+     "note": "\"Second the motion\" supports bringing a motion forward; \"put it to a vote\" is the actual vote."
+    }
+   ],
+   "antonyms": [
+    "table a discussion",
+    "postpone"
+   ],
+   "collocations": [
+    "let's put it to a vote",
+    "put it to a vote",
+    "was put to a vote",
+    "put the question to a vote"
+   ],
+   "examples": {
+    "everyday": "We put the vacation spot to a vote, and the beach won by one.",
+    "professional": "The motion was seconded and put to a vote; it passed unanimously.",
+    "analytical": "Proposals put to a vote after structured discussion tend to pass with larger margins than those voted on immediately."
+   },
+   "analogy": "Like deciding a tie by a show of hands instead of a long argument.",
+   "etymology": "From put in the sense of submitting a question to a group for decision.",
+   "common_mistakes": [
+    "Saying \"put something on a vote\"; it is \"to a vote.\"",
+    "Saying \"put to vote\" without \"a\" in American English; Americans usually say \"put it to a vote.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "rake someone over the coals",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɹeɪk ˌsʌmwʌn ˌoʊvɚ ðə ˈkoʊlz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To criticize or scold someone severely, especially a person in authority doing it to someone below them."
+    ]
+   }
+  ],
+  "etymology": "Said to come from an old punishment of dragging a person, such as an accused heretic, over hot coals.",
+  "conversation": [
+   {
+    "sense": "work",
+    "text": "My boss raked me over the coals for missing the deadline."
+   },
+   {
+    "sense": "hearing",
+    "text": "The committee raked the CEO over the coals about the data leak."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To harshly scold someone."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɹeɪk ˌsʌmwʌn ˌoʊvɚ ðə ˈkoʊlz/",
+    "respelling": "rayk suhm-wuhn oh-ver thuh KOHLZ",
+    "tip": "Stress COALS: kohlz. \"Rake\" rhymes with \"make.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Strongly negative; it describes a harsh, sometimes public scolding.",
+   "usage_note": "Often passive: \"He got raked over the coals.\" Common in news about hearings and in workplace stories. Also \"haul someone over the coals,\" which is more British.",
+   "word_family": [
+    "get raked over the coals (passive)",
+    "haul someone over the coals (variant, more British)"
+   ],
+   "distinctions": [
+    {
+     "vs": "give someone a talking-to",
+     "note": "\"Give someone a talking-to\" is a serious scolding but calmer; \"rake over the coals\" is much harsher."
+    },
+    {
+     "vs": "call someone out",
+     "note": "\"Call someone out\" is publicly pointing out someone's fault; \"rake over the coals\" is a long, severe scolding."
+    }
+   ],
+   "antonyms": [
+    "pat on the back",
+    "sing someone's praises"
+   ],
+   "collocations": [
+    "raked over the coals",
+    "got raked over the coals",
+    "rake him over the coals",
+    "raked the CEO over the coals"
+   ],
+   "examples": {
+    "everyday": "My mom raked me over the coals when I came home at 2 a.m.",
+    "professional": "The vendor was raked over the coals at the quarterly review for repeated outages.",
+    "analytical": "Congressional hearings in which executives are raked over the coals rarely change policy, but they shape public opinion."
+   },
+   "analogy": "Like being dragged across hot coals: slow, painful and hard to forget.",
+   "etymology": "Said to come from an old punishment of dragging a person, such as an accused heretic, over hot coals.",
+   "common_mistakes": [
+    "Saying \"rake someone on the coals\"; it is \"over the coals.\"",
+    "Using it for gentle feedback; it means severe criticism."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "dot the i's and cross the t's",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌdɑt ði ˈaɪz ən ˌkɹɔs ðə ˈtiz/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To take care of all the small details carefully so that something is complete and correct, especially before finishing or signing it."
+    ]
+   }
+  ],
+  "etymology": "From handwriting, where a careless writer may forget the dot on an i or the bar across a t.",
+  "conversation": [
+   {
+    "sense": "contract",
+    "text": "The deal is basically done; we just need to dot the i's and cross the t's."
+   },
+   {
+    "sense": "careful person",
+    "text": "She's great at dotting the i's and crossing the t's."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To finish all the small details carefully."
+   },
+   "pronunciation": {
+    "ipa": "/ˌdɑt ði ˈaɪz ən ˌkɹɔs ðə ˈtiz/",
+    "respelling": "daht thee AHYZ uhn kraws thuh TEEZ",
+    "tip": "Stress I'S and T'S. Say the letters: \"eyes\" and \"tees.\" \"Cross\" is kraws or krahs."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Positive; it praises thoroughness, sometimes suggests the remaining work is minor.",
+   "usage_note": "Common near the end of a deal, project or paperwork: \"We're just dotting the i's and crossing the t's.\" Can describe a careful person. The order is fixed.",
+   "word_family": [
+    "dotting the i's and crossing the t's (-ing)",
+    "cross the t's and dot the i's (rare reversed form)"
+   ],
+   "distinctions": [
+    {
+     "vs": "iron out the details",
+     "note": "\"Iron out the details\" is solving remaining problems; \"dot the i's and cross the t's\" is completing small formalities."
+    },
+    {
+     "vs": "due diligence",
+     "note": "\"Due diligence\" is a formal investigation before a deal; \"dot the i's\" is finishing the small details."
+    }
+   ],
+   "antonyms": [
+    "cut corners"
+   ],
+   "collocations": [
+    "dot the i's and cross the t's",
+    "dotting the i's and crossing the t's",
+    "just need to dot the i's",
+    "all the i's dotted and t's crossed"
+   ],
+   "examples": {
+    "everyday": "Before we closed on the house, our agent made sure every i was dotted and every t crossed.",
+    "professional": "Legal is dotting the i's and crossing the t's, and we expect to sign Friday.",
+    "analytical": "In clinical trials, dotting the i's and crossing the t's on consent forms is essential to regulatory approval."
+   },
+   "analogy": "Like a teacher checking handwriting: every small mark has to be in place.",
+   "etymology": "From handwriting, where a careless writer may forget the dot on an i or the bar across a t.",
+   "common_mistakes": [
+    "Writing \"dot the eyes\"; it is the letters: i's.",
+    "Writing \"is\" and \"ts\" without apostrophes; letters take an apostrophe in the plural here."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "close the loop",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌkloʊz ðə ˈlup/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "(business) To follow up and confirm that a task, question or request has been completed, and tell the people involved, so nothing is left open."
+    ]
+   }
+  ],
+  "etymology": "From engineering and control systems, where a closed loop feeds results back to the start; adopted as business jargon.",
+  "conversation": [
+   {
+    "sense": "follow-up",
+    "text": "I'll talk to IT and close the loop with you by Friday."
+   },
+   {
+    "sense": "customer",
+    "text": "We fixed the bug, so let's close the loop with the customer who reported it."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To finish a follow-up and let everyone know it's done."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkloʊz ðə ˈlup/",
+    "respelling": "klohz thuh LOOP",
+    "tip": "Stress LOOP. \"Close\" here is the verb, with a z sound: klohz."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Positive; it signals reliability and thoroughness.",
+   "usage_note": "Workplace jargon, very common in email: \"Just closing the loop on this,\" \"close the loop with someone,\" \"close the loop on something.\" It means reporting back, not just doing the task.",
+   "word_family": [
+    "closing the loop (-ing)",
+    "loop in (related phrasal verb)",
+    "in the loop (related idiom)"
+   ],
+   "distinctions": [
+    {
+     "vs": "follow up",
+     "note": "\"Follow up\" is contacting someone again about something; \"close the loop\" is the final follow-up that ends it."
+    },
+    {
+     "vs": "loop someone in",
+     "note": "\"Loop someone in\" is adding them to a conversation; \"close the loop\" is finishing it and reporting back."
+    }
+   ],
+   "antonyms": [
+    "leave someone hanging",
+    "drop the ball"
+   ],
+   "collocations": [
+    "close the loop on",
+    "close the loop with",
+    "just closing the loop",
+    "to close the loop"
+   ],
+   "examples": {
+    "everyday": "I texted my sister to close the loop: Mom's flight landed safely.",
+    "professional": "Just closing the loop on this: the refund was processed this morning.",
+    "analytical": "Support teams that close the loop with customers after a fix see higher satisfaction scores than those that resolve issues silently."
+   },
+   "analogy": "Like completing a circuit: the current flows all the way around, and the light comes on.",
+   "etymology": "From engineering and control systems, where a closed loop feeds results back to the start; adopted as business jargon.",
+   "common_mistakes": [
+    "Saying \"close the circle\"; at work the phrase is \"close the loop.\"",
+    "Using it to mean ending a relationship; it means completing a follow-up."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "name your price",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌneɪm jɚ ˈpɹaɪs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Said to tell someone they can decide the amount they want to be paid; often shows strong interest in buying or hiring."
+    ]
+   }
+  ],
+  "etymology": "From name in the sense of stating something aloud; a long-standing bargaining formula.",
+  "conversation": [
+   {
+    "sense": "buyer",
+    "text": "I love that guitar. Name your price."
+   },
+   {
+    "sense": "hiring",
+    "text": "We need you on this project. Name your price."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Tell me how much you want."
+   },
+   "pronunciation": {
+    "ipa": "/ˌneɪm jɚ ˈpɹaɪs/",
+    "respelling": "naym yer PRAHYS",
+    "tip": "Stress PRICE. \"Your\" is weak: yer."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Eager or confident; it signals willingness to pay a lot.",
+   "usage_note": "Usually said by a buyer who really wants something, or by a seller confident of the deal. It can also be hyperbole in movies and jokes. In real negotiations, it gives the other side a big advantage, so negotiators use it carefully.",
+   "word_family": [
+    "name one's price (general form)",
+    "named their price (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "make me an offer",
+     "note": "\"Make me an offer\" is a seller asking the buyer to propose a price; \"name your price\" is a buyer asking the seller to state one."
+    },
+    {
+     "vs": "ballpark figure",
+     "note": "\"A ballpark figure\" is a rough estimate; \"name your price\" asks for the actual amount."
+    }
+   ],
+   "antonyms": [
+    "take it or leave it"
+   ],
+   "collocations": [
+    "name your price",
+    "just name your price",
+    "you can name your price",
+    "name their own price"
+   ],
+   "examples": {
+    "everyday": "Name your price for babysitting Saturday night; we really need a break.",
+    "professional": "Top engineers in that field can practically name their price.",
+    "analytical": "In tight labor markets, specialists with scarce skills can name their price, pushing wages above average."
+   },
+   "analogy": "Like being handed a blank check and a pen.",
+   "etymology": "From name in the sense of stating something aloud; a long-standing bargaining formula.",
+   "common_mistakes": [
+    "Saying \"say your price\" in this fixed meaning; the idiom is \"name your price.\"",
+    "Saying it when you are the seller; it is usually said to the seller or worker."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "reply all",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ɹɪˌplaɪ ˈɔl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To send a response to everyone who received an email, not just the sender (also used as a noun: \"a reply-all\")."
+    ]
+   }
+  ],
+  "etymology": "From the email command 'Reply All,' common in email software since the 1990s.",
+  "conversation": [
+   {
+    "sense": "warning",
+    "text": "Please don't reply all. Just send your answer to me."
+   },
+   {
+    "sense": "mistake",
+    "text": "He meant to reply to his friend but hit reply all, and the whole department read it."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To answer every person on an email at once."
+   },
+   "pronunciation": {
+    "ipa": "/ɹɪˌplaɪ ˈɔl/",
+    "respelling": "rih-plahy AWL",
+    "tip": "Stress ALL; many Americans say ahl. \"Reply\" is stressed on PLY: rih-PLAHY."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral, often joked about as a source of embarrassment and inbox clutter.",
+   "usage_note": "Common forms: \"reply all,\" \"hit reply all,\" \"a reply-all storm\" (many people replying to everyone). Office etiquette: only reply all when everyone needs the answer. Hyphenated as a noun or adjective: \"a reply-all email.\"",
+   "word_family": [
+    "reply-all (noun, adjective)",
+    "reply-all storm (noun phrase)",
+    "replied all (past)"
+   ],
+   "distinctions": [
+    {
+     "vs": "cc",
+     "note": "\"Cc\" adds people as visible extra recipients; \"reply all\" sends your reply to everyone already on the thread."
+    },
+    {
+     "vs": "forward",
+     "note": "\"Forward\" sends the email to new people; \"reply all\" answers everyone already on it."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "hit reply all",
+    "don't reply all",
+    "reply-all storm",
+    "accidentally replied all",
+    "reply all to the thread"
+   ],
+   "examples": {
+    "everyday": "My aunt replied all to the family email with a photo of her lunch.",
+    "professional": "Please reply all so the whole project team sees the decision.",
+    "analytical": "Reply-all storms can overload mail servers when thousands of recipients respond to a mass email."
+   },
+   "analogy": "Like answering a question in a crowded room with a megaphone instead of a whisper.",
+   "etymology": "From the email command 'Reply All,' common in email software since the 1990s.",
+   "common_mistakes": [
+    "Replying all with a message meant for one person; check the recipients first.",
+    "Writing \"replay all\"; the word is \"reply.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "get someone on the phone",
+  "domains": [
+   "idioms",
+   "phone_calls"
+  ],
+  "phonetic": "/ˌɡɛt ˌsʌmwʌn ɑn ðə ˈfoʊn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To succeed in reaching someone by telephone so that one can talk to them.",
+     "To set up a call with someone, especially an important or hard-to-reach person."
+    ]
+   }
+  ],
+  "etymology": "A plain combination of get (succeed in having) and on the phone.",
+  "conversation": [
+   {
+    "sense": "reaching someone",
+    "text": "I finally got the landlord on the phone after three tries."
+   },
+   {
+    "sense": "work",
+    "text": "Let's get the vendor on the phone and sort this out today."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To reach someone and start a phone call with them."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɛt ˌsʌmwʌn ɑn ðə ˈfoʊn/",
+    "respelling": "get suhm-wuhn ahn thuh FOHN",
+    "tip": "Stress PHONE: fohn. \"Get him on the\" often sounds like GEH-dim-ahn-thuh."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Neutral; often suggests effort or urgency.",
+   "usage_note": "Common forms: \"get someone on the phone,\" \"I can't get him on the phone,\" \"get on the phone with someone\" (start a call with them). At work it signals that a quick call will solve something faster than email.",
+   "word_family": [
+    "get on the phone with someone (related phrase)",
+    "be on the phone with someone"
+   ],
+   "distinctions": [
+    {
+     "vs": "get through to someone",
+     "note": "\"Get through to someone\" can mean reaching them by phone or making them understand; \"get someone on the phone\" is only about the call."
+    },
+    {
+     "vs": "get hold of someone",
+     "note": "\"Get hold of someone\" is reaching them by any means; \"get someone on the phone\" is by phone."
+    }
+   ],
+   "antonyms": [
+    "play phone tag",
+    "go straight to voicemail"
+   ],
+   "collocations": [
+    "get him on the phone",
+    "can't get anyone on the phone",
+    "get on the phone with",
+    "finally got her on the phone"
+   ],
+   "examples": {
+    "everyday": "I tried to get my doctor on the phone, but I kept getting the voicemail.",
+    "professional": "Can you get the client on the phone before noon? We need an answer today.",
+    "analytical": "Response times improve when support teams can get a customer on the phone rather than relying only on email."
+   },
+   "analogy": "Like finally catching a fish after many casts: you've got them on the line.",
+   "etymology": "A plain combination of get (succeed in having) and on the phone.",
+   "common_mistakes": [
+    "Saying \"get someone by the phone\"; it is \"on the phone.\"",
+    "Confusing it with \"get off the phone\" (end a call)."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "give someone a heads-up",
+  "domains": [
+   "idioms",
+   "meetings",
+   "phone_calls"
+  ],
+  "phonetic": "/ˌɡɪv ˌsʌmwʌn ə ˈhɛdz ˌʌp/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To warn or inform someone in advance about something that is going to happen, so they can be prepared."
+    ]
+   }
+  ],
+  "etymology": "From the shouted warning \"Heads up!\" (lift your head and look); the noun \"heads-up\" for advance notice is American, from the late 20th century.",
+  "conversation": [
+   {
+    "sense": "warning",
+    "text": "Just a heads-up: the boss is in a bad mood today."
+   },
+   {
+    "sense": "advance notice",
+    "text": "Thanks for the heads-up about the road closure."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To let someone know about something before it happens."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɪv ˌsʌmwʌn ə ˈhɛdz ˌʌp/",
+    "respelling": "giv suhm-wuhn uh HEDZ-up",
+    "tip": "Stress HEADS: HEDZ-up. \"Heads\" has a z sound at the end."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Friendly and considerate.",
+   "usage_note": "Extremely common at work and in daily life: \"Give me a heads-up if you're running late,\" \"Just a heads-up,\" \"Thanks for the heads-up.\" Written \"heads-up\" as a noun (often without the hyphen in casual writing). Not to be confused with the shouted warning \"Heads up!\" (look out).",
+   "word_family": [
+    "heads-up (noun)",
+    "Heads up! (interjection: look out)",
+    "a quick heads-up"
+   ],
+   "distinctions": [
+    {
+     "vs": "heads up (interjection)",
+     "note": "\"Heads up!\" shouted means \"look out right now\"; \"give someone a heads-up\" is advance notice."
+    },
+    {
+     "vs": "tip off",
+     "note": "\"Tip someone off\" is giving secret or private warning, often about wrongdoing; \"a heads-up\" is ordinary advance notice."
+    }
+   ],
+   "antonyms": [
+    "catch someone off guard",
+    "blindside someone"
+   ],
+   "collocations": [
+    "give me a heads-up",
+    "just a heads-up",
+    "thanks for the heads-up",
+    "a quick heads-up",
+    "a heads-up that"
+   ],
+   "examples": {
+    "everyday": "Give me a heads-up before you come over so I can clean.",
+    "professional": "Quick heads-up: the server will be down for maintenance tonight from 10 to midnight.",
+    "analytical": "Advance warnings, a heads-up of even a few days, significantly reduce no-show rates at clinics."
+   },
+   "analogy": "Like a friend tapping your shoulder before the surprise: now you won't be caught off guard.",
+   "etymology": "From the shouted warning \"Heads up!\" (lift your head and look); the noun \"heads-up\" for advance notice is American, from the late 20th century.",
+   "common_mistakes": [
+    "Saying \"give someone a head-up\"; it is \"heads-up,\" with s.",
+    "Using \"a heads-up\" after the event; it is advance notice."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "a tough sell",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ə ˌtʌf ˈsɛl/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Something that is hard to persuade people to accept, agree to or buy (also \"a hard sell\" in this sense)."
+    ]
+   }
+  ],
+  "etymology": "From sell used as a noun for the act of persuading, a 20th-century American usage.",
+  "conversation": [
+   {
+    "sense": "idea",
+    "text": "Working on Saturdays is going to be a tough sell with the team."
+   },
+   {
+    "sense": "product",
+    "text": "A $40 phone case is a tough sell when the phone was free."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "An idea or product that people will resist."
+   },
+   "pronunciation": {
+    "ipa": "/ə ˌtʌf ˈsɛl/",
+    "respelling": "uh tuhf SEL",
+    "tip": "Stress SELL. \"Tough\" rhymes with \"stuff.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral; a realistic warning about resistance.",
+   "usage_note": "Common: \"That's a tough sell,\" \"a tough sell to voters,\" \"a tough sell for parents.\" Also \"an easy sell\" for the opposite. \"A hard sell\" can mean this too, but it more often means pushy sales pressure.",
+   "word_family": [
+    "an easy sell (opposite)",
+    "sell (noun, meaning persuasion)",
+    "sell someone on something (related idiom)"
+   ],
+   "distinctions": [
+    {
+     "vs": "hard sell",
+     "note": "\"Hard sell\" usually means aggressive selling tactics; \"a tough sell\" means the thing itself is hard to persuade people of."
+    },
+    {
+     "vs": "uphill battle",
+     "note": "\"Uphill battle\" is any difficult struggle; \"a tough sell\" is specifically about persuading."
+    }
+   ],
+   "antonyms": [
+    "an easy sell",
+    "a no-brainer"
+   ],
+   "collocations": [
+    "a tough sell",
+    "a tough sell to",
+    "going to be a tough sell",
+    "a tough sell for",
+    "that's a tough sell"
+   ],
+   "examples": {
+    "everyday": "A vegetable lasagna is a tough sell with my kids.",
+    "professional": "Raising prices in a downturn will be a tough sell with our largest customers.",
+    "analytical": "Policies with immediate costs and distant benefits are typically a tough sell to voters."
+   },
+   "analogy": "Like trying to sell umbrellas in the desert.",
+   "etymology": "From sell used as a noun for the act of persuading, a 20th-century American usage.",
+   "common_mistakes": [
+    "Saying \"a tough sale\" in this sense; the idiom uses \"sell.\"",
+    "Using it for a person who is hard to convince; say \"a tough audience\" or \"hard to convince.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "get the nod",
+  "domains": [
+   "idioms",
+   "meetings"
+  ],
+  "phonetic": "/ˌɡɛt ðə ˈnɑd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To receive approval, permission or selection for something (\"give someone the nod\": to approve or choose them)."
+    ]
+   }
+  ],
+  "etymology": "From the nod of the head as a sign of agreement or permission.",
+  "conversation": [
+   {
+    "sense": "approval",
+    "text": "Our proposal got the nod from the board."
+   },
+   {
+    "sense": "selection",
+    "text": "She got the nod to start at quarterback this week."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To be approved or chosen."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɛt ðə ˈnɑd/",
+    "respelling": "get thuh NAHD",
+    "tip": "Stress NOD, with the \"ah\" of \"father\": nahd."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Positive.",
+   "usage_note": "Common in business, politics and sports news: \"get the nod,\" \"give someone the nod,\" \"the nod went to...\" It suggests quick or informal approval, as if by a nod of the head.",
+   "word_family": [
+    "give someone the nod",
+    "the nod (noun)",
+    "a nod to (different meaning: a reference or tribute)"
+   ],
+   "distinctions": [
+    {
+     "vs": "get the go-ahead",
+     "note": "\"Get the go-ahead\" is permission to start; \"get the nod\" can be approval or being chosen over others."
+    },
+    {
+     "vs": "a nod to",
+     "note": "\"A nod to\" something is a small reference or tribute (\"a nod to the 80s\"), not approval."
+    }
+   ],
+   "antonyms": [
+    "get the thumbs-down",
+    "be passed over"
+   ],
+   "collocations": [
+    "got the nod from",
+    "give someone the nod",
+    "get the nod for",
+    "the nod went to"
+   ],
+   "examples": {
+    "everyday": "My sister got the nod to give the speech at Mom's party.",
+    "professional": "The design team's concept got the nod over two competing proposals.",
+    "analytical": "Candidates who get the nod from party leaders early tend to raise more money in the primary."
+   },
+   "analogy": "Like a chairperson nodding at you from across the room: yes, go ahead.",
+   "etymology": "From the nod of the head as a sign of agreement or permission.",
+   "common_mistakes": [
+    "Saying \"get a nod\" when you mean approval; the idiom usually uses \"the nod.\"",
+    "Confusing it with \"nod off,\" which means falling asleep."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "talk turkey",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌtɔk ˈtɝki/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To discuss something, especially a deal or money, frankly and seriously, getting to the practical details."
+    ]
+   }
+  ],
+  "etymology": "American, from the 1800s; the origin is uncertain, though a popular story credits a humorous tale about a hunter dividing a turkey and a buzzard.",
+  "conversation": [
+   {
+    "sense": "negotiation",
+    "text": "Enough small talk. Let's talk turkey: what's your best price?"
+   },
+   {
+    "sense": "serious",
+    "text": "Once the lawyers arrived, everyone started talking turkey."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To talk seriously about the real issues, especially money."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtɔk ˈtɝki/",
+    "respelling": "tawk TUR-kee",
+    "tip": "Stress TUR: TUR-kee. Many Americans say \"talk\" as tahk."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Neutral, a little old-fashioned and folksy.",
+   "usage_note": "American. Usually \"Let's talk turkey.\" Often used when moving from friendly chat to business terms. It sounds a bit old-fashioned but is still heard, especially in negotiations and sales.",
+   "word_family": [
+    "talking turkey (-ing)"
+   ],
+   "distinctions": [
+    {
+     "vs": "cut to the chase",
+     "note": "\"Cut to the chase\" means skipping to the main point; \"talk turkey\" specifically means serious, practical discussion, often of money."
+    },
+    {
+     "vs": "get down to business",
+     "note": "\"Get down to business\" is starting the real work; \"talk turkey\" is frank discussion of terms."
+    }
+   ],
+   "antonyms": [
+    "beat around the bush",
+    "make small talk"
+   ],
+   "collocations": [
+    "let's talk turkey",
+    "ready to talk turkey",
+    "talking turkey",
+    "time to talk turkey"
+   ],
+   "examples": {
+    "everyday": "After the test drive, the dealer sat us down to talk turkey.",
+    "professional": "Once we have the usage numbers, we can talk turkey about pricing.",
+    "analytical": "Labor talks usually start with broad statements before either side is willing to talk turkey on wages."
+   },
+   "analogy": "Like setting the table and finally carving the main dish.",
+   "etymology": "American, from the 1800s; the origin is uncertain, though a popular story credits a humorous tale about a hunter dividing a turkey and a buzzard.",
+   "common_mistakes": [
+    "Saying \"talk the turkey\"; there is no article.",
+    "Thinking it is about Thanksgiving or the country; it means frank business talk."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "get the runaround",
+  "domains": [
+   "idioms",
+   "phone_calls"
+  ],
+  "phonetic": "/ˌɡɛt ðə ˈɹʌnəˌɹaʊnd/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To be given vague answers, excuses or repeated transfers instead of the help or information one asked for (\"give someone the runaround\": to treat them this way)."
+    ]
+   }
+  ],
+  "etymology": "American; from run around, to move about busily without getting anywhere.",
+  "conversation": [
+   {
+    "sense": "phone",
+    "text": "I called the insurance company and got the runaround for an hour."
+   },
+   {
+    "sense": "complaint",
+    "text": "Stop giving me the runaround. Just tell me if the job is mine."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb phrase",
+    "definition": "To be sent from person to person without getting a real answer."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɡɛt ðə ˈɹʌnəˌɹaʊnd/",
+    "respelling": "get thuh RUHN-uh-round",
+    "tip": "Stress RUN: RUHN-uh-round."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Negative; it expresses frustration.",
+   "usage_note": "Very common about customer service, bureaucracy and evasive people: \"get the runaround,\" \"give someone the runaround.\" Often with \"the usual runaround.\"",
+   "word_family": [
+    "the runaround (noun)",
+    "give someone the runaround"
+   ],
+   "distinctions": [
+    {
+     "vs": "get the brush-off",
+     "note": "\"Get the brush-off\" is being rudely dismissed; \"the runaround\" is being kept busy with evasions and transfers."
+    },
+    {
+     "vs": "pass the buck",
+     "note": "\"Pass the buck\" is shifting responsibility to someone else; doing it to a customer is giving them the runaround."
+    }
+   ],
+   "antonyms": [
+    "get a straight answer",
+    "straight talk"
+   ],
+   "collocations": [
+    "got the runaround",
+    "give me the runaround",
+    "the usual runaround",
+    "tired of getting the runaround"
+   ],
+   "examples": {
+    "everyday": "I tried to cancel my gym membership and got the runaround for weeks.",
+    "professional": "We don't want customers getting the runaround, so every call should have one owner from start to finish.",
+    "analytical": "Complaint data show that customers who get the runaround from support are far more likely to cancel."
+   },
+   "analogy": "Like being sent around a maze where every door leads to another hallway.",
+   "etymology": "American; from run around, to move about busily without getting anywhere.",
+   "common_mistakes": [
+    "Saying \"get a run around\"; it is one word with \"the\": the runaround.",
+    "Using it for exercise; it is about being evaded, not running."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "radio silence",
+  "domains": [
+   "idioms"
+  ],
+  "phonetic": "/ˌɹeɪdioʊ ˈsaɪləns/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A period of no communication from someone who is expected to reply or stay in contact.",
+     "(original sense) A time when radio transmission is stopped, as for military security."
+    ]
+   }
+  ],
+  "etymology": "From military and aviation practice, where radios were turned off to avoid detection; the figurative sense grew common in the late 20th century.",
+  "conversation": [
+   {
+    "sense": "no reply",
+    "text": "I sent the proposal last week, and it's been radio silence ever since."
+   },
+   {
+    "sense": "friend",
+    "text": "She was texting every day, then suddenly radio silence."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun phrase",
+    "definition": "When someone stops answering or keeping in touch."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɹeɪdioʊ ˈsaɪləns/",
+    "respelling": "ray-dee-oh SAHY-luhns",
+    "tip": "Stress SI: SAHY-luhns. \"Radio\" is RAY-dee-oh."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly negative; it often hints at worry or annoyance.",
+   "usage_note": "Common in work and dating: \"It's been radio silence,\" \"go radio silent,\" \"after weeks of radio silence.\" It describes the absence of replies, not intentional ghosting, though it can suggest that.",
+   "word_family": [
+    "go radio silent (verb phrase)",
+    "radio-silent (adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "ghost",
+     "note": "\"Ghost\" means to cut off contact deliberately and permanently; \"radio silence\" only describes a period with no word, for whatever reason."
+    },
+    {
+     "vs": "crickets",
+     "note": "\"Crickets\" describes no reaction to something said or posted; \"radio silence\" is ongoing lack of contact."
+    }
+   ],
+   "antonyms": [
+    "keep someone posted",
+    "stay in touch"
+   ],
+   "collocations": [
+    "it's been radio silence",
+    "radio silence from",
+    "go radio silent",
+    "after weeks of radio silence",
+    "total radio silence"
+   ],
+   "examples": {
+    "everyday": "My brother went on a backpacking trip, and it's been radio silence for a week.",
+    "professional": "After the demo, it was radio silence from the client, so I sent a short follow-up.",
+    "analytical": "Long periods of radio silence between project milestones are a common early warning sign of delays."
+   },
+   "analogy": "Like a radio that goes quiet in the middle of a song: you don't know if it's off, broken or just waiting.",
+   "etymology": "From military and aviation practice, where radios were turned off to avoid detection; the figurative sense grew common in the late 20th century.",
+   "common_mistakes": [
+    "Saying \"radio silent\" as a noun; use \"radio silence\" or \"go radio silent.\"",
+    "Using it for a quiet room; it is about missing communication."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ }
+]
