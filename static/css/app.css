@@ -816,6 +816,7 @@ button.term:not(.chip):hover, a.term:not(.chip):hover { text-decoration-color: c
 .gloss-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .gloss-links a { color: var(--lapis); }
 .gloss-source, .gloss-base { font-size: 12px; }
+.gloss-say { align-items: center; margin: 0 0 10px; }
 .gloss .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .also { font-size: 14px; }
 .save-status { font: 500 12px/1 var(--font-ui); text-transform: none; letter-spacing: 0; margin-left: 6px; }
@@ -1307,3 +1308,112 @@ ul.hub-tiles > li > .hub-tile { flex: 1; }
 .az-bubble { position: absolute; right: calc(100% + 10px); transform: translateY(-50%); width: 52px; height: 52px;
   border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none;
   background: var(--accent-fill); color: var(--on-fill); font: 700 26px/1 var(--font-word); box-shadow: var(--shadow); z-index: 5; }
+
+/* ---------------------------------------------------------------- English course */
+/* Each part of a lesson has its own pigment: lapis for the rule and the
+   questions, plum for the comparison table, verdigris for what you hear,
+   madder and sage for wrong and right, gilt for notes and myths. */
+.course-level-pick { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+.course-progress { display: flex; align-items: center; gap: 12px; margin: 0 0 22px; font-size: 14px; color: var(--muted); }
+.course-bar { flex: 0 1 220px; height: 8px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
+.course-bar > span { display: block; height: 100%; background: var(--sage); border-radius: inherit; }
+.course-level { margin: 0 0 34px; }
+.course-level-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; padding-top: 14px; border-top: 3px solid var(--lapis); }
+.course-level-head h2 { margin: 0; font: 600 26px/1.2 var(--font-word); }
+.cefr { font: 600 12px/1 var(--font-ui); letter-spacing: .04em; color: var(--lapis); background: var(--lapis-soft); padding: 5px 9px; border-radius: 99px; }
+.course-goal { margin: 6px 0 4px; color: var(--ink-2); max-width: 65ch; }
+.course-unit-title { margin: 18px 0 8px; font: 600 12px/1.2 var(--font-ui); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.course-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 10px; }
+.course-item { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: start; height: 100%; box-sizing: border-box;
+  padding: 14px 16px; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); color: var(--ink); text-decoration: none;
+  transition: border-color .15s var(--ease), box-shadow .15s var(--ease); }
+.course-item:hover { border-color: var(--lapis); box-shadow: var(--shadow); }
+.course-num { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--lapis-soft); color: var(--lapis);
+  font: 700 15px/1 var(--font-ui); font-variant-numeric: tabular-nums; }
+.course-item.done .course-num { background: var(--sage-soft); color: var(--sage); }
+.course-item-text { display: grid; gap: 3px; min-width: 0; }
+.course-item-text strong { font: 600 17px/1.3 var(--font-word); }
+.course-item-key { font-size: 14px; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.course-tag { margin-left: 6px; font: 600 11px/1 var(--font-ui); color: var(--muted); border: 1px solid var(--rule-strong); padding: 2px 5px; border-radius: 4px; vertical-align: middle; }
+.course-empty { color: var(--muted); font-style: italic; }
+.course-coming { margin-top: 12px; color: var(--muted); font-size: 14px; }
+.course-coming summary { cursor: pointer; width: fit-content; }
+.course-coming ul { columns: 2 220px; margin: 8px 0 0; padding-left: 18px; }
+
+.course-lesson { max-width: 760px; display: grid; gap: 18px; padding-bottom: 32px; }
+.course-back { font-size: 14px; text-decoration: none; width: fit-content; }
+.course-hero h1 { margin: 6px 0 14px; font: 600 clamp(26px, 4.5vw, 34px)/1.15 var(--font-word); text-wrap: balance; }
+.course-eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0; font-size: 13px; color: var(--muted); }
+.course-key { background: var(--lapis-soft); border-radius: var(--radius); padding: 16px 20px; display: grid; gap: 4px; }
+.course-key-label { font: 700 12px/1 var(--font-ui); text-transform: uppercase; letter-spacing: .08em; color: var(--lapis); }
+.course-key p { margin: 0; font: 500 20px/1.45 var(--font-body); color: var(--ink); text-wrap: pretty; }
+
+.cs { --c: var(--lapis); --c-soft: var(--lapis-soft); background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 18px 20px 20px; display: grid; gap: 12px; min-width: 0; }
+.cs-compare { --c: var(--plum); --c-soft: color-mix(in srgb, var(--plum) 12%, var(--surface)); }
+.cs-examples { --c: var(--verdigris); --c-soft: var(--verdigris-soft); }
+.cs-mistakes { --c: var(--madder); --c-soft: var(--madder-soft); }
+.cs-myth, .cs-us { --c: var(--gilt); --c-soft: var(--gilt-soft); background: var(--gilt-soft); border-color: transparent; }
+.cs-head { display: flex; align-items: center; gap: 10px; }
+.cs-mark { width: 10px; height: 22px; border-radius: 3px; background: var(--c); flex: none; }
+.cs-head h2 { margin: 0; font: 600 21px/1.2 var(--font-word); color: var(--c); }
+.cs-lead { margin: -4px 0 0; font-size: 14px; color: var(--muted); }
+.cs p { margin: 0; }
+.cs-rule-body { display: grid; gap: 10px; font: 17px/1.65 var(--font-body); max-width: 68ch; }
+.c-point { color: var(--c, var(--lapis)); font-weight: 700; }
+.c-word { font-style: italic; color: var(--ink); }
+.c-gap { display: inline-block; min-width: 2.6em; border-bottom: 2px solid var(--control); margin: 0 2px; }
+.cs-myth p, .cs-us p { font: 16px/1.6 var(--font-body); }
+.cs-table-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: var(--radius-sm); }
+.cs-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.cs-table th, .cs-table td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+.cs-table thead th { background: var(--c-soft); color: var(--c); font: 600 13px/1.3 var(--font-ui); }
+.cs-table tbody th { font-weight: 600; }
+.cs-table tbody tr:last-child > * { border-bottom: 0; }
+.cs-examples ul, ul.cs-examples, ul.cs-mistakes, ol.cs-questions { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+ul.cs-examples li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.cs-sentence { font: 18px/1.5 var(--font-body); }
+.cs-note-chip { font-size: 12.5px; color: var(--c); background: var(--c-soft); padding: 2px 9px; border-radius: 99px; }
+ul.cs-mistakes > li { display: grid; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+ul.cs-mistakes > li:last-child { border-bottom: 0; padding-bottom: 0; }
+.cs-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 8px; }
+.cs-bad, .cs-good { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: var(--radius-sm); font: 17px/1.45 var(--font-body); min-width: 0; }
+.cs-bad { background: var(--madder-soft); }
+.cs-bad s { text-decoration-color: var(--madder); text-decoration-thickness: 1.5px; color: var(--ink-2); }
+.cs-good { background: var(--sage-soft); }
+.cs-sign { font: 700 16px/1 var(--font-ui); flex: none; }
+.cs-bad .cs-sign { color: var(--madder); }
+.cs-good .cs-sign { color: var(--sage); }
+.cs-why { font-size: 14.5px; color: var(--ink-2); }
+.cs-why .c-word { color: var(--ink); }
+li.cs-q { display: grid; gap: 10px; padding: 14px 0; border-top: 1px solid var(--rule); counter-increment: q; }
+li.cs-q:first-child { border-top: 0; padding-top: 2px; }
+.cs-q-text { display: flex; align-items: center; gap: 10px; font: 17px/1.5 var(--font-body); }
+.cs-q-text::before { content: counter(q) "."; font: 700 14px/1 var(--font-ui); color: var(--c); min-width: 1.3em; }
+ol.cs-questions { counter-reset: q; }
+.cs-choices { display: flex; flex-wrap: wrap; gap: 8px; padding-left: calc(1.3em + 10px); }
+.cs-choice { font: 16px/1.3 var(--font-body); padding: 9px 16px; border-radius: 99px; border: 1.5px solid var(--rule-strong); background: var(--surface); color: var(--ink); cursor: pointer; }
+.cs-choice:hover:not(:disabled) { border-color: var(--lapis); background: var(--lapis-soft); }
+.cs-choice:disabled { cursor: default; opacity: .65; }
+.cs-choice.right { border-color: var(--sage); background: var(--sage-soft); color: var(--ink); opacity: 1; font-weight: 600; }
+.cs-choice.wrong { border-color: var(--madder); background: var(--madder-soft); opacity: 1; text-decoration: line-through; }
+.cs-feedback { padding-left: calc(1.3em + 10px); font-size: 15px; }
+.cs-feedback.ok strong { color: var(--sage); }
+.cs-feedback.no strong { color: var(--madder); }
+.cs-end { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.cs-end:has(> [hidden] + [hidden]) { display: none; }
+.cs-score { font: 600 17px/1.4 var(--font-ui); color: var(--ink); margin: 0; }
+.cs-score.perfect { color: var(--sage); }
+.course-key .c-word { color: var(--lapis); font-style: italic; }
+.course-words { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.course-pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 6px; }
+.course-pager-link { display: grid; gap: 2px; padding: 12px 16px; border: 1px solid var(--rule); border-radius: var(--radius); text-decoration: none; background: var(--surface); }
+.course-pager-link span { font-size: 13px; color: var(--muted); }
+.course-pager-link strong { font: 600 16px/1.3 var(--font-word); color: var(--ink); }
+.course-pager-link.next { text-align: right; }
+.course-pager-link:hover { border-color: var(--lapis); }
+@media (max-width: 760px) {
+  .cs { padding: 14px 14px 16px; }
+  .course-key p { font-size: 18px; }
+  .cs-choices, .cs-feedback { padding-left: 0; }
+  .cs-sentence, .cs-bad, .cs-good, .cs-q-text { font-size: 16.5px; }
+}

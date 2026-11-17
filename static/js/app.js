@@ -14,11 +14,15 @@ import { formDialog, h, icon, showError } from "./ui.js";
 // group in the sidebar (`rail` overrides it there: Meaning and Games are one
 // Practice group in the sidebar, kept apart on the Practice page); `sep` draws
 // a line above a link; `short` is the label on the phone bar when the full one
-// is too long; `hidden` leaves a screen out of the menu.
+// is too long; `hidden` leaves a screen out of the menu. The English course
+// is its own sidebar link (`rail: false`: no group heading there); on a phone,
+// where the bar keeps its six, it is reached from the Practice page.
 export const TABS = [
   { id: "home", label: "Today", icon: "home" },
   { id: "browse", label: "Dictionary", short: "Words", icon: "book", group: "Words", note: "Find any word" },
   { id: "lists", label: "My lists", icon: "list", under: "browse", group: "Words", note: "Your own word lists" },
+  { id: "course", label: "English course", short: "Course", icon: "course", under: "practice", group: "Course", rail: false,
+    note: "Grammar step by step, with audio" },
   { id: "practice", label: "Practice", icon: "practice", hub: true },
   { id: "listen", label: "Listen", icon: "listen", under: "practice", group: "Sound", note: "Hear a word. Pick it or type it." },
   { id: "pronounce", label: "Pronounce", icon: "mic", under: "practice", group: "Sound", note: "Say a word. Hear yourself." },
@@ -48,7 +52,7 @@ function buildNav() {
   const items = [];
   for (const t of TABS.filter(t => !t.hidden)) {
     const last = items[items.length - 1];
-    const group = t.rail || t.group;
+    const group = t.rail === false ? null : t.rail || t.group;
     if (!group) items.push(link(t));
     else if (last && last.dataset.group === group) last.append(link(t));
     else items.push(h("div.nav-group", { role: "group", "aria-label": group, "data-group": group },

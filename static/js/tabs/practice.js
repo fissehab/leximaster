@@ -1,4 +1,4 @@
-// Practice: every way to study, in three groups (Sound first: hearing and
+// Practice: every way to study. The English course first, then three groups (Sound first: hearing and
 // saying words is what LexiMaster is for; then Meaning; then Games). Each
 // activity has its own "Words from" menu and remembers it. On a wide screen
 // the sidebar lists the same links.
@@ -7,6 +7,7 @@ import { TABS } from "../app.js";
 import { h, icon, pageHead } from "../ui.js";
 
 const GROUPS = [
+  ["Course", "Learn grammar step by step"],
   ["Sound", "Hear and say words"],
   ["Meaning", "Learn what words mean"],
   ["Games", "Play against the clock"],
