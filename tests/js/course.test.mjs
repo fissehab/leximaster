@@ -32,7 +32,7 @@ test("lessons are well formed", () => {
     assert.ok(LEVELS.some(v => v.id === l.level), `${l.id}: a known level`);
     for (const f of ["title", "unit", "key"]) assert.ok(l[f], `${l.id}: ${f}`);
     assert.ok(l.rule.length >= 2 && l.examples.length >= 3 && l.mistakes.length >= 2, `${l.id}: rule, examples, mistakes`);
-    assert.ok(l.checks.length >= 8, `${l.id}: at least 8 questions`);
+    assert.ok(l.checks.length >= 20, `${l.id}: at least 20 questions`);
     for (const f of ["intro", "tip", "fact"]) assert.ok(l[f], `${l.id}: ${f}`);
     assert.ok(l.learn?.length >= 2, `${l.id}: what you will learn`);
     assert.ok(l.dialogue?.length >= 4, `${l.id}: a conversation`);
@@ -86,6 +86,19 @@ test("one voice per sentence: a sentence isn't said by both voices", () => {
 test("every sentence said aloud has a recording", () => {
   const missing = LESSONS.flatMap(l => lessonSentences(l)).map(s => s.key).filter(k => !AUDIO[k]);
   assert.deepEqual(missing, [], "run tools/course_audio.py");
+});
+
+test("the whole course: three levels in order, over 1,000 questions, every question new", () => {
+  const order = LEVELS.map(v => v.id);
+  const levels = LESSONS.map(l => order.indexOf(l.level));
+  assert.deepEqual(levels, [...levels].sort((a, b) => a - b), "lessons go beginner → intermediate → advanced");
+  assert.ok(LESSONS.reduce((n, l) => n + l.checks.length, 0) >= 1000);
+  const seen = new Set();
+  for (const l of LESSONS) for (const c of l.checks) {
+    const k = [c.q, c.say || "", ...c.choices].join("|");
+    assert.ok(!seen.has(k), `${l.id}: the same question twice: ${c.q}`);
+    seen.add(k);
+  }
 });
 
 test("lessons still to come are not ones already written", () => {

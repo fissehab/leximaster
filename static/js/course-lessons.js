@@ -17,10 +17,21 @@
 // Rules say "usually" where a rule has exceptions and give one; nothing that
 // educated Americans say or write is marked wrong.
 //
-// static/js/course-more.js adds to each lesson an introduction, what you
-// will learn, grouped examples, a conversation, a tip, a fun fact and more
-// questions; LESSONS is both together.
+// These are the first 15 lessons. static/js/course-more.js adds to each an
+// introduction, what you will learn, grouped examples, a conversation, a tip,
+// a fun fact and more questions, and course-extra.js more questions. The other
+// 38 lessons are written whole in course-b2.js (beginner), course-i2/i3/i4.js
+// (intermediate) and course-a1/a2/a3.js (advanced). LESSONS is all of them,
+// in the order of ORDER below.
 
+import { ADDED as A1 } from "./course-a1.js";
+import { ADDED as A2 } from "./course-a2.js";
+import { ADDED as A3 } from "./course-a3.js";
+import { ADDED as B2 } from "./course-b2.js";
+import { EXTRA } from "./course-extra.js";
+import { ADDED as I2 } from "./course-i2.js";
+import { ADDED as I3 } from "./course-i3.js";
+import { ADDED as I4 } from "./course-i4.js";
 import { MORE } from "./course-more.js";
 
 export const LEVELS = [
@@ -666,23 +677,38 @@ const BASE = [
   },
 ];
 
-export const LESSONS = BASE.map(l => {
-  const m = MORE[l.id] || {};
-  return { ...l, ...m, examples: [...l.examples, ...(m.examples || [])], checks: [...l.checks, ...(m.checks || [])] };
-});
+// The course in teaching order. The other lessons (course-b2.js, -i2, -i3, -i4,
+// -a1, -a2, -a3) are written whole; course-extra.js adds questions to these.
+const ORDER = [
+  // beginner
+  "parts-of-speech", "subject-verb", "pronouns", "adjectives-adverbs",
+  "plural-nouns", "count-noncount", "articles", "possessives-demonstratives", "there-is-it-is",
+  "present-simple", "simple-continuous", "questions-negatives", "imperatives", "past-simple", "future",
+  "time-prepositions", "place-prepositions", "comparatives",
+  // intermediate
+  "present-perfect", "perfect-continuous", "past-continuous", "used-to",
+  "word-jobs", "word-order", "ed-ing-adjectives", "quantifiers",
+  "modals-ability", "must-have-to", "deduction",
+  "set-prepositions", "gerund-infinitive", "phrasal-verbs", "make-do",
+  "subject-questions", "relative-clauses", "conditionals",
+  // advanced
+  "past-conditionals", "modal-perfect", "past-perfect", "future-perfect",
+  "passive", "causative", "reported-speech", "indirect-questions",
+  "articles-2", "agreement", "nonrestrictive", "participle-clauses",
+  "linking", "parallel", "hedging", "emphasis", "formal-informal",
+];
 
-/** Lessons the syllabus has next, shown as "coming later" by level. */
-export const COMING = {
-  beginner: ["Plural nouns", "my, your, 's; this, that, these, those", "There is / there are vs. it is",
-    "Commands, let's and short answers", "Comparing: -er, more, too, enough"],
-  intermediate: ["Present perfect continuous", "Past continuous vs. past simple", "used to, be used to",
-    "One word, several jobs", "Word order: adverbs and adjectives", "-ed vs. -ing adjectives",
-    "some, any, a few, a little", "Modals: ability, permission, polite requests", "must, have to, should",
-    "How sure are you? might, must, can't", "-ing or to: enjoy doing, want to do", "Phrasal verbs",
-    "make vs. do", "Who called you? Subject questions", "Relative clauses", "If: real and imagined"],
-  advanced: ["Past conditionals and wish", "should have, must have, might have", "Past perfect",
-    "Deadlines: will have done", "Passive voice: when and why", "Have it done; It is said that…",
-    "Reported speech; say vs. tell", "Indirect questions", "Articles II", "Agreement: tricky subjects",
-    "Extra information with commas", "Participle clauses", "Linking ideas: but, however, although",
-    "Parallel structure", "Softening and hedging", "Emphasis: What I need is…", "Formal and informal English"],
-};
+const ALL = [
+  ...BASE.map(l => {
+    const m = MORE[l.id] || {};
+    return { ...l, ...m, examples: [...l.examples, ...(m.examples || [])],
+      checks: [...l.checks, ...(m.checks || []), ...(EXTRA[l.id] || [])] };
+  }),
+  ...B2, ...I2, ...I3, ...I4, ...A1, ...A2, ...A3,
+];
+const byId = new Map(ALL.map(l => [l.id, l]));
+if (byId.size !== ORDER.length || ORDER.some(id => !byId.has(id))) throw new Error("course-lessons.js: ORDER and the lessons differ");
+export const LESSONS = ORDER.map(id => byId.get(id));
+
+/** Lessons still to be written, by level (none now). */
+export const COMING = {};

@@ -97,8 +97,8 @@ function listView(root) {
         h("p.course-banner-sub", "Grammar for American English, one short lesson at a time. Hear every example, listen to everyday conversations, and check yourself as you go."),
         h("ul.course-stats", { "aria-label": "In the course" },
           h("li", h("strong", String(LESSONS.length)), " lessons"),
-          h("li", h("strong", String(QUESTIONS)), " questions"),
-          h("li", h("strong", String(RECORDINGS)), " recordings"),
+          h("li", h("strong", QUESTIONS.toLocaleString("en-US")), " questions"),
+          h("li", h("strong", RECORDINGS.toLocaleString("en-US")), " recordings"),
           h("li", h("strong", "3"), " levels"))),
       h("div.course-banner-side",
         h("label.course-level-pick", { for: "course-level" }, h("span", "Course level"), select),
@@ -238,6 +238,16 @@ function lessonView(lesson) {
     toc);
 }
 
+/** A copy of the list in random order (Fisher–Yates). */
+function shuffled(list) {
+  const a = [...list];
+  for (let i = a.length - 1; i > 0; i--) {
+    const k = Math.floor(Math.random() * (i + 1));
+    [a[i], a[k]] = [a[k], a[i]];
+  }
+  return a;
+}
+
 /** The questions: pick an answer, see right or wrong and why. When all are
  * answered, a score card, and the lesson counts as done. */
 function checks(lesson, num) {
@@ -250,7 +260,9 @@ function checks(lesson, num) {
     counter,
     h("ol.cs-questions", lesson.checks.map((c, k) => {
       const feedback = h("p.cs-feedback", { hidden: true });
-      const choices = c.choices.map((label, j) => h("button.cs-choice", { type: "button", on: { click: () => {
+      // Shown in a fresh order each time, so where the answer sits gives nothing away.
+      const order = shuffled(c.choices.map((_, j) => j));
+      const choices = order.map(j => h("button.cs-choice", { type: "button", on: { click: () => {
         if (li.dataset.done) return;
         li.dataset.done = "1";
         const ok = j === c.answer;
@@ -259,14 +271,14 @@ function checks(lesson, num) {
         counter.textContent = `${answered} of ${total} answered · ${right} right`;
         choices.forEach((b, x) => {
           b.disabled = true;
-          if (x === c.answer) b.classList.add("right");
-          else if (x === j) b.classList.add("wrong");
+          if (order[x] === c.answer) b.classList.add("right");
+          else if (order[x] === j) b.classList.add("wrong");
         });
         feedback.hidden = false;
         feedback.className = `cs-feedback ${ok ? "ok" : "no"}`;
         feedback.replaceChildren(h("strong", ok ? "Right. " : `The answer is “${c.choices[c.answer]}”. `), ...rich(c.why));
         if (answered === total) finish();
-      } } }, label));
+      } } }, c.choices[j]));
       const li = h("li.cs-q",
         h("div.cs-q-text", h("span.cs-q-num", String(k + 1)), c.say ? sayButton(spoken(c.say), "the sentence") : null, h("span", rich(c.q))),
         h("div.cs-choices", { role: "group", "aria-label": `Question ${k + 1}` }, choices),
