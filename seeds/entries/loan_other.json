@@ -1,0 +1,1803 @@
+[
+ {
+  "word": "doppelgänger",
+  "domains": [
+   "common_phrases",
+   "feelings"
+  ],
+  "phonetic": "/ˈdɑpəlˌɡæŋɚ/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "A person who looks strikingly like another person; originally, a ghostly double of a living person."
+    ]
+   }
+  ],
+  "etymology": "From German Doppelgänger, literally \"double-goer\" (doppel \"double\" + Gänger \"goer, walker\"). It entered English in the mid-1800s, first in the ghostly sense.",
+  "conversation": [
+   {
+    "sense": "look-alike",
+    "text": "I swear I saw your doppelgänger at the airport. Same glasses, same jacket, everything."
+   },
+   {
+    "sense": "joking",
+    "text": "My dog has a doppelgänger at the park, and the owners keep mixing them up."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "A person who looks strikingly like another person; originally, a ghostly double of a living person."
+   },
+   "pronunciation": {
+    "ipa": "/ˈdɑpəlˌɡæŋɚ/",
+    "respelling": "DOP-uhl-gang-er",
+    "tip": "Stress the first syllable: DOP-pel-gang-er. Americans say a hard g and an English \"a\" as in \"bang,\" not the German \"eh\" sound."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "informal"
+   ],
+   "connotation": "Usually playful or curious today; in fiction and folklore it can be eerie, since meeting your double was thought to bring bad luck.",
+   "usage_note": "Very common in everyday American speech for a stranger who looks just like someone: \"your doppelgänger.\" It is usually written without italics. Both spellings are correct: doppelgänger with the umlaut and doppelganger without it; the plain doppelganger is very common in American English. In German nouns are capitalized, but in English it is lowercase.",
+   "word_family": [
+    "doppelganger (spelling without the umlaut)",
+    "doppelgängers (plural)"
+   ],
+   "distinctions": [
+    {
+     "vs": "look-alike",
+     "note": "\"Look-alike\" is the plain English word; \"doppelgänger\" sounds more striking and is often used for an uncanny, almost spooky resemblance."
+    },
+    {
+     "vs": "twin",
+     "note": "A twin is a real sibling born at the same birth; a doppelgänger is usually an unrelated person."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "your doppelgänger",
+    "evil doppelgänger",
+    "celebrity doppelgänger",
+    "found my doppelgänger",
+    "a real-life doppelgänger"
+   ],
+   "examples": {
+    "everyday": "My coworker has a doppelgänger who works at the coffee shop downstairs.",
+    "professional": "The bank flagged the account after a customer's doppelgänger tried to use her ID at another branch.",
+    "analytical": "In Gothic fiction the doppelgänger often stands for the hidden, darker side of the hero."
+   },
+   "analogy": "Like a mirror that walked away and started living its own life.",
+   "etymology": "From German Doppelgänger, literally \"double-goer\" (doppel \"double\" + Gänger \"goer, walker\"). It entered English in the mid-1800s, first in the ghostly sense.",
+   "common_mistakes": [
+    "Misspelling it \"dopple ganger\" or \"doppleganger\"; the German word is \"doppel,\" with the e before the l.",
+    "Pronouncing the g as a j sound (\"ganjer\"); the g is hard in both places.",
+    "Capitalizing it in the middle of an English sentence; it is a common noun in English."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "realpolitik",
+  "domains": [
+   "common_phrases",
+   "professional",
+   "philosophy"
+  ],
+  "phonetic": "/ɹeɪˈɑlpoʊlɪˌtik/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "Politics or foreign policy based on practical goals, power and national interest rather than on ideals or moral principles."
+    ]
+   }
+  ],
+  "etymology": "From German Realpolitik, \"politics of reality\" (real \"practical, actual\" + Politik \"politics\"), a term made popular by the German writer Ludwig von Rochau in 1853. It came into English in the early 1900s.",
+  "conversation": [
+   {
+    "sense": "news",
+    "text": "Selling weapons to a dictator because he's useful? That's pure realpolitik."
+   },
+   {
+    "sense": "debate",
+    "text": "You can call it realpolitik, but I call it giving up on human rights."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "Politics or foreign policy based on practical goals, power and national interest rather than on ideals or moral principles."
+   },
+   "pronunciation": {
+    "ipa": "/ɹeɪˈɑlpoʊlɪˌtik/",
+    "respelling": "ray-AHL-poh-lih-teek",
+    "tip": "Say it in German style: ray-AHL-poh-lih-TEEK, with the stress on AHL and a lighter beat on the last syllable. The \"real\" is two syllables, not the English word \"real.\""
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal",
+    "academic"
+   ],
+   "connotation": "Neutral to negative: admirers see clear-eyed realism, critics see cynicism and a lack of principle.",
+   "usage_note": "Used mostly in journalism, history and political science, especially about foreign policy (Bismarck and Henry Kissinger are classic examples). Usually lowercase and not italicized in American writing, though some writers still capitalize it as in German. It is rarely heard in casual talk.",
+   "word_family": [
+    "realpolitiker (a person who practices it)",
+    "realpolitik approach (attributive use)"
+   ],
+   "distinctions": [
+    {
+     "vs": "pragmatism",
+     "note": "\"Pragmatism\" is any practical approach; \"realpolitik\" is specifically about power politics between states and implies setting morals aside."
+    },
+    {
+     "vs": "idealism",
+     "note": "In foreign policy \"idealism\" is the opposite position: acting on values such as democracy and human rights."
+    }
+   ],
+   "antonyms": [
+    "idealism",
+    "moralism"
+   ],
+   "collocations": [
+    "cold realpolitik",
+    "an exercise in realpolitik",
+    "the realpolitik of",
+    "pure realpolitik",
+    "realpolitik considerations"
+   ],
+   "examples": {
+    "everyday": "My uncle says every election is just realpolitik and nobody really means what they promise.",
+    "professional": "The briefing argued that realpolitik, not friendship, explains the new trade deal.",
+    "analytical": "Historians often describe Bismarck's alliances as a model of realpolitik: flexible, unsentimental and aimed at German power."
+   },
+   "analogy": "Like a chess player who trades any piece, even a favorite one, if it helps win the game.",
+   "etymology": "From German Realpolitik, \"politics of reality\" (real \"practical, actual\" + Politik \"politics\"), a term made popular by the German writer Ludwig von Rochau in 1853. It came into English in the early 1900s.",
+   "common_mistakes": [
+    "Pronouncing the first part like the English word \"real\" (REEL-politik); Americans who know the term say ray-AHL.",
+    "Using it for any kind of politics; it means practical, power-based politics, especially in foreign affairs.",
+    "Spelling it \"real politik\" or \"realpolitic\" as two words or with a c."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "gestalt",
+  "domains": [
+   "common_phrases",
+   "philosophy"
+  ],
+  "phonetic": "/ɡəˈʃtɑlt/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "An organized whole that is perceived as more than the sum of its parts; also the overall shape, feel or character of something."
+    ]
+   }
+  ],
+  "etymology": "From German Gestalt \"shape, form, figure.\" It came into English in the 1920s through Gestalt psychology, a school founded in Germany by Max Wertheimer, Wolfgang Köhler and Kurt Koffka.",
+  "conversation": [
+   {
+    "sense": "design",
+    "text": "Each piece of the logo is simple, but the gestalt is really striking."
+   },
+   {
+    "sense": "impression",
+    "text": "I can't point to one thing I didn't like about the house; it was the whole gestalt."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "An organized whole that is perceived as more than the sum of its parts; also the overall shape, feel or character of something."
+   },
+   "pronunciation": {
+    "ipa": "/ɡəˈʃtɑlt/",
+    "respelling": "guh-SHTAHLT",
+    "tip": "Stress the second syllable: guh-SHTAHLT. The \"st\" is said \"sht\" as in German; some Americans say guh-STAHLT, which is also heard."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "academic",
+    "technical",
+    "formal"
+   ],
+   "connotation": "Neutral and a little intellectual; it can sound sophisticated or, in casual talk, slightly showy.",
+   "usage_note": "In psychology it is usually capitalized in \"Gestalt psychology\" and \"Gestalt therapy.\" In general use it is lowercase and not italicized, and means the overall effect or feel of something: \"the gestalt of the city.\" It is more common in academic, design and therapy contexts than in everyday conversation.",
+   "word_family": [
+    "gestalts or gestalten (plural)",
+    "gestaltist (follower of Gestalt psychology)",
+    "Gestalt psychology",
+    "Gestalt therapy"
+   ],
+   "distinctions": [
+    {
+     "vs": "whole",
+     "note": "\"The whole\" is plain English; \"gestalt\" stresses that the parts together create something new that you see all at once."
+    },
+    {
+     "vs": "vibe",
+     "note": "\"Vibe\" is informal and about mood; \"gestalt\" is more formal and about the overall pattern or form."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "Gestalt psychology",
+    "Gestalt therapy",
+    "the whole gestalt",
+    "Gestalt principles",
+    "the overall gestalt"
+   ],
+   "examples": {
+    "everyday": "The furniture is mismatched, but the gestalt of the room feels warm and lived-in.",
+    "professional": "Our designers used Gestalt principles like proximity and similarity to group the buttons on the screen.",
+    "analytical": "Gestalt psychologists showed that people see a pattern of dots as a shape before they notice the single dots."
+   },
+   "analogy": "Like a face in a crowd: you recognize the whole face instantly, not the nose, eyes and mouth one by one.",
+   "etymology": "From German Gestalt \"shape, form, figure.\" It came into English in the 1920s through Gestalt psychology, a school founded in Germany by Max Wertheimer, Wolfgang Köhler and Kurt Koffka.",
+   "common_mistakes": [
+    "Spelling it \"gestault\" or \"gestaldt.\"",
+    "Saying \"gestalt\" when you mean a single detail; the word is about the whole, not a part.",
+    "Pronouncing the first syllable as \"jest\"; the g is hard: guh."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "kaput",
+  "domains": [
+   "common_phrases",
+   "small_talk"
+  ],
+  "phonetic": "/kəˈput/",
+  "meanings": [
+   {
+    "pos": "adjective",
+    "senses": [
+     "Broken, ruined or no longer working; finished."
+    ]
+   }
+  ],
+  "etymology": "From German kaputt \"broken, done for,\" which came from French être capot, a card-game expression for losing every trick. It entered English in the late 1800s and became common after World War I.",
+  "conversation": [
+   {
+    "sense": "broken",
+    "text": "The washing machine is kaput. We need to call a repairman."
+   },
+   {
+    "sense": "plans",
+    "text": "Our camping trip went kaput when it rained all weekend."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective",
+    "definition": "Broken, ruined or no longer working; finished."
+   },
+   "pronunciation": {
+    "ipa": "/kəˈput/",
+    "respelling": "kuh-POOT",
+    "tip": "Stress the second syllable: kuh-POOT. Many Americans also say it with the short vowel of \"put\" (kuh-PUT as in \"foot\"); both are fine."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Light and humorous; it makes a breakdown sound a little comic rather than serious.",
+   "usage_note": "Informal and common in speech and casual writing, usually after a verb: \"be kaput,\" \"go kaput.\" It is not used before a noun (\"a kaput car\" is rare and awkward). It is never italicized in ordinary use. Avoid it in formal reports; use \"broken,\" \"out of order\" or \"failed.\"",
+   "word_family": [
+    "go kaput (stop working)",
+    "be kaput"
+   ],
+   "distinctions": [
+    {
+     "vs": "broken",
+     "note": "\"Broken\" is neutral and works in any register; \"kaput\" is informal and often joking."
+    },
+    {
+     "vs": "on the fritz",
+     "note": "\"On the fritz\" means working badly or now and then; \"kaput\" means completely dead."
+    }
+   ],
+   "antonyms": [
+    "working",
+    "up and running"
+   ],
+   "collocations": [
+    "go kaput",
+    "completely kaput",
+    "the engine is kaput",
+    "the deal went kaput"
+   ],
+   "examples": {
+    "everyday": "My phone went kaput the day before my vacation.",
+    "professional": "The merger went kaput when the regulators raised objections, so the team is back to planning.",
+    "analytical": "Many dot-com startups went kaput within two years of the 2000 crash."
+   },
+   "analogy": "Like a light bulb with a snapped filament: no flicker, just done.",
+   "etymology": "From German kaputt \"broken, done for,\" which came from French être capot, a card-game expression for losing every trick. It entered English in the late 1800s and became common after World War I.",
+   "common_mistakes": [
+    "Spelling it with two t's (\"kaputt\") in English; English uses one t.",
+    "Using it in formal writing; \"failed\" or \"broken\" fits better there.",
+    "Putting it before a noun (\"a kaput laptop\"); say \"my laptop is kaput.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "kvetch",
+  "domains": [
+   "common_phrases",
+   "feelings",
+   "small_talk"
+  ],
+  "phonetic": "/kvɛtʃ/",
+  "meanings": [
+   {
+    "pos": "verb",
+    "senses": [
+     "To complain, especially constantly and about small things; as a noun, a person who does this or a complaint."
+    ]
+   }
+  ],
+  "etymology": "From Yiddish kvetshn \"to squeeze, pinch, press,\" and so \"to fuss, complain.\" It entered American English in the mid-1900s, through Jewish communities in New York and the entertainment world.",
+  "conversation": [
+   {
+    "sense": "complaining",
+    "text": "Stop kvetching about the traffic. We'll get there."
+   },
+   {
+    "sense": "person",
+    "text": "My grandpa is a lovable kvetch. Nothing is ever quite right for him."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "verb",
+    "definition": "To complain, especially constantly and about small things; as a noun, a person who does this or a complaint."
+   },
+   "pronunciation": {
+    "ipa": "/kvɛtʃ/",
+    "respelling": "KVECH",
+    "tip": "One syllable: KVECH, with a k and v together at the start. Some speakers make it kfech; never drop the k."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Mildly negative but usually affectionate or humorous; it suggests whining more than serious protest.",
+   "usage_note": "An American English word, strongest in the Northeast and in film and TV, but understood across the country. Used as a verb (\"kvetch about something\") and a noun (\"a kvetch,\" \"have a good kvetch\"). Not italicized. Too informal for professional writing.",
+   "word_family": [
+    "kvetched, kvetching (verb forms)",
+    "kvetcher (one who kvetches)",
+    "kvetchy (adjective, complaining)",
+    "a kvetch (noun)"
+   ],
+   "distinctions": [
+    {
+     "vs": "complain",
+     "note": "\"Complain\" is neutral and can be serious; \"kvetch\" is informal and suggests endless, often petty complaining."
+    },
+    {
+     "vs": "whine",
+     "note": "\"Whine\" stresses an annoying, childish tone; \"kvetch\" is a bit warmer and more humorous."
+    }
+   ],
+   "antonyms": [
+    "praise",
+    "rave"
+   ],
+   "collocations": [
+    "kvetch about",
+    "constant kvetching",
+    "a professional kvetch",
+    "have a good kvetch"
+   ],
+   "examples": {
+    "everyday": "He kvetched the whole flight about the size of the seats.",
+    "professional": "Let's give people a channel for feedback instead of letting them kvetch in the hallway.",
+    "analytical": "The columnist's humor comes from turning everyday kvetching into sharp observations about city life."
+   },
+   "analogy": "Like a dripping faucet: never a flood, just a steady stream of small complaints.",
+   "etymology": "From Yiddish kvetshn \"to squeeze, pinch, press,\" and so \"to fuss, complain.\" It entered American English in the mid-1900s, through Jewish communities in New York and the entertainment world.",
+   "common_mistakes": [
+    "Spelling it \"quetch\" or \"kvench.\"",
+    "Using it for a serious formal complaint; \"kvetch\" makes the complaint sound petty.",
+    "Pronouncing it \"vetch\" without the k."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "bagel",
+  "domains": [
+   "common_phrases",
+   "food",
+   "dining"
+  ],
+  "phonetic": "/ˈbeɪɡəl/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "A dense bread roll shaped like a ring, boiled briefly and then baked, giving it a chewy inside and a shiny crust."
+    ]
+   }
+  ],
+  "etymology": "From Yiddish beygl, from a Middle High German word for a ring or bracelet (related to \"bow\" and \"bend\"). It came into American English in the early 1900s with Jewish immigrants from Eastern Europe.",
+  "conversation": [
+   {
+    "sense": "breakfast",
+    "text": "I'll have an everything bagel with cream cheese, toasted, please."
+   },
+   {
+    "sense": "office",
+    "text": "Someone brought a dozen bagels for the morning meeting."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "A dense bread roll shaped like a ring, boiled briefly and then baked, giving it a chewy inside and a shiny crust."
+   },
+   "pronunciation": {
+    "ipa": "/ˈbeɪɡəl/",
+    "respelling": "BAY-guhl",
+    "tip": "Stress the first syllable: BAY-gul, with a long a as in \"day.\" It is not \"BAG-el.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral to warm; strongly linked with New York and with breakfast or a casual office treat.",
+   "usage_note": "A fully everyday American word, never italicized. Common orders: \"a plain bagel,\" \"an everything bagel,\" \"a bagel with cream cheese (schmear),\" \"bagel and lox.\" \"Bagel\" can be toasted or not, and Americans talk about it as a whole food, not as foreign. In tennis slang, \"a bagel\" is a 6-0 set.",
+   "word_family": [
+    "bagels (plural)",
+    "bagel shop",
+    "bagel chips",
+    "bagel sandwich"
+   ],
+   "distinctions": [
+    {
+     "vs": "doughnut",
+     "note": "A doughnut is also ring-shaped but is fried and sweet; a bagel is boiled, baked and usually savory."
+    },
+    {
+     "vs": "bialy",
+     "note": "A bialy is a related roll from Białystok with a dip in the middle instead of a hole, and it is not boiled."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "everything bagel",
+    "bagel with cream cheese",
+    "toasted bagel",
+    "bagel and lox",
+    "a dozen bagels",
+    "bagel shop"
+   ],
+   "examples": {
+    "everyday": "I grab a bagel and coffee on my way to work most mornings.",
+    "professional": "We'll have bagels and fruit at the 8 a.m. orientation, so no need to eat beforehand.",
+    "analytical": "The spread of bagels from New York delis to supermarkets nationwide shows how immigrant foods become mainstream."
+   },
+   "analogy": "Like a bread roll that got a sauna before the oven: the boiling gives it that chew.",
+   "etymology": "From Yiddish beygl, from a Middle High German word for a ring or bracelet (related to \"bow\" and \"bend\"). It came into American English in the early 1900s with Jewish immigrants from Eastern Europe.",
+   "common_mistakes": [
+    "Pronouncing it \"BAG-el\" with the vowel of \"bag\"; the vowel is \"ay.\"",
+    "Spelling it \"beigel\"; that spelling exists in Britain, but Americans write \"bagel.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "al fresco",
+  "domains": [
+   "common_phrases",
+   "dining",
+   "food"
+  ],
+  "phonetic": "/ˌæl ˈfɹɛskoʊ/",
+  "meanings": [
+   {
+    "pos": "adverb",
+    "senses": [
+     "Outdoors, in the open air; used especially about eating."
+    ]
+   }
+  ],
+  "etymology": "From Italian al fresco, literally \"in the fresh (air)\" or \"in the cool.\" It came into English in the mid-1700s. In modern Italian the phrase is actually slang for \"in jail\"; Italians say \"all'aperto\" for outdoors.",
+  "conversation": [
+   {
+    "sense": "restaurant",
+    "text": "It's such a nice night. Do you want to eat al fresco?"
+   },
+   {
+    "sense": "invitation",
+    "text": "We're doing a little al fresco dinner in the backyard on Saturday."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "Outdoors, in the open air; used especially about eating."
+   },
+   "pronunciation": {
+    "ipa": "/ˌæl ˈfɹɛskoʊ/",
+    "respelling": "al FRES-koh",
+    "tip": "Stress FRES: al FRES-koh. The \"al\" is like the name Al."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "formal"
+   ],
+   "connotation": "Pleasant and a little elegant; it makes eating outside sound like a treat.",
+   "usage_note": "Common in restaurant, travel and lifestyle writing, and heard in conversation with a slightly fancy touch. Used as an adverb (\"dine al fresco\") and an adjective (\"al fresco dining\"). Also spelled as one word, alfresco, which many American dictionaries list first; both are correct. Not usually italicized.",
+   "word_family": [
+    "alfresco (one-word spelling)",
+    "al fresco dining (adjective use)"
+   ],
+   "distinctions": [
+    {
+     "vs": "outdoors",
+     "note": "\"Outdoors\" is plain and general; \"al fresco\" is used mostly for eating and sounds more refined."
+    },
+    {
+     "vs": "picnic",
+     "note": "A picnic is a casual outdoor meal you bring; \"al fresco\" just means outdoors and can describe a formal restaurant meal."
+    }
+   ],
+   "antonyms": [
+    "indoors"
+   ],
+   "collocations": [
+    "dine al fresco",
+    "al fresco dining",
+    "eat al fresco",
+    "an al fresco lunch"
+   ],
+   "examples": {
+    "everyday": "We ate al fresco on the porch and watched the sunset.",
+    "professional": "The restaurant expanded its al fresco seating after the city allowed tables on the sidewalk.",
+    "analytical": "Al fresco dining grew quickly in American cities after 2020, when many restaurants moved tables onto streets."
+   },
+   "analogy": "Like moving the dining room table outside and letting the sky be the ceiling.",
+   "etymology": "From Italian al fresco, literally \"in the fresh (air)\" or \"in the cool.\" It came into English in the mid-1700s. In modern Italian the phrase is actually slang for \"in jail\"; Italians say \"all'aperto\" for outdoors.",
+   "common_mistakes": [
+    "Spelling it \"al frescoe\" or \"el fresco.\"",
+    "Using it for things other than eating or living outdoors, such as \"an al fresco hike\"; a hike is already outdoors.",
+    "Thinking it is the normal Italian phrase for outdoors; in Italy it often means \"in prison.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "al dente",
+  "domains": [
+   "common_phrases",
+   "food",
+   "dining"
+  ],
+  "phonetic": "/ˌæl ˈdɛnteɪ/",
+  "meanings": [
+   {
+    "pos": "adjective",
+    "senses": [
+     "Of pasta or vegetables, cooked so that they are still slightly firm when you bite them."
+    ]
+   }
+  ],
+  "etymology": "From Italian al dente, literally \"to the tooth,\" meaning firm enough to bite against. It came into English in the mid-1900s as Italian cooking became popular.",
+  "conversation": [
+   {
+    "sense": "cooking",
+    "text": "Taste the spaghetti. It should be al dente, not mushy."
+   },
+   {
+    "sense": "restaurant",
+    "text": "The pasta here is always perfectly al dente."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective",
+    "definition": "Of pasta or vegetables, cooked so that they are still slightly firm when you bite them."
+   },
+   "pronunciation": {
+    "ipa": "/ˌæl ˈdɛnteɪ/",
+    "respelling": "al DEN-tay",
+    "tip": "Stress DEN: al DEN-tay. Some Americans say al DEN-tee; both are heard."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Positive; it suggests pasta cooked properly, the way cooks and food lovers prefer.",
+   "usage_note": "Very common in cooking talk, recipes and on menus. Used after a verb (\"cook it al dente,\" \"the pasta is al dente\") and sometimes as an adverb. Not italicized in American recipes. It describes firmness, not rawness: al dente pasta has no hard, chalky center.",
+   "word_family": [
+    "cooked al dente",
+    "just al dente"
+   ],
+   "distinctions": [
+    {
+     "vs": "undercooked",
+     "note": "\"Undercooked\" is a fault: hard or raw inside. \"Al dente\" is the ideal: tender but with a slight bite."
+    },
+    {
+     "vs": "crisp-tender",
+     "note": "\"Crisp-tender\" is the American recipe term for vegetables cooked the same way."
+    }
+   ],
+   "antonyms": [
+    "overcooked",
+    "mushy",
+    "soggy"
+   ],
+   "collocations": [
+    "cook until al dente",
+    "perfectly al dente",
+    "pasta al dente",
+    "just al dente"
+   ],
+   "examples": {
+    "everyday": "Boil the noodles for nine minutes so they stay al dente.",
+    "professional": "Our kitchen standard is pasta al dente, finished in the sauce for one minute before plating.",
+    "analytical": "Pasta cooked al dente has a lower glycemic index than soft, overcooked pasta, so it raises blood sugar more slowly."
+   },
+   "analogy": "Like a good mattress: soft enough to sink into, but with some push back.",
+   "etymology": "From Italian al dente, literally \"to the tooth,\" meaning firm enough to bite against. It came into English in the mid-1900s as Italian cooking became popular.",
+   "common_mistakes": [
+    "Spelling it \"al denté\" with an accent; the Italian has no accent mark.",
+    "Thinking al dente means undercooked or crunchy; it means tender with a little bite."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "la dolce vita",
+  "domains": [
+   "common_phrases",
+   "feelings"
+  ],
+  "phonetic": "/lɑ ˌdoʊltʃeɪ ˈvitə/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "A life of pleasure, luxury and relaxed enjoyment; the sweet life."
+    ]
+   }
+  ],
+  "etymology": "From Italian la dolce vita, \"the sweet life.\" It became famous in English through Federico Fellini's 1960 film La Dolce Vita, about glamorous and empty high society in Rome.",
+  "conversation": [
+   {
+    "sense": "vacation",
+    "text": "Two weeks in Tuscany, good wine, no email. That's la dolce vita."
+   },
+   {
+    "sense": "joking",
+    "text": "Look at you in your hammock with a lemonade, living la dolce vita."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "A life of pleasure, luxury and relaxed enjoyment; the sweet life."
+   },
+   "pronunciation": {
+    "ipa": "/lɑ ˌdoʊltʃeɪ ˈvitə/",
+    "respelling": "lah DOHL-chay VEE-tuh",
+    "tip": "Say lah DOHL-chay VEE-tuh, with the main stress on VEE. The \"c\" in dolce is said like \"ch.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Mostly positive and dreamy, suggesting carefree pleasure; it can also hint at idleness or shallow luxury, as in the film.",
+   "usage_note": "Common in travel ads, lifestyle writing and light conversation, often in the phrase \"living la dolce vita.\" Often italicized in print, and the film title is capitalized: La Dolce Vita. Because \"la\" already means \"the,\" \"the la dolce vita\" is wrong.",
+   "word_family": [
+    "living la dolce vita",
+    "La Dolce Vita (the film)"
+   ],
+   "distinctions": [
+    {
+     "vs": "the good life",
+     "note": "\"The good life\" is the plain English version; \"la dolce vita\" adds an Italian flavor of food, sun and style."
+    },
+    {
+     "vs": "high life",
+     "note": "\"The high life\" stresses wealth and partying; \"la dolce vita\" is more about relaxed pleasure."
+    }
+   ],
+   "antonyms": [
+    "the daily grind",
+    "a hard life"
+   ],
+   "collocations": [
+    "living la dolce vita",
+    "a taste of la dolce vita",
+    "enjoy la dolce vita",
+    "the spirit of la dolce vita"
+   ],
+   "examples": {
+    "everyday": "After retirement my parents moved to the coast to enjoy la dolce vita.",
+    "professional": "The campaign sells the hotel as a taste of la dolce vita, with long lunches and sea views.",
+    "analytical": "Fellini's film turned la dolce vita into a phrase that celebrates luxury while also criticizing its emptiness."
+   },
+   "analogy": "Like a long summer lunch that never quite ends.",
+   "etymology": "From Italian la dolce vita, \"the sweet life.\" It became famous in English through Federico Fellini's 1960 film La Dolce Vita, about glamorous and empty high society in Rome.",
+   "common_mistakes": [
+    "Saying \"the la dolce vita\"; \"la\" already means \"the.\"",
+    "Spelling \"dolce\" as \"dulce\" (that is Spanish) or \"dolche.\"",
+    "Pronouncing \"dolce\" as \"dolls\"; it is DOHL-chay."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "sotto voce",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˌsɑtoʊ ˈvoʊtʃi/",
+  "meanings": [
+   {
+    "pos": "adverb",
+    "senses": [
+     "In a quiet voice, so as not to be overheard; also, in music, played or sung softly."
+    ]
+   }
+  ],
+  "etymology": "From Italian sotto voce, literally \"under the voice,\" that is, below normal speaking volume. It came into English in the 1700s, partly as a musical direction.",
+  "conversation": [
+   {
+    "sense": "story",
+    "text": "\"He's not coming back,\" she said sotto voce, so the kids wouldn't hear."
+   },
+   {
+    "sense": "meeting",
+    "text": "He added sotto voce that the budget numbers were fake."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "In a quiet voice, so as not to be overheard; also, in music, played or sung softly."
+   },
+   "pronunciation": {
+    "ipa": "/ˌsɑtoʊ ˈvoʊtʃi/",
+    "respelling": "SOT-oh VOH-chee",
+    "tip": "Stress VOH: sot-oh VOH-chee. The \"c\" is said like \"ch.\" Some say VOH-chay; both are heard."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "literary",
+    "formal"
+   ],
+   "connotation": "Neutral; often hints at secrecy, gossip, or a comment meant only for some listeners.",
+   "usage_note": "Mostly written, in novels, journalism and music scores, and rarely said in casual talk. Used as an adverb (\"said sotto voce\") and adjective (\"a sotto voce remark\"). Often italicized. In figurative use it can mean said quietly or indirectly in public debate: \"complaints made sotto voce.\"",
+   "word_family": [
+    "sotto voce remark (adjective use)"
+   ],
+   "distinctions": [
+    {
+     "vs": "under one's breath",
+     "note": "\"Under one's breath\" is the everyday phrase; \"sotto voce\" is more literary and is also a musical instruction."
+    },
+    {
+     "vs": "aside",
+     "note": "An aside, especially in theater, is a remark to the audience; \"sotto voce\" describes the quiet way something is said."
+    }
+   ],
+   "antonyms": [
+    "aloud",
+    "at the top of one's voice"
+   ],
+   "collocations": [
+    "said sotto voce",
+    "a sotto voce remark",
+    "muttered sotto voce",
+    "sotto voce comment"
+   ],
+   "examples": {
+    "everyday": "My aunt made a sotto voce comment about the bride's dress during the ceremony.",
+    "professional": "Several board members expressed doubts sotto voce but voted for the plan anyway.",
+    "analytical": "In the score the composer marks the final verse sotto voce, so the song ends almost in a whisper."
+   },
+   "analogy": "Like turning the volume knob of your voice down to two.",
+   "etymology": "From Italian sotto voce, literally \"under the voice,\" that is, below normal speaking volume. It came into English in the 1700s, partly as a musical direction.",
+   "common_mistakes": [
+    "Spelling it \"soto voce\" or \"sotto vocce.\"",
+    "Pronouncing \"voce\" like English \"voice\" or \"vose\"; it is VOH-chee.",
+    "Using it for shouting or loud remarks; it always means quiet."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "bravura",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/bɹəˈvjʊɹə/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "Great skill and boldness, especially in a performance; often used before a noun to mean brilliant and showy."
+    ]
+   }
+  ],
+  "etymology": "From Italian bravura \"bravery, skill,\" from bravo \"brave, skillful.\" It came into English in the 1700s as a music term for a difficult, showy passage.",
+  "conversation": [
+   {
+    "sense": "concert",
+    "text": "Her violin solo was a real bravura performance. The crowd went wild."
+   },
+   {
+    "sense": "praise",
+    "text": "Did you see that catch? Pure bravura."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "Great skill and boldness, especially in a performance; often used before a noun to mean brilliant and showy."
+   },
+   "pronunciation": {
+    "ipa": "/bɹəˈvjʊɹə/",
+    "respelling": "bruh-VYOOR-uh",
+    "tip": "Stress the middle syllable: bruh-VYOOR-uh. Many Americans also say bruh-VOOR-uh without the y sound."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal",
+    "literary"
+   ],
+   "connotation": "Positive and admiring, suggesting dazzling skill; sometimes with a hint of showing off.",
+   "usage_note": "Mostly used in reviews and journalism about music, theater, film, sports and writing. Most often before a noun, as an adjective: \"a bravura performance,\" \"a bravura display.\" Not italicized. Rare in casual conversation, where people say \"amazing\" or \"brilliant.\"",
+   "word_family": [
+    "bravura performance (adjective use)",
+    "bravo (related exclamation)"
+   ],
+   "distinctions": [
+    {
+     "vs": "bravado",
+     "note": "\"Bravado\" is a show of courage that is often fake; \"bravura\" is real skill shown boldly. Do not confuse them."
+    },
+    {
+     "vs": "virtuosity",
+     "note": "\"Virtuosity\" is great technical skill; \"bravura\" adds boldness and display."
+    }
+   ],
+   "antonyms": [
+    "mediocrity",
+    "clumsiness"
+   ],
+   "collocations": [
+    "a bravura performance",
+    "bravura display",
+    "with bravura",
+    "bravura piece",
+    "bravura turn"
+   ],
+   "examples": {
+    "everyday": "The quarterback's bravura run in the last minute won the game.",
+    "professional": "Reviewers praised the lead actor's bravura turn in the new production.",
+    "analytical": "The novel's bravura opening chapter, a single sentence twelve pages long, announces the author's ambition."
+   },
+   "analogy": "Like a firework finale: skill on full display, meant to be seen.",
+   "etymology": "From Italian bravura \"bravery, skill,\" from bravo \"brave, skillful.\" It came into English in the 1700s as a music term for a difficult, showy passage.",
+   "common_mistakes": [
+    "Confusing it with \"bravado\"; \"bravura\" is skill, \"bravado\" is a show of confidence.",
+    "Stressing the first syllable (BRA-vura); the stress is on VYOOR."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "que sera sera",
+  "domains": [
+   "common_phrases",
+   "small_talk",
+   "feelings"
+  ],
+  "phonetic": "/ˌkeɪ səˌɹɑ səˈɹɑ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Whatever will be, will be; said to accept calmly that the future cannot be controlled."
+    ]
+   }
+  ],
+  "etymology": "Made famous by the 1956 song \"Whatever Will Be, Will Be (Que Sera, Sera),\" sung by Doris Day in Alfred Hitchcock's film The Man Who Knew Too Much. It looks Spanish or Italian but is not correct in either: Spanish would say \"lo que será, será\" and Italian \"che sarà, sarà.\" An older English form, \"che sera, sera,\" appears in Marlowe's Doctor Faustus in the late 1500s.",
+  "conversation": [
+   {
+    "sense": "acceptance",
+    "text": "I did my best in the interview. Now it's que sera sera."
+   },
+   {
+    "sense": "shrug",
+    "text": "Will it rain on the wedding? Que sera sera. We have tents."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "Whatever will be, will be; said to accept calmly that the future cannot be controlled."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkeɪ səˌɹɑ səˈɹɑ/",
+    "respelling": "kay suh-RAH suh-RAH",
+    "tip": "Say kay suh-RAH, suh-RAH, with a small pause after the first \"sera\" and stress on RAH each time."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Relaxed and accepting, sometimes a little resigned; a cheerful shrug about fate.",
+   "usage_note": "Used in casual speech, usually as a whole sentence or after \"it's.\" Often written with a comma, \"que sera, sera,\" and sometimes with accents, \"que será, será.\" It is a popular English phrase, not real Spanish or Italian, so do not use it as a sample of either language. Many Americans hum the song line when they say it.",
+   "word_family": [
+    "que sera, sera (comma spelling)",
+    "whatever will be, will be (English version)"
+   ],
+   "distinctions": [
+    {
+     "vs": "c'est la vie",
+     "note": "\"C'est la vie\" (that's life) accepts something that already happened; \"que sera sera\" accepts what will happen."
+    },
+    {
+     "vs": "it is what it is",
+     "note": "\"It is what it is\" is about the present situation; \"que sera sera\" looks toward the future."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "que sera sera",
+    "it's que sera sera",
+    "a que sera sera attitude"
+   ],
+   "examples": {
+    "everyday": "I've studied all I can for the test, so que sera sera.",
+    "professional": "We have done the analysis and submitted the bid; the rest is que sera sera.",
+    "analytical": "The phrase que sera sera spread through a hit song, which shows how pop culture can create a foreign-looking expression that no native speaker uses."
+   },
+   "analogy": "Like letting go of a kite string: you have done your part, and the wind decides the rest.",
+   "etymology": "Made famous by the 1956 song \"Whatever Will Be, Will Be (Que Sera, Sera),\" sung by Doris Day in Alfred Hitchcock's film The Man Who Knew Too Much. It looks Spanish or Italian but is not correct in either: Spanish would say \"lo que será, será\" and Italian \"che sarà, sarà.\" An older English form, \"che sera, sera,\" appears in Marlowe's Doctor Faustus in the late 1500s.",
+   "common_mistakes": [
+    "Thinking it is correct Spanish; a Spanish speaker would say \"lo que será, será.\"",
+    "Spelling it \"kay sera sera\" or \"que sara sara.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "hasta la vista",
+  "domains": [
+   "common_phrases",
+   "small_talk"
+  ],
+  "phonetic": "/ˌɑstə lə ˈvistə/",
+  "meanings": [
+   {
+    "pos": "interjection",
+    "senses": [
+     "An informal, playful way to say goodbye; literally, until we see each other again."
+    ]
+   }
+  ],
+  "etymology": "From Spanish hasta la vista, literally \"until the seeing,\" that is, \"until I see you.\" It has long been used in the American Southwest, and Arnold Schwarzenegger's line \"Hasta la vista, baby\" in the 1991 film Terminator 2 made it famous everywhere.",
+  "conversation": [
+   {
+    "sense": "leaving",
+    "text": "Okay, I'm heading out. Hasta la vista!"
+   },
+   {
+    "sense": "joking",
+    "text": "Hasta la vista, baby. I'm done with that gym membership."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "interjection",
+    "definition": "An informal, playful way to say goodbye; literally, until we see each other again."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɑstə lə ˈvistə/",
+    "respelling": "AH-stuh luh VEE-stuh",
+    "tip": "Stress VEE: ah-stuh luh VEE-stuh. The h in \"hasta\" is silent."
+   },
+   "us_usage": "common",
+   "register": [
+    "informal"
+   ],
+   "connotation": "Playful and casual; with \"baby\" it sounds tough and joking, a movie quote more than a real farewell.",
+   "usage_note": "Used by English speakers as a light, joking goodbye, often with \"baby.\" Spanish speakers use \"hasta luego\" or \"nos vemos\" much more often in daily life; \"hasta la vista\" can sound like a farewell to someone you may not see soon. Not used in formal settings.",
+   "word_family": [
+    "hasta luego (see you later)",
+    "hasta mañana (see you tomorrow)",
+    "hasta la vista, baby (movie line)"
+   ],
+   "distinctions": [
+    {
+     "vs": "adios",
+     "note": "\"Adiós\" is a general goodbye; \"hasta la vista\" says you will see each other again, though English speakers use both loosely."
+    },
+    {
+     "vs": "see you later",
+     "note": "\"See you later\" is the plain English version; \"hasta la vista\" is more playful."
+    }
+   ],
+   "antonyms": [
+    "hello",
+    "hola"
+   ],
+   "collocations": [
+    "hasta la vista, baby",
+    "say hasta la vista",
+    "hasta la vista to"
+   ],
+   "examples": {
+    "everyday": "Hasta la vista, everyone! See you Monday.",
+    "professional": "When the old software was finally shut down, the IT team sent a jokey email titled \"Hasta la vista, baby.\"",
+    "analytical": "Movie lines like \"hasta la vista, baby\" show how a foreign phrase can enter English mainly through pop culture."
+   },
+   "analogy": "Like a wave and a wink as you walk out the door.",
+   "etymology": "From Spanish hasta la vista, literally \"until the seeing,\" that is, \"until I see you.\" It has long been used in the American Southwest, and Arnold Schwarzenegger's line \"Hasta la vista, baby\" in the 1991 film Terminator 2 made it famous everywhere.",
+   "common_mistakes": [
+    "Pronouncing the h in \"hasta\"; it is silent: AH-stuh.",
+    "Spelling it \"asta la vista\" or \"hasta la visa.\"",
+    "Using it in a formal goodbye, such as in a business email to a client."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "siesta",
+  "domains": [
+   "common_phrases",
+   "home_health",
+   "small_talk"
+  ],
+  "phonetic": "/siˈɛstə/",
+  "meanings": [
+   {
+    "pos": "noun",
+    "senses": [
+     "A short nap or rest taken in the early afternoon, especially in hot countries."
+    ]
+   }
+  ],
+  "etymology": "From Spanish siesta, from Latin sexta (hora) \"the sixth hour,\" counted from dawn, which is around noon. It came into English in the 1600s.",
+  "conversation": [
+   {
+    "sense": "tired",
+    "text": "After that big lunch I need a siesta."
+   },
+   {
+    "sense": "vacation",
+    "text": "In the village everything closes for siesta, so plan your shopping for the morning."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "A short nap or rest taken in the early afternoon, especially in hot countries."
+   },
+   "pronunciation": {
+    "ipa": "/siˈɛstə/",
+    "respelling": "see-ES-tuh",
+    "tip": "Stress the second syllable: see-ES-tuh, three syllables."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "informal"
+   ],
+   "connotation": "Positive and relaxed; it can also carry a stereotype of laziness, which is unfair to the cultures that have it.",
+   "usage_note": "A fully English word, never italicized. Americans use it jokingly for any afternoon nap: \"take a siesta.\" It also names the custom in Spain, Mexico and other countries where shops close in the early afternoon. \"Nap\" is the everyday word; \"siesta\" adds a sense of the afternoon and warm weather.",
+   "word_family": [
+    "siestas (plural)",
+    "take a siesta"
+   ],
+   "distinctions": [
+    {
+     "vs": "nap",
+     "note": "A nap can happen at any time of day; a siesta is specifically an afternoon rest."
+    },
+    {
+     "vs": "power nap",
+     "note": "A power nap is a very short nap to restore energy, often at work; a siesta is longer and more leisurely."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "take a siesta",
+    "afternoon siesta",
+    "a short siesta",
+    "close for siesta"
+   ],
+   "examples": {
+    "everyday": "Grandma takes a siesta every afternoon at two.",
+    "professional": "Some companies now have quiet rooms where employees can take a short siesta after lunch.",
+    "analytical": "Researchers studying the siesta have linked a brief afternoon nap to better alertness, though long naps can disturb night sleep."
+   },
+   "analogy": "Like pressing pause on the hottest part of the day.",
+   "etymology": "From Spanish siesta, from Latin sexta (hora) \"the sixth hour,\" counted from dawn, which is around noon. It came into English in the 1600s.",
+   "common_mistakes": [
+    "Spelling it \"seista\" or \"siester.\"",
+    "Using it for a full night's sleep; a siesta is a short afternoon rest."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "eureka",
+  "domains": [
+   "common_phrases",
+   "small_talk",
+   "feelings"
+  ],
+  "phonetic": "/jʊˈɹikə/",
+  "meanings": [
+   {
+    "pos": "interjection",
+    "senses": [
+     "A cry of joy or triumph at suddenly discovering or solving something."
+    ]
+   }
+  ],
+  "etymology": "From Greek heurēka \"I have found (it).\" The story says the mathematician Archimedes shouted it when he realized, in his bath, how to measure the volume of a crown. It has been used in English since the 1600s. It is also the state motto of California, from the Gold Rush.",
+  "conversation": [
+   {
+    "sense": "discovery",
+    "text": "Eureka! I found my car keys. They were in the fridge."
+   },
+   {
+    "sense": "idea",
+    "text": "I was in the shower when I had a eureka moment about the project."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "interjection",
+    "definition": "A cry of joy or triumph at suddenly discovering or solving something."
+   },
+   "pronunciation": {
+    "ipa": "/jʊˈɹikə/",
+    "respelling": "yoo-REE-kuh",
+    "tip": "Stress the middle syllable: yoo-REE-kuh. It starts with a \"yoo\" sound, not \"ee.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "neutral"
+   ],
+   "connotation": "Joyful and triumphant; often used humorously for small discoveries.",
+   "usage_note": "As an exclamation it is often playful today. Very common in the phrase \"a eureka moment,\" meaning a sudden insight. Because it starts with a \"y\" sound, use \"a,\" not \"an\": \"a eureka moment.\" Not italicized.",
+   "word_family": [
+    "eureka moment (sudden insight)"
+   ],
+   "distinctions": [
+    {
+     "vs": "aha",
+     "note": "\"Aha!\" is the everyday sound of discovery; \"eureka\" is bigger and more triumphant, or used jokingly."
+    },
+    {
+     "vs": "epiphany",
+     "note": "An epiphany is a sudden deep realization, often about life; a eureka moment is usually about solving a problem."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "a eureka moment",
+    "shout eureka",
+    "eureka!"
+   ],
+   "examples": {
+    "everyday": "Eureka! The Wi-Fi password was on the bottom of the router the whole time.",
+    "professional": "The breakthrough was less a eureka moment than six months of testing small changes.",
+    "analytical": "Historians of science note that eureka moments usually come after long periods of hard, unglamorous work."
+   },
+   "analogy": "Like a light switching on in a dark room: suddenly everything makes sense.",
+   "etymology": "From Greek heurēka \"I have found (it).\" The story says the mathematician Archimedes shouted it when he realized, in his bath, how to measure the volume of a crown. It has been used in English since the 1600s. It is also the state motto of California, from the Gold Rush.",
+   "common_mistakes": [
+    "Writing \"an eureka moment\"; it begins with a consonant \"y\" sound, so it is \"a eureka moment.\"",
+    "Spelling it \"uereka\" or \"eurika.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "P.S.",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˌpi ˈɛs/",
+  "meanings": [
+   {
+    "pos": "abbreviation",
+    "senses": [
+     "Postscript: a note added at the end of a letter or message, after the signature."
+    ]
+   }
+  ],
+  "etymology": "Short for postscript, from Latin post scriptum \"written after.\" It has been used in English letters since the 1500s and 1600s.",
+  "conversation": [
+   {
+    "sense": "letter",
+    "text": "Love, Mom. P.S. Don't forget to call your grandmother."
+   },
+   {
+    "sense": "email",
+    "text": "P.S. I attached the photos from Saturday."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "abbreviation",
+    "definition": "Postscript: a note added at the end of a letter or message, after the signature."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpi ˈɛs/",
+    "respelling": "pee ES",
+    "tip": "Say the letter names: pee ESS, with the stress on the second letter."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "informal"
+   ],
+   "connotation": "Friendly and personal; a P.S. often holds an afterthought, a reminder, or a key point the writer wants to stand out.",
+   "usage_note": "Common in personal letters, cards and marketing emails. In American English it is usually written with periods, \"P.S.\"; some style guides, including Chicago, prefer \"PS\" without periods. A second added note is \"P.P.S.\" (post-postscript). Put it after the signature, followed by the note. In speech, people sometimes say \"P.S.\" to add one last thing: \"Oh, and P.S., the party starts at seven.\"",
+   "word_family": [
+    "postscript (full word)",
+    "P.P.S. (a second postscript)",
+    "PS (style without periods)"
+   ],
+   "distinctions": [
+    {
+     "vs": "afterthought",
+     "note": "An afterthought is any idea added later; a \"P.S.\" is the written form of one, placed after the signature of a letter or message."
+    },
+    {
+     "vs": "footnote",
+     "note": "A footnote explains something in the text at the bottom of a page; a P.S. is a new thought added after a letter."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "add a P.S.",
+    "P.S. I love you",
+    "P.P.S.",
+    "a quick P.S."
+   ],
+   "examples": {
+    "everyday": "I wrote a P.S. on the birthday card saying dinner was on me.",
+    "professional": "Marketing studies suggest readers often look at the P.S. first, so put your main offer there.",
+    "analytical": "The P.S. survives in email even though, with editing so easy, there is no technical need for an afterthought below the signature."
+   },
+   "analogy": "Like turning back at the door to say one more thing.",
+   "etymology": "Short for postscript, from Latin post scriptum \"written after.\" It has been used in English letters since the 1500s and 1600s.",
+   "common_mistakes": [
+    "Writing \"P.S.S.\" for a second postscript; the correct form is \"P.P.S.\" (post-postscript).",
+    "Writing it as \"p.s\" or \"P.S\" with missing or wrong periods in a style that uses periods.",
+    "Putting the P.S. before the signature; it goes after it."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "a.m.",
+  "domains": [
+   "common_phrases",
+   "small_talk"
+  ],
+  "phonetic": "/ˌeɪ ˈɛm/",
+  "meanings": [
+   {
+    "pos": "abbreviation",
+    "senses": [
+     "Before noon; used after a time to show it is between midnight and midday."
+    ]
+   }
+  ],
+  "etymology": "Short for Latin ante meridiem, \"before midday.\" It has been used in English since the 1700s. Its partner is p.m., post meridiem, \"after midday.\"",
+  "conversation": [
+   {
+    "sense": "plans",
+    "text": "My flight leaves at 6 a.m., so I'm going to bed early."
+   },
+   {
+    "sense": "work",
+    "text": "Can we move the call to 10 a.m.?"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "abbreviation",
+    "definition": "Before noon; used after a time to show it is between midnight and midday."
+   },
+   "pronunciation": {
+    "ipa": "/ˌeɪ ˈɛm/",
+    "respelling": "ay EM",
+    "tip": "Say the letter names: ay EM, with the stress on EM. Never read it as a word."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; with very early times it can carry a groan: \"5 a.m.?\"",
+   "usage_note": "Americans use the 12-hour clock, so a.m. and p.m. are everyday necessities. AP and Chicago styles both use lowercase with periods: \"9 a.m.\" Many people and businesses write \"AM\" or \"am\"; some books use small capitals (AM). Put a space between the number and a.m. Do not add \"in the morning\" after it. Noon and midnight are confusing: \"12 a.m.\" is midnight and \"12 p.m.\" is noon, so it is clearer to write \"noon\" and \"midnight.\" Informally, \"this a.m.\" means \"this morning.\"",
+   "word_family": [
+    "p.m. (after noon)",
+    "ante meridiem (full Latin form)",
+    "AM (capital style)"
+   ],
+   "distinctions": [
+    {
+     "vs": "p.m.",
+     "note": "\"P.m.\" (post meridiem) is for times from noon to midnight; \"a.m.\" is for times from midnight to noon."
+    },
+    {
+     "vs": "AM radio",
+     "note": "In \"AM radio,\" AM stands for amplitude modulation, not the time of day."
+    }
+   ],
+   "antonyms": [
+    "p.m."
+   ],
+   "collocations": [
+    "9 a.m.",
+    "at 7 a.m. sharp",
+    "from 9 a.m. to 5 p.m.",
+    "this a.m.",
+    "2 a.m. phone call"
+   ],
+   "examples": {
+    "everyday": "The bakery opens at 6 a.m., and the croissants sell out by 8.",
+    "professional": "The meeting is scheduled for 10:30 a.m. Eastern Time.",
+    "analytical": "Studies of hospital data show more heart attacks occur between 6 a.m. and noon than at other times of day."
+   },
+   "analogy": "Like a sign on the clock saying \"morning side.\"",
+   "etymology": "Short for Latin ante meridiem, \"before midday.\" It has been used in English since the 1700s. Its partner is p.m., post meridiem, \"after midday.\"",
+   "common_mistakes": [
+    "Writing \"10 a.m. in the morning\"; \"a.m.\" already means morning.",
+    "Using \"12 a.m.\" for noon; 12 a.m. is midnight.",
+    "Writing \"a.m\" or \"am.\" with a missing period in a style that uses periods."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "BC",
+  "domains": [
+   "common_phrases",
+   "theology"
+  ],
+  "phonetic": "/ˌbi ˈsi/",
+  "meanings": [
+   {
+    "pos": "abbreviation",
+    "senses": [
+     "Before Christ: used after a date to show it was that many years before the traditional year of Jesus' birth."
+    ]
+   }
+  ],
+  "etymology": "English abbreviation of \"before Christ.\" Counting years from the birth of Christ began with the monk Dionysius Exiguus in 525; counting years backward \"before Christ\" was spread by the English scholar Bede in the 700s.",
+  "conversation": [
+   {
+    "sense": "history",
+    "text": "The pyramids at Giza were built around 2500 BC."
+   },
+   {
+    "sense": "class",
+    "text": "Wait, is it 44 BC or AD 44 that Caesar died? BC, right?"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "abbreviation",
+    "definition": "Before Christ: used after a date to show it was that many years before the traditional year of Jesus' birth."
+   },
+   "pronunciation": {
+    "ipa": "/ˌbi ˈsi/",
+    "respelling": "bee SEE",
+    "tip": "Say the letter names: bee SEE, with the stress on SEE."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "academic"
+   ],
+   "connotation": "Neutral; some readers prefer BCE because BC refers to Christ.",
+   "usage_note": "BC goes after the year: \"500 BC.\" Its partner AD (Latin anno Domini, \"in the year of the Lord\") traditionally goes before the year: \"AD 79.\" AD is usually left out for recent dates. Many academic and museum texts use BCE (\"before the Common Era\") and CE (\"Common Era\"), which count years the same way but avoid religious terms. AP style writes \"B.C.\" and \"A.D.\" with periods; Chicago prefers BC and AD without periods, sometimes in small capitals. There is no year 0: 1 BC is followed by AD 1.",
+   "word_family": [
+    "AD (anno Domini)",
+    "BCE (before the Common Era)",
+    "CE (Common Era)",
+    "B.C. (AP style with periods)"
+   ],
+   "distinctions": [
+    {
+     "vs": "BCE",
+     "note": "\"BCE\" means the same years as \"BC\" but is religiously neutral; it is preferred in many academic and scientific texts."
+    },
+    {
+     "vs": "AD",
+     "note": "\"AD\" marks years after the start of the era and traditionally comes before the number; \"BC\" comes after."
+    }
+   ],
+   "antonyms": [
+    "AD",
+    "CE"
+   ],
+   "collocations": [
+    "500 BC",
+    "the fifth century BC",
+    "around 3000 BC",
+    "BC and AD",
+    "BC/AD"
+   ],
+   "examples": {
+    "everyday": "Our tour guide said the temple dates from about 400 BC.",
+    "professional": "The exhibit labels use BCE and CE, but the brochure uses BC and AD.",
+    "analytical": "Because there is no year 0, someone born in 10 BC and living until AD 10 was 19, not 20, years old."
+   },
+   "analogy": "Like a number line where zero is skipped: BC counts down, AD counts up.",
+   "etymology": "English abbreviation of \"before Christ.\" Counting years from the birth of Christ began with the monk Dionysius Exiguus in 525; counting years backward \"before Christ\" was spread by the English scholar Bede in the 700s.",
+   "common_mistakes": [
+    "Putting BC before the year (\"BC 500\"); it goes after: \"500 BC.\"",
+    "Thinking AD means \"after death\"; it is Latin anno Domini, \"in the year of the Lord.\"",
+    "Counting a year 0 when calculating spans across BC and AD; there is none."
+   ],
+   "biblical_note": "BC dates are counted from the birth of Jesus as calculated by Dionysius Exiguus in the 500s. His calculation was slightly off: because the Gospel of Matthew places Jesus' birth under Herod the Great, who died around 4 BC, most scholars date the birth of Jesus to about 6 to 4 BC.",
+   "traditions": []
+  }
+ },
+ {
+  "word": "vs.",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˈvɝsəs/",
+  "meanings": [
+   {
+    "pos": "abbreviation",
+    "senses": [
+     "Versus: against, as in a game or legal case; or as opposed to, when comparing two things."
+    ]
+   }
+  ],
+  "etymology": "Short for versus, from Latin versus \"toward, turned toward,\" which in Medieval Latin legal use came to mean \"against.\" It has been used in English since the 1400s, first in law.",
+  "conversation": [
+   {
+    "sense": "sports",
+    "text": "Who's playing tonight? Lakers vs. Celtics."
+   },
+   {
+    "sense": "choice",
+    "text": "It's really a question of price vs. quality."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "abbreviation",
+    "definition": "Versus: against, as in a game or legal case; or as opposed to, when comparing two things."
+   },
+   "pronunciation": {
+    "ipa": "/ˈvɝsəs/",
+    "respelling": "VUR-suhs",
+    "tip": "Read it aloud as the full word \"versus\": VUR-sus. Casual speakers sometimes say \"vee ess,\" but \"versus\" is standard."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; it frames two sides as opponents or alternatives.",
+   "usage_note": "American English writes it with a period: \"vs.\" (British English often writes \"vs\" without). In legal case names Americans use \"v.\": Brown v. Board of Education, read aloud as \"versus\" or as \"vee.\" AP style uses \"vs.\" in general writing and \"v.\" for court cases. In formal prose, writing the full word \"versus\" or \"against\" is often better than the abbreviation.",
+   "word_family": [
+    "versus (full word)",
+    "v. (legal case names)"
+   ],
+   "distinctions": [
+    {
+     "vs": "v.",
+     "note": "\"V.\" is the standard form in court case names (Roe v. Wade); \"vs.\" is used for games, contests and comparisons."
+    },
+    {
+     "vs": "against",
+     "note": "\"Against\" is plain English and works in any sentence; \"vs.\" is mainly for headlines, labels and comparisons."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "Team A vs. Team B",
+    "us vs. them",
+    "cost vs. benefit",
+    "nature vs. nurture",
+    "man vs. machine"
+   ],
+   "examples": {
+    "everyday": "Tonight it's pizza vs. tacos, and the kids get to vote.",
+    "professional": "The slide compares cloud vs. on-site storage for cost and security.",
+    "analytical": "The old nature vs. nurture debate has largely given way to research on how genes and environment interact."
+   },
+   "analogy": "Like the scoreboard line between two team names.",
+   "etymology": "Short for versus, from Latin versus \"toward, turned toward,\" which in Medieval Latin legal use came to mean \"against.\" It has been used in English since the 1400s, first in law.",
+   "common_mistakes": [
+    "Writing \"vs\" without a period in American English; use \"vs.\"",
+    "Using \"vs.\" in a legal case name; American legal style is \"v.\"",
+    "Spelling the full word \"verses\"; that is the plural of \"verse.\" The word is \"versus.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "cf.",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˌsi ˈɛf/",
+  "meanings": [
+   {
+    "pos": "abbreviation",
+    "senses": [
+     "Compare: used in writing to tell the reader to compare one thing with another, often a different or contrasting source."
+    ]
+   }
+  ],
+  "etymology": "Short for Latin confer, \"compare\" (literally \"bring together\"). It has been used in English scholarly writing since the 1500s and 1600s.",
+  "conversation": [
+   {
+    "sense": "research",
+    "text": "The results differ from earlier studies (cf. Smith 2019)."
+   },
+   {
+    "sense": "notes",
+    "text": "My professor wrote \"cf. chapter 3\" in the margin, so I should compare it with that chapter."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "abbreviation",
+    "definition": "Compare: used in writing to tell the reader to compare one thing with another, often a different or contrasting source."
+   },
+   "pronunciation": {
+    "ipa": "/ˌsi ˈɛf/",
+    "respelling": "see EF",
+    "tip": "Say the letter names, see EF, or read it as the word it stands for, \"compare.\""
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "academic",
+    "formal"
+   ],
+   "connotation": "Neutral and scholarly.",
+   "usage_note": "Used in academic writing, footnotes, dictionaries and legal citations, almost never in conversation. It means \"compare,\" not simply \"see\": use it to point the reader to something that is related, similar or contrasting. To send readers to a source that supports a statement, write \"see.\" Usually lowercase with a period, not italicized.",
+   "word_family": [
+    "confer (Latin source)",
+    "see also (related reference)"
+   ],
+   "distinctions": [
+    {
+     "vs": "see",
+     "note": "\"See\" sends readers to support or more detail; \"cf.\" asks them to compare, often with something different."
+    },
+    {
+     "vs": "e.g.",
+     "note": "\"E.g.\" introduces examples; \"cf.\" points to something to compare."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "cf. chapter 2",
+    "cf. Jones (2018)",
+    "cf. also"
+   ],
+   "examples": {
+    "everyday": "My notes say \"cf. last week's lecture,\" so I need to compare the two charts.",
+    "professional": "Revenue rose 8 percent this quarter (cf. 3 percent last year).",
+    "analytical": "Kant's view of duty is quite strict (cf. Mill, who judges actions by their results)."
+   },
+   "analogy": "Like holding two photos side by side and asking what changed.",
+   "etymology": "Short for Latin confer, \"compare\" (literally \"bring together\"). It has been used in English scholarly writing since the 1500s and 1600s.",
+   "common_mistakes": [
+    "Using \"cf.\" to mean \"see\" for a source that simply supports your point; use \"see\" instead.",
+    "Writing \"c.f.\" with two periods; the standard form is \"cf.\"",
+    "Thinking it stands for \"confirm\"; it stands for Latin confer, \"compare.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "QED",
+  "domains": [
+   "common_phrases",
+   "mathematics",
+   "logic"
+  ],
+  "phonetic": "/ˌkju ˌi ˈdi/",
+  "meanings": [
+   {
+    "pos": "abbreviation",
+    "senses": [
+     "Which was to be demonstrated: written at the end of a proof to show it is complete; used jokingly to mean \"and that proves it.\""
+    ]
+   }
+  ],
+  "etymology": "Short for Latin quod erat demonstrandum, \"which was to be demonstrated,\" a translation of the Greek phrase used by Euclid and Archimedes at the end of proofs. It has been used in English since the 1600s.",
+  "conversation": [
+   {
+    "sense": "joke",
+    "text": "You said you'd never eat kale, and you just had a second helping. QED: you like it."
+   },
+   {
+    "sense": "math class",
+    "text": "So x must equal 4, and that's what we had to show. QED."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "abbreviation",
+    "definition": "Which was to be demonstrated: written at the end of a proof to show it is complete; used jokingly to mean \"and that proves it.\""
+   },
+   "pronunciation": {
+    "ipa": "/ˌkju ˌi ˈdi/",
+    "respelling": "kyoo ee DEE",
+    "tip": "Say the letter names: kyoo ee DEE, with the stress on the last letter."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "academic",
+    "technical"
+   ],
+   "connotation": "Confident and triumphant; in casual use, playful or a bit smug.",
+   "usage_note": "Written at the end of a mathematical or logical proof; many modern texts use a small square symbol (∎ or □) instead. In everyday speech it is a joking way to say an argument has been proved. Usually written in capitals, with or without periods: \"QED\" or \"Q.E.D.\" Chicago style prefers no periods.",
+   "word_family": [
+    "quod erat demonstrandum (full Latin form)",
+    "Q.E.D. (style with periods)",
+    "∎ (tombstone symbol)"
+   ],
+   "distinctions": [
+    {
+     "vs": "therefore",
+     "note": "\"Therefore\" introduces a conclusion; \"QED\" announces that the conclusion has been fully proved."
+    },
+    {
+     "vs": "i.e.",
+     "note": "\"I.e.\" explains; \"QED\" closes a proof."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "QED.",
+    "and so, QED",
+    "quod erat demonstrandum"
+   ],
+   "examples": {
+    "everyday": "He said he wasn't tired, then fell asleep on the couch. QED.",
+    "professional": "Our forecast said the price cut would raise sales, and sales rose 20 percent. QED.",
+    "analytical": "The proof ends by showing the assumption leads to a contradiction, so the statement must be true. QED."
+   },
+   "analogy": "Like a judge's gavel: the case is closed.",
+   "etymology": "Short for Latin quod erat demonstrandum, \"which was to be demonstrated,\" a translation of the Greek phrase used by Euclid and Archimedes at the end of proofs. It has been used in English since the 1600s.",
+   "common_mistakes": [
+    "Using QED for a claim that has not actually been proved; it means the proof is complete.",
+    "Spelling out the Latin wrong, such as \"quod erat demonstradum.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "ibid.",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˈɪbɪd/",
+  "meanings": [
+   {
+    "pos": "abbreviation",
+    "senses": [
+     "In the same place: used in a citation to refer to the same source as the one just cited."
+    ]
+   }
+  ],
+  "etymology": "Short for Latin ibidem, \"in the same place.\" It has been used in English scholarly notes since the 1600s and 1700s.",
+  "conversation": [
+   {
+    "sense": "writing help",
+    "text": "If the next footnote is the same book, you can just write \"Ibid.\""
+   },
+   {
+    "sense": "student",
+    "text": "My history paper has ibid. in like ten footnotes in a row."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "abbreviation",
+    "definition": "In the same place: used in a citation to refer to the same source as the one just cited."
+   },
+   "pronunciation": {
+    "ipa": "/ˈɪbɪd/",
+    "respelling": "IB-id",
+    "tip": "Say it as a word: IB-id, with the stress on the first syllable. The full Latin is IB-ih-dem."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "academic",
+    "technical"
+   ],
+   "connotation": "Neutral and technical.",
+   "usage_note": "Used only in footnotes and endnotes, mainly in history and the humanities (Chicago notes style). It refers to the immediately preceding note; add a page number if it differs: \"Ibid., 45.\" It is capitalized at the start of a note, written with a period, and usually not italicized today. The current Chicago Manual of Style discourages ibid. in favor of short citations, and APA and MLA styles do not use it. Rarely said aloud.",
+   "word_family": [
+    "ibidem (full Latin form)",
+    "op. cit. (the work cited, older use)",
+    "id. (the same, in legal citations)"
+   ],
+   "distinctions": [
+    {
+     "vs": "op. cit.",
+     "note": "\"Op. cit.\" refers to a work cited earlier, not just in the last note; most styles now avoid it."
+    },
+    {
+     "vs": "idem",
+     "note": "\"Idem\" (the same person) refers to the same author; \"ibid.\" refers to the same source."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "Ibid., 23.",
+    "ibid. p. 12",
+    "use ibid."
+   ],
+   "examples": {
+    "everyday": "My teacher told me to use ibid. instead of copying the full book title again.",
+    "professional": "Footnote 14 reads \"Ibid., 102,\" because it cites the same report as note 13.",
+    "analytical": "Because ibid. depends on the note before it, it can become wrong if notes are moved, which is one reason style guides now discourage it."
+   },
+   "analogy": "Like saying \"same as above\" on a form.",
+   "etymology": "Short for Latin ibidem, \"in the same place.\" It has been used in English scholarly notes since the 1600s and 1700s.",
+   "common_mistakes": [
+    "Using ibid. when another source was cited in between; it only refers to the note directly before.",
+    "Writing \"ibid\" without the period or \"Ib.\" in place of \"Ibid.\"",
+    "Pronouncing it \"eye-bid\"; Americans usually say IB-id."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ }
+]

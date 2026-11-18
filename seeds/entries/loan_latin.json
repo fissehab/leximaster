@@ -1,0 +1,2589 @@
+[
+ {
+  "word": "sine qua non",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌsɪni kwɑ ˈnɑn/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Something absolutely necessary; an essential condition without which something else cannot happen or exist."
+    ]
+   }
+  ],
+  "etymology": "From Latin, literally \"without which not,\" short for legal and scholastic Latin condicio sine qua non, \"a condition without which (it could) not (be).\" In English since the early 1600s.",
+  "conversation": [
+   {
+    "sense": "essential",
+    "text": "For this job, a driver's license is the sine qua non. No license, no interview."
+   },
+   {
+    "sense": "opinion",
+    "text": "Honestly, good coffee is the sine qua non of a decent morning."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "Something absolutely necessary; an essential condition without which something else cannot happen or exist."
+   },
+   "pronunciation": {
+    "ipa": "/ˌsɪni kwɑ ˈnɑn/",
+    "respelling": "sin-ee kwah NAHN",
+    "tip": "Stress the last word: sin-ee kwah NAHN. You will also hear \"SY-nee kway NAHN\" /ˌsaɪni kweɪ ˈnɑn/ and \"sin-ay kwah NOHN\"; all are accepted."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal",
+    "academic"
+   ],
+   "connotation": "Neutral and serious; it can sound learned or a little showy in casual talk.",
+   "usage_note": "Used mostly in writing, speeches and academic or legal prose, usually as \"the sine qua non of X.\" Often printed in roman type today, though some publications italicize it. In casual talk it is sometimes used playfully about small things. Plural (rare): sine qua nons.",
+   "word_family": [
+    "sine qua nons (plural, rare)",
+    "condicio sine qua non (full legal Latin)"
+   ],
+   "distinctions": [
+    {
+     "vs": "prerequisite",
+     "note": "\"Prerequisite\" is something required before you start; \"sine qua non\" is an indispensable ingredient, stronger and more formal."
+    },
+    {
+     "vs": "essential",
+     "note": "\"Essential\" is the everyday word; \"sine qua non\" says the same thing with a scholarly tone."
+    }
+   ],
+   "antonyms": [
+    "nonessential",
+    "optional extra"
+   ],
+   "collocations": [
+    "the sine qua non of",
+    "an absolute sine qua non",
+    "a sine qua non for success"
+   ],
+   "examples": {
+    "everyday": "A good pair of shoes is the sine qua non of any hiking trip.",
+    "professional": "Trust is the sine qua non of a working partnership, so we disclose every conflict of interest.",
+    "analytical": "Random assignment is the sine qua non of a true experiment; without it, causal claims are weak."
+   },
+   "analogy": "Like the key to a car: everything else can be perfect, but without it nothing moves.",
+   "etymology": "From Latin, literally \"without which not,\" short for legal and scholastic Latin condicio sine qua non, \"a condition without which (it could) not (be).\" In English since the early 1600s.",
+   "common_mistakes": [
+    "Spelling it \"sine qua none\" or \"sina qua non\".",
+    "Using it for something merely helpful; it means truly indispensable.",
+    "Writing \"a sine qua non condition\"; the phrase already means \"essential condition.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "ad nauseam",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌæd ˈnɔziəm/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "To a tiresome, excessive degree; repeated or continued so long that it becomes annoying or sickening."
+    ]
+   }
+  ],
+  "etymology": "From Latin ad nauseam, \"to (the point of) nausea,\" from nausea, originally \"seasickness\" (Greek naus, \"ship\"). In English since the 1600s.",
+  "conversation": [
+   {
+    "sense": "complaint",
+    "text": "He talked about his new car ad nauseam all through dinner."
+   },
+   {
+    "sense": "tired",
+    "text": "We've discussed this ad nauseam. Let's just make a decision."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "To a tiresome, excessive degree; repeated or continued so long that it becomes annoying or sickening."
+   },
+   "pronunciation": {
+    "ipa": "/ˌæd ˈnɔziəm/",
+    "respelling": "ad NAW-zee-uhm",
+    "tip": "Stress NAW: ad NAW-zee-uhm. Some Americans say \"NAW-shee-uhm\" or \"NAH-zee-uhm\"; all are heard."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "formal"
+   ],
+   "connotation": "Negative; it expresses boredom or irritation at repetition.",
+   "usage_note": "Common in both speech and writing, usually after verbs like \"repeat,\" \"discuss,\" \"debate\" or \"play\": \"The ad ran ad nauseam.\" Usually not italicized in American writing. It always comes after the verb or object, never before a noun.",
+   "word_family": [
+    "nausea (noun)",
+    "nauseating (adjective)",
+    "argumentum ad nauseam (argument by repetition)"
+   ],
+   "distinctions": [
+    {
+     "vs": "ad infinitum",
+     "note": "\"Ad infinitum\" means endlessly, without the sense of disgust; \"ad nauseam\" adds that the repetition is sickening."
+    },
+    {
+     "vs": "over and over",
+     "note": "\"Over and over\" is the plain everyday version; \"ad nauseam\" is more emphatic and a bit more formal."
+    }
+   ],
+   "antonyms": [
+    "once",
+    "briefly",
+    "in moderation"
+   ],
+   "collocations": [
+    "repeated ad nauseam",
+    "discussed ad nauseam",
+    "played ad nauseam",
+    "debated ad nauseam"
+   ],
+   "examples": {
+    "everyday": "That song played on the radio ad nauseam all summer.",
+    "professional": "The same talking points have been repeated ad nauseam; we need new data, not new slogans.",
+    "analytical": "A claim repeated ad nauseam can feel true to listeners even when no evidence supports it."
+   },
+   "analogy": "Like a carousel that will not stop: fun for one ride, sickening by the tenth.",
+   "etymology": "From Latin ad nauseam, \"to (the point of) nausea,\" from nausea, originally \"seasickness\" (Greek naus, \"ship\"). In English since the 1600s.",
+   "common_mistakes": [
+    "Spelling it \"ad nauseum\"; the correct ending is -eam.",
+    "Using it before a noun (\"an ad nauseam discussion\"); it normally follows the verb.",
+    "Thinking it means \"to infinity\"; it means to the point of disgust."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "carpe diem",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌkɑɹpeɪ ˈdiəm/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "\"Seize the day\": a call to enjoy the present and make the most of today rather than waiting for the future."
+    ]
+   }
+  ],
+  "etymology": "From Latin carpe diem, literally \"pluck the day\" (carpe, \"pluck, harvest\"), from a poem by Horace (Odes 1.11, about 23 BC), which ends by urging the reader to trust as little as possible in tomorrow. In English since the early 1800s; widely popular in the US after the 1989 film Dead Poets Society.",
+  "conversation": [
+   {
+    "sense": "encouragement",
+    "text": "You've always wanted to learn to surf. Carpe diem! Sign up for the class."
+   },
+   {
+    "sense": "decision",
+    "text": "I booked the trip on a whim. Carpe diem, right?"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "interjection",
+    "definition": "\"Seize the day\": a call to enjoy the present and make the most of today rather than waiting for the future."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkɑɹpeɪ ˈdiəm/",
+    "respelling": "kahr-pay DEE-uhm",
+    "tip": "Stress DEE: kahr-pay DEE-uhm. \"KAHR-pee DY-uhm\" is also heard. The first word has two syllables: CAR-pay, not \"carp.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "informal"
+   ],
+   "connotation": "Positive and upbeat; sometimes used ironically to excuse impulsive choices.",
+   "usage_note": "Very well known in the US, used as a motto, a tattoo, or a cheerful excuse. It can stand alone as an exclamation (\"Carpe diem!\") or as a noun (\"a carpe diem attitude\"). Usually not italicized. The English translation \"seize the day\" is just as common.",
+   "word_family": [
+    "seize the day (English translation)",
+    "carpe noctem (joking \"seize the night\")"
+   ],
+   "distinctions": [
+    {
+     "vs": "YOLO",
+     "note": "\"YOLO\" (you only live once) is slangy and often used to excuse reckless fun; \"carpe diem\" sounds more thoughtful and classic."
+    },
+    {
+     "vs": "live for the moment",
+     "note": "\"Live for the moment\" can suggest ignoring the future; \"carpe diem\" stresses making good use of today."
+    }
+   ],
+   "antonyms": [
+    "procrastinate",
+    "put off until tomorrow"
+   ],
+   "collocations": [
+    "carpe diem attitude",
+    "live by carpe diem",
+    "a carpe diem moment"
+   ],
+   "examples": {
+    "everyday": "The weather is perfect, so carpe diem: let's go to the beach.",
+    "professional": "The market window is short; this is a carpe diem moment for our launch.",
+    "analytical": "Horace's carpe diem is less about pleasure-seeking than about accepting that the future is uncertain."
+   },
+   "analogy": "Like picking fruit when it is ripe: wait too long and the chance is gone.",
+   "etymology": "From Latin carpe diem, literally \"pluck the day\" (carpe, \"pluck, harvest\"), from a poem by Horace (Odes 1.11, about 23 BC), which ends by urging the reader to trust as little as possible in tomorrow. In English since the early 1800s; widely popular in the US after the 1989 film Dead Poets Society.",
+   "common_mistakes": [
+    "Pronouncing it \"carp DY-em\" with a one-syllable \"carp\".",
+    "Translating it as \"seize the dime\" or thinking diem means \"money\"; diem means \"day,\" as in per diem.",
+    "Spelling it \"carpe deum\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "et cetera",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ɛt ˈsɛtəɹə/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "And other things of the same kind; and so on. Used at the end of a list to show that it could continue."
+    ]
+   }
+  ],
+  "etymology": "From Latin et cetera, \"and the rest\" (et, \"and\" + cetera, \"the other things\"). Used in English since the Middle Ages, often written \"&c.\" in older texts.",
+  "conversation": [
+   {
+    "sense": "listing",
+    "text": "Bring the usual camping stuff: tent, sleeping bag, flashlight, et cetera."
+   },
+   {
+    "sense": "impatience",
+    "text": "He gave me the whole speech about responsibility, hard work, et cetera, et cetera."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "And other things of the same kind; and so on. Used at the end of a list to show that it could continue."
+   },
+   "pronunciation": {
+    "ipa": "/ɛt ˈsɛtəɹə/",
+    "respelling": "et SET-er-uh",
+    "tip": "Stress SET: et SET-er-uh, often shortened to \"et SET-ruh.\" Begin with a t sound: \"et,\" not \"ek.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral"
+   ],
+   "connotation": "Neutral; repeated (\"et cetera, et cetera\") it can sound bored or dismissive.",
+   "usage_note": "In writing, the abbreviation \"etc.\" is far more common than the full form, especially in lists, notes and informal documents; formal prose often prefers \"and so on\" or a complete list. Put a comma before it in a series, and do not add \"and\" (\"and etc.\" is redundant). Do not use it with \"such as,\" \"for example\" or \"e.g.,\" which already show the list is incomplete. Use it for things; for people, \"et al.\" is used.",
+   "word_family": [
+    "etc. (abbreviation)",
+    "&c. (old abbreviation)",
+    "et cetera, et cetera (repeated, dismissive)"
+   ],
+   "distinctions": [
+    {
+     "vs": "et al.",
+     "note": "\"Et al.\" (and others) is used for people, especially authors; \"etc.\" is for things."
+    },
+    {
+     "vs": "and so on",
+     "note": "\"And so on\" is the plain English equivalent and is preferred in polished formal writing."
+    }
+   ],
+   "antonyms": [
+    "only",
+    "exclusively"
+   ],
+   "collocations": [
+    "et cetera, et cetera",
+    "and so on, et cetera",
+    "pens, paper, etc."
+   ],
+   "examples": {
+    "everyday": "We need milk, eggs, bread, et cetera.",
+    "professional": "Expense reports must include receipts for travel, meals, lodging, etc.",
+    "analytical": "The model accepts several input types (text, images, audio, etc.), but performance varies by type."
+   },
+   "analogy": "Like the dots that trail off at the end of a sentence: they tell you the list goes on without spelling it out.",
+   "etymology": "From Latin et cetera, \"and the rest\" (et, \"and\" + cetera, \"the other things\"). Used in English since the Middle Ages, often written \"&c.\" in older texts.",
+   "common_mistakes": [
+    "Pronouncing it \"ek-SET-er-uh\" or \"ex-cetera\"; the first word is \"et\" with a t.",
+    "Misspelling the abbreviation as \"ect.\"; it is \"etc.\"",
+    "Writing \"and etc.\" or using etc. after \"such as\" or \"e.g.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "ex officio",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˌɛks əˈfɪʃioʊ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "By virtue of one's office or position, rather than by election or appointment; used especially of membership on a board or committee."
+    ]
+   }
+  ],
+  "etymology": "From Latin ex officio, \"from (or by reason of) the office.\" In English since the 1500s.",
+  "conversation": [
+   {
+    "sense": "board",
+    "text": "The mayor sits on the library board ex officio."
+   },
+   {
+    "sense": "clarifying",
+    "text": "She's an ex officio member, so she got the seat automatically when she became principal."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective",
+    "definition": "By virtue of one's office or position, rather than by election or appointment; used especially of membership on a board or committee."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɛks əˈfɪʃioʊ/",
+    "respelling": "eks uh-FISH-ee-oh",
+    "tip": "Stress FISH: eks uh-FISH-ee-oh. The ci sounds like \"sh.\""
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal",
+    "technical"
+   ],
+   "connotation": "Neutral and official.",
+   "usage_note": "Common in American organizational, governmental and legal language, especially in bylaws: \"The president is an ex officio member of all committees.\" Usually not italicized. Pitfall: ex officio does not by itself mean non-voting; whether such a member votes depends on the bylaws. Sometimes hyphenated before a noun (ex-officio member).",
+   "word_family": [
+    "ex-officio (hyphenated before a noun)",
+    "officio (Latin, \"office\")",
+    "official (related English word)"
+   ],
+   "distinctions": [
+    {
+     "vs": "honorary",
+     "note": "An honorary member is given membership as an honor; an ex officio member has it because of the job they hold."
+    },
+    {
+     "vs": "non-voting",
+     "note": "\"Non-voting\" refers to voting rights; ex officio members may or may not vote."
+    }
+   ],
+   "antonyms": [
+    "elected",
+    "appointed"
+   ],
+   "collocations": [
+    "ex officio member",
+    "serve ex officio",
+    "ex officio seat",
+    "ex officio, non-voting"
+   ],
+   "examples": {
+    "everyday": "The team captain is an ex officio member of the student council.",
+    "professional": "Per the bylaws, the CEO serves ex officio on the board but does not vote on her own compensation.",
+    "analytical": "Boards with many ex officio seats tend to reflect the institution's leadership rather than its members."
+   },
+   "analogy": "Like a parking spot that comes with the job: you get it because of the title, not because you applied.",
+   "etymology": "From Latin ex officio, \"from (or by reason of) the office.\" In English since the 1500s.",
+   "common_mistakes": [
+    "Assuming ex officio means \"former officer\" because of the English prefix ex-.",
+    "Assuming ex officio members cannot vote.",
+    "Pronouncing it \"ex oh-FISH-oh\" and dropping a syllable."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "ex post facto",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˌɛks poʊst ˈfæktoʊ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Done, made or applied after the fact, with effect on something that happened earlier; especially of a law that punishes acts committed before the law existed."
+    ]
+   }
+  ],
+  "etymology": "From Latin ex post facto, \"from what is done afterward.\" In English since the 1600s.",
+  "conversation": [
+   {
+    "sense": "law",
+    "text": "You can't be punished under a law passed after you did it. That would be an ex post facto law."
+   },
+   {
+    "sense": "criticism",
+    "text": "Those reasons sound like an ex post facto justification. They decided first and explained later."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective",
+    "definition": "Done, made or applied after the fact, with effect on something that happened earlier; especially of a law that punishes acts committed before the law existed."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɛks poʊst ˈfæktoʊ/",
+    "respelling": "eks pohst FAK-toh",
+    "tip": "Stress FAK: eks pohst FAK-toh."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal",
+    "technical"
+   ],
+   "connotation": "Neutral in law; in general use often critical, suggesting unfair or after-the-fact reasoning.",
+   "usage_note": "Best known in the US from the Constitution, which forbids Congress and the states to pass ex post facto laws (Article I, Sections 9 and 10). In general writing it describes explanations or approvals given after something has already happened. Usually not italicized. The adverb is also \"ex post facto\" (approved ex post facto).",
+   "word_family": [
+    "ex post (short form, economics)",
+    "ex ante (opposite, \"beforehand\")",
+    "retroactive (English equivalent)"
+   ],
+   "distinctions": [
+    {
+     "vs": "retroactive",
+     "note": "\"Retroactive\" is the everyday word for something taking effect from an earlier date; \"ex post facto\" is mostly legal and often implies unfairness."
+    },
+    {
+     "vs": "after the fact",
+     "note": "\"After the fact\" is the plain English phrase; \"ex post facto\" is the formal Latin one."
+    }
+   ],
+   "antonyms": [
+    "ex ante",
+    "prospective",
+    "in advance"
+   ],
+   "collocations": [
+    "ex post facto law",
+    "ex post facto justification",
+    "approved ex post facto",
+    "ex post facto clause"
+   ],
+   "examples": {
+    "everyday": "Grounding me for something that wasn't a rule last week feels like an ex post facto punishment.",
+    "professional": "The committee's ex post facto approval of the expense does not excuse skipping the review process.",
+    "analytical": "Ex post facto explanations fit the data perfectly because they were built from it, which makes them weak evidence."
+   },
+   "analogy": "Like changing the rules of a game after it ends and then declaring a new winner.",
+   "etymology": "From Latin ex post facto, \"from what is done afterward.\" In English since the 1600s.",
+   "common_mistakes": [
+    "Writing \"ex-post-facto\" with hyphens in every use; hyphens are optional and only before a noun.",
+    "Using it to mean simply \"later\"; it means something applied backward to an earlier event.",
+    "Saying \"ex post de facto,\" mixing it with \"de facto.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in absentia",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˌɪn æbˈsɛnʃə/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "While absent; without the person being present, used especially of trials, sentences and awards."
+    ]
+   }
+  ],
+  "etymology": "From Latin in absentia, \"in absence.\" In English since the 1800s.",
+  "conversation": [
+   {
+    "sense": "news",
+    "text": "He fled the country and was tried in absentia."
+   },
+   {
+    "sense": "graduation",
+    "text": "I couldn't make the ceremony, so my degree was conferred in absentia."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "While absent; without the person being present, used especially of trials, sentences and awards."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɪn æbˈsɛnʃə/",
+    "respelling": "in ab-SEN-shuh",
+    "tip": "Stress SEN: in ab-SEN-shuh. The ti sounds like \"sh\"; \"ab-SEN-shee-uh\" is also heard."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal",
+    "technical"
+   ],
+   "connotation": "Neutral; in legal news it often signals that a defendant has fled.",
+   "usage_note": "Used mainly in law and academic ceremonies. US courts generally require a criminal defendant to be present at trial, so trials in absentia are uncommon in the US and more often reported from other countries. Often italicized in formal writing, but roman type is also common.",
+   "word_family": [
+    "absence (English relative)",
+    "absent (adjective)"
+   ],
+   "distinctions": [
+    {
+     "vs": "by proxy",
+     "note": "\"By proxy\" means someone acts for you; \"in absentia\" means the event happens without you, with or without a stand-in."
+    },
+    {
+     "vs": "in one's absence",
+     "note": "\"In one's absence\" is the everyday phrase; \"in absentia\" is formal and mostly legal or ceremonial."
+    }
+   ],
+   "antonyms": [
+    "in person",
+    "in attendance"
+   ],
+   "collocations": [
+    "tried in absentia",
+    "convicted in absentia",
+    "sentenced in absentia",
+    "awarded in absentia"
+   ],
+   "examples": {
+    "everyday": "My grandfather received his medal in absentia because he was in the hospital.",
+    "professional": "The court convicted the executive in absentia after he left the country before trial.",
+    "analytical": "Trials in absentia raise questions about the right to confront witnesses and present a defense."
+   },
+   "analogy": "Like a meeting where your name is on the agenda but your chair is empty.",
+   "etymology": "From Latin in absentia, \"in absence.\" In English since the 1800s.",
+   "common_mistakes": [
+    "Spelling it \"in abstentia\" or \"in absencia\".",
+    "Using it for simply missing something (\"I was in absentia at the party\"); it is for formal proceedings."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in situ",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌɪn ˈsaɪtu/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "In its original or natural place; in position, without being moved."
+    ]
+   }
+  ],
+  "etymology": "From Latin in situ, \"in position\" (situs, \"place, site\"). In English since the 1700s.",
+  "conversation": [
+   {
+    "sense": "museum",
+    "text": "The mosaic was left in situ, so you have to visit the site to see it."
+   },
+   {
+    "sense": "home",
+    "text": "The contractor said we could refinish the floors in situ instead of replacing them."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "In its original or natural place; in position, without being moved."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɪn ˈsaɪtu/",
+    "respelling": "in SY-too",
+    "tip": "Stress the second word: in SY-too. \"in SIT-oo\" and \"in SEE-too\" are also common, especially among scientists."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "technical",
+    "formal"
+   ],
+   "connotation": "Neutral and precise.",
+   "usage_note": "Common in science, medicine, archaeology, geology and engineering: \"in situ testing,\" \"carcinoma in situ\" (cancer that has not spread). In general writing it means \"in place.\" Often italicized in formal writing, though scientific writing usually prints it in roman.",
+   "word_family": [
+    "site, situation (English relatives)",
+    "ex situ (opposite, \"off site\")"
+   ],
+   "distinctions": [
+    {
+     "vs": "in place",
+     "note": "\"In place\" is the everyday phrase; \"in situ\" is the technical one."
+    },
+    {
+     "vs": "in vivo",
+     "note": "\"In vivo\" means inside a living organism; \"in situ\" means in the original location, which may or may not be living tissue."
+    }
+   ],
+   "antonyms": [
+    "ex situ",
+    "removed",
+    "relocated"
+   ],
+   "collocations": [
+    "left in situ",
+    "in situ testing",
+    "carcinoma in situ",
+    "preserved in situ",
+    "in situ measurement"
+   ],
+   "examples": {
+    "everyday": "The old fireplace was kept in situ when they remodeled the living room.",
+    "professional": "Engineers ran in situ tests on the soil rather than relying on lab samples.",
+    "analytical": "Artifacts studied in situ keep their context, which is lost once they are removed from the ground."
+   },
+   "analogy": "Like studying a bird in its nest rather than in a cage.",
+   "etymology": "From Latin in situ, \"in position\" (situs, \"place, site\"). In English since the 1700s.",
+   "common_mistakes": [
+    "Spelling it \"insitu\" or \"in-situ\" as one word in running text.",
+    "Using it to mean \"on site\" for people (\"the manager was in situ\"); it is for objects and processes."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in toto",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌɪn ˈtoʊtoʊ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Completely; as a whole; in its entirety."
+    ]
+   }
+  ],
+  "etymology": "From Latin in toto, \"in all\" (totus, \"whole\"). In English since the 1700s.",
+  "conversation": [
+   {
+    "sense": "disagreeing",
+    "text": "I don't reject the plan in toto. I just think the budget part needs work."
+   },
+   {
+    "sense": "approval",
+    "text": "The board accepted her proposal in toto, without a single change."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "Completely; as a whole; in its entirety."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɪn ˈtoʊtoʊ/",
+    "respelling": "in TOH-toh",
+    "tip": "Stress the second word: in TOH-toh, both o's as in \"go.\""
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal"
+   ],
+   "connotation": "Neutral; often used to stress completeness of acceptance or rejection.",
+   "usage_note": "Mostly used in formal writing, law and reviews, often with \"accept,\" \"reject,\" \"adopt\" or \"taken.\" Usually printed in roman type in American writing. It is uncommon in casual speech, where people say \"completely\" or \"as a whole.\"",
+   "word_family": [
+    "total, totality (English relatives)",
+    "in total (English phrase, different meaning)"
+   ],
+   "distinctions": [
+    {
+     "vs": "in total",
+     "note": "\"In total\" means \"added up\" (\"$50 in total\"); \"in toto\" means \"entirely, as a whole.\""
+    },
+    {
+     "vs": "altogether",
+     "note": "\"Altogether\" can mean completely or on the whole; \"in toto\" is formal and usually means entirely."
+    }
+   ],
+   "antonyms": [
+    "in part",
+    "partially",
+    "piecemeal"
+   ],
+   "collocations": [
+    "rejected in toto",
+    "accepted in toto",
+    "adopted in toto",
+    "taken in toto"
+   ],
+   "examples": {
+    "everyday": "We didn't eat the whole cake in toto, but we came close.",
+    "professional": "The client approved the contract in toto after the second round of edits.",
+    "analytical": "Taken in toto, the evidence supports the hypothesis even though no single study is decisive."
+   },
+   "analogy": "Like buying the whole box rather than picking out single chocolates.",
+   "etymology": "From Latin in toto, \"in all\" (totus, \"whole\"). In English since the 1700s.",
+   "common_mistakes": [
+    "Using it to mean \"in total\" for sums (\"we spent $200 in toto\"); prefer \"in total.\"",
+    "Spelling it \"in totto\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in vitro",
+  "domains": [
+   "common_phrases",
+   "home_health"
+  ],
+  "phonetic": "/ˌɪn ˈvitɹoʊ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Taking place in a test tube, dish or other artificial environment outside a living organism."
+    ]
+   }
+  ],
+  "etymology": "From Latin in vitro, \"in glass,\" referring to laboratory glassware. In English since the late 1800s.",
+  "conversation": [
+   {
+    "sense": "family",
+    "text": "They had their twins through in vitro fertilization."
+   },
+   {
+    "sense": "science",
+    "text": "The drug worked in vitro, but they still need to test it in animals."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective",
+    "definition": "Taking place in a test tube, dish or other artificial environment outside a living organism."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɪn ˈvitɹoʊ/",
+    "respelling": "in VEE-troh",
+    "tip": "Stress VEE: in VEE-troh. The i sounds like \"ee,\" not \"eye.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "technical",
+    "neutral"
+   ],
+   "connotation": "Neutral and scientific.",
+   "usage_note": "Best known in the US from \"in vitro fertilization\" (IVF), the fertility treatment in which an egg is fertilized in a lab. In science it contrasts with \"in vivo\" (in a living organism). Often italicized in scientific papers, but not in news writing. Hyphenated before a noun in some styles (in-vitro study).",
+   "word_family": [
+    "IVF (in vitro fertilization)",
+    "in vivo (opposite)",
+    "vitreous (English relative, \"glassy\")"
+   ],
+   "distinctions": [
+    {
+     "vs": "in vivo",
+     "note": "\"In vivo\" is inside a living body; \"in vitro\" is in a lab container."
+    },
+    {
+     "vs": "in silico",
+     "note": "\"In silico\" means performed by computer simulation; \"in vitro\" means in a lab dish."
+    }
+   ],
+   "antonyms": [
+    "in vivo"
+   ],
+   "collocations": [
+    "in vitro fertilization",
+    "in vitro study",
+    "tested in vitro",
+    "in vitro results"
+   ],
+   "examples": {
+    "everyday": "My cousin went through in vitro fertilization for two years before her son was born.",
+    "professional": "Our in vitro data are promising, but we need animal studies before a clinical trial.",
+    "analytical": "Effects seen in vitro often shrink or disappear in vivo, where the body metabolizes the compound."
+   },
+   "analogy": "Like testing a recipe in a tiny pan before cooking for a whole party.",
+   "etymology": "From Latin in vitro, \"in glass,\" referring to laboratory glassware. In English since the late 1800s.",
+   "common_mistakes": [
+    "Pronouncing it \"in VY-troh\" with \"eye\"; Americans say VEE-troh.",
+    "Using \"in vitro\" alone to mean IVF in formal writing; say \"in vitro fertilization.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in vivo",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌɪn ˈvivoʊ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Taking place in a living organism, as opposed to in a test tube or artificial environment."
+    ]
+   }
+  ],
+  "etymology": "From Latin in vivo, \"in a living (thing).\" In English since around 1900.",
+  "conversation": [
+   {
+    "sense": "research",
+    "text": "The results looked great in the dish, but in vivo the effect was much weaker."
+   },
+   {
+    "sense": "explaining",
+    "text": "In vivo just means they tested it in living animals or people."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective",
+    "definition": "Taking place in a living organism, as opposed to in a test tube or artificial environment."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɪn ˈvivoʊ/",
+    "respelling": "in VEE-voh",
+    "tip": "Stress VEE: in VEE-voh."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "technical"
+   ],
+   "connotation": "Neutral and scientific.",
+   "usage_note": "Used mainly in biology, medicine and pharmacology, usually paired with or contrasted to \"in vitro.\" Often italicized in scientific writing. Rare in everyday talk outside science.",
+   "word_family": [
+    "in vitro (opposite)",
+    "vivid, vital (English relatives)",
+    "ex vivo (tissue taken out of the organism)"
+   ],
+   "distinctions": [
+    {
+     "vs": "in vitro",
+     "note": "\"In vitro\" is in a lab container; \"in vivo\" is inside a living body."
+    },
+    {
+     "vs": "ex vivo",
+     "note": "\"Ex vivo\" means living tissue studied outside the organism; \"in vivo\" means inside it."
+    }
+   ],
+   "antonyms": [
+    "in vitro",
+    "in silico"
+   ],
+   "collocations": [
+    "in vivo study",
+    "in vivo imaging",
+    "tested in vivo",
+    "in vivo experiments"
+   ],
+   "examples": {
+    "everyday": "My sister explained that her lab finally moved from cell cultures to in vivo tests.",
+    "professional": "The in vivo results in mice justified moving the compound into a phase 1 trial.",
+    "analytical": "Because metabolism and immunity matter, in vivo studies capture effects that in vitro work misses."
+   },
+   "analogy": "Like testing a car on a real road instead of on a garage stand.",
+   "etymology": "From Latin in vivo, \"in a living (thing).\" In English since around 1900.",
+   "common_mistakes": [
+    "Pronouncing it \"in VY-voh\"; Americans say VEE-voh.",
+    "Confusing it with \"in vitro\"; they mean opposite settings."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "ipso facto",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌɪpsoʊ ˈfæktoʊ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "By that very fact; as a direct and automatic result of a particular fact or act."
+    ]
+   }
+  ],
+  "etymology": "From Latin ipso facto, \"by the fact itself.\" In English since the 1500s.",
+  "conversation": [
+   {
+    "sense": "arguing",
+    "text": "Being expensive doesn't make it good ipso facto."
+   },
+   {
+    "sense": "rules",
+    "text": "If you miss three practices, you're ipso facto off the team."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "By that very fact; as a direct and automatic result of a particular fact or act."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɪpsoʊ ˈfæktoʊ/",
+    "respelling": "ip-soh FAK-toh",
+    "tip": "Stress FAK: ip-soh FAK-toh."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal"
+   ],
+   "connotation": "Neutral; often used in arguments to claim or deny an automatic link.",
+   "usage_note": "Used in law, philosophy and argument, and sometimes in educated speech, often in the negative: \"That is not ipso facto wrong.\" Usually printed in roman type. Avoid using it as a fancy \"therefore\"; it means \"by that fact alone.\"",
+   "word_family": [
+    "ipso jure (by the law itself)",
+    "de facto (in fact)"
+   ],
+   "distinctions": [
+    {
+     "vs": "de facto",
+     "note": "\"De facto\" means \"in practice, in reality\"; \"ipso facto\" means \"automatically, by that very fact.\""
+    },
+    {
+     "vs": "therefore",
+     "note": "\"Therefore\" introduces any conclusion; \"ipso facto\" says the conclusion follows from the fact itself, with nothing else needed."
+    }
+   ],
+   "antonyms": [
+    "not necessarily"
+   ],
+   "collocations": [
+    "not ipso facto",
+    "ipso facto invalid",
+    "ipso facto guilty",
+    "is ipso facto"
+   ],
+   "examples": {
+    "everyday": "Owning a guitar doesn't ipso facto make you a musician.",
+    "professional": "A missed payment ipso facto puts the loan in default under section 7.",
+    "analytical": "Correlation is not ipso facto evidence of causation."
+   },
+   "analogy": "Like a light switch wired to a door: open the door and the light is on, no further step needed.",
+   "etymology": "From Latin ipso facto, \"by the fact itself.\" In English since the 1500s.",
+   "common_mistakes": [
+    "Using it as a general synonym for \"therefore\"; it means the result follows automatically from the fact.",
+    "Confusing it with \"de facto.\"",
+    "Spelling it \"ipso fatso\" or \"ipse facto\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "modus operandi",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˌmoʊdəs ˌɑpəˈɹændi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A person's or group's usual way of doing something; in police use, a criminal's characteristic method."
+    ]
+   }
+  ],
+  "etymology": "From Latin modus operandi, \"way of operating.\" In English since the 1600s.",
+  "conversation": [
+   {
+    "sense": "crime",
+    "text": "The burglar's modus operandi was always the same: back window, Sunday afternoon."
+   },
+   {
+    "sense": "joking",
+    "text": "Show up late and charm everyone. That's his M.O."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "A person's or group's usual way of doing something; in police use, a criminal's characteristic method."
+   },
+   "pronunciation": {
+    "ipa": "/ˌmoʊdəs ˌɑpəˈɹændi/",
+    "respelling": "moh-duhs ah-puh-RAN-dee",
+    "tip": "Stress RAN: moh-duhs ah-puh-RAN-dee. \"ah-puh-RAN-dy\" is also heard. Often shortened to \"M.O.\" (em-OH)."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "formal"
+   ],
+   "connotation": "Neutral; in crime contexts it suggests a recognizable pattern.",
+   "usage_note": "Well known in the US from crime news and TV shows, where the short form \"M.O.\" is very common in speech. It is also used for anyone's habitual approach: \"Her modus operandi is to overprepare.\" Plural: modi operandi (rare). Usually not italicized.",
+   "word_family": [
+    "M.O. (abbreviation)",
+    "modi operandi (plural)",
+    "modus vivendi (a way of living together)"
+   ],
+   "distinctions": [
+    {
+     "vs": "modus vivendi",
+     "note": "\"Modus vivendi\" is a working arrangement between parties who disagree; \"modus operandi\" is a way of working."
+    },
+    {
+     "vs": "method",
+     "note": "\"Method\" is general; \"modus operandi\" suggests a habitual, recognizable pattern."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "usual modus operandi",
+    "same modus operandi",
+    "his M.O.",
+    "change one's modus operandi"
+   ],
+   "examples": {
+    "everyday": "Leaving everything to the last minute is my roommate's modus operandi.",
+    "professional": "Our modus operandi with new clients is a short paid pilot before any long contract.",
+    "analytical": "Investigators linked the cases because the modus operandi was nearly identical in each."
+   },
+   "analogy": "Like a chef's signature dish: you can recognize who made it by the way it is done.",
+   "etymology": "From Latin modus operandi, \"way of operating.\" In English since the 1600s.",
+   "common_mistakes": [
+    "Saying \"modus operandus\" or \"modus operandum\".",
+    "Using it as a plural for several people's methods; the plural is modi operandi, but \"methods\" is usually better."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "per annum",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/pəɹ ˈænəm/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "For each year; annually, used especially of rates, salaries and interest."
+    ]
+   }
+  ],
+  "etymology": "From Latin per annum, \"by the year\" (annus, \"year\"). In English since about 1600.",
+  "conversation": [
+   {
+    "sense": "money",
+    "text": "The account pays three percent per annum."
+   },
+   {
+    "sense": "job",
+    "text": "The posting says sixty thousand per annum, plus benefits."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "For each year; annually, used especially of rates, salaries and interest."
+   },
+   "pronunciation": {
+    "ipa": "/pəɹ ˈænəm/",
+    "respelling": "per AN-uhm",
+    "tip": "Stress AN: per AN-uhm."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal",
+    "technical"
+   ],
+   "connotation": "Neutral and businesslike.",
+   "usage_note": "Used in finance, contracts, job postings and economics; in everyday speech Americans say \"a year\" or \"per year.\" Abbreviated \"p.a.\" in financial documents. Usually not italicized.",
+   "word_family": [
+    "p.a. (abbreviation)",
+    "annual, annually (English relatives)",
+    "per diem, per capita (similar Latin phrases)"
+   ],
+   "distinctions": [
+    {
+     "vs": "per year",
+     "note": "\"Per year\" is the plain English phrase; \"per annum\" is more formal and financial."
+    },
+    {
+     "vs": "per diem",
+     "note": "\"Per diem\" is per day, often a daily allowance; \"per annum\" is per year."
+    }
+   ],
+   "antonyms": [
+    "per diem",
+    "per month"
+   ],
+   "collocations": [
+    "interest per annum",
+    "salary per annum",
+    "five percent per annum",
+    "growth per annum"
+   ],
+   "examples": {
+    "everyday": "Our rent goes up about three percent per annum.",
+    "professional": "The loan carries interest of 6.5 percent per annum, compounded monthly.",
+    "analytical": "The population grew by roughly 1.2 percent per annum over the decade."
+   },
+   "analogy": "Like a yearly subscription price: one number for each turn of the calendar.",
+   "etymology": "From Latin per annum, \"by the year\" (annus, \"year\"). In English since about 1600.",
+   "common_mistakes": [
+    "Spelling it \"per anum\" with one n, which is an unfortunate misspelling.",
+    "Writing \"per annum per year\"; that is redundant."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "terra firma",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌtɛɹə ˈfɝmə/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Dry, solid land, as opposed to the sea or the air; figuratively, safe and familiar ground."
+    ]
+   }
+  ],
+  "etymology": "From Latin terra firma, \"solid land.\" In English since the 1600s.",
+  "conversation": [
+   {
+    "sense": "relief",
+    "text": "After six hours on that rocking boat, I was so happy to be back on terra firma."
+   },
+   {
+    "sense": "flying",
+    "text": "She hates flying and doesn't relax until she's on terra firma again."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "Dry, solid land, as opposed to the sea or the air; figuratively, safe and familiar ground."
+   },
+   "pronunciation": {
+    "ipa": "/ˌtɛɹə ˈfɝmə/",
+    "respelling": "ter-uh FUR-muh",
+    "tip": "Stress FUR: ter-uh FUR-muh."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "informal"
+   ],
+   "connotation": "Positive; suggests relief and safety, often humorous.",
+   "usage_note": "Used mostly humorously after a boat ride, flight or roller coaster: \"back on terra firma.\" Also figurative for safe, familiar ground in a discussion. Usually not italicized.",
+   "word_family": [
+    "terrain, territory, terrestrial (English relatives)",
+    "firm (English relative)"
+   ],
+   "distinctions": [
+    {
+     "vs": "dry land",
+     "note": "\"Dry land\" is the plain English phrase; \"terra firma\" is a bit more playful or literary."
+    },
+    {
+     "vs": "solid ground",
+     "note": "\"Solid ground\" is often figurative for reliable facts; \"terra firma\" is usually literal land."
+    }
+   ],
+   "antonyms": [
+    "at sea",
+    "in the air"
+   ],
+   "collocations": [
+    "back on terra firma",
+    "safely on terra firma",
+    "return to terra firma"
+   ],
+   "examples": {
+    "everyday": "The kids cheered when the plane landed and we were back on terra firma.",
+    "professional": "After a year of risky experiments, the company is returning to the terra firma of its core products.",
+    "analytical": "Seasickness often fades within hours once a traveler is back on terra firma."
+   },
+   "analogy": "Like stepping off a rocking boat onto a dock: the world stops moving under your feet.",
+   "etymology": "From Latin terra firma, \"solid land.\" In English since the 1600s.",
+   "common_mistakes": [
+    "Spelling it \"terra ferma\" or \"tera firma\".",
+    "Pronouncing it \"TER-uh FEER-muh\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "ex cathedra",
+  "domains": [
+   "common_phrases",
+   "theology"
+  ],
+  "phonetic": "/ˌɛks kəˈθidɹə/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "With the full authority of one's office; in Roman Catholic teaching, said of a doctrine on faith or morals that the pope defines as binding on the whole Church and holds to be infallible. Loosely, said of any pronouncement made as if beyond question."
+    ]
+   }
+  ],
+  "etymology": "From Latin ex cathedra, \"from the chair\" (cathedra, \"chair, seat,\" the bishop's seat that gives \"cathedral\" its name). In English since the 1600s; the Catholic doctrine of papal infallibility in such statements was formally defined at the First Vatican Council in 1870.",
+  "conversation": [
+   {
+    "sense": "church",
+    "text": "Catholics believe the pope is infallible only when he speaks ex cathedra, which is rare."
+   },
+   {
+    "sense": "criticism",
+    "text": "He announces his opinions ex cathedra, as if no one could possibly disagree."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "With the full authority of one's office; in Roman Catholic teaching, said of a doctrine on faith or morals that the pope defines as binding on the whole Church and holds to be infallible. Loosely, said of any pronouncement made as if beyond question."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɛks kəˈθidɹə/",
+    "respelling": "eks kuh-THEE-druh",
+    "tip": "Stress THEE: eks kuh-THEE-druh, with \"th\" as in \"think.\""
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal",
+    "technical"
+   ],
+   "connotation": "Neutral in theology; in general use usually critical, implying arrogance or unearned authority.",
+   "usage_note": "In the strict sense it applies to rare solemn papal definitions, such as the dogma of the Assumption of Mary (1950); most papal statements are not ex cathedra. Eastern Orthodox and Protestant Christians do not accept papal infallibility. In general American usage it describes anyone pronouncing as though their word is final. Often italicized. Also used before a noun: \"an ex cathedra statement.\"",
+   "word_family": [
+    "cathedral (English relative)",
+    "cathedra (bishop's chair)",
+    "papal infallibility (related doctrine)"
+   ],
+   "distinctions": [
+    {
+     "vs": "authoritative",
+     "note": "\"Authoritative\" can be fully justified; \"ex cathedra\" in general use often suggests the speaker is claiming more authority than they have."
+    },
+    {
+     "vs": "dogmatic",
+     "note": "\"Dogmatic\" describes a rigid attitude; \"ex cathedra\" describes speaking from a position of official authority."
+    }
+   ],
+   "antonyms": [
+    "tentative",
+    "provisional",
+    "off the record"
+   ],
+   "collocations": [
+    "speak ex cathedra",
+    "an ex cathedra statement",
+    "pronounce ex cathedra",
+    "defined ex cathedra"
+   ],
+   "examples": {
+    "everyday": "My uncle speaks ex cathedra about football, as if he owned the team.",
+    "professional": "The CEO's ex cathedra announcement left managers no room to raise concerns.",
+    "analytical": "Catholic theologians distinguish rare ex cathedra definitions from the far larger body of ordinary papal teaching."
+   },
+   "analogy": "Like a judge speaking from the bench rather than chatting at a barbecue: same person, but the words carry official weight.",
+   "etymology": "From Latin ex cathedra, \"from the chair\" (cathedra, \"chair, seat,\" the bishop's seat that gives \"cathedral\" its name). In English since the 1600s; the Catholic doctrine of papal infallibility in such statements was formally defined at the First Vatican Council in 1870.",
+   "common_mistakes": [
+    "Assuming everything the pope says is ex cathedra or infallible; the term covers only rare, solemn definitions.",
+    "Spelling it \"ex cathedral\".",
+    "Pronouncing it \"ex KATH-uh-druh\"; the stress is on THEE."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "summa cum laude",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌsʊmə kʊm ˈlaʊdeɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "With highest honors; the top level of Latin honors given to graduates of many American colleges and universities."
+    ]
+   }
+  ],
+  "etymology": "From Latin summa cum laude, \"with highest praise.\" Used for academic honors in the US since the 1800s.",
+  "conversation": [
+   {
+    "sense": "graduation",
+    "text": "She graduated summa cum laude with a degree in chemistry."
+   },
+   {
+    "sense": "proud",
+    "text": "Summa cum laude? Your parents must be thrilled!"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "With highest honors; the top level of Latin honors given to graduates of many American colleges and universities."
+   },
+   "pronunciation": {
+    "ipa": "/ˌsʊmə kʊm ˈlaʊdeɪ/",
+    "respelling": "suu-muh kuum LOU-day",
+    "tip": "Stress LOU (rhymes with \"now\"): suu-muh kuum LOU-day, with the vowel of \"book\" in the first two words. \"LOU-dee\" and \"LOU-duh\" endings are also heard."
+   },
+   "us_usage": "common",
+   "register": [
+    "formal",
+    "neutral"
+   ],
+   "connotation": "Highly positive and prestigious.",
+   "usage_note": "Mostly used with \"graduate\" and on diplomas, resumes and programs. The three American levels, from highest down, are summa cum laude, magna cum laude and cum laude; requirements (usually GPA cutoffs or class rank) vary by school. On resumes it is often italicized and lowercase: \"B.A., summa cum laude.\"",
+   "word_family": [
+    "magna cum laude (second level)",
+    "cum laude (third level)",
+    "laud, laudable (English relatives)"
+   ],
+   "distinctions": [
+    {
+     "vs": "magna cum laude",
+     "note": "\"Magna cum laude\" is the second level; \"summa cum laude\" is the highest."
+    },
+    {
+     "vs": "valedictorian",
+     "note": "A valedictorian is usually the single top student who gives the farewell speech; summa cum laude can go to many graduates."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "graduated summa cum laude",
+    "summa cum laude graduate",
+    "earn summa cum laude honors"
+   ],
+   "examples": {
+    "everyday": "My brother graduated summa cum laude and still can't cook an egg.",
+    "professional": "She holds a B.S. in economics, summa cum laude, from the University of Michigan.",
+    "analytical": "As GPAs have risen, some colleges have tightened the cutoffs for summa cum laude."
+   },
+   "analogy": "Like the gold medal on the academic podium.",
+   "etymology": "From Latin summa cum laude, \"with highest praise.\" Used for academic honors in the US since the 1800s.",
+   "common_mistakes": [
+    "Spelling it \"suma cum laude\" or \"summa cum lauda\".",
+    "Writing \"graduated with summa cum laude\"; say \"graduated summa cum laude\" or \"with highest honors.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "magna cum laude",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌmɑɡnə kʊm ˈlaʊdeɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "With great honor; the second of the three levels of Latin honors given to graduates of many American colleges and universities."
+    ]
+   }
+  ],
+  "etymology": "From Latin magna cum laude, \"with great praise.\" Used for academic honors in the US since the 1800s.",
+  "conversation": [
+   {
+    "sense": "graduation",
+    "text": "He graduated magna cum laude from Ohio State."
+   },
+   {
+    "sense": "resume",
+    "text": "Should I put magna cum laude on my resume? Yes, definitely."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "With great honor; the second of the three levels of Latin honors given to graduates of many American colleges and universities."
+   },
+   "pronunciation": {
+    "ipa": "/ˌmɑɡnə kʊm ˈlaʊdeɪ/",
+    "respelling": "mahg-nuh kuum LOU-day",
+    "tip": "Stress LOU: mahg-nuh kuum LOU-day. \"Magna\" has a hard g: MAHG-nuh."
+   },
+   "us_usage": "common",
+   "register": [
+    "formal",
+    "neutral"
+   ],
+   "connotation": "Very positive and prestigious.",
+   "usage_note": "Ranks below summa cum laude and above cum laude. Used with \"graduate\" and on diplomas and resumes. Requirements vary by college. Often written lowercase and italicized on resumes.",
+   "word_family": [
+    "summa cum laude (highest)",
+    "cum laude (third level)",
+    "magnitude, magnificent (English relatives)"
+   ],
+   "distinctions": [
+    {
+     "vs": "summa cum laude",
+     "note": "\"Summa cum laude\" is the highest honor; \"magna cum laude\" is the next one down."
+    },
+    {
+     "vs": "cum laude",
+     "note": "\"Cum laude\" is the basic honors level, below magna."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "graduated magna cum laude",
+    "magna cum laude graduate",
+    "magna cum laude honors"
+   ],
+   "examples": {
+    "everyday": "My mom framed my magna cum laude diploma before I even saw it.",
+    "professional": "J.D., magna cum laude, Georgetown University Law Center.",
+    "analytical": "At many colleges, magna cum laude requires a GPA in roughly the top ten to fifteen percent of the class."
+   },
+   "analogy": "Like the silver medal on the academic podium: excellent, just one step down.",
+   "etymology": "From Latin magna cum laude, \"with great praise.\" Used for academic honors in the US since the 1800s.",
+   "common_mistakes": [
+    "Pronouncing \"magna\" as \"MAN-yuh\".",
+    "Spelling it \"magna cum lauda\" or \"magna come laude\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "cum laude",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/kʊm ˈlaʊdeɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "With honor; the basic level of Latin honors given to graduates of many American colleges and universities."
+    ]
+   }
+  ],
+  "etymology": "From Latin cum laude, \"with praise\" (cum, \"with\" + laus, \"praise\"). Used for academic honors in the US since the 1800s.",
+  "conversation": [
+   {
+    "sense": "graduation",
+    "text": "I graduated cum laude, which was a nice surprise."
+   },
+   {
+    "sense": "asking",
+    "text": "What's the GPA cutoff for cum laude here?"
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "With honor; the basic level of Latin honors given to graduates of many American colleges and universities."
+   },
+   "pronunciation": {
+    "ipa": "/kʊm ˈlaʊdeɪ/",
+    "respelling": "kuum LOU-day",
+    "tip": "Stress LOU: kuum LOU-day, with \"cum\" like \"coom\" (the vowel of \"book\"). Some Americans say \"kum LAW-dee,\" but many avoid it because \"cum\" then sounds like a vulgar English word."
+   },
+   "us_usage": "common",
+   "register": [
+    "formal",
+    "neutral"
+   ],
+   "connotation": "Positive and respectable.",
+   "usage_note": "The third level of American Latin honors, after summa cum laude and magna cum laude. Used with \"graduate\" and on diplomas and resumes. Some schools use English instead (\"with honors\"). On resumes it is usually lowercase and often italicized.",
+   "word_family": [
+    "magna cum laude",
+    "summa cum laude",
+    "laud, laudable (English relatives)"
+   ],
+   "distinctions": [
+    {
+     "vs": "with honors",
+     "note": "\"With honors\" is the English equivalent; some colleges use it instead of the Latin."
+    },
+    {
+     "vs": "magna cum laude",
+     "note": "\"Magna cum laude\" is one level higher."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "graduated cum laude",
+    "cum laude honors",
+    "B.A., cum laude"
+   ],
+   "examples": {
+    "everyday": "He graduated cum laude while working two part-time jobs.",
+    "professional": "B.A. in History, cum laude, Boston College.",
+    "analytical": "Latin honors such as cum laude are awarded by GPA at some schools and by class rank at others."
+   },
+   "analogy": "Like the bronze medal: still on the podium, still an honor.",
+   "etymology": "From Latin cum laude, \"with praise\" (cum, \"with\" + laus, \"praise\"). Used for academic honors in the US since the 1800s.",
+   "common_mistakes": [
+    "Pronouncing \"cum\" as \"kum\" in formal settings, which can cause giggles; \"koom\" is safer.",
+    "Writing \"come laude\" or \"cum lade\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in loco parentis",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ɪn ˌloʊkoʊ pəˈɹɛntɪs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "In the place of a parent; having some of a parent's legal duties and authority over a child."
+    ]
+   }
+  ],
+  "etymology": "From Latin in loco parentis, \"in the place of a parent\" (locus, \"place\"). In English since the 1700s.",
+  "conversation": [
+   {
+    "sense": "school",
+    "text": "On field trips, the teachers act in loco parentis."
+   },
+   {
+    "sense": "family",
+    "text": "Grandma's been in loco parentis since our parents moved overseas for work."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "In the place of a parent; having some of a parent's legal duties and authority over a child."
+   },
+   "pronunciation": {
+    "ipa": "/ɪn ˌloʊkoʊ pəˈɹɛntɪs/",
+    "respelling": "in loh-koh puh-REN-tis",
+    "tip": "Stress REN: in loh-koh puh-REN-tis."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal",
+    "technical"
+   ],
+   "connotation": "Neutral and legal.",
+   "usage_note": "In US law and education, it describes schools, camps, caregivers or relatives who take on parental responsibility. American colleges once acted in loco parentis toward students, enforcing curfews and dorm rules, but largely abandoned that role in the 1960s and 1970s. Usually italicized in formal writing.",
+   "word_family": [
+    "locus, location (English relatives)",
+    "parent, parental (English relatives)"
+   ],
+   "distinctions": [
+    {
+     "vs": "guardian",
+     "note": "A guardian is a legal role appointed by a court; \"in loco parentis\" describes acting as a parent, which may be temporary or informal."
+    },
+    {
+     "vs": "foster parent",
+     "note": "A foster parent is a specific role in child welfare; \"in loco parentis\" is the broader legal idea."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "act in loco parentis",
+    "stand in loco parentis",
+    "in loco parentis doctrine",
+    "in loco parentis role"
+   ],
+   "examples": {
+    "everyday": "My aunt was in loco parentis for the summer while my parents were working abroad.",
+    "professional": "Camp staff stand in loco parentis and must follow the same safety rules a parent would.",
+    "analytical": "The decline of in loco parentis on American campuses changed how colleges handle student conduct."
+   },
+   "analogy": "Like a substitute teacher for parenting: not the original, but in charge and responsible.",
+   "etymology": "From Latin in loco parentis, \"in the place of a parent\" (locus, \"place\"). In English since the 1700s.",
+   "common_mistakes": [
+    "Spelling it \"in loco parentes\" or \"in loco parentus\".",
+    "Thinking \"loco\" means \"crazy\" here, from Spanish; in Latin it means \"place.\""
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "lingua franca",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌlɪŋɡwə ˈfɹæŋkə/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A language used for communication between people who do not share a native language, such as English in international business."
+    ]
+   }
+  ],
+  "etymology": "From Italian lingua franca, \"Frankish language.\" It first named a simplified trade language, based largely on Italian with words from Spanish, French, Greek, Arabic and Turkish, used in Mediterranean ports from the Middle Ages into the 1800s; eastern Mediterranean peoples called western Europeans \"Franks.\" In English since the 1600s.",
+  "conversation": [
+   {
+    "sense": "work",
+    "text": "English is the lingua franca at our company, even though most of us speak Spanish at home."
+   },
+   {
+    "sense": "travel",
+    "text": "In that region, Swahili is the lingua franca for trade."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "A language used for communication between people who do not share a native language, such as English in international business."
+   },
+   "pronunciation": {
+    "ipa": "/ˌlɪŋɡwə ˈfɹæŋkə/",
+    "respelling": "ling-gwuh FRANG-kuh",
+    "tip": "Stress FRANG: ling-gwuh FRANG-kuh. \"Lingua\" has a g and w sound: LING-gwuh."
+   },
+   "us_usage": "common",
+   "register": [
+    "neutral",
+    "formal"
+   ],
+   "connotation": "Neutral; often used about practical, shared communication.",
+   "usage_note": "Common in American writing and speech about language, business, science and travel. Used figuratively too: \"Spreadsheets are the lingua franca of finance.\" Plural: lingua francas (usual in American English) or linguae francae (rare). Usually not italicized.",
+   "word_family": [
+    "lingua francas (plural)",
+    "linguae francae (rare Latin-style plural)",
+    "linguistics, bilingual (English relatives)"
+   ],
+   "distinctions": [
+    {
+     "vs": "pidgin",
+     "note": "A pidgin is a simplified mixed language; a lingua franca can be any language, simplified or not, used between groups."
+    },
+    {
+     "vs": "native language",
+     "note": "A native language is learned from birth; a lingua franca is a shared second language for many of its users."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "the lingua franca of",
+    "global lingua franca",
+    "serve as a lingua franca",
+    "become the lingua franca"
+   ],
+   "examples": {
+    "everyday": "At the international dorm, English was the lingua franca, but you could hear ten languages in the kitchen.",
+    "professional": "Python has become the lingua franca of data science teams.",
+    "analytical": "Latin served as the lingua franca of European scholarship well into the 1700s."
+   },
+   "analogy": "Like a universal power adapter: it lets devices from different countries plug into the same outlet.",
+   "etymology": "From Italian lingua franca, \"Frankish language.\" It first named a simplified trade language, based largely on Italian with words from Spanish, French, Greek, Arabic and Turkish, used in Mediterranean ports from the Middle Ages into the 1800s; eastern Mediterranean peoples called western Europeans \"Franks.\" In English since the 1600s.",
+   "common_mistakes": [
+    "Thinking the phrase is Latin or that it means \"French language\"; it is Italian and means \"Frankish language.\"",
+    "Writing \"lingo franca\" or \"lingua frank\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "non compos mentis",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˌnɑn ˌkɑmpəs ˈmɛntɪs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Not of sound mind; mentally incapable of managing one's own affairs or of being held legally responsible."
+    ]
+   }
+  ],
+  "etymology": "From Latin non compos mentis, \"not having control of the mind\" (compos, \"having mastery of\"). In English legal use since the 1600s.",
+  "conversation": [
+   {
+    "sense": "legal",
+    "text": "His lawyer argued he was non compos mentis when he signed the contract."
+   },
+   {
+    "sense": "joking",
+    "text": "Don't ask me anything before coffee. I'm non compos mentis until nine."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective",
+    "definition": "Not of sound mind; mentally incapable of managing one's own affairs or of being held legally responsible."
+   },
+   "pronunciation": {
+    "ipa": "/ˌnɑn ˌkɑmpəs ˈmɛntɪs/",
+    "respelling": "nahn kahm-puhs MEN-tis",
+    "tip": "Stress MEN: nahn kahm-puhs MEN-tis."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal",
+    "technical"
+   ],
+   "connotation": "Serious in law; humorous in casual use.",
+   "usage_note": "A legal term about mental capacity, used for wills, contracts and criminal responsibility, though modern US law more often speaks of \"lack of capacity\" or \"incompetence.\" In conversation it is used jokingly for being tired, sick or drunk. Avoid it as a label for real mental illness in everyday talk; it can sound dismissive.",
+   "word_family": [
+    "compos mentis (of sound mind)",
+    "mental, mind (English relatives)"
+   ],
+   "distinctions": [
+    {
+     "vs": "insane",
+     "note": "\"Insane\" is a strong, often offensive everyday word; \"non compos mentis\" is a legal or humorous term about capacity."
+    },
+    {
+     "vs": "incompetent",
+     "note": "In US law \"incompetent\" is the modern term for lacking legal capacity; \"non compos mentis\" is older."
+    }
+   ],
+   "antonyms": [
+    "compos mentis",
+    "of sound mind",
+    "clear-headed"
+   ],
+   "collocations": [
+    "declared non compos mentis",
+    "non compos mentis at the time",
+    "be non compos mentis"
+   ],
+   "examples": {
+    "everyday": "After that red-eye flight I was totally non compos mentis.",
+    "professional": "The will was challenged on the grounds that the testator was non compos mentis when she signed it.",
+    "analytical": "Courts must decide whether a person was non compos mentis at the time of the act, not at the time of trial."
+   },
+   "analogy": "Like a ship without anyone at the wheel: it is still afloat, but no one is steering.",
+   "etymology": "From Latin non compos mentis, \"not having control of the mind\" (compos, \"having mastery of\"). In English legal use since the 1600s.",
+   "common_mistakes": [
+    "Spelling it \"non compost mentis\" or \"non compos mentus\".",
+    "Using it seriously to insult someone; it can sound cruel outside legal or joking contexts."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "ad valorem",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˌæd vəˈlɔɹəm/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "In proportion to the value of the goods or property, used of taxes, duties and tariffs."
+    ]
+   }
+  ],
+  "etymology": "From Latin ad valorem, \"according to the value.\" In English since the 1700s.",
+  "conversation": [
+   {
+    "sense": "taxes",
+    "text": "Property taxes here are ad valorem, so a bigger house means a bigger bill."
+   },
+   {
+    "sense": "trade",
+    "text": "The tariff is a fifteen percent ad valorem duty on imported steel."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adjective",
+    "definition": "In proportion to the value of the goods or property, used of taxes, duties and tariffs."
+   },
+   "pronunciation": {
+    "ipa": "/ˌæd vəˈlɔɹəm/",
+    "respelling": "ad vuh-LOR-uhm",
+    "tip": "Stress LOR: ad vuh-LOR-uhm."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "technical",
+    "formal"
+   ],
+   "connotation": "Neutral and technical.",
+   "usage_note": "Used in US tax law, customs and economics: property taxes, sales taxes and many tariffs are ad valorem. Usually comes before a noun (\"ad valorem tax\") and is not italicized in professional writing. The contrast is a \"specific\" tax, a fixed amount per unit.",
+   "word_family": [
+    "valuation, value (English relatives)",
+    "specific tax (contrast)"
+   ],
+   "distinctions": [
+    {
+     "vs": "specific tax",
+     "note": "A specific tax is a fixed amount per item or unit (per gallon, per pack); an ad valorem tax is a percentage of value."
+    },
+    {
+     "vs": "flat fee",
+     "note": "A flat fee does not change with value; an ad valorem charge rises with it."
+    }
+   ],
+   "antonyms": [
+    "specific (tax)",
+    "flat-rate",
+    "per-unit"
+   ],
+   "collocations": [
+    "ad valorem tax",
+    "ad valorem duty",
+    "ad valorem tariff",
+    "ad valorem property tax"
+   ],
+   "examples": {
+    "everyday": "Our county's ad valorem tax went up after the home appraisals.",
+    "professional": "Importers should budget for a 7 percent ad valorem duty on these components.",
+    "analytical": "Ad valorem taxes rise automatically with inflation, while specific taxes lose real value over time."
+   },
+   "analogy": "Like a tip calculated as a percentage: the bigger the bill, the bigger the amount.",
+   "etymology": "From Latin ad valorem, \"according to the value.\" In English since the 1700s.",
+   "common_mistakes": [
+    "Spelling it \"ad valorum\".",
+    "Using it for any tax; it applies only to taxes based on value."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in memoriam",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌɪn məˈmɔɹiəm/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "In memory of; used as a heading or dedication to honor someone who has died."
+    ]
+   }
+  ],
+  "etymology": "From Latin in memoriam, \"into (the) memory (of).\" Long used on gravestones and memorials, and well known in English from Tennyson's poem In Memoriam A.H.H. (1850). Common in English since the 1800s.",
+  "conversation": [
+   {
+    "sense": "memorial",
+    "text": "The concert program had a page that said \"In Memoriam\" with the names of members who died this year."
+   },
+   {
+    "sense": "dedication",
+    "text": "The bench in the park reads, \"In memoriam: Ruth Adler, who loved this view.\""
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "preposition",
+    "definition": "In memory of; used as a heading or dedication to honor someone who has died."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɪn məˈmɔɹiəm/",
+    "respelling": "in muh-MOR-ee-uhm",
+    "tip": "Stress MOR: in muh-MOR-ee-uhm."
+   },
+   "us_usage": "common",
+   "register": [
+    "formal"
+   ],
+   "connotation": "Respectful and solemn.",
+   "usage_note": "Used on memorials, plaques, program pages, newspaper notices and film or TV tributes (such as the \"In Memoriam\" segment at award shows). Usually followed directly by a name, without \"of.\" Also used as a noun for a tribute (\"an in memoriam\"). Not used in casual conversation.",
+   "word_family": [
+    "memory, memorial, memorialize (English relatives)",
+    "in memory of (English equivalent)"
+   ],
+   "distinctions": [
+    {
+     "vs": "in memory of",
+     "note": "\"In memory of\" is the everyday phrase and takes \"of\"; \"in memoriam\" is formal and goes straight before the name."
+    },
+    {
+     "vs": "obituary",
+     "note": "An obituary is a news notice of a death; \"in memoriam\" is a heading or tribute, often written later."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "In Memoriam",
+    "in memoriam page",
+    "in memoriam segment",
+    "dedicated in memoriam"
+   ],
+   "examples": {
+    "everyday": "The team wore black armbands in memoriam of their coach.",
+    "professional": "The annual report includes an In Memoriam page honoring retirees who passed away.",
+    "analytical": "Award shows' In Memoriam segments often spark debate over who was left out."
+   },
+   "analogy": "Like a candle lit on a table: a quiet sign that someone is remembered.",
+   "etymology": "From Latin in memoriam, \"into (the) memory (of).\" Long used on gravestones and memorials, and well known in English from Tennyson's poem In Memoriam A.H.H. (1850). Common in English since the 1800s.",
+   "common_mistakes": [
+    "Spelling it \"in memorium\"; the ending is -iam.",
+    "Writing \"in memoriam of\"; the \"of\" is unnecessary in strict usage (\"In memoriam: Jane Smith\")."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "rigor mortis",
+  "domains": [
+   "common_phrases",
+   "home_health"
+  ],
+  "phonetic": "/ˌɹɪɡəɹ ˈmɔɹtɪs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "The temporary stiffening of the muscles of a body after death."
+    ]
+   }
+  ],
+  "etymology": "From Latin rigor mortis, \"stiffness of death.\" In English since the 1800s.",
+  "conversation": [
+   {
+    "sense": "TV",
+    "text": "On the crime show, the detective said rigor mortis meant the victim died hours earlier."
+   },
+   {
+    "sense": "joking",
+    "text": "I sat at my desk so long my legs felt like rigor mortis had set in."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "The temporary stiffening of the muscles of a body after death."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɹɪɡəɹ ˈmɔɹtɪs/",
+    "respelling": "rig-er MOR-tis",
+    "tip": "Stress MOR: rig-er MOR-tis."
+   },
+   "us_usage": "common",
+   "register": [
+    "technical",
+    "neutral"
+   ],
+   "connotation": "Neutral and clinical; jokingly used for stiffness or a lack of change.",
+   "usage_note": "Known in the US from crime shows and forensic science. It usually begins within a few hours of death, is strongest around half a day later and fades over the following day or two, though timing varies with temperature and other factors. Figuratively it describes stiff, unchanging organizations. American spelling is \"rigor\" (British \"rigour\" in other senses, but \"rigor mortis\" everywhere).",
+   "word_family": [
+    "rigid, rigor (English relatives)",
+    "mortal, mortuary (English relatives)",
+    "livor mortis, algor mortis (other signs of death)"
+   ],
+   "distinctions": [
+    {
+     "vs": "rigidity",
+     "note": "\"Rigidity\" is any stiffness; \"rigor mortis\" is stiffness after death."
+    },
+    {
+     "vs": "paralysis",
+     "note": "Paralysis is loss of movement in a living person; rigor mortis occurs only after death."
+    }
+   ],
+   "antonyms": [
+    "flexibility",
+    "suppleness"
+   ],
+   "collocations": [
+    "rigor mortis set in",
+    "onset of rigor mortis",
+    "institutional rigor mortis"
+   ],
+   "examples": {
+    "everyday": "After the long car ride, I climbed out like rigor mortis had set in.",
+    "professional": "The medical examiner noted that rigor mortis was fully established at the scene.",
+    "analytical": "Critics accused the agency of bureaucratic rigor mortis, unable to respond to new problems."
+   },
+   "analogy": "Like wet clay that has dried: once flexible, now locked in place.",
+   "etymology": "From Latin rigor mortis, \"stiffness of death.\" In English since the 1800s.",
+   "common_mistakes": [
+    "Spelling it \"rigamortis\" or \"rigor mortise\" as one word.",
+    "Thinking rigor mortis is permanent; it passes after a day or two."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "veni vidi vici",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌveɪni ˌvidi ˈvitʃi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "\"I came, I saw, I conquered\": a boast of quick and complete success."
+    ]
+   }
+  ],
+  "etymology": "From Latin veni, vidi, vici, said by Julius Caesar after his swift victory over Pharnaces II of Pontus at Zela in 47 BC; ancient writers say he wrote it in a message to Rome and later displayed it in his triumph. Quoted in English since at least Shakespeare's time.",
+  "conversation": [
+   {
+    "sense": "bragging",
+    "text": "I walked into the interview, answered every question and got the job. Veni, vidi, vici."
+   },
+   {
+    "sense": "joking",
+    "text": "Went to the store, found the last box of my cereal. Veni, vidi, vici."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "interjection",
+    "definition": "\"I came, I saw, I conquered\": a boast of quick and complete success."
+   },
+   "pronunciation": {
+    "ipa": "/ˌveɪni ˌvidi ˈvitʃi/",
+    "respelling": "vay-nee vee-dee VEE-chee",
+    "tip": "Stress the last word: vay-nee vee-dee VEE-chee. \"VEE-kee\" is also common, and in classical Latin it was \"WAY-nee WEE-dee WEE-kee.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "informal",
+    "literary"
+   ],
+   "connotation": "Triumphant; usually humorous or mock-heroic today.",
+   "usage_note": "Usually written with commas: \"Veni, vidi, vici.\" Americans use it jokingly after small victories. The English version \"I came, I saw, I conquered\" is just as well known and is often played with (\"I came, I saw, I took a nap\").",
+   "word_family": [
+    "I came, I saw, I conquered (English translation)",
+    "victor, victory (English relatives of vici)"
+   ],
+   "distinctions": [
+    {
+     "vs": "mission accomplished",
+     "note": "\"Mission accomplished\" announces success; \"veni, vidi, vici\" stresses speed and ease."
+    },
+    {
+     "vs": "nailed it",
+     "note": "\"Nailed it\" is modern slang for doing something perfectly; \"veni, vidi, vici\" is the classical, mock-grand version."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "veni, vidi, vici",
+    "I came, I saw, I conquered"
+   ],
+   "examples": {
+    "everyday": "Thirty minutes to assemble the bookshelf. Veni, vidi, vici.",
+    "professional": "The sales team closed the deal on the first visit, a true veni, vidi, vici moment.",
+    "analytical": "Caesar's veni, vidi, vici was as much propaganda as report, advertising a speed that impressed Rome."
+   },
+   "analogy": "Like a sprinter who wins before the crowd has even sat down.",
+   "etymology": "From Latin veni, vidi, vici, said by Julius Caesar after his swift victory over Pharnaces II of Pontus at Zela in 47 BC; ancient writers say he wrote it in a message to Rome and later displayed it in his triumph. Quoted in English since at least Shakespeare's time.",
+   "common_mistakes": [
+    "Writing it without commas or as one word.",
+    "Mixing up the order (\"vidi, veni, vici\"); it follows the order of events: came, saw, conquered."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "post hoc ergo propter hoc",
+  "domains": [
+   "common_phrases",
+   "logic",
+   "philosophy"
+  ],
+  "phonetic": "/ˌpoʊst ˌhɑk ˌɛɹɡoʊ ˌpɹɑptəɹ ˈhɑk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "The fallacy of assuming that because one event followed another, the first event caused the second."
+    ]
+   }
+  ],
+  "etymology": "From Latin post hoc, ergo propter hoc, \"after this, therefore because of this,\" a name from the Latin tradition of logic. Used in English writing on logic by the 1800s; often shortened to \"post hoc.\"",
+  "conversation": [
+   {
+    "sense": "superstition",
+    "text": "I wore my lucky socks and we won, so the socks did it? That's post hoc ergo propter hoc."
+   },
+   {
+    "sense": "health",
+    "text": "He got better after taking the herbal tea, but that could be post hoc reasoning. Colds go away on their own."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "The fallacy of assuming that because one event followed another, the first event caused the second."
+   },
+   "pronunciation": {
+    "ipa": "/ˌpoʊst ˌhɑk ˌɛɹɡoʊ ˌpɹɑptəɹ ˈhɑk/",
+    "respelling": "pohst hahk air-goh prahp-ter HAHK",
+    "tip": "Stress the last word: pohst hahk air-goh prahp-ter HAHK. \"Ergo\" is also said \"UR-goh.\" Many people just say \"post hoc.\""
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "academic",
+    "technical"
+   ],
+   "connotation": "Critical; naming it points out faulty reasoning.",
+   "usage_note": "Used in logic, critical thinking, science and debate, often shortened to \"post hoc\" or \"the post hoc fallacy.\" Usually italicized in formal writing. It is a specific case of confusing correlation with causation, involving the order of events.",
+   "word_family": [
+    "post hoc (short form)",
+    "post hoc fallacy",
+    "cum hoc ergo propter hoc (related fallacy)"
+   ],
+   "distinctions": [
+    {
+     "vs": "cum hoc ergo propter hoc",
+     "note": "\"Cum hoc\" (with this) assumes causation from things happening together; \"post hoc\" assumes it from one following the other."
+    },
+    {
+     "vs": "correlation is not causation",
+     "note": "This general warning covers any link between variables; \"post hoc\" focuses on sequence in time."
+    },
+    {
+     "vs": "post hoc analysis",
+     "note": "In statistics, a \"post hoc analysis\" is one done after the data are in, not a fallacy."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "post hoc ergo propter hoc fallacy",
+    "a classic post hoc ergo propter hoc",
+    "post hoc reasoning"
+   ],
+   "examples": {
+    "everyday": "The rooster crows and then the sun rises, but post hoc ergo propter hoc: the rooster doesn't cause the sunrise.",
+    "professional": "Sales rose after the rebrand, but without a control group that conclusion risks post hoc ergo propter hoc.",
+    "analytical": "Many vaccine myths rest on post hoc ergo propter hoc: a condition noticed after vaccination is assumed to be caused by it."
+   },
+   "analogy": "Like believing the rooster's crow makes the sun come up.",
+   "etymology": "From Latin post hoc, ergo propter hoc, \"after this, therefore because of this,\" a name from the Latin tradition of logic. Used in English writing on logic by the 1800s; often shortened to \"post hoc.\"",
+   "common_mistakes": [
+    "Confusing it with \"post hoc analysis\" in statistics, which is not a fallacy.",
+    "Using it for any mistake about causes; it is specifically about assuming causation from sequence."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "in extremis",
+  "domains": [
+   "common_phrases"
+  ],
+  "phonetic": "/ˌɪn ɛkˈstɹimɪs/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "In an extremely difficult or dangerous situation; especially, at the point of death."
+    ]
+   }
+  ],
+  "etymology": "From Latin in extremis, \"in the outermost (situations),\" that is, at the very end. In English since around 1600.",
+  "conversation": [
+   {
+    "sense": "emergency",
+    "text": "In extremis, you can use the emergency fund, but only then."
+   },
+   {
+    "sense": "medical",
+    "text": "The patient was in extremis when the ambulance arrived."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "In an extremely difficult or dangerous situation; especially, at the point of death."
+   },
+   "pronunciation": {
+    "ipa": "/ˌɪn ɛkˈstɹimɪs/",
+    "respelling": "in ek-STREE-mis",
+    "tip": "Stress STREE: in ek-STREE-mis."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "formal"
+   ],
+   "connotation": "Serious and grave.",
+   "usage_note": "Used in medicine (a patient near death), law, military and formal writing about emergencies: \"only in extremis\" means only as a last resort. Usually italicized in formal writing. Not common in casual speech.",
+   "word_family": [
+    "extreme, extremity (English relatives)"
+   ],
+   "distinctions": [
+    {
+     "vs": "in an emergency",
+     "note": "\"In an emergency\" is the everyday phrase; \"in extremis\" is more formal and often suggests the very worst situation."
+    },
+    {
+     "vs": "as a last resort",
+     "note": "\"As a last resort\" stresses the order of options; \"in extremis\" stresses how desperate the situation is."
+    }
+   ],
+   "antonyms": [
+    "in safety",
+    "at ease"
+   ],
+   "collocations": [
+    "only in extremis",
+    "a patient in extremis",
+    "act in extremis",
+    "in extremis measures"
+   ],
+   "examples": {
+    "everyday": "Dad said we could call him at work in extremis, like if the house was on fire.",
+    "professional": "The emergency credit line should be drawn on only in extremis.",
+    "analytical": "Many legal systems relax formal requirements for wills made in extremis."
+   },
+   "analogy": "Like pulling the emergency brake on a train: for the worst moments only.",
+   "etymology": "From Latin in extremis, \"in the outermost (situations),\" that is, at the very end. In English since around 1600.",
+   "common_mistakes": [
+    "Spelling it \"in extremus\".",
+    "Using it to mean simply \"extremely\" (\"the food was in extremis good\")."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "cogito ergo sum",
+  "domains": [
+   "common_phrases",
+   "philosophy"
+  ],
+  "phonetic": "/ˌkoʊɡɪtoʊ ˌɛɹɡoʊ ˈsʊm/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "\"I think, therefore I am\": Descartes's principle that the act of thinking, even doubting, proves the existence of the one who thinks."
+    ]
+   }
+  ],
+  "etymology": "Latin for \"I think, therefore I am.\" René Descartes first wrote it in French, \"je pense, donc je suis,\" in his Discourse on the Method (1637); the Latin form appears in his Principles of Philosophy (1644). Often called simply \"the cogito.\"",
+  "conversation": [
+   {
+    "sense": "class",
+    "text": "Our philosophy professor spent the whole hour on cogito ergo sum."
+   },
+   {
+    "sense": "joking",
+    "text": "I'm awake and confused, therefore I am. Cogito ergo sum, sort of."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "phrase",
+    "definition": "\"I think, therefore I am\": Descartes's principle that the act of thinking, even doubting, proves the existence of the one who thinks."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkoʊɡɪtoʊ ˌɛɹɡoʊ ˈsʊm/",
+    "respelling": "koh-gih-toh air-goh SUUM",
+    "tip": "Stress the last word: koh-gih-toh air-goh SUUM, with the vowel of \"book.\" \"Ergo\" is also said \"UR-goh,\" and some say \"KAH-jih-toh.\""
+   },
+   "us_usage": "common",
+   "register": [
+    "academic",
+    "formal"
+   ],
+   "connotation": "Neutral; often used playfully in jokes and parodies.",
+   "usage_note": "The most famous line in Western philosophy, known to most educated Americans. In philosophy it is called \"the cogito.\" It is often parodied (\"I shop, therefore I am\"). Usually written with a comma in formal texts: \"Cogito, ergo sum.\"",
+   "word_family": [
+    "the cogito (short name)",
+    "I think, therefore I am (English translation)",
+    "cogitate (English relative, \"think deeply\")"
+   ],
+   "distinctions": [
+    {
+     "vs": "I think, therefore I am",
+     "note": "The English translation is more common in everyday speech; the Latin is used in philosophy and jokes."
+    },
+    {
+     "vs": "solipsism",
+     "note": "Solipsism is the view that only one's own mind is sure to exist; the cogito is Descartes's starting point, not solipsism itself."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "Descartes's cogito ergo sum",
+    "cogito, ergo sum",
+    "the cogito"
+   ],
+   "examples": {
+    "everyday": "My son put cogito ergo sum on his bedroom door, then added \"I sleep, therefore I am.\"",
+    "professional": "Our design philosophy is a kind of cogito ergo sum: we start from what we know for certain about users.",
+    "analytical": "Descartes's cogito ergo sum served as a foundation that radical doubt could not shake."
+   },
+   "analogy": "Like finding the one floor tile that does not wobble and building the whole house from there.",
+   "etymology": "Latin for \"I think, therefore I am.\" René Descartes first wrote it in French, \"je pense, donc je suis,\" in his Discourse on the Method (1637); the Latin form appears in his Principles of Philosophy (1644). Often called simply \"the cogito.\"",
+   "common_mistakes": [
+    "Thinking it means that thinking makes you exist; Descartes meant that thinking proves you exist.",
+    "Attributing it to Aristotle or Socrates; it is from Descartes.",
+    "Spelling it \"cogito ergo some\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "nolo contendere",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˌnoʊloʊ kənˈtɛndəɹi/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "A plea in a criminal case in which the defendant does not admit guilt but does not contest the charge and accepts conviction; \"no contest.\""
+    ]
+   }
+  ],
+  "etymology": "From Latin nolo contendere, \"I do not wish to contend.\" In English legal use since the 1800s.",
+  "conversation": [
+   {
+    "sense": "news",
+    "text": "The senator pleaded nolo contendere to the tax charges."
+   },
+   {
+    "sense": "explaining",
+    "text": "Nolo contendere just means no contest. He's not admitting it, but he's not fighting it."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "A plea in a criminal case in which the defendant does not admit guilt but does not contest the charge and accepts conviction; \"no contest.\""
+   },
+   "pronunciation": {
+    "ipa": "/ˌnoʊloʊ kənˈtɛndəɹi/",
+    "respelling": "noh-loh kuhn-TEN-duh-ree",
+    "tip": "Stress TEN: noh-loh kuhn-TEN-duh-ree."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "technical",
+    "formal"
+   ],
+   "connotation": "Neutral and legal.",
+   "usage_note": "A plea in American courts, usually called \"no contest\" in everyday speech and news. The court treats it like a guilty plea for sentencing, but in many cases it cannot be used as an admission of guilt in a later civil lawsuit. Federal courts and many states allow it only with the court's consent, and some states do not allow it at all. Often italicized.",
+   "word_family": [
+    "nolo (short form)",
+    "no contest (English equivalent)",
+    "contend, contention (English relatives)"
+   ],
+   "distinctions": [
+    {
+     "vs": "guilty plea",
+     "note": "A guilty plea admits the crime; nolo contendere accepts punishment without admitting guilt."
+    },
+    {
+     "vs": "Alford plea",
+     "note": "In an Alford plea the defendant pleads guilty while maintaining innocence; nolo contendere is a different plea that neither admits nor denies."
+    }
+   ],
+   "antonyms": [
+    "not guilty plea"
+   ],
+   "collocations": [
+    "plead nolo contendere",
+    "a plea of nolo contendere",
+    "nolo contendere plea"
+   ],
+   "examples": {
+    "everyday": "My neighbor pleaded nolo contendere to the speeding charge just to get it over with.",
+    "professional": "Counsel advised a nolo contendere plea to limit exposure in the pending civil suit.",
+    "analytical": "Nolo contendere pleas let prosecutors secure convictions while sparing defendants an admission usable in civil court."
+   },
+   "analogy": "Like folding in a card game without showing your cards: you lose the hand, but nobody sees what you held.",
+   "etymology": "From Latin nolo contendere, \"I do not wish to contend.\" In English legal use since the 1800s.",
+   "common_mistakes": [
+    "Thinking it means \"not guilty\"; it results in a conviction.",
+    "Spelling it \"nolo contendre\" or \"nolo contendare\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "corpus delicti",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/ˌkɔɹpəs dɪˈlɪkˌtaɪ/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "The basic facts showing that a crime was committed, such as a death caused by criminal means in a murder case; in popular use, sometimes the victim's body."
+    ]
+   }
+  ],
+  "etymology": "From Latin corpus delicti, \"body of the crime,\" meaning the substance of the offense, not a dead body. In English since the 1800s.",
+  "conversation": [
+   {
+    "sense": "crime show",
+    "text": "Without a body, the prosecutor had to prove the corpus delicti some other way."
+   },
+   {
+    "sense": "explaining",
+    "text": "Corpus delicti doesn't mean the corpse. It means proof that a crime actually happened."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "noun",
+    "definition": "The basic facts showing that a crime was committed, such as a death caused by criminal means in a murder case; in popular use, sometimes the victim's body."
+   },
+   "pronunciation": {
+    "ipa": "/ˌkɔɹpəs dɪˈlɪkˌtaɪ/",
+    "respelling": "kor-puhs dih-LIK-ty",
+    "tip": "Stress LIK: kor-puhs dih-LIK-ty. \"dih-LIK-tee\" is also correct."
+   },
+   "us_usage": "formal or literary",
+   "register": [
+    "technical",
+    "formal"
+   ],
+   "connotation": "Neutral and legal.",
+   "usage_note": "A US legal term. Under the corpus delicti rule, a confession alone is not enough to convict; there must be some independent evidence that the crime occurred. Popularly misused to mean the corpse in a murder case. Usually italicized in legal writing.",
+   "word_family": [
+    "corpus delicti rule",
+    "corpus (body of evidence or writing)",
+    "delict (civil wrong)"
+   ],
+   "distinctions": [
+    {
+     "vs": "corpse",
+     "note": "A corpse is a dead body; corpus delicti is the evidence that a crime took place."
+    },
+    {
+     "vs": "mens rea",
+     "note": "\"Mens rea\" is the guilty mind; \"corpus delicti\" is proof the crime occurred."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "establish the corpus delicti",
+    "corpus delicti rule",
+    "prove the corpus delicti"
+   ],
+   "examples": {
+    "everyday": "My friend loves true crime podcasts and finally learned what corpus delicti really means.",
+    "professional": "The defense moved to exclude the confession because the state had not established the corpus delicti.",
+    "analytical": "The corpus delicti rule guards against convictions based on false confessions."
+   },
+   "analogy": "Like proof that a cake is missing before you ask who ate it.",
+   "etymology": "From Latin corpus delicti, \"body of the crime,\" meaning the substance of the offense, not a dead body. In English since the 1800s.",
+   "common_mistakes": [
+    "Thinking it means the victim's dead body.",
+    "Spelling it \"corpus delecti\"."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ },
+ {
+  "word": "sic",
+  "domains": [
+   "common_phrases",
+   "professional"
+  ],
+  "phonetic": "/sɪk/",
+  "meanings": [
+   {
+    "pos": "phrase",
+    "senses": [
+     "Thus; written in brackets, [sic], after a quoted word or phrase to show that an error or odd usage is in the original and was copied exactly."
+    ]
+   }
+  ],
+  "etymology": "From Latin sic, \"so, thus.\" Used in English in this editorial sense since the 1800s.",
+  "conversation": [
+   {
+    "sense": "editing",
+    "text": "Put [sic] after \"recieve\" so readers know the misspelling is in his letter."
+   },
+   {
+    "sense": "email",
+    "text": "Her text said she was \"definately\" coming, sic."
+   }
+  ],
+  "nuance": {
+   "core": {
+    "pos": "adverb",
+    "definition": "Thus; written in brackets, [sic], after a quoted word or phrase to show that an error or odd usage is in the original and was copied exactly."
+   },
+   "pronunciation": {
+    "ipa": "/sɪk/",
+    "respelling": "SIK",
+    "tip": "Say it like \"sick\": SIK."
+   },
+   "us_usage": "common",
+   "register": [
+    "formal",
+    "technical"
+   ],
+   "connotation": "Neutral when used for accuracy; can feel snide when used to mock.",
+   "usage_note": "Used in journalism, academic writing and law. Put it in square brackets, [sic], right after the error inside a quotation; parentheses are used only if it follows the quotation. It is a full word, not an abbreviation, so no period. Many style guides italicize it (Chicago does); others use roman. Use it sparingly; overusing it to point out small errors can seem petty.",
+   "word_family": [
+    "[sic] (bracketed form)",
+    "sic passim (\"so throughout\")"
+   ],
+   "distinctions": [
+    {
+     "vs": "sic (verb)",
+     "note": "The English verb \"sic\" (to sic a dog on someone) is unrelated; the Latin \"sic\" marks a quoted error."
+    },
+    {
+     "vs": "[emphasis added]",
+     "note": "\"[Emphasis added]\" says the quoter changed the formatting; \"[sic]\" says nothing was changed."
+    }
+   ],
+   "antonyms": [],
+   "collocations": [
+    "[sic]",
+    "quoted, sic",
+    "sic in original"
+   ],
+   "examples": {
+    "everyday": "My little brother's sign said \"Keep Out Grils [sic]\" and Mom framed it.",
+    "professional": "The memo stated that the plan would \"effect [sic] all departments,\" an error the reporter preserved.",
+    "analytical": "Historians use [sic] carefully, since earlier spelling conventions are not errors."
+   },
+   "analogy": "Like a sticky note on a copy saying \"yes, this mistake was in the original.\"",
+   "etymology": "From Latin sic, \"so, thus.\" Used in English in this editorial sense since the 1800s.",
+   "common_mistakes": [
+    "Writing \"sic.\" with a period; it is not an abbreviation.",
+    "Thinking sic stands for \"spelling incorrect\" or \"said in context\"; it is Latin for \"thus.\"",
+    "Using [sic] for normal older spellings or dialect, which can seem condescending."
+   ],
+   "biblical_note": "",
+   "traditions": []
+  }
+ }
+]
