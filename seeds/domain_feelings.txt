@@ -250,3 +250,32 @@ That must be hard. | Showing empathy for someone's difficulty.
 I know how you feel. | Saying you understand someone's feelings.
 Take a deep breath. | Telling someone to calm down.
 I'm on cloud nine. | Casual: extremely happy.
+
+# Everyday words the frequency filter had left out ("shin", "wrist", "why"),
+# added 2026-11-19 after a check of every common English word.
+batty
+cuddle
+cuddly
+depressive
+faze
+horrid
+moronic
+nightmarish
+overprotective
+peachy
+peeve
+pout
+psychopath
+psychopathic
+relatable
+relive
+shrug
+snarky
+snuggle
+sociopath
+sociopathic
+spacey
+squeamish
+suicidal
+unloved
+whoop

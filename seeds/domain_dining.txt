@@ -253,3 +253,15 @@ Can I get a refill? | Asking for your drink to be filled again, often free in th
 We're still working on it. | Telling the server you haven't finished eating, so don't take the plates yet.
 I'm stuffed. | Casual way to say you've eaten so much you are completely full.
 My compliments to the chef. | Formal way of saying the food was excellent.
+
+# Everyday words the frequency filter had left out ("shin", "wrist", "why"),
+# added 2026-11-19 after a check of every common English word.
+ambience
+cater
+catering
+cheeseburger
+entree
+margarita
+pub
+restaurateur
+saloon

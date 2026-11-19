@@ -41,3 +41,360 @@ an | first | article | The form of “a” used before a vowel sound: an apple, 
 # Everyday meaning first (audit 2026-11-15).
 library | promote | noun | An institution which holds books
 server | promote | noun | A waitress or waiter.
+
+# Everyday words added 2026-11-19: the everyday meaning, missing from the dictionary or buried
+# (centimeter, whiskers, popsicle), from a sense review of every new word.
+abacus | first | noun | A frame with beads that slide on wires or rods, used for counting and doing arithmetic.
+aerodynamic | promote | adjective | Having a shape that reduces drag when moving through the air
+aerosol | promote | noun | An aerosol can.
+aerospace | promote | noun | The industry concerned with aircraft, missiles, satellites a
+ago | first | adverb | Back in time from now; used after a length of time to say when something happened, as in 'two years ago.'
+airplane | first | noun | A vehicle with wings and engines that flies through the air, carrying passengers or cargo.
+airway | first | noun | The passage from the nose and mouth to the lungs that air moves through when you breathe.
+aloha | promote | interjection | Expressing good wishes when greeting or parting from someone
+aluminum | first | noun | A light, silver-colored metal used for cans, foil and many household items.
+alumnus | promote | noun | A graduate of any gender.
+amp | promote | noun | Clipping of amplifier.
+amphitheater | first | noun | A large outdoor place for concerts, plays or sports, with rows of seats rising in a curve around a stage or field.
+angina | first | noun | Chest pain or pressure caused when the heart does not get enough blood, often a warning sign of heart disease.
+anus | promote | noun | The external orifice of the rectum in most mammals, teleost 
+applesauce | first | noun | A soft, smooth food made from cooked, mashed apples, often eaten as a snack or side dish.
+artery | promote | noun | Any of the muscular- and elastic-walled blood vessels formin
+asparagus | promote | noun | The young shoots of Asparagus officinalis eaten as a vegetab
+assemblyman | promote | noun | A member of the lower house of certain US state legislatures
+atrium | promote | noun | A square hall lit by daylight from above, into which rooms o
+autistic | promote | adjective | Having autism, or pertaining to autism.
+azalea | first | noun | A flowering shrub with many bright pink, red, purple or white flowers in spring.
+backlash | promote | noun | A negative reaction, objection or outcry, especially of a vi
+backwater | promote | noun | A remote place: somewhere that remains unaffected by new eve
+battalion | promote | noun | An army unit having two or more companies, etc. and a headqu
+bicentennial | promote | noun | The 200th anniversary of an event or happening.
+bike | first | noun | A bicycle; informally, also a motorcycle.
+bladder | promote | noun | Specifically, the urinary bladder.
+bluegrass | first | noun | A type of American country music played on acoustic instruments like the banjo, fiddle and mandolin.
+blueprint | promote | noun | A detailed technical drawing (now often in some electronical
+bogey | promote | noun | A score of one over par on a hole.
+bongo | promote | noun | Either of a pair of small drums of Cuban origin, played by b
+booger | first | noun | A piece of dried mucus from inside the nose (informal, childish).
+bop | promote | noun | A good, catchy song; a song that makes one want to dance.
+breech | promote | adjective | Born, or having been born, breech.
+brigade | promote | noun | A military unit composed of several regiments (or battalions
+brigadier | first | noun | In the US, short for brigadier general, a one-star general officer.
+broadband | promote | noun | An Internet connection provisioned over an existing service 
+buffalo | promote | noun | Any member of the species Bison bison of related North Ameri
+bullish | promote | adjective | Optimistic, confident; overly or foolishly optimistic or hop
+buttermilk | promote | noun | Cultured buttermilk, a fermented dairy product produced from
+butternut | first | noun | Short for butternut squash, a tan, bell-shaped winter squash with sweet orange flesh.
+caddie | promote | noun | A person hired to assist a golfer by carrying their golf clu
+caddy | first | noun | A person who carries a golfer's clubs and gives advice during a round; another spelling of caddie.
+canola | first | noun | A plant grown for its seeds, which are pressed to make a light cooking oil; often short for canola oil.
+capillary | promote | noun | Any of the small blood vessels (from 5 to 10 micrometers/mic
+cardamom | promote | noun | Seed of Elettaria cardamomum, used as a medicine and spice, 
+cardiac | promote | adjective | Pertaining to the heart.
+carnival | promote | noun | A traveling amusement park, called a funfair in British Engl
+cartridge | promote | noun | A vessel which contains the ink or toner for a computer prin
+cashew | promote | noun | A cashew nut.
+cataract | promote | noun | A clouding of the lens in the eye leading to a decrease in v
+cater | promote | verb | To provide with food, especially for a special occasion as a
+catnip | promote | noun | Nepeta cataria and Nepeta grandiflora (and perhaps other spe
+catwalk | promote | noun | A narrow elevated stage on which models parade.
+cayenne | first | noun | A hot red pepper powder made from dried chili peppers, used to make food spicy; short for cayenne pepper.
+centerpiece | first | noun | A decoration, such as flowers or candles, placed in the middle of a table; also the most important or attractive part of something.
+centimeter | first | noun | A metric unit of length equal to one hundredth of a meter, about 0.4 inches. Symbol: cm.
+cervical | promote | adjective | Of or pertaining to the cervix.
+chalk | promote | noun | A piece of chalk, or nowadays processed compressed gypsum (c
+chamomile | first | noun | A plant with small daisy-like flowers that are dried and used to make a mild, calming herbal tea.
+checkmate | promote | noun | The conclusive victory in a game of chess that occurs when a
+chimp | first | noun | A chimpanzee: an intelligent African ape closely related to humans.
+ciao | promote | interjection | Bye, goodbye.
+cinema | promote | noun | Films collectively.
+cockpit | promote | noun | The compartment in an aircraft or spacecraft in which the pi
+cocoa | promote | noun | An unsweetened brown powder made from roasted, ground cocoa 
+congress | promote | noun | A legislative body of a state, originally the bicameral legi
+consulate | promote | noun | The business office of a consul; a minor embassy.
+cookie | first | noun | A small, flat, sweet baked treat, such as a chocolate chip cookie.
+cork | promote | noun | A bottle stopper made from this or any other material.
+coronary | promote | adjective | Encircling something (such as a crown), especially with rega
+coroner | first | noun | A public official who investigates sudden, violent or unexplained deaths to find out why the person died.
+cranberry | promote | noun | The edible red berry of that shrub.
+creaking | first | noun | The long, squeaky sound an old door, floor, chair or stairs makes when it moves or bears weight.
+curate | promote | verb | To apply selectivity and taste to, as a collection of fashio
+curling | promote | noun | A winter sport where players aim and slide stones down a she
+cusp | promote | noun | A point of transition.
+custard | first | noun | A sweet, creamy dessert or filling made from milk or cream, eggs and sugar, cooked until thick.
+cuticle | promote | noun | The strip of hardened skin at the base and sides of a finger
+dal | promote | noun | A dish made from lentils, cooked with spices, tomatoes and o
+dalmatian | promote | noun | One of a breed of dog with a short, white coat with dark spo
+deco | first | noun | Short for Art Deco, the bold, geometric design style of the 1920s and 1930s, seen in buildings, furniture and posters.
+desktop | promote | noun | A desktop computer.
+deuce | promote | noun | A tied game where either player can win by scoring two conse
+diaper | first | noun | A piece of soft, absorbent material worn between the legs by a baby to catch urine and feces.
+diaphragm | promote | noun | In mammals, a sheet of muscle separating the thorax from the
+diehard | promote | adjective | Strongly or fanatically determined or devoted.
+dimple | promote | noun | A small natural depression on the skin, especially on the fa
+dome | promote | noun | A structural element resembling the hollow upper half of a s
+dormitory | promote | noun | A building or part of a building which houses students, sold
+dory | promote | noun | A small flat-bottomed boat with pointed or somewhat pointed 
+dredge | promote | verb | To make a channel deeper or wider using a dredge.
+duffel | first | noun | A large, soft bag shaped like a tube, used to carry clothes and gear; short for duffel bag.
+dyslexic | promote | adjective | Having dyslexia.
+elk | promote | noun | The common wapiti (Cervus canadensis), the second largest me
+embassy | promote | noun | The official residence of such a group, or of an ambassador.
+emporium | promote | noun | A shop that offers a wide variety of goods for sale; a depar
+enamel | promote | noun | The hard covering on the exposed part of a tooth.
+erectile | promote | adjective | Capable of filling with blood and becoming rigid.
+esquire | promote | noun | An honorific sometimes placed after a man's name.
+ethanol | first | noun | A type of alcohol made from corn or sugarcane, used as a fuel mixed into gasoline and also found in alcoholic drinks.
+ethernet | first | noun | A standard way of connecting computers to a network with a cable, rather than through Wi-Fi.
+extravaganza | first | noun | A big, showy and exciting event or performance with lots of spectacle, music, lights or decorations.
+fallback | promote | noun | A backup plan or contingency strategy; an alternative which 
+fella | first | noun | A man or boy; a guy. An informal spelling of 'fellow'.
+fiance | first | noun | The man someone is engaged to marry. Often written fiancé; a woman engaged to marry is a fiancée.
+fieldwork | promote | noun | Work done out in the real world rather than in controlled co
+flak | promote | noun | Adverse criticism.
+flashlight | first | noun | A small, battery-powered light that you hold in your hand.
+fluoride | first | noun | A mineral compound of fluorine added to toothpaste and drinking water to help prevent tooth decay.
+fob | promote | noun | A hand-held electronic device that can be used as a remote c
+fracking | first | noun | Getting oil or natural gas from deep rock by forcing water, sand and chemicals into it under high pressure to crack it open.
+frisk | promote | verb | To search (someone) by feeling their body and clothing.
+furlough | promote | noun | A period of unpaid time off, used by an employer to reduce c
+gala | promote | noun | A showy and festive party.
+galley | promote | noun | The cookroom or kitchen and cooking apparatus of a vessel or
+gaslight | promote | verb | To manipulate someone such that they doubt their own memory,
+genie | promote | noun | A fictional magical being that is typically bound to obey th
+genital | promote | adjective | Of or relating to the genitalia.
+genitals | first | noun | The external sex organs of a person or animal.
+gigabyte | first | noun | A unit of computer memory or data equal to about one billion bytes, often written GB.
+glimpse | promote | noun | Chiefly followed by of: a brief and incomplete look.
+globalization | first | noun | The process by which countries' economies, businesses and cultures become more connected through trade, travel and technology.
+glycerin | first | noun | A clear, thick, sweet liquid used in soap, skin lotion, cough syrup and some foods to keep things moist.
+golf | promote | noun | A ball game played by individuals competing against one anot
+goody | promote | noun | A small amount of something good to eat.
+gourd | promote | noun | A hard-shelled fruit from a plant in Lagenaria or Cucurbita.
+grad | first | noun | Short for graduate: a person who has finished school or college.
+grail | promote | noun | Something eagerly sought or quested for.
+grille | first | noun | The metal or plastic grid on the front of a car that lets air in to cool the engine; also, any decorative grate over an opening.
+gumbo | promote | noun | A soup or stew popular in Louisiana, consisting of a strong 
+gyro | promote | noun | A style of Greek sandwich commonly filled with grilled meat,
+hangman | promote | noun | A guessing game where one has to guess the word an opponent 
+heartburn | promote | noun | A burning pain in the chest that is caused by stomach acid e
+helm | promote | noun | The tiller (or, in a large ship, the wheel) which is used to
+hemlock | first | noun | A very poisonous plant with small white flowers and fern-like leaves.
+hippo | first | noun | Short for hippopotamus: a very large, heavy African animal that spends much of its time in rivers and lakes.
+hippy | first | noun | Another spelling of hippie: a person, especially in the 1960s, who rejects mainstream values and favors peace and a relaxed life.
+holocaust | promote | noun | Extensive destruction of a group of animals or people; a lar
+honeymoon | promote | noun | A trip taken by a newly married couple during this period.
+horoscope | promote | noun | An astrological forecast of a person's future based on such 
+horseradish | promote | noun | A pungent condiment made from the root of the plant.
+hull | promote | noun | The body or frame of a vessel, such as a ship or plane.
+humpback | promote | noun | Ellipsis of humpback whale (Megaptera novaeangliae).
+hutch | promote | noun | A coop or cage for keeping small animals (rabbits, guinea pi
+hydrogen | promote | noun | The lightest chemical element (symbol H), with an atomic num
+infrastructure | promote | noun | The facilities, services and installations needed for the fu
+italic | promote | adjective | Having letters that slant or lean to the right; oblique.
+janitor | first | noun | A person whose job is to clean and take care of a building, such as a school or office.
+jersey | promote | noun | A shirt worn by a member of an athletic team, usually oversi
+jig | first | noun | A lively folk dance with quick jumping steps, especially Irish, or the fast music played for it.
+jigsaw | promote | noun | Ellipsis of jigsaw puzzle.
+jingle | promote | noun | A memorable short song or verse, or in some cases a snippet 
+jive | promote | noun | A dance style popular in the 1940–50s.
+jog | promote | verb | To move at a pace between walking and running, to run at a l
+jogging | promote | noun | The practice of running at a relatively slow pace for exerci
+jugular | promote | noun | Ellipsis of jugular vein.
+karat | first | noun | A unit that measures how pure gold is; 24-karat gold is pure gold.
+kilometer | first | noun | A unit of distance equal to 1,000 meters, or about 0.62 miles.
+kilt | promote | noun | A traditional Scottish garment, usually worn by men, having 
+kindergarten | first | noun | The first year of elementary school in the US, usually for children about five years old, before first grade.
+kiwi | promote | noun | A kiwifruit (Actinidia chinensis var. deliciosa).
+lady | promote | noun | A polite reference or form of address to women.
+ladybug | first | noun | A small round beetle, usually red or orange with black spots, that eats plant pests.
+landfall | promote | noun | The point at which a hurricane or similar storm reaches land
+landfill | promote | noun | A site at which refuse is buried under layers of earth.
+latch | promote | noun | A fastening for a door that has a bar that fits into a notch
+latex | promote | noun | Natural latex rubber, especially nonvulcanized rubber, such 
+laureate | first | noun | A person who has won a major honor, especially a Nobel Prize, as in Nobel laureate or poet laureate.
+leach | first | verb | Of chemicals or nutrients, to drain slowly out of soil or another material, carried by water passing through it.
+licorice | promote | noun | A type of candy made from that plant's dried root or its ext
+limelight | promote | noun | Attention, notice, a starring or central role, present fame;
+lineman | promote | noun | A player who specializes in play at the line of scrimmage.
+liquor | promote | noun | Any alcoholic beverage.
+lisp | promote | verb | To pronounce the consonant ‘s’ imperfectly; to give ‘s’ and 
+lithium | promote | noun | The simplest alkali metal, the lightest solid element, and t
+loon | promote | noun | Any of various birds, of the order Gaviiformes, of North Ame
+lotto | promote | noun | A lottery.
+lung | promote | noun | A biological organ of vertebrates that controls breathing an
+mace | promote | noun | Tear gas or pepper spray, especially for personal use.
+mackerel | first | noun | A fast-swimming ocean fish with blue-green stripes on its back, eaten grilled, smoked or canned.
+mandarin | promote | noun | A small, sweet citrus fruit.
+mango | promote | noun | Fruit of the mango tree.
+mariachi | promote | noun | A traditional form of Mexican music, either sung or purely i
+mascot | promote | noun | Something, especially a person or animal, used to symbolize 
+masonry | promote | noun | That which is built by a mason; anything constructed of the 
+massively | promote | adverb | Greatly.
+mastermind | promote | noun | A person responsible for the highest level of planning and e
+mate | promote | noun | A breeding partner.
+meanwhile | promote | adverb | During the time that something is happening, often specifica
+medal | promote | noun | A stamped or cast metal object (usually a disc), particularl
+medalist | promote | noun | Someone who has received a medal.
+mic | first | noun | Short for microphone: a device that picks up sound so it can be made louder or recorded.
+millimeter | first | noun | A metric unit of length equal to one thousandth of a meter, about the thickness of a credit card.
+mohawk | promote | noun | A hairstyle where both sides are shaved, with the hair along
+mono | first | noun | Short for mononucleosis: a viral illness that causes extreme tiredness, fever, a sore throat and swollen glands, common in teenagers.
+monsoon | promote | noun | Tropical rainy season when the rain lasts for several months
+montage | promote | noun | A sequence of brief clips, often set to music, used to compr
+moor | promote | verb | To fix or secure (e.g. a vessel) in a particular place by ca
+mortuary | promote | noun | A place where dead bodies are stored prior to burial or crem
+mullet | promote | noun | A men's hairstyle where the hair is kept short on the top an
+multiplex | promote | noun | A cineplex.
+mustache | first | noun | Hair that a man grows on his upper lip, between the nose and mouth.
+nasal | promote | adjective | Of or pertaining to the nose or to the nasion.
+navel | promote | noun | The indentation or bump remaining in the abdomen of placenta
+neolithic | first | adjective | Relating to the New Stone Age, about 10,000 to 4,000 years ago, when people began farming and settling in villages.
+neon | promote | noun | The chemical element (symbol Ne) with an atomic number of 10
+ninja | promote | noun | (historical) One trained in ninjutsu, especially one used fo
+nitrate | promote | noun | Any salt or ester of nitric acid.
+nugget | promote | noun | A chicken nugget.
+oatmeal | promote | noun | A breakfast cereal made from rolled oats, cooked in milk or 
+octane | first | noun | A measure of gasoline's quality that shows how well it resists knocking in an engine, like 87 for regular and 91 for premium.
+oncoming | promote | adjective | Approaching; coming closer.
+outboard | promote | noun | An outboard motor.
+ovation | promote | noun | Prolonged enthusiastic applause.
+overdrive | promote | noun | A state of heightened activity.
+overkill | promote | noun | An unnecessary excess of whatever is needed to achieve a goa
+paddy | promote | noun | A paddy field, a rice paddy; an irrigated or flooded field w
+pajama | first | noun | Having to do with pajamas, the loose clothes you sleep in, as in pajama pants or a pajama party.
+pancake | first | noun | A thin, flat, round cake made from batter and cooked on both sides on a griddle or pan, often eaten with syrup for breakfast.
+panda | first | noun | A large black-and-white bear from China that eats mostly bamboo; also called a giant panda.
+parliament | first | noun | The elected group of people who make the laws in Britain and many other countries.
+peachy | promote | adjective | Very good, excellent, typically used sarcastically to indica
+pecan | promote | noun | A smooth, thin-shelled, edible oval nut of this tree.
+pectoral | first | noun | One of the large muscles of the chest, usually used in the plural, pectorals, and informally shortened to 'pecs'.
+philharmonic | first | noun | A large symphony orchestra; the word often appears in orchestra names, like the New York Philharmonic.
+phosphate | promote | noun | Any salt or ester of phosphoric acid.
+pineapple | promote | noun | The ovoid fruit of the pineapple plant, which has very sweet
+pinky | first | noun | The smallest finger on your hand; the little finger.
+pint | first | noun | A unit of liquid measure in the US equal to 16 fluid ounces, or two cups, about 473 milliliters.
+pituitary | promote | noun | The pituitary gland; sometimes including together with the p
+plaid | first | noun | A pattern of colored stripes crossing each other at right angles, common on flannel shirts, skirts and blankets.
+plantain | promote | noun | The fruit of the plant, usually cooked before eating and use
+plumage | promote | noun | The feathers covering the body of a bird collectively.
+pod | promote | noun | A seed case for legumes (e.g. peas, beans, peppers); a seedp
+polio | first | noun | A serious infectious disease caused by a virus that can paralyze people, now prevented by a vaccine.
+polyester | promote | noun | A material or fabric made from polyester polymer.
+popsicle | first | noun | A frozen treat of flavored ice on a wooden stick.
+pounce | promote | verb | To leap into the air intending to seize someone or something
+preposition | first | noun | A small word, such as in, on, at, for or with, placed before a noun to show place, time or relationship.
+preschool | promote | noun | A nursery school.
+proctor | first | noun | A person who watches students during an exam to make sure no one cheats.
+propane | first | noun | A gas fuel stored in tanks and used for grills, heating, stoves and camping.
+pumpkin | promote | noun | The round yellow or orange fruit of this plant.
+putter | promote | noun | A golf club specifically intended for a putt.
+quartermaster | promote | noun | An officer whose duty is to provide quarters, provisions, st
+quilting | promote | noun | The practice of creating quilts.
+quinoa | promote | noun | The high-protein dried fruits and seeds of this plant, used 
+radiotherapy | first | noun | Treatment of cancer and some other diseases using carefully aimed radiation; in the US usually called radiation therapy.
+rap | promote | noun | Rap music.
+redesign | promote | verb | To lay out or plan a new version of something previously lai
+reflux | promote | noun | The leaking of stomach acid up into the esophagus.
+relatable | promote | adjective | Able to be related to on a personal level.
+retrace | promote | verb | To go back over something, usually in an attempt at rediscov
+roach | first | noun | A cockroach, a brown insect that lives in dark, warm places in homes and buildings.
+rodeo | promote | noun | An entertainment event associated with the sport.
+rollover | promote | noun | A road traffic accident in which a vehicle overturns.
+runway | promote | noun | A section of land, usually paved, for airplanes to land on o
+saber | first | noun | A heavy sword with a curved blade, once used by cavalry; also a light sword used in the sport of fencing.
+saffron | promote | noun | A spice (seasoning) and coloring agent made from the stigma 
+saltwater | first | adjective | Living in, using or relating to the salty water of the sea rather than fresh water from lakes and rivers.
+satellite | promote | noun | A man-made apparatus designed to be placed in orbit around a
+scoot | promote | verb | To move sideways (especially along a seat for multiple peopl
+scotch | first | noun | Whiskey made in Scotland, usually written with a capital S (Scotch).
+secretariat | promote | noun | A subdivision within an organization or a company that deals
+seedling | promote | noun | A young plant grown from seed.
+semi | first | noun | A large truck with a cab that pulls a long trailer; short for semi-trailer truck.
+sequoia | first | noun | A giant evergreen tree of California, among the tallest and largest living things on Earth.
+shale | promote | noun | A fine-grained sedimentary rock of a thin, laminated, and of
+sharia | first | noun | Islamic religious law, based on the Quran and the teachings of the Prophet Muhammad, covering worship, ethics and daily life.
+shin | first | noun | The front of the leg between the knee and the ankle.
+shingles | first | noun | A painful skin rash with blisters, usually on one side of the body, caused by the chickenpox virus becoming active again years later.
+shrapnel | promote | noun | Any shot, fragments, or debris thrown out by an exploding sh
+shuttle | promote | noun | A transport service (such as a bus or train) that goes back 
+silicone | promote | noun | Any of a class of inert, semi-inorganic polymeric compounds 
+sir | first | noun | A polite word used to speak to a man, especially a stranger, a customer or someone of higher rank: 'Yes, sir.'
+skyline | promote | noun | The horizontal silhouette of a city or building against the 
+slate | promote | noun | A fine-grained homogeneous sedimentary rock composed of clay
+sludge | first | noun | Thick, wet, dirty mud or a similar soft mixture, such as the waste left after treating sewage or oil.
+smoothie | promote | noun | A drink made from whole fruit, thus thicker than fruit juice
+snuggle | promote | verb | To lie close to another person or thing, hugging or being co
+soy | promote | noun | Soybeans, or the protein derived from them.
+spanking | promote | noun | A form of physical punishment in which a beating is applied 
+squadron | promote | noun | A tactical air force unit; consists of at least two flights;
+staple | promote | noun | A wire fastener, made of thin wire, used to secure stacks of
+starling | promote | noun | The common starling, Sturnus vulgaris, which has dark, iride
+stereo | first | noun | A machine or system for playing music through two or more speakers.
+stethoscope | promote | noun | A medical instrument used for listening to sounds produced w
+stiletto | promote | noun | A woman's shoe with a tall, slender heel (called a stiletto 
+strand | promote | verb | To leave (someone) in a difficult situation; to abandon or d
+strep | first | noun | Short for strep throat, a bacterial infection that causes a very sore throat and fever.
+stylus | promote | noun | A small device resembling a pen used to input handwritten te
+subdivision | promote | noun | A group of houses created by the same builder or in the same
+submarine | promote | noun | A boat that can go underwater.
+sudoku | first | noun | A number puzzle on a 9-by-9 grid where each row, column and small box must contain the numbers 1 to 9 once.
+suite | promote | noun | A group of connected rooms, usually separable from other roo
+swab | promote | noun | A small piece of soft, absorbent material, such as gauze, us
+sweepstakes | first | noun | A contest or drawing in which prizes go to people chosen at random, often free to enter and used to promote a product.
+swish | promote | noun | A short rustling, hissing or whistling sound, often made by 
+swivel | promote | verb | To swing or turn, as on a pin or pivot.
+tandem | first | noun | A bicycle built for two riders, one sitting behind the other.
+tartar | promote | noun | A hard yellow deposit on the teeth, formed from dental plaqu
+techno | first | noun | A style of electronic dance music with a fast, steady, repetitive beat, made mostly with synthesizers and drum machines.
+teddy | first | noun | A teddy bear: a soft stuffed toy bear.
+telecast | promote | noun | A television broadcast, especially outside of a studio.
+telegraph | promote | noun | (historical) The electrical device gradually developed in th
+tentacle | promote | noun | An elongated, boneless, flexible organ or limb of some anima
+thoroughbred | promote | noun | Any purebred horse.
+thyroid | first | noun | A small gland in the front of the neck that makes hormones controlling how fast the body uses energy.
+townspeople | first | noun | The people who live in a particular town, considered as a group.
+tract | promote | noun | A series of connected body organs, such as the digestive tra
+traction | promote | noun | The adhesive friction of a wheel etc on a surface.
+transfusion | promote | noun | The transfer of blood or blood products from one individual 
+triceps | first | noun | The large muscle at the back of your upper arm that straightens your elbow.
+trillion | first | noun | The number 1,000,000,000,000: one thousand billion, or a million million.
+trimester | first | noun | One of the three periods of about three months each into which a pregnancy is divided.
+trot | promote | verb | To move along briskly; specifically, to move at a pace betwe
+tuberculosis | first | noun | A serious contagious disease, usually of the lungs, caused by bacteria and spread through the air when an infected person coughs.
+tuition | promote | noun | A sum of money paid for instruction (such as in a private sc
+turmeric | promote | noun | The pulverized rhizome of the turmeric plant, used for flavo
+turntable | promote | noun | The circular rotating platform of a record player or a disk 
+turret | promote | noun | A little tower, frequently a merely ornamental structure at 
+tux | first | noun | A tuxedo: a man's formal black suit worn with a bow tie for weddings, proms and black-tie events.
+typhoid | first | noun | Typhoid fever: a serious infection from bacteria in dirty food or water, causing high fever, weakness and stomach pain.
+ultrasound | first | noun | A medical scan that uses high-frequency sound waves to show images of the inside of the body, such as a baby in the womb.
+ump | promote | noun | An umpire.
+understudy | first | noun | An actor who learns another actor's part so they can perform it if that actor is sick or absent.
+undertone | promote | noun | An implicit message perceived subtly alongside, but not detr
+unsecured | promote | adjective | Of a loan or guarantee, without collateral.
+upholstery | promote | noun | The materials used in upholstering furniture.
+vagina | promote | noun | A sex organ for copulation and birth, found in female theria
+vanilla | promote | noun | The distinctive fragrant flavor/flavor characteristic of van
+velcro | first | noun | A fastener made of two fabric strips, one with tiny hooks and one with tiny loops, that stick together when pressed.
+vertebra | first | noun | One of the small bones that are linked together to form the spine (backbone).
+vertebrate | promote | noun | An animal having a backbone: one belonging to the subphylum 
+visor | promote | noun | The fore piece of a cap, projecting over, and protecting the
+vitamin | first | noun | A natural substance in food that your body needs in small amounts to stay healthy, such as vitamin C.
+wasabi | promote | noun | A pungent green Japanese condiment made from the plant Eutre
+welfare | promote | noun | Shortened form of "welfare spending", "welfare payments", or
+welterweight | promote | noun | A boxer weighing more than a lightweight boxer and less than
+whereabouts | promote | noun | A location; where something is situated.
+wherever | promote | adverb | In, at or to any place that one likes or chooses.
+whiplash | promote | noun | An injury to the upper spine connected to a violent jerk of 
+whiskers | first | noun | The long, stiff hairs growing near the mouth of a cat, dog or other animal; also hair on a man's face.
+whiskey | first | noun | A strong alcoholic drink made from grain such as corn, rye, barley or wheat, and aged in wooden barrels.
+whoever | promote | pronoun | Any person or persons that.
+wisp | promote | noun | A small, thin line of cloud, smoke, or steam.
+workstation | promote | noun | An area, at a workplace, for a single worker.
+wren | first | noun | A very small brown songbird with a short tail that it often holds straight up, known for its loud song.
+wristband | promote | noun | A strip of material worn around the wrist, e.g. to absorb pe
+yam | promote | noun | A sweet potato; a tuber from the species Ipomoea batatas.
+yearbook | promote | noun | A publication compiled by the graduating class of a high sch
+zap | promote | verb | To strike (something or someone) with electricity or energy,
+zodiac | promote | noun | The twelve equal divisions of the zodiacal region into signs

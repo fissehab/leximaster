@@ -77,3 +77,9 @@ rest +
 dry +
 pin +
 goat +
+
+# Everyday words fetched as a capitalized page (2026-11-19)
+yank
+eight
+ban
+wed
