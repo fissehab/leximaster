@@ -121,7 +121,44 @@ def _inflect(word: str, upos: str) -> list[list[str]]:
     return rows
 
 
-def forms_for(word: str, poses: list[str], family: list[str], shares_stem) -> dict:
+# Wiktionary's inflection senses ("simple past of bear"), which the
+# dictionary senses leave out.
+FORM_SENSE = re.compile(r"^(simple past|past participle|plural)\b[^.;:(]*?\bof ([a-z][a-z -]*[a-z])", re.I)
+FORM_TAGS = {"VBD": "past tense", "VBN": "past participle", "NNS": "plural"}
+# True but misleading for a learner: "opera" (plural of opus), "dive" (of diva).
+NOT_FORM_OF = {"dive", "opera", "stamina", "resent", "rebound", "insignia", "stove"}
+
+
+def _regular(form: str, base: str) -> bool:
+    """"walked", "boxes", "carried", "stopped": built by the usual rules."""
+    ends = [base + e for e in ("s", "es", "d", "ed")] + [base[:-1] + e for e in ("ies", "ied")] + \
+        [base + base[-1] + "ed"]
+    return form in ends
+
+
+def form_of(word: str, definitions: list[str]) -> list[list[str]]:
+    """[[label, base], ...] when the word is also an irregular form of another
+    word ("bore": past tense of bear; "teeth": plural of tooth). Wiktionary
+    names the base and lemminflect must agree, which leaves out archaic
+    forms ("span": past of spin)."""
+    out = []
+    for d in definitions if word not in NOT_FORM_OF else ():
+        m = FORM_SENSE.match(d)
+        if not m:
+            continue
+        base = m.group(2).strip()
+        if base == word or _regular(word, base) or any(b == base for _, b in out):
+            continue
+        upos = "NOUN" if m.group(1).lower() == "plural" else "VERB"
+        forms = getAllInflections(base, upos=upos)
+        tags = [t for t in (("NNS",) if upos == "NOUN" else ("VBD", "VBN")) if word in forms.get(t, ())]
+        if tags:
+            out.append([" and ".join(FORM_TAGS[t] for t in tags), base])
+    return out
+
+
+def forms_for(word: str, poses: list[str], family: list[str], shares_stem,
+              definitions: list[str] = ()) -> dict:
     """The "forms" field of an entry. `poses` are its parts of speech, most
     important first; `family` the study notes' word family ("x (noun)");
     `shares_stem(member, word)` keeps only members built on the same word."""
@@ -158,6 +195,8 @@ def forms_for(word: str, poses: list[str], family: list[str], shares_stem) -> di
             seen.add(f.lower())
             related.append(f"{f} ({p})")
     out = {}
+    if (of := form_of(word, list(definitions))):
+        out["form_of"] = of
     if inflections:
         out["inflections"] = inflections
     if related:

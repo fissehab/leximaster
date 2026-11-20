@@ -3730,11 +3730,14 @@ def drop_editor_notes(words: list[dict]) -> None:
 def add_forms(words: list[dict]) -> None:
     """Each entry's inflections and related forms (tools/forms.py)."""
     from tools.forms import forms_for
+    raw = read_jsonl(DICT_CACHE)     # with the inflection senses ("simple past of bear")
     for w in words:
         n = w.get("nuance") or {}
         poses = [(n.get("core") or {}).get("pos", "")] + [m["pos"] for m in w["meanings"]]
+        entry = (raw.get(w["key"]) or {}).get("entry") or {}
+        defs = [s_["definition"] for m in entry.get("meanings") or [] for s_ in m["senses"]]
         if not w.get("name_kind") and (f := forms_for(w["word"], [p for p in poses if p],
-                                                         n.get("word_family") or [], shares_stem)):
+                                                         n.get("word_family") or [], shares_stem, defs)):
             w["forms"] = f
 
 

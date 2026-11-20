@@ -557,6 +557,9 @@ function wordForms(w, n) {
   const rows = (f.inflections || []).map(([pos, list]) => h("div.forms-row",
     h("span.related-label", pos),
     h("span.forms-list", list.map(([label, value]) => h("span.form", h("span.form-label", label), " ", h("b", value))))));
+  // "bore": also the past tense of bear.
+  rows.unshift(...(f.form_of || []).map(([label, base]) => h("div.forms-row",
+    h("span.related-label", "Also"), h("span.forms-list", `the ${label} of `, termLink(base, { chip: false })))));
   if (related.length) rows.push(h("div.forms-row", h("span.related-label", "Related"), wordChips(related)));
   return rows.length ? h("section.npanel.wide.word-forms", h("h3", "Word forms"), rows) : null;
 }
