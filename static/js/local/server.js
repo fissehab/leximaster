@@ -1,0 +1,1732 @@
+// The LexiMaster API running in the browser, for the static GitHub Pages
+// build. It ports the FastAPI routes (app/api/*.py) to JavaScript over the
+// same SQLite schema, using sql.js (SQLite compiled to WebAssembly).
+//
+// Data: data/index.json lists every word (enough for search, filters and
+// quiz distractors); each word's full entry is in one of data/detail/NN.json,
+// fetched on demand. The learner's progress is saved in IndexedDB in the
+// Export format (the answer log as one key per answer) and restored on load
+// with the Import logic, so a progress file moves freely between this site
+// and the desktop app. See "persistence" for how several open tabs share it.
+
+import { idbDelete, idbEntries, idbGet, idbKeys, idbPut, idbTx } from "./idb.js";
+import { BIBLE_TRACKS, EVERYDAY_DOMAINS, FORM_OF } from "../shared.gen.js";
+import { practiceGrade, schedule } from "./srs.js";
+
+const EVERYDAY_SQL = `EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value IN (${
+  EVERYDAY_DOMAINS.map(d => `'${d}'`).join(",")}))`;
+const MASTERED_INTERVAL = 21;
+// The daily review's session_minutes and new_per_day went with it (2026-11);
+// an old export's values are ignored on import.
+const DEFAULT_SETTINGS = { accent: "us", autoplay: "1", speech_rate: "0.9", word_levels: "2,3,4" };
+
+const SCHEMA = `
+CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
+CREATE TABLE words (
+  id INTEGER PRIMARY KEY, key TEXT UNIQUE NOT NULL, word TEXT NOT NULL, freq_rank INTEGER, zipf REAL,
+  domains TEXT NOT NULL DEFAULT '[]', has_audio INTEGER NOT NULL DEFAULT 0, enriched INTEGER NOT NULL DEFAULT 0,
+  has_conv INTEGER NOT NULL DEFAULT 0, is_custom INTEGER NOT NULL DEFAULT 0, level INTEGER,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')));
+CREATE TABLE user_word (word_id INTEGER PRIMARY KEY, stars INTEGER NOT NULL DEFAULT 0,
+  known INTEGER NOT NULL DEFAULT 0, notes TEXT NOT NULL DEFAULT '', updated_at TEXT NOT NULL DEFAULT (datetime('now')));
+CREATE TABLE srs (word_id INTEGER PRIMARY KEY, ease REAL NOT NULL DEFAULT 2.5, interval_days REAL NOT NULL DEFAULT 0,
+  reps INTEGER NOT NULL DEFAULT 0, lapses INTEGER NOT NULL DEFAULT 0, due_date TEXT NOT NULL, last_reviewed TEXT, prev TEXT);
+CREATE INDEX srs_due ON srs(due_date);
+CREATE TABLE review_log (id INTEGER PRIMARY KEY, word_id INTEGER NOT NULL,
+  ts TEXT NOT NULL DEFAULT (datetime('now', 'localtime')), mode TEXT NOT NULL, grade INTEGER,
+  correct INTEGER NOT NULL, ms_taken INTEGER);
+CREATE INDEX review_log_word ON review_log(word_id);
+CREATE TABLE test_session (id INTEGER PRIMARY KEY, ts TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
+  kind TEXT NOT NULL, score INTEGER NOT NULL, total INTEGER NOT NULL, duration_s INTEGER NOT NULL DEFAULT 0);
+CREATE TABLE daily_activity (date TEXT PRIMARY KEY, seconds INTEGER NOT NULL DEFAULT 0,
+  reviews INTEGER NOT NULL DEFAULT 0, new_words INTEGER NOT NULL DEFAULT 0);
+CREATE TABLE lists (id INTEGER PRIMARY KEY, name TEXT UNIQUE NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')));
+CREATE TABLE list_words (list_id INTEGER NOT NULL, word_id INTEGER NOT NULL, note TEXT NOT NULL DEFAULT '',
+  added_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')), PRIMARY KEY (list_id, word_id));
+CREATE TABLE recordings (word_id INTEGER PRIMARY KEY, path TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')));
+CREATE TABLE settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+`;
+
+const WORD_COLUMNS = `w.id, w.key, w.word, w.freq_rank, w.zipf, w.domains, w.has_audio, w.enriched, w.is_custom, w.level,
+  COALESCE(u.stars, 0) AS stars, COALESCE(u.known, 0) AS known, COALESCE(u.notes, '') AS notes,
+  s.due_date, s.interval_days, s.reps, s.ease, s.lapses, s.last_reviewed`;
+const WORD_FROM = `FROM words w LEFT JOIN user_word u ON u.word_id = w.id LEFT JOIN srs s ON s.word_id = w.id`;
+
+class HttpError extends Error {
+  constructor(status, message) { super(message); this.status = status; }
+}
+
+// ------------------------------------------------------------------ database
+
+let db = null;
+let ready = null;
+const INDEX = new Map();     // id -> index entry (short field names, see tools/build_site.py)
+const CUSTOM = new Map();    // id -> full data of a word you added (never evicted)
+const SHARDS = new Map();    // shard number -> {key: data}, most recently used last
+const LOADING = new Map();   // shard number -> Promise of the same, while it downloads
+const SHARDS_KEPT = 8;       // detail files kept in memory (about 0.7 MB each)
+const recordingUrls = new Map();
+
+function all(sql, params = []) {
+  const stmt = db.prepare(sql);
+  try {
+    stmt.bind(params);
+    const out = [];
+    while (stmt.step()) out.push(stmt.getAsObject());
+    return out;
+  } finally { stmt.free(); }
+}
+const get = (sql, params) => all(sql, params)[0];
+function run(sql, params = []) {
+  db.run(sql, params);
+  return { changes: db.getRowsModified(), lastId: get("SELECT last_insert_rowid() AS id").id };
+}
+
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = src;
+    s.onload = resolve;
+    s.onerror = () => reject(new Error(`Couldn't load ${src}`));
+    document.head.append(s);
+  });
+}
+
+async function fetchJson(url) {
+  let res;
+  try { res = await fetch(url); } catch (e) {
+    throw new HttpError(503, "You're offline, and this part isn't saved on this device yet. " +
+      "Settings → Download for offline use makes all of LexiMaster work offline.");
+  }
+  if (!res.ok) throw new HttpError(503, `Couldn't load ${url} (${res.status}). Check your connection.`);
+  return res.json();
+}
+
+let OFFLINE_MB = null;   // the size of "Download for offline use" (build_site)
+
+async function boot() {
+  await loadScript("static/vendor/sql-wasm.js");
+  const SQL = await window.initSqlJs({ locateFile: f => `static/vendor/${f}` });
+  db = new SQL.Database();
+  db.exec(SCHEMA);
+  for (const [k, v] of Object.entries(DEFAULT_SETTINGS)) run("INSERT INTO settings(key, value) VALUES (?, ?)", [k, v]);
+  const index = await fetchJson("data/index.json");
+  OFFLINE_MB = index.offline_mb || null;
+  db.exec("BEGIN");
+  const stmt = db.prepare("INSERT INTO words(id, key, word, freq_rank, zipf, domains, has_audio, enriched, has_conv, level) " +
+                          "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  index.words.forEach((w, i) => {
+    const id = w.i ?? i + 1;   // build_site's lasting id (older builds: the position)
+    INDEX.set(id, w);
+    stmt.run([id, w.k, w.w, w.f ?? null, w.z ?? null, JSON.stringify(w.d || []), w.a ? 1 : 0, w.e ? 1 : 0, w.c ? 1 : 0,
+              w.l ?? 5]);   // the index leaves out level 5
+  });
+  stmt.free();
+  db.exec("COMMIT");
+  await withWriteLock(async () => {
+    const state = await readState();
+    const migrated = await migrateV1(state);
+    const rebuilt = await safeRebuild(state);
+    if ((rebuilt || migrated || oldDefaultLevels()) && !newerFormat) await persist();
+  });
+}
+
+// Until 2026-10-29 every level was the default, and progress saved then
+// stored it as if chosen. Once per browser, a stored 1-5 that wasn't picked
+// in Settings (which sets "lexi-levels-set") moves to the new default, as
+// app/db.py migration 4 does on a computer.
+function oldDefaultLevels() {
+  try {
+    if (localStorage.getItem("lexi-levels-v2")) return false;
+    localStorage.setItem("lexi-levels-v2", "1");
+    if (localStorage.getItem("lexi-levels-set")) return false;
+  } catch (e) { return false; }   // no storage: a choice can't be told from the old default
+  const row = get("SELECT value FROM settings WHERE key = 'word_levels'");
+  if (!row || row.value !== "1,2,3,4,5") return false;
+  run("UPDATE settings SET value = ? WHERE key = 'word_levels'", [DEFAULT_LEVELS]);
+  return true;
+}
+
+// Saved by a newer version of the app (another tab already updated): this
+// tab reads it but never writes over it, or the newer data would be lost.
+let newerFormat = false;
+let notice = "";
+// A saved snapshot that can't be read is set aside (kept under its own key),
+// and progress is rebuilt from the answer log, which is saved answer by
+// answer. Returns true when it had to do that (the caller saves the result).
+async function safeRebuild(state) {
+  newerFormat = !!(state.saved && state.saved.format > FORMAT);
+  try {
+    rebuild(state);
+    return false;
+  } catch (e) {
+    console.error(e);
+    try { await idbPut("state", state.saved, `progress_damaged_${Date.now()}`); } catch (err) { /* keep going */ }
+    rebuild({ ...state, saved: null });
+    notice = "Your saved progress snapshot was damaged. LexiMaster rebuilt it from your answer history " +
+      "(review dates and ratings may be reset); the damaged copy is kept on this device.";
+    return true;
+  }
+}
+
+// Detail data for a word: a shard file for dictionary words (the few most
+// recently used are kept in memory; the service worker keeps the files), or
+// memory for the words you added.
+async function detail(id) {
+  if (CUSTOM.has(id)) return CUSTOM.get(id);
+  const w = INDEX.get(id);
+  if (!w) return {};
+  let shard = SHARDS.get(w.s);
+  if (shard) {
+    SHARDS.delete(w.s);   // re-inserted as the most recent
+  } else {
+    // One download per file, however many words ask for it at once.
+    if (!LOADING.has(w.s)) {
+      LOADING.set(w.s, fetchJson(`data/detail/${String(w.s).padStart(2, "0")}.json`)
+        .finally(() => LOADING.delete(w.s)));
+    }
+    shard = await LOADING.get(w.s);
+  }
+  SHARDS.set(w.s, shard);
+  while (SHARDS.size > SHARDS_KEPT) SHARDS.delete(SHARDS.keys().next().value);
+  return shard[w.k] || {};
+}
+
+// Short definitions of related words without an entry (tools/glossary.py):
+// data/gloss/NN.json, the shard and key computed as app/common.py does.
+const GLOSS_SHARDS = 16;
+const GLOSS = new Map();     // shard number -> Promise of {key: record}
+function glossKey(term) {
+  return String(term).replace(/[\u2018\u2019]/g, "'").trim().replace(/\s*\([^()]*\)\s*$/, "")
+    .replace(/\s+/g, " ").toLowerCase();
+}
+function glossShard(key) {
+  let h = 0x811c9dc5;
+  for (const b of new TextEncoder().encode(key)) h = Math.imul(h ^ b, 0x01000193) >>> 0;
+  return h % GLOSS_SHARDS;
+}
+const glossUrl = s => `data/gloss/${String(s).padStart(2, "0")}.json`;
+async function gloss(term) {
+  const key = glossKey(term || "").slice(0, 200);
+  const s = glossShard(key);
+  if (!GLOSS.has(s)) GLOSS.set(s, fetchJson(glossUrl(s)).catch(e => { GLOSS.delete(s); throw e; }));
+  const rec = (await GLOSS.get(s))[key] || { w: key, senses: [], syn: [] };
+  return rec.a ? { ...rec, url: audioUrl(rec.a) } : rec;
+}
+
+// Related words without an entry and the entries that list them
+// (app/common.py mentions), for Browse's search; fetched on the first search.
+let MENTIONS = null;
+function mentions() {
+  if (!MENTIONS) MENTIONS = fetchJson("data/mentions.json").catch(e => { MENTIONS = null; throw e; });
+  return MENTIONS;
+}
+
+// --------------------------------------------------------------- persistence
+
+// IndexedDB "state" holds a snapshot ("progress": the export without the
+// answer log), one "log:…" key per logged answer, and a revision number
+// ("rev"). Every change runs under a Web Lock shared by all open tabs: it
+// first reloads if another tab saved since (the revision moved), then saves
+// before replying, so a reply always means "saved". Other tabs hear about the
+// save on a BroadcastChannel and reload before their next request. Saved
+// rows for words missing from this build ("orphans") are kept and re-saved.
+
+const FORMAT = 2;
+let localRev = 0;
+let dirty = false;
+let persistedLogId = 0;           // review_log rows up to this id are saved
+let orphans = noOrphans();
+let askedPersist = false;
+const channel = typeof BroadcastChannel === "function" ? new BroadcastChannel("leximaster") : null;
+if (channel) channel.onmessage = e => { if (!e.data || e.data.rev !== localRev) dirty = true; };
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") dirty = true; });
+
+function noOrphans() { return { user_word: [], srs: [], list_words: [], review_log: [] }; }
+const withWriteLock = fn => navigator.locks ? navigator.locks.request("lexi-write", fn) : fn();
+const logSig = r => JSON.stringify([String(r.key), String(r.ts), r.mode, r.grade ?? null, Number(r.correct) ? 1 : 0, r.ms_taken ?? null]);
+const newLogKey = ts => `log:${ts}|${Math.random().toString(36).slice(2, 10)}`;
+
+async function readState() {
+  try {
+    const [rev, saved, log, recordings] = await Promise.all([
+      idbGet("state", "rev"), idbGet("state", "progress"), idbEntries("state", "log:"), idbKeys("recordings")]);
+    return { rev: rev || 0, saved, log: log.map(([, r]) => r), recordings };
+  } catch (e) {
+    throw new HttpError(503, "Couldn't read your saved progress, so nothing was changed. Reload the page to try again.");
+  }
+}
+
+// Progress saved by an earlier version keeps its answer log inside the
+// snapshot. Move each answer to its own key (adding only answers not already
+// there, so running this twice changes nothing), keep a backup of the old
+// snapshot, and continue in the new format. Returns whether it migrated.
+async function migrateV1(state) {
+  const old = state.saved && (state.saved.progress || state.saved);
+  if (!old || (state.saved.format && state.saved.format !== 1)) return false;   // only the first format migrates
+  const have = new Map();
+  for (const r of state.log) have.set(logSig(r), (have.get(logSig(r)) || 0) + 1);
+  const add = [];
+  for (const r of Array.isArray(old.review_log) ? old.review_log : []) {
+    if (!r || typeof r !== "object") continue;
+    const sig = logSig(r);
+    if (have.get(sig) > 0) have.set(sig, have.get(sig) - 1);
+    else add.push({ key: r.key, ts: r.ts, mode: r.mode, grade: r.grade ?? null, correct: r.correct, ms_taken: r.ms_taken ?? null });
+  }
+  await idbTx("state", "readwrite", s => {
+    s.get("progress_v1_backup").onsuccess = e => { if (e.target.result === undefined) s.put(state.saved, "progress_v1_backup"); };
+    for (const r of add) s.put(r, newLogKey(r.ts));
+  });
+  const { review_log, ...rest } = old;
+  state.saved = { format: FORMAT, progress: rest, meta: state.saved.meta || [] };
+  state.log = state.log.concat(add);
+  return true;
+}
+
+// Replace everything the learner owns in memory with the saved state.
+function rebuild(state) {
+  db.exec("BEGIN");
+  for (const t of ["user_word", "srs", "review_log", "test_session", "daily_activity", "list_words", "lists", "recordings", "settings"]) {
+    db.exec(`DELETE FROM ${t}`);
+  }
+  db.exec("DELETE FROM meta WHERE key LIKE 'wotd:%'");
+  for (const r of all("SELECT id FROM words WHERE is_custom=1")) CUSTOM.delete(r.id);
+  db.exec("DELETE FROM words WHERE is_custom=1");
+  for (const [k, v] of Object.entries(DEFAULT_SETTINGS)) run("INSERT INTO settings(key, value) VALUES (?, ?)", [k, v]);
+  db.exec("COMMIT");
+  orphans = noOrphans();
+  const snap = state.saved && (state.saved.progress || state.saved);
+  if (snap) importProgress(snap, { restore: true });
+  for (const m of (state.saved && state.saved.meta) || []) run("INSERT OR REPLACE INTO meta(key, value) VALUES (?, ?)", [m.key, m.value]);
+  const ids = new Map(all("SELECT id, key FROM words").map(r => [r.key, r.id]));
+  db.exec("BEGIN");
+  const stmt = db.prepare("INSERT INTO review_log(word_id, ts, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?, ?)");
+  for (const r of [...state.log].sort((a, b) => String(a.ts).localeCompare(String(b.ts)))) {
+    if (!ids.has(r.key)) { orphans.review_log.push(r); continue; }
+    stmt.run([ids.get(r.key), String(r.ts), String(r.mode), r.grade ?? null, Number(r.correct) ? 1 : 0, r.ms_taken ?? null]);
+  }
+  stmt.free();
+  for (const k of state.recordings) {
+    if (ids.has(k)) run("INSERT OR REPLACE INTO recordings(word_id, path) VALUES (?, 'idb')", [ids.get(k)]);
+  }
+  db.exec("COMMIT");
+  for (const url of recordingUrls.values()) URL.revokeObjectURL(url);
+  recordingUrls.clear();
+  persistedLogId = get("SELECT COALESCE(MAX(id), 0) AS n FROM review_log").n;
+  localRev = state.rev;
+  dirty = false;
+}
+
+// Reload from IndexedDB if another tab saved since this one last did.
+async function syncIfStale() {
+  let rev;
+  try { rev = (await idbGet("state", "rev")) || 0; } catch (e) {
+    throw new HttpError(503, "Couldn't read your saved progress, so nothing was changed. Reload the page to try again.");
+  }
+  if (rev !== localRev) {
+    const state = await readState();
+    const migrated = await migrateV1(state);   // a tab still running the old version saved
+    if ((await safeRebuild(state) || migrated) && !newerFormat) await persist();
+  }
+  dirty = false;
+}
+
+async function persist() {
+  const progress = exportProgress({ snapshot: true });
+  const meta = all("SELECT key, value FROM meta WHERE key LIKE 'wotd:%'");
+  const newLog = all(`SELECT r.id, w.key, r.ts, r.mode, r.grade, r.correct, r.ms_taken FROM review_log r
+                      JOIN words w ON w.id = r.word_id WHERE r.id > ? ORDER BY r.id`, [persistedLogId]);
+  const rev = localRev + 1;
+  await idbTx("state", "readwrite", s => {
+    s.put({ format: FORMAT, progress, meta }, "progress");
+    for (const { id, ...row } of newLog) {
+      const k = newLogKey(row.ts);
+      s.put(row, k);
+    }
+    s.put(rev, "rev");
+  });
+  if (newLog.length) persistedLogId = newLog[newLog.length - 1].id;
+  localRev = rev;
+  if (channel) channel.postMessage({ rev });
+  if (!askedPersist && navigator.storage && navigator.storage.persist) {
+    askedPersist = true;
+    navigator.storage.persist().catch(() => {});   // ask the browser not to evict progress
+  }
+}
+
+// ------------------------------------------------------------------- helpers
+
+
+function coreDefinition(data) {
+  const core = (data.nuance || {}).core || {};
+  if (core.definition) return [core.pos || "", core.definition];
+  let first = null;
+  for (const m of data.meanings || []) {
+    for (const s of m.senses || []) {
+      if (!s.definition) continue;
+      if (!FORM_OF.test(s.definition)) return [m.pos || "", s.definition];
+      first = first || [m.pos || "", s.definition];
+    }
+  }
+  return first || ["", ""];
+}
+
+const audioUrl = file => file ? `media/${file}` : null;
+
+function compact(row) {
+  const w = INDEX.get(row.id);
+  const d = w ? null : CUSTOM.get(row.id) || {};   // custom words live in CUSTOM
+  const [corePos, def] = w ? [w.cp || "", w.df || ""] : coreDefinition(d);
+  return {
+    id: row.id, word: row.word,
+    phonetic: w ? w.p || "" : d.phonetic || "",
+    pos: w ? w.ps || [] : (d.meanings || []).map(m => m.pos).filter(Boolean),
+    core_pos: corePos, def,
+    domains: JSON.parse(row.domains),
+    name_kind: w ? w.nk || "" : d.name_kind || "",
+    freq_rank: row.freq_rank, level: row.level ?? null, has_audio: !!row.has_audio,
+    audio_url: w ? audioUrl(w.a) : null,
+    tts_url: w && !w.a ? audioUrl(w.t) : null,
+    enriched: !!row.enriched, is_custom: !!row.is_custom,
+    stars: row.stars, known: !!row.known, due: row.due_date,
+  };
+}
+
+async function full(row) {
+  const data = await detail(row.id);
+  const out = compact(row);
+  Object.assign(out, {
+    audio_accent: out.audio_url ? "us" : "",
+    meanings: data.meanings || [], nuance: data.nuance || null,
+    synonyms: data.synonyms || [], antonyms: data.antonyms || [],
+    etymology: data.etymology || "", variant_of: data.variant_of || "", also: data.also || [], forms: data.forms || null,
+    prons: (data.prons || []).map(p => ({ ipa: p.ipa, respell: p.respell, gloss: p.gloss, pos: p.pos,
+                                          url: audioUrl(p.file), human: !!p.human })),
+    conversation: data.conversation || [], source: data.source || "",
+    notes: row.notes,
+    srs: row.due_date == null ? null : {
+      due: row.due_date, interval: row.interval_days, reps: row.reps, ease: row.ease, lapses: row.lapses,
+    },
+  });
+  return out;
+}
+
+const fetchWord = id => get(`SELECT ${WORD_COLUMNS} ${WORD_FROM} WHERE w.id=?`, [id]);
+
+function examplesFor(data) {
+  const out = (data.conversation || []).map(e => e.text);
+  const ex = (data.nuance || {}).examples || {};
+  for (const k of ["everyday", "professional", "analytical"]) if (ex[k]) out.push(ex[k]);
+  for (const m of data.meanings || []) for (const s of m.senses || []) if (s.example) out.push(s.example);
+  return out;
+}
+
+// Sentences a quiz may blank (app/common.py quiz_examples): the studied
+// meaning's examples, and only whole sentences.
+const FULL_SENTENCE = /^["“'(]?[A-Z0-9].*[.!?]["”')]*$/;
+function quizExamples(data) {
+  const out = (data.conversation || []).map(e => e.text);
+  const ex = (data.nuance || {}).examples || {};
+  for (const k of ["everyday", "professional", "analytical"]) if (ex[k]) out.push(ex[k]);
+  // The first dictionary sense's example only when there are none of those:
+  // it is often another meaning (app/common.py quiz_examples).
+  const first = (data.meanings || []).flatMap(m => m.senses || [])[0];
+  if (!out.length && first && first.example) out.push(first.example);
+  return out.filter(e => FULL_SENTENCE.test(e.trim()) && e.split(/\s+/).length >= 5);
+}
+
+const escapeRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+// Endings an inflected form may add (app/common.py SUFFIX).
+const SUFFIX = "(?:e|es|ed|ing|er|ers|est|s|d|ly|y|ies|ied|ier|iest|ily)?";
+function wordPattern(word, flags = "i") {
+  const parts = word.trim().split(/[\s-]+/);
+  let stem = parts[parts.length - 1];
+  if (stem.length > 4 && /e$/.test(stem)) stem = stem.slice(0, -1);
+  if (stem.length > 4 && /y$/.test(stem)) stem = stem.slice(0, -1);
+  const head = parts.slice(0, -1).map(escapeRe).join("[\\s-]+");
+  const body = (head ? head + "[\\s-]+" : "") + escapeRe(stem) + SUFFIX;
+  return new RegExp(`\\b${body}\\b`, flags);
+}
+// Every use of the word blanked; "a"/"an" before a blank written "a(n)".
+// None for three blanks or more: dictionary examples run together.
+function blankSentence(word, sentence) {
+  const out = sentence.replace(wordPattern(word, "gi"), "_____");
+  const n = out.split("_____").length - 1;
+  return out === sentence || n > 2 ? null : out.replace(/\b([Aa])n? (?=_____)/g, "$1(n) ");
+}
+// Whether a blanked sentence still shows a related form of the word
+// ("The inspector came to _____ the roof"): quizzes prefer others.
+function hintsWord(word, blanked) {
+  const parts = word.trim().split(/[\s-]+/);
+  const last = parts[parts.length - 1].toLowerCase();
+  return last.length >= 5 && blanked.toLowerCase().includes(last.slice(0, Math.max(4, last.length - 3)));
+}
+// The word hidden (app/common.py mask_word): its forms, and for words of four
+// letters or more a longer word that starts or ends with it, never the
+// letters inside other words ("H" in "alphabet").
+function maskWord(word, text) {
+  text = text.replace(wordPattern(word, "gi"), "…");
+  if (word.length < 4) return text;
+  const w = escapeRe(word);
+  return text.replace(new RegExp(`(?<![\\w'’-])(?:${w}[\\w'’]*|[\\w'’-]*${w})(?![\\w'’])`, "gi"), "…");
+}
+function isBaseForm(word, sentence) {
+  const m = sentence.match(wordPattern(word));
+  const norm = s => s.replace(/[\s-]+/g, " ").toLowerCase();
+  return !!m && norm(m[0]) === norm(word.trim());
+}
+
+const pad = n => String(n).padStart(2, "0");
+const isoDate = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const todayIso = () => isoDate(new Date());
+function addDays(days) {
+  const d = new Date();
+  d.setDate(d.getDate() + days);
+  return isoDate(d);
+}
+
+function bumpActivity({ seconds = 0, reviews = 0 } = {}) {
+  run(`INSERT INTO daily_activity(date, seconds, reviews, new_words) VALUES (?, ?, ?, ?)
+       ON CONFLICT(date) DO UPDATE SET seconds=seconds+excluded.seconds, reviews=reviews+excluded.reviews,
+       new_words=new_words+excluded.new_words`, [todayIso(), seconds, reviews, 0]);
+}
+
+// Bible names that aren't also vocabulary: studied only when chosen.
+const NAMES_ONLY_SQL = "(EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'bible_names') " +
+  "AND NOT EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'bible_vocab'))";
+// Related words other entries link to that are very rare or very common
+// (domain "reference"; the others are "linked" and studied after the rest):
+// studied only when chosen (a list of yours, starred, or that filter); app/common.py.
+const REFERENCE_SQL = "EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = 'reference')";
+const CHOSEN_SQL = `(NOT ${REFERENCE_SQL} OR COALESCE(u.stars, 0) > 0 ` +
+  "OR EXISTS (SELECT 1 FROM list_words lw2 WHERE lw2.word_id = w.id))";
+// "My words": in a list of yours, or saved (app/common.py MINE_SQL).
+const MINE_SQL = "(EXISTS (SELECT 1 FROM list_words lm WHERE lm.word_id = w.id) " +
+  "OR EXISTS (SELECT 1 FROM user_word um WHERE um.word_id = w.id AND um.stars > 0))";
+// "Words to refresh": practiced words due to come back today (app/common.py REFRESH_SQL).
+const REFRESH_SQL = "EXISTS (SELECT 1 FROM srs sr WHERE sr.word_id = w.id AND sr.due_date <= date('now', 'localtime'))";
+const SCOPES = ["everyday", "core", ...BIBLE_TRACKS, "mine", "refresh"];
+// Word levels (app/common.py LEVELED, parse_levels, level_clause): the
+// levels new words come from, setting "word_levels" = "1,2,3".
+const LEVELED = ["", "everyday", "core"];
+const DEFAULT_LEVELS = "2,3,4";   // a new learner's (app/common.py)
+const parseLevels = v => (v && /^[1-5](,[1-5])*$/.test(v) ? [...new Set(v.split(",").map(Number))].sort() : [1, 2, 3, 4, 5]);
+function levelClause(v) {
+  const levels = parseLevels(v);
+  if (levels.length === 5) return "1=1";
+  return `(w.level IS NULL OR w.level IN (${levels.join(",")}) OR COALESCE(u.stars, 0) > 0 ` +
+    "OR EXISTS (SELECT 1 FROM list_words lw3 WHERE lw3.word_id = w.id))";
+}
+const levelsSetting = () => (get("SELECT value FROM settings WHERE key = 'word_levels'") || {}).value || DEFAULT_LEVELS;  // study tracks, usable wherever a domain filter is
+
+function trackClause(track) {
+  if (track === "everyday") return EVERYDAY_SQL;
+  if (track === "core") return `NOT ${EVERYDAY_SQL} AND NOT ${NAMES_ONLY_SQL}`;
+  if (BIBLE_TRACKS.includes(track)) return `EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = '${track}')`;
+  if (track === "mine") return MINE_SQL;
+  if (track === "refresh") return REFRESH_SQL;
+  return "1=1";
+}
+
+function parseFilters(q) {
+  return { list_id: Number(q.list_id) || null, domain: q.domain || null,
+           exclude_known: true };
+}
+
+function poolIds({ list_id = null, domain = null, need_audio = false, need_enriched = false,
+                   exclude_known = false } = {}) {
+  const where = ["1=1"], args = [];
+  let joins = "LEFT JOIN user_word u ON u.word_id = w.id";
+  if (list_id) { joins += " JOIN list_words lw ON lw.word_id = w.id AND lw.list_id = ?"; args.unshift(list_id); }
+  if (SCOPES.includes(domain)) where.push(trackClause(domain));
+  else if (domain) { where.push("EXISTS (SELECT 1 FROM json_each(w.domains) WHERE json_each.value = ?)"); args.push(domain); }
+  else if (!list_id) where.push(`NOT ${NAMES_ONLY_SQL}`);  // Bible names only when chosen (or in your own list)
+  // A reference word you practiced still comes back to refresh.
+  if (!["reference", "refresh"].includes(domain) && !list_id) where.push(CHOSEN_SQL);
+  if (LEVELED.includes(domain || "") && !list_id) where.push(levelClause(levelsSetting()));
+  if (need_audio) where.push("w.has_audio = 1");
+  if (need_enriched) where.push("w.enriched = 1");
+  if (exclude_known) where.push("COALESCE(u.known, 0) = 0");
+  return all(`SELECT w.id FROM words w ${joins} WHERE ${where.join(" AND ")}`, args).map(r => r.id);
+}
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+const choice = a => a[Math.floor(Math.random() * a.length)];
+
+// A round's words (app/common.py weighted_sample is the same):
+// 1. words due to refresh, most overdue first: up to half the round, or all
+//    of it when every word is due;
+// 2. new words, easiest first: drawn from the most common words not yet
+//    practiced (EASIEST_WINDOW, at least 3 per word asked);
+// 3. words practiced before and not due, at half weight, favouring words
+//    missed lately (a miss counts fully for a month, then fades).
+// Due words lead the list (a quiz builds its questions from the front).
+const EASIEST_WINDOW = 50;
+// The meta key today's word of the day is saved under (app/common.py wotd_key).
+function wotdKey(track = "") {
+  const levels = track === "" || track === "everyday" ? parseLevels(levelsSetting()) : [1, 2, 3, 4, 5];
+  return `wotd:${todayIso()}` + (levels.length === 5 ? "" : ":" + levels.join(",")) + (track ? `:${track}` : "");
+}
+
+// The word of the day the Today page shows, once it has been shown.
+function todaysWord() {
+  const row = get("SELECT value FROM meta WHERE key=?", [wotdKey()]);
+  return row ? Number(row.value) : null;
+}
+
+function weightedSample(ids, n) {
+  if (ids.length <= n) return shuffle([...ids]);
+  const inPool = new Set(ids);
+  const due = all("SELECT word_id FROM srs WHERE due_date <= date('now', 'localtime') ORDER BY due_date, word_id")
+    .map(r => r.word_id).filter(i => inPool.has(i));
+  const chosen = shuffle(due.slice(0, due.length === ids.length ? n : Math.ceil(n / 2)));
+  const taken = new Set(chosen);
+  const seen = new Set(all("SELECT word_id FROM srs").map(r => r.word_id));
+  // Today's word of the day is the first new word (app/common.py weighted_sample).
+  const wotd = todaysWord();
+  if (wotd != null && inPool.has(wotd) && !seen.has(wotd) && !taken.has(wotd) && chosen.length < n) {
+    chosen.push(wotd);
+    taken.add(wotd);
+  }
+  const rank = i => { const e = INDEX.get(i); return e && e.f != null ? e.f : 1e9; };
+  const unseen = ids.filter(i => !seen.has(i) && !taken.has(i)).sort((a, b) => rank(a) - rank(b) || a - b);
+  const window = unseen.slice(0, Math.max(EASIEST_WINDOW, 3 * n));
+  const misses = new Map(all(
+    `SELECT word_id, SUM(CASE WHEN julianday('now') - julianday(ts) <= 30 THEN 1.0
+                              WHEN julianday('now') - julianday(ts) <= 90 THEN 0.4 ELSE 0.1 END) AS m
+     FROM review_log WHERE correct = 0 AND mode != 'repeat' GROUP BY word_id`).map(r => [r.word_id, r.m]));
+  const again = ids.filter(i => seen.has(i) && !taken.has(i));
+  const pool = [...window, ...again];
+  const weights = [...window.map(() => 1), ...again.map(i => 0.5 * (1 + Math.min(misses.get(i) || 0, 5) * 0.5))];
+  while (pool.length && chosen.length < n) {
+    let x = Math.random() * weights.reduce((a, b) => a + b, 0), i = 0;
+    while (i < weights.length - 1 && x >= weights[i]) { x -= weights[i]; i++; }
+    chosen.push(pool.splice(i, 1)[0]);
+    weights.splice(i, 1);
+  }
+  return chosen;
+}
+
+const settingsMap = () => Object.fromEntries(all("SELECT key, value FROM settings").map(r => [r.key, r.value]));
+
+// -------------------------------------------------------------- SM-2 (app/srs.py)
+
+const getCard = id => get("SELECT * FROM srs WHERE word_id=?", [id]);
+
+function ensureCard(id) {
+  const card = getCard(id);
+  if (card) return card;
+  run("INSERT INTO srs(word_id, ease, interval_days, reps, lapses, due_date) VALUES (?, 2.5, 0, 0, 0, ?)", [id, todayIso()]);
+  return getCard(id);
+}
+
+const CARD_FIELDS = ["ease", "interval_days", "reps", "lapses", "due_date", "last_reviewed"];
+
+// Apply a grade (app/srs.py review). The card as it was before the day's
+// first answer is kept (prev); `redo` grades from that, so a miss after a
+// right answer the same day replaces the right answer.
+function review(id, grade, { redo = false } = {}) {
+  const card = ensureCard(id);
+  const day = todayIso();
+  let before = null;
+  if (card.last_reviewed === day && card.prev) { try { before = JSON.parse(card.prev); } catch (e) { before = null; } }
+  if (!before) before = Object.fromEntries(CARD_FIELDS.map(k => [k, card[k]]));
+  const next = schedule(redo ? before : card, grade, day);
+  run("UPDATE srs SET ease=?, interval_days=?, reps=?, lapses=?, due_date=?, last_reviewed=?, prev=? WHERE word_id=?",
+      [next.ease, next.interval_days, next.reps, next.lapses, next.due_date, next.last_reviewed, JSON.stringify(before), id]);
+  return next;
+}
+
+// An answer in Practice schedules the word (srs.js practiceGrade; app/srs.py
+// practice_answer). Returns the grade applied, or null when only logged.
+function practiceAnswer(id, correct) {
+  const row = get("SELECT grade FROM review_log WHERE word_id=? AND grade IS NOT NULL " +
+                  "AND date(ts) = date('now', 'localtime') ORDER BY id DESC LIMIT 1", [id]);
+  const card = getCard(id);
+  const grade = practiceGrade(card, correct, row ? row.grade : null, todayIso());
+  if (grade !== null) review(id, grade, { redo: !!card && card.last_reviewed === todayIso() });
+  return grade;
+}
+
+// ------------------------------------------------------------- words routes
+
+function needWord(id) {
+  if (!get("SELECT 1 AS x FROM words WHERE id=?", [id])) throw new HttpError(404, "Word not found");
+}
+
+function listWords() {
+  const rows = all(`SELECT ${WORD_COLUMNS} ${WORD_FROM} ORDER BY w.word COLLATE NOCASE`);
+  const membership = new Map();
+  for (const r of all("SELECT list_id, word_id FROM list_words")) {
+    if (!membership.has(r.word_id)) membership.set(r.word_id, []);
+    membership.get(r.word_id).push(r.list_id);
+  }
+  return { words: rows.map(r => ({ ...compact(r), lists: membership.get(r.id) || [] })) };
+}
+
+async function wordDetail(id) {
+  const row = fetchWord(id);
+  if (!row) throw new HttpError(404, "Word not found");
+  const out = await full(row);
+  const st = get("SELECT COUNT(*) AS n, COALESCE(SUM(correct), 0) AS ok FROM review_log WHERE word_id=? AND mode NOT IN ('review', 'repeat')", [id]);
+  out.accuracy = { attempts: st.n, correct: st.ok };
+  out.lists = all("SELECT l.id, l.name, lw.note FROM list_words lw JOIN lists l ON l.id = lw.list_id WHERE lw.word_id=? ORDER BY l.name", [id]);
+  out.recording_url = get("SELECT 1 AS x FROM recordings WHERE word_id=?", [id]) ? await recordingUrl(id) : null;
+  return out;
+}
+
+function setState(id, body) {
+  needWord(id);
+  run("INSERT OR IGNORE INTO user_word(word_id) VALUES (?)", [id]);
+  if (body.stars != null) {
+    const stars = body.stars;
+    if (!Number.isInteger(stars) || stars < 0 || stars > 5) throw new HttpError(422, "Stars must be a whole number from 0 to 5.");
+    run("UPDATE user_word SET stars=?, updated_at=datetime('now') WHERE word_id=?", [stars, id]);
+  }
+  if (body.known != null) run("UPDATE user_word SET known=?, updated_at=datetime('now') WHERE word_id=?", [body.known ? 1 : 0, id]);
+  if (body.notes != null) run("UPDATE user_word SET notes=?, updated_at=datetime('now') WHERE word_id=?", [String(body.notes), id]);
+  const r = get("SELECT stars, known, notes FROM user_word WHERE word_id=?", [id]);
+  return { stars: r.stars, known: !!r.known, notes: r.notes };
+}
+
+// Words a learner adds get ids from 10,000,001, clear of the dictionary's
+// (build_site hands those out in order and stops before 10,000,000), so a
+// later version adding words can't take an id a learner's word holds.
+const CUSTOM_IDS = 10_000_000;
+function nextCustomId() {
+  return Math.max(CUSTOM_IDS, get("SELECT COALESCE(MAX(id), 0) AS n FROM words").n) + 1;
+}
+
+async function addCustomWord(body) {
+  const word = String(body.word || "").trim();
+  const definition = String(body.definition || "").trim();
+  if (!word || !definition) throw new HttpError(422, "A word and a definition are required.");
+  if (word.length > 80) throw new HttpError(422, "Keep the word or phrase under 80 characters.");
+  const key = "custom:" + word.toLowerCase().replace(/ /g, "-");
+  const data = {
+    phonetic: String(body.phonetic || "").trim(), audio: null,
+    meanings: [{ pos: String(body.pos || "").trim() || "word", senses: [
+      { definition, example: String(body.example || "").trim(), synonyms: [], antonyms: [] }], synonyms: [], antonyms: [] }],
+    nuance: null, source: "custom",
+  };
+  if (get("SELECT 1 AS x FROM words WHERE key=?", [key])) throw new HttpError(409, `You already added “${word}”.`);
+  if (body.list_id && !get("SELECT 1 AS x FROM lists WHERE id=?", [body.list_id])) {
+    throw new HttpError(404, "That list no longer exists.");
+  }
+  const { lastId } = run(`INSERT INTO words(id, key, word, domains, has_audio, enriched, is_custom) VALUES (?, ?, ?, '["custom"]', 0, 0, 1)`,
+                         [nextCustomId(), key, word]);
+  CUSTOM.set(lastId, data);
+  if (body.notes) run("INSERT INTO user_word(word_id, notes) VALUES (?, ?)", [lastId, String(body.notes)]);
+  if (body.list_id) run("INSERT OR IGNORE INTO list_words(list_id, word_id) VALUES (?, ?)", [body.list_id, lastId]);
+  return full(fetchWord(lastId));
+}
+
+async function deleteCustomWord(id) {
+  const row = get("SELECT is_custom FROM words WHERE id=?", [id]);
+  if (!row) throw new HttpError(404, "Word not found");
+  if (!row.is_custom) throw new HttpError(400, "Only words you added yourself can be deleted.");
+  const key = get("SELECT key FROM words WHERE id=?", [id]).key;
+  for (const t of ["user_word", "srs", "review_log", "list_words", "recordings"]) run(`DELETE FROM ${t} WHERE word_id=?`, [id]);
+  run("DELETE FROM words WHERE id=?", [id]);
+  CUSTOM.delete(id);
+  await idbDelete("recordings", key);
+  const logKeys = (await idbEntries("state", "log:")).filter(([, r]) => r.key === key).map(([k]) => k);
+  if (logKeys.length) await idbTx("state", "readwrite", s => logKeys.forEach(k => s.delete(k)));
+  return { ok: true };
+}
+
+async function wordOfTheDay(q = {}) {
+  const today = todayIso();
+  const track = ["everyday", ...BIBLE_TRACKS].includes(q.track) ? q.track : "";   // see app/api/words.py
+  const levels = track === "" || track === "everyday" ? parseLevels(levelsSetting()) : [1, 2, 3, 4, 5];
+  const todayKey = wotdKey(track);
+  const scope = trackClause(track || "core");
+  const saved = get("SELECT value FROM meta WHERE key=?", [todayKey]);
+  if (saved && get("SELECT 1 AS x FROM words WHERE id=?", [Number(saved.value)])) return full(fetchWord(Number(saved.value)));
+  let base = "SELECT w.id FROM words w LEFT JOIN user_word u ON u.word_id = w.id LEFT JOIN srs s ON s.word_id = w.id " +
+               `WHERE COALESCE(u.known, 0) = 0 AND s.word_id IS NULL AND w.is_custom = 0 AND NOT ${REFERENCE_SQL} AND ${scope} `;
+  let ids = [];
+  const tries = ["AND w.enriched = 1 AND w.zipf < 3.5",
+                 `AND w.zipf < 3.3 AND w.domains NOT IN ('["academic"]', '["professional"]')`, ""];
+  if (levels.length < 5) {   // from the chosen levels, the hardest first (app/api/words.py)
+    base = "SELECT w.id FROM words w LEFT JOIN user_word u ON u.word_id = w.id LEFT JOIN srs s ON s.word_id = w.id " +
+            `WHERE COALESCE(u.known, 0) = 0 AND s.word_id IS NULL AND w.is_custom = 0 AND NOT ${REFERENCE_SQL} AND NOT ${NAMES_ONLY_SQL} ` +
+            (track ? `AND ${scope} ` : "");
+    const chosen = levels.join(",");
+    tries.unshift(`AND w.enriched = 1 AND w.level = ${levels[levels.length - 1]}`,
+                  `AND w.enriched = 1 AND w.level IN (${chosen})`, `AND w.level IN (${chosen})`);
+  }
+  for (const extra of tries) {
+    ids = all(base + extra + " ORDER BY w.id").map(r => r.id);
+    if (ids.length) break;
+  }
+  if (!ids.length) ids = all("SELECT id FROM words ORDER BY id").map(r => r.id);
+  if (!ids.length) throw new HttpError(404, "No words yet.");
+  const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(today)));
+  let h = 0n;
+  for (const b of digest) h = (h << 8n) | BigInt(b);
+  const id = ids[Number(h % BigInt(ids.length))];
+  run("INSERT OR REPLACE INTO meta(key, value) VALUES (?, ?)", [todayKey, String(id)]);
+  return full(fetchWord(id));
+}
+
+// --------------------------------------------------------------- lists routes
+
+function cleanListName(name) {
+  const v = String(name || "").split(/\s+/).filter(Boolean).join(" ");
+  if (!v) throw new HttpError(422, "Give the list a name.");
+  if (v.length > 60) throw new HttpError(422, "List names can be at most 60 characters.");
+  return v;
+}
+function nameTaken(name, exceptId = null) {
+  const row = get("SELECT id FROM lists WHERE lower(name) = lower(?)", [name]);
+  return !!(row && row.id !== exceptId);
+}
+const allLists = () => ({ lists: all(
+  "SELECT l.id, l.name, l.created_at, COUNT(lw.word_id) AS count FROM lists l " +
+  "LEFT JOIN list_words lw ON lw.list_id = l.id GROUP BY l.id ORDER BY l.name") });
+
+function createList(body) {
+  const name = cleanListName(body.name);
+  if (nameTaken(name)) throw new HttpError(409, `A list called “${name}” already exists.`);
+  return { id: run("INSERT INTO lists(name) VALUES (?)", [name]).lastId, name, count: 0 };
+}
+function renameList(id, body) {
+  const name = cleanListName(body.name);
+  if (nameTaken(name, id)) throw new HttpError(409, `A list called “${name}” already exists.`);
+  if (!run("UPDATE lists SET name=? WHERE id=?", [name, id]).changes) throw new HttpError(404, "List not found");
+  return { ok: true };
+}
+function deleteList(id) {
+  run("DELETE FROM list_words WHERE list_id=?", [id]);
+  run("DELETE FROM lists WHERE id=?", [id]);
+  return { ok: true };
+}
+function listDetail(id) {
+  const lst = get("SELECT id, name, created_at FROM lists WHERE id=?", [id]);
+  if (!lst) throw new HttpError(404, "List not found");
+  const rows = all(`SELECT ${WORD_COLUMNS}, lw.note AS list_note ${WORD_FROM} JOIN list_words lw ON lw.word_id = w.id ` +
+                   "AND lw.list_id = ? ORDER BY w.word COLLATE NOCASE", [id]);
+  return { ...lst, words: rows.map(r => ({ ...compact(r), list_note: r.list_note })) };
+}
+function addToList(id, body) {
+  if (!get("SELECT 1 AS x FROM lists WHERE id=?", [id])) throw new HttpError(404, "List not found");
+  needWord(Number(body.word_id));
+  const { changes } = run("INSERT INTO list_words(list_id, word_id, note) VALUES (?, ?, ?) ON CONFLICT(list_id, word_id) DO NOTHING",
+                          [id, Number(body.word_id), String(body.note || "")]);
+  return { ok: true, added: changes > 0 };
+}
+
+// ------------------------------------------------------------ practice routes
+
+// How many practiced words are due to come back today (app/api/practice.py refresh).
+function refreshCount() {
+  return { count: poolIds({ domain: "refresh", exclude_known: true }).length };
+}
+
+function recordAnswer(body) {
+  const id = Number(body.word_id);
+  if (!/^(quiz|match|listen|spell|flash)$/.test(body.mode || "")) throw new HttpError(422, "Unknown mode.");
+  needWord(id);
+  const grade = practiceAnswer(id, !!body.correct);
+  run("INSERT INTO review_log(word_id, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?)",
+      [id, body.mode, grade, body.correct ? 1 : 0, Number(body.ms) || 0]);
+  bumpActivity({ reviews: 1 });   // the day's answers (Progress, the streak)
+  return { ok: true };
+}
+
+async function flashcards(q) {
+  const filters = parseFilters(q);
+  const n = Math.min(500, Math.max(1, Number(q.n) || 30));
+  const pool = poolIds(filters);
+  const ids = q.shuffle === "false" ? pool.slice(0, n) : weightedSample(pool, n);
+  // brief: only what the front needs; each back is loaded when it's shown.
+  const card = q.brief === "true" || q.brief === "1" ? r => compact(r) : r => full(r);
+  return { cards: await Promise.all(ids.map(i => card(fetchWord(i)))), pool: pool.length };
+}
+
+const QUIZ_TYPES = ["word_meaning", "meaning_word", "fill_blank", "synonym", "antonym", "name_kind", "pattern"];
+const PREPOSITIONS = ["on", "in", "at", "of", "to", "for", "with", "about", "from", "by", "into", "against",
+                      "over", "toward", "onto", "upon", "after", "among", "between", "through", "under"];
+const COMMON_PREPS = ["on", "in", "at", "of", "to", "for", "with", "about", "from", "by"];
+// "insist ___ doing sth" → on (practice.py pattern_question).
+// "insist ___ doing sth" → on (app/api/practice.py pattern_question): never a
+// wrong choice that is good English with the word (its patterns, `also`
+// from American books, or its own examples); two wrong choices.
+function patternQuestion(word, patterns, pos = "verb", also = [], examples = []) {
+  if (!["verb", "adjective"].includes(String(pos).toLowerCase())) return null;   // nouns: several prepositions often fit
+  const stem = word.toLowerCase().slice(0, 4);
+  const usable = [], listed = new Set();
+  const bare = t => t.split("/").map(a => a.replace(/[()]/g, ""));
+  for (const p of patterns) {
+    for (let seg of p.split(" / ")) {   // one frame at a time
+      seg = seg.replace(/\[[^\]]*\]/g, " ");
+      if ((seg.match(/\(/g) || []).length !== (seg.match(/\)/g) || []).length) continue;
+      seg = seg.replace(/\((?=(?:at|on|in|of|to|for|with|about|from|by|into|against|over|toward)\b)([^)]*)\)/g, "$1");
+      const tokens = seg.split(/\s+/).filter(Boolean);
+      tokens.forEach(t => bare(t).forEach(a => listed.add(a)));
+      if (!tokens.some(t => t.toLowerCase().startsWith(stem))) continue;
+      for (let i = 1; i < tokens.length; i++) {
+        const alts = bare(tokens[i]);
+        if (alts.every(a => PREPOSITIONS.includes(a))) {
+          const later = tokens.slice(i + 1).flatMap(bare);
+          if (!alts.some(a => later.includes(a))) usable.push([tokens, i, alts]);
+          break;
+        }
+      }
+    }
+  }
+  if (!usable.length) return null;
+  for (const a of also) listed.add(a);
+  const after = new RegExp(`\\b${escapeRe(word.toLowerCase())}\\w*\\s+(${COMMON_PREPS.join("|")})\\b`, "g");
+  for (const ex of examples) for (const m of ex.toLowerCase().matchAll(after)) listed.add(m[1]);
+  const [tokens, i, alts] = choice(usable);
+  // Wrong choices: never a preposition any of the word's patterns uses
+  // (and not "by" after a past participle: "disappointed by" is fine English).
+  const fit = COMMON_PREPS.filter(x => !listed.has(x) && !(x === "by" && /ed$/i.test(word)));
+  if (fit.length < 2) return null;
+  const wrong = shuffle(fit).slice(0, 2);
+  const frame = [...tokens.slice(0, i), alts.join("/"), ...tokens.slice(i + 1)].join(" ");
+  return { prompt: [...tokens.slice(0, i), "___", ...tokens.slice(i + 1)].join(" "), ask: "Which word completes the pattern?",
+           answer: alts[0], options: [...wrong, alts[0]],
+           explain: Object.fromEntries(wrong.map(x => [x, `The pattern to learn is “${frame}”.`])) };
+}
+const NAME_KINDS = { person: "A person", place: "A place", people: "A people or nation" };
+const mask = maskWord;
+// A definition as a quiz option: masked, without a leading "In statistics,".
+function option(word, definition) {
+  const text = mask(word, definition).replace(/^In (?!an? )[A-Za-z' -]{1,40}, /, "");   // not "In a clear, careful way"
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+// Right answers for a synonym or antonym question; "Compared with" words
+// (nuance distinctions) never count as synonyms, even when a dictionary lists them.
+function rightsFor(data, kind) {
+  const field = kind === "synonym" ? "synonyms" : "antonyms";
+  let out = [...(kind === "antonym" ? (data.nuance || {}).antonyms || [] : []), ...(data[field] || [])];
+  for (const m of data.meanings || []) out = out.concat(m[field] || []);
+  const contrasted = new Set(((data.nuance || {}).distinctions || []).map(d => (d.vs || "").toLowerCase()));
+  return [...new Set(out)].filter(r => r && !(kind === "synonym" && contrasted.has(r.toLowerCase())));
+}
+
+// Words that are look-up only (vulgar, slurs, very rare): never a wrong option.
+let LOOKUP_ONLY = null;
+function lookupOnlyWords() {
+  if (!LOOKUP_ONLY) LOOKUP_ONLY = new Set([...INDEX.values()].filter(e => (e.d || []).includes("reference")).map(e => e.w.toLowerCase()));
+  return LOOKUP_ONLY;
+}
+
+// Two phrases share a word of four letters or more, one inside the other
+// ("judgment" / "misjudgment", "cart" / "shopping cart"): such a synonym or
+// antonym gives the answer away (app/api/practice.py shares_word).
+function sharesWord(a, b) {
+  const al = a.toLowerCase(), bl = b.toLowerCase();
+  const words = s => (s.match(/[a-z]+/g) || []).filter(t => t.length >= 4);
+  return words(al).some(t => bl.includes(t)) || words(bl).some(t => al.includes(t));
+}
+
+// A part of speech, broadly: a phrasal verb is a verb, a proper noun a noun
+// (app/api/practice.py broad_pos).
+function broadPos(p) {
+  p = (p || "").toLowerCase();
+  if (/adverb/.test(p)) return "adverb";
+  if (/verb/.test(p)) return "verb";
+  if (/adjective/.test(p)) return "adjective";
+  if (/noun/.test(p)) return "noun";
+  return p || "other";
+}
+
+function defsById(ids) {
+  const out = new Map();
+  if (!ids.length) return out;
+  for (const r of all(`SELECT id, word FROM words WHERE id IN (${ids.map(() => "?").join(",")})`, ids)) {
+    const w = INDEX.get(r.id);
+    const [pos, d] = w ? [w.cp || "", w.df || ""] : coreDefinition(CUSTOM.get(r.id) || {});
+    if (d) out.set(r.id, [r.word, pos, d]);
+  }
+  return out;
+}
+
+async function makeQuiz(q) {
+  const asked = (q.types || QUIZ_TYPES.join(",")).split(",").filter(t => QUIZ_TYPES.includes(t));
+  const types = asked.length ? asked : QUIZ_TYPES;
+  const n = Math.min(50, Math.max(1, Number(q.n) || 10));
+  const filters = parseFilters(q);
+  if (types.length === 1 && types[0] === "name_kind" && !filters.list_id && !BIBLE_TRACKS.includes(filters.domain)) {
+    filters.domain = "bible_names";   // only names can be asked "who or what?"
+  }
+  const pool = poolIds(filters);
+  // Wrong options come from all words, so even one word makes a quiz.
+  if (!pool.length) throw new HttpError(400, "Not enough words here. Choose other words under \"Words from\".");
+  let allIds = all(`SELECT id FROM words w WHERE (enriched = 1 OR is_custom = 1) AND NOT ${NAMES_ONLY_SQL} ` +
+                   `AND NOT ${REFERENCE_SQL}`).map(r => r.id);
+  if (allIds.length < 50) allIds = all("SELECT id FROM words").map(r => r.id);
+  const questions = [];
+  // Fewer question types fit fewer words: look at more of them.
+  const candidates = weightedSample(pool, Math.min(pool.length, n * (types.length > 2 ? 4 : 10)));
+  // Load the words' details together rather than one shard at a time.
+  const details = new Map(await Promise.all(candidates.slice(0, n * 2).map(async id => [id, await detail(id)])));
+  for (const wid of candidates) {
+    if (questions.length >= n) break;
+    const row = fetchWord(wid);
+    const data = details.get(wid) || await detail(wid);
+    const [pos, definition] = INDEX.has(wid) ? [INDEX.get(wid).cp || "", INDEX.get(wid).df || ""] : coreDefinition(data);
+    const word = row.word;
+    const nameKind = INDEX.has(wid) ? INDEX.get(wid).nk || "" : "";
+    const domains = JSON.parse(row.domains || "[]");
+    const everyday = nameKind ? ["bible_names"] : domains.filter(d => EVERYDAY_DOMAINS.includes(d));
+    const distractIds = everyday.length
+      ? all("SELECT id FROM words w WHERE id != ? AND EXISTS (SELECT 1 FROM json_each(w.domains) " +
+            `WHERE json_each.value IN (${everyday.map(() => "?").join(",")})) AND NOT ${REFERENCE_SQL} ORDER BY random() LIMIT 200`,
+            [wid, ...everyday]).map(r => r.id)
+      // Other words of the chosen scope ("Statistics", "Bible · Vocabulary"), else any word.
+      : shuffle((q.domain && pool.length >= 30 ? pool : allIds).filter(i => i !== wid)).slice(0, 200);
+    const nWords = word.split(/\s+/).length;
+    // The word, its synonyms and the words its notes compare it with.
+    const near = new Set([...rightsFor(data || {}, "synonym"), word,
+                          ...(((data || {}).nuance || {}).distinctions || []).map(d => d.vs || "")].map(s => s.toLowerCase()));
+    // A definition that names its own word would read "the …eans" once
+    // masked; a word the entry names as near in meaning would be right too.
+    const others = [...defsById(distractIds).values()]
+      .filter(v => !near.has(v[0].toLowerCase()) && !new RegExp(`\\b${escapeRe(v[0])}\\b`, "i").test(v[2]))
+      // Same kind first: the same broad part of speech (a noun among verbs
+      // gives the answer away), then the same number of words, then the same
+      // exact part of speech (app/api/practice.py).
+      .sort((a, b) => ((broadPos(a[1]) !== broadPos(pos)) - (broadPos(b[1]) !== broadPos(pos))) ||
+                      ((a[0].split(/\s+/).length !== nWords) - (b[0].split(/\s+/).length !== nWords)) ||
+                      ((a[1] !== pos) - (b[1] !== pos)));
+    const build = qtype => {
+      if (qtype === "pattern") {
+        const nu = (data && data.nuance) || {};
+        return patternQuestion(word, nu.patterns || [], pos, nu.also_preps || [], quizExamples(data || {}));
+      }
+      if (qtype === "name_kind") {
+        return { prompt: word, ask: `Who or what is ${word}?`, answer: NAME_KINDS[nameKind], options: Object.values(NAME_KINDS) };
+      }
+      if (qtype === "word_meaning" && definition && others.length >= 3) {
+        return { prompt: word, ask: nameKind ? `Who or what is ${word}?` : "What does this word mean?",
+                 answer: option(word, definition),
+                 options: [...others.slice(0, 3).map(o => option(o[0], o[2])), option(word, definition)],
+                 explain: Object.fromEntries(others.slice(0, 3).map(o => [option(o[0], o[2]), `That's the meaning of “${o[0]}”.`])) };
+      }
+      if (qtype === "meaning_word" && definition && others.length >= 3) {
+        return { prompt: mask(word, definition), ask: "Which word fits this meaning?", answer: word,
+                 options: [...others.slice(0, 3).map(o => o[0]), word],
+                 explain: Object.fromEntries(others.slice(0, 3).map(o => [o[0], `“${o[0]}” means: ${o[2]}`])) };
+      }
+      if (qtype === "fill_blank") {
+        // Never a word the entry names as near in meaning: it would fit too.
+        const fits = others.filter(o => !near.has(o[0].toLowerCase()));
+        const examples = quizExamples(data);
+        // Prefer sentences that use the word as the options show it, then
+        // those that don't show it in another form ("inspector").
+        const usable = examples.filter(e => isBaseForm(word, e));
+        const blanked = (usable.length ? usable : examples).map(e => blankSentence(word, e)).filter(Boolean);
+        const clean = blanked.filter(s => !hintsWord(word, s));
+        const sentences = clean.length ? clean : blanked;
+        if (sentences.length && fits.length >= 3) {
+          return { prompt: choice(sentences), ask: "Fill in the blank.", answer: word,
+                   options: [...fits.slice(0, 3).map(o => o[0]), word],
+                 explain: Object.fromEntries(fits.slice(0, 3).map(o => [o[0], `“${o[0]}” means: ${o[2]}`])) };
+        }
+      }
+      if (qtype === "synonym" || qtype === "antonym") {
+        const rights = rightsFor(data, qtype).filter(r => !sharesWord(r, word));
+        if (!rights.length) return null;
+        const right = choice(rights);
+        // Wrong options: other words' synonyms; never this word's own
+        // synonyms, antonyms or compared-with words, and for antonyms never
+        // from its own subject.
+        const own = new Set([...near, ...rightsFor(data, "antonym").map(s => s.toLowerCase())]);
+        const lookupOnly = lookupOnlyWords();
+        let wrongs = [];
+        for (const id of shuffle([...allIds]).slice(0, 80)) {
+          const e = INDEX.get(id);
+          if (!e || (qtype === "antonym" && (e.d || []).some(d => domains.includes(d)))) continue;
+          // Never a look-up-only word, or one that gives the right answer
+          // away; one per word, so two options aren't synonyms of each other.
+          const s = shuffle((e.sy || []).filter(s => !own.has(s.toLowerCase()) && !lookupOnly.has(s.toLowerCase())
+                                                     && !sharesWord(s, right)))[0];
+          if (s) wrongs.push(s);
+        }
+        wrongs = shuffle([...new Set(wrongs)]);
+        const size = right.split(/\s+/).length;
+        wrongs.sort((a, b) => (a.split(/\s+/).length !== size) - (b.split(/\s+/).length !== size));
+        wrongs = wrongs.reduce((kept, s) => (kept.some(k => sharesWord(k, s)) ? kept : [...kept, s]), []);
+        if (wrongs.length >= 3) {
+          return { prompt: word, ask: qtype === "synonym" ? "Which is closest in meaning?" : "Which is opposite in meaning?",
+                   answer: right, options: [...wrongs.slice(0, 3), right] };
+        }
+      }
+      return null;
+    };
+    // Only the chosen kinds of question. People are asked "person, place or
+    // people?" less often (two in five), or "A person" would be right two times in three.
+    let kinds = shuffle([...types]);
+    kinds = nameKind
+      ? kinds.filter(k => (k === "name_kind" || k === "word_meaning") &&
+                          !(k === "name_kind" && nameKind === "person" && Math.random() < 0.6))
+      : kinds.filter(k => k !== "name_kind");
+    let qn = null, qtype = null;
+    for (qtype of kinds) if ((qn = build(qtype))) break;
+    if (!qn) continue;
+    shuffle(qn.options);
+    const everydayEx = (data.nuance && data.nuance.examples || {}).everyday;
+    // A name's "everyday" line is about a namesake.
+    const example = examplesFor(data).find(e => !(nameKind && e === everydayEx)) || "";
+    Object.assign(qn, { type: qtype, word_id: wid, word, definition, example, phonetic: data.phonetic || "",
+                        audio_url: INDEX.has(wid) ? audioUrl(INDEX.get(wid).a) : null,
+                        tts_url: INDEX.has(wid) && !INDEX.get(wid).a ? audioUrl(INDEX.get(wid).t) : null });
+    questions.push(qn);
+  }
+  return { questions };
+}
+
+async function matching(q) {
+  const n = Math.min(10, Math.max(3, Number(q.n) || 6));
+  const pool = poolIds(parseFilters(q));
+  const pairs = [];
+  const candidates = weightedSample(pool, Math.min(pool.length, n * 5));
+  // Example sentences live in the detail files: load them together.
+  if (q.kind === "example") await Promise.all(candidates.slice(0, n * 2).map(id => detail(id)));
+  for (const wid of candidates) {
+    if (pairs.length >= n) break;
+    const row = fetchWord(wid);
+    let right;
+    if (q.kind === "example") {
+      const blanked = quizExamples(await detail(wid)).map(e => blankSentence(row.word, e)).filter(Boolean);
+      const clean = blanked.filter(s => !hintsWord(row.word, s));
+      const sentences = clean.length ? clean : blanked;
+      if (!sentences.length) continue;
+      right = choice(sentences);
+    } else {
+      const [, d] = INDEX.has(wid) ? [0, INDEX.get(wid).df] : coreDefinition(CUSTOM.get(wid) || {});
+      if (!d) continue;
+      right = mask(row.word, d);
+    }
+    pairs.push({ word_id: wid, word: row.word, match: right });
+  }
+  if (pairs.length < 3) throw new HttpError(400, "Not enough words with this kind of content here. Choose other words under \"Words from\".");
+  return { pairs };
+}
+
+const soundKey = ipa => ipa.split(",")[0].normalize("NFD").replace(/[\u0300-\u036f/\[\]ˈˌː.‿ \-()']/g, "");
+function soundDistance(a, b) {
+  if (!a || !b) return 1;
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    for (let j = 1; j <= b.length; j++) cur.push(Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)));
+    prev = cur;
+  }
+  return prev[b.length] / Math.max(a.length, b.length);
+}
+
+// Sound key -> the single words said that way, every way each is said
+// (index "p" and "xp"), built the first time Listen or Type It needs it.
+let SAME_SOUND = null;
+function sameSound() {
+  if (SAME_SOUND) return SAME_SOUND;
+  SAME_SOUND = new Map();
+  for (const w of INDEX.values()) {
+    if (/[ -]/.test(w.w)) continue;
+    for (const ipa of [w.p, ...(w.xp || [])]) {
+      const k = ipa && soundKey(ipa);
+      if (!k) continue;
+      if (!SAME_SOUND.has(k)) SAME_SOUND.set(k, new Set());
+      SAME_SOUND.get(k).add(w.w);
+    }
+  }
+  return SAME_SOUND;
+}
+
+async function listen(q) {
+  const n = Math.min(50, Math.max(1, Number(q.n) || 10));
+  const filters = parseFilters(q);
+  const audioOnly = q.audio_only === "true";
+  let pool = poolIds({ ...filters, need_audio: audioOnly });
+  let fallback = false;
+  // The choices come from all words, so even one word can be practiced.
+  if (audioOnly && !pool.length) { pool = poolIds(filters); fallback = true; }
+  if (!pool.length) throw new HttpError(400, "Not enough words here. Choose other words under \"Words from\".");
+  const items = [];
+  for (const wid of weightedSample(pool, n)) {
+    const item = await full(fetchWord(wid));
+    const w = item.word;
+    const spaces = (w.match(/ /g) || []).length;
+    // Sound-alikes first (never a homophone), then look-alikes (practice.py).
+    const me = soundKey(item.phonetic || "");
+    // Every word said like one of this word's sounds: never a choice, and a
+    // right answer when typed (Type It: "brake" for "break").
+    const mine = [item.phonetic, ...(item.prons || []).map(p => p.ipa)].filter(Boolean).map(soundKey);
+    const alike = new Set(mine.flatMap(k => [...(sameSound().get(k) || [])]));
+    alike.delete(w);
+    item.same_sound = [...alike].sort();
+    // Never a look-up-only word (vulgar, slurs, very rare) as a choice.
+    const cands = all("SELECT id, word FROM words w WHERE length(word) - length(replace(word, ' ', '')) = ? " +
+                      `AND lower(word) != lower(?) AND NOT ${REFERENCE_SQL} ORDER BY random() LIMIT 400`, [spaces, w]);
+    if (cands.length < 3) cands.push(...all(`SELECT id, word FROM words w WHERE lower(word) != lower(?) AND NOT ${REFERENCE_SQL} ORDER BY random() LIMIT 200`, [w]));
+    const scored = [];
+    for (const c of cands) {
+      const ph = (INDEX.get(c.id) || {}).p || "";
+      const d = me && ph ? soundDistance(me, soundKey(ph)) : 1;
+      if (d === 0 || alike.has(c.word)) continue;
+      scored.push([d, c.word[0].toLowerCase() !== w[0].toLowerCase() ? 1 : 0, Math.abs(c.word.length - w.length), c.word]);
+    }
+    scored.sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || (a[3] < b[3] ? -1 : 1));
+    item.options = shuffle([...scored.slice(0, 3).map(s => s[3]), w]);
+    items.push(item);
+  }
+  return { items, fallback };
+}
+
+async function practiceWords(q) {
+  const n = Math.min(500, Math.max(1, Number(q.n) || 40));
+  return { words: weightedSample(poolIds(parseFilters(q)), n).map(i => compact(fetchWord(i))) };
+}
+
+// Recordings: blobs in IndexedDB, keyed by word key so they survive rebuilds.
+const wordKey = id => (get("SELECT key FROM words WHERE id=?", [id]) || {}).key;
+
+async function recordingUrl(id) {
+  if (recordingUrls.has(id)) return recordingUrls.get(id);
+  const blob = await idbGet("recordings", wordKey(id)).catch(() => undefined);
+  if (!blob) return null;
+  const url = URL.createObjectURL(blob);
+  recordingUrls.set(id, url);
+  return url;
+}
+
+async function saveRecording(id, body) {
+  const file = body instanceof FormData ? body.get("file") : null;
+  if (!file) throw new HttpError(422, "No recording received.");
+  if (file.size > 5_000_000) throw new HttpError(413, "Recording is too long; keep it under a minute.");
+  needWord(id);
+  await idbPut("recordings", wordKey(id), file);
+  if (recordingUrls.has(id)) URL.revokeObjectURL(recordingUrls.get(id));
+  recordingUrls.delete(id);
+  run("INSERT OR REPLACE INTO recordings(word_id, path, created_at) VALUES (?, 'idb', datetime('now','localtime'))", [id]);
+  return { url: await recordingUrl(id) };
+}
+
+// --------------------------------------------------------------- stats routes
+
+function streak() {
+  const active = new Set(all("SELECT date FROM daily_activity WHERE reviews > 0 OR seconds >= 300").map(r => r.date));
+  for (const r of all("SELECT DISTINCT date(ts) AS d FROM review_log")) active.add(r.d);
+  const d = new Date();
+  if (!active.has(isoDate(d))) d.setDate(d.getDate() - 1);
+  let current = 0;
+  while (active.has(isoDate(d))) { current++; d.setDate(d.getDate() - 1); }
+  let best = 0, run_ = 0, prev = null;
+  for (const day of [...active].sort()) {
+    const dd = new Date(day + "T12:00:00");
+    run_ = prev && Math.round((dd - prev) / 86400000) === 1 ? run_ + 1 : 1;
+    best = Math.max(best, run_);
+    prev = dd;
+  }
+  return { current, best, today_done: active.has(todayIso()) };
+}
+
+const STUDIED = "FROM srs s LEFT JOIN user_word u ON u.word_id=s.word_id WHERE COALESCE(u.known,0)=0";
+// Mastered and retention, as in app/api/stats.py.
+const MASTERED_SQL = "SELECT COUNT(*) AS n {studied} AND s.interval_days >= ? AND s.word_id IN (SELECT word_id FROM (SELECT word_id, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE grade IS NOT NULL AND mode != 'repeat') WHERE grade >= 2 AND gap >= ?)";
+// Words remembered on a later day (app/api/stats.py RECALLED_SQL).
+const RECALLED_SQL = "SELECT COUNT(*) AS n {studied} AND EXISTS (SELECT 1 FROM review_log r WHERE r.word_id = s.word_id " +
+  "AND r.grade >= 1 AND date(r.ts) > (SELECT MIN(date(r0.ts)) FROM review_log r0 WHERE r0.word_id = s.word_id))";
+const RETENTION_SQL = "SELECT CASE WHEN gap < 8 THEN 'days' WHEN gap <= 30 THEN 'weeks' ELSE 'months' END AS span, COUNT(*) AS n, SUM(CASE WHEN grade >= 1 THEN 1 ELSE 0 END) AS ok FROM (SELECT ts, grade, julianday(ts) - LAG(julianday(ts)) OVER (PARTITION BY word_id ORDER BY ts, id) AS gap FROM review_log WHERE grade IS NOT NULL AND mode != 'repeat') WHERE gap IS NOT NULL AND julianday('now') - julianday(ts) <= 30 GROUP BY span";
+
+function stats() {
+  const one = sql => get(sql).n;
+  const byDomain = new Map();
+  for (const r of all("SELECT w.domains, r.correct FROM review_log r JOIN words w ON w.id = r.word_id WHERE r.mode != 'repeat'")) {
+    for (const d of JSON.parse(r.domains)) {
+      const agg = byDomain.get(d) || [0, 0];
+      agg[0]++; agg[1] += r.correct;
+      byDomain.set(d, agg);
+    }
+  }
+  const act = new Map(all("SELECT * FROM daily_activity WHERE date >= ?", [addDays(-83)]).map(r => [r.date, r]));
+  const days = [];
+  for (let i = 83; i >= 0; i--) {
+    const date = addDays(-i);
+    const a = act.get(date) || {};
+    days.push({ date, reviews: a.reviews || 0, seconds: a.seconds || 0 });
+  }
+  const overall = get("SELECT COUNT(*) AS n, COALESCE(SUM(correct),0) AS ok FROM review_log WHERE mode NOT IN ('review', 'repeat')");
+  const mastered = get(MASTERED_SQL.replace("{studied}", STUDIED), [MASTERED_INTERVAL, MASTERED_INTERVAL]).n;
+  const studiedN = get(`SELECT COUNT(*) AS n ${STUDIED}`).n;
+  const recalled = get(RECALLED_SQL.replace("{studied}", STUDIED)).n;
+  const retention = Object.fromEntries(all(RETENTION_SQL).map(r => [r.span, { n: r.n, ok: r.ok }]));
+  return {
+    words: {
+      total: one("SELECT COUNT(*) AS n FROM words"),
+      enriched: one("SELECT COUNT(*) AS n FROM words WHERE enriched=1"),
+      with_audio: one("SELECT COUNT(*) AS n FROM words WHERE has_audio=1"),
+      // Words marked known are counted apart (app/api/stats.py).
+      mastered,
+      // Learning: remembered on a later day, not mastered; seen: not yet; overdue: due before today.
+      learning: recalled - mastered,
+      seen: studiedN - recalled,
+      overdue: get(`SELECT COUNT(*) AS n ${STUDIED} AND s.due_date < ?`, [todayIso()]).n,
+      due: refreshCount().count,   // the words to refresh, the same number Today shows
+      known: get("SELECT COUNT(*) AS n FROM user_word WHERE known=1").n,
+    },
+    accuracy: { attempts: overall.n, correct: overall.ok },
+    retention,
+    notice,
+    streak: streak(),
+    by_domain: [...byDomain].map(([domain, [a, k]]) => ({ domain, attempts: a, correct: k, accuracy: k / a }))
+      .sort((x, y) => x.accuracy - y.accuracy),
+    weakest: all("SELECT w.id, w.word, COUNT(*) AS attempts, SUM(r.correct) AS correct, " +
+                 "ROUND(1.0 * SUM(r.correct) / COUNT(*), 3) AS accuracy, SUM(CASE WHEN r.correct = 0 THEN 1 ELSE 0 END) AS misses " +
+                 "FROM review_log r JOIN words w ON w.id = r.word_id WHERE r.mode != 'repeat' GROUP BY w.id " +
+                 "HAVING attempts >= 2 AND misses > 0 ORDER BY accuracy ASC, misses DESC, attempts DESC LIMIT 25"),
+    days,
+    tests: all("SELECT id, ts, kind, score, total, duration_s FROM test_session ORDER BY id DESC LIMIT 40"),
+    forecast: all("SELECT due_date AS date, COUNT(*) AS n FROM srs WHERE due_date > ? AND due_date <= ? " +
+                  "GROUP BY due_date ORDER BY due_date", [todayIso(), addDays(14)]),
+  };
+}
+
+function saveSettings(values) {
+  for (const [k, v] of Object.entries(values)) {
+    const s = v === true ? "1" : v === false ? "0" : String(v);
+    run("INSERT OR REPLACE INTO settings(key, value) VALUES (?, ?)", [k, s]);
+  }
+}
+
+function updateSettings(body) {
+  const values = {};
+  for (const k of ["autoplay", "speech_rate", "word_levels"]) if (body[k] != null) values[k] = body[k];
+  const num = k => Number(values[k]);
+  if ("speech_rate" in values && !(num("speech_rate") >= 0.5 && num("speech_rate") <= 2)) {
+    throw new HttpError(400, "Voice speed must be between 0.5 and 2.");
+  }
+  if ("speech_rate" in values) values.speech_rate = num("speech_rate");
+  if ("autoplay" in values) values.autoplay = !!values.autoplay && values.autoplay !== "0";
+  if ("word_levels" in values) {
+    if (!/^[1-5](,[1-5])*$/.test(String(values.word_levels))) throw new HttpError(400, "Choose at least one word level (1 to 5).");
+    values.word_levels = parseLevels(String(values.word_levels)).join(",");
+  }
+  saveSettings(values);
+  return settingsMap();
+}
+
+// -------------------------------------------------------------- export/import
+
+// The export file; with snapshot, the copy saved in IndexedDB: no answer log
+// (saved as its own keys), list and custom-word ids kept so links and saved
+// filters stay valid, and rows for words missing from this build kept apart.
+function exportProgress({ snapshot = false } = {}) {
+  const withOrphans = (name, rows) => snapshot ? rows : rows.concat(orphans[name]);
+  const out = {
+    app: "LexiMaster", version: 1, exported_at: todayIso(),
+    user_word: withOrphans("user_word", all("SELECT w.key, u.stars, u.known, u.notes, u.updated_at FROM user_word u JOIN words w ON w.id=u.word_id")),
+    srs: withOrphans("srs", all("SELECT w.key, s.ease, s.interval_days, s.reps, s.lapses, s.due_date, s.last_reviewed, s.prev FROM srs s JOIN words w ON w.id=s.word_id")),
+    list_words: withOrphans("list_words", all("SELECT l.name AS list, w.key, lw.note, lw.added_at FROM list_words lw JOIN lists l ON l.id=lw.list_id " +
+                    "JOIN words w ON w.id=lw.word_id")),
+    lists: all(`SELECT ${snapshot ? "id, " : ""}name, created_at FROM lists`),
+    custom_words: all("SELECT id, key, word, domains FROM words WHERE is_custom=1")
+      .map(r => ({ ...(snapshot ? { id: r.id } : {}), key: r.key, word: r.word, domains: r.domains,
+                   data: JSON.stringify(CUSTOM.get(r.id) || {}) })),
+    test_session: all("SELECT ts, kind, score, total, duration_s FROM test_session"),
+    daily_activity: all("SELECT * FROM daily_activity"),
+    settings: settingsMap(),
+  };
+  if (snapshot) out.orphans = { user_word: orphans.user_word, srs: orphans.srs, list_words: orphans.list_words };
+  else out.review_log = all("SELECT w.key, r.ts, r.mode, r.grade, r.correct, r.ms_taken FROM review_log r JOIN words w ON w.id=r.word_id")
+    .concat(orphans.review_log);
+  return out;
+}
+
+function clamp(v, lo, hi, dflt, isInt = Number.isInteger(dflt)) {
+  const n = Number(v);
+  if (v === null || v === undefined || v === "" || Number.isNaN(n)) return dflt;
+  const x = Math.min(hi, Math.max(lo, n));
+  return isInt ? Math.trunc(x) : x;
+}
+
+// A custom word's saved fields, made safe to use: anything malformed becomes
+// empty rather than breaking every page that lists words. Null when unusable.
+function cleanCustomWord(cw) {
+  if (typeof cw.key !== "string" || !cw.key.startsWith("custom:") || typeof cw.word !== "string" || !cw.word.trim()) return null;
+  let data;
+  try { data = typeof cw.data === "string" ? JSON.parse(cw.data) : cw.data; } catch (e) { data = null; }
+  if (!data || typeof data !== "object" || Array.isArray(data)) return null;
+  data.meanings = Array.isArray(data.meanings) ? data.meanings.filter(m => m && typeof m === "object") : [];
+  for (const m of data.meanings) m.senses = Array.isArray(m.senses) ? m.senses.filter(s => s && typeof s === "object") : [];
+  if (data.nuance !== null && (typeof data.nuance !== "object" || Array.isArray(data.nuance))) data.nuance = null;
+  let domains;
+  try { domains = JSON.parse(cw.domains); } catch (e) { domains = null; }
+  if (!Array.isArray(domains) || !domains.every(d => typeof d === "string")) domains = ["custom"];
+  return { key: cw.key, word: cw.word.trim().slice(0, 80), domains: JSON.stringify(domains), data };
+}
+
+// Merge an export into the database (app/api/stats.py import_progress).
+// restore: reloading this site's own saved snapshot, so keep ids, keep every
+// row as it is (no merging of identical rows), and keep rows for words this
+// build doesn't have as orphans instead of dropping them.
+// Import validation, as in app/api/stats.py: a date is YYYY-MM-DD; a
+// datetime is ISO (T or space, optional fraction and offset), stored as
+// "YYYY-MM-DD HH:MM:SS" (UTC for user_word.updated_at, local time elsewhere).
+const isDateStr = v => typeof v === "string" && v.length === 10 && /^\d{4}-\d{2}-\d{2}$/.test(v) &&
+  !Number.isNaN(new Date(v + "T00:00:00Z").getTime()) && new Date(v + "T00:00:00Z").toISOString().slice(0, 10) === v;
+function cleanDatetime(v, utc) {
+  if (typeof v !== "string" || v.length < 16 || v.length > 40) return null;
+  const m = v.match(/^(\d{4}-\d{2}-\d{2})[T ](\d{2}:\d{2})(:\d{2})?(\.\d+)?(Z|[+-]\d{2}:?\d{2})?$/);
+  if (!m || !isDateStr(m[1])) return null;
+  if (!m[5]) return `${m[1]} ${m[2]}${m[3] || ":00"}`;
+  const d = new Date(v.replace(" ", "T"));
+  if (Number.isNaN(d.getTime())) return null;
+  if (utc) return d.toISOString().slice(0, 19).replace("T", " ");
+  return `${isoDate(d)} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+}
+const isInt = v => typeof v === "number" && Number.isInteger(v);
+const isFlag = v => v === 0 || v === 1 || v === true || v === false;
+
+// A card's state before the day's first answer (srs.prev): kept only when it
+// is a well-formed card, else dropped (app/api/stats.py _clean_prev).
+function cleanPrev(v) {
+  if (typeof v !== "string" || v.length > 400) return null;
+  try {
+    const p = JSON.parse(v);
+    const ok = p && typeof p === "object" && ["ease", "interval_days", "reps", "lapses"].every(k => typeof p[k] === "number")
+      && /^\d{4}-\d{2}-\d{2}$/.test(p.due_date || "") && (p.last_reviewed == null || /^\d{4}-\d{2}-\d{2}$/.test(p.last_reviewed));
+    return ok ? v : null;
+  } catch (e) { return null; }
+}
+
+function importProgress(data, { restore = false } = {}) {
+  if (!data || typeof data !== "object" || Array.isArray(data) || data.app !== "LexiMaster") {
+    throw new HttpError(400, "That file isn't a LexiMaster progress export.");
+  }
+  const saved = restore && data.orphans && typeof data.orphans === "object" ? data.orphans : {};
+  const rows = name => (Array.isArray(data[name]) ? data[name] : []).concat(Array.isArray(saved[name]) ? saved[name] : [])
+    .filter(r => r && typeof r === "object");
+  const counts = {};
+  let skipped = 0, added = 0;
+  let invalid = 0;
+  db.exec("BEGIN");
+  try {
+    for (const raw of rows("custom_words")) {
+      const cw = cleanCustomWord(raw);
+      if (!cw) { skipped++; continue; }
+      if (get("SELECT 1 AS x FROM words WHERE key=?", [cw.key])) continue;
+      const keepId = restore && Number.isInteger(raw.id) && !get("SELECT 1 AS x FROM words WHERE id=?", [raw.id]);
+      const { lastId } = keepId
+        ? run("INSERT INTO words(id, key, word, domains, is_custom) VALUES (?, ?, ?, ?, 1)", [raw.id, cw.key, cw.word, cw.domains])
+        : run("INSERT INTO words(id, key, word, domains, is_custom) VALUES (?, ?, ?, ?, 1)", [nextCustomId(), cw.key, cw.word, cw.domains]);
+      CUSTOM.set(keepId ? raw.id : lastId, cw.data);
+      added++;
+    }
+    counts["own words"] = added;
+    if (skipped) counts["damaged custom words skipped"] = skipped;
+    const ids = new Map(all("SELECT id, key FROM words").map(r => [r.key, r.id]));
+    const orphan = (name, r) => { if (restore) orphans[name].push(r); };
+    let n = 0;
+    // Keep the newer copy of each word's state and card: an old backup never
+    // overwrites what you did since.
+    for (const u of rows("user_word")) {
+      if (!ids.has(u.key)) { orphan("user_word", u); continue; }
+      const stars = u.stars ?? 0;
+      // Restoring this browser's own save: take it as saved (older saves may lack a time).
+      const when = cleanDatetime(u.updated_at, true) || (restore ? String(u.updated_at || "") : null);
+      if (!isInt(stars) || stars < 0 || stars > 5 || (u.known != null && !isFlag(u.known)) ||
+          (u.notes != null && typeof u.notes !== "string") || when === null) { invalid++; continue; }
+      const have = get("SELECT updated_at FROM user_word WHERE word_id=?", [ids.get(u.key)]);
+      if (have && (cleanDatetime(have.updated_at, true) || "") >= when) continue;
+      run("INSERT OR REPLACE INTO user_word(word_id, stars, known, notes, updated_at) VALUES (?, ?, ?, ?, ?)",
+          [ids.get(u.key), stars, u.known ? 1 : 0, (u.notes || "").slice(0, 5000), when]);
+      n++;
+    }
+    counts["word states"] = n;
+    n = 0;
+    for (const s of rows("srs")) {
+      if (!s.due_date) continue;
+      if (!ids.has(s.key)) { orphan("srs", s); continue; }
+      const num = v => typeof v === "number" && !Number.isNaN(v);
+      if (!num(s.ease) || !num(s.interval_days) || s.interval_days < 0 || s.interval_days > 1e9 ||
+          !isInt(s.reps ?? 0) || (s.reps ?? 0) < 0 || !isInt(s.lapses ?? 0) || (s.lapses ?? 0) < 0 ||
+          !isDateStr(s.due_date) || (s.last_reviewed != null && !isDateStr(s.last_reviewed))) { invalid++; continue; }
+      const have = get("SELECT reps, last_reviewed FROM srs WHERE word_id=?", [ids.get(s.key)]);
+      if (have) {
+        const mine = [have.last_reviewed || "", have.reps], theirs = [s.last_reviewed || "", s.reps ?? 0];
+        if (!(theirs[0] > mine[0] || (theirs[0] === mine[0] && theirs[1] > mine[1]))) continue;
+      }
+      run("INSERT OR REPLACE INTO srs(word_id, ease, interval_days, reps, lapses, due_date, last_reviewed, prev) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+          [ids.get(s.key), clamp(s.ease, 1.3, 5.0, 2.5, false), clamp(s.interval_days, 0, 36500, 0, false),
+           clamp(s.reps, 0, 10000, 0), clamp(s.lapses, 0, 10000, 0), s.due_date, s.last_reviewed ?? null, cleanPrev(s.prev)]);
+      n++;
+    }
+    counts["review cards"] = n;
+    const seen = new Set(all("SELECT word_id, ts, mode, grade, correct, ms_taken FROM review_log").map(r => JSON.stringify(Object.values(r))));
+    n = 0;
+    for (const r of rows("review_log")) {
+      if (!ids.has(r.key)) continue;
+      const ts = cleanDatetime(r.ts, false);
+      if (!ts || !["review", "repeat", "quiz", "match", "listen", "spell", "flash"].includes(r.mode) ||
+          (r.grade != null && !(isInt(r.grade) && r.grade >= 0 && r.grade <= 3)) || !isFlag(r.correct ?? 0) ||
+          (r.ms_taken != null && !(isInt(r.ms_taken) && r.ms_taken >= 0 && r.ms_taken <= 86400000))) { invalid++; continue; }
+      const row = [ids.get(r.key), restore ? String(r.ts) : ts, r.mode, r.grade ?? null, r.correct ? 1 : 0, r.ms_taken ?? null];
+      const sig = JSON.stringify(row);
+      if (seen.has(sig) && !restore) continue;
+      run("INSERT INTO review_log(word_id, ts, mode, grade, correct, ms_taken) VALUES (?, ?, ?, ?, ?, ?)", row);
+      seen.add(sig);
+      n++;
+    }
+    counts.answers = n;
+    for (const l of rows("lists")) {
+      const name = String(l.name || "").split(/\s+/).filter(Boolean).join(" ").slice(0, 60);
+      if (name && !get("SELECT 1 AS x FROM lists WHERE lower(name)=lower(?)", [name])) {
+        if (restore && Number.isInteger(l.id) && !get("SELECT 1 AS x FROM lists WHERE id=?", [l.id])) {
+          run("INSERT INTO lists(id, name, created_at) VALUES (?, ?, ?)", [l.id, name, l.created_at || ""]);
+        } else run("INSERT INTO lists(name, created_at) VALUES (?, ?)", [name, l.created_at || ""]);
+      }
+    }
+    const listIds = new Map(all("SELECT id, name FROM lists").map(r => [r.name.toLowerCase(), r.id]));
+    n = 0;
+    for (const lw of rows("list_words")) {
+      const lid = listIds.get(String(lw.list || "").split(/\s+/).filter(Boolean).join(" ").toLowerCase());
+      if (!lid) continue;
+      if (!ids.has(lw.key)) { orphan("list_words", lw); continue; }
+      if (lw.note != null && typeof lw.note !== "string") { invalid++; continue; }
+      n += run("INSERT OR IGNORE INTO list_words(list_id, word_id, note, added_at) VALUES (?, ?, ?, ?)",
+               [lid, ids.get(lw.key), (lw.note || "").slice(0, 5000), lw.added_at || ""]).changes;
+    }
+    counts["list entries"] = n;
+    const seenTests = new Set(all("SELECT ts, kind, score, total, duration_s FROM test_session").map(r => JSON.stringify(Object.values(r))));
+    for (const t of rows("test_session")) {
+      if (!cleanDatetime(t.ts, false) || typeof t.kind !== "string") { invalid++; continue; }
+      const row = [String(t.ts), String(t.kind).slice(0, 40), clamp(t.score, 0, 1e6, 0), clamp(t.total, 0, 1e6, 0),
+                   clamp(t.duration_s, 0, 1e7, 0)];
+      if (restore || !seenTests.has(JSON.stringify(row))) run("INSERT INTO test_session(ts, kind, score, total, duration_s) VALUES (?, ?, ?, ?, ?)", row);
+    }
+    for (const a of rows("daily_activity")) {
+      if (!a.date) continue;
+      if (!isDateStr(String(a.date).slice(0, 10))) { invalid++; continue; }
+      run(`INSERT INTO daily_activity(date, seconds, reviews, new_words) VALUES (?, ?, ?, ?)
+           ON CONFLICT(date) DO UPDATE SET seconds=MAX(seconds, excluded.seconds), reviews=MAX(reviews, excluded.reviews),
+           new_words=MAX(new_words, excluded.new_words)`,
+          [String(a.date).slice(0, 10), clamp(a.seconds, 0, 86400, 0), clamp(a.reviews, 0, 100000, 0), clamp(a.new_words, 0, 100000, 0)]);
+    }
+    const st = data.settings && typeof data.settings === "object" ? data.settings : {};
+    const clean = {};
+    if ("speech_rate" in st) clean.speech_rate = clamp(st.speech_rate, 0.5, 2, 0.9, false);
+    if ("autoplay" in st) clean.autoplay = ["1", "True", "true"].includes(String(st.autoplay));
+    if (/^[1-5](,[1-5])*$/.test(String(st.word_levels ?? ""))) clean.word_levels = parseLevels(String(st.word_levels)).join(",");
+    saveSettings(clean);
+    if (invalid) counts.skipped = invalid;
+    db.exec("COMMIT");
+  } catch (e) {
+    db.exec("ROLLBACK");
+    throw e instanceof HttpError ? e : new HttpError(400, `That export file is damaged (${e.message}).`);
+  }
+  return { imported: counts };
+}
+
+async function importFile(body) {
+  const file = body instanceof FormData ? body.get("file") : null;
+  if (!file) throw new HttpError(422, "No file received.");
+  if (file.size > 200 * 1024 * 1024) throw new HttpError(413, "That file is too large (over 200 MB).");
+  let data;
+  try { data = JSON.parse(await file.text()); } catch (e) { throw new HttpError(400, "That file isn't valid JSON."); }
+  const result = importProgress(data);
+  if (Array.isArray(data.recordings)) result.imported.recordings = await importRecordings(data.recordings);
+  return result;
+}
+
+// Your own pronunciation recordings in an export (app/api/stats.py): added
+// for words that have none in this browser, never replacing yours.
+const RECORDING_TYPES = ["audio/webm", "audio/ogg", "audio/mp4", "audio/mpeg", "audio/wav"];
+async function exportRecordings() {
+  const out = [];
+  for (const r of all("SELECT w.id, w.key, r.created_at FROM recordings r JOIN words w ON w.id = r.word_id")) {
+    const blob = await idbGet("recordings", r.key).catch(() => undefined);
+    if (!blob) continue;
+    const bytes = new Uint8Array(await blob.arrayBuffer());
+    let bin = "";
+    for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+    const type = (blob.type || "audio/webm").split(";")[0];
+    out.push({ key: r.key, type: RECORDING_TYPES.includes(type) ? type : "audio/webm", created_at: r.created_at, data: btoa(bin) });
+  }
+  return out;
+}
+async function importRecordings(items) {
+  let n = 0;
+  for (const r of items) {
+    if (!r || typeof r !== "object" || !RECORDING_TYPES.includes(r.type) || typeof r.data !== "string") continue;
+    const w = get("SELECT id FROM words WHERE key=?", [r.key]);
+    if (!w || get("SELECT 1 AS x FROM recordings WHERE word_id=?", [w.id])) continue;
+    let bytes;
+    try { bytes = Uint8Array.from(atob(r.data), ch => ch.charCodeAt(0)); } catch (e) { continue; }
+    if (!bytes.length || bytes.length > 5_000_000) continue;
+    await idbPut("recordings", r.key, new Blob([bytes], { type: r.type }));
+    run("INSERT OR REPLACE INTO recordings(word_id, path, created_at) VALUES (?, 'idb', datetime('now','localtime'))", [w.id]);
+    n++;
+  }
+  return n;
+}
+
+// Fetch every detail file so the whole lexicon works offline.
+async function downloadForOffline() {
+  if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
+  // Fetching each file is enough: the service worker stores it. Not parsing
+  // them keeps 46 MB of entries out of memory. A few at a time, each retried,
+  // with progress reported to the page ("lexi-offline-progress").
+  const shards = [...new Set([...INDEX.values()].map(w => w.s))];
+  const urls = shards.map(s => `data/detail/${String(s).padStart(2, "0")}.json`);
+  for (let s = 0; s < GLOSS_SHARDS; s++) urls.push(glossUrl(s));
+  urls.push("data/mentions.json");
+  // The recordings of words to refresh too, so practicing them sounds right offline.
+  try {
+    const ids = poolIds({ domain: "refresh", exclude_known: true }).slice(0, 80);
+    for (const w of await Promise.all(ids.map(i => full(fetchWord(i))))) {
+      const u = w.audio_url || w.tts_url;
+      if (u) urls.push(u);
+      for (const p of w.prons || []) if (p.url) urls.push(p.url);   // each way it's said
+    }
+  } catch (e) { /* recordings are a bonus */ }
+  let done = 0;
+  const report = () => dispatchEvent(new CustomEvent("lexi-offline-progress", { detail: { done, total: urls.length } }));
+  report();
+  const fetchOne = async url => {
+    for (let attempt = 0; ; attempt++) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(String(res.status));
+        await res.arrayBuffer();   // read to the end so the copy is complete
+        return;
+      } catch (e) {
+        if (attempt >= 2) throw new HttpError(503, `The download stopped at ${url}: check your connection and try again (what's done is kept).`);
+        await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
+      }
+    }
+  };
+  const queue = [...urls];
+  await Promise.all(Array.from({ length: 5 }, async () => {
+    while (queue.length) {
+      await fetchOne(queue.shift());
+      done++;
+      report();
+    }
+  }));
+  try { localStorage.setItem("lexi-offline", "1"); } catch (e) { /* unavailable */ }
+  return { ok: true, files: shards.length };
+}
+
+// -------------------------------------------------------------------- router
+
+const ROUTES = [
+  ["GET", /^\/api\/health$/, () => ({ ok: true, words: get("SELECT COUNT(*) AS n FROM words").n })],
+  ["GET", /^\/api\/words$/, () => listWords()],
+  ["GET", /^\/api\/words\/(\d+)$/, (m) => wordDetail(+m[1])],
+  ["PATCH", /^\/api\/words\/(\d+)\/state$/, (m, q, b) => setState(+m[1], b)],
+  ["POST", /^\/api\/words$/, (m, q, b) => addCustomWord(b)],
+  ["DELETE", /^\/api\/words\/(\d+)$/, (m) => deleteCustomWord(+m[1])],
+  ["GET", /^\/api\/wotd$/, (m, q) => wordOfTheDay(q)],
+  ["GET", /^\/api\/gloss$/, (m, q) => gloss(q.w)],
+  ["GET", /^\/api\/mentions$/, () => mentions()],
+  ["GET", /^\/api\/lists$/, () => allLists()],
+  ["POST", /^\/api\/lists$/, (m, q, b) => createList(b)],
+  ["PATCH", /^\/api\/lists\/(\d+)$/, (m, q, b) => renameList(+m[1], b)],
+  ["DELETE", /^\/api\/lists\/(\d+)$/, (m) => deleteList(+m[1])],
+  ["GET", /^\/api\/lists\/(\d+)$/, (m) => listDetail(+m[1])],
+  ["POST", /^\/api\/lists\/(\d+)\/words$/, (m, q, b) => addToList(+m[1], b)],
+  ["PATCH", /^\/api\/lists\/(\d+)\/words\/(\d+)$/, (m, q, b) => {
+    run("UPDATE list_words SET note=? WHERE list_id=? AND word_id=?", [String(b.note || ""), +m[1], +m[2]]);
+    return { ok: true };
+  }],
+  ["DELETE", /^\/api\/lists\/(\d+)\/words\/(\d+)$/, (m) => {
+    run("DELETE FROM list_words WHERE list_id=? AND word_id=?", [+m[1], +m[2]]);
+    return { ok: true };
+  }],
+  ["GET", /^\/api\/refresh$/, () => refreshCount()],
+  ["POST", /^\/api\/answer$/, (m, q, b) => recordAnswer(b)],
+  ["POST", /^\/api\/sessions$/, (m, q, b) => {
+    run("INSERT INTO test_session(kind, score, total, duration_s) VALUES (?, ?, ?, ?)",
+        [String(b.kind || "").slice(0, 40), Number(b.score) || 0, Number(b.total) || 0, Number(b.duration_s) || 0]);
+    return { ok: true };
+  }],
+  ["POST", /^\/api\/activity$/, (m, q, b) => {
+    const seconds = Number(b.seconds);
+    if (!(seconds >= 0 && seconds <= 600)) throw new HttpError(422, "seconds must be 0-600");
+    bumpActivity({ seconds: Math.trunc(seconds) });
+    return { ok: true };
+  }],
+  ["GET", /^\/api\/flashcards$/, (m, q) => flashcards(q)],
+  ["GET", /^\/api\/quiz$/, (m, q) => makeQuiz(q)],
+  ["GET", /^\/api\/matching$/, (m, q) => matching(q)],
+  ["GET", /^\/api\/listen$/, (m, q) => listen(q)],
+  ["POST", /^\/api\/recordings\/(\d+)$/, (m, q, b) => saveRecording(+m[1], b)],
+  ["GET", /^\/api\/practice\/words$/, (m, q) => practiceWords(q)],
+  ["GET", /^\/api\/stats$/, () => stats()],
+  ["GET", /^\/api\/settings$/, () => settingsMap()],
+  ["PATCH", /^\/api\/settings$/, (m, q, b) => updateSettings(b)],
+  ["GET", /^\/api\/export$/, async (m, q) => {
+    const out = exportProgress();
+    if (q.recordings === "1" || q.recordings === "true") out.recordings = await exportRecordings();
+    return out;
+  }],
+  ["POST", /^\/api\/import$/, (m, q, b) => importFile(b)],
+  ["POST", /^\/api\/offline$/, () => downloadForOffline()],
+  ["GET", /^\/api\/offline$/, () => ({ mb: OFFLINE_MB })],
+];
+const READ_ONLY = new Set(["/api/health", "/api/words", "/api/gloss", "/api/mentions", "/api/lists", "/api/stats", "/api/settings", "/api/export",
+                           "/api/quiz", "/api/matching", "/api/listen", "/api/flashcards", "/api/practice/words",
+                           "/api/refresh", "/api/offline"]);
+
+export async function handle(method, url, body) {
+  if (!ready) ready = boot();
+  try {
+    await ready;
+  } catch (e) {
+    ready = null;   // try again on the next request (e.g. after a network hiccup)
+    throw e;
+  }
+  const u = new URL(url, location.href);
+  const query = Object.fromEntries(u.searchParams);
+  for (const [verb, pattern, fn] of ROUTES) {
+    if (verb !== method) continue;
+    const m = u.pathname.replace(/^.*?(\/api\/)/, "$1").match(pattern);
+    if (!m) continue;
+    const path = m[0];
+    const reads = method === "GET" && (READ_ONLY.has(path) || /^\/api\/(words|lists)\/\d+$/.test(path));
+    if (reads) {
+      if (dirty) await withWriteLock(syncIfStale);
+      return fn(m, query, body);
+    }
+    return withWriteLock(async () => {
+      await syncIfStale();
+      if (newerFormat) {
+        throw new HttpError(409, "A newer version of LexiMaster saved your progress in another tab. Reload this page to update; nothing was changed.");
+      }
+      let result;
+      try {
+        result = await fn(m, query, body);
+      } catch (e) {
+        // A change that failed partway may have changed memory already: reload
+        // what is saved before the next request, so it is never saved later.
+        localRev = -1;
+        dirty = true;
+        throw e;
+      }
+      try {
+        await persist();
+      } catch (e) {
+        localRev = -1;   // memory now differs from what is saved: reload it before anything else
+        dirty = true;
+        throw new HttpError(507, `Couldn't save, so that change wasn't kept (${e && e.message || "storage error"}).`);
+      }
+      return result;
+    });
+  }
+  throw new HttpError(404, `No such endpoint: ${method} ${u.pathname}`);
+}
