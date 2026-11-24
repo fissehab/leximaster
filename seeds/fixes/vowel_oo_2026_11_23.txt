@@ -1,0 +1,343 @@
+# The long oo of food and the short oo of book, checked 2026-11-23 across every
+# entry's shown IPA, study-note IPA, respelling and tip (after a report on stoop).
+# Shown IPA with the wrong oo vowel; the study notes already had it right.
+soot | phonetic | /sʊt/
+blooming | phonetic | /ˈblumɪŋ/
+bushel | phonetic | /ˈbʊʃəl/
+hookah | phonetic | /ˈhʊkə/
+hookup | phonetic | /ˈhʊkˌʌp/
+poor | phonetic | /ˈpʊɹ/
+poorness | phonetic | /ˈpʊɹnəs/
+# Tips that mix up the long oo of food and the short oo of book.
+stooped | nuance.pronunciation.tip | Say it as one syllable and keep the p-t ending clean. The vowel is the same long 'oo' as in 'stoop' and 'food', not the short vowel of 'put' or 'book'.
+stooping | nuance.pronunciation.tip | The stress falls on the first syllable, and the vowel is the long oo of 'food' and 'stoop', not the short oo of 'book'. Keep the final ng clean and do not add a hard g.
+bridegroom | nuance.pronunciation.tip | The main stress falls on BRIDE, with a lighter secondary stress on groom. Do not say 'bridge-groom'; the d is clear and groom has the long oo of 'food'.
+game-room | nuance.pronunciation.tip | This is a compound noun, so Americans stress the first word: GAME room, not game ROOM. The second word is lighter but keeps the long oo of 'boom'; some speakers use the shorter vowel of 'book'.
+locker-room | nuance.pronunciation.tip | In this compound, the strongest stress is on LOCK, with 'room' lighter. The 'r' in 'locker' is pronounced, and 'room' usually has the long 'oo' of 'boom'; some speakers use the shorter vowel of 'book'.
+sunroom | nuance.pronunciation.tip | Stress SUN and make the second syllable 'room,' rhyming with 'broom,' with the long oo of 'food'. Some speakers use the shorter vowel of 'book'.
+classroom | nuance.pronunciation.tip | Stress 'class' with the short a of 'cat'. The second part is usually 'room' with the long oo of 'boom'; some speakers use the shorter vowel of 'book'. Both are common.
+permutation-group | nuance.pronunciation.tip | Stress the TAY in permutation and the GROOP in group. Americans say 'group' with a clear r and the long oo of 'food', and the two words should be joined with light stress on the first word.
+poustinia | nuance.pronunciation.tip | Stress the third syllable, NEE. The word is borrowed from Russian; the first vowel is the oo of 'food', and the final -ia is weakly pronounced as 'uh'.
+unenthusiastic | nuance.pronunciation.tip | The main stress falls on AS, the syllable of 'enthusiasm' that carries the stress. The en- is light, the th is followed by the oo of 'food' (no y sound in most American speech), and the final -ic is 'ik'.
+perdure | nuance.pronunciation.tip | The stress falls on the second syllable, DUR, and the first syllable is a light, r-colored 'per'. DUR rhymes with 'tour' and 'sure': no y sound after the d.
+wormwood | nuance.pronunciation.tip | Stress the first syllable, with the r-colored 'ur' vowel. The second syllable is 'wood', with the short oo of 'good' and 'would', not the long oo of 'food'.
+would-be | nuance.pronunciation.tip | Stress falls on WOULD, and 'be' is a weak 'bee' sound with a reduced vowel. Do not stress 'be'. 'Would' sounds exactly like 'wood', with the short oo of 'book', not the long oo of 'food'.
+repairwoman | nuance.pronunciation.tip | Stress the first syllable of 'repair' on 'PAIR', with a weaker stress on 'wom'. The 'o' in 'woman' is the short oo of 'wood' and 'book', not the long oo of 'food'.
+pull-up-a-chair | nuance.pronunciation.tip | The main stress falls on 'chair', and 'a' is a reduced schwa. Link the phrase so it sounds like 'puul-up-uh-CHAIR', with the short oo of 'book' in 'pull' (not 'pool'), and keep the American r in 'chair'.
+luke | nuance.pronunciation.tip | It rhymes with 'duke' and 'nuke', with the long oo of 'food' and no y sound. It does not sound like 'look'. It is the first half of lukewarm.
+luke-the-evangelist | nuance.pronunciation.tip | Luke is one syllable that rhymes with 'duke', with the long oo of 'food'. It does not sound like 'look'. Stress VAN in Evangelist.
+gospel-of-luke | nuance.pronunciation.tip | Stress falls on GAH and LUKE, and 'of' reduces to 'uv'. Luke rhymes with 'duke', with the long oo of 'food', not the short vowel of 'book' or 'look'.
+lawsuit | nuance.pronunciation.tip | Stress falls on LAW, and the second syllable is 'suit', with the long oo of 'food', not 'syoot.' The y sound given in some dictionaries is not common in General American here.
+pursuit | nuance.pronunciation.tip | Stress the second syllable, SUIT, with the long oo of 'food' and no y sound. Do not stress the first syllable, as in PUR-suit.
+hot-pursuit | nuance.pronunciation.tip | Stress SUIT: "hot pur-SUIT." The vowel is the long oo of "food," with no "yoo."
+birthday-suit | nuance.pronunciation.tip | Stress BIRTH; "suit" rhymes with "boot," with no "y" sound.
+follow-suit | nuance.pronunciation.tip | Stress SUIT. "Suit" rhymes with "boot," with the long "oo" of "food," not "syoot."
+jumpsuit | nuance.pronunciation.tip | Stress 'jump'; 'suit' has a lighter stress and rhymes with 'boot', with a long oo.
+strong-suit | nuance.pronunciation.tip | Stress falls on SUIT, and the vowel is the oo of 'boot', not 'sweet' or 'sute'. The final t is light and may be almost silent before a pause.
+suit | nuance.pronunciation.tip | General American has no y sound after s, so 'suit' rhymes with 'boot', not 'syoot.' The vowel is a long oo, as in 'food.'
+swimsuit | nuance.pronunciation.tip | Stress the first syllable, SWIM. The second part, suit, rhymes with 'boot'; most Americans say it with no y sound.
+hirsute | nuance.pronunciation.tip | Stress falls on the second syllable, which rhymes with 'suit' and 'boot', and the first syllable is a rhotic 'er' sound. Learners often say 'HIR-sute' with stress on the first syllable.
+hirsuteness | nuance.pronunciation.tip | Stress falls on the middle syllable, which rhymes with 'suit', not on the first. The ending -ness is reduced to 'nus', and the first syllable is a soft, r-colored 'hur'.
+sounds-good | nuance.pronunciation.tip | Good is pronounced with a short 'oo' vowel, like 'book', not the long 'food' vowel. Sounds has a final z sound, so keep it voiced.
+stateswoman | nuance.pronunciation.tip | Stress the first syllable. 'Woman' is pronounced 'WUUM-uhn' in American speech, with the short oo of 'book', not 'WAH-man'.
+businesswoman | nuance.pronunciation.tip | Stress 'BIZ'. 'Business' has two syllables, 'BIZ-nus', with no 'i' sound in the middle, and 'woman' is 'WUUM-un', with the short oo of 'book'.
+# Respellings: "oo" is the long oo of food, "uu" the short oo of book (tools/respell.py).
+abraham's-bosom | nuance.pronunciation.respelling | AY-bruh-hamz BUUZ-um
+afoot | nuance.pronunciation.respelling | uh-FUUT
+air-cushion-vehicle | nuance.pronunciation.respelling | air kuush-un VEE-hik-ul
+ambusher | nuance.pronunciation.respelling | AM-buush-ur
+american-football | nuance.pronunciation.respelling | uh-mair-uh-kun FUUT-bawl
+anthood | nuance.pronunciation.respelling | ANT-huud
+babyhood | nuance.pronunciation.respelling | BAY-bee-huud
+backward-looking | nuance.pronunciation.respelling | BAK-werd LUUK-ing
+bathing-suit | nuance.pronunciation.respelling | BAY-thing suit
+birthday-suit | nuance.pronunciation.respelling | BERTH-day suit
+book | nuance.pronunciation.respelling | BUUK
+book-bag | nuance.pronunciation.respelling | BUUK-bag
+book-lover | nuance.pronunciation.respelling | buuk LUH-ver
+book-of-daniel | nuance.pronunciation.respelling | BUUK uv DAN-yul
+book-of-judith | nuance.pronunciation.respelling | BUUK uv JOO-duth
+book-of-psalms | nuance.pronunciation.respelling | BUUK uv SAHLMZ
+bookcase | nuance.pronunciation.respelling | BUUK-kayss
+bookie | nuance.pronunciation.respelling | BUUK-ee
+booking | nuance.pronunciation.respelling | BUUK-ing
+bookish | nuance.pronunciation.respelling | BUUK-ish
+bookshelf | nuance.pronunciation.respelling | BUUK-shelf
+bookworm | nuance.pronunciation.respelling | BUUK-wurm
+bosom | nuance.pronunciation.respelling | BUUZ-um
+bosom-buddy | nuance.pronunciation.respelling | buu-zuhm BUH-dee
+bosom-friend | nuance.pronunciation.respelling | buu-zuhm FREND
+bosomy | nuance.pronunciation.respelling | BUUZ-uh-mee
+boyhood | nuance.pronunciation.respelling | BOY-huud
+brook | nuance.pronunciation.respelling | BRUUK
+bull | nuance.pronunciation.respelling | buul
+bulldog | nuance.pronunciation.respelling | BUUL-dawg
+bullpen | nuance.pronunciation.respelling | BUUL-pen
+bullseye | nuance.pronunciation.respelling | BUUL-zye
+bullshit | nuance.pronunciation.respelling | BUUL-shit
+bully | nuance.pronunciation.respelling | BUUL-ee
+bullying | nuance.pronunciation.respelling | BUU-lee-ing
+bulwark | nuance.pronunciation.respelling | BUUL-wurk
+bush-ape | nuance.pronunciation.respelling | buush AYP
+bush-negro | nuance.pronunciation.respelling | buush NEE-groh
+businesswoman | nuance.pronunciation.respelling | BIZ-nus-wuum-un
+butch | nuance.pronunciation.respelling | BUUCH
+butcher | nuance.pronunciation.respelling | BUUCH-er
+butchery | nuance.pronunciation.respelling | BUUCH-uh-ree
+by-the-book | nuance.pronunciation.respelling | bye thuh BUUK
+clanswoman | nuance.pronunciation.respelling | KLANZ-wuum-uhn
+clergywoman | nuance.pronunciation.respelling | KLER-jih-wuum-un
+clitoral-hood | nuance.pronunciation.respelling | KLIT-er-uhl HUUD
+cloven-footed | nuance.pronunciation.respelling | KLOH-vuhn FUUT-id
+cold-cook | nuance.pronunciation.respelling | kohld KUUK
+cook | nuance.pronunciation.respelling | KUUK
+cook-out | nuance.pronunciation.respelling | kuuk OUT
+cook-up | nuance.pronunciation.respelling | kuuk UP
+cookbook | nuance.pronunciation.respelling | KUUK-buuk
+cooked | nuance.pronunciation.respelling | kuukt
+cooker | nuance.pronunciation.respelling | KUUK-er
+cookery | nuance.pronunciation.respelling | KUUK-uh-ree
+could | nuance.pronunciation.respelling | KUUD
+could-be-worse | nuance.pronunciation.respelling | kuud bee WURS
+could-i-get-a-box-for-this | nuance.pronunciation.respelling | kuud eye get uh BAHKS for this
+could-i-get-the-dressing-on-the-side | nuance.pronunciation.respelling | kuud eye get thuh dress-ing on thuh SIDE
+could-we-get-some-more-napkins | nuance.pronunciation.respelling | kuud wee get sum mor NAP-kinz
+could-we-split-the-check | nuance.pronunciation.respelling | kuud wee split thuh CHEK
+could-you-have-him-call-me-back | nuance.pronunciation.respelling | kuud yoo hav him kawl mee BAK
+could-you-repeat-that | nuance.pronunciation.respelling | kuud yoo rih-PEET that
+could-you-say-more-about-that | nuance.pronunciation.respelling | kuud yoo say mor uh-BOWT that
+could-you-say-that-again | nuance.pronunciation.respelling | kuud yoo say that uh-GEN
+could-you-speak-a-little-louder | nuance.pronunciation.respelling | kuud yoo speek uh LIT-uhl LOW-der
+could-you-speak-up | nuance.pronunciation.respelling | kuud yoo speek UP
+could-you-spell-that | nuance.pronunciation.respelling | kuud yoo SPEL that
+could-you-spell-your-last-name | nuance.pronunciation.respelling | kuud yoo spel yor last NAME
+countrywoman | nuance.pronunciation.respelling | KUN-tree-wuum-un
+craftswoman | nuance.pronunciation.respelling | KRAFTS-wuum-un
+cry-wolf | nuance.pronunciation.respelling | krahy WUULF
+cushion | nuance.pronunciation.respelling | KUUSH-un
+cushion-the-blow | nuance.pronunciation.respelling | kuush-uhn thuh BLOH
+cushioned | nuance.pronunciation.respelling | KUUSH-und
+cushioning | nuance.pronunciation.respelling | KUUSH-un-ing
+cushiony | nuance.pronunciation.respelling | KUUSH-uh-nee
+cushy | nuance.pronunciation.respelling | KUUSH-ee
+desugar | nuance.pronunciation.respelling | dee-SHUU-ger
+did-you-put-on-sunscreen | nuance.pronunciation.respelling | did yoo puut ahn suhn-SKREEN
+do-good | nuance.pronunciation.respelling | doo GUUD
+dodge-a-bullet | nuance.pronunciation.respelling | dahj uh BUUL-it
+double-booked | nuance.pronunciation.respelling | DUB-uhl BUUKT
+double-booking | nuance.pronunciation.respelling | dub-uhl BUUK-ing
+duck-footed | nuance.pronunciation.respelling | duhk FUUT-id
+embosom | nuance.pronunciation.respelling | im-BUU-zum
+falsehood | nuance.pronunciation.respelling | FALS-huud
+fatherhood | nuance.pronunciation.respelling | FAH-thur-huud
+follow-suit | nuance.pronunciation.respelling | fah-loh SUIT
+football | nuance.pronunciation.respelling | FUUT-bawl
+footman | nuance.pronunciation.respelling | FUUT-mun
+footstool | nuance.pronunciation.respelling | FUUT-stool
+for-good-and-all | nuance.pronunciation.respelling | fawr guud und AWL
+for-goodness'-sake | nuance.pronunciation.respelling | fawr GUUD-nus sayk
+four-footed | nuance.pronunciation.respelling | fohr FUUT-id
+fruit-sugar | nuance.pronunciation.respelling | froot SHUU-gur
+fulcral | nuance.pronunciation.respelling | FUUL-kruhl
+full | nuance.pronunciation.respelling | fuul
+full-throated | nuance.pronunciation.respelling | fuul-THROH-tid
+full-time | nuance.pronunciation.respelling | fuul TYME
+fullness | nuance.pronunciation.respelling | FUUL-nuhs
+fully | nuance.pronunciation.respelling | FUUL-ee
+fulsomely | nuance.pronunciation.respelling | FUUL-sum-lee
+fulsomeness | nuance.pronunciation.respelling | FUUL-sum-nuhs
+gentlewoman | nuance.pronunciation.respelling | JEN-tul-WUUM-un
+give-someone-an-earful | nuance.pronunciation.respelling | giv suhm-wuhn uhn EER-fuul
+good-things-come-to-those-who-wait | nuance.pronunciation.respelling | guud THINGZ kum tuh thohz hoo WAYT
+gospel-of-luke | nuance.pronunciation.respelling | GAH-spul uv LUKE
+graceful | nuance.pronunciation.respelling | GRAYS-fuul
+guidebook | nuance.pronunciation.respelling | GYD-buuk
+handful | nuance.pronunciation.respelling | HAN(D)-fuul
+hardwood | nuance.pronunciation.respelling | HAHRD-wuud
+have-one's-hands-full | nuance.pronunciation.respelling | hav wuhnz HANDZ fuul
+hirsute | nuance.pronunciation.respelling | her-SUIT
+hirsuteness | nuance.pronunciation.respelling | hur-SUIT-nus
+home-cooking | nuance.pronunciation.respelling | HOHM kuuk-ing
+hood | nuance.pronunciation.respelling | HUUD
+hoodie | nuance.pronunciation.respelling | HUUD-ee
+hoodwink | nuance.pronunciation.respelling | HUUD-wingk
+hoof | nuance.pronunciation.respelling | HUUF
+hooked | nuance.pronunciation.respelling | HUUKT
+hooker | nuance.pronunciation.respelling | HUUK-er
+hookup | nuance.pronunciation.respelling | HUUK-up
+horsewoman | nuance.pronunciation.respelling | HORS-wuum-un
+hot-pursuit | nuance.pronunciation.respelling | haht per-SUIT
+hymnbook | nuance.pronunciation.respelling | HIM-buuk
+i'd-push-back-on-that | nuance.pronunciation.respelling | ide puush BAK ahn that
+i-could-eat | nuance.pronunciation.respelling | eye kuud EET
+i-couldn't-eat-another-bite | nuance.pronunciation.respelling | eye kuud-unt eet uh-nuth-ur BYTE
+i-got-pulled-over | nuance.pronunciation.respelling | eye gaht puuld OH-ver
+i-should-get-going | nuance.pronunciation.respelling | eye shuud get GOH-ing
+in-one's-birthday-suit | nuance.pronunciation.respelling | in wunz BURTH-day SUIT
+it-could-use-a-little-more-salt | nuance.pronunciation.respelling | it kuud yoos uh lit-uhl mor SAWLT
+jumpsuit | nuance.pronunciation.respelling | JUMP-suit
+just-looking | nuance.pronunciation.respelling | just LUUK-ing
+kinswoman | nuance.pronunciation.respelling | KINZ-wuu-mun
+lawsuit | nuance.pronunciation.respelling | LAW-suit
+little-woman | nuance.pronunciation.respelling | lit-uhl WUUM-un
+look-before-you-leap | nuance.pronunciation.respelling | luuk bih-for yoo LEEP
+luke | nuance.pronunciation.respelling | luke
+luke-the-evangelist | nuance.pronunciation.respelling | luke thee ih-VAN-juh-list
+lukewarm | nuance.pronunciation.respelling | luke-WARM
+lukewarmly | nuance.pronunciation.respelling | luke-WARM-lee
+lukewarmness | nuance.pronunciation.respelling | luke-WARM-nus
+man-wolf | nuance.pronunciation.respelling | man WUULF
+mea-culpa | nuance.pronunciation.respelling | may-uh-KUUL-puh
+misunderstood | nuance.pronunciation.respelling | mis-un-der-STUUD
+no-news-is-good-news | nuance.pronunciation.respelling | noh NOOZ iz guud NOOZ
+noblewoman | nuance.pronunciation.respelling | NOH-buhl-wuum-uhn
+nook | nuance.pronunciation.respelling | NUUK
+not-to-put-too-fine-a-point-on-it | nuance.pronunciation.respelling | naht tuh puut too fahyn uh POINT ahn it
+nuke | nuance.pronunciation.respelling | NUKE
+oarswoman | nuance.pronunciation.respelling | ORZ-wuum-un
+octopus | nuance.pronunciation.respelling | AHK-tuh-puus
+on-foot | nuance.pronunciation.respelling | ahn FUUT
+on-the-hook | nuance.pronunciation.respelling | ahn thuh HUUK
+output-layer | nuance.pronunciation.respelling | owt-puut LAY-er
+overcook | nuance.pronunciation.respelling | oh-ver-KUUK
+overcooked | nuance.pronunciation.respelling | oh-vur-KUUKT
+packaged-goods | nuance.pronunciation.respelling | PAK-ijd GUUDZ
+pocketbook | nuance.pronunciation.respelling | PAH-kit-buuk
+prairie-wolf | nuance.pronunciation.respelling | PRAIR-ee wuulf
+pudding | nuance.pronunciation.respelling | PUUD-ing
+pull-ahead | nuance.pronunciation.respelling | puul uh-HED
+pull-an-all-nighter | nuance.pronunciation.respelling | puul an awl NYTE-er
+pull-away | nuance.pronunciation.respelling | puul uh-WAY
+pull-back | nuance.pronunciation.respelling | puul BACK
+pull-off | nuance.pronunciation.respelling | puul AWF
+pull-oneself-together | nuance.pronunciation.respelling | puul wun-self tuh-GEH-ther
+pull-oneself-up-by-one's-bootstraps | nuance.pronunciation.respelling | puul wuhn-self up bahy wuhnz BOOT-straps
+pull-out | nuance.pronunciation.respelling | puul OUT
+pull-over | nuance.pronunciation.respelling | puul OH-ver
+pull-punches | nuance.pronunciation.respelling | puul PUNCH-iz
+pull-request | nuance.pronunciation.respelling | puul ri-KWEST
+pull-through | nuance.pronunciation.respelling | puul THROO
+pull-together | nuance.pronunciation.respelling | puul tuh-GEH-ther
+pull-up | nuance.pronunciation.respelling | puul UP
+pull-up-a-chair | nuance.pronunciation.respelling | puul up uh CHAIR
+pull-yourself-together | nuance.pronunciation.respelling | puul yur-SELF tuh-GEH-thur
+pulled-over | nuance.pronunciation.respelling | puuld OH-vur
+pullover | nuance.pronunciation.respelling | PUUL-oh-vur
+pulpit | nuance.pronunciation.respelling | PUUL-pit
+pursuit | nuance.pronunciation.respelling | per-SUIT
+push-someone's-buttons | nuance.pronunciation.respelling | puush suhm-wuhnz BUHT-nz
+put-a-pin-in-it | nuance.pronunciation.respelling | puut uh PIN in it
+put-a-spin-on | nuance.pronunciation.respelling | puut uh SPIN ahn
+put-back | nuance.pronunciation.respelling | puut BAK
+put-forth | nuance.pronunciation.respelling | puut FORTH
+put-forward | nuance.pronunciation.respelling | puut FOR-wurd
+put-in-motion | nuance.pronunciation.respelling | puut in MOH-shun
+put-into-action | nuance.pronunciation.respelling | puut in-tuh AK-shun
+put-into-words | nuance.pronunciation.respelling | puut in-tuh WURDZ
+put-off | nuance.pronunciation.respelling | puut AWF
+put-on | nuance.pronunciation.respelling | puut AHN
+put-on-airs | nuance.pronunciation.respelling | puut ahn AIRZ
+put-on-hold | nuance.pronunciation.respelling | puut ahn HOHLD
+put-on-speaker | nuance.pronunciation.respelling | puut ahn SPEE-ker
+put-on-weight | nuance.pronunciation.respelling | puut ahn WAYT
+put-one's-best-foot-forward | nuance.pronunciation.respelling | puut wuhnz best foot FOR-werd
+put-one's-foot-down | nuance.pronunciation.respelling | puut wuhnz FOOT doun
+put-one's-foot-in-one's-mouth | nuance.pronunciation.respelling | puut wuhnz foot in wuhnz MOUTH
+put-one's-money-where-one's-mouth-is | nuance.pronunciation.respelling | puut wuhnz MUHN-ee wair wuhnz MOUTH iz
+put-out | nuance.pronunciation.respelling | puut OWT
+put-out-feelers | nuance.pronunciation.respelling | puut out FEE-lerz
+put-out-to-pasture | nuance.pronunciation.respelling | puut owt too PASS-cher
+put-something-to-a-vote | nuance.pronunciation.respelling | puut suhm-thing too uh VOHT
+put-the-blame-on | nuance.pronunciation.respelling | puut thuh blaym AHN
+put-the-lie-to | nuance.pronunciation.respelling | puut thuh LYE too
+put-the-moves-on | nuance.pronunciation.respelling | puut thuh moovz AHN
+put-through | nuance.pronunciation.respelling | puut THROO
+put-to-bed | nuance.pronunciation.respelling | puut too BED
+put-to-lie | nuance.pronunciation.respelling | puut too LYE
+put-to-rest | nuance.pronunciation.respelling | puut too REST
+put-to-shame | nuance.pronunciation.respelling | puut too SHAME
+put-to-sleep | nuance.pronunciation.respelling | puut too SLEEP
+put-together | nuance.pronunciation.respelling | puut tuh-GEH-thur
+put-under | nuance.pronunciation.respelling | puut UN-der
+put-words-in-someone's-mouth | nuance.pronunciation.respelling | puut WURDZ in suhm-wuhnz mouth
+putsch | nuance.pronunciation.respelling | PUUTCH
+rebook | nuance.pronunciation.respelling | ree-BUUK
+repairwoman | nuance.pronunciation.respelling | rih-PAIR-wuum-un
+rook | nuance.pronunciation.respelling | RUUK
+rookie | nuance.pronunciation.respelling | RUUK-ee
+second-childhood | nuance.pronunciation.respelling | SEK-und CHILD-huud
+shook | nuance.pronunciation.respelling | shuuk
+shovelful | nuance.pronunciation.respelling | SHUV-uhl-fuul
+sketchbook | nuance.pronunciation.respelling | SKECH-buuk
+soot | nuance.pronunciation.respelling | SUUT
+sooty | nuance.pronunciation.respelling | SUUT-ee
+sounds-good | nuance.pronunciation.respelling | sowndz GOOD
+spokeswoman | nuance.pronunciation.respelling | SPOHK-swuum-uhn
+stateswoman | nuance.pronunciation.respelling | STAYTS-wuum-uhn
+stay-put | nuance.pronunciation.respelling | stay PUUT
+stewed | nuance.pronunciation.respelling | STEWD
+storybook | nuance.pronunciation.respelling | STOR-ee-buuk
+strong-suit | nuance.pronunciation.respelling | strawng SUIT
+sugar | nuance.pronunciation.respelling | SHUUG-er
+sugar-free | nuance.pronunciation.respelling | shuug-er FREE
+sugar-pill | nuance.pronunciation.respelling | shuug-er PIL
+sugar-substitute | nuance.pronunciation.respelling | shuug-er SUB-stuh-toot
+sugarcane | nuance.pronunciation.respelling | SHUUG-er-kayn
+sugarcoat | nuance.pronunciation.respelling | SHUUG-er-koht
+sugared | nuance.pronunciation.respelling | SHUUG-erd
+sugariness | nuance.pronunciation.respelling | SHUUG-uh-rih-nus
+sugarless | nuance.pronunciation.respelling | SHUUG-er-lus
+sugary | nuance.pronunciation.respelling | SHUUG-uh-ree
+suit | nuance.pronunciation.respelling | suit
+suit-and-tie | nuance.pronunciation.respelling | suit un TY
+suit-up | nuance.pronunciation.respelling | suit UP
+suit-yourself | nuance.pronunciation.respelling | suit yer-SELF
+suitcase | nuance.pronunciation.respelling | SUIT-kays
+suitor | nuance.pronunciation.respelling | SUIT-er
+swimsuit | nuance.pronunciation.respelling | SWIM-suit
+to-put-it-another-way | nuance.pronunciation.respelling | too puut it uh-nuth-ur WAY
+to-put-it-bluntly | nuance.pronunciation.respelling | tuh puut it BLUHNT-lee
+tough-cookie | nuance.pronunciation.respelling | tuhf KUUK-ee
+two-footed | nuance.pronunciation.respelling | TOO-fuut-id
+unbooked | nuance.pronunciation.respelling | un-BUUKT
+uncooked | nuance.pronunciation.respelling | un-KUUKT
+undercook | nuance.pronunciation.respelling | un-der-KUUK
+understood | nuance.pronunciation.respelling | un-der-STUUD
+unhook | nuance.pronunciation.respelling | uhn-HUUK
+unlikelihood | nuance.pronunciation.respelling | uhn-LYKE-lee-huud
+we-should-get-together-sometime | nuance.pronunciation.respelling | wee shuud get tuh-GEH-thur SUM-time
+we-should-head-back-before-it-gets-dark | nuance.pronunciation.respelling | wee shuud hed bak bih-for it gets DARK
+where-should-i-park | nuance.pronunciation.respelling | wair shuud ai PARK
+whoop-de-doo | nuance.pronunciation.respelling | wuup dee DOO
+whoopee-do | nuance.pronunciation.respelling | WUU-pee doo
+whoops | nuance.pronunciation.respelling | WUUPS
+wolf | nuance.pronunciation.respelling | WUULF
+wolf-down | nuance.pronunciation.respelling | wuulf DOWN
+wolf-in-sheep's-clothing | nuance.pronunciation.respelling | WUULF un SHEEPS KLOH-thing
+wolfish | nuance.pronunciation.respelling | WUUL-fish
+wolfman | nuance.pronunciation.respelling | WUULF-muhn
+wolfpack | nuance.pronunciation.respelling | WUULF-pak
+wolverine | nuance.pronunciation.respelling | wuul-vuh-REEN
+woman | nuance.pronunciation.respelling | WUUM-uhn
+woman-hater | nuance.pronunciation.respelling | WUU-muhn HAY-ter
+woman-up | nuance.pronunciation.respelling | WUU-muhn UP
+womanize | nuance.pronunciation.respelling | WUU-muh-nize
+womanizer | nuance.pronunciation.respelling | WUUM-uh-nye-zer
+womanly | nuance.pronunciation.respelling | WUU-muhn-lee
+woodland | nuance.pronunciation.respelling | WUUD-lund
+woods | nuance.pronunciation.respelling | wuudz
+woody | nuance.pronunciation.respelling | WUUD-ee
+woofer | nuance.pronunciation.respelling | WUUF-er
+woolen | nuance.pronunciation.respelling | WUUL-en
+woolgathering | nuance.pronunciation.respelling | WUUL-gath-er-ing
+woolly | nuance.pronunciation.respelling | WUUL-ee
+woolly-head | nuance.pronunciation.respelling | wuul-ee HED
+worsted | nuance.pronunciation.respelling | WUUS-tid
+would-be | nuance.pronunciation.respelling | WUUD bee
+would-you-like-seconds | nuance.pronunciation.respelling | wuud yoo like SEK-undz
+would-you-like-your-receipt | nuance.pronunciation.respelling | wuud yoo like yor rih-SEET
+you-shouldn't-have | nuance.pronunciation.respelling | yoo SHUUD-nt hav
+nuke | nuance.pronunciation.tip | One syllable, rhyming with "Luke" and "duke," with the long oo of "food." Americans don't say "nyook."
+in-one's-birthday-suit | nuance.pronunciation.tip | The stress falls on BURTH in 'birthday' and on SUIT, which rhymes with 'boot'. The 'ir' in 'birth' is the American r-colored vowel, and 'one's' is pronounced 'wunz'.
+suit | phonetic | /sut/
+luke | phonetic | /luk/
