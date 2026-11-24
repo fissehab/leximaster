@@ -5,6 +5,7 @@
 #   schema: core, pronunciation{ipa,respelling,tip}, us_usage, register,
 #   connotation, usage_note, word_family, distinctions, antonyms,
 #   collocations, examples, analogy, etymology, common_mistakes,
-#   biblical_note, traditions), and optionally etymology and conversation.
+#   biblical_note, traditions), and optionally etymology, conversation and
+#   form_of ([[label, base], ...]: "were" is the past tense of "be").
 # zipf comes from wordfreq. A key the caches already produce is skipped, so
 # a dictionary entry always wins over a hand entry with the same key.

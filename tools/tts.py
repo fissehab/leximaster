@@ -183,6 +183,8 @@ NO_FLAP = {
 FROM_IPA: set[str] = {
     "community garden", "e-ticket", "home away from home", "how-to", "on-off",
     "reel off", "so that", "sous-chef", "such-and-such", "writing on the wall",
+    # Plurals Kokoro reads as another word's: "bases" of base, "diagnoses" the verb.
+    "axes", "bases", "diagnoses", "dreamt", "theses",
 }
 
 

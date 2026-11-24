@@ -3443,7 +3443,8 @@ def load_hand_entries(taken: set[str]) -> list[dict]:
     dictionary lists or that the paid stages never reached ("miaphysite",
     "Tewahedo"). Each file is a JSON list of objects with "word", "domains",
     "phonetic", "meanings" ([{"pos", "senses": [definition, ...]}]), "nuance"
-    (the enrichment schema) and optionally "etymology" and "conversation".
+    (the enrichment schema) and optionally "etymology", "conversation" and
+    "form_of" ([[label, base], ...]: "were" is the past tense of "be").
     A key that the caches already produce is skipped (the dictionary entry
     wins), so a hand entry can't silently duplicate a word."""
     out = []
@@ -3471,6 +3472,7 @@ def load_hand_entries(taken: set[str]) -> list[dict]:
                 "nuance": nuance, "source": "leximaster", "name_kind": "",
                 "status": {"fetched": True, "audio": False, "enriched": True},
                 "phonetic_source": "manual",
+                **({"forms": {"form_of": e["form_of"]}} if e.get("form_of") else {}),
             })
     return out
 
@@ -3736,9 +3738,12 @@ def add_forms(words: list[dict]) -> None:
         poses = [(n.get("core") or {}).get("pos", "")] + [m["pos"] for m in w["meanings"]]
         entry = (raw.get(w["key"]) or {}).get("entry") or {}
         defs = [s_["definition"] for m in entry.get("meanings") or [] for s_ in m["senses"]]
+        hand = (w.get("forms") or {}).get("form_of")   # a hand entry's own ("were": past tense of be)
         if not w.get("name_kind") and (f := forms_for(w["word"], [p for p in poses if p],
                                                          n.get("word_family") or [], shares_stem, defs)):
             w["forms"] = f
+        if hand:
+            w["forms"] = {"form_of": hand, **{k: v for k, v in (w.get("forms") or {}).items() if k != "form_of"}}
 
 
 PATTERN_PREPS = CACHE / "pattern_preps.json"   # tools/pattern_preps.py (Google Books Ngram)
